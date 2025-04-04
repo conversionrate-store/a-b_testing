@@ -1,6 +1,6 @@
-var H = function() {
+var $ = function() {
   "use strict";
-  const c = (a, n, t, e = "") => {
+  const m = (a, n, t, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: a,
@@ -8,17 +8,17 @@ var H = function() {
       event_type: t,
       event_loc: e
     }), console.log(`Event: ${a} | ${n} | ${t} | ${e}`);
-  }, g = ({ name: a, dev: n }) => {
+  }, x = ({ name: a, dev: n }) => {
     console.log(
       `%c EXP: ${a} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, x = (a) => {
+  }, u = (a) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
     }, 1e3);
   };
-  async function u(a, n = "GET", t = null) {
+  async function f(a, n = "GET", t = null) {
     try {
       const e = {
         method: n,
@@ -35,9 +35,9 @@ var H = function() {
       return console.error("Fetch error:", e), { data: null, error: e };
     }
   }
-  const f = async () => await u(
+  const w = async () => await f(
     "https://api.ipgeolocation.io/ipgeo?apiKey=c29806a96e67474aa371681f82156268"
-  ), m = (
+  ), p = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ var H = function() {
     d="M10.084 4.563A3.715 3.715 0 0 0 6.37 8.271a3.715 3.715 0 0 0 7.427 0 3.715 3.715 0 0 0-3.713-3.708Zm0 5.924a2.221 2.221 0 0 1-2.22-2.216 2.221 2.221 0 0 1 4.44 0 2.221 2.221 0 0 1-2.22 2.216Z"
   />
 </svg>`
-  ), w = `#estimate-map h4 {
+  ), y = `#estimate-map h4 {
   margin-bottom: 32px !important;
 }
 
@@ -118,7 +118,7 @@ var H = function() {
   }
 }
 `;
-  class y {
+  class v {
     constructor() {
       this.addressSlide = document.getElementById("estimate-map"), this.init();
     }
@@ -146,7 +146,7 @@ var H = function() {
       class="current-location"
       id="current-location-address"
     >
-      <span class="icon">${m}</span>
+      <span class="icon">${p}</span>
       <span class="text">New York</span>
     </div> `
       ), t = (e = this.addressSlide) == null ? void 0 : e.querySelector("#autoaddress");
@@ -159,10 +159,10 @@ var H = function() {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = w, document.head.appendChild(n);
+      n.innerHTML = y, document.head.appendChild(n);
     }
   }
-  const v = `#estimate-email :is(h1, h2, h4) {
+  const b = `#estimate-email :is(h1, h2, h4) {
   display: none;
 }
 
@@ -295,7 +295,7 @@ var H = function() {
   }
 }
 `;
-  class b {
+  class S {
     constructor() {
       this.emailSlide = document.getElementById("estimate-email"), this.init();
     }
@@ -339,13 +339,13 @@ var H = function() {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = v, document.head.appendChild(n);
+      n.innerHTML = b, document.head.appendChild(n);
     }
   }
-  const S = `#estimate-name .form-list {
+  const z = `#estimate-name .form-list {
   max-width: 620px;
 }`;
-  class z {
+  class T {
     constructor() {
       this.nameSlide = document.getElementById("estimate-name"), this.init();
     }
@@ -362,10 +362,10 @@ var H = function() {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = S, document.head.appendChild(n);
+      n.innerHTML = z, document.head.appendChild(n);
     }
   }
-  const T = `#estimate-zip :is(h1, h4, h5) {
+  const E = `#estimate-zip :is(h1, h4, h5) {
   display: none;
 }
 
@@ -556,7 +556,7 @@ var H = function() {
   }
 }
 `;
-  class E {
+  class A {
     constructor() {
       this.init();
     }
@@ -603,7 +603,7 @@ var H = function() {
       class="current-location"
       id="current-location-zip"
     >
-      <span class="icon">${m}</span>
+      <span class="icon">${p}</span>
       <span class="text">New York</span>
     </div> `
       ), t = document.querySelector("#estimate-zip #zip");
@@ -617,10 +617,10 @@ var H = function() {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = T, document.head.appendChild(n);
+      n.innerHTML = E, document.head.appendChild(n);
     }
   }
-  const A = `@media (max-width: 768px) {
+  const C = `@media (max-width: 768px) {
   [data-current-slide="1"] .wrapper {
     padding-top: 115px;
     padding-bottom: 50px;
@@ -699,7 +699,7 @@ var H = function() {
     line-height: 22px;
   }
 }`;
-  class C {
+  class L {
     constructor({ container: n, position: t }) {
       this.position = t || "beforeend", this.container = n, this.init();
     }
@@ -747,7 +747,7 @@ var H = function() {
       if (!this.container || document.querySelector("#estimate-custom-bill"))
         return;
       const t = document.querySelector("#bill-slider");
-      (e = this.container) == null || e.insertAdjacentHTML(this.position, n), document.head.insertAdjacentHTML("beforeend", `<style>${A}</style>`), t && t.remove();
+      (e = this.container) == null || e.insertAdjacentHTML(this.position, n), document.head.insertAdjacentHTML("beforeend", `<style>${C}</style>`), t && t.remove();
     }
     handle() {
       const n = document.querySelector(
@@ -764,7 +764,7 @@ var H = function() {
           var o, s;
           e.dataset.averageValue;
           const i = (s = (o = e.parentElement) == null ? void 0 : o.textContent) == null ? void 0 : s.trim();
-          c(
+          m(
             "exp_energy_bill_click_01",
             i,
             "click",
@@ -774,7 +774,9 @@ var H = function() {
       });
     }
   }
-  const p = {
+  const N = {
+    "New York": "New York"
+  }, c = {
     "New York": {
       incentivesAvailable: "6",
       stateName: "New York",
@@ -790,7 +792,7 @@ var H = function() {
       stateName: "Massachusetts",
       homeownerSaveVariant: "Massachusetts"
     }
-  }, L = `.swiper-wrapper {
+  }, k = `.swiper-wrapper {
   min-height: var(--height, initial) !important;
 }
 
@@ -870,7 +872,7 @@ var H = function() {
   padding-top: 0 !important;
 }
 `;
-  class N {
+  class M {
     constructor(n) {
       this.activeState = n, this.init();
     }
@@ -879,35 +881,35 @@ var H = function() {
     }
     addNewStyles() {
       const n = document.querySelectorAll(".swiper-slide");
-      new C({ container: n[1], position: "beforeend" });
+      new L({ container: n[1], position: "beforeend" });
     }
     addChanges() {
-      new E(), new y(), new b(), new z();
+      new A(), new v(), new S(), new T();
     }
     async getCopyByRegion() {
       const n = await this.getLocationRegionAndCity();
       if (!n) return;
       const { regionName: t, city: e } = n;
       if (t) {
-        const i = document.querySelector("#os-region"), o = document.querySelectorAll(".current-location"), s = document.querySelectorAll(
+        const i = c[t] ? t : N["New York"], o = document.querySelector("#os-region"), s = document.querySelectorAll(".current-location"), l = document.querySelectorAll(
           "[data-region-homeowner]"
-        ), l = document.querySelectorAll(
+        ), g = document.querySelectorAll(
           "[data-incentives-count]"
         );
-        i && (i.innerHTML = t), o.forEach((d) => {
+        o && (o.innerHTML = i), s.forEach((d) => {
           const r = d.querySelector(".text");
           r && (r.innerHTML = e);
-        }), s.length && s.forEach((d) => {
-          const r = p[t].homeownerSaveVariant;
-          d.innerHTML = r;
         }), l.length && l.forEach((d) => {
-          const r = p[t].incentivesAvailable;
+          const r = c[i].homeownerSaveVariant;
+          d.innerHTML = r;
+        }), g.length && g.forEach((d) => {
+          const r = c[i].incentivesAvailable;
           d.innerHTML = r;
         });
       }
     }
     async getLocationRegionAndCity() {
-      const { data: n, error: t } = await f();
+      const { data: n, error: t } = await w();
       if (t || !n)
         return console.error("Error fetching geolocation:", t), null;
       const { state_prov: e, city: i } = n;
@@ -924,7 +926,7 @@ var H = function() {
             "--height",
             `${l + 5}px`
           );
-        }, 200), o === 5 && c(
+        }, 200), o === 5 && m(
           "exp_energy_bill_view_01",
           "View Screen",
           "view",
@@ -934,10 +936,10 @@ var H = function() {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = L, document.head.appendChild(n);
+      n.innerHTML = k, document.head.appendChild(n);
     }
   }
-  const M = `@media (max-width: 768px) {
+  const H = `@media (max-width: 768px) {
   br.desktop {
     display: none;
   }
@@ -948,8 +950,8 @@ var H = function() {
     display: none;
   }
 }
-`, k = null;
-  x("energy_bill"), g({
+`, _ = null;
+  u("energy_bill"), x({
     dev: "OS",
     name: "Price Tabs"
   });
@@ -958,15 +960,14 @@ var H = function() {
       this.init();
     }
     init() {
-      this.addStyles(), new N(k);
+      this.addStyles(), new M(_);
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = M, document.head.appendChild(n);
+      n.innerHTML = H, document.head.appendChild(n);
     }
   }
   return new h(), {
     LaunchExperiment: h
   };
 }();
-//# sourceMappingURL=index.js.map
