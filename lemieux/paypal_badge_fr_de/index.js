@@ -20,22 +20,6 @@
       });
     });
   }
-  /*!
-   * paypal-js v8.2.0 (2025-01-23T17:26:53.747Z)
-   * Copyright 2020-present, PayPal, Inc. All rights reserved.
-   *
-   * Licensed under the Apache License, Version 2.0 (the "License");
-   * you may not use this file except in compliance with the License.
-   * You may obtain a copy of the License at
-   *
-   * http://www.apache.org/licenses/LICENSE-2.0
-   *
-   * Unless required by applicable law or agreed to in writing, software
-   * distributed under the License is distributed on an "AS IS" BASIS,
-   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   * See the License for the specific language governing permissions and
-   * limitations under the License.
-   */
   function O(t, e) {
     var n = {};
     for (var r in t) Object.prototype.hasOwnProperty.call(t, r) && e.indexOf(r) < 0 && (n[r] = t[r]);
@@ -62,7 +46,7 @@
     o.onerror = a, o.onload = r, document.head.insertBefore(o, document.head.firstElementChild);
   }
   function P(t) {
-    var e = t.sdkBaseUrl, n = t.environment, r = O(t, ["sdkBaseUrl", "environment"]), a = e || D(n), o = r, c = Object.keys(o).filter(function(u) {
+    var e = t.sdkBaseUrl, n = t.environment, r = O(t, ["sdkBaseUrl", "environment"]), a = e || T(n), o = r, c = Object.keys(o).filter(function(u) {
       return typeof o[u] < "u" && o[u] !== null && o[u] !== "";
     }).reduce(function(u, s) {
       var l = o[s].toString();
@@ -72,7 +56,7 @@
       attributes: {}
     }), i = c.queryParams, d = c.attributes;
     return i["merchant-id"] && i["merchant-id"].indexOf(",") !== -1 && (d["data-merchant-id"] = i["merchant-id"], i["merchant-id"] = "*"), {
-      url: "".concat(a, "?").concat(T(i)),
+      url: "".concat(a, "?").concat(D(i)),
       attributes: d
     };
   }
@@ -82,13 +66,13 @@
     };
     return t.replace(/[A-Z]+(?![a-z])|[A-Z]/g, e);
   }
-  function T(t) {
+  function D(t) {
     var e = "";
     return Object.keys(t).forEach(function(n) {
       e.length !== 0 && (e += "&"), e += n + "=" + t[n];
     }), e;
   }
-  function D(t) {
+  function T(t) {
     return t === "sandbox" ? "https://www.sandbox.paypal.com/sdk/js" : "https://www.paypal.com/sdk/js";
   }
   function k(t, e) {
@@ -196,7 +180,7 @@ basket-view paypal-pay-in-three-message {
   padding: 0.5rem;
 }
 `;
-  C({ name: "Klarna & PayPal BNPL", dev: "OS" }), function(t, e, n, r, a, o) {
+  C({ name: "Klarna & PayPal BNPL (FR, DE)", dev: "OS" }), function(t, e, n, r, a, o) {
     t.hj = t.hj || function() {
       (t.hj.q = t.hj.q || []).push(arguments);
     }, t._hjSettings = { hjid: 2667925, hjsv: 6 }, a = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = n + t._hjSettings.hjid + r + t._hjSettings.hjsv, a && a.appendChild(o);
@@ -327,4 +311,3 @@ basket-view paypal-pay-in-three-message {
   }
   new H();
 })();
-//# sourceMappingURL=index.js.map
