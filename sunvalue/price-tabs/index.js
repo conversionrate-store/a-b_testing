@@ -8,7 +8,7 @@ var q = function() {
       event_type: t,
       event_loc: e
     }), console.log(`Event: ${a} | ${n} | ${t} | ${e}`);
-  }, x = ({ name: a, dev: n }) => {
+  }, u = ({ name: a, dev: n }) => {
     console.log(
       `%c EXP: ${a} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -345,7 +345,7 @@ var q = function() {
   const T = `#estimate-name .form-list {
   max-width: 620px;
 }`;
-  class A {
+  class E {
     constructor() {
       this.nameSlide = document.getElementById("estimate-name"), this.init();
     }
@@ -365,7 +365,7 @@ var q = function() {
       n.innerHTML = T, document.head.appendChild(n);
     }
   }
-  const E = `#estimate-zip :is(h1, h4, h5) {
+  const A = `#estimate-zip :is(h1, h4, h5) {
   display: none;
 }
 
@@ -542,12 +542,12 @@ var q = function() {
   }
 }
 `;
-  class L {
+  class C {
     constructor() {
-      this.init();
+      this.isMobile = window.matchMedia("(max-width: 768px)").matches, this.init();
     }
     init() {
-      this.addStyles(), this.addAvailableIncentivesMassage(), this.addHomeownerSaveMassage(), this.addNewTitle(), this.addLocationToInput(), this.changeCopyOfButton();
+      this.addStyles(), this.addAvailableIncentivesMassage(), this.addHomeownerSaveMassage(), this.addNewTitle(), this.addLocationToInput(), this.changeCopyOfButton(), this.resize();
     }
     addNewTitle() {
       const n = (
@@ -599,14 +599,19 @@ var q = function() {
       const n = document.querySelector(
         "#calculateYourSavings"
       );
-      n && (n.innerHTML = "Check now");
+      n && (n.innerHTML = this.isMobile ? "Check eligibility" : "Check now");
+    }
+    resize() {
+      window.addEventListener("resize", () => {
+        this.isMobile = window.matchMedia("(max-width: 768px)").matches, this.changeCopyOfButton();
+      });
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = E, document.head.appendChild(n);
+      n.innerHTML = A, document.head.appendChild(n);
     }
   }
-  const C = `@media (max-width: 768px) {
+  const L = `@media (max-width: 768px) {
   [data-current-slide="1"] .wrapper {
     padding-top: 115px;
     padding-bottom: 50px;
@@ -685,7 +690,7 @@ var q = function() {
     line-height: 22px;
   }
 }`;
-  class N {
+  class M {
     constructor({ container: n, position: t }) {
       this.position = t || "beforeend", this.container = n, this.init();
     }
@@ -733,7 +738,7 @@ var q = function() {
       if (!this.container || document.querySelector("#estimate-custom-bill"))
         return;
       const t = document.querySelector("#bill-slider");
-      (e = this.container) == null || e.insertAdjacentHTML(this.position, n), document.head.insertAdjacentHTML("beforeend", `<style>${C}</style>`), t && t.remove();
+      (e = this.container) == null || e.insertAdjacentHTML(this.position, n), document.head.insertAdjacentHTML("beforeend", `<style>${L}</style>`), t && t.remove();
     }
     handle() {
       const n = document.querySelector(
@@ -780,7 +785,7 @@ var q = function() {
       stateName: "Massachusetts",
       homeownerSaveVariant: "Massachusetts"
     }
-  }, M = `.swiper-wrapper {
+  }, N = `.swiper-wrapper {
   min-height: var(--height, initial) !important;
 }
 
@@ -869,10 +874,10 @@ var q = function() {
     }
     addNewStyles() {
       const n = document.querySelectorAll(".swiper-slide");
-      new N({ container: n[1], position: "beforeend" });
+      new M({ container: n[1], position: "beforeend" });
     }
     addChanges() {
-      new L(), new b(), new z(), new A();
+      new C(), new b(), new z(), new E();
     }
     async getCopyByRegion() {
       const n = await this.getLocationRegionAndCity();
@@ -881,7 +886,7 @@ var q = function() {
       if (t) {
         const i = c[t] ? t : h["New York"], o = document.querySelector("#os-region"), s = document.querySelectorAll(".current-location"), l = document.querySelectorAll(
           "[data-region-homeowner]"
-        ), u = document.querySelectorAll(
+        ), x = document.querySelectorAll(
           "[data-incentives-count]"
         );
         o && (o.innerHTML = i), s.forEach((d) => {
@@ -890,7 +895,7 @@ var q = function() {
         }), l.length && l.forEach((d) => {
           const r = c[i].homeownerSaveVariant;
           d.innerHTML = r;
-        }), u.length && u.forEach((d) => {
+        }), x.length && x.forEach((d) => {
           const r = c[i].incentivesAvailable;
           d.innerHTML = r;
         });
@@ -924,7 +929,7 @@ var q = function() {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.innerHTML = M, document.head.appendChild(n);
+      n.innerHTML = N, document.head.appendChild(n);
     }
   }
   const H = `@media (max-width: 768px) {
@@ -942,7 +947,7 @@ var q = function() {
     const n = new URLSearchParams(window.location.search).get("state");
     return n && h[n] ? n : null;
   })();
-  f("energy_bill"), x({
+  f("energy_bill"), u({
     dev: "OS",
     name: "Price Tabs"
   });
