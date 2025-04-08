@@ -376,6 +376,10 @@ var q = function() {
 }
 
 #estimate-zip .available-incentives {
+  position: relative;
+  max-width: 461px;
+  margin-inline: auto;
+  padding-block: 10px;
   color: #4a4a4a;
   text-align: center;
   font-family: 'Noto Sans SC';
@@ -383,51 +387,34 @@ var q = function() {
   font-weight: 700;
   line-height: 24px;
 }
-
+#estimate-zip .available-incentives::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  border-bottom: 1px dashed rgb(131, 190, 99);
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
 @media (max-width: 768px) {
   #estimate-zip .available-incentives {
-    position: relative;
     padding: 10px;
     font-size: 16px;
     font-weight: 500;
-    background: var(
-      --df,
-      linear-gradient(
-        90deg,
-        rgba(242, 245, 248, 0) 6.35%,
-        #e0ffcf 19.87%,
-        #e0ffcf 41.4%,
-        #e9ffde 49.92%,
-        #e0ffcf 57.93%,
-        #e0ffcf 79.97%,
-        rgba(242, 245, 248, 0) 93.99%
-      )
-    );
-  }
-
-  #estimate-zip .available-incentives::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    border-bottom: 1px dashed rgb(131, 190, 99);
-
-    mask-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0) 100%
-    );
   }
 }
 
@@ -514,7 +501,6 @@ var q = function() {
   font-weight: 700;
   border-radius: 100px;
 }
-
 
 @media (max-width: 768px) {
   #estimate-zip #zip {
