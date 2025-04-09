@@ -105,7 +105,7 @@ var q = function() {
 
 #estimate-map #autoaddress::placeholder {
   color: #757575;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: normal;
@@ -192,7 +192,7 @@ var q = function() {
   color: #4a4a4a;
   text-align: center;
 
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -203,7 +203,7 @@ var q = function() {
   margin-top: 15.5px;
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -235,7 +235,7 @@ var q = function() {
   margin-top: 32px;
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 44px;
   font-style: normal;
   font-weight: 500;
@@ -255,7 +255,7 @@ var q = function() {
   margin-top: 12px;
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 24px; /* 120% */
@@ -382,7 +382,7 @@ var q = function() {
   padding-block: 10px;
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
@@ -427,7 +427,7 @@ var q = function() {
   margin-top: 32px;
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 44px;
   font-style: normal;
   font-weight: 500;
@@ -447,7 +447,7 @@ var q = function() {
   margin-top: 42px;
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px; /* 133.333% */
@@ -496,7 +496,7 @@ var q = function() {
   max-width: 300px;
   width: 100%;
   color: #4a4a4a;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 20px;
   font-weight: 700;
   border-radius: 100px;
@@ -622,7 +622,7 @@ var q = function() {
 .os-title {
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif, sans-serif;
   font-size: 44px;
   font-weight: 500;
   line-height: 56px;
@@ -677,7 +677,7 @@ var q = function() {
   margin-top: 32px;
   color: #4a4a4a;
   text-align: center;
-  font-family: 'Noto Sans SC';
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 16px;
   font-weight: 500;
 }
