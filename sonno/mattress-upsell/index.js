@@ -1,4 +1,4 @@
-var G = function() {
+var K = function() {
   "use strict";
   const E = (s, t, a, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
@@ -8,12 +8,12 @@ var G = function() {
       event_type: a,
       event_loc: n
     }), console.log(`Event: ${s} | ${t} | ${a} | ${n}`);
-  }, I = ({ name: s, dev: t }) => {
+  }, T = ({ name: s, dev: t }) => {
     console.log(
       `%c EXP: ${s} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, T = (s) => {
+  }, F = (s) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", s, "variant_1"));
     }, 1e3);
@@ -32,7 +32,7 @@ var G = function() {
       });
     });
   }
-  const F = `
+  const H = `
 .cart-product-item {
   margin-top: 48px;
   border-radius: 16px;
@@ -42,7 +42,7 @@ var G = function() {
 
 .cart-product-item .cart-product-quantity input {
   background: transparent;
-}`, H = async () => {
+}`, O = async () => {
     try {
       return {
         data: await (await fetch("https://sonno.co.uk/cart.json?vsly=t")).json(),
@@ -54,7 +54,7 @@ var G = function() {
         error: s
       };
     }
-  }, O = async (s) => {
+  }, D = async (s) => {
     try {
       if (!s)
         throw new Error("Handle is not defined");
@@ -68,7 +68,7 @@ var G = function() {
     } catch (t) {
       return console.error("Помилка розбору JSON:", t), { data: null, error: t };
     }
-  }, D = (
+  }, N = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,22 @@ var G = function() {
     clip-rule="evenodd"
   />
 </svg>`
-  ), N = `body.modal-open-hidden
+  ), _ = (
+    /* HTML */
+    ` <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="21"
+  height="4"
+  fill="none"
+>
+  <path
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-width="2"
+    d="M1.844 1.357c6.526 1.751 10.279 1.677 17.312 0"
+  />
+</svg>`
+  ), U = `body.modal-open-hidden
   :is(.crs-mattress-dialog, .crs-mattress-dialog-backdrop) {
   display: none !important;
   visibility: hidden !important;
@@ -204,14 +219,40 @@ var G = function() {
 .crs-mattress-item.hidden {
   display: none;
 }
-
-.crs-mattress-item img {
+.crs-mattress-image {
+  position: relative;
   width: 100% !important;
   height: 132px !important;
+}
+.crs-mattress-item img {
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover !important;
   border-radius: 0 !important;
 }
 
+.crs-mattress-category {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+  width: 53px;
+  height: 53px;
+  padding: 5px;
+  border-radius: 8px;
+  background: rgba(30, 56, 81, 0.53);
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 10px;
+  letter-spacing: 0.25px;
+  text-transform: capitalize;
+}
 .crs-mattress-item h3 {
   padding-inline: 8px;
   color: #1e3851;
@@ -417,7 +458,7 @@ var G = function() {
   }
 }
 `;
-  class U {
+  class P {
     constructor() {
       this.init(), this.cartItems = [], this.device = window.innerWidth < 768 ? "mobile" : "desktop";
     }
@@ -425,7 +466,7 @@ var G = function() {
       this.addStyles(), this.observeChooseMattressDialog(), this.getCartData(), this.observeMattressButtons();
     }
     async getCartData() {
-      const { data: t, error: a } = await H();
+      const { data: t, error: a } = await O();
       if (a || !t) {
         console.error("Error fetching cart data:", a);
         return;
@@ -434,7 +475,7 @@ var G = function() {
       this.cartItems = n;
     }
     async renderUpsell(t) {
-      var A, j;
+      var j, z;
       if (!t) {
         console.error("Mattress button not found");
         return;
@@ -444,17 +485,17 @@ var G = function() {
         return S ? +S[1] : null;
       }
       let n;
-      this.device === "desktop" ? n = t.closest(".cart-product-item") : n = (A = t.closest("section")) == null ? void 0 : A.previousElementSibling;
+      this.device === "desktop" ? n = t.closest(".cart-product-item") : n = (j = t.closest("section")) == null ? void 0 : j.previousElementSibling;
       const c = n == null ? void 0 : n.querySelector(
         ".cart-product-info a"
       );
       if (!c) return;
-      const r = c.href, $ = a(r), b = t.querySelector("button");
+      const r = c.href, L = a(r), b = t.querySelector("button");
       if (!b) {
         console.error("Add Mattress button not found");
         return;
       }
-      const m = (j = this.cartItems.find((w) => w.id === $)) == null ? void 0 : j.handle, { data: y, error: C } = await O(m);
+      const m = (z = this.cartItems.find((w) => w.id === L)) == null ? void 0 : z.handle, { data: y, error: C } = await D(m);
       if (y && y.mattresses) {
         const w = [
           "Medium/Firm",
@@ -471,8 +512,8 @@ var G = function() {
           const o = (l = e.find((g) => g.startsWith("firmness:"))) == null ? void 0 : l.split(":")[1];
           o && S[o] && S[o].push(i);
         });
-        const M = `mattress-upsell-${Math.random().toString(36).substr(2, 9)}`, J = (e, i, o) => {
-          const l = i.map(({ id: d, title: v, images: k, variants: p }, x) => {
+        const M = `mattress-upsell-${Math.random().toString(36).substr(2, 9)}`, W = (e, i, o) => {
+          const l = i.map(({ id: d, title: x, images: k, variants: p }, v) => {
             const { price: f, compare_at_price: u } = p.find(
               (h) => h.title.toLowerCase() === y.current_varrint_size_varients.toLowerCase()
             );
@@ -480,17 +521,23 @@ var G = function() {
               /* HTML */
               `
               <div
-                class="crs-mattress-item ${this.device === "desktop" && x >= 3 ? "hidden" : ""}"
+                class="crs-mattress-item ${this.device === "desktop" && v >= 3 ? "hidden" : ""}"
                 data-mattress-id="${d}"
               >
-                <img
-                  src="${k == null ? void 0 : k[0]}"
-                  alt="${v}"
-                  width="140"
-                  height="132"
-                  loading="lazy"
-                />
-                <h3>${v}</h3>
+                <div class="crs-mattress-image">
+                  <img
+                    src="${k == null ? void 0 : k[0]}"
+                    alt="${x}"
+                    width="140"
+                    height="132"
+                    loading="lazy"
+                  />
+                  <div class="crs-mattress-category">
+                    ${_}
+                    ${e === "Medium/Firm" ? "Medium Firm" : e}
+                  </div>
+                </div>
+                <h3>${x}</h3>
                 <div class="crs-mattress-prices">
                   <div class="crs-mattress-price">
                     ${u ? `<del>£${(u / 100).toFixed(2)}</del>` : ""}
@@ -515,7 +562,7 @@ var G = function() {
                 data-category="${e}"
                 data-upsell-id="${M}"
               >
-                ${D} See all mattresses
+                ${N} See all mattresses
                 <span></span>
               </button>`
           ) : "";
@@ -531,13 +578,13 @@ var G = function() {
           </div>
         `
           );
-        }, W = w.map(
-          (e, i) => J(
+        }, R = w.map(
+          (e, i) => W(
             e,
             S[e] || [],
             i === 0
           )
-        ).join(""), R = w.map(
+        ).join(""), V = w.map(
           (e, i) => (
             /* HTML */
             `
@@ -546,19 +593,7 @@ var G = function() {
               data-category="${e}"
               data-upsell-id="${M}"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="21"
-                height="4"
-                fill="none"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-width="2"
-                  d="M1.844 1.357c6.526 1.751 10.279 1.677 17.312 0"
-                />
-              </svg>
+              ${_}
               ${e === "Medium/Firm" ? "Medium Firm" : e}
             </button>
           `
@@ -576,8 +611,8 @@ var G = function() {
               <span>hassle-free return or exchange</span>
             </div>
             <div class="crs-mattress-upsell-tabs">
-              <div class="crs-mattress-tabs-nav">${R}</div>
-              ${W}
+              <div class="crs-mattress-tabs-nav">${V}</div>
+              ${R}
             </div>
           </div>
         `
@@ -623,28 +658,28 @@ var G = function() {
             "click",
             "Add Matress & Save"
           ), b.click();
-          const l = new MutationObserver((v) => {
-            v.forEach((k) => {
+          const l = new MutationObserver((x) => {
+            x.forEach((k) => {
               if (k.type === "childList" && document.querySelector('[role="dialog"]')) {
                 l.disconnect();
                 const p = document.querySelector(
                   '[role="dialog"][data-state="open"]'
-                ), x = Array.from(
+                ), v = Array.from(
                   (p == null ? void 0 : p.querySelectorAll(".ss-tabs a")) || []
                 ).find(
                   (f) => {
                     var u;
                     return ((u = f.textContent) == null ? void 0 : u.trim()) === w.find(
                       (h) => S[h].some(
-                        (L) => L.id == i
+                        ($) => $.id == i
                       )
                     );
                   }
                 );
-                x == null || x.click(), setTimeout(() => {
+                v == null || v.click(), setTimeout(() => {
                   p == null || p.querySelectorAll(".card-addons").forEach((f) => {
-                    var u, h, L;
-                    ((u = f.querySelector(".title-card")) == null ? void 0 : u.textContent) === o && (f.click(), (h = p.querySelector(".card-button button")) == null || h.click(), (L = document.querySelector(`#${M}`)) == null || L.remove(), setTimeout(() => {
+                    var u, h, $;
+                    ((u = f.querySelector(".title-card")) == null ? void 0 : u.textContent) === o && (f.click(), (h = p.querySelector(".card-button button")) == null || h.click(), ($ = document.querySelector(`#${M}`)) == null || $.remove(), setTimeout(() => {
                       document.body.classList.remove("modal-open-hidden");
                     }, 1e3));
                   });
@@ -670,12 +705,12 @@ var G = function() {
             ), b.click(), Z('[role="dialog"][data-state="open"]').then(() => {
               const d = document.querySelector(
                 '[role="dialog"][data-state="open"]'
-              ), v = d == null ? void 0 : d.querySelector("h2 + button"), k = Array.from(
+              ), x = d == null ? void 0 : d.querySelector("h2 + button"), k = Array.from(
                 (d == null ? void 0 : d.querySelectorAll(".ss-tabs a")) || []
               ).find(
                 (p) => {
-                  var x;
-                  return ((x = p.textContent) == null ? void 0 : x.trim()) === w.find(
+                  var v;
+                  return ((v = p.textContent) == null ? void 0 : v.trim()) === w.find(
                     (f) => S[f].some(
                       (u) => u.id == i
                     )
@@ -684,24 +719,24 @@ var G = function() {
               );
               k == null || k.click(), setTimeout(() => {
                 d == null || d.querySelectorAll(".card-addons").forEach((p) => {
-                  var x;
-                  if (((x = p.querySelector(".title-card")) == null ? void 0 : x.textContent) === o) {
+                  var v;
+                  if (((v = p.querySelector(".title-card")) == null ? void 0 : v.textContent) === o) {
                     const f = p.querySelector("button");
                     f == null || f.click(), Z(
                       '[role="dialog"][data-state="open"] .mattress-details'
                     ).then((u) => {
-                      var z;
+                      var I;
                       const h = u.closest(
                         '[role="dialog"]'
-                      ), L = h == null ? void 0 : h.querySelector("h2 + button");
-                      L == null || L.addEventListener("click", () => {
-                        v == null || v.click(), setTimeout(() => {
+                      ), $ = h == null ? void 0 : h.querySelector("h2 + button");
+                      $ == null || $.addEventListener("click", () => {
+                        x == null || x.click(), setTimeout(() => {
                           document.body.classList.remove("modal-open-hidden");
                         }, 500);
-                      }), (z = h == null ? void 0 : h.previousElementSibling) == null || z.addEventListener(
+                      }), (I = h == null ? void 0 : h.previousElementSibling) == null || I.addEventListener(
                         "click",
-                        (V) => {
-                          V.target.closest("[data-vaul-overlay]") && (v == null || v.click(), setTimeout(() => {
+                        (X) => {
+                          X.target.closest("[data-vaul-overlay]") && (x == null || x.click(), setTimeout(() => {
                             document.body.classList.remove("modal-open-hidden");
                           }, 500));
                         }
@@ -724,9 +759,9 @@ var G = function() {
       const a = new MutationObserver((n) => {
         n.forEach((c) => {
           c.addedNodes.forEach((r) => {
-            var $, b, m;
+            var L, b, m;
             if (r instanceof HTMLElement) {
-              if (r.classList.contains("card-addons") && (($ = r.textContent) != null && $.includes("Add Mattress & Save"))) {
+              if (r.classList.contains("card-addons") && ((L = r.textContent) != null && L.includes("Add Mattress & Save"))) {
                 r.classList.add("crs-mattress-control-btn"), this.renderUpsell(r);
                 const y = document.querySelector(
                   ".crs-mattress-upsell--chosen"
@@ -795,37 +830,37 @@ var G = function() {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = N, document.head.appendChild(t);
+      t.innerHTML = U, document.head.appendChild(t);
     }
   }
-  class P {
+  class J {
     constructor() {
       this.init();
     }
     init() {
-      this.addStyles(), new U();
+      this.addStyles(), new P();
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = F, document.head.appendChild(t);
+      t.innerHTML = H, document.head.appendChild(t);
     }
   }
-  I({
+  T({
     name: "Mattress Upsell",
     dev: "OS"
-  }), T("mattress_upsell");
-  class _ {
+  }), F("mattress_upsell");
+  class A {
     constructor() {
       this.init();
     }
     init() {
-      this.isInCart() && new P();
+      this.isInCart() && new J();
     }
     isInCart() {
       return window.location.href.includes("/cart");
     }
   }
-  return new _(), {
-    LaunchExperiment: _
+  return new A(), {
+    LaunchExperiment: A
   };
 }();
