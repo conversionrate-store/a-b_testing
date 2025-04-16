@@ -1,32 +1,36 @@
-var w = function() {
+var S = function() {
   "use strict";
-  const g = ({ name: l, dev: e }) => {
+  const y = ({ name: p, dev: e }) => {
     console.log(
-      `%c EXP: ${l} (DEV: ${e})`,
+      `%c EXP: ${p} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, m = async (l) => {
-    const e = (t) => new Promise((n, a) => {
-      const i = t.split(".").pop();
-      if (i === "js") {
-        if (Array.from(document.scripts).map((p) => p.src.toLowerCase()).includes(t.toLowerCase()))
-          return console.log(`Script ${t} allready downloaded!`), n("");
+  }, f = async (p) => {
+    const e = (t) => new Promise((i, a) => {
+      const d = t.split(".").pop();
+      if (d === "js") {
+        if (Array.from(document.scripts).map((n) => n.src.toLowerCase()).includes(t.toLowerCase()))
+          return console.log(`Script ${t} allready downloaded!`), i("");
         const o = document.createElement("script");
-        o.src = t, o.onload = n, o.onerror = a, document.head.appendChild(o);
-      } else if (i === "css") {
-        if (Array.from(document.styleSheets).map((p) => {
-          var r;
-          return (r = p.href) == null ? void 0 : r.toLowerCase();
+        o.src = t, o.onload = i, o.onerror = a, document.head.appendChild(o);
+      } else if (d === "css") {
+        if (Array.from(document.styleSheets).map((n) => {
+          var l;
+          return (l = n.href) == null ? void 0 : l.toLowerCase();
         }).includes(t.toLowerCase()))
-          return console.log(`Style ${t} allready downloaded!`), n("");
+          return console.log(`Style ${t} allready downloaded!`), i("");
         const o = document.createElement("link");
-        o.rel = "stylesheet", o.href = t, o.onload = n, o.onerror = a, document.head.appendChild(o);
+        o.rel = "stylesheet", o.href = t, o.onload = i, o.onerror = a, document.head.appendChild(o);
       }
     });
-    for (const t of l)
+    for (const t of p)
       await e(t), console.log(`Loaded librari ${t}`);
     console.log("All libraries loaded!");
-  }, y = `.tippy-box,
+  }, v = (p) => {
+    let e = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", p, "variant_1"));
+    }, 1e3);
+  }, b = `.tippy-box,
 .tippy-content {
   background: transparent !important;
   /* padding: 0 !important;
@@ -50,7 +54,9 @@ var w = function() {
   overflow: hidden;
   overflow-y: auto;
 }
-
+.os-dialog .os-popover {
+  max-width: 100%;
+}
 .os-available {
   display: flex;
   justify-content: center;
@@ -284,7 +290,7 @@ body:has(.os-dialog[open]) {
   overflow: hidden;
 }
 `;
-  class f {
+  class w {
     constructor() {
       this.popoverElement = null, this.aborters = [], this.init(), this.aborters = [];
     }
@@ -356,10 +362,10 @@ body:has(.os-dialog[open]) {
     showDialog(e) {
       var a;
       console.log("showDialog", e);
-      const n = document.getElementById("os-dialog").querySelector(
+      const i = document.getElementById("os-dialog").querySelector(
         "#os-dialog-content"
       );
-      n.innerHTML = this.returnHtml(e), (a = this.popoverElement) == null || a.showModal(), this.eventListeners();
+      i.innerHTML = this.returnHtml(e), (a = this.popoverElement) == null || a.showModal(), this.eventListeners();
     }
     closeDialog() {
       if (!this.popoverElement) return;
@@ -378,8 +384,8 @@ body:has(.os-dialog[open]) {
       t == null || t.addEventListener("click", () => {
         this.closeDialog();
       });
-      const n = new AbortController();
-      this.aborters.push(n);
+      const i = new AbortController();
+      this.aborters.push(i);
       const a = e.querySelector(
         ".btn-download"
       );
@@ -393,16 +399,16 @@ body:has(.os-dialog[open]) {
           }), this.closeDialog();
         },
         {
-          signal: n.signal
+          signal: i.signal
         }
       );
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = y, document.head.appendChild(e);
+      e.textContent = b, document.head.appendChild(e);
     }
   }
-  const d = {
+  const r = {
     diskDrill: {
       imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
       title: "Disk Drill",
@@ -779,7 +785,7 @@ body:has(.os-dialog[open]) {
         ]
       }
     }
-  }, b = [
+  }, x = [
     "/how-to/recover-deleted-photos-from-iphone",
     "/how-to/download-youtube-videos",
     "/how-to/how-to-recover-deleted-text-messages-on-iphone",
@@ -791,78 +797,85 @@ body:has(.os-dialog[open]) {
     "/how-to/tiktok-banned-reasons-and-solutions",
     "/how-to/open-rar-files-on-mac"
   ];
-  g({ name: "1st hypothesis", dev: "OS" });
-  class h {
+  y({ name: "1st hypothesis", dev: "OS" }), v("exp_blog_tooltip");
+  class m {
     constructor() {
       this.init();
     }
     async init() {
       const e = window.location.pathname;
-      if (!b.includes(e)) {
+      if (!x.includes(e)) {
         console.log("Current page is not in blogLinks");
         return;
       }
       await this.initTippy();
-      const t = new f(), n = Array.from(
+      const t = new w(), i = Array.from(
         document.querySelectorAll("article a")
       ).filter(
-        (i) => Object.values(d).some(
-          (s) => i.href.includes(s.link)
+        (o) => Object.values(r).some(
+          (n) => o.href.includes(n.link)
         )
-      ), a = window.matchMedia("(max-width: 768px)").matches;
-      n.forEach((i) => {
-        const s = Object.keys(d).find(
-          (r) => i.href.includes(d[r].link)
+      );
+      let a;
+      const d = () => {
+        const o = window.matchMedia("(max-width: 768px)").matches;
+        i.forEach((n) => {
+          const l = Object.keys(r).find(
+            (c) => n.href.includes(r[c].link)
+          );
+          if (!l) return;
+          const u = r[l];
+          n != null && n._tippy && n._tippy.destroy(), n.removeEventListener("click", s), a && a.abort(), o ? n.addEventListener("click", s) : tippy(n, {
+            content: t.returnHtml(u),
+            allowHTML: !0,
+            arrow: !1,
+            interactive: !0,
+            maxWidth: "none",
+            theme: "light",
+            placement: "auto",
+            boundary: "viewport",
+            onShow(c) {
+              const h = c.popper.querySelector(
+                ".btn-download"
+              );
+              a = new AbortController(), h == null || h.addEventListener(
+                "click",
+                () => {
+                  document.querySelectorAll(
+                    'a[href*="signup"].promo-new-banner__cta-btn'
+                  ).forEach((g) => {
+                    g == null || g.click();
+                  }), c.hide();
+                },
+                {
+                  signal: a.signal
+                }
+              );
+            },
+            onHide(c) {
+              a && a.abort();
+            }
+          });
+        });
+      }, s = (o) => {
+        o.preventDefault();
+        const n = Object.keys(r).find(
+          (u) => o.target.href.includes(r[u].link)
         );
-        if (!s) return;
-        const o = d[s];
-        i.addEventListener("click", (r) => {
-          r.preventDefault();
-        });
-        let p;
-        a ? i.addEventListener("click", () => {
-          t.showDialog(o);
-        }) : tippy(i, {
-          content: t.returnHtml(o),
-          allowHTML: !0,
-          arrow: !1,
-          interactive: !0,
-          maxWidth: "none",
-          theme: "light",
-          placement: "auto",
-          boundary: "viewport",
-          onShow(r) {
-            const c = r.popper.querySelector(
-              ".btn-download"
-            );
-            p = new AbortController(), c == null || c.addEventListener(
-              "click",
-              () => {
-                document.querySelectorAll(
-                  'a[href*="signup"].promo-new-banner__cta-btn'
-                ).forEach((u) => {
-                  u == null || u.click();
-                }), r.hide();
-              },
-              {
-                signal: p.signal
-              }
-            );
-          },
-          onHide(r) {
-            p.abort();
-          }
-        });
-      });
+        if (!n) return;
+        const l = r[n];
+        t.showDialog(l);
+      };
+      d(), window.addEventListener("resize", d);
     }
     async initTippy() {
-      await m([
+      await f([
         "https://unpkg.com/@popperjs/core@2.11.8/dist/umd/popper.min.js",
         "https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"
       ]);
     }
   }
-  return new h(), {
-    LaunchExperiment: h
+  return new m(), {
+    LaunchExperiment: m
   };
 }();
