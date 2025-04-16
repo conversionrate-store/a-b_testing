@@ -1,36 +1,36 @@
 var S = function() {
   "use strict";
-  const y = ({ name: p, dev: e }) => {
+  const y = ({ name: d, dev: e }) => {
     console.log(
-      `%c EXP: ${p} (DEV: ${e})`,
+      `%c EXP: ${d} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, f = async (p) => {
-    const e = (t) => new Promise((i, a) => {
-      const d = t.split(".").pop();
-      if (d === "js") {
-        if (Array.from(document.scripts).map((n) => n.src.toLowerCase()).includes(t.toLowerCase()))
-          return console.log(`Script ${t} allready downloaded!`), i("");
-        const o = document.createElement("script");
-        o.src = t, o.onload = i, o.onerror = a, document.head.appendChild(o);
-      } else if (d === "css") {
+  }, f = async (d) => {
+    const e = (o) => new Promise((a, i) => {
+      const s = o.split(".").pop();
+      if (s === "js") {
+        if (Array.from(document.scripts).map((n) => n.src.toLowerCase()).includes(o.toLowerCase()))
+          return console.log(`Script ${o} allready downloaded!`), a("");
+        const t = document.createElement("script");
+        t.src = o, t.onload = a, t.onerror = i, document.head.appendChild(t);
+      } else if (s === "css") {
         if (Array.from(document.styleSheets).map((n) => {
-          var l;
-          return (l = n.href) == null ? void 0 : l.toLowerCase();
-        }).includes(t.toLowerCase()))
-          return console.log(`Style ${t} allready downloaded!`), i("");
-        const o = document.createElement("link");
-        o.rel = "stylesheet", o.href = t, o.onload = i, o.onerror = a, document.head.appendChild(o);
+          var r;
+          return (r = n.href) == null ? void 0 : r.toLowerCase();
+        }).includes(o.toLowerCase()))
+          return console.log(`Style ${o} allready downloaded!`), a("");
+        const t = document.createElement("link");
+        t.rel = "stylesheet", t.href = o, t.onload = a, t.onerror = i, document.head.appendChild(t);
       }
     });
-    for (const t of p)
-      await e(t), console.log(`Loaded librari ${t}`);
+    for (const o of d)
+      await e(o), console.log(`Loaded librari ${o}`);
     console.log("All libraries loaded!");
-  }, v = (p) => {
+  }, b = (d) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", p, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", d, "variant_1"));
     }, 1e3);
-  }, b = `.tippy-box,
+  }, v = `.tippy-box,
 .tippy-content {
   background: transparent !important;
   /* padding: 0 !important;
@@ -261,6 +261,10 @@ var S = function() {
   background: rgba(0, 0, 0, 0.2);
 }
 
+/* body:has(#signup-modal.is-open) :is(.os-dialog, .os-dialog::backdrop) {
+  visibility: hidden;
+  pointer-events: none;
+} */
 .os-dialog-inner {
   display: grid;
   place-content: end center;
@@ -330,7 +334,7 @@ body:has(.os-dialog[open]) {
       <div class="os-popover-body">
         <p>${e.body.text} <a href="${e.link}">Learn more</a></p>
         <ul>
-          ${e.body.list.map((t) => `<li>${t}</li>`).join("")}
+          ${e.body.list.map((o) => `<li>${o}</li>`).join("")}
         </ul>
       </div>
       <div class="os-popover-footer">
@@ -351,64 +355,75 @@ body:has(.os-dialog[open]) {
       );
     }
     renderDialog() {
+      var e;
       this.popoverElement = document.createElement("dialog"), this.popoverElement.classList.add("os-popover--dialog", "os-dialog"), this.popoverElement.id = "os-dialog", this.popoverElement.innerHTML = /* HTML */
       `
       <div class="os-dialog-inner">
         <button class="os-dialog-close" type="button"></button>
         <div class="os-dialog-content" id="os-dialog-content"></div>
       </div>
-    `, document.body.appendChild(this.popoverElement);
+    `, (e = document.body) == null || e.appendChild(this.popoverElement);
     }
     showDialog(e) {
-      var a;
-      console.log("showDialog", e);
-      const i = document.getElementById("os-dialog").querySelector(
+      var s;
+      e && e !== "latest" && sessionStorage.setItem("os-tooltip-variant", JSON.stringify(e));
+      const a = document.getElementById("os-dialog").querySelector(
         "#os-dialog-content"
-      );
-      i.innerHTML = this.returnHtml(e), (a = this.popoverElement) == null || a.showModal(), this.eventListeners();
+      ), i = e === "latest" ? JSON.parse(sessionStorage.getItem("os-tooltip-variant")) : e;
+      a.innerHTML = this.returnHtml(i), (s = this.popoverElement) == null || s.showModal(), this.eventListeners();
     }
     closeDialog() {
       if (!this.popoverElement) return;
       const e = this.popoverElement.querySelector(
         "#os-dialog-content"
       );
-      this.popoverElement.close(), e.innerHTML = "", this.aborters.forEach((t) => {
-        t.abort();
+      this.popoverElement.close(), e.innerHTML = "", this.aborters.forEach((o) => {
+        o.abort();
       }), this.aborters = [];
     }
     eventListeners() {
       if (!this.popoverElement) return;
-      const e = document.getElementById("os-dialog"), t = e == null ? void 0 : e.querySelector(
+      const e = document.getElementById("os-dialog"), o = e == null ? void 0 : e.querySelector(
         'button[type="button"]'
       );
-      t == null || t.addEventListener("click", () => {
+      o == null || o.addEventListener("click", () => {
         this.closeDialog();
       });
-      const i = new AbortController();
-      this.aborters.push(i);
-      const a = e.querySelector(
+      const a = new AbortController();
+      this.aborters.push(a);
+      const i = e.querySelector(
         ".btn-download"
       );
-      a == null || a.addEventListener(
+      i == null || i.addEventListener(
         "click",
-        () => {
-          document.querySelectorAll(
-            'a[href*="signup"].promo-new-banner__cta-btn'
-          ).forEach((s) => {
-            s == null || s.click();
-          }), this.closeDialog();
+        async () => {
+          const s = document.querySelectorAll(
+            'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
+          );
+          this.closeDialog(), s.forEach((t) => {
+            t == null || t.click();
+          });
+          const p = document.querySelector("#signup-modal");
+          if (p) {
+            const t = new MutationObserver((n) => {
+              n.forEach((r) => {
+                r.type === "attributes" && r.attributeName === "aria-hidden" && p.getAttribute("aria-hidden") === "true" && (t.disconnect(), this.showDialog("latest"));
+              });
+            });
+            t.observe(p, { attributes: !0 });
+          }
         },
         {
-          signal: i.signal
+          signal: a.signal
         }
       );
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = b, document.head.appendChild(e);
+      e.textContent = v, document.head.appendChild(e);
     }
   }
-  const r = {
+  const l = {
     diskDrill: {
       imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
       title: "Disk Drill",
@@ -797,7 +812,7 @@ body:has(.os-dialog[open]) {
     "/how-to/tiktok-banned-reasons-and-solutions",
     "/how-to/open-rar-files-on-mac"
   ];
-  y({ name: "1st hypothesis", dev: "OS" }), v("exp_blog_tooltip");
+  y({ name: "1st hypothesis", dev: "OS" }), b("exp_blog_tooltip");
   class m {
     constructor() {
       this.init();
@@ -809,24 +824,24 @@ body:has(.os-dialog[open]) {
         return;
       }
       await this.initTippy();
-      const t = new w(), i = Array.from(
+      const o = new w(), a = Array.from(
         document.querySelectorAll("article a")
       ).filter(
-        (o) => Object.values(r).some(
-          (n) => o.href.includes(n.link)
+        (t) => Object.values(l).some(
+          (n) => t.href.includes(n.link)
         )
       );
-      let a;
-      const d = () => {
-        const o = window.matchMedia("(max-width: 768px)").matches;
-        i.forEach((n) => {
-          const l = Object.keys(r).find(
-            (c) => n.href.includes(r[c].link)
+      let i;
+      const s = () => {
+        const t = window.matchMedia("(max-width: 768px)").matches;
+        a.forEach((n) => {
+          const r = Object.keys(l).find(
+            (c) => n.href.includes(l[c].link)
           );
-          if (!l) return;
-          const u = r[l];
-          n != null && n._tippy && n._tippy.destroy(), n.removeEventListener("click", s), a && a.abort(), o ? n.addEventListener("click", s) : tippy(n, {
-            content: t.returnHtml(u),
+          if (!r) return;
+          const u = l[r];
+          n != null && n._tippy && n._tippy.destroy(), n.removeEventListener("click", p), i && i.abort(), t ? n.addEventListener("click", p) : tippy(n, {
+            content: o.returnHtml(u),
             allowHTML: !0,
             arrow: !1,
             interactive: !0,
@@ -838,35 +853,35 @@ body:has(.os-dialog[open]) {
               const h = c.popper.querySelector(
                 ".btn-download"
               );
-              a = new AbortController(), h == null || h.addEventListener(
+              i = new AbortController(), h == null || h.addEventListener(
                 "click",
                 () => {
                   document.querySelectorAll(
-                    'a[href*="signup"].promo-new-banner__cta-btn'
+                    'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
                   ).forEach((g) => {
                     g == null || g.click();
                   }), c.hide();
                 },
                 {
-                  signal: a.signal
+                  signal: i.signal
                 }
               );
             },
             onHide(c) {
-              a && a.abort();
+              i && i.abort();
             }
           });
         });
-      }, s = (o) => {
-        o.preventDefault();
-        const n = Object.keys(r).find(
-          (u) => o.target.href.includes(r[u].link)
+      }, p = (t) => {
+        t.preventDefault();
+        const n = Object.keys(l).find(
+          (u) => t.target.href.includes(l[u].link)
         );
         if (!n) return;
-        const l = r[n];
-        t.showDialog(l);
+        const r = l[n];
+        o.showDialog(r);
       };
-      d(), window.addEventListener("resize", d);
+      s(), window.addEventListener("resize", s);
     }
     async initTippy() {
       await f([
