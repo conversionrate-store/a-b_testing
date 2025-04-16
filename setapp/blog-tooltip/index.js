@@ -314,7 +314,7 @@ body:has(.os-dialog[open]) {
                       ${e.ratingDetails.percentage}
                     </div>
                     <div class="os-rating-amount">
-                      ${e.ratingDetails.total} оцінок
+                      ${e.ratingDetails.total} ratings
                     </div>`
         ) : ""}
             </div>
@@ -866,4 +866,3 @@ body:has(.os-dialog[open]) {
     LaunchExperiment: h
   };
 }();
-//# sourceMappingURL=index.js.map
