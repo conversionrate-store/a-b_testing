@@ -759,7 +759,7 @@
     } catch (t) {
       return console.error("request error", t), { data: null, error: t };
     }
-  }, B = (c) => x(`/api/n/route/${c}?pushDeps=true`), O = (c) => x(
+  }, E = (c) => x(`/api/n/route/${c}?pushDeps=true`), O = (c) => x(
     `/api/n/find?type=block&filter={"url":"size-guide-modal@${c}"}&verbosity=3&limit=1`
   ), D = (c) => x("/api/p/basket/add", {
     method: "POST",
@@ -776,7 +776,7 @@
         }
       ]
     })
-  }), E = (c) => x("/api/p/basket/remove", {
+  }), B = (c) => x("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -793,9 +793,9 @@
       id: c,
       qty: e
     })
-  }), $ = () => x("/api/n/attribute/size/verbosity/3"), M = (c) => x(
+  }), $ = () => x("/api/n/attribute/size/verbosity/3"), N = (c) => x(
     `/api/n/load?type=stock&verbosity=1&ids=${c.join(",")}&pushDeps=true`
-  ), R = `.cart-popup {
+  ), M = `.cart-popup {
   top: auto;
   bottom: 0;
   width: 100%;
@@ -939,7 +939,7 @@
   letter-spacing: 1px;
 }
 `;
-  class N {
+  class R {
     constructor() {
       this.dialog = null, this.init();
     }
@@ -1086,7 +1086,7 @@
         t == null || t.removeAttribute("disabled"), i.value = p.toString(), a(+e, p);
       }), s && s.addEventListener("click", async () => {
         const u = s.closest(".cart-product");
-        u && (await E([+e]), u.remove(), this.close());
+        u && (await B([+e]), u.remove(), this.close());
       }), l && l.addEventListener("click", () => {
         const u = l.closest(".cart-product");
         u && u.classList.toggle("favorite");
@@ -1097,7 +1097,7 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = R, document.head.appendChild(e);
+      e.textContent = M, document.head.appendChild(e);
     }
   }
   const V = `.size-popup-table {
@@ -1395,9 +1395,10 @@ input:checked + .slider:before {
     constructor({
       sizeGuideId: e,
       triggerSelector: n,
-      productName: t
+      productName: t,
+      isTooltip: o = !1
     }) {
-      this.sizeGuideId = e, this.triggerSelector = n, this.productName = t, this.init();
+      this.sizeGuideId = e, this.triggerSelector = n, this.productName = t, this.parentElementName = o ? "tip" : "standard", this.init();
     }
     init() {
       this.addStyles(), this.render(), this.eventListeners();
@@ -1454,7 +1455,7 @@ input:checked + .slider:before {
       e && e.addEventListener("click", () => {
         S(
           "exp_cross_sell_click_01",
-          "View size guide",
+          `View size guide-${this.parentElementName}`,
           "click",
           `${this.productName}`
         ), this.open();
@@ -1619,9 +1620,10 @@ input:checked + .slider:before {
       containerSelector: t,
       cartInstance: o,
       position: i = "beforeend",
-      aborters: s
+      aborters: s,
+      isTooltip: l = !1
     }) {
-      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = t, this.position = i, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new N(), this.cart = o, this.aborters = s, I.bundleCounter += 1, this.bundleId = `product-${e.id}-${I.bundleCounter}`, this.init();
+      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = t, this.position = i, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new R(), this.cart = o, this.aborters = s, this.parentElementName = l ? "tip" : "standard", I.bundleCounter += 1, this.bundleId = `product-${e.id}-${I.bundleCounter}`, this.init();
     }
     init() {
       this.addStyles(), this.render(), this.isInitialized || (this.handleSizeSelectOpen(), this.handleSizeSelection(), this.isInitialized = !0);
@@ -1637,7 +1639,7 @@ input:checked + .slider:before {
           d.value,
           this.color
         )
-      })).filter((d) => d.productId), i = o.map((d) => d.productId), { data: s, error: l } = await M(i);
+      })).filter((d) => d.productId), i = o.map((d) => d.productId), { data: s, error: l } = await N(i);
       if (l && !s) {
         console.error("Error fetching stock data:", l);
         return;
@@ -1770,7 +1772,8 @@ input:checked + .slider:before {
         this.removeExistingBundle(), d.insertAdjacentHTML(this.position, p), this.bundle = document.getElementById(this.bundleId), this.bundle && (e != null && e.size_guide) && new Y({
           productName: e.name,
           sizeGuideId: e.size_guide,
-          triggerSelector: `#${this.bundleId} .bundle-size button`
+          triggerSelector: `#${this.bundleId} .bundle-size button`,
+          isTooltip: m
         }), this.attachBundleButtonHandler();
       }
     }
@@ -1781,7 +1784,7 @@ input:checked + .slider:before {
         var l, a, u, p, r, h, b, f, g;
         if (S(
           "exp_cross_sell_click_03",
-          "Add",
+          `Add-${this.parentElementName}`,
           "click",
           `${this.product.name}`
         ), !this.size) {
@@ -1892,7 +1895,7 @@ input:checked + .slider:before {
       const i = (s) => {
         n.classList.contains("hide-up") || S(
           "exp_cross_sell_click_03",
-          "Select size",
+          `Select size-${this.parentElementName}`,
           "click",
           `${this.product.name}`
         ), n.dataset.soldout !== "true" && (n == null || n.classList.toggle("hide-up"));
@@ -2077,6 +2080,12 @@ input:checked + .slider:before {
   padding: 16px;
   pointer-events: auto;
   z-index: 1000;
+}
+
+@media (max-width: 1100px) {
+  .pins-bundle-tooltip {
+    display: none !important;
+  }
 }
 .pins-bundle-tooltip .bundle {
   padding: 0;
@@ -2320,13 +2329,14 @@ input:checked + .slider:before {
       this.tooltip || (this.tooltip = document.createElement("div"), this.tooltip.className = "pins-bundle-tooltip", this.tooltip.style.position = "absolute", this.tooltip.style.zIndex = "99999", this.tooltip.style.display = "none", e == null || e.appendChild(this.tooltip));
       let t = null, o = !1, i = !1;
       const s = (a, u, p) => {
-        t && (clearTimeout(t), t = null), (!this.tooltip.querySelector(".bundle") || this.tooltip.getAttribute("data-tooltip-for-pin") !== String(a.id)) && (this.tooltip.innerHTML = "", this.tooltip.setAttribute("data-tooltip-for-pin", String(a.id)), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltipBundleItem = new k({
+        S("exp_cross_sell_click_05", "pin", "click", a.name), t && (clearTimeout(t), t = null), (!this.tooltip.querySelector(".bundle") || this.tooltip.getAttribute("data-tooltip-for-pin") !== String(a.id)) && (this.tooltip.innerHTML = "", this.tooltip.setAttribute("data-tooltip-for-pin", String(a.id)), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltipBundleItem = new k({
           product: a,
           sizes: u,
           cartInstance: this.cartInstance,
           containerSelector: `[data-tooltip-for-pin='${a.id}']`,
           position: "beforeend",
-          aborters: this.aborters
+          aborters: this.aborters,
+          isTooltip: !0
         }));
         const r = p.getBoundingClientRect(), h = e == null ? void 0 : e.getBoundingClientRect();
         h && this.tooltip && (this.tooltip.style.left = r.right - h.left + 8 + "px", this.tooltip.style.top = r.top - h.top + "px"), this.tooltip.style.display = "block";
@@ -2408,7 +2418,7 @@ input:checked + .slider:before {
       this.bundleData = await Promise.all(
         e.map(async (t) => {
           const [o, i] = await Promise.all([
-            B(t.path || "").then((s) => s.data),
+            E(t.path || "").then((s) => s.data),
             $().then((s) => s.data)
           ]);
           return { product: o, sizes: i, bundle: t };
@@ -2426,7 +2436,7 @@ input:checked + .slider:before {
         Array.isArray(n.pinsLinks) && n.pinsLinks.length > 0 && (t = (await Promise.all(
           n.pinsLinks.map(async (o) => {
             const [i, s] = await Promise.all([
-              B(o || "").then((l) => l.data),
+              E(o || "").then((l) => l.data),
               $().then((l) => l.data)
             ]);
             return { product: i, sizes: s, bundle: n };
@@ -2704,7 +2714,7 @@ input:checked + .slider:before {
         o == null || o.removeAttribute("disabled"), s.value = h.toString(), a && (a.textContent = (+t.price * h).toFixed(2)), u(+e, h);
       }), l && l.addEventListener("click", async () => {
         const r = l.closest("li");
-        r && (await E([+e]), r.remove());
+        r && (await B([+e]), r.remove());
       });
     }
     debounce(e, n) {
