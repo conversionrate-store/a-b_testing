@@ -718,8 +718,8 @@
       path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white",
       bundleGroupId: "white-3"
     }
-  ], B = window.autoInitData.website.websiteCode, x = async (c, e) => {
-    const n = B === "base" ? c : `/${B.toLowerCase()}${c}`;
+  ], _ = window.autoInitData.website.websiteCode, x = async (c, e) => {
+    const n = _ === "base" ? c : `/${_.toLowerCase()}${c}`;
     try {
       const t = await fetch(n, e);
       if (!t.ok)
@@ -759,7 +759,7 @@
     } catch (t) {
       return console.error("request error", t), { data: null, error: t };
     }
-  }, E = (c) => x(`/api/n/route/${c}?pushDeps=true`), O = (c) => x(
+  }, B = (c) => x(`/api/n/route/${c}?pushDeps=true`), O = (c) => x(
     `/api/n/find?type=block&filter={"url":"size-guide-modal@${c}"}&verbosity=3&limit=1`
   ), D = (c) => x("/api/p/basket/add", {
     method: "POST",
@@ -776,7 +776,7 @@
         }
       ]
     })
-  }), P = (c) => x("/api/p/basket/remove", {
+  }), E = (c) => x("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -784,7 +784,7 @@
     body: JSON.stringify({
       ids: c
     })
-  }), _ = ({ id: c, qty: e }) => x("/api/p/basket/qty", {
+  }), P = ({ id: c, qty: e }) => x("/api/p/basket/qty", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -1061,7 +1061,7 @@
         `.cart-product[cart-id="${e}"]`
       ), t = n == null ? void 0 : n.querySelector(".minus"), o = n == null ? void 0 : n.querySelector(".plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), s = n == null ? void 0 : n.querySelector(".remove"), l = n == null ? void 0 : n.querySelector(".favorite"), a = this.debounce(async (u, p) => {
         var f;
-        const { data: r, error: h } = await _({ id: u, qty: p }), b = r == null ? void 0 : r.cart;
+        const { data: r, error: h } = await P({ id: u, qty: p }), b = r == null ? void 0 : r.cart;
         if (b) {
           const g = (f = b == null ? void 0 : b.items.find(
             (d) => d.id === u
@@ -1086,7 +1086,7 @@
         t == null || t.removeAttribute("disabled"), i.value = p.toString(), a(+e, p);
       }), s && s.addEventListener("click", async () => {
         const u = s.closest(".cart-product");
-        u && (await P([+e]), u.remove(), this.close());
+        u && (await E([+e]), u.remove(), this.close());
       }), l && l.addEventListener("click", () => {
         const u = l.closest(".cart-product");
         u && u.classList.toggle("favorite");
@@ -2408,7 +2408,7 @@ input:checked + .slider:before {
       this.bundleData = await Promise.all(
         e.map(async (t) => {
           const [o, i] = await Promise.all([
-            E(t.path || "").then((s) => s.data),
+            B(t.path || "").then((s) => s.data),
             $().then((s) => s.data)
           ]);
           return { product: o, sizes: i, bundle: t };
@@ -2426,7 +2426,7 @@ input:checked + .slider:before {
         Array.isArray(n.pinsLinks) && n.pinsLinks.length > 0 && (t = (await Promise.all(
           n.pinsLinks.map(async (o) => {
             const [i, s] = await Promise.all([
-              E(o || "").then((l) => l.data),
+              B(o || "").then((l) => l.data),
               $().then((l) => l.data)
             ]);
             return { product: i, sizes: s, bundle: n };
@@ -2677,7 +2677,7 @@ input:checked + .slider:before {
       if (!t || !n) return;
       const o = n == null ? void 0 : n.querySelector(".quantity-button.minus"), i = n == null ? void 0 : n.querySelector(".quantity-button.plus"), s = n == null ? void 0 : n.querySelector(".quantity-input"), l = n == null ? void 0 : n.querySelector(".cart-product-remove"), a = n == null ? void 0 : n.querySelector(".cart-product-price"), u = this.debounce(
         async (r, h) => {
-          const { data: b, error: f } = await _({ id: r, qty: h }), g = b == null ? void 0 : b.cart;
+          const { data: b, error: f } = await P({ id: r, qty: h }), g = b == null ? void 0 : b.cart;
           if (g) {
             const d = g == null ? void 0 : g.totals.grand_total;
             if (d) {
@@ -2704,7 +2704,7 @@ input:checked + .slider:before {
         o == null || o.removeAttribute("disabled"), s.value = h.toString(), a && (a.textContent = (+t.price * h).toFixed(2)), u(+e, h);
       }), l && l.addEventListener("click", async () => {
         const r = l.closest("li");
-        r && (await P([+e]), r.remove());
+        r && (await E([+e]), r.remove());
       });
     }
     debounce(e, n) {
@@ -2888,5 +2888,5 @@ input:checked + .slider:before {
       });
     }
   }
-  new se();
+  window.__exp_lemieux_bundles_launched || (window.__exp_lemieux_bundles_launched = !0, new se());
 })();
