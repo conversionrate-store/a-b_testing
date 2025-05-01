@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const B = ({ name: u, dev: e }) => {
+  const A = ({ name: u, dev: e }) => {
     console.log(
       `%c EXP: ${u} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -22,169 +22,674 @@
   }
   const I = [
     // Benetton Blue group 1
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-benetton", bundleGroupId: "benetton-blue-1", showPins: !0 },
-    { name: "Base Layer", path: "/clothing/women/base-layer-benetton-blue", bundleGroupId: "benetton-blue-1" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-benetton", bundleGroupId: "benetton-blue-1" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-benetton-blue", bundleGroupId: "benetton-blue-1" },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-benetton",
+      bundleGroupId: "benetton-blue-1",
+      showPins: !0,
+      pinsLinks: [
+        "horse-saddle-pads/close-contact-pads/suede-close-contact-square-benetton",
+        "/horsewear/boots-bandages/classic-polo-bandages-benetton-blue",
+        "/horsewear/fly-hoods/classic-fly-hood-benetton-blue",
+        "/clothing/women/base-layer-benetton-blue"
+      ]
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-benetton-blue",
+      bundleGroupId: "benetton-blue-1"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-benetton",
+      bundleGroupId: "benetton-blue-1"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-benetton-blue",
+      bundleGroupId: "benetton-blue-1"
+    },
     // Benetton Blue group 2
-    { name: "Suede GP Square", path: "/horse-saddle-pads/gp-pads/suede-gp-square-benetton-blue", bundleGroupId: "benetton-blue-2" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-benetton-blue", bundleGroupId: "benetton-blue-2" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-benetton", bundleGroupId: "benetton-blue-2" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-benetton-blue", bundleGroupId: "benetton-blue-2" },
+    {
+      name: "Suede GP Square",
+      path: "/horse-saddle-pads/gp-pads/suede-gp-square-benetton-blue",
+      bundleGroupId: "benetton-blue-2"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-benetton-blue",
+      bundleGroupId: "benetton-blue-2"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-benetton",
+      bundleGroupId: "benetton-blue-2"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-benetton-blue",
+      bundleGroupId: "benetton-blue-2"
+    },
     // Benetton Blue group 3
-    { name: "YR Base Layer", path: "/clothing/children/casual-wear/base-layers/young-rider-base-layer-benetton", bundleGroupId: "benetton-blue-3" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-benetton", bundleGroupId: "benetton-blue-3" },
-    { name: "YR Pull on Breeches", path: "/clothing/children/casual-wear/leggings-breeches/young-rider-pull-on-breech-benetton-blue", bundleGroupId: "benetton-blue-3" },
-    { name: "Competition Socks", path: "/new-in/ss24/competition-socks-2-pack-benetton", bundleGroupId: "benetton-blue-3" },
+    {
+      name: "YR Base Layer",
+      path: "/clothing/children/casual-wear/base-layers/young-rider-base-layer-benetton",
+      bundleGroupId: "benetton-blue-3"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-benetton",
+      bundleGroupId: "benetton-blue-3"
+    },
+    {
+      name: "YR Pull on Breeches",
+      path: "/clothing/children/casual-wear/leggings-breeches/young-rider-pull-on-breech-benetton-blue",
+      bundleGroupId: "benetton-blue-3"
+    },
+    {
+      name: "Competition Socks",
+      path: "/new-in/ss24/competition-socks-2-pack-benetton",
+      bundleGroupId: "benetton-blue-3"
+    },
     // Benetton Blue group 4
-    { name: "Grafter Brushing Boots", path: "/spring-sale/grafter-brushing-boot-benetton-blue", bundleGroupId: "benetton-blue-4" },
-    { name: "Classic Fly Hood", path: "/horsewear/fly-hoods/classic-fly-hood-benetton-blue", bundleGroupId: "benetton-blue-4" },
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-benetton", bundleGroupId: "benetton-blue-4" },
+    {
+      name: "Grafter Brushing Boots",
+      path: "/spring-sale/grafter-brushing-boot-benetton-blue",
+      bundleGroupId: "benetton-blue-4"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/horsewear/fly-hoods/classic-fly-hood-benetton-blue",
+      bundleGroupId: "benetton-blue-4"
+    },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-benetton",
+      bundleGroupId: "benetton-blue-4"
+    },
     // Benetton Blue group 5
-    { name: "Polo Shirt", path: "/spring-sale/polo-shirt-benetton-blue", bundleGroupId: "benetton-blue-5" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-benetton", bundleGroupId: "benetton-blue-5" },
-    { name: "Classic Fly Hood", path: "/horsewear/fly-hoods/classic-fly-hood-benetton-blue", bundleGroupId: "benetton-blue-5" },
+    {
+      name: "Polo Shirt",
+      path: "/spring-sale/polo-shirt-benetton-blue",
+      bundleGroupId: "benetton-blue-5"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-benetton",
+      bundleGroupId: "benetton-blue-5"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/horsewear/fly-hoods/classic-fly-hood-benetton-blue",
+      bundleGroupId: "benetton-blue-5"
+    },
     // Black group 1
-    { name: "Flexi Curry Comb", path: "/horsewear/grooming-care/flexi-curry-comb-black-26462", bundleGroupId: "black-1" },
-    { name: "Flexi Soft Body Brush", path: "/horsewear/grooming-care/flexi-soft-body-brush-black-26457", bundleGroupId: "black-1" },
-    { name: "Flexi Goats Hair Body Brush", path: "/horsewear/grooming-care/flexi-goat-hair-body-brush-black", bundleGroupId: "black-1" },
-    { name: "Flexi Scrubbing Brush", path: "/horsewear/grooming-care/flexi-scrubbing-brush-black", bundleGroupId: "black-1" },
+    {
+      name: "Flexi Curry Comb",
+      path: "/horsewear/grooming-care/flexi-curry-comb-black-26462",
+      bundleGroupId: "black-1"
+    },
+    {
+      name: "Flexi Soft Body Brush",
+      path: "/horsewear/grooming-care/flexi-soft-body-brush-black-26457",
+      bundleGroupId: "black-1"
+    },
+    {
+      name: "Flexi Goats Hair Body Brush",
+      path: "/horsewear/grooming-care/flexi-goat-hair-body-brush-black",
+      bundleGroupId: "black-1"
+    },
+    {
+      name: "Flexi Scrubbing Brush",
+      path: "/horsewear/grooming-care/flexi-scrubbing-brush-black",
+      bundleGroupId: "black-1"
+    },
     // Black group 2
-    { name: "Base Layer Black", path: "/clothing/women/base-layer-black", bundleGroupId: "black-2" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-black", bundleGroupId: "black-2" },
-    { name: "Competition Socks", path: "/clothing/accessories/competition-sock-black-twin-pack", bundleGroupId: "black-2" },
+    {
+      name: "Base Layer Black",
+      path: "/clothing/women/base-layer-black",
+      bundleGroupId: "black-2"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-black",
+      bundleGroupId: "black-2"
+    },
+    {
+      name: "Competition Socks",
+      path: "/clothing/accessories/competition-sock-black-twin-pack",
+      bundleGroupId: "black-2"
+    },
     // Black group 3
-    { name: "Loire Classic Close Contact", path: "/horse-saddle-pads/close-contact-pads/loire-classic-close-contact-square-black", bundleGroupId: "black-3" },
-    { name: "Loire Fly Hood", path: "/horsewear/fly-hoods/loire-fly-hood-black", bundleGroupId: "black-3" },
+    {
+      name: "Loire Classic Close Contact",
+      path: "/horse-saddle-pads/close-contact-pads/loire-classic-close-contact-square-black",
+      bundleGroupId: "black-3"
+    },
+    {
+      name: "Loire Fly Hood",
+      path: "/horsewear/fly-hoods/loire-fly-hood-black",
+      bundleGroupId: "black-3"
+    },
     // Black group 4
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-black", bundleGroupId: "black-4" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-black", bundleGroupId: "black-4" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-black", bundleGroupId: "black-4" },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-black",
+      bundleGroupId: "black-4"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-black",
+      bundleGroupId: "black-4"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-black",
+      bundleGroupId: "black-4"
+    },
     // Brown group 1
-    { name: "Puisscance Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/puissance-suede-cc-pad-brown", bundleGroupId: "brown-1" },
-    { name: "Puissance Fly Hood", path: "/horsewear/fly-hoods/puissance-fly-hood-brown", bundleGroupId: "brown-1" },
+    {
+      name: "Puisscance Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/puissance-suede-cc-pad-brown",
+      bundleGroupId: "brown-1"
+    },
+    {
+      name: "Puissance Fly Hood",
+      path: "/horsewear/fly-hoods/puissance-fly-hood-brown",
+      bundleGroupId: "brown-1"
+    },
     // Brown group 2
-    { name: "Puissance Suede Dressage Square Brown", path: "/horse-saddle-pads/dressage-pads/puissance-suede-dressage-square-brown", bundleGroupId: "brown-2" },
-    { name: "Mesh Brushing Boots Brown", path: "/horsewear/boots-bandages/mesh-brushing-boot-brown", bundleGroupId: "brown-2" },
+    {
+      name: "Puissance Suede Dressage Square Brown",
+      path: "/horse-saddle-pads/dressage-pads/puissance-suede-dressage-square-brown",
+      bundleGroupId: "brown-2"
+    },
+    {
+      name: "Mesh Brushing Boots Brown",
+      path: "/horsewear/boots-bandages/mesh-brushing-boot-brown",
+      bundleGroupId: "brown-2"
+    },
     // Burgundy group 1
-    { name: "Cotton Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/cotton-close-contact-square-burgundy", bundleGroupId: "burgundy-1" },
-    { name: "Vogue Fly Hood", path: "/horsewear/fly-hoods/vogue-fly-hood-burgundy", bundleGroupId: "burgundy-1" },
-    { name: "Vogue Headcollar", path: "/horsewear/headcollars-leadropes/vogue-headcollar-leadrope-burgundy", bundleGroupId: "burgundy-1" },
+    {
+      name: "Cotton Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/cotton-close-contact-square-burgundy",
+      bundleGroupId: "burgundy-1"
+    },
+    {
+      name: "Vogue Fly Hood",
+      path: "/horsewear/fly-hoods/vogue-fly-hood-burgundy",
+      bundleGroupId: "burgundy-1"
+    },
+    {
+      name: "Vogue Headcollar",
+      path: "/horsewear/headcollars-leadropes/vogue-headcollar-leadrope-burgundy",
+      bundleGroupId: "burgundy-1"
+    },
     // Burgundy group 2
-    { name: "Cotton Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/cotton-close-contact-square-burgundy", bundleGroupId: "burgundy-2" },
+    {
+      name: "Cotton Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/cotton-close-contact-square-burgundy",
+      bundleGroupId: "burgundy-2"
+    },
     { name: "Pro Mesh Hat Silk", path: "???", bundleGroupId: "burgundy-2" },
-    { name: "Competition Socks", path: "/clothing/accessories/competition-sock-burgundy-twin-pack", bundleGroupId: "burgundy-2" },
+    {
+      name: "Competition Socks",
+      path: "/clothing/accessories/competition-sock-burgundy-twin-pack",
+      bundleGroupId: "burgundy-2"
+    },
     // Burgundy group 3
-    { name: "Crystal Suede Close Contact Pad", path: "/horse-saddle-pads/close-contact-pads/crystal-suede-close-contact-pad-burgundy", bundleGroupId: "burgundy-3" },
-    { name: "Crystal Fly Hood", path: "/horsewear/fly-hoods/crystal-fly-hood-burgundy", bundleGroupId: "burgundy-3" },
+    {
+      name: "Crystal Suede Close Contact Pad",
+      path: "/horse-saddle-pads/close-contact-pads/crystal-suede-close-contact-pad-burgundy",
+      bundleGroupId: "burgundy-3"
+    },
+    {
+      name: "Crystal Fly Hood",
+      path: "/horsewear/fly-hoods/crystal-fly-hood-burgundy",
+      bundleGroupId: "burgundy-3"
+    },
     // Chilli group 1
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-chilli", bundleGroupId: "chilli-1", showPins: !0 },
-    { name: "Classic Fly Hood", path: "/horsewear/fly-hoods/classic-fly-hood-chilli", bundleGroupId: "chilli-1" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-chilli", bundleGroupId: "chilli-1" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-chilli", bundleGroupId: "chilli-1" },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-chilli",
+      bundleGroupId: "chilli-1",
+      showPins: !0,
+      pinsLinks: [
+        "/clothing/women/base-layer-chilli",
+        "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-chilli",
+        "/clothing/accessories/pom-hat-silk-chilli",
+        "/horsewear/fly-hoods/loire-fly-hood-chilli"
+      ]
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/horsewear/fly-hoods/classic-fly-hood-chilli",
+      bundleGroupId: "chilli-1"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-chilli",
+      bundleGroupId: "chilli-1"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-chilli",
+      bundleGroupId: "chilli-1"
+    },
     // // Chilli group 2
     // { name: 'Suede Dressage Square', path: '/horse-saddle-pads/dressage-pads/suede-dressage-square-chilli', bundleGroupId: 'chilli-2' },
     // { name: 'Classic Fly Hood', path: '/horsewear/fly-hoods/classic-fly-hood-chilli', bundleGroupId: 'chilli-2' },
     // { name: 'Base Layer', path: '/clothing/women/base-layer-chilli', bundleGroupId: 'chilli-2' },
     // { name: 'Grafter Brushing Boots', path: '', bundleGroupId: 'chilli-2' },
     // Chilli group 3
-    { name: "Vogue Headcollar & Leadrope", path: "/horsewear/headcollars-leadropes/vogue-headcollar-leadrope-chilli", bundleGroupId: "chilli-3" },
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-chilli", bundleGroupId: "chilli-3" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-chilli", bundleGroupId: "chilli-3" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-chilli", bundleGroupId: "chilli-3" },
+    {
+      name: "Vogue Headcollar & Leadrope",
+      path: "/horsewear/headcollars-leadropes/vogue-headcollar-leadrope-chilli",
+      bundleGroupId: "chilli-3"
+    },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-chilli",
+      bundleGroupId: "chilli-3"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-chilli",
+      bundleGroupId: "chilli-3"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-chilli",
+      bundleGroupId: "chilli-3"
+    },
     // Chilli group 4
-    { name: "Suede GP Square", path: "/horse-saddle-pads/gp-pads/suede-gp-square-chilli", bundleGroupId: "chilli-4" },
-    { name: "Classic Fly Hood", path: "/horsewear/fly-hoods/classic-fly-hood-chilli", bundleGroupId: "chilli-4" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-chilli", bundleGroupId: "chilli-4" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-chilli", bundleGroupId: "chilli-4" },
+    {
+      name: "Suede GP Square",
+      path: "/horse-saddle-pads/gp-pads/suede-gp-square-chilli",
+      bundleGroupId: "chilli-4"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/horsewear/fly-hoods/classic-fly-hood-chilli",
+      bundleGroupId: "chilli-4"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-chilli",
+      bundleGroupId: "chilli-4"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-chilli",
+      bundleGroupId: "chilli-4"
+    },
     // Chilli group 5
-    { name: "YR Base Layer", path: "/clothing/children/casual-wear/base-layers/young-rider-base-layer-chilli", bundleGroupId: "chilli-5" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-chilli", bundleGroupId: "chilli-5" },
-    { name: "YR Pull on Breeches", path: "/clothing/children/casual-wear/leggings-breeches/young-rider-pull-on-breech-chilli", bundleGroupId: "chilli-5" },
+    {
+      name: "YR Base Layer",
+      path: "/clothing/children/casual-wear/base-layers/young-rider-base-layer-chilli",
+      bundleGroupId: "chilli-5"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-chilli",
+      bundleGroupId: "chilli-5"
+    },
+    {
+      name: "YR Pull on Breeches",
+      path: "/clothing/children/casual-wear/leggings-breeches/young-rider-pull-on-breech-chilli",
+      bundleGroupId: "chilli-5"
+    },
     // Grey group 1
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-grey", bundleGroupId: "grey-1" },
-    { name: "Vogue Fly Hood Grey", path: "/horsewear/fly-hoods/vogue-fly-hood-grey", bundleGroupId: "grey-1" },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-grey",
+      bundleGroupId: "grey-1"
+    },
+    {
+      name: "Vogue Fly Hood Grey",
+      path: "/horsewear/fly-hoods/vogue-fly-hood-grey",
+      bundleGroupId: "grey-1"
+    },
     // Hunter Green group 1
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-hunter-green", bundleGroupId: "hunter-green-1" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-hunter-green", bundleGroupId: "hunter-green-1" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-hunter-green", bundleGroupId: "hunter-green-1" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-hunter-green", bundleGroupId: "hunter-green-1" },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-hunter-green",
+      bundleGroupId: "hunter-green-1",
+      showPins: !0,
+      pinsLinks: [
+        "/clothing/accessories/pom-hat-silk-hunter-green",
+        "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-hunter-green",
+        "/outfit-builder-merchandising/classic-fly-hood-hunter-green",
+        "/clothing/women/base-layer-hunter-green"
+      ]
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-hunter-green",
+      bundleGroupId: "hunter-green-1"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-hunter-green",
+      bundleGroupId: "hunter-green-1"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-hunter-green",
+      bundleGroupId: "hunter-green-1"
+    },
     // Hunter Green group 2
-    { name: "Suede Dressage Square", path: "/horse-saddle-pads/dressage-pads/suede-dressage-square-hunter-green", bundleGroupId: "hunter-green-2" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-hunter-green", bundleGroupId: "hunter-green-2" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-hunter-green", bundleGroupId: "hunter-green-2" },
+    {
+      name: "Suede Dressage Square",
+      path: "/horse-saddle-pads/dressage-pads/suede-dressage-square-hunter-green",
+      bundleGroupId: "hunter-green-2"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-hunter-green",
+      bundleGroupId: "hunter-green-2"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-hunter-green",
+      bundleGroupId: "hunter-green-2"
+    },
     // Hunter Green group 3
-    { name: "YR Base Layer", path: "/clothing/children/casual-wear/base-layers/young-rider-base-layer-hunter-green", bundleGroupId: "hunter-green-3" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-hunter-green", bundleGroupId: "hunter-green-3" },
-    { name: "Competition Socks", path: "/clothing/accessories/competition-sock-hunter-green-twin-pack", bundleGroupId: "hunter-green-3" },
+    {
+      name: "YR Base Layer",
+      path: "/clothing/children/casual-wear/base-layers/young-rider-base-layer-hunter-green",
+      bundleGroupId: "hunter-green-3"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-hunter-green",
+      bundleGroupId: "hunter-green-3"
+    },
+    {
+      name: "Competition Socks",
+      path: "/clothing/accessories/competition-sock-hunter-green-twin-pack",
+      bundleGroupId: "hunter-green-3"
+    },
     // Hunter Green group 4
-    { name: "Suede GP Square", path: "/horse-saddle-pads/gp-pads/suede-gp-square-hunter-green", bundleGroupId: "hunter-green-4" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-hunter-green", bundleGroupId: "hunter-green-4" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-hunter-green", bundleGroupId: "hunter-green-4" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-hunter-green", bundleGroupId: "hunter-green-4" },
+    {
+      name: "Suede GP Square",
+      path: "/horse-saddle-pads/gp-pads/suede-gp-square-hunter-green",
+      bundleGroupId: "hunter-green-4"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-hunter-green",
+      bundleGroupId: "hunter-green-4"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-hunter-green",
+      bundleGroupId: "hunter-green-4"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-hunter-green",
+      bundleGroupId: "hunter-green-4"
+    },
     // Hunter Green group 5
-    { name: "Vogue Headcollar & Leadrope", path: "/horsewear/headcollars-leadropes/vogue-headcollar-leadrope-hunter-green", bundleGroupId: "hunter-green-5" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-hunter-green", bundleGroupId: "hunter-green-5" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-hunter-green", bundleGroupId: "hunter-green-5" },
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-hunter-green", bundleGroupId: "hunter-green-5" },
+    {
+      name: "Vogue Headcollar & Leadrope",
+      path: "/horsewear/headcollars-leadropes/vogue-headcollar-leadrope-hunter-green",
+      bundleGroupId: "hunter-green-5"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-hunter-green",
+      bundleGroupId: "hunter-green-5"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-hunter-green",
+      bundleGroupId: "hunter-green-5"
+    },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-hunter-green",
+      bundleGroupId: "hunter-green-5"
+    },
     // Ice Blue group 1
-    { name: "YR Base Layer", path: "/clothing/children/young-rider-base-layer-ice-blue", bundleGroupId: "ice-blue-1" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-ice-blue", bundleGroupId: "ice-blue-1" },
-    { name: "YR Pull on Breeches", path: "/clothing/children/young-rider-collection/young-rider-pull-on-breech-ice-blue-34614", bundleGroupId: "ice-blue-1" },
+    {
+      name: "YR Base Layer",
+      path: "/clothing/children/young-rider-base-layer-ice-blue",
+      bundleGroupId: "ice-blue-1"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-ice-blue",
+      bundleGroupId: "ice-blue-1"
+    },
+    {
+      name: "YR Pull on Breeches",
+      path: "/clothing/children/young-rider-collection/young-rider-pull-on-breech-ice-blue-34614",
+      bundleGroupId: "ice-blue-1"
+    },
     // Ice Blue group 2
-    { name: "Suede Dressage Square", path: "/horse-saddle-pads/dressage-pads/suede-dressage-square-ice-blue", bundleGroupId: "ice-blue-2" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-ice-blue", bundleGroupId: "ice-blue-2" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue", bundleGroupId: "ice-blue-2" },
+    {
+      name: "Suede Dressage Square",
+      path: "/horse-saddle-pads/dressage-pads/suede-dressage-square-ice-blue",
+      bundleGroupId: "ice-blue-2"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-ice-blue",
+      bundleGroupId: "ice-blue-2"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue",
+      bundleGroupId: "ice-blue-2"
+    },
     // Ice Blue group 3
-    { name: "Loire Classic Dressage Square", path: "/horse-saddle-pads/dressage-pads/loire-classic-dressage-square-ice-blue", bundleGroupId: "ice-blue-3" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-ice-blue", bundleGroupId: "ice-blue-3" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue", bundleGroupId: "ice-blue-3" },
+    {
+      name: "Loire Classic Dressage Square",
+      path: "/horse-saddle-pads/dressage-pads/loire-classic-dressage-square-ice-blue",
+      bundleGroupId: "ice-blue-3"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-ice-blue",
+      bundleGroupId: "ice-blue-3"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue",
+      bundleGroupId: "ice-blue-3"
+    },
     // Ice Blue group 4
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-ice-blue", bundleGroupId: "ice-blue-4", showPins: !0 },
-    { name: "Base Layer", path: "/clothing/women/base-layer-ice-blue", bundleGroupId: "ice-blue-4" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue", bundleGroupId: "ice-blue-4" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-ice-blue", bundleGroupId: "ice-blue-4" },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-ice-blue",
+      bundleGroupId: "ice-blue-4",
+      showPins: !0,
+      pinsLinks: [
+        "/clothing/women/base-layer-ice-blue",
+        "/horsewear/boots-bandages/grafter-brushing-boot-ice-blue-new",
+        "/clothing/accessories/pom-hat-silk-ice-blue",
+        "/clothing/women/base-layer-ice-blue",
+        "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-ice-blue"
+      ]
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-ice-blue",
+      bundleGroupId: "ice-blue-4"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue",
+      bundleGroupId: "ice-blue-4"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-ice-blue",
+      bundleGroupId: "ice-blue-4"
+    },
     // Ice Blue group 5
-    { name: "Suede GP Square", path: "/horse-saddle-pads/gp-pads/suede-gp-square-ice-blue", bundleGroupId: "ice-blue-5" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-ice-blue", bundleGroupId: "ice-blue-5" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-ice-blue", bundleGroupId: "ice-blue-5" },
-    { name: "Classic Fly Hood", path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue", bundleGroupId: "ice-blue-5" },
+    {
+      name: "Suede GP Square",
+      path: "/horse-saddle-pads/gp-pads/suede-gp-square-ice-blue",
+      bundleGroupId: "ice-blue-5"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-ice-blue",
+      bundleGroupId: "ice-blue-5"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-ice-blue",
+      bundleGroupId: "ice-blue-5"
+    },
+    {
+      name: "Classic Fly Hood",
+      path: "/outfit-builder-merchandising/classic-fly-hood-ice-blue",
+      bundleGroupId: "ice-blue-5"
+    },
     // Ice Blue group 6
-    { name: "Loire Classic Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/loire-classic-close-contact-square-ice-blue", bundleGroupId: "ice-blue-6", showPins: !0 },
-    { name: "Loire Fly Hood", path: "/horsewear/fly-hoods/loire-fly-hood-ice-blue", bundleGroupId: "ice-blue-6" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-ice-blue", bundleGroupId: "ice-blue-6" },
+    {
+      name: "Loire Classic Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/loire-classic-close-contact-square-ice-blue",
+      bundleGroupId: "ice-blue-6",
+      showPins: !0,
+      pinsLinks: [
+        "/horse-saddle-pads/close-contact-pads/loire-classic-close-contact-square-ice-blue",
+        "/clothing/women/base-layer-ice-blue",
+        "/horsewear/fly-hoods/loire-fly-hood-ice-blue",
+        "/spring-sale/grafter-brushing-boot-ice-blue"
+      ]
+    },
+    {
+      name: "Loire Fly Hood",
+      path: "/horsewear/fly-hoods/loire-fly-hood-ice-blue",
+      bundleGroupId: "ice-blue-6"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-ice-blue",
+      bundleGroupId: "ice-blue-6"
+    },
     // Navy group 1
-    { name: "Flexi Curry Comb", path: "/horsewear/grooming-care/flexi-curry-comb-apricot", bundleGroupId: "navy-1" },
-    { name: "Flexi Soft Body Brush", path: "/horsewear/grooming-care/flexi-soft-body-brush-apricot", bundleGroupId: "navy-1" },
-    { name: "Flexi Mssage Body Brush", path: "/horsewear/grooming-care/flexi-massage-brush-apricot", bundleGroupId: "navy-1" },
-    { name: "Flexi Scrubbing Brush", path: "/horsewear/grooming-care/flexi-scrubbing-brush-apricot", bundleGroupId: "navy-1" },
+    {
+      name: "Flexi Curry Comb",
+      path: "/horsewear/grooming-care/flexi-curry-comb-apricot",
+      bundleGroupId: "navy-1"
+    },
+    {
+      name: "Flexi Soft Body Brush",
+      path: "/horsewear/grooming-care/flexi-soft-body-brush-apricot",
+      bundleGroupId: "navy-1"
+    },
+    {
+      name: "Flexi Mssage Body Brush",
+      path: "/horsewear/grooming-care/flexi-massage-brush-apricot",
+      bundleGroupId: "navy-1"
+    },
+    {
+      name: "Flexi Scrubbing Brush",
+      path: "/horsewear/grooming-care/flexi-scrubbing-brush-apricot",
+      bundleGroupId: "navy-1"
+    },
     // Navy group 2
-    { name: "Loire Classic Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/loire-classic-close-contact-square-navy", bundleGroupId: "navy-2" },
-    { name: "Loire Fly Hood", path: "/horsewear/fly-hoods/loire-fly-hood-navy", bundleGroupId: "navy-2" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-navy", bundleGroupId: "navy-2" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-navy", bundleGroupId: "navy-2" },
+    {
+      name: "Loire Classic Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/loire-classic-close-contact-square-navy",
+      bundleGroupId: "navy-2"
+    },
+    {
+      name: "Loire Fly Hood",
+      path: "/horsewear/fly-hoods/loire-fly-hood-navy",
+      bundleGroupId: "navy-2"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-navy",
+      bundleGroupId: "navy-2"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-navy",
+      bundleGroupId: "navy-2"
+    },
     // Navy group 3
-    { name: "Junior Pro GP Jump Square", path: "/horse-saddle-pads/gp-pads/junior-pro-gp-jump-square-navy", bundleGroupId: "navy-3" },
-    { name: "Junior Pro Fly Hood", path: "/horsewear/fly-hoods/junior-pro-fly-hood-navy", bundleGroupId: "navy-3" },
+    {
+      name: "Junior Pro GP Jump Square",
+      path: "/horse-saddle-pads/gp-pads/junior-pro-gp-jump-square-navy",
+      bundleGroupId: "navy-3"
+    },
+    {
+      name: "Junior Pro Fly Hood",
+      path: "/horsewear/fly-hoods/junior-pro-fly-hood-navy",
+      bundleGroupId: "navy-3"
+    },
     // Navy group 4
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-navy", bundleGroupId: "navy-4", showPins: !0 },
-    { name: "Loire Fly Hood", path: "/horsewear/fly-hoods/loire-fly-hood-navy", bundleGroupId: "navy-4" },
-    { name: "Base Layer", path: "/clothing/women/base-layer-navy", bundleGroupId: "navy-4" },
-    { name: "Pom Hat Silk", path: "/clothing/accessories/pom-hat-silk-navy", bundleGroupId: "navy-4" },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-navy",
+      bundleGroupId: "navy-4",
+      showPins: !0,
+      pinsLinks: [
+        "/horsewear/fly-hoods/loire-fly-hood-navy",
+        "/clothing/women/naomi-pull-on-breeches-updated-navy",
+        "/clothing/accessories/pro-mesh-hat-silk-navy",
+        "/clothing/women/base-layer-navy",
+        "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-navy"
+      ]
+    },
+    {
+      name: "Loire Fly Hood",
+      path: "/horsewear/fly-hoods/loire-fly-hood-navy",
+      bundleGroupId: "navy-4"
+    },
+    {
+      name: "Base Layer",
+      path: "/clothing/women/base-layer-navy",
+      bundleGroupId: "navy-4"
+    },
+    {
+      name: "Pom Hat Silk",
+      path: "/clothing/accessories/pom-hat-silk-navy",
+      bundleGroupId: "navy-4"
+    },
     // White group 1
-    { name: "Le Cool Grip Dressage Pad White", path: "/new-in/anti-slip-cooling-dressage-pad-white", bundleGroupId: "white-1" },
-    { name: "Le Cool Grip Dressage Pad Navy", path: "/new-in/anti-slip-cooling-dressage-pad-navy", bundleGroupId: "white-1" },
+    {
+      name: "Le Cool Grip Dressage Pad White",
+      path: "/new-in/anti-slip-cooling-dressage-pad-white",
+      bundleGroupId: "white-1"
+    },
+    {
+      name: "Le Cool Grip Dressage Pad Navy",
+      path: "/new-in/anti-slip-cooling-dressage-pad-navy",
+      bundleGroupId: "white-1"
+    },
     // White group 2
-    { name: "Cotton Dressage Square", path: "/horse-saddle-pads/dressage-pads/cotton-dressage-square-white", bundleGroupId: "white-2" },
-    { name: "Cotton Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/cotton-close-contact-square-white", bundleGroupId: "white-2" },
+    {
+      name: "Cotton Dressage Square",
+      path: "/horse-saddle-pads/dressage-pads/cotton-dressage-square-white",
+      bundleGroupId: "white-2"
+    },
+    {
+      name: "Cotton Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/cotton-close-contact-square-white",
+      bundleGroupId: "white-2"
+    },
     // White group 3
-    { name: "Suede Dressage Square", path: "/horse-saddle-pads/dressage-pads/suede-dressage-square-white", bundleGroupId: "white-3" },
-    { name: "Suede Close Contact Square", path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white", bundleGroupId: "white-3" }
-  ], E = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    bundles: I
-  }, Symbol.toStringTag, { value: "Module" })), z = window.autoInitData.website.websiteCode, w = async (u, e) => {
-    const n = z === "base" ? u : `/${z.toLowerCase()}${u}`;
+    {
+      name: "Suede Dressage Square",
+      path: "/horse-saddle-pads/dressage-pads/suede-dressage-square-white",
+      bundleGroupId: "white-3"
+    },
+    {
+      name: "Suede Close Contact Square",
+      path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white",
+      bundleGroupId: "white-3"
+    }
+  ], L = window.autoInitData.website.websiteCode, w = async (u, e) => {
+    const n = L === "base" ? u : `/${L.toLowerCase()}${u}`;
     try {
       const t = await fetch(n, e);
       if (!t.ok)
@@ -192,30 +697,30 @@
       const o = await t.json();
       if (o.error)
         throw new Error(o.error);
-      const { catalog: s, result: i, customer: a } = o;
-      if (s) {
-        const c = s[0];
+      const { catalog: i, result: s, customer: l } = o;
+      if (i) {
+        const c = i[0];
         if (c)
           return {
             data: c,
             error: null
           };
       }
-      if (i && i.length > 0) {
-        const c = i[0];
+      if (s && s.length > 0) {
+        const c = s[0];
         return c != null && c.product ? {
           data: c.product,
           error: null
-        } : i.length === 1 ? {
-          data: i[0],
+        } : s.length === 1 ? {
+          data: s[0],
           error: null
         } : {
-          data: i,
+          data: s,
           error: null
         };
       }
-      return a ? {
-        data: a,
+      return l ? {
+        data: l,
         error: null
       } : {
         data: null,
@@ -224,9 +729,9 @@
     } catch (t) {
       return console.error("request error", t), { data: null, error: t };
     }
-  }, _ = (u) => w(`/api/n/route/${u}?pushDeps=true`), $ = (u) => w(
+  }, P = (u) => w(`/api/n/route/${u}?pushDeps=true`), F = (u) => w(
     `/api/n/find?type=block&filter={"url":"size-guide-modal@${u}"}&verbosity=3&limit=1`
-  ), H = (u) => w("/api/p/basket/add", {
+  ), j = (u) => w("/api/p/basket/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -241,7 +746,7 @@
         }
       ]
     })
-  }), C = (u) => w("/api/p/basket/remove", {
+  }), B = (u) => w("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -249,7 +754,7 @@
     body: JSON.stringify({
       ids: u
     })
-  }), G = ({ id: u, qty: e }) => w("/api/p/basket/qty", {
+  }), E = ({ id: u, qty: e }) => w("/api/p/basket/qty", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -258,7 +763,7 @@
       id: u,
       qty: e
     })
-  }), T = () => w("/api/n/attribute/size/verbosity/3"), F = `.cart-popup {
+  }), $ = () => w("/api/n/attribute/size/verbosity/3"), D = `.cart-popup {
   top: auto;
   bottom: 0;
   width: 100%;
@@ -402,7 +907,7 @@
   letter-spacing: 1px;
 }
 `;
-  class j {
+  class M {
     constructor() {
       this.dialog = null, this.init();
     }
@@ -437,11 +942,11 @@
         this.close();
       });
       const n = (o = this.dialog) == null ? void 0 : o.querySelector(".cart-popup-content");
-      n && n.addEventListener("click", (s) => {
-        const i = s.target;
-        if (i.classList.contains("remove")) {
-          const a = i.closest(".cart-product");
-          a && a.remove();
+      n && n.addEventListener("click", (i) => {
+        const s = i.target;
+        if (s.classList.contains("remove")) {
+          const l = s.closest(".cart-product");
+          l && l.remove();
         }
       });
     }
@@ -450,19 +955,19 @@
       productCartId: n,
       color: t,
       size: o,
-      title: s,
-      price: i,
-      image: a,
+      title: i,
+      price: s,
+      image: l,
       link: c,
       qty: r
     }) {
-      var h, g, y, p, k, b;
-      const l = (h = this.dialog) == null ? void 0 : h.querySelector(".cart-popup-content");
-      if (!l) return;
+      var b, g, y, p, k, m;
+      const a = (b = this.dialog) == null ? void 0 : b.querySelector(".cart-popup-content");
+      if (!a) return;
       const d = (
         // @ts-ignore
         ((k = (p = (y = (g = window == null ? void 0 : window.autoInitData) == null ? void 0 : g.website) == null ? void 0 : y.currency) == null ? void 0 : p.list) == null ? void 0 : k[0].symbol) || "$"
-      ), m = (
+      ), h = (
         /* HTML */
         ` <div
       class="cart-product"
@@ -470,13 +975,13 @@
       cart-id="${n}"
     >
       <div class="cart-product-image">
-        <img src="${a}" alt="" width="84" height="113" />
+        <img src="${l}" alt="" width="84" height="113" />
       </div>
       <div class="cart-product-content">
         <div class="cart-product-header">
-          <div class="cart-product-title">${s}</div>
+          <div class="cart-product-title">${i}</div>
           <div class="cart-product-price">
-            ${d}<span>${i}</span>
+            ${d}<span>${s}</span>
           </div>
         </div>
         <div class="cart-product-options">
@@ -511,7 +1016,7 @@
       </div>
     </div>`
       );
-      l.innerHTML = m, this.productEvents(n), (b = this.dialog) == null || b.showModal();
+      a.innerHTML = h, this.productEvents(n), (m = this.dialog) == null || m.showModal();
     }
     debounce(e, n) {
       let t = null;
@@ -522,11 +1027,11 @@
     productEvents(e) {
       const n = document.querySelector(
         `.cart-product[cart-id="${e}"]`
-      ), t = n == null ? void 0 : n.querySelector(".minus"), o = n == null ? void 0 : n.querySelector(".plus"), s = n == null ? void 0 : n.querySelector(".quantity-input"), i = n == null ? void 0 : n.querySelector(".remove"), a = n == null ? void 0 : n.querySelector(".favorite"), c = this.debounce(async (r, l) => {
+      ), t = n == null ? void 0 : n.querySelector(".minus"), o = n == null ? void 0 : n.querySelector(".plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), s = n == null ? void 0 : n.querySelector(".remove"), l = n == null ? void 0 : n.querySelector(".favorite"), c = this.debounce(async (r, a) => {
         var g;
-        const { data: d, error: m } = await G({ id: r, qty: l }), h = d == null ? void 0 : d.cart;
-        if (h) {
-          const y = (g = h == null ? void 0 : h.items.find(
+        const { data: d, error: h } = await E({ id: r, qty: a }), b = d == null ? void 0 : d.cart;
+        if (b) {
+          const y = (g = b == null ? void 0 : b.items.find(
             (p) => p.id === r
           )) == null ? void 0 : g.rowPrice;
           if (y) {
@@ -537,21 +1042,21 @@
           }
         }
       }, 300);
-      !n || !s || (t && t.addEventListener("click", () => {
-        const l = parseInt(s.value) - 1;
-        if (o == null || o.removeAttribute("disabled"), l < 1) {
-          s.value = "1", t.setAttribute("disabled", "true");
+      !n || !i || (t && t.addEventListener("click", () => {
+        const a = parseInt(i.value) - 1;
+        if (o == null || o.removeAttribute("disabled"), a < 1) {
+          i.value = "1", t.setAttribute("disabled", "true");
           return;
         }
-        s.value = l.toString(), c(+e, l);
+        i.value = a.toString(), c(+e, a);
       }), o && o.addEventListener("click", () => {
-        const l = parseInt(s.value) + 1;
-        t == null || t.removeAttribute("disabled"), s.value = l.toString(), c(+e, l);
-      }), i && i.addEventListener("click", async () => {
-        const r = i.closest(".cart-product");
-        r && (await C([+e]), r.remove(), this.close());
-      }), a && a.addEventListener("click", () => {
-        const r = a.closest(".cart-product");
+        const a = parseInt(i.value) + 1;
+        t == null || t.removeAttribute("disabled"), i.value = a.toString(), c(+e, a);
+      }), s && s.addEventListener("click", async () => {
+        const r = s.closest(".cart-product");
+        r && (await B([+e]), r.remove(), this.close());
+      }), l && l.addEventListener("click", () => {
+        const r = l.closest(".cart-product");
         r && r.classList.toggle("favorite");
       }));
     }
@@ -560,10 +1065,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = F, document.head.appendChild(e);
+      e.textContent = D, document.head.appendChild(e);
     }
   }
-  const A = `.size-popup-table {
+  const O = `.size-popup-table {
   display: flex;
   justify-content: center;
 }
@@ -647,16 +1152,16 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 `;
-  class O {
+  class R {
     constructor(e) {
       this.tables = e, this.addStyles();
     }
     renderTables() {
       return this.tables.map((e) => {
-        const n = e.rows[0].columns.map((s) => `<th>${s.valueFirst}</th>`).join(""), t = e.rows.slice(1).map(
-          (s) => `<tr class="cm-unit">${s.columns.map((i) => `<td>${i.valueFirst}</td>`).join("")}</tr>`
+        const n = e.rows[0].columns.map((i) => `<th>${i.valueFirst}</th>`).join(""), t = e.rows.slice(1).map(
+          (i) => `<tr class="cm-unit">${i.columns.map((s) => `<td>${s.valueFirst}</td>`).join("")}</tr>`
         ).join(""), o = e.rows.slice(1).map(
-          (s) => `<tr class="inches-unit" style="display: none;">${s.columns.map((i) => `<td>${i.valueSecond}</td>`).join("")}</tr>`
+          (i) => `<tr class="inches-unit" style="display: none;">${i.columns.map((s) => `<td>${s.valueSecond}</td>`).join("")}</tr>`
         ).join("");
         return (
           /* HTML */
@@ -698,21 +1203,21 @@ input:checked + .slider:before {
     addUnitToggleListeners(e) {
       e.querySelectorAll(".unit-toggle").forEach((t) => {
         t.addEventListener("change", (o) => {
-          const s = o.target.checked, i = t.closest(
+          const i = o.target.checked, s = t.closest(
             ".size-popup-table-wrapper"
           );
-          if (!i) return;
-          const a = i.querySelectorAll(".cm-unit"), c = i.querySelectorAll(".inches-unit"), r = i.querySelector(".switch-label-cm"), l = i.querySelector(".switch-label-inches");
-          r && r.classList.toggle("active", !s), l && l.classList.toggle("active", s), s ? (a.forEach((d) => d.style.display = "none"), c.forEach((d) => d.style.display = "")) : (a.forEach((d) => d.style.display = ""), c.forEach((d) => d.style.display = "none"));
+          if (!s) return;
+          const l = s.querySelectorAll(".cm-unit"), c = s.querySelectorAll(".inches-unit"), r = s.querySelector(".switch-label-cm"), a = s.querySelector(".switch-label-inches");
+          r && r.classList.toggle("active", !i), a && a.classList.toggle("active", i), i ? (l.forEach((d) => d.style.display = "none"), c.forEach((d) => d.style.display = "")) : (l.forEach((d) => d.style.display = ""), c.forEach((d) => d.style.display = "none"));
         });
       });
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = A, document.head.appendChild(e);
+      e.innerHTML = O, document.head.appendChild(e);
     }
   }
-  const M = `.size-popup {
+  const N = `.size-popup {
   width: 80vw;
   max-width: 80vw;
   max-height: 90vh;
@@ -854,7 +1359,7 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 `;
-  class D {
+  class V {
     constructor({
       sizeGuideId: e,
       triggerSelector: n
@@ -865,7 +1370,7 @@ input:checked + .slider:before {
       this.addStyles(), this.render(), this.eventListeners();
     }
     async getSizeGuide() {
-      const { data: e, error: n } = await $(this.sizeGuideId);
+      const { data: e, error: n } = await F(this.sizeGuideId);
       if (n) {
         console.error("Error fetching size guide", n.message);
         return;
@@ -875,11 +1380,11 @@ input:checked + .slider:before {
     async render() {
       const e = await this.getSizeGuide();
       if (!e) return;
-      const { title: n, subtitle: t, image: o, copy: s, tables: i } = e.content, a = document.querySelector(
+      const { title: n, subtitle: t, image: o, copy: i, tables: s } = e.content, l = document.querySelector(
         `size-popup-${this.sizeGuideId}`
       );
-      a && a.remove();
-      const c = new O(i), r = c.renderTables(), l = o.startsWith("/") ? `https://www.lemieux.com/static${o}` : `https://www.lemieux.com/static/${o}`, d = (
+      l && l.remove();
+      const c = new R(s), r = c.renderTables(), a = o.startsWith("/") ? `https://www.lemieux.com/static${o}` : `https://www.lemieux.com/static/${o}`, d = (
         /* HTML */
         `
       <dialog class="size-popup" id="size-popup-${this.sizeGuideId}">
@@ -896,20 +1401,20 @@ input:checked + .slider:before {
 
           <div class="size-popup-table">${r}</div>
           <div class="size-popup-image">
-            <img src="${l}" alt="Size Guide Image" />
+            <img src="${a}" alt="Size Guide Image" />
           </div>
-          <p class="size-popup-copy">${s}</p>
+          <p class="size-popup-copy">${i}</p>
         </div>
       </dialog>
     `
       );
       document.body.insertAdjacentHTML("beforeend", d);
-      const m = document.querySelector(
+      const h = document.querySelector(
         `#size-popup-${this.sizeGuideId}`
       );
-      m.querySelector(
+      h.querySelector(
         ".size-popup-close"
-      ).addEventListener("click", () => m.close()), c.addUnitToggleListeners(m);
+      ).addEventListener("click", () => h.close()), c.addUnitToggleListeners(h);
     }
     eventListeners() {
       const e = document.querySelector(this.triggerSelector);
@@ -922,17 +1427,16 @@ input:checked + .slider:before {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = M, document.head.appendChild(e);
+      e.innerHTML = N, document.head.appendChild(e);
     }
   }
-  const R = `.bundle {
+  const W = `.bundle {
   width: 100%;
   padding-block: 24px;
 }
 
 .bundle + .bundle {
   border-top: 1px solid #cfd2d3;
-  
 }
 
 .bundle-inner {
@@ -953,6 +1457,13 @@ input:checked + .slider:before {
 .bundle-img img {
   height: auto;
 }
+
+.bundle-rating {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+}
+
 .bundle-content {
   flex: 1;
 }
@@ -1073,24 +1584,24 @@ input:checked + .slider:before {
       sizes: n,
       containerSelector: t,
       cartInstance: o,
-      position: s = "beforeend",
-      aborters: i
+      position: i = "beforeend",
+      aborters: s
     }) {
-      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = t, this.position = s, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new j(), this.cart = o, this.aborters = i, S.bundleCounter += 1, this.bundleId = `product-${e.id}-${S.bundleCounter}`, this.init();
+      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = t, this.position = i, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new M(), this.cart = o, this.aborters = s, S.bundleCounter += 1, this.bundleId = `product-${e.id}-${S.bundleCounter}`, this.init();
     }
     init() {
       this.addStyles(), this.render(), this.isInitialized || (this.handleSizeSelectOpen(), this.handleSizeSelection(), this.isInitialized = !0);
     }
     async render() {
-      var a, c, r, l;
+      var l, c, r, a, d;
       const e = this.product, n = this.sizes;
-      this.color = this.getHashParam("selection.color");
+      console.log("product", e), this.color = this.getHashParam("selection.color");
       const t = e.size, o = n.options.filter(
-        (d) => t.includes(d.value)
-      ), s = (
-        // @ts-ignore
-        (l = (r = (c = (a = window == null ? void 0 : window.autoInitData) == null ? void 0 : a.website) == null ? void 0 : c.currency) == null ? void 0 : r.list) == null ? void 0 : l[0].symbol
+        (h) => t.includes(h.value)
       ), i = (
+        // @ts-ignore
+        (a = (r = (c = (l = window == null ? void 0 : window.autoInitData) == null ? void 0 : l.website) == null ? void 0 : c.currency) == null ? void 0 : r.list) == null ? void 0 : a[0].symbol
+      ), s = (
         /* HTML */
         `<div class="bundle" id="${this.bundleId}">
       <div class="bundle-inner">
@@ -1102,11 +1613,29 @@ input:checked + .slider:before {
             height="100%"
             loading="lazy"
           />
+          <div class="bundle-rating">
+            <div class="ng-star-inserted">
+              <div
+                class="cursor-pointer p-b-1-s p-b-1-m flex flex-middle pos-relative"
+              >
+                <rating
+                  class="col-12 inline-block"
+                  style="font-size: 13px; height: 1em;"
+                  ><i class="rate-full ng-star-inserted"></i
+                  ><i class="rate-full ng-star-inserted"></i
+                  ><i class="rate-full ng-star-inserted"></i
+                  ><i class="rate-full ng-star-inserted"></i
+                  ><i class="rate-full ng-star-inserted"></i
+                ></rating>
+                <span class="p2 p-l-2">(${(d = e == null ? void 0 : e.reviews) == null ? void 0 : d.count})</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="bundle-content">
           <a href="${e.url}" class="bundle-title">${e.name}</a>
           <div class="bundle-price-size">
-            <div class="bundle-price">${s}${e.price}</div>
+            <div class="bundle-price">${i}${e.price}</div>
             <div class="bundle-size">
               ${e != null && e.size_guide ? (
           /* HTML */
@@ -1138,24 +1667,24 @@ input:checked + .slider:before {
                 <div class="_content flex flex-column flex-justify-end">
                   <div>
                     <div class="bundle-size-options bg-col-w">
-                      ${o.map((d) => {
-          const m = this.getProductIdBySizeAndColor(
+                      ${o.map((h) => {
+          const b = this.getProductIdBySizeAndColor(
             this.product,
-            d.value,
+            h.value,
             this.color
           );
-          return m ? (
+          return b ? (
             /* HTML */
             `<div
                             class="p-r p-l bundle-size-item"
-                            data-variant-id="${m}"
-                            data-size-id="${d.value}"
-                            data-size-label="${d.label}"
+                            data-variant-id="${b}"
+                            data-size-id="${h.value}"
+                            data-size-label="${h.label}"
                           >
                             <div
                               class="cursor-pointer p-t-3 p-b-3 b-t b-col-42 flex flex-justify-between flex-middle"
                             >
-                              <p class="s2 col-1">${d.label}</p>
+                              <p class="s2 col-1">${h.label}</p>
                             </div>
                           </div>`
           ) : "";
@@ -1172,10 +1701,10 @@ input:checked + .slider:before {
     </div> `
       );
       if (this.containerSelector) {
-        const d = document.querySelector(
+        const h = document.querySelector(
           this.containerSelector
         );
-        this.removeExistingBundle(), d.insertAdjacentHTML(this.position, i), this.bundle = document.getElementById(this.bundleId), e != null && e.size_guide && new D({
+        this.removeExistingBundle(), h.insertAdjacentHTML(this.position, s), this.bundle = document.getElementById(this.bundleId), e != null && e.size_guide && new V({
           sizeGuideId: e.size_guide,
           triggerSelector: `#${this.bundleId} .bundle-size button`
         }), this.attachBundleButtonHandler();
@@ -1185,9 +1714,9 @@ input:checked + .slider:before {
       if (!this.bundle) return;
       const e = this.bundle.querySelector(".bundle-button");
       e && (this.bundleButtonHandler && e.removeEventListener("click", this.bundleButtonHandler), this.bundleButtonHandler = async () => {
-        var a, c, r, l, d, m, h, g, y;
+        var l, c, r, a, d, h, b, g, y;
         if (!this.size) {
-          const p = (a = this.bundle) == null ? void 0 : a.querySelector(
+          const p = (l = this.bundle) == null ? void 0 : l.querySelector(
             "#size-select"
           );
           p == null || p.classList.add("hide-up");
@@ -1210,37 +1739,37 @@ input:checked + .slider:before {
           ".bundle-size-selected"
         ), o = document.getElementById(
           "bundle-color"
-        ), s = (r = document.querySelector("a")) == null ? void 0 : r.getAttribute("href"), i = (d = (l = this.bundle) == null ? void 0 : l.querySelector("img")) == null ? void 0 : d.getAttribute("src");
+        ), i = (r = document.querySelector("a")) == null ? void 0 : r.getAttribute("href"), s = (d = (a = this.bundle) == null ? void 0 : a.querySelector("img")) == null ? void 0 : d.getAttribute("src");
         try {
-          const { data: p, error: k } = await H(n);
+          const { data: p, error: k } = await j(n);
           if (k)
             throw new Error(k.message);
-          const b = p == null ? void 0 : p.cart, ne = b == null ? void 0 : b.items, q = (m = b == null ? void 0 : b.items.find((f) => f.product === n)) == null ? void 0 : m.request.qty, P = (h = b == null ? void 0 : b.items.find(
+          const m = p == null ? void 0 : p.cart, te = m == null ? void 0 : m.items, _ = (h = m == null ? void 0 : m.items.find((f) => f.product === n)) == null ? void 0 : h.request.qty, H = (b = m == null ? void 0 : m.items.find(
             (f) => f.product === n
-          )) == null ? void 0 : h.rowPrice, te = b.items.reduce((f, ee) => f + ee.rowPrice, 0).toFixed(2), L = (g = b == null ? void 0 : b.items.find(
+          )) == null ? void 0 : b.rowPrice, oe = m.items.reduce((f, ne) => f + ne.rowPrice, 0).toFixed(2), T = (g = m == null ? void 0 : m.items.find(
             (f) => f.product === n
           )) == null ? void 0 : g.id;
           if (this.device === "desktop" && this.cart.addItemToCart({
             id: n.toString(),
-            productCartId: L,
+            productCartId: T,
             title: this.product.name,
             size: t.dataset.chosenLabel || "",
             color: o.textContent || "",
-            price: P,
-            image: i || "",
-            link: s || "",
-            qty: q
+            price: H,
+            image: s || "",
+            link: i || "",
+            qty: _
           }), window.innerWidth <= 700) {
             this.basketPopup.open({
               productId: n,
-              productCartId: L,
+              productCartId: T,
               color: o.textContent || "",
               size: t.dataset.chosenLabel || "",
               title: this.product.name,
-              price: P,
-              image: i || "",
-              link: s || "",
-              qty: q
+              price: H,
+              image: s || "",
+              link: i || "",
+              qty: _
             });
             const f = (y = this.bundle) == null ? void 0 : y.closest(
               "#pins-bundle-mobile-popup"
@@ -1265,24 +1794,24 @@ input:checked + .slider:before {
         ".bundle-size-options"
       );
       if (!t || !o || !t) return;
-      const s = (i) => {
+      const i = (s) => {
         var d;
-        const c = i.target.closest(".bundle-size-item");
+        const c = s.target.closest(".bundle-size-item");
         if (!c) return;
-        const r = c.dataset.sizeId, l = (d = c.querySelector(".s2")) == null ? void 0 : d.textContent;
-        !r || !l || (t.textContent = l, t.dataset.chosenValue = r, t.dataset.chosenLabel = l, this.size = r, n == null || n.classList.remove("hide-up"));
+        const r = c.dataset.sizeId, a = (d = c.querySelector(".s2")) == null ? void 0 : d.textContent;
+        !r || !a || (t.textContent = a, t.dataset.chosenValue = r, t.dataset.chosenLabel = a, this.size = r, n == null || n.classList.remove("hide-up"));
       };
-      n.addEventListener("click", s), this.eventRemovers.push(
-        () => n.removeEventListener("click", s)
+      n.addEventListener("click", i), this.eventRemovers.push(
+        () => n.removeEventListener("click", i)
       );
     }
     getHashParam(e) {
       if (!location.hash) return null;
       const t = location.hash.substring(1).split("&");
       for (const o of t) {
-        const [s, i] = o.split("=");
-        if (s === e)
-          return i;
+        const [i, s] = o.split("=");
+        if (i === e)
+          return s;
       }
       return null;
     }
@@ -1291,41 +1820,41 @@ input:checked + .slider:before {
         ".bundle-size-options"
       );
       if (!t || !o) return;
-      const s = (i) => {
+      const i = (s) => {
         n == null || n.classList.toggle("hide-up");
       };
-      n.addEventListener("click", s), this.eventRemovers.push(
-        () => n.removeEventListener("click", s)
+      n.addEventListener("click", i), this.eventRemovers.push(
+        () => n.removeEventListener("click", i)
       );
     }
     getProductIdBySizeAndColor(e, n, t) {
-      var a, c, r, l;
-      if (!((c = (a = e == null ? void 0 : e.options) == null ? void 0 : a.configurable) != null && c.size) || !((l = (r = e == null ? void 0 : e.options) == null ? void 0 : r.configurable) != null && l.color))
+      var l, c, r, a;
+      if (!((c = (l = e == null ? void 0 : e.options) == null ? void 0 : l.configurable) != null && c.size) || !((a = (r = e == null ? void 0 : e.options) == null ? void 0 : r.configurable) != null && a.color))
         return console.error("Product options structure is invalid"), null;
-      const o = e.options.configurable.size[n], s = e.options.configurable.color[t];
-      if (!o || !s)
+      const o = e.options.configurable.size[n], i = e.options.configurable.color[t];
+      if (!o || !i)
         return console.error("Size or color not found in product options"), null;
-      const i = o.filter(
-        (d) => s.includes(d)
+      const s = o.filter(
+        (d) => i.includes(d)
       );
-      return i.length === 0 ? (console.warn("No product found with this size and color combination"), null) : (i.length > 1 && console.warn(
+      return s.length === 0 ? (console.warn("No product found with this size and color combination"), null) : (s.length > 1 && console.warn(
         "Multiple products found with this size and color combination, returning first one"
-      ), i[0]);
+      ), s[0]);
     }
     waitForBundle(e = 5e4) {
       return new Promise((n, t) => {
         if (this.bundle)
           return n(this.bundle);
         const o = setInterval(() => {
-          this.bundle && (clearInterval(o), clearTimeout(s), n(this.bundle));
-        }, 200), s = setTimeout(() => {
+          this.bundle && (clearInterval(o), clearTimeout(i), n(this.bundle));
+        }, 200), i = setTimeout(() => {
           clearInterval(o), t(new Error("Timeout waiting for window.product"));
         }, e);
       });
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = R, document.head.appendChild(e);
+      e.innerHTML = W, document.head.appendChild(e);
     }
     dispose() {
       this.disposed || (this.disposed = !0, this.eventRemovers.forEach((e) => e()), this.eventRemovers = [], this.bundle && this.bundle.parentElement && this.bundle.parentElement.removeChild(this.bundle), this.bundle = null);
@@ -1333,7 +1862,7 @@ input:checked + .slider:before {
   };
   S.bundleCounter = 0;
   let x = S;
-  const W = `.bundle-container {
+  const U = `.bundle-container {
   margin-top: 28px;
   padding: 24px 16px;
   background: #f3f3f3;
@@ -1349,12 +1878,33 @@ input:checked + .slider:before {
   letter-spacing: 0.5px;
 }
 
+.bundle-container-footer {
+  color: #8e8e8e;
+  font-family: 'Source Sans 3';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 1px;
+}
+
+.bundle-container-footer a {
+  color: #212121;
+  font-family: 'Source Sans 3';
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+
 @media (max-width: 1100px) {
   .bundle-container-title {
     font-size: 26px;
   }
-}`;
-  class V {
+}
+`;
+  class Y {
     constructor(e, n, t) {
       this.aborters = [], this.bundleItems = [], this.disposed = !1, this.bundleData = e, this.cartInstance = n, this.aborters = t, this.init();
     }
@@ -1362,47 +1912,51 @@ input:checked + .slider:before {
       this.addStyles(), await this.render();
     }
     async render() {
-      var i, a;
+      var c, r;
       await v("product-view-cms-carousel");
       const e = await Promise.race([
         v("product-view-delivery-note"),
         v("product-view-add-to-basket")
       ]);
       if (!e) return;
-      const t = window.autoInitData.website.defaultCountry === "GB" ? "colour set" : "color set", s = (
+      const t = window.autoInitData.website.defaultCountry === "GB" ? "colour set" : "color set", o = ((c = window == null ? void 0 : window.product) == null ? void 0 : c.item_category3) || "", i = this.bundleData.map(
+        ({ product: a }) => a != null && a.name && (a != null && a.url) ? `<a href="${a.url}" target="_blank">${a.name}</a>` : null
+      ).filter(Boolean), s = i.length ? `Match your item with ${i.join(", ")}` : "", l = (
         /* HTML */
         `<div class="bundle-container">
       <div class="bundle-container-title">
-        Complete your <span id="bundle-color">${((i = window == null ? void 0 : window.product) == null ? void 0 : i.item_category3) || ""}</span><br />
+        Complete your <span id="bundle-color">${o}</span><br />
         ${t}
       </div>
+      <div class="bundle-items-wrapper"></div>
+      <div class="bundle-container-footer">${s}</div>
     </div>`
       );
-      document.querySelector(".bundle-container") && ((a = document.querySelector(".bundle-container")) == null || a.remove()), e.insertAdjacentHTML("afterend", s);
-      for (const [c, { product: r, sizes: l, bundle: d }] of this.bundleData.entries()) {
-        const m = new x({
-          product: r,
-          sizes: l,
+      document.querySelector(".bundle-container") && ((r = document.querySelector(".bundle-container")) == null || r.remove()), e.insertAdjacentHTML("afterend", l), document.querySelector(".bundle-items-wrapper");
+      for (const [a, { product: d, sizes: h, bundle: b }] of this.bundleData.entries()) {
+        const g = new x({
+          product: d,
+          sizes: h,
           cartInstance: this.cartInstance,
-          containerSelector: ".bundle-container",
+          containerSelector: ".bundle-items-wrapper",
           position: "beforeend",
           aborters: this.aborters
         });
-        this.bundleItems.push(m);
+        this.bundleItems.push(g);
       }
     }
     dispose() {
       if (this.disposed) return;
       this.disposed = !0, this.bundleItems.forEach((n) => n.dispose()), this.bundleItems = [];
       const e = document.querySelector(".bundle-container");
-      e && (console.log("Container removed"), e.remove());
+      e && e.remove();
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = W, document.head.appendChild(e);
+      e.innerHTML = U, document.head.appendChild(e);
     }
   }
-  const N = `/* PinsBundle styles */
+  const J = `/* PinsBundle styles */
 .pins-bundle-pin {
   width: 24px;
   height: 24px;
@@ -1455,33 +2009,144 @@ input:checked + .slider:before {
   position: absolute;
 }
 
-[data-product-name='chilli-1'] [data-pin-index='0'] {
+/* PINS BUNDLE */
+
+/* CHILLI 1 */
+[data-product-name='chilli-1'] [data-pin-id='4780'] {
+  top: 6%;
+  left: 45%;
+}
+
+[data-product-name='chilli-1'] [data-pin-id='27607'] {
   top: 14%;
   left: 66%;
 }
+[data-product-name='chilli-1'] [data-pin-id='7872'] {
+  top: 41%;
+  left: 36%;
+}
 
-[data-product-name='chilli-1'] [data-pin-index='1'] {
+[data-product-name='chilli-1'] [data-pin-id='10726'] {
   top: 16%;
   left: 45%;
 }
 
-[data-product-name='chilli-1'] [data-pin-index='2'] {
-  top: 5%;
-  left: 49%;
-}
-
-[data-product-name='benetton-blue-1'] [data-pin-index='0'] {
-  top: 39%;
-  left: 70%;
-}
+/* BENETTON BLUE 1 */
 [data-product-name='benetton-blue-1'] [data-pin-index='1'] {
   top: 17%;
   left: 68%;
 }
-[data-product-name='benetton-blue-1'] [data-pin-index='2'] {
+[data-product-name='benetton-blue-1'] [data-pin-id='6529'] {
   top: 14%;
   left: 60%;
 }
+
+[data-product-name='benetton-blue-1'] [data-pin-id='10712'] {
+  top: 39%;
+  left: 70%;
+}
+
+[data-product-name='benetton-blue-1'] [data-pin-id='5418'] {
+  top: 79%;
+  left: 25%;
+}
+
+[data-product-name='benetton-blue-1'] [data-pin-id='7869'] {
+  top: 24%;
+  left: 29%;
+}
+
+/* NAVY 4 */
+[data-product-name='navy-4'] [data-pin-id='6462'] {
+  top: 27%;
+  left: 32%;
+}
+[data-product-name='navy-4'] [data-pin-id='34525'] {
+  left: 51%;
+  top: 39%;
+}
+
+[data-product-name='navy-4'] [data-pin-id='4746'] {
+  top: 4%;
+  left: 62%;
+}
+
+[data-product-name='navy-4'] [data-pin-id='10798'] {
+  top: 20%;
+  left: 65%;
+}
+
+[data-product-name='navy-4'] [data-pin-id='7901'] {
+  top: 39%;
+  left: 67%;
+}
+
+/* ICE BLUE 4 */
+
+[data-product-name='ice-blue-4'] [data-pin-id='10754'] {
+  top: 15%;
+  left: 63%;
+}
+
+[data-product-name='ice-blue-4'] [data-pin-id='26466'] {
+  top: 85%;
+  left: 46%;
+}
+
+[data-product-name='ice-blue-4'] [data-pin-id='4788'] {
+  top: 4%;
+  left: 61%;
+}
+
+[data-product-name='ice-blue-4'] [data-pin-id='7883'] {
+  top: 42%;
+  left: 67%;
+}
+
+/* HUNTER GREEN 1 */
+
+[data-product-name='hunter-green-1'] [data-pin-id='7880'] {
+  top: 52%;
+  left: 34%;
+}
+
+[data-product-name='hunter-green-1'] [data-pin-id='4786'] {
+  top: 12%;
+  left: 39%;
+}
+
+[data-product-name='hunter-green-1'] [data-pin-id='6545'] {
+  top: 20%;
+  left: 78%;
+}
+
+[data-product-name='hunter-green-1'] [data-pin-id='10747'] {
+  top: 30%;
+  left: 52%;
+}
+
+/* ICE BLUE ^ */
+
+[data-product-name='ice-blue-6'] [data-pin-id='7999'] {
+  top: 34%;
+  left: 37%;
+}
+
+[data-product-name='ice-blue-6'] [data-pin-id='10754'] {
+  top: 12%;
+  left: 52%;
+}
+
+[data-product-name='ice-blue-6'] [data-pin-id='6446'] {
+  top: 35%;
+  left: 67%;
+}
+
+[data-product-name='ice-blue-6'] [data-pin-id='5988'] {
+  top: 76%;
+  left: 67%;
+}
+
 /* POPUP */
 
 .pins-bundle-mobile-popup {
@@ -1527,10 +2192,14 @@ input:checked + .slider:before {
 .pins-bundle-mobile-popup__item:first-child .bundle {
   padding-top: 0;
 }
-`, U = "product-gallery .product-gallery > div:last-child", Y = "product-gallery .product-gallery .swiper-slide:last-child";
-  class J {
+`, C = "product-gallery .product-gallery > div", z = "product-gallery .product-gallery .swiper-slide", q = window.innerWidth < 1100, G = {
+    "navy-4": q ? z + ":nth-child(2)" : C + ":first-child",
+    "navy-2": q ? z + ":nth-child(2)" : C + ":first-child",
+    default: q ? z + ":last-child" : C + ":last-child"
+  };
+  class Q {
     constructor(e, n, t) {
-      this.aborters = [], this.bundleItems = [], this.disposed = !1, this.rootClass = window.innerWidth < 1100 ? Y : U, this.bundleData = e, this.cartInstance = n, this.aborters = t, this.addStyles(), this.renderAllPins();
+      this.aborters = [], this.bundleItems = [], this.disposed = !1, this.tooltip = null, this.tooltipBundleItem = null, this.bundleData = e, this.cartInstance = n, this.aborters = t, this.rootClass = G[this.bundleData[0].bundle.bundleGroupId] ? G[this.bundleData[0].bundle.bundleGroupId] : G.default, this.addStyles(), this.renderAllPins();
     }
     /**
      * Рендерить всі піни у контейнер з класом rootClass
@@ -1542,8 +2211,11 @@ input:checked + .slider:before {
         return;
       }
       e.classList.add("pins-bundle"), e.dataset.productName = this.bundleData[0].bundle.bundleGroupId, this.bundleData.forEach((n, t) => {
-        const o = this.renderPinHtml(t);
-        e.insertAdjacentHTML("beforeend", o);
+        const { product: o } = this.bundleData[t];
+        if (e.querySelector(`.pins-bundle-pin[data-pin-id="${o.id}"]`))
+          return;
+        const i = this.renderPinHtml(t);
+        e.insertAdjacentHTML("beforeend", i);
       }), this.attachTooltipLogic();
     }
     /**
@@ -1551,41 +2223,43 @@ input:checked + .slider:before {
      */
     renderPinHtml(e) {
       const { product: n } = this.bundleData[e];
-      return `<div class="pins-bundle-pin" tabindex="0" aria-label="${n.name}" data-pin-index="${e}"></div>`;
+      return `<div class="pins-bundle-pin" tabindex="0" aria-label="${n.name}" data-pin-index="${e}" data-pin-id="${n.id}"></div>`;
     }
     /**
      * Додає тултіп і логіку до кожного піна після вставки в DOM
      */
     attachTooltipLogic() {
-      document.querySelectorAll(
+      const e = document.querySelector(`${this.rootClass}`), n = document.querySelectorAll(
         `.${this.rootClass} .pins-bundle-pin,${this.rootClass} .pins-bundle-pin`
-      ).forEach((n, t) => {
-        n.addEventListener("click", (l) => {
+      );
+      this.tooltip || (this.tooltip = document.createElement("div"), this.tooltip.className = "pins-bundle-tooltip", this.tooltip.style.position = "absolute", this.tooltip.style.zIndex = "99999", this.tooltip.style.display = "none", e == null || e.appendChild(this.tooltip)), n.forEach((t, o) => {
+        const { product: i, sizes: s } = this.bundleData[o];
+        let l = null;
+        const c = () => {
+          l && (clearTimeout(l), l = null), (!this.tooltip.querySelector(".bundle") || this.tooltip.getAttribute("data-tooltip-for-pin") !== String(i.id)) && (this.tooltip.innerHTML = "", this.tooltip.setAttribute(
+            "data-tooltip-for-pin",
+            String(i.id)
+          ), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltipBundleItem = new x({
+            product: i,
+            sizes: s,
+            cartInstance: this.cartInstance,
+            containerSelector: `[data-tooltip-for-pin='${i.id}']`,
+            position: "beforeend",
+            aborters: this.aborters
+          }));
+          const a = t.getBoundingClientRect(), d = e == null ? void 0 : e.getBoundingClientRect();
+          d && this.tooltip && (this.tooltip.style.left = a.right - d.left + 8 + "px", this.tooltip.style.top = a.top - d.top + "px"), this.tooltip.style.display = "block";
+        }, r = () => {
+          l && clearTimeout(l), l = setTimeout(() => {
+            this.tooltip && (this.tooltip.style.display = "none");
+          }, 200);
+        };
+        t.addEventListener("mouseenter", c), t.addEventListener("focus", c), t.addEventListener("mouseleave", r), t.addEventListener("blur", r), this.tooltip.addEventListener("mouseenter", c), this.tooltip.addEventListener("mouseleave", r), t.addEventListener("click", (a) => {
           if (window.innerWidth < 1100) {
-            l.preventDefault(), this.openMobilePopup();
+            a.preventDefault(), this.openMobilePopup();
             return;
           }
         });
-        const { product: o, sizes: s } = this.bundleData[t], i = document.createElement("div");
-        i.className = "pins-bundle-tooltip", i.style.display = "none", i.style.position = "absolute", i.style.zIndex = "1000", i.style.left = "40px", i.style.top = "0px", i.setAttribute("data-tooltip-for-pin", o.id), n.appendChild(i), v(`div[data-tooltip-for-pin='${o.id}']`).then(() => {
-          new x({
-            product: o,
-            sizes: s,
-            cartInstance: this.cartInstance,
-            containerSelector: `div[data-tooltip-for-pin='${o.id}']`,
-            position: "beforeend",
-            aborters: this.aborters
-          });
-        });
-        let a = null;
-        const c = () => {
-          a && (clearTimeout(a), a = null), i.style.display = "block";
-        }, r = () => {
-          a && clearTimeout(a), a = setTimeout(() => {
-            i.style.display = "none";
-          }, 200);
-        };
-        n.addEventListener("mouseenter", c), n.addEventListener("focus", c), n.addEventListener("mouseleave", r), n.addEventListener("blur", r), i.addEventListener("mouseenter", c), i.addEventListener("mouseleave", r);
       });
     }
     /**
@@ -1603,13 +2277,13 @@ input:checked + .slider:before {
       </div>
     `, document.body.appendChild(e);
       const n = e.querySelector(".pins-bundle-mobile-popup__list");
-      this.bundleData.forEach(({ product: o, sizes: s }, i) => {
-        const a = document.createElement("div");
-        a.className = "pins-bundle-mobile-popup__item", n == null || n.appendChild(a), new x({
+      this.bundleData.forEach(({ product: o, sizes: i }, s) => {
+        const l = document.createElement("div");
+        l.className = "pins-bundle-mobile-popup__item", n == null || n.appendChild(l), new x({
           product: o,
-          sizes: s,
+          sizes: i,
           cartInstance: this.cartInstance,
-          containerSelector: `#pins-bundle-mobile-popup .pins-bundle-mobile-popup__item:nth-child(${i + 1})`,
+          containerSelector: `#pins-bundle-mobile-popup .pins-bundle-mobile-popup__item:nth-child(${s + 1})`,
           position: "beforeend",
           aborters: this.aborters
         });
@@ -1620,49 +2294,67 @@ input:checked + .slider:before {
       }), e.showModal();
     }
     dispose() {
-      this.disposed || (this.disposed = !0, this.bundleItems.forEach((e) => e.dispose()), this.bundleItems = []);
+      if (this.disposed) return;
+      this.disposed = !0, this.bundleItems.forEach((n) => n.dispose()), this.bundleItems = [];
+      const e = document.querySelector(`${this.rootClass}`);
+      e && (e.querySelectorAll(".pins-bundle-pin").forEach((n) => n.remove()), e.querySelectorAll(".pins-bundle-tooltip").forEach((n) => n.remove()), e.classList.remove("pins-bundle"), e.removeAttribute("data-product-name")), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltip = null;
     }
     addStyles() {
       if (document.getElementById("pins-bundle-style")) return;
       const e = document.createElement("style");
-      e.id = "pins-bundle-style", e.innerHTML = N, document.head.appendChild(e);
+      e.id = "pins-bundle-style", e.innerHTML = J, document.head.appendChild(e);
     }
   }
-  class Q {
+  class X {
     constructor(e, n, t) {
       this.bundleData = [], this.bundleContainer = null, this.pinsBundle = null, this.cartInstance = n, this.aborters = t, this.init(e);
     }
     async init(e) {
       this.bundleData = await Promise.all(
-        e.map(async (o) => {
-          const [s, i] = await Promise.all([
-            _(o.path || "").then((a) => a.data),
-            T().then((a) => a.data)
+        e.map(async (t) => {
+          const [o, i] = await Promise.all([
+            P(t.path || "").then((s) => s.data),
+            $().then((s) => s.data)
           ]);
-          return { product: s, sizes: i, bundle: o };
+          return { product: o, sizes: i, bundle: t };
         })
-      ), this.bundleContainer = new V(
+      ), this.bundleContainer = new Y(
         this.bundleData,
         this.cartInstance,
         this.aborters
       );
-      const t = (await Promise.resolve().then(() => E)).bundles.find((o) => window.location.pathname.includes(o.path));
-      t != null && t.showPins && (this.pinsBundle = new J(
-        this.bundleData,
-        this.cartInstance,
-        this.aborters
-      ));
+      const n = I.find(
+        (t) => window.location.pathname.includes(t.path)
+      );
+      if (n != null && n.showPins) {
+        let t = [];
+        Array.isArray(n.pinsLinks) && n.pinsLinks.length > 0 && (t = (await Promise.all(
+          n.pinsLinks.map(async (o) => {
+            const [i, s] = await Promise.all([
+              P(o || "").then((l) => l.data),
+              $().then((l) => l.data)
+            ]);
+            return { product: i, sizes: s, bundle: n };
+          })
+        )).filter((o) => o !== null)), setTimeout(() => {
+          this.pinsBundle = new Q(
+            t,
+            this.cartInstance,
+            this.aborters
+          );
+        }, 100);
+      }
     }
     dispose() {
       var e, n;
       (e = this.bundleContainer) == null || e.dispose(), this.bundleContainer = null, (n = this.pinsBundle) == null || n.dispose(), this.pinsBundle = null;
     }
   }
-  class X {
+  class K {
     constructor(e) {
-      var n, t, o, s;
+      var n, t, o, i;
       this.eventsAborters = [], this.items = [], this.initialCartButtonClick = !0, this.currencySymbol = // @ts-ignore
-      (s = (o = (t = (n = window == null ? void 0 : window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : t.currency) == null ? void 0 : o.list) == null ? void 0 : s[0].symbol, this.eventsAborters = e, this.handleCartButtonClick();
+      (i = (o = (t = (n = window == null ? void 0 : window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : t.currency) == null ? void 0 : o.list) == null ? void 0 : i[0].symbol, this.eventsAborters = e, this.handleCartButtonClick();
     }
     async addItemToCart(e) {
       if (!this.items.some(
@@ -1671,7 +2363,7 @@ input:checked + .slider:before {
         this.items.push(e);
       else {
         const o = this.items.find(
-          (s) => s.id === e.id && s.size === e.size && s.color === e.color
+          (i) => i.id === e.id && i.size === e.size && i.color === e.color
         );
         o && (o.qty = e.qty, o.price = (parseFloat(o.price) + parseFloat(e.price)).toFixed(2));
       }
@@ -1844,12 +2536,12 @@ input:checked + .slider:before {
         `[data-cart-id="${e}"]`
       );
       if (!n) return;
-      const t = n == null ? void 0 : n.querySelector(".quantity-button.minus"), o = n == null ? void 0 : n.querySelector(".quantity-button.plus"), s = n == null ? void 0 : n.querySelector(".quantity-input"), i = n == null ? void 0 : n.querySelector(".button-inline-extra-small"), a = this.debounce(
-        async (r, l) => {
+      const t = n == null ? void 0 : n.querySelector(".quantity-button.minus"), o = n == null ? void 0 : n.querySelector(".quantity-button.plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), s = n == null ? void 0 : n.querySelector(".button-inline-extra-small"), l = this.debounce(
+        async (r, a) => {
           var g;
-          const { data: d, error: m } = await G({ id: r, qty: l }), h = d == null ? void 0 : d.cart;
-          if (h) {
-            const y = (g = h == null ? void 0 : h.items.find(
+          const { data: d, error: h } = await E({ id: r, qty: a }), b = d == null ? void 0 : d.cart;
+          if (b) {
+            const y = (g = b == null ? void 0 : b.items.find(
               (p) => p.id === r
             )) == null ? void 0 : g.rowPrice;
             if (y) {
@@ -1862,21 +2554,21 @@ input:checked + .slider:before {
         },
         300
       );
-      if (!n || !s) return;
+      if (!n || !i) return;
       const c = new AbortController();
       this.eventsAborters.push(c), t && t.addEventListener("click", () => {
-        const l = parseInt(s.value) - 1;
-        if (o == null || o.removeAttribute("disabled"), l < 1) {
-          s.value = "1", t.setAttribute("disabled", "true");
+        const a = parseInt(i.value) - 1;
+        if (o == null || o.removeAttribute("disabled"), a < 1) {
+          i.value = "1", t.setAttribute("disabled", "true");
           return;
         }
-        s.value = l.toString(), a(+e, l);
+        i.value = a.toString(), l(+e, a);
       }), o && o.addEventListener("click", () => {
-        const l = parseInt(s.value) + 1;
-        t == null || t.removeAttribute("disabled"), s.value = l.toString(), a(+e, l);
-      }), i && i.addEventListener("click", async () => {
-        const r = i.closest(".cart-product");
-        r && (await C([+e]), r.remove());
+        const a = parseInt(i.value) + 1;
+        t == null || t.removeAttribute("disabled"), i.value = a.toString(), l(+e, a);
+      }), s && s.addEventListener("click", async () => {
+        const r = s.closest(".cart-product");
+        r && (await B([+e]), r.remove());
       });
     }
     debounce(e, n) {
@@ -1974,17 +2666,17 @@ input:checked + .slider:before {
       n && n.insertAdjacentHTML("beforeend", e);
     }
   }
-  B({
+  A({
     name: "Adding bundle options based on color to the product detail page (PDP) and cart",
     dev: "OS"
   });
-  function K(u) {
+  function Z(u) {
     const e = I.find((n) => u.includes(n.path));
-    return console.log("Current bundle", e), e ? I.filter(
+    return e ? I.filter(
       (n) => n.bundleGroupId === e.bundleGroupId && !u.includes(n.path)
     ) : [];
   }
-  class Z {
+  class ee {
     constructor() {
       this.aborters = [], this.bundleWrapper = null, this.aborters = [], this.bundleWrapper = null, this.init();
     }
@@ -1996,18 +2688,16 @@ input:checked + .slider:before {
     async initChangesOnPDP() {
       var n;
       if (await this.checkIsProductPage()) {
-        const { url: t, ...o } = await this.waitForProduct(), s = t.replace(/^https?:\/\/(www\.)?lemieux\.com/, "").replace(/#.*/, "");
-        console.log("Product path", s);
-        const i = K(s);
-        if (console.log("Bundle products", i), console.log("bundleProducts.length", i.length), i.length > 0) {
-          const a = new X(this.aborters);
-          this.bundleWrapper = new Q(
-            i,
-            a,
+        const { url: t, ...o } = await this.waitForProduct(), i = t.replace(/^https?:\/\/(www\.)?lemieux\.com/, "").replace(/#.*/, ""), s = Z(i);
+        if (s.length > 0) {
+          const l = new K(this.aborters);
+          this.bundleWrapper = new X(
+            s,
+            l,
             this.aborters
           );
         } else
-          console.log("No bundle products found for this product"), (n = this.bundleWrapper) == null || n.dispose(), this.bundleWrapper = null;
+          (n = this.bundleWrapper) == null || n.dispose(), this.bundleWrapper = null;
       } else this.bundleWrapper && (this.bundleWrapper.dispose(), this.bundleWrapper = null);
     }
     async checkIsProductPage(e = 5e3) {
@@ -2026,17 +2716,17 @@ input:checked + .slider:before {
       return new Promise((n, t) => {
         window.product && setTimeout(() => n(window.product), 100);
         const o = setInterval(() => {
-          window.product && (clearInterval(o), clearTimeout(s), n(window.product));
-        }, 200), s = setTimeout(() => {
+          window.product && (clearInterval(o), clearTimeout(i), n(window.product));
+        }, 200), i = setTimeout(() => {
           clearInterval(o), t(new Error("Timeout waiting for window.product"));
         }, e);
       });
     }
     pageChangeHandler(e) {
-      let n = window.location.href;
+      let n = window.location.pathname;
       new MutationObserver((o) => {
-        o.forEach((s) => {
-          n !== window.location.href && location.hash.includes("selection.color") && (e(), n = window.location.href);
+        o.forEach((i) => {
+          n !== window.location.pathname && location.hash.includes("selection.color") && (e(), n = window.location.pathname);
         });
       }).observe(document.body, {
         childList: !0,
@@ -2044,6 +2734,5 @@ input:checked + .slider:before {
       });
     }
   }
-  new Z();
+  new ee();
 })();
-//# sourceMappingURL=index.js.map
