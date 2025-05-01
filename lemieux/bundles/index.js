@@ -718,8 +718,8 @@
       path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white",
       bundleGroupId: "white-3"
     }
-  ], E = window.autoInitData.website.websiteCode, x = async (c, e) => {
-    const n = E === "base" ? c : `/${E.toLowerCase()}${c}`;
+  ], B = window.autoInitData.website.websiteCode, x = async (c, e) => {
+    const n = B === "base" ? c : `/${B.toLowerCase()}${c}`;
     try {
       const t = await fetch(n, e);
       if (!t.ok)
@@ -759,7 +759,7 @@
     } catch (t) {
       return console.error("request error", t), { data: null, error: t };
     }
-  }, P = (c) => x(`/api/n/route/${c}?pushDeps=true`), O = (c) => x(
+  }, E = (c) => x(`/api/n/route/${c}?pushDeps=true`), O = (c) => x(
     `/api/n/find?type=block&filter={"url":"size-guide-modal@${c}"}&verbosity=3&limit=1`
   ), D = (c) => x("/api/p/basket/add", {
     method: "POST",
@@ -776,7 +776,7 @@
         }
       ]
     })
-  }), B = (c) => x("/api/p/basket/remove", {
+  }), P = (c) => x("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -1086,7 +1086,7 @@
         t == null || t.removeAttribute("disabled"), i.value = p.toString(), l(+e, p);
       }), s && s.addEventListener("click", async () => {
         const u = s.closest(".cart-product");
-        u && (await B([+e]), u.remove(), this.close());
+        u && (await P([+e]), u.remove(), this.close());
       }), a && a.addEventListener("click", () => {
         const u = a.closest(".cart-product");
         u && u.classList.toggle("favorite");
@@ -1638,7 +1638,7 @@ input:checked + .slider:before {
           this.color
         )
       })).filter((d) => d.productId), i = o.map((d) => d.productId), { data: s, error: a } = await M(i);
-      if (a) {
+      if (a && !s) {
         console.error("Error fetching stock data:", a);
         return;
       }
@@ -2390,7 +2390,7 @@ input:checked + .slider:before {
       this.bundleData = await Promise.all(
         e.map(async (t) => {
           const [o, i] = await Promise.all([
-            P(t.path || "").then((s) => s.data),
+            E(t.path || "").then((s) => s.data),
             $().then((s) => s.data)
           ]);
           return { product: o, sizes: i, bundle: t };
@@ -2408,7 +2408,7 @@ input:checked + .slider:before {
         Array.isArray(n.pinsLinks) && n.pinsLinks.length > 0 && (t = (await Promise.all(
           n.pinsLinks.map(async (o) => {
             const [i, s] = await Promise.all([
-              P(o || "").then((a) => a.data),
+              E(o || "").then((a) => a.data),
               $().then((a) => a.data)
             ]);
             return { product: i, sizes: s, bundle: n };
@@ -2686,7 +2686,7 @@ input:checked + .slider:before {
         o == null || o.removeAttribute("disabled"), s.value = h.toString(), l && (l.textContent = (+t.price * h).toFixed(2)), u(+e, h);
       }), a && a.addEventListener("click", async () => {
         const r = a.closest("li");
-        r && (await B([+e]), r.remove());
+        r && (await P([+e]), r.remove());
       });
     }
     debounce(e, n) {
@@ -2816,7 +2816,7 @@ input:checked + .slider:before {
       var n;
       if (await this.checkIsProductPage()) {
         const { url: t, ...o } = await this.waitForProduct(), i = this.checkCountry();
-        if (!oe.includes(i)) {
+        if (console.log("Current country:", i), !oe.includes(i)) {
           console.error("Not an English country, exiting...");
           return;
         }
@@ -2833,7 +2833,8 @@ input:checked + .slider:before {
       } else this.bundleWrapper && (this.bundleWrapper.dispose(), this.bundleWrapper = null);
     }
     checkCountry() {
-      return window.autoInitData.website.defaultCountry;
+      const e = window.autoInitData.website.websiteCode;
+      return e === "base" ? "GB" : e.toUpperCase();
     }
     async checkIsProductPage(e = 5e3) {
       try {
