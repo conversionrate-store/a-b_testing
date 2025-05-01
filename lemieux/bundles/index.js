@@ -2832,7 +2832,8 @@ input:checked + .slider:before {
     }
     async initChangesOnPDP() {
       var n;
-      if (await this.checkIsProductPage()) {
+      const e = await this.checkIsProductPage();
+      if (console.log("Is product page:", e), e) {
         const { url: t, ...o } = await this.waitForProduct(), i = this.checkCountry();
         if (console.log("Current country:", i), !oe.includes(i)) {
           console.error("Not an English country, exiting...");
