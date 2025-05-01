@@ -1,25 +1,25 @@
 (function() {
   "use strict";
-  const S = (c, e, n, t = "") => {
+  const S = (d, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: c,
+      event_name: d,
       event_desc: e,
       event_type: n,
       event_loc: t
-    }), console.log(`Event: ${c} | ${e} | ${n} | ${t}`);
-  }, A = ({ name: c, dev: e }) => {
+    }), console.log(`Event: ${d} | ${e} | ${n} | ${t}`);
+  }, A = ({ name: d, dev: e }) => {
     console.log(
-      `%c EXP: ${c} (DEV: ${e})`,
+      `%c EXP: ${d} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  function w(c) {
+  function w(d) {
     return new Promise((e) => {
-      if (document.querySelector(c))
-        return e(document.querySelector(c));
+      if (document.querySelector(d))
+        return e(document.querySelector(d));
       const n = new MutationObserver(() => {
-        document.querySelector(c) && (e(document.querySelector(c)), n.disconnect());
+        document.querySelector(d) && (e(document.querySelector(d)), n.disconnect());
       });
       n.observe(document.documentElement, {
         childList: !0,
@@ -28,9 +28,9 @@
       });
     });
   }
-  const F = (c, e, n, t) => {
+  const F = (d, e, n, t) => {
     let o = [];
-    o = document.querySelectorAll(c);
+    o = document.querySelectorAll(d);
     let i = new IntersectionObserver(
       (a) => {
         a.forEach((l) => {
@@ -718,8 +718,8 @@
       path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white",
       bundleGroupId: "white-3"
     }
-  ], B = window.autoInitData.website.websiteCode, x = async (c, e) => {
-    const n = B === "base" ? c : `/${B.toLowerCase()}${c}`;
+  ], B = window.autoInitData.website.websiteCode, x = async (d, e) => {
+    const n = B === "base" ? d : `/${B.toLowerCase()}${d}`;
     try {
       const t = await fetch(n, e);
       if (!t.ok)
@@ -759,9 +759,9 @@
     } catch (t) {
       return console.error("request error", t), { data: null, error: t };
     }
-  }, E = (c) => x(`/api/n/route/${c}?pushDeps=true`), O = (c) => x(
-    `/api/n/find?type=block&filter={"url":"size-guide-modal@${c}"}&verbosity=3&limit=1`
-  ), D = (c) => x("/api/p/basket/add", {
+  }, E = (d) => x(`/api/n/route/${d}?pushDeps=true`), O = (d) => x(
+    `/api/n/find?type=block&filter={"url":"size-guide-modal@${d}"}&verbosity=3&limit=1`
+  ), D = (d) => x("/api/p/basket/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -769,32 +769,32 @@
     body: JSON.stringify({
       products: [
         {
-          id: c,
+          id: d,
           qty: 1,
           options: {},
           bundle_options: {}
         }
       ]
     })
-  }), P = (c) => x("/api/p/basket/remove", {
+  }), P = (d) => x("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      ids: c
+      ids: d
     })
-  }), _ = ({ id: c, qty: e }) => x("/api/p/basket/qty", {
+  }), _ = ({ id: d, qty: e }) => x("/api/p/basket/qty", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      id: c,
+      id: d,
       qty: e
     })
-  }), $ = () => x("/api/n/attribute/size/verbosity/3"), M = (c) => x(
-    `/api/n/load?type=stock&verbosity=1&ids=${c.join(",")}&pushDeps=true`
+  }), $ = () => x("/api/n/attribute/size/verbosity/3"), M = (d) => x(
+    `/api/n/load?type=stock&verbosity=1&ids=${d.join(",")}&pushDeps=true`
   ), R = `.cart-popup {
   top: auto;
   bottom: 0;
@@ -993,12 +993,12 @@
       link: l,
       qty: u
     }) {
-      var b, f, g, d, m, y;
+      var b, f, g, c, m, y;
       const p = (b = this.dialog) == null ? void 0 : b.querySelector(".cart-popup-content");
       if (!p) return;
       const r = (
         // @ts-ignore
-        ((m = (d = (g = (f = window == null ? void 0 : window.autoInitData) == null ? void 0 : f.website) == null ? void 0 : g.currency) == null ? void 0 : d.list) == null ? void 0 : m[0].symbol) || "$"
+        ((m = (c = (g = (f = window == null ? void 0 : window.autoInitData) == null ? void 0 : f.website) == null ? void 0 : g.currency) == null ? void 0 : c.list) == null ? void 0 : m[0].symbol) || "$"
       ), h = (
         /* HTML */
         ` <div
@@ -1064,13 +1064,13 @@
         const { data: r, error: h } = await _({ id: u, qty: p }), b = r == null ? void 0 : r.cart;
         if (b) {
           const g = (f = b == null ? void 0 : b.items.find(
-            (d) => d.id === u
+            (c) => c.id === u
           )) == null ? void 0 : f.rowPrice;
           if (g) {
-            const d = n == null ? void 0 : n.querySelector(
+            const c = n == null ? void 0 : n.querySelector(
               ".cart-product-price span"
             );
-            d && (d.innerHTML = `${g}`);
+            c && (c.innerHTML = `${g}`);
           }
         }
       }, 300);
@@ -1630,23 +1630,23 @@ input:checked + .slider:before {
       var r, h, b, f, g;
       const e = this.product, n = this.sizes;
       this.color = this.getHashParam("selection.color");
-      const t = e.size, o = n.options.filter((d) => t.includes(d.value)).map((d) => ({
-        size: d,
+      const t = e.size, o = n.options.filter((c) => t.includes(c.value)).map((c) => ({
+        size: c,
         productId: this.getProductIdBySizeAndColor(
           e,
-          d.value,
+          c.value,
           this.color
         )
-      })).filter((d) => d.productId), i = o.map((d) => d.productId), { data: s, error: a } = await M(i);
+      })).filter((c) => c.productId), i = o.map((c) => c.productId), { data: s, error: a } = await M(i);
       if (a && !s) {
         console.error("Error fetching stock data:", a);
         return;
       }
-      const l = o.map((d) => {
-        const m = Array.isArray(s) ? s.find((y) => y.id === d.productId) : s;
+      const l = o.map((c) => {
+        const m = Array.isArray(s) ? s.find((y) => y.id === c.productId) : s;
         return m ? {
-          id: d.productId,
-          size: d.size,
+          id: c.productId,
+          size: c.size,
           stock: {
             isSoldOut: !!(m != null && m.isOut && (m != null && m.isOutTemp)),
             qty: (m == null ? void 0 : m.qty) || 0
@@ -1721,21 +1721,21 @@ input:checked + .slider:before {
                 <div class="_content flex flex-column flex-justify-end">
                   <div>
                     <div class="bundle-size-options bg-col-w">
-                      ${l.map((d) => (
+                      ${l.map((c) => (
           /* HTML */
           `<div
                             class="p-r p-l bundle-size-item"
-                            data-variant-id="${d.id}"
-                            data-size-id="${d.size.value}"
-                            data-size-label="${d.size.label}"
-                            data-soldout="${d.stock.isSoldOut}"
-                            data-qty="${d.stock.qty}"
+                            data-variant-id="${c.id}"
+                            data-size-id="${c.size.value}"
+                            data-size-label="${c.size.label}"
+                            data-soldout="${c.stock.isSoldOut}"
+                            data-qty="${c.stock.qty}"
                           >
                             <div
                               class="cursor-pointer p-t-3 p-b-3 b-t b-col-42 flex flex-justify-between flex-middle"
                             >
-                              <p class="s2 col-1">${d.size.label}</p>
-                              ${d.stock.isSoldOut ? (
+                              <p class="s2 col-1">${c.size.label}</p>
+                              ${c.stock.isSoldOut ? (
             /* HTML */
             `<span class="bundle-size-sold"
                                     >SOLD OUT</span
@@ -1756,10 +1756,16 @@ input:checked + .slider:before {
     </div> `
       );
       if (this.containerSelector) {
-        const d = document.querySelector(
+        const c = document.querySelector(
           this.containerSelector
         );
-        this.removeExistingBundle(), d.insertAdjacentHTML(this.position, p), this.bundle = document.getElementById(this.bundleId), this.bundle && (e != null && e.size_guide) && new Y({
+        if (!c) {
+          console.error(
+            `Container not found: ${this.containerSelector}. Bundle not rendered.`
+          );
+          return;
+        }
+        this.removeExistingBundle(), c == null || c.insertAdjacentHTML(this.position, p), this.bundle = document.getElementById(this.bundleId), this.bundle && (e != null && e.size_guide) && new Y({
           productName: e.name,
           sizeGuideId: e.size_guide,
           triggerSelector: `#${this.bundleId} .bundle-size button`
@@ -1777,10 +1783,10 @@ input:checked + .slider:before {
           "click",
           `${this.product.name}`
         ), !this.size) {
-          const d = (a = this.bundle) == null ? void 0 : a.querySelector(
+          const c = (a = this.bundle) == null ? void 0 : a.querySelector(
             "#size-select"
           );
-          d == null || d.classList.add("hide-up");
+          c == null || c.classList.add("hide-up");
           return;
         }
         if (!this.color) {
@@ -1802,10 +1808,10 @@ input:checked + .slider:before {
           "bundle-color"
         ), i = (u = document.querySelector("a")) == null ? void 0 : u.getAttribute("href"), s = (r = (p = this.bundle) == null ? void 0 : p.querySelector("img")) == null ? void 0 : r.getAttribute("src");
         try {
-          const { data: d, error: m } = await D(n);
+          const { data: c, error: m } = await D(n);
           if (m)
             throw new Error(m.message);
-          const y = d == null ? void 0 : d.cart, re = y == null ? void 0 : y.items, T = (h = y == null ? void 0 : y.items.find((v) => v.product === n)) == null ? void 0 : h.request.qty, H = (b = y == null ? void 0 : y.items.find(
+          const y = c == null ? void 0 : c.cart, re = y == null ? void 0 : y.items, T = (h = y == null ? void 0 : y.items.find((v) => v.product === n)) == null ? void 0 : h.request.qty, H = (b = y == null ? void 0 : y.items.find(
             (v) => v.product === n
           )) == null ? void 0 : b.rowPrice, le = y.items.reduce((v, ae) => v + ae.rowPrice, 0).toFixed(2), j = (f = y == null ? void 0 : y.items.find(
             (v) => v.product === n
@@ -1837,8 +1843,8 @@ input:checked + .slider:before {
             );
             v && (v.close(), v.remove());
           }
-        } catch (d) {
-          console.error("Error adding to basket", d);
+        } catch (c) {
+          console.error("Error adding to basket", c);
         }
       }, e.addEventListener("click", this.bundleButtonHandler), this.eventRemovers.push(
         () => e.removeEventListener("click", this.bundleButtonHandler)
@@ -2661,12 +2667,12 @@ input:checked + .slider:before {
         async (r, h) => {
           const { data: b, error: f } = await _({ id: r, qty: h }), g = b == null ? void 0 : b.cart;
           if (g) {
-            const d = g == null ? void 0 : g.totals.grand_total;
-            if (d) {
+            const c = g == null ? void 0 : g.totals.grand_total;
+            if (c) {
               const m = document == null ? void 0 : document.querySelector(
                 "basket-view-totals price"
               );
-              m && (m.innerHTML = `${this.currencySymbol}${d}`);
+              m && (m.innerHTML = `${this.currencySymbol}${c}`);
             }
           }
         },
@@ -2791,16 +2797,16 @@ input:checked + .slider:before {
   A({
     name: "Adding bundle options based on color to the product detail page (PDP) and cart",
     dev: "OS"
-  }), function(c, e, n, t, o, i) {
-    c.hj = c.hj || function() {
-      (c.hj.q = c.hj.q || []).push(arguments);
-    }, c._hjSettings = { hjid: 2667925, hjsv: 6 }, o = e.getElementsByTagName("head")[0], i = e.createElement("script"), i.async = !0, i.src = n + c._hjSettings.hjid + t + c._hjSettings.hjsv, o && o.appendChild(i);
+  }), function(d, e, n, t, o, i) {
+    d.hj = d.hj || function() {
+      (d.hj.q = d.hj.q || []).push(arguments);
+    }, d._hjSettings = { hjid: 2667925, hjsv: 6 }, o = e.getElementsByTagName("head")[0], i = e.createElement("script"), i.async = !0, i.src = n + d._hjSettings.hjid + t + d._hjSettings.hjsv, o && o.appendChild(i);
   }(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_cross_sell");
   const oe = ["GB", "US", "IE", "AU", "NZ", "ZA", "CA"];
-  function ie(c) {
-    const e = C.find((n) => c.includes(n.path));
+  function ie(d) {
+    const e = C.find((n) => d.includes(n.path));
     return e ? C.filter(
-      (n) => n.bundleGroupId === e.bundleGroupId && !c.includes(n.path)
+      (n) => n.bundleGroupId === e.bundleGroupId && !d.includes(n.path)
     ) : [];
   }
   class se {
