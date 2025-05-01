@@ -2329,7 +2329,7 @@ input:checked + .slider:before {
       this.tooltip || (this.tooltip = document.createElement("div"), this.tooltip.className = "pins-bundle-tooltip", this.tooltip.style.position = "absolute", this.tooltip.style.zIndex = "99999", this.tooltip.style.display = "none", e == null || e.appendChild(this.tooltip));
       let t = null, o = !1, i = !1;
       const s = (a, u, p) => {
-        S("exp_cross_sell_click_05", "pin", "click", a.name), t && (clearTimeout(t), t = null), (!this.tooltip.querySelector(".bundle") || this.tooltip.getAttribute("data-tooltip-for-pin") !== String(a.id)) && (this.tooltip.innerHTML = "", this.tooltip.setAttribute("data-tooltip-for-pin", String(a.id)), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltipBundleItem = new k({
+        t && (clearTimeout(t), t = null), (!this.tooltip.querySelector(".bundle") || this.tooltip.getAttribute("data-tooltip-for-pin") !== String(a.id)) && (this.tooltip.innerHTML = "", this.tooltip.setAttribute("data-tooltip-for-pin", String(a.id)), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltipBundleItem = new k({
           product: a,
           sizes: u,
           cartInstance: this.cartInstance,
@@ -2339,7 +2339,7 @@ input:checked + .slider:before {
           isTooltip: !0
         }));
         const r = p.getBoundingClientRect(), h = e == null ? void 0 : e.getBoundingClientRect();
-        h && this.tooltip && (this.tooltip.style.left = r.right - h.left + 8 + "px", this.tooltip.style.top = r.top - h.top + "px"), this.tooltip.style.display = "block";
+        h && this.tooltip && (this.tooltip.style.left = r.right - h.left + 8 + "px", this.tooltip.style.top = r.top - h.top + "px"), S("exp_cross_sell_click_05", "pin", "click", a.name), window.innerWidth > 1100 && (this.tooltip.style.display = "block");
       }, l = () => {
         t && clearTimeout(t), t = setTimeout(() => {
           !o && !i && this.tooltip && (this.tooltip.style.display = "none");
