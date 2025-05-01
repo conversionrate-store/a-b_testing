@@ -1643,7 +1643,7 @@ input:checked + .slider:before {
         return;
       }
       const l = o.map((d) => {
-        const m = s.find((y) => y.id === d.productId);
+        const m = Array.isArray(s) ? s.find((y) => y.id === d.productId) : s;
         return m ? {
           id: d.productId,
           size: d.size,
@@ -1759,7 +1759,7 @@ input:checked + .slider:before {
         const d = document.querySelector(
           this.containerSelector
         );
-        this.removeExistingBundle(), d.insertAdjacentHTML(this.position, p), this.bundle = document.getElementById(this.bundleId), e != null && e.size_guide && new Y({
+        this.removeExistingBundle(), d.insertAdjacentHTML(this.position, p), this.bundle = document.getElementById(this.bundleId), this.bundle && (e != null && e.size_guide) && new Y({
           productName: e.name,
           sizeGuideId: e.size_guide,
           triggerSelector: `#${this.bundleId} .bundle-size button`
