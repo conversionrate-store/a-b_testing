@@ -1,17 +1,17 @@
 (function() {
   "use strict";
-  const A = ({ name: u, dev: e }) => {
+  const F = ({ name: p, dev: e }) => {
     console.log(
-      `%c EXP: ${u} (DEV: ${e})`,
+      `%c EXP: ${p} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  function v(u) {
+  function v(p) {
     return new Promise((e) => {
-      if (document.querySelector(u))
-        return e(document.querySelector(u));
+      if (document.querySelector(p))
+        return e(document.querySelector(p));
       const n = new MutationObserver(() => {
-        document.querySelector(u) && (e(document.querySelector(u)), n.disconnect());
+        document.querySelector(p) && (e(document.querySelector(p)), n.disconnect());
       });
       n.observe(document.documentElement, {
         childList: !0,
@@ -688,8 +688,8 @@
       path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white",
       bundleGroupId: "white-3"
     }
-  ], L = window.autoInitData.website.websiteCode, w = async (u, e) => {
-    const n = L === "base" ? u : `/${L.toLowerCase()}${u}`;
+  ], L = window.autoInitData.website.websiteCode, x = async (p, e) => {
+    const n = L === "base" ? p : `/${L.toLowerCase()}${p}`;
     try {
       const t = await fetch(n, e);
       if (!t.ok)
@@ -697,19 +697,19 @@
       const o = await t.json();
       if (o.error)
         throw new Error(o.error);
-      const { catalog: i, result: s, customer: l } = o;
+      const { catalog: i, result: s, customer: a } = o;
       if (i) {
-        const c = i[0];
-        if (c)
+        const r = i[0];
+        if (r)
           return {
-            data: c,
+            data: r,
             error: null
           };
       }
       if (s && s.length > 0) {
-        const c = s[0];
-        return c != null && c.product ? {
-          data: c.product,
+        const r = s[0];
+        return r != null && r.product ? {
+          data: r.product,
           error: null
         } : s.length === 1 ? {
           data: s[0],
@@ -719,8 +719,8 @@
           error: null
         };
       }
-      return l ? {
-        data: l,
+      return a ? {
+        data: a,
         error: null
       } : {
         data: null,
@@ -729,9 +729,9 @@
     } catch (t) {
       return console.error("request error", t), { data: null, error: t };
     }
-  }, P = (u) => w(`/api/n/route/${u}?pushDeps=true`), F = (u) => w(
-    `/api/n/find?type=block&filter={"url":"size-guide-modal@${u}"}&verbosity=3&limit=1`
-  ), j = (u) => w("/api/p/basket/add", {
+  }, P = (p) => x(`/api/n/route/${p}?pushDeps=true`), A = (p) => x(
+    `/api/n/find?type=block&filter={"url":"size-guide-modal@${p}"}&verbosity=3&limit=1`
+  ), j = (p) => x("/api/p/basket/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -739,31 +739,31 @@
     body: JSON.stringify({
       products: [
         {
-          id: u,
+          id: p,
           qty: 1,
           options: {},
           bundle_options: {}
         }
       ]
     })
-  }), B = (u) => w("/api/p/basket/remove", {
+  }), B = (p) => x("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      ids: u
+      ids: p
     })
-  }), E = ({ id: u, qty: e }) => w("/api/p/basket/qty", {
+  }), E = ({ id: p, qty: e }) => x("/api/p/basket/qty", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      id: u,
+      id: p,
       qty: e
     })
-  }), $ = () => w("/api/n/attribute/size/verbosity/3"), D = `.cart-popup {
+  }), $ = () => x("/api/n/attribute/size/verbosity/3"), D = `.cart-popup {
   top: auto;
   bottom: 0;
   width: 100%;
@@ -945,8 +945,8 @@
       n && n.addEventListener("click", (i) => {
         const s = i.target;
         if (s.classList.contains("remove")) {
-          const l = s.closest(".cart-product");
-          l && l.remove();
+          const a = s.closest(".cart-product");
+          a && a.remove();
         }
       });
     }
@@ -957,17 +957,17 @@
       size: o,
       title: i,
       price: s,
-      image: l,
-      link: c,
-      qty: r
+      image: a,
+      link: r,
+      qty: d
     }) {
-      var b, g, y, p, k, m;
-      const a = (b = this.dialog) == null ? void 0 : b.querySelector(".cart-popup-content");
-      if (!a) return;
-      const d = (
+      var b, y, g, h, w, m;
+      const l = (b = this.dialog) == null ? void 0 : b.querySelector(".cart-popup-content");
+      if (!l) return;
+      const c = (
         // @ts-ignore
-        ((k = (p = (y = (g = window == null ? void 0 : window.autoInitData) == null ? void 0 : g.website) == null ? void 0 : y.currency) == null ? void 0 : p.list) == null ? void 0 : k[0].symbol) || "$"
-      ), h = (
+        ((w = (h = (g = (y = window == null ? void 0 : window.autoInitData) == null ? void 0 : y.website) == null ? void 0 : g.currency) == null ? void 0 : h.list) == null ? void 0 : w[0].symbol) || "$"
+      ), u = (
         /* HTML */
         ` <div
       class="cart-product"
@@ -975,13 +975,13 @@
       cart-id="${n}"
     >
       <div class="cart-product-image">
-        <img src="${l}" alt="" width="84" height="113" />
+        <img src="${a}" alt="" width="84" height="113" />
       </div>
       <div class="cart-product-content">
         <div class="cart-product-header">
           <div class="cart-product-title">${i}</div>
           <div class="cart-product-price">
-            ${d}<span>${s}</span>
+            ${c}<span>${s}</span>
           </div>
         </div>
         <div class="cart-product-options">
@@ -996,7 +996,7 @@
             <input
               type="number"
               class="quantity-input no-spinner center p2 ng-untouched ng-pristine"
-              value="${r}"
+              value="${d}"
               min="1"
               max="99"
               disabled
@@ -1016,7 +1016,7 @@
       </div>
     </div>`
       );
-      a.innerHTML = h, this.productEvents(n), (m = this.dialog) == null || m.showModal();
+      l.innerHTML = u, this.productEvents(n), (m = this.dialog) == null || m.showModal();
     }
     debounce(e, n) {
       let t = null;
@@ -1027,37 +1027,37 @@
     productEvents(e) {
       const n = document.querySelector(
         `.cart-product[cart-id="${e}"]`
-      ), t = n == null ? void 0 : n.querySelector(".minus"), o = n == null ? void 0 : n.querySelector(".plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), s = n == null ? void 0 : n.querySelector(".remove"), l = n == null ? void 0 : n.querySelector(".favorite"), c = this.debounce(async (r, a) => {
-        var g;
-        const { data: d, error: h } = await E({ id: r, qty: a }), b = d == null ? void 0 : d.cart;
+      ), t = n == null ? void 0 : n.querySelector(".minus"), o = n == null ? void 0 : n.querySelector(".plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), s = n == null ? void 0 : n.querySelector(".remove"), a = n == null ? void 0 : n.querySelector(".favorite"), r = this.debounce(async (d, l) => {
+        var y;
+        const { data: c, error: u } = await E({ id: d, qty: l }), b = c == null ? void 0 : c.cart;
         if (b) {
-          const y = (g = b == null ? void 0 : b.items.find(
-            (p) => p.id === r
-          )) == null ? void 0 : g.rowPrice;
-          if (y) {
-            const p = n == null ? void 0 : n.querySelector(
+          const g = (y = b == null ? void 0 : b.items.find(
+            (h) => h.id === d
+          )) == null ? void 0 : y.rowPrice;
+          if (g) {
+            const h = n == null ? void 0 : n.querySelector(
               ".cart-product-price span"
             );
-            p && (p.innerHTML = `${y}`);
+            h && (h.innerHTML = `${g}`);
           }
         }
       }, 300);
       !n || !i || (t && t.addEventListener("click", () => {
-        const a = parseInt(i.value) - 1;
-        if (o == null || o.removeAttribute("disabled"), a < 1) {
+        const l = parseInt(i.value) - 1;
+        if (o == null || o.removeAttribute("disabled"), l < 1) {
           i.value = "1", t.setAttribute("disabled", "true");
           return;
         }
-        i.value = a.toString(), c(+e, a);
+        i.value = l.toString(), r(+e, l);
       }), o && o.addEventListener("click", () => {
-        const a = parseInt(i.value) + 1;
-        t == null || t.removeAttribute("disabled"), i.value = a.toString(), c(+e, a);
+        const l = parseInt(i.value) + 1;
+        t == null || t.removeAttribute("disabled"), i.value = l.toString(), r(+e, l);
       }), s && s.addEventListener("click", async () => {
-        const r = s.closest(".cart-product");
-        r && (await B([+e]), r.remove(), this.close());
-      }), l && l.addEventListener("click", () => {
-        const r = l.closest(".cart-product");
-        r && r.classList.toggle("favorite");
+        const d = s.closest(".cart-product");
+        d && (await B([+e]), d.remove(), this.close());
+      }), a && a.addEventListener("click", () => {
+        const d = a.closest(".cart-product");
+        d && d.classList.toggle("favorite");
       }));
     }
     close() {
@@ -1068,7 +1068,7 @@
       e.textContent = D, document.head.appendChild(e);
     }
   }
-  const O = `.size-popup-table {
+  const R = `.size-popup-table {
   display: flex;
   justify-content: center;
 }
@@ -1152,7 +1152,7 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 `;
-  class R {
+  class O {
     constructor(e) {
       this.tables = e, this.addStyles();
     }
@@ -1207,14 +1207,14 @@ input:checked + .slider:before {
             ".size-popup-table-wrapper"
           );
           if (!s) return;
-          const l = s.querySelectorAll(".cm-unit"), c = s.querySelectorAll(".inches-unit"), r = s.querySelector(".switch-label-cm"), a = s.querySelector(".switch-label-inches");
-          r && r.classList.toggle("active", !i), a && a.classList.toggle("active", i), i ? (l.forEach((d) => d.style.display = "none"), c.forEach((d) => d.style.display = "")) : (l.forEach((d) => d.style.display = ""), c.forEach((d) => d.style.display = "none"));
+          const a = s.querySelectorAll(".cm-unit"), r = s.querySelectorAll(".inches-unit"), d = s.querySelector(".switch-label-cm"), l = s.querySelector(".switch-label-inches");
+          d && d.classList.toggle("active", !i), l && l.classList.toggle("active", i), i ? (a.forEach((c) => c.style.display = "none"), r.forEach((c) => c.style.display = "")) : (a.forEach((c) => c.style.display = ""), r.forEach((c) => c.style.display = "none"));
         });
       });
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = O, document.head.appendChild(e);
+      e.innerHTML = R, document.head.appendChild(e);
     }
   }
   const N = `.size-popup {
@@ -1370,7 +1370,7 @@ input:checked + .slider:before {
       this.addStyles(), this.render(), this.eventListeners();
     }
     async getSizeGuide() {
-      const { data: e, error: n } = await F(this.sizeGuideId);
+      const { data: e, error: n } = await A(this.sizeGuideId);
       if (n) {
         console.error("Error fetching size guide", n.message);
         return;
@@ -1380,11 +1380,11 @@ input:checked + .slider:before {
     async render() {
       const e = await this.getSizeGuide();
       if (!e) return;
-      const { title: n, subtitle: t, image: o, copy: i, tables: s } = e.content, l = document.querySelector(
+      const { title: n, subtitle: t, image: o, copy: i, tables: s } = e.content, a = document.querySelector(
         `size-popup-${this.sizeGuideId}`
       );
-      l && l.remove();
-      const c = new R(s), r = c.renderTables(), a = o.startsWith("/") ? `https://www.lemieux.com/static${o}` : `https://www.lemieux.com/static/${o}`, d = (
+      a && a.remove();
+      const r = new O(s), d = r.renderTables(), l = o.startsWith("/") ? `https://www.lemieux.com/static${o}` : `https://www.lemieux.com/static/${o}`, c = (
         /* HTML */
         `
       <dialog class="size-popup" id="size-popup-${this.sizeGuideId}">
@@ -1399,22 +1399,22 @@ input:checked + .slider:before {
           <h2 class="size-popup-title h2">${n}</h2>
           ${t ? `<h3 class="size-popup-subtitle">${t}</h3>` : ""}
 
-          <div class="size-popup-table">${r}</div>
+          <div class="size-popup-table">${d}</div>
           <div class="size-popup-image">
-            <img src="${a}" alt="Size Guide Image" />
+            <img src="${l}" alt="Size Guide Image" />
           </div>
           <p class="size-popup-copy">${i}</p>
         </div>
       </dialog>
     `
       );
-      document.body.insertAdjacentHTML("beforeend", d);
-      const h = document.querySelector(
+      document.body.insertAdjacentHTML("beforeend", c);
+      const u = document.querySelector(
         `#size-popup-${this.sizeGuideId}`
       );
-      h.querySelector(
+      u.querySelector(
         ".size-popup-close"
-      ).addEventListener("click", () => h.close()), c.addUnitToggleListeners(h);
+      ).addEventListener("click", () => u.close()), r.addUnitToggleListeners(u);
     }
     eventListeners() {
       const e = document.querySelector(this.triggerSelector);
@@ -1555,30 +1555,7 @@ input:checked + .slider:before {
   letter-spacing: 1px;
   cursor: pointer;
 }
-
-.quantity-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 69px;
-  height: 34px;
-  border: 1px solid #cfd2d3;
-}
-
-.quantity-wrapper button {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 34px;
-}
-
-.quantity-wrapper input {
-  text-align: center;
-  pointer-events: none;
-}
-`, S = class S {
+`, k = class k {
     constructor({
       product: e,
       sizes: n,
@@ -1587,20 +1564,20 @@ input:checked + .slider:before {
       position: i = "beforeend",
       aborters: s
     }) {
-      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = t, this.position = i, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new M(), this.cart = o, this.aborters = s, S.bundleCounter += 1, this.bundleId = `product-${e.id}-${S.bundleCounter}`, this.init();
+      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = t, this.position = i, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new M(), this.cart = o, this.aborters = s, k.bundleCounter += 1, this.bundleId = `product-${e.id}-${k.bundleCounter}`, this.init();
     }
     init() {
       this.addStyles(), this.render(), this.isInitialized || (this.handleSizeSelectOpen(), this.handleSizeSelection(), this.isInitialized = !0);
     }
     async render() {
-      var l, c, r, a, d;
+      var a, r, d, l, c;
       const e = this.product, n = this.sizes;
-      console.log("product", e), this.color = this.getHashParam("selection.color");
+      this.color = this.getHashParam("selection.color");
       const t = e.size, o = n.options.filter(
-        (h) => t.includes(h.value)
+        (u) => t.includes(u.value)
       ), i = (
         // @ts-ignore
-        (a = (r = (c = (l = window == null ? void 0 : window.autoInitData) == null ? void 0 : l.website) == null ? void 0 : c.currency) == null ? void 0 : r.list) == null ? void 0 : a[0].symbol
+        (l = (d = (r = (a = window == null ? void 0 : window.autoInitData) == null ? void 0 : a.website) == null ? void 0 : r.currency) == null ? void 0 : d.list) == null ? void 0 : l[0].symbol
       ), s = (
         /* HTML */
         `<div class="bundle" id="${this.bundleId}">
@@ -1627,7 +1604,7 @@ input:checked + .slider:before {
                   ><i class="rate-full ng-star-inserted"></i
                   ><i class="rate-full ng-star-inserted"></i
                 ></rating>
-                <span class="p2 p-l-2">(${(d = e == null ? void 0 : e.reviews) == null ? void 0 : d.count})</span>
+                <span class="p2 p-l-2">(${(c = e == null ? void 0 : e.reviews) == null ? void 0 : c.count})</span>
               </div>
             </div>
           </div>
@@ -1667,10 +1644,10 @@ input:checked + .slider:before {
                 <div class="_content flex flex-column flex-justify-end">
                   <div>
                     <div class="bundle-size-options bg-col-w">
-                      ${o.map((h) => {
+                      ${o.map((u) => {
           const b = this.getProductIdBySizeAndColor(
             this.product,
-            h.value,
+            u.value,
             this.color
           );
           return b ? (
@@ -1678,13 +1655,13 @@ input:checked + .slider:before {
             `<div
                             class="p-r p-l bundle-size-item"
                             data-variant-id="${b}"
-                            data-size-id="${h.value}"
-                            data-size-label="${h.label}"
+                            data-size-id="${u.value}"
+                            data-size-label="${u.label}"
                           >
                             <div
                               class="cursor-pointer p-t-3 p-b-3 b-t b-col-42 flex flex-justify-between flex-middle"
                             >
-                              <p class="s2 col-1">${h.label}</p>
+                              <p class="s2 col-1">${u.label}</p>
                             </div>
                           </div>`
           ) : "";
@@ -1701,10 +1678,10 @@ input:checked + .slider:before {
     </div> `
       );
       if (this.containerSelector) {
-        const h = document.querySelector(
+        const u = document.querySelector(
           this.containerSelector
         );
-        this.removeExistingBundle(), h.insertAdjacentHTML(this.position, s), this.bundle = document.getElementById(this.bundleId), e != null && e.size_guide && new V({
+        this.removeExistingBundle(), u.insertAdjacentHTML(this.position, s), this.bundle = document.getElementById(this.bundleId), e != null && e.size_guide && new V({
           sizeGuideId: e.size_guide,
           triggerSelector: `#${this.bundleId} .bundle-size button`
         }), this.attachBundleButtonHandler();
@@ -1714,12 +1691,12 @@ input:checked + .slider:before {
       if (!this.bundle) return;
       const e = this.bundle.querySelector(".bundle-button");
       e && (this.bundleButtonHandler && e.removeEventListener("click", this.bundleButtonHandler), this.bundleButtonHandler = async () => {
-        var l, c, r, a, d, h, b, g, y;
+        var a, r, d, l, c, u, b, y, g;
         if (!this.size) {
-          const p = (l = this.bundle) == null ? void 0 : l.querySelector(
+          const h = (a = this.bundle) == null ? void 0 : a.querySelector(
             "#size-select"
           );
-          p == null || p.classList.add("hide-up");
+          h == null || h.classList.add("hide-up");
           return;
         }
         if (!this.color) {
@@ -1735,20 +1712,20 @@ input:checked + .slider:before {
           console.error("Product not found");
           return;
         }
-        const t = (c = this.bundle) == null ? void 0 : c.querySelector(
+        const t = (r = this.bundle) == null ? void 0 : r.querySelector(
           ".bundle-size-selected"
         ), o = document.getElementById(
           "bundle-color"
-        ), i = (r = document.querySelector("a")) == null ? void 0 : r.getAttribute("href"), s = (d = (a = this.bundle) == null ? void 0 : a.querySelector("img")) == null ? void 0 : d.getAttribute("src");
+        ), i = (d = document.querySelector("a")) == null ? void 0 : d.getAttribute("href"), s = (c = (l = this.bundle) == null ? void 0 : l.querySelector("img")) == null ? void 0 : c.getAttribute("src");
         try {
-          const { data: p, error: k } = await j(n);
-          if (k)
-            throw new Error(k.message);
-          const m = p == null ? void 0 : p.cart, te = m == null ? void 0 : m.items, _ = (h = m == null ? void 0 : m.items.find((f) => f.product === n)) == null ? void 0 : h.request.qty, H = (b = m == null ? void 0 : m.items.find(
+          const { data: h, error: w } = await j(n);
+          if (w)
+            throw new Error(w.message);
+          const m = h == null ? void 0 : h.cart, oe = m == null ? void 0 : m.items, _ = (u = m == null ? void 0 : m.items.find((f) => f.product === n)) == null ? void 0 : u.request.qty, H = (b = m == null ? void 0 : m.items.find(
             (f) => f.product === n
-          )) == null ? void 0 : b.rowPrice, oe = m.items.reduce((f, ne) => f + ne.rowPrice, 0).toFixed(2), T = (g = m == null ? void 0 : m.items.find(
+          )) == null ? void 0 : b.rowPrice, ie = m.items.reduce((f, te) => f + te.rowPrice, 0).toFixed(2), T = (y = m == null ? void 0 : m.items.find(
             (f) => f.product === n
-          )) == null ? void 0 : g.id;
+          )) == null ? void 0 : y.id;
           if (this.device === "desktop" && this.cart.addItemToCart({
             id: n.toString(),
             productCartId: T,
@@ -1771,13 +1748,13 @@ input:checked + .slider:before {
               link: i || "",
               qty: _
             });
-            const f = (y = this.bundle) == null ? void 0 : y.closest(
+            const f = (g = this.bundle) == null ? void 0 : g.closest(
               "#pins-bundle-mobile-popup"
             );
             f && (f.close(), f.remove());
           }
-        } catch (p) {
-          console.error("Error adding to basket", p);
+        } catch (h) {
+          console.error("Error adding to basket", h);
         }
       }, e.addEventListener("click", this.bundleButtonHandler), this.eventRemovers.push(
         () => e.removeEventListener("click", this.bundleButtonHandler)
@@ -1795,11 +1772,11 @@ input:checked + .slider:before {
       );
       if (!t || !o || !t) return;
       const i = (s) => {
-        var d;
-        const c = s.target.closest(".bundle-size-item");
-        if (!c) return;
-        const r = c.dataset.sizeId, a = (d = c.querySelector(".s2")) == null ? void 0 : d.textContent;
-        !r || !a || (t.textContent = a, t.dataset.chosenValue = r, t.dataset.chosenLabel = a, this.size = r, n == null || n.classList.remove("hide-up"));
+        var c;
+        const r = s.target.closest(".bundle-size-item");
+        if (!r) return;
+        const d = r.dataset.sizeId, l = (c = r.querySelector(".s2")) == null ? void 0 : c.textContent;
+        !d || !l || (t.textContent = l, t.dataset.chosenValue = d, t.dataset.chosenLabel = l, this.size = d, n == null || n.classList.remove("hide-up"));
       };
       n.addEventListener("click", i), this.eventRemovers.push(
         () => n.removeEventListener("click", i)
@@ -1828,14 +1805,14 @@ input:checked + .slider:before {
       );
     }
     getProductIdBySizeAndColor(e, n, t) {
-      var l, c, r, a;
-      if (!((c = (l = e == null ? void 0 : e.options) == null ? void 0 : l.configurable) != null && c.size) || !((a = (r = e == null ? void 0 : e.options) == null ? void 0 : r.configurable) != null && a.color))
+      var a, r, d, l;
+      if (!((r = (a = e == null ? void 0 : e.options) == null ? void 0 : a.configurable) != null && r.size) || !((l = (d = e == null ? void 0 : e.options) == null ? void 0 : d.configurable) != null && l.color))
         return console.error("Product options structure is invalid"), null;
       const o = e.options.configurable.size[n], i = e.options.configurable.color[t];
       if (!o || !i)
         return console.error("Size or color not found in product options"), null;
       const s = o.filter(
-        (d) => i.includes(d)
+        (c) => i.includes(c)
       );
       return s.length === 0 ? (console.warn("No product found with this size and color combination"), null) : (s.length > 1 && console.warn(
         "Multiple products found with this size and color combination, returning first one"
@@ -1860,8 +1837,8 @@ input:checked + .slider:before {
       this.disposed || (this.disposed = !0, this.eventRemovers.forEach((e) => e()), this.eventRemovers = [], this.bundle && this.bundle.parentElement && this.bundle.parentElement.removeChild(this.bundle), this.bundle = null);
     }
   };
-  S.bundleCounter = 0;
-  let x = S;
+  k.bundleCounter = 0;
+  let S = k;
   const U = `.bundle-container {
   margin-top: 28px;
   padding: 24px 16px;
@@ -1912,16 +1889,16 @@ input:checked + .slider:before {
       this.addStyles(), await this.render();
     }
     async render() {
-      var c, r;
+      var r, d;
       await v("product-view-cms-carousel");
       const e = await Promise.race([
         v("product-view-delivery-note"),
         v("product-view-add-to-basket")
       ]);
       if (!e) return;
-      const t = window.autoInitData.website.defaultCountry === "GB" ? "colour set" : "color set", o = ((c = window == null ? void 0 : window.product) == null ? void 0 : c.item_category3) || "", i = this.bundleData.map(
-        ({ product: a }) => a != null && a.name && (a != null && a.url) ? `<a href="${a.url}" target="_blank">${a.name}</a>` : null
-      ).filter(Boolean), s = i.length ? `Match your item with ${i.join(", ")}` : "", l = (
+      const t = window.autoInitData.website.defaultCountry === "GB" ? "colour set" : "color set", o = ((r = window == null ? void 0 : window.product) == null ? void 0 : r.item_category3) || "", i = this.bundleData.map(
+        ({ product: l }) => l != null && l.name && (l != null && l.url) ? `<a href="${l.url}" target="_blank">${l.name}</a>` : null
+      ).filter(Boolean), s = i.length ? `Match your item with ${i.join(", ")}` : "", a = (
         /* HTML */
         `<div class="bundle-container">
       <div class="bundle-container-title">
@@ -1932,17 +1909,17 @@ input:checked + .slider:before {
       <div class="bundle-container-footer">${s}</div>
     </div>`
       );
-      document.querySelector(".bundle-container") && ((r = document.querySelector(".bundle-container")) == null || r.remove()), e.insertAdjacentHTML("afterend", l), document.querySelector(".bundle-items-wrapper");
-      for (const [a, { product: d, sizes: h, bundle: b }] of this.bundleData.entries()) {
-        const g = new x({
-          product: d,
-          sizes: h,
+      document.querySelector(".bundle-container") && ((d = document.querySelector(".bundle-container")) == null || d.remove()), e.insertAdjacentHTML("afterend", a), document.querySelector(".bundle-items-wrapper");
+      for (const [l, { product: c, sizes: u, bundle: b }] of this.bundleData.entries()) {
+        const y = new S({
+          product: c,
+          sizes: u,
           cartInstance: this.cartInstance,
           containerSelector: ".bundle-items-wrapper",
           position: "beforeend",
           aborters: this.aborters
         });
-        this.bundleItems.push(g);
+        this.bundleItems.push(y);
       }
     }
     dispose() {
@@ -2192,10 +2169,10 @@ input:checked + .slider:before {
 .pins-bundle-mobile-popup__item:first-child .bundle {
   padding-top: 0;
 }
-`, C = "product-gallery .product-gallery > div", z = "product-gallery .product-gallery .swiper-slide", q = window.innerWidth < 1100, G = {
-    "navy-4": q ? z + ":nth-child(2)" : C + ":first-child",
-    "navy-2": q ? z + ":nth-child(2)" : C + ":first-child",
-    default: q ? z + ":last-child" : C + ":last-child"
+`, C = "product-gallery .product-gallery > div", q = "product-gallery .product-gallery .swiper-slide", z = window.innerWidth < 1100, G = {
+    "navy-4": z ? q + ":nth-child(2)" : C + ":first-child",
+    "navy-2": z ? q + ":nth-child(2)" : C + ":first-child",
+    default: z ? q + ":last-child" : C + ":last-child"
   };
   class Q {
     constructor(e, n, t) {
@@ -2234,12 +2211,12 @@ input:checked + .slider:before {
       );
       this.tooltip || (this.tooltip = document.createElement("div"), this.tooltip.className = "pins-bundle-tooltip", this.tooltip.style.position = "absolute", this.tooltip.style.zIndex = "99999", this.tooltip.style.display = "none", e == null || e.appendChild(this.tooltip)), n.forEach((t, o) => {
         const { product: i, sizes: s } = this.bundleData[o];
-        let l = null;
-        const c = () => {
-          l && (clearTimeout(l), l = null), (!this.tooltip.querySelector(".bundle") || this.tooltip.getAttribute("data-tooltip-for-pin") !== String(i.id)) && (this.tooltip.innerHTML = "", this.tooltip.setAttribute(
+        let a = null;
+        const r = () => {
+          a && (clearTimeout(a), a = null), (!this.tooltip.querySelector(".bundle") || this.tooltip.getAttribute("data-tooltip-for-pin") !== String(i.id)) && (this.tooltip.innerHTML = "", this.tooltip.setAttribute(
             "data-tooltip-for-pin",
             String(i.id)
-          ), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltipBundleItem = new x({
+          ), this.tooltipBundleItem && (this.tooltipBundleItem.dispose(), this.tooltipBundleItem = null), this.tooltipBundleItem = new S({
             product: i,
             sizes: s,
             cartInstance: this.cartInstance,
@@ -2247,16 +2224,16 @@ input:checked + .slider:before {
             position: "beforeend",
             aborters: this.aborters
           }));
-          const a = t.getBoundingClientRect(), d = e == null ? void 0 : e.getBoundingClientRect();
-          d && this.tooltip && (this.tooltip.style.left = a.right - d.left + 8 + "px", this.tooltip.style.top = a.top - d.top + "px"), this.tooltip.style.display = "block";
-        }, r = () => {
-          l && clearTimeout(l), l = setTimeout(() => {
+          const l = t.getBoundingClientRect(), c = e == null ? void 0 : e.getBoundingClientRect();
+          c && this.tooltip && (this.tooltip.style.left = l.right - c.left + 8 + "px", this.tooltip.style.top = l.top - c.top + "px"), this.tooltip.style.display = "block";
+        }, d = () => {
+          a && clearTimeout(a), a = setTimeout(() => {
             this.tooltip && (this.tooltip.style.display = "none");
           }, 200);
         };
-        t.addEventListener("mouseenter", c), t.addEventListener("focus", c), t.addEventListener("mouseleave", r), t.addEventListener("blur", r), this.tooltip.addEventListener("mouseenter", c), this.tooltip.addEventListener("mouseleave", r), t.addEventListener("click", (a) => {
+        t.addEventListener("mouseenter", r), t.addEventListener("focus", r), t.addEventListener("mouseleave", d), t.addEventListener("blur", d), this.tooltip.addEventListener("mouseenter", r), this.tooltip.addEventListener("mouseleave", d), t.addEventListener("click", (l) => {
           if (window.innerWidth < 1100) {
-            a.preventDefault(), this.openMobilePopup();
+            l.preventDefault(), this.openMobilePopup();
             return;
           }
         });
@@ -2278,8 +2255,8 @@ input:checked + .slider:before {
     `, document.body.appendChild(e);
       const n = e.querySelector(".pins-bundle-mobile-popup__list");
       this.bundleData.forEach(({ product: o, sizes: i }, s) => {
-        const l = document.createElement("div");
-        l.className = "pins-bundle-mobile-popup__item", n == null || n.appendChild(l), new x({
+        const a = document.createElement("div");
+        a.className = "pins-bundle-mobile-popup__item", n == null || n.appendChild(a), new S({
           product: o,
           sizes: i,
           cartInstance: this.cartInstance,
@@ -2331,8 +2308,8 @@ input:checked + .slider:before {
         Array.isArray(n.pinsLinks) && n.pinsLinks.length > 0 && (t = (await Promise.all(
           n.pinsLinks.map(async (o) => {
             const [i, s] = await Promise.all([
-              P(o || "").then((l) => l.data),
-              $().then((l) => l.data)
+              P(o || "").then((a) => a.data),
+              $().then((a) => a.data)
             ]);
             return { product: i, sizes: s, bundle: n };
           })
@@ -2350,11 +2327,48 @@ input:checked + .slider:before {
       (e = this.bundleContainer) == null || e.dispose(), this.bundleContainer = null, (n = this.pinsBundle) == null || n.dispose(), this.pinsBundle = null;
     }
   }
-  class K {
+  const K = `.cart-product-quantity {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.quantity-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 69px;
+  height: 34px;
+  border: 1px solid #cfd2d3;
+}
+
+.quantity-wrapper button {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 34px;
+}
+
+.quantity-wrapper input {
+  text-align: center;
+  pointer-events: none;
+}
+
+
+.cart-product-remove {
+  font-size: 11px;
+  text-decoration: underline;
+}`;
+  class Z {
     constructor(e) {
       var n, t, o, i;
       this.eventsAborters = [], this.items = [], this.initialCartButtonClick = !0, this.currencySymbol = // @ts-ignore
-      (i = (o = (t = (n = window == null ? void 0 : window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : t.currency) == null ? void 0 : o.list) == null ? void 0 : i[0].symbol, this.eventsAborters = e, this.handleCartButtonClick();
+      (i = (o = (t = (n = window == null ? void 0 : window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : t.currency) == null ? void 0 : o.list) == null ? void 0 : i[0].symbol, this.eventsAborters = e, this.init();
+    }
+    init() {
+      this.addStyles(), this.handleCartButtonClick();
     }
     async addItemToCart(e) {
       if (!this.items.some(
@@ -2384,7 +2398,7 @@ input:checked + .slider:before {
       });
     }
     async renderSingleItem(e) {
-      const n = (
+      const t = window.autoInitData.website.defaultCountry === "GB" ? "Colour" : "Color", o = (
         /* HTML */
         `
       <li
@@ -2439,7 +2453,7 @@ input:checked + .slider:before {
                           |
                         </span></span
                       ><span _ngcontent-ng-c2131613575 class="ng-star-inserted">
-                        Color: ${e.color}
+                        ${t}: ${e.color}
                       </span>
                     </div>
                   </div>
@@ -2453,7 +2467,10 @@ input:checked + .slider:before {
                       class="block price"
                       _nghost-ng-c136849178
                       sl-minibasket-item-price="10731869"
-                      >${e.price}</price
+                    >
+                      ${this.currencySymbol}<span class="cart-product-price"
+                        >${e.price}</span
+                      ></price
                     >
                   </div>
                 </div>
@@ -2479,6 +2496,7 @@ input:checked + .slider:before {
                         <i class="icon-plus fs-2"></i>
                       </button>
                     </div>
+                    <button class="cart-product-remove">Remove</button>
                   </div>
                 </div>
 
@@ -2501,25 +2519,26 @@ input:checked + .slider:before {
         ></minibasket-item>
       </li>
     `
-      ), t = document.querySelector(
+      ), i = document.querySelector(
         "modal-right-container minibasket p[cy-basketempty]"
       );
-      if (t) {
-        const o = t.closest(".custom-scrollbar");
-        o && (o.innerHTML = /* HTML */
+      if (i) {
+        const s = i.closest(".custom-scrollbar");
+        s && (s.innerHTML = /* HTML */
         `<div
           class="p-r-5 p-l-5 ng-star-inserted"
         >
           <ul cy-minibasketlist>
-            ${n}
+            ${o}
           </ul>
         </div>`), this.addCheckoutButton();
       } else {
-        const o = document.querySelector(
+        const s = document.querySelector(
           "minibasket ul[cy-minibasketlist]"
         );
-        o && (o.insertAdjacentHTML("beforeend", n), this.addItemEventListeners(e.productCartId));
+        s && s.insertAdjacentHTML("beforeend", o);
       }
+      this.addItemEventListeners(e.productCartId);
     }
     handleCartButtonClick() {
       const e = document.querySelector(
@@ -2534,41 +2553,40 @@ input:checked + .slider:before {
     async addItemEventListeners(e) {
       const n = await v(
         `[data-cart-id="${e}"]`
+      ), t = this.items.find(
+        (c) => c.productCartId === e
       );
-      if (!n) return;
-      const t = n == null ? void 0 : n.querySelector(".quantity-button.minus"), o = n == null ? void 0 : n.querySelector(".quantity-button.plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), s = n == null ? void 0 : n.querySelector(".button-inline-extra-small"), l = this.debounce(
-        async (r, a) => {
-          var g;
-          const { data: d, error: h } = await E({ id: r, qty: a }), b = d == null ? void 0 : d.cart;
-          if (b) {
-            const y = (g = b == null ? void 0 : b.items.find(
-              (p) => p.id === r
-            )) == null ? void 0 : g.rowPrice;
-            if (y) {
-              const p = n == null ? void 0 : n.querySelector(
+      if (!t || !n) return;
+      const o = n == null ? void 0 : n.querySelector(".quantity-button.minus"), i = n == null ? void 0 : n.querySelector(".quantity-button.plus"), s = n == null ? void 0 : n.querySelector(".quantity-input"), a = n == null ? void 0 : n.querySelector(".cart-product-remove"), r = n == null ? void 0 : n.querySelector(".cart-product-price"), d = this.debounce(
+        async (c, u) => {
+          const { data: b, error: y } = await E({ id: c, qty: u }), g = b == null ? void 0 : b.cart;
+          if (g) {
+            const h = g == null ? void 0 : g.totals.grand_total;
+            if (h) {
+              const w = document == null ? void 0 : document.querySelector(
                 "basket-view-totals price"
               );
-              p && (p.innerHTML = `${this.currencySymbol}${y}`);
+              w && (w.innerHTML = `${this.currencySymbol}${h}`);
             }
           }
         },
         300
       );
-      if (!n || !i) return;
-      const c = new AbortController();
-      this.eventsAborters.push(c), t && t.addEventListener("click", () => {
-        const a = parseInt(i.value) - 1;
-        if (o == null || o.removeAttribute("disabled"), a < 1) {
-          i.value = "1", t.setAttribute("disabled", "true");
+      if (!n || !s) return;
+      const l = new AbortController();
+      this.eventsAborters.push(l), o && o.addEventListener("click", () => {
+        const u = parseInt(s.value) - 1;
+        if (i == null || i.removeAttribute("disabled"), u < 1) {
+          s.value = "1", o.setAttribute("disabled", "true");
           return;
         }
-        i.value = a.toString(), l(+e, a);
-      }), o && o.addEventListener("click", () => {
-        const a = parseInt(i.value) + 1;
-        t == null || t.removeAttribute("disabled"), i.value = a.toString(), l(+e, a);
-      }), s && s.addEventListener("click", async () => {
-        const r = s.closest(".cart-product");
-        r && (await B([+e]), r.remove());
+        s.value = u.toString(), r && (r.textContent = (+t.price * u).toFixed(2)), d(+e, u);
+      }), i && i.addEventListener("click", () => {
+        const u = parseFloat(s.value) + 1;
+        o == null || o.removeAttribute("disabled"), s.value = u.toString(), r && (r.textContent = (+t.price * u).toFixed(2)), d(+e, u);
+      }), a && a.addEventListener("click", async () => {
+        const c = a.closest("li");
+        c && (await B([+e]), c.remove());
       });
     }
     debounce(e, n) {
@@ -2665,18 +2683,22 @@ input:checked + .slider:before {
       );
       n && n.insertAdjacentHTML("beforeend", e);
     }
+    addStyles() {
+      const e = document.createElement("style");
+      e.innerHTML = K, document.head.appendChild(e);
+    }
   }
-  A({
+  F({
     name: "Adding bundle options based on color to the product detail page (PDP) and cart",
     dev: "OS"
   });
-  function Z(u) {
-    const e = I.find((n) => u.includes(n.path));
+  function ee(p) {
+    const e = I.find((n) => p.includes(n.path));
     return e ? I.filter(
-      (n) => n.bundleGroupId === e.bundleGroupId && !u.includes(n.path)
+      (n) => n.bundleGroupId === e.bundleGroupId && !p.includes(n.path)
     ) : [];
   }
-  class ee {
+  class ne {
     constructor() {
       this.aborters = [], this.bundleWrapper = null, this.aborters = [], this.bundleWrapper = null, this.init();
     }
@@ -2688,12 +2710,12 @@ input:checked + .slider:before {
     async initChangesOnPDP() {
       var n;
       if (await this.checkIsProductPage()) {
-        const { url: t, ...o } = await this.waitForProduct(), i = t.replace(/^https?:\/\/(www\.)?lemieux\.com/, "").replace(/#.*/, ""), s = Z(i);
+        const { url: t, ...o } = await this.waitForProduct(), i = t.replace(/^https?:\/\/(www\.)?lemieux\.com/, "").replace(/#.*/, ""), s = ee(i);
         if (s.length > 0) {
-          const l = new K(this.aborters);
+          const a = new Z(this.aborters);
           this.bundleWrapper = new X(
             s,
-            l,
+            a,
             this.aborters
           );
         } else
@@ -2734,5 +2756,5 @@ input:checked + .slider:before {
       });
     }
   }
-  new ee();
+  new ne();
 })();
