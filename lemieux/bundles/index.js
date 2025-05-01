@@ -2881,7 +2881,7 @@ input:checked + .slider:before {
       let n = window.location.pathname;
       new MutationObserver((o) => {
         o.forEach((i) => {
-          n !== window.location.pathname && location.hash.includes("selection.color") && (e(), n = window.location.pathname);
+          console.log("Mutation:", i), n !== window.location.pathname && location.hash.includes("selection.color") && (console.log("Page changed:", window.location.pathname), e(), n = window.location.pathname);
         });
       }).observe(document.body, {
         childList: !0,
