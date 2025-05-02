@@ -718,8 +718,8 @@
       path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white",
       bundleGroupId: "white-3"
     }
-  ], C = window.autoInitData.website.websiteCode, x = async (l, e) => {
-    const n = C === "base" ? l : `/${C.toLowerCase()}${l}`;
+  ], q = window.autoInitData.website.websiteCode, x = async (l, e) => {
+    const n = q === "base" ? l : `/${q.toLowerCase()}${l}`;
     try {
       const t = await fetch(n, e);
       if (!t.ok)
@@ -776,7 +776,7 @@
         }
       ]
     })
-  }), q = (l) => x("/api/p/basket/remove", {
+  }), C = (l) => x("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -1086,7 +1086,7 @@
         t == null || t.removeAttribute("disabled"), s.value = p.toString(), r(+e, p);
       }), i && i.addEventListener("click", async () => {
         const u = i.closest(".cart-product");
-        u && (await q([+e]), u.remove(), this.close());
+        u && (await C([+e]), u.remove(), this.close());
       }), c && c.addEventListener("click", () => {
         const u = c.closest(".cart-product");
         u && u.classList.toggle("favorite");
@@ -1908,7 +1908,7 @@ input:checked + .slider:before {
       var c, r, u, p;
       if (!((r = (c = e == null ? void 0 : e.options) == null ? void 0 : c.configurable) != null && r.size) || !((p = (u = e == null ? void 0 : e.options) == null ? void 0 : u.configurable) != null && p.color))
         return console.error("Product options structure is invalid"), null;
-      const o = e.options.configurable.size[n], s = e.options.configurable.color[t];
+      const o = e.options.configurable.size[n], s = e.options.configurable.color[t] ? e.options.configurable.color[t] : t === "8792" ? e.options.configurable.color[6635] : t === "6635" ? e.options.configurable.color[8792] : e.options.configurable.color[t];
       if (!o || !s)
         return console.error("Size or color not found in product options"), null;
       const i = o.filter(
@@ -2327,7 +2327,7 @@ input:checked + .slider:before {
         o == null || o.removeAttribute("disabled"), i.value = h.toString(), r && (r.textContent = (+t.price * h).toFixed(2)), u(+e, h);
       }), c && c.addEventListener("click", async () => {
         const a = c.closest("li");
-        a && (await q([+e]), a.remove());
+        a && (await C([+e]), a.remove());
       });
     }
     debounce(e, n) {
@@ -2455,10 +2455,9 @@ input:checked + .slider:before {
     }
     async initChangesOnPDP() {
       var n;
-      const e = await this.checkIsProductPage();
-      if (console.log("Is product page:", e), e) {
+      if (await this.checkIsProductPage()) {
         const { url: t, ...o } = await this.waitForProduct(), s = this.checkCountry();
-        if (console.log("Current country:", s), !X.includes(s)) {
+        if (!X.includes(s)) {
           console.error("Not an English country, exiting...");
           return;
         }
