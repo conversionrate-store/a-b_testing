@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const a = (r) => new Promise((t) => {
+  const l = (r) => new Promise((t) => {
     const n = document.querySelector(r);
     n && t(n);
     const e = new MutationObserver(() => {
@@ -11,7 +11,7 @@
       childList: !0,
       subtree: !0
     });
-  }), p = ({ name: r, dev: t }) => {
+  }), d = ({ name: r, dev: t }) => {
     console.log(
       `%c EXP: ${r} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -26,8 +26,8 @@
         s.addEventListener(t, function(o) {
           var f;
           if (n !== "") {
-            let d = (f = o.target) == null ? void 0 : f.closest(n);
-            d && (e == null || e.call(d, o));
+            let p = (f = o.target) == null ? void 0 : f.closest(n);
+            p && (e == null || e.call(p, o));
           } else
             e == null || e.call(s, o);
         });
@@ -79,7 +79,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const l = (r) => new i(r), h = (r) => {
+  const a = (r) => new i(r), h = (r) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
     }, 1e3);
@@ -223,20 +223,20 @@
     /* HTML */
     ' <button class="crs_faq_btn">Get Yours Now</button> '
   );
-  p({ dev: "YK", name: "Exp: trailpatch trusted" }), h("trailpatch_trusted");
+  d({ dev: "YK", name: "Exp: trailpatch trusted" }), h("trailpatch_trusted");
   class x {
     constructor() {
       this.init(), this.faqUpdate();
     }
     async init() {
-      (await a(".lp-tr--hero-section .container-fluid")).insertAdjacentHTML("afterend", g), l(".crs_trusted button").on("click", () => {
+      (await l(".lp-tr--hero-section .container-fluid")).insertAdjacentHTML("afterend", g), a(".crs_trusted button").on("click", () => {
         u(".lp-tr--purchase", 100);
-      });
+      }), a(".lp-tr--btn img").attr("src", "https://conversionrate-store.github.io/a-b_images/natpat/main_img.webp");
     }
     async faqUpdate() {
-      (await a("#accordionFaq")).querySelectorAll(".card-body").forEach((n) => {
+      (await l("#accordionFaq")).querySelectorAll(".card-body").forEach((n) => {
         n.insertAdjacentHTML("afterend", y);
-      }), l(".crs_faq_btn").on("click", () => {
+      }), a(".crs_faq_btn").on("click", () => {
         u(".lp-tr--purchase", 100);
       });
     }
@@ -244,4 +244,3 @@
   new x();
 })();
 //# sourceMappingURL=index.js.map
-
