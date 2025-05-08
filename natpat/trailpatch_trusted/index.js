@@ -1,6 +1,14 @@
 (function() {
   "use strict";
-  const l = (r) => new Promise((t) => {
+  const p = (r, t, n, e = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: r,
+      event_desc: t,
+      event_type: n,
+      event_loc: e
+    }), m(`Event: ${r} | ${t} | ${n} | ${e}`, "success");
+  }, f = (r) => new Promise((t) => {
     const n = document.querySelector(r);
     n && t(n);
     const e = new MutationObserver(() => {
@@ -11,25 +19,25 @@
       childList: !0,
       subtree: !0
     });
-  }), d = ({ name: r, dev: t }) => {
+  }), g = ({ name: r, dev: t }) => {
     console.log(
       `%c EXP: ${r} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class i {
+  class c {
     constructor(t) {
-      this.elements = t instanceof i ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
+      this.elements = t instanceof c ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
     }
     on(t, n, e) {
       return typeof n == "function" && (e = n, n = ""), this.elements.forEach((s) => {
-        s.addEventListener(t, function(o) {
-          var f;
+        s.addEventListener(t, function(i) {
+          var o;
           if (n !== "") {
-            let p = (f = o.target) == null ? void 0 : f.closest(n);
-            p && (e == null || e.call(p, o));
+            let l = (o = i.target) == null ? void 0 : o.closest(n);
+            l && (e == null || e.call(l, i));
           } else
-            e == null || e.call(s, o);
+            e == null || e.call(s, i);
         });
       }), this;
     }
@@ -50,18 +58,18 @@
     }
     each(t) {
       for (let n of this.elements)
-        t(new i(n), this.elements.indexOf(n));
+        t(new c(n), this.elements.indexOf(n));
       return this;
     }
     style(t, n) {
-      const e = t.split("-").map((s, o) => o === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
+      const e = t.split("-").map((s, i) => i === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
       return this.elements.forEach(function(s) {
         s.style[e] = n;
       }), this;
     }
     find(t) {
       const n = this.elements.map((e) => Array.from(e.querySelectorAll(t)));
-      return new i(n.flat());
+      return new c(n.flat());
     }
     attr(t, n) {
       return n ? (this.elements.forEach(function(e) {
@@ -79,11 +87,30 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const a = (r) => new i(r), h = (r) => {
+  const a = (r) => new c(r), b = (r) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, u = (r, t) => {
+  }, y = (r, t, n, e, s = 1e3, i = 0.5) => {
+    let o, l;
+    o = new IntersectionObserver(
+      function(u) {
+        u[0].isIntersecting === !0 ? l = setTimeout(() => {
+          p(
+            t,
+            u[0].target.dataset.visible || e || "",
+            "view",
+            n
+          ), o.disconnect();
+        }, s) : (m("Element is not fully visible", "warn"), clearTimeout(l));
+      },
+      { threshold: [i] }
+    );
+    {
+      const u = document.querySelector(r);
+      u && o.observe(u);
+    }
+  }, h = (r, t) => {
     const n = document.querySelector(r);
     if (!n) return;
     const s = n.getBoundingClientRect().top - t;
@@ -91,12 +118,37 @@
       top: s,
       behavior: "smooth"
     });
-  }, m = `.lp-tr--hero-section .container-fluid {
+  }, m = (r, t = "info") => {
+    let n;
+    switch (t) {
+      case "info":
+        n = "color: #3498db;";
+        break;
+      case "warn":
+        n = "color: #f39c12;";
+        break;
+      case "error":
+        n = "color: #e74c3c;";
+        break;
+      case "success":
+        n = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${r}`, `${n} font-size: 16px; font-weight: 600`);
+  }, x = `.lp-tr--hero-section .container-fluid {
   display: none;
 }
 
 .lp-tr--hero-section .scroll-to-checkout {
   padding: 20px;
+}
+
+.lp-tr--header-btn a {
+  padding: 15px 40px;
+}
+
+.lp-tr--btn {
+  margin-top: 30px;
 }
 
 .crs_trusted {
@@ -193,21 +245,21 @@
 
 #accordionFaq .card-body {
   margin-bottom: 12px !important;
-}/*# sourceMappingURL=style.css.map */`, c = "https://conversionrate-store.github.io/a-b_images/natpat", g = (
+}/*# sourceMappingURL=style.css.map */`, d = "https://conversionrate-store.github.io/a-b_images/natpat", w = (
     /* HTML */
     `
   <div class="crs_trusted">
     <style>
-      ${m}
+      ${x}
     </style>
     <div class="wrap">
       <h2>Trusted by 5000 stores<br />and top retailers globaly</h2>
-      <img src="${c}/logos.webp" alt="logos" />
-      <img src="${c}/map.webp" alt="map" />
+      <img src="${d}/logos.webp" alt="logos" />
+      <img src="${d}/map.webp" alt="map" />
     </div>
     <div class="slider">
       <ul>
-        ${[...Array(7)].map((r, t) => `<li><img src="${c}/slide-${t + 1}.webp" alt="slide" /></li>`).join("")}
+        ${[...Array(7)].map((r, t) => `<li><img src="${d}/slide-${t + 1}.webp" alt="slide" /></li>`).join("")}
       </ul>
     </div>
     <div class="wrap">
@@ -215,32 +267,35 @@
       <p>
         <b>30 Day Money Back Guarantee</b>: If our stickers don’t help your active child, we’ll give you a full refund.
       </p>
-      <img src="${c}/guaranty.webp" alt="guaranty" />
+      <img src="${d}/guaranty.webp" alt="guaranty" />
     </div>
   </div>
 `
-  ), y = (
+  ), _ = (
     /* HTML */
     ' <button class="crs_faq_btn">Get Yours Now</button> '
   );
-  d({ dev: "YK", name: "Exp: trailpatch trusted" }), h("trailpatch_trusted");
-  class x {
+  g({ dev: "YK", name: "Exp: trailpatch trusted" }), b("trailpatch_trusted");
+  class v {
     constructor() {
       this.init(), this.faqUpdate();
     }
     async init() {
-      (await l(".lp-tr--hero-section .container-fluid")).insertAdjacentHTML("afterend", g), a(".crs_trusted button").on("click", () => {
-        u(".lp-tr--purchase", 100);
-      }), a(".lp-tr--btn img").attr("src", "https://conversionrate-store.github.io/a-b_images/natpat/main_img.webp");
+      (await f(".lp-tr--hero-section .container-fluid")).insertAdjacentHTML("afterend", w), a(".crs_trusted button").on("click", () => {
+        h(".lp-tr--purchase", 100), p("exp_trailpatch_click_02", "Buy now", "click", "Trusted by 5000 stores");
+      }), a(".lp-tr--btn img").attr("src", "https://conversionrate-store.github.io/a-b_images/natpat/main_img.webp"), a(".lp-tr--header-btn a").text("GET IT NOW"), a(".lp-tr--header-btn a").on("click", () => {
+        p("exp_trailpatch_click_01", "Get it now", "click", "Header");
+      }), y(".crs_trusted", "exp_trailpatch_view_01", "Trusted by 5000 stores");
     }
     async faqUpdate() {
-      (await l("#accordionFaq")).querySelectorAll(".card-body").forEach((n) => {
-        n.insertAdjacentHTML("afterend", y);
-      }), a(".crs_faq_btn").on("click", () => {
-        u(".lp-tr--purchase", 100);
+      (await f("#accordionFaq")).querySelectorAll(".card-body").forEach((n) => {
+        n.insertAdjacentHTML("afterend", _);
+      }), a(".crs_faq_btn").on("click", function() {
+        const n = this.closest(".card").querySelector("h5").innerText;
+        h(".lp-tr--purchase", 100), p("exp_trailpatch_click_03", "Get yours now:" + n, "click", "FAQ");
       });
     }
   }
-  new x();
+  new v();
 })();
 //# sourceMappingURL=index.js.map
