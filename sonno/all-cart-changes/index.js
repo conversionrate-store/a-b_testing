@@ -18,7 +18,7 @@ var at = function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
     }, 1e3);
   };
-  function $(i) {
+  function q(i) {
     return new Promise((t) => {
       if (document.querySelector(i))
         return t(document.querySelector(i));
@@ -484,7 +484,7 @@ section.cart-header-trustpilot {
       !t || !e || t.appendChild(e);
     }
     async addDeliveryDate() {
-      await $(".estimate-delivery-item");
+      await q(".estimate-delivery-item");
       const t = document.querySelector("[data-delivery]"), e = document.querySelectorAll(
         ".estimate-delivery-item"
       );
@@ -521,6 +521,10 @@ section.cart-header-trustpilot {
 
     line-height: 32px; 
   }
+
+  .crs-cart-qty {
+    display: none;
+  }
 }
 `;
   class R {
@@ -537,7 +541,7 @@ section.cart-header-trustpilot {
       <div class="crs-cart-items-count">
         <div class="container flex items-center justify-center text-center">
           <span class="crs-cart-items-count__text"
-            >Your Basket (<span id="crs-cart-count">1</span>)</span
+            >Your Basket <span class="crs-cart-qty">(<span id="crs-cart-count">1</span>)</span></span
           >
         </div>
       </div>
@@ -704,7 +708,7 @@ section.cart-header-trustpilot {
       t && t.insertAdjacentHTML(e, n);
     }
     async addItemLeftNotification() {
-      await $(A.cartProductItem);
+      await q(A.cartProductItem);
       const t = document.querySelectorAll(
         A.cartProductItem
       );
@@ -1243,13 +1247,13 @@ section.cart-header-trustpilot {
       return e ? +e[1] : null;
     }
     async renderUpsell(t) {
-      var q, v;
+      var $, v;
       if (!t) {
         console.error("Mattress button not found");
         return;
       }
       let e;
-      this.device === "desktop" ? e = t.closest(".cart-product-item") : e = (q = t.closest("section")) == null ? void 0 : q.previousElementSibling;
+      this.device === "desktop" ? e = t.closest(".cart-product-item") : e = ($ = t.closest("section")) == null ? void 0 : $.previousElementSibling;
       const n = e == null ? void 0 : e.querySelector(
         ".cart-product-info a"
       );
@@ -1449,7 +1453,7 @@ section.cart-header-trustpilot {
             f,
             "click",
             "Add Matress & Save"
-          ), c.click(), $('[role="dialog"][data-state="open"]').then(() => {
+          ), c.click(), q('[role="dialog"][data-state="open"]').then(() => {
             const h = document.querySelector(
               '[role="dialog"][data-state="open"]'
             ), k = h == null ? void 0 : h.querySelector("h2 + button"), E = Array.from(
@@ -1469,7 +1473,7 @@ section.cart-header-trustpilot {
                 var S;
                 if (((S = g.querySelector(".title-card")) == null ? void 0 : S.textContent) === f) {
                   const b = g.querySelector("button");
-                  b == null || b.click(), $(
+                  b == null || b.click(), q(
                     '[role="dialog"][data-state="open"] .mattress-details'
                   ).then((x) => {
                     var z;
@@ -1497,7 +1501,7 @@ section.cart-header-trustpilot {
       );
     }
     async observeMattressButtons() {
-      await $(".cart-product-image");
+      await q(".cart-product-image");
       let t;
       this.device === "desktop" ? t = document.querySelectorAll(".cart-product-image") : t = document.querySelectorAll(
         ".cart-product-item + .block.md\\:hidden"
@@ -1543,7 +1547,7 @@ section.cart-header-trustpilot {
       });
     }
     async changeChosenMattressElement(t) {
-      var F, C, q;
+      var F, C, $;
       const e = t.querySelectorAll("button");
       t.querySelector(".image-card  img"), t.querySelector(".title-card").textContent;
       let n = null, a = null, s;
@@ -1561,7 +1565,7 @@ section.cart-header-trustpilot {
         ".card-pricing-details .price > span"
       );
       if (m) {
-        const v = (q = m.textContent) == null ? void 0 : q.replace(/Was:\s*/, "").trim();
+        const v = ($ = m.textContent) == null ? void 0 : $.replace(/Was:\s*/, "").trim();
         m.textContent = v || "";
       }
       a && n && a.insertAdjacentElement(
