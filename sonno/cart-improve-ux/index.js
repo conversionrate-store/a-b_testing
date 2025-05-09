@@ -783,7 +783,7 @@ section.cart-header-trustpilot {
     }
   }
   f({
-    name: "Cart Changes v2",
+    name: "Cart Improve UX and highlight main info",
     dev: "OS"
   }), v("mattress_upsell");
   class p {
@@ -801,4 +801,3 @@ section.cart-header-trustpilot {
     LaunchExperiment: p
   };
 }();
-//# sourceMappingURL=index.js.map
