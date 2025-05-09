@@ -1,6 +1,6 @@
 var at = function() {
   "use strict";
-  const q = (i, t, e, n = "") => {
+  const Z = (i, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
@@ -18,7 +18,7 @@ var at = function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
     }, 1e3);
   };
-  function Z(i) {
+  function $(i) {
     return new Promise((t) => {
       if (document.querySelector(i))
         return t(document.querySelector(i));
@@ -32,7 +32,7 @@ var at = function() {
       });
     });
   }
-  const D = `@media (min-width: 768px) {
+  const O = `@media (min-width: 768px) {
   .crs-cta {
     display: none;
   }
@@ -68,12 +68,12 @@ var at = function() {
   line-height: 32px;
 }
 `;
-  class O {
+  class D {
     constructor() {
       this.init();
     }
     init() {
-      this.addStyles(), this.render(), this.observeCheckoutLinks();
+      this.addStyles(), this.render(), this.observeCheckoutLinks(), this.eventListeners();
     }
     render() {
       document.body.insertAdjacentHTML(
@@ -82,11 +82,24 @@ var at = function() {
         `
       <div class="crs-cta">
         <div class="crs-cta-inner">
-          <a href="/checkout" class="crs-cta-button">See Order Summary</a>
+          <a href="/checkout" class="crs-cta-button" id="crs-cta-btn"
+            >See Order Summary</a
+          >
         </div>
       </div>
     `
       );
+    }
+    eventListeners() {
+      const t = document.getElementById("crs-cta-btn");
+      t && t.addEventListener("click", (e) => {
+        Z(
+          "exp_m_upsell_click_05",
+          "See Order Summary",
+          "click",
+          "See Order Summary"
+        );
+      });
     }
     observeCheckoutLinks() {
       const t = document.querySelector(".crs-cta");
@@ -109,7 +122,7 @@ var at = function() {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = D, document.head.appendChild(t);
+      t.textContent = O, document.head.appendChild(t);
     }
   }
   const N = (
@@ -471,7 +484,7 @@ section.cart-header-trustpilot {
       !t || !e || t.appendChild(e);
     }
     async addDeliveryDate() {
-      await Z(".estimate-delivery-item");
+      await $(".estimate-delivery-item");
       const t = document.querySelector("[data-delivery]"), e = document.querySelectorAll(
         ".estimate-delivery-item"
       );
@@ -691,7 +704,7 @@ section.cart-header-trustpilot {
       t && t.insertAdjacentHTML(e, n);
     }
     async addItemLeftNotification() {
-      await Z(A.cartProductItem);
+      await $(A.cartProductItem);
       const t = document.querySelectorAll(
         A.cartProductItem
       );
@@ -782,7 +795,7 @@ section.cart-header-trustpilot {
     clip-rule="evenodd"
   />
 </svg>`
-  ), j = (
+  ), _ = (
     /* HTML */
     ` <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -1213,7 +1226,7 @@ section.cart-header-trustpilot {
         );
         n.mattresses.forEach(({ tags: d, ...u }) => {
           var m;
-          const p = (m = d.find((F) => F.startsWith("firmness:"))) == null ? void 0 : m.split(":")[1];
+          const p = (m = d.find((I) => I.startsWith("firmness:"))) == null ? void 0 : m.split(":")[1];
           p && c[p] && c[p].push(u);
         }), this.mattresses = n.mattresses;
         const o = {
@@ -1230,13 +1243,13 @@ section.cart-header-trustpilot {
       return e ? +e[1] : null;
     }
     async renderUpsell(t) {
-      var $, v;
+      var q, v;
       if (!t) {
         console.error("Mattress button not found");
         return;
       }
       let e;
-      this.device === "desktop" ? e = t.closest(".cart-product-item") : e = ($ = t.closest("section")) == null ? void 0 : $.previousElementSibling;
+      this.device === "desktop" ? e = t.closest(".cart-product-item") : e = (q = t.closest("section")) == null ? void 0 : q.previousElementSibling;
       const n = e == null ? void 0 : e.querySelector(
         ".cart-product-info a"
       );
@@ -1247,7 +1260,7 @@ section.cart-header-trustpilot {
         return;
       }
       const o = (v = this.cartItems.find((r) => r.id === s)) == null ? void 0 : v.handle, { categorizedMattresses: d, currentVariant: u } = await this.fetchMattresses(o), p = `mattress-upsell-${Math.random().toString(36).substr(2, 9)}`, m = (r, l, f) => {
-        const w = l.map(({ id: h, title: k, images: E, variants: g }, M) => {
+        const w = l.map(({ id: h, title: k, images: E, variants: g }, S) => {
           const { price: b, compare_at_price: x } = g.find(
             (y) => y.title.toLowerCase() === u.toLowerCase()
           );
@@ -1255,7 +1268,7 @@ section.cart-header-trustpilot {
             /* HTML */
             `
             <div
-              class="crs-mattress-item ${this.device === "desktop" && M >= 3 ? "hidden" : ""}"
+              class="crs-mattress-item ${this.device === "desktop" && S >= 3 ? "hidden" : ""}"
               data-mattress-id="${h}"
             >
               <div class="crs-mattress-image">
@@ -1267,7 +1280,7 @@ section.cart-header-trustpilot {
                   loading="lazy"
                 />
                 <div class="crs-mattress-category">
-                  ${j}
+                  ${_}
                   ${r === "Medium/Firm" ? "Medium Firm" : r}
                 </div>
               </div>
@@ -1289,7 +1302,7 @@ section.cart-header-trustpilot {
             </div>
           `
           );
-        }).join(""), S = l.length > 3 ? (
+        }).join(""), M = l.length > 3 ? (
           /* HTML */
           `<button
               class=" crs-mattress-item crs-mattress-see-all"
@@ -1308,17 +1321,17 @@ section.cart-header-trustpilot {
           data-category="${r}"
           data-upsell-id="${p}"
         >
-          <div class="crs-mattress-list">${w}${S}</div>
+          <div class="crs-mattress-list">${w}${M}</div>
         </div>
       `
         );
-      }, F = Object.keys(d).map(
+      }, I = Object.keys(d).map(
         (r, l) => m(
           r,
           d[r] || [],
           l === 0
         )
-      ).join(""), I = Object.keys(d).map(
+      ).join(""), F = Object.keys(d).map(
         (r, l) => (
           /* HTML */
           `
@@ -1327,7 +1340,7 @@ section.cart-header-trustpilot {
             data-category="${r}"
             data-upsell-id="${p}"
           >
-            ${j}
+            ${_}
             ${r === "Medium/Firm" ? "Medium Firm" : r}
           </button>
         `
@@ -1345,48 +1358,48 @@ section.cart-header-trustpilot {
             <span>hassle-free return or exchange</span>
           </div>
           <div class="crs-mattress-upsell-tabs">
-            <div class="crs-mattress-tabs-nav">${I}</div>
-            ${F}
+            <div class="crs-mattress-tabs-nav">${F}</div>
+            ${I}
           </div>
         </div>
       `
       );
-      const L = (r, l, f) => {
+      const C = (r, l, f) => {
         document.querySelectorAll(r).forEach((w) => w.addEventListener(l, f));
       };
-      L(
+      C(
         `.crs-mattress-tab-nav[data-upsell-id="${p}"]`,
         "click",
         (r) => {
           var w;
           const { category: l, upsellId: f } = r.target.dataset;
-          q(
+          Z(
             "exp_m_upsell_click_01",
             l,
             "click",
             "Add Matress & Save"
           ), document.querySelectorAll(
             `.crs-mattress-tab[data-upsell-id="${f}"], .crs-mattress-tab-nav[data-upsell-id="${f}"]`
-          ).forEach((S) => S.classList.remove("active")), (w = document.querySelector(
+          ).forEach((M) => M.classList.remove("active")), (w = document.querySelector(
             `.crs-mattress-tab[data-category="${l}"][data-upsell-id="${f}"]`
           )) == null || w.classList.add("active"), r.target.classList.add("active");
         }
-      ), L(
+      ), C(
         `.crs-mattress-see-all[data-upsell-id="${p}"]`,
         "click",
         (r) => {
           const { category: l, upsellId: f } = r.target.dataset;
-          c.click(), q(
+          c.click(), Z(
             "exp_m_upsell_click_04",
             "See all",
             "click",
             "Add Matress & Save"
           );
         }
-      ), L(`#${p} .crs-add-to-cart`, "click", (r) => {
-        var S, h;
-        const l = r.target.dataset.variantId, f = (h = (S = r.target.closest(".crs-mattress-item")) == null ? void 0 : S.querySelector("h3")) == null ? void 0 : h.textContent;
-        document.body.classList.add("modal-open-hidden"), q(
+      ), C(`#${p} .crs-add-to-cart`, "click", (r) => {
+        var M, h;
+        const l = r.target.dataset.variantId, f = (h = (M = r.target.closest(".crs-mattress-item")) == null ? void 0 : M.querySelector("h3")) == null ? void 0 : h.textContent;
+        document.body.classList.add("modal-open-hidden"), Z(
           "exp_m_upsell_click_03",
           f,
           "click",
@@ -1398,22 +1411,22 @@ section.cart-header-trustpilot {
               w.disconnect();
               const g = document.querySelector(
                 '[role="dialog"][data-state="open"]'
-              ), M = Array.from(
+              ), S = Array.from(
                 (g == null ? void 0 : g.querySelectorAll(".ss-tabs a")) || []
               ).find(
                 (b) => {
                   var x;
                   return ((x = b.textContent) == null ? void 0 : x.trim()) === Object.keys(d).find(
                     (y) => d[y].some(
-                      (C) => C.id == l
+                      (L) => L.id == l
                     )
                   );
                 }
               );
-              M == null || M.click(), setTimeout(() => {
+              S == null || S.click(), setTimeout(() => {
                 g == null || g.querySelectorAll(".card-addons").forEach((b) => {
-                  var x, y, C;
-                  ((x = b.querySelector(".title-card")) == null ? void 0 : x.textContent) === f && (b.click(), (y = g.querySelector(".card-button button")) == null || y.click(), (C = document.querySelector(`#${p}`)) == null || C.remove(), setTimeout(() => {
+                  var x, y, L;
+                  ((x = b.querySelector(".title-card")) == null ? void 0 : x.textContent) === f && (b.click(), (y = g.querySelector(".card-button button")) == null || y.click(), (L = document.querySelector(`#${p}`)) == null || L.remove(), setTimeout(() => {
                     document.body.classList.remove("modal-open-hidden");
                   }, 1e3));
                 });
@@ -1425,26 +1438,26 @@ section.cart-header-trustpilot {
           childList: !0,
           subtree: !0
         });
-      }), L(
+      }), C(
         ".crs-mattress-item:not(.crs-mattress-see-all) > *:not(.crs-mattress-footer)",
         "click",
         (r) => {
-          var w, S;
-          const l = r.target.closest(".crs-mattress-item").dataset.mattressId, f = (S = (w = r.target.closest(".crs-mattress-item")) == null ? void 0 : w.querySelector("h3")) == null ? void 0 : S.textContent;
-          document.body.classList.add("modal-open-hidden"), q(
+          var w, M;
+          const l = r.target.closest(".crs-mattress-item").dataset.mattressId, f = (M = (w = r.target.closest(".crs-mattress-item")) == null ? void 0 : w.querySelector("h3")) == null ? void 0 : M.textContent;
+          document.body.classList.add("modal-open-hidden"), Z(
             "exp_m_upsell_click_02",
             f,
             "click",
             "Add Matress & Save"
-          ), c.click(), Z('[role="dialog"][data-state="open"]').then(() => {
+          ), c.click(), $('[role="dialog"][data-state="open"]').then(() => {
             const h = document.querySelector(
               '[role="dialog"][data-state="open"]'
             ), k = h == null ? void 0 : h.querySelector("h2 + button"), E = Array.from(
               (h == null ? void 0 : h.querySelectorAll(".ss-tabs a")) || []
             ).find(
               (g) => {
-                var M;
-                return ((M = g.textContent) == null ? void 0 : M.trim()) === Object.keys(d).find(
+                var S;
+                return ((S = g.textContent) == null ? void 0 : S.trim()) === Object.keys(d).find(
                   (b) => d[b].some(
                     (x) => x.id == l
                   )
@@ -1453,21 +1466,21 @@ section.cart-header-trustpilot {
             );
             E == null || E.click(), setTimeout(() => {
               h == null || h.querySelectorAll(".card-addons").forEach((g) => {
-                var M;
-                if (((M = g.querySelector(".title-card")) == null ? void 0 : M.textContent) === f) {
+                var S;
+                if (((S = g.querySelector(".title-card")) == null ? void 0 : S.textContent) === f) {
                   const b = g.querySelector("button");
-                  b == null || b.click(), Z(
+                  b == null || b.click(), $(
                     '[role="dialog"][data-state="open"] .mattress-details'
                   ).then((x) => {
-                    var _;
+                    var z;
                     const y = x.closest(
                       '[role="dialog"]'
-                    ), C = y == null ? void 0 : y.querySelector("h2 + button");
-                    C == null || C.addEventListener("click", () => {
+                    ), L = y == null ? void 0 : y.querySelector("h2 + button");
+                    L == null || L.addEventListener("click", () => {
                       k == null || k.click(), setTimeout(() => {
                         document.body.classList.remove("modal-open-hidden");
                       }, 500);
-                    }), (_ = y == null ? void 0 : y.previousElementSibling) == null || _.addEventListener(
+                    }), (z = y == null ? void 0 : y.previousElementSibling) == null || z.addEventListener(
                       "click",
                       (rt) => {
                         rt.target.closest("[data-vaul-overlay]") && (k == null || k.click(), setTimeout(() => {
@@ -1484,7 +1497,7 @@ section.cart-header-trustpilot {
       );
     }
     async observeMattressButtons() {
-      await Z(".cart-product-image");
+      await $(".cart-product-image");
       let t;
       this.device === "desktop" ? t = document.querySelectorAll(".cart-product-image") : t = document.querySelectorAll(
         ".cart-product-item + .block.md\\:hidden"
@@ -1530,16 +1543,16 @@ section.cart-header-trustpilot {
       });
     }
     async changeChosenMattressElement(t) {
-      var I, L, $;
+      var F, C, q;
       const e = t.querySelectorAll("button");
       t.querySelector(".image-card  img"), t.querySelector(".title-card").textContent;
       let n = null, a = null, s;
-      this.device === "desktop" ? s = t.closest(".cart-product-item") : s = (I = t.closest("section")) == null ? void 0 : I.previousElementSibling;
+      this.device === "desktop" ? s = t.closest(".cart-product-item") : s = (F = t.closest("section")) == null ? void 0 : F.previousElementSibling;
       const c = s == null ? void 0 : s.querySelector(
         ".cart-product-info a"
       );
       if (!c) return;
-      const o = c.href, d = this.extractIdFromUrl(o), u = (L = this.cartItems.find((v) => v.id === d)) == null ? void 0 : L.handle, { allMattresses: p } = await this.fetchMattresses(u);
+      const o = c.href, d = this.extractIdFromUrl(o), u = (C = this.cartItems.find((v) => v.id === d)) == null ? void 0 : C.handle, { allMattresses: p } = await this.fetchMattresses(u);
       e.forEach((v) => {
         var r, l;
         (r = v.textContent) != null && r.includes("See Details") && (v.classList.add("crs-mattress-details-btn"), n = v), (l = v.textContent) != null && l.includes("Remove") && (a = v, v.classList.add("crs-mattress-remove-btn"));
@@ -1548,7 +1561,7 @@ section.cart-header-trustpilot {
         ".card-pricing-details .price > span"
       );
       if (m) {
-        const v = ($ = m.textContent) == null ? void 0 : $.replace(/Was:\s*/, "").trim();
+        const v = (q = m.textContent) == null ? void 0 : q.replace(/Was:\s*/, "").trim();
         m.textContent = v || "";
       }
       a && n && a.insertAdjacentElement(
@@ -1579,14 +1592,14 @@ section.cart-header-trustpilot {
       this.init();
     }
     init() {
-      new J(), new nt(), new Y(), new G(), new O(), new R();
+      new J(), new nt(), new Y(), new G(), new D(), new R();
     }
   }
   H({
     name: "Cart Changes v2",
     dev: "OS"
   }), T("mattress_upsell");
-  class z {
+  class j {
     constructor() {
       this.init();
     }
@@ -1597,8 +1610,7 @@ section.cart-header-trustpilot {
       return window.location.href.includes("/cart");
     }
   }
-  return new z(), {
-    LaunchExperiment: z
+  return new j(), {
+    LaunchExperiment: j
   };
 }();
-//# sourceMappingURL=index.js.map
