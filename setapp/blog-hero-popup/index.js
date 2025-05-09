@@ -1,13 +1,13 @@
 (function() {
   "use strict";
-  const k = ({ name: h, dev: n }) => {
+  const _ = ({ name: u, dev: e }) => {
     console.log(
-      `%c EXP: ${h} (DEV: ${n})`,
+      `%c EXP: ${u} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, E = (h) => {
-    let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", h, "variant_1"));
+  }, S = (u) => {
+    let e = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", u, "variant_1"));
     }, 1e3);
   }, g = [
     {
@@ -55,8 +55,136 @@
           subnote: "Enjoy now for FREE, and protect your memories forever"
         }
       }
+    },
+    {
+      link: "/how-to/download-youtube-videos",
+      title: "How to save YouTube videos on Mac",
+      description: "How to download a YouTube video on a Mac using dedicated apps and built-in programs to get the ability to edit and share video files.",
+      headerBlock: {
+        title: "Download YouTube videos in high quality",
+        description: "Get Downie on Setapp to save, share or edit any YouTube video. Need audio, subtitles, or thumbnails separately? Downie has you covered.",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/how-to-recover-deleted-text-messages-on-iphone",
+      title: "How to retrieve deleted text messages on your iPhone",
+      description: "How to recover deleted text messages iPhone using Apple functions, phone provider, and dedicated pro apps.",
+      headerBlock: {
+        title: "The fastest way to recover lost data on iPhone",
+        description: "Install Disk Drill on your Mac from Setapp and recover any lost files on iPhone in a few clicks.",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/how-to-recover-an-unsaved-word-document-on-mac",
+      title: "How to recover unsaved Word document on a Mac",
+      description: "When you need to recover Word document Mac computers don’t respond well to the retrieval process. Microsoft Word is a third party app, and Apple doesn’t automatically save its documents to icloud as it does with apps like Pages.",
+      headerBlock: {
+        title: "Recover Word documents on Mac from any device",
+        description: "Have your important Word documents been lost or intentionally destroyed? Get DiskDrill on Setapp to recover deleted files.",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/convert-youtube-to-mp3",
+      title: "Best ways to convert YouTube to MP3",
+      description: "Find out the best ways to convert YouTube to MP3 format, download whole playlists in a click, and transfer media to other devices instantly.",
+      headerBlock: {
+        title: "Easily convert a YouTube video to MP3",
+        description: "Install Pulltube or Downie to grab your video in the desired quality, adjust the length, and instantly convert it to the preferred format. Get both apps on Setapp.",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png"
+      },
+      popupData: {
+        step1: {
+          title: "Have you successfully converted your YouTube video to MP3?"
+        },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/download-facebook-video",
+      title: "How to download Facebook videos to Mac",
+      description: "Learn how to save from Facebook. Keep your favorite videos close at hand for easy access and enjoyment.",
+      headerBlock: {
+        title: "Effortlessly download videos from leading sites ",
+        description: "Explore Pulltube and Downie, the Mac media downloaders available on Setapp, and easily save all the content you desire.",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/how-to-recover-sd-card-on-mac",
+      title: "How to recover deleted files from an SD card on a Mac: 5 easy ways",
+      description: "No matter what caused the data loss, learn how to recover an SD card on Mac with our guide. Quickly recover photos, documents, and more.",
+      headerBlock: {
+        title: "Recover Word documents on Mac from any device",
+        description: "Disk Drill can recover them regardless of the cause of the loss – accidental deletion, data corruption, disk damage, etc. Available on Setapp.",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/unblur-an-image",
+      title: "How to unblur an image quickly and easily",
+      description: "Find out how to sharpen blurry pictures in a variety of ways, from using traditional photo-editing tools to web apps to AI-powered software.",
+      headerBlock: {
+        title: "Perfect your photo-editing workflow",
+        description: "Use the best image-manipulation software from the Setapp collection. Try all the apps for free.",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/566/0/icon-1741357275-67cb00db1ded3.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/tiktok-banned-reasons-and-solutions",
+      title: "TikTok banned: Reasons and solutions",
+      description: "Find out ways to unblock TikTok or work around its regional content restrictions, keeping your web browsing secure and anonymous.",
+      headerBlock: {
+        title: "Safely access content anywhere in the world",
+        description: "Learn to connect to the web using secure VPN protocols and find other ways to optimize your productivity with 240+ apps on Setapp",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/433/42254/icon-1743694727-67eeab8756821.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
+    },
+    {
+      link: "/how-to/open-rar-files-on-mac",
+      title: "How to open RAR files on Mac",
+      description: "Learn how to effortlessly open RAR files on Mac and how to extract .rar files using Terminal with step-by-step instructions.",
+      headerBlock: {
+        title: "Easy drag-and-drop compression for RAR, ZIP, and more on Mac",
+        description: "Macs don’t have native support for compressed folders. With Setapp’s Archiver, customize your (de)compression or preview your file without unpacking",
+        imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png"
+      },
+      popupData: {
+        step1: { title: "" },
+        step2: { title: "", description: "", applist: [], subnote: "" }
+      }
     }
-  ], S = `.article header + .article__header-image {
+  ], E = `.article header + .article__header-image {
   display: none;
 }
 
@@ -403,53 +531,53 @@
       this.addStyles(), this.render(), this.changeTitlePosition(), this.renderNewSearch(), this.eventListeners();
     }
     handleResize() {
-      const n = this.isMobileHeader;
-      this.isMobileHeader = window.innerWidth < 1280, n !== this.isMobileHeader && this.moveSearchElement();
+      const e = this.isMobileHeader;
+      this.isMobileHeader = window.innerWidth < 1280, e !== this.isMobileHeader && this.moveSearchElement();
     }
     moveSearchElement() {
       var o;
-      const n = document.querySelector(".crs-search");
-      if (!n) return;
-      (o = n.parentElement) == null || o.removeChild(n);
-      const e = document.querySelector(
+      const e = document.querySelector(".crs-search");
+      if (!e) return;
+      (o = e.parentElement) == null || o.removeChild(e);
+      const t = document.querySelector(
         ".site-navigation__menu-list .site-navigation__item-divider"
-      ), t = document.querySelector(".site-navigation__signup-button");
-      !this.isMobileHeader && e && e.insertAdjacentElement("beforebegin", n), this.isMobileHeader && t && t.insertAdjacentElement("beforebegin", n);
+      ), n = document.querySelector(".site-navigation__signup-button");
+      !this.isMobileHeader && t && t.insertAdjacentElement("beforebegin", e), this.isMobileHeader && n && n.insertAdjacentElement("beforebegin", e);
     }
     render() {
       var c;
-      const n = window.location.pathname, e = g.find(
-        (r) => n.includes(r.link)
+      const e = window.location.pathname, t = g.find(
+        (r) => e.includes(r.link)
       );
-      if (!e) {
+      if (!t) {
         console.error("No article found for the current path");
         return;
       }
       const {
-        description: t,
+        description: n,
         headerBlock: {
           description: o,
-          title: i,
-          imgSrc: a
+          title: a,
+          imgSrc: s
         }
-      } = e, p = (
+      } = t, p = (
         /* HTML */
         `<div class="crs-hero">
       <div class="crs-hero-inner">
         <div class="crs-hero-text">
           <div class="crs-title-wrap" id="crs-title-wrap"></div>
-          <div class="crs-hero-description">${t}</div>
+          <div class="crs-hero-description">${n}</div>
         </div>
         <div class="crs-hero-solution">
           <div class="crs-hero-solution-note">Fastest solution</div>
           <div class="crs-solution-inner">
             <div class="crs-solution-content">
-              <div class="crs-solution-title">${i}</div>
+              <div class="crs-solution-title">${a}</div>
               <div class="crs-solution-description">
                 ${o}
               </div>
               <div class="crs-solution-actions">
-                <button class="btn-download" id="crs-download">
+                <button class="btn btn_md btn_primary accept-button" id="crs-download">
                   Download now
                 </button>
                 <div class="crs-solution-security">Security-tested</div>
@@ -457,7 +585,7 @@
             </div>
             <div class="crs-solution-image">
               <img
-                src="${a}"
+                src="${s}"
                 alt=""
                 width="112"
                 height="112"
@@ -472,12 +600,12 @@
       (c = document.querySelector("header > .page-header-wrapper")) == null || c.insertAdjacentHTML("beforeend", p);
     }
     changeTitlePosition() {
-      const n = document.querySelector("h1"), e = document.querySelector("#crs-title-wrap");
-      !n || !e || e.appendChild(n);
+      const e = document.querySelector("h1"), t = document.querySelector("#crs-title-wrap");
+      !e || !t || t.appendChild(e);
     }
     renderNewSearch() {
       document.querySelectorAll(".crs-search").forEach((o) => o.remove());
-      const n = (
+      const e = (
         /* HTML */
         `<div class="crs-search search js-search-block ">
       <button class="search-button"></button>
@@ -512,42 +640,42 @@
         />
       </button>
     </div>`
-      ), e = document.querySelector(
+      ), t = document.querySelector(
         ".site-navigation__menu-list .site-navigation__item-divider"
-      ), t = document.querySelector(".site-navigation__signup-button");
-      !this.isMobileHeader && e && (e.insertAdjacentHTML("beforebegin", n), e.previousElementSibling), this.isMobileHeader && t && (t.insertAdjacentHTML("beforebegin", n), t.previousElementSibling);
+      ), n = document.querySelector(".site-navigation__signup-button");
+      !this.isMobileHeader && t && (t.insertAdjacentHTML("beforebegin", e), t.previousElementSibling), this.isMobileHeader && n && (n.insertAdjacentHTML("beforebegin", e), n.previousElementSibling);
     }
     eventListeners() {
-      const n = document.querySelector(".site-navigation__menu-list"), e = document.querySelector(".crs-search"), t = e == null ? void 0 : e.querySelector(
+      const e = document.querySelector(".site-navigation__menu-list"), t = document.querySelector(".crs-search"), n = t == null ? void 0 : t.querySelector(
         ".search-button"
-      ), o = e == null ? void 0 : e.querySelector(
+      ), o = t == null ? void 0 : t.querySelector(
         "form"
-      ), i = e == null ? void 0 : e.querySelector(".search__close-btn"), a = e == null ? void 0 : e.querySelector(
+      ), a = t == null ? void 0 : t.querySelector(".search__close-btn"), s = t == null ? void 0 : t.querySelector(
         ".js-search-input"
       ), p = document.querySelector(".site-navigation__content");
-      if (n && e && t && o && i && a) {
+      if (e && t && n && o && a && s) {
         const r = () => {
-          for (const m of Array.from(n.children)) {
-            if (m === e)
+          for (const m of Array.from(e.children)) {
+            if (m === t)
               break;
             m.tagName === "LI" && (m.style.display = "none");
           }
-          e.dataset.status = "active", o.style.display = "block", o.offsetWidth, o.classList.add("crs-search-form-animate"), t.style.display = "none", i.style.display = "";
+          t.dataset.status = "active", o.style.display = "block", o.offsetWidth, o.classList.add("crs-search-form-animate"), n.style.display = "none", a.style.display = "";
           const d = o.querySelector("input");
           d && setTimeout(() => d.focus(), 200), window.innerWidth < 576 && p && p.classList.add("search-active");
         }, l = () => {
-          e.dataset.status = "inactive", o.classList.remove("crs-search-form-animate"), setTimeout(() => {
+          t.dataset.status = "inactive", o.classList.remove("crs-search-form-animate"), setTimeout(() => {
             o.style.display = "none";
-          }, 200), t.style.display = "", i.style.display = "none", a.value = "";
-          for (const d of Array.from(n.children)) {
-            if (d === e) break;
+          }, 200), n.style.display = "", a.style.display = "none", s.value = "";
+          for (const d of Array.from(e.children)) {
+            if (d === t) break;
             d.tagName === "LI" && (d.style.display = "");
           }
           p && p.classList.remove("search-active");
         };
-        t.addEventListener("click", r), i == null || i.addEventListener("click", l), a.addEventListener("focus", () => {
-          i == null || i.classList.remove("search__close-btn_hidden");
-        }), a.addEventListener("blur", l);
+        n.addEventListener("click", r), a == null || a.addEventListener("click", l), s.addEventListener("focus", () => {
+          a == null || a.classList.remove("search__close-btn_hidden");
+        }), s.addEventListener("blur", l);
       }
       const c = document.querySelector("#crs-download");
       c == null || c.addEventListener("click", async () => {
@@ -559,8 +687,8 @@
       });
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.textContent = S, document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.textContent = E, document.head.appendChild(e);
     }
   }
   const z = `/* CRS Popup backdrop */
@@ -653,26 +781,26 @@ body:has(.crs-popup--visible) {
      * Opens the popup with the provided content
      * @param content HTML string or DOM element
      */
-    open(n) {
-      this.isOpen || (this.isOpen = !0, this.render(n), setTimeout(() => {
-        var e, t;
-        (e = this.popupElement) == null || e.classList.add("crs-popup--visible"), (t = this.backdropElement) == null || t.classList.add("crs-popup-backdrop--visible");
+    open(e) {
+      this.isOpen || (this.isOpen = !0, this.render(e), setTimeout(() => {
+        var t, n;
+        (t = this.popupElement) == null || t.classList.add("crs-popup--visible"), (n = this.backdropElement) == null || n.classList.add("crs-popup-backdrop--visible");
       }, 10));
     }
     /**
      * Closes the popup
      */
     close() {
-      var n, e;
-      this.isOpen && ((n = this.popupElement) == null || n.classList.remove("crs-popup--visible"), (e = this.backdropElement) == null || e.classList.remove("crs-popup-backdrop--visible"), setTimeout(() => {
-        var t, o;
-        (t = this.popupElement) == null || t.remove(), (o = this.backdropElement) == null || o.remove(), this.popupElement = null, this.backdropElement = null, this.isOpen = !1;
+      var e, t;
+      this.isOpen && ((e = this.popupElement) == null || e.classList.remove("crs-popup--visible"), (t = this.backdropElement) == null || t.classList.remove("crs-popup-backdrop--visible"), setTimeout(() => {
+        var n, o;
+        (n = this.popupElement) == null || n.remove(), (o = this.backdropElement) == null || o.remove(), this.popupElement = null, this.backdropElement = null, this.isOpen = !1;
       }, 200));
     }
-    render(n) {
+    render(e) {
       this.backdropElement = document.createElement("div"), this.backdropElement.className = "crs-popup-backdrop", this.backdropElement.addEventListener("click", () => this.close()), this.popupElement = document.createElement("div"), this.popupElement.className = "crs-popup";
-      const e = document.createElement("div");
-      e.className = "crs-popup__header", e.innerHTML = `
+      const t = document.createElement("div");
+      t.className = "crs-popup__header", t.innerHTML = `
       <div class="logo">
         <svg class="logo__symbol" xmlns="http://www.w3.org/2000/svg" width="20" height="32" viewBox="0 0 19 30">
           <path fill-rule="evenodd" d="M10.694 9.987l3.372 3.404a.748.748 0 0 0 1.065 0l3.372-3.404a.764.764 0 0 0 0-1.075L15.13 5.508a.748.748 0 0 0-1.065 0l-3.372 3.404a.766.766 0 0 0 0 1.075zM8.829 8.106a.748.748 0 0 0 1.065 0l3.373-3.404a.765.765 0 0 0 0-1.076L9.894.222a.748.748 0 0 0-1.065 0L5.458 3.626a.764.764 0 0 0 0 1.076l3.371 3.404zm0 2.688l-3.371 3.404a.764.764 0 0 0 0 1.076l3.371 3.403a.747.747 0 0 0 1.065 0l3.373-3.403a.765.765 0 0 0 0-1.076l-3.373-3.404a.748.748 0 0 0-1.065 0zm-5.236 2.598a.748.748 0 0 0 1.065 0L8.03 9.988a.767.767 0 0 0 0-1.076L4.658 5.509a.747.747 0 0 0-1.065 0L.221 8.912a.765.765 0 0 0 0 1.076l3.372 3.404zm11.538 2.688a.748.748 0 0 0-1.065 0l-3.373 3.404a.766.766 0 0 0 0 1.075l3.373 3.404a.749.749 0 0 0 1.065 0l3.372-3.404a.764.764 0 0 0 0-1.076L15.13 16.08zm-5.237 5.285a.748.748 0 0 0-1.065 0l-3.372 3.404a.765.765 0 0 0 0 1.076l3.372 3.404a.748.748 0 0 0 1.065 0l3.373-3.404a.764.764 0 0 0 0-1.076l-3.373-3.404zm-1.863-1.881L4.658 16.08a.748.748 0 0 0-1.065 0L.22 19.484a.766.766 0 0 0 0 1.075l3.372 3.404a.75.75 0 0 0 1.066 0L8.03 20.56a.766.766 0 0 0 0-1.075z"></path>
@@ -686,16 +814,16 @@ body:has(.crs-popup--visible) {
         </svg>
       </div>
     `;
-      const t = document.createElement("button");
-      t.className = "btn modal__close crs-popup__close", t.setAttribute("aria-label", "Close"), t.addEventListener("click", () => this.close());
+      const n = document.createElement("button");
+      n.className = "btn modal__close crs-popup__close", n.setAttribute("aria-label", "Close"), n.addEventListener("click", () => this.close());
       const o = document.createElement("div");
-      o.className = "crs-popup__content", typeof n == "string" ? o.innerHTML = n : o.appendChild(n), o.addEventListener("click", (i) => {
-        i.target.closest("[data-popup-close]") && this.close();
-      }), this.popupElement.appendChild(e), this.popupElement.appendChild(t), this.popupElement.appendChild(o), document.body.appendChild(this.backdropElement), document.body.appendChild(this.popupElement);
+      o.className = "crs-popup__content", typeof e == "string" ? o.innerHTML = e : o.appendChild(e), o.addEventListener("click", (a) => {
+        a.target.closest("[data-popup-close]") && this.close();
+      }), this.popupElement.appendChild(t), this.popupElement.appendChild(n), this.popupElement.appendChild(o), document.body.appendChild(this.backdropElement), document.body.appendChild(this.popupElement);
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.innerHTML = z, document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.innerHTML = z, document.head.appendChild(e);
     }
   }
   const P = `.crs-popup__content {
@@ -885,9 +1013,10 @@ div[data-step] {
     init() {
       this.addStyles();
     }
-    render(n) {
-      var i;
-      const { step1: e, step2: t } = n;
+    render(e) {
+      var a;
+      if (!e) return;
+      const { step1: t, step2: n } = e;
       return (
         /* HTML */
         `
@@ -895,9 +1024,9 @@ div[data-step] {
         <div data-step="1" style="display: block;">
           <div class="crs-popup-content-step">
             <div class="crs-popup-content-supnote">
-              🖐 <span class="highlight">Wait!</span> Before you go...
+              🖐 <span class="highlight">Wait!&nbsp; </span> Before you go...
             </div>
-            <div class="crs-popup-content-title">${e.title}</div>
+            <div class="crs-popup-content-title">${t.title}</div>
           </div>
           <div class="crs-popup-content-actions">
             <div class="crs-popup-content-actions-wrap">
@@ -910,23 +1039,23 @@ div[data-step] {
         </div>
         <div data-step="2" style="display: none">
           <div class="crs-popup-content-step">
-            <div class="crs-popup-content-title">${t.title}</div>
+            <div class="crs-popup-content-title">${n.title}</div>
             <div class="crs-popup-content-description">
-              ${t.description || ""}
+              ${n.description || ""}
             </div>
             <div class="crs-popup-content-apps">
               <ul>
-                ${(i = t.applist) == null ? void 0 : i.map(
-          (a) => (
+                ${(a = n.applist) == null ? void 0 : a.map(
+          (s) => (
             /* HTML */
             `
                       <li>
-                        <img src="${a.imgSrc}" alt="${a.title}" />
+                        <img src="${s.imgSrc}" alt="${s.title}" />
                         <div class="crs-popup-content-app-title">
-                          ${a.title}
+                          ${s.title}
                         </div>
                         <div class="crs-popup-content-app-description">
-                          ${a.description}
+                          ${s.description}
                         </div>
                       </li>
                     `
@@ -937,10 +1066,10 @@ div[data-step] {
           </div>
           <div class="crs-popup-content-actions">
             <div class="crs-popup-content-actions-note">
-              ${t.subnote || ""}
+              ${n.subnote || ""}
             </div>
             <div class="crs-popup-content-actions-wrap">
-              <button class="btn btn-download crs-popup-cta" data-popup-close>
+              <button class="btn btn_md btn_primary accept-button crs-popup-cta" data-popup-close>
                 Try Free
               </button>
             </div>
@@ -950,20 +1079,20 @@ div[data-step] {
     `
       );
     }
-    changeStep(n) {
-      document.querySelectorAll("[data-step]").forEach((t) => {
-        parseInt(t.getAttribute("data-step") || "0") === n ? t.style.display = "flex" : t.style.display = "none";
+    changeStep(e) {
+      document.querySelectorAll("[data-step]").forEach((n) => {
+        parseInt(n.getAttribute("data-step") || "0") === e ? n.style.display = "flex" : n.style.display = "none";
       });
     }
     initEvents() {
-      const n = document.querySelector(
+      const e = document.querySelector(
         ".crs-popup-content-actions button:nth-child(1)"
-      ), e = document.querySelector(
+      ), t = document.querySelector(
         ".crs-popup-content-actions .crs-popup-cta"
       );
-      n && n.addEventListener("click", () => {
+      e && e.addEventListener("click", () => {
         this.changeStep(2);
-      }), e == null || e.addEventListener("click", async () => {
+      }), t == null || t.addEventListener("click", async () => {
         document.querySelectorAll(
           'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
         ).forEach((o) => {
@@ -972,11 +1101,11 @@ div[data-step] {
       });
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.innerHTML = P, document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.innerHTML = P, document.head.appendChild(e);
     }
   }
-  class C {
+  class D {
     constructor() {
       this.popup = new M(), this.popupContent = new T(), this.init();
     }
@@ -984,16 +1113,19 @@ div[data-step] {
       this.triggerPopup();
     }
     triggerPopup() {
-      const n = window.location.pathname, e = g.find(
-        (s) => n.includes(s.link)
+      const e = window.location.pathname, t = g.find(
+        (i) => e.includes(i.link)
       );
-      if (!e) {
+      if (!t) {
         console.error("No article found for the current path");
         return;
       }
-      let t = !1, o = !1, i = !1, a = !1;
-      const p = /Mobi|Android/i.test(navigator.userAgent), c = () => {
-        t || (t = !0, this.popup.open(this.popupContent.render(e.popupData)), this.popupContent.initEvents(), D());
+      let n = !1, o = !1, a = !1, s = !1;
+      const p = window.innerWidth < 992, c = () => {
+        if (n) return;
+        n = !0;
+        const i = this.popupContent.render(t.popupData);
+        i && (this.popup.open(i), this.popupContent.initEvents(), B());
       }, r = [];
       let l;
       const d = () => {
@@ -1001,45 +1133,47 @@ div[data-step] {
           console.log("[POPUP TRIGGER] inactivity > 30s"), c();
         }, 3e4);
       };
-      ["mousemove", "keydown", "scroll", "touchstart"].forEach((s) => {
-        window.addEventListener(s, d), r.push(() => window.removeEventListener(s, d));
+      ["mousemove", "keydown", "scroll", "touchstart"].forEach((i) => {
+        window.addEventListener(i, d), r.push(() => window.removeEventListener(i, d));
       }), d();
       const m = setTimeout(() => {
         console.log("[POPUP TRIGGER] time on page > 90s"), c();
       }, 9e4);
       r.push(() => clearTimeout(m));
-      const A = setTimeout(() => {
+      const C = setTimeout(() => {
         o = !0;
       }, 1e4);
-      r.push(() => clearTimeout(A));
-      const v = (s) => {
-        !o || t || s.clientY <= 0 && (console.log("[POPUP TRIGGER] exit intent"), c());
+      r.push(() => clearTimeout(C));
+      const v = (i) => {
+        if (!o || n) return;
+        const h = i.clientY <= 0, R = i.clientX <= 0, A = i.clientX >= window.innerWidth, j = i.clientY >= window.innerHeight;
+        (h || R || A || j) && (console.log("[POPUP TRIGGER] exit intent"), c());
       };
       p || (document.addEventListener("mouseleave", v), r.push(() => document.removeEventListener("mouseleave", v)));
-      let f = window.scrollY, x = Date.now();
-      const w = () => {
-        const s = Date.now(), u = window.scrollY;
-        f - u > 100 && s - x < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), c()), f = u, x = s;
-      };
-      window.addEventListener("scroll", w), r.push(() => window.removeEventListener("scroll", w));
+      let f = window.scrollY, w = Date.now();
       const b = () => {
-        const s = window.scrollY || document.documentElement.scrollTop, u = document.documentElement.scrollHeight - window.innerHeight;
-        u > 0 && s / u > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), c());
+        const i = Date.now(), h = window.scrollY;
+        f - h > 100 && i - w < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), c()), f = h, w = i;
       };
       window.addEventListener("scroll", b), r.push(() => window.removeEventListener("scroll", b));
+      const x = () => {
+        const i = window.scrollY || document.documentElement.scrollTop, h = document.documentElement.scrollHeight - window.innerHeight;
+        h > 0 && i / h > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), c());
+      };
+      window.addEventListener("scroll", x), r.push(() => window.removeEventListener("scroll", x));
       const y = () => {
-        document.visibilityState === "hidden" && (i = !0), p && document.visibilityState === "visible" && i && !t && (console.log("[POPUP TRIGGER] tab visible again (mobile)"), c());
+        document.visibilityState === "hidden" && (a = !0), p && document.visibilityState === "visible" && a && !n && (console.log("[POPUP TRIGGER] tab visible again (mobile)"), c());
       };
       document.addEventListener("visibilitychange", y), r.push(() => document.removeEventListener("visibilitychange", y));
-      const _ = (s) => {
-        var u;
-        p && !t && !a && ((u = s.preventDefault) == null || u.call(s), console.log("[POPUP TRIGGER] back button (mobile)"), c(), a = !0, setTimeout(() => {
-          a = !1;
+      const k = (i) => {
+        var h;
+        p && !n && !s && ((h = i.preventDefault) == null || h.call(i), console.log("[POPUP TRIGGER] back button (mobile)"), c(), s = !0, setTimeout(() => {
+          s = !1;
         }, 2e3), history.pushState(null, "", window.location.href));
       };
-      p && (window.addEventListener("popstate", _), r.push(() => window.removeEventListener("popstate", _)), history.pushState(null, "", window.location.href));
-      function D() {
-        r.forEach((s) => s()), clearTimeout(l);
+      p && (window.addEventListener("popstate", k), r.push(() => window.removeEventListener("popstate", k)), history.pushState(null, "", window.location.href));
+      function B() {
+        r.forEach((i) => i()), clearTimeout(l);
       }
     }
   }
@@ -1055,20 +1189,19 @@ div[data-step] {
     "/how-to/tiktok-banned-reasons-and-solutions",
     "/how-to/open-rar-files-on-mac"
   ];
-  k({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), E("");
+  _({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), S("");
   class q {
     constructor() {
       this.init();
     }
     init() {
-      const n = window.location.pathname;
-      if (!H.includes(n)) {
+      const e = window.location.pathname;
+      if (!H.includes(e)) {
         console.log("Current page is not in blogLinks");
         return;
       }
-      new L(), new C();
+      new L(), new D();
     }
   }
   new q();
 })();
-//# sourceMappingURL=index.js.map
