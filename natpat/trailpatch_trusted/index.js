@@ -147,6 +147,13 @@
   padding: 15px 40px;
 }
 
+.lp-tr--mobile.lp-tr--main-title {
+  font-family: DINEngschrift LT, sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
 .lp-tr--btn {
   margin-top: 30px;
 }
