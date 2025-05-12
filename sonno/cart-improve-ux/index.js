@@ -67,7 +67,10 @@ var Y = function() {
   font-weight: 600;
   line-height: 32px;
 }
-`;
+
+[data-fixed-cta="true"] .rp-micro-app-dummy-icon-container {
+  bottom: 70px !important;
+}`;
   class Z {
     constructor() {
       this.init();
@@ -111,7 +114,7 @@ var Y = function() {
           const a = s.getBoundingClientRect(), d = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(s);
           return d && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
-        t.style.display = i ? "none" : "";
+        t.style.display = i ? "none" : "", document.body.dataset.fixedCta = i ? "false" : "true";
       };
       new MutationObserver(n).observe(document.body, {
         childList: !0,
