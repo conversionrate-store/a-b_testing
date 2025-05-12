@@ -108,7 +108,7 @@ var q = function() {
         const r = Array.from(
           document.querySelectorAll('a[href="/checkout"]:not(.crs-cta-button)')
         ).some((s) => {
-          const c = s.getBoundingClientRect(), l = c.top < window.innerHeight && c.bottom > 0 && c.left < window.innerWidth && c.right > 0, o = window.getComputedStyle(s);
+          const a = s.getBoundingClientRect(), l = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(s);
           return l && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
         t.style.display = r ? "none" : "";
@@ -489,12 +489,12 @@ section.cart-header-trustpilot {
         ".estimate-delivery-item"
       );
       !t || !n || n.forEach((e) => {
-        var a, r;
-        if ((a = e.textContent) != null && a.toLocaleLowerCase().includes("delivered")) {
+        var c, r;
+        if ((c = e.textContent) != null && c.toLocaleLowerCase().includes("delivered")) {
           const s = e.querySelector(".estimate-delivery-date");
           if (s) {
-            const c = (r = s.textContent) == null ? void 0 : r.trim();
-            return c ? (t.textContent = c, c) : void 0;
+            const a = (r = s.textContent) == null ? void 0 : r.trim();
+            return a ? (t.textContent = a, a) : void 0;
           }
         }
       });
@@ -560,10 +560,10 @@ section.cart-header-trustpilot {
     observeCartQuantity() {
       const t = () => {
         var r;
-        const e = document.querySelector("cart-quantity"), a = document.getElementById("crs-cart-count");
-        if (e && a) {
-          const s = e.getElementsByClassName("w-3.5")[0], c = s ? s.getElementsByClassName("w-full")[0] : null;
-          a.textContent = ((r = c == null ? void 0 : c.textContent) == null ? void 0 : r.trim()) || "0";
+        const e = document.querySelector("cart-quantity"), c = document.getElementById("crs-cart-count");
+        if (e && c) {
+          const s = e.getElementsByClassName("w-3.5")[0], a = s ? s.getElementsByClassName("w-full")[0] : null;
+          c.textContent = ((r = a == null ? void 0 : a.textContent) == null ? void 0 : r.trim()) || "0";
         }
       };
       t();
@@ -629,7 +629,7 @@ section.cart-header-trustpilot {
     margin-top: 12px;
     position: relative;
     top: 0;
-    right: -8px;
+    right: 0;
     height: 24px;
     margin-left: auto;
   }
@@ -691,6 +691,13 @@ section.cart-header-trustpilot {
     background: #fff;
   }
 }
+
+[data-remain] {
+  font-variant-numeric: tabular-nums;
+  min-width: 4.2ch;
+  display: inline-block;
+  text-align: center;
+}
 `, h = {
     cartProductItem: ".cart-product-section .cart-product-item"
   };
@@ -731,10 +738,10 @@ section.cart-header-trustpilot {
         ".cart-product-item + .block.md\\:hidden"
       );
       const n = new MutationObserver((e) => {
-        e.forEach((a) => {
-          a.addedNodes.forEach((r) => {
-            var s, c, l, o;
-            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((s = r.textContent) != null && s.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((c = r.textContent) != null && c.includes("Remove")) && ((l = r.textContent) != null && l.includes("See Details")))) {
+        e.forEach((c) => {
+          c.addedNodes.forEach((r) => {
+            var s, a, l, o;
+            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((s = r.textContent) != null && s.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((a = r.textContent) != null && a.includes("Remove")) && ((l = r.textContent) != null && l.includes("See Details")))) {
               const u = (o = r.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
               u && u.remove(), r.classList.add("crs-mattress-chosen");
             }
@@ -767,12 +774,12 @@ section.cart-header-trustpilot {
     }
     updateAll() {
       const t = Math.floor(this.remain / 60).toString().padStart(2, "0"), n = (this.remain % 60).toString().padStart(2, "0");
-      this.headerRemainEls && this.headerRemainEls.forEach((a) => {
-        a.textContent = `${t}:${n}`;
+      this.headerRemainEls && this.headerRemainEls.forEach((c) => {
+        c.textContent = `${t}:${n}`;
       });
       const e = document.querySelectorAll(".cart-product-items [data-remain]");
-      e.length && e.forEach((a) => {
-        a.textContent = `${t}:${n}`;
+      e.length && e.forEach((c) => {
+        c.textContent = `${t}:${n}`;
       });
     }
   }
