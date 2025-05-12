@@ -1,4 +1,4 @@
-var Y = function() {
+var U = function() {
   "use strict";
   const I = (r, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
@@ -13,12 +13,12 @@ var Y = function() {
       `%c EXP: ${r} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, A = (r) => {
+  }, F = (r) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
     }, 1e3);
   };
-  function f(r) {
+  function g(r) {
     return new Promise((t) => {
       if (document.querySelector(r))
         return t(document.querySelector(r));
@@ -32,7 +32,7 @@ var Y = function() {
       });
     });
   }
-  const F = `@media (min-width: 768px) {
+  const Z = `@media (min-width: 768px) {
   .crs-cta {
     display: none;
   }
@@ -125,10 +125,10 @@ var Y = function() {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = F, document.head.appendChild(t);
+      t.textContent = Z, document.head.appendChild(t);
     }
   }
-  const Z = (
+  const A = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +234,7 @@ var Y = function() {
     d="M8.224 13.68h-1.42V9.462c1.82-1.9 1.42-.95 1.42 0v4.218Z"
   />
 </svg>`
-  ), P = (
+  ), D = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +267,7 @@ var Y = function() {
     d="m20.496 10.355.183 1.08a3.433 3.433 0 0 1-2.834-.69 3.494 3.494 0 0 1-.942-1.17 3.526 3.526 0 0 1-.368-1.46L17.293 8l1.223-2.5L19.738 8l2.738.4-1.98 1.955ZM34.598 7.042l-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), D = `.section-header > *:not(.crs-header),
+  ), B = `.section-header > *:not(.crs-header),
 section.cart-header-trustpilot {
   display: none;
 }
@@ -418,7 +418,7 @@ section.cart-header-trustpilot {
     display: block;
   }
 }`;
-  class _ {
+  class P {
     constructor() {
       console.info("CartHeader"), this.init();
     }
@@ -437,7 +437,7 @@ section.cart-header-trustpilot {
       <div class="container">
         <div class="crs-header-inner">
           <div class="crs-header-block">
-            <div class="crs-icon">${Z}</div>
+            <div class="crs-icon">${A}</div>
             <div class="crs-text">Price Match Guarantee</div>
           </div>
           <div class="crs-header-block crs-header-delivery">
@@ -455,7 +455,7 @@ section.cart-header-trustpilot {
             <div class="crs-text">60 Nights Free Trial</div>
           </div>
           <div class="crs-header-block crs-header-guarantee">
-            <div class="crs-icon">${P}</div>
+            <div class="crs-icon">${D}</div>
             <div class="crs-text">5 Year Guarantee</div>
           </div>
         </div>
@@ -487,7 +487,7 @@ section.cart-header-trustpilot {
       !t || !e || t.appendChild(e);
     }
     async addDeliveryDate() {
-      await f(".estimate-delivery-item");
+      await g(".estimate-delivery-item");
       const t = document.querySelector("[data-delivery]"), e = document.querySelectorAll(
         ".estimate-delivery-item"
       );
@@ -504,10 +504,10 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = D, document.head.appendChild(t);
+      t.innerHTML = B, document.head.appendChild(t);
     }
   }
-  const N = `.crs-cart-items-count {
+  const _ = `.crs-cart-items-count {
   margin-top: 24px;
 }
 
@@ -530,7 +530,7 @@ section.cart-header-trustpilot {
   }
 }
 `;
-  class B {
+  class $ {
     constructor() {
       this.init();
     }
@@ -558,7 +558,7 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = N, document.head.appendChild(t);
+      t.textContent = _, document.head.appendChild(t);
     }
     observeCartQuantity() {
       const t = () => {
@@ -578,7 +578,7 @@ section.cart-header-trustpilot {
       });
     }
   }
-  const $ = `.cart-product-item {
+  const z = `.cart-product-item {
   margin-top: 48px;
   border-radius: 16px;
   background: #f5f5f5;
@@ -608,7 +608,6 @@ section.cart-header-trustpilot {
 }
 
 .crs-item-left-notification {
-  display: none;
   position: absolute;
   top: 91px;
   right: 0;
@@ -616,10 +615,6 @@ section.cart-header-trustpilot {
   height: 32px;
 
   background: #1e3851;
-}
-
-[data-item-left] .crs-item-left-notification {
-  display: block;
 }
 
 @media (max-width: 902px) and (min-width: 768px) {
@@ -719,12 +714,14 @@ section.cart-header-trustpilot {
     cartProductItems: ".cart-product-section .cart-product-items",
     cartProductItem: ".cart-product-section .cart-product-item"
   };
-  class z {
+  class N {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.addStyles(), this.addItemLeftNotification(), this.observeCartProductItems(), this.observeMattressButtons();
+      this.addStyles(), this.observeCartProductItems(), this.observeMattressButtons(), setTimeout(() => {
+        this.addItemLeftNotification();
+      }, 300);
     }
     renderItemLeftNotification(t, e = "afterend") {
       const n = (
@@ -739,67 +736,57 @@ section.cart-header-trustpilot {
       t && t.insertAdjacentHTML(e, n);
     }
     async observeCartProductItems() {
-      console.log("observeCartProductItems"), document.addEventListener("CART_CHANGE", (n) => {
-        console.log("CART_CHANGE", n), this.addItemLeftNotification();
-      }), await f(y.cartProductItems);
-      const t = document.querySelectorAll(
-        y.cartProductItems
-      );
-      if (!t) return;
-      const e = new MutationObserver((n) => {
-        n.forEach((c) => {
-          c.addedNodes.forEach((i) => {
-            i instanceof HTMLElement && (console.log("node", i), i.matches(".item-variants-name") && this.addItemLeftNotification());
-          });
+      new MutationObserver((e) => {
+        e.forEach((n) => {
+          n.target instanceof HTMLElement && n.target.matches(y.cartProductItems) && setTimeout(() => {
+            this.addItemLeftNotification();
+          }, 150);
         });
-      });
-      t.forEach((n) => {
-        e.observe(n, {
-          childList: !0,
-          subtree: !0
-        });
+      }).observe(document.body, {
+        childList: !0,
+        subtree: !0
       });
     }
     async addItemLeftNotification() {
       var s, a, l, o;
-      await f(y.cartProductItem);
+      await g(y.cartProductItem);
       const t = document.querySelectorAll(
         y.cartProductItem
       );
-      if (console.log("addItemLeftNotification"), !t) return;
+      if (!t) return;
       const e = sessionStorage.getItem("firstItem");
       let n = null;
       const c = document.querySelector(
         ".crs-item-left-notification"
       );
       if (c && c.remove(), e) {
-        const { titleText: d, colorText: h, headboardText: m, baseText: u } = JSON.parse(e), v = Array.from(t).find((p) => {
-          var E, S, M, k;
-          const g = p.querySelector(".cart-product-info"), x = p.querySelector(".item-variants-name"), w = p.querySelector(
+        const { titleText: d, colorText: h, headboardText: u, baseText: m } = JSON.parse(e), x = Array.from(t).find((p) => {
+          var C, E, M, k;
+          const f = p.querySelector(".cart-product-info"), v = p.querySelector(".item-variants-name"), w = p.querySelector(
             ".item-variants-name.headboard"
           ), b = p.querySelector(
             ".item-variants-name.base"
-          ), R = ((E = g == null ? void 0 : g.textContent) == null ? void 0 : E.trim()) === d, V = ((S = x == null ? void 0 : x.textContent) == null ? void 0 : S.trim()) === h, G = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === m, Q = ((k = b == null ? void 0 : b.textContent) == null ? void 0 : k.trim()) === u;
-          return R && V && G && Q;
+          ), R = ((C = f == null ? void 0 : f.textContent) == null ? void 0 : C.trim()) === d, V = ((E = v == null ? void 0 : v.textContent) == null ? void 0 : E.trim()) === h, Q = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === u, Y = ((k = b == null ? void 0 : b.textContent) == null ? void 0 : k.trim()) === m;
+          return R && V && Q && Y;
         });
-        v && (v.dataset.itemLeft = "true", n = v);
+        x && (n = x);
       }
       if (!n && !e) {
         n = t[t.length - 1];
-        const d = n.querySelector(".cart-product-info"), h = n.querySelector(".item-variants-name"), m = n.querySelector(
+        const d = n.querySelector(".cart-product-info"), h = n.querySelector(".item-variants-name"), u = n.querySelector(
           ".item-variants-name.headboard"
-        ), u = n.querySelector(
+        ), m = n.querySelector(
           ".item-variants-name.base"
         );
-        if (d || h || m || u) {
-          const v = (s = d == null ? void 0 : d.textContent) == null ? void 0 : s.trim(), p = (a = h == null ? void 0 : h.textContent) == null ? void 0 : a.trim(), g = (l = m == null ? void 0 : m.textContent) == null ? void 0 : l.trim(), x = (o = u == null ? void 0 : u.textContent) == null ? void 0 : o.trim();
+        if (d || h || u || m) {
+          const x = (s = d == null ? void 0 : d.textContent) == null ? void 0 : s.trim(), p = (a = h == null ? void 0 : h.textContent) == null ? void 0 : a.trim(), f = (l = u == null ? void 0 : u.textContent) == null ? void 0 : l.trim(), v = (o = m == null ? void 0 : m.textContent) == null ? void 0 : o.trim();
           sessionStorage.setItem(
             "firstItem",
             JSON.stringify({
-              titleText: v,
+              titleText: x,
               colorText: p,
-              headboardText: g,
-              baseText: x
+              headboardText: f,
+              baseText: v
             })
           );
         }
@@ -811,7 +798,7 @@ section.cart-header-trustpilot {
       i && this.renderItemLeftNotification(i, "beforebegin");
     }
     async observeMattressButtons() {
-      await f(".cart-product-image");
+      await g(".cart-product-image");
       let t;
       this.device === "desktop" ? t = document.querySelectorAll(".cart-product-image") : t = document.querySelectorAll(
         ".cart-product-item + .block.md\\:hidden"
@@ -836,7 +823,7 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = $, document.head.appendChild(t);
+      t.innerHTML = z, document.head.appendChild(t);
     }
   }
   class O {
@@ -844,7 +831,7 @@ section.cart-header-trustpilot {
       this.initialSeconds = 900, this.intervalId = null, this.headerRemainEls = null, this.remain = this.initialSeconds, this.init();
     }
     async init() {
-      await f(".crs-header [data-remain]"), this.headerRemainEls = document.querySelectorAll(".crs-header [data-remain]"), this.start();
+      await g(".crs-header [data-remain]"), this.headerRemainEls = document.querySelectorAll(".crs-header [data-remain]"), this.start();
     }
     start() {
       this.updateAll(), this.intervalId && clearInterval(this.intervalId), this.intervalId = window.setInterval(() => {
@@ -867,14 +854,14 @@ section.cart-header-trustpilot {
       this.init();
     }
     init() {
-      new _(), new z(), new O(), new q(), new B();
+      new P(), new N(), new O(), new q(), new $();
     }
   }
   L({
     name: "Cart Improve UX and highlight main info",
     dev: "OS"
-  }), A("mattress_upsell");
-  class C {
+  }), F("mattress_upsell");
+  class S {
     constructor() {
       this.init();
     }
@@ -885,7 +872,7 @@ section.cart-header-trustpilot {
       return window.location.href.includes("/cart");
     }
   }
-  return new C(), {
-    LaunchExperiment: C
+  return new S(), {
+    LaunchExperiment: S
   };
 }();
