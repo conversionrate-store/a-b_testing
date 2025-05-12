@@ -1,13 +1,13 @@
 (function() {
   "use strict";
-  const _ = ({ name: u, dev: e }) => {
+  const S = ({ name: u, dev: t }) => {
     console.log(
-      `%c EXP: ${u} (DEV: ${e})`,
+      `%c EXP: ${u} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, S = (u) => {
-    let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", u, "variant_1"));
+  }, E = (u) => {
+    let t = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", u, "variant_1"));
     }, 1e3);
   }, g = [
     {
@@ -20,40 +20,54 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
       },
       popupData: {
-        step1: {
+        initial: {
           title: "Have you figured out how to recover deleted iPhone photos?"
         },
-        step2: {
+        yesStep: {
           title: (
             /* HTML */
             `<span class="highlight">Fantastic!</span> Keep your
           photos safe from now on`
           ),
           description: "Setapp helps you prevent future photo-loss stress with one simple subscription:",
-          applist: [
-            {
-              imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80,dpr=1/https://store.setapp.com/app/399/42166/icon-67e3aab93a5fb.jpg",
-              title: "CleanMy®Phone",
-              description: "to clear duplicates and free up storage"
-            },
-            {
-              imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80,dpr=1/https://store.setapp.com/app/217/40765/icon-1730479186-67250452d2169.png",
-              title: "ChronoSync Express",
-              description: "for automatic backups"
-            },
-            {
-              imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/289/42253/icon-1743678842-67ee6d7aeeda6.png",
-              title: "CloudMounter",
-              description: "for hassle-free cloud storage"
-            },
-            {
-              imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
-              title: "Disk Drill",
-              description: "ready for emergencies"
-            }
-          ],
           subnote: "Enjoy now for FREE, and protect your memories forever"
-        }
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Don’t worry</span> <br />
+          you still have options!`
+          ),
+          description: (
+            /* HTML */
+            `Instantly recover your permanently deleted
+          photos with <b>Disk Drill</b> on Setapp. Plus, you’ll get full access
+          to other essential apps`
+          ),
+          subnote: "Enjoy now for FREE, and protect your memories forever"
+        },
+        applist: [
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80,dpr=1/https://store.setapp.com/app/399/42166/icon-67e3aab93a5fb.jpg",
+            title: "CleanMy®Phone",
+            description: "to clear duplicates and free up storage"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80,dpr=1/https://store.setapp.com/app/217/40765/icon-1730479186-67250452d2169.png",
+            title: "ChronoSync Express",
+            description: "for automatic backups"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/289/42253/icon-1743678842-67ee6d7aeeda6.png",
+            title: "CloudMounter",
+            description: "for hassle-free cloud storage"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
+            title: "Disk Drill",
+            description: "ready for emergencies"
+          }
+        ]
       }
     },
     {
@@ -66,8 +80,44 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: {
+          title: "Have you successfully downloaded your YouTube video?"
+        },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Awesome!</span> Want an
+          easier way next time? `
+          ),
+          description: "Setapp makes downloading and managing videos effortless with these powerful tools:",
+          subnote: "Enjoy now for FREE, and protect your memories forever"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">No worries,</span> <br />
+          we’ve got you covered! `
+          ),
+          description: "Effortlessly download any YouTube video using Setapp’s powerful apps:",
+          subnote: "Enjoy now for FREE, and protect your memories forever"
+        },
+        applist: [
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
+            title: "Pulltube",
+            description: "quick and easy video downloads"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
+            title: "Downie",
+            description: "grab videos from any platform"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/321/42059/icon-1741882724-67d3056489850.png",
+            title: "CleanShot X",
+            description: "quickly capture and edit your screen"
+          }
+        ]
       }
     },
     {
@@ -80,8 +130,37 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: { title: "Have you recovered your deleted iPhone messages?" },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Great!</span> Now keep your
+          messages safe`
+          ),
+          description: "Setapp helps secure your data with these easy-to-use tools:",
+          subnote: "Get your messages back immediately—start for FREE now!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Don’t panic</span>, we have a
+          solution!`
+          ),
+          description: "Instantly retrieve your deleted messages using Setapp’s powerful apps:",
+          subnote: "Get your messages back immediately—start for FREE now!"
+        },
+        applist: [
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
+            title: "Disk Drill",
+            description: "recover deleted messages easily"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/328/41359/icon-1734924881-6768da51c8c1a.png",
+            title: "AnyTrans",
+            description: "effortlessly manage and transfer your data"
+          }
+        ]
       }
     },
     {
@@ -94,8 +173,42 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: { title: "Have you recovered your unsaved Word document?" },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Excellent!</span> Now
+          safeguard your documents`
+          ),
+          description: "Setapp offers powerful solutions to protect your files:",
+          subnote: "Restore your documents now—start FREE today!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Don’t stress</span>, help is
+          here!`
+          ),
+          description: "Quickly recover your unsaved documents with these powerful Setapp apps:",
+          subnote: "Restore your documents now—start FREE today!"
+        },
+        applist: [
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
+            title: "Disk Drill",
+            description: "to recover deleted files easily"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/217/40765/icon-1730479186-67250452d2169.png",
+            title: "ChronoSync Express",
+            description: "automated backups to protect future documents"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png",
+            title: "Backup Pro",
+            description: "effortlessly backup and restore data"
+          }
+        ]
       }
     },
     {
@@ -108,10 +221,44 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png"
       },
       popupData: {
-        step1: {
+        initial: {
           title: "Have you successfully converted your YouTube video to MP3?"
         },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Awesome!</span> Simplify your
+          media tasks even more.`
+          ),
+          description: "Setapp helps you handle media effortlessly with these useful apps:",
+          subnote: "Convert videos instantly—start for FREE now!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Don’t worry</span>, we've got
+          your back!`
+          ),
+          description: "Easily convert YouTube videos to MP3 with these powerful Setapp tools:",
+          subnote: "Convert videos instantly—start for FREE now!"
+        },
+        applist: [
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
+            title: "Pulltube",
+            description: "easily download and convert YouTube videos"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
+            title: "Downie",
+            description: "high-quality audio extraction from the video"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/219/42264/icon-1743758208-67efa380b6636.png",
+            title: "Permute",
+            description: "effortlessly convert to MP3 and other formats"
+          }
+        ]
       }
     },
     {
@@ -124,8 +271,44 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: {
+          title: "Have you successfully downloaded your Facebook video?"
+        },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Great!</span> Make video
+          downloading even easier next time.`
+          ),
+          description: "Setapp simplifies video management with these handy tools:",
+          subnote: "Enhance your video experience—start your FREE trial today!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">No worries</span>, we can
+          help!`
+          ),
+          description: "Quickly download any Facebook video using these reliable Setapp apps:",
+          subnote: "Enjoy now for FREE, and protect your memories forever"
+        },
+        applist: [
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
+            title: "Pulltube",
+            description: "simple Facebook video downloads"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
+            title: "Downie",
+            description: "easily grab videos from various websites"
+          },
+          {
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/219/42264/icon-1743758208-67efa380b6636.png",
+            title: "Permute",
+            description: "instantly convert videos for convenient use"
+          }
+        ]
       }
     },
     {
@@ -138,8 +321,37 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: { title: "Have you successfully recovered your SD card data?" },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Awesome!</span> Secure your
+          data from now on`
+          ),
+          description: "Protect your important files easily with Setapp’s powerful apps:",
+          subnote: "Keep your files safe permanently—start for FREE today!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Don’t worry</span>, we've got
+          the solution!`
+          ),
+          description: "Quickly recover lost SD card data using Setapp’s trusted tools:",
+          subnote: "Recover your files now—try Setapp for FREE!"
+        },
+        applist: [
+          {
+            title: "Disk Drill",
+            description: "powerful SD card data recovery",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png"
+          },
+          {
+            title: "Backup Pro",
+            description: "simple backup solutions to safeguard your data",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png"
+          }
+        ]
       }
     },
     {
@@ -152,8 +364,42 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/566/0/icon-1741357275-67cb00db1ded3.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: { title: "Did you manage to unblur your image?" },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Fantastic!</span> Enhance
+          images easily from now on`
+          ),
+          description: "Setapp makes image editing effortless with these powerful apps:",
+          subnote: "Start enhancing your images today—FREE trial included!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">No worries</span>, we have
+          the perfect solution!`
+          ),
+          description: "Effortlessly fix blurry images using Setapp’s reliable apps:",
+          subnote: "Start enhancing your images today—FREE trial included!"
+        },
+        applist: [
+          {
+            title: "Luminar ",
+            description: "quickly sharpen and enhance your images",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/566/0/icon-1741357275-67cb00db1ded3.png"
+          },
+          {
+            title: "TouchRetouch",
+            description: "easily remove unwanted objects from photos",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/298/8541/icon-1691068510-64cba85e8b087.png"
+          },
+          {
+            title: "CameraBag Pro",
+            description: "powerful filters and photo editing tools",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/299/42088/icon-1742267911-67d8e607487c0.png"
+          }
+        ]
       }
     },
     {
@@ -166,8 +412,42 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/433/42254/icon-1743694727-67eeab8756821.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: { title: "Did you resolve your TikTok ban issue?" },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Great!</span> Stay
+          trouble-free on TikTok.`
+          ),
+          description: "Setapp helps keep your online presence smooth and secure with these powerful apps:",
+          subnote: "Ensure uninterrupted social media access—start FREE today!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Don't worry</span>, we can
+          help you fix this!`
+          ),
+          description: "Quickly resolve TikTok bans and avoid future issues with these Setapp apps:",
+          subnote: "Get back on TikTok now—try Setapp FREE today!"
+        },
+        applist: [
+          {
+            title: "ClearVPN",
+            description: "safely browse and unblock restricted content",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/433/42254/icon-1743694727-67eeab8756821.png"
+          },
+          {
+            title: "AdLock",
+            description: "block unwanted ads and trackers",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/517/41861/icon-1740384397-67bc288ddd017.png"
+          },
+          {
+            title: "Secrets 4",
+            description: "securely manage passwords and logins",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/587/41798/icon-1739292259-67ab7e63760de.png"
+          }
+        ]
       }
     },
     {
@@ -180,11 +460,40 @@
         imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png"
       },
       popupData: {
-        step1: { title: "" },
-        step2: { title: "", description: "", applist: [], subnote: "" }
+        initial: { title: "Were you able to open your RAR file on Mac?" },
+        yesStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Awesome!</span> Now make file
+          management even easier.`
+          ),
+          description: "Setapp gives you all the tools you need to handle archives and files like a pro:",
+          subnote: "Make file handling a breeze—start your FREE trial now!"
+        },
+        noStep: {
+          title: (
+            /* HTML */
+            `<span class="highlight">Don’t worry</span>, we’ve got
+          the tool for you!`
+          ),
+          description: "Instantly open RAR files on your Mac with help from Setapp apps:",
+          subnote: "Open any file easily—try Setapp FREE today!"
+        },
+        applist: [
+          {
+            title: "Archiver",
+            description: "open, create, and manage RAR and other archives",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png"
+          },
+          {
+            title: "CleanMyMac X",
+            description: "keep your Mac organized and fast",
+            imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/399/42535/icon-681c5b30e19c0.jpg"
+          }
+        ]
       }
     }
-  ], E = `.article header + .article__header-image {
+  ], _ = `.article header + .article__header-image {
   display: none;
 }
 
@@ -531,25 +840,25 @@
       this.addStyles(), this.render(), this.changeTitlePosition(), this.renderNewSearch(), this.eventListeners();
     }
     handleResize() {
-      const e = this.isMobileHeader;
-      this.isMobileHeader = window.innerWidth < 1280, e !== this.isMobileHeader && this.moveSearchElement();
+      const t = this.isMobileHeader;
+      this.isMobileHeader = window.innerWidth < 1280, t !== this.isMobileHeader && this.moveSearchElement();
     }
     moveSearchElement() {
       var o;
-      const e = document.querySelector(".crs-search");
-      if (!e) return;
-      (o = e.parentElement) == null || o.removeChild(e);
-      const t = document.querySelector(
+      const t = document.querySelector(".crs-search");
+      if (!t) return;
+      (o = t.parentElement) == null || o.removeChild(t);
+      const e = document.querySelector(
         ".site-navigation__menu-list .site-navigation__item-divider"
       ), n = document.querySelector(".site-navigation__signup-button");
-      !this.isMobileHeader && t && t.insertAdjacentElement("beforebegin", e), this.isMobileHeader && n && n.insertAdjacentElement("beforebegin", e);
+      !this.isMobileHeader && e && e.insertAdjacentElement("beforebegin", t), this.isMobileHeader && n && n.insertAdjacentElement("beforebegin", t);
     }
     render() {
-      var c;
-      const e = window.location.pathname, t = g.find(
-        (r) => e.includes(r.link)
+      var r;
+      const t = window.location.pathname, e = g.find(
+        (c) => t.includes(c.link)
       );
-      if (!t) {
+      if (!e) {
         console.error("No article found for the current path");
         return;
       }
@@ -557,10 +866,10 @@
         description: n,
         headerBlock: {
           description: o,
-          title: a,
-          imgSrc: s
+          title: i,
+          imgSrc: p
         }
-      } = t, p = (
+      } = e, s = (
         /* HTML */
         `<div class="crs-hero">
       <div class="crs-hero-inner">
@@ -572,7 +881,7 @@
           <div class="crs-hero-solution-note">Fastest solution</div>
           <div class="crs-solution-inner">
             <div class="crs-solution-content">
-              <div class="crs-solution-title">${a}</div>
+              <div class="crs-solution-title">${i}</div>
               <div class="crs-solution-description">
                 ${o}
               </div>
@@ -585,7 +894,7 @@
             </div>
             <div class="crs-solution-image">
               <img
-                src="${s}"
+                src="${p}"
                 alt=""
                 width="112"
                 height="112"
@@ -597,15 +906,15 @@
       </div>
     </div>`
       );
-      (c = document.querySelector("header > .page-header-wrapper")) == null || c.insertAdjacentHTML("beforeend", p);
+      (r = document.querySelector("header > .page-header-wrapper")) == null || r.insertAdjacentHTML("beforeend", s);
     }
     changeTitlePosition() {
-      const e = document.querySelector("h1"), t = document.querySelector("#crs-title-wrap");
-      !e || !t || t.appendChild(e);
+      const t = document.querySelector("h1"), e = document.querySelector("#crs-title-wrap");
+      !t || !e || e.appendChild(t);
     }
     renderNewSearch() {
       document.querySelectorAll(".crs-search").forEach((o) => o.remove());
-      const e = (
+      const t = (
         /* HTML */
         `<div class="crs-search search js-search-block ">
       <button class="search-button"></button>
@@ -640,45 +949,45 @@
         />
       </button>
     </div>`
-      ), t = document.querySelector(
+      ), e = document.querySelector(
         ".site-navigation__menu-list .site-navigation__item-divider"
       ), n = document.querySelector(".site-navigation__signup-button");
-      !this.isMobileHeader && t && (t.insertAdjacentHTML("beforebegin", e), t.previousElementSibling), this.isMobileHeader && n && (n.insertAdjacentHTML("beforebegin", e), n.previousElementSibling);
+      !this.isMobileHeader && e && (e.insertAdjacentHTML("beforebegin", t), e.previousElementSibling), this.isMobileHeader && n && (n.insertAdjacentHTML("beforebegin", t), n.previousElementSibling);
     }
     eventListeners() {
-      const e = document.querySelector(".site-navigation__menu-list"), t = document.querySelector(".crs-search"), n = t == null ? void 0 : t.querySelector(
+      const t = document.querySelector(".site-navigation__menu-list"), e = document.querySelector(".crs-search"), n = e == null ? void 0 : e.querySelector(
         ".search-button"
-      ), o = t == null ? void 0 : t.querySelector(
+      ), o = e == null ? void 0 : e.querySelector(
         "form"
-      ), a = t == null ? void 0 : t.querySelector(".search__close-btn"), s = t == null ? void 0 : t.querySelector(
+      ), i = e == null ? void 0 : e.querySelector(".search__close-btn"), p = e == null ? void 0 : e.querySelector(
         ".js-search-input"
-      ), p = document.querySelector(".site-navigation__content");
-      if (e && t && n && o && a && s) {
-        const r = () => {
-          for (const m of Array.from(e.children)) {
-            if (m === t)
+      ), s = document.querySelector(".site-navigation__content");
+      if (t && e && n && o && i && p) {
+        const c = () => {
+          for (const m of Array.from(t.children)) {
+            if (m === e)
               break;
             m.tagName === "LI" && (m.style.display = "none");
           }
-          t.dataset.status = "active", o.style.display = "block", o.offsetWidth, o.classList.add("crs-search-form-animate"), n.style.display = "none", a.style.display = "";
+          e.dataset.status = "active", o.style.display = "block", o.offsetWidth, o.classList.add("crs-search-form-animate"), n.style.display = "none", i.style.display = "";
           const d = o.querySelector("input");
-          d && setTimeout(() => d.focus(), 200), window.innerWidth < 576 && p && p.classList.add("search-active");
+          d && setTimeout(() => d.focus(), 200), window.innerWidth < 576 && s && s.classList.add("search-active");
         }, l = () => {
-          t.dataset.status = "inactive", o.classList.remove("crs-search-form-animate"), setTimeout(() => {
+          e.dataset.status = "inactive", o.classList.remove("crs-search-form-animate"), setTimeout(() => {
             o.style.display = "none";
-          }, 200), n.style.display = "", a.style.display = "none", s.value = "";
-          for (const d of Array.from(e.children)) {
-            if (d === t) break;
+          }, 200), n.style.display = "", i.style.display = "none", p.value = "";
+          for (const d of Array.from(t.children)) {
+            if (d === e) break;
             d.tagName === "LI" && (d.style.display = "");
           }
-          p && p.classList.remove("search-active");
+          s && s.classList.remove("search-active");
         };
-        n.addEventListener("click", r), a == null || a.addEventListener("click", l), s.addEventListener("focus", () => {
-          a == null || a.classList.remove("search__close-btn_hidden");
-        }), s.addEventListener("blur", l);
+        n.addEventListener("click", c), i == null || i.addEventListener("click", l), p.addEventListener("focus", () => {
+          i == null || i.classList.remove("search__close-btn_hidden");
+        }), p.addEventListener("blur", l);
       }
-      const c = document.querySelector("#crs-download");
-      c == null || c.addEventListener("click", async () => {
+      const r = document.querySelector("#crs-download");
+      r == null || r.addEventListener("click", async () => {
         document.querySelectorAll(
           'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
         ).forEach((l) => {
@@ -687,11 +996,11 @@
       });
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.textContent = E, document.head.appendChild(e);
+      const t = document.createElement("style");
+      t.textContent = _, document.head.appendChild(t);
     }
   }
-  const z = `/* CRS Popup backdrop */
+  const M = `/* CRS Popup backdrop */
 .crs-popup-backdrop {
   position: fixed;
   inset: 0;
@@ -770,7 +1079,7 @@ body:has(.crs-popup--visible) {
   }
 }
 `;
-  class M {
+  class P {
     constructor() {
       this.popupElement = null, this.backdropElement = null, this.isOpen = !1, this.init();
     }
@@ -781,26 +1090,26 @@ body:has(.crs-popup--visible) {
      * Opens the popup with the provided content
      * @param content HTML string or DOM element
      */
-    open(e) {
-      this.isOpen || (this.isOpen = !0, this.render(e), setTimeout(() => {
-        var t, n;
-        (t = this.popupElement) == null || t.classList.add("crs-popup--visible"), (n = this.backdropElement) == null || n.classList.add("crs-popup-backdrop--visible");
+    open(t) {
+      this.isOpen || (this.isOpen = !0, this.render(t), setTimeout(() => {
+        var e, n;
+        (e = this.popupElement) == null || e.classList.add("crs-popup--visible"), (n = this.backdropElement) == null || n.classList.add("crs-popup-backdrop--visible");
       }, 10));
     }
     /**
      * Closes the popup
      */
     close() {
-      var e, t;
-      this.isOpen && ((e = this.popupElement) == null || e.classList.remove("crs-popup--visible"), (t = this.backdropElement) == null || t.classList.remove("crs-popup-backdrop--visible"), setTimeout(() => {
+      var t, e;
+      this.isOpen && ((t = this.popupElement) == null || t.classList.remove("crs-popup--visible"), (e = this.backdropElement) == null || e.classList.remove("crs-popup-backdrop--visible"), setTimeout(() => {
         var n, o;
         (n = this.popupElement) == null || n.remove(), (o = this.backdropElement) == null || o.remove(), this.popupElement = null, this.backdropElement = null, this.isOpen = !1;
       }, 200));
     }
-    render(e) {
+    render(t) {
       this.backdropElement = document.createElement("div"), this.backdropElement.className = "crs-popup-backdrop", this.backdropElement.addEventListener("click", () => this.close()), this.popupElement = document.createElement("div"), this.popupElement.className = "crs-popup";
-      const t = document.createElement("div");
-      t.className = "crs-popup__header", t.innerHTML = `
+      const e = document.createElement("div");
+      e.className = "crs-popup__header", e.innerHTML = `
       <div class="logo">
         <svg class="logo__symbol" xmlns="http://www.w3.org/2000/svg" width="20" height="32" viewBox="0 0 19 30">
           <path fill-rule="evenodd" d="M10.694 9.987l3.372 3.404a.748.748 0 0 0 1.065 0l3.372-3.404a.764.764 0 0 0 0-1.075L15.13 5.508a.748.748 0 0 0-1.065 0l-3.372 3.404a.766.766 0 0 0 0 1.075zM8.829 8.106a.748.748 0 0 0 1.065 0l3.373-3.404a.765.765 0 0 0 0-1.076L9.894.222a.748.748 0 0 0-1.065 0L5.458 3.626a.764.764 0 0 0 0 1.076l3.371 3.404zm0 2.688l-3.371 3.404a.764.764 0 0 0 0 1.076l3.371 3.403a.747.747 0 0 0 1.065 0l3.373-3.403a.765.765 0 0 0 0-1.076l-3.373-3.404a.748.748 0 0 0-1.065 0zm-5.236 2.598a.748.748 0 0 0 1.065 0L8.03 9.988a.767.767 0 0 0 0-1.076L4.658 5.509a.747.747 0 0 0-1.065 0L.221 8.912a.765.765 0 0 0 0 1.076l3.372 3.404zm11.538 2.688a.748.748 0 0 0-1.065 0l-3.373 3.404a.766.766 0 0 0 0 1.075l3.373 3.404a.749.749 0 0 0 1.065 0l3.372-3.404a.764.764 0 0 0 0-1.076L15.13 16.08zm-5.237 5.285a.748.748 0 0 0-1.065 0l-3.372 3.404a.765.765 0 0 0 0 1.076l3.372 3.404a.748.748 0 0 0 1.065 0l3.373-3.404a.764.764 0 0 0 0-1.076l-3.373-3.404zm-1.863-1.881L4.658 16.08a.748.748 0 0 0-1.065 0L.22 19.484a.766.766 0 0 0 0 1.075l3.372 3.404a.75.75 0 0 0 1.066 0L8.03 20.56a.766.766 0 0 0 0-1.075z"></path>
@@ -817,16 +1126,16 @@ body:has(.crs-popup--visible) {
       const n = document.createElement("button");
       n.className = "btn modal__close crs-popup__close", n.setAttribute("aria-label", "Close"), n.addEventListener("click", () => this.close());
       const o = document.createElement("div");
-      o.className = "crs-popup__content", typeof e == "string" ? o.innerHTML = e : o.appendChild(e), o.addEventListener("click", (a) => {
-        a.target.closest("[data-popup-close]") && this.close();
-      }), this.popupElement.appendChild(t), this.popupElement.appendChild(n), this.popupElement.appendChild(o), document.body.appendChild(this.backdropElement), document.body.appendChild(this.popupElement);
+      o.className = "crs-popup__content", typeof t == "string" ? o.innerHTML = t : o.appendChild(t), o.addEventListener("click", (i) => {
+        i.target.closest("[data-popup-close]") && this.close();
+      }), this.popupElement.appendChild(e), this.popupElement.appendChild(n), this.popupElement.appendChild(o), document.body.appendChild(this.backdropElement), document.body.appendChild(this.popupElement);
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.innerHTML = z, document.head.appendChild(e);
+      const t = document.createElement("style");
+      t.innerHTML = M, document.head.appendChild(t);
     }
   }
-  const P = `.crs-popup__content {
+  const q = `.crs-popup__content {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -884,7 +1193,7 @@ body:has(.crs-popup--visible) {
   color: #e6842e;
 }
 
-.crs-popup-content-description {
+.crs-popup-content-description, .crs-popup-content-description--no {
   margin-top: 12px;
   color: #26262b;
   text-align: center;
@@ -900,6 +1209,14 @@ body:has(.crs-popup--visible) {
     line-height: 24px;
   }
 }
+
+.crs-popup-content-description--no {
+  font-weight: 400;
+}
+
+.crs-popup-content-description--no b {
+  font-weight: 700;
+} 
 
 .crs-popup-content-apps {
   margin-top: 24px;
@@ -951,6 +1268,7 @@ body:has(.crs-popup--visible) {
   font-weight: 400;
   line-height: 20px;
 }
+
 
 .crs-popup-content-actions-note {
   margin-top: 12px;
@@ -1006,17 +1324,16 @@ div[data-step] {
   min-height: 0;
 }
 `;
-  class T {
+  class z {
     constructor() {
       this.init();
     }
     init() {
       this.addStyles();
     }
-    render(e) {
-      var a;
-      if (!e) return;
-      const { step1: t, step2: n } = e;
+    render(t) {
+      if (!t) return;
+      const { initial: e, yesStep: n, noStep: o, applist: i } = t;
       return (
         /* HTML */
         `
@@ -1026,13 +1343,13 @@ div[data-step] {
             <div class="crs-popup-content-supnote">
               🖐 <span class="highlight">Wait!&nbsp; </span> Before you go...
             </div>
-            <div class="crs-popup-content-title">${t.title}</div>
+            <div class="crs-popup-content-title">${e.title}</div>
           </div>
           <div class="crs-popup-content-actions">
             <div class="crs-popup-content-actions-wrap">
-              <button class="btn btn_sm btn_outline-primary">Yes</button
-              ><button class="btn btn_sm btn_outline-primary" data-popup-close>
-                Now
+              <button class="btn btn_sm btn_outline-primary">Yes</button>
+              <button class="btn btn_sm btn_outline-primary no-button">
+                No
               </button>
             </div>
           </div>
@@ -1045,7 +1362,7 @@ div[data-step] {
             </div>
             <div class="crs-popup-content-apps">
               <ul>
-                ${(a = n.applist) == null ? void 0 : a.map(
+                ${i == null ? void 0 : i.map(
           (s) => (
             /* HTML */
             `
@@ -1069,7 +1386,51 @@ div[data-step] {
               ${n.subnote || ""}
             </div>
             <div class="crs-popup-content-actions-wrap">
-              <button class="btn btn_md btn_primary accept-button crs-popup-cta" data-popup-close>
+              <button
+                class="btn btn_md btn_primary accept-button crs-popup-cta"
+                data-popup-close
+              >
+                Try Free
+              </button>
+            </div>
+          </div>
+        </div>
+        <div data-step="3" style="display: none">
+          <div class="crs-popup-content-step">
+            <div class="crs-popup-content-title">${o.title}</div>
+            <div class="crs-popup-content-description--no">
+              ${o.description || ""}
+            </div>
+            <div class="crs-popup-content-apps">
+              <ul>
+                ${i == null ? void 0 : i.map(
+          (s) => (
+            /* HTML */
+            `
+                      <li>
+                        <img src="${s.imgSrc}" alt="${s.title}" />
+                        <div class="crs-popup-content-app-title">
+                          ${s.title}
+                        </div>
+                        <div class="crs-popup-content-app-description">
+                          ${s.description}
+                        </div>
+                      </li>
+                    `
+          )
+        ).join("")}
+              </ul>
+            </div>
+          </div>
+          <div class="crs-popup-content-actions">
+            <div class="crs-popup-content-actions-note">
+              ${o.subnote || ""}
+            </div>
+            <div class="crs-popup-content-actions-wrap">
+              <button
+                class="btn btn_md btn_primary accept-button crs-popup-cta"
+                data-popup-close
+              >
                 Try Free
               </button>
             </div>
@@ -1079,105 +1440,111 @@ div[data-step] {
     `
       );
     }
-    changeStep(e) {
+    changeStep(t) {
       document.querySelectorAll("[data-step]").forEach((n) => {
-        parseInt(n.getAttribute("data-step") || "0") === e ? n.style.display = "flex" : n.style.display = "none";
+        parseInt(n.getAttribute("data-step") || "0") === t ? n.style.display = "flex" : n.style.display = "none";
       });
     }
     initEvents() {
-      const e = document.querySelector(
+      const t = document.querySelector(
         ".crs-popup-content-actions button:nth-child(1)"
-      ), t = document.querySelector(
+      ), e = document.querySelector(
+        ".crs-popup-content-actions .no-button"
+      ), n = document.querySelectorAll(
         ".crs-popup-content-actions .crs-popup-cta"
       );
-      e && e.addEventListener("click", () => {
+      t && t.addEventListener("click", () => {
         this.changeStep(2);
-      }), t == null || t.addEventListener("click", async () => {
-        document.querySelectorAll(
-          'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
-        ).forEach((o) => {
-          o == null || o.click();
+      }), e && e.addEventListener("click", () => {
+        this.changeStep(3);
+      }), n.forEach((o) => {
+        o == null || o.addEventListener("click", async () => {
+          document.querySelectorAll(
+            'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
+          ).forEach((p) => {
+            p == null || p.click();
+          });
         });
       });
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.innerHTML = P, document.head.appendChild(e);
+      const t = document.createElement("style");
+      t.innerHTML = q, document.head.appendChild(t);
     }
   }
   class D {
     constructor() {
-      this.popup = new M(), this.popupContent = new T(), this.init();
+      this.popup = new P(), this.popupContent = new z(), this.init();
     }
     init() {
       this.triggerPopup();
     }
     triggerPopup() {
-      const e = window.location.pathname, t = g.find(
-        (i) => e.includes(i.link)
+      const t = window.location.pathname, e = g.find(
+        (a) => t.includes(a.link)
       );
-      if (!t) {
+      if (!e) {
         console.error("No article found for the current path");
         return;
       }
-      let n = !1, o = !1, a = !1, s = !1;
-      const p = window.innerWidth < 992, c = () => {
+      let n = !1, o = !1, i = !1, p = !1;
+      const s = window.innerWidth < 992, r = () => {
         if (n) return;
         n = !0;
-        const i = this.popupContent.render(t.popupData);
-        i && (this.popup.open(i), this.popupContent.initEvents(), B());
-      }, r = [];
+        const a = this.popupContent.render(e.popupData);
+        a && (this.popup.open(a), this.popupContent.initEvents(), F());
+      }, c = [];
       let l;
       const d = () => {
         clearTimeout(l), l = setTimeout(() => {
-          console.log("[POPUP TRIGGER] inactivity > 30s"), c();
+          console.log("[POPUP TRIGGER] inactivity > 30s"), r();
         }, 3e4);
       };
-      ["mousemove", "keydown", "scroll", "touchstart"].forEach((i) => {
-        window.addEventListener(i, d), r.push(() => window.removeEventListener(i, d));
+      ["mousemove", "keydown", "scroll", "touchstart"].forEach((a) => {
+        window.addEventListener(a, d), c.push(() => window.removeEventListener(a, d));
       }), d();
       const m = setTimeout(() => {
-        console.log("[POPUP TRIGGER] time on page > 90s"), c();
+        console.log("[POPUP TRIGGER] time on page > 90s"), r();
       }, 9e4);
-      r.push(() => clearTimeout(m));
-      const C = setTimeout(() => {
+      c.push(() => clearTimeout(m));
+      const H = setTimeout(() => {
         o = !0;
       }, 1e4);
-      r.push(() => clearTimeout(C));
-      const v = (i) => {
+      c.push(() => clearTimeout(H));
+      const f = (a) => {
         if (!o || n) return;
-        const h = i.clientY <= 0, R = i.clientX <= 0, A = i.clientX >= window.innerWidth, j = i.clientY >= window.innerHeight;
-        (h || R || A || j) && (console.log("[POPUP TRIGGER] exit intent"), c());
+        const h = a.clientY <= 0, C = a.clientX <= 0, A = a.clientX >= window.innerWidth, B = a.clientY >= window.innerHeight;
+        (h || C || A || B) && (console.log("[POPUP TRIGGER] exit intent"), r());
       };
-      p || (document.addEventListener("mouseleave", v), r.push(() => document.removeEventListener("mouseleave", v)));
-      let f = window.scrollY, w = Date.now();
-      const b = () => {
-        const i = Date.now(), h = window.scrollY;
-        f - h > 100 && i - w < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), c()), f = h, w = i;
-      };
-      window.addEventListener("scroll", b), r.push(() => window.removeEventListener("scroll", b));
-      const x = () => {
-        const i = window.scrollY || document.documentElement.scrollTop, h = document.documentElement.scrollHeight - window.innerHeight;
-        h > 0 && i / h > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), c());
-      };
-      window.addEventListener("scroll", x), r.push(() => window.removeEventListener("scroll", x));
+      s || (document.addEventListener("mouseleave", f), c.push(() => document.removeEventListener("mouseleave", f)));
+      let w = window.scrollY, v = Date.now();
       const y = () => {
-        document.visibilityState === "hidden" && (a = !0), p && document.visibilityState === "visible" && a && !n && (console.log("[POPUP TRIGGER] tab visible again (mobile)"), c());
+        const a = Date.now(), h = window.scrollY;
+        w - h > 100 && a - v < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), r()), w = h, v = a;
       };
-      document.addEventListener("visibilitychange", y), r.push(() => document.removeEventListener("visibilitychange", y));
-      const k = (i) => {
+      window.addEventListener("scroll", y), c.push(() => window.removeEventListener("scroll", y));
+      const b = () => {
+        const a = window.scrollY || document.documentElement.scrollTop, h = document.documentElement.scrollHeight - window.innerHeight;
+        h > 0 && a / h > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), r());
+      };
+      window.addEventListener("scroll", b), c.push(() => window.removeEventListener("scroll", b));
+      const x = () => {
+        document.visibilityState === "hidden" && (i = !0), s && document.visibilityState === "visible" && i && !n && (console.log("[POPUP TRIGGER] tab visible again (mobile)"), r());
+      };
+      document.addEventListener("visibilitychange", x), c.push(() => document.removeEventListener("visibilitychange", x));
+      const k = (a) => {
         var h;
-        p && !n && !s && ((h = i.preventDefault) == null || h.call(i), console.log("[POPUP TRIGGER] back button (mobile)"), c(), s = !0, setTimeout(() => {
-          s = !1;
+        s && !n && !p && ((h = a.preventDefault) == null || h.call(a), console.log("[POPUP TRIGGER] back button (mobile)"), r(), p = !0, setTimeout(() => {
+          p = !1;
         }, 2e3), history.pushState(null, "", window.location.href));
       };
-      p && (window.addEventListener("popstate", k), r.push(() => window.removeEventListener("popstate", k)), history.pushState(null, "", window.location.href));
-      function B() {
-        r.forEach((i) => i()), clearTimeout(l);
+      s && (window.addEventListener("popstate", k), c.push(() => window.removeEventListener("popstate", k)), history.pushState(null, "", window.location.href));
+      function F() {
+        c.forEach((a) => a()), clearTimeout(l);
       }
     }
   }
-  const H = [
+  const T = [
     "/how-to/recover-deleted-photos-from-iphone",
     "/how-to/download-youtube-videos",
     "/how-to/how-to-recover-deleted-text-messages-on-iphone",
@@ -1189,19 +1556,19 @@ div[data-step] {
     "/how-to/tiktok-banned-reasons-and-solutions",
     "/how-to/open-rar-files-on-mac"
   ];
-  _({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), S("");
-  class q {
+  S({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), E("");
+  class R {
     constructor() {
       this.init();
     }
     init() {
-      const e = window.location.pathname;
-      if (!H.includes(e)) {
+      const t = window.location.pathname;
+      if (!T.includes(t)) {
         console.log("Current page is not in blogLinks");
         return;
       }
       new L(), new D();
     }
   }
-  new q();
+  new R();
 })();
