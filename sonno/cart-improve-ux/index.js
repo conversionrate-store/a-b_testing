@@ -107,8 +107,8 @@ var q = function() {
       const n = () => {
         const r = Array.from(
           document.querySelectorAll('a[href="/checkout"]:not(.crs-cta-button)')
-        ).some((s) => {
-          const c = s.getBoundingClientRect(), d = c.top < window.innerHeight && c.bottom > 0 && c.left < window.innerWidth && c.right > 0, o = window.getComputedStyle(s);
+        ).some((a) => {
+          const c = a.getBoundingClientRect(), d = c.top < window.innerHeight && c.bottom > 0 && c.left < window.innerWidth && c.right > 0, o = window.getComputedStyle(a);
           return d && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
         t.style.display = r ? "none" : "";
@@ -264,7 +264,7 @@ var q = function() {
     d="m20.496 10.355.183 1.08a3.433 3.433 0 0 1-2.834-.69 3.494 3.494 0 0 1-.942-1.17 3.526 3.526 0 0 1-.368-1.46L17.293 8l1.223-2.5L19.738 8l2.738.4-1.98 1.955ZM34.598 7.042l-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), S = `.section-header > *:not(.crs-header),
+  ), k = `.section-header > *:not(.crs-header),
 section.cart-header-trustpilot {
   display: none;
 }
@@ -489,11 +489,11 @@ section.cart-header-trustpilot {
         ".estimate-delivery-item"
       );
       !t || !n || n.forEach((e) => {
-        var a, r;
-        if ((a = e.textContent) != null && a.toLocaleLowerCase().includes("delivered")) {
-          const s = e.querySelector(".estimate-delivery-date");
-          if (s) {
-            const c = (r = s.textContent) == null ? void 0 : r.trim();
+        var s, r;
+        if ((s = e.textContent) != null && s.toLocaleLowerCase().includes("delivered")) {
+          const a = e.querySelector(".estimate-delivery-date");
+          if (a) {
+            const c = (r = a.textContent) == null ? void 0 : r.trim();
             return c ? (t.textContent = c, c) : void 0;
           }
         }
@@ -501,10 +501,10 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = S, document.head.appendChild(t);
+      t.innerHTML = k, document.head.appendChild(t);
     }
   }
-  const k = `.crs-cart-items-count {
+  const M = `.crs-cart-items-count {
   margin-top: 24px;
 }
 
@@ -527,7 +527,7 @@ section.cart-header-trustpilot {
   }
 }
 `;
-  class M {
+  class S {
     constructor() {
       this.init();
     }
@@ -555,15 +555,15 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = k, document.head.appendChild(t);
+      t.textContent = M, document.head.appendChild(t);
     }
     observeCartQuantity() {
       const t = () => {
         var r;
-        const e = document.querySelector("cart-quantity"), a = document.getElementById("crs-cart-count");
-        if (e && a) {
-          const s = e.getElementsByClassName("w-3.5")[0], c = s ? s.getElementsByClassName("w-full")[0] : null;
-          a.textContent = ((r = c == null ? void 0 : c.textContent) == null ? void 0 : r.trim()) || "0";
+        const e = document.querySelector("cart-quantity"), s = document.getElementById("crs-cart-count");
+        if (e && s) {
+          const a = e.getElementsByClassName("w-3.5")[0], c = a ? a.getElementsByClassName("w-full")[0] : null;
+          s.textContent = ((r = c == null ? void 0 : c.textContent) == null ? void 0 : r.trim()) || "0";
         }
       };
       t();
@@ -731,10 +731,10 @@ section.cart-header-trustpilot {
         ".cart-product-item + .block.md\\:hidden"
       );
       const n = new MutationObserver((e) => {
-        e.forEach((a) => {
-          a.addedNodes.forEach((r) => {
-            var s, c, d, o;
-            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((s = r.textContent) != null && s.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((c = r.textContent) != null && c.includes("Remove")) && ((d = r.textContent) != null && d.includes("See Details")))) {
+        e.forEach((s) => {
+          s.addedNodes.forEach((r) => {
+            var a, c, d, o;
+            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((a = r.textContent) != null && a.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((c = r.textContent) != null && c.includes("Remove")) && ((d = r.textContent) != null && d.includes("See Details")))) {
               const u = (o = r.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
               u && u.remove(), r.classList.add("crs-mattress-chosen");
             }
@@ -753,33 +753,12 @@ section.cart-header-trustpilot {
       t.innerHTML = L, document.head.appendChild(t);
     }
   }
-  class I {
-    constructor() {
-      this.initialSeconds = 900, this.intervalId = null, this.observer = null, this.remain = this.initialSeconds, this.start(), this.observe();
-    }
-    start() {
-      this.updateAll(), this.intervalId && clearInterval(this.intervalId), this.intervalId = window.setInterval(() => {
-        this.remain > 0 ? (this.remain--, this.updateAll()) : (this.updateAll(), this.intervalId && clearInterval(this.intervalId));
-      }, 1e3);
-    }
-    updateAll() {
-      const t = Math.floor(this.remain / 60).toString().padStart(2, "0"), n = (this.remain % 60).toString().padStart(2, "0");
-      document.querySelectorAll("[data-remain]").forEach((e) => {
-        e.textContent = `${t}:${n}`;
-      });
-    }
-    observe() {
-      this.observer = new MutationObserver(() => {
-        this.updateAll();
-      }), this.observer.observe(document.body, { childList: !0, subtree: !0 });
-    }
-  }
   class Z {
     constructor() {
       this.init();
     }
     init() {
-      new C(), new F(), new I(), new x(), new M();
+      new C(), new F(), new x(), new S();
     }
   }
   f({
