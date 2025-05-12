@@ -1,13 +1,13 @@
 var q = function() {
   "use strict";
-  const m = (i, t, n, e = "") => {
+  const m = (i, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
       event_desc: t,
-      event_type: n,
-      event_loc: e
-    }), console.log(`Event: ${i} | ${t} | ${n} | ${e}`);
+      event_type: e,
+      event_loc: n
+    }), console.log(`Event: ${i} | ${t} | ${e} | ${n}`);
   }, f = ({ name: i, dev: t }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${t})`,
@@ -18,14 +18,14 @@ var q = function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
     }, 1e3);
   };
-  function l(i) {
+  function d(i) {
     return new Promise((t) => {
       if (document.querySelector(i))
         return t(document.querySelector(i));
-      const n = new MutationObserver(() => {
-        document.querySelector(i) && (t(document.querySelector(i)), n.disconnect());
+      const e = new MutationObserver(() => {
+        document.querySelector(i) && (t(document.querySelector(i)), e.disconnect());
       });
-      n.observe(document.documentElement, {
+      e.observe(document.documentElement, {
         childList: !0,
         subtree: !0,
         characterData: !0
@@ -92,7 +92,7 @@ var q = function() {
     }
     eventListeners() {
       const t = document.getElementById("crs-cta-btn");
-      t && t.addEventListener("click", (n) => {
+      t && t.addEventListener("click", (e) => {
         m(
           "exp_m_upsell_click_05",
           "See Order Summary",
@@ -104,21 +104,21 @@ var q = function() {
     observeCheckoutLinks() {
       const t = document.querySelector(".crs-cta");
       if (!t) return;
-      const n = () => {
+      const e = () => {
         const r = Array.from(
           document.querySelectorAll('a[href="/checkout"]:not(.crs-cta-button)')
         ).some((a) => {
-          const c = a.getBoundingClientRect(), d = c.top < window.innerHeight && c.bottom > 0 && c.left < window.innerWidth && c.right > 0, o = window.getComputedStyle(a);
-          return d && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
+          const c = a.getBoundingClientRect(), l = c.top < window.innerHeight && c.bottom > 0 && c.left < window.innerWidth && c.right > 0, o = window.getComputedStyle(a);
+          return l && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
         t.style.display = r ? "none" : "";
       };
-      new MutationObserver(n).observe(document.body, {
+      new MutationObserver(e).observe(document.body, {
         childList: !0,
         subtree: !0,
         attributes: !0,
         attributeFilter: ["style", "class"]
-      }), window.addEventListener("scroll", n, !0), window.addEventListener("resize", n), n();
+      }), window.addEventListener("scroll", e, !0), window.addEventListener("resize", e), e();
     }
     addStyles() {
       const t = document.createElement("style");
@@ -264,7 +264,7 @@ var q = function() {
     d="m20.496 10.355.183 1.08a3.433 3.433 0 0 1-2.834-.69 3.494 3.494 0 0 1-.942-1.17 3.526 3.526 0 0 1-.368-1.46L17.293 8l1.223-2.5L19.738 8l2.738.4-1.98 1.955ZM34.598 7.042l-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), k = `.section-header > *:not(.crs-header),
+  ), S = `.section-header > *:not(.crs-header),
 section.cart-header-trustpilot {
   display: none;
 }
@@ -428,7 +428,7 @@ section.cart-header-trustpilot {
         console.error("Container not found");
         return;
       }
-      const n = (
+      const e = (
         /* HTML */
         ` <div class="crs-header">
       <div class="container">
@@ -469,29 +469,29 @@ section.cart-header-trustpilot {
       </div>
     </div>`
       );
-      t.insertAdjacentHTML("afterbegin", n);
+      t.insertAdjacentHTML("afterbegin", e);
     }
     changeLogoPosition() {
-      const t = document.querySelector(".crs-logo"), n = document.querySelector(
+      const t = document.querySelector(".crs-logo"), e = document.querySelector(
         ".section-header nav.bg-white .container .justify-center"
       );
-      !t || !n || t.appendChild(n);
+      !t || !e || t.appendChild(e);
     }
     changeTrustpilotPosition() {
-      const t = document.querySelector(".crs-trustpilot"), n = document.querySelector(
+      const t = document.querySelector(".crs-trustpilot"), e = document.querySelector(
         "section.cart-header-trustpilot > div"
       );
-      !t || !n || t.appendChild(n);
+      !t || !e || t.appendChild(e);
     }
     async addDeliveryDate() {
-      await l(".estimate-delivery-item");
-      const t = document.querySelector("[data-delivery]"), n = document.querySelectorAll(
+      await d(".estimate-delivery-item");
+      const t = document.querySelector("[data-delivery]"), e = document.querySelectorAll(
         ".estimate-delivery-item"
       );
-      !t || !n || n.forEach((e) => {
+      !t || !e || e.forEach((n) => {
         var s, r;
-        if ((s = e.textContent) != null && s.toLocaleLowerCase().includes("delivered")) {
-          const a = e.querySelector(".estimate-delivery-date");
+        if ((s = n.textContent) != null && s.toLocaleLowerCase().includes("delivered")) {
+          const a = n.querySelector(".estimate-delivery-date");
           if (a) {
             const c = (r = a.textContent) == null ? void 0 : r.trim();
             return c ? (t.textContent = c, c) : void 0;
@@ -501,10 +501,10 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = k, document.head.appendChild(t);
+      t.innerHTML = S, document.head.appendChild(t);
     }
   }
-  const M = `.crs-cart-items-count {
+  const k = `.crs-cart-items-count {
   margin-top: 24px;
 }
 
@@ -527,7 +527,7 @@ section.cart-header-trustpilot {
   }
 }
 `;
-  class S {
+  class M {
     constructor() {
       this.init();
     }
@@ -546,29 +546,29 @@ section.cart-header-trustpilot {
         </div>
       </div>
     `
-      ), n = document.querySelector(".crs-header");
-      if (!n) {
+      ), e = document.querySelector(".crs-header");
+      if (!e) {
         console.error("Cart header not found");
         return;
       }
-      n.insertAdjacentHTML("beforeend", t);
+      e.insertAdjacentHTML("beforeend", t);
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = M, document.head.appendChild(t);
+      t.textContent = k, document.head.appendChild(t);
     }
     observeCartQuantity() {
       const t = () => {
         var r;
-        const e = document.querySelector("cart-quantity"), s = document.getElementById("crs-cart-count");
-        if (e && s) {
-          const a = e.getElementsByClassName("w-3.5")[0], c = a ? a.getElementsByClassName("w-full")[0] : null;
+        const n = document.querySelector("cart-quantity"), s = document.getElementById("crs-cart-count");
+        if (n && s) {
+          const a = n.getElementsByClassName("w-3.5")[0], c = a ? a.getElementsByClassName("w-full")[0] : null;
           s.textContent = ((r = c == null ? void 0 : c.textContent) == null ? void 0 : r.trim()) || "0";
         }
       };
       t();
-      const n = document.querySelector("cart-quantity");
-      n && new MutationObserver(t).observe(n, {
+      const e = document.querySelector("cart-quantity");
+      e && new MutationObserver(t).observe(e, {
         childList: !0,
         subtree: !0,
         characterData: !0
@@ -701,8 +701,8 @@ section.cart-header-trustpilot {
     init() {
       this.addStyles(), this.addItemLeftNotification(), this.observeMattressButtons();
     }
-    renderItemLeftNotification(t, n = "afterend") {
-      const e = (
+    renderItemLeftNotification(t, e = "afterend") {
+      const n = (
         /* HTML */
         ` <div class="crs-item-left-notification">
       <div class="crs-item-left-notification-inner">
@@ -711,38 +711,38 @@ section.cart-header-trustpilot {
       </div>
     </div>`
       );
-      t && t.insertAdjacentHTML(n, e);
+      t && t.insertAdjacentHTML(e, n);
     }
     async addItemLeftNotification() {
-      await l(h.cartProductItem);
+      await d(h.cartProductItem);
       const t = document.querySelectorAll(
         h.cartProductItem
       );
       if (!t) return;
-      const e = t[0].querySelector(
+      const n = t[0].querySelector(
         ".cart-product-price"
       );
-      e && this.renderItemLeftNotification(e, "beforebegin");
+      n && this.renderItemLeftNotification(n, "beforebegin");
     }
     async observeMattressButtons() {
-      await l(".cart-product-image");
+      await d(".cart-product-image");
       let t;
       this.device === "desktop" ? t = document.querySelectorAll(".cart-product-image") : t = document.querySelectorAll(
         ".cart-product-item + .block.md\\:hidden"
       );
-      const n = new MutationObserver((e) => {
-        e.forEach((s) => {
+      const e = new MutationObserver((n) => {
+        n.forEach((s) => {
           s.addedNodes.forEach((r) => {
-            var a, c, d, o;
-            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((a = r.textContent) != null && a.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((c = r.textContent) != null && c.includes("Remove")) && ((d = r.textContent) != null && d.includes("See Details")))) {
+            var a, c, l, o;
+            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((a = r.textContent) != null && a.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((c = r.textContent) != null && c.includes("Remove")) && ((l = r.textContent) != null && l.includes("See Details")))) {
               const u = (o = r.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
               u && u.remove(), r.classList.add("crs-mattress-chosen");
             }
           });
         });
       });
-      t.forEach((e) => {
-        n.observe(e, {
+      t.forEach((n) => {
+        e.observe(n, {
           childList: !0,
           subtree: !0
         });
@@ -753,12 +753,42 @@ section.cart-header-trustpilot {
       t.innerHTML = L, document.head.appendChild(t);
     }
   }
+  class I {
+    constructor() {
+      this.initialSeconds = 900, this.intervalId = null, this.observer = null, this.remain = this.initialSeconds, this.initTimer();
+    }
+    initTimer() {
+      this.start();
+    }
+    start() {
+      this.updateAll(), this.intervalId && clearInterval(this.intervalId), this.intervalId = window.setInterval(() => {
+        this.remain > 0 ? (this.remain--, this.updateAll()) : (this.updateAll(), this.intervalId && clearInterval(this.intervalId));
+      }, 1e3);
+    }
+    updateAll() {
+      const t = Math.floor(this.remain / 60).toString().padStart(2, "0"), e = (this.remain % 60).toString().padStart(2, "0");
+      d(".crs-header [data-remain]").then(() => {
+        document.querySelectorAll(".crs-header [data-remain]").forEach((n) => {
+          n.textContent = `${t}:${e}`;
+        });
+      }), d(".cart-product-items [data-remain]").then(() => {
+        document.querySelectorAll(".cart-product-items [data-remain]").forEach((n) => {
+          n.textContent = `${t}:${e}`;
+        });
+      });
+    }
+    observe() {
+      this.observer = new MutationObserver(() => {
+        this.updateAll();
+      }), this.observer.observe(document.body, { childList: !0, subtree: !0 });
+    }
+  }
   class Z {
     constructor() {
       this.init();
     }
     init() {
-      new C(), new F(), new x(), new S();
+      new C(), new F(), new I(), new x(), new M();
     }
   }
   f({
