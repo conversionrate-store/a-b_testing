@@ -186,7 +186,7 @@
         noStep: {
           title: (
             /* HTML */
-            `<span class="highlight">Don’t stress</span>, help is
+            `<span class="highlight">Don’t stress,</span> help is
           here!`
           ),
           description: "Quickly recover your unsaved documents with these powerful Setapp apps:",
@@ -236,7 +236,7 @@
         noStep: {
           title: (
             /* HTML */
-            `<span class="highlight">Don’t worry</span>, we've got
+            `<span class="highlight">Don’t worry,</span> we've got
           your back!`
           ),
           description: "Easily convert YouTube videos to MP3 with these powerful Setapp tools:",
@@ -286,7 +286,7 @@
         noStep: {
           title: (
             /* HTML */
-            `<span class="highlight">No worries</span>, we can
+            `<span class="highlight">No worries,</span> we can
           help!`
           ),
           description: "Quickly download any Facebook video using these reliable Setapp apps:",
@@ -334,7 +334,7 @@
         noStep: {
           title: (
             /* HTML */
-            `<span class="highlight">Don’t worry</span>, we've got
+            `<span class="highlight">Don’t worry,</span> we've got
           the solution!`
           ),
           description: "Quickly recover lost SD card data using Setapp’s trusted tools:",
@@ -377,7 +377,7 @@
         noStep: {
           title: (
             /* HTML */
-            `<span class="highlight">No worries</span>, we have
+            `<span class="highlight">No worries,</span> we have
           the perfect solution!`
           ),
           description: "Effortlessly fix blurry images using Setapp’s reliable apps:",
@@ -425,7 +425,7 @@
         noStep: {
           title: (
             /* HTML */
-            `<span class="highlight">Don't worry</span>, we can
+            `<span class="highlight">Don't worry,</span> we can
           help you fix this!`
           ),
           description: "Quickly resolve TikTok bans and avoid future issues with these Setapp apps:",
@@ -473,7 +473,7 @@
         noStep: {
           title: (
             /* HTML */
-            `<span class="highlight">Don’t worry</span>, we’ve got
+            `<span class="highlight">Don’t worry,</span> we’ve got
           the tool for you!`
           ),
           description: "Instantly open RAR files on your Mac with help from Setapp apps:",
@@ -854,7 +854,7 @@
       !this.isMobileHeader && e && e.insertAdjacentElement("beforebegin", t), this.isMobileHeader && n && n.insertAdjacentElement("beforebegin", t);
     }
     render() {
-      var r;
+      var l;
       const t = window.location.pathname, e = g.find(
         (c) => t.includes(c.link)
       );
@@ -867,7 +867,7 @@
         headerBlock: {
           description: o,
           title: i,
-          imgSrc: p
+          imgSrc: r
         }
       } = e, s = (
         /* HTML */
@@ -894,7 +894,7 @@
             </div>
             <div class="crs-solution-image">
               <img
-                src="${p}"
+                src="${r}"
                 alt=""
                 width="112"
                 height="112"
@@ -906,7 +906,7 @@
       </div>
     </div>`
       );
-      (r = document.querySelector("header > .page-header-wrapper")) == null || r.insertAdjacentHTML("beforeend", s);
+      (l = document.querySelector("header > .page-header-wrapper")) == null || l.insertAdjacentHTML("beforeend", s);
     }
     changeTitlePosition() {
       const t = document.querySelector("h1"), e = document.querySelector("#crs-title-wrap");
@@ -959,10 +959,10 @@
         ".search-button"
       ), o = e == null ? void 0 : e.querySelector(
         "form"
-      ), i = e == null ? void 0 : e.querySelector(".search__close-btn"), p = e == null ? void 0 : e.querySelector(
+      ), i = e == null ? void 0 : e.querySelector(".search__close-btn"), r = e == null ? void 0 : e.querySelector(
         ".js-search-input"
       ), s = document.querySelector(".site-navigation__content");
-      if (t && e && n && o && i && p) {
+      if (t && e && n && o && i && r) {
         const c = () => {
           for (const m of Array.from(t.children)) {
             if (m === e)
@@ -972,26 +972,26 @@
           e.dataset.status = "active", o.style.display = "block", o.offsetWidth, o.classList.add("crs-search-form-animate"), n.style.display = "none", i.style.display = "";
           const d = o.querySelector("input");
           d && setTimeout(() => d.focus(), 200), window.innerWidth < 576 && s && s.classList.add("search-active");
-        }, l = () => {
+        }, p = () => {
           e.dataset.status = "inactive", o.classList.remove("crs-search-form-animate"), setTimeout(() => {
             o.style.display = "none";
-          }, 200), n.style.display = "", i.style.display = "none", p.value = "";
+          }, 200), n.style.display = "", i.style.display = "none", r.value = "";
           for (const d of Array.from(t.children)) {
             if (d === e) break;
             d.tagName === "LI" && (d.style.display = "");
           }
           s && s.classList.remove("search-active");
         };
-        n.addEventListener("click", c), i == null || i.addEventListener("click", l), p.addEventListener("focus", () => {
+        n.addEventListener("click", c), i == null || i.addEventListener("click", p), r.addEventListener("focus", () => {
           i == null || i.classList.remove("search__close-btn_hidden");
-        }), p.addEventListener("blur", l);
+        }), r.addEventListener("blur", p);
       }
-      const r = document.querySelector("#crs-download");
-      r == null || r.addEventListener("click", async () => {
+      const l = document.querySelector("#crs-download");
+      l == null || l.addEventListener("click", async () => {
         document.querySelectorAll(
           'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
-        ).forEach((l) => {
-          l == null || l.click();
+        ).forEach((p) => {
+          p == null || p.click();
         });
       });
     }
@@ -1193,8 +1193,10 @@ body:has(.crs-popup--visible) {
   color: #e6842e;
 }
 
-.crs-popup-content-description, .crs-popup-content-description--no {
+.crs-popup-content-description,
+.crs-popup-content-description--no {
   margin-top: 12px;
+  padding-inline: 30px;
   color: #26262b;
   text-align: center;
   font-size: 18px;
@@ -1205,6 +1207,8 @@ body:has(.crs-popup--visible) {
 
 @media (max-width: 992px) {
   .crs-popup-content-description {
+    padding-inline: 0;
+
     font-size: 16px;
     line-height: 24px;
   }
@@ -1216,7 +1220,7 @@ body:has(.crs-popup--visible) {
 
 .crs-popup-content-description--no b {
   font-weight: 700;
-} 
+}
 
 .crs-popup-content-apps {
   margin-top: 24px;
@@ -1268,7 +1272,6 @@ body:has(.crs-popup--visible) {
   font-weight: 400;
   line-height: 20px;
 }
-
 
 .crs-popup-content-actions-note {
   margin-top: 12px;
@@ -1461,8 +1464,8 @@ div[data-step] {
         o == null || o.addEventListener("click", async () => {
           document.querySelectorAll(
             'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
-          ).forEach((p) => {
-            p == null || p.click();
+          ).forEach((r) => {
+            r == null || r.click();
           });
         });
       });
@@ -1487,60 +1490,61 @@ div[data-step] {
         console.error("No article found for the current path");
         return;
       }
-      let n = !1, o = !1, i = !1, p = !1;
-      const s = window.innerWidth < 992, r = () => {
-        if (n) return;
-        n = !0;
+      const n = `popup_shown_${t}`;
+      let o = sessionStorage.getItem(n), i = !1, r = !1, s = !1;
+      const l = window.innerWidth < 992, c = () => {
+        if (o) return;
+        sessionStorage.setItem(n, "1");
         const a = this.popupContent.render(e.popupData);
-        a && (this.popup.open(a), this.popupContent.initEvents(), F());
-      }, c = [];
-      let l;
-      const d = () => {
-        clearTimeout(l), l = setTimeout(() => {
-          console.log("[POPUP TRIGGER] inactivity > 30s"), r();
+        a && (this.popup.open(a), this.popupContent.initEvents(), C());
+      }, p = [];
+      let d;
+      const m = () => {
+        clearTimeout(d), d = setTimeout(() => {
+          console.log("[POPUP TRIGGER] inactivity > 30s"), c();
         }, 3e4);
       };
       ["mousemove", "keydown", "scroll", "touchstart"].forEach((a) => {
-        window.addEventListener(a, d), c.push(() => window.removeEventListener(a, d));
-      }), d();
-      const m = setTimeout(() => {
-        console.log("[POPUP TRIGGER] time on page > 90s"), r();
-      }, 9e4);
-      c.push(() => clearTimeout(m));
+        window.addEventListener(a, m), p.push(() => window.removeEventListener(a, m));
+      }), m();
       const H = setTimeout(() => {
-        o = !0;
+        console.log("[POPUP TRIGGER] time on page > 90s"), c();
+      }, 9e4);
+      p.push(() => clearTimeout(H));
+      const F = setTimeout(() => {
+        i = !0;
       }, 1e4);
-      c.push(() => clearTimeout(H));
+      p.push(() => clearTimeout(F));
       const f = (a) => {
-        if (!o || n) return;
-        const h = a.clientY <= 0, C = a.clientX <= 0, A = a.clientX >= window.innerWidth, B = a.clientY >= window.innerHeight;
-        (h || C || A || B) && (console.log("[POPUP TRIGGER] exit intent"), r());
+        if (!i || o) return;
+        const h = a.clientY <= 0, A = a.clientX <= 0, B = a.clientX >= window.innerWidth, j = a.clientY >= window.innerHeight;
+        (h || A || B || j) && (console.log("[POPUP TRIGGER] mouse leave"), c());
       };
-      s || (document.addEventListener("mouseleave", f), c.push(() => document.removeEventListener("mouseleave", f)));
+      l || (document.addEventListener("mouseleave", f), p.push(() => document.removeEventListener("mouseleave", f)));
       let w = window.scrollY, v = Date.now();
       const y = () => {
         const a = Date.now(), h = window.scrollY;
-        w - h > 100 && a - v < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), r()), w = h, v = a;
+        w - h > 100 && a - v < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), c()), w = h, v = a;
       };
-      window.addEventListener("scroll", y), c.push(() => window.removeEventListener("scroll", y));
+      window.addEventListener("scroll", y), p.push(() => window.removeEventListener("scroll", y));
       const b = () => {
         const a = window.scrollY || document.documentElement.scrollTop, h = document.documentElement.scrollHeight - window.innerHeight;
-        h > 0 && a / h > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), r());
+        h > 0 && a / h > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), c());
       };
-      window.addEventListener("scroll", b), c.push(() => window.removeEventListener("scroll", b));
+      window.addEventListener("scroll", b), p.push(() => window.removeEventListener("scroll", b));
       const x = () => {
-        document.visibilityState === "hidden" && (i = !0), s && document.visibilityState === "visible" && i && !n && (console.log("[POPUP TRIGGER] tab visible again (mobile)"), r());
+        document.visibilityState === "hidden" && (r = !0), l && document.visibilityState === "visible" && r && !o && (console.log("[POPUP TRIGGER] tab visible again (mobile)"), c());
       };
-      document.addEventListener("visibilitychange", x), c.push(() => document.removeEventListener("visibilitychange", x));
+      document.addEventListener("visibilitychange", x), p.push(() => document.removeEventListener("visibilitychange", x));
       const k = (a) => {
         var h;
-        s && !n && !p && ((h = a.preventDefault) == null || h.call(a), console.log("[POPUP TRIGGER] back button (mobile)"), r(), p = !0, setTimeout(() => {
-          p = !1;
+        l && !o && !s && ((h = a.preventDefault) == null || h.call(a), console.log("[POPUP TRIGGER] back button (mobile)"), c(), s = !0, setTimeout(() => {
+          s = !1;
         }, 2e3), history.pushState(null, "", window.location.href));
       };
-      s && (window.addEventListener("popstate", k), c.push(() => window.removeEventListener("popstate", k)), history.pushState(null, "", window.location.href));
-      function F() {
-        c.forEach((a) => a()), clearTimeout(l);
+      l && (window.addEventListener("popstate", k), p.push(() => window.removeEventListener("popstate", k)), history.pushState(null, "", window.location.href));
+      function C() {
+        p.forEach((a) => a()), clearTimeout(d);
       }
     }
   }
