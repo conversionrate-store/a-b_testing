@@ -1,13 +1,13 @@
 var q = function() {
   "use strict";
-  const m = (i, t, e, n = "") => {
+  const m = (i, t, n, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
       event_desc: t,
-      event_type: e,
-      event_loc: n
-    }), console.log(`Event: ${i} | ${t} | ${e} | ${n}`);
+      event_type: n,
+      event_loc: e
+    }), console.log(`Event: ${i} | ${t} | ${n} | ${e}`);
   }, f = ({ name: i, dev: t }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${t})`,
@@ -22,10 +22,10 @@ var q = function() {
     return new Promise((t) => {
       if (document.querySelector(i))
         return t(document.querySelector(i));
-      const e = new MutationObserver(() => {
-        document.querySelector(i) && (t(document.querySelector(i)), e.disconnect());
+      const n = new MutationObserver(() => {
+        document.querySelector(i) && (t(document.querySelector(i)), n.disconnect());
       });
-      e.observe(document.documentElement, {
+      n.observe(document.documentElement, {
         childList: !0,
         subtree: !0,
         characterData: !0
@@ -92,7 +92,7 @@ var q = function() {
     }
     eventListeners() {
       const t = document.getElementById("crs-cta-btn");
-      t && t.addEventListener("click", (e) => {
+      t && t.addEventListener("click", (n) => {
         m(
           "exp_m_upsell_click_05",
           "See Order Summary",
@@ -104,21 +104,21 @@ var q = function() {
     observeCheckoutLinks() {
       const t = document.querySelector(".crs-cta");
       if (!t) return;
-      const e = () => {
+      const n = () => {
         const r = Array.from(
           document.querySelectorAll('a[href="/checkout"]:not(.crs-cta-button)')
-        ).some((a) => {
-          const c = a.getBoundingClientRect(), l = c.top < window.innerHeight && c.bottom > 0 && c.left < window.innerWidth && c.right > 0, o = window.getComputedStyle(a);
+        ).some((s) => {
+          const c = s.getBoundingClientRect(), l = c.top < window.innerHeight && c.bottom > 0 && c.left < window.innerWidth && c.right > 0, o = window.getComputedStyle(s);
           return l && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
         t.style.display = r ? "none" : "";
       };
-      new MutationObserver(e).observe(document.body, {
+      new MutationObserver(n).observe(document.body, {
         childList: !0,
         subtree: !0,
         attributes: !0,
         attributeFilter: ["style", "class"]
-      }), window.addEventListener("scroll", e, !0), window.addEventListener("resize", e), e();
+      }), window.addEventListener("scroll", n, !0), window.addEventListener("resize", n), n();
     }
     addStyles() {
       const t = document.createElement("style");
@@ -428,7 +428,7 @@ section.cart-header-trustpilot {
         console.error("Container not found");
         return;
       }
-      const e = (
+      const n = (
         /* HTML */
         ` <div class="crs-header">
       <div class="container">
@@ -462,38 +462,38 @@ section.cart-header-trustpilot {
         <div class="container flex items-center justify-center text-center">
           <div class="crs-header-line-inner">
             You have added low stock items! &nbsp;<span class="highlight"
-              >Buy within <span data-remain>14:22</span></span
+              >Buy within <span data-remain>15:00</span></span
             >
           </div>
         </div>
       </div>
     </div>`
       );
-      t.insertAdjacentHTML("afterbegin", e);
+      t.insertAdjacentHTML("afterbegin", n);
     }
     changeLogoPosition() {
-      const t = document.querySelector(".crs-logo"), e = document.querySelector(
+      const t = document.querySelector(".crs-logo"), n = document.querySelector(
         ".section-header nav.bg-white .container .justify-center"
       );
-      !t || !e || t.appendChild(e);
+      !t || !n || t.appendChild(n);
     }
     changeTrustpilotPosition() {
-      const t = document.querySelector(".crs-trustpilot"), e = document.querySelector(
+      const t = document.querySelector(".crs-trustpilot"), n = document.querySelector(
         "section.cart-header-trustpilot > div"
       );
-      !t || !e || t.appendChild(e);
+      !t || !n || t.appendChild(n);
     }
     async addDeliveryDate() {
       await d(".estimate-delivery-item");
-      const t = document.querySelector("[data-delivery]"), e = document.querySelectorAll(
+      const t = document.querySelector("[data-delivery]"), n = document.querySelectorAll(
         ".estimate-delivery-item"
       );
-      !t || !e || e.forEach((n) => {
-        var s, r;
-        if ((s = n.textContent) != null && s.toLocaleLowerCase().includes("delivered")) {
-          const a = n.querySelector(".estimate-delivery-date");
-          if (a) {
-            const c = (r = a.textContent) == null ? void 0 : r.trim();
+      !t || !n || n.forEach((e) => {
+        var a, r;
+        if ((a = e.textContent) != null && a.toLocaleLowerCase().includes("delivered")) {
+          const s = e.querySelector(".estimate-delivery-date");
+          if (s) {
+            const c = (r = s.textContent) == null ? void 0 : r.trim();
             return c ? (t.textContent = c, c) : void 0;
           }
         }
@@ -546,12 +546,12 @@ section.cart-header-trustpilot {
         </div>
       </div>
     `
-      ), e = document.querySelector(".crs-header");
-      if (!e) {
+      ), n = document.querySelector(".crs-header");
+      if (!n) {
         console.error("Cart header not found");
         return;
       }
-      e.insertAdjacentHTML("beforeend", t);
+      n.insertAdjacentHTML("beforeend", t);
     }
     addStyles() {
       const t = document.createElement("style");
@@ -560,15 +560,15 @@ section.cart-header-trustpilot {
     observeCartQuantity() {
       const t = () => {
         var r;
-        const n = document.querySelector("cart-quantity"), s = document.getElementById("crs-cart-count");
-        if (n && s) {
-          const a = n.getElementsByClassName("w-3.5")[0], c = a ? a.getElementsByClassName("w-full")[0] : null;
-          s.textContent = ((r = c == null ? void 0 : c.textContent) == null ? void 0 : r.trim()) || "0";
+        const e = document.querySelector("cart-quantity"), a = document.getElementById("crs-cart-count");
+        if (e && a) {
+          const s = e.getElementsByClassName("w-3.5")[0], c = s ? s.getElementsByClassName("w-full")[0] : null;
+          a.textContent = ((r = c == null ? void 0 : c.textContent) == null ? void 0 : r.trim()) || "0";
         }
       };
       t();
-      const e = document.querySelector("cart-quantity");
-      e && new MutationObserver(t).observe(e, {
+      const n = document.querySelector("cart-quantity");
+      n && new MutationObserver(t).observe(n, {
         childList: !0,
         subtree: !0,
         characterData: !0
@@ -701,17 +701,17 @@ section.cart-header-trustpilot {
     init() {
       this.addStyles(), this.addItemLeftNotification(), this.observeMattressButtons();
     }
-    renderItemLeftNotification(t, e = "afterend") {
-      const n = (
+    renderItemLeftNotification(t, n = "afterend") {
+      const e = (
         /* HTML */
         ` <div class="crs-item-left-notification">
       <div class="crs-item-left-notification-inner">
         Only &nbsp;<span class="highlight">3 items left</span>! Buy within&nbsp;
-        <span class="highlight" data-remain="">14:22</span>
+        <span class="highlight" data-remain="">15:00</span>
       </div>
     </div>`
       );
-      t && t.insertAdjacentHTML(e, n);
+      t && t.insertAdjacentHTML(n, e);
     }
     async addItemLeftNotification() {
       await d(h.cartProductItem);
@@ -719,10 +719,10 @@ section.cart-header-trustpilot {
         h.cartProductItem
       );
       if (!t) return;
-      const n = t[0].querySelector(
+      const e = t[0].querySelector(
         ".cart-product-price"
       );
-      n && this.renderItemLeftNotification(n, "beforebegin");
+      e && this.renderItemLeftNotification(e, "beforebegin");
     }
     async observeMattressButtons() {
       await d(".cart-product-image");
@@ -730,19 +730,19 @@ section.cart-header-trustpilot {
       this.device === "desktop" ? t = document.querySelectorAll(".cart-product-image") : t = document.querySelectorAll(
         ".cart-product-item + .block.md\\:hidden"
       );
-      const e = new MutationObserver((n) => {
-        n.forEach((s) => {
-          s.addedNodes.forEach((r) => {
-            var a, c, l, o;
-            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((a = r.textContent) != null && a.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((c = r.textContent) != null && c.includes("Remove")) && ((l = r.textContent) != null && l.includes("See Details")))) {
+      const n = new MutationObserver((e) => {
+        e.forEach((a) => {
+          a.addedNodes.forEach((r) => {
+            var s, c, l, o;
+            if (r instanceof HTMLElement && (r.classList.contains("card-addons") && ((s = r.textContent) != null && s.includes("Add Mattress & Save")) && r.classList.add("crs-mattress-control-btn"), r.classList.contains("card-addons") && ((c = r.textContent) != null && c.includes("Remove")) && ((l = r.textContent) != null && l.includes("See Details")))) {
               const u = (o = r.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
               u && u.remove(), r.classList.add("crs-mattress-chosen");
             }
           });
         });
       });
-      t.forEach((n) => {
-        e.observe(n, {
+      t.forEach((e) => {
+        n.observe(e, {
           childList: !0,
           subtree: !0
         });
@@ -755,10 +755,10 @@ section.cart-header-trustpilot {
   }
   class I {
     constructor() {
-      this.initialSeconds = 900, this.intervalId = null, this.observer = null, this.remain = this.initialSeconds, this.initTimer();
+      this.initialSeconds = 900, this.intervalId = null, this.headerRemainEls = null, this.remain = this.initialSeconds, this.init();
     }
-    initTimer() {
-      this.start();
+    async init() {
+      await d(".crs-header [data-remain]"), this.headerRemainEls = document.querySelectorAll(".crs-header [data-remain]"), this.start();
     }
     start() {
       this.updateAll(), this.intervalId && clearInterval(this.intervalId), this.intervalId = window.setInterval(() => {
@@ -766,21 +766,14 @@ section.cart-header-trustpilot {
       }, 1e3);
     }
     updateAll() {
-      const t = Math.floor(this.remain / 60).toString().padStart(2, "0"), e = (this.remain % 60).toString().padStart(2, "0");
-      d(".crs-header [data-remain]").then(() => {
-        document.querySelectorAll(".crs-header [data-remain]").forEach((n) => {
-          n.textContent = `${t}:${e}`;
-        });
-      }), d(".cart-product-items [data-remain]").then(() => {
-        document.querySelectorAll(".cart-product-items [data-remain]").forEach((n) => {
-          n.textContent = `${t}:${e}`;
-        });
+      const t = Math.floor(this.remain / 60).toString().padStart(2, "0"), n = (this.remain % 60).toString().padStart(2, "0");
+      this.headerRemainEls && this.headerRemainEls.forEach((a) => {
+        a.textContent = `${t}:${n}`;
       });
-    }
-    observe() {
-      this.observer = new MutationObserver(() => {
-        this.updateAll();
-      }), this.observer.observe(document.body, { childList: !0, subtree: !0 });
+      const e = document.querySelectorAll(".cart-product-items [data-remain]");
+      e.length && e.forEach((a) => {
+        a.textContent = `${t}:${n}`;
+      });
     }
   }
   class Z {
