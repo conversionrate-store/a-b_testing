@@ -1,15 +1,15 @@
 (function() {
   "use strict";
-  const S = ({ name: u, dev: t }) => {
+  const E = ({ name: d, dev: e }) => {
     console.log(
-      `%c EXP: ${u} (DEV: ${t})`,
+      `%c EXP: ${d} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, E = (u) => {
-    let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", u, "variant_1"));
+  }, _ = (d) => {
+    let e = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", d, "variant_1"));
     }, 1e3);
-  }, g = [
+  }, f = [
     {
       link: "/how-to/recover-deleted-photos-from-iphone",
       title: "How to recover deleted photos from an iPhone",
@@ -493,7 +493,21 @@
         ]
       }
     }
-  ], _ = `.article header + .article__header-image {
+  ], m = (d, e, t) => {
+    var o;
+    const n = {
+      event: "crs-setapp",
+      eventCategory: d,
+      eventAction: e,
+      eventLabel: t,
+      eventLabel2: "",
+      //cd8
+      eventValue: "",
+      eventNonInteraction: !0,
+      intercomLoaded: !0
+    };
+    (o = window == null ? void 0 : window.dataLayer) == null || o.push(n), console.log(n);
+  }, L = `.article header + .article__header-image {
   display: none;
 }
 
@@ -821,6 +835,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border: none;
+  cursor: pointer;
 }
 
 @media (max-width: 576px) {
@@ -832,7 +847,7 @@
   }
 }
 `;
-  class L {
+  class P {
     constructor() {
       console.info("HeroSection"), this.isMobileHeader = window.innerWidth < 1280, this.init(), window.addEventListener("resize", this.handleResize.bind(this));
     }
@@ -840,25 +855,27 @@
       this.addStyles(), this.render(), this.changeTitlePosition(), this.renderNewSearch(), this.eventListeners();
     }
     handleResize() {
-      const t = this.isMobileHeader;
-      this.isMobileHeader = window.innerWidth < 1280, t !== this.isMobileHeader && this.moveSearchElement();
+      const e = this.isMobileHeader;
+      this.isMobileHeader = window.innerWidth < 1280, e !== this.isMobileHeader && this.moveSearchElement();
     }
     moveSearchElement() {
       var o;
-      const t = document.querySelector(".crs-search");
-      if (!t) return;
-      (o = t.parentElement) == null || o.removeChild(t);
-      const e = document.querySelector(
+      const e = document.querySelector(".crs-search");
+      if (!e) return;
+      (o = e.parentElement) == null || o.removeChild(e);
+      const t = document.querySelector(
         ".site-navigation__menu-list .site-navigation__item-divider"
-      ), n = document.querySelector(".site-navigation__signup-button");
-      !this.isMobileHeader && e && e.insertAdjacentElement("beforebegin", t), this.isMobileHeader && n && n.insertAdjacentElement("beforebegin", t);
+      ), n = document.querySelector(
+        ".site-navigation__signup-button"
+      );
+      !this.isMobileHeader && t && t.insertAdjacentElement("beforebegin", e), this.isMobileHeader && n && n.insertAdjacentElement("beforebegin", e);
     }
     render() {
       var l;
-      const t = window.location.pathname, e = g.find(
-        (c) => t.includes(c.link)
+      const e = window.location.pathname, t = f.find(
+        (c) => e.includes(c.link)
       );
-      if (!e) {
+      if (!t) {
         console.error("No article found for the current path");
         return;
       }
@@ -869,7 +886,7 @@
           title: i,
           imgSrc: r
         }
-      } = e, s = (
+      } = t, s = (
         /* HTML */
         `<div class="crs-hero">
       <div class="crs-hero-inner">
@@ -886,7 +903,10 @@
                 ${o}
               </div>
               <div class="crs-solution-actions">
-                <button class="btn btn_md btn_primary accept-button" id="crs-download">
+                <button
+                  class="btn btn_md btn_primary accept-button"
+                  id="crs-download"
+                >
                   Download now
                 </button>
                 <div class="crs-solution-security">Security-tested</div>
@@ -909,12 +929,12 @@
       (l = document.querySelector("header > .page-header-wrapper")) == null || l.insertAdjacentHTML("beforeend", s);
     }
     changeTitlePosition() {
-      const t = document.querySelector("h1"), e = document.querySelector("#crs-title-wrap");
-      !t || !e || e.appendChild(t);
+      const e = document.querySelector("h1"), t = document.querySelector("#crs-title-wrap");
+      !e || !t || t.appendChild(e);
     }
     renderNewSearch() {
       document.querySelectorAll(".crs-search").forEach((o) => o.remove());
-      const t = (
+      const e = (
         /* HTML */
         `<div class="crs-search search js-search-block ">
       <button class="search-button"></button>
@@ -949,36 +969,38 @@
         />
       </button>
     </div>`
-      ), e = document.querySelector(
+      ), t = document.querySelector(
         ".site-navigation__menu-list .site-navigation__item-divider"
-      ), n = document.querySelector(".site-navigation__signup-button");
-      !this.isMobileHeader && e && (e.insertAdjacentHTML("beforebegin", t), e.previousElementSibling), this.isMobileHeader && n && (n.insertAdjacentHTML("beforebegin", t), n.previousElementSibling);
+      ), n = document.querySelector(
+        ".site-navigation__signup-button"
+      );
+      !this.isMobileHeader && t && (t.insertAdjacentHTML("beforebegin", e), t.previousElementSibling), this.isMobileHeader && n && (n.insertAdjacentHTML("beforebegin", e), n.previousElementSibling);
     }
     eventListeners() {
-      const t = document.querySelector(".site-navigation__menu-list"), e = document.querySelector(".crs-search"), n = e == null ? void 0 : e.querySelector(
+      const e = document.querySelector(".site-navigation__menu-list"), t = document.querySelector(".crs-search"), n = t == null ? void 0 : t.querySelector(
         ".search-button"
-      ), o = e == null ? void 0 : e.querySelector(
+      ), o = t == null ? void 0 : t.querySelector(
         "form"
-      ), i = e == null ? void 0 : e.querySelector(".search__close-btn"), r = e == null ? void 0 : e.querySelector(
+      ), i = t == null ? void 0 : t.querySelector(".search__close-btn"), r = t == null ? void 0 : t.querySelector(
         ".js-search-input"
       ), s = document.querySelector(".site-navigation__content");
-      if (t && e && n && o && i && r) {
+      if (e && t && n && o && i && r) {
         const c = () => {
-          for (const m of Array.from(t.children)) {
-            if (m === e)
+          for (const g of Array.from(e.children)) {
+            if (g === t)
               break;
-            m.tagName === "LI" && (m.style.display = "none");
+            g.tagName === "LI" && (g.style.display = "none");
           }
-          e.dataset.status = "active", o.style.display = "block", o.offsetWidth, o.classList.add("crs-search-form-animate"), n.style.display = "none", i.style.display = "";
-          const d = o.querySelector("input");
-          d && setTimeout(() => d.focus(), 200), window.innerWidth < 576 && s && s.classList.add("search-active");
+          t.dataset.status = "active", o.style.display = "block", o.offsetWidth, o.classList.add("crs-search-form-animate"), n.style.display = "none", i.style.display = "";
+          const h = o.querySelector("input");
+          h && setTimeout(() => h.focus(), 200), window.innerWidth < 576 && s && s.classList.add("search-active"), m("Blog Article", "Click - Search", "Header");
         }, p = () => {
-          e.dataset.status = "inactive", o.classList.remove("crs-search-form-animate"), setTimeout(() => {
+          t.dataset.status = "inactive", o.classList.remove("crs-search-form-animate"), setTimeout(() => {
             o.style.display = "none";
           }, 200), n.style.display = "", i.style.display = "none", r.value = "";
-          for (const d of Array.from(t.children)) {
-            if (d === e) break;
-            d.tagName === "LI" && (d.style.display = "");
+          for (const h of Array.from(e.children)) {
+            if (h === t) break;
+            h.tagName === "LI" && (h.style.display = "");
           }
           s && s.classList.remove("search-active");
         };
@@ -992,12 +1014,12 @@
           'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
         ).forEach((p) => {
           p == null || p.click();
-        });
+        }), m("Blog Article", "Click - Download now", "First screen");
       });
     }
     addStyles() {
-      const t = document.createElement("style");
-      t.textContent = _, document.head.appendChild(t);
+      const e = document.createElement("style");
+      e.textContent = L, document.head.appendChild(e);
     }
   }
   const M = `/* CRS Popup backdrop */
@@ -1079,7 +1101,7 @@ body:has(.crs-popup--visible) {
   }
 }
 `;
-  class P {
+  class q {
     constructor() {
       this.popupElement = null, this.backdropElement = null, this.isOpen = !1, this.init();
     }
@@ -1090,26 +1112,32 @@ body:has(.crs-popup--visible) {
      * Opens the popup with the provided content
      * @param content HTML string or DOM element
      */
-    open(t) {
-      this.isOpen || (this.isOpen = !0, this.render(t), setTimeout(() => {
-        var e, n;
-        (e = this.popupElement) == null || e.classList.add("crs-popup--visible"), (n = this.backdropElement) == null || n.classList.add("crs-popup-backdrop--visible");
+    open(e) {
+      this.isOpen || (this.isOpen = !0, this.render(e), setTimeout(() => {
+        var t, n;
+        (t = this.popupElement) == null || t.classList.add("crs-popup--visible"), (n = this.backdropElement) == null || n.classList.add("crs-popup-backdrop--visible");
       }, 10));
     }
     /**
      * Closes the popup
      */
     close() {
-      var t, e;
-      this.isOpen && ((t = this.popupElement) == null || t.classList.remove("crs-popup--visible"), (e = this.backdropElement) == null || e.classList.remove("crs-popup-backdrop--visible"), setTimeout(() => {
+      var e, t;
+      this.isOpen && ((e = this.popupElement) == null || e.classList.remove("crs-popup--visible"), (t = this.backdropElement) == null || t.classList.remove("crs-popup-backdrop--visible"), setTimeout(() => {
         var n, o;
         (n = this.popupElement) == null || n.remove(), (o = this.backdropElement) == null || o.remove(), this.popupElement = null, this.backdropElement = null, this.isOpen = !1;
       }, 200));
     }
-    render(t) {
-      this.backdropElement = document.createElement("div"), this.backdropElement.className = "crs-popup-backdrop", this.backdropElement.addEventListener("click", () => this.close()), this.popupElement = document.createElement("div"), this.popupElement.className = "crs-popup";
-      const e = document.createElement("div");
-      e.className = "crs-popup__header", e.innerHTML = `
+    render(e) {
+      this.backdropElement = document.createElement("div"), this.backdropElement.className = "crs-popup-backdrop", this.backdropElement.addEventListener("click", () => {
+        this.close(), m(
+          "Blog Article",
+          "Click - Close",
+          "Popup - Wait! Before you go..."
+        );
+      }), this.popupElement = document.createElement("div"), this.popupElement.className = "crs-popup";
+      const t = document.createElement("div");
+      t.className = "crs-popup__header", t.innerHTML = `
       <div class="logo">
         <svg class="logo__symbol" xmlns="http://www.w3.org/2000/svg" width="20" height="32" viewBox="0 0 19 30">
           <path fill-rule="evenodd" d="M10.694 9.987l3.372 3.404a.748.748 0 0 0 1.065 0l3.372-3.404a.764.764 0 0 0 0-1.075L15.13 5.508a.748.748 0 0 0-1.065 0l-3.372 3.404a.766.766 0 0 0 0 1.075zM8.829 8.106a.748.748 0 0 0 1.065 0l3.373-3.404a.765.765 0 0 0 0-1.076L9.894.222a.748.748 0 0 0-1.065 0L5.458 3.626a.764.764 0 0 0 0 1.076l3.371 3.404zm0 2.688l-3.371 3.404a.764.764 0 0 0 0 1.076l3.371 3.403a.747.747 0 0 0 1.065 0l3.373-3.403a.765.765 0 0 0 0-1.076l-3.373-3.404a.748.748 0 0 0-1.065 0zm-5.236 2.598a.748.748 0 0 0 1.065 0L8.03 9.988a.767.767 0 0 0 0-1.076L4.658 5.509a.747.747 0 0 0-1.065 0L.221 8.912a.765.765 0 0 0 0 1.076l3.372 3.404zm11.538 2.688a.748.748 0 0 0-1.065 0l-3.373 3.404a.766.766 0 0 0 0 1.075l3.373 3.404a.749.749 0 0 0 1.065 0l3.372-3.404a.764.764 0 0 0 0-1.076L15.13 16.08zm-5.237 5.285a.748.748 0 0 0-1.065 0l-3.372 3.404a.765.765 0 0 0 0 1.076l3.372 3.404a.748.748 0 0 0 1.065 0l3.373-3.404a.764.764 0 0 0 0-1.076l-3.373-3.404zm-1.863-1.881L4.658 16.08a.748.748 0 0 0-1.065 0L.22 19.484a.766.766 0 0 0 0 1.075l3.372 3.404a.75.75 0 0 0 1.066 0L8.03 20.56a.766.766 0 0 0 0-1.075z"></path>
@@ -1124,18 +1152,24 @@ body:has(.crs-popup--visible) {
       </div>
     `;
       const n = document.createElement("button");
-      n.className = "btn modal__close crs-popup__close", n.setAttribute("aria-label", "Close"), n.addEventListener("click", () => this.close());
+      n.className = "btn modal__close crs-popup__close", n.setAttribute("aria-label", "Close"), n.addEventListener("click", () => {
+        this.close(), m(
+          "Blog Article",
+          "Click - Close",
+          "Popup - Wait! Before you go..."
+        );
+      });
       const o = document.createElement("div");
-      o.className = "crs-popup__content", typeof t == "string" ? o.innerHTML = t : o.appendChild(t), o.addEventListener("click", (i) => {
+      o.className = "crs-popup__content", typeof e == "string" ? o.innerHTML = e : o.appendChild(e), o.addEventListener("click", (i) => {
         i.target.closest("[data-popup-close]") && this.close();
-      }), this.popupElement.appendChild(e), this.popupElement.appendChild(n), this.popupElement.appendChild(o), document.body.appendChild(this.backdropElement), document.body.appendChild(this.popupElement);
+      }), this.popupElement.appendChild(t), this.popupElement.appendChild(n), this.popupElement.appendChild(o), document.body.appendChild(this.backdropElement), document.body.appendChild(this.popupElement);
     }
     addStyles() {
-      const t = document.createElement("style");
-      t.innerHTML = M, document.head.appendChild(t);
+      const e = document.createElement("style");
+      e.innerHTML = M, document.head.appendChild(e);
     }
   }
-  const q = `.crs-popup__content {
+  const D = `.crs-popup__content {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1334,9 +1368,9 @@ div[data-step] {
     init() {
       this.addStyles();
     }
-    render(t) {
-      if (!t) return;
-      const { initial: e, yesStep: n, noStep: o, applist: i } = t;
+    render(e) {
+      if (!e) return;
+      const { initial: t, yesStep: n, noStep: o, applist: i } = e;
       return (
         /* HTML */
         `
@@ -1346,7 +1380,7 @@ div[data-step] {
             <div class="crs-popup-content-supnote">
               🖐 <span class="highlight">Wait!&nbsp; </span> Before you go...
             </div>
-            <div class="crs-popup-content-title">${e.title}</div>
+            <div class="crs-popup-content-title">${t.title}</div>
           </div>
           <div class="crs-popup-content-actions">
             <div class="crs-popup-content-actions-wrap">
@@ -1443,112 +1477,124 @@ div[data-step] {
     `
       );
     }
-    changeStep(t) {
+    changeStep(e) {
       document.querySelectorAll("[data-step]").forEach((n) => {
-        parseInt(n.getAttribute("data-step") || "0") === t ? n.style.display = "flex" : n.style.display = "none";
+        parseInt(n.getAttribute("data-step") || "0") === e ? n.style.display = "flex" : n.style.display = "none";
       });
     }
     initEvents() {
-      const t = document.querySelector(
+      const e = document.querySelector(
         ".crs-popup-content-actions button:nth-child(1)"
-      ), e = document.querySelector(
+      ), t = document.querySelector(
         ".crs-popup-content-actions .no-button"
       ), n = document.querySelectorAll(
         ".crs-popup-content-actions .crs-popup-cta"
       );
-      t && t.addEventListener("click", () => {
-        this.changeStep(2);
-      }), e && e.addEventListener("click", () => {
-        this.changeStep(3);
+      e && e.addEventListener("click", () => {
+        this.changeStep(2), m(
+          "Blog Article",
+          "Click - Yes",
+          "Popup - Wait! Before you go..."
+        );
+      }), t && t.addEventListener("click", () => {
+        this.changeStep(3), m("Blog Article", "Click - No", "Popup - Wait! Before you go...");
       }), n.forEach((o) => {
         o == null || o.addEventListener("click", async () => {
           document.querySelectorAll(
             'a[href*="signup"].promo-new-banner__cta-btn, a[href*="signup"].promo-banner__cta-btn'
           ).forEach((r) => {
             r == null || r.click();
-          });
+          }), m(
+            "Blog Article",
+            "Click - Try Free",
+            "Popup - Wait! Before you go..."
+          );
         });
       });
     }
     addStyles() {
-      const t = document.createElement("style");
-      t.innerHTML = q, document.head.appendChild(t);
+      const e = document.createElement("style");
+      e.innerHTML = D, document.head.appendChild(e);
     }
   }
-  class D {
+  class T {
     constructor() {
-      this.popup = new P(), this.popupContent = new z(), this.init();
+      this.popup = new q(), this.popupContent = new z(), this.init();
     }
     init() {
       this.triggerPopup();
     }
     triggerPopup() {
-      const t = window.location.pathname, e = g.find(
-        (a) => t.includes(a.link)
+      const e = window.location.pathname, t = f.find(
+        (a) => e.includes(a.link)
       );
-      if (!e) {
+      if (!t) {
         console.error("No article found for the current path");
         return;
       }
-      const n = `popup_shown_${t}`;
+      const n = `popup_shown_${e}`;
       let o = sessionStorage.getItem(n), i = !1, r = !1, s = !1;
       const l = window.innerWidth < 992, c = () => {
         if (o) return;
         sessionStorage.setItem(n, "1");
-        const a = this.popupContent.render(e.popupData);
-        a && (this.popup.open(a), this.popupContent.initEvents(), C());
+        const a = this.popupContent.render(t.popupData);
+        a && (this.popup.open(a), this.popupContent.initEvents(), B(), m("Blog Article", "Load", "Popup - Wait! Before you go..."));
       }, p = [];
-      let d;
-      const m = () => {
-        clearTimeout(d), d = setTimeout(() => {
+      let h;
+      const g = () => {
+        clearTimeout(h), h = setTimeout(() => {
           console.log("[POPUP TRIGGER] inactivity > 30s"), c();
         }, 3e4);
       };
       ["mousemove", "keydown", "scroll", "touchstart"].forEach((a) => {
-        window.addEventListener(a, m), p.push(() => window.removeEventListener(a, m));
-      }), m();
+        window.addEventListener(a, g), p.push(() => window.removeEventListener(a, g));
+      }), g();
       const H = setTimeout(() => {
         console.log("[POPUP TRIGGER] time on page > 90s"), c();
       }, 9e4);
       p.push(() => clearTimeout(H));
-      const F = setTimeout(() => {
+      const A = setTimeout(() => {
         i = !0;
       }, 1e4);
-      p.push(() => clearTimeout(F));
-      const f = (a) => {
+      p.push(() => clearTimeout(A));
+      const w = (a) => {
         if (!i || o) return;
-        const h = a.clientY <= 0, A = a.clientX <= 0, B = a.clientX >= window.innerWidth, j = a.clientY >= window.innerHeight;
-        (h || A || B || j) && (console.log("[POPUP TRIGGER] mouse leave"), c());
+        const u = a.clientY <= 0, F = a.clientX <= 0, j = a.clientX >= window.innerWidth, I = a.clientY >= window.innerHeight;
+        (u || F || j || I) && (console.log("[POPUP TRIGGER] mouse leave"), c());
       };
-      l || (document.addEventListener("mouseleave", f), p.push(() => document.removeEventListener("mouseleave", f)));
-      let w = window.scrollY, v = Date.now();
-      const y = () => {
-        const a = Date.now(), h = window.scrollY;
-        w - h > 100 && a - v < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), c()), w = h, v = a;
-      };
-      window.addEventListener("scroll", y), p.push(() => window.removeEventListener("scroll", y));
+      l || (document.addEventListener("mouseleave", w), p.push(
+        () => document.removeEventListener("mouseleave", w)
+      ));
+      let v = window.scrollY, y = Date.now();
       const b = () => {
-        const a = window.scrollY || document.documentElement.scrollTop, h = document.documentElement.scrollHeight - window.innerHeight;
-        h > 0 && a / h > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), c());
+        const a = Date.now(), u = window.scrollY;
+        v - u > 100 && a - y < 400 && (console.log("[POPUP TRIGGER] quick scroll up"), c()), v = u, y = a;
       };
       window.addEventListener("scroll", b), p.push(() => window.removeEventListener("scroll", b));
       const x = () => {
+        const a = window.scrollY || document.documentElement.scrollTop, u = document.documentElement.scrollHeight - window.innerHeight;
+        u > 0 && a / u > 0.9 && (console.log("[POPUP TRIGGER] scroll to 90-100%"), c());
+      };
+      window.addEventListener("scroll", x), p.push(() => window.removeEventListener("scroll", x));
+      const k = () => {
         document.visibilityState === "hidden" && (r = !0), l && document.visibilityState === "visible" && r && !o && (console.log("[POPUP TRIGGER] tab visible again (mobile)"), c());
       };
-      document.addEventListener("visibilitychange", x), p.push(() => document.removeEventListener("visibilitychange", x));
-      const k = (a) => {
-        var h;
-        l && !o && !s && ((h = a.preventDefault) == null || h.call(a), console.log("[POPUP TRIGGER] back button (mobile)"), c(), s = !0, setTimeout(() => {
+      document.addEventListener("visibilitychange", k), p.push(
+        () => document.removeEventListener("visibilitychange", k)
+      );
+      const S = (a) => {
+        var u;
+        l && !o && !s && ((u = a.preventDefault) == null || u.call(a), console.log("[POPUP TRIGGER] back button (mobile)"), c(), s = !0, setTimeout(() => {
           s = !1;
         }, 2e3), history.pushState(null, "", window.location.href));
       };
-      l && (window.addEventListener("popstate", k), p.push(() => window.removeEventListener("popstate", k)), history.pushState(null, "", window.location.href));
-      function C() {
-        p.forEach((a) => a()), clearTimeout(d);
+      l && (window.addEventListener("popstate", S), p.push(() => window.removeEventListener("popstate", S)), history.pushState(null, "", window.location.href));
+      function B() {
+        p.forEach((a) => a()), clearTimeout(h);
       }
     }
   }
-  const T = [
+  const R = [
     "/how-to/recover-deleted-photos-from-iphone",
     "/how-to/download-youtube-videos",
     "/how-to/how-to-recover-deleted-text-messages-on-iphone",
@@ -1560,19 +1606,19 @@ div[data-step] {
     "/how-to/tiktok-banned-reasons-and-solutions",
     "/how-to/open-rar-files-on-mac"
   ];
-  S({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), E("");
-  class R {
+  E({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), _("");
+  class C {
     constructor() {
       this.init();
     }
     init() {
-      const t = window.location.pathname;
-      if (!T.includes(t)) {
+      const e = window.location.pathname;
+      if (!R.includes(e)) {
         console.log("Current page is not in blogLinks");
         return;
       }
-      new L(), new D();
+      new P(), new T();
     }
   }
-  new R();
+  new C();
 })();
