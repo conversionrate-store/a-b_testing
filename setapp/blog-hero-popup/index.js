@@ -1037,6 +1037,7 @@
 
 /* CRS Popup window */
 .crs-popup {
+  --max-height: 95dvh;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -1046,7 +1047,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   width: 100%;
   max-width: 866px;
-  max-height: 95dvh;
+  max-height:  95dvh;
   opacity: 0;
   transition: opacity 0.2s, transform 0.2s;
   z-index: 99999998;
@@ -1091,7 +1092,7 @@ body:has(.crs-popup--visible) {
     min-width: unset;
     width: 100vw;
     max-width: 100vw;
-    max-height: 95vh;
+    max-height: 95dvh;
   }
   .crs-popup--visible {
     transform: translate(-50%, 0) scale(1);
@@ -1164,12 +1165,19 @@ body:has(.crs-popup--visible) {
         i.target.closest("[data-popup-close]") && this.close();
       }), this.popupElement.appendChild(t), this.popupElement.appendChild(n), this.popupElement.appendChild(o), document.body.appendChild(this.backdropElement), document.body.appendChild(this.popupElement);
     }
+    setPopupMaxHeight() {
+      const e = () => {
+        const t = window.innerHeight * 0.95;
+        this.popupElement && (this.popupElement.style.maxHeight = t + "px");
+      };
+      window.addEventListener("resize", e), e();
+    }
     addStyles() {
       const e = document.createElement("style");
       e.innerHTML = M, document.head.appendChild(e);
     }
   }
-  const D = `.crs-popup__content {
+  const z = `.crs-popup__content {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1361,7 +1369,7 @@ div[data-step] {
   min-height: 0;
 }
 `;
-  class z {
+  class D {
     constructor() {
       this.init();
     }
@@ -1514,12 +1522,12 @@ div[data-step] {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = D, document.head.appendChild(e);
+      e.innerHTML = z, document.head.appendChild(e);
     }
   }
   class T {
     constructor() {
-      this.popup = new q(), this.popupContent = new z(), this.init();
+      this.popup = new q(), this.popupContent = new D(), this.init();
     }
     init() {
       this.triggerPopup();
@@ -1549,10 +1557,10 @@ div[data-step] {
       ["mousemove", "keydown", "scroll", "touchstart"].forEach((a) => {
         window.addEventListener(a, g), p.push(() => window.removeEventListener(a, g));
       }), g();
-      const H = setTimeout(() => {
+      const C = setTimeout(() => {
         console.log("[POPUP TRIGGER] time on page > 90s"), c();
       }, 9e4);
-      p.push(() => clearTimeout(H));
+      p.push(() => clearTimeout(C));
       const A = setTimeout(() => {
         i = !0;
       }, 1e4);
@@ -1607,7 +1615,7 @@ div[data-step] {
     "/how-to/open-rar-files-on-mac"
   ];
   E({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), _("");
-  class C {
+  class H {
     constructor() {
       this.init();
     }
@@ -1620,5 +1628,5 @@ div[data-step] {
       new P(), new T();
     }
   }
-  new C();
+  new H();
 })();
