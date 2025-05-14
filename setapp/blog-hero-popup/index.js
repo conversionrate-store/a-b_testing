@@ -1538,7 +1538,7 @@ div[data-step] {
         if (o) return;
         sessionStorage.setItem(n, "1");
         const a = this.popupContent.render(t.popupData);
-        a && (this.popup.open(a), this.popupContent.initEvents(), B(), m("Blog Article", "Load", "Popup - Wait! Before you go..."));
+        a && (document.querySelector(".signup-modal.is-open") || (this.popup.open(a), this.popupContent.initEvents(), B(), m("Blog Article", "Load", "Popup - Wait! Before you go...")));
       }, p = [];
       let h;
       const g = () => {
