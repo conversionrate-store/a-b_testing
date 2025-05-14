@@ -1046,7 +1046,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   width: 100%;
   max-width: 866px;
-  max-height: 95vh;
+  max-height: 95dvh;
   opacity: 0;
   transition: opacity 0.2s, transform 0.2s;
   z-index: 99999998;
