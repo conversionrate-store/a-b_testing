@@ -39,6 +39,7 @@ var K = function() {
 }
 
 .delivery-status {
+  margin: 0 !important;
   text-align: left !important;
   color: #000 !important;
   font-size: 16px !important;
@@ -51,6 +52,7 @@ var K = function() {
 }
 
 .crs-estimate-delivery-items {
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   gap: 18px;
