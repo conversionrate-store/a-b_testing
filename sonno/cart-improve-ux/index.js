@@ -1,29 +1,29 @@
-var U = function() {
+var K = function() {
   "use strict";
-  const I = (r, t, e, n = "") => {
+  const I = (s, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: r,
+      event_name: s,
       event_desc: t,
       event_type: e,
       event_loc: n
-    }), console.log(`Event: ${r} | ${t} | ${e} | ${n}`);
-  }, L = ({ name: r, dev: t }) => {
+    }), console.log(`Event: ${s} | ${t} | ${e} | ${n}`);
+  }, A = ({ name: s, dev: t }) => {
     console.log(
-      `%c EXP: ${r} (DEV: ${t})`,
+      `%c EXP: ${s} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, F = (r) => {
+  }, q = (s) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", s, "variant_1"));
     }, 1e3);
   };
-  function g(r) {
+  function g(s) {
     return new Promise((t) => {
-      if (document.querySelector(r))
-        return t(document.querySelector(r));
+      if (document.querySelector(s))
+        return t(document.querySelector(s));
       const e = new MutationObserver(() => {
-        document.querySelector(r) && (t(document.querySelector(r)), e.disconnect());
+        document.querySelector(s) && (t(document.querySelector(s)), e.disconnect());
       });
       e.observe(document.documentElement, {
         childList: !0,
@@ -32,7 +32,234 @@ var U = function() {
       });
     });
   }
-  const Z = `@media (min-width: 768px) {
+  const L = `.estimate-delivery-wrapper {
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: rgba(165, 211, 255, 0.24);
+}
+
+.delivery-status {
+  text-align: left !important;
+  color: #000 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 24px !important;
+  letter-spacing: 0.4px !important;
+}
+.estimate-delivery-ele {
+  display: none !important;
+}
+
+.crs-estimate-delivery-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.crs-estimate-delivery-item {
+  position: relative;
+  display: flex;
+  gap: 12px;
+}
+.crs-estimate-delivery-item::before {
+  flex-shrink: 0;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: #f89201;
+}
+
+.crs-estimate-delivery-item::after {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  transform: translateX(-50%);
+  content: '';
+  display: block;
+  width: 6px;
+  height: 100%;
+  background: #f89201;
+}
+
+.crs-estimate-delivery-item:last-child::after {
+  background: #f892014d;
+  height: calc(100% - 20px);
+  border-radius: 0 0 20px 20px;
+}
+
+.crs-estimate-delivery-item .crs-title {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21.85px;
+}
+
+.crs-estimate-delivery-item .crs-description {
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 21.85px;
+  letter-spacing: 0.364px;
+}
+
+.crs-estimate-delivery-item .crs-note {
+  color: #1e3851;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+}
+
+@media (min-width: 768px) {
+  .delivery-status {
+    margin: 0 !important;
+
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 28px !important;
+    max-width: 100% !important;
+  }
+  .crs-estimate-delivery-items {
+    margin-top: 20px;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .crs-estimate-delivery-item {
+    min-width: 86px;
+    max-width: 276px;
+  }
+
+  .crs-estimate-delivery-items::after {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 5px;
+    display: block;
+    width: 100%;
+    height: 6px;
+    background: #f892014d;
+    border-radius: 20px;
+  }
+  .crs-estimate-delivery-items::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 5px;
+    display: block;
+    width: 80%;
+    height: 6px;
+    background: #f89201;
+    border-radius: 20px;
+  }
+  .crs-estimate-delivery-item::before {
+    display: none;
+  }
+
+  .crs-estimate-delivery-item .crs-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .crs-estimate-delivery-item .crs-title {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+  }
+  .crs-estimate-delivery-item::after {
+    display: none;
+  }
+  .crs-estimate-delivery-item .crs-title::after {
+    flex-shrink: 0;
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    background: #f89201;
+  }
+
+  .crs-estimate-delivery-item .crs-description {
+    white-space: nowrap;
+  }
+}
+`;
+  class T {
+    constructor() {
+      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
+    }
+    init() {
+      this.addStyles(), this.render();
+    }
+    async render() {
+      var a, d;
+      const t = await g(
+        ".footer-cart .estimate-delivery-wrapper"
+      ), e = t.querySelectorAll(
+        ".estimate-delivery-item"
+      ), n = (a = e[0].querySelector(
+        ".estimate-delivery-date"
+      )) == null ? void 0 : a.textContent, r = (d = e[2].querySelector(
+        ".estimate-delivery-date"
+      )) == null ? void 0 : d.textContent;
+      let i = "";
+      if (r) {
+        const o = r.match(
+          /([A-Za-z]+) (\d{1,2}) - ([A-Za-z]+) (\d{1,2})/
+        ), h = (/* @__PURE__ */ new Date()).getFullYear();
+        if (o) {
+          const l = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${h}`), p = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${h}`), m = new Date(
+            l.getTime() + 60 * 24 * 60 * 60 * 1e3
+          ), u = new Date(p.getTime() + 60 * 24 * 60 * 60 * 1e3), x = (f) => f.toLocaleString("en-US", { month: "short", day: "numeric" });
+          i = `${x(m)} - ${x(u)}`;
+        }
+      }
+      const c = (
+        /* HTML */
+        `
+      <div class="crs-estimate-delivery">
+        <div class="crs-estimate-delivery-items">
+          <div class="crs-estimate-delivery-item">
+            <div class="crs-content">
+              <div class="crs-title">Ordered</div>
+              <div class="crs-description">
+                ${n}, ${(/* @__PURE__ */ new Date()).getFullYear()}
+              </div>
+            </div>
+          </div>
+          <div class="crs-estimate-delivery-item">
+            <div class="crs-content">
+              <div class="crs-title">Delivered</div>
+              <div class="crs-description">${r}</div>
+            </div>
+          </div>
+          <div class="crs-estimate-delivery-item">
+            <div class="crs-content">
+              <div class="crs-title">Enjoy a 60-Night Free Trial</div>
+              <div class="crs-description">${i}</div>
+              <div class="crs-note">
+                Not fully satisfied? Don't worry; we'll arrange a return or
+                exchange for you.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+      );
+      t && t.insertAdjacentHTML("beforeend", c);
+    }
+    addStyles() {
+      const t = document.createElement("style");
+      t.textContent = L, document.head.appendChild(t);
+    }
+  }
+  const D = `@media (min-width: 768px) {
   .crs-cta {
     display: none;
   }
@@ -71,7 +298,7 @@ var U = function() {
 [data-fixed-cta="true"] .rp-micro-app-dummy-icon-container {
   bottom: 70px !important;
 }`;
-  class q {
+  class $ {
     constructor() {
       this.init();
     }
@@ -110,9 +337,9 @@ var U = function() {
       const e = () => {
         const i = Array.from(
           document.querySelectorAll('a[href="/checkout"]:not(.crs-cta-button)')
-        ).some((s) => {
-          const a = s.getBoundingClientRect(), l = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(s);
-          return l && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
+        ).some((c) => {
+          const a = c.getBoundingClientRect(), d = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(c);
+          return d && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
         t.style.display = i ? "none" : "", document.body.dataset.fixedCta = i ? "false" : "true";
       };
@@ -125,10 +352,10 @@ var U = function() {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = Z, document.head.appendChild(t);
+      t.textContent = D, document.head.appendChild(t);
     }
   }
-  const A = (
+  const z = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +427,7 @@ var U = function() {
     d="M10.708 0H2.793C1.48 0 .42 1.107.42 2.478v8.261h12.663v-8.26c0-1.372-1.06-2.48-2.374-2.48ZM22.58 14.87h-.72c-.475 0-.863-.405-.863-.901v-1.503c0-.496.388-.9.863-.9h.72v3.303Z"
   />
 </svg>`
-  ), T = (
+  ), S = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +461,7 @@ var U = function() {
     d="M8.224 13.68h-1.42V9.462c1.82-1.9 1.42-.95 1.42 0v4.218Z"
   />
 </svg>`
-  ), D = (
+  ), P = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -267,14 +494,13 @@ var U = function() {
     d="m20.496 10.355.183 1.08a3.433 3.433 0 0 1-2.834-.69 3.494 3.494 0 0 1-.942-1.17 3.526 3.526 0 0 1-.368-1.46L17.293 8l1.223-2.5L19.738 8l2.738.4-1.98 1.955ZM34.598 7.042l-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), B = `.section-header > *:not(.crs-header),
+  ), N = `.section-header > *:not(.crs-header),
 section.cart-header-trustpilot {
   display: none;
 }
 
 .crs-header-inner {
   display: grid;
-  justify-content: center;
   grid-template-columns: repeat(5, auto);
   grid-template-rows: auto;
   gap: 24px;
@@ -297,6 +523,9 @@ section.cart-header-trustpilot {
   max-width: 140px;
 }
 
+.crs-header-block:not(.crs-header-logo) {
+  display: none;
+}
 .crs-header-block .crs-icon img {
   background-color: #ccc;
   width: 19px;
@@ -321,8 +550,11 @@ section.cart-header-trustpilot {
 }
 
 .crs-header-logo {
-  flex-direction: column;
-  max-width: 321px;
+  grid-column: 1 / -1;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
 }
 
 .crs-logo {
@@ -337,16 +569,37 @@ section.cart-header-trustpilot {
 }
 
 @media (max-width: 768px) {
+  .crs-header .container {
+    padding: 0;
+  }
+  .crs-header-inner {
+    padding-block: 12px;
+  }
   .crs-header-logo {
     grid-column: 1 / -1;
     grid-row: 1 / 2;
     flex-direction: row;
     align-items: center;
     max-width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   .crs-header-block:not(.crs-header-logo) {
     grid-row: 2 / 3;
     max-width: 114px;
+  }
+}
+
+@media (max-width: 768px) {
+  .crs-header-block.crs-header-free-trial {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    max-width: 100%;
+  }
+  .crs-header-block.crs-header-free-trial .crs-text {
+    width: max-content;
   }
   .crs-header-delivery {
     grid-column: 1 / 2;
@@ -388,7 +641,6 @@ section.cart-header-trustpilot {
   background-color: #1e3851;
 }
 
-
 .crs-header-line-inner {
   width: max-content;
   color: #fff;
@@ -417,8 +669,9 @@ section.cart-header-trustpilot {
   .crs-header-line-inner .highlight {
     display: block;
   }
-}`;
-  class P {
+}
+`;
+  class j {
     constructor() {
       console.info("CartHeader"), this.init();
     }
@@ -437,7 +690,7 @@ section.cart-header-trustpilot {
       <div class="container">
         <div class="crs-header-inner">
           <div class="crs-header-block">
-            <div class="crs-icon">${A}</div>
+            <div class="crs-icon">${z}</div>
             <div class="crs-text">Price Match Guarantee</div>
           </div>
           <div class="crs-header-block crs-header-delivery">
@@ -451,11 +704,11 @@ section.cart-header-trustpilot {
             <div class="crs-trustpilot"></div>
           </div>
           <div class="crs-header-block crs-header-free-trial">
-            <div class="crs-icon">${T}</div>
+            <div class="crs-icon">${S}</div>
             <div class="crs-text">60 Nights Free Trial</div>
           </div>
           <div class="crs-header-block crs-header-guarantee">
-            <div class="crs-icon">${D}</div>
+            <div class="crs-icon">${P}</div>
             <div class="crs-text">5 Year Guarantee</div>
           </div>
         </div>
@@ -492,11 +745,11 @@ section.cart-header-trustpilot {
         ".estimate-delivery-item"
       );
       !t || !e || e.forEach((n) => {
-        var c, i;
-        if ((c = n.textContent) != null && c.toLocaleLowerCase().includes("delivered")) {
-          const s = n.querySelector(".estimate-delivery-date");
-          if (s) {
-            const a = (i = s.textContent) == null ? void 0 : i.trim();
+        var r, i;
+        if ((r = n.textContent) != null && r.toLocaleLowerCase().includes("delivered")) {
+          const c = n.querySelector(".estimate-delivery-date");
+          if (c) {
+            const a = (i = c.textContent) == null ? void 0 : i.trim();
             return a ? (t.textContent = a, a) : void 0;
           }
         }
@@ -504,10 +757,10 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = B, document.head.appendChild(t);
+      t.innerHTML = N, document.head.appendChild(t);
     }
   }
-  const _ = `.crs-cart-items-count {
+  const B = `.crs-cart-items-count {
   margin-top: 24px;
 }
 
@@ -530,7 +783,7 @@ section.cart-header-trustpilot {
   }
 }
 `;
-  class $ {
+  class _ {
     constructor() {
       this.init();
     }
@@ -558,15 +811,15 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = _, document.head.appendChild(t);
+      t.textContent = B, document.head.appendChild(t);
     }
     observeCartQuantity() {
       const t = () => {
         var i;
-        const n = document.querySelector("cart-quantity"), c = document.getElementById("crs-cart-count");
-        if (n && c) {
-          const s = n.getElementsByClassName("w-3.5")[0], a = s ? s.getElementsByClassName("w-full")[0] : null;
-          c.textContent = ((i = a == null ? void 0 : a.textContent) == null ? void 0 : i.trim()) || "0";
+        const n = document.querySelector("cart-quantity"), r = document.getElementById("crs-cart-count");
+        if (n && r) {
+          const c = n.getElementsByClassName("w-3.5")[0], a = c ? c.getElementsByClassName("w-full")[0] : null;
+          r.textContent = ((i = a == null ? void 0 : a.textContent) == null ? void 0 : i.trim()) || "0";
         }
       };
       t();
@@ -578,7 +831,110 @@ section.cart-header-trustpilot {
       });
     }
   }
-  const z = `.cart-product-item {
+  const O = `.crs-price-match-guarantee {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding-block: 6px;
+}
+.crs-price-match-guarantee .crs-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1e3851;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration: underline;
+}
+
+.crs-price-match-guarantee .crs-text::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="19" fill="none"><path fill="%2309457E" d="M26.488 10.217a1.268 1.268 0 0 0-.29 1.482 1.261 1.261 0 0 1-.261 1.447 1.237 1.237 0 0 1-.438.273 1.254 1.254 0 0 0-.644.517c-.15.241-.216.526-.186.81a1.275 1.275 0 0 1-.424.947 1.25 1.25 0 0 1-.984.308 1.225 1.225 0 0 0-.713.237 1.245 1.245 0 0 0-.445.61 1.252 1.252 0 0 1-.697.747 1.227 1.227 0 0 1-1.015-.031 1.25 1.25 0 0 0-.774-.1c-.765.128-.736.806-1.623.806-.886 0-.858-.678-1.623-.815a1.228 1.228 0 0 0-.774.1 1.228 1.228 0 0 1-1.44-.26 1.254 1.254 0 0 1-.272-.447 1.244 1.244 0 0 0-.45-.607c-.21-.15-.46-.231-.718-.23a1.242 1.242 0 0 1-1.01-.331 1.263 1.263 0 0 1-.397-.996 1.26 1.26 0 0 0-.2-.772 1.24 1.24 0 0 0-.62-.493 1.23 1.23 0 0 1-.742-.703 1.257 1.257 0 0 1 .033-1.026 1.271 1.271 0 0 0-.281-1.473 1.254 1.254 0 0 1-.428-.947 1.266 1.266 0 0 1 .428-.948 1.268 1.268 0 0 0 .29-1.482 1.26 1.26 0 0 1 .261-1.447c.126-.12.275-.214.438-.273.266-.094.493-.277.644-.517.15-.241.216-.526.187-.81a1.274 1.274 0 0 1 .423-.947 1.25 1.25 0 0 1 .984-.308c.256-.002.506-.085.713-.236.208-.152.363-.366.445-.611.085-.246.243-.46.453-.61.21-.152.462-.233.72-.234.469 0 .586.252 1.083.252.953.009.915-.83 1.853-.83a1.238 1.238 0 0 1 .938.422A1.245 1.245 0 0 0 20.4.985a1.228 1.228 0 0 1 1.433.263c.12.127.211.278.27.443.093.268.274.497.512.65.239.152.52.218.801.188a1.242 1.242 0 0 1 .939.427 1.267 1.267 0 0 1 .304.994c.002.259.084.51.235.72.15.21.362.367.605.45.243.086.455.246.604.458.15.212.23.466.23.726 0 .474-.248.592-.248 1.094-.01.962.82.924.82 1.872a1.271 1.271 0 0 1-.417.947Z"/><path fill="%2309457E" d="M26.486 10.217a1.268 1.268 0 0 0-.29 1.482 1.261 1.261 0 0 1-.261 1.447 1.237 1.237 0 0 1-.438.273c-.24.084-.448.24-.597.448-.148.207-.23.456-.233.712a8.341 8.341 0 0 1-5.737 2.27c-7.378 0-11.158-8.915-6.196-14.31.255-.005.502-.088.708-.24.206-.152.36-.365.441-.608a1.25 1.25 0 0 1 .453-.612 1.23 1.23 0 0 1 .72-.232c.469 0 .586.252 1.084.252.952.009.914-.83 1.852-.83a1.238 1.238 0 0 1 .938.422 1.245 1.245 0 0 0 1.468.294 1.228 1.228 0 0 1 1.433.263c.12.127.212.278.27.443.094.268.274.497.512.65.239.152.52.218.801.188a1.242 1.242 0 0 1 .94.427 1.268 1.268 0 0 1 .303.994c.002.259.084.51.235.72.15.21.362.367.605.45.243.086.455.246.604.458.15.212.23.466.23.726 0 .474-.248.592-.248 1.094-.01.962.82.924.82 1.872a1.27 1.27 0 0 1-.416.947Z"/><path fill="%23FFFFFE" d="M24.089 9.27a6.21 6.21 0 0 1-.465 2.356 6.162 6.162 0 0 1-1.321 1.998 6.094 6.094 0 0 1-1.979 1.335c-.74.31-1.532.468-2.333.468-5.736 0-8.297-7.342-3.813-10.956a6.045 6.045 0 0 1 6.45-.748 6.118 6.118 0 0 1 2.521 2.27c.613.98.938 2.117.94 3.276Z"/><path fill="%23FFFFFE" d="M24.092 9.27a6.139 6.139 0 0 1-1.346 3.85 6.057 6.057 0 0 1-4.136 1.317 6.07 6.07 0 0 1-3.957-1.793 6.2 6.2 0 0 1-.472-8.173 6.045 6.045 0 0 1 6.45-.748 6.118 6.118 0 0 1 2.521 2.27c.613.98.938 2.117.94 3.276Z"/><path fill="%23F89201" stroke="%23F89201" stroke-width=".2" d="M17.977 4.424c.645 0 1.28.23 1.774.657h-.001c.613.515.963 1.28.963 2.08 0 .35-.277.626-.627.626a.622.622 0 0 1-.627-.627c0-.435-.189-.85-.523-1.125h-.001a1.44 1.44 0 0 0-.958-.357c-.088 0-.165.009-.26.02-.368.059-.714.292-.944.63h.001c-.227.356-.297.78-.198 1.197l.286 1.118h2.17c.35 0 .626.276.626.627 0 .35-.276.626-.627.626h-1.848c.106.509.061 1.02-.114 1.488.337.052.665.154.96.33h-.002c.122.067.231.144.34.23l.104.076a1.486 1.486 0 0 0 1.753-.076l.104-.068a.622.622 0 0 1 .774.168.622.622 0 0 1-.1.878 2.713 2.713 0 0 1-3.073.231v.001a2.064 2.064 0 0 1-.176-.108l-.166-.123a1.47 1.47 0 0 0-1.838-.01l-.006.005a.727.727 0 0 1-.527.128.609.609 0 0 1-.401-.26l-.002-.003a.631.631 0 0 1 .131-.825v-.021l.045-.03.338-.222.095-.068c.457-.357.665-.957.518-1.531l-.002-.002-.044-.188h-1.082a.622.622 0 0 1-.627-.626c0-.351.277-.627.627-.627h.757l-.21-.804v-.001a2.764 2.764 0 0 1 .371-2.189l.168-.227c.411-.51.985-.86 1.62-.966h.002l.228-.024c.076-.006.152-.008.229-.008Z"/><path fill="%23F89201" d="M33.227 6.941 31.38 9.39l1.834 2.472-6.882-.046c.2-.714.777-.752 1.11-1.326.18-.29.262-.63.235-.97a1.627 1.627 0 0 0-.385-.926 1.623 1.623 0 0 1-.374-.809 1.6 1.6 0 0 1 .11-.88l6.199.037ZM2.726 6.941 4.573 9.39 2.74 11.86l6.882-.046c-.2-.714-.777-.752-1.11-1.326-.18-.29-.262-.63-.235-.97.027-.34.162-.665.385-.926.198-.23.328-.51.375-.809a1.599 1.599 0 0 0-.11-.88l-6.2.037Z"/></svg>');
+}
+
+.crs-price-match-guarantee .crs-tooltip {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none"><g clip-path="url(%23a)"><path fill="%23F89201" d="M10.597 2.027a6 6 0 1 0-8.486 8.487 6 6 0 0 0 8.486-8.487ZM7.136 8.878a.783.783 0 1 1-1.565 0v-3.13a.783.783 0 1 1 1.565 0v3.13ZM6.34 4.41c-.451 0-.752-.32-.742-.713-.01-.414.29-.723.75-.723s.752.31.762.723c0 .394-.3.713-.77.713Z"/></g><defs><clipPath id="a"><path fill="%23fff" d="M.354.27h12v12h-12z"/></clipPath></defs></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+
+.crs-price-match-guarantee .crs-tooltip::before {
+  display: none;
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 6px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="6" fill="none"><path fill="%23D7E7F8" d="m6.5 6-6-6h12l-6 6Z"/></svg>');
+}
+.crs-price-match-guarantee .crs-tooltip::after {
+  display: none;
+  content: attr(data-content);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: -10px;
+  width: 172px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #d7e7f8;
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.crs-price-match-guarantee .crs-tooltip:hover::before {
+  display: block;
+}
+.crs-price-match-guarantee .crs-tooltip:hover::after {
+  display: block;
+}`;
+  class R {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.addStyles(), this.render();
+    }
+    async render() {
+      const t = (
+        /* HTML */
+        `
+      <div class="crs-price-match-guarantee">
+        <div class="crs-text">Price Match Guarantee</div>
+        <span
+          class="crs-tooltip"
+          data-content="We’ll price match any product we sell against any other retailer."
+        ></span>
+      </div>
+    `
+      ), e = await g(
+        ".calculate-pricing-part .total-order"
+      );
+      e && e.insertAdjacentHTML("afterend", t);
+    }
+    addStyles() {
+      const t = document.createElement("style");
+      t.textContent = O, document.head.appendChild(t);
+    }
+  }
+  const V = `.cart-product-item {
   margin-top: 48px;
   border-radius: 16px;
   background: #f5f5f5;
@@ -591,6 +947,7 @@ section.cart-header-trustpilot {
 
 @media (max-width: 768px) {
   .cart-product-item {
+    padding: 8px 12px 12px !important;
     border-radius: 16px 16px 0 0;
   }
 
@@ -647,7 +1004,7 @@ section.cart-header-trustpilot {
 .crs-item-left-notification::after {
   content: '';
   position: absolute;
-  left: -12px;
+  left: -11px;
   top: 50%;
   transform: translateY(-50%);
   width: 0;
@@ -710,18 +1067,85 @@ section.cart-header-trustpilot {
   display: inline-block;
   text-align: center;
 }
-`, y = {
+
+.cart-product-item + .crs-nights-free-trial {
+  display: none;
+}
+
+.crs-nights-free-trial {
+  padding-block: 12px;
+  border-top: 1px dashed rgba(165, 211, 255, 0.24);
+}
+
+.crs-nights-free-trial .crs-title {
+  display: flex;
+  gap: 8px;
+  color: #1e3851;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+}
+
+.crs-nights-free-trial .crs-description {
+  margin-top: 8px;
+  color: #1e3851;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px; /* 183.333% */
+}
+
+@media (max-width: 768px) {
+  .cart-product-item .crs-nights-free-trial {
+    display: none;
+  }
+  .cart-product-item + .crs-nights-free-trial {
+    display: block;
+    padding-top: 0;
+    padding-inline: 12px;
+    border-radius: 0 0 12px 12px;
+    background: #f5f5f5;
+    border-top: none;
+  }
+
+  .crs-nights-free-trial .crs-content {
+    padding-top: 12px;
+    border-top: 1px dashed rgba(165, 211, 255, 0.24);
+  }
+}
+`, v = {
     cartProductItems: ".cart-product-section .cart-product-items",
     cartProductItem: ".cart-product-section .cart-product-item"
   };
-  class N {
+  class Y {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
       this.addStyles(), this.observeCartProductItems(), this.observeMattressButtons(), setTimeout(() => {
-        this.addItemLeftNotification();
+        this.addItemAddNotes();
       }, 300);
+    }
+    async renderNightsFreeTrial(t, e = "afterend") {
+      await g(v.cartProductItem);
+      const n = document.querySelectorAll(
+        v.cartProductItem
+      ), r = (
+        /* HTML */
+        ` <div class="crs-nights-free-trial">
+      <div class="crs-content">
+        <div class="crs-title">
+          <span>${S}</span> 60 Nights Free Trial
+        </div>
+        <div class="crs-description">
+          Enjoy a
+          <b>60-Night Free Trial!</b> Choose your item with confidence—if it’s
+          not perfect, we’ll arrange a
+          <b>hassle-free return or exchange</b>
+        </div>
+      </div>
+    </div>`
+      );
+      console.log("addNightsFreeTrial", n), t && t.insertAdjacentHTML(e, r);
     }
     renderItemLeftNotification(t, e = "afterend") {
       const n = (
@@ -738,8 +1162,8 @@ section.cart-header-trustpilot {
     async observeCartProductItems() {
       new MutationObserver((e) => {
         e.forEach((n) => {
-          n.target instanceof HTMLElement && n.target.matches(y.cartProductItems) && setTimeout(() => {
-            this.addItemLeftNotification();
+          n.target instanceof HTMLElement && n.target.matches(v.cartProductItems) && setTimeout(() => {
+            this.addItemAddNotes();
           }, 150);
         });
       }).observe(document.body, {
@@ -747,46 +1171,46 @@ section.cart-header-trustpilot {
         subtree: !0
       });
     }
-    async addItemLeftNotification() {
-      var s, a, l, o;
-      await g(y.cartProductItem);
+    async addItemAddNotes() {
+      var a, d, o, h;
+      await g(v.cartProductItem);
       const t = document.querySelectorAll(
-        y.cartProductItem
+        v.cartProductItem
       );
       if (!t) return;
       const e = sessionStorage.getItem("firstItem");
       let n = null;
-      const c = document.querySelector(
+      const r = document.querySelector(
         ".crs-item-left-notification"
       );
-      if (c && c.remove(), e) {
-        const { titleText: d, colorText: h, headboardText: u, baseText: m } = JSON.parse(e), x = Array.from(t).find((p) => {
-          var C, E, M, k;
-          const f = p.querySelector(".cart-product-info"), v = p.querySelector(".item-variants-name"), w = p.querySelector(
+      if (r && r.remove(), e) {
+        const { titleText: l, colorText: p, headboardText: m, baseText: u } = JSON.parse(e), x = Array.from(t).find((f) => {
+          var C, M, F, Z;
+          const y = f.querySelector(".cart-product-info"), w = f.querySelector(".item-variants-name"), b = f.querySelector(
             ".item-variants-name.headboard"
-          ), b = p.querySelector(
+          ), k = f.querySelector(
             ".item-variants-name.base"
-          ), R = ((C = f == null ? void 0 : f.textContent) == null ? void 0 : C.trim()) === d, V = ((E = v == null ? void 0 : v.textContent) == null ? void 0 : E.trim()) === h, Q = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === u, Y = ((k = b == null ? void 0 : b.textContent) == null ? void 0 : k.trim()) === m;
-          return R && V && Q && Y;
+          ), U = ((C = y == null ? void 0 : y.textContent) == null ? void 0 : C.trim()) === l, W = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === p, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === m, J = ((Z = k == null ? void 0 : k.textContent) == null ? void 0 : Z.trim()) === u;
+          return U && W && X && J;
         });
         x && (n = x);
       }
       if (!n && !e) {
         n = t[t.length - 1];
-        const d = n.querySelector(".cart-product-info"), h = n.querySelector(".item-variants-name"), u = n.querySelector(
+        const l = n.querySelector(".cart-product-info"), p = n.querySelector(".item-variants-name"), m = n.querySelector(
           ".item-variants-name.headboard"
-        ), m = n.querySelector(
+        ), u = n.querySelector(
           ".item-variants-name.base"
         );
-        if (d || h || u || m) {
-          const x = (s = d == null ? void 0 : d.textContent) == null ? void 0 : s.trim(), p = (a = h == null ? void 0 : h.textContent) == null ? void 0 : a.trim(), f = (l = u == null ? void 0 : u.textContent) == null ? void 0 : l.trim(), v = (o = m == null ? void 0 : m.textContent) == null ? void 0 : o.trim();
+        if (l || p || m || u) {
+          const x = (a = l == null ? void 0 : l.textContent) == null ? void 0 : a.trim(), f = (d = p == null ? void 0 : p.textContent) == null ? void 0 : d.trim(), y = (o = m == null ? void 0 : m.textContent) == null ? void 0 : o.trim(), w = (h = u == null ? void 0 : u.textContent) == null ? void 0 : h.trim();
           sessionStorage.setItem(
             "firstItem",
             JSON.stringify({
               titleText: x,
-              colorText: p,
-              headboardText: f,
-              baseText: v
+              colorText: f,
+              headboardText: y,
+              baseText: w
             })
           );
         }
@@ -795,7 +1219,14 @@ section.cart-header-trustpilot {
       const i = n.querySelector(
         ".cart-product-price"
       );
-      i && this.renderItemLeftNotification(i, "beforebegin");
+      if (!i) return;
+      this.renderItemLeftNotification(i, "beforebegin");
+      const c = document.querySelectorAll(
+        ".crs-nights-free-trial"
+      );
+      c && c.forEach((l) => {
+        l.remove();
+      }), this.renderNightsFreeTrial(n, "afterend"), this.renderNightsFreeTrial(i, "afterend");
     }
     async observeMattressButtons() {
       await g(".cart-product-image");
@@ -804,12 +1235,12 @@ section.cart-header-trustpilot {
         ".cart-product-item + .block.md\\:hidden"
       );
       const e = new MutationObserver((n) => {
-        n.forEach((c) => {
-          c.addedNodes.forEach((i) => {
-            var s, a, l, o;
-            if (i instanceof HTMLElement && (i.classList.contains("card-addons") && ((s = i.textContent) != null && s.includes("Add Mattress & Save")) && i.classList.add("crs-mattress-control-btn"), i.classList.contains("card-addons") && ((a = i.textContent) != null && a.includes("Remove")) && ((l = i.textContent) != null && l.includes("See Details")))) {
-              const d = (o = i.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
-              d && d.remove(), i.classList.add("crs-mattress-chosen");
+        n.forEach((r) => {
+          r.addedNodes.forEach((i) => {
+            var c, a, d, o;
+            if (i instanceof HTMLElement && (i.classList.contains("card-addons") && ((c = i.textContent) != null && c.includes("Add Mattress & Save")) && i.classList.add("crs-mattress-control-btn"), i.classList.contains("card-addons") && ((a = i.textContent) != null && a.includes("Remove")) && ((d = i.textContent) != null && d.includes("See Details")))) {
+              const h = (o = i.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
+              h && h.remove(), i.classList.add("crs-mattress-chosen");
             }
           });
         });
@@ -823,10 +1254,10 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = z, document.head.appendChild(t);
+      t.innerHTML = V, document.head.appendChild(t);
     }
   }
-  class O {
+  class G {
     constructor() {
       this.initialSeconds = 900, this.intervalId = null, this.headerRemainEls = null, this.remain = this.initialSeconds, this.init();
     }
@@ -840,39 +1271,40 @@ section.cart-header-trustpilot {
     }
     updateAll() {
       const t = Math.floor(this.remain / 60).toString().padStart(2, "0"), e = (this.remain % 60).toString().padStart(2, "0");
-      this.headerRemainEls && this.headerRemainEls.forEach((c) => {
-        c.textContent = `${t}:${e}`;
+      this.headerRemainEls && this.headerRemainEls.forEach((r) => {
+        r.textContent = `${t}:${e}`;
       });
       const n = document.querySelectorAll(".cart-product-items [data-remain]");
-      n.length && n.forEach((c) => {
-        c.textContent = `${t}:${e}`;
+      n.length && n.forEach((r) => {
+        r.textContent = `${t}:${e}`;
       });
     }
   }
-  class j {
+  class Q {
     constructor() {
       this.init();
     }
     init() {
-      new P(), new N(), new O(), new q(), new $();
+      new j(), new Y(), new G(), new $(), new _(), new T(), new R();
     }
   }
-  L({
+  A({
     name: "Cart Improve UX and highlight main info",
     dev: "OS"
-  }), F("mattress_upsell");
-  class S {
+  }), q("mattress_upsell");
+  class E {
     constructor() {
       this.init();
     }
     init() {
-      this.isInCart() && new j();
+      this.isInCart() && new Q();
     }
     isInCart() {
       return window.location.href.includes("/cart");
     }
   }
-  return new S(), {
-    LaunchExperiment: S
+  return new E(), {
+    LaunchExperiment: E
   };
 }();
+
