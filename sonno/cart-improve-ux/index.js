@@ -1307,4 +1307,3 @@ section.cart-header-trustpilot {
     LaunchExperiment: E
   };
 }();
-
