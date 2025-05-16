@@ -215,8 +215,8 @@ var K = function() {
         if (o) {
           const l = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${h}`), p = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${h}`), m = new Date(
             l.getTime() + 60 * 24 * 60 * 60 * 1e3
-          ), u = new Date(p.getTime() + 60 * 24 * 60 * 60 * 1e3), x = (f) => f.toLocaleString("en-US", { month: "short", day: "numeric" });
-          i = `${x(m)} - ${x(u)}`;
+          ), u = new Date(p.getTime() + 60 * 24 * 60 * 60 * 1e3), v = (f) => f.toLocaleString("en-US", { month: "short", day: "numeric" });
+          i = `${v(m)} - ${v(u)}`;
         }
       }
       const c = (
@@ -590,7 +590,7 @@ section.cart-header-trustpilot {
 }
 
 @media (max-width: 768px) {
-  .crs-header-block.crs-header-free-trial {
+  .crs-header-block.crs-header-delivery {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -598,7 +598,7 @@ section.cart-header-trustpilot {
     grid-row: 2 / 3;
     max-width: 100%;
   }
-  .crs-header-block.crs-header-free-trial .crs-text {
+  .crs-header-block.crs-header-delivery .crs-text {
     width: max-content;
   }
   .crs-header-delivery {
@@ -1112,7 +1112,7 @@ section.cart-header-trustpilot {
     border-top: 1px dashed rgba(165, 211, 255, 0.24);
   }
 }
-`, v = {
+`, x = {
     cartProductItems: ".cart-product-section .cart-product-items",
     cartProductItem: ".cart-product-section .cart-product-item"
   };
@@ -1126,9 +1126,9 @@ section.cart-header-trustpilot {
       }, 300);
     }
     async renderNightsFreeTrial(t, e = "afterend") {
-      await g(v.cartProductItem);
+      await g(x.cartProductItem);
       const n = document.querySelectorAll(
-        v.cartProductItem
+        x.cartProductItem
       ), r = (
         /* HTML */
         ` <div class="crs-nights-free-trial">
@@ -1162,7 +1162,7 @@ section.cart-header-trustpilot {
     async observeCartProductItems() {
       new MutationObserver((e) => {
         e.forEach((n) => {
-          n.target instanceof HTMLElement && n.target.matches(v.cartProductItems) && setTimeout(() => {
+          n.target instanceof HTMLElement && n.target.matches(x.cartProductItems) && setTimeout(() => {
             this.addItemAddNotes();
           }, 150);
         });
@@ -1173,9 +1173,9 @@ section.cart-header-trustpilot {
     }
     async addItemAddNotes() {
       var a, d, o, h;
-      await g(v.cartProductItem);
+      await g(x.cartProductItem);
       const t = document.querySelectorAll(
-        v.cartProductItem
+        x.cartProductItem
       );
       if (!t) return;
       const e = sessionStorage.getItem("firstItem");
@@ -1184,7 +1184,7 @@ section.cart-header-trustpilot {
         ".crs-item-left-notification"
       );
       if (r && r.remove(), e) {
-        const { titleText: l, colorText: p, headboardText: m, baseText: u } = JSON.parse(e), x = Array.from(t).find((f) => {
+        const { titleText: l, colorText: p, headboardText: m, baseText: u } = JSON.parse(e), v = Array.from(t).find((f) => {
           var C, M, F, Z;
           const y = f.querySelector(".cart-product-info"), w = f.querySelector(".item-variants-name"), b = f.querySelector(
             ".item-variants-name.headboard"
@@ -1193,7 +1193,7 @@ section.cart-header-trustpilot {
           ), U = ((C = y == null ? void 0 : y.textContent) == null ? void 0 : C.trim()) === l, W = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === p, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === m, J = ((Z = k == null ? void 0 : k.textContent) == null ? void 0 : Z.trim()) === u;
           return U && W && X && J;
         });
-        x && (n = x);
+        v && (n = v);
       }
       if (!n && !e) {
         n = t[t.length - 1];
@@ -1203,11 +1203,11 @@ section.cart-header-trustpilot {
           ".item-variants-name.base"
         );
         if (l || p || m || u) {
-          const x = (a = l == null ? void 0 : l.textContent) == null ? void 0 : a.trim(), f = (d = p == null ? void 0 : p.textContent) == null ? void 0 : d.trim(), y = (o = m == null ? void 0 : m.textContent) == null ? void 0 : o.trim(), w = (h = u == null ? void 0 : u.textContent) == null ? void 0 : h.trim();
+          const v = (a = l == null ? void 0 : l.textContent) == null ? void 0 : a.trim(), f = (d = p == null ? void 0 : p.textContent) == null ? void 0 : d.trim(), y = (o = m == null ? void 0 : m.textContent) == null ? void 0 : o.trim(), w = (h = u == null ? void 0 : u.textContent) == null ? void 0 : h.trim();
           sessionStorage.setItem(
             "firstItem",
             JSON.stringify({
-              titleText: x,
+              titleText: v,
               colorText: f,
               headboardText: y,
               baseText: w
