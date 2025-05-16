@@ -1,20 +1,20 @@
 (function() {
   "use strict";
-  const S = (c, e, n, t = "") => {
+  const I = (c, e, n, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: c,
       event_desc: e,
       event_type: n,
-      event_loc: t
-    }), console.log(`Event: ${c} | ${e} | ${n} | ${t}`);
-  }, B = ({ name: c, dev: e }) => {
+      event_loc: o
+    }), console.log(`Event: ${c} | ${e} | ${n} | ${o}`);
+  }, T = ({ name: c, dev: e }) => {
     console.log(
       `%c EXP: ${c} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  function v(c) {
+  function k(c) {
     return new Promise((e) => {
       if (document.querySelector(c))
         return e(document.querySelector(c));
@@ -28,29 +28,29 @@
       });
     });
   }
-  const _ = (c, e, n, t) => {
-    let o = [];
-    o = document.querySelectorAll(c);
+  const $ = (c, e, n, o) => {
+    let t = [];
+    t = document.querySelectorAll(c);
     let s = new IntersectionObserver(
-      (d) => {
-        d.forEach((a) => {
-          a.isIntersecting && (s.unobserve(a.target), setTimeout(function() {
-            i.observe(a.target);
+      (l) => {
+        l.forEach((r) => {
+          r.isIntersecting && (s.unobserve(r.target), setTimeout(function() {
+            i.observe(r.target);
           }, 1e3));
         });
       },
       {
         threshold: 0.2
       }
-    ), i = new IntersectionObserver((d) => {
-      d.forEach((a) => {
-        a.isIntersecting ? (S(e, n, "view", t || a.target.id), s.unobserve(a.target)) : s.observe(a.target), i.unobserve(a.target);
+    ), i = new IntersectionObserver((l) => {
+      l.forEach((r) => {
+        r.isIntersecting ? (I(e, n, "view", o || r.target.id), s.unobserve(r.target)) : s.observe(r.target), i.unobserve(r.target);
       });
     });
-    o.forEach((d) => {
-      s.observe(d);
+    t.forEach((l) => {
+      s.observe(l);
     });
-  }, z = [
+  }, C = [
     // Benetton Blue group 1
     {
       name: "Suede Close Contact Square",
@@ -717,29 +717,406 @@
       name: "Suede Close Contact Square",
       path: "/horse-saddle-pads/close-contact-pads/suede-close-contact-square-white",
       bundleGroupId: "white-3"
+    },
+    // bundle-1
+    {
+      name: "Toy Pony Bridle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-bridle-black",
+      bundleGroupId: "bundle-1"
+    },
+    {
+      name: "Toy Pony Saddle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-saddle-black",
+      bundleGroupId: "bundle-1"
+    },
+    {
+      name: "Toy Pony Grooming Kit Red",
+      path: "/toys/toy-pony-accessories/toy-pony-grooming-kit-ember",
+      bundleGroupId: "bundle-1"
+    },
+    // bundle-2
+    {
+      name: "Toy Pony Saddle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-saddle-black",
+      bundleGroupId: "bundle-2"
+    },
+    {
+      name: "Toy Pony Bridle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-bridle-black",
+      bundleGroupId: "bundle-2"
+    },
+    {
+      name: "Toy Pony Grooming Kit Red",
+      path: "/toys/toy-pony-accessories/toy-pony-grooming-kit-ember",
+      bundleGroupId: "bundle-2"
+    },
+    // bundle-3
+    {
+      name: "Toy Pony Grooming Kit Sage",
+      path: "/toys/toy-pony-accessories/toy-pony-grooming-kit-sage",
+      bundleGroupId: "bundle-3"
+    },
+    {
+      name: "Toy Pony Bridle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-bridle-black",
+      bundleGroupId: "bundle-3"
+    },
+    {
+      name: "Toy Pony Saddle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-saddle-black",
+      bundleGroupId: "bundle-3"
+    },
+    // bundle-4
+    {
+      name: "Toy Pony Grooming Kit Red",
+      path: "/toys/toy-pony-accessories/toy-pony-grooming-kit-ember",
+      bundleGroupId: "bundle-4"
+    },
+    {
+      name: "Toy Pony Bridle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-bridle-black",
+      bundleGroupId: "bundle-4"
+    },
+    {
+      name: "Toy Pony Saddle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-saddle-black",
+      bundleGroupId: "bundle-4"
+    },
+    // bundle-5
+    {
+      name: "Toy Pony Saddle Brown",
+      path: "/gifts/for-children/toy-pony-saddle-brown",
+      bundleGroupId: "bundle-5"
+    },
+    {
+      name: "Toy Pony Martingale Brown",
+      path: "/toys/toy-pony-accessories/toy-pony-martingale-brown",
+      bundleGroupId: "bundle-5"
+    },
+    {
+      name: "Toy Pony Bridle Brown",
+      path: "/toys/toy-pony-accessories/toy-pony-bridle-brown",
+      bundleGroupId: "bundle-5"
+    },
+    // bundle-6
+    {
+      name: "Toy Pony Bridle Brown",
+      path: "/toys/toy-pony-accessories/toy-pony-bridle-brown",
+      bundleGroupId: "bundle-6"
+    },
+    {
+      name: "Toy Pony Saddle Brown",
+      path: "/gifts/for-children/toy-pony-saddle-brown",
+      bundleGroupId: "bundle-6"
+    },
+    {
+      name: "Toy Pony Martingale Brown",
+      path: "/toys/toy-pony-accessories/toy-pony-martingale-brown",
+      bundleGroupId: "bundle-6"
+    },
+    // bundle-7
+    {
+      name: "Toy Pony Popcorn",
+      path: "/new-in/mini-lemieux-pony-popcorn",
+      bundleGroupId: "bundle-7"
+    },
+    {
+      name: "Toy Pony Fly Hood Azure",
+      path: "/toys/toy-pony-sets/mini-lemieux-pony-fly-hood-azure",
+      bundleGroupId: "bundle-7"
+    },
+    {
+      name: "Toy Pony Rug Azure",
+      path: "/toys/toy-pony-sets/mini-lemieux-pony-rug-azure",
+      bundleGroupId: "bundle-7"
+    },
+    {
+      name: "Toy Pony Pad Azure",
+      path: "/toys/toy-pony-pad-azure",
+      bundleGroupId: "bundle-7"
+    },
+    // bundle-8
+    {
+      name: "Toy Pony Dream",
+      path: "/gifts/for-children/toy-pony-dream",
+      bundleGroupId: "bundle-8"
+    },
+    {
+      name: "Toy Pony Bridle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-bridle-black",
+      bundleGroupId: "bundle-8"
+    },
+    {
+      name: "Toy Pony Saddle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-saddle-black",
+      bundleGroupId: "bundle-8"
+    },
+    {
+      name: "Toy Pony Stable Tek Rug Navy",
+      path: "/gifts/for-children/toy-pony-stable-tek-rug-navy",
+      bundleGroupId: "bundle-8"
+    },
+    // bundle-9
+    {
+      name: "Toy Pony Lemon",
+      path: "/toys/toy-ponies/toy-pony-lemon",
+      bundleGroupId: "bundle-9"
+    },
+    {
+      name: "Lemon the Rescue Pony Book",
+      path: "/gifts/for-children/lemon-the-rescue-pony-book",
+      bundleGroupId: "bundle-9"
+    },
+    {
+      name: "Hobby Horse Fly Hood Blossom",
+      path: "/us/toys/hobby-horse-accessories/hobby-horse-fly-hood-blossom",
+      bundleGroupId: "bundle-9"
+    },
+    {
+      name: "Toy Pony Lemon LeMieux Printed Rug",
+      path: "/toys/toy-pony-accessories/toy-pony-lemon-lemieux-printed-rug",
+      bundleGroupId: "bundle-9"
+    },
+    // bundle-10
+    {
+      name: "Toy Pony Chancer",
+      path: "/new-in/toy-pony-collection/toy-pony-chancer",
+      bundleGroupId: "bundle-10"
+    },
+    {
+      name: "Toy Pony Racing Brdile Set Black",
+      path: "/new-in/toy-pony-collection/toy-pony-racing-bridle-set-black",
+      bundleGroupId: "bundle-10"
+    },
+    {
+      name: "Toy Pony Grooming Kit Sage",
+      path: "/toys/toy-pony-accessories/toy-pony-grooming-kit-sage",
+      bundleGroupId: "bundle-10"
+    },
+    {
+      name: "Toy Pony Racing Saddle Set Black",
+      path: "/new-in/toy-pony-collection/toy-pony-racing-saddle-black",
+      bundleGroupId: "bundle-10"
+    },
+    // bundle-11
+    {
+      name: "Toy Pony Coco",
+      path: "/toys/toy-ponies/toy-pony-show-pony-white",
+      bundleGroupId: "bundle-11"
+    },
+    {
+      name: "Toy Pony Bridle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-bridle-black",
+      bundleGroupId: "bundle-11"
+    },
+    {
+      name: "Toy Pony Saddle Black",
+      path: "/gifts/for-children/mini-lemieux-pony-saddle-black",
+      bundleGroupId: "bundle-11"
+    },
+    // bundle-12
+    {
+      name: "Hobby Horse Hunter Bridle Brown",
+      path: "/toys/hobby-horse-accessories/hobby-horse-hunter-bridle-brown",
+      bundleGroupId: "bundle-12"
+    },
+    {
+      name: "Hobby Horse Vogue Headcollar & Leadrope Blossom",
+      path: "/toys/hobby-horse-accessories/hobby-horse-vogue-headcollar-leadrope-blossom",
+      bundleGroupId: "bundle-12"
+    },
+    {
+      name: "Hobby Horse Fly Hood Blossom",
+      path: "/toys/hobby-horse-accessories/hobby-horse-fly-hood-blossom",
+      bundleGroupId: "bundle-12"
+    },
+    // bundle-13
+    {
+      name: "Hobby Horse Double Bridle Black",
+      path: "/toys/hobby-horse-accessories/hobby-horse-double-bridle-black",
+      bundleGroupId: "bundle-13"
+    },
+    {
+      name: "Toy Pony Dressage Saddle Black",
+      path: "/new-in/toy-pony-collection/toy-pony-dressage-saddle-black",
+      bundleGroupId: "bundle-13"
+    },
+    {
+      name: "Toy Pony Winners Rug Navy",
+      path: "/new-in/toy-pony-collection/toy-pony-winners-rug-navy",
+      bundleGroupId: "bundle-13"
+    },
+    // bundle-14
+    {
+      name: "Hobby Horse Showing Bridle Black",
+      path: "/toys/hobby-horse-accessories/hobby-horse-showing-bridle-black",
+      bundleGroupId: "bundle-14"
+    },
+    {
+      name: "Hobby Horse Rosette Pack Multi",
+      path: "/toys/hobby-horse-accessories/hobby-horse-rosette-pack-multi",
+      bundleGroupId: "bundle-14"
+    },
+    {
+      name: "Hobby Horse Fly Hood Lagoon or Blossom",
+      path: "/toys/hobby-horse-accessories/hobby-horse-fly-hood-blossom",
+      bundleGroupId: "bundle-14"
+    },
+    // bundle-15
+    {
+      name: "Hobby Horse Competition Bridle Black",
+      path: "/gifts/for-children/hobby-horse-competition-bridle-black",
+      bundleGroupId: "bundle-15"
+    },
+    {
+      name: "Hobby Horse Rosette Pack Multi",
+      path: "/toys/hobby-horse-accessories/hobby-horse-rosette-pack-multi",
+      bundleGroupId: "bundle-15"
+    },
+    {
+      name: "Hobby Horse Fly Hood Black",
+      path: "/toys/hobby-horse-accessories/hobby-horse-fly-hood-black",
+      bundleGroupId: "bundle-15"
+    },
+    // bundle-16
+    {
+      name: "Hobby Horse Grackle Bridle Brown",
+      path: "/gifts/for-children/hobby-horse-grackle-bridle-brown",
+      bundleGroupId: "bundle-16"
+    },
+    {
+      name: "Hobby Horse Crystal Browband Brown",
+      path: "/toys/hobby-horse-accessories/hobby-horse-browband-pack-of-3",
+      bundleGroupId: "bundle-16"
+    },
+    {
+      name: "Hobby Horse Fly Hood Black",
+      path: "/toys/hobby-horse-accessories/hobby-horse-fly-hood-black",
+      bundleGroupId: "bundle-16"
+    },
+    // bundle-17
+    {
+      name: "Hobby Horse Dream",
+      path: "/toys/hobby-horse/hobby-horse-dream",
+      bundleGroupId: "bundle-17"
+    },
+    {
+      name: "Hobby Horse Competition Bridle Black",
+      path: "/gifts/for-children/hobby-horse-competition-bridle-black",
+      bundleGroupId: "bundle-17"
+    },
+    {
+      name: "Hobby Horse Fly Hood Lagoon or Blossom",
+      path: "/toys/hobby-horse-accessories/hobby-horse-fly-hood-blossom",
+      bundleGroupId: "bundle-17"
+    },
+    // bundle-18
+    {
+      name: "Hobby Horse Chancer",
+      path: "/toys/hobby-horse/hobby-horse-chancer",
+      bundleGroupId: "bundle-18"
+    },
+    {
+      name: "Hobby Horse Grackle Bridle Brown",
+      path: "/gifts/for-children/hobby-horse-grackle-bridle-brown",
+      bundleGroupId: "bundle-18"
+    },
+    {
+      name: "Hobby Horse Rosette Pack Multi",
+      path: "/toys/hobby-horse-accessories/hobby-horse-rosette-pack-multi",
+      bundleGroupId: "bundle-18"
+    },
+    {
+      name: "Hobby Horse Stretch Hood Chilli",
+      path: "/new-in/ss24/hobby-horse-stretch-hood-chilli",
+      bundleGroupId: "bundle-18"
+    },
+    // bundle-19
+    {
+      name: "Hobby Horse Razzle",
+      path: "/toys/hobby-horse/hobby-horse-razzle",
+      bundleGroupId: "bundle-19"
+    },
+    {
+      name: "Hobby Horse Competition Bridle Black",
+      path: "/gifts/for-children/hobby-horse-competition-bridle-black",
+      bundleGroupId: "bundle-19"
+    },
+    {
+      name: "Hobby Horse Rosette Pack Multi",
+      path: "/toys/hobby-horse-accessories/hobby-horse-rosette-pack-multi",
+      bundleGroupId: "bundle-19"
+    },
+    // bundle-20
+    {
+      name: "Hobby Horse Popcorn",
+      path: "/gifts/for-children/hobby-horse-popcorn",
+      bundleGroupId: "bundle-20"
+    },
+    {
+      name: "Hobby Horse Competition Bridle Black",
+      path: "/gifts/for-children/hobby-horse-competition-bridle-black",
+      bundleGroupId: "bundle-20"
+    },
+    {
+      name: "Hobby Horse Fly Hood Lagoon or Blossom",
+      path: "/toys/hobby-horse-accessories/hobby-horse-fly-hood-blossom",
+      bundleGroupId: "bundle-20"
+    },
+    // bundle-21
+    {
+      name: "Hobby Horse Flash",
+      path: "/gifts/for-children/hobby-horse-flash",
+      bundleGroupId: "bundle-21"
+    },
+    {
+      name: "Hobby Horse Grackle Bridle Brown",
+      path: "/gifts/for-children/hobby-horse-grackle-bridle-brown",
+      bundleGroupId: "bundle-21"
+    },
+    {
+      name: "Hobby Horse Standing Martingale Brown",
+      path: "/toys/hobby-horse-accessories/hobby-horse-standing-martingale-brown-48508",
+      bundleGroupId: "bundle-21"
+    },
+    // bundle-22
+    {
+      name: "Hobby Horse Sammy",
+      path: "/gifts/for-children/hobby-horse-sam",
+      bundleGroupId: "bundle-22"
+    },
+    {
+      name: "Hobby Horse Competition Bridle Black",
+      path: "/gifts/for-children/hobby-horse-competition-bridle-black",
+      bundleGroupId: "bundle-22"
+    },
+    {
+      name: "Hobby Horse Fly Hood Black",
+      path: "/toys/hobby-horse-accessories/hobby-horse-fly-hood-black",
+      bundleGroupId: "bundle-22"
     }
-  ], q = window.autoInitData.website.websiteCode, x = async (c, e) => {
-    const n = q === "base" ? c : `/${q.toLowerCase()}${c}`;
+  ], B = window.autoInitData.website.websiteCode, x = async (c, e) => {
+    const n = B === "base" ? c : `/${B.toLowerCase()}${c}`;
     try {
-      const t = await fetch(n, e);
-      if (!t.ok)
-        throw new Error(t.statusText);
-      const o = await t.json();
-      if (o.error)
-        throw new Error(o.error);
-      const { catalog: s, result: i, customer: d } = o;
+      const o = await fetch(n, e);
+      if (!o.ok)
+        throw new Error(o.statusText);
+      const t = await o.json();
+      if (t.error)
+        throw new Error(t.error);
+      const { catalog: s, result: i, customer: l } = t;
       if (s) {
-        const a = s[0];
-        if (a)
+        const r = s[0];
+        if (r)
           return {
-            data: a,
+            data: r,
             error: null
           };
       }
       if (i && i.length > 0) {
-        const a = i[0];
-        return a != null && a.product ? {
-          data: a.product,
+        const r = i[0];
+        return r != null && r.product ? {
+          data: r.product,
           error: null
         } : i.length === 1 ? {
           data: i[0],
@@ -749,19 +1126,19 @@
           error: null
         };
       }
-      return d ? {
-        data: d,
+      return l ? {
+        data: l,
         error: null
       } : {
         data: null,
         error: new Error("No data found")
       };
-    } catch (t) {
-      return console.error("request error", t), { data: null, error: t };
+    } catch (o) {
+      return console.error("request error", o), { data: null, error: o };
     }
-  }, E = (c) => x(`/api/n/route/${c}?pushDeps=true`), H = (c) => x(
+  }, _ = (c) => x(`/api/n/route/${c}?pushDeps=true`), E = (c) => x(
     `/api/n/find?type=block&filter={"url":"size-guide-modal@${c}"}&verbosity=3&limit=1`
-  ), T = (c) => x("/api/p/basket/add", {
+  ), F = (c) => x("/api/p/basket/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -776,7 +1153,7 @@
         }
       ]
     })
-  }), C = (c) => x("/api/p/basket/remove", {
+  }), q = (c) => x("/api/p/basket/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -784,7 +1161,7 @@
     body: JSON.stringify({
       ids: c
     })
-  }), G = ({ id: c, qty: e }) => x("/api/p/basket/qty", {
+  }), H = ({ id: c, qty: e }) => x("/api/p/basket/qty", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -793,9 +1170,9 @@
       id: c,
       qty: e
     })
-  }), j = () => x("/api/n/attribute/size/verbosity/3"), F = (c) => x(
+  }), j = () => x("/api/n/attribute/size/verbosity/3"), A = (c) => x(
     `/api/n/load?type=stock&verbosity=1&ids=${c.join(",")}&pushDeps=true`
-  ), A = `.cart-popup {
+  ), R = `.cart-popup {
   top: auto;
   bottom: 0;
   width: 100%;
@@ -968,37 +1345,37 @@
       ), this.dialog = document.getElementById("cart-popup");
     }
     eventListeners() {
-      var t, o;
-      const e = (t = this.dialog) == null ? void 0 : t.querySelector(".cart-popup-close");
+      var o, t;
+      const e = (o = this.dialog) == null ? void 0 : o.querySelector(".cart-popup-close");
       e && e.addEventListener("click", () => {
         this.close();
       });
-      const n = (o = this.dialog) == null ? void 0 : o.querySelector(".cart-popup-content");
+      const n = (t = this.dialog) == null ? void 0 : t.querySelector(".cart-popup-content");
       n && n.addEventListener("click", (s) => {
         const i = s.target;
         if (i.classList.contains("remove")) {
-          const d = i.closest(".cart-product");
-          d && d.remove();
+          const l = i.closest(".cart-product");
+          l && l.remove();
         }
       });
     }
     open({
       productId: e,
       productCartId: n,
-      color: t,
-      size: o,
+      color: o,
+      size: t,
       title: s,
       price: i,
-      image: d,
-      link: a,
+      image: l,
+      link: r,
       qty: u
     }) {
-      var b, f, m, l, g, y;
+      var b, g, m, y, w, d;
       const p = (b = this.dialog) == null ? void 0 : b.querySelector(".cart-popup-content");
       if (!p) return;
-      const r = (
+      const a = (
         // @ts-ignore
-        ((g = (l = (m = (f = window == null ? void 0 : window.autoInitData) == null ? void 0 : f.website) == null ? void 0 : m.currency) == null ? void 0 : l.list) == null ? void 0 : g[0].symbol) || "$"
+        ((w = (y = (m = (g = window == null ? void 0 : window.autoInitData) == null ? void 0 : g.website) == null ? void 0 : m.currency) == null ? void 0 : y.list) == null ? void 0 : w[0].symbol) || "$"
       ), h = (
         /* HTML */
         ` <div
@@ -1007,18 +1384,18 @@
       cart-id="${n}"
     >
       <div class="cart-product-image">
-        <img src="${d}" alt="" width="84" height="113" />
+        <img src="${l}" alt="" width="84" height="113" />
       </div>
       <div class="cart-product-content">
         <div class="cart-product-header">
           <div class="cart-product-title">${s}</div>
           <div class="cart-product-price">
-            ${r}<span>${i}</span>
+            ${a}<span>${i}</span>
           </div>
         </div>
         <div class="cart-product-options">
-          <div class="cart-product-size">${o}</div>
-          <div class="cart-product-color">| ${t}</div>
+          <div class="cart-product-size">${t}</div>
+          <div class="cart-product-color">| ${o}</div>
         </div>
         <div class="cart-product-quantity">
           <div class="quantity-wrapper">
@@ -1048,47 +1425,47 @@
       </div>
     </div>`
       );
-      p.innerHTML = h, this.productEvents(n), (y = this.dialog) == null || y.showModal();
+      p.innerHTML = h, this.productEvents(n), (d = this.dialog) == null || d.showModal();
     }
     debounce(e, n) {
-      let t = null;
-      return (...o) => {
-        t && clearTimeout(t), t = setTimeout(() => e(...o), n);
+      let o = null;
+      return (...t) => {
+        o && clearTimeout(o), o = setTimeout(() => e(...t), n);
       };
     }
     productEvents(e) {
       const n = document.querySelector(
         `.cart-product[cart-id="${e}"]`
-      ), t = n == null ? void 0 : n.querySelector(".minus"), o = n == null ? void 0 : n.querySelector(".plus"), s = n == null ? void 0 : n.querySelector(".quantity-input"), i = n == null ? void 0 : n.querySelector(".remove"), d = n == null ? void 0 : n.querySelector(".favorite"), a = this.debounce(async (u, p) => {
-        var f;
-        const { data: r, error: h } = await G({ id: u, qty: p }), b = r == null ? void 0 : r.cart;
+      ), o = n == null ? void 0 : n.querySelector(".minus"), t = n == null ? void 0 : n.querySelector(".plus"), s = n == null ? void 0 : n.querySelector(".quantity-input"), i = n == null ? void 0 : n.querySelector(".remove"), l = n == null ? void 0 : n.querySelector(".favorite"), r = this.debounce(async (u, p) => {
+        var g;
+        const { data: a, error: h } = await H({ id: u, qty: p }), b = a == null ? void 0 : a.cart;
         if (b) {
-          const m = (f = b == null ? void 0 : b.items.find(
-            (l) => l.id === u
-          )) == null ? void 0 : f.rowPrice;
+          const m = (g = b == null ? void 0 : b.items.find(
+            (y) => y.id === u
+          )) == null ? void 0 : g.rowPrice;
           if (m) {
-            const l = n == null ? void 0 : n.querySelector(
+            const y = n == null ? void 0 : n.querySelector(
               ".cart-product-price span"
             );
-            l && (l.innerHTML = `${m}`);
+            y && (y.innerHTML = `${m}`);
           }
         }
       }, 300);
-      !n || !s || (t && t.addEventListener("click", () => {
+      !n || !s || (o && o.addEventListener("click", () => {
         const p = parseInt(s.value) - 1;
-        if (o == null || o.removeAttribute("disabled"), p < 1) {
-          s.value = "1", t.setAttribute("disabled", "true");
+        if (t == null || t.removeAttribute("disabled"), p < 1) {
+          s.value = "1", o.setAttribute("disabled", "true");
           return;
         }
-        s.value = p.toString(), a(+e, p);
-      }), o && o.addEventListener("click", () => {
+        s.value = p.toString(), r(+e, p);
+      }), t && t.addEventListener("click", () => {
         const p = parseInt(s.value) + 1;
-        t == null || t.removeAttribute("disabled"), s.value = p.toString(), a(+e, p);
+        o == null || o.removeAttribute("disabled"), s.value = p.toString(), r(+e, p);
       }), i && i.addEventListener("click", async () => {
         const u = i.closest(".cart-product");
-        u && (await C([+e]), u.remove(), this.close());
-      }), d && d.addEventListener("click", () => {
-        const u = d.closest(".cart-product");
+        u && (await q([+e]), u.remove(), this.close());
+      }), l && l.addEventListener("click", () => {
+        const u = l.closest(".cart-product");
         u && u.classList.toggle("favorite");
       }));
     }
@@ -1097,7 +1474,7 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = A, document.head.appendChild(e);
+      e.textContent = R, document.head.appendChild(e);
     }
   }
   const M = `.size-popup-table {
@@ -1184,15 +1561,15 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 `;
-  class R {
+  class D {
     constructor(e) {
       this.tables = e, this.addStyles();
     }
     renderTables() {
       return this.tables.map((e) => {
-        const n = e.rows[0].columns.map((s) => `<th>${s.valueFirst}</th>`).join(""), t = e.rows.slice(1).map(
+        const n = e.rows[0].columns.map((s) => `<th>${s.valueFirst}</th>`).join(""), o = e.rows.slice(1).map(
           (s) => `<tr class="cm-unit">${s.columns.map((i) => `<td>${i.valueFirst}</td>`).join("")}</tr>`
-        ).join(""), o = e.rows.slice(1).map(
+        ).join(""), t = e.rows.slice(1).map(
           (s) => `<tr class="inches-unit" style="display: none;">${s.columns.map((i) => `<td>${i.valueSecond}</td>`).join("")}</tr>`
         ).join("");
         return (
@@ -1207,7 +1584,7 @@ input:checked + .slider:before {
                 </tr>
               </thead>
               <tbody>
-                ${t} ${o}
+                ${o} ${t}
               </tbody>
             </table>
           </div>
@@ -1233,14 +1610,14 @@ input:checked + .slider:before {
       ) : "";
     }
     addUnitToggleListeners(e) {
-      e.querySelectorAll(".unit-toggle").forEach((t) => {
-        t.addEventListener("change", (o) => {
-          const s = o.target.checked, i = t.closest(
+      e.querySelectorAll(".unit-toggle").forEach((o) => {
+        o.addEventListener("change", (t) => {
+          const s = t.target.checked, i = o.closest(
             ".size-popup-table-wrapper"
           );
           if (!i) return;
-          const d = i.querySelectorAll(".cm-unit"), a = i.querySelectorAll(".inches-unit"), u = i.querySelector(".switch-label-cm"), p = i.querySelector(".switch-label-inches");
-          u && u.classList.toggle("active", !s), p && p.classList.toggle("active", s), s ? (d.forEach((r) => r.style.display = "none"), a.forEach((r) => r.style.display = "")) : (d.forEach((r) => r.style.display = ""), a.forEach((r) => r.style.display = "none"));
+          const l = i.querySelectorAll(".cm-unit"), r = i.querySelectorAll(".inches-unit"), u = i.querySelector(".switch-label-cm"), p = i.querySelector(".switch-label-inches");
+          u && u.classList.toggle("active", !s), p && p.classList.toggle("active", s), s ? (l.forEach((a) => a.style.display = "none"), r.forEach((a) => a.style.display = "")) : (l.forEach((a) => a.style.display = ""), r.forEach((a) => a.style.display = "none"));
         });
       });
     }
@@ -1391,20 +1768,20 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 `;
-  class D {
+  class N {
     constructor({
       sizeGuideId: e,
       triggerSelector: n,
-      productName: t,
-      isTooltip: o = !1
+      productName: o,
+      isTooltip: t = !1
     }) {
-      this.sizeGuideId = e, this.triggerSelector = n, this.productName = t, this.parentElementName = o ? "tip" : "standard", this.init();
+      this.sizeGuideId = e, this.triggerSelector = n, this.productName = o, this.parentElementName = t ? "tip" : "standard", this.init();
     }
     init() {
       this.addStyles(), this.render(), this.eventListeners();
     }
     async getSizeGuide() {
-      const { data: e, error: n } = await H(this.sizeGuideId);
+      const { data: e, error: n } = await E(this.sizeGuideId);
       if (n) {
         console.error("Error fetching size guide", n.message);
         return;
@@ -1414,11 +1791,11 @@ input:checked + .slider:before {
     async render() {
       const e = await this.getSizeGuide();
       if (!e) return;
-      const { title: n, subtitle: t, image: o, copy: s, tables: i } = e.content, d = document.querySelector(
+      const { title: n, subtitle: o, image: t, copy: s, tables: i } = e.content, l = document.querySelector(
         `size-popup-${this.sizeGuideId}`
       );
-      d && d.remove();
-      const a = new R(i), u = a.renderTables(), p = o.startsWith("/") ? `https://www.lemieux.com/static${o}` : `https://www.lemieux.com/static/${o}`, r = (
+      l && l.remove();
+      const r = new D(i), u = r.renderTables(), p = t != null && t.startsWith("/") ? `https://www.lemieux.com/static${t}` : `https://www.lemieux.com/static/${t}`, a = (
         /* HTML */
         `
       <dialog class="size-popup" id="size-popup-${this.sizeGuideId}">
@@ -1431,7 +1808,7 @@ input:checked + .slider:before {
             ></i>
           </button>
           <h2 class="size-popup-title h2">${n}</h2>
-          ${t ? `<h3 class="size-popup-subtitle">${t}</h3>` : ""}
+          ${o ? `<h3 class="size-popup-subtitle">${o}</h3>` : ""}
 
           <div class="size-popup-table">${u}</div>
           <div class="size-popup-image">
@@ -1442,18 +1819,18 @@ input:checked + .slider:before {
       </dialog>
     `
       );
-      document.body.insertAdjacentHTML("beforeend", r);
+      document.body.insertAdjacentHTML("beforeend", a);
       const h = document.querySelector(
         `#size-popup-${this.sizeGuideId}`
       );
       h.querySelector(
         ".size-popup-close"
-      ).addEventListener("click", () => h.close()), a.addUnitToggleListeners(h);
+      ).addEventListener("click", () => h.close()), r.addUnitToggleListeners(h);
     }
     eventListeners() {
       const e = document.querySelector(this.triggerSelector);
       e && e.addEventListener("click", () => {
-        S(
+        I(
           "exp_cross_sell_click_01",
           `View size guide-${this.parentElementName}`,
           "click",
@@ -1471,7 +1848,7 @@ input:checked + .slider:before {
       e.innerHTML = V, document.head.appendChild(e);
     }
   }
-  const N = `.bundle {
+  const W = `.bundle {
   width: 100%;
   padding-block: 24px;
 }
@@ -1613,58 +1990,56 @@ input:checked + .slider:before {
   letter-spacing: 1px;
   cursor: pointer;
 }
-`, k = class k {
+`, S = class S {
     constructor({
       product: e,
       sizes: n,
-      containerSelector: t,
-      cartInstance: o,
+      containerSelector: o,
+      cartInstance: t,
       position: s = "beforeend",
       aborters: i,
-      isTooltip: d = !1
+      isTooltip: l = !1
     }) {
-      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = t, this.position = s, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new O(), this.cart = o, this.aborters = i, this.parentElementName = d ? "tip" : "standard", k.bundleCounter += 1, this.bundleId = `product-${e.id}-${k.bundleCounter}`, this.init();
+      this.eventRemovers = [], this.disposed = !1, this.bundleButtonHandler = null, this.isInitialized = !1, this.product = e, this.sizes = n, this.containerSelector = o, this.position = s, this.bundle = null, this.size = null, this.color = null, this.device = window.innerWidth <= 1100 ? "mobile" : "desktop", this.basketPopup = new O(), this.cart = t, this.aborters = i, this.parentElementName = l ? "tip" : "standard", S.bundleCounter += 1, this.bundleId = `product-${e.id}-${S.bundleCounter}`, this.init();
     }
     init() {
       this.addStyles(), this.render(), this.isInitialized || (this.handleSizeSelectOpen(), this.handleSizeSelection(), this.isInitialized = !0);
     }
     async render() {
-      var r, h, b, f, m;
+      var b, g, m, y, w;
       const e = this.product, n = this.sizes;
-      this.color = this.getHashParam("selection.color");
-      const t = e.size, o = n.options.filter((l) => t.includes(l.value)).map((l) => ({
-        size: l,
+      this.color = e.color_org;
+      const o = e.size, t = n.options.filter((d) => o.includes(d.value)).map((d) => ({
+        size: d,
         productId: this.getProductIdBySizeAndColor(
           e,
-          l.value,
+          d.value,
           e.color_org
         )
-      })).filter((l) => l.productId);
-      console.log("product", e), console.log("data", o);
-      const s = o.map((l) => l.productId), { data: i, error: d } = await F(s);
-      if (d && !i) {
-        console.error("Error fetching stock data:", d);
+      })).filter((d) => d.productId), s = t.map((d) => d.productId), { data: i, error: l } = await A(s);
+      if (l && !i) {
+        console.error("Error fetching stock data:", l);
         return;
       }
-      const a = o.map((l) => {
-        const g = Array.isArray(i) ? i.find((y) => y.id === l.productId) : i;
-        return g ? {
-          id: l.productId,
-          size: l.size,
+      const r = t.map((d) => {
+        const f = Array.isArray(i) ? i.find((G) => G.id === d.productId) : i;
+        return f ? {
+          id: d.productId,
+          size: d.size,
           stock: {
-            isSoldOut: !!(g != null && g.isOut && (g != null && g.isOutTemp)),
-            qty: (g == null ? void 0 : g.qty) || 0
+            isSoldOut: !!(f != null && f.isOut && (f != null && f.isOutTemp)),
+            qty: (f == null ? void 0 : f.qty) || 0
           }
         } : null;
       }).filter(Boolean);
-      if (a.length === 0 || a.every((l) => l.stock.isSoldOut))
+      if (r.length === 0 || r.every((d) => d.stock.isSoldOut))
         return;
-      const u = (
+      let u = "Select Size", p = "empty";
+      r.length === 1 && !r[0].stock.isSoldOut && (u = r[0].size.label, p = r[0].size.value, this.size = r[0].size.value);
+      const a = (
         // @ts-ignore
-        (f = (b = (h = (r = window == null ? void 0 : window.autoInitData) == null ? void 0 : r.website) == null ? void 0 : h.currency) == null ? void 0 : b.list) == null ? void 0 : f[0].symbol
-      ), p = (
-        /* HTML */
-        `<div class="bundle" id="${this.bundleId}">
+        (y = (m = (g = (b = window == null ? void 0 : window.autoInitData) == null ? void 0 : b.website) == null ? void 0 : g.currency) == null ? void 0 : m.list) == null ? void 0 : y[0].symbol
+      ), h = `<div class="bundle" id="${this.bundleId}">
       <div class="bundle-inner">
         <div class="bundle-img">
           <img
@@ -1688,7 +2063,7 @@ input:checked + .slider:before {
                   ><i class="rate-full ng-star-inserted"></i
                   ><i class="rate-full ng-star-inserted"></i
                 ></rating>
-                <span class="p2 p-l-2">(${(m = e == null ? void 0 : e.reviews) == null ? void 0 : m.count})</span>
+                <span class="p2 p-l-2">(${(w = e == null ? void 0 : e.reviews) == null ? void 0 : w.count})</span>
               </div>
             </div>
           </div>
@@ -1696,12 +2071,9 @@ input:checked + .slider:before {
         <div class="bundle-content">
           <a href="${e.url}" class="bundle-title">${e.name}</a>
           <div class="bundle-price-size">
-            <div class="bundle-price">${u}${e.price}</div>
+            <div class="bundle-price">${a}${e.price}</div>
             <div class="bundle-size">
-              ${e != null && e.size_guide ? (
-          /* HTML */
-          "<button>View size guide</button>"
-        ) : ""}
+              ${e != null && e.size_guide ? "<button>View size guide</button>" : ""}
             </div>
           </div>
           <div
@@ -1716,10 +2088,10 @@ input:checked + .slider:before {
                 <div class="flex-grow">
                   <p
                     class="bundle-size-selected s2"
-                    data-chosen-value="empty"
-                    data-chosen-label="empty"
+                    data-chosen-value="${p}"
+                    data-chosen-label="${u}"
                   >
-                    Select Size
+                    ${u}
                   </p>
                 </div>
                 <i class="icon-chevron inline-flex _chevron _is-up"></i>
@@ -1728,29 +2100,21 @@ input:checked + .slider:before {
                 <div class="_content flex flex-column flex-justify-end">
                   <div>
                     <div class="bundle-size-options bg-col-w">
-                      ${a.map((l) => (
-          /* HTML */
-          `<div
-                            class="p-r p-l bundle-size-item"
-                            data-variant-id="${l.id}"
-                            data-size-id="${l.size.value}"
-                            data-size-label="${l.size.label}"
-                            data-soldout="${l.stock.isSoldOut}"
-                            data-qty="${l.stock.qty}"
+                      ${r.map((d) => `<div
+                            class="p-r p-l bundle-size-item${r.length === 1 && !d.stock.isSoldOut ? " checked" : ""}"
+                            data-variant-id="${d.id}"
+                            data-size-id="${d.size.value}"
+                            data-size-label="${d.size.label}"
+                            data-soldout="${d.stock.isSoldOut}"
+                            data-qty="${d.stock.qty}"
                           >
                             <div
                               class="cursor-pointer p-t-3 p-b-3 b-t b-col-42 flex flex-justify-between flex-middle"
                             >
-                              <p class="s2 col-1">${l.size.label}</p>
-                              ${l.stock.isSoldOut ? (
-            /* HTML */
-            `<span class="bundle-size-sold"
-                                    >SOLD OUT</span
-                                  >`
-          ) : ""}
+                              <p class="s2 col-1">${d.size.label}</p>
+                              ${d.stock.isSoldOut ? '<span class="bundle-size-sold">SOLD OUT</span>' : ""}
                             </div>
-                          </div>`
-        )).join("")}
+                          </div>`).join("")}
                     </div>
                   </div>
                 </div>
@@ -1760,25 +2124,24 @@ input:checked + .slider:before {
           <button class="bundle-button">Add</button>
         </div>
       </div>
-    </div> `
-      );
+    </div>`;
       if (this.containerSelector) {
-        const l = document.querySelector(
+        const d = document.querySelector(
           this.containerSelector
-        ), g = this.containerSelector.includes("tooltip") || this.containerSelector.includes("pins-bundle-tooltip");
-        if (!l) {
-          g || console.error(
+        ), f = this.containerSelector.includes("tooltip") || this.containerSelector.includes("pins-bundle-tooltip");
+        if (!d) {
+          f || console.error(
             `Container not found: ${this.containerSelector}. Bundle not rendered.`
           );
           return;
         }
         if (document.getElementById(this.bundleId))
           return;
-        this.removeExistingBundle(), l.insertAdjacentHTML(this.position, p), this.bundle = document.getElementById(this.bundleId), this.bundle && (e != null && e.size_guide) && new D({
+        this.removeExistingBundle(), d.insertAdjacentHTML(this.position, h), this.bundle = document.getElementById(this.bundleId), this.bundle && (e != null && e.size_guide) && new N({
           productName: e.name,
           sizeGuideId: e.size_guide,
           triggerSelector: `#${this.bundleId} .bundle-size button`,
-          isTooltip: g
+          isTooltip: f
         }), this.attachBundleButtonHandler();
       }
     }
@@ -1786,75 +2149,71 @@ input:checked + .slider:before {
       if (!this.bundle) return;
       const e = this.bundle.querySelector(".bundle-button");
       e && (this.bundleButtonHandler && e.removeEventListener("click", this.bundleButtonHandler), this.bundleButtonHandler = async () => {
-        var d, a, u, p, r, h, b, f, m;
-        if (S(
+        var l, r, u, p, a, h, b, g, m;
+        if (I(
           "exp_cross_sell_click_03",
           `Add-${this.parentElementName}`,
           "click",
           `${this.product.name}`
         ), !this.size) {
-          const l = (d = this.bundle) == null ? void 0 : d.querySelector(
+          const y = (l = this.bundle) == null ? void 0 : l.querySelector(
             "#size-select"
           );
-          l == null || l.classList.add("hide-up");
-          return;
-        }
-        if (!this.color) {
-          console.error("Color must be selected");
+          y == null || y.classList.add("hide-up");
           return;
         }
         const n = this.getProductIdBySizeAndColor(
           this.product,
           this.size,
-          this.color
+          this.color || ""
         );
         if (!n) {
           console.error("Product not found");
           return;
         }
-        const t = (a = this.bundle) == null ? void 0 : a.querySelector(
+        const o = (r = this.bundle) == null ? void 0 : r.querySelector(
           ".bundle-size-selected"
-        ), o = document.getElementById(
+        ), t = document.getElementById(
           "bundle-color"
-        ), s = (u = document.querySelector("a")) == null ? void 0 : u.getAttribute("href"), i = (r = (p = this.bundle) == null ? void 0 : p.querySelector("img")) == null ? void 0 : r.getAttribute("src");
+        ), s = (u = document.querySelector("a")) == null ? void 0 : u.getAttribute("href"), i = (a = (p = this.bundle) == null ? void 0 : p.querySelector("img")) == null ? void 0 : a.getAttribute("src");
         try {
-          const { data: l, error: g } = await T(n);
-          if (g)
-            throw new Error(g.message);
-          const y = l == null ? void 0 : l.cart, ne = y == null ? void 0 : y.items, L = (h = y == null ? void 0 : y.items.find((w) => w.product === n)) == null ? void 0 : h.request.qty, $ = (b = y == null ? void 0 : y.items.find(
-            (w) => w.product === n
-          )) == null ? void 0 : b.rowPrice, te = y.items.reduce((w, ee) => w + ee.rowPrice, 0).toFixed(2), P = (f = y == null ? void 0 : y.items.find(
-            (w) => w.product === n
-          )) == null ? void 0 : f.id;
+          const { data: y, error: w } = await F(n);
+          if (w)
+            throw new Error(w.message);
+          const d = y == null ? void 0 : y.cart, f = d == null ? void 0 : d.items, G = (h = d == null ? void 0 : d.items.find((v) => v.product === n)) == null ? void 0 : h.request.qty, P = (b = d == null ? void 0 : d.items.find(
+            (v) => v.product === n
+          )) == null ? void 0 : b.rowPrice, te = d.items.reduce((v, ne) => v + ne.rowPrice, 0).toFixed(2), L = (g = d == null ? void 0 : d.items.find(
+            (v) => v.product === n
+          )) == null ? void 0 : g.id;
           if (this.device === "desktop" && this.cart.addItemToCart({
             id: n.toString(),
-            productCartId: P,
+            productCartId: L,
             title: this.product.name,
-            size: t.dataset.chosenLabel || "",
-            color: o.textContent || "",
-            price: $,
+            size: o.dataset.chosenLabel || "",
+            color: t.textContent || "",
+            price: P,
             image: i || "",
             link: s || "",
-            qty: L
+            qty: G
           }), window.innerWidth <= 700) {
             this.basketPopup.open({
               productId: n,
-              productCartId: P,
-              color: o.textContent || "",
-              size: t.dataset.chosenLabel || "",
+              productCartId: L,
+              color: t.textContent || "",
+              size: o.dataset.chosenLabel || "",
               title: this.product.name,
-              price: $,
+              price: P,
               image: i || "",
               link: s || "",
-              qty: L
+              qty: G
             });
-            const w = (m = this.bundle) == null ? void 0 : m.closest(
+            const v = (m = this.bundle) == null ? void 0 : m.closest(
               "#pins-bundle-mobile-popup"
             );
-            w && (w.close(), w.remove());
+            v && (v.close(), v.remove());
           }
-        } catch (l) {
-          console.error("Error adding to basket", l);
+        } catch (y) {
+          console.error("Error adding to basket", y);
         }
       }, e.addEventListener("click", this.bundleButtonHandler), this.eventRemovers.push(
         () => e.removeEventListener("click", this.bundleButtonHandler)
@@ -1865,18 +2224,18 @@ input:checked + .slider:before {
       e && e.remove();
     }
     async handleSizeSelection() {
-      const e = await this.waitForBundle(), n = e == null ? void 0 : e.querySelector("#size-select"), t = n.querySelector(
+      const e = await this.waitForBundle(), n = e == null ? void 0 : e.querySelector("#size-select"), o = n.querySelector(
         ".bundle-size-selected"
-      ), o = n.querySelector(
+      ), t = n.querySelector(
         ".bundle-size-options"
       );
-      if (!t || !o || !t) return;
+      if (!o || !t || !o) return;
       const s = (i) => {
-        var r;
-        const a = i.target.closest(".bundle-size-item");
-        if (!a || a.dataset.soldout === "true") return;
-        const u = a.dataset.sizeId, p = (r = a.querySelector(".s2")) == null ? void 0 : r.textContent;
-        !u || !p || (t.textContent = p, t.dataset.chosenValue = u, t.dataset.chosenLabel = p, this.size = u, n == null || n.classList.remove("hide-up"));
+        var a;
+        const r = i.target.closest(".bundle-size-item");
+        if (!r || r.dataset.soldout === "true") return;
+        const u = r.dataset.sizeId, p = (a = r.querySelector(".s2")) == null ? void 0 : a.textContent;
+        !u || !p || (o.textContent = p, o.dataset.chosenValue = u, o.dataset.chosenLabel = p, this.size = u, n == null || n.classList.remove("hide-up"));
       };
       n.addEventListener("click", s), this.eventRemovers.push(
         () => n.removeEventListener("click", s)
@@ -1884,21 +2243,21 @@ input:checked + .slider:before {
     }
     getHashParam(e) {
       if (!location.hash) return null;
-      const t = location.hash.substring(1).split("&");
-      for (const o of t) {
-        const [s, i] = o.split("=");
+      const o = location.hash.substring(1).split("&");
+      for (const t of o) {
+        const [s, i] = t.split("=");
         if (s === e)
           return i;
       }
       return null;
     }
     async handleSizeSelectOpen() {
-      const e = await this.waitForBundle(), n = e == null ? void 0 : e.querySelector("#size-select"), t = n.querySelector(".bundle-size-selected"), o = n.querySelector(
+      const e = await this.waitForBundle(), n = e == null ? void 0 : e.querySelector("#size-select"), o = n.querySelector(".bundle-size-selected"), t = n.querySelector(
         ".bundle-size-options"
       );
-      if (!t || !o) return;
+      if (!o || !t) return;
       const s = (i) => {
-        n.classList.contains("hide-up") || S(
+        n.classList.contains("hide-up") || I(
           "exp_cross_sell_click_03",
           `Select size-${this.parentElementName}`,
           "click",
@@ -1909,42 +2268,50 @@ input:checked + .slider:before {
         () => n.removeEventListener("click", s)
       );
     }
-    getProductIdBySizeAndColor(e, n, t) {
-      var d, a, u, p;
-      if (!((a = (d = e == null ? void 0 : e.options) == null ? void 0 : d.configurable) != null && a.size) || !((p = (u = e == null ? void 0 : e.options) == null ? void 0 : u.configurable) != null && p.color))
+    getProductIdBySizeAndColor(e, n, o) {
+      var r;
+      const t = (r = e == null ? void 0 : e.options) == null ? void 0 : r.configurable;
+      if (!(t != null && t.size))
         return console.error("Product options structure is invalid"), null;
-      const o = e.options.configurable.size[n], s = e.options.configurable.color[t] ? e.options.configurable.color[t] : t === "8792" ? e.options.configurable.color[6635] : t === "6635" ? e.options.configurable.color[8792] : e.options.configurable.color[t];
-      if (!o || !s)
-        return console.error("Size or color not found in product options"), null;
-      const i = o.filter(
-        (r) => s.includes(r)
+      const s = t.size[n];
+      if (!s)
+        return console.error("Size not found in product options"), null;
+      if (s.length === 1 && !t.color)
+        return s[0];
+      if (!t.color)
+        return console.error("Product options structure is invalid"), null;
+      let i = t.color[o];
+      if (i || (o === "8792" ? i = t.color[6635] : o === "6635" ? i = t.color[8792] : i = t.color[o]), !i)
+        return console.error("Color not found in product options"), null;
+      const l = s.filter(
+        (u) => i.length === 0 && s.length === 1 ? !0 : i.includes(u)
       );
-      return i.length === 0 ? (console.warn("No product found with this size and color combination"), null) : (i.length > 1 && console.warn(
+      return l.length === 0 ? (console.warn("No product found with this size and color combination"), null) : (l.length > 1 && console.warn(
         "Multiple products found with this size and color combination, returning first one"
-      ), i[0]);
+      ), l[0]);
     }
     waitForBundle(e = 5e4) {
-      return new Promise((n, t) => {
+      return new Promise((n, o) => {
         if (this.bundle)
           return n(this.bundle);
-        const o = setInterval(() => {
-          this.bundle && (clearInterval(o), clearTimeout(s), n(this.bundle));
+        const t = setInterval(() => {
+          this.bundle && (clearInterval(t), clearTimeout(s), n(this.bundle));
         }, 200), s = setTimeout(() => {
-          clearInterval(o), t(new Error("Timeout waiting for window.product"));
+          clearInterval(t), o(new Error("Timeout waiting for window.product"));
         }, e);
       });
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = N, document.head.appendChild(e);
+      e.innerHTML = W, document.head.appendChild(e);
     }
     dispose() {
       this.disposed || (this.disposed = !0, this.eventRemovers.forEach((e) => e()), this.eventRemovers = [], this.bundle && this.bundle.parentElement && this.bundle.parentElement.removeChild(this.bundle), this.bundle = null);
     }
   };
-  k.bundleCounter = 0;
-  let I = k;
-  const W = `.bundle-container {
+  S.bundleCounter = 0;
+  let z = S;
+  const U = `.bundle-container {
   margin-top: 28px;
   padding: 24px 16px;
   background: #f3f3f3;
@@ -1990,37 +2357,37 @@ input:checked + .slider:before {
   }
 }
 `;
-  class U {
-    constructor(e, n, t) {
-      this.aborters = [], this.bundleItems = [], this.disposed = !1, this.bundleData = e, this.cartInstance = n, this.aborters = t, this.init();
+  class Y {
+    constructor(e, n, o) {
+      this.aborters = [], this.bundleItems = [], this.disposed = !1, this.bundleData = e, this.cartInstance = n, this.aborters = o, this.init();
     }
     async init() {
       this.addStyles(), await this.render();
     }
     async render() {
       var u, p;
-      await v("product-view-cms-carousel");
+      await k("product-view-cms-carousel");
       const e = await Promise.race([
-        v("product-view-delivery-note"),
-        v("product-view-add-to-basket")
+        k("product-view-delivery-note"),
+        k("product-view-add-to-basket")
       ]);
       if (!e) return;
-      const t = window.autoInitData.website.defaultCountry === "GB" ? "colour set" : "color set", o = ((u = window == null ? void 0 : window.product) == null ? void 0 : u.item_category3) || "", s = this.bundleData.map(
-        ({ product: r }) => r != null && r.name && (r != null && r.url) ? `<a href="${r.url}" target="_blank" class="bundle-link" data-name="${r.name}">${r.name}</a>` : null
-      ).filter(Boolean), i = s.length ? `Match your item with ${s.join(" and ")}` : "", d = (
+      const o = window.autoInitData.website.defaultCountry === "GB" ? "colour set" : "color set", t = ((u = window == null ? void 0 : window.product) == null ? void 0 : u.item_category3) || "", s = this.bundleData.map(
+        ({ product: a }) => a != null && a.name && (a != null && a.url) ? `<a href="${a.url}" target="_blank" class="bundle-link" data-name="${a.name}">${a.name}</a>` : null
+      ).filter(Boolean), i = s.length ? `Match your item with ${s.join(" and ")}` : "", l = (
         /* HTML */
         `<div class="bundle-container">
       <div class="bundle-container-title">
-        Complete your <span id="bundle-color">${o}</span><br />
-        ${t}
+        Complete your <span id="bundle-color">${t}</span><br />
+        ${o}
       </div>
       <div class="bundle-items-wrapper"></div>
       <div class="bundle-container-footer">${i}</div>
     </div>`
       );
-      document.querySelector(".bundle-container") && ((p = document.querySelector(".bundle-container")) == null || p.remove()), e.insertAdjacentHTML("afterend", d), _(".bundle-container", "exp_cross_sell_visibility_01", "Visibility", `Complete your ${o} color set`), document.querySelector(".bundle-items-wrapper");
-      for (const [r, { product: h, sizes: b, bundle: f }] of this.bundleData.entries()) {
-        const m = new I({
+      document.querySelector(".bundle-container") && ((p = document.querySelector(".bundle-container")) == null || p.remove()), e.insertAdjacentHTML("afterend", l), $(".bundle-container", "exp_cross_sell_visibility_01", "Visibility", `Complete your ${t} color set`), document.querySelector(".bundle-items-wrapper");
+      for (const [a, { product: h, sizes: b, bundle: g }] of this.bundleData.entries()) {
+        const m = new z({
           product: h,
           sizes: b,
           cartInstance: this.cartInstance,
@@ -2030,14 +2397,14 @@ input:checked + .slider:before {
         });
         this.bundleItems.push(m);
       }
-      document.querySelectorAll(".bundle-container-footer .bundle-link").forEach((r) => {
-        r.addEventListener("mousedown", (h) => {
+      document.querySelectorAll(".bundle-container-footer .bundle-link").forEach((a) => {
+        a.addEventListener("mousedown", (h) => {
           var b;
-          S(
+          I(
             "exp_cross_sell_click_04",
-            r.textContent || "",
+            a.textContent || "",
             "click",
-            ((b = this.bundleData.find((f) => f.product.name === r.textContent)) == null ? void 0 : b.product.name) || ""
+            ((b = this.bundleData.find((g) => g.product.name === a.textContent)) == null ? void 0 : b.product.name) || ""
           );
         });
       });
@@ -2050,23 +2417,23 @@ input:checked + .slider:before {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = W, document.head.appendChild(e);
+      e.innerHTML = U, document.head.appendChild(e);
     }
   }
-  class Y {
-    constructor(e, n, t) {
-      this.bundleData = [], this.bundleContainer = null, this.pinsBundle = null, this.cartInstance = n, this.aborters = t, this.init(e);
+  class J {
+    constructor(e, n, o) {
+      this.bundleData = [], this.bundleContainer = null, this.pinsBundle = null, this.cartInstance = n, this.aborters = o, this.init(e);
     }
     async init(e) {
       this.bundleData = await Promise.all(
         e.map(async (n) => {
-          const [t, o] = await Promise.all([
-            E(n.path || "").then((s) => s.data),
+          const [o, t] = await Promise.all([
+            _(n.path || "").then((s) => s.data),
             j().then((s) => s.data)
           ]);
-          return { product: t, sizes: o, bundle: n };
+          return { product: o, sizes: t, bundle: n };
         })
-      ), this.bundleContainer = new U(
+      ), this.bundleContainer = new Y(
         this.bundleData,
         this.cartInstance,
         this.aborters
@@ -2077,7 +2444,7 @@ input:checked + .slider:before {
       (e = this.bundleContainer) == null || e.dispose(), this.bundleContainer = null, (n = this.pinsBundle) == null || n.dispose(), this.pinsBundle = null;
     }
   }
-  const J = `.cart-product-quantity {
+  const K = `.cart-product-quantity {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -2113,42 +2480,42 @@ input:checked + .slider:before {
 }`;
   class Q {
     constructor(e) {
-      var n, t, o, s;
+      var n, o, t, s;
       this.eventsAborters = [], this.items = [], this.initialCartButtonClick = !0, this.currencySymbol = // @ts-ignore
-      (s = (o = (t = (n = window == null ? void 0 : window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : t.currency) == null ? void 0 : o.list) == null ? void 0 : s[0].symbol, this.eventsAborters = e, this.init();
+      (s = (t = (o = (n = window == null ? void 0 : window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : o.currency) == null ? void 0 : t.list) == null ? void 0 : s[0].symbol, this.eventsAborters = e, this.init();
     }
     init() {
       this.addStyles(), this.handleCartButtonClick();
     }
     async addItemToCart(e) {
       if (!this.items.some(
-        (o) => o.id === e.id && o.size === e.size && o.color === e.color
+        (t) => t.id === e.id && t.size === e.size && t.color === e.color
       ))
         this.items.push(e);
       else {
-        const o = this.items.find(
+        const t = this.items.find(
           (s) => s.id === e.id && s.size === e.size && s.color === e.color
         );
-        o && (o.qty = e.qty, o.price = (parseFloat(o.price) + parseFloat(e.price)).toFixed(2));
+        t && (t.qty = e.qty, t.price = (parseFloat(t.price) + parseFloat(e.price)).toFixed(2));
       }
-      const t = document.querySelector(
+      const o = document.querySelector(
         "button:has(basket-qty)"
       );
-      t && (t._programmaticClick = !0, t.click(), setTimeout(() => {
-        delete t._programmaticClick;
+      o && (o._programmaticClick = !0, o.click(), setTimeout(() => {
+        delete o._programmaticClick;
       }, 0), this.initialCartButtonClick = !1), this.renderAllItems();
     }
     async renderAllItems() {
-      if (!await v("modal-right-container minibasket")) {
+      if (!await k("modal-right-container minibasket")) {
         console.error("Container for rendering items not found");
         return;
       }
-      this.items.forEach((t) => {
-        this.renderSingleItem(t);
+      this.items.forEach((o) => {
+        this.renderSingleItem(o);
       });
     }
     async renderSingleItem(e) {
-      const t = window.autoInitData.website.defaultCountry === "GB" ? "Colour" : "Color", o = (
+      const o = window.autoInitData.website.defaultCountry === "GB" ? "Colour" : "Color", t = (
         /* HTML */
         `
       <li
@@ -2203,7 +2570,7 @@ input:checked + .slider:before {
                           |
                         </span></span
                       ><span _ngcontent-ng-c2131613575 class="ng-star-inserted">
-                        ${t}: ${e.color}
+                        ${o}: ${e.color}
                       </span>
                     </div>
                   </div>
@@ -2279,14 +2646,14 @@ input:checked + .slider:before {
           class="p-r-5 p-l-5 ng-star-inserted"
         >
           <ul cy-minibasketlist>
-            ${o}
+            ${t}
           </ul>
         </div>`), this.addCheckoutButton();
       } else {
         const i = document.querySelector(
           "minibasket ul[cy-minibasketlist]"
         );
-        i && i.insertAdjacentHTML("beforeend", o);
+        i && i.insertAdjacentHTML("beforeend", t);
       }
       this.addItemEventListeners(e.productCartId);
     }
@@ -2295,28 +2662,28 @@ input:checked + .slider:before {
         "button:has(basket-qty)"
       );
       e && (e == null || e.addEventListener("click", async (n) => {
-        e._programmaticClick || this.initialCartButtonClick || (this.eventsAborters.forEach((t) => {
-          t.abort();
+        e._programmaticClick || this.initialCartButtonClick || (this.eventsAborters.forEach((o) => {
+          o.abort();
         }), this.eventsAborters = [], this.renderAllItems());
       }));
     }
     async addItemEventListeners(e) {
-      const n = await v(
+      const n = await k(
         `[data-cart-id="${e}"]`
-      ), t = this.items.find(
-        (r) => r.productCartId === e
+      ), o = this.items.find(
+        (a) => a.productCartId === e
       );
-      if (!t || !n) return;
-      const o = n == null ? void 0 : n.querySelector(".quantity-button.minus"), s = n == null ? void 0 : n.querySelector(".quantity-button.plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), d = n == null ? void 0 : n.querySelector(".cart-product-remove"), a = n == null ? void 0 : n.querySelector(".cart-product-price"), u = this.debounce(
-        async (r, h) => {
-          const { data: b, error: f } = await G({ id: r, qty: h }), m = b == null ? void 0 : b.cart;
+      if (!o || !n) return;
+      const t = n == null ? void 0 : n.querySelector(".quantity-button.minus"), s = n == null ? void 0 : n.querySelector(".quantity-button.plus"), i = n == null ? void 0 : n.querySelector(".quantity-input"), l = n == null ? void 0 : n.querySelector(".cart-product-remove"), r = n == null ? void 0 : n.querySelector(".cart-product-price"), u = this.debounce(
+        async (a, h) => {
+          const { data: b, error: g } = await H({ id: a, qty: h }), m = b == null ? void 0 : b.cart;
           if (m) {
-            const l = m == null ? void 0 : m.totals.grand_total;
-            if (l) {
-              const g = document == null ? void 0 : document.querySelector(
+            const y = m == null ? void 0 : m.totals.grand_total;
+            if (y) {
+              const w = document == null ? void 0 : document.querySelector(
                 "basket-view-totals price"
               );
-              g && (g.innerHTML = `${this.currencySymbol}${l}`);
+              w && (w.innerHTML = `${this.currencySymbol}${y}`);
             }
           }
         },
@@ -2324,25 +2691,25 @@ input:checked + .slider:before {
       );
       if (!n || !i) return;
       const p = new AbortController();
-      this.eventsAborters.push(p), o && o.addEventListener("click", () => {
+      this.eventsAborters.push(p), t && t.addEventListener("click", () => {
         const h = parseInt(i.value) - 1;
         if (s == null || s.removeAttribute("disabled"), h < 1) {
-          i.value = "1", o.setAttribute("disabled", "true");
+          i.value = "1", t.setAttribute("disabled", "true");
           return;
         }
-        i.value = h.toString(), a && (a.textContent = (+t.price * h).toFixed(2)), u(+e, h);
+        i.value = h.toString(), r && (r.textContent = (+o.price * h).toFixed(2)), u(+e, h);
       }), s && s.addEventListener("click", () => {
         const h = parseFloat(i.value) + 1;
-        o == null || o.removeAttribute("disabled"), i.value = h.toString(), a && (a.textContent = (+t.price * h).toFixed(2)), u(+e, h);
-      }), d && d.addEventListener("click", async () => {
-        const r = d.closest("li");
-        r && (await C([+e]), r.remove());
+        t == null || t.removeAttribute("disabled"), i.value = h.toString(), r && (r.textContent = (+o.price * h).toFixed(2)), u(+e, h);
+      }), l && l.addEventListener("click", async () => {
+        const a = l.closest("li");
+        a && (await q([+e]), a.remove());
       });
     }
     debounce(e, n) {
-      let t = null;
-      return (...o) => {
-        t && clearTimeout(t), t = setTimeout(() => e(...o), n);
+      let o = null;
+      return (...t) => {
+        o && clearTimeout(o), o = setTimeout(() => e(...t), n);
       };
     }
     addCheckoutButton() {
@@ -2435,47 +2802,47 @@ input:checked + .slider:before {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.innerHTML = J, document.head.appendChild(e);
+      e.innerHTML = K, document.head.appendChild(e);
     }
   }
-  B({
+  T({
     name: "Adding bundle options based on color to the product detail page (PDP) and cart",
     dev: "OS"
-  }), function(c, e, n, t, o, s) {
+  }), function(c, e, n, o, t, s) {
     c.hj = c.hj || function() {
       (c.hj.q = c.hj.q || []).push(arguments);
-    }, c._hjSettings = { hjid: 2667925, hjsv: 6 }, o = e.getElementsByTagName("head")[0], s = e.createElement("script"), s.async = !0, s.src = n + c._hjSettings.hjid + t + c._hjSettings.hjsv, o && o.appendChild(s);
+    }, c._hjSettings = { hjid: 2667925, hjsv: 6 }, t = e.getElementsByTagName("head")[0], s = e.createElement("script"), s.async = !0, s.src = n + c._hjSettings.hjid + o + c._hjSettings.hjsv, t && t.appendChild(s);
   }(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_cross_sell");
   const X = ["GB", "US", "IE", "AU", "NZ", "ZA", "CA"];
   function Z(c) {
-    const e = z.find((n) => c.includes(n.path));
-    return e ? z.filter(
+    const e = C.find((n) => c.includes(n.path));
+    return e ? C.filter(
       (n) => n.bundleGroupId === e.bundleGroupId && !c.includes(n.path)
     ) : [];
   }
-  class K {
+  class ee {
     constructor() {
       this.aborters = [], this.bundleWrapper = null, this.aborters = [], this.bundleWrapper = null, this.init();
     }
     async init() {
       this.pageChangeHandler(async () => {
-        this.aborters.forEach((e) => e.abort()), this.aborters = [], this.bundleWrapper && (this.bundleWrapper.dispose(), this.bundleWrapper = null), await v("html.content-initiated-root"), await this.initChangesOnPDP();
-      }), await v("html.content-initiated-root"), this.initChangesOnPDP();
+        this.aborters.forEach((e) => e.abort()), this.aborters = [], this.bundleWrapper && (this.bundleWrapper.dispose(), this.bundleWrapper = null), await k("html.content-initiated-root"), await this.initChangesOnPDP();
+      }), await k("html.content-initiated-root"), this.initChangesOnPDP();
     }
     async initChangesOnPDP() {
       var n;
       if (await this.checkIsProductPage()) {
-        const { url: t, ...o } = await this.waitForProduct(), s = this.checkCountry();
+        const { url: o, ...t } = await this.waitForProduct(), s = this.checkCountry();
         if (!X.includes(s)) {
           console.error("Not an English country, exiting...");
           return;
         }
-        const i = t.replace(/^https?:\/\/(www\.)?lemieux\.com/, "").replace(/#.*/, ""), d = Z(i);
-        if (d.length > 0) {
-          const a = new Q(this.aborters);
-          this.bundleWrapper = new Y(
-            d,
-            a,
+        const i = o.replace(/^https?:\/\/(www\.)?lemieux\.com/, "").replace(/#.*/, ""), l = Z(i);
+        if (l.length > 0) {
+          const r = new Q(this.aborters);
+          this.bundleWrapper = new J(
+            l,
+            r,
             this.aborters
           );
         } else
@@ -2489,9 +2856,9 @@ input:checked + .slider:before {
     async checkIsProductPage(e = 5e3) {
       try {
         return !!await Promise.race([
-          v("product-view-layout"),
+          k("product-view-layout"),
           new Promise(
-            (t, o) => setTimeout(() => o("timeout"), e)
+            (o, t) => setTimeout(() => t("timeout"), e)
           )
         ]);
       } catch {
@@ -2499,19 +2866,19 @@ input:checked + .slider:before {
       }
     }
     waitForProduct(e = 5e4) {
-      return new Promise((n, t) => {
-        window.product && setTimeout(() => n(window.product), 100);
-        const o = setInterval(() => {
-          window.product && (clearInterval(o), clearTimeout(s), n(window.product));
+      return new Promise((n, o) => {
+        window != null && window.product && setTimeout(() => n(window.product), 100);
+        const t = setInterval(() => {
+          window.product && (clearInterval(t), clearTimeout(s), n(window.product));
         }, 200), s = setTimeout(() => {
-          clearInterval(o), t(new Error("Timeout waiting for window.product"));
+          clearInterval(t), o(new Error("Timeout waiting for window.product"));
         }, e);
       });
     }
     pageChangeHandler(e) {
       let n = window.location.pathname;
-      new MutationObserver((o) => {
-        o.forEach((s) => {
+      new MutationObserver((t) => {
+        t.forEach((s) => {
           n !== window.location.pathname && (e(), n = window.location.pathname);
         });
       }).observe(document.body, {
@@ -2520,5 +2887,5 @@ input:checked + .slider:before {
       });
     }
   }
-  window.__exp_lemieux_bundles_launched || (window.__exp_lemieux_bundles_launched = !0, new K());
+  window.__exp_lemieux_bundles_launched || (window.__exp_lemieux_bundles_launched = !0, new ee());
 })();
