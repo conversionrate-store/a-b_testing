@@ -1,29 +1,29 @@
 var K = function() {
   "use strict";
-  const I = (s, t, e, n = "") => {
+  const A = (c, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: s,
+      event_name: c,
       event_desc: t,
       event_type: e,
       event_loc: n
-    }), console.log(`Event: ${s} | ${t} | ${e} | ${n}`);
-  }, A = ({ name: s, dev: t }) => {
+    }), console.log(`Event: ${c} | ${t} | ${e} | ${n}`);
+  }, q = ({ name: c, dev: t }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${t})`,
+      `%c EXP: ${c} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, q = (s) => {
+  }, I = (c) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", s, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", c, "variant_1"));
     }, 1e3);
   };
-  function g(s) {
+  function p(c) {
     return new Promise((t) => {
-      if (document.querySelector(s))
-        return t(document.querySelector(s));
+      if (document.querySelector(c))
+        return t(document.querySelector(c));
       const e = new MutationObserver(() => {
-        document.querySelector(s) && (t(document.querySelector(s)), e.disconnect());
+        document.querySelector(c) && (t(document.querySelector(c)), e.disconnect());
       });
       e.observe(document.documentElement, {
         childList: !0,
@@ -126,7 +126,7 @@ var K = function() {
     position: relative;
     flex-direction: row;
     justify-content: space-between;
-    gap: 24px;
+    gap: 10px;
   }
 
   .crs-estimate-delivery-item {
@@ -168,7 +168,7 @@ var K = function() {
   .crs-estimate-delivery-item .crs-title {
     display: flex;
     flex-direction: column;
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
   .crs-estimate-delivery-item::after {
     display: none;
@@ -185,7 +185,7 @@ var K = function() {
   }
 
   .crs-estimate-delivery-item .crs-description {
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
 }
 `;
@@ -194,39 +194,41 @@ var K = function() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.addStyles(), this.render();
+      this.addStyles(), this.render(), this.handleTitleWrap();
     }
     async render() {
-      var a, d;
-      const t = await g(
+      var a, l;
+      const t = await p(
         ".footer-cart .estimate-delivery-wrapper"
       ), e = t.querySelectorAll(
         ".estimate-delivery-item"
       ), n = (a = e[0].querySelector(
         ".estimate-delivery-date"
-      )) == null ? void 0 : a.textContent, r = (d = e[2].querySelector(
+      )) == null ? void 0 : a.textContent, r = (l = e[2].querySelector(
         ".estimate-delivery-date"
-      )) == null ? void 0 : d.textContent;
+      )) == null ? void 0 : l.textContent;
       let i = "";
       if (r) {
         const o = r.match(
           /([A-Za-z]+) (\d{1,2}) - ([A-Za-z]+) (\d{1,2})/
         ), h = (/* @__PURE__ */ new Date()).getFullYear();
         if (o) {
-          const l = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${h}`), p = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${h}`), m = new Date(
-            l.getTime() + 60 * 24 * 60 * 60 * 1e3
-          ), u = new Date(p.getTime() + 60 * 24 * 60 * 60 * 1e3), v = (f) => f.toLocaleString("en-US", { month: "short", day: "numeric" });
-          i = `${v(m)} - ${v(u)}`;
+          const d = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${h}`), m = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${h}`), u = new Date(
+            d.getTime() + 60 * 24 * 60 * 60 * 1e3
+          ), f = new Date(m.getTime() + 60 * 24 * 60 * 60 * 1e3), x = (g) => g.toLocaleString("en-US", { month: "short", day: "numeric" });
+          i = `${x(u)} - ${x(f)}`;
         }
       }
-      const c = (
+      const s = (
         /* HTML */
         `
       <div class="crs-estimate-delivery">
         <div class="crs-estimate-delivery-items">
           <div class="crs-estimate-delivery-item">
             <div class="crs-content">
-              <div class="crs-title">Ordered</div>
+              <div class="crs-title">
+                <span class="crs-title-text">Ordered</span>
+              </div>
               <div class="crs-description">
                 ${n}, ${(/* @__PURE__ */ new Date()).getFullYear()}
               </div>
@@ -234,13 +236,17 @@ var K = function() {
           </div>
           <div class="crs-estimate-delivery-item">
             <div class="crs-content">
-              <div class="crs-title">Delivered</div>
+              <div class="crs-title">
+                <span class="crs-title-text">Delivered</span>
+              </div>
               <div class="crs-description">${r}</div>
             </div>
           </div>
           <div class="crs-estimate-delivery-item">
             <div class="crs-content">
-              <div class="crs-title">Enjoy a 60-Night Free Trial</div>
+              <div class="crs-title">
+                <span class="crs-title-text">Enjoy a 60-Night Free Trial</span>
+              </div>
               <div class="crs-description">${i}</div>
               <div class="crs-note">
                 Not fully satisfied? Don't worry; we'll arrange a return or
@@ -252,7 +258,21 @@ var K = function() {
       </div>
     `
       );
-      t && t.insertAdjacentHTML("beforeend", c);
+      t && t.insertAdjacentHTML("beforeend", s);
+    }
+    async handleTitleWrap() {
+      await p(".crs-estimate-delivery-item .crs-title");
+      const t = document.querySelectorAll(
+        ".crs-estimate-delivery-item .crs-title"
+      ), e = () => {
+        t.forEach((n) => {
+          const r = n.closest(".crs-content"), i = n.querySelector(".crs-title-text"), s = r == null ? void 0 : r.querySelector(".crs-description"), a = r == null ? void 0 : r.querySelector(".crs-note");
+          if (!i) return;
+          const l = parseFloat(getComputedStyle(i).lineHeight);
+          i.offsetHeight > l + 1 ? (n.style.transform = "translateY(-22px)", s && (s.style.transform = "translateY(-22px)"), a && (a.style.transform = "translateY(-22px)")) : (n.style.transform = "", s && (s.style.transform = ""), a && (a.style.transform = ""));
+        });
+      };
+      window.addEventListener("resize", e), e();
     }
     addStyles() {
       const t = document.createElement("style");
@@ -323,7 +343,7 @@ var K = function() {
     eventListeners() {
       const t = document.getElementById("crs-cta-btn");
       t && t.addEventListener("click", (e) => {
-        I(
+        A(
           "exp_m_upsell_click_05",
           "See Order Summary",
           "click",
@@ -337,9 +357,9 @@ var K = function() {
       const e = () => {
         const i = Array.from(
           document.querySelectorAll('a[href="/checkout"]:not(.crs-cta-button)')
-        ).some((c) => {
-          const a = c.getBoundingClientRect(), d = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(c);
-          return d && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
+        ).some((s) => {
+          const a = s.getBoundingClientRect(), l = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(s);
+          return l && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
         t.style.display = i ? "none" : "", document.body.dataset.fixedCta = i ? "false" : "true";
       };
@@ -355,7 +375,7 @@ var K = function() {
       t.textContent = D, document.head.appendChild(t);
     }
   }
-  const z = (
+  const H = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -390,7 +410,7 @@ var K = function() {
     d="m34.598 7.042-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), H = (
+  ), z = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -690,11 +710,11 @@ section.cart-header-trustpilot {
       <div class="container">
         <div class="crs-header-inner">
           <div class="crs-header-block">
-            <div class="crs-icon">${z}</div>
+            <div class="crs-icon">${H}</div>
             <div class="crs-text">Price Match Guarantee</div>
           </div>
           <div class="crs-header-block crs-header-delivery">
-            <div class="crs-icon">${H}</div>
+            <div class="crs-icon">${z}</div>
             <div class="crs-text">
               FREE Delivery: <span data-delivery></span>
             </div>
@@ -740,16 +760,16 @@ section.cart-header-trustpilot {
       !t || !e || t.appendChild(e);
     }
     async addDeliveryDate() {
-      await g(".estimate-delivery-item");
+      await p(".estimate-delivery-item");
       const t = document.querySelector("[data-delivery]"), e = document.querySelectorAll(
         ".estimate-delivery-item"
       );
       !t || !e || e.forEach((n) => {
         var r, i;
         if ((r = n.textContent) != null && r.toLocaleLowerCase().includes("delivered")) {
-          const c = n.querySelector(".estimate-delivery-date");
-          if (c) {
-            const a = (i = c.textContent) == null ? void 0 : i.trim();
+          const s = n.querySelector(".estimate-delivery-date");
+          if (s) {
+            const a = (i = s.textContent) == null ? void 0 : i.trim();
             return a ? (t.textContent = a, a) : void 0;
           }
         }
@@ -818,7 +838,7 @@ section.cart-header-trustpilot {
         var i;
         const n = document.querySelector("cart-quantity"), r = document.getElementById("crs-cart-count");
         if (n && r) {
-          const c = n.getElementsByClassName("w-3.5")[0], a = c ? c.getElementsByClassName("w-full")[0] : null;
+          const s = n.getElementsByClassName("w-3.5")[0], a = s ? s.getElementsByClassName("w-full")[0] : null;
           r.textContent = ((i = a == null ? void 0 : a.textContent) == null ? void 0 : i.trim()) || "0";
         }
       };
@@ -924,7 +944,7 @@ section.cart-header-trustpilot {
         ></span>
       </div>
     `
-      ), e = await g(
+      ), e = await p(
         ".calculate-pricing-part .total-order"
       );
       e && e.insertAdjacentHTML("afterend", t);
@@ -934,7 +954,7 @@ section.cart-header-trustpilot {
       t.textContent = O, document.head.appendChild(t);
     }
   }
-  const V = `.cart-product-item {
+  const Y = `.cart-product-item {
   margin-top: 48px;
   border-radius: 16px;
   background: #f5f5f5;
@@ -1112,11 +1132,11 @@ section.cart-header-trustpilot {
     border-top: 1px dashed rgba(165, 211, 255, 0.24);
   }
 }
-`, x = {
+`, v = {
     cartProductItems: ".cart-product-section .cart-product-items",
     cartProductItem: ".cart-product-section .cart-product-item"
   };
-  class Y {
+  class V {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
@@ -1126,10 +1146,10 @@ section.cart-header-trustpilot {
       }, 300);
     }
     async renderNightsFreeTrial(t, e = "afterend") {
-      await g(x.cartProductItem);
-      const n = document.querySelectorAll(
-        x.cartProductItem
-      ), r = (
+      await p(v.cartProductItem), document.querySelectorAll(
+        v.cartProductItem
+      );
+      const n = (
         /* HTML */
         ` <div class="crs-nights-free-trial">
       <div class="crs-content">
@@ -1145,7 +1165,7 @@ section.cart-header-trustpilot {
       </div>
     </div>`
       );
-      console.log("addNightsFreeTrial", n), t && t.insertAdjacentHTML(e, r);
+      t && t.insertAdjacentHTML(e, n);
     }
     renderItemLeftNotification(t, e = "afterend") {
       const n = (
@@ -1162,7 +1182,7 @@ section.cart-header-trustpilot {
     async observeCartProductItems() {
       new MutationObserver((e) => {
         e.forEach((n) => {
-          n.target instanceof HTMLElement && n.target.matches(x.cartProductItems) && setTimeout(() => {
+          n.target instanceof HTMLElement && n.target.matches(v.cartProductItems) && setTimeout(() => {
             this.addItemAddNotes();
           }, 150);
         });
@@ -1172,10 +1192,10 @@ section.cart-header-trustpilot {
       });
     }
     async addItemAddNotes() {
-      var a, d, o, h;
-      await g(x.cartProductItem);
+      var a, l, o, h;
+      await p(v.cartProductItem);
       const t = document.querySelectorAll(
-        x.cartProductItem
+        v.cartProductItem
       );
       if (!t) return;
       const e = sessionStorage.getItem("firstItem");
@@ -1184,31 +1204,31 @@ section.cart-header-trustpilot {
         ".crs-item-left-notification"
       );
       if (r && r.remove(), e) {
-        const { titleText: l, colorText: p, headboardText: m, baseText: u } = JSON.parse(e), v = Array.from(t).find((f) => {
+        const { titleText: d, colorText: m, headboardText: u, baseText: f } = JSON.parse(e), x = Array.from(t).find((g) => {
           var C, M, F, Z;
-          const y = f.querySelector(".cart-product-info"), w = f.querySelector(".item-variants-name"), b = f.querySelector(
+          const y = g.querySelector(".cart-product-info"), w = g.querySelector(".item-variants-name"), b = g.querySelector(
             ".item-variants-name.headboard"
-          ), k = f.querySelector(
+          ), k = g.querySelector(
             ".item-variants-name.base"
-          ), U = ((C = y == null ? void 0 : y.textContent) == null ? void 0 : C.trim()) === l, W = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === p, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === m, J = ((Z = k == null ? void 0 : k.textContent) == null ? void 0 : Z.trim()) === u;
-          return U && W && X && J;
+          ), Q = ((C = y == null ? void 0 : y.textContent) == null ? void 0 : C.trim()) === d, U = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === m, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === u, J = ((Z = k == null ? void 0 : k.textContent) == null ? void 0 : Z.trim()) === f;
+          return Q && U && X && J;
         });
-        v && (n = v);
+        x && (n = x);
       }
       if (!n && !e) {
         n = t[t.length - 1];
-        const l = n.querySelector(".cart-product-info"), p = n.querySelector(".item-variants-name"), m = n.querySelector(
+        const d = n.querySelector(".cart-product-info"), m = n.querySelector(".item-variants-name"), u = n.querySelector(
           ".item-variants-name.headboard"
-        ), u = n.querySelector(
+        ), f = n.querySelector(
           ".item-variants-name.base"
         );
-        if (l || p || m || u) {
-          const v = (a = l == null ? void 0 : l.textContent) == null ? void 0 : a.trim(), f = (d = p == null ? void 0 : p.textContent) == null ? void 0 : d.trim(), y = (o = m == null ? void 0 : m.textContent) == null ? void 0 : o.trim(), w = (h = u == null ? void 0 : u.textContent) == null ? void 0 : h.trim();
+        if (d || m || u || f) {
+          const x = (a = d == null ? void 0 : d.textContent) == null ? void 0 : a.trim(), g = (l = m == null ? void 0 : m.textContent) == null ? void 0 : l.trim(), y = (o = u == null ? void 0 : u.textContent) == null ? void 0 : o.trim(), w = (h = f == null ? void 0 : f.textContent) == null ? void 0 : h.trim();
           sessionStorage.setItem(
             "firstItem",
             JSON.stringify({
-              titleText: v,
-              colorText: f,
+              titleText: x,
+              colorText: g,
               headboardText: y,
               baseText: w
             })
@@ -1221,15 +1241,15 @@ section.cart-header-trustpilot {
       );
       if (!i) return;
       this.renderItemLeftNotification(i, "beforebegin");
-      const c = document.querySelectorAll(
+      const s = document.querySelectorAll(
         ".crs-nights-free-trial"
       );
-      c && c.forEach((l) => {
-        l.remove();
+      s && s.forEach((d) => {
+        d.remove();
       }), this.renderNightsFreeTrial(n, "afterend"), this.renderNightsFreeTrial(i, "afterend");
     }
     async observeMattressButtons() {
-      await g(".cart-product-image");
+      await p(".cart-product-image");
       let t;
       this.device === "desktop" ? t = document.querySelectorAll(".cart-product-image") : t = document.querySelectorAll(
         ".cart-product-item + .block.md\\:hidden"
@@ -1237,8 +1257,8 @@ section.cart-header-trustpilot {
       const e = new MutationObserver((n) => {
         n.forEach((r) => {
           r.addedNodes.forEach((i) => {
-            var c, a, d, o;
-            if (i instanceof HTMLElement && (i.classList.contains("card-addons") && ((c = i.textContent) != null && c.includes("Add Mattress & Save")) && i.classList.add("crs-mattress-control-btn"), i.classList.contains("card-addons") && ((a = i.textContent) != null && a.includes("Remove")) && ((d = i.textContent) != null && d.includes("See Details")))) {
+            var s, a, l, o;
+            if (i instanceof HTMLElement && (i.classList.contains("card-addons") && ((s = i.textContent) != null && s.includes("Add Mattress & Save")) && i.classList.add("crs-mattress-control-btn"), i.classList.contains("card-addons") && ((a = i.textContent) != null && a.includes("Remove")) && ((l = i.textContent) != null && l.includes("See Details")))) {
               const h = (o = i.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
               h && h.remove(), i.classList.add("crs-mattress-chosen");
             }
@@ -1254,15 +1274,15 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = V, document.head.appendChild(t);
+      t.innerHTML = Y, document.head.appendChild(t);
     }
   }
-  class G {
+  class W {
     constructor() {
       this.initialSeconds = 900, this.intervalId = null, this.headerRemainEls = null, this.remain = this.initialSeconds, this.init();
     }
     async init() {
-      await g(".crs-header [data-remain]"), this.headerRemainEls = document.querySelectorAll(".crs-header [data-remain]"), this.start();
+      await p(".crs-header [data-remain]"), this.headerRemainEls = document.querySelectorAll(".crs-header [data-remain]"), this.start();
     }
     start() {
       this.updateAll(), this.intervalId && clearInterval(this.intervalId), this.intervalId = window.setInterval(() => {
@@ -1280,24 +1300,24 @@ section.cart-header-trustpilot {
       });
     }
   }
-  class Q {
+  class G {
     constructor() {
       this.init();
     }
     init() {
-      new j(), new Y(), new G(), new $(), new _(), new T(), new R();
+      new j(), new V(), new W(), new $(), new _(), new T(), new R();
     }
   }
-  A({
+  q({
     name: "Cart Improve UX and highlight main info",
     dev: "OS"
-  }), q("mattress_upsell");
+  }), I("mattress_upsell");
   class E {
     constructor() {
       this.init();
     }
     init() {
-      this.isInCart() && new Q();
+      this.isInCart() && new G();
     }
     isInCart() {
       return window.location.href.includes("/cart");
