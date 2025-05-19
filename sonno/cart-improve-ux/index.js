@@ -199,24 +199,24 @@ var K = function() {
       this.addStyles(), this.render(), this.handleTitleWrap();
     }
     async render() {
-      var a, l;
+      var a, d;
       const t = await p(
         ".footer-cart .estimate-delivery-wrapper"
       ), e = t.querySelectorAll(
         ".estimate-delivery-item"
       ), n = (a = e[0].querySelector(
         ".estimate-delivery-date"
-      )) == null ? void 0 : a.textContent, r = (l = e[2].querySelector(
+      )) == null ? void 0 : a.textContent, r = (d = e[2].querySelector(
         ".estimate-delivery-date"
-      )) == null ? void 0 : l.textContent;
+      )) == null ? void 0 : d.textContent;
       let i = "";
       if (r) {
         const o = r.match(
           /([A-Za-z]+) (\d{1,2}) - ([A-Za-z]+) (\d{1,2})/
         ), h = (/* @__PURE__ */ new Date()).getFullYear();
         if (o) {
-          const d = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${h}`), m = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${h}`), u = new Date(
-            d.getTime() + 60 * 24 * 60 * 60 * 1e3
+          const l = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${h}`), m = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${h}`), u = new Date(
+            l.getTime() + 60 * 24 * 60 * 60 * 1e3
           ), f = new Date(m.getTime() + 60 * 24 * 60 * 60 * 1e3), x = (g) => g.toLocaleString("en-US", { month: "short", day: "numeric" });
           i = `${x(u)} - ${x(f)}`;
         }
@@ -270,8 +270,8 @@ var K = function() {
         t.forEach((n) => {
           const r = n.closest(".crs-content"), i = n.querySelector(".crs-title-text"), s = r == null ? void 0 : r.querySelector(".crs-description"), a = r == null ? void 0 : r.querySelector(".crs-note");
           if (!i) return;
-          const l = parseFloat(getComputedStyle(i).lineHeight);
-          i.offsetHeight > l + 1 ? (n.style.transform = "translateY(-22px)", s && (s.style.transform = "translateY(-22px)"), a && (a.style.transform = "translateY(-22px)")) : (n.style.transform = "", s && (s.style.transform = ""), a && (a.style.transform = ""));
+          const d = parseFloat(getComputedStyle(i).lineHeight);
+          i.offsetHeight > d + 1 ? (n.style.transform = "translateY(-22px)", s && (s.style.transform = "translateY(-22px)"), a && (a.style.transform = "translateY(-22px)")) : (n.style.transform = "", s && (s.style.transform = ""), a && (a.style.transform = ""));
         });
       };
       window.addEventListener("resize", e), e();
@@ -281,7 +281,7 @@ var K = function() {
       t.textContent = L, document.head.appendChild(t);
     }
   }
-  const D = `@media (min-width: 768px) {
+  const z = `@media (min-width: 768px) {
   .crs-cta {
     display: none;
   }
@@ -320,7 +320,7 @@ var K = function() {
 [data-fixed-cta="true"] .rp-micro-app-dummy-icon-container {
   bottom: 70px !important;
 }`;
-  class $ {
+  class D {
     constructor() {
       this.init();
     }
@@ -360,8 +360,8 @@ var K = function() {
         const i = Array.from(
           document.querySelectorAll('a[href="/checkout"]:not(.crs-cta-button)')
         ).some((s) => {
-          const a = s.getBoundingClientRect(), l = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(s);
-          return l && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
+          const a = s.getBoundingClientRect(), d = a.top < window.innerHeight && a.bottom > 0 && a.left < window.innerWidth && a.right > 0, o = window.getComputedStyle(s);
+          return d && o.display !== "none" && o.visibility !== "hidden" && o.opacity !== "0";
         });
         t.style.display = i ? "none" : "", document.body.dataset.fixedCta = i ? "false" : "true";
       };
@@ -374,10 +374,10 @@ var K = function() {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = D, document.head.appendChild(t);
+      t.textContent = z, document.head.appendChild(t);
     }
   }
-  const H = (
+  const $ = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -412,7 +412,7 @@ var K = function() {
     d="m34.598 7.042-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), z = (
+  ), H = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -712,11 +712,11 @@ section.cart-header-trustpilot {
       <div class="container">
         <div class="crs-header-inner">
           <div class="crs-header-block">
-            <div class="crs-icon">${H}</div>
+            <div class="crs-icon">${$}</div>
             <div class="crs-text">Price Match Guarantee</div>
           </div>
           <div class="crs-header-block crs-header-delivery">
-            <div class="crs-icon">${z}</div>
+            <div class="crs-icon">${H}</div>
             <div class="crs-text">
               FREE Delivery: <span data-delivery></span>
             </div>
@@ -967,6 +967,29 @@ section.cart-header-trustpilot {
   margin-top: 44px;
 }
 
+.cart-product-section .card-addons .card-button:has(.border-btn.arrow) {
+  container-type: inline-size;
+  min-width: 130px;
+}
+.cart-product-section .card-addons .card-button .border-btn.arrow {
+  width: 100%;
+  max-width: 200px;
+  gap: 5px;
+  justify-content: space-between;
+}
+
+@container (max-width: 156px) {
+  .cart-product-section .card-addons .card-button .border-btn.arrow {
+    font-size: 0.675rem !important;
+  }
+}
+
+@media (max-width: 802px) {
+ .upsell-cart .card-addons .card-details {
+  padding-right: 1rem;
+ }
+}
+
 @media (max-width: 768px) {
   .cart-product-item {
     padding: 8px 12px 12px !important;
@@ -1011,7 +1034,7 @@ section.cart-header-trustpilot {
     margin-top: 12px;
     position: relative;
     top: 0;
-    right: 0;
+    right: -12px;
     height: 24px;
     margin-left: auto;
   }
@@ -1070,6 +1093,12 @@ section.cart-header-trustpilot {
     padding-block: 5px;
     font-size: 12px;
     line-height: 14px;
+  }
+}
+
+@media (max-width: 370px) {
+  .crs-item-left-notification-inner {
+    font-size: 10px;
   }
 }
 
@@ -1194,7 +1223,7 @@ section.cart-header-trustpilot {
       });
     }
     async addItemAddNotes() {
-      var a, l, o, h;
+      var a, d, o, h;
       await p(v.cartProductItem);
       const t = document.querySelectorAll(
         v.cartProductItem
@@ -1206,26 +1235,26 @@ section.cart-header-trustpilot {
         ".crs-item-left-notification"
       );
       if (r && r.remove(), e) {
-        const { titleText: d, colorText: m, headboardText: u, baseText: f } = JSON.parse(e), x = Array.from(t).find((g) => {
+        const { titleText: l, colorText: m, headboardText: u, baseText: f } = JSON.parse(e), x = Array.from(t).find((g) => {
           var C, M, F, Z;
           const y = g.querySelector(".cart-product-info"), w = g.querySelector(".item-variants-name"), b = g.querySelector(
             ".item-variants-name.headboard"
           ), k = g.querySelector(
             ".item-variants-name.base"
-          ), Q = ((C = y == null ? void 0 : y.textContent) == null ? void 0 : C.trim()) === d, U = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === m, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === u, J = ((Z = k == null ? void 0 : k.textContent) == null ? void 0 : Z.trim()) === f;
+          ), Q = ((C = y == null ? void 0 : y.textContent) == null ? void 0 : C.trim()) === l, U = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === m, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === u, J = ((Z = k == null ? void 0 : k.textContent) == null ? void 0 : Z.trim()) === f;
           return Q && U && X && J;
         });
         x && (n = x);
       }
       if (!n && !e) {
         n = t[t.length - 1];
-        const d = n.querySelector(".cart-product-info"), m = n.querySelector(".item-variants-name"), u = n.querySelector(
+        const l = n.querySelector(".cart-product-info"), m = n.querySelector(".item-variants-name"), u = n.querySelector(
           ".item-variants-name.headboard"
         ), f = n.querySelector(
           ".item-variants-name.base"
         );
-        if (d || m || u || f) {
-          const x = (a = d == null ? void 0 : d.textContent) == null ? void 0 : a.trim(), g = (l = m == null ? void 0 : m.textContent) == null ? void 0 : l.trim(), y = (o = u == null ? void 0 : u.textContent) == null ? void 0 : o.trim(), w = (h = f == null ? void 0 : f.textContent) == null ? void 0 : h.trim();
+        if (l || m || u || f) {
+          const x = (a = l == null ? void 0 : l.textContent) == null ? void 0 : a.trim(), g = (d = m == null ? void 0 : m.textContent) == null ? void 0 : d.trim(), y = (o = u == null ? void 0 : u.textContent) == null ? void 0 : o.trim(), w = (h = f == null ? void 0 : f.textContent) == null ? void 0 : h.trim();
           sessionStorage.setItem(
             "firstItem",
             JSON.stringify({
@@ -1246,8 +1275,8 @@ section.cart-header-trustpilot {
       const s = document.querySelectorAll(
         ".crs-nights-free-trial"
       );
-      s && s.forEach((d) => {
-        d.remove();
+      s && s.forEach((l) => {
+        l.remove();
       }), this.renderNightsFreeTrial(n, "afterend"), this.renderNightsFreeTrial(i, "afterend");
     }
     async observeMattressButtons() {
@@ -1259,8 +1288,8 @@ section.cart-header-trustpilot {
       const e = new MutationObserver((n) => {
         n.forEach((r) => {
           r.addedNodes.forEach((i) => {
-            var s, a, l, o;
-            if (i instanceof HTMLElement && (i.classList.contains("card-addons") && ((s = i.textContent) != null && s.includes("Add Mattress & Save")) && i.classList.add("crs-mattress-control-btn"), i.classList.contains("card-addons") && ((a = i.textContent) != null && a.includes("Remove")) && ((l = i.textContent) != null && l.includes("See Details")))) {
+            var s, a, d, o;
+            if (i instanceof HTMLElement && (i.classList.contains("card-addons") && ((s = i.textContent) != null && s.includes("Add Mattress & Save")) && i.classList.add("crs-mattress-control-btn"), i.classList.contains("card-addons") && ((a = i.textContent) != null && a.includes("Remove")) && ((d = i.textContent) != null && d.includes("See Details")))) {
               const h = (o = i.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
               h && h.remove(), i.classList.add("crs-mattress-chosen");
             }
@@ -1307,7 +1336,7 @@ section.cart-header-trustpilot {
       this.init();
     }
     init() {
-      new j(), new V(), new W(), new $(), new _(), new T(), new R();
+      new j(), new V(), new W(), new D(), new _(), new T(), new R();
     }
   }
   q({
