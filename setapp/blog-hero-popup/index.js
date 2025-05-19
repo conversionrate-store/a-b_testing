@@ -1614,7 +1614,7 @@ div[data-step] {
     "/how-to/tiktok-banned-reasons-and-solutions",
     "/how-to/open-rar-files-on-mac"
   ];
-  E({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), _("");
+  E({ name: "2nd Hero Section + Exit intent popup merge", dev: "OS" }), _("exp_blog_hero");
   class H {
     constructor() {
       this.init();
