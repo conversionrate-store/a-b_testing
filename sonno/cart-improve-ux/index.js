@@ -1035,7 +1035,7 @@ section.cart-header-trustpilot {
     margin-top: 12px;
     position: relative;
     top: 0;
-    right: -12px;
+    right: 0;
     height: 24px;
     margin-left: auto;
   }
