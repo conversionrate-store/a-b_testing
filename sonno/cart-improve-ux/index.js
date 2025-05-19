@@ -1,6 +1,6 @@
-var K = function() {
+var J = function() {
   "use strict";
-  const A = (c, t, e, n = "") => {
+  const Z = (c, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: c,
@@ -13,12 +13,12 @@ var K = function() {
       `%c EXP: ${c} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, I = (c) => {
+  }, A = (c) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", c, "variant_1"));
     }, 1e3);
   };
-  function p(c) {
+  function h(c) {
     return new Promise((t) => {
       if (document.querySelector(c))
         return t(document.querySelector(c));
@@ -32,7 +32,7 @@ var K = function() {
       });
     });
   }
-  const L = `.estimate-delivery-wrapper {
+  const I = `.estimate-delivery-wrapper {
   padding: 16px 20px;
   border-radius: 8px;
   background: rgba(165, 211, 255, 0.24);
@@ -191,7 +191,7 @@ var K = function() {
   }
 }
 `;
-  class T {
+  class L {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
@@ -200,7 +200,7 @@ var K = function() {
     }
     async render() {
       var a, d;
-      const t = await p(
+      const t = await h(
         ".footer-cart .estimate-delivery-wrapper"
       ), e = t.querySelectorAll(
         ".estimate-delivery-item"
@@ -213,12 +213,12 @@ var K = function() {
       if (r) {
         const o = r.match(
           /([A-Za-z]+) (\d{1,2}) - ([A-Za-z]+) (\d{1,2})/
-        ), h = (/* @__PURE__ */ new Date()).getFullYear();
+        ), l = (/* @__PURE__ */ new Date()).getFullYear();
         if (o) {
-          const l = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${h}`), m = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${h}`), u = new Date(
-            l.getTime() + 60 * 24 * 60 * 60 * 1e3
-          ), f = new Date(m.getTime() + 60 * 24 * 60 * 60 * 1e3), x = (g) => g.toLocaleString("en-US", { month: "short", day: "numeric" });
-          i = `${x(u)} - ${x(f)}`;
+          const m = /* @__PURE__ */ new Date(`${o[1]} ${o[2]}, ${l}`), u = /* @__PURE__ */ new Date(`${o[3]} ${o[4]}, ${l}`), f = new Date(
+            m.getTime() + 60 * 24 * 60 * 60 * 1e3
+          ), x = new Date(u.getTime() + 60 * 24 * 60 * 60 * 1e3), p = (g) => g.toLocaleString("en-US", { month: "short", day: "numeric" });
+          i = `${p(f)} - ${p(x)}`;
         }
       }
       const s = (
@@ -263,7 +263,7 @@ var K = function() {
       t && t.insertAdjacentHTML("beforeend", s);
     }
     async handleTitleWrap() {
-      await p(".crs-estimate-delivery-item .crs-title");
+      await h(".crs-estimate-delivery-item .crs-title");
       const t = document.querySelectorAll(
         ".crs-estimate-delivery-item .crs-title"
       ), e = () => {
@@ -278,10 +278,10 @@ var K = function() {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = L, document.head.appendChild(t);
+      t.textContent = I, document.head.appendChild(t);
     }
   }
-  const z = `@media (min-width: 768px) {
+  const T = `@media (min-width: 768px) {
   .crs-cta {
     display: none;
   }
@@ -320,7 +320,7 @@ var K = function() {
 [data-fixed-cta="true"] .rp-micro-app-dummy-icon-container {
   bottom: 70px !important;
 }`;
-  class D {
+  class z {
     constructor() {
       this.init();
     }
@@ -345,7 +345,7 @@ var K = function() {
     eventListeners() {
       const t = document.getElementById("crs-cta-btn");
       t && t.addEventListener("click", (e) => {
-        A(
+        Z(
           "exp_m_upsell_click_05",
           "See Order Summary",
           "click",
@@ -374,10 +374,10 @@ var K = function() {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = z, document.head.appendChild(t);
+      t.textContent = T, document.head.appendChild(t);
     }
   }
-  const $ = (
+  const D = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -412,7 +412,7 @@ var K = function() {
     d="m34.598 7.042-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), H = (
+  ), $ = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -449,7 +449,7 @@ var K = function() {
     d="M10.708 0H2.793C1.48 0 .42 1.107.42 2.478v8.261h12.663v-8.26c0-1.372-1.06-2.48-2.374-2.48ZM22.58 14.87h-.72c-.475 0-.863-.405-.863-.901v-1.503c0-.496.388-.9.863-.9h.72v3.303Z"
   />
 </svg>`
-  ), S = (
+  ), k = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -483,7 +483,7 @@ var K = function() {
     d="M8.224 13.68h-1.42V9.462c1.82-1.9 1.42-.95 1.42 0v4.218Z"
   />
 </svg>`
-  ), P = (
+  ), H = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -516,7 +516,7 @@ var K = function() {
     d="m20.496 10.355.183 1.08a3.433 3.433 0 0 1-2.834-.69 3.494 3.494 0 0 1-.942-1.17 3.526 3.526 0 0 1-.368-1.46L17.293 8l1.223-2.5L19.738 8l2.738.4-1.98 1.955ZM34.598 7.042l-1.95 2.584 1.937 2.61-7.265-.05c.212-.753.82-.793 1.172-1.399a1.69 1.69 0 0 0 .247-1.024 1.717 1.717 0 0 0-.405-.978 1.713 1.713 0 0 1-.396-.853 1.687 1.687 0 0 1 .117-.928l6.543.038ZM2.402 7.042l1.95 2.584-1.937 2.61 7.265-.05c-.212-.753-.82-.793-1.172-1.399a1.69 1.69 0 0 1-.247-1.024c.028-.36.17-.702.405-.978.21-.242.347-.538.396-.853.05-.315.009-.636-.117-.928l-6.543.038Z"
   />
 </svg>`
-  ), N = `.section-header > *:not(.crs-header),
+  ), P = `.section-header > *:not(.crs-header),
 section.cart-header-trustpilot {
   display: none;
 }
@@ -693,12 +693,12 @@ section.cart-header-trustpilot {
   }
 }
 `;
-  class j {
+  class N {
     constructor() {
       console.info("CartHeader"), this.init();
     }
     init() {
-      this.addStyles(), this.render(), this.changeLogoPosition(), this.changeTrustpilotPosition(), this.addDeliveryDate();
+      this.render(), this.changeLogoPosition(), this.changeTrustpilotPosition(), this.addDeliveryDate();
     }
     render() {
       const t = document.querySelector(".section-header");
@@ -712,11 +712,11 @@ section.cart-header-trustpilot {
       <div class="container">
         <div class="crs-header-inner">
           <div class="crs-header-block">
-            <div class="crs-icon">${$}</div>
+            <div class="crs-icon">${D}</div>
             <div class="crs-text">Price Match Guarantee</div>
           </div>
           <div class="crs-header-block crs-header-delivery">
-            <div class="crs-icon">${H}</div>
+            <div class="crs-icon">${$}</div>
             <div class="crs-text">
               FREE Delivery: <span data-delivery></span>
             </div>
@@ -726,11 +726,11 @@ section.cart-header-trustpilot {
             <div class="crs-trustpilot"></div>
           </div>
           <div class="crs-header-block crs-header-free-trial">
-            <div class="crs-icon">${S}</div>
+            <div class="crs-icon">${k}</div>
             <div class="crs-text">60 Nights Free Trial</div>
           </div>
           <div class="crs-header-block crs-header-guarantee">
-            <div class="crs-icon">${P}</div>
+            <div class="crs-icon">${H}</div>
             <div class="crs-text">5 Year Guarantee</div>
           </div>
         </div>
@@ -747,7 +747,7 @@ section.cart-header-trustpilot {
       </div>
     </div>`
       );
-      t.insertAdjacentHTML("afterbegin", e);
+      document.querySelector(".custom-no-cart") || (this.addStyles(), t.insertAdjacentHTML("afterbegin", e));
     }
     changeLogoPosition() {
       const t = document.querySelector(".crs-logo"), e = document.querySelector(
@@ -762,7 +762,7 @@ section.cart-header-trustpilot {
       !t || !e || t.appendChild(e);
     }
     async addDeliveryDate() {
-      await p(".estimate-delivery-item");
+      await h(".estimate-delivery-item");
       const t = document.querySelector("[data-delivery]"), e = document.querySelectorAll(
         ".estimate-delivery-item"
       );
@@ -779,10 +779,10 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = N, document.head.appendChild(t);
+      t.innerHTML = P, document.head.appendChild(t);
     }
   }
-  const B = `.crs-cart-items-count {
+  const j = `.crs-cart-items-count {
   margin-top: 24px;
 }
 
@@ -805,7 +805,7 @@ section.cart-header-trustpilot {
   }
 }
 `;
-  class _ {
+  class B {
     constructor() {
       this.init();
     }
@@ -833,7 +833,7 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = B, document.head.appendChild(t);
+      t.textContent = j, document.head.appendChild(t);
     }
     observeCartQuantity() {
       const t = () => {
@@ -853,7 +853,7 @@ section.cart-header-trustpilot {
       });
     }
   }
-  const O = `.crs-price-match-guarantee {
+  const _ = `.crs-price-match-guarantee {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -927,7 +927,7 @@ section.cart-header-trustpilot {
 .crs-price-match-guarantee .crs-tooltip:hover::after {
   display: block;
 }`;
-  class R {
+  class O {
     constructor() {
       this.init();
     }
@@ -946,17 +946,17 @@ section.cart-header-trustpilot {
         ></span>
       </div>
     `
-      ), e = await p(
+      ), e = await h(
         ".calculate-pricing-part .total-order"
       );
       e && e.insertAdjacentHTML("afterend", t);
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = O, document.head.appendChild(t);
+      t.textContent = _, document.head.appendChild(t);
     }
   }
-  const Y = `.cart-product-item {
+  const R = `.cart-product-item {
   margin-top: 48px;
   border-radius: 16px;
   background: #f5f5f5;
@@ -985,15 +985,16 @@ section.cart-header-trustpilot {
 }
 
 @media (max-width: 802px) {
- .upsell-cart .card-addons .card-details {
-  padding-right: 1rem;
- }
+  .upsell-cart .card-addons .card-details {
+    padding-right: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
   .cart-product-item {
+    margin-bottom: 16px;
     padding: 8px 12px 12px !important;
-    border-radius: 16px 16px 0 0;
+    border-radius: 12px;
   }
 
   .cart-product-items .cart-product-item:first-child {
@@ -1119,84 +1120,75 @@ section.cart-header-trustpilot {
   text-align: center;
 }
 
-.cart-product-item + .crs-nights-free-trial {
-  display: none;
-}
-
 .crs-nights-free-trial {
-  padding-block: 12px;
-  border-top: 1px dashed rgba(165, 211, 255, 0.24);
+  margin-bottom: 26px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #f7ded9;
 }
 
 .crs-nights-free-trial .crs-title {
   display: flex;
   gap: 8px;
   color: #1e3851;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 20px; /* 142.857% */
+  line-height: 24px;
 }
 
 .crs-nights-free-trial .crs-description {
   margin-top: 8px;
   color: #1e3851;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 22px; /* 183.333% */
+  line-height: 24px;
 }
 
 @media (max-width: 768px) {
-  .cart-product-item .crs-nights-free-trial {
-    display: none;
+  .cart-product-item + section {
+   border-bottom: 0;
   }
-  .cart-product-item + .crs-nights-free-trial {
-    display: block;
-    padding-top: 0;
-    padding-inline: 12px;
-    border-radius: 0 0 12px 12px;
-    background: #f5f5f5;
-    border-top: none;
+  .footer-cart {
+    margin-top: 0;
   }
 
-  .crs-nights-free-trial .crs-content {
-    padding-top: 12px;
-    border-top: 1px dashed rgba(165, 211, 255, 0.24);
-  }
+
 }
-`, v = {
+`, y = {
     cartProductItems: ".cart-product-section .cart-product-items",
     cartProductItem: ".cart-product-section .cart-product-item"
   };
-  class V {
+  class Y {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
       this.addStyles(), this.observeCartProductItems(), this.observeMattressButtons(), setTimeout(() => {
-        this.addItemAddNotes();
+        this.addItemAddNotes(), this.addNightsFreeTrial();
       }, 300);
     }
     async renderNightsFreeTrial(t, e = "afterend") {
-      await p(v.cartProductItem), document.querySelectorAll(
-        v.cartProductItem
-      );
       const n = (
         /* HTML */
         ` <div class="crs-nights-free-trial">
       <div class="crs-content">
         <div class="crs-title">
-          <span>${S}</span> 60 Nights Free Trial
+          <span>${k}</span> 60 Nights Free Trial
         </div>
         <div class="crs-description">
-          Enjoy a
-          <b>60-Night Free Trial!</b> Choose your item with confidence—if it’s
-          not perfect, we’ll arrange a
-          <b>hassle-free return or exchange</b>
+          Buy with Confidence: 60-Night Free Trial for your purchase! If it’s
+          not perfect, we’ll arrange a <b>hassle-free return or exchange</b>
         </div>
       </div>
     </div>`
       );
-      t && t.insertAdjacentHTML(e, n);
+      t && (console.log("container", t), t.insertAdjacentHTML(e, n));
+    }
+    async addNightsFreeTrial() {
+      const t = await h(
+        ".calculate-pricing-part"
+      );
+      console.log("container", t), t && this.renderNightsFreeTrial(t, "afterbegin");
     }
     renderItemLeftNotification(t, e = "afterend") {
       const n = (
@@ -1213,7 +1205,7 @@ section.cart-header-trustpilot {
     async observeCartProductItems() {
       new MutationObserver((e) => {
         e.forEach((n) => {
-          n.target instanceof HTMLElement && n.target.matches(v.cartProductItems) && setTimeout(() => {
+          n.target instanceof HTMLElement && n.target.matches(y.cartProductItems) && setTimeout(() => {
             this.addItemAddNotes();
           }, 150);
         });
@@ -1223,10 +1215,10 @@ section.cart-header-trustpilot {
       });
     }
     async addItemAddNotes() {
-      var a, d, o, h;
-      await p(v.cartProductItem);
+      var s, a, d, o;
+      await h(y.cartProductItem);
       const t = document.querySelectorAll(
-        v.cartProductItem
+        y.cartProductItem
       );
       if (!t) return;
       const e = sessionStorage.getItem("firstItem");
@@ -1235,14 +1227,14 @@ section.cart-header-trustpilot {
         ".crs-item-left-notification"
       );
       if (r && r.remove(), e) {
-        const { titleText: l, colorText: m, headboardText: u, baseText: f } = JSON.parse(e), x = Array.from(t).find((g) => {
-          var C, M, F, Z;
-          const y = g.querySelector(".cart-product-info"), w = g.querySelector(".item-variants-name"), b = g.querySelector(
+        const { titleText: l, colorText: m, headboardText: u, baseText: f } = JSON.parse(e), x = Array.from(t).find((p) => {
+          var E, C, M, F;
+          const g = p.querySelector(".cart-product-info"), v = p.querySelector(".item-variants-name"), w = p.querySelector(
             ".item-variants-name.headboard"
-          ), k = g.querySelector(
+          ), b = p.querySelector(
             ".item-variants-name.base"
-          ), Q = ((C = y == null ? void 0 : y.textContent) == null ? void 0 : C.trim()) === l, U = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === m, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === u, J = ((Z = k == null ? void 0 : k.textContent) == null ? void 0 : Z.trim()) === f;
-          return Q && U && X && J;
+          ), G = ((E = g == null ? void 0 : g.textContent) == null ? void 0 : E.trim()) === l, Q = ((C = v == null ? void 0 : v.textContent) == null ? void 0 : C.trim()) === m, U = ((M = w == null ? void 0 : w.textContent) == null ? void 0 : M.trim()) === u, X = ((F = b == null ? void 0 : b.textContent) == null ? void 0 : F.trim()) === f;
+          return G && Q && U && X;
         });
         x && (n = x);
       }
@@ -1254,14 +1246,14 @@ section.cart-header-trustpilot {
           ".item-variants-name.base"
         );
         if (l || m || u || f) {
-          const x = (a = l == null ? void 0 : l.textContent) == null ? void 0 : a.trim(), g = (d = m == null ? void 0 : m.textContent) == null ? void 0 : d.trim(), y = (o = u == null ? void 0 : u.textContent) == null ? void 0 : o.trim(), w = (h = f == null ? void 0 : f.textContent) == null ? void 0 : h.trim();
+          const x = (s = l == null ? void 0 : l.textContent) == null ? void 0 : s.trim(), p = (a = m == null ? void 0 : m.textContent) == null ? void 0 : a.trim(), g = (d = u == null ? void 0 : u.textContent) == null ? void 0 : d.trim(), v = (o = f == null ? void 0 : f.textContent) == null ? void 0 : o.trim();
           sessionStorage.setItem(
             "firstItem",
             JSON.stringify({
               titleText: x,
-              colorText: g,
-              headboardText: y,
-              baseText: w
+              colorText: p,
+              headboardText: g,
+              baseText: v
             })
           );
         }
@@ -1270,17 +1262,10 @@ section.cart-header-trustpilot {
       const i = n.querySelector(
         ".cart-product-price"
       );
-      if (!i) return;
-      this.renderItemLeftNotification(i, "beforebegin");
-      const s = document.querySelectorAll(
-        ".crs-nights-free-trial"
-      );
-      s && s.forEach((l) => {
-        l.remove();
-      }), this.renderNightsFreeTrial(n, "afterend"), this.renderNightsFreeTrial(i, "afterend");
+      i && this.renderItemLeftNotification(i, "beforebegin");
     }
     async observeMattressButtons() {
-      await p(".cart-product-image");
+      await h(".cart-product-image");
       let t;
       this.device === "desktop" ? t = document.querySelectorAll(".cart-product-image") : t = document.querySelectorAll(
         ".cart-product-item + .block.md\\:hidden"
@@ -1290,8 +1275,8 @@ section.cart-header-trustpilot {
           r.addedNodes.forEach((i) => {
             var s, a, d, o;
             if (i instanceof HTMLElement && (i.classList.contains("card-addons") && ((s = i.textContent) != null && s.includes("Add Mattress & Save")) && i.classList.add("crs-mattress-control-btn"), i.classList.contains("card-addons") && ((a = i.textContent) != null && a.includes("Remove")) && ((d = i.textContent) != null && d.includes("See Details")))) {
-              const h = (o = i.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
-              h && h.remove(), i.classList.add("crs-mattress-chosen");
+              const l = (o = i.closest(".cart-product-items > div")) == null ? void 0 : o.querySelector(".crs-mattress-upsell");
+              l && l.remove(), i.classList.add("crs-mattress-chosen");
             }
           });
         });
@@ -1305,15 +1290,15 @@ section.cart-header-trustpilot {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.innerHTML = Y, document.head.appendChild(t);
+      t.innerHTML = R, document.head.appendChild(t);
     }
   }
-  class W {
+  class V {
     constructor() {
       this.initialSeconds = 900, this.intervalId = null, this.headerRemainEls = null, this.remain = this.initialSeconds, this.init();
     }
     async init() {
-      await p(".crs-header [data-remain]"), this.headerRemainEls = document.querySelectorAll(".crs-header [data-remain]"), this.start();
+      await h(".crs-header [data-remain]"), this.headerRemainEls = document.querySelectorAll(".crs-header [data-remain]"), this.start();
     }
     start() {
       this.updateAll(), this.intervalId && clearInterval(this.intervalId), this.intervalId = window.setInterval(() => {
@@ -1331,30 +1316,30 @@ section.cart-header-trustpilot {
       });
     }
   }
-  class G {
+  class W {
     constructor() {
       this.init();
     }
     init() {
-      new j(), new V(), new W(), new D(), new _(), new T(), new R();
+      new N(), new Y(), new V(), new z(), new B(), new L(), new O();
     }
   }
   q({
     name: "Cart Improve UX and highlight main info",
     dev: "OS"
-  }), I("mattress_upsell");
-  class E {
+  }), A("mattress_upsell");
+  class S {
     constructor() {
       this.init();
     }
     init() {
-      this.isInCart() && new G();
+      this.isInCart() && new W();
     }
     isInCart() {
       return window.location.href.includes("/cart");
     }
   }
-  return new E(), {
-    LaunchExperiment: E
+  return new S(), {
+    LaunchExperiment: S
   };
 }();
