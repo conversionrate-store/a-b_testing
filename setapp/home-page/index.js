@@ -443,7 +443,7 @@
     },
     {
       name: "BetterZip",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/16/41955/icon-1740784885-67c23eb5b0dac.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/245/7858/icon-1681236553-6435a249c1fd2.png",
       description: "Archive files the easy way",
       url: "https://setapp.com/apps/betterzip",
       platforms: "Mac",
@@ -459,7 +459,7 @@
     },
     {
       name: "Archiver",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/109/41938/icon-1740627509-67bf963597df7.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png",
       description: "Compress files easily",
       url: "https://setapp.com/apps/archiver",
       platforms: "Mac",
