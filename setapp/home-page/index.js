@@ -90,7 +90,7 @@
 
 .crs-apps-block {
   --main-text-color: #fff;
-  scroll-margin-top: 80px;;
+  scroll-margin-top: 80px;
   container-type: inline-size;
   border-radius: 20px;
 }
@@ -336,7 +336,12 @@
   font-weight: 600;
   line-height: 48px;
 }
-`, ce = [
+
+.crs-apps-sub-action {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}`, ce = [
     {
       name: "CleanMyMac",
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
@@ -592,7 +597,7 @@
   display: flex;
   gap: 14px;
   padding-inline: 4px;
-  padding-left: 36 px;
+  padding-left: 36px;
 }
 
 .os-popover-header img {
@@ -605,9 +610,8 @@
   max-width: 209px;
   color: #26262b;
   font-size: 28px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 32px; /* 114.286% */
+  line-height: 32px; 
   letter-spacing: 1.15px;
 }
 
@@ -1633,7 +1637,7 @@ body:has(.os-dialog[open]) {
       }
     }
   ];
-  var $ = "top", N = "bottom", U = "right", F = "left", le = "auto", Tt = [$, N, U, F], wt = "start", Pt = "end", Sn = "clippingParents", Me = "viewport", Lt = "popper", An = "reference", De = /* @__PURE__ */ Tt.reduce(function(e, t) {
+  var $ = "top", N = "bottom", U = "right", _ = "left", le = "auto", Tt = [$, N, U, _], wt = "start", Pt = "end", Sn = "clippingParents", Me = "viewport", Lt = "popper", An = "reference", De = /* @__PURE__ */ Tt.reduce(function(e, t) {
     return e.concat([t + "-" + wt, t + "-" + Pt]);
   }, []), Te = /* @__PURE__ */ [].concat(Tt, [le]).reduce(function(e, t) {
     return e.concat([t, t + "-" + wt, t + "-" + Pt]);
@@ -1641,7 +1645,7 @@ body:has(.os-dialog[open]) {
   function X(e) {
     return e ? (e.nodeName || "").toLowerCase() : null;
   }
-  function _(e) {
+  function F(e) {
     if (e == null)
       return window;
     if (e.toString() !== "[object Window]") {
@@ -1651,20 +1655,20 @@ body:has(.os-dialog[open]) {
     return e;
   }
   function ft(e) {
-    var t = _(e).Element;
+    var t = F(e).Element;
     return e instanceof t || e instanceof Element;
   }
   function Y(e) {
-    var t = _(e).HTMLElement;
+    var t = F(e).HTMLElement;
     return e instanceof t || e instanceof HTMLElement;
   }
   function de(e) {
     if (typeof ShadowRoot > "u")
       return !1;
-    var t = _(e).ShadowRoot;
+    var t = F(e).ShadowRoot;
     return e instanceof t || e instanceof ShadowRoot;
   }
-  function In(e) {
+  function jn(e) {
     var t = e.state;
     Object.keys(t.elements).forEach(function(n) {
       var i = t.styles[n] || {}, r = t.attributes[n] || {}, a = t.elements[n];
@@ -1674,7 +1678,7 @@ body:has(.os-dialog[open]) {
       }));
     });
   }
-  function jn(e) {
+  function In(e) {
     var t = e.state, n = {
       popper: {
         position: t.options.strategy,
@@ -1702,8 +1706,8 @@ body:has(.os-dialog[open]) {
     name: "applyStyles",
     enabled: !0,
     phase: "write",
-    fn: In,
-    effect: jn,
+    fn: jn,
+    effect: In,
     requires: ["computeStyles"]
   };
   function K(e) {
@@ -1723,7 +1727,7 @@ body:has(.os-dialog[open]) {
     t === void 0 && (t = !1), n === void 0 && (n = !1);
     var i = e.getBoundingClientRect(), r = 1, a = 1;
     t && Y(e) && (r = e.offsetWidth > 0 && xt(i.width) / e.offsetWidth || 1, a = e.offsetHeight > 0 && xt(i.height) / e.offsetHeight || 1);
-    var s = ft(e) ? _(e) : window, p = s.visualViewport, c = !Le() && n, u = (i.left + (c && p ? p.offsetLeft : 0)) / r, d = (i.top + (c && p ? p.offsetTop : 0)) / a, k = i.width / r, x = i.height / a;
+    var s = ft(e) ? F(e) : window, p = s.visualViewport, c = !Le() && n, u = (i.left + (c && p ? p.offsetLeft : 0)) / r, d = (i.top + (c && p ? p.offsetTop : 0)) / a, k = i.width / r, x = i.height / a;
     return {
       width: k,
       height: x,
@@ -1759,7 +1763,7 @@ body:has(.os-dialog[open]) {
     return !1;
   }
   function nt(e) {
-    return _(e).getComputedStyle(e);
+    return F(e).getComputedStyle(e);
   }
   function zn(e) {
     return ["table", "td", "th"].indexOf(X(e)) >= 0;
@@ -1803,7 +1807,7 @@ body:has(.os-dialog[open]) {
     return null;
   }
   function Rt(e) {
-    for (var t = _(e), n = qe(e); n && zn(n) && nt(n).position === "static"; )
+    for (var t = F(e), n = qe(e); n && zn(n) && nt(n).position === "static"; )
       n = qe(n);
     return n && (X(n) === "html" || X(n) === "body" && nt(n).position === "static") ? t : n || Hn(e) || t;
   }
@@ -1825,23 +1829,23 @@ body:has(.os-dialog[open]) {
       left: 0
     };
   }
-  function Ie(e) {
+  function je(e) {
     return Object.assign({}, Be(), e);
   }
-  function je(e, t) {
+  function Ie(e, t) {
     return t.reduce(function(n, i) {
       return n[i] = e, n;
     }, {});
   }
-  var Fn = function(t, n) {
+  var _n = function(t, n) {
     return t = typeof t == "function" ? t(Object.assign({}, n.rects, {
       placement: n.placement
-    })) : t, Ie(typeof t != "number" ? t : je(t, Tt));
+    })) : t, je(typeof t != "number" ? t : Ie(t, Tt));
   };
-  function _n(e) {
-    var t, n = e.state, i = e.name, r = e.options, a = n.elements.arrow, s = n.modifiersData.popperOffsets, p = K(n.placement), c = me(p), u = [F, U].indexOf(p) >= 0, d = u ? "height" : "width";
+  function Fn(e) {
+    var t, n = e.state, i = e.name, r = e.options, a = n.elements.arrow, s = n.modifiersData.popperOffsets, p = K(n.placement), c = me(p), u = [_, U].indexOf(p) >= 0, d = u ? "height" : "width";
     if (!(!a || !s)) {
-      var k = Fn(r.padding, n), x = fe(a), v = c === "y" ? $ : F, w = c === "y" ? N : U, g = n.rects.reference[d] + n.rects.reference[c] - s[c] - n.rects.popper[d], h = s[c] - n.rects.reference[c], f = Rt(a), C = f ? c === "y" ? f.clientHeight || 0 : f.clientWidth || 0 : 0, A = g / 2 - h / 2, o = k[v], b = C - x[d] - k[w], m = C / 2 - x[d] / 2 + A, O = qt(o, m, b), M = c;
+      var k = _n(r.padding, n), x = fe(a), v = c === "y" ? $ : _, w = c === "y" ? N : U, g = n.rects.reference[d] + n.rects.reference[c] - s[c] - n.rects.popper[d], h = s[c] - n.rects.reference[c], f = Rt(a), C = f ? c === "y" ? f.clientHeight || 0 : f.clientWidth || 0 : 0, A = g / 2 - h / 2, o = k[v], b = C - x[d] - k[w], m = C / 2 - x[d] / 2 + A, O = qt(o, m, b), M = c;
       n.modifiersData[i] = (t = {}, t[M] = O, t.centerOffset = O - m, t);
     }
   }
@@ -1853,7 +1857,7 @@ body:has(.os-dialog[open]) {
     name: "arrow",
     enabled: !0,
     phase: "main",
-    fn: _n,
+    fn: Fn,
     effect: Vn,
     requires: ["popperOffsets"],
     requiresIfExists: ["preventOverflow"]
@@ -1883,10 +1887,10 @@ body:has(.os-dialog[open]) {
       y: g
     };
     v = h.x, g = h.y;
-    var f = s.hasOwnProperty("x"), C = s.hasOwnProperty("y"), A = F, o = $, b = window;
+    var f = s.hasOwnProperty("x"), C = s.hasOwnProperty("y"), A = _, o = $, b = window;
     if (u) {
       var m = Rt(n), O = "clientHeight", M = "clientWidth";
-      if (m === _(n) && (m = pt(n), nt(m).position !== "static" && p === "absolute" && (O = "scrollHeight", M = "scrollWidth")), m = m, r === $ || (r === F || r === U) && a === Pt) {
+      if (m === F(n) && (m = pt(n), nt(m).position !== "static" && p === "absolute" && (O = "scrollHeight", M = "scrollWidth")), m = m, r === $ || (r === _ || r === U) && a === Pt) {
         o = N;
         var T = k && m === b && b.visualViewport ? b.visualViewport.height : (
           // $FlowFixMe[prop-missing]
@@ -1894,7 +1898,7 @@ body:has(.os-dialog[open]) {
         );
         g -= T - i.height, g *= c ? 1 : -1;
       }
-      if (r === F || (r === $ || r === N) && a === Pt) {
+      if (r === _ || (r === $ || r === N) && a === Pt) {
         A = U;
         var P = k && m === b && b.visualViewport ? b.visualViewport.width : (
           // $FlowFixMe[prop-missing]
@@ -1908,7 +1912,7 @@ body:has(.os-dialog[open]) {
     }, u && Nn), R = d === !0 ? Un({
       x: v,
       y: g
-    }, _(n)) : {
+    }, F(n)) : {
       x: v,
       y: g
     };
@@ -1952,7 +1956,7 @@ body:has(.os-dialog[open]) {
     passive: !0
   };
   function Gn(e) {
-    var t = e.state, n = e.instance, i = e.options, r = i.scroll, a = r === void 0 ? !0 : r, s = i.resize, p = s === void 0 ? !0 : s, c = _(t.elements.popper), u = [].concat(t.scrollParents.reference, t.scrollParents.popper);
+    var t = e.state, n = e.instance, i = e.options, r = i.scroll, a = r === void 0 ? !0 : r, s = i.resize, p = s === void 0 ? !0 : s, c = F(t.elements.popper), u = [].concat(t.scrollParents.reference, t.scrollParents.popper);
     return a && u.forEach(function(d) {
       d.addEventListener("scroll", n.update, Nt);
     }), p && c.addEventListener("resize", n.update, Nt), function() {
@@ -1991,7 +1995,7 @@ body:has(.os-dialog[open]) {
     });
   }
   function he(e) {
-    var t = _(e), n = t.pageXOffset, i = t.pageYOffset;
+    var t = F(e), n = t.pageXOffset, i = t.pageYOffset;
     return {
       scrollLeft: n,
       scrollTop: i
@@ -2001,7 +2005,7 @@ body:has(.os-dialog[open]) {
     return kt(pt(e)).left + he(e).scrollLeft;
   }
   function Jn(e, t) {
-    var n = _(e), i = pt(e), r = n.visualViewport, a = i.clientWidth, s = i.clientHeight, p = 0, c = 0;
+    var n = F(e), i = pt(e), r = n.visualViewport, a = i.clientWidth, s = i.clientHeight, p = 0, c = 0;
     if (r) {
       a = r.width, s = r.height;
       var u = Le();
@@ -2033,7 +2037,7 @@ body:has(.os-dialog[open]) {
   function Bt(e, t) {
     var n;
     t === void 0 && (t = []);
-    var i = $e(e), r = i === ((n = e.ownerDocument) == null ? void 0 : n.body), a = _(i), s = r ? [a].concat(a.visualViewport || [], ve(i) ? i : []) : i, p = t.concat(s);
+    var i = $e(e), r = i === ((n = e.ownerDocument) == null ? void 0 : n.body), a = F(i), s = r ? [a].concat(a.visualViewport || [], ve(i) ? i : []) : i, p = t.concat(s);
     return r ? p : (
       // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
       p.concat(Bt(Wt(s)))
@@ -2051,7 +2055,7 @@ body:has(.os-dialog[open]) {
     var n = kt(e, !1, t === "fixed");
     return n.top = n.top + e.clientTop, n.left = n.left + e.clientLeft, n.bottom = n.top + e.clientHeight, n.right = n.left + e.clientWidth, n.width = e.clientWidth, n.height = e.clientHeight, n.x = n.left, n.y = n.top, n;
   }
-  function Fe(e, t, n) {
+  function _e(e, t, n) {
     return t === Me ? be(Jn(e, n)) : ft(t) ? ei(t, n) : be(ti(pt(e)));
   }
   function ni(e) {
@@ -2062,12 +2066,12 @@ body:has(.os-dialog[open]) {
   }
   function ii(e, t, n, i) {
     var r = t === "clippingParents" ? ni(e) : [].concat(t), a = [].concat(r, [n]), s = a[0], p = a.reduce(function(c, u) {
-      var d = Fe(e, u, i);
+      var d = _e(e, u, i);
       return c.top = mt(d.top, c.top), c.right = Vt(d.right, c.right), c.bottom = Vt(d.bottom, c.bottom), c.left = mt(d.left, c.left), c;
-    }, Fe(e, s, i));
+    }, _e(e, s, i));
     return p.width = p.right - p.left, p.height = p.bottom - p.top, p.x = p.left, p.y = p.top, p;
   }
-  function _e(e) {
+  function Fe(e) {
     var t = e.reference, n = e.element, i = e.placement, r = i ? K(i) : null, a = i ? Ct(i) : null, s = t.x + t.width / 2 - n.width / 2, p = t.y + t.height / 2 - n.height / 2, c;
     switch (r) {
       case $:
@@ -2088,7 +2092,7 @@ body:has(.os-dialog[open]) {
           y: p
         };
         break;
-      case F:
+      case _:
         c = {
           x: t.x - n.width,
           y: p
@@ -2114,9 +2118,9 @@ body:has(.os-dialog[open]) {
     }
     return c;
   }
-  function It(e, t) {
+  function jt(e, t) {
     t === void 0 && (t = {});
-    var n = t, i = n.placement, r = i === void 0 ? e.placement : i, a = n.strategy, s = a === void 0 ? e.strategy : a, p = n.boundary, c = p === void 0 ? Sn : p, u = n.rootBoundary, d = u === void 0 ? Me : u, k = n.elementContext, x = k === void 0 ? Lt : k, v = n.altBoundary, w = v === void 0 ? !1 : v, g = n.padding, h = g === void 0 ? 0 : g, f = Ie(typeof h != "number" ? h : je(h, Tt)), C = x === Lt ? An : Lt, A = e.rects.popper, o = e.elements[w ? C : x], b = ii(ft(o) ? o : o.contextElement || pt(e.elements.popper), c, d, s), m = kt(e.elements.reference), O = _e({
+    var n = t, i = n.placement, r = i === void 0 ? e.placement : i, a = n.strategy, s = a === void 0 ? e.strategy : a, p = n.boundary, c = p === void 0 ? Sn : p, u = n.rootBoundary, d = u === void 0 ? Me : u, k = n.elementContext, x = k === void 0 ? Lt : k, v = n.altBoundary, w = v === void 0 ? !1 : v, g = n.padding, h = g === void 0 ? 0 : g, f = je(typeof h != "number" ? h : Ie(h, Tt)), C = x === Lt ? An : Lt, A = e.rects.popper, o = e.elements[w ? C : x], b = ii(ft(o) ? o : o.contextElement || pt(e.elements.popper), c, d, s), m = kt(e.elements.reference), O = Fe({
       reference: m,
       element: A,
       placement: r
@@ -2129,8 +2133,8 @@ body:has(.os-dialog[open]) {
     if (x === Lt && q) {
       var R = q[r];
       Object.keys(P).forEach(function(L) {
-        var I = [U, N].indexOf(L) >= 0 ? 1 : -1, W = [$, N].indexOf(L) >= 0 ? "y" : "x";
-        P[L] += R[W] * I;
+        var j = [U, N].indexOf(L) >= 0 ? 1 : -1, W = [$, N].indexOf(L) >= 0 ? "y" : "x";
+        P[L] += R[W] * j;
       });
     }
     return P;
@@ -2144,7 +2148,7 @@ body:has(.os-dialog[open]) {
     });
     x.length === 0 && (x = k);
     var v = x.reduce(function(w, g) {
-      return w[g] = It(e, {
+      return w[g] = jt(e, {
         placement: g,
         boundary: r,
         rootBoundary: a,
@@ -2174,16 +2178,16 @@ body:has(.os-dialog[open]) {
           allowedAutoPlacements: g
         }) : G);
       }, []), b = t.rects.reference, m = t.rects.popper, O = /* @__PURE__ */ new Map(), M = !0, T = o[0], P = 0; P < o.length; P++) {
-        var q = o[P], R = K(q), L = Ct(q) === wt, I = [$, N].indexOf(R) >= 0, W = I ? "width" : "height", j = It(t, {
+        var q = o[P], R = K(q), L = Ct(q) === wt, j = [$, N].indexOf(R) >= 0, W = j ? "width" : "height", I = jt(t, {
           placement: q,
           boundary: d,
           rootBoundary: k,
           altBoundary: x,
           padding: u
-        }), z = I ? L ? U : F : L ? N : $;
+        }), z = j ? L ? U : _ : L ? N : $;
         b[W] > m[W] && (z = Ut(z));
         var B = Ut(z), J = [];
-        if (a && J.push(j[R] <= 0), p && J.push(j[z] <= 0, j[B] <= 0), J.every(function(ot) {
+        if (a && J.push(I[R] <= 0), p && J.push(I[z] <= 0, I[B] <= 0), J.every(function(ot) {
           return ot;
         })) {
           T = q, M = !1;
@@ -2231,14 +2235,14 @@ body:has(.os-dialog[open]) {
     };
   }
   function We(e) {
-    return [$, U, N, F].some(function(t) {
+    return [$, U, N, _].some(function(t) {
       return e[t] >= 0;
     });
   }
   function pi(e) {
-    var t = e.state, n = e.name, i = t.rects.reference, r = t.rects.popper, a = t.modifiersData.preventOverflow, s = It(t, {
+    var t = e.state, n = e.name, i = t.rects.reference, r = t.rects.popper, a = t.modifiersData.preventOverflow, s = jt(t, {
       elementContext: "reference"
-    }), p = It(t, {
+    }), p = jt(t, {
       altBoundary: !0
     }), c = Ve(s, i), u = Ve(p, r, a), d = We(c), k = We(u);
     t.modifiersData[n] = {
@@ -2259,10 +2263,10 @@ body:has(.os-dialog[open]) {
     fn: pi
   };
   function li(e, t, n) {
-    var i = K(e), r = [F, $].indexOf(i) >= 0 ? -1 : 1, a = typeof n == "function" ? n(Object.assign({}, t, {
+    var i = K(e), r = [_, $].indexOf(i) >= 0 ? -1 : 1, a = typeof n == "function" ? n(Object.assign({}, t, {
       placement: e
     })) : n, s = a[0], p = a[1];
-    return s = s || 0, p = (p || 0) * r, [F, U].indexOf(i) >= 0 ? {
+    return s = s || 0, p = (p || 0) * r, [_, U].indexOf(i) >= 0 ? {
       x: p,
       y: s
     } : {
@@ -2285,7 +2289,7 @@ body:has(.os-dialog[open]) {
   };
   function fi(e) {
     var t = e.state, n = e.name;
-    t.modifiersData[n] = _e({
+    t.modifiersData[n] = Fe({
       reference: t.rects.reference,
       element: t.rects.popper,
       placement: t.placement
@@ -2302,7 +2306,7 @@ body:has(.os-dialog[open]) {
     return e === "x" ? "y" : "x";
   }
   function gi(e) {
-    var t = e.state, n = e.options, i = e.name, r = n.mainAxis, a = r === void 0 ? !0 : r, s = n.altAxis, p = s === void 0 ? !1 : s, c = n.boundary, u = n.rootBoundary, d = n.altBoundary, k = n.padding, x = n.tether, v = x === void 0 ? !0 : x, w = n.tetherOffset, g = w === void 0 ? 0 : w, h = It(t, {
+    var t = e.state, n = e.options, i = e.name, r = n.mainAxis, a = r === void 0 ? !0 : r, s = n.altAxis, p = s === void 0 ? !1 : s, c = n.boundary, u = n.rootBoundary, d = n.altBoundary, k = n.padding, x = n.tether, v = x === void 0 ? !0 : x, w = n.tetherOffset, g = w === void 0 ? 0 : w, h = jt(t, {
       boundary: c,
       rootBoundary: u,
       padding: k,
@@ -2321,14 +2325,14 @@ body:has(.os-dialog[open]) {
     };
     if (m) {
       if (a) {
-        var L, I = o === "y" ? $ : F, W = o === "y" ? N : U, j = o === "y" ? "height" : "width", z = m[o], B = z + h[I], J = z - h[W], tt = v ? -M[j] / 2 : 0, gt = C === wt ? O[j] : M[j], et = C === wt ? -M[j] : -O[j], vt = t.elements.arrow, ot = v && vt ? fe(vt) : {
+        var L, j = o === "y" ? $ : _, W = o === "y" ? N : U, I = o === "y" ? "height" : "width", z = m[o], B = z + h[j], J = z - h[W], tt = v ? -M[I] / 2 : 0, gt = C === wt ? O[I] : M[I], et = C === wt ? -M[I] : -O[I], vt = t.elements.arrow, ot = v && vt ? fe(vt) : {
           width: 0,
           height: 0
-        }, G = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : Be(), rt = G[I], At = G[W], at = qt(0, O[j], ot[j]), Ot = A ? O[j] / 2 - tt - at - rt - P.mainAxis : gt - at - rt - P.mainAxis, dt = A ? -O[j] / 2 + tt + at + At + P.mainAxis : et + at + At + P.mainAxis, Et = t.elements.arrow && Rt(t.elements.arrow), Qt = Et ? o === "y" ? Et.clientTop || 0 : Et.clientLeft || 0 : 0, zt = (L = q == null ? void 0 : q[o]) != null ? L : 0, Jt = z + Ot - zt - Qt, te = z + dt - zt, Ht = qt(v ? Vt(B, Jt) : B, z, v ? mt(J, te) : J);
+        }, G = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : Be(), rt = G[j], At = G[W], at = qt(0, O[I], ot[I]), Ot = A ? O[I] / 2 - tt - at - rt - P.mainAxis : gt - at - rt - P.mainAxis, dt = A ? -O[I] / 2 + tt + at + At + P.mainAxis : et + at + At + P.mainAxis, Et = t.elements.arrow && Rt(t.elements.arrow), Qt = Et ? o === "y" ? Et.clientTop || 0 : Et.clientLeft || 0 : 0, zt = (L = q == null ? void 0 : q[o]) != null ? L : 0, Jt = z + Ot - zt - Qt, te = z + dt - zt, Ht = qt(v ? Vt(B, Jt) : B, z, v ? mt(J, te) : J);
         m[o] = Ht, R[o] = Ht - z;
       }
       if (p) {
-        var $t, ee = o === "x" ? $ : F, ne = o === "x" ? N : U, st = m[b], ut = b === "y" ? "height" : "width", Ft = st + h[ee], bt = st - h[ne], _t = [$, F].indexOf(f) !== -1, ie = ($t = q == null ? void 0 : q[b]) != null ? $t : 0, oe = _t ? Ft : st - O[ut] - M[ut] - ie + P.altAxis, re = _t ? st + O[ut] + M[ut] - ie - P.altAxis : bt, ae = v && _t ? $n(oe, st, re) : qt(v ? oe : Ft, st, v ? re : bt);
+        var $t, ee = o === "x" ? $ : _, ne = o === "x" ? N : U, st = m[b], ut = b === "y" ? "height" : "width", _t = st + h[ee], bt = st - h[ne], Ft = [$, _].indexOf(f) !== -1, ie = ($t = q == null ? void 0 : q[b]) != null ? $t : 0, oe = Ft ? _t : st - O[ut] - M[ut] - ie + P.altAxis, re = Ft ? st + O[ut] + M[ut] - ie - P.altAxis : bt, ae = v && Ft ? $n(oe, st, re) : qt(v ? oe : _t, st, v ? re : bt);
         m[b] = ae, R[b] = ae - st;
       }
       t.modifiersData[i] = R;
@@ -2348,7 +2352,7 @@ body:has(.os-dialog[open]) {
     };
   }
   function yi(e) {
-    return e === _(e) || !Y(e) ? he(e) : bi(e);
+    return e === F(e) || !Y(e) ? he(e) : bi(e);
   }
   function wi(e) {
     var t = e.getBoundingClientRect(), n = xt(t.width) / e.offsetWidth || 1, i = xt(t.height) / e.offsetHeight || 1;
@@ -2619,7 +2623,7 @@ body:has(.os-dialog[open]) {
       n && (n.style.transitionDuration = t + "ms");
     });
   }
-  function jt(e, t) {
+  function It(e, t) {
     e.forEach(function(n) {
       n && n.setAttribute("data-state", t);
     });
@@ -2656,14 +2660,14 @@ body:has(.os-dialog[open]) {
   var Q = {
     isTouch: !1
   }, pn = 0;
-  function Ii() {
+  function ji() {
     Q.isTouch || (Q.isTouch = !0, window.performance && document.addEventListener("mousemove", cn));
   }
   function cn() {
     var e = performance.now();
     e - pn < 20 && (Q.isTouch = !1, document.removeEventListener("mousemove", cn)), pn = e;
   }
-  function ji() {
+  function Ii() {
     var e = document.activeElement;
     if (rn(e)) {
       var t = e._tippy;
@@ -2671,17 +2675,17 @@ body:has(.os-dialog[open]) {
     }
   }
   function zi() {
-    document.addEventListener("touchstart", Ii, ct), window.addEventListener("blur", ji);
+    document.addEventListener("touchstart", ji, ct), window.addEventListener("blur", Ii);
   }
   var Hi = typeof window < "u" && typeof document < "u", $i = Hi ? (
     // @ts-ignore
     !!window.msCrypto
-  ) : !1, Fi = {
+  ) : !1, _i = {
     animateFill: !1,
     followCursor: !1,
     inlinePositioning: !1,
     sticky: !1
-  }, _i = {
+  }, Fi = {
     allowHTML: !1,
     animation: "fade",
     arrow: !0,
@@ -2739,7 +2743,7 @@ body:has(.os-dialog[open]) {
     touch: !0,
     trigger: "mouseenter focus",
     triggerTarget: null
-  }, Fi, _i), Vi = Object.keys(V), Wi = function(t) {
+  }, _i, Fi), Vi = Object.keys(V), Wi = function(t) {
     var n = Object.keys(t);
     n.forEach(function(i) {
       V[i] = t[i];
@@ -2856,7 +2860,7 @@ body:has(.os-dialog[open]) {
       show: xo,
       hide: ko,
       hideWithInteractivity: Co,
-      enable: _t,
+      enable: Ft,
       disable: ie,
       unmount: So,
       destroy: Ao
@@ -2868,10 +2872,10 @@ body:has(.os-dialog[open]) {
     var M = C.map(function(l) {
       return l.fn(o);
     }), T = e.hasAttribute("aria-expanded");
-    return Et(), tt(), z(), B("onCreate", [o]), n.showOnCreate && Ft(), m.addEventListener("mouseenter", function() {
+    return Et(), tt(), z(), B("onCreate", [o]), n.showOnCreate && _t(), m.addEventListener("mouseenter", function() {
       o.props.interactive && o.state.isVisible && o.clearDelayTimeouts();
     }), m.addEventListener("mouseleave", function() {
-      o.props.interactive && o.props.trigger.indexOf("mouseenter") >= 0 && I().addEventListener("mousemove", w);
+      o.props.interactive && o.props.trigger.indexOf("mouseenter") >= 0 && j().addEventListener("mousemove", w);
     }), o;
     function P() {
       var l = o.props.touch;
@@ -2887,14 +2891,14 @@ body:has(.os-dialog[open]) {
     function L() {
       return g || e;
     }
-    function I() {
+    function j() {
       var l = L().parentNode;
       return l ? an(l) : document;
     }
     function W() {
       return Zt(m);
     }
-    function j(l) {
+    function I(l) {
       return o.state.isMounted && !o.state.isVisible || Q.isTouch || d && d.type === "focus" ? 0 : ye(o.props.delay, l ? 0 : 1, V.delay);
     }
     function z(l) {
@@ -2932,7 +2936,7 @@ body:has(.os-dialog[open]) {
       }
     }
     function gt() {
-      I().removeEventListener("mousemove", w), Gt = Gt.filter(function(l) {
+      j().removeEventListener("mousemove", w), Gt = Gt.filter(function(l) {
         return l !== w;
       });
     }
@@ -2960,11 +2964,11 @@ body:has(.os-dialog[open]) {
       c = !1;
     }
     function G() {
-      var l = I();
+      var l = j();
       l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, ct), l.addEventListener("touchstart", ot, ct), l.addEventListener("touchmove", vt, ct);
     }
     function rt() {
-      var l = I();
+      var l = j();
       l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, ct), l.removeEventListener("touchstart", ot, ct), l.removeEventListener("touchmove", vt, ct);
     }
     function At(l, y) {
@@ -3028,7 +3032,7 @@ body:has(.os-dialog[open]) {
         var D = ((y = d) == null ? void 0 : y.type) === "focus";
         d = l, g = l.currentTarget, tt(), !o.state.isVisible && xe(l) && Gt.forEach(function(E) {
           return E(l);
-        }), l.type === "click" && (o.props.trigger.indexOf("mouseenter") < 0 || s) && o.props.hideOnClick !== !1 && o.state.isVisible ? S = !0 : Ft(l), l.type === "click" && (s = !S), S && !D && bt(l);
+        }), l.type === "click" && (o.props.trigger.indexOf("mouseenter") < 0 || s) && o.props.hideOnClick !== !1 && o.state.isVisible ? S = !0 : _t(l), l.type === "click" && (s = !S), S && !D && bt(l);
       }
     }
     function Jt(l) {
@@ -3128,9 +3132,9 @@ body:has(.os-dialog[open]) {
     function ut() {
       return St(m.querySelectorAll("[data-tippy-root]"));
     }
-    function Ft(l) {
+    function _t(l) {
       o.clearDelayTimeouts(), l && B("onTrigger", [o, l]), G();
-      var y = j(!0), S = P(), D = S[0], E = S[1];
+      var y = I(!0), S = P(), D = S[0], E = S[1];
       Q.isTouch && D === "hold" && E && (y = E), y ? i = setTimeout(function() {
         o.show();
       }, y) : o.show();
@@ -3141,7 +3145,7 @@ body:has(.os-dialog[open]) {
         return;
       }
       if (!(o.props.trigger.indexOf("mouseenter") >= 0 && o.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(l.type) >= 0 && s)) {
-        var y = j(!1);
+        var y = I(!1);
         y ? r = setTimeout(function() {
           o.state.isVisible && o.hide();
         }, y) : a = requestAnimationFrame(function() {
@@ -3149,7 +3153,7 @@ body:has(.os-dialog[open]) {
         });
       }
     }
-    function _t() {
+    function Ft() {
       o.state.isEnabled = !0;
     }
     function ie() {
@@ -3188,7 +3192,7 @@ body:has(.os-dialog[open]) {
           if (!(!o.state.isVisible || u)) {
             if (u = !0, m.offsetHeight, m.style.transition = o.props.moveTransition, R() && o.props.animation) {
               var Oe = W(), se = Oe.box, Dt = Oe.content;
-              ke([se, Dt], E), jt([se, Dt], "visible");
+              ke([se, Dt], E), It([se, Dt], "visible");
             }
             J(), tt(), en(Xt, o), (yt = o.popperInstance) == null || yt.forceUpdate(), B("onMount", [o]), o.props.animation && R() && at(E, function() {
               o.state.isShown = !0, B("onShown", [o]);
@@ -3202,13 +3206,13 @@ body:has(.os-dialog[open]) {
       if (!(l || y || S) && (B("onHide", [o], !1), o.props.onHide(o) !== !1)) {
         if (o.state.isVisible = !1, o.state.isShown = !1, u = !1, s = !1, R() && (m.style.visibility = "hidden"), gt(), rt(), z(!0), R()) {
           var E = W(), H = E.box, Z = E.content;
-          o.props.animation && (ke([H, Z], D), jt([H, Z], "hidden"));
+          o.props.animation && (ke([H, Z], D), It([H, Z], "hidden"));
         }
         J(), tt(), o.props.animation ? R() && At(D, o.unmount) : o.unmount();
       }
     }
     function Co(l) {
-      I().addEventListener("mousemove", w), en(Gt, w), w(l);
+      j().addEventListener("mousemove", w), en(Gt, w), w(l);
     }
     function So() {
       o.state.isVisible && o.hide(), o.state.isMounted && (ne(), ut().forEach(function(l) {
@@ -3453,21 +3457,21 @@ body:has(.os-dialog[open]) {
         onMount: function() {
           if (s) {
             var c = r.style.transitionDuration, u = Number(c.replace("ms", ""));
-            a.style.transitionDelay = Math.round(u / 10) + "ms", s.style.transitionDuration = c, jt([s], "visible");
+            a.style.transitionDelay = Math.round(u / 10) + "ms", s.style.transitionDuration = c, It([s], "visible");
           }
         },
         onShow: function() {
           s && (s.style.transitionDuration = "0ms");
         },
         onHide: function() {
-          s && jt([s], "hidden");
+          s && It([s], "hidden");
         }
       };
     }
   };
   function eo() {
     var e = ht();
-    return e.className = Ze, jt([e], "hidden"), e;
+    return e.className = Ze, It([e], "hidden"), e;
   }
   var Ae = {
     clientX: 0,
@@ -3512,14 +3516,14 @@ body:has(.os-dialog[open]) {
           getReferenceClientRect: function() {
             var M = n.getBoundingClientRect(), T = C, P = A;
             f === "initial" && (T = M.left + b, P = M.top + m);
-            var q = f === "horizontal" ? M.top : P, R = f === "vertical" ? M.right : T, L = f === "horizontal" ? M.bottom : P, I = f === "vertical" ? M.left : T;
+            var q = f === "horizontal" ? M.top : P, R = f === "vertical" ? M.right : T, L = f === "horizontal" ? M.bottom : P, j = f === "vertical" ? M.left : T;
             return {
-              width: R - I,
+              width: R - j,
               height: L - q,
               top: q,
               right: R,
               bottom: L,
-              left: I
+              left: j
             };
           }
         });
@@ -3726,7 +3730,9 @@ body:has(.os-dialog[open]) {
           anything without stress, all with one simple subscription
         </div>
         <ul class="crs-apps-nav">
-          <li class="crs-apps-nav-item"><a href="#fix-slow-mac">Fix slow Mac</a></li>
+          <li class="crs-apps-nav-item">
+            <a href="#fix-slow-mac">Fix slow Mac</a>
+          </li>
           <li class="crs-apps-nav-item">
             <a href="#customize-workspace">Customise your workspace</a>
           </li>
@@ -3739,7 +3745,9 @@ body:has(.os-dialog[open]) {
           <li class="crs-apps-nav-item">
             <a href="#use-tools">All-in-one work tools</a>
           </li>
-          <li class="crs-apps-nav-item"><a href="#use-ai">Do more with AI</a></li>
+          <li class="crs-apps-nav-item">
+            <a href="#use-ai">Do more with AI</a>
+          </li>
           <li class="crs-apps-nav-item crs-apps-nav-item--more">
             <a href="https://setapp.com/apps">And more...</a>
           </li>
@@ -3775,20 +3783,22 @@ body:has(.os-dialog[open]) {
                     — David M.
                   </div>
                   <div class="crs-block-comment-text">
-                    " Setapp is like a magic toolbox for my Mac — whatever I need, it’s just there. Makes me way more productive "
+                    " Setapp is like a magic toolbox for my Mac — whatever I
+                    need, it’s just there. Makes me way more productive "
                   </div>
                 </div>
               </div>
               <div class="crs-block-apps">
                 <div class="crs-block-apps-list">
-                ${this.renderApps([
+                  ${this.renderApps([
           "CleanMyMac",
           "QuitAll",
           "iStat Menus",
           "Endurance",
           "AlDente Pro",
           "Mission Control"
-        ])}</div>
+        ])}
+                </div>
                 <div class="crs-block-more">
                   <div>35+ more apps</div>
                   <div>solving this with one subscription</div>
@@ -3796,7 +3806,11 @@ body:has(.os-dialog[open]) {
               </div>
             </div>
           </div>
-          <div class="crs-apps-block" data-color="D5D8FE" id="customize-workspace">
+          <div
+            class="crs-apps-block"
+            data-color="D5D8FE"
+            id="customize-workspace"
+          >
             <div class="crs-apps-block-inner">
               <div class="crs-block-info">
                 <h4 class="crs-block-title">
@@ -3820,11 +3834,9 @@ body:has(.os-dialog[open]) {
                 </div>
               </div>
               <div class="crs-block-apps">
-                <div class="crs-block-apps-list">${this.renderApps([
-          "WidgetWall",
-          "Bartender",
-          "CleanShot X"
-        ])}</div>
+                <div class="crs-block-apps-list">
+                  ${this.renderApps(["WidgetWall", "Bartender", "CleanShot X"])}
+                </div>
                 <div class="crs-block-more">
                   <div>20+ more apps</div>
                   <div>solving this with one subscription</div>
@@ -3832,7 +3844,11 @@ body:has(.os-dialog[open]) {
               </div>
             </div>
           </div>
-          <div class="crs-apps-block" data-color="424E81" id="download-convert-media">
+          <div
+            class="crs-apps-block"
+            data-color="424E81"
+            id="download-convert-media"
+          >
             <div class="crs-apps-block-inner">
               <div class="crs-block-info">
                 <h4 class="crs-block-title">
@@ -3856,11 +3872,9 @@ body:has(.os-dialog[open]) {
                 </div>
               </div>
               <div class="crs-block-apps">
-                <div class="crs-block-apps-list">${this.renderApps([
-          "Downie",
-          "Pulltube",
-          "Permute"
-        ])}</div>
+                <div class="crs-block-apps-list">
+                  ${this.renderApps(["Downie", "Pulltube", "Permute"])}
+                </div>
                 <div class="crs-block-more">
                   <div>17+ more apps</div>
                   <div>solving this with one subscription</div>
@@ -3868,7 +3882,11 @@ body:has(.os-dialog[open]) {
               </div>
             </div>
           </div>
-          <div class="crs-apps-block" data-color="CF6F8A" id="recover-open-files">
+          <div
+            class="crs-apps-block"
+            data-color="CF6F8A"
+            id="recover-open-files"
+          >
             <div class="crs-apps-block-inner">
               <div class="crs-block-info">
                 <h4 class="crs-block-title">
@@ -3892,24 +3910,28 @@ body:has(.os-dialog[open]) {
                 <div class="crs-block-comment">
                   <div class="crs-block-comment-author">
                     <span class="crs-block-comment-rating">
-                    <span></span><span></span><span></span><span></span
+                      <span></span><span></span><span></span><span></span
                       ><span></span
-                    ></span></span> — Andy S.
+                    ></span>
+                    — Andy S.
                   </div>
                   <div class="crs-block-comment-text">
-                    " One subscription, tons of great Mac and iOS apps. No separate licenses needed! "
+                    " One subscription, tons of great Mac and iOS apps. No
+                    separate licenses needed! "
                   </div>
                 </div>
               </div>
               <div class="crs-block-apps">
-                <div class="crs-block-apps-list">${this.renderApps([
+                <div class="crs-block-apps-list">
+                  ${this.renderApps([
           "Nitro PDF Pro",
           "BetterZip",
           "Get Backup Pro",
           "Archiver",
           "Ulysses",
           "Renamer"
-        ])}</div>
+        ])}
+                </div>
                 <div class="crs-block-more">
                   <div>63+ more apps</div>
                   <div>solving this with one subscription</div>
@@ -3941,11 +3963,9 @@ body:has(.os-dialog[open]) {
                 </div>
               </div>
               <div class="crs-block-apps">
-                <div class="crs-block-apps-list">${this.renderApps([
-          "Session",
-          "CodeRunner",
-          "Craft"
-        ])}</div>
+                <div class="crs-block-apps-list">
+                  ${this.renderApps(["Session", "CodeRunner", "Craft"])}
+                </div>
                 <div class="crs-block-more">
                   <div>83+ more apps</div>
                   <div>solving this with one subscription</div>
@@ -3975,14 +3995,15 @@ body:has(.os-dialog[open]) {
                     start your 7 days free trial
                   </div>
                 </div>
-         
               </div>
               <div class="crs-block-apps">
-                     <div class="crs-block-apps-list">${this.renderApps([
+                <div class="crs-block-apps-list">
+                  ${this.renderApps([
           "PDF Pals",
           "MurmurType",
           "Ready to Send"
-        ])}</div>
+        ])}
+                </div>
                 <div class="crs-block-more">
                   <div>9+ more apps</div>
                   <div>solving this with one subscription</div>
@@ -3992,13 +4013,24 @@ body:has(.os-dialog[open]) {
           </div>
         </div>
         <div class="crs-apps-action">
-          <a href="https://setapp.com/apps" class="btn btn-link btn_no-spacing btn-link_light btn-link_with-arrow">
+          <a
+            href="https://setapp.com/apps"
+            class="btn btn-link btn_no-spacing btn-link_light btn-link_with-arrow"
+          >
             View all superpowers
           </a>
         </div>
         <div class="crs-apps-subtitle">
-          Sign up, install Setapp, and find your <br>
-perfect app in our suite of 260+ apps.
+          Sign up, install Setapp, and find your <br />
+          perfect app in our suite of 260+ apps.
+        </div>
+        <div class="crs-apps-sub-action">
+          <button
+            class="btn btn_light signup__button crs-block-action-button"
+            type="button"
+          >
+            Try free for 7 days
+          </button>
         </div>
       </div>
     </section>`
@@ -4088,7 +4120,6 @@ perfect app in our suite of 260+ apps.
           }
           const p = r.querySelector(".crs-block-app-name");
           if (!p) return;
-          console.log("App Name:", p.textContent);
           const c = Cn.find(
             (d) => d.title.includes(p.textContent || "")
           );
