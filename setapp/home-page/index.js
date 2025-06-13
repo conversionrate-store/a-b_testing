@@ -1,15 +1,15 @@
 (function() {
   "use strict";
-  const va = ({ name: e, dev: t }) => {
+  const yn = ({ name: e, dev: t }) => {
     console.log(
       `%c EXP: ${e} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, ya = (e) => {
+  }, bn = (e) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", e, "variant_1"));
     }, 1e3);
-  }, ba = `section.apps {
+  }, wn = `section.apps {
   display: none; /* Hide control section */
 }
 
@@ -338,12 +338,60 @@
 }
 `, ce = [
     {
-      name: "Supercharge",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/742/42581/icon-1747027558-6821866668cc5.png",
-      description: "Supercharge your Mac",
-      url: "https://setapp.com/apps/supercharge",
+      name: "CleanMyMac",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
+      description: "Tidy up your Mac",
+      url: "https://setapp.com/apps/cleanmymac",
       platforms: "Mac",
-      rating: "100"
+      rating: "97"
+    },
+    {
+      name: "QuitAll",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/493/10507/icon-1715515857-6640b1d134f36.png",
+      description: "Speed up Mac by quitting all apps",
+      url: "https://setapp.com/apps/quit-all-mac",
+      platforms: "Mac",
+      rating: "98"
+    },
+    {
+      name: "iStat Menus",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/144/41794/icon-1739274958-67ab3ace7a0bf.png",
+      description: "Track CPU, GPU, sensors, etc.",
+      url: "https://setapp.com/apps/istat-menus",
+      platforms: "Mac",
+      rating: "97"
+    },
+    {
+      name: "Endurance",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/301/42576/icon-1746973828-6820b484ae86f.png",
+      description: "Extend your battery life",
+      url: "https://setapp.com/apps/endurance",
+      platforms: "Mac",
+      rating: "94"
+    },
+    {
+      name: "AlDente Pro",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/483/42676/icon-1747828119-682dbd97182a6.png",
+      description: "Set battery charging limits",
+      url: "https://setapp.com/apps/aldente-pro",
+      platforms: "Mac",
+      rating: "98"
+    },
+    {
+      name: "Mission Control",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/376/42548/icon-1746731563-681d022b89238.png",
+      description: "Close windows from Mission Control",
+      url: "https://setapp.com/apps/mission-control-plus",
+      platforms: "Mac",
+      rating: "98"
+    },
+    {
+      name: "WidgetWall",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/528/42687/icon-1747926996-682f3fd48a02b.png",
+      description: "Add widgets to Mac desktop",
+      url: "https://setapp.com/apps/widget-wall",
+      platforms: "Mac",
+      rating: "88"
     },
     {
       name: "Bartender",
@@ -362,1380 +410,28 @@
       rating: "99"
     },
     {
-      name: "TextSniper",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/431/40216/icon-1726504026-66e85c5a39ab4.png",
-      description: "Extract text from visuals",
-      url: "https://setapp.com/apps/textsniper",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Numi",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/186/7868/icon-1681314493-6436d2bdefebe.png",
-      description: "Calculate and convert anything",
-      url: "https://setapp.com/apps/numi",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Ulysses",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/67/42660/icon-1747749841-682c8bd1e7d9c.png",
-      description: "Write and publish from one app",
-      url: "https://setapp.com/apps/ulysses",
-      platforms: "Mac, iOS",
-      rating: "99"
-    },
-    {
-      name: "TablePlus",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/297/43846/icon-1749387295-6845881fbfe73.png",
-      description: "Query, edit, and manage databases",
-      url: "https://setapp.com/apps/tableplus",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "MindNode Classic",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/320/43815/icon-1749119470-684171ee26b61.png",
-      description: "Mind map and brainstorm ideas",
-      url: "https://setapp.com/apps/mindnode",
-      platforms: "Mac, iOS",
-      rating: "99"
-    },
-    {
-      name: "Yoink",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/330/41335/icon-1734701336-67657118b1691.png",
-      description: "Improve drag and drop",
-      url: "https://setapp.com/apps/yoink",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "DevUtils",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/445/7963/icon-1682658507-644b54cbceb37.png",
-      description: "Offline development toolkit",
-      url: "https://setapp.com/apps/devutils.app",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Lungo",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/270/42370/icon-1744999749-68029545752bd.png",
-      description: "Keep your Mac awake",
-      url: "https://setapp.com/apps/lungo",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "PixelSnap",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/358/41224/icon-1734003597-675acb8d48307.png",
-      description: "Measure anything on the screen",
-      url: "https://setapp.com/apps/pixelsnap",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Dash",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/152/41998/icon-1741245191-67c94b07a2ef0.png",
-      description: "Access API documentation offline",
-      url: "https://setapp.com/apps/dash",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Dropzone",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/155/43866/icon-1749628562-68493692cbdc5.png",
-      description: "Complete everyday tasks faster",
-      url: "https://setapp.com/apps/dropzone",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "HazeOver",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/212/40224/icon-1726555425-66e9252168c8f.png",
-      description: "Dim background windows",
-      url: "https://setapp.com/apps/hazeover",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Proxyman",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/346/43836/icon-1749304623-6844452f7a6cb.png",
-      description: "Debug your web traffic",
-      url: "https://setapp.com/apps/proxyman",
-      platforms: "Mac, iOS",
-      rating: "99"
-    },
-    {
-      name: "Soulver",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/551/42488/icon-1746240116-6815827493d38.png",
-      description: "Convert and calculate in notes",
-      url: "https://setapp.com/apps/soulver",
-      platforms: "Mac, iOS",
-      rating: "99"
-    },
-    {
-      name: "SnippetsLab",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/125/41422/icon-1735798322-67762e322edcd.png",
-      description: "Create a library of code snippets",
-      url: "https://setapp.com/apps/snippetslab",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Dato",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/571/42735/icon-1748450972-68373e9c7d7fe.png",
-      description: "Stay on top of your schedule",
-      url: "https://setapp.com/apps/dato",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "In Your Face",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/591/42540/icon-1746702631-681c9127e40e9.png",
-      description: "Get full-screen meeting alerts",
-      url: "https://setapp.com/apps/in-your-face",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Image2icon",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/195/5841/icon-1648290647-623eeb57731c9.png",
-      description: "Turn images into icons",
-      url: "https://setapp.com/apps/image2icon",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "TextSoap",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/284/42084/icon-1742216932-67d81ee49773c.png",
-      description: "Make sure your text has no errors",
-      url: "https://setapp.com/apps/textsoap",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "IconJar",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/264/39405/icon-1719519131-667dc79b49105.png",
-      description: "Organize your icon sets",
-      url: "https://setapp.com/apps/iconjar",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "TaskPaper",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/213/40865/icon-1731425370-6733745a98d57.png",
-      description: "Plain-text task management",
-      url: "https://setapp.com/apps/taskpaper",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "SnapMotion",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/509/41065/icon-1732813283-6748a1e33ce65.png",
-      description: "Capture snaps from your videos",
-      url: "https://setapp.com/apps/snapmotion",
-      platforms: "Mac, iOS",
-      rating: "99"
-    },
-    {
-      name: "Buildwatch",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/467/8800/icon-1695307195-650c55bbf4200.png",
-      description: "Track your build time in Xcode",
-      url: "https://setapp.com/apps/buildwatch",
-      platforms: "Mac",
-      rating: "99"
-    },
-    {
-      name: "Paste",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/98/43831/icon-1749237176-68433db804712.png",
-      description: "Never lose anything you copy",
-      url: "https://setapp.com/apps/paste",
-      platforms: "Mac, iOS",
-      rating: "98"
-    },
-    {
       name: "Downie",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/222/42776/icon-1748848008-683d4d8870860.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
       description: "Download YouTube videos",
       url: "https://setapp.com/apps/downie",
       platforms: "Mac",
       rating: "98"
     },
     {
-      name: "Permute",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/219/42789/icon-1748930371-683e8f43d99aa.png",
-      description: "Convert audio, images, and videos",
-      url: "https://setapp.com/apps/permute",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "BetterTouchTool",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/295/42221/icon-1743429358-67ea9eee7ee73.png",
-      description: "Save time with custom actions",
-      url: "https://setapp.com/apps/bettertouchtool",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "AlDente Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/483/42676/icon-1747828119-682dbd97182a6.png",
-      description: "Set battery charging limits",
-      url: "https://setapp.com/apps/aldente-pro",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Session",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/428/42692/icon-1747967217-682fdcf1a2474.png",
-      description: "Work in short intervals",
-      url: "https://setapp.com/apps/session",
-      platforms: "Mac, iOS",
-      rating: "98"
-    },
-    {
-      name: "Timing",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/184/43855/icon-1749474823-6846de07658d9.png",
-      description: "Track time you spend in each app",
-      url: "https://setapp.com/apps/timing",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "One Switch",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/349/39552/icon-1720703221-668fd8f5909f4.png",
-      description: "Access macOS features fast",
-      url: "https://setapp.com/apps/one-switch",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "QuitAll",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/493/10507/icon-1715515857-6640b1d134f36.png",
-      description: "Speed up Mac by quitting all apps",
-      url: "https://setapp.com/apps/quit-all-mac",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "PDF Squeezer",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/188/41776/icon-1739380114-67acd5926e8ff.png",
-      description: "Compress PDFs without quality loss",
-      url: "https://setapp.com/apps/pdf-squeezer",
-      platforms: "Mac, iOS",
-      rating: "98"
-    },
-    {
       name: "Pulltube",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/371/43863/icon-1749589731-68489ee3bdf17.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
       description: "Download and trim videos",
       url: "https://setapp.com/apps/pulltube",
       platforms: "Mac",
       rating: "98"
     },
     {
-      name: "Elmedia Player",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/178/41555/icon-1737151476-678ad3f48d49a.png",
-      description: "Versatile media player",
-      url: "https://setapp.com/apps/elmedia-player",
+      name: "Permute",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/219/42264/icon-1743758208-67efa380b6636.png",
+      description: "Convert video and audio files",
+      url: "https://setapp.com/apps/permute",
       platforms: "Mac",
       rating: "98"
-    },
-    {
-      name: "Default Folder X",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/396/42594/icon-1747113137-6822d4b146299.png",
-      description: "Access recent and favorite files",
-      url: "https://setapp.com/apps/default-folder-x",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "PopClip",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/159/41304/icon-1734542637-6763052df1bf2.png",
-      description: "Use instant text actions",
-      url: "https://setapp.com/apps/popclip",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Mission Control",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/376/42548/icon-1746731563-681d022b89238.png",
-      description: "Close windows from Mission Control",
-      url: "https://setapp.com/apps/mission-control-plus",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Movist Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/344/41625/icon-1737718534-67937b06a660d.png",
-      description: "Play all video formats",
-      url: "https://setapp.com/apps/movist-pro",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "HoudahSpot",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/452/40620/icon-1729324375-67136557e86ed.png",
-      description: "Find files faster",
-      url: "https://setapp.com/apps/houdahspot",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Typeface",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/315/42539/icon-1746695766-681c765661a38.png",
-      description: "Find the perfect font",
-      url: "https://setapp.com/apps/typeface",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "TouchRetouch",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/298/8541/icon-1691068510-64cba85e8b087.png",
-      description: "Remove objects from photos",
-      url: "https://setapp.com/apps/touchretouch",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Gifox",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/197/42706/icon-1748180877-68331f8d91fc4.png",
-      description: "Capture GIFs from your screen",
-      url: "https://setapp.com/apps/gifox",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Hand Mirror",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/564/41679/icon-1738219390-679b1f7e17746.png",
-      description: "Check Mac camera in a click",
-      url: "https://setapp.com/apps/hand-mirror",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Unclutter",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/242/41940/icon-1740661852-67c0645c93b70.png",
-      description: "Manage files, notes, clipboard",
-      url: "https://setapp.com/apps/unclutter",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Bike",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/598/41510/icon-1736770872-678505384e5f5.png",
-      description: "Outline ideas and projects",
-      url: "https://setapp.com/apps/bike-outliner",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Antinote",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/757/42717/icon-1748322683-6835497b1e179.png",
-      description: "Take notes and do calculations",
-      url: "https://setapp.com/apps/antinote",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Base",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/135/9151/icon-1697967585-6534ede1ef890.png",
-      description: "Simplify SQLite file management",
-      url: "https://setapp.com/apps/base",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "Goldie App",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/345/42291/icon-1744380820-67f92394afe8e.png",
-      description: "Measure golden ratio in designs",
-      url: "https://setapp.com/apps/goldie-app",
-      platforms: "Mac",
-      rating: "98"
-    },
-    {
-      name: "CleanMyMac",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
-      description: "Tidy up your Mac",
-      url: "https://setapp.com/apps/cleanmymac",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "iStat Menus",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/144/41794/icon-1739274958-67ab3ace7a0bf.png",
-      description: "Track CPU, GPU, sensors, etc.",
-      url: "https://setapp.com/apps/istat-menus",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Archiver",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png",
-      description: "Compress and unarchive files",
-      url: "https://setapp.com/apps/archiver",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "SideNotes",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/365/42288/icon-1744039822-67f3ef8e035dd.png",
-      description: "Notes on the side of your screen",
-      url: "https://setapp.com/apps/sidenotes",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "24 Hour Wallpaper",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/405/41207/icon-1733878798-6758e40ea005c.png",
-      description: "100+ dynamic wallpapers",
-      url: "https://setapp.com/apps/24-hour-wallpaper",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "NotePlan",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/280/42737/icon-1748462307-68376ae39b791.png",
-      description: "One space for all your work",
-      url: "https://setapp.com/apps/noteplan",
-      platforms: "Mac, iOS",
-      rating: "97"
-    },
-    {
-      name: "OpenIn",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/459/41451/icon-1736125870-677b2daede071.png",
-      description: "Open links in select browsers",
-      url: "https://setapp.com/apps/openin",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Swish",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/403/41992/icon-1741196417-67c88c81798d1.png",
-      description: "Set up quick trackpad actions",
-      url: "https://setapp.com/apps/swish",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "TripMode",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/244/41564/icon-1737319715-678d6523e2898.png",
-      description: "Save internet data",
-      url: "https://setapp.com/apps/tripmode",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Pareto Security",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/496/42756/icon-1748647998-683a403ea24fa.png",
-      description: "Check your security settings",
-      url: "https://setapp.com/apps/pareto-security",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "SQLPro Studio",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/230/41517/icon-1736865184-678675a0afa1f.png",
-      description: "Manage multiple DBMS",
-      url: "https://setapp.com/apps/sqlpro-studio",
-      platforms: "Mac, iOS",
-      rating: "97"
-    },
-    {
-      name: "WiFi Explorer",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/74/41442/icon-1735942774-67786276c8ca4.png",
-      description: "Fix WiFi problems",
-      url: "https://setapp.com/apps/wifi-explorer",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Magic Window Air",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/437/8979/icon-1696301083-651b801b55c0c.png",
-      description: "Try aerial screen savers",
-      url: "https://setapp.com/apps/magic-window-air",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Step Two",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/378/7227/icon-1671473505-63a0a9610bff6.png",
-      description: "Simplify two-step authentication",
-      url: "https://setapp.com/apps/step-two",
-      platforms: "Mac, iOS",
-      rating: "97"
-    },
-    {
-      name: "Paletro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/465/41928/icon-1740573715-67bf0c13e78c0.png",
-      description: "Access app menu commands",
-      url: "https://setapp.com/apps/paletro",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Due",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/434/43829/icon-1749224796-68430d5cd57f9.png",
-      description: "Receive persistent reminders",
-      url: "https://setapp.com/apps/due",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "PhotoBulk",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/286/42242/icon-1743778095-67eff12f33d65.png",
-      description: "Resize and watermark photos",
-      url: "https://setapp.com/apps/photobulk",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Meta",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/389/7448/icon-1675335200-63db9620a3946.png",
-      description: "Manage music libraries",
-      url: "https://setapp.com/apps/meta",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Be Focused",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/173/42056/icon-1741873453-67d2e12deefa4.png",
-      description: "Manage to-do lists with timers",
-      url: "https://setapp.com/apps/be-focused",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Diarly",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/347/43860/icon-1749557700-684821c419182.png",
-      description: "Create a private personal diary",
-      url: "https://setapp.com/apps/diarly",
-      platforms: "Mac, iOS",
-      rating: "97"
-    },
-    {
-      name: "SSH Config Editor",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/395/43809/icon-1749051292-6840679c82bf3.png",
-      description: "Manage SSH client config files",
-      url: "https://setapp.com/apps/ssh-config-editor",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Awesome Habits",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/616/42378/icon-1745096293-68040e655a3fe.png",
-      description: "Build better habits",
-      url: "https://setapp.com/apps/awesome-habits",
-      platforms: "Mac, iOS",
-      rating: "97"
-    },
-    {
-      name: "Merlin Project Express",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/241/41668/icon-1738139017-6799e5893e6bc.png",
-      description: "Manage large projects",
-      url: "https://setapp.com/apps/merlin-project-express",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "Hype",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/192/41603/icon-1737573990-67914666d5d5f.png",
-      description: "Create animated HTML5 content",
-      url: "https://setapp.com/apps/hype",
-      platforms: "Mac",
-      rating: "97"
-    },
-    {
-      name: "BetterZip",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/245/7858/icon-1681236553-6435a249c1fd2.png",
-      description: "Create and encrypt archives",
-      url: "https://setapp.com/apps/betterzip",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "ForkLift",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/253/42746/icon-1748525039-68385fef5c0b1.png",
-      description: "Manage files across servers",
-      url: "https://setapp.com/apps/forklift",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "BusyCal",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/304/43841/icon-1749392085-68459ad5ecfbf.png",
-      description: "Sync your tasks with calendar",
-      url: "https://setapp.com/apps/busycal",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "AirBuddy",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/513/40120/icon-1726002236-66e0b43cd7afc.png",
-      description: "Monitor your wireless devices",
-      url: "https://setapp.com/apps/airbuddy",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "CodeRunner",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/122/41549/icon-1737112183-678a3a77b43aa.png",
-      description: "Edit and run code faster",
-      url: "https://setapp.com/apps/coderunner",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Mate Translate",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/248/9552/icon-1703223793-658521f1d6148.png",
-      description: "Translate anything",
-      url: "https://setapp.com/apps/mate-translate",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Renamer",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/136/40792/icon-1730733142-6728e4563df6a.png",
-      description: "Rename a batch of files",
-      url: "https://setapp.com/apps/renamer",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Xnapper",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/549/9000/icon-1696394577-651ced51d24d2.png",
-      description: "Create shareable screenshots",
-      url: "https://setapp.com/apps/xnapper",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Hookmark",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/544/42451/icon-1745878864-680fff5052376.png",
-      description: "Link files, webpages, PDFs",
-      url: "https://setapp.com/apps/hookmark",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "KeyKey Typing Tutor",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/274/39421/icon-1720817328-669196b02ad52.png",
-      description: "Boost your typing speed",
-      url: "https://setapp.com/apps/keykey-typing-tutor",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "News Explorer",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/249/42312/icon-1744274352-67f783b0c27a5.png",
-      description: "Create your perfect RSS feed",
-      url: "https://setapp.com/apps/news-explorer",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Expressions",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/243/42471/icon-1746014049-68120f61e101a.png",
-      description: "Speed up work with regex",
-      url: "https://setapp.com/apps/expressions",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Receipts",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/351/41795/icon-1739276776-67ab41e871a94.png",
-      description: "Collect documents digitally",
-      url: "https://setapp.com/apps/receipts",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Whisk",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/463/8892/icon-1695310657-650c634147f17.png",
-      description: "Code editor with live preview",
-      url: "https://setapp.com/apps/whisk",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Usage",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/637/43818/icon-1749136158-6841b31ef3039.png",
-      description: "Monitor device performance",
-      url: "https://setapp.com/apps/usage",
-      platforms: "Mac, iOS",
-      rating: "96"
-    },
-    {
-      name: "PhotosRevive",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/508/41064/icon-1732756775-6747c527cfab2.png",
-      description: "Colorize your old photos",
-      url: "https://setapp.com/apps/photosrevive",
-      platforms: "Mac, iOS",
-      rating: "96"
-    },
-    {
-      name: "Godspeed",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/714/43822/icon-1749174965-68424ab54b3f5.png",
-      description: "Manage tasks faster",
-      url: "https://setapp.com/apps/godspeed",
-      platforms: "Mac, iOS",
-      rating: "96"
-    },
-    {
-      name: "SQLPro for SQLite",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/333/42122/icon-1742478513-67dc1cb168fd3.png",
-      description: "Control SQLite databases",
-      url: "https://setapp.com/apps/sqlpro-for-sqlite",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Transloader",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/481/10253/icon-1712837431-6617d33756e3b.png",
-      description: "Start downloads on Mac remotely",
-      url: "https://setapp.com/apps/transloader",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Asset Catalog Creator Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/426/41835/icon-1739661896-67b1224841142.png",
-      description: "Prepare icons and app assets",
-      url: "https://setapp.com/apps/asset-catalog-creator-pro",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Studies",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/231/39891/icon-1723640492-66bcaaacaa482.png",
-      description: "Try smart study notes",
-      url: "https://setapp.com/apps/studies",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Flinto",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/419/10164/icon-1711471249-6602fa9155d9b.png",
-      description: "Design interactive app prototypes",
-      url: "https://setapp.com/apps/flinto",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "ScreenFloat",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/753/42658/icon-1747738138-682c5e1a49712.png",
-      description: "Power up your screenshots",
-      url: "https://setapp.com/apps/screenfloat",
-      platforms: "Mac",
-      rating: "96"
-    },
-    {
-      name: "Craft",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/554/42322/icon-1744394392-67f95898339a9.png",
-      description: "Create and structure documents",
-      url: "https://setapp.com/apps/craft",
-      platforms: "Mac, iOS, Web",
-      rating: "95"
-    },
-    {
-      name: "Folx",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/202/42801/icon-1748963323-683f0ffbd0dc0.png",
-      description: "Download videos and torrents",
-      url: "https://setapp.com/apps/folx",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Forecast Bar",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/234/5651/icon-1678734015-640f72bf93fb1.png",
-      description: "Receive weather alerts",
-      url: "https://setapp.com/apps/forecast-bar",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Gitfox",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/385/41675/icon-1738172457-679a6829c6cd0.png",
-      description: "Commit faster with superior diffs",
-      url: "https://setapp.com/apps/gitfox",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "App Tamer",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/466/39811/icon-1722916151-66b19d375746f.png",
-      description: "Reduce CPU usage",
-      url: "https://setapp.com/apps/app-tamer",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Timemator",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/380/42266/icon-1743772162-67efda0297d7a.png",
-      description: "Track productivity per project",
-      url: "https://setapp.com/apps/timemator",
-      platforms: "Mac, iOS",
-      rating: "95"
-    },
-    {
-      name: "Commander One",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/366/42052/icon-1741858073-67d2a5194d1f4.png",
-      description: "Two-pane file manager",
-      url: "https://setapp.com/apps/commander-one",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Keysmith",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/438/39289/icon-1718665165-6670bfcd18ac5.png",
-      description: "Create a shortcut for any action",
-      url: "https://setapp.com/apps/keysmith",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "BoltAI",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/626/42745/icon-1748503663-68380c6f619d4.png",
-      description: "Write, code, learn with AI",
-      url: "https://setapp.com/apps/boltai",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "ChronoSync Express",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/217/40765/icon-1730479186-67250452d2169.png",
-      description: "Sync and back up folders",
-      url: "https://setapp.com/apps/chronosync-express",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Presentify",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/401/42773/icon-1748820377-683ce1999ef93.png",
-      description: "Give better presentations",
-      url: "https://setapp.com/apps/presentify",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "NetSpot",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/223/41521/icon-1736870905-67868bf9ce735.png",
-      description: "Find the best network connection",
-      url: "https://setapp.com/apps/netspot",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Time Out",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/364/10078/icon-1710337184-65f1aca0acf44.png",
-      description: "Remind yourself to take a break",
-      url: "https://setapp.com/apps/time-out",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "start",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/377/42367/icon-1744970349-6802226d6784a.png",
-      description: "Open any app faster",
-      url: "https://setapp.com/apps/start",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Trickster",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/357/41461/icon-1736217057-677c91e120abd.png",
-      description: "Quickly access recent files",
-      url: "https://setapp.com/apps/trickster",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Euclid",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/435/8913/icon-1695837595-65146d9b44aa1.png",
-      description: "Calculate with Excel formulas",
-      url: "https://setapp.com/apps/euclid",
-      platforms: "Mac, iOS",
-      rating: "95"
-    },
-    {
-      name: "Glyphs Mini",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/469/4408/icon-1618232817-607445f1711ef.png",
-      description: "Edit and manage icon designs",
-      url: "https://setapp.com/apps/glyphs-mini",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Paper",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/746/42597/icon-1749398986-6845b5ca795d9.png",
-      description: "Write without distractions",
-      url: "https://setapp.com/apps/paper",
-      platforms: "Mac, iOS",
-      rating: "95"
-    },
-    {
-      name: "Novabench",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/605/42189/icon-1743118649-67e5e1394d007.png",
-      description: "Evaluate computer performance",
-      url: "https://setapp.com/apps/novabench",
-      platforms: "Mac",
-      rating: "95"
-    },
-    {
-      name: "Sip",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/232/42197/icon-1743177567-67e6c75f1698c.png",
-      description: "Pick colors for your designs",
-      url: "https://setapp.com/apps/sip",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "Wallpaper Wizard",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/269/1726/icon-1593690549-5efdc9b5cc2f0.png",
-      description: "Choose from 25K wallpapers",
-      url: "https://setapp.com/apps/wallpaper-wizard",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "Endurance",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/301/42576/icon-1746973828-6820b484ae86f.png",
-      description: "Extend your battery life",
-      url: "https://setapp.com/apps/endurance",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "Mockuuups Studio",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/373/10202/icon-1712050881-660bd2c1d13ba.png",
-      description: "Generate mockups for all devices",
-      url: "https://setapp.com/apps/mockuuups-studio",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "Marked",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/80/42026/icon-1741607738-67ced33aba53e.png",
-      description: "Live Markdown preview",
-      url: "https://setapp.com/apps/marked",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "Lofi Garden",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/506/7515/icon-1677325365-63f9f435a368b.png",
-      description: "Play lofi music in a click",
-      url: "https://setapp.com/apps/lofi-garden",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "ToothFairy",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/319/43816/icon-1749136211-6841b3535cf06.png",
-      description: "Connect Bluetooth devices faster",
-      url: "https://setapp.com/apps/toothfairy",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "MenubarX",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/538/42337/icon-1744644568-67fd29d8898ce.png",
-      description: "Browse the web from menu bar",
-      url: "https://setapp.com/apps/menubarx",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "iFlicks",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/229/5236/icon-1636875938-6190bea26ea8a.png",
-      description: "Upload videos to iTunes",
-      url: "https://setapp.com/apps/iflicks",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "Movie Explorer Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/335/10025/icon-1709829117-65e9ebfdd2714.png",
-      description: "Curate your movie collection",
-      url: "https://setapp.com/apps/movie-explorer-pro",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "GlueMotion",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/324/41063/icon-1732813247-6748a1bf4f1a8.png",
-      description: "Turn photos into time lapses",
-      url: "https://setapp.com/apps/gluemotion",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "PocketCAS",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/355/40804/icon-1730880531-672b2413b44d4.png",
-      description: "Solve advanced math equations",
-      url: "https://setapp.com/apps/pocketcas",
-      platforms: "Mac",
-      rating: "94"
-    },
-    {
-      name: "Gemini",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/79/9042/icon-1696867211-6524238b4f102.png",
-      description: "Find and remove duplicates",
-      url: "https://setapp.com/apps/gemini",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "BusyContacts",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/369/43840/icon-1749326776-68449bb851452.png",
-      description: "Build your contact database",
-      url: "https://setapp.com/apps/busycontacts",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Core Shell",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/339/40002/icon-1724861736-66cf4d28414e0.png",
-      description: "Full-featured SSH terminal",
-      url: "https://setapp.com/apps/core-shell",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "MarginNote",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/323/8222/icon-1748318556-6835395c4b07b.png",
-      description: "Study more productively",
-      url: "https://setapp.com/apps/marginnote",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Prizmo",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/160/41752/icon-1738766542-67a378ce29d98.png",
-      description: "Scan and OCR any document",
-      url: "https://setapp.com/apps/prizmo",
-      platforms: "Mac, iOS",
-      rating: "93"
-    },
-    {
-      name: "2Do",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/68/42482/icon-1746151123-681426d399e36.png",
-      description: "Schedule tasks and reminders",
-      url: "https://setapp.com/apps/2do",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "GoodTask",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/206/42251/icon-1743656461-67ee160d23e22.png",
-      description: "Sync to-dos with reminders",
-      url: "https://setapp.com/apps/goodtask",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "WiFi Signal",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/596/42294/icon-1744164549-67f5d6c522359.png",
-      description: "Monitor your Wi-Fi connection",
-      url: "https://setapp.com/apps/wifi-signal",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Workspaces",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/268/42258/icon-1743703876-67eecf44145bb.png",
-      description: "Set up your work in one click",
-      url: "https://setapp.com/apps/workspaces",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Noizio",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/130/3569/icon-1604047179-5f9bd14bc431b.png",
-      description: "Turn on ambient sounds to focus",
-      url: "https://setapp.com/apps/noizio",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "MetaImage",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/356/41358/icon-1734915652-6768b644d8129.png",
-      description: "Edit image metadata",
-      url: "https://setapp.com/apps/metaimage",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Swift Publisher",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/95/41473/icon-1736331218-677e4fd2d30c5.png",
-      description: "Self-publish books or booklets",
-      url: "https://setapp.com/apps/swift-publisher",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Focused",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/134/9293/icon-1699654599-654eabc721744.png",
-      description: "Focus on your writing",
-      url: "https://setapp.com/apps/focused",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Pagico",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/70/42787/icon-1748923372-683e73ec92068.png",
-      description: "Manage teams and projects",
-      url: "https://setapp.com/apps/pagico",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "MarsEdit",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/343/42338/icon-1744655073-67fd52e16f243.png",
-      description: "Create your text content offline",
-      url: "https://setapp.com/apps/marsedit",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Clariti",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/754/43828/icon-1749224551-68430c678d16b.png",
-      description: "Boost mental clarity with sound",
-      url: "https://setapp.com/apps/clariti",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Cloud Outliner",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/174/42713/icon-1748249451-68342b6baac84.png",
-      description: "Create visual outlines",
-      url: "https://setapp.com/apps/cloud-outliner",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "XCOrganizer",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/407/8157/icon-1685704795-6479d05b0e326.png",
-      description: "Organize Xcode projects",
-      url: "https://setapp.com/apps/xcorganizer",
-      platforms: "Mac",
-      rating: "93"
-    },
-    {
-      name: "Mosaic",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/247/9106/icon-1698836080-65422e70e6dff.png",
-      description: "Automatically organize windows",
-      url: "https://setapp.com/apps/mosaic",
-      platforms: "Mac",
-      rating: "92"
-    },
-    {
-      name: "Path Finder",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/362/42172/icon-1743009756-67e437dcb92b8.png",
-      description: "Copy, delete, and sync files",
-      url: "https://setapp.com/apps/path-finder",
-      platforms: "Mac",
-      rating: "92"
-    },
-    {
-      name: "CloudMounter",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/289/42253/icon-1743678842-67ee6d7aeeda6.png",
-      description: "Connect cloud storage to Finder",
-      url: "https://setapp.com/apps/cloudmounter",
-      platforms: "Mac",
-      rating: "92"
-    },
-    {
-      name: "Squash",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/209/40929/icon-1731928296-673b20e8a961c.png",
-      description: "Compress and resize images",
-      url: "https://setapp.com/apps/squash",
-      platforms: "Mac",
-      rating: "92"
-    },
-    {
-      name: "Slidepad",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/367/42788/icon-1748925454-683e7c0eddcf7.png",
-      description: "Keep most used apps at hand",
-      url: "https://setapp.com/apps/slidepad",
-      platforms: "Mac",
-      rating: "92"
-    },
-    {
-      name: "Dropshare",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/250/42493/icon-1746289475-681643438e929.png",
-      description: "Save space with file sharing",
-      url: "https://setapp.com/apps/dropshare",
-      platforms: "Mac, iOS",
-      rating: "92"
-    },
-    {
-      name: "VidCap",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/558/42099/icon-1742341967-67da074f05fc7.png",
-      description: "Generate captions for video",
-      url: "https://setapp.com/apps/vidcap",
-      platforms: "Mac, iOS",
-      rating: "92"
-    },
-    {
-      name: "Tripsy",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/523/42589/icon-1747072498-682235f2b097c.png",
-      description: "Plan trips on Mac and iOS",
-      url: "https://setapp.com/apps/tripsy",
-      platforms: "Mac, iOS",
-      rating: "92"
-    },
-    {
-      name: "PDF Search",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/272/39404/icon-1719522579-667dd513092fa.png",
-      description: "Find anything in a PDF with AI",
-      url: "https://setapp.com/apps/pdf-search",
-      platforms: "Mac, iOS",
-      rating: "92"
-    },
-    {
-      name: "Eter",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/627/42268/icon-1743775680-67efe7c02e15f.png",
-      description: "Listen to internet radio",
-      url: "https://setapp.com/apps/eter",
-      platforms: "Mac, iOS",
-      rating: "92"
-    },
-    {
-      name: "Teleprompter App",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/609/42100/icon-1742342094-67da07cedaca3.png",
-      description: "Record video with teleprompter",
-      url: "https://setapp.com/apps/teleprompter-app",
-      platforms: "Mac, iOS",
-      rating: "92"
-    },
-    {
-      name: "Boom 3D",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/291/43826/icon-1749207472-6842c9b062dd4.png",
-      description: "Boost volume and audio quality",
-      url: "https://setapp.com/apps/boom-3d",
-      platforms: "Mac, iOS",
-      rating: "91"
-    },
-    {
-      name: "NotchNook",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/719/42362/icon-1744915474-68014c12efb6a.png",
-      description: "Control Mac from the notch",
-      url: "https://setapp.com/apps/notchnook",
-      platforms: "Mac",
-      rating: "91"
-    },
-    {
-      name: "DisplayBuddy",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/489/42766/icon-1748774988-683c304c2ca82.png",
-      description: "Control settings across monitors",
-      url: "https://setapp.com/apps/displaybuddy",
-      platforms: "Mac",
-      rating: "91"
-    },
-    {
-      name: "Diagrams",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/408/40176/icon-1726300270-66e5406e6521f.png",
-      description: "Visualize with diagrams",
-      url: "https://setapp.com/apps/diagrams",
-      platforms: "Mac",
-      rating: "91"
-    },
-    {
-      name: "Chronicle",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/83/42541/icon-1747068772-6822276422f39.png",
-      description: "Track bills and subscriptions",
-      url: "https://setapp.com/apps/chronicle",
-      platforms: "Mac, iOS",
-      rating: "91"
-    },
-    {
-      name: "Clop",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/612/42707/icon-1748187919-68333b0fc8980.png",
-      description: "Shrink images, video, PDFs",
-      url: "https://setapp.com/apps/clop",
-      platforms: "Mac",
-      rating: "91"
-    },
-    {
-      name: "Focus 2",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/266/42278/icon-1743893238-67f1b2f666bec.png",
-      description: "Block websites and apps",
-      url: "https://setapp.com/apps/focus",
-      platforms: "Mac",
-      rating: "91"
-    },
-    {
-      name: "Almighty",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/487/42639/icon-1747515066-6828f6ba09c10.png",
-      description: "Unlock 50+ Mac shortcuts",
-      url: "https://setapp.com/apps/almighty",
-      platforms: "Mac",
-      rating: "91"
-    },
-    {
-      name: "Aquarelo",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/300/5565/icon-1643378565-61f3f785e6af0.png",
-      description: "Simplify color management",
-      url: "https://setapp.com/apps/aquarelo",
-      platforms: "Mac",
-      rating: "91"
-    },
-    {
-      name: "Muse",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/628/43865/icon-1749614395-6848ff3bd49e3.png",
-      description: "Put ideas on a single canvas",
-      url: "https://setapp.com/apps/muse",
-      platforms: "Mac, iOS",
-      rating: "91"
-    },
-    {
-      name: "TypingMind",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/583/40440/icon-1727938430-66fe3f7ee68ac.png",
-      description: "Use new UI to chat with AI",
-      url: "https://setapp.com/apps/typingmind",
-      platforms: "Mac, Web",
-      rating: "90"
-    },
-    {
-      name: "Luminar Neo",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/566/42752/icon-1748605432-683999f81f0e9.png",
-      description: "Improve your photos like a pro",
-      url: "https://setapp.com/apps/luminar-neo",
-      platforms: "Mac",
-      rating: "90"
-    },
-    {
-      name: "ChatMate for WhatsApp",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/240/40674/icon-1729783133-671a655d54dbe.png",
-      description: "Personalize WhatsApp",
-      url: "https://setapp.com/apps/chatmate-for-whatsapp",
-      platforms: "Mac",
-      rating: "90"
-    },
-    {
-      name: "CameraBag Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/299/42519/icon-1746576494-681aa46e5c360.png",
-      description: "Edit photos and videos",
-      url: "https://setapp.com/apps/camerabag-pro",
-      platforms: "Mac",
-      rating: "90"
-    },
-    {
-      name: "Moment",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/424/40407/icon-1727793531-66fc097bc6429.png",
-      description: "Create countdown events",
-      url: "https://setapp.com/apps/moment",
-      platforms: "Mac",
-      rating: "90"
-    },
-    {
-      name: "Daily",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/504/42708/icon-1748198319-683363afddb8c.png",
-      description: "Track time easily",
-      url: "https://setapp.com/apps/daily",
-      platforms: "Mac, iOS",
-      rating: "90"
     },
     {
       name: "Nitro PDF Pro",
@@ -1746,148 +442,12 @@
       rating: "89"
     },
     {
-      name: "Spark Mail",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/575/43810/icon-1749053067-68406e8ba3735.png",
-      description: "Manage emails easier",
-      url: "https://setapp.com/apps/spark-mail",
-      platforms: "Mac, iOS",
-      rating: "89"
-    },
-    {
-      name: "World Clock Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/246/41965/icon-1741045317-67c63e4508341.png",
-      description: "Work across time zones",
-      url: "https://setapp.com/apps/world-clock-pro",
-      platforms: "Mac, iOS",
-      rating: "89"
-    },
-    {
-      name: "iBoysoft MagicMenu",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/512/42345/icon-1744773554-67ff21b228833.png",
-      description: "Expand your Mac’s right click",
-      url: "https://setapp.com/apps/iboysoft-magicmenu",
+      name: "BetterZip",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/16/41955/icon-1740784885-67c23eb5b0dac.png",
+      description: "Archive files the easy way",
+      url: "https://setapp.com/apps/betterzip",
       platforms: "Mac",
-      rating: "89"
-    },
-    {
-      name: "PDF Pals",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/606/42481/icon-1746107539-68137c9375583.png",
-      description: "Chat with your PDFs",
-      url: "https://setapp.com/apps/pdf-pals",
-      platforms: "Mac",
-      rating: "89"
-    },
-    {
-      name: "Tayasui Sketches",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/255/5389/icon-1639474288-61b86470bad86.png",
-      description: "Draw and create illustrations",
-      url: "https://setapp.com/apps/tayasui-sketches",
-      platforms: "Mac",
-      rating: "89"
-    },
-    {
-      name: "GetAPI",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/756/42618/icon-1747220736-6824790076491.png",
-      description: "Manage API interactions easier",
-      url: "https://setapp.com/apps/getapi",
-      platforms: "Mac",
-      rating: "89"
-    },
-    {
-      name: "ClearVPN",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/433/42622/icon-1747307513-6825cbf994f32.png",
-      description: "Use an intuitive VPN",
-      url: "https://setapp.com/apps/clearvpn",
-      platforms: "Mac, iOS",
-      rating: "88"
-    },
-    {
-      name: "Batteries",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/393/42767/icon-1748785895-683c5ae74dbc9.png",
-      description: "Track all devices' battery levels",
-      url: "https://setapp.com/apps/batteries",
-      platforms: "Mac",
-      rating: "88"
-    },
-    {
-      name: "WidgetWall",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/528/42687/icon-1747926996-682f3fd48a02b.png",
-      description: "Add widgets to Mac desktop",
-      url: "https://setapp.com/apps/widget-wall",
-      platforms: "Mac",
-      rating: "88"
-    },
-    {
-      name: "WallCal",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/541/41930/icon-1740579534-67bf22cec4e8d.png",
-      description: "Pin clear calendar to desktop",
-      url: "https://setapp.com/apps/wallcal",
-      platforms: "Mac",
-      rating: "88"
-    },
-    {
-      name: "Capto",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/175/42078/icon-1742193995-67d7c54b2f8f8.png",
-      description: "Create screen recordings",
-      url: "https://setapp.com/apps/capto",
-      platforms: "Mac",
-      rating: "87"
-    },
-    {
-      name: "Elephas",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/576/42780/icon-1748860950-683d8016cd020.png",
-      description: "Manage knowledge with AI",
-      url: "https://setapp.com/apps/elephas",
-      platforms: "Mac, iOS",
-      rating: "87"
-    },
-    {
-      name: "GetSound",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/586/9717/icon-1706102658-65b10f82b952a.png",
-      description: "Focus with AI soundscapes",
-      url: "https://setapp.com/apps/getsound",
-      platforms: "Mac",
-      rating: "87"
-    },
-    {
-      name: "Expenses",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/521/43864/icon-1749612036-6848f60475063.png",
-      description: "Track your spending",
-      url: "https://setapp.com/apps/expenses",
-      platforms: "Mac, iOS",
-      rating: "87"
-    },
-    {
-      name: "Focused Work",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/699/42759/icon-1748710157-683b330d4602c.png",
-      description: "Work with timers",
-      url: "https://setapp.com/apps/focused-work-mac",
-      platforms: "Mac, iOS",
-      rating: "87"
-    },
-    {
-      name: "iMeetingX",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/337/9518/icon-1702884273-657ff3b16c0a6.png",
-      description: "Run meetings effectively",
-      url: "https://setapp.com/apps/imeetingx",
-      platforms: "Mac",
-      rating: "87"
-    },
-    {
-      name: "iBoysoft NTFS for Mac",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/384/40354/icon-1727496466-66f7811273225.png",
-      description: "Read/write to NTFS drives",
-      url: "https://setapp.com/apps/iboysoft-ntfs-for-mac",
-      platforms: "Mac",
-      rating: "86"
-    },
-    {
-      name: "Structured",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/555/42768/icon-1748786595-683c5da33211f.png",
-      description: "Structure your day",
-      url: "https://setapp.com/apps/structured",
-      platforms: "Mac, iOS",
-      rating: "86"
+      rating: "96"
     },
     {
       name: "Get Backup Pro",
@@ -1898,140 +458,60 @@
       rating: "86"
     },
     {
-      name: "SheetPlanner",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/453/40067/icon-1725563539-66da0293bf0a3.png",
-      description: "Plan and track project progress",
-      url: "https://setapp.com/apps/sheetplanner",
+      name: "Archiver",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/109/41938/icon-1740627509-67bf963597df7.png",
+      description: "Compress files easily",
+      url: "https://setapp.com/apps/archiver",
       platforms: "Mac",
-      rating: "86"
+      rating: "96"
     },
     {
-      name: "Focus",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/700/28918/icon-1716573034-6650d36a66766.png",
-      description: "Block websites and social media",
-      url: "https://setapp.com/apps/focus-mac",
-      platforms: "Mac",
-      rating: "86"
-    },
-    {
-      name: "Rocket Typist",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/276/41821/icon-1739458538-67ae07eac8620.png",
-      description: "Save time typing with text snippets",
-      url: "https://setapp.com/apps/rocket-typist",
+      name: "Ulysses",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/67/42660/icon-1747749841-682c8bd1e7d9c.png",
+      description: "Write and publish from one app",
+      url: "https://setapp.com/apps/ulysses",
       platforms: "Mac, iOS",
-      rating: "85"
+      rating: "99"
     },
     {
-      name: "uBar",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/306/6785/icon-1665525396-6345e6945f33c.png",
-      description: "Make the Dock useful",
-      url: "https://setapp.com/apps/ubar",
+      name: "Renamer",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/136/40792/icon-1730733142-6728e4563df6a.png",
+      description: "Rename a batch of files",
+      url: "https://setapp.com/apps/renamer",
       platforms: "Mac",
-      rating: "85"
+      rating: "96"
     },
     {
-      name: "Vivid",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/546/39922/icon-1724012110-66c2564e2b09f.png",
-      description: "Double display brightness",
-      url: "https://setapp.com/apps/vivid",
-      platforms: "Mac",
-      rating: "85"
-    },
-    {
-      name: "Plus",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/584/42484/icon-1746174118-681480a6e0e16.png",
-      description: "Work with text using AI",
-      url: "https://setapp.com/apps/plus",
-      platforms: "Mac",
-      rating: "85"
-    },
-    {
-      name: "AnyDroid",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/336/41846/icon-1739786426-67b308ba38644.png",
-      description: "Move files between Mac and Android",
-      url: "https://setapp.com/apps/anytrans-for-android",
-      platforms: "Mac",
-      rating: "85"
-    },
-    {
-      name: "PliimPRO",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/406/9104/icon-1697480465-652d7f11a4cad.png",
-      description: "Share screen distraction-free",
-      url: "https://setapp.com/apps/pliimpro",
-      platforms: "Mac",
-      rating: "85"
-    },
-    {
-      name: "Hustl",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/436/5289/icon-1637696825-619d453928e34.png",
-      description: "Create timelapses of your screen",
-      url: "https://setapp.com/apps/hustl",
-      platforms: "Mac",
-      rating: "85"
-    },
-    {
-      name: "MonsterWriter",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/502/42757/icon-1748691704-683aeaf8555d7.png",
-      description: "Write complex texts easily",
-      url: "https://setapp.com/apps/monsterwriter",
-      platforms: "Mac",
-      rating: "85"
-    },
-    {
-      name: "Clobbr",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/593/41323/icon-1734653161-6764b4e997d42.png",
-      description: "Load test API endpoints",
-      url: "https://setapp.com/apps/clobbr",
-      platforms: "Mac",
-      rating: "85"
-    },
-    {
-      name: "Canary Mail",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/307/42730/icon-1748435453-683701fd4d865.png",
-      description: "Write and manage emails",
-      url: "https://setapp.com/apps/canary-mail",
+      name: "Session",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/428/42692/icon-1747967217-682fdcf1a2474.png",
+      description: "Work in short intervals",
+      url: "https://setapp.com/apps/session",
       platforms: "Mac, iOS",
-      rating: "84"
+      rating: "98"
     },
     {
-      name: "Calendars",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/623/42476/icon-1746037434-68126abadb8d9.png",
-      description: "Track tasks, events, and plans",
-      url: "https://setapp.com/apps/calendars",
-      platforms: "Mac, iOS",
-      rating: "84"
-    },
-    {
-      name: "Spellar AI",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/635/42593/icon-1747110468-6822ca44591b2.png",
-      description: "Smart Meeting Notes with AI",
-      url: "https://setapp.com/apps/spellar-ai",
-      platforms: "Mac, Web",
-      rating: "84"
-    },
-    {
-      name: "WhisperTranscribe",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/691/42434/icon-1745789075-680ea09336dbf.png",
-      description: "Turn voice into text content",
-      url: "https://setapp.com/apps/whisper-transcribe",
+      name: "CodeRunner",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/122/41549/icon-1737112183-678a3a77b43aa.png",
+      description: "Edit and run code faster",
+      url: "https://setapp.com/apps/coderunner",
       platforms: "Mac",
-      rating: "84"
+      rating: "96"
     },
     {
-      name: "GreenBooks",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/505/42101/icon-1742439491-67db844380d13.png",
-      description: "Manage money easily",
-      url: "https://setapp.com/apps/greenbooks",
+      name: "Craft",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/554/42201/icon-1743413950-67ea62be54f57.png",
+      description: "Create and structure documents",
+      url: "https://setapp.com/apps/craft",
       platforms: "Mac, iOS",
-      rating: "84"
+      rating: "99"
     },
     {
-      name: "Smmall Cloud",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/744/41994/icon-1741202691-67c8a5031d9fd.png",
-      description: "Share files and boost your brand",
-      url: "https://setapp.com/apps/smmall-cloud",
+      name: "PDF Pals",
+      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/606/42481/icon-1746107539-68137c9375583.png",
+      description: "Chat with your PDFs",
+      url: "https://setapp.com/apps/pdf-pals",
       platforms: "Mac",
-      rating: "84"
+      rating: "89"
     },
     {
       name: "MurmurType",
@@ -2042,381 +522,14 @@
       rating: "83"
     },
     {
-      name: "Speeko",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/477/42496/icon-1746321274-6816bf7a5ee04.png",
-      description: "Get better at public speaking",
-      url: "https://setapp.com/apps/speeko",
-      platforms: "Mac, iOS",
-      rating: "83"
-    },
-    {
-      name: "Mimir",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/451/43827/icon-1749222527-6843047f5921c.png",
-      description: "Play and manage podcasts",
-      url: "https://setapp.com/apps/mimir",
-      platforms: "Mac, iOS",
-      rating: "83"
-    },
-    {
-      name: "UpLife",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/530/42483/icon-6814723cd9b41.jpg",
-      description: "Your self-care assistant",
-      url: "https://setapp.com/apps/uplife-mental-health-therapy-ios",
-      platforms: "iOS",
-      rating: "83"
-    },
-    {
-      name: "IM+",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/296/3685/icon-1605729873-5fb57e510c414.png",
-      description: "Bring all messengers into one",
-      url: "https://setapp.com/apps/im+",
-      platforms: "Mac",
-      rating: "82"
-    },
-    {
-      name: "DCommander",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/311/41384/icon-1735205346-676d21e2e8634.png",
-      description: "Manage files in a dual-pane view",
-      url: "https://setapp.com/apps/dcommander",
-      platforms: "Mac",
-      rating: "82"
-    },
-    {
-      name: "Silenz",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/350/8914/icon-1695550446-65100beee3749.png",
-      description: "Focus mode sound",
-      url: "https://setapp.com/apps/silenz",
-      platforms: "Mac",
-      rating: "82"
-    },
-    {
-      name: "mSecure",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/732/41618/icon-1737736000-6793bf40b30b3.png",
-      description: "Store and sync passwords",
-      url: "https://setapp.com/apps/msecure",
-      platforms: "Mac, iOS",
-      rating: "82"
-    },
-    {
-      name: "Invoice Rex",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/749/42777/icon-1748848699-683d503b31d44.png",
-      description: "Edit and track invoices",
-      url: "https://setapp.com/apps/invoice-rex",
-      platforms: "Mac, iOS",
-      rating: "82"
-    },
-    {
-      name: "AppWage",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/711/42286/icon-1744026714-67f3bc5a93dfb.png",
-      description: "Track your app earnings",
-      url: "https://setapp.com/apps/appwage",
-      platforms: "Mac",
-      rating: "82"
-    },
-    {
-      name: "MoneyWiz 2025",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/565/42636/icon-1747415862-682773363aa5c.png",
-      description: "Budget and manage bills",
-      url: "https://setapp.com/apps/moneywiz",
-      platforms: "Mac, iOS",
-      rating: "81"
-    },
-    {
-      name: "JustStream",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/370/42243/icon-1743592902-67ed1dc64ffe1.png",
-      description: "Mirror Mac screen to TV",
-      url: "https://setapp.com/apps/juststream",
-      platforms: "Mac",
-      rating: "81"
-    },
-    {
-      name: "Pie Menu",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/697/40821/icon-1730974322-672c927219414.png",
-      description: "Access app actions in a click",
-      url: "https://setapp.com/apps/pie-menu",
-      platforms: "Mac",
-      rating: "80"
-    },
-    {
-      name: "iShowU",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/720/42317/icon-1744317122-67f82ac23fa0b.png",
-      description: "Record screen on Mac",
-      url: "https://setapp.com/apps/ishowu",
-      platforms: "Mac",
-      rating: "80"
-    },
-    {
-      name: "FreeYourMusic",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/737/42359/icon-1744872400-6800a3d0e8dc6.png",
-      description: "Transfer your playlists",
-      url: "https://setapp.com/apps/freeyourmusic",
-      platforms: "Mac, iOS",
-      rating: "79"
-    },
-    {
-      name: "Boom",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/735/42783/icon-1748875965-683dbabdd428d.png",
-      description: "Level-up your video calls",
-      url: "https://setapp.com/apps/boom",
-      platforms: "Mac",
-      rating: "79"
-    },
-    {
-      name: "Remote Mouse",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/193/1970/icon-1558078558-5cde645e2405f.png",
-      description: "Control Mac from your phone",
-      url: "https://setapp.com/apps/remote-mouse",
-      platforms: "Mac",
-      rating: "79"
-    },
-    {
-      name: "AnyTrans for iOS",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/328/42580/icon-1747015439-6821570f0d559.png",
-      description: "Move files between macOS and iOS",
-      url: "https://setapp.com/apps/anytrans",
-      platforms: "Mac",
-      rating: "78"
-    },
-    {
-      name: "Backtrack",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/381/41528/icon-1736899813-6786fce564982.png",
-      description: "Record audio from the past",
-      url: "https://setapp.com/apps/backtrack",
-      platforms: "Mac",
-      rating: "78"
-    },
-    {
-      name: "Taskheat",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/326/41099/icon-1732998743-674b7657aad16.png",
-      description: "Learn to prioritize tasks",
-      url: "https://setapp.com/apps/taskheat",
-      platforms: "Mac, iOS",
-      rating: "78"
-    },
-    {
-      name: "Secrets 4",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/587/42673/icon-1747819273-682d9b0983304.png",
-      description: "Store and manage passwords",
-      url: "https://setapp.com/apps/secrets",
-      platforms: "Mac, iOS",
-      rating: "77"
-    },
-    {
-      name: "Simon",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/201/7859/icon-1681321139-6436ecb3343c6.png",
-      description: "Control and troubleshoot servers",
-      url: "https://setapp.com/apps/simon",
-      platforms: "Mac",
-      rating: "77"
-    },
-    {
-      name: "Chimeful",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/759/43808/icon-1749050058-684062ca28067.png",
-      description: "Improve focus and stay mindful",
-      url: "https://setapp.com/apps/chimeful",
-      platforms: "Mac",
-      rating: "77"
-    },
-    {
-      name: "Subjects",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/619/41415/icon-1735670378-67743a6a3647c.png",
-      description: "Track class schedule, homework",
-      url: "https://setapp.com/apps/subjects",
-      platforms: "Mac, iOS",
-      rating: "76"
-    },
-    {
-      name: "TeaCode",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/308/40239/icon-1726668573-66eadf1df1cc3.png",
-      description: "Speed up coding with expanders",
-      url: "https://setapp.com/apps/teacode",
-      platforms: "Mac",
-      rating: "76"
-    },
-    {
-      name: "Coherence X",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/363/39301/icon-1718731966-6671c4be62880.png",
-      description: "Turn websites into apps",
-      url: "https://setapp.com/apps/coherence-pro",
-      platforms: "Mac",
-      rating: "74"
-    },
-    {
-      name: "Keep It Shot",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/688/41516/icon-1736865151-6786757f32e88.png",
-      description: "Rename screenshots with AI",
-      url: "https://setapp.com/apps/keep-it-shot",
-      platforms: "Mac",
-      rating: "74"
-    },
-    {
-      name: "Lacona",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/235/7221/icon-1671243506-639d26f20c993.png",
-      description: "Tell your Mac what to do",
-      url: "https://setapp.com/apps/lacona",
-      platforms: "Mac",
-      rating: "74"
-    },
-    {
-      name: "Moonitor",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/314/8672/icon-1706610205-65b8ce1de936e.png",
-      description: "Receive live updates on crypto",
-      url: "https://setapp.com/apps/moonitor",
-      platforms: "Mac",
-      rating: "74"
-    },
-    {
-      name: "CleanPresenter",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/581/40679/icon-1729846239-671b5bdf41873.png",
-      description: "Present a single window",
-      url: "https://setapp.com/apps/cleanpresenter",
-      platforms: "Mac",
-      rating: "73"
-    },
-    {
-      name: "Spotless",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/294/2215/icon-1566995620-5d6674a445de5.png",
-      description: "Auto-hide files and clean up",
-      url: "https://setapp.com/apps/spotless",
-      platforms: "Mac",
-      rating: "73"
-    },
-    {
-      name: "Numerics",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/594/42160/icon-1742954658-67e360a2042df.png",
-      description: "Monitor your business data",
-      url: "https://setapp.com/apps/numerics",
-      platforms: "Mac, iOS",
-      rating: "73"
-    },
-    {
-      name: "Filmage Editor",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/545/9060/icon-1697012144-652659b0b21ce.png",
-      description: "Easily edit videos like a pro",
-      url: "https://setapp.com/apps/filmage-editor",
-      platforms: "Mac",
-      rating: "72"
-    },
-    {
-      name: "AdLock",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/517/41861/icon-1740384397-67bc288ddd017.png",
-      description: "Block annoying browser ads",
-      url: "https://setapp.com/apps/adlock",
-      platforms: "Mac, iOS",
-      rating: "70"
-    },
-    {
-      name: "Headway",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/618/43872/icon-684a7fb820d5f.jpg",
-      description: "Get summaries for nonfiction",
-      url: "https://setapp.com/apps/headway",
-      platforms: "iOS, Web",
-      rating: "70"
-    },
-    {
-      name: "Unite",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/340/43849/icon-1749485603-6847082326200.png",
-      description: "Create an app from a website",
-      url: "https://setapp.com/apps/unite",
-      platforms: "Mac",
-      rating: "67"
-    },
-    {
-      name: "Tab Finder",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/488/9319/icon-1700040755-65549033172ca.png",
-      description: "Tabs from all browsers in one spot",
-      url: "https://setapp.com/apps/tabfinder",
-      platforms: "Mac",
-      rating: "67"
-    },
-    {
-      name: "n-Track Studio",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/238/7508/icon-1676044779-63e669eb0b3d9.png",
-      description: "Record and edit music on Mac",
-      url: "https://setapp.com/apps/n-track-studio",
-      platforms: "Mac",
-      rating: "67"
-    },
-    {
-      name: "ByDesign",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/760/43851/icon-1749459354-6846a19a331ec.png",
-      description: "Organize your work and life",
-      url: "https://setapp.com/apps/bydesign",
-      platforms: "Mac, iOS, Web",
-      rating: "67"
-    },
-    {
-      name: "Mental Walk",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/494/6892/icon-1666616857-63568e19275d5.png",
-      description: "Reflect on your life",
-      url: "https://setapp.com/apps/mentalwalk",
-      platforms: "Mac",
-      rating: "67"
-    },
-    {
-      name: "Sidebar",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/729/42661/icon-1747749988-682c8c6458556.png",
-      description: "Try a Dock alternative",
-      url: "https://setapp.com/apps/sidebar",
-      platforms: "Mac",
-      rating: "64"
-    },
-    {
-      name: "TaoGit",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/516/40716/icon-1730208153-6720e19925f0f.png",
-      description: "Streamline your work with Git",
-      url: "https://setapp.com/apps/taogit",
-      platforms: "Mac",
-      rating: "60"
-    },
-    {
-      name: "SwiftyLaunch",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/738/42635/icon-1747402833-68274051f26a0.png",
-      description: "Build iOS apps faster",
-      url: "https://setapp.com/apps/swiftylaunch",
-      platforms: "Mac",
-      rating: "59"
-    },
-    {
-      name: "CleanMy®Phone",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/399/43814/icon-684145403148e.jpg",
-      description: "Remove digital clutter",
-      url: "https://setapp.com/apps/gemini-photos",
-      platforms: "iOS",
-      rating: "58"
-    },
-    {
-      name: "Launcher with Multiple Widgets",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/535/41592/icon-67909c33365bc.jpg",
-      description: "Customize your home screen",
-      url: "https://setapp.com/apps/launcher-with-multiple-widgets-ios",
-      platforms: "iOS",
-      rating: "57"
-    },
-    {
-      name: "Voice Dream Reader",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/717/41922/icon-1740505258-67be00aa89d1a.png",
-      description: "Listen to your texts",
-      url: "https://setapp.com/apps/voice-dream-reader",
-      platforms: "Mac",
-      rating: "48"
-    },
-    {
-      name: "Leave Me Alone",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/709/main/icon-7777ffdacb9dc.png",
-      description: "Manage email subscriptions",
-      url: "https://setapp.com/apps/leave-me-alone",
-      platforms: "Web",
-      rating: "0"
-    },
-    {
       name: "Ready to Send",
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/607/main/icon-65719fa98f5e6.png",
       description: "Generate draft email replies",
       url: "https://setapp.com/apps/ready-to-send",
-      platforms: "Web"
+      platforms: "Web",
+      rating: "0"
     }
-  ], wa = `.tippy-box,
+  ], xn = `.tippy-box,
 .tippy-content {
   background: transparent !important;
   /* padding: 0 !important;
@@ -2680,7 +793,7 @@ body:has(.os-dialog[open]) {
   overflow: hidden;
 }
 `;
-  class xa {
+  class kn {
     constructor() {
       this.popoverElement = null, this.aborters = [], this.init(), this.aborters = [];
     }
@@ -2720,7 +833,7 @@ body:has(.os-dialog[open]) {
       <div class="os-popover-body">
         <p>${t.body.text}</p>
         <ul>
-          ${t.body.list.map((a) => `<li>${a}</li>`).join("")}
+          ${t.body.list.map((n) => `<li>${n}</li>`).join("")}
         </ul>
       </div>
       <div class="os-popover-footer">
@@ -2752,61 +865,61 @@ body:has(.os-dialog[open]) {
     `, (t = document.body) == null || t.appendChild(this.popoverElement);
     }
     showDialog(t) {
-      var p;
+      var a;
       t && t !== "latest" && sessionStorage.setItem("os-tooltip-variant", JSON.stringify(t));
-      const o = document.getElementById("os-dialog").querySelector(
+      const i = document.getElementById("os-dialog").querySelector(
         "#os-dialog-content"
-      ), n = t === "latest" ? JSON.parse(sessionStorage.getItem("os-tooltip-variant")) : t;
-      o.innerHTML = this.returnHtml(n), (p = this.popoverElement) == null || p.showModal(), this.eventListeners();
+      ), r = t === "latest" ? JSON.parse(sessionStorage.getItem("os-tooltip-variant")) : t;
+      i.innerHTML = this.returnHtml(r), (a = this.popoverElement) == null || a.showModal(), this.eventListeners();
     }
     closeDialog() {
       if (!this.popoverElement) return;
       const t = this.popoverElement.querySelector(
         "#os-dialog-content"
       );
-      this.popoverElement.close(), t.innerHTML = "", this.aborters.forEach((a) => {
-        a.abort();
+      this.popoverElement.close(), t.innerHTML = "", this.aborters.forEach((n) => {
+        n.abort();
       }), this.aborters = [];
     }
     eventListeners() {
       if (!this.popoverElement) return;
-      const t = document.getElementById("os-dialog"), a = t == null ? void 0 : t.querySelector(
+      const t = document.getElementById("os-dialog"), n = t == null ? void 0 : t.querySelector(
         'button[type="button"]'
       );
-      a == null || a.addEventListener("click", () => {
+      n == null || n.addEventListener("click", () => {
         this.closeDialog();
       });
-      const o = new AbortController();
-      this.aborters.push(o);
-      const n = t.querySelector(
+      const i = new AbortController();
+      this.aborters.push(i);
+      const r = t.querySelector(
         ".btn-download"
       );
-      n == null || n.addEventListener(
+      r == null || r.addEventListener(
         "click",
         async () => {
           var s;
           (s = document.querySelector(".header__cta-button")) == null || s.click();
-          const p = document.querySelector("#signup-modal");
-          if (p) {
-            const r = new MutationObserver((c) => {
-              c.forEach((m) => {
-                m.type === "attributes" && m.attributeName === "aria-hidden" && p.getAttribute("aria-hidden") === "true" && (r.disconnect(), this.showDialog("latest"));
+          const a = document.querySelector("#signup-modal");
+          if (a) {
+            const p = new MutationObserver((c) => {
+              c.forEach((u) => {
+                u.type === "attributes" && u.attributeName === "aria-hidden" && a.getAttribute("aria-hidden") === "true" && (p.disconnect(), this.showDialog("latest"));
               });
             });
-            r.observe(p, { attributes: !0 });
+            p.observe(a, { attributes: !0 });
           }
         },
         {
-          signal: o.signal
+          signal: i.signal
         }
       );
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = wa, document.head.appendChild(t);
+      t.textContent = xn, document.head.appendChild(t);
     }
   }
-  const ka = [
+  const Cn = [
     {
       imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
       title: "Disk Drill",
@@ -3498,15 +1611,15 @@ body:has(.os-dialog[open]) {
       }
     }
   ];
-  var W = "top", _ = "bottom", U = "right", H = "left", le = "auto", Dt = [W, _, U, H], wt = "start", Et = "end", Ma = "clippingParents", Ae = "viewport", Pt = "popper", Sa = "reference", Te = /* @__PURE__ */ Dt.reduce(function(e, t) {
-    return e.concat([t + "-" + wt, t + "-" + Et]);
-  }, []), De = /* @__PURE__ */ [].concat(Dt, [le]).reduce(function(e, t) {
-    return e.concat([t, t + "-" + wt, t + "-" + Et]);
-  }, []), Ca = "beforeRead", qa = "read", Oa = "afterRead", Aa = "beforeMain", Ta = "main", Da = "afterMain", Ea = "beforeWrite", Pa = "write", La = "afterWrite", Ra = [Ca, qa, Oa, Aa, Ta, Da, Ea, Pa, La];
-  function Z(e) {
+  var $ = "top", N = "bottom", U = "right", F = "left", le = "auto", Tt = [$, N, U, F], wt = "start", Pt = "end", Sn = "clippingParents", Me = "viewport", Lt = "popper", An = "reference", De = /* @__PURE__ */ Tt.reduce(function(e, t) {
+    return e.concat([t + "-" + wt, t + "-" + Pt]);
+  }, []), Te = /* @__PURE__ */ [].concat(Tt, [le]).reduce(function(e, t) {
+    return e.concat([t, t + "-" + wt, t + "-" + Pt]);
+  }, []), On = "beforeRead", En = "read", Mn = "afterRead", Dn = "beforeMain", Tn = "main", Pn = "afterMain", Ln = "beforeWrite", Rn = "write", qn = "afterWrite", Bn = [On, En, Mn, Dn, Tn, Pn, Ln, Rn, qn];
+  function X(e) {
     return e ? (e.nodeName || "").toLowerCase() : null;
   }
-  function $(e) {
+  function _(e) {
     if (e == null)
       return window;
     if (e.toString() !== "[object Window]") {
@@ -3515,32 +1628,32 @@ body:has(.os-dialog[open]) {
     }
     return e;
   }
-  function ut(e) {
-    var t = $(e).Element;
+  function ft(e) {
+    var t = _(e).Element;
     return e instanceof t || e instanceof Element;
   }
-  function G(e) {
-    var t = $(e).HTMLElement;
+  function Y(e) {
+    var t = _(e).HTMLElement;
     return e instanceof t || e instanceof HTMLElement;
   }
   function de(e) {
     if (typeof ShadowRoot > "u")
       return !1;
-    var t = $(e).ShadowRoot;
+    var t = _(e).ShadowRoot;
     return e instanceof t || e instanceof ShadowRoot;
   }
-  function Ba(e) {
+  function In(e) {
     var t = e.state;
-    Object.keys(t.elements).forEach(function(a) {
-      var o = t.styles[a] || {}, n = t.attributes[a] || {}, p = t.elements[a];
-      !G(p) || !Z(p) || (Object.assign(p.style, o), Object.keys(n).forEach(function(s) {
-        var r = n[s];
-        r === !1 ? p.removeAttribute(s) : p.setAttribute(s, r === !0 ? "" : r);
+    Object.keys(t.elements).forEach(function(n) {
+      var i = t.styles[n] || {}, r = t.attributes[n] || {}, a = t.elements[n];
+      !Y(a) || !X(a) || (Object.assign(a.style, i), Object.keys(r).forEach(function(s) {
+        var p = r[s];
+        p === !1 ? a.removeAttribute(s) : a.setAttribute(s, p === !0 ? "" : p);
       }));
     });
   }
-  function Fa(e) {
-    var t = e.state, a = {
+  function jn(e) {
+    var t = e.state, n = {
       popper: {
         position: t.options.strategy,
         left: "0",
@@ -3552,91 +1665,91 @@ body:has(.os-dialog[open]) {
       },
       reference: {}
     };
-    return Object.assign(t.elements.popper.style, a.popper), t.styles = a, t.elements.arrow && Object.assign(t.elements.arrow.style, a.arrow), function() {
-      Object.keys(t.elements).forEach(function(o) {
-        var n = t.elements[o], p = t.attributes[o] || {}, s = Object.keys(t.styles.hasOwnProperty(o) ? t.styles[o] : a[o]), r = s.reduce(function(c, m) {
-          return c[m] = "", c;
+    return Object.assign(t.elements.popper.style, n.popper), t.styles = n, t.elements.arrow && Object.assign(t.elements.arrow.style, n.arrow), function() {
+      Object.keys(t.elements).forEach(function(i) {
+        var r = t.elements[i], a = t.attributes[i] || {}, s = Object.keys(t.styles.hasOwnProperty(i) ? t.styles[i] : n[i]), p = s.reduce(function(c, u) {
+          return c[u] = "", c;
         }, {});
-        !G(n) || !Z(n) || (Object.assign(n.style, r), Object.keys(p).forEach(function(c) {
-          n.removeAttribute(c);
+        !Y(r) || !X(r) || (Object.assign(r.style, p), Object.keys(a).forEach(function(c) {
+          r.removeAttribute(c);
         }));
       });
     };
   }
-  const Ee = {
+  const Pe = {
     name: "applyStyles",
     enabled: !0,
     phase: "write",
-    fn: Ba,
-    effect: Fa,
+    fn: In,
+    effect: jn,
     requires: ["computeStyles"]
   };
   function K(e) {
     return e.split("-")[0];
   }
-  var ft = Math.max, Nt = Math.min, xt = Math.round;
-  function me() {
+  var mt = Math.max, Vt = Math.min, xt = Math.round;
+  function ue() {
     var e = navigator.userAgentData;
     return e != null && e.brands && Array.isArray(e.brands) ? e.brands.map(function(t) {
       return t.brand + "/" + t.version;
     }).join(" ") : navigator.userAgent;
   }
-  function Pe() {
-    return !/^((?!chrome|android).)*safari/i.test(me());
+  function Le() {
+    return !/^((?!chrome|android).)*safari/i.test(ue());
   }
-  function kt(e, t, a) {
-    t === void 0 && (t = !1), a === void 0 && (a = !1);
-    var o = e.getBoundingClientRect(), n = 1, p = 1;
-    t && G(e) && (n = e.offsetWidth > 0 && xt(o.width) / e.offsetWidth || 1, p = e.offsetHeight > 0 && xt(o.height) / e.offsetHeight || 1);
-    var s = ut(e) ? $(e) : window, r = s.visualViewport, c = !Pe() && a, m = (o.left + (c && r ? r.offsetLeft : 0)) / n, d = (o.top + (c && r ? r.offsetTop : 0)) / p, k = o.width / n, x = o.height / p;
+  function kt(e, t, n) {
+    t === void 0 && (t = !1), n === void 0 && (n = !1);
+    var i = e.getBoundingClientRect(), r = 1, a = 1;
+    t && Y(e) && (r = e.offsetWidth > 0 && xt(i.width) / e.offsetWidth || 1, a = e.offsetHeight > 0 && xt(i.height) / e.offsetHeight || 1);
+    var s = ft(e) ? _(e) : window, p = s.visualViewport, c = !Le() && n, u = (i.left + (c && p ? p.offsetLeft : 0)) / r, d = (i.top + (c && p ? p.offsetTop : 0)) / a, k = i.width / r, x = i.height / a;
     return {
       width: k,
       height: x,
       top: d,
-      right: m + k,
+      right: u + k,
       bottom: d + x,
-      left: m,
-      x: m,
+      left: u,
+      x: u,
       y: d
     };
   }
-  function ue(e) {
-    var t = kt(e), a = e.offsetWidth, o = e.offsetHeight;
-    return Math.abs(t.width - a) <= 1 && (a = t.width), Math.abs(t.height - o) <= 1 && (o = t.height), {
+  function fe(e) {
+    var t = kt(e), n = e.offsetWidth, i = e.offsetHeight;
+    return Math.abs(t.width - n) <= 1 && (n = t.width), Math.abs(t.height - i) <= 1 && (i = t.height), {
       x: e.offsetLeft,
       y: e.offsetTop,
-      width: a,
-      height: o
+      width: n,
+      height: i
     };
   }
-  function Le(e, t) {
-    var a = t.getRootNode && t.getRootNode();
+  function Re(e, t) {
+    var n = t.getRootNode && t.getRootNode();
     if (e.contains(t))
       return !0;
-    if (a && de(a)) {
-      var o = t;
+    if (n && de(n)) {
+      var i = t;
       do {
-        if (o && e.isSameNode(o))
+        if (i && e.isSameNode(i))
           return !0;
-        o = o.parentNode || o.host;
-      } while (o);
+        i = i.parentNode || i.host;
+      } while (i);
     }
     return !1;
   }
-  function at(e) {
-    return $(e).getComputedStyle(e);
+  function nt(e) {
+    return _(e).getComputedStyle(e);
   }
-  function Ia(e) {
-    return ["table", "td", "th"].indexOf(Z(e)) >= 0;
+  function Hn(e) {
+    return ["table", "td", "th"].indexOf(X(e)) >= 0;
   }
-  function rt(e) {
-    return ((ut(e) ? e.ownerDocument : (
+  function pt(e) {
+    return ((ft(e) ? e.ownerDocument : (
       // $FlowFixMe[prop-missing]
       e.document
     )) || window.document).documentElement;
   }
-  function Vt(e) {
-    return Z(e) === "html" ? e : (
+  function Wt(e) {
+    return X(e) === "html" ? e : (
       // this is a quicker (but less type safe) way to save quite some bytes from the bundle
       // $FlowFixMe[incompatible-return]
       // $FlowFixMe[prop-missing]
@@ -3644,43 +1757,43 @@ body:has(.os-dialog[open]) {
       e.parentNode || // DOM Element detected
       (de(e) ? e.host : null) || // ShadowRoot detected
       // $FlowFixMe[incompatible-call]: HTMLElement is a Node
-      rt(e)
+      pt(e)
     );
   }
-  function Re(e) {
-    return !G(e) || // https://github.com/popperjs/popper-core/issues/837
-    at(e).position === "fixed" ? null : e.offsetParent;
+  function qe(e) {
+    return !Y(e) || // https://github.com/popperjs/popper-core/issues/837
+    nt(e).position === "fixed" ? null : e.offsetParent;
   }
-  function za(e) {
-    var t = /firefox/i.test(me()), a = /Trident/i.test(me());
-    if (a && G(e)) {
-      var o = at(e);
-      if (o.position === "fixed")
+  function zn(e) {
+    var t = /firefox/i.test(ue()), n = /Trident/i.test(ue());
+    if (n && Y(e)) {
+      var i = nt(e);
+      if (i.position === "fixed")
         return null;
     }
-    var n = Vt(e);
-    for (de(n) && (n = n.host); G(n) && ["html", "body"].indexOf(Z(n)) < 0; ) {
-      var p = at(n);
-      if (p.transform !== "none" || p.perspective !== "none" || p.contain === "paint" || ["transform", "perspective"].indexOf(p.willChange) !== -1 || t && p.willChange === "filter" || t && p.filter && p.filter !== "none")
-        return n;
-      n = n.parentNode;
+    var r = Wt(e);
+    for (de(r) && (r = r.host); Y(r) && ["html", "body"].indexOf(X(r)) < 0; ) {
+      var a = nt(r);
+      if (a.transform !== "none" || a.perspective !== "none" || a.contain === "paint" || ["transform", "perspective"].indexOf(a.willChange) !== -1 || t && a.willChange === "filter" || t && a.filter && a.filter !== "none")
+        return r;
+      r = r.parentNode;
     }
     return null;
   }
-  function Lt(e) {
-    for (var t = $(e), a = Re(e); a && Ia(a) && at(a).position === "static"; )
-      a = Re(a);
-    return a && (Z(a) === "html" || Z(a) === "body" && at(a).position === "static") ? t : a || za(e) || t;
+  function Rt(e) {
+    for (var t = _(e), n = qe(e); n && Hn(n) && nt(n).position === "static"; )
+      n = qe(n);
+    return n && (X(n) === "html" || X(n) === "body" && nt(n).position === "static") ? t : n || zn(e) || t;
   }
-  function fe(e) {
+  function me(e) {
     return ["top", "bottom"].indexOf(e) >= 0 ? "x" : "y";
   }
-  function Rt(e, t, a) {
-    return ft(e, Nt(t, a));
+  function qt(e, t, n) {
+    return mt(e, Vt(t, n));
   }
-  function ja(e, t, a) {
-    var o = Rt(e, t, a);
-    return o > a ? a : o;
+  function $n(e, t, n) {
+    var i = qt(e, t, n);
+    return i > n ? n : i;
   }
   function Be() {
     return {
@@ -3690,57 +1803,57 @@ body:has(.os-dialog[open]) {
       left: 0
     };
   }
-  function Fe(e) {
+  function Ie(e) {
     return Object.assign({}, Be(), e);
   }
-  function Ie(e, t) {
-    return t.reduce(function(a, o) {
-      return a[o] = e, a;
+  function je(e, t) {
+    return t.reduce(function(n, i) {
+      return n[i] = e, n;
     }, {});
   }
-  var Wa = function(t, a) {
-    return t = typeof t == "function" ? t(Object.assign({}, a.rects, {
-      placement: a.placement
-    })) : t, Fe(typeof t != "number" ? t : Ie(t, Dt));
+  var Fn = function(t, n) {
+    return t = typeof t == "function" ? t(Object.assign({}, n.rects, {
+      placement: n.placement
+    })) : t, Ie(typeof t != "number" ? t : je(t, Tt));
   };
-  function Ha(e) {
-    var t, a = e.state, o = e.name, n = e.options, p = a.elements.arrow, s = a.modifiersData.popperOffsets, r = K(a.placement), c = fe(r), m = [H, U].indexOf(r) >= 0, d = m ? "height" : "width";
-    if (!(!p || !s)) {
-      var k = Wa(n.padding, a), x = ue(p), y = c === "y" ? W : H, w = c === "y" ? _ : U, g = a.rects.reference[d] + a.rects.reference[c] - s[c] - a.rects.popper[d], h = s[c] - a.rects.reference[c], u = Lt(p), M = u ? c === "y" ? u.clientHeight || 0 : u.clientWidth || 0 : 0, C = g / 2 - h / 2, i = k[y], v = M - x[d] - k[w], f = M / 2 - x[d] / 2 + C, q = Rt(i, f, v), A = c;
-      a.modifiersData[o] = (t = {}, t[A] = q, t.centerOffset = q - f, t);
+  function _n(e) {
+    var t, n = e.state, i = e.name, r = e.options, a = n.elements.arrow, s = n.modifiersData.popperOffsets, p = K(n.placement), c = me(p), u = [F, U].indexOf(p) >= 0, d = u ? "height" : "width";
+    if (!(!a || !s)) {
+      var k = Fn(r.padding, n), x = fe(a), y = c === "y" ? $ : F, w = c === "y" ? N : U, g = n.rects.reference[d] + n.rects.reference[c] - s[c] - n.rects.popper[d], h = s[c] - n.rects.reference[c], f = Rt(a), C = f ? c === "y" ? f.clientHeight || 0 : f.clientWidth || 0 : 0, A = g / 2 - h / 2, o = k[y], v = C - x[d] - k[w], m = C / 2 - x[d] / 2 + A, O = qt(o, m, v), M = c;
+      n.modifiersData[i] = (t = {}, t[M] = O, t.centerOffset = O - m, t);
     }
   }
-  function $a(e) {
-    var t = e.state, a = e.options, o = a.element, n = o === void 0 ? "[data-popper-arrow]" : o;
-    n != null && (typeof n == "string" && (n = t.elements.popper.querySelector(n), !n) || Le(t.elements.popper, n) && (t.elements.arrow = n));
+  function Vn(e) {
+    var t = e.state, n = e.options, i = n.element, r = i === void 0 ? "[data-popper-arrow]" : i;
+    r != null && (typeof r == "string" && (r = t.elements.popper.querySelector(r), !r) || Re(t.elements.popper, r) && (t.elements.arrow = r));
   }
-  const Na = {
+  const Wn = {
     name: "arrow",
     enabled: !0,
     phase: "main",
-    fn: Ha,
-    effect: $a,
+    fn: _n,
+    effect: Vn,
     requires: ["popperOffsets"],
     requiresIfExists: ["preventOverflow"]
   };
-  function Mt(e) {
+  function Ct(e) {
     return e.split("-")[1];
   }
-  var Va = {
+  var Nn = {
     top: "auto",
     right: "auto",
     bottom: "auto",
     left: "auto"
   };
-  function _a(e, t) {
-    var a = e.x, o = e.y, n = t.devicePixelRatio || 1;
+  function Un(e, t) {
+    var n = e.x, i = e.y, r = t.devicePixelRatio || 1;
     return {
-      x: xt(a * n) / n || 0,
-      y: xt(o * n) / n || 0
+      x: xt(n * r) / r || 0,
+      y: xt(i * r) / r || 0
     };
   }
-  function ze(e) {
-    var t, a = e.popper, o = e.popperRect, n = e.placement, p = e.variation, s = e.offsets, r = e.position, c = e.gpuAcceleration, m = e.adaptive, d = e.roundOffsets, k = e.isFixed, x = s.x, y = x === void 0 ? 0 : x, w = s.y, g = w === void 0 ? 0 : w, h = typeof d == "function" ? d({
+  function He(e) {
+    var t, n = e.popper, i = e.popperRect, r = e.placement, a = e.variation, s = e.offsets, p = e.position, c = e.gpuAcceleration, u = e.adaptive, d = e.roundOffsets, k = e.isFixed, x = s.x, y = x === void 0 ? 0 : x, w = s.y, g = w === void 0 ? 0 : w, h = typeof d == "function" ? d({
       x: y,
       y: g
     }) : {
@@ -3748,56 +1861,56 @@ body:has(.os-dialog[open]) {
       y: g
     };
     y = h.x, g = h.y;
-    var u = s.hasOwnProperty("x"), M = s.hasOwnProperty("y"), C = H, i = W, v = window;
-    if (m) {
-      var f = Lt(a), q = "clientHeight", A = "clientWidth";
-      if (f === $(a) && (f = rt(a), at(f).position !== "static" && r === "absolute" && (q = "scrollHeight", A = "scrollWidth")), f = f, n === W || (n === H || n === U) && p === Et) {
-        i = _;
-        var D = k && f === v && v.visualViewport ? v.visualViewport.height : (
+    var f = s.hasOwnProperty("x"), C = s.hasOwnProperty("y"), A = F, o = $, v = window;
+    if (u) {
+      var m = Rt(n), O = "clientHeight", M = "clientWidth";
+      if (m === _(n) && (m = pt(n), nt(m).position !== "static" && p === "absolute" && (O = "scrollHeight", M = "scrollWidth")), m = m, r === $ || (r === F || r === U) && a === Pt) {
+        o = N;
+        var T = k && m === v && v.visualViewport ? v.visualViewport.height : (
           // $FlowFixMe[prop-missing]
-          f[q]
+          m[O]
         );
-        g -= D - o.height, g *= c ? 1 : -1;
+        g -= T - i.height, g *= c ? 1 : -1;
       }
-      if (n === H || (n === W || n === _) && p === Et) {
-        C = U;
-        var E = k && f === v && v.visualViewport ? v.visualViewport.width : (
+      if (r === F || (r === $ || r === N) && a === Pt) {
+        A = U;
+        var P = k && m === v && v.visualViewport ? v.visualViewport.width : (
           // $FlowFixMe[prop-missing]
-          f[A]
+          m[M]
         );
-        y -= E - o.width, y *= c ? 1 : -1;
+        y -= P - i.width, y *= c ? 1 : -1;
       }
     }
-    var R = Object.assign({
-      position: r
-    }, m && Va), L = d === !0 ? _a({
+    var q = Object.assign({
+      position: p
+    }, u && Nn), R = d === !0 ? Un({
       x: y,
       y: g
-    }, $(a)) : {
+    }, _(n)) : {
       x: y,
       y: g
     };
-    if (y = L.x, g = L.y, c) {
-      var P;
-      return Object.assign({}, R, (P = {}, P[i] = M ? "0" : "", P[C] = u ? "0" : "", P.transform = (v.devicePixelRatio || 1) <= 1 ? "translate(" + y + "px, " + g + "px)" : "translate3d(" + y + "px, " + g + "px, 0)", P));
+    if (y = R.x, g = R.y, c) {
+      var L;
+      return Object.assign({}, q, (L = {}, L[o] = C ? "0" : "", L[A] = f ? "0" : "", L.transform = (v.devicePixelRatio || 1) <= 1 ? "translate(" + y + "px, " + g + "px)" : "translate3d(" + y + "px, " + g + "px, 0)", L));
     }
-    return Object.assign({}, R, (t = {}, t[i] = M ? g + "px" : "", t[C] = u ? y + "px" : "", t.transform = "", t));
+    return Object.assign({}, q, (t = {}, t[o] = C ? g + "px" : "", t[A] = f ? y + "px" : "", t.transform = "", t));
   }
-  function Ua(e) {
-    var t = e.state, a = e.options, o = a.gpuAcceleration, n = o === void 0 ? !0 : o, p = a.adaptive, s = p === void 0 ? !0 : p, r = a.roundOffsets, c = r === void 0 ? !0 : r, m = {
+  function Yn(e) {
+    var t = e.state, n = e.options, i = n.gpuAcceleration, r = i === void 0 ? !0 : i, a = n.adaptive, s = a === void 0 ? !0 : a, p = n.roundOffsets, c = p === void 0 ? !0 : p, u = {
       placement: K(t.placement),
-      variation: Mt(t.placement),
+      variation: Ct(t.placement),
       popper: t.elements.popper,
       popperRect: t.rects.popper,
-      gpuAcceleration: n,
+      gpuAcceleration: r,
       isFixed: t.options.strategy === "fixed"
     };
-    t.modifiersData.popperOffsets != null && (t.styles.popper = Object.assign({}, t.styles.popper, ze(Object.assign({}, m, {
+    t.modifiersData.popperOffsets != null && (t.styles.popper = Object.assign({}, t.styles.popper, He(Object.assign({}, u, {
       offsets: t.modifiersData.popperOffsets,
       position: t.options.strategy,
       adaptive: s,
       roundOffsets: c
-    })))), t.modifiersData.arrow != null && (t.styles.arrow = Object.assign({}, t.styles.arrow, ze(Object.assign({}, m, {
+    })))), t.modifiersData.arrow != null && (t.styles.arrow = Object.assign({}, t.styles.arrow, He(Object.assign({}, u, {
       offsets: t.modifiersData.arrow,
       position: "absolute",
       adaptive: !1,
@@ -3806,36 +1919,36 @@ body:has(.os-dialog[open]) {
       "data-popper-placement": t.placement
     });
   }
-  const Ga = {
+  const Zn = {
     name: "computeStyles",
     enabled: !0,
     phase: "beforeWrite",
-    fn: Ua,
+    fn: Yn,
     data: {}
   };
-  var _t = {
+  var Nt = {
     passive: !0
   };
-  function Ya(e) {
-    var t = e.state, a = e.instance, o = e.options, n = o.scroll, p = n === void 0 ? !0 : n, s = o.resize, r = s === void 0 ? !0 : s, c = $(t.elements.popper), m = [].concat(t.scrollParents.reference, t.scrollParents.popper);
-    return p && m.forEach(function(d) {
-      d.addEventListener("scroll", a.update, _t);
-    }), r && c.addEventListener("resize", a.update, _t), function() {
-      p && m.forEach(function(d) {
-        d.removeEventListener("scroll", a.update, _t);
-      }), r && c.removeEventListener("resize", a.update, _t);
+  function Gn(e) {
+    var t = e.state, n = e.instance, i = e.options, r = i.scroll, a = r === void 0 ? !0 : r, s = i.resize, p = s === void 0 ? !0 : s, c = _(t.elements.popper), u = [].concat(t.scrollParents.reference, t.scrollParents.popper);
+    return a && u.forEach(function(d) {
+      d.addEventListener("scroll", n.update, Nt);
+    }), p && c.addEventListener("resize", n.update, Nt), function() {
+      a && u.forEach(function(d) {
+        d.removeEventListener("scroll", n.update, Nt);
+      }), p && c.removeEventListener("resize", n.update, Nt);
     };
   }
-  const Xa = {
+  const Xn = {
     name: "eventListeners",
     enabled: !0,
     phase: "write",
     fn: function() {
     },
-    effect: Ya,
+    effect: Gn,
     data: {}
   };
-  var Za = {
+  var Kn = {
     left: "right",
     right: "left",
     bottom: "top",
@@ -3843,65 +1956,65 @@ body:has(.os-dialog[open]) {
   };
   function Ut(e) {
     return e.replace(/left|right|bottom|top/g, function(t) {
-      return Za[t];
+      return Kn[t];
     });
   }
-  var Ka = {
+  var Qn = {
     start: "end",
     end: "start"
   };
-  function je(e) {
+  function ze(e) {
     return e.replace(/start|end/g, function(t) {
-      return Ka[t];
+      return Qn[t];
     });
   }
   function he(e) {
-    var t = $(e), a = t.pageXOffset, o = t.pageYOffset;
+    var t = _(e), n = t.pageXOffset, i = t.pageYOffset;
     return {
-      scrollLeft: a,
-      scrollTop: o
+      scrollLeft: n,
+      scrollTop: i
     };
   }
   function ge(e) {
-    return kt(rt(e)).left + he(e).scrollLeft;
+    return kt(pt(e)).left + he(e).scrollLeft;
   }
-  function Qa(e, t) {
-    var a = $(e), o = rt(e), n = a.visualViewport, p = o.clientWidth, s = o.clientHeight, r = 0, c = 0;
-    if (n) {
-      p = n.width, s = n.height;
-      var m = Pe();
-      (m || !m && t === "fixed") && (r = n.offsetLeft, c = n.offsetTop);
+  function Jn(e, t) {
+    var n = _(e), i = pt(e), r = n.visualViewport, a = i.clientWidth, s = i.clientHeight, p = 0, c = 0;
+    if (r) {
+      a = r.width, s = r.height;
+      var u = Le();
+      (u || !u && t === "fixed") && (p = r.offsetLeft, c = r.offsetTop);
     }
     return {
-      width: p,
+      width: a,
       height: s,
-      x: r + ge(e),
+      x: p + ge(e),
       y: c
     };
   }
-  function Ja(e) {
-    var t, a = rt(e), o = he(e), n = (t = e.ownerDocument) == null ? void 0 : t.body, p = ft(a.scrollWidth, a.clientWidth, n ? n.scrollWidth : 0, n ? n.clientWidth : 0), s = ft(a.scrollHeight, a.clientHeight, n ? n.scrollHeight : 0, n ? n.clientHeight : 0), r = -o.scrollLeft + ge(e), c = -o.scrollTop;
-    return at(n || a).direction === "rtl" && (r += ft(a.clientWidth, n ? n.clientWidth : 0) - p), {
-      width: p,
+  function ti(e) {
+    var t, n = pt(e), i = he(e), r = (t = e.ownerDocument) == null ? void 0 : t.body, a = mt(n.scrollWidth, n.clientWidth, r ? r.scrollWidth : 0, r ? r.clientWidth : 0), s = mt(n.scrollHeight, n.clientHeight, r ? r.scrollHeight : 0, r ? r.clientHeight : 0), p = -i.scrollLeft + ge(e), c = -i.scrollTop;
+    return nt(r || n).direction === "rtl" && (p += mt(n.clientWidth, r ? r.clientWidth : 0) - a), {
+      width: a,
       height: s,
-      x: r,
+      x: p,
       y: c
     };
   }
   function ve(e) {
-    var t = at(e), a = t.overflow, o = t.overflowX, n = t.overflowY;
-    return /auto|scroll|overlay|hidden/.test(a + n + o);
+    var t = nt(e), n = t.overflow, i = t.overflowX, r = t.overflowY;
+    return /auto|scroll|overlay|hidden/.test(n + r + i);
   }
-  function We(e) {
-    return ["html", "body", "#document"].indexOf(Z(e)) >= 0 ? e.ownerDocument.body : G(e) && ve(e) ? e : We(Vt(e));
+  function $e(e) {
+    return ["html", "body", "#document"].indexOf(X(e)) >= 0 ? e.ownerDocument.body : Y(e) && ve(e) ? e : $e(Wt(e));
   }
   function Bt(e, t) {
-    var a;
+    var n;
     t === void 0 && (t = []);
-    var o = We(e), n = o === ((a = e.ownerDocument) == null ? void 0 : a.body), p = $(o), s = n ? [p].concat(p.visualViewport || [], ve(o) ? o : []) : o, r = t.concat(s);
-    return n ? r : (
+    var i = $e(e), r = i === ((n = e.ownerDocument) == null ? void 0 : n.body), a = _(i), s = r ? [a].concat(a.visualViewport || [], ve(i) ? i : []) : i, p = t.concat(s);
+    return r ? p : (
       // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
-      r.concat(Bt(Vt(s)))
+      p.concat(Bt(Wt(s)))
     );
   }
   function ye(e) {
@@ -3912,36 +2025,36 @@ body:has(.os-dialog[open]) {
       bottom: e.y + e.height
     });
   }
-  function to(e, t) {
-    var a = kt(e, !1, t === "fixed");
-    return a.top = a.top + e.clientTop, a.left = a.left + e.clientLeft, a.bottom = a.top + e.clientHeight, a.right = a.left + e.clientWidth, a.width = e.clientWidth, a.height = e.clientHeight, a.x = a.left, a.y = a.top, a;
+  function ei(e, t) {
+    var n = kt(e, !1, t === "fixed");
+    return n.top = n.top + e.clientTop, n.left = n.left + e.clientLeft, n.bottom = n.top + e.clientHeight, n.right = n.left + e.clientWidth, n.width = e.clientWidth, n.height = e.clientHeight, n.x = n.left, n.y = n.top, n;
   }
-  function He(e, t, a) {
-    return t === Ae ? ye(Qa(e, a)) : ut(t) ? to(t, a) : ye(Ja(rt(e)));
+  function Fe(e, t, n) {
+    return t === Me ? ye(Jn(e, n)) : ft(t) ? ei(t, n) : ye(ti(pt(e)));
   }
-  function eo(e) {
-    var t = Bt(Vt(e)), a = ["absolute", "fixed"].indexOf(at(e).position) >= 0, o = a && G(e) ? Lt(e) : e;
-    return ut(o) ? t.filter(function(n) {
-      return ut(n) && Le(n, o) && Z(n) !== "body";
+  function ni(e) {
+    var t = Bt(Wt(e)), n = ["absolute", "fixed"].indexOf(nt(e).position) >= 0, i = n && Y(e) ? Rt(e) : e;
+    return ft(i) ? t.filter(function(r) {
+      return ft(r) && Re(r, i) && X(r) !== "body";
     }) : [];
   }
-  function ao(e, t, a, o) {
-    var n = t === "clippingParents" ? eo(e) : [].concat(t), p = [].concat(n, [a]), s = p[0], r = p.reduce(function(c, m) {
-      var d = He(e, m, o);
-      return c.top = ft(d.top, c.top), c.right = Nt(d.right, c.right), c.bottom = Nt(d.bottom, c.bottom), c.left = ft(d.left, c.left), c;
-    }, He(e, s, o));
-    return r.width = r.right - r.left, r.height = r.bottom - r.top, r.x = r.left, r.y = r.top, r;
+  function ii(e, t, n, i) {
+    var r = t === "clippingParents" ? ni(e) : [].concat(t), a = [].concat(r, [n]), s = a[0], p = a.reduce(function(c, u) {
+      var d = Fe(e, u, i);
+      return c.top = mt(d.top, c.top), c.right = Vt(d.right, c.right), c.bottom = Vt(d.bottom, c.bottom), c.left = mt(d.left, c.left), c;
+    }, Fe(e, s, i));
+    return p.width = p.right - p.left, p.height = p.bottom - p.top, p.x = p.left, p.y = p.top, p;
   }
-  function $e(e) {
-    var t = e.reference, a = e.element, o = e.placement, n = o ? K(o) : null, p = o ? Mt(o) : null, s = t.x + t.width / 2 - a.width / 2, r = t.y + t.height / 2 - a.height / 2, c;
-    switch (n) {
-      case W:
+  function _e(e) {
+    var t = e.reference, n = e.element, i = e.placement, r = i ? K(i) : null, a = i ? Ct(i) : null, s = t.x + t.width / 2 - n.width / 2, p = t.y + t.height / 2 - n.height / 2, c;
+    switch (r) {
+      case $:
         c = {
           x: s,
-          y: t.y - a.height
+          y: t.y - n.height
         };
         break;
-      case _:
+      case N:
         c = {
           x: s,
           y: t.y + t.height
@@ -3950,13 +2063,13 @@ body:has(.os-dialog[open]) {
       case U:
         c = {
           x: t.x + t.width,
-          y: r
+          y: p
         };
         break;
-      case H:
+      case F:
         c = {
-          x: t.x - a.width,
-          y: r
+          x: t.x - n.width,
+          y: p
         };
         break;
       default:
@@ -3965,54 +2078,54 @@ body:has(.os-dialog[open]) {
           y: t.y
         };
     }
-    var m = n ? fe(n) : null;
-    if (m != null) {
-      var d = m === "y" ? "height" : "width";
-      switch (p) {
+    var u = r ? me(r) : null;
+    if (u != null) {
+      var d = u === "y" ? "height" : "width";
+      switch (a) {
         case wt:
-          c[m] = c[m] - (t[d] / 2 - a[d] / 2);
+          c[u] = c[u] - (t[d] / 2 - n[d] / 2);
           break;
-        case Et:
-          c[m] = c[m] + (t[d] / 2 - a[d] / 2);
+        case Pt:
+          c[u] = c[u] + (t[d] / 2 - n[d] / 2);
           break;
       }
     }
     return c;
   }
-  function Ft(e, t) {
+  function It(e, t) {
     t === void 0 && (t = {});
-    var a = t, o = a.placement, n = o === void 0 ? e.placement : o, p = a.strategy, s = p === void 0 ? e.strategy : p, r = a.boundary, c = r === void 0 ? Ma : r, m = a.rootBoundary, d = m === void 0 ? Ae : m, k = a.elementContext, x = k === void 0 ? Pt : k, y = a.altBoundary, w = y === void 0 ? !1 : y, g = a.padding, h = g === void 0 ? 0 : g, u = Fe(typeof h != "number" ? h : Ie(h, Dt)), M = x === Pt ? Sa : Pt, C = e.rects.popper, i = e.elements[w ? M : x], v = ao(ut(i) ? i : i.contextElement || rt(e.elements.popper), c, d, s), f = kt(e.elements.reference), q = $e({
-      reference: f,
-      element: C,
-      placement: n
-    }), A = ye(Object.assign({}, C, q)), D = x === Pt ? A : f, E = {
-      top: v.top - D.top + u.top,
-      bottom: D.bottom - v.bottom + u.bottom,
-      left: v.left - D.left + u.left,
-      right: D.right - v.right + u.right
-    }, R = e.modifiersData.offset;
-    if (x === Pt && R) {
-      var L = R[n];
-      Object.keys(E).forEach(function(P) {
-        var F = [U, _].indexOf(P) >= 0 ? 1 : -1, V = [W, _].indexOf(P) >= 0 ? "y" : "x";
-        E[P] += L[V] * F;
+    var n = t, i = n.placement, r = i === void 0 ? e.placement : i, a = n.strategy, s = a === void 0 ? e.strategy : a, p = n.boundary, c = p === void 0 ? Sn : p, u = n.rootBoundary, d = u === void 0 ? Me : u, k = n.elementContext, x = k === void 0 ? Lt : k, y = n.altBoundary, w = y === void 0 ? !1 : y, g = n.padding, h = g === void 0 ? 0 : g, f = Ie(typeof h != "number" ? h : je(h, Tt)), C = x === Lt ? An : Lt, A = e.rects.popper, o = e.elements[w ? C : x], v = ii(ft(o) ? o : o.contextElement || pt(e.elements.popper), c, d, s), m = kt(e.elements.reference), O = _e({
+      reference: m,
+      element: A,
+      placement: r
+    }), M = ye(Object.assign({}, A, O)), T = x === Lt ? M : m, P = {
+      top: v.top - T.top + f.top,
+      bottom: T.bottom - v.bottom + f.bottom,
+      left: v.left - T.left + f.left,
+      right: T.right - v.right + f.right
+    }, q = e.modifiersData.offset;
+    if (x === Lt && q) {
+      var R = q[r];
+      Object.keys(P).forEach(function(L) {
+        var I = [U, N].indexOf(L) >= 0 ? 1 : -1, W = [$, N].indexOf(L) >= 0 ? "y" : "x";
+        P[L] += R[W] * I;
       });
     }
-    return E;
+    return P;
   }
-  function oo(e, t) {
+  function oi(e, t) {
     t === void 0 && (t = {});
-    var a = t, o = a.placement, n = a.boundary, p = a.rootBoundary, s = a.padding, r = a.flipVariations, c = a.allowedAutoPlacements, m = c === void 0 ? De : c, d = Mt(o), k = d ? r ? Te : Te.filter(function(w) {
-      return Mt(w) === d;
-    }) : Dt, x = k.filter(function(w) {
-      return m.indexOf(w) >= 0;
+    var n = t, i = n.placement, r = n.boundary, a = n.rootBoundary, s = n.padding, p = n.flipVariations, c = n.allowedAutoPlacements, u = c === void 0 ? Te : c, d = Ct(i), k = d ? p ? De : De.filter(function(w) {
+      return Ct(w) === d;
+    }) : Tt, x = k.filter(function(w) {
+      return u.indexOf(w) >= 0;
     });
     x.length === 0 && (x = k);
     var y = x.reduce(function(w, g) {
-      return w[g] = Ft(e, {
+      return w[g] = It(e, {
         placement: g,
-        boundary: n,
-        rootBoundary: p,
+        boundary: r,
+        rootBoundary: a,
         padding: s
       })[K(g)], w;
     }, {});
@@ -4020,95 +2133,95 @@ body:has(.os-dialog[open]) {
       return y[w] - y[g];
     });
   }
-  function io(e) {
+  function ri(e) {
     if (K(e) === le)
       return [];
     var t = Ut(e);
-    return [je(e), t, je(t)];
+    return [ze(e), t, ze(t)];
   }
-  function no(e) {
-    var t = e.state, a = e.options, o = e.name;
-    if (!t.modifiersData[o]._skip) {
-      for (var n = a.mainAxis, p = n === void 0 ? !0 : n, s = a.altAxis, r = s === void 0 ? !0 : s, c = a.fallbackPlacements, m = a.padding, d = a.boundary, k = a.rootBoundary, x = a.altBoundary, y = a.flipVariations, w = y === void 0 ? !0 : y, g = a.allowedAutoPlacements, h = t.options.placement, u = K(h), M = u === h, C = c || (M || !w ? [Ut(h)] : io(h)), i = [h].concat(C).reduce(function(it, X) {
-        return it.concat(K(X) === le ? oo(t, {
-          placement: X,
+  function ai(e) {
+    var t = e.state, n = e.options, i = e.name;
+    if (!t.modifiersData[i]._skip) {
+      for (var r = n.mainAxis, a = r === void 0 ? !0 : r, s = n.altAxis, p = s === void 0 ? !0 : s, c = n.fallbackPlacements, u = n.padding, d = n.boundary, k = n.rootBoundary, x = n.altBoundary, y = n.flipVariations, w = y === void 0 ? !0 : y, g = n.allowedAutoPlacements, h = t.options.placement, f = K(h), C = f === h, A = c || (C || !w ? [Ut(h)] : ri(h)), o = [h].concat(A).reduce(function(ot, G) {
+        return ot.concat(K(G) === le ? oi(t, {
+          placement: G,
           boundary: d,
           rootBoundary: k,
-          padding: m,
+          padding: u,
           flipVariations: w,
           allowedAutoPlacements: g
-        }) : X);
-      }, []), v = t.rects.reference, f = t.rects.popper, q = /* @__PURE__ */ new Map(), A = !0, D = i[0], E = 0; E < i.length; E++) {
-        var R = i[E], L = K(R), P = Mt(R) === wt, F = [W, _].indexOf(L) >= 0, V = F ? "width" : "height", I = Ft(t, {
-          placement: R,
+        }) : G);
+      }, []), v = t.rects.reference, m = t.rects.popper, O = /* @__PURE__ */ new Map(), M = !0, T = o[0], P = 0; P < o.length; P++) {
+        var q = o[P], R = K(q), L = Ct(q) === wt, I = [$, N].indexOf(R) >= 0, W = I ? "width" : "height", j = It(t, {
+          placement: q,
           boundary: d,
           rootBoundary: k,
           altBoundary: x,
-          padding: m
-        }), z = F ? P ? U : H : P ? _ : W;
-        v[V] > f[V] && (z = Ut(z));
-        var B = Ut(z), J = [];
-        if (p && J.push(I[L] <= 0), r && J.push(I[z] <= 0, I[B] <= 0), J.every(function(it) {
-          return it;
+          padding: u
+        }), H = I ? L ? U : F : L ? N : $;
+        v[W] > m[W] && (H = Ut(H));
+        var B = Ut(H), J = [];
+        if (a && J.push(j[R] <= 0), p && J.push(j[H] <= 0, j[B] <= 0), J.every(function(ot) {
+          return ot;
         })) {
-          D = R, A = !1;
+          T = q, M = !1;
           break;
         }
-        q.set(R, J);
+        O.set(q, J);
       }
-      if (A)
-        for (var tt = w ? 3 : 1, gt = function(X) {
-          var nt = i.find(function(Ct) {
-            var pt = q.get(Ct);
-            if (pt)
-              return pt.slice(0, X).every(function(qt) {
-                return qt;
+      if (M)
+        for (var tt = w ? 3 : 1, gt = function(G) {
+          var rt = o.find(function(At) {
+            var at = O.get(At);
+            if (at)
+              return at.slice(0, G).every(function(Ot) {
+                return Ot;
               });
           });
-          if (nt)
-            return D = nt, "break";
+          if (rt)
+            return T = rt, "break";
         }, et = tt; et > 0; et--) {
           var vt = gt(et);
           if (vt === "break") break;
         }
-      t.placement !== D && (t.modifiersData[o]._skip = !0, t.placement = D, t.reset = !0);
+      t.placement !== T && (t.modifiersData[i]._skip = !0, t.placement = T, t.reset = !0);
     }
   }
-  const po = {
+  const si = {
     name: "flip",
     enabled: !0,
     phase: "main",
-    fn: no,
+    fn: ai,
     requiresIfExists: ["offset"],
     data: {
       _skip: !1
     }
   };
-  function Ne(e, t, a) {
-    return a === void 0 && (a = {
+  function Ve(e, t, n) {
+    return n === void 0 && (n = {
       x: 0,
       y: 0
     }), {
-      top: e.top - t.height - a.y,
-      right: e.right - t.width + a.x,
-      bottom: e.bottom - t.height + a.y,
-      left: e.left - t.width - a.x
+      top: e.top - t.height - n.y,
+      right: e.right - t.width + n.x,
+      bottom: e.bottom - t.height + n.y,
+      left: e.left - t.width - n.x
     };
   }
-  function Ve(e) {
-    return [W, U, _, H].some(function(t) {
+  function We(e) {
+    return [$, U, N, F].some(function(t) {
       return e[t] >= 0;
     });
   }
-  function so(e) {
-    var t = e.state, a = e.name, o = t.rects.reference, n = t.rects.popper, p = t.modifiersData.preventOverflow, s = Ft(t, {
+  function pi(e) {
+    var t = e.state, n = e.name, i = t.rects.reference, r = t.rects.popper, a = t.modifiersData.preventOverflow, s = It(t, {
       elementContext: "reference"
-    }), r = Ft(t, {
+    }), p = It(t, {
       altBoundary: !0
-    }), c = Ne(s, o), m = Ne(r, n, p), d = Ve(c), k = Ve(m);
-    t.modifiersData[a] = {
+    }), c = Ve(s, i), u = Ve(p, r, a), d = We(c), k = We(u);
+    t.modifiersData[n] = {
       referenceClippingOffsets: c,
-      popperEscapeOffsets: m,
+      popperEscapeOffsets: u,
       isReferenceHidden: d,
       hasPopperEscaped: k
     }, t.attributes.popper = Object.assign({}, t.attributes.popper, {
@@ -4116,214 +2229,214 @@ body:has(.os-dialog[open]) {
       "data-popper-escaped": k
     });
   }
-  const ro = {
+  const ci = {
     name: "hide",
     enabled: !0,
     phase: "main",
     requiresIfExists: ["preventOverflow"],
-    fn: so
+    fn: pi
   };
-  function co(e, t, a) {
-    var o = K(e), n = [H, W].indexOf(o) >= 0 ? -1 : 1, p = typeof a == "function" ? a(Object.assign({}, t, {
+  function li(e, t, n) {
+    var i = K(e), r = [F, $].indexOf(i) >= 0 ? -1 : 1, a = typeof n == "function" ? n(Object.assign({}, t, {
       placement: e
-    })) : a, s = p[0], r = p[1];
-    return s = s || 0, r = (r || 0) * n, [H, U].indexOf(o) >= 0 ? {
-      x: r,
+    })) : n, s = a[0], p = a[1];
+    return s = s || 0, p = (p || 0) * r, [F, U].indexOf(i) >= 0 ? {
+      x: p,
       y: s
     } : {
       x: s,
-      y: r
+      y: p
     };
   }
-  function lo(e) {
-    var t = e.state, a = e.options, o = e.name, n = a.offset, p = n === void 0 ? [0, 0] : n, s = De.reduce(function(d, k) {
-      return d[k] = co(k, t.rects, p), d;
-    }, {}), r = s[t.placement], c = r.x, m = r.y;
-    t.modifiersData.popperOffsets != null && (t.modifiersData.popperOffsets.x += c, t.modifiersData.popperOffsets.y += m), t.modifiersData[o] = s;
+  function di(e) {
+    var t = e.state, n = e.options, i = e.name, r = n.offset, a = r === void 0 ? [0, 0] : r, s = Te.reduce(function(d, k) {
+      return d[k] = li(k, t.rects, a), d;
+    }, {}), p = s[t.placement], c = p.x, u = p.y;
+    t.modifiersData.popperOffsets != null && (t.modifiersData.popperOffsets.x += c, t.modifiersData.popperOffsets.y += u), t.modifiersData[i] = s;
   }
-  const mo = {
+  const ui = {
     name: "offset",
     enabled: !0,
     phase: "main",
     requires: ["popperOffsets"],
-    fn: lo
+    fn: di
   };
-  function uo(e) {
-    var t = e.state, a = e.name;
-    t.modifiersData[a] = $e({
+  function fi(e) {
+    var t = e.state, n = e.name;
+    t.modifiersData[n] = _e({
       reference: t.rects.reference,
       element: t.rects.popper,
       placement: t.placement
     });
   }
-  const fo = {
+  const mi = {
     name: "popperOffsets",
     enabled: !0,
     phase: "read",
-    fn: uo,
+    fn: fi,
     data: {}
   };
-  function ho(e) {
+  function hi(e) {
     return e === "x" ? "y" : "x";
   }
-  function go(e) {
-    var t = e.state, a = e.options, o = e.name, n = a.mainAxis, p = n === void 0 ? !0 : n, s = a.altAxis, r = s === void 0 ? !1 : s, c = a.boundary, m = a.rootBoundary, d = a.altBoundary, k = a.padding, x = a.tether, y = x === void 0 ? !0 : x, w = a.tetherOffset, g = w === void 0 ? 0 : w, h = Ft(t, {
+  function gi(e) {
+    var t = e.state, n = e.options, i = e.name, r = n.mainAxis, a = r === void 0 ? !0 : r, s = n.altAxis, p = s === void 0 ? !1 : s, c = n.boundary, u = n.rootBoundary, d = n.altBoundary, k = n.padding, x = n.tether, y = x === void 0 ? !0 : x, w = n.tetherOffset, g = w === void 0 ? 0 : w, h = It(t, {
       boundary: c,
-      rootBoundary: m,
+      rootBoundary: u,
       padding: k,
       altBoundary: d
-    }), u = K(t.placement), M = Mt(t.placement), C = !M, i = fe(u), v = ho(i), f = t.modifiersData.popperOffsets, q = t.rects.reference, A = t.rects.popper, D = typeof g == "function" ? g(Object.assign({}, t.rects, {
+    }), f = K(t.placement), C = Ct(t.placement), A = !C, o = me(f), v = hi(o), m = t.modifiersData.popperOffsets, O = t.rects.reference, M = t.rects.popper, T = typeof g == "function" ? g(Object.assign({}, t.rects, {
       placement: t.placement
-    })) : g, E = typeof D == "number" ? {
-      mainAxis: D,
-      altAxis: D
+    })) : g, P = typeof T == "number" ? {
+      mainAxis: T,
+      altAxis: T
     } : Object.assign({
       mainAxis: 0,
       altAxis: 0
-    }, D), R = t.modifiersData.offset ? t.modifiersData.offset[t.placement] : null, L = {
+    }, T), q = t.modifiersData.offset ? t.modifiersData.offset[t.placement] : null, R = {
       x: 0,
       y: 0
     };
-    if (f) {
-      if (p) {
-        var P, F = i === "y" ? W : H, V = i === "y" ? _ : U, I = i === "y" ? "height" : "width", z = f[i], B = z + h[F], J = z - h[V], tt = y ? -A[I] / 2 : 0, gt = M === wt ? q[I] : A[I], et = M === wt ? -A[I] : -q[I], vt = t.elements.arrow, it = y && vt ? ue(vt) : {
+    if (m) {
+      if (a) {
+        var L, I = o === "y" ? $ : F, W = o === "y" ? N : U, j = o === "y" ? "height" : "width", H = m[o], B = H + h[I], J = H - h[W], tt = y ? -M[j] / 2 : 0, gt = C === wt ? O[j] : M[j], et = C === wt ? -M[j] : -O[j], vt = t.elements.arrow, ot = y && vt ? fe(vt) : {
           width: 0,
           height: 0
-        }, X = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : Be(), nt = X[F], Ct = X[V], pt = Rt(0, q[I], it[I]), qt = C ? q[I] / 2 - tt - pt - nt - E.mainAxis : gt - pt - nt - E.mainAxis, dt = C ? -q[I] / 2 + tt + pt + Ct + E.mainAxis : et + pt + Ct + E.mainAxis, Ot = t.elements.arrow && Lt(t.elements.arrow), Qt = Ot ? i === "y" ? Ot.clientTop || 0 : Ot.clientLeft || 0 : 0, zt = (P = R == null ? void 0 : R[i]) != null ? P : 0, Jt = z + qt - zt - Qt, te = z + dt - zt, jt = Rt(y ? Nt(B, Jt) : B, z, y ? ft(J, te) : J);
-        f[i] = jt, L[i] = jt - z;
+        }, G = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : Be(), rt = G[I], At = G[W], at = qt(0, O[j], ot[j]), Ot = A ? O[j] / 2 - tt - at - rt - P.mainAxis : gt - at - rt - P.mainAxis, dt = A ? -O[j] / 2 + tt + at + At + P.mainAxis : et + at + At + P.mainAxis, Et = t.elements.arrow && Rt(t.elements.arrow), Qt = Et ? o === "y" ? Et.clientTop || 0 : Et.clientLeft || 0 : 0, Ht = (L = q == null ? void 0 : q[o]) != null ? L : 0, Jt = H + Ot - Ht - Qt, te = H + dt - Ht, zt = qt(y ? Vt(B, Jt) : B, H, y ? mt(J, te) : J);
+        m[o] = zt, R[o] = zt - H;
       }
-      if (r) {
-        var Wt, ee = i === "x" ? W : H, ae = i === "x" ? _ : U, st = f[v], mt = v === "y" ? "height" : "width", Ht = st + h[ee], yt = st - h[ae], $t = [W, H].indexOf(u) !== -1, oe = (Wt = R == null ? void 0 : R[v]) != null ? Wt : 0, ie = $t ? Ht : st - q[mt] - A[mt] - oe + E.altAxis, ne = $t ? st + q[mt] + A[mt] - oe - E.altAxis : yt, pe = y && $t ? ja(ie, st, ne) : Rt(y ? ie : Ht, st, y ? ne : yt);
-        f[v] = pe, L[v] = pe - st;
+      if (p) {
+        var $t, ee = o === "x" ? $ : F, ne = o === "x" ? N : U, st = m[v], ut = v === "y" ? "height" : "width", Ft = st + h[ee], yt = st - h[ne], _t = [$, F].indexOf(f) !== -1, ie = ($t = q == null ? void 0 : q[v]) != null ? $t : 0, oe = _t ? Ft : st - O[ut] - M[ut] - ie + P.altAxis, re = _t ? st + O[ut] + M[ut] - ie - P.altAxis : yt, ae = y && _t ? $n(oe, st, re) : qt(y ? oe : Ft, st, y ? re : yt);
+        m[v] = ae, R[v] = ae - st;
       }
-      t.modifiersData[o] = L;
+      t.modifiersData[i] = R;
     }
   }
-  const vo = {
+  const vi = {
     name: "preventOverflow",
     enabled: !0,
     phase: "main",
-    fn: go,
+    fn: gi,
     requiresIfExists: ["offset"]
   };
-  function yo(e) {
+  function yi(e) {
     return {
       scrollLeft: e.scrollLeft,
       scrollTop: e.scrollTop
     };
   }
-  function bo(e) {
-    return e === $(e) || !G(e) ? he(e) : yo(e);
+  function bi(e) {
+    return e === _(e) || !Y(e) ? he(e) : yi(e);
   }
-  function wo(e) {
-    var t = e.getBoundingClientRect(), a = xt(t.width) / e.offsetWidth || 1, o = xt(t.height) / e.offsetHeight || 1;
-    return a !== 1 || o !== 1;
+  function wi(e) {
+    var t = e.getBoundingClientRect(), n = xt(t.width) / e.offsetWidth || 1, i = xt(t.height) / e.offsetHeight || 1;
+    return n !== 1 || i !== 1;
   }
-  function xo(e, t, a) {
-    a === void 0 && (a = !1);
-    var o = G(t), n = G(t) && wo(t), p = rt(t), s = kt(e, n, a), r = {
+  function xi(e, t, n) {
+    n === void 0 && (n = !1);
+    var i = Y(t), r = Y(t) && wi(t), a = pt(t), s = kt(e, r, n), p = {
       scrollLeft: 0,
       scrollTop: 0
     }, c = {
       x: 0,
       y: 0
     };
-    return (o || !o && !a) && ((Z(t) !== "body" || // https://github.com/popperjs/popper-core/issues/1078
-    ve(p)) && (r = bo(t)), G(t) ? (c = kt(t, !0), c.x += t.clientLeft, c.y += t.clientTop) : p && (c.x = ge(p))), {
-      x: s.left + r.scrollLeft - c.x,
-      y: s.top + r.scrollTop - c.y,
+    return (i || !i && !n) && ((X(t) !== "body" || // https://github.com/popperjs/popper-core/issues/1078
+    ve(a)) && (p = bi(t)), Y(t) ? (c = kt(t, !0), c.x += t.clientLeft, c.y += t.clientTop) : a && (c.x = ge(a))), {
+      x: s.left + p.scrollLeft - c.x,
+      y: s.top + p.scrollTop - c.y,
       width: s.width,
       height: s.height
     };
   }
-  function ko(e) {
-    var t = /* @__PURE__ */ new Map(), a = /* @__PURE__ */ new Set(), o = [];
-    e.forEach(function(p) {
-      t.set(p.name, p);
+  function ki(e) {
+    var t = /* @__PURE__ */ new Map(), n = /* @__PURE__ */ new Set(), i = [];
+    e.forEach(function(a) {
+      t.set(a.name, a);
     });
-    function n(p) {
-      a.add(p.name);
-      var s = [].concat(p.requires || [], p.requiresIfExists || []);
-      s.forEach(function(r) {
-        if (!a.has(r)) {
-          var c = t.get(r);
-          c && n(c);
+    function r(a) {
+      n.add(a.name);
+      var s = [].concat(a.requires || [], a.requiresIfExists || []);
+      s.forEach(function(p) {
+        if (!n.has(p)) {
+          var c = t.get(p);
+          c && r(c);
         }
-      }), o.push(p);
+      }), i.push(a);
     }
-    return e.forEach(function(p) {
-      a.has(p.name) || n(p);
-    }), o;
+    return e.forEach(function(a) {
+      n.has(a.name) || r(a);
+    }), i;
   }
-  function Mo(e) {
-    var t = ko(e);
-    return Ra.reduce(function(a, o) {
-      return a.concat(t.filter(function(n) {
-        return n.phase === o;
+  function Ci(e) {
+    var t = ki(e);
+    return Bn.reduce(function(n, i) {
+      return n.concat(t.filter(function(r) {
+        return r.phase === i;
       }));
     }, []);
   }
-  function So(e) {
+  function Si(e) {
     var t;
     return function() {
-      return t || (t = new Promise(function(a) {
+      return t || (t = new Promise(function(n) {
         Promise.resolve().then(function() {
-          t = void 0, a(e());
+          t = void 0, n(e());
         });
       })), t;
     };
   }
-  function Co(e) {
-    var t = e.reduce(function(a, o) {
-      var n = a[o.name];
-      return a[o.name] = n ? Object.assign({}, n, o, {
-        options: Object.assign({}, n.options, o.options),
-        data: Object.assign({}, n.data, o.data)
-      }) : o, a;
+  function Ai(e) {
+    var t = e.reduce(function(n, i) {
+      var r = n[i.name];
+      return n[i.name] = r ? Object.assign({}, r, i, {
+        options: Object.assign({}, r.options, i.options),
+        data: Object.assign({}, r.data, i.data)
+      }) : i, n;
     }, {});
-    return Object.keys(t).map(function(a) {
-      return t[a];
+    return Object.keys(t).map(function(n) {
+      return t[n];
     });
   }
-  var _e = {
+  var Ne = {
     placement: "bottom",
     modifiers: [],
     strategy: "absolute"
   };
   function Ue() {
-    for (var e = arguments.length, t = new Array(e), a = 0; a < e; a++)
-      t[a] = arguments[a];
-    return !t.some(function(o) {
-      return !(o && typeof o.getBoundingClientRect == "function");
+    for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++)
+      t[n] = arguments[n];
+    return !t.some(function(i) {
+      return !(i && typeof i.getBoundingClientRect == "function");
     });
   }
-  function qo(e) {
+  function Oi(e) {
     e === void 0 && (e = {});
-    var t = e, a = t.defaultModifiers, o = a === void 0 ? [] : a, n = t.defaultOptions, p = n === void 0 ? _e : n;
-    return function(r, c, m) {
-      m === void 0 && (m = p);
+    var t = e, n = t.defaultModifiers, i = n === void 0 ? [] : n, r = t.defaultOptions, a = r === void 0 ? Ne : r;
+    return function(p, c, u) {
+      u === void 0 && (u = a);
       var d = {
         placement: "bottom",
         orderedModifiers: [],
-        options: Object.assign({}, _e, p),
+        options: Object.assign({}, Ne, a),
         modifiersData: {},
         elements: {
-          reference: r,
+          reference: p,
           popper: c
         },
         attributes: {},
         styles: {}
       }, k = [], x = !1, y = {
         state: d,
-        setOptions: function(u) {
-          var M = typeof u == "function" ? u(d.options) : u;
-          g(), d.options = Object.assign({}, p, d.options, M), d.scrollParents = {
-            reference: ut(r) ? Bt(r) : r.contextElement ? Bt(r.contextElement) : [],
+        setOptions: function(f) {
+          var C = typeof f == "function" ? f(d.options) : f;
+          g(), d.options = Object.assign({}, a, d.options, C), d.scrollParents = {
+            reference: ft(p) ? Bt(p) : p.contextElement ? Bt(p.contextElement) : [],
             popper: Bt(c)
           };
-          var C = Mo(Co([].concat(o, d.options.modifiers)));
-          return d.orderedModifiers = C.filter(function(i) {
-            return i.enabled;
+          var A = Ci(Ai([].concat(i, d.options.modifiers)));
+          return d.orderedModifiers = A.filter(function(o) {
+            return o.enabled;
           }), w(), y.update();
         },
         // Sync update – it will always be executed, even if not necessary. This
@@ -4333,24 +2446,24 @@ body:has(.os-dialog[open]) {
         // prefer the async Popper#update method
         forceUpdate: function() {
           if (!x) {
-            var u = d.elements, M = u.reference, C = u.popper;
-            if (Ue(M, C)) {
+            var f = d.elements, C = f.reference, A = f.popper;
+            if (Ue(C, A)) {
               d.rects = {
-                reference: xo(M, Lt(C), d.options.strategy === "fixed"),
-                popper: ue(C)
-              }, d.reset = !1, d.placement = d.options.placement, d.orderedModifiers.forEach(function(E) {
-                return d.modifiersData[E.name] = Object.assign({}, E.data);
+                reference: xi(C, Rt(A), d.options.strategy === "fixed"),
+                popper: fe(A)
+              }, d.reset = !1, d.placement = d.options.placement, d.orderedModifiers.forEach(function(P) {
+                return d.modifiersData[P.name] = Object.assign({}, P.data);
               });
-              for (var i = 0; i < d.orderedModifiers.length; i++) {
+              for (var o = 0; o < d.orderedModifiers.length; o++) {
                 if (d.reset === !0) {
-                  d.reset = !1, i = -1;
+                  d.reset = !1, o = -1;
                   continue;
                 }
-                var v = d.orderedModifiers[i], f = v.fn, q = v.options, A = q === void 0 ? {} : q, D = v.name;
-                typeof f == "function" && (d = f({
+                var v = d.orderedModifiers[o], m = v.fn, O = v.options, M = O === void 0 ? {} : O, T = v.name;
+                typeof m == "function" && (d = m({
                   state: d,
-                  options: A,
-                  name: D,
+                  options: M,
+                  name: T,
                   instance: y
                 }) || d);
               }
@@ -4359,7 +2472,7 @@ body:has(.os-dialog[open]) {
         },
         // Async and optimistically optimized update – it will not be executed if
         // not necessary (debounced to run at most once-per-tick)
-        update: So(function() {
+        update: Si(function() {
           return new Promise(function(h) {
             y.forceUpdate(), h(d);
           });
@@ -4368,23 +2481,23 @@ body:has(.os-dialog[open]) {
           g(), x = !0;
         }
       };
-      if (!Ue(r, c))
+      if (!Ue(p, c))
         return y;
-      y.setOptions(m).then(function(h) {
-        !x && m.onFirstUpdate && m.onFirstUpdate(h);
+      y.setOptions(u).then(function(h) {
+        !x && u.onFirstUpdate && u.onFirstUpdate(h);
       });
       function w() {
         d.orderedModifiers.forEach(function(h) {
-          var u = h.name, M = h.options, C = M === void 0 ? {} : M, i = h.effect;
-          if (typeof i == "function") {
-            var v = i({
+          var f = h.name, C = h.options, A = C === void 0 ? {} : C, o = h.effect;
+          if (typeof o == "function") {
+            var v = o({
               state: d,
-              name: u,
+              name: f,
               instance: y,
-              options: C
-            }), f = function() {
+              options: A
+            }), m = function() {
             };
-            k.push(v || f);
+            k.push(v || m);
           }
         });
       }
@@ -4396,24 +2509,24 @@ body:has(.os-dialog[open]) {
       return y;
     };
   }
-  var Oo = [Xa, fo, Ga, Ee, mo, po, vo, Na, ro], Ao = /* @__PURE__ */ qo({
-    defaultModifiers: Oo
-  }), To = '<svg width="16" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M0 6s1.796-.013 4.67-3.615C5.851.9 6.93.006 8 0c1.07-.006 2.148.887 3.343 2.385C14.233 6.005 16 6 16 6H0z"></svg>', Do = "tippy-box", Ge = "tippy-content", Ye = "tippy-backdrop", Xe = "tippy-arrow", Ze = "tippy-svg-arrow", ct = {
+  var Ei = [Xn, mi, Zn, Pe, ui, si, vi, Wn, ci], Mi = /* @__PURE__ */ Oi({
+    defaultModifiers: Ei
+  }), Di = '<svg width="16" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M0 6s1.796-.013 4.67-3.615C5.851.9 6.93.006 8 0c1.07-.006 2.148.887 3.343 2.385C14.233 6.005 16 6 16 6H0z"></svg>', Ti = "tippy-box", Ye = "tippy-content", Ze = "tippy-backdrop", Ge = "tippy-arrow", Xe = "tippy-svg-arrow", ct = {
     passive: !0,
     capture: !0
   }, Ke = function() {
     return document.body;
   };
-  function be(e, t, a) {
+  function be(e, t, n) {
     if (Array.isArray(e)) {
-      var o = e[t];
-      return o ?? (Array.isArray(a) ? a[t] : a);
+      var i = e[t];
+      return i ?? (Array.isArray(n) ? n[t] : n);
     }
     return e;
   }
   function we(e, t) {
-    var a = {}.toString.call(e);
-    return a.indexOf("[object") === 0 && a.indexOf(t + "]") > -1;
+    var n = {}.toString.call(e);
+    return n.indexOf("[object") === 0 && n.indexOf(t + "]") > -1;
   }
   function Qe(e, t) {
     return typeof e == "function" ? e.apply(void 0, t) : e;
@@ -4421,132 +2534,132 @@ body:has(.os-dialog[open]) {
   function Je(e, t) {
     if (t === 0)
       return e;
-    var a;
-    return function(o) {
-      clearTimeout(a), a = setTimeout(function() {
-        e(o);
+    var n;
+    return function(i) {
+      clearTimeout(n), n = setTimeout(function() {
+        e(i);
       }, t);
     };
   }
-  function ta(e, t) {
-    var a = Object.assign({}, e);
-    return t.forEach(function(o) {
-      delete a[o];
-    }), a;
+  function tn(e, t) {
+    var n = Object.assign({}, e);
+    return t.forEach(function(i) {
+      delete n[i];
+    }), n;
   }
-  function Eo(e) {
+  function Pi(e) {
     return e.split(/\s+/).filter(Boolean);
   }
   function lt(e) {
     return [].concat(e);
   }
-  function ea(e, t) {
+  function en(e, t) {
     e.indexOf(t) === -1 && e.push(t);
   }
-  function Po(e) {
-    return e.filter(function(t, a) {
-      return e.indexOf(t) === a;
+  function Li(e) {
+    return e.filter(function(t, n) {
+      return e.indexOf(t) === n;
     });
   }
-  function aa(e) {
+  function nn(e) {
     return e.split("-")[0];
   }
   function St(e) {
     return [].slice.call(e);
   }
-  function oa(e) {
-    return Object.keys(e).reduce(function(t, a) {
-      return e[a] !== void 0 && (t[a] = e[a]), t;
+  function on(e) {
+    return Object.keys(e).reduce(function(t, n) {
+      return e[n] !== void 0 && (t[n] = e[n]), t;
     }, {});
   }
   function ht() {
     return document.createElement("div");
   }
-  function Gt(e) {
+  function Yt(e) {
     return ["Element", "Fragment"].some(function(t) {
       return we(e, t);
     });
   }
-  function Lo(e) {
+  function Ri(e) {
     return we(e, "NodeList");
   }
   function xe(e) {
     return we(e, "MouseEvent");
   }
-  function ia(e) {
+  function rn(e) {
     return !!(e && e._tippy && e._tippy.reference === e);
   }
-  function Ro(e) {
-    return Gt(e) ? [e] : Lo(e) ? St(e) : Array.isArray(e) ? e : St(document.querySelectorAll(e));
+  function qi(e) {
+    return Yt(e) ? [e] : Ri(e) ? St(e) : Array.isArray(e) ? e : St(document.querySelectorAll(e));
   }
   function ke(e, t) {
-    e.forEach(function(a) {
-      a && (a.style.transitionDuration = t + "ms");
+    e.forEach(function(n) {
+      n && (n.style.transitionDuration = t + "ms");
     });
   }
-  function It(e, t) {
-    e.forEach(function(a) {
-      a && a.setAttribute("data-state", t);
+  function jt(e, t) {
+    e.forEach(function(n) {
+      n && n.setAttribute("data-state", t);
     });
   }
-  function na(e) {
-    var t, a = lt(e), o = a[0];
-    return o != null && (t = o.ownerDocument) != null && t.body ? o.ownerDocument : document;
+  function an(e) {
+    var t, n = lt(e), i = n[0];
+    return i != null && (t = i.ownerDocument) != null && t.body ? i.ownerDocument : document;
   }
-  function Bo(e, t) {
-    var a = t.clientX, o = t.clientY;
-    return e.every(function(n) {
-      var p = n.popperRect, s = n.popperState, r = n.props, c = r.interactiveBorder, m = aa(s.placement), d = s.modifiersData.offset;
+  function Bi(e, t) {
+    var n = t.clientX, i = t.clientY;
+    return e.every(function(r) {
+      var a = r.popperRect, s = r.popperState, p = r.props, c = p.interactiveBorder, u = nn(s.placement), d = s.modifiersData.offset;
       if (!d)
         return !0;
-      var k = m === "bottom" ? d.top.y : 0, x = m === "top" ? d.bottom.y : 0, y = m === "right" ? d.left.x : 0, w = m === "left" ? d.right.x : 0, g = p.top - o + k > c, h = o - p.bottom - x > c, u = p.left - a + y > c, M = a - p.right - w > c;
-      return g || h || u || M;
+      var k = u === "bottom" ? d.top.y : 0, x = u === "top" ? d.bottom.y : 0, y = u === "right" ? d.left.x : 0, w = u === "left" ? d.right.x : 0, g = a.top - i + k > c, h = i - a.bottom - x > c, f = a.left - n + y > c, C = n - a.right - w > c;
+      return g || h || f || C;
     });
   }
-  function Me(e, t, a) {
-    var o = t + "EventListener";
-    ["transitionend", "webkitTransitionEnd"].forEach(function(n) {
-      e[o](n, a);
+  function Ce(e, t, n) {
+    var i = t + "EventListener";
+    ["transitionend", "webkitTransitionEnd"].forEach(function(r) {
+      e[i](r, n);
     });
   }
-  function pa(e, t) {
-    for (var a = t; a; ) {
-      var o;
-      if (e.contains(a))
+  function sn(e, t) {
+    for (var n = t; n; ) {
+      var i;
+      if (e.contains(n))
         return !0;
-      a = a.getRootNode == null || (o = a.getRootNode()) == null ? void 0 : o.host;
+      n = n.getRootNode == null || (i = n.getRootNode()) == null ? void 0 : i.host;
     }
     return !1;
   }
   var Q = {
     isTouch: !1
-  }, sa = 0;
-  function Fo() {
-    Q.isTouch || (Q.isTouch = !0, window.performance && document.addEventListener("mousemove", ra));
+  }, pn = 0;
+  function Ii() {
+    Q.isTouch || (Q.isTouch = !0, window.performance && document.addEventListener("mousemove", cn));
   }
-  function ra() {
+  function cn() {
     var e = performance.now();
-    e - sa < 20 && (Q.isTouch = !1, document.removeEventListener("mousemove", ra)), sa = e;
+    e - pn < 20 && (Q.isTouch = !1, document.removeEventListener("mousemove", cn)), pn = e;
   }
-  function Io() {
+  function ji() {
     var e = document.activeElement;
-    if (ia(e)) {
+    if (rn(e)) {
       var t = e._tippy;
       e.blur && !t.state.isVisible && e.blur();
     }
   }
-  function zo() {
-    document.addEventListener("touchstart", Fo, ct), window.addEventListener("blur", Io);
+  function Hi() {
+    document.addEventListener("touchstart", Ii, ct), window.addEventListener("blur", ji);
   }
-  var jo = typeof window < "u" && typeof document < "u", Wo = jo ? (
+  var zi = typeof window < "u" && typeof document < "u", $i = zi ? (
     // @ts-ignore
     !!window.msCrypto
-  ) : !1, Ho = {
+  ) : !1, Fi = {
     animateFill: !1,
     followCursor: !1,
     inlinePositioning: !1,
     sticky: !1
-  }, $o = {
+  }, _i = {
     allowHTML: !1,
     animation: "fade",
     arrow: !0,
@@ -4556,7 +2669,7 @@ body:has(.os-dialog[open]) {
     role: "tooltip",
     theme: "",
     zIndex: 9999
-  }, N = Object.assign({
+  }, V = Object.assign({
     appendTo: Ke,
     aria: {
       content: "auto",
@@ -4604,97 +2717,97 @@ body:has(.os-dialog[open]) {
     touch: !0,
     trigger: "mouseenter focus",
     triggerTarget: null
-  }, Ho, $o), No = Object.keys(N), Vo = function(t) {
-    var a = Object.keys(t);
-    a.forEach(function(o) {
-      N[o] = t[o];
+  }, Fi, _i), Vi = Object.keys(V), Wi = function(t) {
+    var n = Object.keys(t);
+    n.forEach(function(i) {
+      V[i] = t[i];
     });
   };
-  function ca(e) {
-    var t = e.plugins || [], a = t.reduce(function(o, n) {
-      var p = n.name, s = n.defaultValue;
-      if (p) {
-        var r;
-        o[p] = e[p] !== void 0 ? e[p] : (r = N[p]) != null ? r : s;
+  function ln(e) {
+    var t = e.plugins || [], n = t.reduce(function(i, r) {
+      var a = r.name, s = r.defaultValue;
+      if (a) {
+        var p;
+        i[a] = e[a] !== void 0 ? e[a] : (p = V[a]) != null ? p : s;
       }
-      return o;
+      return i;
     }, {});
-    return Object.assign({}, e, a);
+    return Object.assign({}, e, n);
   }
-  function _o(e, t) {
-    var a = t ? Object.keys(ca(Object.assign({}, N, {
+  function Ni(e, t) {
+    var n = t ? Object.keys(ln(Object.assign({}, V, {
       plugins: t
-    }))) : No, o = a.reduce(function(n, p) {
-      var s = (e.getAttribute("data-tippy-" + p) || "").trim();
+    }))) : Vi, i = n.reduce(function(r, a) {
+      var s = (e.getAttribute("data-tippy-" + a) || "").trim();
       if (!s)
-        return n;
-      if (p === "content")
-        n[p] = s;
+        return r;
+      if (a === "content")
+        r[a] = s;
       else
         try {
-          n[p] = JSON.parse(s);
+          r[a] = JSON.parse(s);
         } catch {
-          n[p] = s;
+          r[a] = s;
         }
-      return n;
+      return r;
     }, {});
-    return o;
+    return i;
   }
-  function la(e, t) {
-    var a = Object.assign({}, t, {
+  function dn(e, t) {
+    var n = Object.assign({}, t, {
       content: Qe(t.content, [e])
-    }, t.ignoreAttributes ? {} : _o(e, t.plugins));
-    return a.aria = Object.assign({}, N.aria, a.aria), a.aria = {
-      expanded: a.aria.expanded === "auto" ? t.interactive : a.aria.expanded,
-      content: a.aria.content === "auto" ? t.interactive ? null : "describedby" : a.aria.content
-    }, a;
+    }, t.ignoreAttributes ? {} : Ni(e, t.plugins));
+    return n.aria = Object.assign({}, V.aria, n.aria), n.aria = {
+      expanded: n.aria.expanded === "auto" ? t.interactive : n.aria.expanded,
+      content: n.aria.content === "auto" ? t.interactive ? null : "describedby" : n.aria.content
+    }, n;
   }
-  var Uo = function() {
+  var Ui = function() {
     return "innerHTML";
   };
   function Se(e, t) {
-    e[Uo()] = t;
+    e[Ui()] = t;
   }
-  function da(e) {
+  function un(e) {
     var t = ht();
-    return e === !0 ? t.className = Xe : (t.className = Ze, Gt(e) ? t.appendChild(e) : Se(t, e)), t;
+    return e === !0 ? t.className = Ge : (t.className = Xe, Yt(e) ? t.appendChild(e) : Se(t, e)), t;
   }
-  function ma(e, t) {
-    Gt(t.content) ? (Se(e, ""), e.appendChild(t.content)) : typeof t.content != "function" && (t.allowHTML ? Se(e, t.content) : e.textContent = t.content);
+  function fn(e, t) {
+    Yt(t.content) ? (Se(e, ""), e.appendChild(t.content)) : typeof t.content != "function" && (t.allowHTML ? Se(e, t.content) : e.textContent = t.content);
   }
-  function Yt(e) {
-    var t = e.firstElementChild, a = St(t.children);
+  function Zt(e) {
+    var t = e.firstElementChild, n = St(t.children);
     return {
       box: t,
-      content: a.find(function(o) {
-        return o.classList.contains(Ge);
+      content: n.find(function(i) {
+        return i.classList.contains(Ye);
       }),
-      arrow: a.find(function(o) {
-        return o.classList.contains(Xe) || o.classList.contains(Ze);
+      arrow: n.find(function(i) {
+        return i.classList.contains(Ge) || i.classList.contains(Xe);
       }),
-      backdrop: a.find(function(o) {
-        return o.classList.contains(Ye);
+      backdrop: n.find(function(i) {
+        return i.classList.contains(Ze);
       })
     };
   }
-  function ua(e) {
-    var t = ht(), a = ht();
-    a.className = Do, a.setAttribute("data-state", "hidden"), a.setAttribute("tabindex", "-1");
-    var o = ht();
-    o.className = Ge, o.setAttribute("data-state", "hidden"), ma(o, e.props), t.appendChild(a), a.appendChild(o), n(e.props, e.props);
-    function n(p, s) {
-      var r = Yt(t), c = r.box, m = r.content, d = r.arrow;
-      s.theme ? c.setAttribute("data-theme", s.theme) : c.removeAttribute("data-theme"), typeof s.animation == "string" ? c.setAttribute("data-animation", s.animation) : c.removeAttribute("data-animation"), s.inertia ? c.setAttribute("data-inertia", "") : c.removeAttribute("data-inertia"), c.style.maxWidth = typeof s.maxWidth == "number" ? s.maxWidth + "px" : s.maxWidth, s.role ? c.setAttribute("role", s.role) : c.removeAttribute("role"), (p.content !== s.content || p.allowHTML !== s.allowHTML) && ma(m, e.props), s.arrow ? d ? p.arrow !== s.arrow && (c.removeChild(d), c.appendChild(da(s.arrow))) : c.appendChild(da(s.arrow)) : d && c.removeChild(d);
+  function mn(e) {
+    var t = ht(), n = ht();
+    n.className = Ti, n.setAttribute("data-state", "hidden"), n.setAttribute("tabindex", "-1");
+    var i = ht();
+    i.className = Ye, i.setAttribute("data-state", "hidden"), fn(i, e.props), t.appendChild(n), n.appendChild(i), r(e.props, e.props);
+    function r(a, s) {
+      var p = Zt(t), c = p.box, u = p.content, d = p.arrow;
+      s.theme ? c.setAttribute("data-theme", s.theme) : c.removeAttribute("data-theme"), typeof s.animation == "string" ? c.setAttribute("data-animation", s.animation) : c.removeAttribute("data-animation"), s.inertia ? c.setAttribute("data-inertia", "") : c.removeAttribute("data-inertia"), c.style.maxWidth = typeof s.maxWidth == "number" ? s.maxWidth + "px" : s.maxWidth, s.role ? c.setAttribute("role", s.role) : c.removeAttribute("role"), (a.content !== s.content || a.allowHTML !== s.allowHTML) && fn(u, e.props), s.arrow ? d ? a.arrow !== s.arrow && (c.removeChild(d), c.appendChild(un(s.arrow))) : c.appendChild(un(s.arrow)) : d && c.removeChild(d);
     }
     return {
       popper: t,
-      onUpdate: n
+      onUpdate: r
     };
   }
-  ua.$$tippy = !0;
-  var Go = 1, Xt = [], Zt = [];
-  function Yo(e, t) {
-    var a = la(e, Object.assign({}, N, ca(oa(t)))), o, n, p, s = !1, r = !1, c = !1, m = !1, d, k, x, y = [], w = Je(Jt, a.interactiveDebounce), g, h = Go++, u = null, M = Po(a.plugins), C = {
+  mn.$$tippy = !0;
+  var Yi = 1, Gt = [], Xt = [];
+  function Zi(e, t) {
+    var n = dn(e, Object.assign({}, V, ln(on(t)))), i, r, a, s = !1, p = !1, c = !1, u = !1, d, k, x, y = [], w = Je(Jt, n.interactiveDebounce), g, h = Yi++, f = null, C = Li(n.plugins), A = {
       // Is the instance currently enabled?
       isEnabled: !0,
       // Is the tippy currently showing and not transitioning out?
@@ -4705,250 +2818,250 @@ body:has(.os-dialog[open]) {
       isMounted: !1,
       // Has the tippy finished transitioning in?
       isShown: !1
-    }, i = {
+    }, o = {
       // properties
       id: h,
       reference: e,
       popper: ht(),
-      popperInstance: u,
-      props: a,
-      state: C,
-      plugins: M,
+      popperInstance: f,
+      props: n,
+      state: A,
+      plugins: C,
       // methods
-      clearDelayTimeouts: ie,
-      setProps: ne,
-      setContent: pe,
-      show: wi,
-      hide: xi,
-      hideWithInteractivity: ki,
-      enable: $t,
-      disable: oe,
-      unmount: Mi,
-      destroy: Si
+      clearDelayTimeouts: oe,
+      setProps: re,
+      setContent: ae,
+      show: xo,
+      hide: ko,
+      hideWithInteractivity: Co,
+      enable: _t,
+      disable: ie,
+      unmount: So,
+      destroy: Ao
     };
-    if (!a.render)
-      return i;
-    var v = a.render(i), f = v.popper, q = v.onUpdate;
-    f.setAttribute("data-tippy-root", ""), f.id = "tippy-" + i.id, i.popper = f, e._tippy = i, f._tippy = i;
-    var A = M.map(function(l) {
-      return l.fn(i);
-    }), D = e.hasAttribute("aria-expanded");
-    return Ot(), tt(), z(), B("onCreate", [i]), a.showOnCreate && Ht(), f.addEventListener("mouseenter", function() {
-      i.props.interactive && i.state.isVisible && i.clearDelayTimeouts();
-    }), f.addEventListener("mouseleave", function() {
-      i.props.interactive && i.props.trigger.indexOf("mouseenter") >= 0 && F().addEventListener("mousemove", w);
-    }), i;
-    function E() {
-      var l = i.props.touch;
+    if (!n.render)
+      return o;
+    var v = n.render(o), m = v.popper, O = v.onUpdate;
+    m.setAttribute("data-tippy-root", ""), m.id = "tippy-" + o.id, o.popper = m, e._tippy = o, m._tippy = o;
+    var M = C.map(function(l) {
+      return l.fn(o);
+    }), T = e.hasAttribute("aria-expanded");
+    return Et(), tt(), H(), B("onCreate", [o]), n.showOnCreate && Ft(), m.addEventListener("mouseenter", function() {
+      o.props.interactive && o.state.isVisible && o.clearDelayTimeouts();
+    }), m.addEventListener("mouseleave", function() {
+      o.props.interactive && o.props.trigger.indexOf("mouseenter") >= 0 && I().addEventListener("mousemove", w);
+    }), o;
+    function P() {
+      var l = o.props.touch;
       return Array.isArray(l) ? l : [l, 0];
     }
+    function q() {
+      return P()[0] === "hold";
+    }
     function R() {
-      return E()[0] === "hold";
+      var l;
+      return !!((l = o.props.render) != null && l.$$tippy);
     }
     function L() {
-      var l;
-      return !!((l = i.props.render) != null && l.$$tippy);
-    }
-    function P() {
       return g || e;
     }
-    function F() {
-      var l = P().parentNode;
-      return l ? na(l) : document;
+    function I() {
+      var l = L().parentNode;
+      return l ? an(l) : document;
     }
-    function V() {
-      return Yt(f);
+    function W() {
+      return Zt(m);
     }
-    function I(l) {
-      return i.state.isMounted && !i.state.isVisible || Q.isTouch || d && d.type === "focus" ? 0 : be(i.props.delay, l ? 0 : 1, N.delay);
+    function j(l) {
+      return o.state.isMounted && !o.state.isVisible || Q.isTouch || d && d.type === "focus" ? 0 : be(o.props.delay, l ? 0 : 1, V.delay);
     }
-    function z(l) {
-      l === void 0 && (l = !1), f.style.pointerEvents = i.props.interactive && !l ? "" : "none", f.style.zIndex = "" + i.props.zIndex;
+    function H(l) {
+      l === void 0 && (l = !1), m.style.pointerEvents = o.props.interactive && !l ? "" : "none", m.style.zIndex = "" + o.props.zIndex;
     }
     function B(l, b, S) {
-      if (S === void 0 && (S = !0), A.forEach(function(O) {
-        O[l] && O[l].apply(O, b);
+      if (S === void 0 && (S = !0), M.forEach(function(E) {
+        E[l] && E[l].apply(E, b);
       }), S) {
-        var T;
-        (T = i.props)[l].apply(T, b);
+        var D;
+        (D = o.props)[l].apply(D, b);
       }
     }
     function J() {
-      var l = i.props.aria;
+      var l = o.props.aria;
       if (l.content) {
-        var b = "aria-" + l.content, S = f.id, T = lt(i.props.triggerTarget || e);
-        T.forEach(function(O) {
-          var j = O.getAttribute(b);
-          if (i.state.isVisible)
-            O.setAttribute(b, j ? j + " " + S : S);
+        var b = "aria-" + l.content, S = m.id, D = lt(o.props.triggerTarget || e);
+        D.forEach(function(E) {
+          var z = E.getAttribute(b);
+          if (o.state.isVisible)
+            E.setAttribute(b, z ? z + " " + S : S);
           else {
-            var Y = j && j.replace(S, "").trim();
-            Y ? O.setAttribute(b, Y) : O.removeAttribute(b);
+            var Z = z && z.replace(S, "").trim();
+            Z ? E.setAttribute(b, Z) : E.removeAttribute(b);
           }
         });
       }
     }
     function tt() {
-      if (!(D || !i.props.aria.expanded)) {
-        var l = lt(i.props.triggerTarget || e);
+      if (!(T || !o.props.aria.expanded)) {
+        var l = lt(o.props.triggerTarget || e);
         l.forEach(function(b) {
-          i.props.interactive ? b.setAttribute("aria-expanded", i.state.isVisible && b === P() ? "true" : "false") : b.removeAttribute("aria-expanded");
+          o.props.interactive ? b.setAttribute("aria-expanded", o.state.isVisible && b === L() ? "true" : "false") : b.removeAttribute("aria-expanded");
         });
       }
     }
     function gt() {
-      F().removeEventListener("mousemove", w), Xt = Xt.filter(function(l) {
+      I().removeEventListener("mousemove", w), Gt = Gt.filter(function(l) {
         return l !== w;
       });
     }
     function et(l) {
       if (!(Q.isTouch && (c || l.type === "mousedown"))) {
         var b = l.composedPath && l.composedPath()[0] || l.target;
-        if (!(i.props.interactive && pa(f, b))) {
-          if (lt(i.props.triggerTarget || e).some(function(S) {
-            return pa(S, b);
+        if (!(o.props.interactive && sn(m, b))) {
+          if (lt(o.props.triggerTarget || e).some(function(S) {
+            return sn(S, b);
           })) {
-            if (Q.isTouch || i.state.isVisible && i.props.trigger.indexOf("click") >= 0)
+            if (Q.isTouch || o.state.isVisible && o.props.trigger.indexOf("click") >= 0)
               return;
           } else
-            B("onClickOutside", [i, l]);
-          i.props.hideOnClick === !0 && (i.clearDelayTimeouts(), i.hide(), r = !0, setTimeout(function() {
-            r = !1;
-          }), i.state.isMounted || nt());
+            B("onClickOutside", [o, l]);
+          o.props.hideOnClick === !0 && (o.clearDelayTimeouts(), o.hide(), p = !0, setTimeout(function() {
+            p = !1;
+          }), o.state.isMounted || rt());
         }
       }
     }
     function vt() {
       c = !0;
     }
-    function it() {
+    function ot() {
       c = !1;
     }
-    function X() {
-      var l = F();
-      l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, ct), l.addEventListener("touchstart", it, ct), l.addEventListener("touchmove", vt, ct);
+    function G() {
+      var l = I();
+      l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, ct), l.addEventListener("touchstart", ot, ct), l.addEventListener("touchmove", vt, ct);
     }
-    function nt() {
-      var l = F();
-      l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, ct), l.removeEventListener("touchstart", it, ct), l.removeEventListener("touchmove", vt, ct);
+    function rt() {
+      var l = I();
+      l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, ct), l.removeEventListener("touchstart", ot, ct), l.removeEventListener("touchmove", vt, ct);
     }
-    function Ct(l, b) {
-      qt(l, function() {
-        !i.state.isVisible && f.parentNode && f.parentNode.contains(f) && b();
+    function At(l, b) {
+      Ot(l, function() {
+        !o.state.isVisible && m.parentNode && m.parentNode.contains(m) && b();
       });
     }
-    function pt(l, b) {
-      qt(l, b);
+    function at(l, b) {
+      Ot(l, b);
     }
-    function qt(l, b) {
-      var S = V().box;
-      function T(O) {
-        O.target === S && (Me(S, "remove", T), b());
+    function Ot(l, b) {
+      var S = W().box;
+      function D(E) {
+        E.target === S && (Ce(S, "remove", D), b());
       }
       if (l === 0)
         return b();
-      Me(S, "remove", k), Me(S, "add", T), k = T;
+      Ce(S, "remove", k), Ce(S, "add", D), k = D;
     }
     function dt(l, b, S) {
       S === void 0 && (S = !1);
-      var T = lt(i.props.triggerTarget || e);
-      T.forEach(function(O) {
-        O.addEventListener(l, b, S), y.push({
-          node: O,
+      var D = lt(o.props.triggerTarget || e);
+      D.forEach(function(E) {
+        E.addEventListener(l, b, S), y.push({
+          node: E,
           eventType: l,
           handler: b,
           options: S
         });
       });
     }
-    function Ot() {
-      R() && (dt("touchstart", zt, {
+    function Et() {
+      q() && (dt("touchstart", Ht, {
         passive: !0
       }), dt("touchend", te, {
         passive: !0
-      })), Eo(i.props.trigger).forEach(function(l) {
+      })), Pi(o.props.trigger).forEach(function(l) {
         if (l !== "manual")
-          switch (dt(l, zt), l) {
+          switch (dt(l, Ht), l) {
             case "mouseenter":
               dt("mouseleave", te);
               break;
             case "focus":
-              dt(Wo ? "focusout" : "blur", jt);
+              dt($i ? "focusout" : "blur", zt);
               break;
             case "focusin":
-              dt("focusout", jt);
+              dt("focusout", zt);
               break;
           }
       });
     }
     function Qt() {
       y.forEach(function(l) {
-        var b = l.node, S = l.eventType, T = l.handler, O = l.options;
-        b.removeEventListener(S, T, O);
+        var b = l.node, S = l.eventType, D = l.handler, E = l.options;
+        b.removeEventListener(S, D, E);
       }), y = [];
     }
-    function zt(l) {
+    function Ht(l) {
       var b, S = !1;
-      if (!(!i.state.isEnabled || Wt(l) || r)) {
-        var T = ((b = d) == null ? void 0 : b.type) === "focus";
-        d = l, g = l.currentTarget, tt(), !i.state.isVisible && xe(l) && Xt.forEach(function(O) {
-          return O(l);
-        }), l.type === "click" && (i.props.trigger.indexOf("mouseenter") < 0 || s) && i.props.hideOnClick !== !1 && i.state.isVisible ? S = !0 : Ht(l), l.type === "click" && (s = !S), S && !T && yt(l);
+      if (!(!o.state.isEnabled || $t(l) || p)) {
+        var D = ((b = d) == null ? void 0 : b.type) === "focus";
+        d = l, g = l.currentTarget, tt(), !o.state.isVisible && xe(l) && Gt.forEach(function(E) {
+          return E(l);
+        }), l.type === "click" && (o.props.trigger.indexOf("mouseenter") < 0 || s) && o.props.hideOnClick !== !1 && o.state.isVisible ? S = !0 : Ft(l), l.type === "click" && (s = !S), S && !D && yt(l);
       }
     }
     function Jt(l) {
-      var b = l.target, S = P().contains(b) || f.contains(b);
+      var b = l.target, S = L().contains(b) || m.contains(b);
       if (!(l.type === "mousemove" && S)) {
-        var T = mt().concat(f).map(function(O) {
-          var j, Y = O._tippy, At = (j = Y.popperInstance) == null ? void 0 : j.state;
-          return At ? {
-            popperRect: O.getBoundingClientRect(),
-            popperState: At,
-            props: a
+        var D = ut().concat(m).map(function(E) {
+          var z, Z = E._tippy, Mt = (z = Z.popperInstance) == null ? void 0 : z.state;
+          return Mt ? {
+            popperRect: E.getBoundingClientRect(),
+            popperState: Mt,
+            props: n
           } : null;
         }).filter(Boolean);
-        Bo(T, l) && (gt(), yt(l));
+        Bi(D, l) && (gt(), yt(l));
       }
     }
     function te(l) {
-      var b = Wt(l) || i.props.trigger.indexOf("click") >= 0 && s;
+      var b = $t(l) || o.props.trigger.indexOf("click") >= 0 && s;
       if (!b) {
-        if (i.props.interactive) {
-          i.hideWithInteractivity(l);
+        if (o.props.interactive) {
+          o.hideWithInteractivity(l);
           return;
         }
         yt(l);
       }
     }
-    function jt(l) {
-      i.props.trigger.indexOf("focusin") < 0 && l.target !== P() || i.props.interactive && l.relatedTarget && f.contains(l.relatedTarget) || yt(l);
+    function zt(l) {
+      o.props.trigger.indexOf("focusin") < 0 && l.target !== L() || o.props.interactive && l.relatedTarget && m.contains(l.relatedTarget) || yt(l);
     }
-    function Wt(l) {
-      return Q.isTouch ? R() !== l.type.indexOf("touch") >= 0 : !1;
+    function $t(l) {
+      return Q.isTouch ? q() !== l.type.indexOf("touch") >= 0 : !1;
     }
     function ee() {
-      ae();
-      var l = i.props, b = l.popperOptions, S = l.placement, T = l.offset, O = l.getReferenceClientRect, j = l.moveTransition, Y = L() ? Yt(f).arrow : null, At = O ? {
-        getBoundingClientRect: O,
-        contextElement: O.contextElement || P()
-      } : e, ga = {
+      ne();
+      var l = o.props, b = l.popperOptions, S = l.placement, D = l.offset, E = l.getReferenceClientRect, z = l.moveTransition, Z = R() ? Zt(m).arrow : null, Mt = E ? {
+        getBoundingClientRect: E,
+        contextElement: E.contextElement || L()
+      } : e, vn = {
         name: "$$tippy",
         enabled: !0,
         phase: "beforeWrite",
         requires: ["computeStyles"],
         fn: function(se) {
-          var Tt = se.state;
-          if (L()) {
-            var Ci = V(), Oe = Ci.box;
-            ["placement", "reference-hidden", "escaped"].forEach(function(re) {
-              re === "placement" ? Oe.setAttribute("data-placement", Tt.placement) : Tt.attributes.popper["data-popper-" + re] ? Oe.setAttribute("data-" + re, "") : Oe.removeAttribute("data-" + re);
-            }), Tt.attributes.popper = {};
+          var Dt = se.state;
+          if (R()) {
+            var Oo = W(), Ee = Oo.box;
+            ["placement", "reference-hidden", "escaped"].forEach(function(pe) {
+              pe === "placement" ? Ee.setAttribute("data-placement", Dt.placement) : Dt.attributes.popper["data-popper-" + pe] ? Ee.setAttribute("data-" + pe, "") : Ee.removeAttribute("data-" + pe);
+            }), Dt.attributes.popper = {};
           }
         }
       }, bt = [{
         name: "offset",
         options: {
-          offset: T
+          offset: D
         }
       }, {
         name: "preventOverflow",
@@ -4968,155 +3081,155 @@ body:has(.os-dialog[open]) {
       }, {
         name: "computeStyles",
         options: {
-          adaptive: !j
+          adaptive: !z
         }
-      }, ga];
-      L() && Y && bt.push({
+      }, vn];
+      R() && Z && bt.push({
         name: "arrow",
         options: {
-          element: Y,
+          element: Z,
           padding: 3
         }
-      }), bt.push.apply(bt, (b == null ? void 0 : b.modifiers) || []), i.popperInstance = Ao(At, f, Object.assign({}, b, {
+      }), bt.push.apply(bt, (b == null ? void 0 : b.modifiers) || []), o.popperInstance = Mi(Mt, m, Object.assign({}, b, {
         placement: S,
         onFirstUpdate: x,
         modifiers: bt
       }));
     }
-    function ae() {
-      i.popperInstance && (i.popperInstance.destroy(), i.popperInstance = null);
+    function ne() {
+      o.popperInstance && (o.popperInstance.destroy(), o.popperInstance = null);
     }
     function st() {
-      var l = i.props.appendTo, b, S = P();
-      i.props.interactive && l === Ke || l === "parent" ? b = S.parentNode : b = Qe(l, [S]), b.contains(f) || b.appendChild(f), i.state.isMounted = !0, ee();
+      var l = o.props.appendTo, b, S = L();
+      o.props.interactive && l === Ke || l === "parent" ? b = S.parentNode : b = Qe(l, [S]), b.contains(m) || b.appendChild(m), o.state.isMounted = !0, ee();
     }
-    function mt() {
-      return St(f.querySelectorAll("[data-tippy-root]"));
+    function ut() {
+      return St(m.querySelectorAll("[data-tippy-root]"));
     }
-    function Ht(l) {
-      i.clearDelayTimeouts(), l && B("onTrigger", [i, l]), X();
-      var b = I(!0), S = E(), T = S[0], O = S[1];
-      Q.isTouch && T === "hold" && O && (b = O), b ? o = setTimeout(function() {
-        i.show();
-      }, b) : i.show();
+    function Ft(l) {
+      o.clearDelayTimeouts(), l && B("onTrigger", [o, l]), G();
+      var b = j(!0), S = P(), D = S[0], E = S[1];
+      Q.isTouch && D === "hold" && E && (b = E), b ? i = setTimeout(function() {
+        o.show();
+      }, b) : o.show();
     }
     function yt(l) {
-      if (i.clearDelayTimeouts(), B("onUntrigger", [i, l]), !i.state.isVisible) {
-        nt();
+      if (o.clearDelayTimeouts(), B("onUntrigger", [o, l]), !o.state.isVisible) {
+        rt();
         return;
       }
-      if (!(i.props.trigger.indexOf("mouseenter") >= 0 && i.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(l.type) >= 0 && s)) {
-        var b = I(!1);
-        b ? n = setTimeout(function() {
-          i.state.isVisible && i.hide();
-        }, b) : p = requestAnimationFrame(function() {
-          i.hide();
+      if (!(o.props.trigger.indexOf("mouseenter") >= 0 && o.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(l.type) >= 0 && s)) {
+        var b = j(!1);
+        b ? r = setTimeout(function() {
+          o.state.isVisible && o.hide();
+        }, b) : a = requestAnimationFrame(function() {
+          o.hide();
         });
       }
     }
-    function $t() {
-      i.state.isEnabled = !0;
-    }
-    function oe() {
-      i.hide(), i.state.isEnabled = !1;
+    function _t() {
+      o.state.isEnabled = !0;
     }
     function ie() {
-      clearTimeout(o), clearTimeout(n), cancelAnimationFrame(p);
+      o.hide(), o.state.isEnabled = !1;
     }
-    function ne(l) {
-      if (!i.state.isDestroyed) {
-        B("onBeforeUpdate", [i, l]), Qt();
-        var b = i.props, S = la(e, Object.assign({}, b, oa(l), {
+    function oe() {
+      clearTimeout(i), clearTimeout(r), cancelAnimationFrame(a);
+    }
+    function re(l) {
+      if (!o.state.isDestroyed) {
+        B("onBeforeUpdate", [o, l]), Qt();
+        var b = o.props, S = dn(e, Object.assign({}, b, on(l), {
           ignoreAttributes: !0
         }));
-        i.props = S, Ot(), b.interactiveDebounce !== S.interactiveDebounce && (gt(), w = Je(Jt, S.interactiveDebounce)), b.triggerTarget && !S.triggerTarget ? lt(b.triggerTarget).forEach(function(T) {
-          T.removeAttribute("aria-expanded");
-        }) : S.triggerTarget && e.removeAttribute("aria-expanded"), tt(), z(), q && q(b, S), i.popperInstance && (ee(), mt().forEach(function(T) {
-          requestAnimationFrame(T._tippy.popperInstance.forceUpdate);
-        })), B("onAfterUpdate", [i, l]);
+        o.props = S, Et(), b.interactiveDebounce !== S.interactiveDebounce && (gt(), w = Je(Jt, S.interactiveDebounce)), b.triggerTarget && !S.triggerTarget ? lt(b.triggerTarget).forEach(function(D) {
+          D.removeAttribute("aria-expanded");
+        }) : S.triggerTarget && e.removeAttribute("aria-expanded"), tt(), H(), O && O(b, S), o.popperInstance && (ee(), ut().forEach(function(D) {
+          requestAnimationFrame(D._tippy.popperInstance.forceUpdate);
+        })), B("onAfterUpdate", [o, l]);
       }
     }
-    function pe(l) {
-      i.setProps({
+    function ae(l) {
+      o.setProps({
         content: l
       });
     }
-    function wi() {
-      var l = i.state.isVisible, b = i.state.isDestroyed, S = !i.state.isEnabled, T = Q.isTouch && !i.props.touch, O = be(i.props.duration, 0, N.duration);
-      if (!(l || b || S || T) && !P().hasAttribute("disabled") && (B("onShow", [i], !1), i.props.onShow(i) !== !1)) {
-        if (i.state.isVisible = !0, L() && (f.style.visibility = "visible"), z(), X(), i.state.isMounted || (f.style.transition = "none"), L()) {
-          var j = V(), Y = j.box, At = j.content;
-          ke([Y, At], 0);
+    function xo() {
+      var l = o.state.isVisible, b = o.state.isDestroyed, S = !o.state.isEnabled, D = Q.isTouch && !o.props.touch, E = be(o.props.duration, 0, V.duration);
+      if (!(l || b || S || D) && !L().hasAttribute("disabled") && (B("onShow", [o], !1), o.props.onShow(o) !== !1)) {
+        if (o.state.isVisible = !0, R() && (m.style.visibility = "visible"), H(), G(), o.state.isMounted || (m.style.transition = "none"), R()) {
+          var z = W(), Z = z.box, Mt = z.content;
+          ke([Z, Mt], 0);
         }
         x = function() {
           var bt;
-          if (!(!i.state.isVisible || m)) {
-            if (m = !0, f.offsetHeight, f.style.transition = i.props.moveTransition, L() && i.props.animation) {
-              var qe = V(), se = qe.box, Tt = qe.content;
-              ke([se, Tt], O), It([se, Tt], "visible");
+          if (!(!o.state.isVisible || u)) {
+            if (u = !0, m.offsetHeight, m.style.transition = o.props.moveTransition, R() && o.props.animation) {
+              var Oe = W(), se = Oe.box, Dt = Oe.content;
+              ke([se, Dt], E), jt([se, Dt], "visible");
             }
-            J(), tt(), ea(Zt, i), (bt = i.popperInstance) == null || bt.forceUpdate(), B("onMount", [i]), i.props.animation && L() && pt(O, function() {
-              i.state.isShown = !0, B("onShown", [i]);
+            J(), tt(), en(Xt, o), (bt = o.popperInstance) == null || bt.forceUpdate(), B("onMount", [o]), o.props.animation && R() && at(E, function() {
+              o.state.isShown = !0, B("onShown", [o]);
             });
           }
         }, st();
       }
     }
-    function xi() {
-      var l = !i.state.isVisible, b = i.state.isDestroyed, S = !i.state.isEnabled, T = be(i.props.duration, 1, N.duration);
-      if (!(l || b || S) && (B("onHide", [i], !1), i.props.onHide(i) !== !1)) {
-        if (i.state.isVisible = !1, i.state.isShown = !1, m = !1, s = !1, L() && (f.style.visibility = "hidden"), gt(), nt(), z(!0), L()) {
-          var O = V(), j = O.box, Y = O.content;
-          i.props.animation && (ke([j, Y], T), It([j, Y], "hidden"));
+    function ko() {
+      var l = !o.state.isVisible, b = o.state.isDestroyed, S = !o.state.isEnabled, D = be(o.props.duration, 1, V.duration);
+      if (!(l || b || S) && (B("onHide", [o], !1), o.props.onHide(o) !== !1)) {
+        if (o.state.isVisible = !1, o.state.isShown = !1, u = !1, s = !1, R() && (m.style.visibility = "hidden"), gt(), rt(), H(!0), R()) {
+          var E = W(), z = E.box, Z = E.content;
+          o.props.animation && (ke([z, Z], D), jt([z, Z], "hidden"));
         }
-        J(), tt(), i.props.animation ? L() && Ct(T, i.unmount) : i.unmount();
+        J(), tt(), o.props.animation ? R() && At(D, o.unmount) : o.unmount();
       }
     }
-    function ki(l) {
-      F().addEventListener("mousemove", w), ea(Xt, w), w(l);
+    function Co(l) {
+      I().addEventListener("mousemove", w), en(Gt, w), w(l);
     }
-    function Mi() {
-      i.state.isVisible && i.hide(), i.state.isMounted && (ae(), mt().forEach(function(l) {
+    function So() {
+      o.state.isVisible && o.hide(), o.state.isMounted && (ne(), ut().forEach(function(l) {
         l._tippy.unmount();
-      }), f.parentNode && f.parentNode.removeChild(f), Zt = Zt.filter(function(l) {
-        return l !== i;
-      }), i.state.isMounted = !1, B("onHidden", [i]));
+      }), m.parentNode && m.parentNode.removeChild(m), Xt = Xt.filter(function(l) {
+        return l !== o;
+      }), o.state.isMounted = !1, B("onHidden", [o]));
     }
-    function Si() {
-      i.state.isDestroyed || (i.clearDelayTimeouts(), i.unmount(), Qt(), delete e._tippy, i.state.isDestroyed = !0, B("onDestroy", [i]));
+    function Ao() {
+      o.state.isDestroyed || (o.clearDelayTimeouts(), o.unmount(), Qt(), delete e._tippy, o.state.isDestroyed = !0, B("onDestroy", [o]));
     }
   }
-  function ot(e, t) {
+  function it(e, t) {
     t === void 0 && (t = {});
-    var a = N.plugins.concat(t.plugins || []);
-    zo();
-    var o = Object.assign({}, t, {
-      plugins: a
-    }), n = Ro(e), p = n.reduce(function(s, r) {
-      var c = r && Yo(r, o);
+    var n = V.plugins.concat(t.plugins || []);
+    Hi();
+    var i = Object.assign({}, t, {
+      plugins: n
+    }), r = qi(e), a = r.reduce(function(s, p) {
+      var c = p && Zi(p, i);
       return c && s.push(c), s;
     }, []);
-    return Gt(e) ? p[0] : p;
+    return Yt(e) ? a[0] : a;
   }
-  ot.defaultProps = N, ot.setDefaultProps = Vo, ot.currentInput = Q;
-  var Xo = function(t) {
-    var a = t === void 0 ? {} : t, o = a.exclude, n = a.duration;
-    Zt.forEach(function(p) {
+  it.defaultProps = V, it.setDefaultProps = Wi, it.currentInput = Q;
+  var Gi = function(t) {
+    var n = t === void 0 ? {} : t, i = n.exclude, r = n.duration;
+    Xt.forEach(function(a) {
       var s = !1;
-      if (o && (s = ia(o) ? p.reference === o : p.popper === o.popper), !s) {
-        var r = p.props.duration;
-        p.setProps({
-          duration: n
-        }), p.hide(), p.state.isDestroyed || p.setProps({
+      if (i && (s = rn(i) ? a.reference === i : a.popper === i.popper), !s) {
+        var p = a.props.duration;
+        a.setProps({
           duration: r
+        }), a.hide(), a.state.isDestroyed || a.setProps({
+          duration: p
         });
       }
     });
-  }, Zo = Object.assign({}, Ee, {
+  }, Xi = Object.assign({}, Pe, {
     effect: function(t) {
-      var a = t.state, o = {
+      var n = t.state, i = {
         popper: {
-          position: a.options.strategy,
+          position: n.options.strategy,
           left: "0",
           top: "0",
           margin: "0"
@@ -5126,50 +3239,50 @@ body:has(.os-dialog[open]) {
         },
         reference: {}
       };
-      Object.assign(a.elements.popper.style, o.popper), a.styles = o, a.elements.arrow && Object.assign(a.elements.arrow.style, o.arrow);
+      Object.assign(n.elements.popper.style, i.popper), n.styles = i, n.elements.arrow && Object.assign(n.elements.arrow.style, i.arrow);
     }
-  }), Ko = function(t, a) {
-    var o;
-    a === void 0 && (a = {});
-    var n = t, p = [], s = [], r, c = a.overrides, m = [], d = !1;
+  }), Ki = function(t, n) {
+    var i;
+    n === void 0 && (n = {});
+    var r = t, a = [], s = [], p, c = n.overrides, u = [], d = !1;
     function k() {
-      s = n.map(function(i) {
-        return lt(i.props.triggerTarget || i.reference);
-      }).reduce(function(i, v) {
-        return i.concat(v);
+      s = r.map(function(o) {
+        return lt(o.props.triggerTarget || o.reference);
+      }).reduce(function(o, v) {
+        return o.concat(v);
       }, []);
     }
     function x() {
-      p = n.map(function(i) {
-        return i.reference;
+      a = r.map(function(o) {
+        return o.reference;
       });
     }
-    function y(i) {
-      n.forEach(function(v) {
-        i ? v.enable() : v.disable();
+    function y(o) {
+      r.forEach(function(v) {
+        o ? v.enable() : v.disable();
       });
     }
-    function w(i) {
-      return n.map(function(v) {
-        var f = v.setProps;
-        return v.setProps = function(q) {
-          f(q), v.reference === r && i.setProps(q);
+    function w(o) {
+      return r.map(function(v) {
+        var m = v.setProps;
+        return v.setProps = function(O) {
+          m(O), v.reference === p && o.setProps(O);
         }, function() {
-          v.setProps = f;
+          v.setProps = m;
         };
       });
     }
-    function g(i, v) {
-      var f = s.indexOf(v);
-      if (v !== r) {
-        r = v;
-        var q = (c || []).concat("content").reduce(function(A, D) {
-          return A[D] = n[f].props[D], A;
+    function g(o, v) {
+      var m = s.indexOf(v);
+      if (v !== p) {
+        p = v;
+        var O = (c || []).concat("content").reduce(function(M, T) {
+          return M[T] = r[m].props[T], M;
         }, {});
-        i.setProps(Object.assign({}, q, {
-          getReferenceClientRect: typeof q.getReferenceClientRect == "function" ? q.getReferenceClientRect : function() {
-            var A;
-            return (A = p[f]) == null ? void 0 : A.getBoundingClientRect();
+        o.setProps(Object.assign({}, O, {
+          getReferenceClientRect: typeof O.getReferenceClientRect == "function" ? O.getReferenceClientRect : function() {
+            var M;
+            return (M = a[m]) == null ? void 0 : M.getBoundingClientRect();
           }
         }));
       }
@@ -5182,209 +3295,209 @@ body:has(.os-dialog[open]) {
             y(!0);
           },
           onHidden: function() {
-            r = null;
+            p = null;
           },
-          onClickOutside: function(f) {
-            f.props.showOnCreate && !d && (d = !0, r = null);
+          onClickOutside: function(m) {
+            m.props.showOnCreate && !d && (d = !0, p = null);
           },
-          onShow: function(f) {
-            f.props.showOnCreate && !d && (d = !0, g(f, p[0]));
+          onShow: function(m) {
+            m.props.showOnCreate && !d && (d = !0, g(m, a[0]));
           },
-          onTrigger: function(f, q) {
-            g(f, q.currentTarget);
+          onTrigger: function(m, O) {
+            g(m, O.currentTarget);
           }
         };
       }
-    }, u = ot(ht(), Object.assign({}, ta(a, ["overrides"]), {
-      plugins: [h].concat(a.plugins || []),
+    }, f = it(ht(), Object.assign({}, tn(n, ["overrides"]), {
+      plugins: [h].concat(n.plugins || []),
       triggerTarget: s,
-      popperOptions: Object.assign({}, a.popperOptions, {
-        modifiers: [].concat(((o = a.popperOptions) == null ? void 0 : o.modifiers) || [], [Zo])
+      popperOptions: Object.assign({}, n.popperOptions, {
+        modifiers: [].concat(((i = n.popperOptions) == null ? void 0 : i.modifiers) || [], [Xi])
       })
-    })), M = u.show;
-    u.show = function(i) {
-      if (M(), !r && i == null)
-        return g(u, p[0]);
-      if (!(r && i == null)) {
-        if (typeof i == "number")
-          return p[i] && g(u, p[i]);
-        if (n.indexOf(i) >= 0) {
-          var v = i.reference;
-          return g(u, v);
+    })), C = f.show;
+    f.show = function(o) {
+      if (C(), !p && o == null)
+        return g(f, a[0]);
+      if (!(p && o == null)) {
+        if (typeof o == "number")
+          return a[o] && g(f, a[o]);
+        if (r.indexOf(o) >= 0) {
+          var v = o.reference;
+          return g(f, v);
         }
-        if (p.indexOf(i) >= 0)
-          return g(u, i);
+        if (a.indexOf(o) >= 0)
+          return g(f, o);
       }
-    }, u.showNext = function() {
-      var i = p[0];
-      if (!r)
-        return u.show(0);
-      var v = p.indexOf(r);
-      u.show(p[v + 1] || i);
-    }, u.showPrevious = function() {
-      var i = p[p.length - 1];
-      if (!r)
-        return u.show(i);
-      var v = p.indexOf(r), f = p[v - 1] || i;
-      u.show(f);
+    }, f.showNext = function() {
+      var o = a[0];
+      if (!p)
+        return f.show(0);
+      var v = a.indexOf(p);
+      f.show(a[v + 1] || o);
+    }, f.showPrevious = function() {
+      var o = a[a.length - 1];
+      if (!p)
+        return f.show(o);
+      var v = a.indexOf(p), m = a[v - 1] || o;
+      f.show(m);
     };
-    var C = u.setProps;
-    return u.setProps = function(i) {
-      c = i.overrides || c, C(i);
-    }, u.setInstances = function(i) {
-      y(!0), m.forEach(function(v) {
+    var A = f.setProps;
+    return f.setProps = function(o) {
+      c = o.overrides || c, A(o);
+    }, f.setInstances = function(o) {
+      y(!0), u.forEach(function(v) {
         return v();
-      }), n = i, y(!1), x(), k(), m = w(u), u.setProps({
+      }), r = o, y(!1), x(), k(), u = w(f), f.setProps({
         triggerTarget: s
       });
-    }, m = w(u), u;
-  }, Qo = {
+    }, u = w(f), f;
+  }, Qi = {
     mouseover: "mouseenter",
     focusin: "focus",
     click: "click"
   };
-  function Jo(e, t) {
-    var a = [], o = [], n = !1, p = t.target, s = ta(t, ["target"]), r = Object.assign({}, s, {
+  function Ji(e, t) {
+    var n = [], i = [], r = !1, a = t.target, s = tn(t, ["target"]), p = Object.assign({}, s, {
       trigger: "manual",
       touch: !1
     }), c = Object.assign({
-      touch: N.touch
+      touch: V.touch
     }, s, {
       showOnCreate: !0
-    }), m = ot(e, r), d = lt(m);
+    }), u = it(e, p), d = lt(u);
     function k(h) {
-      if (!(!h.target || n)) {
-        var u = h.target.closest(p);
-        if (u) {
-          var M = u.getAttribute("data-tippy-trigger") || t.trigger || N.trigger;
-          if (!u._tippy && !(h.type === "touchstart" && typeof c.touch == "boolean") && !(h.type !== "touchstart" && M.indexOf(Qo[h.type]) < 0)) {
-            var C = ot(u, c);
-            C && (o = o.concat(C));
+      if (!(!h.target || r)) {
+        var f = h.target.closest(a);
+        if (f) {
+          var C = f.getAttribute("data-tippy-trigger") || t.trigger || V.trigger;
+          if (!f._tippy && !(h.type === "touchstart" && typeof c.touch == "boolean") && !(h.type !== "touchstart" && C.indexOf(Qi[h.type]) < 0)) {
+            var A = it(f, c);
+            A && (i = i.concat(A));
           }
         }
       }
     }
-    function x(h, u, M, C) {
-      C === void 0 && (C = !1), h.addEventListener(u, M, C), a.push({
+    function x(h, f, C, A) {
+      A === void 0 && (A = !1), h.addEventListener(f, C, A), n.push({
         node: h,
-        eventType: u,
-        handler: M,
-        options: C
+        eventType: f,
+        handler: C,
+        options: A
       });
     }
     function y(h) {
-      var u = h.reference;
-      x(u, "touchstart", k, ct), x(u, "mouseover", k), x(u, "focusin", k), x(u, "click", k);
+      var f = h.reference;
+      x(f, "touchstart", k, ct), x(f, "mouseover", k), x(f, "focusin", k), x(f, "click", k);
     }
     function w() {
-      a.forEach(function(h) {
-        var u = h.node, M = h.eventType, C = h.handler, i = h.options;
-        u.removeEventListener(M, C, i);
-      }), a = [];
+      n.forEach(function(h) {
+        var f = h.node, C = h.eventType, A = h.handler, o = h.options;
+        f.removeEventListener(C, A, o);
+      }), n = [];
     }
     function g(h) {
-      var u = h.destroy, M = h.enable, C = h.disable;
-      h.destroy = function(i) {
-        i === void 0 && (i = !0), i && o.forEach(function(v) {
+      var f = h.destroy, C = h.enable, A = h.disable;
+      h.destroy = function(o) {
+        o === void 0 && (o = !0), o && i.forEach(function(v) {
           v.destroy();
-        }), o = [], w(), u();
+        }), i = [], w(), f();
       }, h.enable = function() {
-        M(), o.forEach(function(i) {
-          return i.enable();
-        }), n = !1;
+        C(), i.forEach(function(o) {
+          return o.enable();
+        }), r = !1;
       }, h.disable = function() {
-        C(), o.forEach(function(i) {
-          return i.disable();
-        }), n = !0;
+        A(), i.forEach(function(o) {
+          return o.disable();
+        }), r = !0;
       }, y(h);
     }
-    return d.forEach(g), m;
+    return d.forEach(g), u;
   }
-  var ti = {
+  var to = {
     name: "animateFill",
     defaultValue: !1,
     fn: function(t) {
-      var a;
-      if (!((a = t.props.render) != null && a.$$tippy))
+      var n;
+      if (!((n = t.props.render) != null && n.$$tippy))
         return {};
-      var o = Yt(t.popper), n = o.box, p = o.content, s = t.props.animateFill ? ei() : null;
+      var i = Zt(t.popper), r = i.box, a = i.content, s = t.props.animateFill ? eo() : null;
       return {
         onCreate: function() {
-          s && (n.insertBefore(s, n.firstElementChild), n.setAttribute("data-animatefill", ""), n.style.overflow = "hidden", t.setProps({
+          s && (r.insertBefore(s, r.firstElementChild), r.setAttribute("data-animatefill", ""), r.style.overflow = "hidden", t.setProps({
             arrow: !1,
             animation: "shift-away"
           }));
         },
         onMount: function() {
           if (s) {
-            var c = n.style.transitionDuration, m = Number(c.replace("ms", ""));
-            p.style.transitionDelay = Math.round(m / 10) + "ms", s.style.transitionDuration = c, It([s], "visible");
+            var c = r.style.transitionDuration, u = Number(c.replace("ms", ""));
+            a.style.transitionDelay = Math.round(u / 10) + "ms", s.style.transitionDuration = c, jt([s], "visible");
           }
         },
         onShow: function() {
           s && (s.style.transitionDuration = "0ms");
         },
         onHide: function() {
-          s && It([s], "hidden");
+          s && jt([s], "hidden");
         }
       };
     }
   };
-  function ei() {
+  function eo() {
     var e = ht();
-    return e.className = Ye, It([e], "hidden"), e;
+    return e.className = Ze, jt([e], "hidden"), e;
   }
-  var Ce = {
+  var Ae = {
     clientX: 0,
     clientY: 0
   }, Kt = [];
-  function fa(e) {
-    var t = e.clientX, a = e.clientY;
-    Ce = {
+  function hn(e) {
+    var t = e.clientX, n = e.clientY;
+    Ae = {
       clientX: t,
-      clientY: a
+      clientY: n
     };
   }
-  function ai(e) {
-    e.addEventListener("mousemove", fa);
+  function no(e) {
+    e.addEventListener("mousemove", hn);
   }
-  function oi(e) {
-    e.removeEventListener("mousemove", fa);
+  function io(e) {
+    e.removeEventListener("mousemove", hn);
   }
-  var ii = {
+  var oo = {
     name: "followCursor",
     defaultValue: !1,
     fn: function(t) {
-      var a = t.reference, o = na(t.props.triggerTarget || a), n = !1, p = !1, s = !0, r = t.props;
+      var n = t.reference, i = an(t.props.triggerTarget || n), r = !1, a = !1, s = !0, p = t.props;
       function c() {
         return t.props.followCursor === "initial" && t.state.isVisible;
       }
-      function m() {
-        o.addEventListener("mousemove", x);
+      function u() {
+        i.addEventListener("mousemove", x);
       }
       function d() {
-        o.removeEventListener("mousemove", x);
+        i.removeEventListener("mousemove", x);
       }
       function k() {
-        n = !0, t.setProps({
+        r = !0, t.setProps({
           getReferenceClientRect: null
-        }), n = !1;
+        }), r = !1;
       }
       function x(g) {
-        var h = g.target ? a.contains(g.target) : !0, u = t.props.followCursor, M = g.clientX, C = g.clientY, i = a.getBoundingClientRect(), v = M - i.left, f = C - i.top;
+        var h = g.target ? n.contains(g.target) : !0, f = t.props.followCursor, C = g.clientX, A = g.clientY, o = n.getBoundingClientRect(), v = C - o.left, m = A - o.top;
         (h || !t.props.interactive) && t.setProps({
           // @ts-ignore - unneeded DOMRect properties
           getReferenceClientRect: function() {
-            var A = a.getBoundingClientRect(), D = M, E = C;
-            u === "initial" && (D = A.left + v, E = A.top + f);
-            var R = u === "horizontal" ? A.top : E, L = u === "vertical" ? A.right : D, P = u === "horizontal" ? A.bottom : E, F = u === "vertical" ? A.left : D;
+            var M = n.getBoundingClientRect(), T = C, P = A;
+            f === "initial" && (T = M.left + v, P = M.top + m);
+            var q = f === "horizontal" ? M.top : P, R = f === "vertical" ? M.right : T, L = f === "horizontal" ? M.bottom : P, I = f === "vertical" ? M.left : T;
             return {
-              width: L - F,
-              height: P - R,
-              top: R,
-              right: L,
-              bottom: P,
-              left: F
+              width: R - I,
+              height: L - q,
+              top: q,
+              right: R,
+              bottom: L,
+              left: I
             };
           }
         });
@@ -5392,34 +3505,34 @@ body:has(.os-dialog[open]) {
       function y() {
         t.props.followCursor && (Kt.push({
           instance: t,
-          doc: o
-        }), ai(o));
+          doc: i
+        }), no(i));
       }
       function w() {
         Kt = Kt.filter(function(g) {
           return g.instance !== t;
         }), Kt.filter(function(g) {
-          return g.doc === o;
-        }).length === 0 && oi(o);
+          return g.doc === i;
+        }).length === 0 && io(i);
       }
       return {
         onCreate: y,
         onDestroy: w,
         onBeforeUpdate: function() {
-          r = t.props;
+          p = t.props;
         },
-        onAfterUpdate: function(h, u) {
-          var M = u.followCursor;
-          n || M !== void 0 && r.followCursor !== M && (w(), M ? (y(), t.state.isMounted && !p && !c() && m()) : (d(), k()));
+        onAfterUpdate: function(h, f) {
+          var C = f.followCursor;
+          r || C !== void 0 && p.followCursor !== C && (w(), C ? (y(), t.state.isMounted && !a && !c() && u()) : (d(), k()));
         },
         onMount: function() {
-          t.props.followCursor && !p && (s && (x(Ce), s = !1), c() || m());
+          t.props.followCursor && !a && (s && (x(Ae), s = !1), c() || u());
         },
-        onTrigger: function(h, u) {
-          xe(u) && (Ce = {
-            clientX: u.clientX,
-            clientY: u.clientY
-          }), p = u.type === "focus";
+        onTrigger: function(h, f) {
+          xe(f) && (Ae = {
+            clientX: f.clientX,
+            clientY: f.clientY
+          }), a = f.type === "focus";
         },
         onHidden: function() {
           t.props.followCursor && (k(), d(), s = !0);
@@ -5427,78 +3540,78 @@ body:has(.os-dialog[open]) {
       };
     }
   };
-  function ni(e, t) {
-    var a;
+  function ro(e, t) {
+    var n;
     return {
       popperOptions: Object.assign({}, e.popperOptions, {
-        modifiers: [].concat((((a = e.popperOptions) == null ? void 0 : a.modifiers) || []).filter(function(o) {
-          var n = o.name;
-          return n !== t.name;
+        modifiers: [].concat((((n = e.popperOptions) == null ? void 0 : n.modifiers) || []).filter(function(i) {
+          var r = i.name;
+          return r !== t.name;
         }), [t])
       })
     };
   }
-  var pi = {
+  var ao = {
     name: "inlinePositioning",
     defaultValue: !1,
     fn: function(t) {
-      var a = t.reference;
-      function o() {
+      var n = t.reference;
+      function i() {
         return !!t.props.inlinePositioning;
       }
-      var n, p = -1, s = !1, r = [], c = {
+      var r, a = -1, s = !1, p = [], c = {
         name: "tippyInlinePositioning",
         enabled: !0,
         phase: "afterWrite",
         fn: function(y) {
           var w = y.state;
-          o() && (r.indexOf(w.placement) !== -1 && (r = []), n !== w.placement && r.indexOf(w.placement) === -1 && (r.push(w.placement), t.setProps({
+          i() && (p.indexOf(w.placement) !== -1 && (p = []), r !== w.placement && p.indexOf(w.placement) === -1 && (p.push(w.placement), t.setProps({
             // @ts-ignore - unneeded DOMRect properties
             getReferenceClientRect: function() {
-              return m(w.placement);
+              return u(w.placement);
             }
-          })), n = w.placement);
+          })), r = w.placement);
         }
       };
-      function m(x) {
-        return si(aa(x), a.getBoundingClientRect(), St(a.getClientRects()), p);
+      function u(x) {
+        return so(nn(x), n.getBoundingClientRect(), St(n.getClientRects()), a);
       }
       function d(x) {
         s = !0, t.setProps(x), s = !1;
       }
       function k() {
-        s || d(ni(t.props, c));
+        s || d(ro(t.props, c));
       }
       return {
         onCreate: k,
         onAfterUpdate: k,
         onTrigger: function(y, w) {
           if (xe(w)) {
-            var g = St(t.reference.getClientRects()), h = g.find(function(M) {
-              return M.left - 2 <= w.clientX && M.right + 2 >= w.clientX && M.top - 2 <= w.clientY && M.bottom + 2 >= w.clientY;
-            }), u = g.indexOf(h);
-            p = u > -1 ? u : p;
+            var g = St(t.reference.getClientRects()), h = g.find(function(C) {
+              return C.left - 2 <= w.clientX && C.right + 2 >= w.clientX && C.top - 2 <= w.clientY && C.bottom + 2 >= w.clientY;
+            }), f = g.indexOf(h);
+            a = f > -1 ? f : a;
           }
         },
         onHidden: function() {
-          p = -1;
+          a = -1;
         }
       };
     }
   };
-  function si(e, t, a, o) {
-    if (a.length < 2 || e === null)
+  function so(e, t, n, i) {
+    if (n.length < 2 || e === null)
       return t;
-    if (a.length === 2 && o >= 0 && a[0].left > a[1].right)
-      return a[o] || t;
+    if (n.length === 2 && i >= 0 && n[0].left > n[1].right)
+      return n[i] || t;
     switch (e) {
       case "top":
       case "bottom": {
-        var n = a[0], p = a[a.length - 1], s = e === "top", r = n.top, c = p.bottom, m = s ? n.left : p.left, d = s ? n.right : p.right, k = d - m, x = c - r;
+        var r = n[0], a = n[n.length - 1], s = e === "top", p = r.top, c = a.bottom, u = s ? r.left : a.left, d = s ? r.right : a.right, k = d - u, x = c - p;
         return {
-          top: r,
+          top: p,
           bottom: c,
-          left: m,
+          left: u,
           right: d,
           width: k,
           height: x
@@ -5506,19 +3619,19 @@ body:has(.os-dialog[open]) {
       }
       case "left":
       case "right": {
-        var y = Math.min.apply(Math, a.map(function(f) {
-          return f.left;
-        })), w = Math.max.apply(Math, a.map(function(f) {
-          return f.right;
-        })), g = a.filter(function(f) {
-          return e === "left" ? f.left === y : f.right === w;
-        }), h = g[0].top, u = g[g.length - 1].bottom, M = y, C = w, i = C - M, v = u - h;
+        var y = Math.min.apply(Math, n.map(function(m) {
+          return m.left;
+        })), w = Math.max.apply(Math, n.map(function(m) {
+          return m.right;
+        })), g = n.filter(function(m) {
+          return e === "left" ? m.left === y : m.right === w;
+        }), h = g[0].top, f = g[g.length - 1].bottom, C = y, A = w, o = A - C, v = f - h;
         return {
           top: h,
-          bottom: u,
-          left: M,
-          right: C,
-          width: i,
+          bottom: f,
+          left: C,
+          right: A,
+          width: o,
           height: v
         };
       }
@@ -5526,21 +3639,21 @@ body:has(.os-dialog[open]) {
         return t;
     }
   }
-  var ri = {
+  var po = {
     name: "sticky",
     defaultValue: !1,
     fn: function(t) {
-      var a = t.reference, o = t.popper;
-      function n() {
-        return t.popperInstance ? t.popperInstance.state.elements.reference : a;
+      var n = t.reference, i = t.popper;
+      function r() {
+        return t.popperInstance ? t.popperInstance.state.elements.reference : n;
       }
-      function p(m) {
-        return t.props.sticky === !0 || t.props.sticky === m;
+      function a(u) {
+        return t.props.sticky === !0 || t.props.sticky === u;
       }
-      var s = null, r = null;
+      var s = null, p = null;
       function c() {
-        var m = p("reference") ? n().getBoundingClientRect() : null, d = p("popper") ? o.getBoundingClientRect() : null;
-        (m && ha(s, m) || d && ha(r, d)) && t.popperInstance && t.popperInstance.update(), s = m, r = d, t.state.isMounted && requestAnimationFrame(c);
+        var u = a("reference") ? r().getBoundingClientRect() : null, d = a("popper") ? i.getBoundingClientRect() : null;
+        (u && gn(s, u) || d && gn(p, d)) && t.popperInstance && t.popperInstance.update(), s = u, p = d, t.state.isMounted && requestAnimationFrame(c);
       }
       return {
         onMount: function() {
@@ -5549,25 +3662,25 @@ body:has(.os-dialog[open]) {
       };
     }
   };
-  function ha(e, t) {
+  function gn(e, t) {
     return e && t ? e.top !== t.top || e.right !== t.right || e.bottom !== t.bottom || e.left !== t.left : !0;
   }
-  ot.setDefaultProps({
-    render: ua
+  it.setDefaultProps({
+    render: mn
   });
-  const ci = ot || /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  const co = it || /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
-    animateFill: ti,
-    createSingleton: Ko,
-    default: ot,
-    delegate: Jo,
-    followCursor: ii,
-    hideAll: Xo,
-    inlinePositioning: pi,
-    roundArrow: To,
-    sticky: ri
+    animateFill: to,
+    createSingleton: Ki,
+    default: it,
+    delegate: Ji,
+    followCursor: oo,
+    hideAll: Gi,
+    inlinePositioning: ao,
+    roundArrow: Di,
+    sticky: po
   }, Symbol.toStringTag, { value: "Module" }));
-  class li {
+  class lo {
     constructor() {
       this.init();
     }
@@ -5581,7 +3694,7 @@ body:has(.os-dialog[open]) {
         return;
       }
       if (ce == null) return;
-      const a = (
+      const n = (
         /* HTML */
         `<section class="page-content-wrapper crs-apps">
       <div class="crs-apps-content">
@@ -5868,27 +3981,27 @@ perfect app in our suite of 260+ apps.
       </div>
     </section>`
       );
-      t.insertAdjacentHTML("afterend", a);
+      t.insertAdjacentHTML("afterend", n);
     }
     renderApps(t) {
-      return t.map((a) => ce.find((o) => o.name === a)).filter((a) => a !== void 0).map(
-        (a) => (
+      return t.map((n) => ce.find((i) => i.name === n)).filter((n) => n !== void 0).map(
+        (n) => (
           /* HTML */
           `<div class="crs-block-app">
           <div class="crs-block-app-icon">
             <img
-              src="${a.icon}"
-              alt="${a.name}"
+              src="${n.icon}"
+              alt="${n.name}"
               width="80"
               height="80"
               loading="lazy"
             />
           </div>
-          <div class="crs-block-app-name">${a.name}</div>
-          <div class="crs-block-app-description">${a.description}</div>
+          <div class="crs-block-app-name">${n.name}</div>
+          <div class="crs-block-app-description">${n.description}</div>
 
           <div class="crs-block-app-meta">
-            ${a.rating ? (
+            ${n.rating ? (
             /* HTML */
             `<div class="crs-block-app-rating">
                   <img
@@ -5896,10 +4009,10 @@ perfect app in our suite of 260+ apps.
                     width="16"
                     height="16"
                     src="https://cdn.setapp.com/master-9f18f44f26fe5f8aa6077a4a8f38ca796e93985f-590/build/main/751ecfba46c61061d678.svg"
-                  />${a.rating}%
+                  />${n.rating}%
                 </div>`
           ) : ""}
-            <div class="crs-block-app-platforms">${a.platforms}</div>
+            <div class="crs-block-app-platforms">${n.platforms}</div>
           </div>
         </div>`
         )
@@ -5909,26 +4022,26 @@ perfect app in our suite of 260+ apps.
       const t = document.querySelectorAll(
         ".crs-block-action-button"
       );
-      t && t.length > 0 && t.forEach((a) => {
-        a.addEventListener("click", (o) => {
-          var n;
-          (n = document.querySelector(".header__cta-button")) == null || n.click();
+      t && t.length > 0 && t.forEach((n) => {
+        n.addEventListener("click", (i) => {
+          var r;
+          (r = document.querySelector(".header__cta-button")) == null || r.click();
         });
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = ba, document.head.append(t);
+      t.textContent = wn, document.head.append(t);
     }
     addSmoothScrolling() {
       document.addEventListener("click", (t) => {
-        const o = t.target.closest('.crs-apps-nav a[href^="#"]');
-        if (o) {
+        const i = t.target.closest('.crs-apps-nav a[href^="#"]');
+        if (i) {
           t.preventDefault();
-          const n = o.getAttribute("href");
-          if (n && n !== "#") {
-            const p = document.querySelector(n);
-            p && p.scrollIntoView({
+          const r = i.getAttribute("href");
+          if (r && r !== "#") {
+            const a = document.querySelector(r);
+            a && a.scrollIntoView({
               behavior: "smooth",
               block: "start"
             });
@@ -5942,31 +4055,31 @@ perfect app in our suite of 260+ apps.
         console.error("Apps blocks container not found");
         return;
       }
-      let a;
-      const o = new xa();
-      t.forEach((n) => {
-        let p = null;
-        n.addEventListener("mouseenter", (s) => {
-          if (p) {
-            p.hide();
+      let n;
+      const i = new kn();
+      t.forEach((r) => {
+        let a = null;
+        r.addEventListener("mouseenter", (s) => {
+          if (a) {
+            a.hide();
             return;
           }
-          const r = n.querySelector(".crs-block-app-name");
-          if (!r) return;
-          console.log("App Name:", r.textContent);
-          const c = ka.find(
-            (d) => d.title.includes(r.textContent || "")
+          const p = r.querySelector(".crs-block-app-name");
+          if (!p) return;
+          console.log("App Name:", p.textContent);
+          const c = Cn.find(
+            (d) => d.title.includes(p.textContent || "")
           );
           if (!c) {
             console.warn(
               "No tooltip variant found for app:",
-              r.textContent
+              p.textContent
             );
             return;
           }
-          const m = s.target;
-          p = ci(m, {
-            content: o.returnHtml(c),
+          const u = s.target;
+          a = co(u, {
+            content: i.returnHtml(c),
             allowHTML: !0,
             arrow: !1,
             interactive: !0,
@@ -5992,7 +4105,7 @@ perfect app in our suite of 260+ apps.
               const k = d.popper.querySelector(
                 ".btn-download"
               );
-              a = new AbortController(), k == null || k.addEventListener(
+              n = new AbortController(), k == null || k.addEventListener(
                 "click",
                 () => {
                   d.hide(), setTimeout(() => {
@@ -6001,19 +4114,19 @@ perfect app in our suite of 260+ apps.
                   }, 200);
                 },
                 {
-                  signal: a.signal
+                  signal: n.signal
                 }
               );
             },
             onHide(d) {
-              a && a.abort();
+              n && n.abort();
             }
           });
         });
       });
     }
   }
-  const di = `.crs-achievs {
+  const uo = `.crs-achievs {
   margin-top: 80px;
   width: 100%;
 }
@@ -6119,9 +4232,9 @@ perfect app in our suite of 260+ apps.
   background-repeat: no-repeat;
 }
 `;
-  class mi {
-    constructor({ container: t, position: a = "afterend" }) {
-      this.container = t, this.position = a, this.init();
+  class fo {
+    constructor({ container: t, position: n = "afterend" }) {
+      this.container = t, this.position = n, this.init();
     }
     init() {
       if (!this.container) {
@@ -6174,10 +4287,10 @@ perfect app in our suite of 260+ apps.
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = di, document.head.appendChild(t);
+      t.textContent = uo, document.head.appendChild(t);
     }
   }
-  const ui = "https://conversionrate-store.github.io/a-b_images/setapp/", fi = `.site-navigation__bar {
+  const mo = "https://conversionrate-store.github.io/a-b_images/setapp/", ho = `.site-navigation__bar {
   background: #1a1a1d;
 }
 
@@ -6250,7 +4363,7 @@ section.header .header__description {
   background-image: var(--star-image);
 }
 `;
-  class hi {
+  class go {
     constructor() {
       this.init();
     }
@@ -6259,10 +4372,10 @@ section.header .header__description {
     }
     addAppsImage() {
       const t = `
-      <div class="header__apps-image"><img src="${ui}/apps.webp" alt="Apps Image"></div>`, a = document.querySelector(
+      <div class="header__apps-image"><img src="${mo}/apps.webp" alt="Apps Image"></div>`, n = document.querySelector(
         "section.header .header__logo"
       );
-      a ? a.insertAdjacentHTML("beforebegin", t) : console.error("Target element not found");
+      n ? n.insertAdjacentHTML("beforebegin", t) : console.error("Target element not found");
     }
     changeTitle() {
       const t = document.querySelector("section.header h1.h1_hero");
@@ -6295,17 +4408,17 @@ section.header .header__description {
       const t = document.querySelector(
         "section.header .header__description"
       );
-      t && new mi({
+      t && new fo({
         container: t,
         position: "afterend"
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = fi, document.head.appendChild(t);
+      t.textContent = ho, document.head.appendChild(t);
     }
   }
-  const gi = `.crs-more {
+  const vo = `.crs-more {
   margin-bottom: 120px;
   max-width: 100%;
   color: #fff;
@@ -6381,7 +4494,7 @@ section.header .header__description {
   line-height: 28px;
 }
 `;
-  class vi {
+  class yo {
     constructor() {
       this.init();
     }
@@ -6506,41 +4619,41 @@ section.header .header__description {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = gi, document.head.appendChild(t);
+      t.textContent = vo, document.head.appendChild(t);
     }
   }
-  const yi = `.home {
+  const bo = `.home {
   background: #1a1a1d;
 }
 `;
-  va({ name: "4th EXP on HP", dev: "OS" }), ya("exp_hp");
-  class bi {
+  yn({ name: "4th EXP on HP", dev: "OS" }), bn("exp_hp");
+  class wo {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.getAppData(), !(this.device === "mobile" || location.pathname !== "/") && (console.log("Test init"), this.addStyles(), new hi(), new li(), new vi());
+      this.getAppData(), !(this.device === "mobile" || location.pathname !== "/") && (console.log("Test init"), this.addStyles(), new go(), new lo(), new yo());
     }
     getAppData() {
       const t = document.querySelectorAll("app-details");
       console.log("All Apps:", t);
-      const a = Array.from(t).map((o) => {
-        const n = o.getAttribute("name") || "", p = o.getAttribute("iconsrc") || "", s = o.getAttribute("description") || "", r = o.getAttribute("url") || "", c = o.getAttribute("platforms") || "", m = o.getAttribute("rating") || "";
+      const n = Array.from(t).map((i) => {
+        const r = i.getAttribute("name") || "", a = i.getAttribute("iconsrc") || "", s = i.getAttribute("description") || "", p = i.getAttribute("url") || "", c = i.getAttribute("platforms") || "", u = i.getAttribute("rating") || "";
         return {
-          name: n,
-          icon: p,
+          name: r,
+          icon: a,
           description: s,
-          url: r,
+          url: p,
           platforms: c,
-          rating: m
+          rating: u
         };
       });
-      console.log("App Data:", a);
+      console.log("App Data:", n);
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = yi, document.head.appendChild(t);
+      t.textContent = bo, document.head.appendChild(t);
     }
   }
-  new bi();
+  new wo();
 })();
