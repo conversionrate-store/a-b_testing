@@ -1,15 +1,15 @@
 (function() {
   "use strict";
-  const n = ({ name: s, dev: t }) => {
+  const va = ({ name: e, dev: t }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${t})`,
+      `%c EXP: ${e} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, c = (s) => {
+  }, ya = (e) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", s, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", e, "variant_1"));
     }, 1e3);
-  }, r = `section.apps {
+  }, ba = `section.apps {
   display: none; /* Hide control section */
 }
 
@@ -263,6 +263,7 @@
   background: #fff;
   color: #26262b;
   break-inside: avoid;
+  cursor: pointer;
 }
 
 .crs-block-app-name {
@@ -335,7 +336,7 @@
   font-weight: 600;
   line-height: 48px;
 }
-`, i = [
+`, ce = [
     {
       name: "Supercharge",
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/742/42581/icon-1747027558-6821866668cc5.png",
@@ -353,7 +354,7 @@
       rating: "99"
     },
     {
-      name: "CleanShot",
+      name: "CleanShot X",
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/321/42718/icon-1748347773-6835ab7ddfd5d.png",
       description: "Take better screenshots and GIFs",
       url: "https://setapp.com/apps/cleanshot",
@@ -753,7 +754,7 @@
       rating: "98"
     },
     {
-      name: "CleanMyMac X",
+      name: "CleanMyMac",
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
       description: "Tidy up your Mac",
       url: "https://setapp.com/apps/cleanmymac",
@@ -2413,16 +2414,3165 @@
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/607/main/icon-65719fa98f5e6.png",
       description: "Generate draft email replies",
       url: "https://setapp.com/apps/ready-to-send",
-      platforms: "Web",
-      rating: "0"
+      platforms: "Web"
+    }
+  ], wa = `.tippy-box,
+.tippy-content {
+  background: transparent !important;
+  /* padding: 0 !important;
+  border: 0; */
+}
+
+.os-popover {
+  width: 100%;
+  max-width: 408px;
+  max-height: 100vh;
+  background-color: #fff;
+  color: #26262b;
+  padding-top: 0;
+  border-radius: 24px;
+  font-size: 14px;
+  z-index: 1000;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Avenir Next, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, sans-serif;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.os-dialog .os-popover {
+  max-width: 100%;
+}
+.os-available {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 6px;
+  background: #f5f5f5;
+  color: #77767a;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+.os-popover-header-inner {
+  margin-top: 12px;
+  display: flex;
+  gap: 14px;
+  padding-inline: 4px;
+  padding-left: 36 px;
+}
+
+.os-popover-header img {
+  width: 96px;
+  height: 96px;
+}
+.os-popover-header h3 {
+  margin: 0;
+  padding: 0;
+  max-width: 209px;
+  color: #26262b;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px; /* 114.286% */
+  letter-spacing: 1.15px;
+}
+
+.os-popover-header p {
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: #26262b;
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.os-popover-rating {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.os-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #26262b;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 40.04px;
+}
+
+.os-rating::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="%239D9CA2" fill-rule="evenodd" d="M9.637 7.41A6.015 6.015 0 0 0 9 10.11v6.39c0 1.65 1.342 3 3 3h5.343c1.284 0 2.425-.81 2.84-2.025l1.888-5.55c.663-1.935-.785-3.96-2.841-3.96H15v-4.98a1.485 1.485 0 0 0-2.805-.675l-2.558 5.1Zm-5.887.555a2.249 2.249 0 0 0-2.25 2.25v7.035a2.25 2.25 0 1 0 4.5 0v-7.035a2.249 2.249 0 0 0-2.25-2.25Z" clip-rule="evenodd"/></svg>');
+}
+
+.os-rating-amount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #26262b;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.02px;
+}
+
+.os-rating-amount::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #26262b;
+}
+
+.os-popover-body {
+  margin-top: 12px;
+  padding-inline: 16px;
+}
+
+.os-popover-body p {
+  margin-bottom: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #ebebec;
+  color: #26262b;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.os-popover-body ul {
+  padding-inline: 0 !important;
+  margin-inline: 0 !important;
+  margin-bottom: 0 !important;
+  display: grid;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #ebebec;
+  list-style: none;
+  list-style-position: inside;
+}
+
+.os-popover-body li {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #26262b;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 22px;
+  list-style-type: disc !important;
+  list-style-image: none !important;
+}
+
+.os-popover-body a {
+  color: #e6842e;
+}
+
+.os-popover-footer {
+  margin-top: 12px;
+  padding-inline: 16px;
+}
+
+.os-popover-footer-inner {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #ebebec;
+}
+
+.btn-download,
+.btn-learn-more {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 22px;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  border-radius: 4px;
+  transition: color 0.15sease-in-out, background-color 0.15sease-in-out,
+    border-color 0.15sease-in-out, box-shadow 0.15sease-in-out;
+  cursor: pointer;
+}
+
+.btn-download {
+  background-color: #26262b;
+  color: #fff;
+}
+.btn-download:hover {
+  background-color: #36383e;
+}
+
+.btn-learn-more {
+  background-color: #fff;
+  border: 1px solid #26262b;
+  color: #26262b !important;
+  text-decoration: none !important;
+}
+
+.os-popover-security {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 16px;
+}
+.os-popover-security::before {
+  content: '';
+  width: 15px;
+  height: 17px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" fill="none"><g clip-path="url(%23a)"><path fill="%2326262B" fill-rule="evenodd" d="M8.064.666a2 2 0 0 0-1.128 0L.5 2.553v6.389a7 7 0 0 0 4.362 6.483l1.884.766a2 2 0 0 0 1.508 0l1.883-.766A7 7 0 0 0 14.5 8.944V2.555L8.064.666ZM7.5 2.585l-5 1.467v4.89a5 5 0 0 0 3.116 4.632l1.884.766V2.585Z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="%23fff" d="M.5.5h14v16H.5z"/></clipPath></defs></svg>');
+}
+
+.os-dialog {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* body:has(#signup-modal.is-open) :is(.os-dialog, .os-dialog::backdrop) {
+  visibility: hidden;
+  pointer-events: none;
+} */
+.os-dialog-inner {
+  display: grid;
+  place-content: end center;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.os-dialog-close {
+  margin-right: 16px;
+  justify-self: end;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" fill="none"><g clip-path="url(%23a)"><path fill="%23fff" fill-rule="evenodd" d="M20 40.02c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20 8.954 20 20 20Zm7.134-27.134a1.25 1.25 0 0 1 0 1.768l-5.366 5.366 5.366 5.366a1.25 1.25 0 0 1-1.768 1.768L20 21.788l-5.366 5.366a1.25 1.25 0 0 1-1.768-1.768l5.366-5.366-5.366-5.366a1.25 1.25 0 0 1 1.768-1.768L20 18.252l5.366-5.366a1.25 1.25 0 0 1 1.768 0Z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="%23fff" d="M0 .02h40v40H0z"/></clipPath></defs></svg>');
+}
+
+.os-dialog-content {
+  margin-top: 12px;
+}
+
+.os-dialog .os-popover {
+  border-radius: 24px 24px 0 0;
+}
+
+body:has(.os-dialog[open]) {
+  overflow: hidden;
+}
+`;
+  class xa {
+    constructor() {
+      this.popoverElement = null, this.aborters = [], this.init(), this.aborters = [];
+    }
+    init() {
+      this.addStyles(), this.renderDialog();
+    }
+    content(t) {
+      return (
+        /* HTML */
+        `<div class="os-popover-header">
+        <div class="os-available">Available via Setapp</div>
+        <div class="os-popover-header-inner">
+          <img
+            src="${t.imgSrc}"
+            alt=""
+            width="96"
+            height="96"
+            loading="lazy"
+          />
+          <div>
+            <h3>${t.title}</h3>
+            <p>${t.description}</p>
+            <div class="os-popover-rating">
+              ${t.ratingDetails ? (
+          /* HTML */
+          ` <div class="os-rating">
+                      ${t.ratingDetails.percentage}
+                    </div>
+                    <div class="os-rating-amount">
+                      ${t.ratingDetails.total} ratings
+                    </div>`
+        ) : ""}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="os-popover-body">
+        <p>${t.body.text}</p>
+        <ul>
+          ${t.body.list.map((a) => `<li>${a}</li>`).join("")}
+        </ul>
+      </div>
+      <div class="os-popover-footer">
+        <div class="os-popover-footer-inner">
+          <button class="btn-download" id="os-download">
+            Try free for 7 days
+          </button>
+        </div>
+      </div>
+      <div class="os-popover-security">Security-tested</div>`
+      );
+    }
+    returnHtml(t) {
+      return (
+        /* HTML */
+        `
+      <div class="os-popover">${this.content(t)}</div>
+    `
+      );
+    }
+    renderDialog() {
+      var t;
+      this.popoverElement = document.createElement("dialog"), this.popoverElement.classList.add("os-popover--dialog", "os-dialog"), this.popoverElement.id = "os-dialog", this.popoverElement.innerHTML = /* HTML */
+      `
+      <div class="os-dialog-inner">
+        <button class="os-dialog-close" type="button"></button>
+        <div class="os-dialog-content" id="os-dialog-content"></div>
+      </div>
+    `, (t = document.body) == null || t.appendChild(this.popoverElement);
+    }
+    showDialog(t) {
+      var p;
+      t && t !== "latest" && sessionStorage.setItem("os-tooltip-variant", JSON.stringify(t));
+      const o = document.getElementById("os-dialog").querySelector(
+        "#os-dialog-content"
+      ), n = t === "latest" ? JSON.parse(sessionStorage.getItem("os-tooltip-variant")) : t;
+      o.innerHTML = this.returnHtml(n), (p = this.popoverElement) == null || p.showModal(), this.eventListeners();
+    }
+    closeDialog() {
+      if (!this.popoverElement) return;
+      const t = this.popoverElement.querySelector(
+        "#os-dialog-content"
+      );
+      this.popoverElement.close(), t.innerHTML = "", this.aborters.forEach((a) => {
+        a.abort();
+      }), this.aborters = [];
+    }
+    eventListeners() {
+      if (!this.popoverElement) return;
+      const t = document.getElementById("os-dialog"), a = t == null ? void 0 : t.querySelector(
+        'button[type="button"]'
+      );
+      a == null || a.addEventListener("click", () => {
+        this.closeDialog();
+      });
+      const o = new AbortController();
+      this.aborters.push(o);
+      const n = t.querySelector(
+        ".btn-download"
+      );
+      n == null || n.addEventListener(
+        "click",
+        async () => {
+          var s;
+          (s = document.querySelector(".header__cta-button")) == null || s.click();
+          const p = document.querySelector("#signup-modal");
+          if (p) {
+            const r = new MutationObserver((c) => {
+              c.forEach((m) => {
+                m.type === "attributes" && m.attributeName === "aria-hidden" && p.getAttribute("aria-hidden") === "true" && (r.disconnect(), this.showDialog("latest"));
+              });
+            });
+            r.observe(p, { attributes: !0 });
+          }
+        },
+        {
+          signal: o.signal
+        }
+      );
+    }
+    addStyles() {
+      const t = document.createElement("style");
+      t.textContent = wa, document.head.appendChild(t);
+    }
+  }
+  const ka = [
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
+      title: "Disk Drill",
+      description: "Recover files and avoid data loss",
+      link: "https://setapp.com/apps/disk-drill",
+      ratingDetails: {
+        percentage: "93%",
+        total: "1224"
+      },
+      body: {
+        text: "This first rated data recovery app can bring any kind of data back regardless of the loss cause. Indeed, no matter whether your stuff has gone because of data corruption, unintended removal, and disk utility error, it will help.",
+        list: [
+          "Recover deleted files",
+          "Simple and fast data backup",
+          "Hard drive data recovery",
+          "Powerful data protection"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/217/40765/icon-1730479186-67250452d2169.png",
+      title: "ChronoSync Express",
+      description: "Sync and back up folders",
+      link: "/apps/chronosync-express",
+      ratingDetails: {
+        percentage: "95%",
+        total: "389"
+      },
+      body: {
+        text: "Chronosync Express gives you peace of mind for the security of your files, office and personal data. This consistent application keeps your data safe and updated, no matter where you happen to be.",
+        list: [
+          "Home folder backup or sync",
+          "Easy connection to Macs, iPhones and iPads",
+          "File servers backup and auto mount",
+          "Email and system notifications supported"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png",
+      title: "Backup Pro",
+      description: "Back up only essential files",
+      link: "/apps/get-backup-pro",
+      ratingDetails: {
+        percentage: "86%",
+        total: "281"
+      },
+      body: {
+        text: "Try Get Backup Pro. It's a good mix of backup methods, coming with four varying ways of backups: simple copy, clone, incremental and versioned. Plus, it's used once you need to recover data that has been accidentally deleted from your Mac.",
+        list: [
+          "Backup only those units you want",
+          "Scheduled backups with Stealth mode",
+          "Recover to any computer",
+          "Folder synchronization"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/289/42253/icon-1743678842-67ee6d7aeeda6.png",
+      title: "CloudMounter",
+      description: "Connect cloud storage to Finder",
+      link: "/apps/cloudmounter",
+      ratingDetails: {
+        percentage: "90%",
+        total: "1234"
+      },
+      body: {
+        text: "CloudMounter connects your cloud storage accounts like Google Drive, Dropbox, Amazon S3, OneDrive, and others to your Mac's Finder so you can treat them as regular, local drives.",
+        list: [
+          "Secure cloud data encryption",
+          "Streamlined into your Finder",
+          "Access multiple cloud accounts",
+          "Mount all Cloud storages as local disks"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
+      title: "Downie",
+      description: "Download YouTube videos",
+      link: "/apps/downie",
+      ratingDetails: {
+        percentage: "98%",
+        total: "4372"
+      },
+      body: {
+        text: "Find a video you want to download, then drag and drop the link into the app, or take advantage of a Downie browser extension doing it for you. That's literally all it takes to get that video on your Mac.",
+        list: [
+          "Download YouTube videos",
+          "Download MP4 or just the audio",
+          "Simply drag-and-drop an URL",
+          "Save 4K YouTube videos"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
+      title: "Pulltube",
+      description: "Download and trim videos",
+      link: "https://setapp.com/apps/pulltube",
+      ratingDetails: {
+        percentage: "98%",
+        total: "1478"
+      },
+      body: {
+        text: "Pulltube is a Mac app that enables you to save any type of video and audio content from the top websites like YouTube and Vimeo — in the best quality. 4K, 8K, HD, and 60fps videos are covered.",
+        list: [
+          "Download from 1000+ sites",
+          "Trim your video and audio",
+          "Capture video subtitles",
+          "Download faster via extensions"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/321/42059/icon-1741882724-67d3056489850.png",
+      title: "CleanShot X",
+      description: "Take better screenshots and GIFs",
+      link: "/apps/cleanshot",
+      ratingDetails: {
+        percentage: "99%",
+        total: "11843"
+      },
+      body: {
+        text: "CleanShot is the ultimate screen recording app made for macOS. With its rich toolkit, CleanShot actually feels like 6 apps in one. You can use it to swiftly capture Mac's screen without desktop icons, record and trim video, annotate, save screenshots to dedicated cloud, and more.",
+        list: [
+          "Record screen",
+          "Hide desktop icons",
+          "Annotate, highlight or blur",
+          "Quick Access Overlay"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/328/41359/icon-1734924881-6768da51c8c1a.png",
+      title: "AnyTrans for iOS",
+      description: "Move files between macOS and iOS",
+      link: "/apps/anytrans",
+      body: {
+        text: "The app instantly backups and copies your iPhone content to Mac, as well as transfers data across iOS, iTunes and iCloud. Connect a device and watch your content fly.",
+        list: [
+          "Schedule instant iPhone backups",
+          "Manage iTunes and iCloud content",
+          "Secure management of backups",
+          "Download media from 900+ sites"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/67/41952/icon-1740773686-67c219360b852.png",
+      title: "Ulysses",
+      description: "Write and publish from one app",
+      link: "/apps/ulysses",
+      ratingDetails: {
+        percentage: "99%",
+        total: "2127"
+      },
+      body: {
+        text: "It's an insanely functional writing program, yet it stays completely out of your way when you just need a page to write on. With Ulysses, every step of your story's lifecycle gets easier: you can write undistracted, format with a few keystrokes, and publish without leaving the app.",
+        list: [
+          "Write without distractions",
+          "Stay safe with iCloud sync",
+          "Export beautiful ebooks and PDFs",
+          "Publish to WordPress or Medium"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/554/42201/icon-1743413950-67ea62be54f57.png",
+      title: "Craft",
+      description: "Create and structure documents",
+      link: "/apps/craft",
+      ratingDetails: {
+        percentage: "99%",
+        total: "2127"
+      },
+      body: {
+        text: "Create efficient and visually pleasing documents to track your projects, ideas, plans, and more. File away your items into neatly organized folders or interlink via a master document.",
+        list: [
+          "Share what you are working on",
+          "Use AI assistant",
+          "Structure your items",
+          "Collaborate easily"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/219/42264/icon-1743758208-67efa380b6636.png",
+      title: "Permute",
+      description: "Convert audio, images, and videos",
+      link: "/apps/permute",
+      ratingDetails: {
+        percentage: "98%",
+        total: "3778"
+      },
+      body: {
+        text: "Permute is a quick image, audio, and video converter. You can use it for files of all formats because Permute can convert anything into anything.",
+        list: [
+          "Video converter",
+          "Image converter",
+          "Audio converter",
+          "Video to audio converter"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/566/0/icon-1741357275-67cb00db1ded3.png",
+      title: "Luminar Neo",
+      description: "Improve your photos like a pro",
+      link: "/apps/luminar-neo",
+      ratingDetails: {
+        percentage: "90%",
+        total: "700"
+      },
+      body: {
+        text: "Luminar Neo does everything you need done with your shots — from simple color and vibrancy fixes to more advanced clutter removal, sky replacement, improving the lighting in your photos and more.",
+        list: [
+          "Enhance photos with AI tools",
+          "Utilize extensions",
+          "Get the colors just right",
+          "Use presets"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/299/42088/icon-1742267911-67d8e607487c0.png",
+      title: "CameraBag Pro",
+      description: "Edit photos and videos",
+      link: "/apps/camerabag-pro",
+      ratingDetails: {
+        percentage: "90%",
+        total: "428"
+      },
+      body: {
+        text: "Create breathtaking photos and films with professional one-click filters, or tweak and adjust image settings precisely to impress your friends, colleagues, and clients easier than ever before.",
+        list: [
+          "Professional filters at the ready",
+          "Quick and easy batch changes",
+          "Intuitive adjustment tiles",
+          "Award-winning interface"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/298/8541/icon-1691068510-64cba85e8b087.png",
+      title: "TouchRetouch",
+      description: "Remove objects from photos",
+      link: "/apps/touchretouch",
+      ratingDetails: {
+        percentage: "98%",
+        total: "680"
+      },
+      body: {
+        text: "Don't let a poorly placed trash can or powerline ruin an otherwise perfect photo. With TouchRetouch, your Mac becomes an all-in-one photo retouching studio where you can get your images looking their best.",
+        list: [
+          "Remove unwanted objects",
+          "Crop and edit photos",
+          "Photo retouching in a click",
+          "Line removal"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/433/42254/icon-1743694727-67eeab8756821.png",
+      title: "ClearVPN",
+      description: "Use an intuitive VPN",
+      link: "/apps/clearvpn",
+      ratingDetails: {
+        percentage: "88%",
+        total: "2686"
+      },
+      body: {
+        text: "The app offers simple, ready-made tools that help you spend less time tweaking your VPN's settings and more time actually doing what you want done. Stay more anonymous online, protect your personal information, connect to servers from a specific country and more in a click.",
+        list: [
+          "Deploy a VPN easily",
+          "Change geolocation",
+          "Enjoy perfectly usable speeds",
+          "Keep your data anonymous"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/517/41861/icon-1740384397-67bc288ddd017.png",
+      title: "AddLock",
+      description: "Block annoying browser ads",
+      link: "/apps/adlock",
+      ratingDetails: {
+        percentage: "69%",
+        total: "711"
+      },
+      body: {
+        text: "AdLock — a simple blocker for intrusive pop-up ads, annoying online chats, snoopers, and trackers. Save traffic on autoplay videos and remove unwanted distractions by blocking out ad types you'd like to avoid.",
+        list: [
+          "Block intrusive ads",
+          "Use flexible blocking",
+          "Browse safely",
+          "Remove distractions"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/496/41929/icon-1740575425-67bf12c1bdfa7.png",
+      title: "Pareto Security",
+      description: "Check your security settings",
+      link: "/apps/pareto-security",
+      ratingDetails: {
+        percentage: "97%",
+        total: "634"
+      },
+      body: {
+        text: "Pareto Security checks your device to see if you've utilized all these solutions and lets you know what can be improved. Always keep your Mac security settings up to par with this helpful tool.",
+        list: [
+          "Easy security",
+          "Menu bar interface",
+          "Security checklist",
+          "Automatic checks"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/587/41798/icon-1739292259-67ab7e63760de.png",
+      title: "Secrets 4",
+      description: "Store and manage passwords",
+      link: "/apps/secrets",
+      ratingDetails: {
+        percentage: "77%",
+        total: "151"
+      },
+      body: {
+        text: "Keep your secrets secret with Secrets 4, an updated tool to lock your sensitive information away. Your passwords are not synced to the app's server and are stored on your device or in your iCloud. Easily generate, store, use, and share your passwords.",
+        list: [
+          "Store sensitive information",
+          "Generate passwords",
+          "Share passwords",
+          "Sync between devices"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png",
+      title: "Archiver",
+      description: "Compress and unarchive files",
+      link: "/apps/archiver",
+      ratingDetails: {
+        percentage: "97%",
+        total: "1435"
+      },
+      body: {
+        text: "Zip, unpack and encrypt archives, split big files. You will enjoy its smooth interface, compelling features, and a rapid workflow. Definitely one of the today's most feature-rich file extractor and compressor programs.",
+        list: [
+          "Unpack folders and files in a snap",
+          "Compress files to get more space",
+          "Encrypt and password protect archives",
+          "Preview files in archive without their opening"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/245/7858/icon-1681236553-6435a249c1fd2.png",
+      title: "BetterZip",
+      description: "Create and encrypt archives",
+      link: "/apps/betterzip",
+      ratingDetails: {
+        percentage: "96%",
+        total: "2353"
+      },
+      body: {
+        text: "Delete the unnecessary files right in the archives, preview with Quick Look, rename or move files or folders there - no need to recompress!",
+        list: [
+          "Convenient ZIP file reader and manager",
+          "Archive comments for ZIP and RAR formats",
+          "Reliable password generator and manager",
+          "Over 30 archive formats support + ISO extractor"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/78/43873/icon-1749713159-684a8107ee73d.png",
+      title: "CleanMyMac",
+      description: "Tidy up your Mac",
+      link: "https://setapp.com/apps/cleanmymac",
+      ratingDetails: {
+        percentage: "97%",
+        total: "15454"
+      },
+      body: {
+        text: "CleanMyMac is an all-in-one Mac care app. Run performance optimization, free up space, eliminate duplicates, and manage apps seamlessly.",
+        list: [
+          "Care smarter",
+          "Steer clear of malware",
+          "Free up space",
+          "Declutter your space"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/144/41794/icon-1739274958-67ab3ace7a0bf.png",
+      title: "iStat Menus",
+      description: "Track CPU, GPU, sensors, etc.",
+      link: "https://setapp.com/apps/istat-menus",
+      ratingDetails: {
+        percentage: "97%",
+        total: "4991"
+      },
+      body: {
+        text: "The most comprehensive Mac monitor to date. iStat Menus is a fully-equipped system data collector that lives in your menu bar and provides vital info about the key indicators.",
+        list: ["CPU & GPU", "Disk usage & activity", "Memory", "Sensors"]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/493/10507/icon-1715515857-6640b1d134f36.png",
+      title: "QuitAll",
+      description: "Speed up Mac by quitting all apps",
+      link: "https://setapp.com/apps/quit-all-mac",
+      ratingDetails: {
+        percentage: "98%",
+        total: "1635"
+      },
+      body: {
+        text: "Love handling all the tasks at the same time but hate closing multiple apps one by one? Or find yourself stuck when your machine stalls due to too many apps running in the background?",
+        list: [
+          "Quick quit",
+          "Handle background apps",
+          "Force quit",
+          "Customize to your needs"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/301/42576/icon-1746973828-6820b484ae86f.png",
+      title: "Endurance",
+      description: "Extend your battery life",
+      link: "https://setapp.com/apps/endurance",
+      ratingDetails: {
+        percentage: "94%",
+        total: "569"
+      },
+      body: {
+        text: "Did you ever wish you could squeeze a little more battery life out of your MacBook? Now there’s Endurance, the app designed to make your laptop battery last longer while improving its overall battery health.",
+        list: [
+          "Lower the lights",
+          "Snooze inactive apps",
+          "Toggle your turbo",
+          "Lessen dependence on Flash"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/483/42676/icon-1747828119-682dbd97182a6.png",
+      title: "AlDente Pro",
+      description: "Set battery charging limits",
+      link: "https://setapp.com/apps/aldente-pro",
+      ratingDetails: {
+        percentage: "98%",
+        total: "2847"
+      },
+      body: {
+        text: "You may have heard that having your device plugged in and at 100% all day long is not the best for the battery. You may also have been trying to make sure you don’t go below 20 or 30% on your battery.",
+        list: [
+          "Set charging limit",
+          "Stop charging when hot",
+          "Run on battery when plugged in",
+          "Monitor status and manage"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/376/42548/icon-1746731563-681d022b89238.png",
+      title: "Mission Control",
+      description: "Close windows from Mission Control",
+      link: "https://setapp.com/apps/mission-control-plus",
+      ratingDetails: {
+        percentage: "98%",
+        total: "968"
+      },
+      body: {
+        text: "Tweak Mac’s native Mission Control feature to make the most out of it. Mission Control Plus is an app that adds the close button to all open windows you can view from Mission Control on Mac. It also covers a few shortcuts for quick actions like closing apps or killing active processes.",
+        list: [
+          "Master Mission Control and improve it",
+          "Useful shortcuts for batch actions",
+          "Close windows in Mission Control",
+          "Enjoy the native experience"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/528/42687/icon-1747926996-682f3fd48a02b.png",
+      title: "WidgetWall",
+      description: "Add widgets to Mac desktop",
+      link: "https://setapp.com/apps/widget-wall",
+      ratingDetails: {
+        percentage: "88%",
+        total: "469"
+      },
+      body: {
+        text: "Customize your Mac desktop with widgets — add favorite apps, pictures, Mac stats, and even websites for quick access. Build your very own widget wall on your desktop with WidgetWall.",
+        list: [
+          "Desktop overlay",
+          "Desktop browser widget",
+          "Quick access to tools",
+          "Easy customization"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/153/42799/icon-1748962599-683f0d271f5a8.png",
+      title: "Bartender",
+      description: "Personalize your menu bar",
+      link: "https://setapp.com/apps/bartender",
+      ratingDetails: {
+        percentage: "99%",
+        total: "14530"
+      },
+      body: {
+        text: "Bartender is a slick utility app and a one-stop menu bar organizer for Mac. It helps to organize, search, and actually use your Mac menu bar icons while also keeping your desktop tidy.",
+        list: [
+          "Customize the macOS menu bar",
+          "Search menu items",
+          "Reorder all icons",
+          "Make your own hotkeys"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/321/42718/icon-1748347773-6835ab7ddfd5d.png",
+      title: "CleanShot X",
+      description: "Take better screenshots and GIFs",
+      link: "https://setapp.com/apps/cleanshot",
+      ratingDetails: {
+        percentage: "99%",
+        total: "12298"
+      },
+      body: {
+        text: "CleanShot is the ultimate screen recording app made for macOS. With its rich toolkit, CleanShot actually feels like 6 apps in one. You can use it to swiftly capture Mac’s screen without desktop icons, record and trim video, annotate, save screenshots to dedicated cloud, and more.",
+        list: [
+          "CleanShot Cloud",
+          "Quick Access Overlay",
+          "Hide desktop icons",
+          "Simple yet powerful"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/428/42692/icon-1747967217-682fdcf1a2474.png",
+      title: "Session",
+      description: "Work in short intervals",
+      link: "https://setapp.com/apps/session",
+      ratingDetails: {
+        percentage: "98%",
+        total: "1943"
+      },
+      body: {
+        text: "Session is a focus app that helps build your productivity momentum. Block distractions, work in short intervals, and take regular breaks to recharge your mind. What makes Session stand out is its huge focus on analytics.",
+        list: [
+          "25 minutes of focused work",
+          "Reflect on your sessions",
+          "Block distractions",
+          "See how you perform over time"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/518/42755/icon-1749071187-6840b55359ae5.png",
+      title: "Nitro PDF Pro",
+      description: "Work with your PDFs",
+      link: "https://setapp.com/apps/nitro-pdf-pro",
+      ratingDetails: {
+        percentage: "89%",
+        total: "2746"
+      },
+      body: {
+        text: "Discover this all-round tool for all your PDF editing needs. Create and edit PDFs in Nitro PDF Pro, merge multiple files into one document, or convert into popular formats. ",
+        list: [
+          "Create and edit PDFs",
+          "Merge PDFs",
+          "Annotate PDFs",
+          "Convert PDFs"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png",
+      title: "Get Backup Pro",
+      description: "Back up only essential files",
+      link: "https://setapp.com/apps/get-backup-pro",
+      ratingDetails: {
+        percentage: "86%",
+        total: "288"
+      },
+      body: {
+        text: "You've got a lot of data stored on your computer, right? How about a reliable backup utility for your Mac to be able to resist any kind of data-loss catastrophes? Try Get Backup Pro. It’s a good mix of backup methods, coming with four varying ways of backups: simple copy, clone, incremental and versioned.",
+        list: [
+          "Backup only those units you want",
+          "Folder synchronization",
+          "Incremental and compressed backups",
+          "Scheduled backups with Stealth mode"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/136/40792/icon-1730733142-6728e4563df6a.png",
+      title: "Renamer",
+      description: "Rename a batch of files",
+      link: "https://setapp.com/apps/renamer",
+      ratingDetails: {
+        percentage: "96%",
+        total: "935"
+      },
+      body: {
+        text: "What if you could rename lots of files in a snap? Feels wonderful, right? Renamer makes it possible! This robust application takes the pain out of renaming and managing dozens of files.",
+        list: [
+          "Multiple ways to rename files",
+          "Keep your music organized",
+          "Live preview",
+          "Convert upper and lower cases"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/122/41549/icon-1737112183-678a3a77b43aa.png",
+      title: "CodeRunner",
+      description: "Edit and run code faster",
+      link: "https://setapp.com/apps/coderunner",
+      ratingDetails: {
+        percentage: "96%",
+        total: "1186"
+      },
+      body: {
+        text: "Simplify your software development with the lightning-fast code editor. Write, run, and debug quickly from a single app with out-of-the-box support for more than 25 languages.",
+        list: [
+          "Build smarter",
+          "Debug like a dream",
+          "Beautify your code",
+          "Search docs swiftly"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/606/42481/icon-1746107539-68137c9375583.png",
+      title: "PDF Pals",
+      description: "Chat with your PDFs",
+      link: "https://setapp.com/apps/pdf-pals",
+      ratingDetails: {
+        percentage: "89%",
+        total: "354"
+      },
+      body: {
+        text: "What if the long report you’ve been going over could talk? What if you could just type in some questions and it could give you the answer right away, without having to read (or re-read) it top to bottom? PDF Pals app does exactly that.",
+        list: [
+          "Interact with your PDFs",
+          "No uploads needed",
+          "Get answers with citations",
+          "Customize your chat"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/592/43811/icon-1749109056-68414940d76a1.png",
+      title: "MurmurType",
+      description: "Transcribe your speech",
+      link: "https://setapp.com/apps/murmur",
+      ratingDetails: {
+        percentage: "83%",
+        total: "323"
+      },
+      body: {
+        text: "Got a lot to say and not a lot of time to type it all out? MurmurType is here to help. Record your voice and get the transcription right away. And if you prefer to speak another language, you can set the app to translate your speech into English.",
+        list: [
+          "Easy-to-use interface",
+          "Quick translation",
+          "Automated silence tracker",
+          "Keyboard shortcuts"
+        ]
+      }
+    },
+    {
+      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/607/main/icon-65719fa98f5e6.png",
+      title: "Ready to Send",
+      description: "Generate draft email replies",
+      link: "https://setapp.com/apps/ready-to-send",
+      body: {
+        text: "Start your day with some work already done using Ready to Send. This web app connects to your Gmail, finds unread emails that need replying, and generates handy drafts. All you need to do is review, edit, and send.",
+        list: [
+          "Get automated email reply drafts",
+          "Disable auto-generated responses",
+          "Customize response style",
+          "Add calendar links automatically"
+        ]
+      }
     }
   ];
-  class m {
+  var W = "top", _ = "bottom", U = "right", H = "left", le = "auto", Dt = [W, _, U, H], wt = "start", Et = "end", Ma = "clippingParents", Ae = "viewport", Pt = "popper", Sa = "reference", Te = /* @__PURE__ */ Dt.reduce(function(e, t) {
+    return e.concat([t + "-" + wt, t + "-" + Et]);
+  }, []), De = /* @__PURE__ */ [].concat(Dt, [le]).reduce(function(e, t) {
+    return e.concat([t, t + "-" + wt, t + "-" + Et]);
+  }, []), Ca = "beforeRead", qa = "read", Oa = "afterRead", Aa = "beforeMain", Ta = "main", Da = "afterMain", Ea = "beforeWrite", Pa = "write", La = "afterWrite", Ra = [Ca, qa, Oa, Aa, Ta, Da, Ea, Pa, La];
+  function Z(e) {
+    return e ? (e.nodeName || "").toLowerCase() : null;
+  }
+  function $(e) {
+    if (e == null)
+      return window;
+    if (e.toString() !== "[object Window]") {
+      var t = e.ownerDocument;
+      return t && t.defaultView || window;
+    }
+    return e;
+  }
+  function ut(e) {
+    var t = $(e).Element;
+    return e instanceof t || e instanceof Element;
+  }
+  function G(e) {
+    var t = $(e).HTMLElement;
+    return e instanceof t || e instanceof HTMLElement;
+  }
+  function de(e) {
+    if (typeof ShadowRoot > "u")
+      return !1;
+    var t = $(e).ShadowRoot;
+    return e instanceof t || e instanceof ShadowRoot;
+  }
+  function Ba(e) {
+    var t = e.state;
+    Object.keys(t.elements).forEach(function(a) {
+      var o = t.styles[a] || {}, n = t.attributes[a] || {}, p = t.elements[a];
+      !G(p) || !Z(p) || (Object.assign(p.style, o), Object.keys(n).forEach(function(s) {
+        var r = n[s];
+        r === !1 ? p.removeAttribute(s) : p.setAttribute(s, r === !0 ? "" : r);
+      }));
+    });
+  }
+  function Fa(e) {
+    var t = e.state, a = {
+      popper: {
+        position: t.options.strategy,
+        left: "0",
+        top: "0",
+        margin: "0"
+      },
+      arrow: {
+        position: "absolute"
+      },
+      reference: {}
+    };
+    return Object.assign(t.elements.popper.style, a.popper), t.styles = a, t.elements.arrow && Object.assign(t.elements.arrow.style, a.arrow), function() {
+      Object.keys(t.elements).forEach(function(o) {
+        var n = t.elements[o], p = t.attributes[o] || {}, s = Object.keys(t.styles.hasOwnProperty(o) ? t.styles[o] : a[o]), r = s.reduce(function(c, m) {
+          return c[m] = "", c;
+        }, {});
+        !G(n) || !Z(n) || (Object.assign(n.style, r), Object.keys(p).forEach(function(c) {
+          n.removeAttribute(c);
+        }));
+      });
+    };
+  }
+  const Ee = {
+    name: "applyStyles",
+    enabled: !0,
+    phase: "write",
+    fn: Ba,
+    effect: Fa,
+    requires: ["computeStyles"]
+  };
+  function K(e) {
+    return e.split("-")[0];
+  }
+  var ft = Math.max, Nt = Math.min, xt = Math.round;
+  function me() {
+    var e = navigator.userAgentData;
+    return e != null && e.brands && Array.isArray(e.brands) ? e.brands.map(function(t) {
+      return t.brand + "/" + t.version;
+    }).join(" ") : navigator.userAgent;
+  }
+  function Pe() {
+    return !/^((?!chrome|android).)*safari/i.test(me());
+  }
+  function kt(e, t, a) {
+    t === void 0 && (t = !1), a === void 0 && (a = !1);
+    var o = e.getBoundingClientRect(), n = 1, p = 1;
+    t && G(e) && (n = e.offsetWidth > 0 && xt(o.width) / e.offsetWidth || 1, p = e.offsetHeight > 0 && xt(o.height) / e.offsetHeight || 1);
+    var s = ut(e) ? $(e) : window, r = s.visualViewport, c = !Pe() && a, m = (o.left + (c && r ? r.offsetLeft : 0)) / n, d = (o.top + (c && r ? r.offsetTop : 0)) / p, k = o.width / n, x = o.height / p;
+    return {
+      width: k,
+      height: x,
+      top: d,
+      right: m + k,
+      bottom: d + x,
+      left: m,
+      x: m,
+      y: d
+    };
+  }
+  function ue(e) {
+    var t = kt(e), a = e.offsetWidth, o = e.offsetHeight;
+    return Math.abs(t.width - a) <= 1 && (a = t.width), Math.abs(t.height - o) <= 1 && (o = t.height), {
+      x: e.offsetLeft,
+      y: e.offsetTop,
+      width: a,
+      height: o
+    };
+  }
+  function Le(e, t) {
+    var a = t.getRootNode && t.getRootNode();
+    if (e.contains(t))
+      return !0;
+    if (a && de(a)) {
+      var o = t;
+      do {
+        if (o && e.isSameNode(o))
+          return !0;
+        o = o.parentNode || o.host;
+      } while (o);
+    }
+    return !1;
+  }
+  function at(e) {
+    return $(e).getComputedStyle(e);
+  }
+  function Ia(e) {
+    return ["table", "td", "th"].indexOf(Z(e)) >= 0;
+  }
+  function rt(e) {
+    return ((ut(e) ? e.ownerDocument : (
+      // $FlowFixMe[prop-missing]
+      e.document
+    )) || window.document).documentElement;
+  }
+  function Vt(e) {
+    return Z(e) === "html" ? e : (
+      // this is a quicker (but less type safe) way to save quite some bytes from the bundle
+      // $FlowFixMe[incompatible-return]
+      // $FlowFixMe[prop-missing]
+      e.assignedSlot || // step into the shadow DOM of the parent of a slotted node
+      e.parentNode || // DOM Element detected
+      (de(e) ? e.host : null) || // ShadowRoot detected
+      // $FlowFixMe[incompatible-call]: HTMLElement is a Node
+      rt(e)
+    );
+  }
+  function Re(e) {
+    return !G(e) || // https://github.com/popperjs/popper-core/issues/837
+    at(e).position === "fixed" ? null : e.offsetParent;
+  }
+  function za(e) {
+    var t = /firefox/i.test(me()), a = /Trident/i.test(me());
+    if (a && G(e)) {
+      var o = at(e);
+      if (o.position === "fixed")
+        return null;
+    }
+    var n = Vt(e);
+    for (de(n) && (n = n.host); G(n) && ["html", "body"].indexOf(Z(n)) < 0; ) {
+      var p = at(n);
+      if (p.transform !== "none" || p.perspective !== "none" || p.contain === "paint" || ["transform", "perspective"].indexOf(p.willChange) !== -1 || t && p.willChange === "filter" || t && p.filter && p.filter !== "none")
+        return n;
+      n = n.parentNode;
+    }
+    return null;
+  }
+  function Lt(e) {
+    for (var t = $(e), a = Re(e); a && Ia(a) && at(a).position === "static"; )
+      a = Re(a);
+    return a && (Z(a) === "html" || Z(a) === "body" && at(a).position === "static") ? t : a || za(e) || t;
+  }
+  function fe(e) {
+    return ["top", "bottom"].indexOf(e) >= 0 ? "x" : "y";
+  }
+  function Rt(e, t, a) {
+    return ft(e, Nt(t, a));
+  }
+  function ja(e, t, a) {
+    var o = Rt(e, t, a);
+    return o > a ? a : o;
+  }
+  function Be() {
+    return {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0
+    };
+  }
+  function Fe(e) {
+    return Object.assign({}, Be(), e);
+  }
+  function Ie(e, t) {
+    return t.reduce(function(a, o) {
+      return a[o] = e, a;
+    }, {});
+  }
+  var Wa = function(t, a) {
+    return t = typeof t == "function" ? t(Object.assign({}, a.rects, {
+      placement: a.placement
+    })) : t, Fe(typeof t != "number" ? t : Ie(t, Dt));
+  };
+  function Ha(e) {
+    var t, a = e.state, o = e.name, n = e.options, p = a.elements.arrow, s = a.modifiersData.popperOffsets, r = K(a.placement), c = fe(r), m = [H, U].indexOf(r) >= 0, d = m ? "height" : "width";
+    if (!(!p || !s)) {
+      var k = Wa(n.padding, a), x = ue(p), y = c === "y" ? W : H, w = c === "y" ? _ : U, g = a.rects.reference[d] + a.rects.reference[c] - s[c] - a.rects.popper[d], h = s[c] - a.rects.reference[c], u = Lt(p), M = u ? c === "y" ? u.clientHeight || 0 : u.clientWidth || 0 : 0, C = g / 2 - h / 2, i = k[y], v = M - x[d] - k[w], f = M / 2 - x[d] / 2 + C, q = Rt(i, f, v), A = c;
+      a.modifiersData[o] = (t = {}, t[A] = q, t.centerOffset = q - f, t);
+    }
+  }
+  function $a(e) {
+    var t = e.state, a = e.options, o = a.element, n = o === void 0 ? "[data-popper-arrow]" : o;
+    n != null && (typeof n == "string" && (n = t.elements.popper.querySelector(n), !n) || Le(t.elements.popper, n) && (t.elements.arrow = n));
+  }
+  const Na = {
+    name: "arrow",
+    enabled: !0,
+    phase: "main",
+    fn: Ha,
+    effect: $a,
+    requires: ["popperOffsets"],
+    requiresIfExists: ["preventOverflow"]
+  };
+  function Mt(e) {
+    return e.split("-")[1];
+  }
+  var Va = {
+    top: "auto",
+    right: "auto",
+    bottom: "auto",
+    left: "auto"
+  };
+  function _a(e, t) {
+    var a = e.x, o = e.y, n = t.devicePixelRatio || 1;
+    return {
+      x: xt(a * n) / n || 0,
+      y: xt(o * n) / n || 0
+    };
+  }
+  function ze(e) {
+    var t, a = e.popper, o = e.popperRect, n = e.placement, p = e.variation, s = e.offsets, r = e.position, c = e.gpuAcceleration, m = e.adaptive, d = e.roundOffsets, k = e.isFixed, x = s.x, y = x === void 0 ? 0 : x, w = s.y, g = w === void 0 ? 0 : w, h = typeof d == "function" ? d({
+      x: y,
+      y: g
+    }) : {
+      x: y,
+      y: g
+    };
+    y = h.x, g = h.y;
+    var u = s.hasOwnProperty("x"), M = s.hasOwnProperty("y"), C = H, i = W, v = window;
+    if (m) {
+      var f = Lt(a), q = "clientHeight", A = "clientWidth";
+      if (f === $(a) && (f = rt(a), at(f).position !== "static" && r === "absolute" && (q = "scrollHeight", A = "scrollWidth")), f = f, n === W || (n === H || n === U) && p === Et) {
+        i = _;
+        var D = k && f === v && v.visualViewport ? v.visualViewport.height : (
+          // $FlowFixMe[prop-missing]
+          f[q]
+        );
+        g -= D - o.height, g *= c ? 1 : -1;
+      }
+      if (n === H || (n === W || n === _) && p === Et) {
+        C = U;
+        var E = k && f === v && v.visualViewport ? v.visualViewport.width : (
+          // $FlowFixMe[prop-missing]
+          f[A]
+        );
+        y -= E - o.width, y *= c ? 1 : -1;
+      }
+    }
+    var R = Object.assign({
+      position: r
+    }, m && Va), L = d === !0 ? _a({
+      x: y,
+      y: g
+    }, $(a)) : {
+      x: y,
+      y: g
+    };
+    if (y = L.x, g = L.y, c) {
+      var P;
+      return Object.assign({}, R, (P = {}, P[i] = M ? "0" : "", P[C] = u ? "0" : "", P.transform = (v.devicePixelRatio || 1) <= 1 ? "translate(" + y + "px, " + g + "px)" : "translate3d(" + y + "px, " + g + "px, 0)", P));
+    }
+    return Object.assign({}, R, (t = {}, t[i] = M ? g + "px" : "", t[C] = u ? y + "px" : "", t.transform = "", t));
+  }
+  function Ua(e) {
+    var t = e.state, a = e.options, o = a.gpuAcceleration, n = o === void 0 ? !0 : o, p = a.adaptive, s = p === void 0 ? !0 : p, r = a.roundOffsets, c = r === void 0 ? !0 : r, m = {
+      placement: K(t.placement),
+      variation: Mt(t.placement),
+      popper: t.elements.popper,
+      popperRect: t.rects.popper,
+      gpuAcceleration: n,
+      isFixed: t.options.strategy === "fixed"
+    };
+    t.modifiersData.popperOffsets != null && (t.styles.popper = Object.assign({}, t.styles.popper, ze(Object.assign({}, m, {
+      offsets: t.modifiersData.popperOffsets,
+      position: t.options.strategy,
+      adaptive: s,
+      roundOffsets: c
+    })))), t.modifiersData.arrow != null && (t.styles.arrow = Object.assign({}, t.styles.arrow, ze(Object.assign({}, m, {
+      offsets: t.modifiersData.arrow,
+      position: "absolute",
+      adaptive: !1,
+      roundOffsets: c
+    })))), t.attributes.popper = Object.assign({}, t.attributes.popper, {
+      "data-popper-placement": t.placement
+    });
+  }
+  const Ga = {
+    name: "computeStyles",
+    enabled: !0,
+    phase: "beforeWrite",
+    fn: Ua,
+    data: {}
+  };
+  var _t = {
+    passive: !0
+  };
+  function Ya(e) {
+    var t = e.state, a = e.instance, o = e.options, n = o.scroll, p = n === void 0 ? !0 : n, s = o.resize, r = s === void 0 ? !0 : s, c = $(t.elements.popper), m = [].concat(t.scrollParents.reference, t.scrollParents.popper);
+    return p && m.forEach(function(d) {
+      d.addEventListener("scroll", a.update, _t);
+    }), r && c.addEventListener("resize", a.update, _t), function() {
+      p && m.forEach(function(d) {
+        d.removeEventListener("scroll", a.update, _t);
+      }), r && c.removeEventListener("resize", a.update, _t);
+    };
+  }
+  const Xa = {
+    name: "eventListeners",
+    enabled: !0,
+    phase: "write",
+    fn: function() {
+    },
+    effect: Ya,
+    data: {}
+  };
+  var Za = {
+    left: "right",
+    right: "left",
+    bottom: "top",
+    top: "bottom"
+  };
+  function Ut(e) {
+    return e.replace(/left|right|bottom|top/g, function(t) {
+      return Za[t];
+    });
+  }
+  var Ka = {
+    start: "end",
+    end: "start"
+  };
+  function je(e) {
+    return e.replace(/start|end/g, function(t) {
+      return Ka[t];
+    });
+  }
+  function he(e) {
+    var t = $(e), a = t.pageXOffset, o = t.pageYOffset;
+    return {
+      scrollLeft: a,
+      scrollTop: o
+    };
+  }
+  function ge(e) {
+    return kt(rt(e)).left + he(e).scrollLeft;
+  }
+  function Qa(e, t) {
+    var a = $(e), o = rt(e), n = a.visualViewport, p = o.clientWidth, s = o.clientHeight, r = 0, c = 0;
+    if (n) {
+      p = n.width, s = n.height;
+      var m = Pe();
+      (m || !m && t === "fixed") && (r = n.offsetLeft, c = n.offsetTop);
+    }
+    return {
+      width: p,
+      height: s,
+      x: r + ge(e),
+      y: c
+    };
+  }
+  function Ja(e) {
+    var t, a = rt(e), o = he(e), n = (t = e.ownerDocument) == null ? void 0 : t.body, p = ft(a.scrollWidth, a.clientWidth, n ? n.scrollWidth : 0, n ? n.clientWidth : 0), s = ft(a.scrollHeight, a.clientHeight, n ? n.scrollHeight : 0, n ? n.clientHeight : 0), r = -o.scrollLeft + ge(e), c = -o.scrollTop;
+    return at(n || a).direction === "rtl" && (r += ft(a.clientWidth, n ? n.clientWidth : 0) - p), {
+      width: p,
+      height: s,
+      x: r,
+      y: c
+    };
+  }
+  function ve(e) {
+    var t = at(e), a = t.overflow, o = t.overflowX, n = t.overflowY;
+    return /auto|scroll|overlay|hidden/.test(a + n + o);
+  }
+  function We(e) {
+    return ["html", "body", "#document"].indexOf(Z(e)) >= 0 ? e.ownerDocument.body : G(e) && ve(e) ? e : We(Vt(e));
+  }
+  function Bt(e, t) {
+    var a;
+    t === void 0 && (t = []);
+    var o = We(e), n = o === ((a = e.ownerDocument) == null ? void 0 : a.body), p = $(o), s = n ? [p].concat(p.visualViewport || [], ve(o) ? o : []) : o, r = t.concat(s);
+    return n ? r : (
+      // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
+      r.concat(Bt(Vt(s)))
+    );
+  }
+  function ye(e) {
+    return Object.assign({}, e, {
+      left: e.x,
+      top: e.y,
+      right: e.x + e.width,
+      bottom: e.y + e.height
+    });
+  }
+  function to(e, t) {
+    var a = kt(e, !1, t === "fixed");
+    return a.top = a.top + e.clientTop, a.left = a.left + e.clientLeft, a.bottom = a.top + e.clientHeight, a.right = a.left + e.clientWidth, a.width = e.clientWidth, a.height = e.clientHeight, a.x = a.left, a.y = a.top, a;
+  }
+  function He(e, t, a) {
+    return t === Ae ? ye(Qa(e, a)) : ut(t) ? to(t, a) : ye(Ja(rt(e)));
+  }
+  function eo(e) {
+    var t = Bt(Vt(e)), a = ["absolute", "fixed"].indexOf(at(e).position) >= 0, o = a && G(e) ? Lt(e) : e;
+    return ut(o) ? t.filter(function(n) {
+      return ut(n) && Le(n, o) && Z(n) !== "body";
+    }) : [];
+  }
+  function ao(e, t, a, o) {
+    var n = t === "clippingParents" ? eo(e) : [].concat(t), p = [].concat(n, [a]), s = p[0], r = p.reduce(function(c, m) {
+      var d = He(e, m, o);
+      return c.top = ft(d.top, c.top), c.right = Nt(d.right, c.right), c.bottom = Nt(d.bottom, c.bottom), c.left = ft(d.left, c.left), c;
+    }, He(e, s, o));
+    return r.width = r.right - r.left, r.height = r.bottom - r.top, r.x = r.left, r.y = r.top, r;
+  }
+  function $e(e) {
+    var t = e.reference, a = e.element, o = e.placement, n = o ? K(o) : null, p = o ? Mt(o) : null, s = t.x + t.width / 2 - a.width / 2, r = t.y + t.height / 2 - a.height / 2, c;
+    switch (n) {
+      case W:
+        c = {
+          x: s,
+          y: t.y - a.height
+        };
+        break;
+      case _:
+        c = {
+          x: s,
+          y: t.y + t.height
+        };
+        break;
+      case U:
+        c = {
+          x: t.x + t.width,
+          y: r
+        };
+        break;
+      case H:
+        c = {
+          x: t.x - a.width,
+          y: r
+        };
+        break;
+      default:
+        c = {
+          x: t.x,
+          y: t.y
+        };
+    }
+    var m = n ? fe(n) : null;
+    if (m != null) {
+      var d = m === "y" ? "height" : "width";
+      switch (p) {
+        case wt:
+          c[m] = c[m] - (t[d] / 2 - a[d] / 2);
+          break;
+        case Et:
+          c[m] = c[m] + (t[d] / 2 - a[d] / 2);
+          break;
+      }
+    }
+    return c;
+  }
+  function Ft(e, t) {
+    t === void 0 && (t = {});
+    var a = t, o = a.placement, n = o === void 0 ? e.placement : o, p = a.strategy, s = p === void 0 ? e.strategy : p, r = a.boundary, c = r === void 0 ? Ma : r, m = a.rootBoundary, d = m === void 0 ? Ae : m, k = a.elementContext, x = k === void 0 ? Pt : k, y = a.altBoundary, w = y === void 0 ? !1 : y, g = a.padding, h = g === void 0 ? 0 : g, u = Fe(typeof h != "number" ? h : Ie(h, Dt)), M = x === Pt ? Sa : Pt, C = e.rects.popper, i = e.elements[w ? M : x], v = ao(ut(i) ? i : i.contextElement || rt(e.elements.popper), c, d, s), f = kt(e.elements.reference), q = $e({
+      reference: f,
+      element: C,
+      placement: n
+    }), A = ye(Object.assign({}, C, q)), D = x === Pt ? A : f, E = {
+      top: v.top - D.top + u.top,
+      bottom: D.bottom - v.bottom + u.bottom,
+      left: v.left - D.left + u.left,
+      right: D.right - v.right + u.right
+    }, R = e.modifiersData.offset;
+    if (x === Pt && R) {
+      var L = R[n];
+      Object.keys(E).forEach(function(P) {
+        var F = [U, _].indexOf(P) >= 0 ? 1 : -1, V = [W, _].indexOf(P) >= 0 ? "y" : "x";
+        E[P] += L[V] * F;
+      });
+    }
+    return E;
+  }
+  function oo(e, t) {
+    t === void 0 && (t = {});
+    var a = t, o = a.placement, n = a.boundary, p = a.rootBoundary, s = a.padding, r = a.flipVariations, c = a.allowedAutoPlacements, m = c === void 0 ? De : c, d = Mt(o), k = d ? r ? Te : Te.filter(function(w) {
+      return Mt(w) === d;
+    }) : Dt, x = k.filter(function(w) {
+      return m.indexOf(w) >= 0;
+    });
+    x.length === 0 && (x = k);
+    var y = x.reduce(function(w, g) {
+      return w[g] = Ft(e, {
+        placement: g,
+        boundary: n,
+        rootBoundary: p,
+        padding: s
+      })[K(g)], w;
+    }, {});
+    return Object.keys(y).sort(function(w, g) {
+      return y[w] - y[g];
+    });
+  }
+  function io(e) {
+    if (K(e) === le)
+      return [];
+    var t = Ut(e);
+    return [je(e), t, je(t)];
+  }
+  function no(e) {
+    var t = e.state, a = e.options, o = e.name;
+    if (!t.modifiersData[o]._skip) {
+      for (var n = a.mainAxis, p = n === void 0 ? !0 : n, s = a.altAxis, r = s === void 0 ? !0 : s, c = a.fallbackPlacements, m = a.padding, d = a.boundary, k = a.rootBoundary, x = a.altBoundary, y = a.flipVariations, w = y === void 0 ? !0 : y, g = a.allowedAutoPlacements, h = t.options.placement, u = K(h), M = u === h, C = c || (M || !w ? [Ut(h)] : io(h)), i = [h].concat(C).reduce(function(it, X) {
+        return it.concat(K(X) === le ? oo(t, {
+          placement: X,
+          boundary: d,
+          rootBoundary: k,
+          padding: m,
+          flipVariations: w,
+          allowedAutoPlacements: g
+        }) : X);
+      }, []), v = t.rects.reference, f = t.rects.popper, q = /* @__PURE__ */ new Map(), A = !0, D = i[0], E = 0; E < i.length; E++) {
+        var R = i[E], L = K(R), P = Mt(R) === wt, F = [W, _].indexOf(L) >= 0, V = F ? "width" : "height", I = Ft(t, {
+          placement: R,
+          boundary: d,
+          rootBoundary: k,
+          altBoundary: x,
+          padding: m
+        }), z = F ? P ? U : H : P ? _ : W;
+        v[V] > f[V] && (z = Ut(z));
+        var B = Ut(z), J = [];
+        if (p && J.push(I[L] <= 0), r && J.push(I[z] <= 0, I[B] <= 0), J.every(function(it) {
+          return it;
+        })) {
+          D = R, A = !1;
+          break;
+        }
+        q.set(R, J);
+      }
+      if (A)
+        for (var tt = w ? 3 : 1, gt = function(X) {
+          var nt = i.find(function(Ct) {
+            var pt = q.get(Ct);
+            if (pt)
+              return pt.slice(0, X).every(function(qt) {
+                return qt;
+              });
+          });
+          if (nt)
+            return D = nt, "break";
+        }, et = tt; et > 0; et--) {
+          var vt = gt(et);
+          if (vt === "break") break;
+        }
+      t.placement !== D && (t.modifiersData[o]._skip = !0, t.placement = D, t.reset = !0);
+    }
+  }
+  const po = {
+    name: "flip",
+    enabled: !0,
+    phase: "main",
+    fn: no,
+    requiresIfExists: ["offset"],
+    data: {
+      _skip: !1
+    }
+  };
+  function Ne(e, t, a) {
+    return a === void 0 && (a = {
+      x: 0,
+      y: 0
+    }), {
+      top: e.top - t.height - a.y,
+      right: e.right - t.width + a.x,
+      bottom: e.bottom - t.height + a.y,
+      left: e.left - t.width - a.x
+    };
+  }
+  function Ve(e) {
+    return [W, U, _, H].some(function(t) {
+      return e[t] >= 0;
+    });
+  }
+  function so(e) {
+    var t = e.state, a = e.name, o = t.rects.reference, n = t.rects.popper, p = t.modifiersData.preventOverflow, s = Ft(t, {
+      elementContext: "reference"
+    }), r = Ft(t, {
+      altBoundary: !0
+    }), c = Ne(s, o), m = Ne(r, n, p), d = Ve(c), k = Ve(m);
+    t.modifiersData[a] = {
+      referenceClippingOffsets: c,
+      popperEscapeOffsets: m,
+      isReferenceHidden: d,
+      hasPopperEscaped: k
+    }, t.attributes.popper = Object.assign({}, t.attributes.popper, {
+      "data-popper-reference-hidden": d,
+      "data-popper-escaped": k
+    });
+  }
+  const ro = {
+    name: "hide",
+    enabled: !0,
+    phase: "main",
+    requiresIfExists: ["preventOverflow"],
+    fn: so
+  };
+  function co(e, t, a) {
+    var o = K(e), n = [H, W].indexOf(o) >= 0 ? -1 : 1, p = typeof a == "function" ? a(Object.assign({}, t, {
+      placement: e
+    })) : a, s = p[0], r = p[1];
+    return s = s || 0, r = (r || 0) * n, [H, U].indexOf(o) >= 0 ? {
+      x: r,
+      y: s
+    } : {
+      x: s,
+      y: r
+    };
+  }
+  function lo(e) {
+    var t = e.state, a = e.options, o = e.name, n = a.offset, p = n === void 0 ? [0, 0] : n, s = De.reduce(function(d, k) {
+      return d[k] = co(k, t.rects, p), d;
+    }, {}), r = s[t.placement], c = r.x, m = r.y;
+    t.modifiersData.popperOffsets != null && (t.modifiersData.popperOffsets.x += c, t.modifiersData.popperOffsets.y += m), t.modifiersData[o] = s;
+  }
+  const mo = {
+    name: "offset",
+    enabled: !0,
+    phase: "main",
+    requires: ["popperOffsets"],
+    fn: lo
+  };
+  function uo(e) {
+    var t = e.state, a = e.name;
+    t.modifiersData[a] = $e({
+      reference: t.rects.reference,
+      element: t.rects.popper,
+      placement: t.placement
+    });
+  }
+  const fo = {
+    name: "popperOffsets",
+    enabled: !0,
+    phase: "read",
+    fn: uo,
+    data: {}
+  };
+  function ho(e) {
+    return e === "x" ? "y" : "x";
+  }
+  function go(e) {
+    var t = e.state, a = e.options, o = e.name, n = a.mainAxis, p = n === void 0 ? !0 : n, s = a.altAxis, r = s === void 0 ? !1 : s, c = a.boundary, m = a.rootBoundary, d = a.altBoundary, k = a.padding, x = a.tether, y = x === void 0 ? !0 : x, w = a.tetherOffset, g = w === void 0 ? 0 : w, h = Ft(t, {
+      boundary: c,
+      rootBoundary: m,
+      padding: k,
+      altBoundary: d
+    }), u = K(t.placement), M = Mt(t.placement), C = !M, i = fe(u), v = ho(i), f = t.modifiersData.popperOffsets, q = t.rects.reference, A = t.rects.popper, D = typeof g == "function" ? g(Object.assign({}, t.rects, {
+      placement: t.placement
+    })) : g, E = typeof D == "number" ? {
+      mainAxis: D,
+      altAxis: D
+    } : Object.assign({
+      mainAxis: 0,
+      altAxis: 0
+    }, D), R = t.modifiersData.offset ? t.modifiersData.offset[t.placement] : null, L = {
+      x: 0,
+      y: 0
+    };
+    if (f) {
+      if (p) {
+        var P, F = i === "y" ? W : H, V = i === "y" ? _ : U, I = i === "y" ? "height" : "width", z = f[i], B = z + h[F], J = z - h[V], tt = y ? -A[I] / 2 : 0, gt = M === wt ? q[I] : A[I], et = M === wt ? -A[I] : -q[I], vt = t.elements.arrow, it = y && vt ? ue(vt) : {
+          width: 0,
+          height: 0
+        }, X = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : Be(), nt = X[F], Ct = X[V], pt = Rt(0, q[I], it[I]), qt = C ? q[I] / 2 - tt - pt - nt - E.mainAxis : gt - pt - nt - E.mainAxis, dt = C ? -q[I] / 2 + tt + pt + Ct + E.mainAxis : et + pt + Ct + E.mainAxis, Ot = t.elements.arrow && Lt(t.elements.arrow), Qt = Ot ? i === "y" ? Ot.clientTop || 0 : Ot.clientLeft || 0 : 0, zt = (P = R == null ? void 0 : R[i]) != null ? P : 0, Jt = z + qt - zt - Qt, te = z + dt - zt, jt = Rt(y ? Nt(B, Jt) : B, z, y ? ft(J, te) : J);
+        f[i] = jt, L[i] = jt - z;
+      }
+      if (r) {
+        var Wt, ee = i === "x" ? W : H, ae = i === "x" ? _ : U, st = f[v], mt = v === "y" ? "height" : "width", Ht = st + h[ee], yt = st - h[ae], $t = [W, H].indexOf(u) !== -1, oe = (Wt = R == null ? void 0 : R[v]) != null ? Wt : 0, ie = $t ? Ht : st - q[mt] - A[mt] - oe + E.altAxis, ne = $t ? st + q[mt] + A[mt] - oe - E.altAxis : yt, pe = y && $t ? ja(ie, st, ne) : Rt(y ? ie : Ht, st, y ? ne : yt);
+        f[v] = pe, L[v] = pe - st;
+      }
+      t.modifiersData[o] = L;
+    }
+  }
+  const vo = {
+    name: "preventOverflow",
+    enabled: !0,
+    phase: "main",
+    fn: go,
+    requiresIfExists: ["offset"]
+  };
+  function yo(e) {
+    return {
+      scrollLeft: e.scrollLeft,
+      scrollTop: e.scrollTop
+    };
+  }
+  function bo(e) {
+    return e === $(e) || !G(e) ? he(e) : yo(e);
+  }
+  function wo(e) {
+    var t = e.getBoundingClientRect(), a = xt(t.width) / e.offsetWidth || 1, o = xt(t.height) / e.offsetHeight || 1;
+    return a !== 1 || o !== 1;
+  }
+  function xo(e, t, a) {
+    a === void 0 && (a = !1);
+    var o = G(t), n = G(t) && wo(t), p = rt(t), s = kt(e, n, a), r = {
+      scrollLeft: 0,
+      scrollTop: 0
+    }, c = {
+      x: 0,
+      y: 0
+    };
+    return (o || !o && !a) && ((Z(t) !== "body" || // https://github.com/popperjs/popper-core/issues/1078
+    ve(p)) && (r = bo(t)), G(t) ? (c = kt(t, !0), c.x += t.clientLeft, c.y += t.clientTop) : p && (c.x = ge(p))), {
+      x: s.left + r.scrollLeft - c.x,
+      y: s.top + r.scrollTop - c.y,
+      width: s.width,
+      height: s.height
+    };
+  }
+  function ko(e) {
+    var t = /* @__PURE__ */ new Map(), a = /* @__PURE__ */ new Set(), o = [];
+    e.forEach(function(p) {
+      t.set(p.name, p);
+    });
+    function n(p) {
+      a.add(p.name);
+      var s = [].concat(p.requires || [], p.requiresIfExists || []);
+      s.forEach(function(r) {
+        if (!a.has(r)) {
+          var c = t.get(r);
+          c && n(c);
+        }
+      }), o.push(p);
+    }
+    return e.forEach(function(p) {
+      a.has(p.name) || n(p);
+    }), o;
+  }
+  function Mo(e) {
+    var t = ko(e);
+    return Ra.reduce(function(a, o) {
+      return a.concat(t.filter(function(n) {
+        return n.phase === o;
+      }));
+    }, []);
+  }
+  function So(e) {
+    var t;
+    return function() {
+      return t || (t = new Promise(function(a) {
+        Promise.resolve().then(function() {
+          t = void 0, a(e());
+        });
+      })), t;
+    };
+  }
+  function Co(e) {
+    var t = e.reduce(function(a, o) {
+      var n = a[o.name];
+      return a[o.name] = n ? Object.assign({}, n, o, {
+        options: Object.assign({}, n.options, o.options),
+        data: Object.assign({}, n.data, o.data)
+      }) : o, a;
+    }, {});
+    return Object.keys(t).map(function(a) {
+      return t[a];
+    });
+  }
+  var _e = {
+    placement: "bottom",
+    modifiers: [],
+    strategy: "absolute"
+  };
+  function Ue() {
+    for (var e = arguments.length, t = new Array(e), a = 0; a < e; a++)
+      t[a] = arguments[a];
+    return !t.some(function(o) {
+      return !(o && typeof o.getBoundingClientRect == "function");
+    });
+  }
+  function qo(e) {
+    e === void 0 && (e = {});
+    var t = e, a = t.defaultModifiers, o = a === void 0 ? [] : a, n = t.defaultOptions, p = n === void 0 ? _e : n;
+    return function(r, c, m) {
+      m === void 0 && (m = p);
+      var d = {
+        placement: "bottom",
+        orderedModifiers: [],
+        options: Object.assign({}, _e, p),
+        modifiersData: {},
+        elements: {
+          reference: r,
+          popper: c
+        },
+        attributes: {},
+        styles: {}
+      }, k = [], x = !1, y = {
+        state: d,
+        setOptions: function(u) {
+          var M = typeof u == "function" ? u(d.options) : u;
+          g(), d.options = Object.assign({}, p, d.options, M), d.scrollParents = {
+            reference: ut(r) ? Bt(r) : r.contextElement ? Bt(r.contextElement) : [],
+            popper: Bt(c)
+          };
+          var C = Mo(Co([].concat(o, d.options.modifiers)));
+          return d.orderedModifiers = C.filter(function(i) {
+            return i.enabled;
+          }), w(), y.update();
+        },
+        // Sync update – it will always be executed, even if not necessary. This
+        // is useful for low frequency updates where sync behavior simplifies the
+        // logic.
+        // For high frequency updates (e.g. `resize` and `scroll` events), always
+        // prefer the async Popper#update method
+        forceUpdate: function() {
+          if (!x) {
+            var u = d.elements, M = u.reference, C = u.popper;
+            if (Ue(M, C)) {
+              d.rects = {
+                reference: xo(M, Lt(C), d.options.strategy === "fixed"),
+                popper: ue(C)
+              }, d.reset = !1, d.placement = d.options.placement, d.orderedModifiers.forEach(function(E) {
+                return d.modifiersData[E.name] = Object.assign({}, E.data);
+              });
+              for (var i = 0; i < d.orderedModifiers.length; i++) {
+                if (d.reset === !0) {
+                  d.reset = !1, i = -1;
+                  continue;
+                }
+                var v = d.orderedModifiers[i], f = v.fn, q = v.options, A = q === void 0 ? {} : q, D = v.name;
+                typeof f == "function" && (d = f({
+                  state: d,
+                  options: A,
+                  name: D,
+                  instance: y
+                }) || d);
+              }
+            }
+          }
+        },
+        // Async and optimistically optimized update – it will not be executed if
+        // not necessary (debounced to run at most once-per-tick)
+        update: So(function() {
+          return new Promise(function(h) {
+            y.forceUpdate(), h(d);
+          });
+        }),
+        destroy: function() {
+          g(), x = !0;
+        }
+      };
+      if (!Ue(r, c))
+        return y;
+      y.setOptions(m).then(function(h) {
+        !x && m.onFirstUpdate && m.onFirstUpdate(h);
+      });
+      function w() {
+        d.orderedModifiers.forEach(function(h) {
+          var u = h.name, M = h.options, C = M === void 0 ? {} : M, i = h.effect;
+          if (typeof i == "function") {
+            var v = i({
+              state: d,
+              name: u,
+              instance: y,
+              options: C
+            }), f = function() {
+            };
+            k.push(v || f);
+          }
+        });
+      }
+      function g() {
+        k.forEach(function(h) {
+          return h();
+        }), k = [];
+      }
+      return y;
+    };
+  }
+  var Oo = [Xa, fo, Ga, Ee, mo, po, vo, Na, ro], Ao = /* @__PURE__ */ qo({
+    defaultModifiers: Oo
+  }), To = '<svg width="16" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M0 6s1.796-.013 4.67-3.615C5.851.9 6.93.006 8 0c1.07-.006 2.148.887 3.343 2.385C14.233 6.005 16 6 16 6H0z"></svg>', Do = "tippy-box", Ge = "tippy-content", Ye = "tippy-backdrop", Xe = "tippy-arrow", Ze = "tippy-svg-arrow", ct = {
+    passive: !0,
+    capture: !0
+  }, Ke = function() {
+    return document.body;
+  };
+  function be(e, t, a) {
+    if (Array.isArray(e)) {
+      var o = e[t];
+      return o ?? (Array.isArray(a) ? a[t] : a);
+    }
+    return e;
+  }
+  function we(e, t) {
+    var a = {}.toString.call(e);
+    return a.indexOf("[object") === 0 && a.indexOf(t + "]") > -1;
+  }
+  function Qe(e, t) {
+    return typeof e == "function" ? e.apply(void 0, t) : e;
+  }
+  function Je(e, t) {
+    if (t === 0)
+      return e;
+    var a;
+    return function(o) {
+      clearTimeout(a), a = setTimeout(function() {
+        e(o);
+      }, t);
+    };
+  }
+  function ta(e, t) {
+    var a = Object.assign({}, e);
+    return t.forEach(function(o) {
+      delete a[o];
+    }), a;
+  }
+  function Eo(e) {
+    return e.split(/\s+/).filter(Boolean);
+  }
+  function lt(e) {
+    return [].concat(e);
+  }
+  function ea(e, t) {
+    e.indexOf(t) === -1 && e.push(t);
+  }
+  function Po(e) {
+    return e.filter(function(t, a) {
+      return e.indexOf(t) === a;
+    });
+  }
+  function aa(e) {
+    return e.split("-")[0];
+  }
+  function St(e) {
+    return [].slice.call(e);
+  }
+  function oa(e) {
+    return Object.keys(e).reduce(function(t, a) {
+      return e[a] !== void 0 && (t[a] = e[a]), t;
+    }, {});
+  }
+  function ht() {
+    return document.createElement("div");
+  }
+  function Gt(e) {
+    return ["Element", "Fragment"].some(function(t) {
+      return we(e, t);
+    });
+  }
+  function Lo(e) {
+    return we(e, "NodeList");
+  }
+  function xe(e) {
+    return we(e, "MouseEvent");
+  }
+  function ia(e) {
+    return !!(e && e._tippy && e._tippy.reference === e);
+  }
+  function Ro(e) {
+    return Gt(e) ? [e] : Lo(e) ? St(e) : Array.isArray(e) ? e : St(document.querySelectorAll(e));
+  }
+  function ke(e, t) {
+    e.forEach(function(a) {
+      a && (a.style.transitionDuration = t + "ms");
+    });
+  }
+  function It(e, t) {
+    e.forEach(function(a) {
+      a && a.setAttribute("data-state", t);
+    });
+  }
+  function na(e) {
+    var t, a = lt(e), o = a[0];
+    return o != null && (t = o.ownerDocument) != null && t.body ? o.ownerDocument : document;
+  }
+  function Bo(e, t) {
+    var a = t.clientX, o = t.clientY;
+    return e.every(function(n) {
+      var p = n.popperRect, s = n.popperState, r = n.props, c = r.interactiveBorder, m = aa(s.placement), d = s.modifiersData.offset;
+      if (!d)
+        return !0;
+      var k = m === "bottom" ? d.top.y : 0, x = m === "top" ? d.bottom.y : 0, y = m === "right" ? d.left.x : 0, w = m === "left" ? d.right.x : 0, g = p.top - o + k > c, h = o - p.bottom - x > c, u = p.left - a + y > c, M = a - p.right - w > c;
+      return g || h || u || M;
+    });
+  }
+  function Me(e, t, a) {
+    var o = t + "EventListener";
+    ["transitionend", "webkitTransitionEnd"].forEach(function(n) {
+      e[o](n, a);
+    });
+  }
+  function pa(e, t) {
+    for (var a = t; a; ) {
+      var o;
+      if (e.contains(a))
+        return !0;
+      a = a.getRootNode == null || (o = a.getRootNode()) == null ? void 0 : o.host;
+    }
+    return !1;
+  }
+  var Q = {
+    isTouch: !1
+  }, sa = 0;
+  function Fo() {
+    Q.isTouch || (Q.isTouch = !0, window.performance && document.addEventListener("mousemove", ra));
+  }
+  function ra() {
+    var e = performance.now();
+    e - sa < 20 && (Q.isTouch = !1, document.removeEventListener("mousemove", ra)), sa = e;
+  }
+  function Io() {
+    var e = document.activeElement;
+    if (ia(e)) {
+      var t = e._tippy;
+      e.blur && !t.state.isVisible && e.blur();
+    }
+  }
+  function zo() {
+    document.addEventListener("touchstart", Fo, ct), window.addEventListener("blur", Io);
+  }
+  var jo = typeof window < "u" && typeof document < "u", Wo = jo ? (
+    // @ts-ignore
+    !!window.msCrypto
+  ) : !1, Ho = {
+    animateFill: !1,
+    followCursor: !1,
+    inlinePositioning: !1,
+    sticky: !1
+  }, $o = {
+    allowHTML: !1,
+    animation: "fade",
+    arrow: !0,
+    content: "",
+    inertia: !1,
+    maxWidth: 350,
+    role: "tooltip",
+    theme: "",
+    zIndex: 9999
+  }, N = Object.assign({
+    appendTo: Ke,
+    aria: {
+      content: "auto",
+      expanded: "auto"
+    },
+    delay: 0,
+    duration: [300, 250],
+    getReferenceClientRect: null,
+    hideOnClick: !0,
+    ignoreAttributes: !1,
+    interactive: !1,
+    interactiveBorder: 2,
+    interactiveDebounce: 0,
+    moveTransition: "",
+    offset: [0, 10],
+    onAfterUpdate: function() {
+    },
+    onBeforeUpdate: function() {
+    },
+    onCreate: function() {
+    },
+    onDestroy: function() {
+    },
+    onHidden: function() {
+    },
+    onHide: function() {
+    },
+    onMount: function() {
+    },
+    onShow: function() {
+    },
+    onShown: function() {
+    },
+    onTrigger: function() {
+    },
+    onUntrigger: function() {
+    },
+    onClickOutside: function() {
+    },
+    placement: "top",
+    plugins: [],
+    popperOptions: {},
+    render: null,
+    showOnCreate: !1,
+    touch: !0,
+    trigger: "mouseenter focus",
+    triggerTarget: null
+  }, Ho, $o), No = Object.keys(N), Vo = function(t) {
+    var a = Object.keys(t);
+    a.forEach(function(o) {
+      N[o] = t[o];
+    });
+  };
+  function ca(e) {
+    var t = e.plugins || [], a = t.reduce(function(o, n) {
+      var p = n.name, s = n.defaultValue;
+      if (p) {
+        var r;
+        o[p] = e[p] !== void 0 ? e[p] : (r = N[p]) != null ? r : s;
+      }
+      return o;
+    }, {});
+    return Object.assign({}, e, a);
+  }
+  function _o(e, t) {
+    var a = t ? Object.keys(ca(Object.assign({}, N, {
+      plugins: t
+    }))) : No, o = a.reduce(function(n, p) {
+      var s = (e.getAttribute("data-tippy-" + p) || "").trim();
+      if (!s)
+        return n;
+      if (p === "content")
+        n[p] = s;
+      else
+        try {
+          n[p] = JSON.parse(s);
+        } catch {
+          n[p] = s;
+        }
+      return n;
+    }, {});
+    return o;
+  }
+  function la(e, t) {
+    var a = Object.assign({}, t, {
+      content: Qe(t.content, [e])
+    }, t.ignoreAttributes ? {} : _o(e, t.plugins));
+    return a.aria = Object.assign({}, N.aria, a.aria), a.aria = {
+      expanded: a.aria.expanded === "auto" ? t.interactive : a.aria.expanded,
+      content: a.aria.content === "auto" ? t.interactive ? null : "describedby" : a.aria.content
+    }, a;
+  }
+  var Uo = function() {
+    return "innerHTML";
+  };
+  function Se(e, t) {
+    e[Uo()] = t;
+  }
+  function da(e) {
+    var t = ht();
+    return e === !0 ? t.className = Xe : (t.className = Ze, Gt(e) ? t.appendChild(e) : Se(t, e)), t;
+  }
+  function ma(e, t) {
+    Gt(t.content) ? (Se(e, ""), e.appendChild(t.content)) : typeof t.content != "function" && (t.allowHTML ? Se(e, t.content) : e.textContent = t.content);
+  }
+  function Yt(e) {
+    var t = e.firstElementChild, a = St(t.children);
+    return {
+      box: t,
+      content: a.find(function(o) {
+        return o.classList.contains(Ge);
+      }),
+      arrow: a.find(function(o) {
+        return o.classList.contains(Xe) || o.classList.contains(Ze);
+      }),
+      backdrop: a.find(function(o) {
+        return o.classList.contains(Ye);
+      })
+    };
+  }
+  function ua(e) {
+    var t = ht(), a = ht();
+    a.className = Do, a.setAttribute("data-state", "hidden"), a.setAttribute("tabindex", "-1");
+    var o = ht();
+    o.className = Ge, o.setAttribute("data-state", "hidden"), ma(o, e.props), t.appendChild(a), a.appendChild(o), n(e.props, e.props);
+    function n(p, s) {
+      var r = Yt(t), c = r.box, m = r.content, d = r.arrow;
+      s.theme ? c.setAttribute("data-theme", s.theme) : c.removeAttribute("data-theme"), typeof s.animation == "string" ? c.setAttribute("data-animation", s.animation) : c.removeAttribute("data-animation"), s.inertia ? c.setAttribute("data-inertia", "") : c.removeAttribute("data-inertia"), c.style.maxWidth = typeof s.maxWidth == "number" ? s.maxWidth + "px" : s.maxWidth, s.role ? c.setAttribute("role", s.role) : c.removeAttribute("role"), (p.content !== s.content || p.allowHTML !== s.allowHTML) && ma(m, e.props), s.arrow ? d ? p.arrow !== s.arrow && (c.removeChild(d), c.appendChild(da(s.arrow))) : c.appendChild(da(s.arrow)) : d && c.removeChild(d);
+    }
+    return {
+      popper: t,
+      onUpdate: n
+    };
+  }
+  ua.$$tippy = !0;
+  var Go = 1, Xt = [], Zt = [];
+  function Yo(e, t) {
+    var a = la(e, Object.assign({}, N, ca(oa(t)))), o, n, p, s = !1, r = !1, c = !1, m = !1, d, k, x, y = [], w = Je(Jt, a.interactiveDebounce), g, h = Go++, u = null, M = Po(a.plugins), C = {
+      // Is the instance currently enabled?
+      isEnabled: !0,
+      // Is the tippy currently showing and not transitioning out?
+      isVisible: !1,
+      // Has the instance been destroyed?
+      isDestroyed: !1,
+      // Is the tippy currently mounted to the DOM?
+      isMounted: !1,
+      // Has the tippy finished transitioning in?
+      isShown: !1
+    }, i = {
+      // properties
+      id: h,
+      reference: e,
+      popper: ht(),
+      popperInstance: u,
+      props: a,
+      state: C,
+      plugins: M,
+      // methods
+      clearDelayTimeouts: ie,
+      setProps: ne,
+      setContent: pe,
+      show: wi,
+      hide: xi,
+      hideWithInteractivity: ki,
+      enable: $t,
+      disable: oe,
+      unmount: Mi,
+      destroy: Si
+    };
+    if (!a.render)
+      return i;
+    var v = a.render(i), f = v.popper, q = v.onUpdate;
+    f.setAttribute("data-tippy-root", ""), f.id = "tippy-" + i.id, i.popper = f, e._tippy = i, f._tippy = i;
+    var A = M.map(function(l) {
+      return l.fn(i);
+    }), D = e.hasAttribute("aria-expanded");
+    return Ot(), tt(), z(), B("onCreate", [i]), a.showOnCreate && Ht(), f.addEventListener("mouseenter", function() {
+      i.props.interactive && i.state.isVisible && i.clearDelayTimeouts();
+    }), f.addEventListener("mouseleave", function() {
+      i.props.interactive && i.props.trigger.indexOf("mouseenter") >= 0 && F().addEventListener("mousemove", w);
+    }), i;
+    function E() {
+      var l = i.props.touch;
+      return Array.isArray(l) ? l : [l, 0];
+    }
+    function R() {
+      return E()[0] === "hold";
+    }
+    function L() {
+      var l;
+      return !!((l = i.props.render) != null && l.$$tippy);
+    }
+    function P() {
+      return g || e;
+    }
+    function F() {
+      var l = P().parentNode;
+      return l ? na(l) : document;
+    }
+    function V() {
+      return Yt(f);
+    }
+    function I(l) {
+      return i.state.isMounted && !i.state.isVisible || Q.isTouch || d && d.type === "focus" ? 0 : be(i.props.delay, l ? 0 : 1, N.delay);
+    }
+    function z(l) {
+      l === void 0 && (l = !1), f.style.pointerEvents = i.props.interactive && !l ? "" : "none", f.style.zIndex = "" + i.props.zIndex;
+    }
+    function B(l, b, S) {
+      if (S === void 0 && (S = !0), A.forEach(function(O) {
+        O[l] && O[l].apply(O, b);
+      }), S) {
+        var T;
+        (T = i.props)[l].apply(T, b);
+      }
+    }
+    function J() {
+      var l = i.props.aria;
+      if (l.content) {
+        var b = "aria-" + l.content, S = f.id, T = lt(i.props.triggerTarget || e);
+        T.forEach(function(O) {
+          var j = O.getAttribute(b);
+          if (i.state.isVisible)
+            O.setAttribute(b, j ? j + " " + S : S);
+          else {
+            var Y = j && j.replace(S, "").trim();
+            Y ? O.setAttribute(b, Y) : O.removeAttribute(b);
+          }
+        });
+      }
+    }
+    function tt() {
+      if (!(D || !i.props.aria.expanded)) {
+        var l = lt(i.props.triggerTarget || e);
+        l.forEach(function(b) {
+          i.props.interactive ? b.setAttribute("aria-expanded", i.state.isVisible && b === P() ? "true" : "false") : b.removeAttribute("aria-expanded");
+        });
+      }
+    }
+    function gt() {
+      F().removeEventListener("mousemove", w), Xt = Xt.filter(function(l) {
+        return l !== w;
+      });
+    }
+    function et(l) {
+      if (!(Q.isTouch && (c || l.type === "mousedown"))) {
+        var b = l.composedPath && l.composedPath()[0] || l.target;
+        if (!(i.props.interactive && pa(f, b))) {
+          if (lt(i.props.triggerTarget || e).some(function(S) {
+            return pa(S, b);
+          })) {
+            if (Q.isTouch || i.state.isVisible && i.props.trigger.indexOf("click") >= 0)
+              return;
+          } else
+            B("onClickOutside", [i, l]);
+          i.props.hideOnClick === !0 && (i.clearDelayTimeouts(), i.hide(), r = !0, setTimeout(function() {
+            r = !1;
+          }), i.state.isMounted || nt());
+        }
+      }
+    }
+    function vt() {
+      c = !0;
+    }
+    function it() {
+      c = !1;
+    }
+    function X() {
+      var l = F();
+      l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, ct), l.addEventListener("touchstart", it, ct), l.addEventListener("touchmove", vt, ct);
+    }
+    function nt() {
+      var l = F();
+      l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, ct), l.removeEventListener("touchstart", it, ct), l.removeEventListener("touchmove", vt, ct);
+    }
+    function Ct(l, b) {
+      qt(l, function() {
+        !i.state.isVisible && f.parentNode && f.parentNode.contains(f) && b();
+      });
+    }
+    function pt(l, b) {
+      qt(l, b);
+    }
+    function qt(l, b) {
+      var S = V().box;
+      function T(O) {
+        O.target === S && (Me(S, "remove", T), b());
+      }
+      if (l === 0)
+        return b();
+      Me(S, "remove", k), Me(S, "add", T), k = T;
+    }
+    function dt(l, b, S) {
+      S === void 0 && (S = !1);
+      var T = lt(i.props.triggerTarget || e);
+      T.forEach(function(O) {
+        O.addEventListener(l, b, S), y.push({
+          node: O,
+          eventType: l,
+          handler: b,
+          options: S
+        });
+      });
+    }
+    function Ot() {
+      R() && (dt("touchstart", zt, {
+        passive: !0
+      }), dt("touchend", te, {
+        passive: !0
+      })), Eo(i.props.trigger).forEach(function(l) {
+        if (l !== "manual")
+          switch (dt(l, zt), l) {
+            case "mouseenter":
+              dt("mouseleave", te);
+              break;
+            case "focus":
+              dt(Wo ? "focusout" : "blur", jt);
+              break;
+            case "focusin":
+              dt("focusout", jt);
+              break;
+          }
+      });
+    }
+    function Qt() {
+      y.forEach(function(l) {
+        var b = l.node, S = l.eventType, T = l.handler, O = l.options;
+        b.removeEventListener(S, T, O);
+      }), y = [];
+    }
+    function zt(l) {
+      var b, S = !1;
+      if (!(!i.state.isEnabled || Wt(l) || r)) {
+        var T = ((b = d) == null ? void 0 : b.type) === "focus";
+        d = l, g = l.currentTarget, tt(), !i.state.isVisible && xe(l) && Xt.forEach(function(O) {
+          return O(l);
+        }), l.type === "click" && (i.props.trigger.indexOf("mouseenter") < 0 || s) && i.props.hideOnClick !== !1 && i.state.isVisible ? S = !0 : Ht(l), l.type === "click" && (s = !S), S && !T && yt(l);
+      }
+    }
+    function Jt(l) {
+      var b = l.target, S = P().contains(b) || f.contains(b);
+      if (!(l.type === "mousemove" && S)) {
+        var T = mt().concat(f).map(function(O) {
+          var j, Y = O._tippy, At = (j = Y.popperInstance) == null ? void 0 : j.state;
+          return At ? {
+            popperRect: O.getBoundingClientRect(),
+            popperState: At,
+            props: a
+          } : null;
+        }).filter(Boolean);
+        Bo(T, l) && (gt(), yt(l));
+      }
+    }
+    function te(l) {
+      var b = Wt(l) || i.props.trigger.indexOf("click") >= 0 && s;
+      if (!b) {
+        if (i.props.interactive) {
+          i.hideWithInteractivity(l);
+          return;
+        }
+        yt(l);
+      }
+    }
+    function jt(l) {
+      i.props.trigger.indexOf("focusin") < 0 && l.target !== P() || i.props.interactive && l.relatedTarget && f.contains(l.relatedTarget) || yt(l);
+    }
+    function Wt(l) {
+      return Q.isTouch ? R() !== l.type.indexOf("touch") >= 0 : !1;
+    }
+    function ee() {
+      ae();
+      var l = i.props, b = l.popperOptions, S = l.placement, T = l.offset, O = l.getReferenceClientRect, j = l.moveTransition, Y = L() ? Yt(f).arrow : null, At = O ? {
+        getBoundingClientRect: O,
+        contextElement: O.contextElement || P()
+      } : e, ga = {
+        name: "$$tippy",
+        enabled: !0,
+        phase: "beforeWrite",
+        requires: ["computeStyles"],
+        fn: function(se) {
+          var Tt = se.state;
+          if (L()) {
+            var Ci = V(), Oe = Ci.box;
+            ["placement", "reference-hidden", "escaped"].forEach(function(re) {
+              re === "placement" ? Oe.setAttribute("data-placement", Tt.placement) : Tt.attributes.popper["data-popper-" + re] ? Oe.setAttribute("data-" + re, "") : Oe.removeAttribute("data-" + re);
+            }), Tt.attributes.popper = {};
+          }
+        }
+      }, bt = [{
+        name: "offset",
+        options: {
+          offset: T
+        }
+      }, {
+        name: "preventOverflow",
+        options: {
+          padding: {
+            top: 2,
+            bottom: 2,
+            left: 5,
+            right: 5
+          }
+        }
+      }, {
+        name: "flip",
+        options: {
+          padding: 5
+        }
+      }, {
+        name: "computeStyles",
+        options: {
+          adaptive: !j
+        }
+      }, ga];
+      L() && Y && bt.push({
+        name: "arrow",
+        options: {
+          element: Y,
+          padding: 3
+        }
+      }), bt.push.apply(bt, (b == null ? void 0 : b.modifiers) || []), i.popperInstance = Ao(At, f, Object.assign({}, b, {
+        placement: S,
+        onFirstUpdate: x,
+        modifiers: bt
+      }));
+    }
+    function ae() {
+      i.popperInstance && (i.popperInstance.destroy(), i.popperInstance = null);
+    }
+    function st() {
+      var l = i.props.appendTo, b, S = P();
+      i.props.interactive && l === Ke || l === "parent" ? b = S.parentNode : b = Qe(l, [S]), b.contains(f) || b.appendChild(f), i.state.isMounted = !0, ee();
+    }
+    function mt() {
+      return St(f.querySelectorAll("[data-tippy-root]"));
+    }
+    function Ht(l) {
+      i.clearDelayTimeouts(), l && B("onTrigger", [i, l]), X();
+      var b = I(!0), S = E(), T = S[0], O = S[1];
+      Q.isTouch && T === "hold" && O && (b = O), b ? o = setTimeout(function() {
+        i.show();
+      }, b) : i.show();
+    }
+    function yt(l) {
+      if (i.clearDelayTimeouts(), B("onUntrigger", [i, l]), !i.state.isVisible) {
+        nt();
+        return;
+      }
+      if (!(i.props.trigger.indexOf("mouseenter") >= 0 && i.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(l.type) >= 0 && s)) {
+        var b = I(!1);
+        b ? n = setTimeout(function() {
+          i.state.isVisible && i.hide();
+        }, b) : p = requestAnimationFrame(function() {
+          i.hide();
+        });
+      }
+    }
+    function $t() {
+      i.state.isEnabled = !0;
+    }
+    function oe() {
+      i.hide(), i.state.isEnabled = !1;
+    }
+    function ie() {
+      clearTimeout(o), clearTimeout(n), cancelAnimationFrame(p);
+    }
+    function ne(l) {
+      if (!i.state.isDestroyed) {
+        B("onBeforeUpdate", [i, l]), Qt();
+        var b = i.props, S = la(e, Object.assign({}, b, oa(l), {
+          ignoreAttributes: !0
+        }));
+        i.props = S, Ot(), b.interactiveDebounce !== S.interactiveDebounce && (gt(), w = Je(Jt, S.interactiveDebounce)), b.triggerTarget && !S.triggerTarget ? lt(b.triggerTarget).forEach(function(T) {
+          T.removeAttribute("aria-expanded");
+        }) : S.triggerTarget && e.removeAttribute("aria-expanded"), tt(), z(), q && q(b, S), i.popperInstance && (ee(), mt().forEach(function(T) {
+          requestAnimationFrame(T._tippy.popperInstance.forceUpdate);
+        })), B("onAfterUpdate", [i, l]);
+      }
+    }
+    function pe(l) {
+      i.setProps({
+        content: l
+      });
+    }
+    function wi() {
+      var l = i.state.isVisible, b = i.state.isDestroyed, S = !i.state.isEnabled, T = Q.isTouch && !i.props.touch, O = be(i.props.duration, 0, N.duration);
+      if (!(l || b || S || T) && !P().hasAttribute("disabled") && (B("onShow", [i], !1), i.props.onShow(i) !== !1)) {
+        if (i.state.isVisible = !0, L() && (f.style.visibility = "visible"), z(), X(), i.state.isMounted || (f.style.transition = "none"), L()) {
+          var j = V(), Y = j.box, At = j.content;
+          ke([Y, At], 0);
+        }
+        x = function() {
+          var bt;
+          if (!(!i.state.isVisible || m)) {
+            if (m = !0, f.offsetHeight, f.style.transition = i.props.moveTransition, L() && i.props.animation) {
+              var qe = V(), se = qe.box, Tt = qe.content;
+              ke([se, Tt], O), It([se, Tt], "visible");
+            }
+            J(), tt(), ea(Zt, i), (bt = i.popperInstance) == null || bt.forceUpdate(), B("onMount", [i]), i.props.animation && L() && pt(O, function() {
+              i.state.isShown = !0, B("onShown", [i]);
+            });
+          }
+        }, st();
+      }
+    }
+    function xi() {
+      var l = !i.state.isVisible, b = i.state.isDestroyed, S = !i.state.isEnabled, T = be(i.props.duration, 1, N.duration);
+      if (!(l || b || S) && (B("onHide", [i], !1), i.props.onHide(i) !== !1)) {
+        if (i.state.isVisible = !1, i.state.isShown = !1, m = !1, s = !1, L() && (f.style.visibility = "hidden"), gt(), nt(), z(!0), L()) {
+          var O = V(), j = O.box, Y = O.content;
+          i.props.animation && (ke([j, Y], T), It([j, Y], "hidden"));
+        }
+        J(), tt(), i.props.animation ? L() && Ct(T, i.unmount) : i.unmount();
+      }
+    }
+    function ki(l) {
+      F().addEventListener("mousemove", w), ea(Xt, w), w(l);
+    }
+    function Mi() {
+      i.state.isVisible && i.hide(), i.state.isMounted && (ae(), mt().forEach(function(l) {
+        l._tippy.unmount();
+      }), f.parentNode && f.parentNode.removeChild(f), Zt = Zt.filter(function(l) {
+        return l !== i;
+      }), i.state.isMounted = !1, B("onHidden", [i]));
+    }
+    function Si() {
+      i.state.isDestroyed || (i.clearDelayTimeouts(), i.unmount(), Qt(), delete e._tippy, i.state.isDestroyed = !0, B("onDestroy", [i]));
+    }
+  }
+  function ot(e, t) {
+    t === void 0 && (t = {});
+    var a = N.plugins.concat(t.plugins || []);
+    zo();
+    var o = Object.assign({}, t, {
+      plugins: a
+    }), n = Ro(e), p = n.reduce(function(s, r) {
+      var c = r && Yo(r, o);
+      return c && s.push(c), s;
+    }, []);
+    return Gt(e) ? p[0] : p;
+  }
+  ot.defaultProps = N, ot.setDefaultProps = Vo, ot.currentInput = Q;
+  var Xo = function(t) {
+    var a = t === void 0 ? {} : t, o = a.exclude, n = a.duration;
+    Zt.forEach(function(p) {
+      var s = !1;
+      if (o && (s = ia(o) ? p.reference === o : p.popper === o.popper), !s) {
+        var r = p.props.duration;
+        p.setProps({
+          duration: n
+        }), p.hide(), p.state.isDestroyed || p.setProps({
+          duration: r
+        });
+      }
+    });
+  }, Zo = Object.assign({}, Ee, {
+    effect: function(t) {
+      var a = t.state, o = {
+        popper: {
+          position: a.options.strategy,
+          left: "0",
+          top: "0",
+          margin: "0"
+        },
+        arrow: {
+          position: "absolute"
+        },
+        reference: {}
+      };
+      Object.assign(a.elements.popper.style, o.popper), a.styles = o, a.elements.arrow && Object.assign(a.elements.arrow.style, o.arrow);
+    }
+  }), Ko = function(t, a) {
+    var o;
+    a === void 0 && (a = {});
+    var n = t, p = [], s = [], r, c = a.overrides, m = [], d = !1;
+    function k() {
+      s = n.map(function(i) {
+        return lt(i.props.triggerTarget || i.reference);
+      }).reduce(function(i, v) {
+        return i.concat(v);
+      }, []);
+    }
+    function x() {
+      p = n.map(function(i) {
+        return i.reference;
+      });
+    }
+    function y(i) {
+      n.forEach(function(v) {
+        i ? v.enable() : v.disable();
+      });
+    }
+    function w(i) {
+      return n.map(function(v) {
+        var f = v.setProps;
+        return v.setProps = function(q) {
+          f(q), v.reference === r && i.setProps(q);
+        }, function() {
+          v.setProps = f;
+        };
+      });
+    }
+    function g(i, v) {
+      var f = s.indexOf(v);
+      if (v !== r) {
+        r = v;
+        var q = (c || []).concat("content").reduce(function(A, D) {
+          return A[D] = n[f].props[D], A;
+        }, {});
+        i.setProps(Object.assign({}, q, {
+          getReferenceClientRect: typeof q.getReferenceClientRect == "function" ? q.getReferenceClientRect : function() {
+            var A;
+            return (A = p[f]) == null ? void 0 : A.getBoundingClientRect();
+          }
+        }));
+      }
+    }
+    y(!1), x(), k();
+    var h = {
+      fn: function() {
+        return {
+          onDestroy: function() {
+            y(!0);
+          },
+          onHidden: function() {
+            r = null;
+          },
+          onClickOutside: function(f) {
+            f.props.showOnCreate && !d && (d = !0, r = null);
+          },
+          onShow: function(f) {
+            f.props.showOnCreate && !d && (d = !0, g(f, p[0]));
+          },
+          onTrigger: function(f, q) {
+            g(f, q.currentTarget);
+          }
+        };
+      }
+    }, u = ot(ht(), Object.assign({}, ta(a, ["overrides"]), {
+      plugins: [h].concat(a.plugins || []),
+      triggerTarget: s,
+      popperOptions: Object.assign({}, a.popperOptions, {
+        modifiers: [].concat(((o = a.popperOptions) == null ? void 0 : o.modifiers) || [], [Zo])
+      })
+    })), M = u.show;
+    u.show = function(i) {
+      if (M(), !r && i == null)
+        return g(u, p[0]);
+      if (!(r && i == null)) {
+        if (typeof i == "number")
+          return p[i] && g(u, p[i]);
+        if (n.indexOf(i) >= 0) {
+          var v = i.reference;
+          return g(u, v);
+        }
+        if (p.indexOf(i) >= 0)
+          return g(u, i);
+      }
+    }, u.showNext = function() {
+      var i = p[0];
+      if (!r)
+        return u.show(0);
+      var v = p.indexOf(r);
+      u.show(p[v + 1] || i);
+    }, u.showPrevious = function() {
+      var i = p[p.length - 1];
+      if (!r)
+        return u.show(i);
+      var v = p.indexOf(r), f = p[v - 1] || i;
+      u.show(f);
+    };
+    var C = u.setProps;
+    return u.setProps = function(i) {
+      c = i.overrides || c, C(i);
+    }, u.setInstances = function(i) {
+      y(!0), m.forEach(function(v) {
+        return v();
+      }), n = i, y(!1), x(), k(), m = w(u), u.setProps({
+        triggerTarget: s
+      });
+    }, m = w(u), u;
+  }, Qo = {
+    mouseover: "mouseenter",
+    focusin: "focus",
+    click: "click"
+  };
+  function Jo(e, t) {
+    var a = [], o = [], n = !1, p = t.target, s = ta(t, ["target"]), r = Object.assign({}, s, {
+      trigger: "manual",
+      touch: !1
+    }), c = Object.assign({
+      touch: N.touch
+    }, s, {
+      showOnCreate: !0
+    }), m = ot(e, r), d = lt(m);
+    function k(h) {
+      if (!(!h.target || n)) {
+        var u = h.target.closest(p);
+        if (u) {
+          var M = u.getAttribute("data-tippy-trigger") || t.trigger || N.trigger;
+          if (!u._tippy && !(h.type === "touchstart" && typeof c.touch == "boolean") && !(h.type !== "touchstart" && M.indexOf(Qo[h.type]) < 0)) {
+            var C = ot(u, c);
+            C && (o = o.concat(C));
+          }
+        }
+      }
+    }
+    function x(h, u, M, C) {
+      C === void 0 && (C = !1), h.addEventListener(u, M, C), a.push({
+        node: h,
+        eventType: u,
+        handler: M,
+        options: C
+      });
+    }
+    function y(h) {
+      var u = h.reference;
+      x(u, "touchstart", k, ct), x(u, "mouseover", k), x(u, "focusin", k), x(u, "click", k);
+    }
+    function w() {
+      a.forEach(function(h) {
+        var u = h.node, M = h.eventType, C = h.handler, i = h.options;
+        u.removeEventListener(M, C, i);
+      }), a = [];
+    }
+    function g(h) {
+      var u = h.destroy, M = h.enable, C = h.disable;
+      h.destroy = function(i) {
+        i === void 0 && (i = !0), i && o.forEach(function(v) {
+          v.destroy();
+        }), o = [], w(), u();
+      }, h.enable = function() {
+        M(), o.forEach(function(i) {
+          return i.enable();
+        }), n = !1;
+      }, h.disable = function() {
+        C(), o.forEach(function(i) {
+          return i.disable();
+        }), n = !0;
+      }, y(h);
+    }
+    return d.forEach(g), m;
+  }
+  var ti = {
+    name: "animateFill",
+    defaultValue: !1,
+    fn: function(t) {
+      var a;
+      if (!((a = t.props.render) != null && a.$$tippy))
+        return {};
+      var o = Yt(t.popper), n = o.box, p = o.content, s = t.props.animateFill ? ei() : null;
+      return {
+        onCreate: function() {
+          s && (n.insertBefore(s, n.firstElementChild), n.setAttribute("data-animatefill", ""), n.style.overflow = "hidden", t.setProps({
+            arrow: !1,
+            animation: "shift-away"
+          }));
+        },
+        onMount: function() {
+          if (s) {
+            var c = n.style.transitionDuration, m = Number(c.replace("ms", ""));
+            p.style.transitionDelay = Math.round(m / 10) + "ms", s.style.transitionDuration = c, It([s], "visible");
+          }
+        },
+        onShow: function() {
+          s && (s.style.transitionDuration = "0ms");
+        },
+        onHide: function() {
+          s && It([s], "hidden");
+        }
+      };
+    }
+  };
+  function ei() {
+    var e = ht();
+    return e.className = Ye, It([e], "hidden"), e;
+  }
+  var Ce = {
+    clientX: 0,
+    clientY: 0
+  }, Kt = [];
+  function fa(e) {
+    var t = e.clientX, a = e.clientY;
+    Ce = {
+      clientX: t,
+      clientY: a
+    };
+  }
+  function ai(e) {
+    e.addEventListener("mousemove", fa);
+  }
+  function oi(e) {
+    e.removeEventListener("mousemove", fa);
+  }
+  var ii = {
+    name: "followCursor",
+    defaultValue: !1,
+    fn: function(t) {
+      var a = t.reference, o = na(t.props.triggerTarget || a), n = !1, p = !1, s = !0, r = t.props;
+      function c() {
+        return t.props.followCursor === "initial" && t.state.isVisible;
+      }
+      function m() {
+        o.addEventListener("mousemove", x);
+      }
+      function d() {
+        o.removeEventListener("mousemove", x);
+      }
+      function k() {
+        n = !0, t.setProps({
+          getReferenceClientRect: null
+        }), n = !1;
+      }
+      function x(g) {
+        var h = g.target ? a.contains(g.target) : !0, u = t.props.followCursor, M = g.clientX, C = g.clientY, i = a.getBoundingClientRect(), v = M - i.left, f = C - i.top;
+        (h || !t.props.interactive) && t.setProps({
+          // @ts-ignore - unneeded DOMRect properties
+          getReferenceClientRect: function() {
+            var A = a.getBoundingClientRect(), D = M, E = C;
+            u === "initial" && (D = A.left + v, E = A.top + f);
+            var R = u === "horizontal" ? A.top : E, L = u === "vertical" ? A.right : D, P = u === "horizontal" ? A.bottom : E, F = u === "vertical" ? A.left : D;
+            return {
+              width: L - F,
+              height: P - R,
+              top: R,
+              right: L,
+              bottom: P,
+              left: F
+            };
+          }
+        });
+      }
+      function y() {
+        t.props.followCursor && (Kt.push({
+          instance: t,
+          doc: o
+        }), ai(o));
+      }
+      function w() {
+        Kt = Kt.filter(function(g) {
+          return g.instance !== t;
+        }), Kt.filter(function(g) {
+          return g.doc === o;
+        }).length === 0 && oi(o);
+      }
+      return {
+        onCreate: y,
+        onDestroy: w,
+        onBeforeUpdate: function() {
+          r = t.props;
+        },
+        onAfterUpdate: function(h, u) {
+          var M = u.followCursor;
+          n || M !== void 0 && r.followCursor !== M && (w(), M ? (y(), t.state.isMounted && !p && !c() && m()) : (d(), k()));
+        },
+        onMount: function() {
+          t.props.followCursor && !p && (s && (x(Ce), s = !1), c() || m());
+        },
+        onTrigger: function(h, u) {
+          xe(u) && (Ce = {
+            clientX: u.clientX,
+            clientY: u.clientY
+          }), p = u.type === "focus";
+        },
+        onHidden: function() {
+          t.props.followCursor && (k(), d(), s = !0);
+        }
+      };
+    }
+  };
+  function ni(e, t) {
+    var a;
+    return {
+      popperOptions: Object.assign({}, e.popperOptions, {
+        modifiers: [].concat((((a = e.popperOptions) == null ? void 0 : a.modifiers) || []).filter(function(o) {
+          var n = o.name;
+          return n !== t.name;
+        }), [t])
+      })
+    };
+  }
+  var pi = {
+    name: "inlinePositioning",
+    defaultValue: !1,
+    fn: function(t) {
+      var a = t.reference;
+      function o() {
+        return !!t.props.inlinePositioning;
+      }
+      var n, p = -1, s = !1, r = [], c = {
+        name: "tippyInlinePositioning",
+        enabled: !0,
+        phase: "afterWrite",
+        fn: function(y) {
+          var w = y.state;
+          o() && (r.indexOf(w.placement) !== -1 && (r = []), n !== w.placement && r.indexOf(w.placement) === -1 && (r.push(w.placement), t.setProps({
+            // @ts-ignore - unneeded DOMRect properties
+            getReferenceClientRect: function() {
+              return m(w.placement);
+            }
+          })), n = w.placement);
+        }
+      };
+      function m(x) {
+        return si(aa(x), a.getBoundingClientRect(), St(a.getClientRects()), p);
+      }
+      function d(x) {
+        s = !0, t.setProps(x), s = !1;
+      }
+      function k() {
+        s || d(ni(t.props, c));
+      }
+      return {
+        onCreate: k,
+        onAfterUpdate: k,
+        onTrigger: function(y, w) {
+          if (xe(w)) {
+            var g = St(t.reference.getClientRects()), h = g.find(function(M) {
+              return M.left - 2 <= w.clientX && M.right + 2 >= w.clientX && M.top - 2 <= w.clientY && M.bottom + 2 >= w.clientY;
+            }), u = g.indexOf(h);
+            p = u > -1 ? u : p;
+          }
+        },
+        onHidden: function() {
+          p = -1;
+        }
+      };
+    }
+  };
+  function si(e, t, a, o) {
+    if (a.length < 2 || e === null)
+      return t;
+    if (a.length === 2 && o >= 0 && a[0].left > a[1].right)
+      return a[o] || t;
+    switch (e) {
+      case "top":
+      case "bottom": {
+        var n = a[0], p = a[a.length - 1], s = e === "top", r = n.top, c = p.bottom, m = s ? n.left : p.left, d = s ? n.right : p.right, k = d - m, x = c - r;
+        return {
+          top: r,
+          bottom: c,
+          left: m,
+          right: d,
+          width: k,
+          height: x
+        };
+      }
+      case "left":
+      case "right": {
+        var y = Math.min.apply(Math, a.map(function(f) {
+          return f.left;
+        })), w = Math.max.apply(Math, a.map(function(f) {
+          return f.right;
+        })), g = a.filter(function(f) {
+          return e === "left" ? f.left === y : f.right === w;
+        }), h = g[0].top, u = g[g.length - 1].bottom, M = y, C = w, i = C - M, v = u - h;
+        return {
+          top: h,
+          bottom: u,
+          left: M,
+          right: C,
+          width: i,
+          height: v
+        };
+      }
+      default:
+        return t;
+    }
+  }
+  var ri = {
+    name: "sticky",
+    defaultValue: !1,
+    fn: function(t) {
+      var a = t.reference, o = t.popper;
+      function n() {
+        return t.popperInstance ? t.popperInstance.state.elements.reference : a;
+      }
+      function p(m) {
+        return t.props.sticky === !0 || t.props.sticky === m;
+      }
+      var s = null, r = null;
+      function c() {
+        var m = p("reference") ? n().getBoundingClientRect() : null, d = p("popper") ? o.getBoundingClientRect() : null;
+        (m && ha(s, m) || d && ha(r, d)) && t.popperInstance && t.popperInstance.update(), s = m, r = d, t.state.isMounted && requestAnimationFrame(c);
+      }
+      return {
+        onMount: function() {
+          t.props.sticky && c();
+        }
+      };
+    }
+  };
+  function ha(e, t) {
+    return e && t ? e.top !== t.top || e.right !== t.right || e.bottom !== t.bottom || e.left !== t.left : !0;
+  }
+  ot.setDefaultProps({
+    render: ua
+  });
+  const ci = ot || /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    animateFill: ti,
+    createSingleton: Ko,
+    default: ot,
+    delegate: Jo,
+    followCursor: ii,
+    hideAll: Xo,
+    inlinePositioning: pi,
+    roundArrow: To,
+    sticky: ri
+  }, Symbol.toStringTag, { value: "Module" }));
+  class li {
     constructor() {
       this.init();
     }
     init() {
-      this.addStyles(), this.render(), this.addSmoothScrolling(), this.events();
+      this.addStyles(), this.render(), this.addSmoothScrolling(), this.events(), this.addTooltipByHover();
     }
     render() {
       const t = document.querySelector("section.header");
@@ -2430,7 +5580,7 @@
         console.error("Target element not found");
         return;
       }
-      if (i == null) return;
+      if (ce == null) return;
       const a = (
         /* HTML */
         `<section class="page-content-wrapper crs-apps">
@@ -2497,7 +5647,7 @@
               <div class="crs-block-apps">
                 <div class="crs-block-apps-list">
                 ${this.renderApps([
-          "CleanMyMac X",
+          "CleanMyMac",
           "QuitAll",
           "iStat Menus",
           "Endurance",
@@ -2538,7 +5688,7 @@
                 <div class="crs-block-apps-list">${this.renderApps([
           "WidgetWall",
           "Bartender",
-          "CleanShot"
+          "CleanShot X"
         ])}</div>
                 <div class="crs-block-more">
                   <div>20+ more apps</div>
@@ -2721,7 +5871,7 @@ perfect app in our suite of 260+ apps.
       t.insertAdjacentHTML("afterend", a);
     }
     renderApps(t) {
-      return t.map((a) => i.find((p) => p.name === a)).filter((a) => a !== void 0).map(
+      return t.map((a) => ce.find((o) => o.name === a)).filter((a) => a !== void 0).map(
         (a) => (
           /* HTML */
           `<div class="crs-block-app">
@@ -2738,14 +5888,17 @@ perfect app in our suite of 260+ apps.
           <div class="crs-block-app-description">${a.description}</div>
 
           <div class="crs-block-app-meta">
-            <div class="crs-block-app-rating">
-              <img
-                alt=""
-                width="16"
-                height="16"
-                src="https://cdn.setapp.com/master-9f18f44f26fe5f8aa6077a4a8f38ca796e93985f-590/build/main/751ecfba46c61061d678.svg"
-              />${a.rating}%
-            </div>
+            ${a.rating ? (
+            /* HTML */
+            `<div class="crs-block-app-rating">
+                  <img
+                    alt=""
+                    width="16"
+                    height="16"
+                    src="https://cdn.setapp.com/master-9f18f44f26fe5f8aa6077a4a8f38ca796e93985f-590/build/main/751ecfba46c61061d678.svg"
+                  />${a.rating}%
+                </div>`
+          ) : ""}
             <div class="crs-block-app-platforms">${a.platforms}</div>
           </div>
         </div>`
@@ -2757,25 +5910,25 @@ perfect app in our suite of 260+ apps.
         ".crs-block-action-button"
       );
       t && t.length > 0 && t.forEach((a) => {
-        a.addEventListener("click", (p) => {
-          var e;
-          (e = document.querySelector(".header__cta-button")) == null || e.click();
+        a.addEventListener("click", (o) => {
+          var n;
+          (n = document.querySelector(".header__cta-button")) == null || n.click();
         });
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = r, document.head.append(t);
+      t.textContent = ba, document.head.append(t);
     }
     addSmoothScrolling() {
       document.addEventListener("click", (t) => {
-        const p = t.target.closest('.crs-apps-nav a[href^="#"]');
-        if (p) {
+        const o = t.target.closest('.crs-apps-nav a[href^="#"]');
+        if (o) {
           t.preventDefault();
-          const e = p.getAttribute("href");
-          if (e && e !== "#") {
-            const o = document.querySelector(e);
-            o && o.scrollIntoView({
+          const n = o.getAttribute("href");
+          if (n && n !== "#") {
+            const p = document.querySelector(n);
+            p && p.scrollIntoView({
               behavior: "smooth",
               block: "start"
             });
@@ -2783,8 +5936,84 @@ perfect app in our suite of 260+ apps.
         }
       });
     }
+    addTooltipByHover() {
+      const t = document.querySelectorAll(".crs-block-app");
+      if (!t) {
+        console.error("Apps blocks container not found");
+        return;
+      }
+      let a;
+      const o = new xa();
+      t.forEach((n) => {
+        let p = null;
+        n.addEventListener("mouseenter", (s) => {
+          if (p) {
+            p.hide();
+            return;
+          }
+          const r = n.querySelector(".crs-block-app-name");
+          if (!r) return;
+          console.log("App Name:", r.textContent);
+          const c = ka.find(
+            (d) => d.title.includes(r.textContent || "")
+          );
+          if (!c) {
+            console.warn(
+              "No tooltip variant found for app:",
+              r.textContent
+            );
+            return;
+          }
+          const m = s.target;
+          p = ci(m, {
+            content: o.returnHtml(c),
+            allowHTML: !0,
+            arrow: !1,
+            interactive: !0,
+            maxWidth: "none",
+            theme: "light",
+            placement: "right-start",
+            boundary: "viewport",
+            delay: [1e3, 1e3],
+            // Show immediately, hide with delay
+            showOnCreate: !0,
+            // Show the tooltip immediately when created
+            popperOptions: {
+              modifiers: [
+                {
+                  name: "flip",
+                  options: {
+                    fallbackPlacements: ["left-start", "top", "bottom"]
+                  }
+                }
+              ]
+            },
+            onShow(d) {
+              const k = d.popper.querySelector(
+                ".btn-download"
+              );
+              a = new AbortController(), k == null || k.addEventListener(
+                "click",
+                () => {
+                  d.hide(), setTimeout(() => {
+                    var x;
+                    (x = document.querySelector(".header__cta-button")) == null || x.click();
+                  }, 200);
+                },
+                {
+                  signal: a.signal
+                }
+              );
+            },
+            onHide(d) {
+              a && a.abort();
+            }
+          });
+        });
+      });
+    }
   }
-  const l = `.crs-achievs {
+  const di = `.crs-achievs {
   margin-top: 80px;
   width: 100%;
 }
@@ -2890,7 +6119,7 @@ perfect app in our suite of 260+ apps.
   background-repeat: no-repeat;
 }
 `;
-  class d {
+  class mi {
     constructor({ container: t, position: a = "afterend" }) {
       this.container = t, this.position = a, this.init();
     }
@@ -2945,10 +6174,10 @@ perfect app in our suite of 260+ apps.
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = l, document.head.appendChild(t);
+      t.textContent = di, document.head.appendChild(t);
     }
   }
-  const h = "https://conversionrate-store.github.io/a-b_images/setapp/", g = `.site-navigation__bar {
+  const ui = "https://conversionrate-store.github.io/a-b_images/setapp/", fi = `.site-navigation__bar {
   background: #1a1a1d;
 }
 
@@ -3021,7 +6250,7 @@ section.header .header__description {
   background-image: var(--star-image);
 }
 `;
-  class u {
+  class hi {
     constructor() {
       this.init();
     }
@@ -3030,7 +6259,7 @@ section.header .header__description {
     }
     addAppsImage() {
       const t = `
-      <div class="header__apps-image"><img src="${h}/apps.webp" alt="Apps Image"></div>`, a = document.querySelector(
+      <div class="header__apps-image"><img src="${ui}/apps.webp" alt="Apps Image"></div>`, a = document.querySelector(
         "section.header .header__logo"
       );
       a ? a.insertAdjacentHTML("beforebegin", t) : console.error("Target element not found");
@@ -3066,17 +6295,17 @@ section.header .header__description {
       const t = document.querySelector(
         "section.header .header__description"
       );
-      t && new d({
+      t && new mi({
         container: t,
         position: "afterend"
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = g, document.head.appendChild(t);
+      t.textContent = fi, document.head.appendChild(t);
     }
   }
-  const f = `.crs-more {
+  const gi = `.crs-more {
   margin-bottom: 120px;
   max-width: 100%;
   color: #fff;
@@ -3152,7 +6381,7 @@ section.header .header__description {
   line-height: 28px;
 }
 `;
-  class y {
+  class vi {
     constructor() {
       this.init();
     }
@@ -3277,42 +6506,41 @@ section.header .header__description {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = f, document.head.appendChild(t);
+      t.textContent = gi, document.head.appendChild(t);
     }
   }
-  const b = `.home {
+  const yi = `.home {
   background: #1a1a1d;
 }
 `;
-  n({ name: "4th EXP on HP", dev: "OS" }), c("exp_hp");
-  class w {
+  va({ name: "4th EXP on HP", dev: "OS" }), ya("exp_hp");
+  class bi {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.getAppData(), !(this.device === "mobile" || location.pathname !== "/") && (console.log("Test init"), this.addStyles(), new u(), new m(), new y());
+      this.getAppData(), !(this.device === "mobile" || location.pathname !== "/") && (console.log("Test init"), this.addStyles(), new hi(), new li(), new vi());
     }
     getAppData() {
       const t = document.querySelectorAll("app-details");
       console.log("All Apps:", t);
-      const a = Array.from(t).map((p) => {
-        const e = p.getAttribute("name") || "", o = p.getAttribute("iconsrc") || "", v = p.getAttribute("description") || "", M = p.getAttribute("url") || "", k = p.getAttribute("platforms") || "", x = p.getAttribute("rating") || "";
+      const a = Array.from(t).map((o) => {
+        const n = o.getAttribute("name") || "", p = o.getAttribute("iconsrc") || "", s = o.getAttribute("description") || "", r = o.getAttribute("url") || "", c = o.getAttribute("platforms") || "", m = o.getAttribute("rating") || "";
         return {
-          name: e,
-          icon: o,
-          description: v,
-          url: M,
-          platforms: k,
-          rating: x
+          name: n,
+          icon: p,
+          description: s,
+          url: r,
+          platforms: c,
+          rating: m
         };
       });
       console.log("App Data:", a);
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = b, document.head.appendChild(t);
+      t.textContent = yi, document.head.appendChild(t);
     }
   }
-  new w();
+  new bi();
 })();
-//# sourceMappingURL=index.js.map
