@@ -1,15 +1,32 @@
 (function() {
   "use strict";
-  const bn = ({ name: e, dev: t }) => {
+  const wn = ({ name: e, dev: t }) => {
     console.log(
       `%c EXP: ${e} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, yn = (e) => {
+  }, xn = (e) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", e, "variant_1"));
     }, 1e3);
-  }, wn = `section.apps {
+  }, De = (e, t = "info") => {
+    let n;
+    switch (t) {
+      case "info":
+        n = "color: #3498db;";
+        break;
+      case "warn":
+        n = "color: #f39c12;";
+        break;
+      case "error":
+        n = "color: #e74c3c;";
+        break;
+      case "success":
+        n = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${e}`, `${n} font-size: 16px; font-weight: 600`);
+  }, kn = `section.apps {
   display: none; /* Hide control section */
 }
 
@@ -341,7 +358,7 @@
   margin-top: 24px;
   display: flex;
   justify-content: center;
-}`, ce = [
+}`, le = [
     {
       name: "CleanMyMac",
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
@@ -534,7 +551,7 @@
       platforms: "Web",
       rating: "0"
     }
-  ], xn = `.tippy-box,
+  ], Cn = `.tippy-box,
 .tippy-content {
   background: transparent !important;
   /* padding: 0 !important;
@@ -815,7 +832,7 @@ body:has(.os-dialog[open]) {
   overflow: hidden;
 }
 `;
-  class kn {
+  class Sn {
     constructor() {
       this.popoverElement = null, this.aborters = [], this.init(), this.aborters = [];
     }
@@ -891,12 +908,12 @@ body:has(.os-dialog[open]) {
     `, (t = document.body) == null || t.appendChild(this.popoverElement);
     }
     showDialog(t) {
-      var a;
+      var r;
       t && t !== "latest" && sessionStorage.setItem("os-tooltip-variant", JSON.stringify(t));
-      const i = document.getElementById("os-dialog").querySelector(
+      const o = document.getElementById("os-dialog").querySelector(
         "#os-dialog-content"
-      ), r = t === "latest" ? JSON.parse(sessionStorage.getItem("os-tooltip-variant")) : t;
-      i.innerHTML = this.returnHtml(r), (a = this.popoverElement) == null || a.showModal(), this.eventListeners();
+      ), a = t === "latest" ? JSON.parse(sessionStorage.getItem("os-tooltip-variant")) : t;
+      o.innerHTML = this.returnHtml(a), (r = this.popoverElement) == null || r.showModal(), this.eventListeners();
     }
     closeDialog() {
       if (!this.popoverElement) return;
@@ -915,37 +932,37 @@ body:has(.os-dialog[open]) {
       n == null || n.addEventListener("click", () => {
         this.closeDialog();
       });
-      const i = new AbortController();
-      this.aborters.push(i);
-      const r = t.querySelector(
+      const o = new AbortController();
+      this.aborters.push(o);
+      const a = t.querySelector(
         ".btn-download"
       );
-      r == null || r.addEventListener(
+      a == null || a.addEventListener(
         "click",
         async () => {
-          var s;
-          (s = document.querySelector(".header__cta-button")) == null || s.click();
-          const a = document.querySelector("#signup-modal");
-          if (a) {
-            const p = new MutationObserver((c) => {
-              c.forEach((u) => {
-                u.type === "attributes" && u.attributeName === "aria-hidden" && a.getAttribute("aria-hidden") === "true" && (p.disconnect(), this.showDialog("latest"));
+          var c;
+          (c = document.querySelector(".header__cta-button")) == null || c.click();
+          const r = document.querySelector("#signup-modal");
+          if (r) {
+            const s = new MutationObserver((p) => {
+              p.forEach((u) => {
+                u.type === "attributes" && u.attributeName === "aria-hidden" && r.getAttribute("aria-hidden") === "true" && (s.disconnect(), this.showDialog("latest"));
               });
             });
-            p.observe(a, { attributes: !0 });
+            s.observe(r, { attributes: !0 });
           }
         },
         {
-          signal: i.signal
+          signal: o.signal
         }
       );
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = xn, document.head.appendChild(t);
+      t.textContent = Cn, document.head.appendChild(t);
     }
   }
-  const Cn = [
+  const An = [
     {
       imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
       title: "Disk Drill",
@@ -1637,15 +1654,15 @@ body:has(.os-dialog[open]) {
       }
     }
   ];
-  var $ = "top", N = "bottom", U = "right", _ = "left", le = "auto", Tt = [$, N, U, _], wt = "start", Pt = "end", Sn = "clippingParents", Me = "viewport", Lt = "popper", An = "reference", De = /* @__PURE__ */ Tt.reduce(function(e, t) {
+  var $ = "top", N = "bottom", U = "right", F = "left", de = "auto", Tt = [$, N, U, F], wt = "start", Pt = "end", On = "clippingParents", Te = "viewport", Lt = "popper", Mn = "reference", Pe = /* @__PURE__ */ Tt.reduce(function(e, t) {
     return e.concat([t + "-" + wt, t + "-" + Pt]);
-  }, []), Te = /* @__PURE__ */ [].concat(Tt, [le]).reduce(function(e, t) {
+  }, []), Le = /* @__PURE__ */ [].concat(Tt, [de]).reduce(function(e, t) {
     return e.concat([t, t + "-" + wt, t + "-" + Pt]);
-  }, []), On = "beforeRead", En = "read", Mn = "afterRead", Dn = "beforeMain", Tn = "main", Pn = "afterMain", Ln = "beforeWrite", Rn = "write", qn = "afterWrite", Bn = [On, En, Mn, Dn, Tn, Pn, Ln, Rn, qn];
+  }, []), En = "beforeRead", Dn = "read", Tn = "afterRead", Pn = "beforeMain", Ln = "main", Rn = "afterMain", qn = "beforeWrite", Bn = "write", In = "afterWrite", jn = [En, Dn, Tn, Pn, Ln, Rn, qn, Bn, In];
   function X(e) {
     return e ? (e.nodeName || "").toLowerCase() : null;
   }
-  function F(e) {
+  function _(e) {
     if (e == null)
       return window;
     if (e.toString() !== "[object Window]") {
@@ -1655,30 +1672,30 @@ body:has(.os-dialog[open]) {
     return e;
   }
   function ft(e) {
-    var t = F(e).Element;
+    var t = _(e).Element;
     return e instanceof t || e instanceof Element;
   }
   function Y(e) {
-    var t = F(e).HTMLElement;
+    var t = _(e).HTMLElement;
     return e instanceof t || e instanceof HTMLElement;
   }
-  function de(e) {
+  function ue(e) {
     if (typeof ShadowRoot > "u")
       return !1;
-    var t = F(e).ShadowRoot;
+    var t = _(e).ShadowRoot;
     return e instanceof t || e instanceof ShadowRoot;
   }
-  function jn(e) {
+  function zn(e) {
     var t = e.state;
     Object.keys(t.elements).forEach(function(n) {
-      var i = t.styles[n] || {}, r = t.attributes[n] || {}, a = t.elements[n];
-      !Y(a) || !X(a) || (Object.assign(a.style, i), Object.keys(r).forEach(function(s) {
-        var p = r[s];
-        p === !1 ? a.removeAttribute(s) : a.setAttribute(s, p === !0 ? "" : p);
+      var o = t.styles[n] || {}, a = t.attributes[n] || {}, r = t.elements[n];
+      !Y(r) || !X(r) || (Object.assign(r.style, o), Object.keys(a).forEach(function(c) {
+        var s = a[c];
+        s === !1 ? r.removeAttribute(c) : r.setAttribute(c, s === !0 ? "" : s);
       }));
     });
   }
-  function In(e) {
+  function Hn(e) {
     var t = e.state, n = {
       popper: {
         position: t.options.strategy,
@@ -1692,42 +1709,42 @@ body:has(.os-dialog[open]) {
       reference: {}
     };
     return Object.assign(t.elements.popper.style, n.popper), t.styles = n, t.elements.arrow && Object.assign(t.elements.arrow.style, n.arrow), function() {
-      Object.keys(t.elements).forEach(function(i) {
-        var r = t.elements[i], a = t.attributes[i] || {}, s = Object.keys(t.styles.hasOwnProperty(i) ? t.styles[i] : n[i]), p = s.reduce(function(c, u) {
-          return c[u] = "", c;
+      Object.keys(t.elements).forEach(function(o) {
+        var a = t.elements[o], r = t.attributes[o] || {}, c = Object.keys(t.styles.hasOwnProperty(o) ? t.styles[o] : n[o]), s = c.reduce(function(p, u) {
+          return p[u] = "", p;
         }, {});
-        !Y(r) || !X(r) || (Object.assign(r.style, p), Object.keys(a).forEach(function(c) {
-          r.removeAttribute(c);
+        !Y(a) || !X(a) || (Object.assign(a.style, s), Object.keys(r).forEach(function(p) {
+          a.removeAttribute(p);
         }));
       });
     };
   }
-  const Pe = {
+  const Re = {
     name: "applyStyles",
     enabled: !0,
     phase: "write",
-    fn: jn,
-    effect: In,
+    fn: zn,
+    effect: Hn,
     requires: ["computeStyles"]
   };
   function K(e) {
     return e.split("-")[0];
   }
-  var mt = Math.max, Vt = Math.min, xt = Math.round;
-  function ue() {
+  var mt = Math.max, Wt = Math.min, xt = Math.round;
+  function fe() {
     var e = navigator.userAgentData;
     return e != null && e.brands && Array.isArray(e.brands) ? e.brands.map(function(t) {
       return t.brand + "/" + t.version;
     }).join(" ") : navigator.userAgent;
   }
-  function Le() {
-    return !/^((?!chrome|android).)*safari/i.test(ue());
+  function qe() {
+    return !/^((?!chrome|android).)*safari/i.test(fe());
   }
   function kt(e, t, n) {
     t === void 0 && (t = !1), n === void 0 && (n = !1);
-    var i = e.getBoundingClientRect(), r = 1, a = 1;
-    t && Y(e) && (r = e.offsetWidth > 0 && xt(i.width) / e.offsetWidth || 1, a = e.offsetHeight > 0 && xt(i.height) / e.offsetHeight || 1);
-    var s = ft(e) ? F(e) : window, p = s.visualViewport, c = !Le() && n, u = (i.left + (c && p ? p.offsetLeft : 0)) / r, d = (i.top + (c && p ? p.offsetTop : 0)) / a, k = i.width / r, x = i.height / a;
+    var o = e.getBoundingClientRect(), a = 1, r = 1;
+    t && Y(e) && (a = e.offsetWidth > 0 && xt(o.width) / e.offsetWidth || 1, r = e.offsetHeight > 0 && xt(o.height) / e.offsetHeight || 1);
+    var c = ft(e) ? _(e) : window, s = c.visualViewport, p = !qe() && n, u = (o.left + (p && s ? s.offsetLeft : 0)) / a, d = (o.top + (p && s ? s.offsetTop : 0)) / r, k = o.width / a, x = o.height / r;
     return {
       width: k,
       height: x,
@@ -1739,89 +1756,89 @@ body:has(.os-dialog[open]) {
       y: d
     };
   }
-  function fe(e) {
-    var t = kt(e), n = e.offsetWidth, i = e.offsetHeight;
-    return Math.abs(t.width - n) <= 1 && (n = t.width), Math.abs(t.height - i) <= 1 && (i = t.height), {
+  function me(e) {
+    var t = kt(e), n = e.offsetWidth, o = e.offsetHeight;
+    return Math.abs(t.width - n) <= 1 && (n = t.width), Math.abs(t.height - o) <= 1 && (o = t.height), {
       x: e.offsetLeft,
       y: e.offsetTop,
       width: n,
-      height: i
+      height: o
     };
   }
-  function Re(e, t) {
+  function Be(e, t) {
     var n = t.getRootNode && t.getRootNode();
     if (e.contains(t))
       return !0;
-    if (n && de(n)) {
-      var i = t;
+    if (n && ue(n)) {
+      var o = t;
       do {
-        if (i && e.isSameNode(i))
+        if (o && e.isSameNode(o))
           return !0;
-        i = i.parentNode || i.host;
-      } while (i);
+        o = o.parentNode || o.host;
+      } while (o);
     }
     return !1;
   }
   function nt(e) {
-    return F(e).getComputedStyle(e);
+    return _(e).getComputedStyle(e);
   }
-  function zn(e) {
+  function $n(e) {
     return ["table", "td", "th"].indexOf(X(e)) >= 0;
   }
-  function pt(e) {
+  function ct(e) {
     return ((ft(e) ? e.ownerDocument : (
       // $FlowFixMe[prop-missing]
       e.document
     )) || window.document).documentElement;
   }
-  function Wt(e) {
+  function Nt(e) {
     return X(e) === "html" ? e : (
       // this is a quicker (but less type safe) way to save quite some bytes from the bundle
       // $FlowFixMe[incompatible-return]
       // $FlowFixMe[prop-missing]
       e.assignedSlot || // step into the shadow DOM of the parent of a slotted node
       e.parentNode || // DOM Element detected
-      (de(e) ? e.host : null) || // ShadowRoot detected
+      (ue(e) ? e.host : null) || // ShadowRoot detected
       // $FlowFixMe[incompatible-call]: HTMLElement is a Node
-      pt(e)
+      ct(e)
     );
   }
-  function qe(e) {
+  function Ie(e) {
     return !Y(e) || // https://github.com/popperjs/popper-core/issues/837
     nt(e).position === "fixed" ? null : e.offsetParent;
   }
-  function Hn(e) {
-    var t = /firefox/i.test(ue()), n = /Trident/i.test(ue());
+  function Fn(e) {
+    var t = /firefox/i.test(fe()), n = /Trident/i.test(fe());
     if (n && Y(e)) {
-      var i = nt(e);
-      if (i.position === "fixed")
+      var o = nt(e);
+      if (o.position === "fixed")
         return null;
     }
-    var r = Wt(e);
-    for (de(r) && (r = r.host); Y(r) && ["html", "body"].indexOf(X(r)) < 0; ) {
-      var a = nt(r);
-      if (a.transform !== "none" || a.perspective !== "none" || a.contain === "paint" || ["transform", "perspective"].indexOf(a.willChange) !== -1 || t && a.willChange === "filter" || t && a.filter && a.filter !== "none")
-        return r;
-      r = r.parentNode;
+    var a = Nt(e);
+    for (ue(a) && (a = a.host); Y(a) && ["html", "body"].indexOf(X(a)) < 0; ) {
+      var r = nt(a);
+      if (r.transform !== "none" || r.perspective !== "none" || r.contain === "paint" || ["transform", "perspective"].indexOf(r.willChange) !== -1 || t && r.willChange === "filter" || t && r.filter && r.filter !== "none")
+        return a;
+      a = a.parentNode;
     }
     return null;
   }
   function Rt(e) {
-    for (var t = F(e), n = qe(e); n && zn(n) && nt(n).position === "static"; )
-      n = qe(n);
-    return n && (X(n) === "html" || X(n) === "body" && nt(n).position === "static") ? t : n || Hn(e) || t;
+    for (var t = _(e), n = Ie(e); n && $n(n) && nt(n).position === "static"; )
+      n = Ie(n);
+    return n && (X(n) === "html" || X(n) === "body" && nt(n).position === "static") ? t : n || Fn(e) || t;
   }
-  function me(e) {
+  function he(e) {
     return ["top", "bottom"].indexOf(e) >= 0 ? "x" : "y";
   }
   function qt(e, t, n) {
-    return mt(e, Vt(t, n));
+    return mt(e, Wt(t, n));
   }
-  function $n(e, t, n) {
-    var i = qt(e, t, n);
-    return i > n ? n : i;
+  function _n(e, t, n) {
+    var o = qt(e, t, n);
+    return o > n ? n : o;
   }
-  function Be() {
+  function je() {
     return {
       top: 0,
       right: 0,
@@ -1829,57 +1846,57 @@ body:has(.os-dialog[open]) {
       left: 0
     };
   }
-  function je(e) {
-    return Object.assign({}, Be(), e);
+  function ze(e) {
+    return Object.assign({}, je(), e);
   }
-  function Ie(e, t) {
-    return t.reduce(function(n, i) {
-      return n[i] = e, n;
+  function He(e, t) {
+    return t.reduce(function(n, o) {
+      return n[o] = e, n;
     }, {});
   }
-  var _n = function(t, n) {
+  var Vn = function(t, n) {
     return t = typeof t == "function" ? t(Object.assign({}, n.rects, {
       placement: n.placement
-    })) : t, je(typeof t != "number" ? t : Ie(t, Tt));
+    })) : t, ze(typeof t != "number" ? t : He(t, Tt));
   };
-  function Fn(e) {
-    var t, n = e.state, i = e.name, r = e.options, a = n.elements.arrow, s = n.modifiersData.popperOffsets, p = K(n.placement), c = me(p), u = [_, U].indexOf(p) >= 0, d = u ? "height" : "width";
-    if (!(!a || !s)) {
-      var k = _n(r.padding, n), x = fe(a), v = c === "y" ? $ : _, w = c === "y" ? N : U, g = n.rects.reference[d] + n.rects.reference[c] - s[c] - n.rects.popper[d], h = s[c] - n.rects.reference[c], f = Rt(a), C = f ? c === "y" ? f.clientHeight || 0 : f.clientWidth || 0 : 0, A = g / 2 - h / 2, o = k[v], b = C - x[d] - k[w], m = C / 2 - x[d] / 2 + A, O = qt(o, m, b), M = c;
-      n.modifiersData[i] = (t = {}, t[M] = O, t.centerOffset = O - m, t);
+  function Wn(e) {
+    var t, n = e.state, o = e.name, a = e.options, r = n.elements.arrow, c = n.modifiersData.popperOffsets, s = K(n.placement), p = he(s), u = [F, U].indexOf(s) >= 0, d = u ? "height" : "width";
+    if (!(!r || !c)) {
+      var k = Vn(a.padding, n), x = me(r), v = p === "y" ? $ : F, y = p === "y" ? N : U, g = n.rects.reference[d] + n.rects.reference[p] - c[p] - n.rects.popper[d], h = c[p] - n.rects.reference[p], f = Rt(r), C = f ? p === "y" ? f.clientHeight || 0 : f.clientWidth || 0 : 0, A = g / 2 - h / 2, i = k[v], b = C - x[d] - k[y], m = C / 2 - x[d] / 2 + A, O = qt(i, m, b), E = p;
+      n.modifiersData[o] = (t = {}, t[E] = O, t.centerOffset = O - m, t);
     }
   }
-  function Vn(e) {
-    var t = e.state, n = e.options, i = n.element, r = i === void 0 ? "[data-popper-arrow]" : i;
-    r != null && (typeof r == "string" && (r = t.elements.popper.querySelector(r), !r) || Re(t.elements.popper, r) && (t.elements.arrow = r));
+  function Nn(e) {
+    var t = e.state, n = e.options, o = n.element, a = o === void 0 ? "[data-popper-arrow]" : o;
+    a != null && (typeof a == "string" && (a = t.elements.popper.querySelector(a), !a) || Be(t.elements.popper, a) && (t.elements.arrow = a));
   }
-  const Wn = {
+  const Un = {
     name: "arrow",
     enabled: !0,
     phase: "main",
-    fn: Fn,
-    effect: Vn,
+    fn: Wn,
+    effect: Nn,
     requires: ["popperOffsets"],
     requiresIfExists: ["preventOverflow"]
   };
   function Ct(e) {
     return e.split("-")[1];
   }
-  var Nn = {
+  var Yn = {
     top: "auto",
     right: "auto",
     bottom: "auto",
     left: "auto"
   };
-  function Un(e, t) {
-    var n = e.x, i = e.y, r = t.devicePixelRatio || 1;
+  function Gn(e, t) {
+    var n = e.x, o = e.y, a = t.devicePixelRatio || 1;
     return {
-      x: xt(n * r) / r || 0,
-      y: xt(i * r) / r || 0
+      x: xt(n * a) / a || 0,
+      y: xt(o * a) / a || 0
     };
   }
-  function ze(e) {
-    var t, n = e.popper, i = e.popperRect, r = e.placement, a = e.variation, s = e.offsets, p = e.position, c = e.gpuAcceleration, u = e.adaptive, d = e.roundOffsets, k = e.isFixed, x = s.x, v = x === void 0 ? 0 : x, w = s.y, g = w === void 0 ? 0 : w, h = typeof d == "function" ? d({
+  function $e(e) {
+    var t, n = e.popper, o = e.popperRect, a = e.placement, r = e.variation, c = e.offsets, s = e.position, p = e.gpuAcceleration, u = e.adaptive, d = e.roundOffsets, k = e.isFixed, x = c.x, v = x === void 0 ? 0 : x, y = c.y, g = y === void 0 ? 0 : y, h = typeof d == "function" ? d({
       x: v,
       y: g
     }) : {
@@ -1887,163 +1904,163 @@ body:has(.os-dialog[open]) {
       y: g
     };
     v = h.x, g = h.y;
-    var f = s.hasOwnProperty("x"), C = s.hasOwnProperty("y"), A = _, o = $, b = window;
+    var f = c.hasOwnProperty("x"), C = c.hasOwnProperty("y"), A = F, i = $, b = window;
     if (u) {
-      var m = Rt(n), O = "clientHeight", M = "clientWidth";
-      if (m === F(n) && (m = pt(n), nt(m).position !== "static" && p === "absolute" && (O = "scrollHeight", M = "scrollWidth")), m = m, r === $ || (r === _ || r === U) && a === Pt) {
-        o = N;
+      var m = Rt(n), O = "clientHeight", E = "clientWidth";
+      if (m === _(n) && (m = ct(n), nt(m).position !== "static" && s === "absolute" && (O = "scrollHeight", E = "scrollWidth")), m = m, a === $ || (a === F || a === U) && r === Pt) {
+        i = N;
         var T = k && m === b && b.visualViewport ? b.visualViewport.height : (
           // $FlowFixMe[prop-missing]
           m[O]
         );
-        g -= T - i.height, g *= c ? 1 : -1;
+        g -= T - o.height, g *= p ? 1 : -1;
       }
-      if (r === _ || (r === $ || r === N) && a === Pt) {
+      if (a === F || (a === $ || a === N) && r === Pt) {
         A = U;
         var P = k && m === b && b.visualViewport ? b.visualViewport.width : (
           // $FlowFixMe[prop-missing]
-          m[M]
+          m[E]
         );
-        v -= P - i.width, v *= c ? 1 : -1;
+        v -= P - o.width, v *= p ? 1 : -1;
       }
     }
     var q = Object.assign({
-      position: p
-    }, u && Nn), R = d === !0 ? Un({
+      position: s
+    }, u && Yn), R = d === !0 ? Gn({
       x: v,
       y: g
-    }, F(n)) : {
+    }, _(n)) : {
       x: v,
       y: g
     };
-    if (v = R.x, g = R.y, c) {
+    if (v = R.x, g = R.y, p) {
       var L;
-      return Object.assign({}, q, (L = {}, L[o] = C ? "0" : "", L[A] = f ? "0" : "", L.transform = (b.devicePixelRatio || 1) <= 1 ? "translate(" + v + "px, " + g + "px)" : "translate3d(" + v + "px, " + g + "px, 0)", L));
+      return Object.assign({}, q, (L = {}, L[i] = C ? "0" : "", L[A] = f ? "0" : "", L.transform = (b.devicePixelRatio || 1) <= 1 ? "translate(" + v + "px, " + g + "px)" : "translate3d(" + v + "px, " + g + "px, 0)", L));
     }
-    return Object.assign({}, q, (t = {}, t[o] = C ? g + "px" : "", t[A] = f ? v + "px" : "", t.transform = "", t));
+    return Object.assign({}, q, (t = {}, t[i] = C ? g + "px" : "", t[A] = f ? v + "px" : "", t.transform = "", t));
   }
-  function Yn(e) {
-    var t = e.state, n = e.options, i = n.gpuAcceleration, r = i === void 0 ? !0 : i, a = n.adaptive, s = a === void 0 ? !0 : a, p = n.roundOffsets, c = p === void 0 ? !0 : p, u = {
+  function Zn(e) {
+    var t = e.state, n = e.options, o = n.gpuAcceleration, a = o === void 0 ? !0 : o, r = n.adaptive, c = r === void 0 ? !0 : r, s = n.roundOffsets, p = s === void 0 ? !0 : s, u = {
       placement: K(t.placement),
       variation: Ct(t.placement),
       popper: t.elements.popper,
       popperRect: t.rects.popper,
-      gpuAcceleration: r,
+      gpuAcceleration: a,
       isFixed: t.options.strategy === "fixed"
     };
-    t.modifiersData.popperOffsets != null && (t.styles.popper = Object.assign({}, t.styles.popper, ze(Object.assign({}, u, {
+    t.modifiersData.popperOffsets != null && (t.styles.popper = Object.assign({}, t.styles.popper, $e(Object.assign({}, u, {
       offsets: t.modifiersData.popperOffsets,
       position: t.options.strategy,
-      adaptive: s,
-      roundOffsets: c
-    })))), t.modifiersData.arrow != null && (t.styles.arrow = Object.assign({}, t.styles.arrow, ze(Object.assign({}, u, {
+      adaptive: c,
+      roundOffsets: p
+    })))), t.modifiersData.arrow != null && (t.styles.arrow = Object.assign({}, t.styles.arrow, $e(Object.assign({}, u, {
       offsets: t.modifiersData.arrow,
       position: "absolute",
       adaptive: !1,
-      roundOffsets: c
+      roundOffsets: p
     })))), t.attributes.popper = Object.assign({}, t.attributes.popper, {
       "data-popper-placement": t.placement
     });
   }
-  const Zn = {
+  const Xn = {
     name: "computeStyles",
     enabled: !0,
     phase: "beforeWrite",
-    fn: Yn,
+    fn: Zn,
     data: {}
   };
-  var Nt = {
+  var Ut = {
     passive: !0
   };
-  function Gn(e) {
-    var t = e.state, n = e.instance, i = e.options, r = i.scroll, a = r === void 0 ? !0 : r, s = i.resize, p = s === void 0 ? !0 : s, c = F(t.elements.popper), u = [].concat(t.scrollParents.reference, t.scrollParents.popper);
-    return a && u.forEach(function(d) {
-      d.addEventListener("scroll", n.update, Nt);
-    }), p && c.addEventListener("resize", n.update, Nt), function() {
-      a && u.forEach(function(d) {
-        d.removeEventListener("scroll", n.update, Nt);
-      }), p && c.removeEventListener("resize", n.update, Nt);
+  function Kn(e) {
+    var t = e.state, n = e.instance, o = e.options, a = o.scroll, r = a === void 0 ? !0 : a, c = o.resize, s = c === void 0 ? !0 : c, p = _(t.elements.popper), u = [].concat(t.scrollParents.reference, t.scrollParents.popper);
+    return r && u.forEach(function(d) {
+      d.addEventListener("scroll", n.update, Ut);
+    }), s && p.addEventListener("resize", n.update, Ut), function() {
+      r && u.forEach(function(d) {
+        d.removeEventListener("scroll", n.update, Ut);
+      }), s && p.removeEventListener("resize", n.update, Ut);
     };
   }
-  const Xn = {
+  const Qn = {
     name: "eventListeners",
     enabled: !0,
     phase: "write",
     fn: function() {
     },
-    effect: Gn,
+    effect: Kn,
     data: {}
   };
-  var Kn = {
+  var Jn = {
     left: "right",
     right: "left",
     bottom: "top",
     top: "bottom"
   };
-  function Ut(e) {
+  function Yt(e) {
     return e.replace(/left|right|bottom|top/g, function(t) {
-      return Kn[t];
+      return Jn[t];
     });
   }
-  var Qn = {
+  var to = {
     start: "end",
     end: "start"
   };
-  function He(e) {
+  function Fe(e) {
     return e.replace(/start|end/g, function(t) {
-      return Qn[t];
+      return to[t];
     });
   }
-  function he(e) {
-    var t = F(e), n = t.pageXOffset, i = t.pageYOffset;
+  function ge(e) {
+    var t = _(e), n = t.pageXOffset, o = t.pageYOffset;
     return {
       scrollLeft: n,
-      scrollTop: i
-    };
-  }
-  function ge(e) {
-    return kt(pt(e)).left + he(e).scrollLeft;
-  }
-  function Jn(e, t) {
-    var n = F(e), i = pt(e), r = n.visualViewport, a = i.clientWidth, s = i.clientHeight, p = 0, c = 0;
-    if (r) {
-      a = r.width, s = r.height;
-      var u = Le();
-      (u || !u && t === "fixed") && (p = r.offsetLeft, c = r.offsetTop);
-    }
-    return {
-      width: a,
-      height: s,
-      x: p + ge(e),
-      y: c
-    };
-  }
-  function ti(e) {
-    var t, n = pt(e), i = he(e), r = (t = e.ownerDocument) == null ? void 0 : t.body, a = mt(n.scrollWidth, n.clientWidth, r ? r.scrollWidth : 0, r ? r.clientWidth : 0), s = mt(n.scrollHeight, n.clientHeight, r ? r.scrollHeight : 0, r ? r.clientHeight : 0), p = -i.scrollLeft + ge(e), c = -i.scrollTop;
-    return nt(r || n).direction === "rtl" && (p += mt(n.clientWidth, r ? r.clientWidth : 0) - a), {
-      width: a,
-      height: s,
-      x: p,
-      y: c
+      scrollTop: o
     };
   }
   function ve(e) {
-    var t = nt(e), n = t.overflow, i = t.overflowX, r = t.overflowY;
-    return /auto|scroll|overlay|hidden/.test(n + r + i);
+    return kt(ct(e)).left + ge(e).scrollLeft;
   }
-  function $e(e) {
-    return ["html", "body", "#document"].indexOf(X(e)) >= 0 ? e.ownerDocument.body : Y(e) && ve(e) ? e : $e(Wt(e));
+  function eo(e, t) {
+    var n = _(e), o = ct(e), a = n.visualViewport, r = o.clientWidth, c = o.clientHeight, s = 0, p = 0;
+    if (a) {
+      r = a.width, c = a.height;
+      var u = qe();
+      (u || !u && t === "fixed") && (s = a.offsetLeft, p = a.offsetTop);
+    }
+    return {
+      width: r,
+      height: c,
+      x: s + ve(e),
+      y: p
+    };
+  }
+  function no(e) {
+    var t, n = ct(e), o = ge(e), a = (t = e.ownerDocument) == null ? void 0 : t.body, r = mt(n.scrollWidth, n.clientWidth, a ? a.scrollWidth : 0, a ? a.clientWidth : 0), c = mt(n.scrollHeight, n.clientHeight, a ? a.scrollHeight : 0, a ? a.clientHeight : 0), s = -o.scrollLeft + ve(e), p = -o.scrollTop;
+    return nt(a || n).direction === "rtl" && (s += mt(n.clientWidth, a ? a.clientWidth : 0) - r), {
+      width: r,
+      height: c,
+      x: s,
+      y: p
+    };
+  }
+  function be(e) {
+    var t = nt(e), n = t.overflow, o = t.overflowX, a = t.overflowY;
+    return /auto|scroll|overlay|hidden/.test(n + a + o);
+  }
+  function _e(e) {
+    return ["html", "body", "#document"].indexOf(X(e)) >= 0 ? e.ownerDocument.body : Y(e) && be(e) ? e : _e(Nt(e));
   }
   function Bt(e, t) {
     var n;
     t === void 0 && (t = []);
-    var i = $e(e), r = i === ((n = e.ownerDocument) == null ? void 0 : n.body), a = F(i), s = r ? [a].concat(a.visualViewport || [], ve(i) ? i : []) : i, p = t.concat(s);
-    return r ? p : (
+    var o = _e(e), a = o === ((n = e.ownerDocument) == null ? void 0 : n.body), r = _(o), c = a ? [r].concat(r.visualViewport || [], be(o) ? o : []) : o, s = t.concat(c);
+    return a ? s : (
       // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
-      p.concat(Bt(Wt(s)))
+      s.concat(Bt(Nt(c)))
     );
   }
-  function be(e) {
+  function ye(e) {
     return Object.assign({}, e, {
       left: e.x,
       top: e.y,
@@ -2051,179 +2068,179 @@ body:has(.os-dialog[open]) {
       bottom: e.y + e.height
     });
   }
-  function ei(e, t) {
+  function oo(e, t) {
     var n = kt(e, !1, t === "fixed");
     return n.top = n.top + e.clientTop, n.left = n.left + e.clientLeft, n.bottom = n.top + e.clientHeight, n.right = n.left + e.clientWidth, n.width = e.clientWidth, n.height = e.clientHeight, n.x = n.left, n.y = n.top, n;
   }
-  function _e(e, t, n) {
-    return t === Me ? be(Jn(e, n)) : ft(t) ? ei(t, n) : be(ti(pt(e)));
+  function Ve(e, t, n) {
+    return t === Te ? ye(eo(e, n)) : ft(t) ? oo(t, n) : ye(no(ct(e)));
   }
-  function ni(e) {
-    var t = Bt(Wt(e)), n = ["absolute", "fixed"].indexOf(nt(e).position) >= 0, i = n && Y(e) ? Rt(e) : e;
-    return ft(i) ? t.filter(function(r) {
-      return ft(r) && Re(r, i) && X(r) !== "body";
+  function io(e) {
+    var t = Bt(Nt(e)), n = ["absolute", "fixed"].indexOf(nt(e).position) >= 0, o = n && Y(e) ? Rt(e) : e;
+    return ft(o) ? t.filter(function(a) {
+      return ft(a) && Be(a, o) && X(a) !== "body";
     }) : [];
   }
-  function ii(e, t, n, i) {
-    var r = t === "clippingParents" ? ni(e) : [].concat(t), a = [].concat(r, [n]), s = a[0], p = a.reduce(function(c, u) {
-      var d = _e(e, u, i);
-      return c.top = mt(d.top, c.top), c.right = Vt(d.right, c.right), c.bottom = Vt(d.bottom, c.bottom), c.left = mt(d.left, c.left), c;
-    }, _e(e, s, i));
-    return p.width = p.right - p.left, p.height = p.bottom - p.top, p.x = p.left, p.y = p.top, p;
+  function ao(e, t, n, o) {
+    var a = t === "clippingParents" ? io(e) : [].concat(t), r = [].concat(a, [n]), c = r[0], s = r.reduce(function(p, u) {
+      var d = Ve(e, u, o);
+      return p.top = mt(d.top, p.top), p.right = Wt(d.right, p.right), p.bottom = Wt(d.bottom, p.bottom), p.left = mt(d.left, p.left), p;
+    }, Ve(e, c, o));
+    return s.width = s.right - s.left, s.height = s.bottom - s.top, s.x = s.left, s.y = s.top, s;
   }
-  function Fe(e) {
-    var t = e.reference, n = e.element, i = e.placement, r = i ? K(i) : null, a = i ? Ct(i) : null, s = t.x + t.width / 2 - n.width / 2, p = t.y + t.height / 2 - n.height / 2, c;
-    switch (r) {
+  function We(e) {
+    var t = e.reference, n = e.element, o = e.placement, a = o ? K(o) : null, r = o ? Ct(o) : null, c = t.x + t.width / 2 - n.width / 2, s = t.y + t.height / 2 - n.height / 2, p;
+    switch (a) {
       case $:
-        c = {
-          x: s,
+        p = {
+          x: c,
           y: t.y - n.height
         };
         break;
       case N:
-        c = {
-          x: s,
+        p = {
+          x: c,
           y: t.y + t.height
         };
         break;
       case U:
-        c = {
+        p = {
           x: t.x + t.width,
-          y: p
+          y: s
         };
         break;
-      case _:
-        c = {
+      case F:
+        p = {
           x: t.x - n.width,
-          y: p
+          y: s
         };
         break;
       default:
-        c = {
+        p = {
           x: t.x,
           y: t.y
         };
     }
-    var u = r ? me(r) : null;
+    var u = a ? he(a) : null;
     if (u != null) {
       var d = u === "y" ? "height" : "width";
-      switch (a) {
+      switch (r) {
         case wt:
-          c[u] = c[u] - (t[d] / 2 - n[d] / 2);
+          p[u] = p[u] - (t[d] / 2 - n[d] / 2);
           break;
         case Pt:
-          c[u] = c[u] + (t[d] / 2 - n[d] / 2);
+          p[u] = p[u] + (t[d] / 2 - n[d] / 2);
           break;
       }
     }
-    return c;
+    return p;
   }
-  function jt(e, t) {
+  function It(e, t) {
     t === void 0 && (t = {});
-    var n = t, i = n.placement, r = i === void 0 ? e.placement : i, a = n.strategy, s = a === void 0 ? e.strategy : a, p = n.boundary, c = p === void 0 ? Sn : p, u = n.rootBoundary, d = u === void 0 ? Me : u, k = n.elementContext, x = k === void 0 ? Lt : k, v = n.altBoundary, w = v === void 0 ? !1 : v, g = n.padding, h = g === void 0 ? 0 : g, f = je(typeof h != "number" ? h : Ie(h, Tt)), C = x === Lt ? An : Lt, A = e.rects.popper, o = e.elements[w ? C : x], b = ii(ft(o) ? o : o.contextElement || pt(e.elements.popper), c, d, s), m = kt(e.elements.reference), O = Fe({
+    var n = t, o = n.placement, a = o === void 0 ? e.placement : o, r = n.strategy, c = r === void 0 ? e.strategy : r, s = n.boundary, p = s === void 0 ? On : s, u = n.rootBoundary, d = u === void 0 ? Te : u, k = n.elementContext, x = k === void 0 ? Lt : k, v = n.altBoundary, y = v === void 0 ? !1 : v, g = n.padding, h = g === void 0 ? 0 : g, f = ze(typeof h != "number" ? h : He(h, Tt)), C = x === Lt ? Mn : Lt, A = e.rects.popper, i = e.elements[y ? C : x], b = ao(ft(i) ? i : i.contextElement || ct(e.elements.popper), p, d, c), m = kt(e.elements.reference), O = We({
       reference: m,
       element: A,
-      placement: r
-    }), M = be(Object.assign({}, A, O)), T = x === Lt ? M : m, P = {
+      placement: a
+    }), E = ye(Object.assign({}, A, O)), T = x === Lt ? E : m, P = {
       top: b.top - T.top + f.top,
       bottom: T.bottom - b.bottom + f.bottom,
       left: b.left - T.left + f.left,
       right: T.right - b.right + f.right
     }, q = e.modifiersData.offset;
     if (x === Lt && q) {
-      var R = q[r];
+      var R = q[a];
       Object.keys(P).forEach(function(L) {
-        var j = [U, N].indexOf(L) >= 0 ? 1 : -1, W = [$, N].indexOf(L) >= 0 ? "y" : "x";
-        P[L] += R[W] * j;
+        var I = [U, N].indexOf(L) >= 0 ? 1 : -1, W = [$, N].indexOf(L) >= 0 ? "y" : "x";
+        P[L] += R[W] * I;
       });
     }
     return P;
   }
-  function oi(e, t) {
+  function ro(e, t) {
     t === void 0 && (t = {});
-    var n = t, i = n.placement, r = n.boundary, a = n.rootBoundary, s = n.padding, p = n.flipVariations, c = n.allowedAutoPlacements, u = c === void 0 ? Te : c, d = Ct(i), k = d ? p ? De : De.filter(function(w) {
-      return Ct(w) === d;
-    }) : Tt, x = k.filter(function(w) {
-      return u.indexOf(w) >= 0;
+    var n = t, o = n.placement, a = n.boundary, r = n.rootBoundary, c = n.padding, s = n.flipVariations, p = n.allowedAutoPlacements, u = p === void 0 ? Le : p, d = Ct(o), k = d ? s ? Pe : Pe.filter(function(y) {
+      return Ct(y) === d;
+    }) : Tt, x = k.filter(function(y) {
+      return u.indexOf(y) >= 0;
     });
     x.length === 0 && (x = k);
-    var v = x.reduce(function(w, g) {
-      return w[g] = jt(e, {
+    var v = x.reduce(function(y, g) {
+      return y[g] = It(e, {
         placement: g,
-        boundary: r,
-        rootBoundary: a,
-        padding: s
-      })[K(g)], w;
+        boundary: a,
+        rootBoundary: r,
+        padding: c
+      })[K(g)], y;
     }, {});
-    return Object.keys(v).sort(function(w, g) {
-      return v[w] - v[g];
+    return Object.keys(v).sort(function(y, g) {
+      return v[y] - v[g];
     });
   }
-  function ri(e) {
-    if (K(e) === le)
+  function so(e) {
+    if (K(e) === de)
       return [];
-    var t = Ut(e);
-    return [He(e), t, He(t)];
+    var t = Yt(e);
+    return [Fe(e), t, Fe(t)];
   }
-  function ai(e) {
-    var t = e.state, n = e.options, i = e.name;
-    if (!t.modifiersData[i]._skip) {
-      for (var r = n.mainAxis, a = r === void 0 ? !0 : r, s = n.altAxis, p = s === void 0 ? !0 : s, c = n.fallbackPlacements, u = n.padding, d = n.boundary, k = n.rootBoundary, x = n.altBoundary, v = n.flipVariations, w = v === void 0 ? !0 : v, g = n.allowedAutoPlacements, h = t.options.placement, f = K(h), C = f === h, A = c || (C || !w ? [Ut(h)] : ri(h)), o = [h].concat(A).reduce(function(ot, G) {
-        return ot.concat(K(G) === le ? oi(t, {
-          placement: G,
+  function co(e) {
+    var t = e.state, n = e.options, o = e.name;
+    if (!t.modifiersData[o]._skip) {
+      for (var a = n.mainAxis, r = a === void 0 ? !0 : a, c = n.altAxis, s = c === void 0 ? !0 : c, p = n.fallbackPlacements, u = n.padding, d = n.boundary, k = n.rootBoundary, x = n.altBoundary, v = n.flipVariations, y = v === void 0 ? !0 : v, g = n.allowedAutoPlacements, h = t.options.placement, f = K(h), C = f === h, A = p || (C || !y ? [Yt(h)] : so(h)), i = [h].concat(A).reduce(function(it, Z) {
+        return it.concat(K(Z) === de ? ro(t, {
+          placement: Z,
           boundary: d,
           rootBoundary: k,
           padding: u,
-          flipVariations: w,
+          flipVariations: y,
           allowedAutoPlacements: g
-        }) : G);
-      }, []), b = t.rects.reference, m = t.rects.popper, O = /* @__PURE__ */ new Map(), M = !0, T = o[0], P = 0; P < o.length; P++) {
-        var q = o[P], R = K(q), L = Ct(q) === wt, j = [$, N].indexOf(R) >= 0, W = j ? "width" : "height", I = jt(t, {
+        }) : Z);
+      }, []), b = t.rects.reference, m = t.rects.popper, O = /* @__PURE__ */ new Map(), E = !0, T = i[0], P = 0; P < i.length; P++) {
+        var q = i[P], R = K(q), L = Ct(q) === wt, I = [$, N].indexOf(R) >= 0, W = I ? "width" : "height", j = It(t, {
           placement: q,
           boundary: d,
           rootBoundary: k,
           altBoundary: x,
           padding: u
-        }), z = j ? L ? U : _ : L ? N : $;
-        b[W] > m[W] && (z = Ut(z));
-        var B = Ut(z), J = [];
-        if (a && J.push(I[R] <= 0), p && J.push(I[z] <= 0, I[B] <= 0), J.every(function(ot) {
-          return ot;
+        }), z = I ? L ? U : F : L ? N : $;
+        b[W] > m[W] && (z = Yt(z));
+        var B = Yt(z), J = [];
+        if (r && J.push(j[R] <= 0), s && J.push(j[z] <= 0, j[B] <= 0), J.every(function(it) {
+          return it;
         })) {
-          T = q, M = !1;
+          T = q, E = !1;
           break;
         }
         O.set(q, J);
       }
-      if (M)
-        for (var tt = w ? 3 : 1, gt = function(G) {
-          var rt = o.find(function(At) {
-            var at = O.get(At);
-            if (at)
-              return at.slice(0, G).every(function(Ot) {
+      if (E)
+        for (var tt = y ? 3 : 1, gt = function(Z) {
+          var at = i.find(function(At) {
+            var rt = O.get(At);
+            if (rt)
+              return rt.slice(0, Z).every(function(Ot) {
                 return Ot;
               });
           });
-          if (rt)
-            return T = rt, "break";
+          if (at)
+            return T = at, "break";
         }, et = tt; et > 0; et--) {
           var vt = gt(et);
           if (vt === "break") break;
         }
-      t.placement !== T && (t.modifiersData[i]._skip = !0, t.placement = T, t.reset = !0);
+      t.placement !== T && (t.modifiersData[o]._skip = !0, t.placement = T, t.reset = !0);
     }
   }
-  const si = {
+  const po = {
     name: "flip",
     enabled: !0,
     phase: "main",
-    fn: ai,
+    fn: co,
     requiresIfExists: ["offset"],
     data: {
       _skip: !1
     }
   };
-  function Ve(e, t, n) {
+  function Ne(e, t, n) {
     return n === void 0 && (n = {
       x: 0,
       y: 0
@@ -2234,19 +2251,19 @@ body:has(.os-dialog[open]) {
       left: e.left - t.width - n.x
     };
   }
-  function We(e) {
-    return [$, U, N, _].some(function(t) {
+  function Ue(e) {
+    return [$, U, N, F].some(function(t) {
       return e[t] >= 0;
     });
   }
-  function pi(e) {
-    var t = e.state, n = e.name, i = t.rects.reference, r = t.rects.popper, a = t.modifiersData.preventOverflow, s = jt(t, {
+  function lo(e) {
+    var t = e.state, n = e.name, o = t.rects.reference, a = t.rects.popper, r = t.modifiersData.preventOverflow, c = It(t, {
       elementContext: "reference"
-    }), p = jt(t, {
+    }), s = It(t, {
       altBoundary: !0
-    }), c = Ve(s, i), u = Ve(p, r, a), d = We(c), k = We(u);
+    }), p = Ne(c, o), u = Ne(s, a, r), d = Ue(p), k = Ue(u);
     t.modifiersData[n] = {
-      referenceClippingOffsets: c,
+      referenceClippingOffsets: p,
       popperEscapeOffsets: u,
       isReferenceHidden: d,
       hasPopperEscaped: k
@@ -2255,63 +2272,63 @@ body:has(.os-dialog[open]) {
       "data-popper-escaped": k
     });
   }
-  const ci = {
+  const uo = {
     name: "hide",
     enabled: !0,
     phase: "main",
     requiresIfExists: ["preventOverflow"],
-    fn: pi
+    fn: lo
   };
-  function li(e, t, n) {
-    var i = K(e), r = [_, $].indexOf(i) >= 0 ? -1 : 1, a = typeof n == "function" ? n(Object.assign({}, t, {
+  function fo(e, t, n) {
+    var o = K(e), a = [F, $].indexOf(o) >= 0 ? -1 : 1, r = typeof n == "function" ? n(Object.assign({}, t, {
       placement: e
-    })) : n, s = a[0], p = a[1];
-    return s = s || 0, p = (p || 0) * r, [_, U].indexOf(i) >= 0 ? {
-      x: p,
-      y: s
-    } : {
+    })) : n, c = r[0], s = r[1];
+    return c = c || 0, s = (s || 0) * a, [F, U].indexOf(o) >= 0 ? {
       x: s,
-      y: p
+      y: c
+    } : {
+      x: c,
+      y: s
     };
   }
-  function di(e) {
-    var t = e.state, n = e.options, i = e.name, r = n.offset, a = r === void 0 ? [0, 0] : r, s = Te.reduce(function(d, k) {
-      return d[k] = li(k, t.rects, a), d;
-    }, {}), p = s[t.placement], c = p.x, u = p.y;
-    t.modifiersData.popperOffsets != null && (t.modifiersData.popperOffsets.x += c, t.modifiersData.popperOffsets.y += u), t.modifiersData[i] = s;
+  function mo(e) {
+    var t = e.state, n = e.options, o = e.name, a = n.offset, r = a === void 0 ? [0, 0] : a, c = Le.reduce(function(d, k) {
+      return d[k] = fo(k, t.rects, r), d;
+    }, {}), s = c[t.placement], p = s.x, u = s.y;
+    t.modifiersData.popperOffsets != null && (t.modifiersData.popperOffsets.x += p, t.modifiersData.popperOffsets.y += u), t.modifiersData[o] = c;
   }
-  const ui = {
+  const ho = {
     name: "offset",
     enabled: !0,
     phase: "main",
     requires: ["popperOffsets"],
-    fn: di
+    fn: mo
   };
-  function fi(e) {
+  function go(e) {
     var t = e.state, n = e.name;
-    t.modifiersData[n] = Fe({
+    t.modifiersData[n] = We({
       reference: t.rects.reference,
       element: t.rects.popper,
       placement: t.placement
     });
   }
-  const mi = {
+  const vo = {
     name: "popperOffsets",
     enabled: !0,
     phase: "read",
-    fn: fi,
+    fn: go,
     data: {}
   };
-  function hi(e) {
+  function bo(e) {
     return e === "x" ? "y" : "x";
   }
-  function gi(e) {
-    var t = e.state, n = e.options, i = e.name, r = n.mainAxis, a = r === void 0 ? !0 : r, s = n.altAxis, p = s === void 0 ? !1 : s, c = n.boundary, u = n.rootBoundary, d = n.altBoundary, k = n.padding, x = n.tether, v = x === void 0 ? !0 : x, w = n.tetherOffset, g = w === void 0 ? 0 : w, h = jt(t, {
-      boundary: c,
+  function yo(e) {
+    var t = e.state, n = e.options, o = e.name, a = n.mainAxis, r = a === void 0 ? !0 : a, c = n.altAxis, s = c === void 0 ? !1 : c, p = n.boundary, u = n.rootBoundary, d = n.altBoundary, k = n.padding, x = n.tether, v = x === void 0 ? !0 : x, y = n.tetherOffset, g = y === void 0 ? 0 : y, h = It(t, {
+      boundary: p,
       rootBoundary: u,
       padding: k,
       altBoundary: d
-    }), f = K(t.placement), C = Ct(t.placement), A = !C, o = me(f), b = hi(o), m = t.modifiersData.popperOffsets, O = t.rects.reference, M = t.rects.popper, T = typeof g == "function" ? g(Object.assign({}, t.rects, {
+    }), f = K(t.placement), C = Ct(t.placement), A = !C, i = he(f), b = bo(i), m = t.modifiersData.popperOffsets, O = t.rects.reference, E = t.rects.popper, T = typeof g == "function" ? g(Object.assign({}, t.rects, {
       placement: t.placement
     })) : g, P = typeof T == "number" ? {
       mainAxis: T,
@@ -2324,85 +2341,85 @@ body:has(.os-dialog[open]) {
       y: 0
     };
     if (m) {
-      if (a) {
-        var L, j = o === "y" ? $ : _, W = o === "y" ? N : U, I = o === "y" ? "height" : "width", z = m[o], B = z + h[j], J = z - h[W], tt = v ? -M[I] / 2 : 0, gt = C === wt ? O[I] : M[I], et = C === wt ? -M[I] : -O[I], vt = t.elements.arrow, ot = v && vt ? fe(vt) : {
+      if (r) {
+        var L, I = i === "y" ? $ : F, W = i === "y" ? N : U, j = i === "y" ? "height" : "width", z = m[i], B = z + h[I], J = z - h[W], tt = v ? -E[j] / 2 : 0, gt = C === wt ? O[j] : E[j], et = C === wt ? -E[j] : -O[j], vt = t.elements.arrow, it = v && vt ? me(vt) : {
           width: 0,
           height: 0
-        }, G = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : Be(), rt = G[j], At = G[W], at = qt(0, O[I], ot[I]), Ot = A ? O[I] / 2 - tt - at - rt - P.mainAxis : gt - at - rt - P.mainAxis, dt = A ? -O[I] / 2 + tt + at + At + P.mainAxis : et + at + At + P.mainAxis, Et = t.elements.arrow && Rt(t.elements.arrow), Qt = Et ? o === "y" ? Et.clientTop || 0 : Et.clientLeft || 0 : 0, zt = (L = q == null ? void 0 : q[o]) != null ? L : 0, Jt = z + Ot - zt - Qt, te = z + dt - zt, Ht = qt(v ? Vt(B, Jt) : B, z, v ? mt(J, te) : J);
-        m[o] = Ht, R[o] = Ht - z;
+        }, Z = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : je(), at = Z[I], At = Z[W], rt = qt(0, O[j], it[j]), Ot = A ? O[j] / 2 - tt - rt - at - P.mainAxis : gt - rt - at - P.mainAxis, dt = A ? -O[j] / 2 + tt + rt + At + P.mainAxis : et + rt + At + P.mainAxis, Mt = t.elements.arrow && Rt(t.elements.arrow), Jt = Mt ? i === "y" ? Mt.clientTop || 0 : Mt.clientLeft || 0 : 0, Ht = (L = q == null ? void 0 : q[i]) != null ? L : 0, te = z + Ot - Ht - Jt, ee = z + dt - Ht, $t = qt(v ? Wt(B, te) : B, z, v ? mt(J, ee) : J);
+        m[i] = $t, R[i] = $t - z;
       }
-      if (p) {
-        var $t, ee = o === "x" ? $ : _, ne = o === "x" ? N : U, st = m[b], ut = b === "y" ? "height" : "width", _t = st + h[ee], bt = st - h[ne], Ft = [$, _].indexOf(f) !== -1, ie = ($t = q == null ? void 0 : q[b]) != null ? $t : 0, oe = Ft ? _t : st - O[ut] - M[ut] - ie + P.altAxis, re = Ft ? st + O[ut] + M[ut] - ie - P.altAxis : bt, ae = v && Ft ? $n(oe, st, re) : qt(v ? oe : _t, st, v ? re : bt);
-        m[b] = ae, R[b] = ae - st;
+      if (s) {
+        var Ft, ne = i === "x" ? $ : F, oe = i === "x" ? N : U, st = m[b], ut = b === "y" ? "height" : "width", _t = st + h[ne], bt = st - h[oe], Vt = [$, F].indexOf(f) !== -1, ie = (Ft = q == null ? void 0 : q[b]) != null ? Ft : 0, ae = Vt ? _t : st - O[ut] - E[ut] - ie + P.altAxis, re = Vt ? st + O[ut] + E[ut] - ie - P.altAxis : bt, se = v && Vt ? _n(ae, st, re) : qt(v ? ae : _t, st, v ? re : bt);
+        m[b] = se, R[b] = se - st;
       }
-      t.modifiersData[i] = R;
+      t.modifiersData[o] = R;
     }
   }
-  const vi = {
+  const wo = {
     name: "preventOverflow",
     enabled: !0,
     phase: "main",
-    fn: gi,
+    fn: yo,
     requiresIfExists: ["offset"]
   };
-  function bi(e) {
+  function xo(e) {
     return {
       scrollLeft: e.scrollLeft,
       scrollTop: e.scrollTop
     };
   }
-  function yi(e) {
-    return e === F(e) || !Y(e) ? he(e) : bi(e);
+  function ko(e) {
+    return e === _(e) || !Y(e) ? ge(e) : xo(e);
   }
-  function wi(e) {
-    var t = e.getBoundingClientRect(), n = xt(t.width) / e.offsetWidth || 1, i = xt(t.height) / e.offsetHeight || 1;
-    return n !== 1 || i !== 1;
+  function Co(e) {
+    var t = e.getBoundingClientRect(), n = xt(t.width) / e.offsetWidth || 1, o = xt(t.height) / e.offsetHeight || 1;
+    return n !== 1 || o !== 1;
   }
-  function xi(e, t, n) {
+  function So(e, t, n) {
     n === void 0 && (n = !1);
-    var i = Y(t), r = Y(t) && wi(t), a = pt(t), s = kt(e, r, n), p = {
+    var o = Y(t), a = Y(t) && Co(t), r = ct(t), c = kt(e, a, n), s = {
       scrollLeft: 0,
       scrollTop: 0
-    }, c = {
+    }, p = {
       x: 0,
       y: 0
     };
-    return (i || !i && !n) && ((X(t) !== "body" || // https://github.com/popperjs/popper-core/issues/1078
-    ve(a)) && (p = yi(t)), Y(t) ? (c = kt(t, !0), c.x += t.clientLeft, c.y += t.clientTop) : a && (c.x = ge(a))), {
-      x: s.left + p.scrollLeft - c.x,
-      y: s.top + p.scrollTop - c.y,
-      width: s.width,
-      height: s.height
+    return (o || !o && !n) && ((X(t) !== "body" || // https://github.com/popperjs/popper-core/issues/1078
+    be(r)) && (s = ko(t)), Y(t) ? (p = kt(t, !0), p.x += t.clientLeft, p.y += t.clientTop) : r && (p.x = ve(r))), {
+      x: c.left + s.scrollLeft - p.x,
+      y: c.top + s.scrollTop - p.y,
+      width: c.width,
+      height: c.height
     };
   }
-  function ki(e) {
-    var t = /* @__PURE__ */ new Map(), n = /* @__PURE__ */ new Set(), i = [];
-    e.forEach(function(a) {
-      t.set(a.name, a);
+  function Ao(e) {
+    var t = /* @__PURE__ */ new Map(), n = /* @__PURE__ */ new Set(), o = [];
+    e.forEach(function(r) {
+      t.set(r.name, r);
     });
-    function r(a) {
-      n.add(a.name);
-      var s = [].concat(a.requires || [], a.requiresIfExists || []);
-      s.forEach(function(p) {
-        if (!n.has(p)) {
-          var c = t.get(p);
-          c && r(c);
+    function a(r) {
+      n.add(r.name);
+      var c = [].concat(r.requires || [], r.requiresIfExists || []);
+      c.forEach(function(s) {
+        if (!n.has(s)) {
+          var p = t.get(s);
+          p && a(p);
         }
-      }), i.push(a);
+      }), o.push(r);
     }
-    return e.forEach(function(a) {
-      n.has(a.name) || r(a);
-    }), i;
+    return e.forEach(function(r) {
+      n.has(r.name) || a(r);
+    }), o;
   }
-  function Ci(e) {
-    var t = ki(e);
-    return Bn.reduce(function(n, i) {
-      return n.concat(t.filter(function(r) {
-        return r.phase === i;
+  function Oo(e) {
+    var t = Ao(e);
+    return jn.reduce(function(n, o) {
+      return n.concat(t.filter(function(a) {
+        return a.phase === o;
       }));
     }, []);
   }
-  function Si(e) {
+  function Mo(e) {
     var t;
     return function() {
       return t || (t = new Promise(function(n) {
@@ -2412,43 +2429,43 @@ body:has(.os-dialog[open]) {
       })), t;
     };
   }
-  function Ai(e) {
-    var t = e.reduce(function(n, i) {
-      var r = n[i.name];
-      return n[i.name] = r ? Object.assign({}, r, i, {
-        options: Object.assign({}, r.options, i.options),
-        data: Object.assign({}, r.data, i.data)
-      }) : i, n;
+  function Eo(e) {
+    var t = e.reduce(function(n, o) {
+      var a = n[o.name];
+      return n[o.name] = a ? Object.assign({}, a, o, {
+        options: Object.assign({}, a.options, o.options),
+        data: Object.assign({}, a.data, o.data)
+      }) : o, n;
     }, {});
     return Object.keys(t).map(function(n) {
       return t[n];
     });
   }
-  var Ne = {
+  var Ye = {
     placement: "bottom",
     modifiers: [],
     strategy: "absolute"
   };
-  function Ue() {
+  function Ge() {
     for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++)
       t[n] = arguments[n];
-    return !t.some(function(i) {
-      return !(i && typeof i.getBoundingClientRect == "function");
+    return !t.some(function(o) {
+      return !(o && typeof o.getBoundingClientRect == "function");
     });
   }
-  function Oi(e) {
+  function Do(e) {
     e === void 0 && (e = {});
-    var t = e, n = t.defaultModifiers, i = n === void 0 ? [] : n, r = t.defaultOptions, a = r === void 0 ? Ne : r;
-    return function(p, c, u) {
-      u === void 0 && (u = a);
+    var t = e, n = t.defaultModifiers, o = n === void 0 ? [] : n, a = t.defaultOptions, r = a === void 0 ? Ye : a;
+    return function(s, p, u) {
+      u === void 0 && (u = r);
       var d = {
         placement: "bottom",
         orderedModifiers: [],
-        options: Object.assign({}, Ne, a),
+        options: Object.assign({}, Ye, r),
         modifiersData: {},
         elements: {
-          reference: p,
-          popper: c
+          reference: s,
+          popper: p
         },
         attributes: {},
         styles: {}
@@ -2456,14 +2473,14 @@ body:has(.os-dialog[open]) {
         state: d,
         setOptions: function(f) {
           var C = typeof f == "function" ? f(d.options) : f;
-          g(), d.options = Object.assign({}, a, d.options, C), d.scrollParents = {
-            reference: ft(p) ? Bt(p) : p.contextElement ? Bt(p.contextElement) : [],
-            popper: Bt(c)
+          g(), d.options = Object.assign({}, r, d.options, C), d.scrollParents = {
+            reference: ft(s) ? Bt(s) : s.contextElement ? Bt(s.contextElement) : [],
+            popper: Bt(p)
           };
-          var A = Ci(Ai([].concat(i, d.options.modifiers)));
-          return d.orderedModifiers = A.filter(function(o) {
-            return o.enabled;
-          }), w(), v.update();
+          var A = Oo(Eo([].concat(o, d.options.modifiers)));
+          return d.orderedModifiers = A.filter(function(i) {
+            return i.enabled;
+          }), y(), v.update();
         },
         // Sync update – it will always be executed, even if not necessary. This
         // is useful for low frequency updates where sync behavior simplifies the
@@ -2473,22 +2490,22 @@ body:has(.os-dialog[open]) {
         forceUpdate: function() {
           if (!x) {
             var f = d.elements, C = f.reference, A = f.popper;
-            if (Ue(C, A)) {
+            if (Ge(C, A)) {
               d.rects = {
-                reference: xi(C, Rt(A), d.options.strategy === "fixed"),
-                popper: fe(A)
+                reference: So(C, Rt(A), d.options.strategy === "fixed"),
+                popper: me(A)
               }, d.reset = !1, d.placement = d.options.placement, d.orderedModifiers.forEach(function(P) {
                 return d.modifiersData[P.name] = Object.assign({}, P.data);
               });
-              for (var o = 0; o < d.orderedModifiers.length; o++) {
+              for (var i = 0; i < d.orderedModifiers.length; i++) {
                 if (d.reset === !0) {
-                  d.reset = !1, o = -1;
+                  d.reset = !1, i = -1;
                   continue;
                 }
-                var b = d.orderedModifiers[o], m = b.fn, O = b.options, M = O === void 0 ? {} : O, T = b.name;
+                var b = d.orderedModifiers[i], m = b.fn, O = b.options, E = O === void 0 ? {} : O, T = b.name;
                 typeof m == "function" && (d = m({
                   state: d,
-                  options: M,
+                  options: E,
                   name: T,
                   instance: v
                 }) || d);
@@ -2498,7 +2515,7 @@ body:has(.os-dialog[open]) {
         },
         // Async and optimistically optimized update – it will not be executed if
         // not necessary (debounced to run at most once-per-tick)
-        update: Si(function() {
+        update: Mo(function() {
           return new Promise(function(h) {
             v.forceUpdate(), h(d);
           });
@@ -2507,16 +2524,16 @@ body:has(.os-dialog[open]) {
           g(), x = !0;
         }
       };
-      if (!Ue(p, c))
+      if (!Ge(s, p))
         return v;
       v.setOptions(u).then(function(h) {
         !x && u.onFirstUpdate && u.onFirstUpdate(h);
       });
-      function w() {
+      function y() {
         d.orderedModifiers.forEach(function(h) {
-          var f = h.name, C = h.options, A = C === void 0 ? {} : C, o = h.effect;
-          if (typeof o == "function") {
-            var b = o({
+          var f = h.name, C = h.options, A = C === void 0 ? {} : C, i = h.effect;
+          if (typeof i == "function") {
+            var b = i({
               state: d,
               name: f,
               instance: v,
@@ -2535,65 +2552,65 @@ body:has(.os-dialog[open]) {
       return v;
     };
   }
-  var Ei = [Xn, mi, Zn, Pe, ui, si, vi, Wn, ci], Mi = /* @__PURE__ */ Oi({
-    defaultModifiers: Ei
-  }), Di = '<svg width="16" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M0 6s1.796-.013 4.67-3.615C5.851.9 6.93.006 8 0c1.07-.006 2.148.887 3.343 2.385C14.233 6.005 16 6 16 6H0z"></svg>', Ti = "tippy-box", Ye = "tippy-content", Ze = "tippy-backdrop", Ge = "tippy-arrow", Xe = "tippy-svg-arrow", ct = {
+  var To = [Qn, vo, Xn, Re, ho, po, wo, Un, uo], Po = /* @__PURE__ */ Do({
+    defaultModifiers: To
+  }), Lo = '<svg width="16" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M0 6s1.796-.013 4.67-3.615C5.851.9 6.93.006 8 0c1.07-.006 2.148.887 3.343 2.385C14.233 6.005 16 6 16 6H0z"></svg>', Ro = "tippy-box", Ze = "tippy-content", Xe = "tippy-backdrop", Ke = "tippy-arrow", Qe = "tippy-svg-arrow", pt = {
     passive: !0,
     capture: !0
-  }, Ke = function() {
+  }, Je = function() {
     return document.body;
   };
-  function ye(e, t, n) {
+  function we(e, t, n) {
     if (Array.isArray(e)) {
-      var i = e[t];
-      return i ?? (Array.isArray(n) ? n[t] : n);
+      var o = e[t];
+      return o ?? (Array.isArray(n) ? n[t] : n);
     }
     return e;
   }
-  function we(e, t) {
+  function xe(e, t) {
     var n = {}.toString.call(e);
     return n.indexOf("[object") === 0 && n.indexOf(t + "]") > -1;
   }
-  function Qe(e, t) {
+  function tn(e, t) {
     return typeof e == "function" ? e.apply(void 0, t) : e;
   }
-  function Je(e, t) {
+  function en(e, t) {
     if (t === 0)
       return e;
     var n;
-    return function(i) {
+    return function(o) {
       clearTimeout(n), n = setTimeout(function() {
-        e(i);
+        e(o);
       }, t);
     };
   }
-  function tn(e, t) {
+  function nn(e, t) {
     var n = Object.assign({}, e);
-    return t.forEach(function(i) {
-      delete n[i];
+    return t.forEach(function(o) {
+      delete n[o];
     }), n;
   }
-  function Pi(e) {
+  function qo(e) {
     return e.split(/\s+/).filter(Boolean);
   }
   function lt(e) {
     return [].concat(e);
   }
-  function en(e, t) {
+  function on(e, t) {
     e.indexOf(t) === -1 && e.push(t);
   }
-  function Li(e) {
+  function Bo(e) {
     return e.filter(function(t, n) {
       return e.indexOf(t) === n;
     });
   }
-  function nn(e) {
+  function an(e) {
     return e.split("-")[0];
   }
   function St(e) {
     return [].slice.call(e);
   }
-  function on(e) {
+  function rn(e) {
     return Object.keys(e).reduce(function(t, n) {
       return e[n] !== void 0 && (t[n] = e[n]), t;
     }, {});
@@ -2601,91 +2618,91 @@ body:has(.os-dialog[open]) {
   function ht() {
     return document.createElement("div");
   }
-  function Yt(e) {
+  function Gt(e) {
     return ["Element", "Fragment"].some(function(t) {
-      return we(e, t);
+      return xe(e, t);
     });
   }
-  function Ri(e) {
-    return we(e, "NodeList");
+  function Io(e) {
+    return xe(e, "NodeList");
   }
-  function xe(e) {
-    return we(e, "MouseEvent");
+  function ke(e) {
+    return xe(e, "MouseEvent");
   }
-  function rn(e) {
+  function sn(e) {
     return !!(e && e._tippy && e._tippy.reference === e);
   }
-  function qi(e) {
-    return Yt(e) ? [e] : Ri(e) ? St(e) : Array.isArray(e) ? e : St(document.querySelectorAll(e));
+  function jo(e) {
+    return Gt(e) ? [e] : Io(e) ? St(e) : Array.isArray(e) ? e : St(document.querySelectorAll(e));
   }
-  function ke(e, t) {
+  function Ce(e, t) {
     e.forEach(function(n) {
       n && (n.style.transitionDuration = t + "ms");
     });
   }
-  function It(e, t) {
+  function jt(e, t) {
     e.forEach(function(n) {
       n && n.setAttribute("data-state", t);
     });
   }
-  function an(e) {
-    var t, n = lt(e), i = n[0];
-    return i != null && (t = i.ownerDocument) != null && t.body ? i.ownerDocument : document;
+  function cn(e) {
+    var t, n = lt(e), o = n[0];
+    return o != null && (t = o.ownerDocument) != null && t.body ? o.ownerDocument : document;
   }
-  function Bi(e, t) {
-    var n = t.clientX, i = t.clientY;
-    return e.every(function(r) {
-      var a = r.popperRect, s = r.popperState, p = r.props, c = p.interactiveBorder, u = nn(s.placement), d = s.modifiersData.offset;
+  function zo(e, t) {
+    var n = t.clientX, o = t.clientY;
+    return e.every(function(a) {
+      var r = a.popperRect, c = a.popperState, s = a.props, p = s.interactiveBorder, u = an(c.placement), d = c.modifiersData.offset;
       if (!d)
         return !0;
-      var k = u === "bottom" ? d.top.y : 0, x = u === "top" ? d.bottom.y : 0, v = u === "right" ? d.left.x : 0, w = u === "left" ? d.right.x : 0, g = a.top - i + k > c, h = i - a.bottom - x > c, f = a.left - n + v > c, C = n - a.right - w > c;
+      var k = u === "bottom" ? d.top.y : 0, x = u === "top" ? d.bottom.y : 0, v = u === "right" ? d.left.x : 0, y = u === "left" ? d.right.x : 0, g = r.top - o + k > p, h = o - r.bottom - x > p, f = r.left - n + v > p, C = n - r.right - y > p;
       return g || h || f || C;
     });
   }
-  function Ce(e, t, n) {
-    var i = t + "EventListener";
-    ["transitionend", "webkitTransitionEnd"].forEach(function(r) {
-      e[i](r, n);
+  function Se(e, t, n) {
+    var o = t + "EventListener";
+    ["transitionend", "webkitTransitionEnd"].forEach(function(a) {
+      e[o](a, n);
     });
   }
-  function sn(e, t) {
+  function pn(e, t) {
     for (var n = t; n; ) {
-      var i;
+      var o;
       if (e.contains(n))
         return !0;
-      n = n.getRootNode == null || (i = n.getRootNode()) == null ? void 0 : i.host;
+      n = n.getRootNode == null || (o = n.getRootNode()) == null ? void 0 : o.host;
     }
     return !1;
   }
   var Q = {
     isTouch: !1
-  }, pn = 0;
-  function ji() {
-    Q.isTouch || (Q.isTouch = !0, window.performance && document.addEventListener("mousemove", cn));
+  }, ln = 0;
+  function Ho() {
+    Q.isTouch || (Q.isTouch = !0, window.performance && document.addEventListener("mousemove", dn));
   }
-  function cn() {
+  function dn() {
     var e = performance.now();
-    e - pn < 20 && (Q.isTouch = !1, document.removeEventListener("mousemove", cn)), pn = e;
+    e - ln < 20 && (Q.isTouch = !1, document.removeEventListener("mousemove", dn)), ln = e;
   }
-  function Ii() {
+  function $o() {
     var e = document.activeElement;
-    if (rn(e)) {
+    if (sn(e)) {
       var t = e._tippy;
       e.blur && !t.state.isVisible && e.blur();
     }
   }
-  function zi() {
-    document.addEventListener("touchstart", ji, ct), window.addEventListener("blur", Ii);
+  function Fo() {
+    document.addEventListener("touchstart", Ho, pt), window.addEventListener("blur", $o);
   }
-  var Hi = typeof window < "u" && typeof document < "u", $i = Hi ? (
+  var _o = typeof window < "u" && typeof document < "u", Vo = _o ? (
     // @ts-ignore
     !!window.msCrypto
-  ) : !1, _i = {
+  ) : !1, Wo = {
     animateFill: !1,
     followCursor: !1,
     inlinePositioning: !1,
     sticky: !1
-  }, Fi = {
+  }, No = {
     allowHTML: !1,
     animation: "fade",
     arrow: !0,
@@ -2696,7 +2713,7 @@ body:has(.os-dialog[open]) {
     theme: "",
     zIndex: 9999
   }, V = Object.assign({
-    appendTo: Ke,
+    appendTo: Je,
     aria: {
       content: "auto",
       expanded: "auto"
@@ -2743,97 +2760,97 @@ body:has(.os-dialog[open]) {
     touch: !0,
     trigger: "mouseenter focus",
     triggerTarget: null
-  }, _i, Fi), Vi = Object.keys(V), Wi = function(t) {
+  }, Wo, No), Uo = Object.keys(V), Yo = function(t) {
     var n = Object.keys(t);
-    n.forEach(function(i) {
-      V[i] = t[i];
+    n.forEach(function(o) {
+      V[o] = t[o];
     });
   };
-  function ln(e) {
-    var t = e.plugins || [], n = t.reduce(function(i, r) {
-      var a = r.name, s = r.defaultValue;
-      if (a) {
-        var p;
-        i[a] = e[a] !== void 0 ? e[a] : (p = V[a]) != null ? p : s;
+  function un(e) {
+    var t = e.plugins || [], n = t.reduce(function(o, a) {
+      var r = a.name, c = a.defaultValue;
+      if (r) {
+        var s;
+        o[r] = e[r] !== void 0 ? e[r] : (s = V[r]) != null ? s : c;
       }
-      return i;
+      return o;
     }, {});
     return Object.assign({}, e, n);
   }
-  function Ni(e, t) {
-    var n = t ? Object.keys(ln(Object.assign({}, V, {
+  function Go(e, t) {
+    var n = t ? Object.keys(un(Object.assign({}, V, {
       plugins: t
-    }))) : Vi, i = n.reduce(function(r, a) {
-      var s = (e.getAttribute("data-tippy-" + a) || "").trim();
-      if (!s)
-        return r;
-      if (a === "content")
-        r[a] = s;
+    }))) : Uo, o = n.reduce(function(a, r) {
+      var c = (e.getAttribute("data-tippy-" + r) || "").trim();
+      if (!c)
+        return a;
+      if (r === "content")
+        a[r] = c;
       else
         try {
-          r[a] = JSON.parse(s);
+          a[r] = JSON.parse(c);
         } catch {
-          r[a] = s;
+          a[r] = c;
         }
-      return r;
+      return a;
     }, {});
-    return i;
+    return o;
   }
-  function dn(e, t) {
+  function fn(e, t) {
     var n = Object.assign({}, t, {
-      content: Qe(t.content, [e])
-    }, t.ignoreAttributes ? {} : Ni(e, t.plugins));
+      content: tn(t.content, [e])
+    }, t.ignoreAttributes ? {} : Go(e, t.plugins));
     return n.aria = Object.assign({}, V.aria, n.aria), n.aria = {
       expanded: n.aria.expanded === "auto" ? t.interactive : n.aria.expanded,
       content: n.aria.content === "auto" ? t.interactive ? null : "describedby" : n.aria.content
     }, n;
   }
-  var Ui = function() {
+  var Zo = function() {
     return "innerHTML";
   };
-  function Se(e, t) {
-    e[Ui()] = t;
+  function Ae(e, t) {
+    e[Zo()] = t;
   }
-  function un(e) {
+  function mn(e) {
     var t = ht();
-    return e === !0 ? t.className = Ge : (t.className = Xe, Yt(e) ? t.appendChild(e) : Se(t, e)), t;
+    return e === !0 ? t.className = Ke : (t.className = Qe, Gt(e) ? t.appendChild(e) : Ae(t, e)), t;
   }
-  function fn(e, t) {
-    Yt(t.content) ? (Se(e, ""), e.appendChild(t.content)) : typeof t.content != "function" && (t.allowHTML ? Se(e, t.content) : e.textContent = t.content);
+  function hn(e, t) {
+    Gt(t.content) ? (Ae(e, ""), e.appendChild(t.content)) : typeof t.content != "function" && (t.allowHTML ? Ae(e, t.content) : e.textContent = t.content);
   }
   function Zt(e) {
     var t = e.firstElementChild, n = St(t.children);
     return {
       box: t,
-      content: n.find(function(i) {
-        return i.classList.contains(Ye);
+      content: n.find(function(o) {
+        return o.classList.contains(Ze);
       }),
-      arrow: n.find(function(i) {
-        return i.classList.contains(Ge) || i.classList.contains(Xe);
+      arrow: n.find(function(o) {
+        return o.classList.contains(Ke) || o.classList.contains(Qe);
       }),
-      backdrop: n.find(function(i) {
-        return i.classList.contains(Ze);
+      backdrop: n.find(function(o) {
+        return o.classList.contains(Xe);
       })
     };
   }
-  function mn(e) {
+  function gn(e) {
     var t = ht(), n = ht();
-    n.className = Ti, n.setAttribute("data-state", "hidden"), n.setAttribute("tabindex", "-1");
-    var i = ht();
-    i.className = Ye, i.setAttribute("data-state", "hidden"), fn(i, e.props), t.appendChild(n), n.appendChild(i), r(e.props, e.props);
-    function r(a, s) {
-      var p = Zt(t), c = p.box, u = p.content, d = p.arrow;
-      s.theme ? c.setAttribute("data-theme", s.theme) : c.removeAttribute("data-theme"), typeof s.animation == "string" ? c.setAttribute("data-animation", s.animation) : c.removeAttribute("data-animation"), s.inertia ? c.setAttribute("data-inertia", "") : c.removeAttribute("data-inertia"), c.style.maxWidth = typeof s.maxWidth == "number" ? s.maxWidth + "px" : s.maxWidth, s.role ? c.setAttribute("role", s.role) : c.removeAttribute("role"), (a.content !== s.content || a.allowHTML !== s.allowHTML) && fn(u, e.props), s.arrow ? d ? a.arrow !== s.arrow && (c.removeChild(d), c.appendChild(un(s.arrow))) : c.appendChild(un(s.arrow)) : d && c.removeChild(d);
+    n.className = Ro, n.setAttribute("data-state", "hidden"), n.setAttribute("tabindex", "-1");
+    var o = ht();
+    o.className = Ze, o.setAttribute("data-state", "hidden"), hn(o, e.props), t.appendChild(n), n.appendChild(o), a(e.props, e.props);
+    function a(r, c) {
+      var s = Zt(t), p = s.box, u = s.content, d = s.arrow;
+      c.theme ? p.setAttribute("data-theme", c.theme) : p.removeAttribute("data-theme"), typeof c.animation == "string" ? p.setAttribute("data-animation", c.animation) : p.removeAttribute("data-animation"), c.inertia ? p.setAttribute("data-inertia", "") : p.removeAttribute("data-inertia"), p.style.maxWidth = typeof c.maxWidth == "number" ? c.maxWidth + "px" : c.maxWidth, c.role ? p.setAttribute("role", c.role) : p.removeAttribute("role"), (r.content !== c.content || r.allowHTML !== c.allowHTML) && hn(u, e.props), c.arrow ? d ? r.arrow !== c.arrow && (p.removeChild(d), p.appendChild(mn(c.arrow))) : p.appendChild(mn(c.arrow)) : d && p.removeChild(d);
     }
     return {
       popper: t,
-      onUpdate: r
+      onUpdate: a
     };
   }
-  mn.$$tippy = !0;
-  var Yi = 1, Gt = [], Xt = [];
-  function Zi(e, t) {
-    var n = dn(e, Object.assign({}, V, ln(on(t)))), i, r, a, s = !1, p = !1, c = !1, u = !1, d, k, x, v = [], w = Je(Jt, n.interactiveDebounce), g, h = Yi++, f = null, C = Li(n.plugins), A = {
+  gn.$$tippy = !0;
+  var Xo = 1, Xt = [], Kt = [];
+  function Ko(e, t) {
+    var n = fn(e, Object.assign({}, V, un(rn(t)))), o, a, r, c = !1, s = !1, p = !1, u = !1, d, k, x, v = [], y = en(te, n.interactiveDebounce), g, h = Xo++, f = null, C = Bo(n.plugins), A = {
       // Is the instance currently enabled?
       isEnabled: !0,
       // Is the tippy currently showing and not transitioning out?
@@ -2844,7 +2861,7 @@ body:has(.os-dialog[open]) {
       isMounted: !1,
       // Has the tippy finished transitioning in?
       isShown: !1
-    }, o = {
+    }, i = {
       // properties
       id: h,
       reference: e,
@@ -2854,31 +2871,31 @@ body:has(.os-dialog[open]) {
       state: A,
       plugins: C,
       // methods
-      clearDelayTimeouts: oe,
+      clearDelayTimeouts: ae,
       setProps: re,
-      setContent: ae,
-      show: xo,
-      hide: ko,
-      hideWithInteractivity: Co,
-      enable: Ft,
+      setContent: se,
+      show: Ai,
+      hide: Oi,
+      hideWithInteractivity: Mi,
+      enable: Vt,
       disable: ie,
-      unmount: So,
-      destroy: Ao
+      unmount: Ei,
+      destroy: Di
     };
     if (!n.render)
-      return o;
-    var b = n.render(o), m = b.popper, O = b.onUpdate;
-    m.setAttribute("data-tippy-root", ""), m.id = "tippy-" + o.id, o.popper = m, e._tippy = o, m._tippy = o;
-    var M = C.map(function(l) {
-      return l.fn(o);
+      return i;
+    var b = n.render(i), m = b.popper, O = b.onUpdate;
+    m.setAttribute("data-tippy-root", ""), m.id = "tippy-" + i.id, i.popper = m, e._tippy = i, m._tippy = i;
+    var E = C.map(function(l) {
+      return l.fn(i);
     }), T = e.hasAttribute("aria-expanded");
-    return Et(), tt(), z(), B("onCreate", [o]), n.showOnCreate && _t(), m.addEventListener("mouseenter", function() {
-      o.props.interactive && o.state.isVisible && o.clearDelayTimeouts();
+    return Mt(), tt(), z(), B("onCreate", [i]), n.showOnCreate && _t(), m.addEventListener("mouseenter", function() {
+      i.props.interactive && i.state.isVisible && i.clearDelayTimeouts();
     }), m.addEventListener("mouseleave", function() {
-      o.props.interactive && o.props.trigger.indexOf("mouseenter") >= 0 && j().addEventListener("mousemove", w);
-    }), o;
+      i.props.interactive && i.props.trigger.indexOf("mouseenter") >= 0 && I().addEventListener("mousemove", y);
+    }), i;
     function P() {
-      var l = o.props.touch;
+      var l = i.props.touch;
       return Array.isArray(l) ? l : [l, 0];
     }
     function q() {
@@ -2886,199 +2903,199 @@ body:has(.os-dialog[open]) {
     }
     function R() {
       var l;
-      return !!((l = o.props.render) != null && l.$$tippy);
+      return !!((l = i.props.render) != null && l.$$tippy);
     }
     function L() {
       return g || e;
     }
-    function j() {
+    function I() {
       var l = L().parentNode;
-      return l ? an(l) : document;
+      return l ? cn(l) : document;
     }
     function W() {
       return Zt(m);
     }
-    function I(l) {
-      return o.state.isMounted && !o.state.isVisible || Q.isTouch || d && d.type === "focus" ? 0 : ye(o.props.delay, l ? 0 : 1, V.delay);
+    function j(l) {
+      return i.state.isMounted && !i.state.isVisible || Q.isTouch || d && d.type === "focus" ? 0 : we(i.props.delay, l ? 0 : 1, V.delay);
     }
     function z(l) {
-      l === void 0 && (l = !1), m.style.pointerEvents = o.props.interactive && !l ? "" : "none", m.style.zIndex = "" + o.props.zIndex;
+      l === void 0 && (l = !1), m.style.pointerEvents = i.props.interactive && !l ? "" : "none", m.style.zIndex = "" + i.props.zIndex;
     }
-    function B(l, y, S) {
-      if (S === void 0 && (S = !0), M.forEach(function(E) {
-        E[l] && E[l].apply(E, y);
+    function B(l, w, S) {
+      if (S === void 0 && (S = !0), E.forEach(function(M) {
+        M[l] && M[l].apply(M, w);
       }), S) {
         var D;
-        (D = o.props)[l].apply(D, y);
+        (D = i.props)[l].apply(D, w);
       }
     }
     function J() {
-      var l = o.props.aria;
+      var l = i.props.aria;
       if (l.content) {
-        var y = "aria-" + l.content, S = m.id, D = lt(o.props.triggerTarget || e);
-        D.forEach(function(E) {
-          var H = E.getAttribute(y);
-          if (o.state.isVisible)
-            E.setAttribute(y, H ? H + " " + S : S);
+        var w = "aria-" + l.content, S = m.id, D = lt(i.props.triggerTarget || e);
+        D.forEach(function(M) {
+          var H = M.getAttribute(w);
+          if (i.state.isVisible)
+            M.setAttribute(w, H ? H + " " + S : S);
           else {
-            var Z = H && H.replace(S, "").trim();
-            Z ? E.setAttribute(y, Z) : E.removeAttribute(y);
+            var G = H && H.replace(S, "").trim();
+            G ? M.setAttribute(w, G) : M.removeAttribute(w);
           }
         });
       }
     }
     function tt() {
-      if (!(T || !o.props.aria.expanded)) {
-        var l = lt(o.props.triggerTarget || e);
-        l.forEach(function(y) {
-          o.props.interactive ? y.setAttribute("aria-expanded", o.state.isVisible && y === L() ? "true" : "false") : y.removeAttribute("aria-expanded");
+      if (!(T || !i.props.aria.expanded)) {
+        var l = lt(i.props.triggerTarget || e);
+        l.forEach(function(w) {
+          i.props.interactive ? w.setAttribute("aria-expanded", i.state.isVisible && w === L() ? "true" : "false") : w.removeAttribute("aria-expanded");
         });
       }
     }
     function gt() {
-      j().removeEventListener("mousemove", w), Gt = Gt.filter(function(l) {
-        return l !== w;
+      I().removeEventListener("mousemove", y), Xt = Xt.filter(function(l) {
+        return l !== y;
       });
     }
     function et(l) {
-      if (!(Q.isTouch && (c || l.type === "mousedown"))) {
-        var y = l.composedPath && l.composedPath()[0] || l.target;
-        if (!(o.props.interactive && sn(m, y))) {
-          if (lt(o.props.triggerTarget || e).some(function(S) {
-            return sn(S, y);
+      if (!(Q.isTouch && (p || l.type === "mousedown"))) {
+        var w = l.composedPath && l.composedPath()[0] || l.target;
+        if (!(i.props.interactive && pn(m, w))) {
+          if (lt(i.props.triggerTarget || e).some(function(S) {
+            return pn(S, w);
           })) {
-            if (Q.isTouch || o.state.isVisible && o.props.trigger.indexOf("click") >= 0)
+            if (Q.isTouch || i.state.isVisible && i.props.trigger.indexOf("click") >= 0)
               return;
           } else
-            B("onClickOutside", [o, l]);
-          o.props.hideOnClick === !0 && (o.clearDelayTimeouts(), o.hide(), p = !0, setTimeout(function() {
-            p = !1;
-          }), o.state.isMounted || rt());
+            B("onClickOutside", [i, l]);
+          i.props.hideOnClick === !0 && (i.clearDelayTimeouts(), i.hide(), s = !0, setTimeout(function() {
+            s = !1;
+          }), i.state.isMounted || at());
         }
       }
     }
     function vt() {
-      c = !0;
+      p = !0;
     }
-    function ot() {
-      c = !1;
+    function it() {
+      p = !1;
     }
-    function G() {
-      var l = j();
-      l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, ct), l.addEventListener("touchstart", ot, ct), l.addEventListener("touchmove", vt, ct);
+    function Z() {
+      var l = I();
+      l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, pt), l.addEventListener("touchstart", it, pt), l.addEventListener("touchmove", vt, pt);
     }
-    function rt() {
-      var l = j();
-      l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, ct), l.removeEventListener("touchstart", ot, ct), l.removeEventListener("touchmove", vt, ct);
+    function at() {
+      var l = I();
+      l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, pt), l.removeEventListener("touchstart", it, pt), l.removeEventListener("touchmove", vt, pt);
     }
-    function At(l, y) {
+    function At(l, w) {
       Ot(l, function() {
-        !o.state.isVisible && m.parentNode && m.parentNode.contains(m) && y();
+        !i.state.isVisible && m.parentNode && m.parentNode.contains(m) && w();
       });
     }
-    function at(l, y) {
-      Ot(l, y);
+    function rt(l, w) {
+      Ot(l, w);
     }
-    function Ot(l, y) {
+    function Ot(l, w) {
       var S = W().box;
-      function D(E) {
-        E.target === S && (Ce(S, "remove", D), y());
+      function D(M) {
+        M.target === S && (Se(S, "remove", D), w());
       }
       if (l === 0)
-        return y();
-      Ce(S, "remove", k), Ce(S, "add", D), k = D;
+        return w();
+      Se(S, "remove", k), Se(S, "add", D), k = D;
     }
-    function dt(l, y, S) {
+    function dt(l, w, S) {
       S === void 0 && (S = !1);
-      var D = lt(o.props.triggerTarget || e);
-      D.forEach(function(E) {
-        E.addEventListener(l, y, S), v.push({
-          node: E,
+      var D = lt(i.props.triggerTarget || e);
+      D.forEach(function(M) {
+        M.addEventListener(l, w, S), v.push({
+          node: M,
           eventType: l,
-          handler: y,
+          handler: w,
           options: S
         });
       });
     }
-    function Et() {
-      q() && (dt("touchstart", zt, {
+    function Mt() {
+      q() && (dt("touchstart", Ht, {
         passive: !0
-      }), dt("touchend", te, {
+      }), dt("touchend", ee, {
         passive: !0
-      })), Pi(o.props.trigger).forEach(function(l) {
+      })), qo(i.props.trigger).forEach(function(l) {
         if (l !== "manual")
-          switch (dt(l, zt), l) {
+          switch (dt(l, Ht), l) {
             case "mouseenter":
-              dt("mouseleave", te);
+              dt("mouseleave", ee);
               break;
             case "focus":
-              dt($i ? "focusout" : "blur", Ht);
+              dt(Vo ? "focusout" : "blur", $t);
               break;
             case "focusin":
-              dt("focusout", Ht);
+              dt("focusout", $t);
               break;
           }
       });
     }
-    function Qt() {
+    function Jt() {
       v.forEach(function(l) {
-        var y = l.node, S = l.eventType, D = l.handler, E = l.options;
-        y.removeEventListener(S, D, E);
+        var w = l.node, S = l.eventType, D = l.handler, M = l.options;
+        w.removeEventListener(S, D, M);
       }), v = [];
     }
-    function zt(l) {
-      var y, S = !1;
-      if (!(!o.state.isEnabled || $t(l) || p)) {
-        var D = ((y = d) == null ? void 0 : y.type) === "focus";
-        d = l, g = l.currentTarget, tt(), !o.state.isVisible && xe(l) && Gt.forEach(function(E) {
-          return E(l);
-        }), l.type === "click" && (o.props.trigger.indexOf("mouseenter") < 0 || s) && o.props.hideOnClick !== !1 && o.state.isVisible ? S = !0 : _t(l), l.type === "click" && (s = !S), S && !D && bt(l);
-      }
-    }
-    function Jt(l) {
-      var y = l.target, S = L().contains(y) || m.contains(y);
-      if (!(l.type === "mousemove" && S)) {
-        var D = ut().concat(m).map(function(E) {
-          var H, Z = E._tippy, Mt = (H = Z.popperInstance) == null ? void 0 : H.state;
-          return Mt ? {
-            popperRect: E.getBoundingClientRect(),
-            popperState: Mt,
-            props: n
-          } : null;
-        }).filter(Boolean);
-        Bi(D, l) && (gt(), bt(l));
+    function Ht(l) {
+      var w, S = !1;
+      if (!(!i.state.isEnabled || Ft(l) || s)) {
+        var D = ((w = d) == null ? void 0 : w.type) === "focus";
+        d = l, g = l.currentTarget, tt(), !i.state.isVisible && ke(l) && Xt.forEach(function(M) {
+          return M(l);
+        }), l.type === "click" && (i.props.trigger.indexOf("mouseenter") < 0 || c) && i.props.hideOnClick !== !1 && i.state.isVisible ? S = !0 : _t(l), l.type === "click" && (c = !S), S && !D && bt(l);
       }
     }
     function te(l) {
-      var y = $t(l) || o.props.trigger.indexOf("click") >= 0 && s;
-      if (!y) {
-        if (o.props.interactive) {
-          o.hideWithInteractivity(l);
+      var w = l.target, S = L().contains(w) || m.contains(w);
+      if (!(l.type === "mousemove" && S)) {
+        var D = ut().concat(m).map(function(M) {
+          var H, G = M._tippy, Et = (H = G.popperInstance) == null ? void 0 : H.state;
+          return Et ? {
+            popperRect: M.getBoundingClientRect(),
+            popperState: Et,
+            props: n
+          } : null;
+        }).filter(Boolean);
+        zo(D, l) && (gt(), bt(l));
+      }
+    }
+    function ee(l) {
+      var w = Ft(l) || i.props.trigger.indexOf("click") >= 0 && c;
+      if (!w) {
+        if (i.props.interactive) {
+          i.hideWithInteractivity(l);
           return;
         }
         bt(l);
       }
     }
-    function Ht(l) {
-      o.props.trigger.indexOf("focusin") < 0 && l.target !== L() || o.props.interactive && l.relatedTarget && m.contains(l.relatedTarget) || bt(l);
-    }
     function $t(l) {
+      i.props.trigger.indexOf("focusin") < 0 && l.target !== L() || i.props.interactive && l.relatedTarget && m.contains(l.relatedTarget) || bt(l);
+    }
+    function Ft(l) {
       return Q.isTouch ? q() !== l.type.indexOf("touch") >= 0 : !1;
     }
-    function ee() {
-      ne();
-      var l = o.props, y = l.popperOptions, S = l.placement, D = l.offset, E = l.getReferenceClientRect, H = l.moveTransition, Z = R() ? Zt(m).arrow : null, Mt = E ? {
-        getBoundingClientRect: E,
-        contextElement: E.contextElement || L()
-      } : e, vn = {
+    function ne() {
+      oe();
+      var l = i.props, w = l.popperOptions, S = l.placement, D = l.offset, M = l.getReferenceClientRect, H = l.moveTransition, G = R() ? Zt(m).arrow : null, Et = M ? {
+        getBoundingClientRect: M,
+        contextElement: M.contextElement || L()
+      } : e, yn = {
         name: "$$tippy",
         enabled: !0,
         phase: "beforeWrite",
         requires: ["computeStyles"],
-        fn: function(se) {
-          var Dt = se.state;
+        fn: function(ce) {
+          var Dt = ce.state;
           if (R()) {
-            var Oo = W(), Ee = Oo.box;
+            var Ti = W(), Ee = Ti.box;
             ["placement", "reference-hidden", "escaped"].forEach(function(pe) {
               pe === "placement" ? Ee.setAttribute("data-placement", Dt.placement) : Dt.attributes.popper["data-popper-" + pe] ? Ee.setAttribute("data-" + pe, "") : Ee.removeAttribute("data-" + pe);
             }), Dt.attributes.popper = {};
@@ -3109,151 +3126,151 @@ body:has(.os-dialog[open]) {
         options: {
           adaptive: !H
         }
-      }, vn];
-      R() && Z && yt.push({
+      }, yn];
+      R() && G && yt.push({
         name: "arrow",
         options: {
-          element: Z,
+          element: G,
           padding: 3
         }
-      }), yt.push.apply(yt, (y == null ? void 0 : y.modifiers) || []), o.popperInstance = Mi(Mt, m, Object.assign({}, y, {
+      }), yt.push.apply(yt, (w == null ? void 0 : w.modifiers) || []), i.popperInstance = Po(Et, m, Object.assign({}, w, {
         placement: S,
         onFirstUpdate: x,
         modifiers: yt
       }));
     }
-    function ne() {
-      o.popperInstance && (o.popperInstance.destroy(), o.popperInstance = null);
+    function oe() {
+      i.popperInstance && (i.popperInstance.destroy(), i.popperInstance = null);
     }
     function st() {
-      var l = o.props.appendTo, y, S = L();
-      o.props.interactive && l === Ke || l === "parent" ? y = S.parentNode : y = Qe(l, [S]), y.contains(m) || y.appendChild(m), o.state.isMounted = !0, ee();
+      var l = i.props.appendTo, w, S = L();
+      i.props.interactive && l === Je || l === "parent" ? w = S.parentNode : w = tn(l, [S]), w.contains(m) || w.appendChild(m), i.state.isMounted = !0, ne();
     }
     function ut() {
       return St(m.querySelectorAll("[data-tippy-root]"));
     }
     function _t(l) {
-      o.clearDelayTimeouts(), l && B("onTrigger", [o, l]), G();
-      var y = I(!0), S = P(), D = S[0], E = S[1];
-      Q.isTouch && D === "hold" && E && (y = E), y ? i = setTimeout(function() {
-        o.show();
-      }, y) : o.show();
+      i.clearDelayTimeouts(), l && B("onTrigger", [i, l]), Z();
+      var w = j(!0), S = P(), D = S[0], M = S[1];
+      Q.isTouch && D === "hold" && M && (w = M), w ? o = setTimeout(function() {
+        i.show();
+      }, w) : i.show();
     }
     function bt(l) {
-      if (o.clearDelayTimeouts(), B("onUntrigger", [o, l]), !o.state.isVisible) {
-        rt();
+      if (i.clearDelayTimeouts(), B("onUntrigger", [i, l]), !i.state.isVisible) {
+        at();
         return;
       }
-      if (!(o.props.trigger.indexOf("mouseenter") >= 0 && o.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(l.type) >= 0 && s)) {
-        var y = I(!1);
-        y ? r = setTimeout(function() {
-          o.state.isVisible && o.hide();
-        }, y) : a = requestAnimationFrame(function() {
-          o.hide();
+      if (!(i.props.trigger.indexOf("mouseenter") >= 0 && i.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(l.type) >= 0 && c)) {
+        var w = j(!1);
+        w ? a = setTimeout(function() {
+          i.state.isVisible && i.hide();
+        }, w) : r = requestAnimationFrame(function() {
+          i.hide();
         });
       }
     }
-    function Ft() {
-      o.state.isEnabled = !0;
+    function Vt() {
+      i.state.isEnabled = !0;
     }
     function ie() {
-      o.hide(), o.state.isEnabled = !1;
+      i.hide(), i.state.isEnabled = !1;
     }
-    function oe() {
-      clearTimeout(i), clearTimeout(r), cancelAnimationFrame(a);
+    function ae() {
+      clearTimeout(o), clearTimeout(a), cancelAnimationFrame(r);
     }
     function re(l) {
-      if (!o.state.isDestroyed) {
-        B("onBeforeUpdate", [o, l]), Qt();
-        var y = o.props, S = dn(e, Object.assign({}, y, on(l), {
+      if (!i.state.isDestroyed) {
+        B("onBeforeUpdate", [i, l]), Jt();
+        var w = i.props, S = fn(e, Object.assign({}, w, rn(l), {
           ignoreAttributes: !0
         }));
-        o.props = S, Et(), y.interactiveDebounce !== S.interactiveDebounce && (gt(), w = Je(Jt, S.interactiveDebounce)), y.triggerTarget && !S.triggerTarget ? lt(y.triggerTarget).forEach(function(D) {
+        i.props = S, Mt(), w.interactiveDebounce !== S.interactiveDebounce && (gt(), y = en(te, S.interactiveDebounce)), w.triggerTarget && !S.triggerTarget ? lt(w.triggerTarget).forEach(function(D) {
           D.removeAttribute("aria-expanded");
-        }) : S.triggerTarget && e.removeAttribute("aria-expanded"), tt(), z(), O && O(y, S), o.popperInstance && (ee(), ut().forEach(function(D) {
+        }) : S.triggerTarget && e.removeAttribute("aria-expanded"), tt(), z(), O && O(w, S), i.popperInstance && (ne(), ut().forEach(function(D) {
           requestAnimationFrame(D._tippy.popperInstance.forceUpdate);
-        })), B("onAfterUpdate", [o, l]);
+        })), B("onAfterUpdate", [i, l]);
       }
     }
-    function ae(l) {
-      o.setProps({
+    function se(l) {
+      i.setProps({
         content: l
       });
     }
-    function xo() {
-      var l = o.state.isVisible, y = o.state.isDestroyed, S = !o.state.isEnabled, D = Q.isTouch && !o.props.touch, E = ye(o.props.duration, 0, V.duration);
-      if (!(l || y || S || D) && !L().hasAttribute("disabled") && (B("onShow", [o], !1), o.props.onShow(o) !== !1)) {
-        if (o.state.isVisible = !0, R() && (m.style.visibility = "visible"), z(), G(), o.state.isMounted || (m.style.transition = "none"), R()) {
-          var H = W(), Z = H.box, Mt = H.content;
-          ke([Z, Mt], 0);
+    function Ai() {
+      var l = i.state.isVisible, w = i.state.isDestroyed, S = !i.state.isEnabled, D = Q.isTouch && !i.props.touch, M = we(i.props.duration, 0, V.duration);
+      if (!(l || w || S || D) && !L().hasAttribute("disabled") && (B("onShow", [i], !1), i.props.onShow(i) !== !1)) {
+        if (i.state.isVisible = !0, R() && (m.style.visibility = "visible"), z(), Z(), i.state.isMounted || (m.style.transition = "none"), R()) {
+          var H = W(), G = H.box, Et = H.content;
+          Ce([G, Et], 0);
         }
         x = function() {
           var yt;
-          if (!(!o.state.isVisible || u)) {
-            if (u = !0, m.offsetHeight, m.style.transition = o.props.moveTransition, R() && o.props.animation) {
-              var Oe = W(), se = Oe.box, Dt = Oe.content;
-              ke([se, Dt], E), It([se, Dt], "visible");
+          if (!(!i.state.isVisible || u)) {
+            if (u = !0, m.offsetHeight, m.style.transition = i.props.moveTransition, R() && i.props.animation) {
+              var Me = W(), ce = Me.box, Dt = Me.content;
+              Ce([ce, Dt], M), jt([ce, Dt], "visible");
             }
-            J(), tt(), en(Xt, o), (yt = o.popperInstance) == null || yt.forceUpdate(), B("onMount", [o]), o.props.animation && R() && at(E, function() {
-              o.state.isShown = !0, B("onShown", [o]);
+            J(), tt(), on(Kt, i), (yt = i.popperInstance) == null || yt.forceUpdate(), B("onMount", [i]), i.props.animation && R() && rt(M, function() {
+              i.state.isShown = !0, B("onShown", [i]);
             });
           }
         }, st();
       }
     }
-    function ko() {
-      var l = !o.state.isVisible, y = o.state.isDestroyed, S = !o.state.isEnabled, D = ye(o.props.duration, 1, V.duration);
-      if (!(l || y || S) && (B("onHide", [o], !1), o.props.onHide(o) !== !1)) {
-        if (o.state.isVisible = !1, o.state.isShown = !1, u = !1, s = !1, R() && (m.style.visibility = "hidden"), gt(), rt(), z(!0), R()) {
-          var E = W(), H = E.box, Z = E.content;
-          o.props.animation && (ke([H, Z], D), It([H, Z], "hidden"));
+    function Oi() {
+      var l = !i.state.isVisible, w = i.state.isDestroyed, S = !i.state.isEnabled, D = we(i.props.duration, 1, V.duration);
+      if (!(l || w || S) && (B("onHide", [i], !1), i.props.onHide(i) !== !1)) {
+        if (i.state.isVisible = !1, i.state.isShown = !1, u = !1, c = !1, R() && (m.style.visibility = "hidden"), gt(), at(), z(!0), R()) {
+          var M = W(), H = M.box, G = M.content;
+          i.props.animation && (Ce([H, G], D), jt([H, G], "hidden"));
         }
-        J(), tt(), o.props.animation ? R() && At(D, o.unmount) : o.unmount();
+        J(), tt(), i.props.animation ? R() && At(D, i.unmount) : i.unmount();
       }
     }
-    function Co(l) {
-      j().addEventListener("mousemove", w), en(Gt, w), w(l);
+    function Mi(l) {
+      I().addEventListener("mousemove", y), on(Xt, y), y(l);
     }
-    function So() {
-      o.state.isVisible && o.hide(), o.state.isMounted && (ne(), ut().forEach(function(l) {
+    function Ei() {
+      i.state.isVisible && i.hide(), i.state.isMounted && (oe(), ut().forEach(function(l) {
         l._tippy.unmount();
-      }), m.parentNode && m.parentNode.removeChild(m), Xt = Xt.filter(function(l) {
-        return l !== o;
-      }), o.state.isMounted = !1, B("onHidden", [o]));
+      }), m.parentNode && m.parentNode.removeChild(m), Kt = Kt.filter(function(l) {
+        return l !== i;
+      }), i.state.isMounted = !1, B("onHidden", [i]));
     }
-    function Ao() {
-      o.state.isDestroyed || (o.clearDelayTimeouts(), o.unmount(), Qt(), delete e._tippy, o.state.isDestroyed = !0, B("onDestroy", [o]));
+    function Di() {
+      i.state.isDestroyed || (i.clearDelayTimeouts(), i.unmount(), Jt(), delete e._tippy, i.state.isDestroyed = !0, B("onDestroy", [i]));
     }
   }
-  function it(e, t) {
+  function ot(e, t) {
     t === void 0 && (t = {});
     var n = V.plugins.concat(t.plugins || []);
-    zi();
-    var i = Object.assign({}, t, {
+    Fo();
+    var o = Object.assign({}, t, {
       plugins: n
-    }), r = qi(e), a = r.reduce(function(s, p) {
-      var c = p && Zi(p, i);
-      return c && s.push(c), s;
+    }), a = jo(e), r = a.reduce(function(c, s) {
+      var p = s && Ko(s, o);
+      return p && c.push(p), c;
     }, []);
-    return Yt(e) ? a[0] : a;
+    return Gt(e) ? r[0] : r;
   }
-  it.defaultProps = V, it.setDefaultProps = Wi, it.currentInput = Q;
-  var Gi = function(t) {
-    var n = t === void 0 ? {} : t, i = n.exclude, r = n.duration;
-    Xt.forEach(function(a) {
-      var s = !1;
-      if (i && (s = rn(i) ? a.reference === i : a.popper === i.popper), !s) {
-        var p = a.props.duration;
-        a.setProps({
-          duration: r
-        }), a.hide(), a.state.isDestroyed || a.setProps({
-          duration: p
+  ot.defaultProps = V, ot.setDefaultProps = Yo, ot.currentInput = Q;
+  var Qo = function(t) {
+    var n = t === void 0 ? {} : t, o = n.exclude, a = n.duration;
+    Kt.forEach(function(r) {
+      var c = !1;
+      if (o && (c = sn(o) ? r.reference === o : r.popper === o.popper), !c) {
+        var s = r.props.duration;
+        r.setProps({
+          duration: a
+        }), r.hide(), r.state.isDestroyed || r.setProps({
+          duration: s
         });
       }
     });
-  }, Xi = Object.assign({}, Pe, {
+  }, Jo = Object.assign({}, Re, {
     effect: function(t) {
-      var n = t.state, i = {
+      var n = t.state, o = {
         popper: {
           position: n.options.strategy,
           left: "0",
@@ -3265,50 +3282,50 @@ body:has(.os-dialog[open]) {
         },
         reference: {}
       };
-      Object.assign(n.elements.popper.style, i.popper), n.styles = i, n.elements.arrow && Object.assign(n.elements.arrow.style, i.arrow);
+      Object.assign(n.elements.popper.style, o.popper), n.styles = o, n.elements.arrow && Object.assign(n.elements.arrow.style, o.arrow);
     }
-  }), Ki = function(t, n) {
-    var i;
+  }), ti = function(t, n) {
+    var o;
     n === void 0 && (n = {});
-    var r = t, a = [], s = [], p, c = n.overrides, u = [], d = !1;
+    var a = t, r = [], c = [], s, p = n.overrides, u = [], d = !1;
     function k() {
-      s = r.map(function(o) {
-        return lt(o.props.triggerTarget || o.reference);
-      }).reduce(function(o, b) {
-        return o.concat(b);
+      c = a.map(function(i) {
+        return lt(i.props.triggerTarget || i.reference);
+      }).reduce(function(i, b) {
+        return i.concat(b);
       }, []);
     }
     function x() {
-      a = r.map(function(o) {
-        return o.reference;
+      r = a.map(function(i) {
+        return i.reference;
       });
     }
-    function v(o) {
-      r.forEach(function(b) {
-        o ? b.enable() : b.disable();
+    function v(i) {
+      a.forEach(function(b) {
+        i ? b.enable() : b.disable();
       });
     }
-    function w(o) {
-      return r.map(function(b) {
+    function y(i) {
+      return a.map(function(b) {
         var m = b.setProps;
         return b.setProps = function(O) {
-          m(O), b.reference === p && o.setProps(O);
+          m(O), b.reference === s && i.setProps(O);
         }, function() {
           b.setProps = m;
         };
       });
     }
-    function g(o, b) {
-      var m = s.indexOf(b);
-      if (b !== p) {
-        p = b;
-        var O = (c || []).concat("content").reduce(function(M, T) {
-          return M[T] = r[m].props[T], M;
+    function g(i, b) {
+      var m = c.indexOf(b);
+      if (b !== s) {
+        s = b;
+        var O = (p || []).concat("content").reduce(function(E, T) {
+          return E[T] = a[m].props[T], E;
         }, {});
-        o.setProps(Object.assign({}, O, {
+        i.setProps(Object.assign({}, O, {
           getReferenceClientRect: typeof O.getReferenceClientRect == "function" ? O.getReferenceClientRect : function() {
-            var M;
-            return (M = a[m]) == null ? void 0 : M.getBoundingClientRect();
+            var E;
+            return (E = r[m]) == null ? void 0 : E.getBoundingClientRect();
           }
         }));
       }
@@ -3321,84 +3338,84 @@ body:has(.os-dialog[open]) {
             v(!0);
           },
           onHidden: function() {
-            p = null;
+            s = null;
           },
           onClickOutside: function(m) {
-            m.props.showOnCreate && !d && (d = !0, p = null);
+            m.props.showOnCreate && !d && (d = !0, s = null);
           },
           onShow: function(m) {
-            m.props.showOnCreate && !d && (d = !0, g(m, a[0]));
+            m.props.showOnCreate && !d && (d = !0, g(m, r[0]));
           },
           onTrigger: function(m, O) {
             g(m, O.currentTarget);
           }
         };
       }
-    }, f = it(ht(), Object.assign({}, tn(n, ["overrides"]), {
+    }, f = ot(ht(), Object.assign({}, nn(n, ["overrides"]), {
       plugins: [h].concat(n.plugins || []),
-      triggerTarget: s,
+      triggerTarget: c,
       popperOptions: Object.assign({}, n.popperOptions, {
-        modifiers: [].concat(((i = n.popperOptions) == null ? void 0 : i.modifiers) || [], [Xi])
+        modifiers: [].concat(((o = n.popperOptions) == null ? void 0 : o.modifiers) || [], [Jo])
       })
     })), C = f.show;
-    f.show = function(o) {
-      if (C(), !p && o == null)
-        return g(f, a[0]);
-      if (!(p && o == null)) {
-        if (typeof o == "number")
-          return a[o] && g(f, a[o]);
-        if (r.indexOf(o) >= 0) {
-          var b = o.reference;
+    f.show = function(i) {
+      if (C(), !s && i == null)
+        return g(f, r[0]);
+      if (!(s && i == null)) {
+        if (typeof i == "number")
+          return r[i] && g(f, r[i]);
+        if (a.indexOf(i) >= 0) {
+          var b = i.reference;
           return g(f, b);
         }
-        if (a.indexOf(o) >= 0)
-          return g(f, o);
+        if (r.indexOf(i) >= 0)
+          return g(f, i);
       }
     }, f.showNext = function() {
-      var o = a[0];
-      if (!p)
+      var i = r[0];
+      if (!s)
         return f.show(0);
-      var b = a.indexOf(p);
-      f.show(a[b + 1] || o);
+      var b = r.indexOf(s);
+      f.show(r[b + 1] || i);
     }, f.showPrevious = function() {
-      var o = a[a.length - 1];
-      if (!p)
-        return f.show(o);
-      var b = a.indexOf(p), m = a[b - 1] || o;
+      var i = r[r.length - 1];
+      if (!s)
+        return f.show(i);
+      var b = r.indexOf(s), m = r[b - 1] || i;
       f.show(m);
     };
     var A = f.setProps;
-    return f.setProps = function(o) {
-      c = o.overrides || c, A(o);
-    }, f.setInstances = function(o) {
+    return f.setProps = function(i) {
+      p = i.overrides || p, A(i);
+    }, f.setInstances = function(i) {
       v(!0), u.forEach(function(b) {
         return b();
-      }), r = o, v(!1), x(), k(), u = w(f), f.setProps({
-        triggerTarget: s
+      }), a = i, v(!1), x(), k(), u = y(f), f.setProps({
+        triggerTarget: c
       });
-    }, u = w(f), f;
-  }, Qi = {
+    }, u = y(f), f;
+  }, ei = {
     mouseover: "mouseenter",
     focusin: "focus",
     click: "click"
   };
-  function Ji(e, t) {
-    var n = [], i = [], r = !1, a = t.target, s = tn(t, ["target"]), p = Object.assign({}, s, {
+  function ni(e, t) {
+    var n = [], o = [], a = !1, r = t.target, c = nn(t, ["target"]), s = Object.assign({}, c, {
       trigger: "manual",
       touch: !1
-    }), c = Object.assign({
+    }), p = Object.assign({
       touch: V.touch
-    }, s, {
+    }, c, {
       showOnCreate: !0
-    }), u = it(e, p), d = lt(u);
+    }), u = ot(e, s), d = lt(u);
     function k(h) {
-      if (!(!h.target || r)) {
-        var f = h.target.closest(a);
+      if (!(!h.target || a)) {
+        var f = h.target.closest(r);
         if (f) {
           var C = f.getAttribute("data-tippy-trigger") || t.trigger || V.trigger;
-          if (!f._tippy && !(h.type === "touchstart" && typeof c.touch == "boolean") && !(h.type !== "touchstart" && C.indexOf(Qi[h.type]) < 0)) {
-            var A = it(f, c);
-            A && (i = i.concat(A));
+          if (!f._tippy && !(h.type === "touchstart" && typeof p.touch == "boolean") && !(h.type !== "touchstart" && C.indexOf(ei[h.type]) < 0)) {
+            var A = ot(f, p);
+            A && (o = o.concat(A));
           }
         }
       }
@@ -3413,230 +3430,230 @@ body:has(.os-dialog[open]) {
     }
     function v(h) {
       var f = h.reference;
-      x(f, "touchstart", k, ct), x(f, "mouseover", k), x(f, "focusin", k), x(f, "click", k);
+      x(f, "touchstart", k, pt), x(f, "mouseover", k), x(f, "focusin", k), x(f, "click", k);
     }
-    function w() {
+    function y() {
       n.forEach(function(h) {
-        var f = h.node, C = h.eventType, A = h.handler, o = h.options;
-        f.removeEventListener(C, A, o);
+        var f = h.node, C = h.eventType, A = h.handler, i = h.options;
+        f.removeEventListener(C, A, i);
       }), n = [];
     }
     function g(h) {
       var f = h.destroy, C = h.enable, A = h.disable;
-      h.destroy = function(o) {
-        o === void 0 && (o = !0), o && i.forEach(function(b) {
+      h.destroy = function(i) {
+        i === void 0 && (i = !0), i && o.forEach(function(b) {
           b.destroy();
-        }), i = [], w(), f();
+        }), o = [], y(), f();
       }, h.enable = function() {
-        C(), i.forEach(function(o) {
-          return o.enable();
-        }), r = !1;
+        C(), o.forEach(function(i) {
+          return i.enable();
+        }), a = !1;
       }, h.disable = function() {
-        A(), i.forEach(function(o) {
-          return o.disable();
-        }), r = !0;
+        A(), o.forEach(function(i) {
+          return i.disable();
+        }), a = !0;
       }, v(h);
     }
     return d.forEach(g), u;
   }
-  var to = {
+  var oi = {
     name: "animateFill",
     defaultValue: !1,
     fn: function(t) {
       var n;
       if (!((n = t.props.render) != null && n.$$tippy))
         return {};
-      var i = Zt(t.popper), r = i.box, a = i.content, s = t.props.animateFill ? eo() : null;
+      var o = Zt(t.popper), a = o.box, r = o.content, c = t.props.animateFill ? ii() : null;
       return {
         onCreate: function() {
-          s && (r.insertBefore(s, r.firstElementChild), r.setAttribute("data-animatefill", ""), r.style.overflow = "hidden", t.setProps({
+          c && (a.insertBefore(c, a.firstElementChild), a.setAttribute("data-animatefill", ""), a.style.overflow = "hidden", t.setProps({
             arrow: !1,
             animation: "shift-away"
           }));
         },
         onMount: function() {
-          if (s) {
-            var c = r.style.transitionDuration, u = Number(c.replace("ms", ""));
-            a.style.transitionDelay = Math.round(u / 10) + "ms", s.style.transitionDuration = c, It([s], "visible");
+          if (c) {
+            var p = a.style.transitionDuration, u = Number(p.replace("ms", ""));
+            r.style.transitionDelay = Math.round(u / 10) + "ms", c.style.transitionDuration = p, jt([c], "visible");
           }
         },
         onShow: function() {
-          s && (s.style.transitionDuration = "0ms");
+          c && (c.style.transitionDuration = "0ms");
         },
         onHide: function() {
-          s && It([s], "hidden");
+          c && jt([c], "hidden");
         }
       };
     }
   };
-  function eo() {
+  function ii() {
     var e = ht();
-    return e.className = Ze, It([e], "hidden"), e;
+    return e.className = Xe, jt([e], "hidden"), e;
   }
-  var Ae = {
+  var Oe = {
     clientX: 0,
     clientY: 0
-  }, Kt = [];
-  function hn(e) {
+  }, Qt = [];
+  function vn(e) {
     var t = e.clientX, n = e.clientY;
-    Ae = {
+    Oe = {
       clientX: t,
       clientY: n
     };
   }
-  function no(e) {
-    e.addEventListener("mousemove", hn);
+  function ai(e) {
+    e.addEventListener("mousemove", vn);
   }
-  function io(e) {
-    e.removeEventListener("mousemove", hn);
+  function ri(e) {
+    e.removeEventListener("mousemove", vn);
   }
-  var oo = {
+  var si = {
     name: "followCursor",
     defaultValue: !1,
     fn: function(t) {
-      var n = t.reference, i = an(t.props.triggerTarget || n), r = !1, a = !1, s = !0, p = t.props;
-      function c() {
+      var n = t.reference, o = cn(t.props.triggerTarget || n), a = !1, r = !1, c = !0, s = t.props;
+      function p() {
         return t.props.followCursor === "initial" && t.state.isVisible;
       }
       function u() {
-        i.addEventListener("mousemove", x);
+        o.addEventListener("mousemove", x);
       }
       function d() {
-        i.removeEventListener("mousemove", x);
+        o.removeEventListener("mousemove", x);
       }
       function k() {
-        r = !0, t.setProps({
+        a = !0, t.setProps({
           getReferenceClientRect: null
-        }), r = !1;
+        }), a = !1;
       }
       function x(g) {
-        var h = g.target ? n.contains(g.target) : !0, f = t.props.followCursor, C = g.clientX, A = g.clientY, o = n.getBoundingClientRect(), b = C - o.left, m = A - o.top;
+        var h = g.target ? n.contains(g.target) : !0, f = t.props.followCursor, C = g.clientX, A = g.clientY, i = n.getBoundingClientRect(), b = C - i.left, m = A - i.top;
         (h || !t.props.interactive) && t.setProps({
           // @ts-ignore - unneeded DOMRect properties
           getReferenceClientRect: function() {
-            var M = n.getBoundingClientRect(), T = C, P = A;
-            f === "initial" && (T = M.left + b, P = M.top + m);
-            var q = f === "horizontal" ? M.top : P, R = f === "vertical" ? M.right : T, L = f === "horizontal" ? M.bottom : P, j = f === "vertical" ? M.left : T;
+            var E = n.getBoundingClientRect(), T = C, P = A;
+            f === "initial" && (T = E.left + b, P = E.top + m);
+            var q = f === "horizontal" ? E.top : P, R = f === "vertical" ? E.right : T, L = f === "horizontal" ? E.bottom : P, I = f === "vertical" ? E.left : T;
             return {
-              width: R - j,
+              width: R - I,
               height: L - q,
               top: q,
               right: R,
               bottom: L,
-              left: j
+              left: I
             };
           }
         });
       }
       function v() {
-        t.props.followCursor && (Kt.push({
+        t.props.followCursor && (Qt.push({
           instance: t,
-          doc: i
-        }), no(i));
+          doc: o
+        }), ai(o));
       }
-      function w() {
-        Kt = Kt.filter(function(g) {
+      function y() {
+        Qt = Qt.filter(function(g) {
           return g.instance !== t;
-        }), Kt.filter(function(g) {
-          return g.doc === i;
-        }).length === 0 && io(i);
+        }), Qt.filter(function(g) {
+          return g.doc === o;
+        }).length === 0 && ri(o);
       }
       return {
         onCreate: v,
-        onDestroy: w,
+        onDestroy: y,
         onBeforeUpdate: function() {
-          p = t.props;
+          s = t.props;
         },
         onAfterUpdate: function(h, f) {
           var C = f.followCursor;
-          r || C !== void 0 && p.followCursor !== C && (w(), C ? (v(), t.state.isMounted && !a && !c() && u()) : (d(), k()));
+          a || C !== void 0 && s.followCursor !== C && (y(), C ? (v(), t.state.isMounted && !r && !p() && u()) : (d(), k()));
         },
         onMount: function() {
-          t.props.followCursor && !a && (s && (x(Ae), s = !1), c() || u());
+          t.props.followCursor && !r && (c && (x(Oe), c = !1), p() || u());
         },
         onTrigger: function(h, f) {
-          xe(f) && (Ae = {
+          ke(f) && (Oe = {
             clientX: f.clientX,
             clientY: f.clientY
-          }), a = f.type === "focus";
+          }), r = f.type === "focus";
         },
         onHidden: function() {
-          t.props.followCursor && (k(), d(), s = !0);
+          t.props.followCursor && (k(), d(), c = !0);
         }
       };
     }
   };
-  function ro(e, t) {
+  function ci(e, t) {
     var n;
     return {
       popperOptions: Object.assign({}, e.popperOptions, {
-        modifiers: [].concat((((n = e.popperOptions) == null ? void 0 : n.modifiers) || []).filter(function(i) {
-          var r = i.name;
-          return r !== t.name;
+        modifiers: [].concat((((n = e.popperOptions) == null ? void 0 : n.modifiers) || []).filter(function(o) {
+          var a = o.name;
+          return a !== t.name;
         }), [t])
       })
     };
   }
-  var ao = {
+  var pi = {
     name: "inlinePositioning",
     defaultValue: !1,
     fn: function(t) {
       var n = t.reference;
-      function i() {
+      function o() {
         return !!t.props.inlinePositioning;
       }
-      var r, a = -1, s = !1, p = [], c = {
+      var a, r = -1, c = !1, s = [], p = {
         name: "tippyInlinePositioning",
         enabled: !0,
         phase: "afterWrite",
         fn: function(v) {
-          var w = v.state;
-          i() && (p.indexOf(w.placement) !== -1 && (p = []), r !== w.placement && p.indexOf(w.placement) === -1 && (p.push(w.placement), t.setProps({
+          var y = v.state;
+          o() && (s.indexOf(y.placement) !== -1 && (s = []), a !== y.placement && s.indexOf(y.placement) === -1 && (s.push(y.placement), t.setProps({
             // @ts-ignore - unneeded DOMRect properties
             getReferenceClientRect: function() {
-              return u(w.placement);
+              return u(y.placement);
             }
-          })), r = w.placement);
+          })), a = y.placement);
         }
       };
       function u(x) {
-        return so(nn(x), n.getBoundingClientRect(), St(n.getClientRects()), a);
+        return li(an(x), n.getBoundingClientRect(), St(n.getClientRects()), r);
       }
       function d(x) {
-        s = !0, t.setProps(x), s = !1;
+        c = !0, t.setProps(x), c = !1;
       }
       function k() {
-        s || d(ro(t.props, c));
+        c || d(ci(t.props, p));
       }
       return {
         onCreate: k,
         onAfterUpdate: k,
-        onTrigger: function(v, w) {
-          if (xe(w)) {
+        onTrigger: function(v, y) {
+          if (ke(y)) {
             var g = St(t.reference.getClientRects()), h = g.find(function(C) {
-              return C.left - 2 <= w.clientX && C.right + 2 >= w.clientX && C.top - 2 <= w.clientY && C.bottom + 2 >= w.clientY;
+              return C.left - 2 <= y.clientX && C.right + 2 >= y.clientX && C.top - 2 <= y.clientY && C.bottom + 2 >= y.clientY;
             }), f = g.indexOf(h);
-            a = f > -1 ? f : a;
+            r = f > -1 ? f : r;
           }
         },
         onHidden: function() {
-          a = -1;
+          r = -1;
         }
       };
     }
   };
-  function so(e, t, n, i) {
+  function li(e, t, n, o) {
     if (n.length < 2 || e === null)
       return t;
-    if (n.length === 2 && i >= 0 && n[0].left > n[1].right)
-      return n[i] || t;
+    if (n.length === 2 && o >= 0 && n[0].left > n[1].right)
+      return n[o] || t;
     switch (e) {
       case "top":
       case "bottom": {
-        var r = n[0], a = n[n.length - 1], s = e === "top", p = r.top, c = a.bottom, u = s ? r.left : a.left, d = s ? r.right : a.right, k = d - u, x = c - p;
+        var a = n[0], r = n[n.length - 1], c = e === "top", s = a.top, p = r.bottom, u = c ? a.left : r.left, d = c ? a.right : r.right, k = d - u, x = p - s;
         return {
-          top: p,
-          bottom: c,
+          top: s,
+          bottom: p,
           left: u,
           right: d,
           width: k,
@@ -3647,17 +3664,17 @@ body:has(.os-dialog[open]) {
       case "right": {
         var v = Math.min.apply(Math, n.map(function(m) {
           return m.left;
-        })), w = Math.max.apply(Math, n.map(function(m) {
+        })), y = Math.max.apply(Math, n.map(function(m) {
           return m.right;
         })), g = n.filter(function(m) {
-          return e === "left" ? m.left === v : m.right === w;
-        }), h = g[0].top, f = g[g.length - 1].bottom, C = v, A = w, o = A - C, b = f - h;
+          return e === "left" ? m.left === v : m.right === y;
+        }), h = g[0].top, f = g[g.length - 1].bottom, C = v, A = y, i = A - C, b = f - h;
         return {
           top: h,
           bottom: f,
           left: C,
           right: A,
-          width: o,
+          width: i,
           height: b
         };
       }
@@ -3665,48 +3682,85 @@ body:has(.os-dialog[open]) {
         return t;
     }
   }
-  var po = {
+  var di = {
     name: "sticky",
     defaultValue: !1,
     fn: function(t) {
-      var n = t.reference, i = t.popper;
-      function r() {
+      var n = t.reference, o = t.popper;
+      function a() {
         return t.popperInstance ? t.popperInstance.state.elements.reference : n;
       }
-      function a(u) {
+      function r(u) {
         return t.props.sticky === !0 || t.props.sticky === u;
       }
-      var s = null, p = null;
-      function c() {
-        var u = a("reference") ? r().getBoundingClientRect() : null, d = a("popper") ? i.getBoundingClientRect() : null;
-        (u && gn(s, u) || d && gn(p, d)) && t.popperInstance && t.popperInstance.update(), s = u, p = d, t.state.isMounted && requestAnimationFrame(c);
+      var c = null, s = null;
+      function p() {
+        var u = r("reference") ? a().getBoundingClientRect() : null, d = r("popper") ? o.getBoundingClientRect() : null;
+        (u && bn(c, u) || d && bn(s, d)) && t.popperInstance && t.popperInstance.update(), c = u, s = d, t.state.isMounted && requestAnimationFrame(p);
       }
       return {
         onMount: function() {
-          t.props.sticky && c();
+          t.props.sticky && p();
         }
       };
     }
   };
-  function gn(e, t) {
+  function bn(e, t) {
     return e && t ? e.top !== t.top || e.right !== t.right || e.bottom !== t.bottom || e.left !== t.left : !0;
   }
-  it.setDefaultProps({
-    render: mn
+  ot.setDefaultProps({
+    render: gn
   });
-  const co = it || /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  const ui = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
-    animateFill: to,
-    createSingleton: Ki,
-    default: it,
-    delegate: Ji,
-    followCursor: oo,
-    hideAll: Gi,
-    inlinePositioning: ao,
-    roundArrow: Di,
-    sticky: po
-  }, Symbol.toStringTag, { value: "Module" }));
-  class lo {
+    animateFill: oi,
+    createSingleton: ti,
+    default: ot,
+    delegate: ni,
+    followCursor: si,
+    hideAll: Qo,
+    inlinePositioning: pi,
+    roundArrow: Lo,
+    sticky: di
+  }, Symbol.toStringTag, { value: "Module" })), zt = ({
+    eventCategory: e,
+    eventAction: t,
+    eventLabel: n
+  }) => {
+    const o = {
+      eventCategory: e,
+      eventAction: t,
+      eventLabel: n
+    }, a = {
+      event: "crs-setapp",
+      ...o,
+      eventLabel2: "",
+      //cd8
+      eventValue: "",
+      eventNonInteraction: !0,
+      intercomLoaded: !0
+    };
+    window.dataLayer.push(a), De("Data pushed to dataLayer", "info"), console.table(o);
+  }, fi = (e, t, n, o = 1e3, a = 0.5) => {
+    let r, c;
+    r = new IntersectionObserver(
+      function(s) {
+        s[0].isIntersecting === !0 ? c = setTimeout(() => {
+          zt({
+            eventCategory: t,
+            eventAction: "View",
+            eventLabel: n
+          }), r.disconnect();
+        }, o) : (De("Element is not fully visible", "warn"), clearTimeout(c));
+      },
+      { threshold: [a] }
+    );
+    {
+      const s = document.querySelector(e);
+      s && r.observe(s);
+    }
+  }, mi = ot || ui;
+  class hi {
     constructor() {
       this.init();
     }
@@ -3719,7 +3773,7 @@ body:has(.os-dialog[open]) {
         console.error("Target element not found");
         return;
       }
-      if (ce == null) return;
+      if (le == null) return;
       const n = (
         /* HTML */
         `<section class="page-content-wrapper crs-apps">
@@ -3731,25 +3785,37 @@ body:has(.os-dialog[open]) {
         </div>
         <ul class="crs-apps-nav">
           <li class="crs-apps-nav-item">
-            <a href="#fix-slow-mac">Fix slow Mac</a>
+            <a href="#fix-slow-mac" data-title="Fix slow Mac">Fix slow Mac</a>
           </li>
           <li class="crs-apps-nav-item">
-            <a href="#customize-workspace">Customise your workspace</a>
+            <a href="#customize-workspace" data-title="Customise your workspace"
+              >Customise your workspace</a
+            >
           </li>
           <li class="crs-apps-nav-item">
-            <a href="#download-convert-media">Download & convert media</a>
+            <a
+              href="#download-convert-media"
+              data-title="Download & convert media"
+              >Download & convert media</a
+            >
           </li>
           <li class="crs-apps-nav-item">
-            <a href="#recover-open-files">Recover & open files</a>
+            <a href="#recover-open-files" data-title="Recover & open files"
+              >Recover & open files</a
+            >
           </li>
           <li class="crs-apps-nav-item">
-            <a href="#use-tools">All-in-one work tools</a>
+            <a href="#use-tools" data-title="All-in-one work tools"
+              >All-in-one work tools</a
+            >
           </li>
           <li class="crs-apps-nav-item">
-            <a href="#use-ai">Do more with AI</a>
+            <a href="#use-ai" data-title="Do more with AI">Do more with AI</a>
           </li>
           <li class="crs-apps-nav-item crs-apps-nav-item--more">
-            <a href="https://setapp.com/apps">And more...</a>
+            <a href="https://setapp.com/apps" data-title="And more..."
+              >And more...</a
+            >
           </li>
         </ul>
         <div class="crs-apps-blocks">
@@ -3766,6 +3832,8 @@ body:has(.os-dialog[open]) {
                 <div class="crs-block-action">
                   <button
                     type="button"
+                    data-block-title="Make your Mac faster and last longer"
+                    data-title="Speed up my Mac"
                     class="btn btn_primary signup__button crs-block-action-button"
                   >
                     Speed up my Mac
@@ -3824,6 +3892,8 @@ body:has(.os-dialog[open]) {
                 <div class="crs-block-action">
                   <button
                     type="button"
+                    data-block-title="Customize your Mac to look clean and work faster"
+                    data-title="Customize my Mac"
                     class="btn btn_primary signup__button crs-block-action-button"
                   >
                     Customize my Mac
@@ -3862,6 +3932,8 @@ body:has(.os-dialog[open]) {
                 <div class="crs-block-action">
                   <button
                     type="button"
+                    data-block-title="Get the videos you need, in the format you want"
+                    data-title="Get the video I need"
                     class="btn btn_light signup__button crs-block-action-button"
                   >
                     Get the video I need
@@ -3899,6 +3971,8 @@ body:has(.os-dialog[open]) {
                 <div class="crs-block-action">
                   <button
                     type="button"
+                    data-block-title="Open and edit what your Mac usually can't"
+                    data-title="Handle my tricky files"
                     class="btn btn_primary signup__button crs-block-action-button"
                   >
                     Handle my tricky files
@@ -3953,6 +4027,8 @@ body:has(.os-dialog[open]) {
                 <div class="crs-block-action">
                   <button
                     type="button"
+                    data-block-title="All your work tools, finally in one place"
+                    data-title="Get my full toolkit"
                     class="btn btn_primary signup__button crs-block-action-button"
                   >
                     Get my full toolkit
@@ -3987,6 +4063,8 @@ body:has(.os-dialog[open]) {
                 <div class="crs-block-action">
                   <button
                     type="button"
+                    data-block-title="Use AI to write, transcribe, and stay ahead"
+                    data-title="Explore my AI tools"
                     class="btn btn_primary signup__button crs-block-action-button"
                   >
                     Explore my AI tools
@@ -4028,6 +4106,8 @@ body:has(.os-dialog[open]) {
           <button
             class="btn btn_light signup__button crs-block-action-button"
             type="button"
+            data-block-title="Sign up, install Setapp..."
+            data-title="Try free for 7 days"
           >
             Try free for 7 days
           </button>
@@ -4038,7 +4118,7 @@ body:has(.os-dialog[open]) {
       t.insertAdjacentHTML("afterend", n);
     }
     renderApps(t) {
-      return t.map((n) => ce.find((i) => i.name === n)).filter((n) => n !== void 0).map(
+      return t.map((n) => le.find((o) => o.name === n)).filter((n) => n !== void 0).map(
         (n) => (
           /* HTML */
           `<div class="crs-block-app">
@@ -4077,25 +4157,34 @@ body:has(.os-dialog[open]) {
         ".crs-block-action-button"
       );
       t && t.length > 0 && t.forEach((n) => {
-        n.addEventListener("click", (i) => {
+        n.addEventListener("click", (o) => {
           var r;
-          (r = document.querySelector(".header__cta-button")) == null || r.click();
+          const a = o.target;
+          (r = document.querySelector(".header__cta-button")) == null || r.click(), zt({
+            eventCategory: a.getAttribute("data-block-title") || "",
+            eventAction: "Click",
+            eventLabel: a.getAttribute("data-title") || ""
+          });
         });
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = wn, document.head.append(t);
+      t.textContent = kn, document.head.append(t);
     }
     addSmoothScrolling() {
       document.addEventListener("click", (t) => {
-        const i = t.target.closest('.crs-apps-nav a[href^="#"]');
-        if (i) {
-          t.preventDefault();
-          const r = i.getAttribute("href");
-          if (r && r !== "#") {
-            const a = document.querySelector(r);
-            a && a.scrollIntoView({
+        const o = t.target.closest('.crs-apps-nav a[href^="#"]');
+        if (o) {
+          t.preventDefault(), zt({
+            eventCategory: "What do you want to start with today?",
+            eventAction: "Click",
+            eventLabel: o.getAttribute("data-title") || ""
+          });
+          const a = o.getAttribute("href");
+          if (a && a !== "#") {
+            const r = document.querySelector(a);
+            r && r.scrollIntoView({
               behavior: "smooth",
               block: "start"
             });
@@ -4110,29 +4199,29 @@ body:has(.os-dialog[open]) {
         return;
       }
       let n;
-      const i = new kn();
-      t.forEach((r) => {
-        let a = null;
-        r.addEventListener("mouseenter", (s) => {
-          if (a) {
-            a.hide();
+      const o = new Sn();
+      t.forEach((a) => {
+        let r = null;
+        a.addEventListener("mouseenter", (c) => {
+          if (r) {
+            r.hide();
             return;
           }
-          const p = r.querySelector(".crs-block-app-name");
-          if (!p) return;
-          const c = Cn.find(
-            (d) => d.title.includes(p.textContent || "")
+          const s = a.querySelector(".crs-block-app-name");
+          if (!s) return;
+          const p = An.find(
+            (d) => d.title.includes(s.textContent || "")
           );
-          if (!c) {
+          if (!p) {
             console.warn(
               "No tooltip variant found for app:",
-              p.textContent
+              s.textContent
             );
             return;
           }
-          const u = s.target;
-          a = co(u, {
-            content: i.returnHtml(c),
+          const u = c.target;
+          r = mi(u, {
+            content: o.returnHtml(p),
             allowHTML: !0,
             arrow: !1,
             interactive: !0,
@@ -4155,19 +4244,24 @@ body:has(.os-dialog[open]) {
               ]
             },
             onShow(d) {
-              const k = d.popper.querySelector(".btn-download"), x = d.popper.querySelector(".os-popover-close");
-              n = new AbortController(), k == null || k.addEventListener(
+              var y;
+              const k = (y = d.popper.querySelector("h3")) == null ? void 0 : y.textContent, x = d.popper.querySelector(".btn-download"), v = d.popper.querySelector(".os-popover-close");
+              n = new AbortController(), x == null || x.addEventListener(
                 "click",
                 () => {
                   d.hide(), setTimeout(() => {
-                    var v;
-                    (v = document.querySelector(".header__cta-button")) == null || v.click();
+                    var g;
+                    (g = document.querySelector(".header__cta-button")) == null || g.click(), zt({
+                      eventCategory: k || "",
+                      eventAction: "Click",
+                      eventLabel: "Try free for 7 days"
+                    });
                   }, 200);
                 },
                 {
                   signal: n.signal
                 }
-              ), x == null || x.addEventListener(
+              ), v == null || v.addEventListener(
                 "click",
                 () => {
                   d.hide();
@@ -4175,7 +4269,11 @@ body:has(.os-dialog[open]) {
                 {
                   signal: n.signal
                 }
-              );
+              ), zt({
+                eventCategory: k || "",
+                eventAction: "view",
+                eventLabel: "Popup after hover"
+              });
             },
             onHide(d) {
               n && n.abort();
@@ -4185,7 +4283,7 @@ body:has(.os-dialog[open]) {
       });
     }
   }
-  const uo = `.crs-achievs {
+  const gi = `.crs-achievs {
   margin-top: 80px;
   width: 100%;
 }
@@ -4291,7 +4389,7 @@ body:has(.os-dialog[open]) {
   background-repeat: no-repeat;
 }
 `;
-  class fo {
+  class vi {
     constructor({ container: t, position: n = "afterend" }) {
       this.container = t, this.position = n, this.init();
     }
@@ -4346,10 +4444,10 @@ body:has(.os-dialog[open]) {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = uo, document.head.appendChild(t);
+      t.textContent = gi, document.head.appendChild(t);
     }
   }
-  const mo = "https://conversionrate-store.github.io/a-b_images/setapp/", ho = `.site-navigation__bar {
+  const bi = "https://conversionrate-store.github.io/a-b_images/setapp/", yi = `.site-navigation__bar {
   background: #1a1a1d;
 }
 
@@ -4422,7 +4520,7 @@ section.header .header__description {
   background-image: var(--star-image);
 }
 `;
-  class go {
+  class wi {
     constructor() {
       this.init();
     }
@@ -4431,7 +4529,7 @@ section.header .header__description {
     }
     addAppsImage() {
       const t = `
-      <div class="header__apps-image"><img src="${mo}/apps.webp" alt="Apps Image"></div>`, n = document.querySelector(
+      <div class="header__apps-image"><img src="${bi}/apps.webp" alt="Apps Image"></div>`, n = document.querySelector(
         "section.header .header__logo"
       );
       n ? n.insertAdjacentHTML("beforebegin", t) : console.error("Target element not found");
@@ -4467,17 +4565,17 @@ section.header .header__description {
       const t = document.querySelector(
         "section.header .header__description"
       );
-      t && new fo({
+      t && new vi({
         container: t,
         position: "afterend"
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = ho, document.head.appendChild(t);
+      t.textContent = yi, document.head.appendChild(t);
     }
   }
-  const vo = `.crs-more {
+  const xi = `.crs-more {
   margin-bottom: 120px;
   max-width: 100%;
   color: #fff;
@@ -4553,12 +4651,12 @@ section.header .header__description {
   line-height: 28px;
 }
 `;
-  class bo {
+  class ki {
     constructor() {
       this.init();
     }
     init() {
-      this.addStyles(), this.render();
+      this.addStyles(), this.render(), this.events();
     }
     render() {
       const t = document.querySelector("section.apps");
@@ -4574,7 +4672,8 @@ section.header .header__description {
         <div class="crs-more-content">
           <h3 class="crs-more-title">More with Setapp</h3>
           <div class="crs-more-description">
-            With a Setapp subscription, it's easy to discover, install, and use <br>
+            With a Setapp subscription, it's easy to discover, install, and use
+            <br />
             quality apps for Mac and iOS.
           </div>
           <div class="crs-more-blocks">
@@ -4676,43 +4775,44 @@ section.header .header__description {
     `
       );
     }
+    events() {
+      fi(".crs-more", "More with Setapp", "Benefits", 0);
+    }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = vo, document.head.appendChild(t);
+      t.textContent = xi, document.head.appendChild(t);
     }
   }
-  const yo = `.home {
+  const Ci = `.home {
   background: #1a1a1d;
 }
 `;
-  bn({ name: "4th EXP on HP", dev: "OS" }), yn("exp_hp");
-  class wo {
+  wn({ name: "4th EXP on HP", dev: "OS" }), xn("exp_hp");
+  class Si {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.getAppData(), !(this.device === "mobile" || location.pathname !== "/") && (console.log("Test init"), this.addStyles(), new go(), new lo(), new bo());
+      this.getAppData(), !(this.device === "mobile" || location.pathname !== "/") && (this.addStyles(), new wi(), new hi(), new ki());
     }
     getAppData() {
       const t = document.querySelectorAll("app-details");
-      console.log("All Apps:", t);
-      const n = Array.from(t).map((i) => {
-        const r = i.getAttribute("name") || "", a = i.getAttribute("iconsrc") || "", s = i.getAttribute("description") || "", p = i.getAttribute("url") || "", c = i.getAttribute("platforms") || "", u = i.getAttribute("rating") || "";
+      Array.from(t).map((n) => {
+        const o = n.getAttribute("name") || "", a = n.getAttribute("iconsrc") || "", r = n.getAttribute("description") || "", c = n.getAttribute("url") || "", s = n.getAttribute("platforms") || "", p = n.getAttribute("rating") || "";
         return {
-          name: r,
+          name: o,
           icon: a,
-          description: s,
-          url: p,
-          platforms: c,
-          rating: u
+          description: r,
+          url: c,
+          platforms: s,
+          rating: p
         };
       });
-      console.log("App Data:", n);
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = yo, document.head.appendChild(t);
+      t.textContent = Ci, document.head.appendChild(t);
     }
   }
-  new wo();
+  new Si();
 })();
