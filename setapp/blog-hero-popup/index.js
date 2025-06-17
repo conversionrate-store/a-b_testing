@@ -540,6 +540,19 @@
   position: relative;
   z-index: 1;
 }
+
+@media (max-width: 992px) {
+  .eney-promo-banner +  .layout__main > header .page-header-wrapper {
+    padding-top: 150px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .eney-promo-banner + .layout__main > header .page-header-wrapper {
+    padding-top: 225px;
+  }
+}
 @media (max-width: 992px) {
   .layout__main > header {
     padding-block: 0;
@@ -1630,3 +1643,4 @@ div[data-step] {
   }
   new H();
 })();
+//# sourceMappingURL=index.js.map
