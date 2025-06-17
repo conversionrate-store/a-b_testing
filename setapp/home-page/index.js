@@ -1672,7 +1672,7 @@ body:has(.os-dialog[open]) {
       }
     }
   ];
-  var $ = "top", N = "bottom", U = "right", F = "left", de = "auto", Tt = [$, N, U, F], wt = "start", Pt = "end", On = "clippingParents", Te = "viewport", Lt = "popper", Mn = "reference", Pe = /* @__PURE__ */ Tt.reduce(function(e, t) {
+  var _ = "top", N = "bottom", U = "right", $ = "left", de = "auto", Tt = [_, N, U, $], wt = "start", Pt = "end", On = "clippingParents", Te = "viewport", Lt = "popper", Mn = "reference", Pe = /* @__PURE__ */ Tt.reduce(function(e, t) {
     return e.concat([t + "-" + wt, t + "-" + Pt]);
   }, []), Le = /* @__PURE__ */ [].concat(Tt, [de]).reduce(function(e, t) {
     return e.concat([t, t + "-" + wt, t + "-" + Pt]);
@@ -1680,7 +1680,7 @@ body:has(.os-dialog[open]) {
   function X(e) {
     return e ? (e.nodeName || "").toLowerCase() : null;
   }
-  function _(e) {
+  function F(e) {
     if (e == null)
       return window;
     if (e.toString() !== "[object Window]") {
@@ -1690,17 +1690,17 @@ body:has(.os-dialog[open]) {
     return e;
   }
   function ft(e) {
-    var t = _(e).Element;
+    var t = F(e).Element;
     return e instanceof t || e instanceof Element;
   }
   function Y(e) {
-    var t = _(e).HTMLElement;
+    var t = F(e).HTMLElement;
     return e instanceof t || e instanceof HTMLElement;
   }
   function ue(e) {
     if (typeof ShadowRoot > "u")
       return !1;
-    var t = _(e).ShadowRoot;
+    var t = F(e).ShadowRoot;
     return e instanceof t || e instanceof ShadowRoot;
   }
   function zn(e) {
@@ -1762,7 +1762,7 @@ body:has(.os-dialog[open]) {
     t === void 0 && (t = !1), n === void 0 && (n = !1);
     var o = e.getBoundingClientRect(), a = 1, r = 1;
     t && Y(e) && (a = e.offsetWidth > 0 && xt(o.width) / e.offsetWidth || 1, r = e.offsetHeight > 0 && xt(o.height) / e.offsetHeight || 1);
-    var c = ft(e) ? _(e) : window, s = c.visualViewport, p = !qe() && n, u = (o.left + (p && s ? s.offsetLeft : 0)) / a, d = (o.top + (p && s ? s.offsetTop : 0)) / r, k = o.width / a, x = o.height / r;
+    var c = ft(e) ? F(e) : window, s = c.visualViewport, p = !qe() && n, u = (o.left + (p && s ? s.offsetLeft : 0)) / a, d = (o.top + (p && s ? s.offsetTop : 0)) / r, k = o.width / a, x = o.height / r;
     return {
       width: k,
       height: x,
@@ -1798,9 +1798,9 @@ body:has(.os-dialog[open]) {
     return !1;
   }
   function nt(e) {
-    return _(e).getComputedStyle(e);
+    return F(e).getComputedStyle(e);
   }
-  function $n(e) {
+  function _n(e) {
     return ["table", "td", "th"].indexOf(X(e)) >= 0;
   }
   function ct(e) {
@@ -1825,7 +1825,7 @@ body:has(.os-dialog[open]) {
     return !Y(e) || // https://github.com/popperjs/popper-core/issues/837
     nt(e).position === "fixed" ? null : e.offsetParent;
   }
-  function Fn(e) {
+  function $n(e) {
     var t = /firefox/i.test(fe()), n = /Trident/i.test(fe());
     if (n && Y(e)) {
       var o = nt(e);
@@ -1842,9 +1842,9 @@ body:has(.os-dialog[open]) {
     return null;
   }
   function Rt(e) {
-    for (var t = _(e), n = Ie(e); n && $n(n) && nt(n).position === "static"; )
+    for (var t = F(e), n = Ie(e); n && _n(n) && nt(n).position === "static"; )
       n = Ie(n);
-    return n && (X(n) === "html" || X(n) === "body" && nt(n).position === "static") ? t : n || Fn(e) || t;
+    return n && (X(n) === "html" || X(n) === "body" && nt(n).position === "static") ? t : n || $n(e) || t;
   }
   function he(e) {
     return ["top", "bottom"].indexOf(e) >= 0 ? "x" : "y";
@@ -1852,7 +1852,7 @@ body:has(.os-dialog[open]) {
   function qt(e, t, n) {
     return mt(e, Wt(t, n));
   }
-  function _n(e, t, n) {
+  function Fn(e, t, n) {
     var o = qt(e, t, n);
     return o > n ? n : o;
   }
@@ -1878,9 +1878,9 @@ body:has(.os-dialog[open]) {
     })) : t, ze(typeof t != "number" ? t : He(t, Tt));
   };
   function Wn(e) {
-    var t, n = e.state, o = e.name, a = e.options, r = n.elements.arrow, c = n.modifiersData.popperOffsets, s = K(n.placement), p = he(s), u = [F, U].indexOf(s) >= 0, d = u ? "height" : "width";
+    var t, n = e.state, o = e.name, a = e.options, r = n.elements.arrow, c = n.modifiersData.popperOffsets, s = K(n.placement), p = he(s), u = [$, U].indexOf(s) >= 0, d = u ? "height" : "width";
     if (!(!r || !c)) {
-      var k = Vn(a.padding, n), x = me(r), v = p === "y" ? $ : F, y = p === "y" ? N : U, g = n.rects.reference[d] + n.rects.reference[p] - c[p] - n.rects.popper[d], h = c[p] - n.rects.reference[p], f = Rt(r), C = f ? p === "y" ? f.clientHeight || 0 : f.clientWidth || 0 : 0, A = g / 2 - h / 2, i = k[v], b = C - x[d] - k[y], m = C / 2 - x[d] / 2 + A, O = qt(i, m, b), E = p;
+      var k = Vn(a.padding, n), x = me(r), v = p === "y" ? _ : $, y = p === "y" ? N : U, g = n.rects.reference[d] + n.rects.reference[p] - c[p] - n.rects.popper[d], h = c[p] - n.rects.reference[p], f = Rt(r), C = f ? p === "y" ? f.clientHeight || 0 : f.clientWidth || 0 : 0, A = g / 2 - h / 2, i = k[v], b = C - x[d] - k[y], m = C / 2 - x[d] / 2 + A, O = qt(i, m, b), E = p;
       n.modifiersData[o] = (t = {}, t[E] = O, t.centerOffset = O - m, t);
     }
   }
@@ -1913,7 +1913,7 @@ body:has(.os-dialog[open]) {
       y: xt(o * a) / a || 0
     };
   }
-  function $e(e) {
+  function _e(e) {
     var t, n = e.popper, o = e.popperRect, a = e.placement, r = e.variation, c = e.offsets, s = e.position, p = e.gpuAcceleration, u = e.adaptive, d = e.roundOffsets, k = e.isFixed, x = c.x, v = x === void 0 ? 0 : x, y = c.y, g = y === void 0 ? 0 : y, h = typeof d == "function" ? d({
       x: v,
       y: g
@@ -1922,10 +1922,10 @@ body:has(.os-dialog[open]) {
       y: g
     };
     v = h.x, g = h.y;
-    var f = c.hasOwnProperty("x"), C = c.hasOwnProperty("y"), A = F, i = $, b = window;
+    var f = c.hasOwnProperty("x"), C = c.hasOwnProperty("y"), A = $, i = _, b = window;
     if (u) {
       var m = Rt(n), O = "clientHeight", E = "clientWidth";
-      if (m === _(n) && (m = ct(n), nt(m).position !== "static" && s === "absolute" && (O = "scrollHeight", E = "scrollWidth")), m = m, a === $ || (a === F || a === U) && r === Pt) {
+      if (m === F(n) && (m = ct(n), nt(m).position !== "static" && s === "absolute" && (O = "scrollHeight", E = "scrollWidth")), m = m, a === _ || (a === $ || a === U) && r === Pt) {
         i = N;
         var T = k && m === b && b.visualViewport ? b.visualViewport.height : (
           // $FlowFixMe[prop-missing]
@@ -1933,7 +1933,7 @@ body:has(.os-dialog[open]) {
         );
         g -= T - o.height, g *= p ? 1 : -1;
       }
-      if (a === F || (a === $ || a === N) && r === Pt) {
+      if (a === $ || (a === _ || a === N) && r === Pt) {
         A = U;
         var P = k && m === b && b.visualViewport ? b.visualViewport.width : (
           // $FlowFixMe[prop-missing]
@@ -1947,7 +1947,7 @@ body:has(.os-dialog[open]) {
     }, u && Yn), R = d === !0 ? Gn({
       x: v,
       y: g
-    }, _(n)) : {
+    }, F(n)) : {
       x: v,
       y: g
     };
@@ -1966,12 +1966,12 @@ body:has(.os-dialog[open]) {
       gpuAcceleration: a,
       isFixed: t.options.strategy === "fixed"
     };
-    t.modifiersData.popperOffsets != null && (t.styles.popper = Object.assign({}, t.styles.popper, $e(Object.assign({}, u, {
+    t.modifiersData.popperOffsets != null && (t.styles.popper = Object.assign({}, t.styles.popper, _e(Object.assign({}, u, {
       offsets: t.modifiersData.popperOffsets,
       position: t.options.strategy,
       adaptive: c,
       roundOffsets: p
-    })))), t.modifiersData.arrow != null && (t.styles.arrow = Object.assign({}, t.styles.arrow, $e(Object.assign({}, u, {
+    })))), t.modifiersData.arrow != null && (t.styles.arrow = Object.assign({}, t.styles.arrow, _e(Object.assign({}, u, {
       offsets: t.modifiersData.arrow,
       position: "absolute",
       adaptive: !1,
@@ -1991,7 +1991,7 @@ body:has(.os-dialog[open]) {
     passive: !0
   };
   function Kn(e) {
-    var t = e.state, n = e.instance, o = e.options, a = o.scroll, r = a === void 0 ? !0 : a, c = o.resize, s = c === void 0 ? !0 : c, p = _(t.elements.popper), u = [].concat(t.scrollParents.reference, t.scrollParents.popper);
+    var t = e.state, n = e.instance, o = e.options, a = o.scroll, r = a === void 0 ? !0 : a, c = o.resize, s = c === void 0 ? !0 : c, p = F(t.elements.popper), u = [].concat(t.scrollParents.reference, t.scrollParents.popper);
     return r && u.forEach(function(d) {
       d.addEventListener("scroll", n.update, Ut);
     }), s && p.addEventListener("resize", n.update, Ut), function() {
@@ -2024,13 +2024,13 @@ body:has(.os-dialog[open]) {
     start: "end",
     end: "start"
   };
-  function Fe(e) {
+  function $e(e) {
     return e.replace(/start|end/g, function(t) {
       return to[t];
     });
   }
   function ge(e) {
-    var t = _(e), n = t.pageXOffset, o = t.pageYOffset;
+    var t = F(e), n = t.pageXOffset, o = t.pageYOffset;
     return {
       scrollLeft: n,
       scrollTop: o
@@ -2040,7 +2040,7 @@ body:has(.os-dialog[open]) {
     return kt(ct(e)).left + ge(e).scrollLeft;
   }
   function eo(e, t) {
-    var n = _(e), o = ct(e), a = n.visualViewport, r = o.clientWidth, c = o.clientHeight, s = 0, p = 0;
+    var n = F(e), o = ct(e), a = n.visualViewport, r = o.clientWidth, c = o.clientHeight, s = 0, p = 0;
     if (a) {
       r = a.width, c = a.height;
       var u = qe();
@@ -2066,13 +2066,13 @@ body:has(.os-dialog[open]) {
     var t = nt(e), n = t.overflow, o = t.overflowX, a = t.overflowY;
     return /auto|scroll|overlay|hidden/.test(n + a + o);
   }
-  function _e(e) {
-    return ["html", "body", "#document"].indexOf(X(e)) >= 0 ? e.ownerDocument.body : Y(e) && be(e) ? e : _e(Nt(e));
+  function Fe(e) {
+    return ["html", "body", "#document"].indexOf(X(e)) >= 0 ? e.ownerDocument.body : Y(e) && be(e) ? e : Fe(Nt(e));
   }
   function Bt(e, t) {
     var n;
     t === void 0 && (t = []);
-    var o = _e(e), a = o === ((n = e.ownerDocument) == null ? void 0 : n.body), r = _(o), c = a ? [r].concat(r.visualViewport || [], be(o) ? o : []) : o, s = t.concat(c);
+    var o = Fe(e), a = o === ((n = e.ownerDocument) == null ? void 0 : n.body), r = F(o), c = a ? [r].concat(r.visualViewport || [], be(o) ? o : []) : o, s = t.concat(c);
     return a ? s : (
       // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
       s.concat(Bt(Nt(c)))
@@ -2109,7 +2109,7 @@ body:has(.os-dialog[open]) {
   function We(e) {
     var t = e.reference, n = e.element, o = e.placement, a = o ? K(o) : null, r = o ? Ct(o) : null, c = t.x + t.width / 2 - n.width / 2, s = t.y + t.height / 2 - n.height / 2, p;
     switch (a) {
-      case $:
+      case _:
         p = {
           x: c,
           y: t.y - n.height
@@ -2127,7 +2127,7 @@ body:has(.os-dialog[open]) {
           y: s
         };
         break;
-      case F:
+      case $:
         p = {
           x: t.x - n.width,
           y: s
@@ -2168,7 +2168,7 @@ body:has(.os-dialog[open]) {
     if (x === Lt && q) {
       var R = q[a];
       Object.keys(P).forEach(function(L) {
-        var I = [U, N].indexOf(L) >= 0 ? 1 : -1, W = [$, N].indexOf(L) >= 0 ? "y" : "x";
+        var I = [U, N].indexOf(L) >= 0 ? 1 : -1, W = [_, N].indexOf(L) >= 0 ? "y" : "x";
         P[L] += R[W] * I;
       });
     }
@@ -2198,7 +2198,7 @@ body:has(.os-dialog[open]) {
     if (K(e) === de)
       return [];
     var t = Yt(e);
-    return [Fe(e), t, Fe(t)];
+    return [$e(e), t, $e(t)];
   }
   function co(e) {
     var t = e.state, n = e.options, o = e.name;
@@ -2213,13 +2213,13 @@ body:has(.os-dialog[open]) {
           allowedAutoPlacements: g
         }) : Z);
       }, []), b = t.rects.reference, m = t.rects.popper, O = /* @__PURE__ */ new Map(), E = !0, T = i[0], P = 0; P < i.length; P++) {
-        var q = i[P], R = K(q), L = Ct(q) === wt, I = [$, N].indexOf(R) >= 0, W = I ? "width" : "height", j = It(t, {
+        var q = i[P], R = K(q), L = Ct(q) === wt, I = [_, N].indexOf(R) >= 0, W = I ? "width" : "height", j = It(t, {
           placement: q,
           boundary: d,
           rootBoundary: k,
           altBoundary: x,
           padding: u
-        }), z = I ? L ? U : F : L ? N : $;
+        }), z = I ? L ? U : $ : L ? N : _;
         b[W] > m[W] && (z = Yt(z));
         var B = Yt(z), J = [];
         if (r && J.push(j[R] <= 0), s && J.push(j[z] <= 0, j[B] <= 0), J.every(function(it) {
@@ -2270,7 +2270,7 @@ body:has(.os-dialog[open]) {
     };
   }
   function Ue(e) {
-    return [$, U, N, F].some(function(t) {
+    return [_, U, N, $].some(function(t) {
       return e[t] >= 0;
     });
   }
@@ -2298,10 +2298,10 @@ body:has(.os-dialog[open]) {
     fn: lo
   };
   function fo(e, t, n) {
-    var o = K(e), a = [F, $].indexOf(o) >= 0 ? -1 : 1, r = typeof n == "function" ? n(Object.assign({}, t, {
+    var o = K(e), a = [$, _].indexOf(o) >= 0 ? -1 : 1, r = typeof n == "function" ? n(Object.assign({}, t, {
       placement: e
     })) : n, c = r[0], s = r[1];
-    return c = c || 0, s = (s || 0) * a, [F, U].indexOf(o) >= 0 ? {
+    return c = c || 0, s = (s || 0) * a, [$, U].indexOf(o) >= 0 ? {
       x: s,
       y: c
     } : {
@@ -2360,14 +2360,14 @@ body:has(.os-dialog[open]) {
     };
     if (m) {
       if (r) {
-        var L, I = i === "y" ? $ : F, W = i === "y" ? N : U, j = i === "y" ? "height" : "width", z = m[i], B = z + h[I], J = z - h[W], tt = v ? -E[j] / 2 : 0, gt = C === wt ? O[j] : E[j], et = C === wt ? -E[j] : -O[j], vt = t.elements.arrow, it = v && vt ? me(vt) : {
+        var L, I = i === "y" ? _ : $, W = i === "y" ? N : U, j = i === "y" ? "height" : "width", z = m[i], B = z + h[I], J = z - h[W], tt = v ? -E[j] / 2 : 0, gt = C === wt ? O[j] : E[j], et = C === wt ? -E[j] : -O[j], vt = t.elements.arrow, it = v && vt ? me(vt) : {
           width: 0,
           height: 0
-        }, Z = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : je(), at = Z[I], At = Z[W], rt = qt(0, O[j], it[j]), Ot = A ? O[j] / 2 - tt - rt - at - P.mainAxis : gt - rt - at - P.mainAxis, dt = A ? -O[j] / 2 + tt + rt + At + P.mainAxis : et + rt + At + P.mainAxis, Mt = t.elements.arrow && Rt(t.elements.arrow), Jt = Mt ? i === "y" ? Mt.clientTop || 0 : Mt.clientLeft || 0 : 0, Ht = (L = q == null ? void 0 : q[i]) != null ? L : 0, te = z + Ot - Ht - Jt, ee = z + dt - Ht, $t = qt(v ? Wt(B, te) : B, z, v ? mt(J, ee) : J);
-        m[i] = $t, R[i] = $t - z;
+        }, Z = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : je(), at = Z[I], At = Z[W], rt = qt(0, O[j], it[j]), Ot = A ? O[j] / 2 - tt - rt - at - P.mainAxis : gt - rt - at - P.mainAxis, dt = A ? -O[j] / 2 + tt + rt + At + P.mainAxis : et + rt + At + P.mainAxis, Mt = t.elements.arrow && Rt(t.elements.arrow), Jt = Mt ? i === "y" ? Mt.clientTop || 0 : Mt.clientLeft || 0 : 0, Ht = (L = q == null ? void 0 : q[i]) != null ? L : 0, te = z + Ot - Ht - Jt, ee = z + dt - Ht, _t = qt(v ? Wt(B, te) : B, z, v ? mt(J, ee) : J);
+        m[i] = _t, R[i] = _t - z;
       }
       if (s) {
-        var Ft, ne = i === "x" ? $ : F, oe = i === "x" ? N : U, st = m[b], ut = b === "y" ? "height" : "width", _t = st + h[ne], bt = st - h[oe], Vt = [$, F].indexOf(f) !== -1, ie = (Ft = q == null ? void 0 : q[b]) != null ? Ft : 0, ae = Vt ? _t : st - O[ut] - E[ut] - ie + P.altAxis, re = Vt ? st + O[ut] + E[ut] - ie - P.altAxis : bt, se = v && Vt ? _n(ae, st, re) : qt(v ? ae : _t, st, v ? re : bt);
+        var $t, ne = i === "x" ? _ : $, oe = i === "x" ? N : U, st = m[b], ut = b === "y" ? "height" : "width", Ft = st + h[ne], bt = st - h[oe], Vt = [_, $].indexOf(f) !== -1, ie = ($t = q == null ? void 0 : q[b]) != null ? $t : 0, ae = Vt ? Ft : st - O[ut] - E[ut] - ie + P.altAxis, re = Vt ? st + O[ut] + E[ut] - ie - P.altAxis : bt, se = v && Vt ? Fn(ae, st, re) : qt(v ? ae : Ft, st, v ? re : bt);
         m[b] = se, R[b] = se - st;
       }
       t.modifiersData[o] = R;
@@ -2387,7 +2387,7 @@ body:has(.os-dialog[open]) {
     };
   }
   function ko(e) {
-    return e === _(e) || !Y(e) ? ge(e) : xo(e);
+    return e === F(e) || !Y(e) ? ge(e) : xo(e);
   }
   function Co(e) {
     var t = e.getBoundingClientRect(), n = xt(t.width) / e.offsetWidth || 1, o = xt(t.height) / e.offsetHeight || 1;
@@ -2702,17 +2702,17 @@ body:has(.os-dialog[open]) {
     var e = performance.now();
     e - ln < 20 && (Q.isTouch = !1, document.removeEventListener("mousemove", dn)), ln = e;
   }
-  function $o() {
+  function _o() {
     var e = document.activeElement;
     if (sn(e)) {
       var t = e._tippy;
       e.blur && !t.state.isVisible && e.blur();
     }
   }
-  function Fo() {
-    document.addEventListener("touchstart", Ho, pt), window.addEventListener("blur", $o);
+  function $o() {
+    document.addEventListener("touchstart", Ho, pt), window.addEventListener("blur", _o);
   }
-  var _o = typeof window < "u" && typeof document < "u", Vo = _o ? (
+  var Fo = typeof window < "u" && typeof document < "u", Vo = Fo ? (
     // @ts-ignore
     !!window.msCrypto
   ) : !1, Wo = {
@@ -2907,7 +2907,7 @@ body:has(.os-dialog[open]) {
     var E = C.map(function(l) {
       return l.fn(i);
     }), T = e.hasAttribute("aria-expanded");
-    return Mt(), tt(), z(), B("onCreate", [i]), n.showOnCreate && _t(), m.addEventListener("mouseenter", function() {
+    return Mt(), tt(), z(), B("onCreate", [i]), n.showOnCreate && Ft(), m.addEventListener("mouseenter", function() {
       i.props.interactive && i.state.isVisible && i.clearDelayTimeouts();
     }), m.addEventListener("mouseleave", function() {
       i.props.interactive && i.props.trigger.indexOf("mouseenter") >= 0 && I().addEventListener("mousemove", y);
@@ -3047,10 +3047,10 @@ body:has(.os-dialog[open]) {
               dt("mouseleave", ee);
               break;
             case "focus":
-              dt(Vo ? "focusout" : "blur", $t);
+              dt(Vo ? "focusout" : "blur", _t);
               break;
             case "focusin":
-              dt("focusout", $t);
+              dt("focusout", _t);
               break;
           }
       });
@@ -3063,11 +3063,11 @@ body:has(.os-dialog[open]) {
     }
     function Ht(l) {
       var w, S = !1;
-      if (!(!i.state.isEnabled || Ft(l) || s)) {
+      if (!(!i.state.isEnabled || $t(l) || s)) {
         var D = ((w = d) == null ? void 0 : w.type) === "focus";
         d = l, g = l.currentTarget, tt(), !i.state.isVisible && ke(l) && Xt.forEach(function(M) {
           return M(l);
-        }), l.type === "click" && (i.props.trigger.indexOf("mouseenter") < 0 || c) && i.props.hideOnClick !== !1 && i.state.isVisible ? S = !0 : _t(l), l.type === "click" && (c = !S), S && !D && bt(l);
+        }), l.type === "click" && (i.props.trigger.indexOf("mouseenter") < 0 || c) && i.props.hideOnClick !== !1 && i.state.isVisible ? S = !0 : Ft(l), l.type === "click" && (c = !S), S && !D && bt(l);
       }
     }
     function te(l) {
@@ -3085,7 +3085,7 @@ body:has(.os-dialog[open]) {
       }
     }
     function ee(l) {
-      var w = Ft(l) || i.props.trigger.indexOf("click") >= 0 && c;
+      var w = $t(l) || i.props.trigger.indexOf("click") >= 0 && c;
       if (!w) {
         if (i.props.interactive) {
           i.hideWithInteractivity(l);
@@ -3094,10 +3094,10 @@ body:has(.os-dialog[open]) {
         bt(l);
       }
     }
-    function $t(l) {
+    function _t(l) {
       i.props.trigger.indexOf("focusin") < 0 && l.target !== L() || i.props.interactive && l.relatedTarget && m.contains(l.relatedTarget) || bt(l);
     }
-    function Ft(l) {
+    function $t(l) {
       return Q.isTouch ? q() !== l.type.indexOf("touch") >= 0 : !1;
     }
     function ne() {
@@ -3167,7 +3167,7 @@ body:has(.os-dialog[open]) {
     function ut() {
       return St(m.querySelectorAll("[data-tippy-root]"));
     }
-    function _t(l) {
+    function Ft(l) {
       i.clearDelayTimeouts(), l && B("onTrigger", [i, l]), Z();
       var w = j(!0), S = P(), D = S[0], M = S[1];
       Q.isTouch && D === "hold" && M && (w = M), w ? o = setTimeout(function() {
@@ -3263,7 +3263,7 @@ body:has(.os-dialog[open]) {
   function ot(e, t) {
     t === void 0 && (t = {});
     var n = V.plugins.concat(t.plugins || []);
-    Fo();
+    $o();
     var o = Object.assign({}, t, {
       plugins: n
     }), a = jo(e), r = a.reduce(function(c, s) {
@@ -4473,17 +4473,31 @@ section.header {
   padding-top: 0 !important;
 }
 
-.eney-promo-banner,
+/* .eney-promo-banner, */
 section.header .header__badge,
 section.header .header__description {
   display: none;
 }
 
 .header__apps-image {
-  margin-top: 20px;
+  margin-top: 113px;
   margin-bottom: -60px;
   width: 100%;
   height: max-content;
+}
+
+@media (max-width: 992px) {
+  .header__apps-image {
+    margin-top: 90px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .header__apps-image {
+    margin-top: 165px;
+    
+  }
 }
 
 .header__apps-image img {
