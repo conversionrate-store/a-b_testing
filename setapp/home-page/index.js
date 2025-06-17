@@ -4247,7 +4247,7 @@ body:has(.os-dialog[open]) {
             theme: "light",
             placement: "right-start",
             boundary: "viewport",
-            delay: [1e3, 1e3],
+            delay: [2e3, 1e3],
             // Show immediately, hide with delay
             showOnCreate: !0,
             // Show the tooltip immediately when created
@@ -4848,3 +4848,4 @@ section.header .header__description {
   }
   new Si();
 })();
+
