@@ -120,7 +120,9 @@
 
 @container (max-width: 900px) {
   .crs-apps-block-inner {
+    height: 100%;
     flex-direction: column;
+    justify-content: start;
   }
 }
 
@@ -138,7 +140,6 @@
 }
 
 .crs-apps-block[data-color='424E81'] {
-  
   background: #424e81;
 }
 
@@ -170,11 +171,15 @@
 
 @container (max-width: 900px) {
   .crs-block-info {
+    flex: 1;
     max-width: 100%;
     padding: 60px 40px 0;
   }
 
   .crs-block-apps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     max-width: 100%;
     padding: 0 40px 24px;
   }
@@ -263,8 +268,10 @@
 }
 @container (max-width: 900px) {
   .crs-block-apps-list {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
     gap: 18px;
   }
 }
@@ -283,10 +290,20 @@
   cursor: pointer;
 }
 
+@container (max-width: 900px) {
+  .crs-block-app {
+    max-width: 155px;
+    min-height: 265px;
+  }
+}
+
+
+
 .crs-block-app-name {
   font-size: 18px;
   font-weight: 600;
   line-height: 32.04px;
+  text-align: center;
 }
 
 .crs-block-app-description {
@@ -358,7 +375,8 @@
   margin-top: 24px;
   display: flex;
   justify-content: center;
-}`, le = [
+}
+`, le = [
     {
       name: "CleanMyMac",
       icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
