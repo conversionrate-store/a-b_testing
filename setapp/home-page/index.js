@@ -379,7 +379,7 @@
 `, le = [
     {
       name: "CleanMyMac",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/78/42681/icon-1747895078-682ec326c5805.png",
       description: "Tidy up your Mac",
       url: "https://setapp.com/apps/cleanmymac",
       platforms: "Mac",
@@ -387,7 +387,7 @@
     },
     {
       name: "QuitAll",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/493/10507/icon-1715515857-6640b1d134f36.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/493/10507/icon-1715515857-6640b1d134f36.png",
       description: "Speed up Mac by quitting all apps",
       url: "https://setapp.com/apps/quit-all-mac",
       platforms: "Mac",
@@ -395,7 +395,7 @@
     },
     {
       name: "iStat Menus",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/144/41794/icon-1739274958-67ab3ace7a0bf.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/144/41794/icon-1739274958-67ab3ace7a0bf.png",
       description: "Track CPU, GPU, sensors, etc.",
       url: "https://setapp.com/apps/istat-menus",
       platforms: "Mac",
@@ -403,7 +403,7 @@
     },
     {
       name: "Endurance",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/301/42576/icon-1746973828-6820b484ae86f.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/301/42576/icon-1746973828-6820b484ae86f.png",
       description: "Extend your battery life",
       url: "https://setapp.com/apps/endurance",
       platforms: "Mac",
@@ -411,7 +411,7 @@
     },
     {
       name: "AlDente Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/483/42676/icon-1747828119-682dbd97182a6.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/483/42676/icon-1747828119-682dbd97182a6.png",
       description: "Set battery charging limits",
       url: "https://setapp.com/apps/aldente-pro",
       platforms: "Mac",
@@ -419,7 +419,7 @@
     },
     {
       name: "Mission Control",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/376/42548/icon-1746731563-681d022b89238.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/376/42548/icon-1746731563-681d022b89238.png",
       description: "Close windows from Mission Control",
       url: "https://setapp.com/apps/mission-control-plus",
       platforms: "Mac",
@@ -427,7 +427,7 @@
     },
     {
       name: "WidgetWall",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/528/42687/icon-1747926996-682f3fd48a02b.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/528/42687/icon-1747926996-682f3fd48a02b.png",
       description: "Add widgets to Mac desktop",
       url: "https://setapp.com/apps/widget-wall",
       platforms: "Mac",
@@ -435,7 +435,7 @@
     },
     {
       name: "Bartender",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/153/42799/icon-1748962599-683f0d271f5a8.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/153/42799/icon-1748962599-683f0d271f5a8.png",
       description: "Personalize your menu bar",
       url: "https://setapp.com/apps/bartender",
       platforms: "Mac",
@@ -443,7 +443,7 @@
     },
     {
       name: "CleanShot X",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/321/42718/icon-1748347773-6835ab7ddfd5d.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/321/42718/icon-1748347773-6835ab7ddfd5d.png",
       description: "Take better screenshots and GIFs",
       url: "https://setapp.com/apps/cleanshot",
       platforms: "Mac",
@@ -451,7 +451,7 @@
     },
     {
       name: "Downie",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
       description: "Download YouTube videos",
       url: "https://setapp.com/apps/downie",
       platforms: "Mac",
@@ -459,7 +459,7 @@
     },
     {
       name: "Pulltube",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
       description: "Download and trim videos",
       url: "https://setapp.com/apps/pulltube",
       platforms: "Mac",
@@ -467,7 +467,7 @@
     },
     {
       name: "Permute",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/219/42264/icon-1743758208-67efa380b6636.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=128,dpr=1/https://store.setapp.com/app/219/42264/icon-1743758208-67efa380b6636.png",
       description: "Convert video and audio files",
       url: "https://setapp.com/apps/permute",
       platforms: "Mac",
@@ -475,7 +475,7 @@
     },
     {
       name: "Nitro PDF Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/518/42755/icon-1749071187-6840b55359ae5.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/518/42755/icon-1749071187-6840b55359ae5.png",
       description: "Work with your PDFs",
       url: "https://setapp.com/apps/nitro-pdf-pro",
       platforms: "Mac, iOS",
@@ -483,7 +483,7 @@
     },
     {
       name: "BetterZip",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/245/7858/icon-1681236553-6435a249c1fd2.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=128,dpr=1/https://store.setapp.com/app/245/7858/icon-1681236553-6435a249c1fd2.png",
       description: "Archive files the easy way",
       url: "https://setapp.com/apps/betterzip",
       platforms: "Mac",
@@ -491,7 +491,7 @@
     },
     {
       name: "Get Backup Pro",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png",
       description: "Back up only essential files",
       url: "https://setapp.com/apps/get-backup-pro",
       platforms: "Mac",
@@ -499,7 +499,7 @@
     },
     {
       name: "Archiver",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png",
       description: "Compress files easily",
       url: "https://setapp.com/apps/archiver",
       platforms: "Mac",
@@ -507,7 +507,7 @@
     },
     {
       name: "Ulysses",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/67/42660/icon-1747749841-682c8bd1e7d9c.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/67/42660/icon-1747749841-682c8bd1e7d9c.png",
       description: "Write and publish from one app",
       url: "https://setapp.com/apps/ulysses",
       platforms: "Mac, iOS",
@@ -515,7 +515,7 @@
     },
     {
       name: "Renamer",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/136/40792/icon-1730733142-6728e4563df6a.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/136/40792/icon-1730733142-6728e4563df6a.png",
       description: "Rename a batch of files",
       url: "https://setapp.com/apps/renamer",
       platforms: "Mac",
@@ -523,7 +523,7 @@
     },
     {
       name: "Session",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/428/42692/icon-1747967217-682fdcf1a2474.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/428/42692/icon-1747967217-682fdcf1a2474.png",
       description: "Work in short intervals",
       url: "https://setapp.com/apps/session",
       platforms: "Mac, iOS",
@@ -531,7 +531,7 @@
     },
     {
       name: "CodeRunner",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/122/41549/icon-1737112183-678a3a77b43aa.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/122/41549/icon-1737112183-678a3a77b43aa.png",
       description: "Edit and run code faster",
       url: "https://setapp.com/apps/coderunner",
       platforms: "Mac",
@@ -539,7 +539,7 @@
     },
     {
       name: "Craft",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/554/42201/icon-1743413950-67ea62be54f57.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/554/42201/icon-1743413950-67ea62be54f57.png",
       description: "Create and structure documents",
       url: "https://setapp.com/apps/craft",
       platforms: "Mac, iOS",
@@ -547,7 +547,7 @@
     },
     {
       name: "PDF Pals",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/606/42481/icon-1746107539-68137c9375583.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/606/42481/icon-1746107539-68137c9375583.png",
       description: "Chat with your PDFs",
       url: "https://setapp.com/apps/pdf-pals",
       platforms: "Mac",
@@ -555,7 +555,7 @@
     },
     {
       name: "MurmurType",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/592/43811/icon-1749109056-68414940d76a1.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/592/43811/icon-1749109056-68414940d76a1.png",
       description: "Transcribe your speech",
       url: "https://setapp.com/apps/murmur",
       platforms: "Mac",
@@ -563,7 +563,7 @@
     },
     {
       name: "Ready to Send",
-      icon: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=80/https://store.setapp.com/app/607/main/icon-65719fa98f5e6.png",
+      icon: "https://setapp.com/cdn-cgi/image/quality=100,format=auto,width=160/https://store.setapp.com/app/607/main/icon-65719fa98f5e6.png",
       description: "Generate draft email replies",
       url: "https://setapp.com/apps/ready-to-send",
       platforms: "Web",
@@ -4848,4 +4848,3 @@ section.header .header__description {
   }
   new Si();
 })();
-
