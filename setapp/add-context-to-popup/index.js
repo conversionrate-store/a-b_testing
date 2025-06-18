@@ -2658,7 +2658,11 @@
       });
     }
   }
-  const O = "";
+  const O = `article.article {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+`;
   h({ name: "3rd EXP on Blog", dev: "OS" }), u("exp_blog");
   class T {
     constructor() {
