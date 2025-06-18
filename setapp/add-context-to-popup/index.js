@@ -2417,7 +2417,6 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  max-width: 500px;
   padding: 12px 20px;
   border-radius: 15px;
   background: rgb(245, 245, 245);
@@ -2425,14 +2424,14 @@
 .app-context  .app-name {
   text-transform: capitalize;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .app-context {
     max-width: 520px;
     gap: 16px;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .app-context {
     margin-top: 52px;
     border-top: 1px solid #EBEBEC;
@@ -2675,4 +2674,3 @@
   }
   new T();
 })();
-//# sourceMappingURL=index.js.map
