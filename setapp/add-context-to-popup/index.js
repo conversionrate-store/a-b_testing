@@ -2229,7 +2229,7 @@
           <span class="crs-current-rating">4.8</span
           > <span class="crs-possible-rating">/ 5</span>
           <div class="line"></div>
-          200 000+ happy customers
+          100 000+ happy customers
         </div>
         <div class="crs-modal-comments-slider" id="crs-modal-comments-slider">
           <div class="crs-comments">
