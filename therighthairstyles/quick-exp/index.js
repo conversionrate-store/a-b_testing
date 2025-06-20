@@ -1,53 +1,53 @@
 (function() {
   "use strict";
-  const c = (n, e, t, s = "") => {
+  const d = (s, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: n,
+      event_name: s,
       event_desc: e,
       event_type: t,
-      event_loc: s
-    }), r(`Event: ${n} | ${e} | ${t} | ${s}`, "success");
-  }, d = (n) => new Promise((e) => {
-    const t = document.querySelector(n);
+      event_loc: n
+    }), r(`Event: ${s} | ${e} | ${t} | ${n}`, "success");
+  }, h = (s) => new Promise((e) => {
+    const t = document.querySelector(s);
     t && e(t);
-    const s = new MutationObserver(() => {
-      const i = document.querySelector(n);
-      i && (e(i), s.disconnect());
+    const n = new MutationObserver(() => {
+      const o = document.querySelector(s);
+      o && (e(o), n.disconnect());
     });
-    s.observe(document.documentElement, {
+    n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), p = ({ name: n, dev: e }) => {
+  }), p = ({ name: s, dev: e }) => {
     console.log(
-      `%c EXP: ${n} (DEV: ${e})`,
+      `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, y = (n) => {
+  }, y = (s) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", n, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", s, "variant_1"));
     }, 1e3);
-  }, f = (n, e, t, s, i = 1e3, o = 0.5) => {
-    let a, u;
+  }, m = (s, e, t, n, o = 1e3, i = 0.5) => {
+    let a, c;
     a = new IntersectionObserver(
       function(l) {
-        l[0].isIntersecting === !0 ? u = setTimeout(() => {
-          c(
+        l[0].isIntersecting === !0 ? c = setTimeout(() => {
+          d(
             e,
-            l[0].target.dataset.visible || s,
+            l[0].target.dataset.visible || n,
             "view",
             t
           ), a.disconnect();
-        }, i) : (r("Element is not fully visible", "warn"), clearTimeout(u));
+        }, o) : (r("Element is not fully visible", "warn"), clearTimeout(c));
       },
-      { threshold: [o] }
+      { threshold: [i] }
     );
     {
-      const l = document.querySelector(n);
+      const l = document.querySelector(s);
       l && a.observe(l);
     }
-  }, r = (n, e = "info") => {
+  }, r = (s, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -63,8 +63,8 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
-  }, h = "crs-test", g = "https://conversionrate-store.github.io/a-b_images/therighthairstyles", m = `:is(a, button).crs-try-on-button {
+    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
+  }, u = "crs-test", f = "https://conversionrate-store.github.io/a-b_images/therighthairstyles", g = `:is(a, button).crs-try-on-button {
   font-size: 14px;
   width: 90px;
   height: 40px;
@@ -94,10 +94,10 @@
     changeTryOnButtonText() {
       this.getAllTryOnButtons().then((e) => {
         e.forEach((t) => {
-          const s = (
+          const n = (
             /* HTML */
             `<a
-          href="https://app.therighthairstyles.com/virtual-styler-new/step-1?${h}"
+          href="https://app.therighthairstyles.com/virtual-styler-new/step-1?${u}"
           class="crs-try-on-button"
         >
           <img
@@ -108,18 +108,18 @@
           <span>Try On</span>
         </a>`
           );
-          t.style.display = "none", t.insertAdjacentHTML("afterend", s);
+          t.style.display = "none", t.insertAdjacentHTML("afterend", n);
         });
       });
     }
     async getAllTryOnButtons() {
-      return await d("#try-on-button"), document.querySelectorAll("#try-on-button");
+      return await h("#try-on-button"), document.querySelectorAll("#try-on-button");
     }
     events() {
-      d(".crs-try-on-button").then(() => {
+      h(".crs-try-on-button").then(() => {
         document.querySelectorAll(".crs-try-on-button").forEach((t) => {
-          t.addEventListener("click", (s) => {
-            c("exp_q_click_1", "Try on", "click", "Banner on Blog");
+          t.addEventListener("click", (n) => {
+            d("exp_q_click_1", "Try on", "click", "Banner on Blog");
           });
         });
       });
@@ -131,7 +131,7 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = m, document.head.appendChild(e);
+      e.textContent = g, document.head.appendChild(e);
     }
   }
   const v = "", b = `header > .header-content-wrapper > .ant-flex button {
@@ -208,7 +208,7 @@
         /* HTML */
         ` <div class="crs-tried-banner">
       <img
-        src="${g}/people-have-tried.webp"
+        src="${f}/people-have-tried.webp"
         alt=""
         width="80"
         height="19"
@@ -248,7 +248,7 @@
   line-height: 22px;
 }
 `;
-  class T {
+  class S {
     constructor({ container: e, position: t = "beforeend" }) {
       this.container = e instanceof HTMLElement ? e : e ? document.querySelector(e) : null, this.position = t, this.init();
     }
@@ -284,7 +284,52 @@
       e.textContent = q, document.head.appendChild(e);
     }
   }
-  const S = `.crs__faq {
+  const T = [
+    {
+      question: "How do I get the generated images?",
+      answer: 'To access and download the generated images, follow the direct link we send to your email once the results are ready, or visit the <a href="https://app.therighthairstyles.com/virtual-styler-new/step-1">Log In page</a>.'
+    },
+    {
+      question: "Can I choose what hairstyles to generate?",
+      answer: "If you use the free AI hairstyle generator, random hairstyles will be selected for you. After purchasing 20, 40 or 80 credits <span>(1 credit = 1 try-on),</span> you can choose any hairstyles and colors from all available options."
+    },
+    {
+      question: "Does it generate men's hairstyles?",
+      answer: "There are five male hairstyles you can try on using the free AI hairstyle changer, available on all articles for men. All other hairstyle options are available for women only."
+    },
+    {
+      question: "How is my privacy protected?",
+      answer: "We take your privacy seriously. Your uploaded selfies are deleted as soon as the model training is complete. We do not store any personal information."
+    },
+    {
+      question: "How many images do I need to upload for the hairstyle generator online?",
+      answer: "Only one high-quality image! Upload a selfie that is more than 1024x1024 pixels, clear, and not blurry or pixelated."
+    },
+    {
+      question: "How secure is the payment process?",
+      answer: "We prioritize the security of your transactions. We use Stripe to handle transactions which uses industry-standard protocols to ensure that your payment information is secure."
+    },
+    {
+      question: "Is there a refund policy for the hairstyle try-on service?",
+      answer: "We do offer refunds if you are dissatisfied. Your satisfaction is our priority, and we want to ensure you are pleased with our service. Please contact our customer support team at support@therighthairstyles.com, and we will work to address any concerns you may have. Don't worry if you haven't received the response instantly; we respond to every request within 12 hours."
+    },
+    {
+      question: "How long does it take to generate images using the virtual hairstyle try-on?",
+      answer: "The image generation process takes up to 30 minutes, depending on the number of hairstyles you have selected. We appreciate your patience as we ensure the best results for your personalized hairstyles."
+    },
+    {
+      question: "What if I encounter technical issues?",
+      answer: "We have a dedicated support team ready to assist you. Contact us at support@therighthairstyles.com for any technical issues or inquiries. Don't worry if you haven't received the response instantly; we respond to every request within 12 hours."
+    },
+    {
+      question: "Who owns the images generated by the AI hairstyle simulator?",
+      answer: "You retain ownership of the images generated using our service. We do not use or share them for any purpose other than providing you with the desired hairstyle transformations."
+    },
+    {
+      question: "What are the methods of payment you accept?",
+      answer: "Our payments are handled through Stripe which accepts certain Visa/Mastercard depending on your country."
+    }
+  ], A = `.crs__faq {
   margin-top: -60px;
   margin-inline: -20px;
   margin-bottom: 40px;
@@ -372,54 +417,9 @@
   background-image: url('data:image/svg+xml,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6665 17.3334V14.6667H25.3332V17.3334H6.6665Z" fill="%23B79625"/></svg>');
 }
 `;
-  class A {
+  class C {
     constructor({ container: e, position: t = "beforeend" }) {
-      this.faqData = [
-        {
-          question: "How do I get the generated images?",
-          answer: 'To access and download the generated images, follow the direct link we send to your email once the results are ready, or visit the <a href="https://app.therighthairstyles.com/virtual-styler-new/step-1">Log In page</a>.'
-        },
-        {
-          question: "Can I choose what hairstyles to generate?",
-          answer: "If you use the free AI hairstyle generator, random hairstyles will be selected for you. After purchasing 20, 40 or 80 credits <span>(1 credit = 1 try-on),</span> you can choose any hairstyles and colors from all available options."
-        },
-        {
-          question: "Does it generate men's hairstyles?",
-          answer: "There are five male hairstyles you can try on using the free AI hairstyle changer, available on all articles for men. All other hairstyle options are available for women only."
-        },
-        {
-          question: "How is my privacy protected?",
-          answer: "We take your privacy seriously. Your uploaded selfies are deleted as soon as the model training is complete. We do not store any personal information."
-        },
-        {
-          question: "How many images do I need to upload for the hairstyle generator online?",
-          answer: "Only one high-quality image! Upload a selfie that is more than 1024x1024 pixels, clear, and not blurry or pixelated."
-        },
-        {
-          question: "How secure is the payment process?",
-          answer: "We prioritize the security of your transactions. We use Stripe to handle transactions which uses industry-standard protocols to ensure that your payment information is secure."
-        },
-        {
-          question: "Is there a refund policy for the hairstyle try-on service?",
-          answer: "We do offer refunds if you are dissatisfied. Your satisfaction is our priority, and we want to ensure you are pleased with our service. Please contact our customer support team at support@therighthairstyles.com, and we will work to address any concerns you may have. Don't worry if you haven't received the response instantly; we respond to every request within 12 hours."
-        },
-        {
-          question: "How long does it take to generate images using the virtual hairstyle try-on?",
-          answer: "The image generation process takes up to 30 minutes, depending on the number of hairstyles you have selected. We appreciate your patience as we ensure the best results for your personalized hairstyles."
-        },
-        {
-          question: "What if I encounter technical issues?",
-          answer: "We have a dedicated support team ready to assist you. Contact us at support@therighthairstyles.com for any technical issues or inquiries. Don't worry if you haven't received the response instantly; we respond to every request within 12 hours."
-        },
-        {
-          question: "Who owns the images generated by the AI hairstyle simulator?",
-          answer: "You retain ownership of the images generated using our service. We do not use or share them for any purpose other than providing you with the desired hairstyle transformations."
-        },
-        {
-          question: "What are the methods of payment you accept?",
-          answer: "Our payments are handled through Stripe which accepts certain Visa/Mastercard depending on your country."
-        }
-      ], this.container = e instanceof HTMLElement ? e : e ? document.querySelector(e) : null, this.position = t, this.init();
+      this.faqData = T, this.container = e instanceof HTMLElement ? e : e ? document.querySelector(e) : null, this.position = t, this.init();
     }
     init() {
       if (!this.container) {
@@ -430,7 +430,7 @@
     }
     insertToDOM() {
       var e;
-      (e = this.container) == null || e.insertAdjacentHTML(this.position, this.render()), f(
+      (e = this.container) == null || e.insertAdjacentHTML(this.position, this.render()), m(
         "#crs-faq",
         "exp_q_view",
         "Virtual Styles",
@@ -468,15 +468,17 @@
     events() {
       var t;
       const e = (t = this.container) == null ? void 0 : t.querySelectorAll(".crs__faq_item");
-      e == null || e.forEach((s) => {
-        s.addEventListener("click", (i) => {
+      e == null || e.forEach((n) => {
+        n.addEventListener("click", (o) => {
           var a;
-          const o = (a = s.querySelector(
+          const i = (a = n.querySelector(
             ".crs__faq_item-question"
           )) == null ? void 0 : a.textContent;
-          this.toggleFAQItem(i), s.getAttribute("data-state") === "open" && c(
+          e.forEach((c) => {
+            console.log("el", c), console.log("item", n), c !== n && c.setAttribute("data-state", "close");
+          }), this.toggleFAQItem(o), n.getAttribute("data-state") === "open" && d(
             "exp_q_click_2",
-            o || "",
+            i || "",
             "click",
             "Virtual Styler. FAQ"
           );
@@ -484,28 +486,26 @@
       });
     }
     toggleFAQItem(e) {
-      const s = e.target.closest(".crs__faq_item");
-      if (!s || !s.querySelector(".crs__faq_item-answer")) return;
-      const o = s.getAttribute("data-state") === "open";
-      s.setAttribute("data-state", o ? "close" : "open");
+      const n = e.target.closest(".crs__faq_item");
+      if (!n || !n.querySelector(".crs__faq_item-answer")) return;
+      const i = n.getAttribute("data-state") === "open";
+      n.setAttribute("data-state", i ? "close" : "open");
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = S, document.head.appendChild(e);
+      e.textContent = A, document.head.appendChild(e);
     }
   }
   class k {
     constructor() {
-      this.init();
+      this.observer = null, this.currentUrl = "", this.componentsAdded = !1, this.init();
     }
     init() {
-      !this.isATestStylerPage() && !this.isUserIsLoggedIn() || (r("StylerChange initialized", "info"), this.addStyles(), this.addRatingStarsToHeader(), this.addTriedBanner(), this.addTitleBanner(), setTimeout(() => {
-        this.addFAQ();
-      }, 1e3));
+      this.currentUrl = location.href, this.setupObserver(), this.checkAndUpdateComponents();
     }
     isATestStylerPage() {
       const e = new URL(location.href);
-      return location.hostname.includes("app.therighthairstyles.com") && location.pathname.includes("/virtual-styler-new/step-1") && e.searchParams.has(h);
+      return location.hostname.includes("app.therighthairstyles.com") && location.pathname.includes("/virtual-styler-new/step-1") && e.searchParams.has(u);
     }
     isUserIsLoggedIn() {
       var t;
@@ -516,6 +516,8 @@
         return ((t = e.textContent) == null ? void 0 : t.trim()) !== "Log In";
     }
     addRatingStarsToHeader() {
+      if (document.querySelector(".crs-rating-stars"))
+        return;
       const e = document.querySelector(
         "header > .header-content-wrapper > .ant-flex"
       );
@@ -541,6 +543,8 @@
       );
     }
     addTriedBanner() {
+      if (document.querySelector(".crs-tried-banner"))
+        return;
       const e = document.querySelector(
         "header.ant-layout-header"
       );
@@ -554,6 +558,8 @@
       });
     }
     addTitleBanner() {
+      if (document.querySelector(".crs-title-banner"))
+        return;
       const e = document.querySelector(
         "main.ant-layout-content"
       );
@@ -561,25 +567,71 @@
         r("Title banner container not found", "error");
         return;
       }
-      new T({
+      new S({
         container: e,
         position: "beforebegin"
       });
     }
     addFAQ() {
+      if (document.querySelector(".crs__faq"))
+        return;
       const e = document.querySelector(".footer");
       if (!e) {
         r("FAQ container not found", "error");
         return;
       }
-      new A({
+      new C({
         container: e,
         position: "afterbegin"
       });
     }
     addStyles() {
+      if (document.querySelector("style[data-crs-styler]"))
+        return;
       const e = document.createElement("style");
-      e.textContent = b, document.head.appendChild(e);
+      e.setAttribute("data-crs-styler", "true"), e.textContent = b, document.head.appendChild(e);
+    }
+    setupObserver() {
+      window.addEventListener("popstate", () => this.handleUrlChange());
+      const e = history.pushState, t = history.replaceState;
+      history.pushState = (...n) => {
+        e.apply(history, n), setTimeout(() => this.handleUrlChange(), 0);
+      }, history.replaceState = (...n) => {
+        t.apply(history, n), setTimeout(() => this.handleUrlChange(), 0);
+      }, this.observer = new MutationObserver(() => {
+        this.handleUrlChange();
+      }), this.observer.observe(document.body, {
+        childList: !0,
+        subtree: !0
+      });
+    }
+    handleUrlChange() {
+      const e = location.href;
+      e !== this.currentUrl && (this.currentUrl = e, this.checkAndUpdateComponents());
+    }
+    checkAndUpdateComponents() {
+      const e = this.isATestStylerPage() || this.isUserIsLoggedIn();
+      e && !this.componentsAdded ? (r("StylerChange components added", "info"), this.addAllComponents(), this.componentsAdded = !0) : !e && this.componentsAdded && (r("StylerChange components removed", "info"), this.removeAllComponents(), this.componentsAdded = !1);
+    }
+    addAllComponents() {
+      this.addStyles(), this.addRatingStarsToHeader(), this.addTriedBanner(), this.addTitleBanner(), setTimeout(() => {
+        this.addFAQ();
+      }, 1e3);
+    }
+    removeAllComponents() {
+      var a;
+      document.querySelectorAll("style[data-crs-styler]").forEach((c) => c.remove());
+      const t = document.querySelector(".crs-rating-stars");
+      t == null || t.remove();
+      const n = document.querySelector(".crs-tried-banner");
+      (a = n == null ? void 0 : n.closest(".crs-tried-banner")) == null || a.remove();
+      const o = document.querySelector(".crs-title-banner");
+      o == null || o.remove();
+      const i = document.querySelector(".crs__faq");
+      i == null || i.remove();
+    }
+    destroy() {
+      this.observer && (this.observer.disconnect(), this.observer = null), this.removeAllComponents();
     }
   }
   p({ name: "Quick Exp", dev: "OS" }), y("exp_quick");
