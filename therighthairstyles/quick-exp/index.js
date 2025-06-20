@@ -1,34 +1,34 @@
 (function() {
   "use strict";
-  const d = (s, e, t, n = "") => {
+  const d = (r, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: s,
+      event_name: r,
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), r(`Event: ${s} | ${e} | ${t} | ${n}`, "success");
-  }, h = (s) => new Promise((e) => {
-    const t = document.querySelector(s);
+    }), s(`Event: ${r} | ${e} | ${t} | ${n}`, "success");
+  }, h = (r) => new Promise((e) => {
+    const t = document.querySelector(r);
     t && e(t);
     const n = new MutationObserver(() => {
-      const o = document.querySelector(s);
+      const o = document.querySelector(r);
       o && (e(o), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), p = ({ name: s, dev: e }) => {
+  }), p = ({ name: r, dev: e }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${e})`,
+      `%c EXP: ${r} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, y = (s) => {
+  }, y = (r) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", s, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, m = (s, e, t, n, o = 1e3, i = 0.5) => {
+  }, m = (r, e, t, n, o = 1e3, i = 0.5) => {
     let a, c;
     a = new IntersectionObserver(
       function(l) {
@@ -39,15 +39,15 @@
             "view",
             t
           ), a.disconnect();
-        }, o) : (r("Element is not fully visible", "warn"), clearTimeout(c));
+        }, o) : (s("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [i] }
     );
     {
-      const l = document.querySelector(s);
+      const l = document.querySelector(r);
       l && a.observe(l);
     }
-  }, r = (s, e = "info") => {
+  }, s = (r, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -63,7 +63,7 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${r}`, `${t} font-size: 16px; font-weight: 600`);
   }, u = "crs-test", f = "https://conversionrate-store.github.io/a-b_images/therighthairstyles", g = `:is(a, button).crs-try-on-button {
   font-size: 14px;
   width: 90px;
@@ -194,7 +194,7 @@
     }
     init() {
       if (!this.container) {
-        r("Container not found for TriedBanner", "error");
+        s("Container not found for TriedBanner", "error");
         return;
       }
       this.addStyles(), this.insertToDOM();
@@ -254,7 +254,7 @@
     }
     init() {
       if (!this.container) {
-        r("Container not found for TitleBanner", "error");
+        s("Container not found for TitleBanner", "error");
         return;
       }
       this.addStyles(), this.insertToDOM();
@@ -423,7 +423,7 @@
     }
     init() {
       if (!this.container) {
-        r("Container not found for FAQ", "error");
+        s("Container not found for FAQ", "error");
         return;
       }
       this.addStyles(), this.insertToDOM(), setTimeout(() => this.events(), 0);
@@ -433,8 +433,8 @@
       (e = this.container) == null || e.insertAdjacentHTML(this.position, this.render()), m(
         "#crs-faq",
         "exp_q_view",
-        "Virtual Styles",
         "Virtual Styler. FAQ",
+        "FAQ",
         0,
         0.3
       );
@@ -475,7 +475,7 @@
             ".crs__faq_item-question"
           )) == null ? void 0 : a.textContent;
           e.forEach((c) => {
-            console.log("el", c), console.log("item", n), c !== n && c.setAttribute("data-state", "close");
+            c !== n && c.setAttribute("data-state", "close");
           }), this.toggleFAQItem(o), n.getAttribute("data-state") === "open" && d(
             "exp_q_click_2",
             i || "",
@@ -522,7 +522,7 @@
         "header > .header-content-wrapper > .ant-flex"
       );
       if (!e) {
-        r("Target element not found for rating stars", "error");
+        s("Target element not found for rating stars", "error");
         return;
       }
       e.insertAdjacentHTML(
@@ -549,7 +549,7 @@
         "header.ant-layout-header"
       );
       if (!e) {
-        r("Tried banner container not found", "error");
+        s("Tried banner container not found", "error");
         return;
       }
       new _({
@@ -564,7 +564,7 @@
         "main.ant-layout-content"
       );
       if (!e) {
-        r("Title banner container not found", "error");
+        s("Title banner container not found", "error");
         return;
       }
       new S({
@@ -577,7 +577,7 @@
         return;
       const e = document.querySelector(".footer");
       if (!e) {
-        r("FAQ container not found", "error");
+        s("FAQ container not found", "error");
         return;
       }
       new C({
@@ -611,7 +611,7 @@
     }
     checkAndUpdateComponents() {
       const e = this.isATestStylerPage() || this.isUserIsLoggedIn();
-      e && !this.componentsAdded ? (r("StylerChange components added", "info"), this.addAllComponents(), this.componentsAdded = !0) : !e && this.componentsAdded && (r("StylerChange components removed", "info"), this.removeAllComponents(), this.componentsAdded = !1);
+      e && !this.componentsAdded ? (s("StylerChange components added", "info"), this.addAllComponents(), this.componentsAdded = !0) : !e && this.componentsAdded && (s("StylerChange components removed", "info"), this.removeAllComponents(), this.componentsAdded = !1);
     }
     addAllComponents() {
       this.addStyles(), this.addRatingStarsToHeader(), this.addTriedBanner(), this.addTitleBanner(), setTimeout(() => {
