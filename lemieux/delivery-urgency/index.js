@@ -189,9 +189,9 @@
         </div>
       `, this.container.insertAdjacentElement(this.position, this.badgeElement), E(
         this.badgeElement,
-        "exp_delivery_view",
+        "exp_delivery_view_01",
         "PDP",
-        "view element",
+        "Visibility",
         0
       ));
     }
@@ -298,4 +298,3 @@
   }
   new x();
 })();
-//# sourceMappingURL=index.js.map
