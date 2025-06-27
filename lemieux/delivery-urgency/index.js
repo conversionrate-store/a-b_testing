@@ -1,53 +1,49 @@
 (function() {
   "use strict";
-  const p = (s, e, t, i = "") => {
+  const p = (i, e, t, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: s,
+      event_name: i,
       event_desc: e,
       event_type: t,
-      event_loc: i
-    }), y(`Event: ${s} | ${e} | ${t} | ${i}`, "success");
-  }, v = (s) => new Promise((e) => {
-    const t = document.querySelector(s);
+      event_loc: s
+    }), v(`Event: ${i} | ${e} | ${t} | ${s}`, "success");
+  }, m = (i) => new Promise((e) => {
+    const t = document.querySelector(i);
     t && e(t);
-    const i = new MutationObserver(() => {
-      const n = document.querySelector(s);
-      n && (e(n), i.disconnect());
+    const s = new MutationObserver(() => {
+      const n = document.querySelector(i);
+      n && (e(n), s.disconnect());
     });
-    i.observe(document.documentElement, {
+    s.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: s, dev: e }) => {
+  }), f = ({ name: i, dev: e }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${e})`,
+      `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, w = (s) => {
-    let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", s, "variant_1"));
-    }, 1e3);
-  }, E = (s, e, t, i, n = 1e3, r = 0.5) => {
-    let o, a;
-    if (o = new IntersectionObserver(
+  }, w = (i, e, t, s, n = 1e3, o = 0.5) => {
+    let r, a;
+    if (r = new IntersectionObserver(
       function(c) {
         c[0].isIntersecting === !0 ? a = setTimeout(() => {
           p(
             e,
-            c[0].target.dataset.visible || i,
+            c[0].target.dataset.visible || s,
             "view",
             t
-          ), o.disconnect();
-        }, n) : (y("Element is not fully visible", "warn"), clearTimeout(a));
+          ), r.disconnect();
+        }, n) : (v("Element is not fully visible", "warn"), clearTimeout(a));
       },
-      { threshold: [r] }
-    ), typeof s == "string") {
-      const c = document.querySelector(s);
-      c && o.observe(c);
+      { threshold: [o] }
+    ), typeof i == "string") {
+      const c = document.querySelector(i);
+      c && r.observe(c);
     } else
-      o.observe(s);
-  }, y = (s, e = "info") => {
+      r.observe(i);
+  }, v = (i, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -63,8 +59,8 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
-  }, b = "", D = (
+    console.log(`%c>>> ${i}`, `${t} font-size: 16px; font-weight: 600`);
+  }, E = "", b = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -108,16 +104,16 @@
   font-weight: 700;
   white-space: nowrap;
 }
-`, m = {
+`, y = {
     // Set to false to use local time instead of UTC
     DEADLINE_HOUR: 15,
     // 15:00 - deadline for orders
     DEADLINE_MINUTES: 60
     // 60 minutes
   };
-  class I {
+  class D {
     constructor({ container: e, position: t }) {
-      this.staticHour = m.DEADLINE_HOUR, this.staticMinutes = m.DEADLINE_MINUTES, this.container = typeof e == "string" ? document.querySelector(e) : e, this.position = t || "beforeend", this.init();
+      this.staticHour = y.DEADLINE_HOUR, this.staticMinutes = y.DEADLINE_MINUTES, this.container = typeof e == "string" ? document.querySelector(e) : e, this.position = t || "beforeend", this.init();
     }
     init() {
       this.container && (this.createCountdownElement(), this.updateCountdown(), this.startCountdownTimer(), this.addStyles());
@@ -143,29 +139,29 @@
       );
     }
     calculateCountdown() {
-      const t = /* @__PURE__ */ new Date(), i = t.getHours(), n = t.getMinutes(), r = t.getSeconds(), o = t.getDay(), a = -1 * (i - this.staticHour), c = n === 0 ? 0 : this.staticMinutes - n, h = r === 0 ? 0 : 60 - r, g = c.toString().padStart(2, "0"), H = h.toString().padStart(2, "0");
+      const t = /* @__PURE__ */ new Date(), s = t.getHours(), n = t.getMinutes(), o = t.getSeconds(), r = t.getDay(), a = -1 * (s - this.staticHour), c = n === 0 ? 0 : this.staticMinutes - n, u = o === 0 ? 0 : 60 - o, g = c.toString().padStart(2, "0"), x = u.toString().padStart(2, "0");
       let d, l;
-      if (i < this.staticHour && o >= 1 && o <= 5)
-        d = (a - (n === 0 && r === 0 ? 0 : 1)).toString().padStart(2, "0"), l = "TODAY";
-      else if (i >= this.staticHour && o === 5)
-        d = (a + (n === 0 && r === 0 ? 72 : 71)).toString().padStart(2, "0"), l = "on MONDAY";
-      else if (i >= this.staticHour && o >= 1 && o <= 4)
-        d = (a + (n === 0 && r === 0 ? 24 : 23)).toString().padStart(2, "0"), l = "TOMORROW";
-      else if (o === 6)
-        d = (a + (n === 0 && r === 0 ? 48 : 47)).toString().padStart(2, "0"), l = "on MONDAY";
-      else if (o === 0)
-        d = (a + (n === 0 && r === 0 ? 24 : 23)).toString().padStart(2, "0"), l = "on MONDAY";
+      if (s < this.staticHour && r >= 1 && r <= 5)
+        d = (a - (n === 0 && o === 0 ? 0 : 1)).toString().padStart(2, "0"), l = "TODAY";
+      else if (s >= this.staticHour && r === 5)
+        d = (a + (n === 0 && o === 0 ? 72 : 71)).toString().padStart(2, "0"), l = "on MONDAY";
+      else if (s >= this.staticHour && r >= 1 && r <= 4)
+        d = (a + (n === 0 && o === 0 ? 24 : 23)).toString().padStart(2, "0"), l = "TOMORROW";
+      else if (r === 6)
+        d = (a + (n === 0 && o === 0 ? 48 : 47)).toString().padStart(2, "0"), l = "on MONDAY";
+      else if (r === 0)
+        d = (a + (n === 0 && o === 0 ? 24 : 23)).toString().padStart(2, "0"), l = "on MONDAY";
       else {
-        if (i === this.staticHour && o >= 1 && o <= 4)
+        if (s === this.staticHour && r >= 1 && r <= 4)
           return `Order in the next 24 ${this.getHourWord(24)} 00 minutes 00 seconds for dispatch TOMORROW`;
         d = (a + 24).toString().padStart(2, "0"), l = "TOMORROW";
       }
-      const T = this.getHourWord(parseInt(d));
+      const H = this.getHourWord(parseInt(d));
       return {
         hoursText: d,
-        hoursWord: T,
+        hoursWord: H,
         minutesText: g,
-        secondsText: H,
+        secondsText: x,
         deliveryDay: l
       };
     }
@@ -175,7 +171,7 @@
     createCountdownElement() {
       this.container && !this.badgeElement && (this.badgeElement = document.createElement("p"), this.badgeElement.className = "crs-delivery-countdown", this.badgeElement.innerHTML = /* HTML */
       `
-        <div class="icon">${D}</div>
+        <div class="icon">${b}</div>
         <div class="text">
           Delivery <span class="highlight">tomorrow*</span> if you order in the
           next:
@@ -187,7 +183,7 @@
           <span class="colon">:</span>
           <span class="seconds">00</span>
         </div>
-      `, this.container.insertAdjacentElement(this.position, this.badgeElement), E(
+      `, this.container.insertAdjacentElement(this.position, this.badgeElement), w(
         this.badgeElement,
         "exp_delivery_view_01",
         "PDP",
@@ -195,10 +191,10 @@
         0
       ));
     }
-    updateCountdownElements(e, t, i, n, r) {
+    updateCountdownElements(e, t, s, n, o) {
       if (this.badgeElement) {
-        const o = this.badgeElement.querySelector(".hours"), a = this.badgeElement.querySelector(".hours-word"), c = this.badgeElement.querySelector(".minutes"), h = this.badgeElement.querySelector(".seconds"), g = this.badgeElement.querySelector(".delivery-day");
-        o && (o.textContent = e), a && (a.textContent = t), c && (c.textContent = i), h && (h.textContent = n), g && (g.textContent = r);
+        const r = this.badgeElement.querySelector(".hours"), a = this.badgeElement.querySelector(".hours-word"), c = this.badgeElement.querySelector(".minutes"), u = this.badgeElement.querySelector(".seconds"), g = this.badgeElement.querySelector(".delivery-day");
+        r && (r.textContent = e), a && (a.textContent = t), c && (c.textContent = s), u && (u.textContent = n), g && (g.textContent = o);
       }
     }
     // Method for cleaning up interval
@@ -213,34 +209,40 @@
   const C = `icms-outlet:has(product-view-delivery-coutdown) {
   display: none !important;
 }
-`, u = {
+`;
+  (function(i, e, t, s, n, o) {
+    i.hj = i.hj || function() {
+      (i.hj.q = i.hj.q || []).push(arguments);
+    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, n = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + i._hjSettings.hjid + s + i._hjSettings.hjsv, n && n.appendChild(o);
+  })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
+  const h = {
     // Set to false to use local time instead of UTC
     DAILY_CUTOFF_HOUR: 15,
     // 3:00 PM cutoff for daily orders
     WEEKLY_START_HOUR: 5
     // 5:00 AM Monday start time
   };
-  class O {
+  class I {
     constructor() {
       this.init();
     }
     init() {
       this.checkIsPdpPage().then((e) => {
-        e && (this.addStyles(), v("footer").then(() => {
+        e && (this.addStyles(), m("footer").then(() => {
           this.addDeliveryBadge();
         }));
       });
     }
     async checkIsPdpPage() {
-      return !!await v("product-view");
+      return !!await m("product-view");
     }
     async addDeliveryBadge() {
       if (!this.shouldShowDeliveryBadge()) {
         console.log("Delivery badge hidden due to time restrictions");
         return;
       }
-      const e = await v("product-view-add-to-basket"), t = document.querySelector(".crs-delivery-countdown");
-      t && t.remove(), this.deliveryBadgeInstance = new I({
+      const e = await m("product-view-add-to-basket"), t = document.querySelector(".crs-delivery-countdown");
+      t && t.remove(), this.deliveryBadgeInstance = new D({
         container: e,
         position: "beforebegin"
       }), this.startVisibilityMonitoring();
@@ -259,16 +261,16 @@
       this.hideDeliveryBadge();
     }
     shouldShowDeliveryBadge() {
-      const t = /* @__PURE__ */ new Date(), i = t.getHours(), n = t.getDay();
-      return n === 0 || n === 6 ? !1 : n === 1 ? i >= u.WEEKLY_START_HOUR && i < u.DAILY_CUTOFF_HOUR : n >= 2 && n <= 4 || n === 5 ? i < u.DAILY_CUTOFF_HOUR : !1;
+      const t = /* @__PURE__ */ new Date(), s = t.getHours(), n = t.getDay();
+      return n === 0 || n === 6 ? !1 : n === 1 ? s >= h.WEEKLY_START_HOUR && s < h.DAILY_CUTOFF_HOUR : n >= 2 && n <= 4 || n === 5 ? s < h.DAILY_CUTOFF_HOUR : !1;
     }
     addStyles() {
       const e = document.createElement("style");
       e.textContent = C, document.head.appendChild(e);
     }
   }
-  f({ name: "Delivery urgency and date", dev: "OS" }), w("exp_delivery");
-  class x {
+  f({ name: "Delivery urgency and date", dev: "OS" });
+  class O {
     constructor() {
       this.init();
     }
@@ -278,12 +280,12 @@
       }), this.initChanges();
     }
     initChanges() {
-      new O();
+      new I();
     }
     pageChangeHandler(e) {
       let t = window.location.pathname;
       new MutationObserver((n) => {
-        n.forEach((r) => {
+        n.forEach((o) => {
           t !== window.location.pathname && (e(), t = window.location.pathname);
         });
       }).observe(document.body, {
@@ -293,8 +295,8 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = b, document.head.appendChild(e);
+      e.textContent = E, document.head.appendChild(e);
     }
   }
-  new x();
+  new O();
 })();
