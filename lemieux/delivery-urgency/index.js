@@ -94,7 +94,7 @@
   line-height: 20px;
 }
 
-.crs-delivery-countdown .text .highlight {
+.crs-delivery-countdown .text-content .highlight {
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -169,10 +169,10 @@
       return e === 1 ? "hour" : "hours";
     }
     createCountdownElement() {
-      this.container && !this.badgeElement && (this.badgeElement = document.createElement("p"), this.badgeElement.className = "crs-delivery-countdown", this.badgeElement.innerHTML = /* HTML */
+      this.container && !this.badgeElement && (this.badgeElement = document.createElement("div"), this.badgeElement.className = "crs-delivery-countdown", this.badgeElement.innerHTML = /* HTML */
       `
         <div class="icon">${b}</div>
-        <div class="text">
+        <div class="text-content">
           Delivery <span class="highlight">tomorrow*</span> if you order in the
           next:
         </div>
