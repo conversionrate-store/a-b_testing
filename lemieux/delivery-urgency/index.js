@@ -84,6 +84,7 @@
   </defs>
 </svg> `
   ), S = `.crs-delivery-countdown {
+  container-type: inline-size;
   margin-top: 24px;
   display: flex;
   align-items: center;
@@ -92,6 +93,13 @@
   background-color: #fff7ec;
   font-size: 16px;
   line-height: 20px;
+}
+
+
+@container (min-width: 428px) {
+  .crs-delivery-countdown  br {
+    display: none;
+  }
 }
 
 .crs-delivery-countdown .text-content .highlight {
@@ -173,8 +181,8 @@
       `
         <div class="icon">${b}</div>
         <div class="text-content">
-          Delivery <span class="highlight">tomorrow*</span> if you order in the
-          next:
+          Delivery <span class="highlight">tomorrow*</span><br />
+          if you order in the next:
         </div>
         <div class="timer">
           <span class="hours">00</span>
