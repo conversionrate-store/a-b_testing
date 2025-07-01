@@ -1,53 +1,53 @@
 (function() {
   "use strict";
-  const d = (r, e, t, n = "") => {
+  const h = (s, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: r,
+      event_name: s,
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), s(`Event: ${r} | ${e} | ${t} | ${n}`, "success");
-  }, h = (r) => new Promise((e) => {
-    const t = document.querySelector(r);
+    }), r(`Event: ${s} | ${e} | ${t} | ${n}`, "success");
+  }, l = (s) => new Promise((e) => {
+    const t = document.querySelector(s);
     t && e(t);
     const n = new MutationObserver(() => {
-      const o = document.querySelector(r);
+      const o = document.querySelector(s);
       o && (e(o), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), p = ({ name: r, dev: e }) => {
+  }), p = ({ name: s, dev: e }) => {
     console.log(
-      `%c EXP: ${r} (DEV: ${e})`,
+      `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, y = (r) => {
+  }, y = (s) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", s, "variant_1"));
     }, 1e3);
-  }, m = (r, e, t, n, o = 1e3, i = 0.5) => {
-    let a, c;
-    a = new IntersectionObserver(
-      function(l) {
-        l[0].isIntersecting === !0 ? c = setTimeout(() => {
-          d(
+  }, m = (s, e, t, n, o = 1e3, a = 0.5) => {
+    let i, c;
+    i = new IntersectionObserver(
+      function(d) {
+        d[0].isIntersecting === !0 ? c = setTimeout(() => {
+          h(
             e,
-            l[0].target.dataset.visible || n,
+            d[0].target.dataset.visible || n,
             "view",
             t
-          ), a.disconnect();
-        }, o) : (s("Element is not fully visible", "warn"), clearTimeout(c));
+          ), i.disconnect();
+        }, o) : (r("Element is not fully visible", "warn"), clearTimeout(c));
       },
-      { threshold: [i] }
+      { threshold: [a] }
     );
     {
-      const l = document.querySelector(r);
-      l && a.observe(l);
+      const d = document.querySelector(s);
+      d && i.observe(d);
     }
-  }, s = (r, e = "info") => {
+  }, r = (s, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -63,7 +63,7 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${r}`, `${t} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
   }, u = "crs-test", f = "https://conversionrate-store.github.io/a-b_images/therighthairstyles", g = `:is(a, button).crs-try-on-button {
   font-size: 14px;
   width: 90px;
@@ -113,13 +113,13 @@
       });
     }
     async getAllTryOnButtons() {
-      return await h("#try-on-button"), document.querySelectorAll("#try-on-button");
+      return await l("#try-on-button"), document.querySelectorAll("#try-on-button");
     }
     events() {
-      h(".crs-try-on-button").then(() => {
+      l(".crs-try-on-button").then(() => {
         document.querySelectorAll(".crs-try-on-button").forEach((t) => {
           t.addEventListener("click", (n) => {
-            d("exp_q_click_1", "Try on", "click", "Banner on Blog");
+            h("exp_q_click_1", "Try on", "click", "Banner on Blog");
           });
         });
       });
@@ -134,40 +134,7 @@
       e.textContent = g, document.head.appendChild(e);
     }
   }
-  const v = "", b = `header > .header-content-wrapper > .ant-flex button {
-  display: none;
-}
-
-/* RATING */
-.crs-rating-stars {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.crs-rating-stars__stars {
-  display: flex;
-  align-items: center;
-}
-
-.crs-star {
-  width: 12px;
-  height: 12px;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none"><path fill="%23EED6A6" d="m6 9.517-2.767 1.666a.605.605 0 0 1-.383.1.645.645 0 0 1-.35-.133.8.8 0 0 1-.234-.292.583.583 0 0 1-.033-.391l.733-3.15L.516 5.2a.639.639 0 0 1-.183-.717.714.714 0 0 1 .2-.3.693.693 0 0 1 .367-.15l3.233-.283L5.383.783a.598.598 0 0 1 .258-.3.714.714 0 0 1 .359-.1c.122 0 .241.034.358.1a.598.598 0 0 1 .258.3l1.25 2.967 3.234.283a.693.693 0 0 1 .366.15.714.714 0 0 1 .225.675.639.639 0 0 1-.208.342l-2.45 2.117.733 3.15a.583.583 0 0 1-.033.391.8.8 0 0 1-.233.292.645.645 0 0 1-.35.133.605.605 0 0 1-.384-.1L6 9.517Z"/></svg>');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.crs-rating-stars__label {
-  color: #22190c;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-}
-`, x = `.crs-tried-banner {
+  const v = "", b = `.crs-tried-banner {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -188,13 +155,13 @@
   color: #6b21a8;
 }
 `;
-  class _ {
+  class x {
     constructor({ container: e, position: t = "beforeend" }) {
       this.container = e instanceof HTMLElement ? e : e ? document.querySelector(e) : null, this.position = t, this.init();
     }
     init() {
       if (!this.container) {
-        s("Container not found for TriedBanner", "error");
+        r("Container not found for TriedBanner", "error");
         return;
       }
       this.addStyles(), this.insertToDOM();
@@ -220,10 +187,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = x, document.head.appendChild(e);
+      e.textContent = b, document.head.appendChild(e);
     }
   }
-  const q = `.crs-title-banner {
+  const _ = `.crs-title-banner {
   margin-top: 4px;
   padding: 16px;
   font-family: 'DM Serif Display', serif;
@@ -248,13 +215,13 @@
   line-height: 22px;
 }
 `;
-  class S {
+  class q {
     constructor({ container: e, position: t = "beforeend" }) {
       this.container = e instanceof HTMLElement ? e : e ? document.querySelector(e) : null, this.position = t, this.init();
     }
     init() {
       if (!this.container) {
-        s("Container not found for TitleBanner", "error");
+        r("Container not found for TitleBanner", "error");
         return;
       }
       this.addStyles(), this.insertToDOM();
@@ -281,10 +248,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = q, document.head.appendChild(e);
+      e.textContent = _, document.head.appendChild(e);
     }
   }
-  const T = [
+  const S = [
     {
       question: "How do I get the generated images?",
       answer: 'To access and download the generated images, follow the direct link we send to your email once the results are ready, or visit the <a href="https://app.therighthairstyles.com/virtual-styler-new/step-1">Log In page</a>.'
@@ -329,7 +296,7 @@
       question: "What are the methods of payment you accept?",
       answer: "Our payments are handled through Stripe which accepts certain Visa/Mastercard depending on your country."
     }
-  ], A = `.crs__faq {
+  ], T = `.crs__faq {
   margin-top: -60px;
   margin-inline: -20px;
   margin-bottom: 40px;
@@ -417,13 +384,13 @@
   background-image: url('data:image/svg+xml,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6665 17.3334V14.6667H25.3332V17.3334H6.6665Z" fill="%23B79625"/></svg>');
 }
 `;
-  class C {
+  class A {
     constructor({ container: e, position: t = "beforeend" }) {
-      this.faqData = T, this.container = e instanceof HTMLElement ? e : e ? document.querySelector(e) : null, this.position = t, this.init();
+      this.faqData = S, this.container = e instanceof HTMLElement ? e : e ? document.querySelector(e) : null, this.position = t, this.init();
     }
     init() {
       if (!this.container) {
-        s("Container not found for FAQ", "error");
+        r("Container not found for FAQ", "error");
         return;
       }
       this.addStyles(), this.insertToDOM(), setTimeout(() => this.events(), 0);
@@ -470,15 +437,15 @@
       const e = (t = this.container) == null ? void 0 : t.querySelectorAll(".crs__faq_item");
       e == null || e.forEach((n) => {
         n.addEventListener("click", (o) => {
-          var a;
-          const i = (a = n.querySelector(
+          var i;
+          const a = (i = n.querySelector(
             ".crs__faq_item-question"
-          )) == null ? void 0 : a.textContent;
+          )) == null ? void 0 : i.textContent;
           e.forEach((c) => {
             c !== n && c.setAttribute("data-state", "close");
-          }), this.toggleFAQItem(o), n.getAttribute("data-state") === "open" && d(
+          }), this.toggleFAQItem(o), n.getAttribute("data-state") === "open" && h(
             "exp_q_click_2",
-            i || "",
+            a || "",
             "click",
             "Virtual Styler. FAQ"
           );
@@ -488,14 +455,48 @@
     toggleFAQItem(e) {
       const n = e.target.closest(".crs__faq_item");
       if (!n || !n.querySelector(".crs__faq_item-answer")) return;
-      const i = n.getAttribute("data-state") === "open";
-      n.setAttribute("data-state", i ? "close" : "open");
+      const a = n.getAttribute("data-state") === "open";
+      n.setAttribute("data-state", a ? "close" : "open");
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = A, document.head.appendChild(e);
+      e.textContent = T, document.head.appendChild(e);
     }
   }
+  const C = `header > .header-content-wrapper > .ant-flex button {
+  display: none;
+}
+
+/* RATING */
+.crs-rating-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.crs-rating-stars__stars {
+  display: flex;
+  align-items: center;
+}
+
+.crs-star {
+  width: 12px;
+  height: 12px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none"><path fill="%23EED6A6" d="m6 9.517-2.767 1.666a.605.605 0 0 1-.383.1.645.645 0 0 1-.35-.133.8.8 0 0 1-.234-.292.583.583 0 0 1-.033-.391l.733-3.15L.516 5.2a.639.639 0 0 1-.183-.717.714.714 0 0 1 .2-.3.693.693 0 0 1 .367-.15l3.233-.283L5.383.783a.598.598 0 0 1 .258-.3.714.714 0 0 1 .359-.1c.122 0 .241.034.358.1a.598.598 0 0 1 .258.3l1.25 2.967 3.234.283a.693.693 0 0 1 .366.15.714.714 0 0 1 .225.675.639.639 0 0 1-.208.342l-2.45 2.117.733 3.15a.583.583 0 0 1-.033.391.8.8 0 0 1-.233.292.645.645 0 0 1-.35.133.605.605 0 0 1-.384-.1L6 9.517Z"/></svg>');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.crs-rating-stars__label {
+  color: #22190c;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+`;
   class k {
     constructor() {
       this.observer = null, this.currentUrl = "", this.componentsAdded = !1, this.init();
@@ -507,11 +508,9 @@
       const e = new URL(location.href);
       return location.hostname.includes("app.therighthairstyles.com") && location.pathname.includes("/virtual-styler-new/step-1") && e.searchParams.has(u);
     }
-    isUserIsLoggedIn() {
+    async isUserIsLoggedIn() {
       var t;
-      const e = document.querySelector(
-        "header button.ant-btn"
-      );
+      const e = await l("header button.ant-btn");
       if (e)
         return ((t = e.textContent) == null ? void 0 : t.trim()) !== "Log In";
     }
@@ -522,7 +521,7 @@
         "header > .header-content-wrapper > .ant-flex"
       );
       if (!e) {
-        s("Target element not found for rating stars", "error");
+        r("Target element not found for rating stars", "error");
         return;
       }
       e.insertAdjacentHTML(
@@ -542,32 +541,28 @@
     `
       );
     }
-    addTriedBanner() {
+    async addTriedBanner() {
       if (document.querySelector(".crs-tried-banner"))
         return;
-      const e = document.querySelector(
-        "header.ant-layout-header"
-      );
+      const e = await l("header.ant-layout-header");
       if (!e) {
-        s("Tried banner container not found", "error");
+        r("Tried banner container not found", "error");
         return;
       }
-      new _({
+      new x({
         container: e,
         position: "afterend"
       });
     }
-    addTitleBanner() {
+    async addTitleBanner() {
       if (document.querySelector(".crs-title-banner"))
         return;
-      const e = document.querySelector(
-        "main.ant-layout-content"
-      );
+      const e = await l("main.ant-layout-content");
       if (!e) {
-        s("Title banner container not found", "error");
+        r("Title banner container not found", "error");
         return;
       }
-      new S({
+      new q({
         container: e,
         position: "beforebegin"
       });
@@ -577,10 +572,10 @@
         return;
       const e = document.querySelector(".footer");
       if (!e) {
-        s("FAQ container not found", "error");
+        r("FAQ container not found", "error");
         return;
       }
-      new C({
+      new A({
         container: e,
         position: "afterbegin"
       });
@@ -589,7 +584,7 @@
       if (document.querySelector("style[data-crs-styler]"))
         return;
       const e = document.createElement("style");
-      e.setAttribute("data-crs-styler", "true"), e.textContent = b, document.head.appendChild(e);
+      e.setAttribute("data-crs-styler", "true"), e.textContent = C, document.head.appendChild(e);
     }
     setupObserver() {
       window.addEventListener("popstate", () => this.handleUrlChange());
@@ -609,9 +604,9 @@
       const e = location.href;
       e !== this.currentUrl && (this.currentUrl = e, this.checkAndUpdateComponents());
     }
-    checkAndUpdateComponents() {
-      const e = this.isATestStylerPage() || this.isUserIsLoggedIn();
-      e && !this.componentsAdded ? (s("StylerChange components added", "info"), this.addAllComponents(), this.componentsAdded = !0) : !e && this.componentsAdded && (s("StylerChange components removed", "info"), this.removeAllComponents(), this.componentsAdded = !1);
+    async checkAndUpdateComponents() {
+      const e = this.isATestStylerPage() || await this.isUserIsLoggedIn();
+      e && !this.componentsAdded ? (r("StylerChange components added", "info"), this.addAllComponents(), this.componentsAdded = !0) : !e && this.componentsAdded && (r("StylerChange components removed", "info"), this.removeAllComponents(), this.componentsAdded = !1);
     }
     addAllComponents() {
       this.addStyles(), this.addRatingStarsToHeader(), this.addTriedBanner(), this.addTitleBanner(), setTimeout(() => {
@@ -619,16 +614,16 @@
       }, 1e3);
     }
     removeAllComponents() {
-      var a;
+      var i;
       document.querySelectorAll("style[data-crs-styler]").forEach((c) => c.remove());
       const t = document.querySelector(".crs-rating-stars");
       t == null || t.remove();
       const n = document.querySelector(".crs-tried-banner");
-      (a = n == null ? void 0 : n.closest(".crs-tried-banner")) == null || a.remove();
+      (i = n == null ? void 0 : n.closest(".crs-tried-banner")) == null || i.remove();
       const o = document.querySelector(".crs-title-banner");
       o == null || o.remove();
-      const i = document.querySelector(".crs__faq");
-      i == null || i.remove();
+      const a = document.querySelector(".crs__faq");
+      a == null || a.remove();
     }
     destroy() {
       this.observer && (this.observer.disconnect(), this.observer = null), this.removeAllComponents();
