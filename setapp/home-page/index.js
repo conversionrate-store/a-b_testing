@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const ft = (e) => new Promise((t) => {
+  const ct = (e) => new Promise((t) => {
     const n = document.querySelector(e);
     n && t(n);
     const i = new MutationObserver(() => {
@@ -1814,7 +1814,7 @@ body:has(.os-dialog[open]) {
   function $n(e) {
     return ["table", "td", "th"].indexOf(X(e)) >= 0;
   }
-  function ct(e) {
+  function pt(e) {
     return ((mt(e) ? e.ownerDocument : (
       // $FlowFixMe[prop-missing]
       e.document
@@ -1829,7 +1829,7 @@ body:has(.os-dialog[open]) {
       e.parentNode || // DOM Element detected
       (fe(e) ? e.host : null) || // ShadowRoot detected
       // $FlowFixMe[incompatible-call]: HTMLElement is a Node
-      ct(e)
+      pt(e)
     );
   }
   function je(e) {
@@ -1936,7 +1936,7 @@ body:has(.os-dialog[open]) {
     var f = s.hasOwnProperty("x"), x = s.hasOwnProperty("y"), A = $, a = _, b = window;
     if (u) {
       var m = qt(n), E = "clientHeight", O = "clientWidth";
-      if (m === F(n) && (m = ct(n), nt(m).position !== "static" && c === "absolute" && (E = "scrollHeight", O = "scrollWidth")), m = m, o === _ || (o === $ || o === U) && r === Lt) {
+      if (m === F(n) && (m = pt(n), nt(m).position !== "static" && c === "absolute" && (E = "scrollHeight", O = "scrollWidth")), m = m, o === _ || (o === $ || o === U) && r === Lt) {
         a = N;
         var T = C && m === b && b.visualViewport ? b.visualViewport.height : (
           // $FlowFixMe[prop-missing]
@@ -2048,10 +2048,10 @@ body:has(.os-dialog[open]) {
     };
   }
   function be(e) {
-    return Ct(ct(e)).left + ve(e).scrollLeft;
+    return Ct(pt(e)).left + ve(e).scrollLeft;
   }
   function ni(e, t) {
-    var n = F(e), i = ct(e), o = n.visualViewport, r = i.clientWidth, s = i.clientHeight, c = 0, p = 0;
+    var n = F(e), i = pt(e), o = n.visualViewport, r = i.clientWidth, s = i.clientHeight, c = 0, p = 0;
     if (o) {
       r = o.width, s = o.height;
       var u = Ie();
@@ -2065,7 +2065,7 @@ body:has(.os-dialog[open]) {
     };
   }
   function ii(e) {
-    var t, n = ct(e), i = ve(e), o = (t = e.ownerDocument) == null ? void 0 : t.body, r = ht(n.scrollWidth, n.clientWidth, o ? o.scrollWidth : 0, o ? o.clientWidth : 0), s = ht(n.scrollHeight, n.clientHeight, o ? o.scrollHeight : 0, o ? o.clientHeight : 0), c = -i.scrollLeft + be(e), p = -i.scrollTop;
+    var t, n = pt(e), i = ve(e), o = (t = e.ownerDocument) == null ? void 0 : t.body, r = ht(n.scrollWidth, n.clientWidth, o ? o.scrollWidth : 0, o ? o.clientWidth : 0), s = ht(n.scrollHeight, n.clientHeight, o ? o.scrollHeight : 0, o ? o.clientHeight : 0), c = -i.scrollLeft + be(e), p = -i.scrollTop;
     return nt(o || n).direction === "rtl" && (c += ht(n.clientWidth, o ? o.clientWidth : 0) - r), {
       width: r,
       height: s,
@@ -2102,7 +2102,7 @@ body:has(.os-dialog[open]) {
     return n.top = n.top + e.clientTop, n.left = n.left + e.clientLeft, n.bottom = n.top + e.clientHeight, n.right = n.left + e.clientWidth, n.width = e.clientWidth, n.height = e.clientHeight, n.x = n.left, n.y = n.top, n;
   }
   function We(e, t, n) {
-    return t === Pe ? we(ni(e, n)) : mt(t) ? oi(t, n) : we(ii(ct(e)));
+    return t === Pe ? we(ni(e, n)) : mt(t) ? oi(t, n) : we(ii(pt(e)));
   }
   function ai(e) {
     var t = Bt(Ut(e)), n = ["absolute", "fixed"].indexOf(nt(e).position) >= 0, i = n && Y(e) ? qt(e) : e;
@@ -2166,7 +2166,7 @@ body:has(.os-dialog[open]) {
   }
   function jt(e, t) {
     t === void 0 && (t = {});
-    var n = t, i = n.placement, o = i === void 0 ? e.placement : i, r = n.strategy, s = r === void 0 ? e.strategy : r, c = n.boundary, p = c === void 0 ? Mn : c, u = n.rootBoundary, d = u === void 0 ? Pe : u, C = n.elementContext, k = C === void 0 ? Rt : C, h = n.altBoundary, y = h === void 0 ? !1 : h, v = n.padding, g = v === void 0 ? 0 : v, f = He(typeof g != "number" ? g : _e(g, Pt)), x = k === Rt ? On : Rt, A = e.rects.popper, a = e.elements[y ? x : k], b = ri(mt(a) ? a : a.contextElement || ct(e.elements.popper), p, d, s), m = Ct(e.elements.reference), E = Ne({
+    var n = t, i = n.placement, o = i === void 0 ? e.placement : i, r = n.strategy, s = r === void 0 ? e.strategy : r, c = n.boundary, p = c === void 0 ? Mn : c, u = n.rootBoundary, d = u === void 0 ? Pe : u, C = n.elementContext, k = C === void 0 ? Rt : C, h = n.altBoundary, y = h === void 0 ? !1 : h, v = n.padding, g = v === void 0 ? 0 : v, f = He(typeof g != "number" ? g : _e(g, Pt)), x = k === Rt ? On : Rt, A = e.rects.popper, a = e.elements[y ? x : k], b = ri(mt(a) ? a : a.contextElement || pt(e.elements.popper), p, d, s), m = Ct(e.elements.reference), E = Ne({
       reference: m,
       element: A,
       placement: o
@@ -2374,11 +2374,11 @@ body:has(.os-dialog[open]) {
         var L, B = a === "y" ? _ : $, W = a === "y" ? N : U, j = a === "y" ? "height" : "width", z = m[a], I = z + g[B], J = z - g[W], tt = h ? -O[j] / 2 : 0, vt = x === xt ? E[j] : O[j], et = x === xt ? -O[j] : -E[j], bt = t.elements.arrow, ot = h && bt ? he(bt) : {
           width: 0,
           height: 0
-        }, Z = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : ze(), at = Z[B], Et = Z[W], rt = It(0, E[j], ot[j]), Mt = A ? E[j] / 2 - tt - rt - at - P.mainAxis : vt - rt - at - P.mainAxis, dt = A ? -E[j] / 2 + tt + rt + Et + P.mainAxis : et + rt + Et + P.mainAxis, Ot = t.elements.arrow && qt(t.elements.arrow), te = Ot ? a === "y" ? Ot.clientTop || 0 : Ot.clientLeft || 0 : 0, _t = (L = q == null ? void 0 : q[a]) != null ? L : 0, ee = z + Mt - _t - te, ne = z + dt - _t, $t = It(h ? Nt(I, ee) : I, z, h ? ht(J, ne) : J);
+        }, Z = t.modifiersData["arrow#persistent"] ? t.modifiersData["arrow#persistent"].padding : ze(), at = Z[B], Et = Z[W], rt = It(0, E[j], ot[j]), Mt = A ? E[j] / 2 - tt - rt - at - P.mainAxis : vt - rt - at - P.mainAxis, ut = A ? -E[j] / 2 + tt + rt + Et + P.mainAxis : et + rt + Et + P.mainAxis, Ot = t.elements.arrow && qt(t.elements.arrow), te = Ot ? a === "y" ? Ot.clientTop || 0 : Ot.clientLeft || 0 : 0, _t = (L = q == null ? void 0 : q[a]) != null ? L : 0, ee = z + Mt - _t - te, ne = z + ut - _t, $t = It(h ? Nt(I, ee) : I, z, h ? ht(J, ne) : J);
         m[a] = $t, R[a] = $t - z;
       }
       if (c) {
-        var Ft, ie = a === "x" ? _ : $, oe = a === "x" ? N : U, st = m[b], ut = b === "y" ? "height" : "width", Vt = st + g[ie], yt = st - g[oe], Wt = [_, $].indexOf(f) !== -1, ae = (Ft = q == null ? void 0 : q[b]) != null ? Ft : 0, re = Wt ? Vt : st - E[ut] - O[ut] - ae + P.altAxis, se = Wt ? st + E[ut] + O[ut] - ae - P.altAxis : yt, ce = h && Wt ? Vn(re, st, se) : It(h ? re : Vt, st, h ? se : yt);
+        var Ft, ie = a === "x" ? _ : $, oe = a === "x" ? N : U, st = m[b], ft = b === "y" ? "height" : "width", Vt = st + g[ie], yt = st - g[oe], Wt = [_, $].indexOf(f) !== -1, ae = (Ft = q == null ? void 0 : q[b]) != null ? Ft : 0, re = Wt ? Vt : st - E[ft] - O[ft] - ae + P.altAxis, se = Wt ? st + E[ft] + O[ft] - ae - P.altAxis : yt, ce = h && Wt ? Vn(re, st, se) : It(h ? re : Vt, st, h ? se : yt);
         m[b] = ce, R[b] = ce - st;
       }
       t.modifiersData[i] = R;
@@ -2406,7 +2406,7 @@ body:has(.os-dialog[open]) {
   }
   function Si(e, t, n) {
     n === void 0 && (n = !1);
-    var i = Y(t), o = Y(t) && Ci(t), r = ct(t), s = Ct(e, o, n), c = {
+    var i = Y(t), o = Y(t) && Ci(t), r = pt(t), s = Ct(e, o, n), c = {
       scrollLeft: 0,
       scrollTop: 0
     }, p = {
@@ -2583,7 +2583,7 @@ body:has(.os-dialog[open]) {
   }
   var Ti = [Jn, vi, Kn, qe, hi, li, wi, Yn, ui], Pi = /* @__PURE__ */ Di({
     defaultModifiers: Ti
-  }), Li = '<svg width="16" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M0 6s1.796-.013 4.67-3.615C5.851.9 6.93.006 8 0c1.07-.006 2.148.887 3.343 2.385C14.233 6.005 16 6 16 6H0z"></svg>', Ri = "tippy-box", Xe = "tippy-content", Ke = "tippy-backdrop", Qe = "tippy-arrow", Je = "tippy-svg-arrow", pt = {
+  }), Li = '<svg width="16" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M0 6s1.796-.013 4.67-3.615C5.851.9 6.93.006 8 0c1.07-.006 2.148.887 3.343 2.385C14.233 6.005 16 6 16 6H0z"></svg>', Ri = "tippy-box", Xe = "tippy-content", Ke = "tippy-backdrop", Qe = "tippy-arrow", Je = "tippy-svg-arrow", lt = {
     passive: !0,
     capture: !0
   }, tn = function() {
@@ -2622,7 +2622,7 @@ body:has(.os-dialog[open]) {
   function qi(e) {
     return e.split(/\s+/).filter(Boolean);
   }
-  function lt(e) {
+  function dt(e) {
     return [].concat(e);
   }
   function an(e, t) {
@@ -2675,7 +2675,7 @@ body:has(.os-dialog[open]) {
     });
   }
   function pn(e) {
-    var t, n = lt(e), i = n[0];
+    var t, n = dt(e), i = n[0];
     return i != null && (t = i.ownerDocument) != null && t.body ? i.ownerDocument : document;
   }
   function zi(e, t) {
@@ -2721,7 +2721,7 @@ body:has(.os-dialog[open]) {
     }
   }
   function $i() {
-    document.addEventListener("touchstart", Hi, pt), window.addEventListener("blur", _i);
+    document.addEventListener("touchstart", Hi, lt), window.addEventListener("blur", _i);
   }
   var Fi = typeof window < "u" && typeof document < "u", Vi = Fi ? (
     // @ts-ignore
@@ -2961,7 +2961,7 @@ body:has(.os-dialog[open]) {
     function J() {
       var l = a.props.aria;
       if (l.content) {
-        var w = "aria-" + l.content, S = m.id, D = lt(a.props.triggerTarget || e);
+        var w = "aria-" + l.content, S = m.id, D = dt(a.props.triggerTarget || e);
         D.forEach(function(M) {
           var H = M.getAttribute(w);
           if (a.state.isVisible)
@@ -2975,7 +2975,7 @@ body:has(.os-dialog[open]) {
     }
     function tt() {
       if (!(T || !a.props.aria.expanded)) {
-        var l = lt(a.props.triggerTarget || e);
+        var l = dt(a.props.triggerTarget || e);
         l.forEach(function(w) {
           a.props.interactive ? w.setAttribute("aria-expanded", a.state.isVisible && w === L() ? "true" : "false") : w.removeAttribute("aria-expanded");
         });
@@ -2990,7 +2990,7 @@ body:has(.os-dialog[open]) {
       if (!(Q.isTouch && (p || l.type === "mousedown"))) {
         var w = l.composedPath && l.composedPath()[0] || l.target;
         if (!(a.props.interactive && ln(m, w))) {
-          if (lt(a.props.triggerTarget || e).some(function(S) {
+          if (dt(a.props.triggerTarget || e).some(function(S) {
             return ln(S, w);
           })) {
             if (Q.isTouch || a.state.isVisible && a.props.trigger.indexOf("click") >= 0)
@@ -3011,11 +3011,11 @@ body:has(.os-dialog[open]) {
     }
     function Z() {
       var l = B();
-      l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, pt), l.addEventListener("touchstart", ot, pt), l.addEventListener("touchmove", bt, pt);
+      l.addEventListener("mousedown", et, !0), l.addEventListener("touchend", et, lt), l.addEventListener("touchstart", ot, lt), l.addEventListener("touchmove", bt, lt);
     }
     function at() {
       var l = B();
-      l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, pt), l.removeEventListener("touchstart", ot, pt), l.removeEventListener("touchmove", bt, pt);
+      l.removeEventListener("mousedown", et, !0), l.removeEventListener("touchend", et, lt), l.removeEventListener("touchstart", ot, lt), l.removeEventListener("touchmove", bt, lt);
     }
     function Et(l, w) {
       Mt(l, function() {
@@ -3034,9 +3034,9 @@ body:has(.os-dialog[open]) {
         return w();
       Ae(S, "remove", C), Ae(S, "add", D), C = D;
     }
-    function dt(l, w, S) {
+    function ut(l, w, S) {
       S === void 0 && (S = !1);
-      var D = lt(a.props.triggerTarget || e);
+      var D = dt(a.props.triggerTarget || e);
       D.forEach(function(M) {
         M.addEventListener(l, w, S), h.push({
           node: M,
@@ -3047,21 +3047,21 @@ body:has(.os-dialog[open]) {
       });
     }
     function Ot() {
-      q() && (dt("touchstart", _t, {
+      q() && (ut("touchstart", _t, {
         passive: !0
-      }), dt("touchend", ne, {
+      }), ut("touchend", ne, {
         passive: !0
       })), qi(a.props.trigger).forEach(function(l) {
         if (l !== "manual")
-          switch (dt(l, _t), l) {
+          switch (ut(l, _t), l) {
             case "mouseenter":
-              dt("mouseleave", ne);
+              ut("mouseleave", ne);
               break;
             case "focus":
-              dt(Vi ? "focusout" : "blur", $t);
+              ut(Vi ? "focusout" : "blur", $t);
               break;
             case "focusin":
-              dt("focusout", $t);
+              ut("focusout", $t);
               break;
           }
       });
@@ -3084,7 +3084,7 @@ body:has(.os-dialog[open]) {
     function ee(l) {
       var w = l.target, S = L().contains(w) || m.contains(w);
       if (!(l.type === "mousemove" && S)) {
-        var D = ut().concat(m).map(function(M) {
+        var D = ft().concat(m).map(function(M) {
           var H, G = M._tippy, Dt = (H = G.popperInstance) == null ? void 0 : H.state;
           return Dt ? {
             popperRect: M.getBoundingClientRect(),
@@ -3175,7 +3175,7 @@ body:has(.os-dialog[open]) {
       var l = a.props.appendTo, w, S = L();
       a.props.interactive && l === tn || l === "parent" ? w = S.parentNode : w = en(l, [S]), w.contains(m) || w.appendChild(m), a.state.isMounted = !0, ie();
     }
-    function ut() {
+    function ft() {
       return At(m.querySelectorAll("[data-tippy-root]"));
     }
     function Vt(l) {
@@ -3214,9 +3214,9 @@ body:has(.os-dialog[open]) {
         var w = a.props, S = mn(e, Object.assign({}, w, sn(l), {
           ignoreAttributes: !0
         }));
-        a.props = S, Ot(), w.interactiveDebounce !== S.interactiveDebounce && (vt(), y = nn(ee, S.interactiveDebounce)), w.triggerTarget && !S.triggerTarget ? lt(w.triggerTarget).forEach(function(D) {
+        a.props = S, Ot(), w.interactiveDebounce !== S.interactiveDebounce && (vt(), y = nn(ee, S.interactiveDebounce)), w.triggerTarget && !S.triggerTarget ? dt(w.triggerTarget).forEach(function(D) {
           D.removeAttribute("aria-expanded");
-        }) : S.triggerTarget && e.removeAttribute("aria-expanded"), tt(), z(), E && E(w, S), a.popperInstance && (ie(), ut().forEach(function(D) {
+        }) : S.triggerTarget && e.removeAttribute("aria-expanded"), tt(), z(), E && E(w, S), a.popperInstance && (ie(), ft().forEach(function(D) {
           requestAnimationFrame(D._tippy.popperInstance.forceUpdate);
         })), I("onAfterUpdate", [a, l]);
       }
@@ -3261,7 +3261,7 @@ body:has(.os-dialog[open]) {
       B().addEventListener("mousemove", y), an(Kt, y), y(l);
     }
     function Do() {
-      a.state.isVisible && a.hide(), a.state.isMounted && (oe(), ut().forEach(function(l) {
+      a.state.isVisible && a.hide(), a.state.isMounted && (oe(), ft().forEach(function(l) {
         l._tippy.unmount();
       }), m.parentNode && m.parentNode.removeChild(m), Qt = Qt.filter(function(l) {
         return l !== a;
@@ -3319,7 +3319,7 @@ body:has(.os-dialog[open]) {
     var o = t, r = [], s = [], c, p = n.overrides, u = [], d = !1;
     function C() {
       s = o.map(function(a) {
-        return lt(a.props.triggerTarget || a.reference);
+        return dt(a.props.triggerTarget || a.reference);
       }).reduce(function(a, b) {
         return a.concat(b);
       }, []);
@@ -3436,7 +3436,7 @@ body:has(.os-dialog[open]) {
       touch: V.touch
     }, s, {
       showOnCreate: !0
-    }), u = it(e, c), d = lt(u);
+    }), u = it(e, c), d = dt(u);
     function C(g) {
       if (!(!g.target || o)) {
         var f = g.target.closest(r);
@@ -3459,7 +3459,7 @@ body:has(.os-dialog[open]) {
     }
     function h(g) {
       var f = g.reference;
-      k(f, "touchstart", C, pt), k(f, "mouseover", C), k(f, "focusin", C), k(f, "click", C);
+      k(f, "touchstart", C, lt), k(f, "mouseover", C), k(f, "focusin", C), k(f, "click", C);
     }
     function y() {
       n.forEach(function(g) {
@@ -3797,7 +3797,7 @@ body:has(.os-dialog[open]) {
       this.render(), this.addSmoothScrolling(), this.addTooltipByHover(), this.addStyles(), this.events();
     }
     async render() {
-      const t = await ft("section.header");
+      const t = await ct("section.header");
       if (!t)
         throw new Error("Target element not found for Apps Section");
       if (de == null) return;
@@ -4182,7 +4182,8 @@ body:has(.os-dialog[open]) {
         )
       ).join("");
     }
-    events() {
+    async events() {
+      await ct(".crs-block-action-button");
       const t = document.querySelectorAll(
         ".crs-block-action-button"
       );
@@ -4223,7 +4224,7 @@ body:has(.os-dialog[open]) {
       });
     }
     async addTooltipByHover() {
-      await ft(".crs-block-app");
+      await ct(".crs-block-app");
       const t = document.querySelectorAll(".crs-block-app");
       if (!t) {
         console.error("Apps blocks container not found");
@@ -4584,7 +4585,7 @@ section.header .header__description {
     }
     async addAppsImage() {
       const t = `
-      <div class="header__apps-image"><img src="${yo}/apps.webp" alt="Apps Image"></div>`, n = await ft(
+      <div class="header__apps-image"><img src="${yo}/apps.webp" alt="Apps Image"></div>`, n = await ct(
         "section.header .header__logo"
       );
       if (n)
@@ -4593,11 +4594,11 @@ section.header .header__description {
         throw new Error("Target element not found for Apps Image");
     }
     async changeTitle() {
-      const t = await ft("section.header h1.h1_hero");
+      const t = await ct("section.header h1.h1_hero");
       t && (t.textContent = "Get any task done on your Mac with one subscription");
     }
     async addComment() {
-      const t = await ft(
+      const t = await ct(
         "section.header .header__description"
       );
       if (!t) return;
@@ -4620,7 +4621,7 @@ section.header .header__description {
       );
     }
     async addAchievs() {
-      const t = await ft(
+      const t = await ct(
         "section.header .header__description"
       );
       t && new bo({
@@ -4717,7 +4718,7 @@ section.header .header__description {
       this.render(), this.events(), this.addStyles();
     }
     async render() {
-      const t = await ft("section.apps");
+      const t = await ct("section.apps");
       if (!t)
         throw new Error("Target element not found for More Section");
       t.insertAdjacentHTML(
