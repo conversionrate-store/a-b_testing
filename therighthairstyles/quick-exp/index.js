@@ -514,10 +514,10 @@
       if (e)
         return ((t = e.textContent) == null ? void 0 : t.trim()) !== "Log In";
     }
-    addRatingStarsToHeader() {
+    async addRatingStarsToHeader() {
       if (document.querySelector(".crs-rating-stars"))
         return;
-      const e = document.querySelector(
+      const e = await l(
         "header > .header-content-wrapper > .ant-flex"
       );
       if (!e) {
