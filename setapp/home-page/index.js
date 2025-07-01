@@ -4282,7 +4282,11 @@ body:has(.os-dialog[open]) {
             },
             onShow(h) {
               var f;
-              o && o !== h && (o.destroy(), o = null), o = h;
+              if (o && o !== h) {
+                o.destroy(), o = null;
+                return;
+              }
+              o = h;
               const y = (f = h.popper.querySelector("h3")) == null ? void 0 : f.textContent, v = h.popper.querySelector(".btn-download"), g = h.popper.querySelector(".os-popover-close");
               n = new AbortController(), v == null || v.addEventListener(
                 "click",
