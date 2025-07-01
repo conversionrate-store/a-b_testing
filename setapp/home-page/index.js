@@ -4499,7 +4499,7 @@ section.header {
 @media (min-width: 992px) {
   .eney-promo-banner {
     top: 78px !important;
-    z-index: 9999;
+    z-index: 199;
   }
 }
 
