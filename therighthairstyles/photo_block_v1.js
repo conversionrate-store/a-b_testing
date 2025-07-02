@@ -9,6 +9,10 @@
   z-index: 1002 !important;
 }
 
+.ant-modal-wrap.camera-modal {
+  z-index: 1200 !important;
+}
+
 .photos-block-wrapper {
   justify-content: space-between !important;
 }
