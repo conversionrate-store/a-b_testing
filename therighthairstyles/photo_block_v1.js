@@ -237,7 +237,7 @@
 .price-block p:last-of-type {
   color: #6b21a8;
   font-weight: 700;
-}/*# sourceMappingURL=style.css.map */`, d = (r, e, t, n = "") => {
+}/*# sourceMappingURL=style.css.map */`, h = (r, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: r,
@@ -245,7 +245,7 @@
       event_type: t,
       event_loc: n
     }), C(`Event: ${r} | ${e} | ${t} | ${n}`, "success");
-  }, h = (r) => new Promise((e) => {
+  }, p = (r) => new Promise((e) => {
     const t = document.querySelector(r);
     t && e(t);
     const n = new MutationObserver(() => {
@@ -353,7 +353,7 @@
         break;
     }
     console.log(`%c>>> ${r}`, `${t} font-size: 16px; font-weight: 600`);
-  }, p = {
+  }, d = {
     check: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M17.3046 8.19232C17.6708 8.55853 17.6708 9.15216 17.3046 9.51819L11.0153 15.8077C10.649 16.1737 10.0556 16.1737 9.68939 15.8077L6.69543 12.8135C6.32922 12.4475 6.32922 11.8539 6.69543 11.4879C7.06146 11.1216 7.65509 11.1216 8.02112 11.4879L10.3522 13.819L15.9787 8.19232C16.3449 7.82629 16.9385 7.82629 17.3046 8.19232ZM24 12C24 18.633 18.6321 24 12 24C5.367 24 0 18.6321 0 12C0 5.367 5.36792 0 12 0C18.633 0 24 5.36792 24 12ZM22.125 12C22.125 6.40338 17.5959 1.875 12 1.875C6.40338 1.875 1.875 6.40411 1.875 12C1.875 17.5966 6.40411 22.125 12 22.125C17.5966 22.125 22.125 17.5959 22.125 12Z" fill="#047F00"/>
 </svg>`,
@@ -374,7 +374,7 @@
     /* HTML */
     `
   <div class="snap-block">
-    ${p.check}
+    ${d.check}
     <div>
       <h2>Your photo’s uploaded.</h2>
       <p>Now pick the hairstyle you’d like to try on</p>
@@ -386,7 +386,7 @@
     `
   <div class="fixed-ready-block">
     <p>Ready to see how it looks on you?</p>
-    <button class="ready-button">Generate My Hairstyle ${p.arrow}</button>
+    <button class="ready-button">Generate My Hairstyle ${d.arrow}</button>
   </div>
 `
   ), b = (
@@ -420,7 +420,7 @@
     <div class="try-another">
       <h3>💇‍♀️ Want to try a different vibe?</h3>
       <p>Explore more styles and keep the inspiration flowing.</p>
-      <button>Try another haircut style ${p.arrow}</button>
+      <button>Try another haircut style ${d.arrow}</button>
     </div>
   </div>
 `
@@ -432,7 +432,7 @@
   ), u = (r) => (
     /* HTML */
     `
-  <div class="download-photo" data-src="${r}">${p.download}</div>
+  <div class="download-photo" data-src="${r}">${d.download}</div>
 `
   ), I = (
     /* HTML */
@@ -483,16 +483,16 @@
       e ? this.usedBlocks(e) : this.createHairBlock();
     }
     async createHairBlock() {
-      await h(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", I), o("main").elements[0].insertAdjacentHTML("afterend", E), o(".fixed-ready-block button").on("click", ".ready-button", () => {
-        this.sendImageToEditor(), d("exp_q2_click_1", "Generate my hairstyle", "click", "Footer");
-      }), await h(".img-wrapper"), o(".photos-block-wrapper").on("click", ".img-wrapper", (t) => {
+      await p(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", I), o("main").elements[0].insertAdjacentHTML("afterend", E), o(".fixed-ready-block button").on("click", ".ready-button", () => {
+        this.sendImageToEditor(), h("exp_q2_click_1", "Generate my hairstyle", "click", "Footer");
+      }), await p(".img-wrapper"), o(".photos-block-wrapper").on("click", ".img-wrapper", (t) => {
         var n;
         console.log("click on img"), o(".fixed-ready-block").elements.length === 0 && o(".photo-block img").elements[0] ? window.location.pathname = "/user/purchase-credits" : o(".fixed-ready-block").elements.length === 0 && !o(".photo-block img").elements[0] && (o(".hide-label").removeClass("hide-label"), t.target.closest(".img-wrapper").classList.add("hide-label"), o(".fixed-top").elements[0] || o(".page-content").elements[0].insertAdjacentHTML("beforebegin", _), window.addEventListener("scroll", (i) => {
           window.scrollY < 68 ? o(".fixed-top").attr("style", `top: ${68 - window.scrollY}px; transform: translateY(-100%);`) : o(".fixed-top").attr("style", "top: 0;");
         })), o(".fixed-ready-block").addClass("active"), this.selectedImage = ((n = t.target.closest(".img-wrapper").querySelector("img.photo-item")) == null ? void 0 : n.getAttribute("src")) || null, console.log("Selected image:", this.selectedImage);
       });
       const e = setInterval(() => {
-        window.ExternalUploader && window.ExternalUploader.openUploadModal && (clearInterval(e), window.ExternalUploader.openUploadModal(), d("exp_q2_view", "Image loading", "view", "First screen"));
+        window.ExternalUploader && window.ExternalUploader.openUploadModal && (clearInterval(e), window.ExternalUploader.openUploadModal(), h("exp_q2_view", "Image loading", "view", "First screen"));
       }, 100);
       window.addEventListener("sessionStorageChange", (t) => {
         const { key: n, value: i } = t.detail;
@@ -512,7 +512,7 @@
         "style",
         `background:linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(${this.selectedImage}) center center no-repeat; background-size: cover;`
       ), o(".fixed-ready-block").elements[0].remove(), o(".try-another").addClass("hide"), o(".reviews-block").elements[0].remove(), o(".try-another button").on("click", () => {
-        f(".photos-block-wrapper"), d("exp_q2_click_2", "Try another hairstyle", "click", "Want to try different vibe.");
+        f(".photos-block-wrapper"), h("exp_q2_click_2", "Try another hairstyle", "click", "Want to try different vibe.");
       }), f(".photo-block"), this.setTimer(), this.getGenerationPhoto();
     }
     async getGenerationPhoto() {
@@ -562,7 +562,7 @@
         }
     }
     async usedBlocks(e) {
-      await h(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", b), o(".photo-block-wrapper>h3").text("Your new look is ready 🎉"), o(".photo-block-wrapper>h3+p").text("Enjoy your transformation — you look amazing!"), o(".photo-block .timer").elements[0].remove(), o(".photo-block").html(`${u(e)}<img src="${e}" alt="Generated hairstyle" />`), o(".try-another button").on("click", () => {
+      await p(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", b), o(".photo-block-wrapper>h3").text("Your new look is ready 🎉"), o(".photo-block-wrapper>h3+p").text("Enjoy your transformation — you look amazing!"), o(".photo-block .timer").elements[0].remove(), o(".photo-block").html(`${u(e)}<img src="${e}" alt="Generated hairstyle" />`), o(".try-another button").on("click", () => {
         f(".photos-block-wrapper");
       }), o(".img-wrapper").on("click", (t) => {
         window.location.pathname = "/user/purchase-credits";
@@ -577,29 +577,31 @@
       });
     }
   }
-  window.innerWidth < 769 && window.location.pathname.includes("/virtual-styler-test/step-1") && new H(), window.innerWidth < 769 && window.location.pathname.includes("/user/purchase-credits") && localStorage.getItem("haircut-used") && !o(".price-block").elements[0] && o(".page-content").elements[0].insertAdjacentHTML(
-    "beforebegin",
-    /* HTML */
-    `
-      <div class="price-block">
-        <style>
-          .price-block {
-            background: linear-gradient(180deg, #f5ede2 0%, #e7dbe5 100%);
-            padding: 16px;
-          }
-          .price-block p {
-            font-size: 14px;
-            margin: 0;
-          }
-          .price-block p + p {
-            color: #6b21a8;
-            font-weight: 700;
-          }
-        </style>
-        <p>You've used your first free look!</p>
-        <p>To try more styles, pick a plan below</p>
-      </div>
-    `
-  );
+  window.innerWidth < 769 && window.location.pathname.includes("/virtual-styler-test/step-1") && new H(), window.innerWidth < 769 && window.location.pathname.includes("/user/purchase-credits") && localStorage.getItem("haircut-used") && !o(".price-block").elements[0] && p(".page-content").then(() => {
+    o(".page-content").elements[0].insertAdjacentHTML(
+      "beforebegin",
+      /* HTML */
+      `
+        <div class="price-block">
+          <style>
+            .price-block {
+              background: linear-gradient(180deg, #f5ede2 0%, #e7dbe5 100%);
+              padding: 16px;
+            }
+            .price-block p {
+              font-size: 14px;
+              margin: 0;
+            }
+            .price-block p + p {
+              color: #6b21a8;
+              font-weight: 700;
+            }
+          </style>
+          <p>You've used your first free look!</p>
+          <p>To try more styles, pick a plan below</p>
+        </div>
+      `
+    );
+  });
 })();
 //# sourceMappingURL=index.js.map
