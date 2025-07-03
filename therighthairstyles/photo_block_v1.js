@@ -469,7 +469,7 @@
         this.sendImageToEditor(), d("exp_q2_click_1", "Generate my hairstyle", "click", "Footer");
       }), await h(".img-wrapper"), o(".photos-block-wrapper").on("click", ".img-wrapper", (t) => {
         var n;
-        console.log("click on img"), o(".fixed-ready-block").elements.length === 0 && o(".photo-block img").elements[0] ? window.location.pathname = "/user/purchase-credits" : o(".fixed-ready-block").elements.length === 0 && !o(".photo-block img").elements[0] && (o(".page-content").elements[0].insertAdjacentHTML("beforebegin", _), window.addEventListener("scroll", (i) => {
+        console.log("click on img"), o(".fixed-ready-block").elements.length === 0 && o(".photo-block img").elements[0] ? window.location.pathname = "/user/purchase-credits" : o(".fixed-ready-block").elements.length === 0 && !o(".photo-block img").elements[0] && !o(".fixed-top").elements[0] && (o(".page-content").elements[0].insertAdjacentHTML("beforebegin", _), window.addEventListener("scroll", (i) => {
           window.scrollY < 68 ? o(".fixed-top").attr("style", `top: ${68 - window.scrollY}px; transform: translateY(-100%);`) : o(".fixed-top").attr("style", "top: 0;");
         })), o(".fixed-ready-block").addClass("active"), this.selectedImage = ((n = t.target.closest(".img-wrapper").querySelector("img.photo-item")) == null ? void 0 : n.getAttribute("src")) || null, console.log("Selected image:", this.selectedImage);
       });
