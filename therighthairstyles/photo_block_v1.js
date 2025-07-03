@@ -467,7 +467,7 @@
     async createHairBlock() {
       await h(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", I), o("main").elements[0].insertAdjacentHTML("afterend", L), o(".fixed-ready-block button").on("click", ".ready-button", () => {
         this.sendImageToEditor(), d("exp_q2_click_1", "Generate my hairstyle", "click", "Footer");
-      }), await h(".img-wrapper"), o(".img-wrapper").on("click", (t) => {
+      }), await h(".img-wrapper"), o(".photos-block-wrapper").on("click", ".img-wrapper", (t) => {
         var n;
         console.log("click on img"), o(".fixed-ready-block").elements.length === 0 && o(".photo-block img").elements[0] ? window.location.pathname = "/user/purchase-credits" : o(".fixed-ready-block").elements.length === 0 && !o(".photo-block img").elements[0] && (o(".page-content").elements[0].insertAdjacentHTML("beforebegin", _), window.addEventListener("scroll", (i) => {
           window.scrollY < 68 ? o(".fixed-top").attr("style", `top: ${68 - window.scrollY}px; transform: translateY(-100%);`) : o(".fixed-top").attr("style", "top: 0;");
