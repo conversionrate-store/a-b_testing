@@ -3760,7 +3760,7 @@ body:has(.os-dialog[open]) {
             trigger: "mouseenter",
             triggerEventData: {
               eventCategory: r || "",
-              eventAction: "hover"
+              eventAction: "Hover"
             }
           })
         ), fn(
@@ -3771,7 +3771,7 @@ body:has(.os-dialog[open]) {
             trigger: "click",
             triggerEventData: {
               eventCategory: r || "",
-              eventAction: "click"
+              eventAction: "Click"
             }
           })
         );
