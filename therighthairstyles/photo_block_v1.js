@@ -202,7 +202,7 @@
   width: 100%;
   background: #ffffff;
   padding: 12px 16px;
-  z-index: 11;
+  z-index: 10;
   box-shadow: 0px -6px 16px 0px rgba(0, 0, 0, 0.08), 0px -3px 6px -4px rgba(0, 0, 0, 0.12), 0px -9px 28px 8px rgba(0, 0, 0, 0.05);
   text-align: justify;
   font-size: 14px;
