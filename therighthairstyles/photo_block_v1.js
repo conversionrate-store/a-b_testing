@@ -202,7 +202,7 @@
   width: 100%;
   background: #ffffff;
   padding: 12px 16px;
-  z-index: 10;
+  z-index: 11;
   box-shadow: 0px -6px 16px 0px rgba(0, 0, 0, 0.08), 0px -3px 6px -4px rgba(0, 0, 0, 0.12), 0px -9px 28px 8px rgba(0, 0, 0, 0.05);
   text-align: justify;
   font-size: 14px;
@@ -372,7 +372,7 @@
     download: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21" fill="none">
 <path d="M2 21C1.45 21 0.979167 20.8042 0.5875 20.4125C0.195833 20.0208 0 19.55 0 19V9C0 8.45 0.195833 7.97917 0.5875 7.5875C0.979167 7.19583 1.45 7 2 7H5C5.28333 7 5.52083 7.09583 5.7125 7.2875C5.90417 7.47917 6 7.71667 6 8C6 8.28333 5.90417 8.52083 5.7125 8.7125C5.52083 8.90417 5.28333 9 5 9H2V19H16V9H13C12.7167 9 12.4792 8.90417 12.2875 8.7125C12.0958 8.52083 12 8.28333 12 8C12 7.71667 12.0958 7.47917 12.2875 7.2875C12.4792 7.09583 12.7167 7 13 7H16C16.55 7 17.0208 7.19583 17.4125 7.5875C17.8042 7.97917 18 8.45 18 9V19C18 19.55 17.8042 20.0208 17.4125 20.4125C17.0208 20.8042 16.55 21 16 21H2ZM10 12.175L10.9 11.275C11.0833 11.0917 11.3125 11 11.5875 11C11.8625 11 12.1 11.1 12.3 11.3C12.4833 11.4833 12.575 11.7167 12.575 12C12.575 12.2833 12.4833 12.5167 12.3 12.7L9.7 15.3C9.5 15.5 9.26667 15.6 9 15.6C8.73333 15.6 8.5 15.5 8.3 15.3L5.7 12.7C5.51667 12.5167 5.42083 12.2875 5.4125 12.0125C5.40417 11.7375 5.5 11.5 5.7 11.3C5.88333 11.1167 6.11667 11.025 6.4 11.025C6.68333 11.025 6.91667 11.1167 7.1 11.3L8 12.175V1C8 0.716667 8.09583 0.479167 8.2875 0.2875C8.47917 0.0958333 8.71667 0 9 0C9.28333 0 9.52083 0.0958333 9.7125 0.2875C9.90417 0.479167 10 0.716667 10 1V12.175Z" fill="#B79625"/>
 </svg>`
-  }, L = (
+  }, I = (
     /* HTML */
     `
   <div class="snap-block">
@@ -383,7 +383,7 @@
     </div>
   </div>
 `
-  ), E = (
+  ), L = (
     /* HTML */
     `
   <div class="fixed-ready-block">
@@ -426,7 +426,7 @@
     </div>
   </div>
 `
-  ), _ = (
+  ), E = (
     /* HTML */
     `
   <div class="fixed-top">Please wait for your current hairstyle to finish generating before starting a new one</div>
@@ -436,7 +436,7 @@
     `
   <div class="download-photo" data-src="${r}">${d.download}</div>
 `
-  ), I = (
+  ), _ = (
     /* HTML */
     `
   <div class="reviews-block">
@@ -477,6 +477,20 @@
   }();
   class H {
     constructor() {
+      this.lastValue = null, this.intervalId = null;
+    }
+    startWatching(e, t) {
+      this.lastValue = sessionStorage.getItem(e), this.intervalId = setInterval(() => {
+        const n = sessionStorage.getItem(e);
+        n !== this.lastValue && n && (this.lastValue = n, t(n));
+      }, 100);
+    }
+    stopWatching() {
+      this.intervalId && clearInterval(this.intervalId);
+    }
+  }
+  class S {
+    constructor() {
       this.generationId = null, this.selectedImage = null, this.init();
     }
     async init() {
@@ -485,20 +499,19 @@
       e ? this.usedBlocks(e) : this.createHairBlock();
     }
     async createHairBlock() {
-      await p(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", I), o("main").elements[0].insertAdjacentHTML("afterend", E), o(".fixed-ready-block button").on("click", ".ready-button", () => {
+      await p(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", _), o("main").elements[0].insertAdjacentHTML("afterend", L), o(".fixed-ready-block button").on("click", ".ready-button", () => {
         this.sendImageToEditor(), h("exp_q2_click_1", "Generate my hairstyle", "click", "Footer");
-      }), await p(".img-wrapper"), o(".photos-block-wrapper").on("click", ".img-wrapper", (t) => {
-        var n;
-        console.log("click on img"), o(".fixed-ready-block").elements.length === 0 && o(".photo-block img").elements[0] ? window.location.pathname = "/user/purchase-credits" : o(".fixed-ready-block").elements.length === 0 && !o(".photo-block img").elements[0] && (o(".hide-label").removeClass("hide-label"), t.target.closest(".img-wrapper").classList.add("hide-label"), o(".fixed-top").elements[0] || o(".page-content").elements[0].insertAdjacentHTML("beforebegin", _), window.addEventListener("scroll", (i) => {
+      }), await p(".img-wrapper"), o(".photos-block-wrapper").on("click", ".img-wrapper", (n) => {
+        var i;
+        console.log("click on img"), o(".fixed-ready-block").elements.length === 0 && o(".photo-block img").elements[0] ? window.location.pathname = "/user/purchase-credits" : o(".fixed-ready-block").elements.length === 0 && !o(".photo-block img").elements[0] && (o(".hide-label").removeClass("hide-label"), n.target.closest(".img-wrapper").classList.add("hide-label"), o(".fixed-top").elements[0] || o(".page-content").elements[0].insertAdjacentHTML("beforebegin", E), window.addEventListener("scroll", (a) => {
           window.scrollY < 68 ? o(".fixed-top").attr("style", `top: ${68 - window.scrollY}px; transform: translateY(-100%);`) : o(".fixed-top").attr("style", "top: 0;");
-        })), o(".fixed-ready-block").addClass("active"), this.selectedImage = ((n = t.target.closest(".img-wrapper").querySelector("img.photo-item")) == null ? void 0 : n.getAttribute("src")) || null, console.log("Selected image:", this.selectedImage);
+        })), o(".fixed-ready-block").addClass("active"), this.selectedImage = ((i = n.target.closest(".img-wrapper").querySelector("img.photo-item")) == null ? void 0 : i.getAttribute("src")) || null, console.log("Selected image:", this.selectedImage);
       });
       const e = setInterval(() => {
         window.ExternalUploader && window.ExternalUploader.openUploadModal && (clearInterval(e), window.ExternalUploader.openUploadModal(), h("exp_q2_view", "Image loading", "view", "First screen"));
       }, 100);
-      window.addEventListener("sessionStorageChange", (t) => {
-        const { key: n, value: i } = t.detail;
-        n === "uploadedFile" && (window.ExternalUploader.closeModal(), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", L));
+      new H().startWatching("uploadedFile", (n) => {
+        window.ExternalUploader.closeModal(), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", I);
       });
     }
     async sendImageToEditor() {
@@ -579,7 +592,7 @@
       });
     }
   }
-  window.innerWidth < 769 && window.location.pathname.includes("/virtual-styler-test/step-1") && new H(), window.innerWidth < 769 && window.location.pathname.includes("/user/purchase-credits") && localStorage.getItem("haircut-used") && !o(".price-block").elements[0] && p(".page-content").then(() => {
+  window.innerWidth < 769 && window.location.pathname.includes("/virtual-styler-test/step-1") && new S(), window.innerWidth < 769 && window.location.pathname.includes("/user/purchase-credits") && localStorage.getItem("haircut-used") && !o(".price-block").elements[0] && p(".page-content").then(() => {
     o(".page-content").elements[0].insertAdjacentHTML(
       "beforebegin",
       /* HTML */
