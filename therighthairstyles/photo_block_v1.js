@@ -145,6 +145,8 @@
           backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
+  text-align: center;
+  padding: 30px;
   justify-content: center;
 }
 .photo-block-wrapper .timer p {
@@ -200,7 +202,7 @@
   width: 100%;
   background: #ffffff;
   padding: 12px 16px;
-  z-index: 10;
+  z-index: 11;
   box-shadow: 0px -6px 16px 0px rgba(0, 0, 0, 0.08), 0px -3px 6px -4px rgba(0, 0, 0, 0.12), 0px -9px 28px 8px rgba(0, 0, 0, 0.05);
   text-align: justify;
   font-size: 14px;
@@ -328,7 +330,7 @@
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, f = (r, e) => {
+  }, g = (r, e) => {
     const t = document.querySelector(r);
     if (!t) return;
     const i = t.getBoundingClientRect().top - 100;
@@ -446,9 +448,9 @@
   function T(r) {
     return r && r.__esModule && Object.prototype.hasOwnProperty.call(r, "default") ? r.default : r;
   }
-  var g, m;
+  var f, m;
   function j() {
-    return m || (m = 1, g = function(r) {
+    return m || (m = 1, f = function(r) {
       if (!window || window.window !== window)
         throw new Error("This module is only available in browser");
       var e = window.Blob || window.MozBlob || window.WebKitBlob;
@@ -460,7 +462,7 @@
       for (var i = n[2] ? n[1] : "text/plain" + (n[3] || ";charset=utf-8"), a = !!n[4], s = r.slice(n[0].length), c = a ? atob(s) : decodeURIComponent(s), y = [], w = 0; w < c.length; w++)
         y.push(c.charCodeAt(w));
       return new e([new Uint8Array(y)], { type: i });
-    }), g;
+    }), f;
   }
   var B = j();
   const M = /* @__PURE__ */ T(B);
@@ -512,8 +514,8 @@
         "style",
         `background:linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(${this.selectedImage}) center center no-repeat; background-size: cover;`
       ), o(".fixed-ready-block").elements[0].remove(), o(".try-another").addClass("hide"), o(".reviews-block").elements[0].remove(), o(".try-another button").on("click", () => {
-        f(".photos-block-wrapper"), h("exp_q2_click_2", "Try another hairstyle", "click", "Want to try different vibe.");
-      }), f(".photo-block"), this.setTimer(), this.getGenerationPhoto();
+        g(".photos-block-wrapper"), h("exp_q2_click_2", "Try another hairstyle", "click", "Want to try different vibe.");
+      }), g(".photo-block"), this.setTimer(), this.getGenerationPhoto();
     }
     async getGenerationPhoto() {
       if (!this.generationId) return;
@@ -526,13 +528,13 @@
 					${u(n[0].generated_image_urls[0])}
 					<img src="${n[0].generated_image_urls[0]}" alt="Generated hairstyle" />
 					`), this.downloadPhotoHandler(), localStorage.setItem("haircut-used", n[0].generated_image_urls[0]));
-      }, 3e3);
+      }, 5e3);
       setTimeout(() => {
         e && clearInterval(e);
-      }, 33e3);
+      }, 6e4);
     }
     setTimer() {
-      let e = 35;
+      let e = 60;
       o(".photo-block .timer p span").text(e.toString());
       const t = setInterval(() => {
         if (!o(".photo-block .timer").elements[0]) {
@@ -540,7 +542,7 @@
           return;
         }
         e -= 1;
-        const n = 150.8 - e / 35 * 150.8;
+        const n = 150.8 - e / 60 * 150.8;
         o("#borderTimer").attr("stroke-dashoffset", `${-n}`), o(".photo-block .timer p span").text(e.toString()), e <= 0 && (clearInterval(t), o(".photo-block .timer").html("Sorry, we can’t generate your photo now. Please try again later."));
       }, 1e3);
     }
@@ -563,7 +565,7 @@
     }
     async usedBlocks(e) {
       await p(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", b), o(".photo-block-wrapper>h3").text("Your new look is ready 🎉"), o(".photo-block-wrapper>h3+p").text("Enjoy your transformation — you look amazing!"), o(".photo-block .timer").elements[0].remove(), o(".photo-block").html(`${u(e)}<img src="${e}" alt="Generated hairstyle" />`), o(".try-another button").on("click", () => {
-        f(".photos-block-wrapper");
+        g(".photos-block-wrapper");
       }), o(".img-wrapper").on("click", (t) => {
         window.location.pathname = "/user/purchase-credits";
       }), this.downloadPhotoHandler();
