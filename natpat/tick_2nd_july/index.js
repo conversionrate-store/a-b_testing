@@ -1181,7 +1181,12 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
      */
     handleRadioChange(t) {
       const e = t.value === "bundle";
-      this.bundleSelected = e, this.stateManager.saveBundleState(e), e || this.stateManager.clearBundleState(), this.updatePriceDisplay(t);
+      this.bundleSelected = e, this.stateManager.saveBundleState(e), e || this.stateManager.clearBundleState(), e && E(
+        "exp_tick_02_click_03",
+        "Select 4 pack bundles",
+        "click",
+        "Bundle and save"
+      ), this.updatePriceDisplay(t);
     }
     /**
      * Updates price display based on selected input
@@ -1204,12 +1209,7 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
         const n = document.querySelector(
           l.CHECKED_RADIO
         );
-        if (E(
-          "exp_tick_02_click_03",
-          "Select 4 pack bundles",
-          "click",
-          "Bundle and save"
-        ), !n) {
+        if (!n) {
           console.error("No pack selected");
           return;
         }
