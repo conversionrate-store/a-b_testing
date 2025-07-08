@@ -2632,8 +2632,8 @@ section.header .header__description {
     `
       );
     }
-    events() {
-      m(".crs-more", "More with Setapp", "Benefits", 0);
+    async events() {
+      await r(".crs-more"), m(".crs-more", "More with Setapp", "Benefits", 0);
     }
     addStyles() {
       const t = document.createElement("style");
