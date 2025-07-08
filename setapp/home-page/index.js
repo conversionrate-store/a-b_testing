@@ -70,7 +70,7 @@
       navTitle: "Fix slow Mac",
       title: "Make your Mac faster and last longer",
       description: "Clean hidden junk, free up RAM, and keep your Mac in peak shape with tools that prevent future slowdowns.",
-      buttonText: "Speed up my Mac",
+      buttonText: "See apps to speed up Mac",
       buttonClass: "btn_primary",
       apps: [
         "CleanMyMac",
@@ -93,7 +93,7 @@
       navTitle: "Customise your workspace",
       title: "Customize your Mac to look clean and work faster",
       description: "Hide distractions, manage your menu bar, create custom gestures, and design a workspace that fits the way you think — not the way Apple decided",
-      buttonText: "Customize my Mac",
+      buttonText: "Browse customization apps",
       buttonClass: "btn_primary",
       apps: ["WidgetWall", "Bartender", "CleanShot X"],
       moreAppsCount: "20+",
@@ -105,7 +105,7 @@
       navTitle: "Download & convert media",
       title: "Get the videos you need, in the format you want",
       description: "Whether it's YouTube tutorials or social media clips, Setapp gives you tools to download videos, extract audio, and convert formats that actually work",
-      buttonText: "Get the video I need",
+      buttonText: "Browse video downloaders & converters",
       buttonClass: "btn_light",
       apps: ["Downie", "Pulltube", "Permute"],
       moreAppsCount: "17+",
@@ -117,7 +117,7 @@
       navTitle: "Recover & open files",
       title: "Open and edit what your Mac usually can't",
       description: "Work with PDFs, RARs, NTFS, and more — open, edit, fix, and convert the formats your Mac can't handle on its own",
-      buttonText: "Handle my tricky files",
+      buttonText: "See apps for tricky files",
       buttonClass: "btn_primary",
       apps: [
         "Nitro PDF Pro",
@@ -140,7 +140,7 @@
       navTitle: "All-in-one work tools",
       title: "All your work tools, finally in one place",
       description: "From documents to development, Setapp includes focused tools for writing, coding, managing tasks, and staying productive — no extra subscriptions needed",
-      buttonText: "Get my full toolkit",
+      buttonText: "Browse productivity apps",
       buttonClass: "btn_primary",
       apps: ["Session", "CodeRunner", "Craft"],
       moreAppsCount: "83+",
@@ -152,7 +152,7 @@
       navTitle: "Do more with AI",
       title: "Use AI to write, transcribe, and stay ahead",
       description: "With tools for writing, summarising, chatting with PDFs, and transcribing meetings, Setapp brings AI into your workflow — without setup, stress, or extra subscriptions",
-      buttonText: "Explore my AI tools",
+      buttonText: "Explore AI apps",
       buttonClass: "btn_primary",
       apps: ["PDF Pals", "MurmurType", "Ready to Send"],
       moreAppsCount: "9+",
@@ -576,6 +576,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  display: none; /* Hide by default */
 }
 
 .crs-block-comment {
