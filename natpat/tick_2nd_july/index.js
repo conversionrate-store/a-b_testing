@@ -1400,13 +1400,13 @@
     }
   }
   const M = "";
-  _({ name: "Tick - Improve E-Commerce section", dev: "OS" }), S("exp-ec-section");
+  _({ name: "Tick - Improve E-Commerce section", dev: "OS" }), S("exp_tick_02");
   class F {
     constructor() {
-      this.init();
+      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.addStyles(), new R();
+      this.device === "mobile" && (this.addStyles(), new R());
     }
     addStyles() {
       const t = document.createElement("style");
