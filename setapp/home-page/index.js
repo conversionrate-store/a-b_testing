@@ -473,6 +473,7 @@
   scroll-margin-top: 80px;
   container-type: inline-size;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .crs-apps-block-inner {
