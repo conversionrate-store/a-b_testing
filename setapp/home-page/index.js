@@ -20,7 +20,7 @@
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, g = (i, t = "info") => {
+  }, u = (i, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -63,7 +63,7 @@
       Focus: "18",
       Finance: "20"
     }
-  }, u = [
+  }, g = [
     {
       id: "fix-slow-mac",
       color: "7E7EE1",
@@ -1471,7 +1471,7 @@ body:has(.os-dialog[open]) {
       eventNonInteraction: !0,
       intercomLoaded: !0
     };
-    window.dataLayer.push(o), g("Data pushed to dataLayer", "info"), console.table(n);
+    window.dataLayer.push(o), u("Data pushed to dataLayer", "info"), console.table(n);
   }, m = (i, t, e, n = 1e3, o = 0.5) => {
     let a, p;
     if (a = new IntersectionObserver(
@@ -1482,7 +1482,7 @@ body:has(.os-dialog[open]) {
             eventAction: "View",
             eventLabel: e
           }), a.disconnect();
-        }, n) : (g("Element is not fully visible", "warn"), clearTimeout(p));
+        }, n) : (u("Element is not fully visible", "warn"), clearTimeout(p));
       },
       { threshold: [o] }
     ), typeof i == "string") {
@@ -1886,7 +1886,7 @@ body:has(.os-dialog[open]) {
         </div>
         <div class="crs-apps-sub-action">
           <button
-            class="btn btn_light signup__button crs-block-action-button"
+            class="btn btn_light signup__button crs-block-action-popup-button"
             type="button"
             data-block-title="Sign up, install Setapp..."
             data-title="Try free for 7 days"
@@ -1900,7 +1900,7 @@ body:has(.os-dialog[open]) {
       t.insertAdjacentHTML("afterend", e);
     }
     renderNavigation() {
-      return u.map(
+      return g.map(
         (n) => (
           /* HTML */
           `<li class="crs-apps-nav-item">
@@ -1917,7 +1917,7 @@ body:has(.os-dialog[open]) {
     </li>`;
     }
     renderBlocks() {
-      return u.map(
+      return g.map(
         (t) => (
           /* HTML */
           `<div
@@ -2021,7 +2021,7 @@ body:has(.os-dialog[open]) {
           eventCategory: n.getAttribute("data-block-title") || "",
           eventAction: "Click",
           eventLabel: n.getAttribute("data-title") || ""
-        }), console.log("link", a), setTimeout(() => {
+        }), setTimeout(() => {
           a && (window.location.href = a);
         }));
       };
@@ -2031,6 +2031,20 @@ body:has(.os-dialog[open]) {
           ".crs-block-action-button"
         ), e && e.length > 0 && e.forEach((n) => {
           n.addEventListener("click", t);
+        });
+      }), r(".crs-block-action-popup-button").then(() => {
+        const e = document.querySelectorAll(
+          ".crs-block-action-popup-button"
+        );
+        e && e.length > 0 && e.forEach((n) => {
+          n.addEventListener("click", () => {
+            var o;
+            (o = document.querySelector(".header__cta-button")) == null || o.click(), l({
+              eventCategory: n.getAttribute("data-block-title") || "",
+              eventAction: "Click",
+              eventLabel: n.getAttribute("data-title") || ""
+            });
+          });
         });
       }), r(".crs-apps-block").then(() => {
         document.querySelectorAll(".crs-apps-block").forEach((n, o) => {
@@ -2270,7 +2284,7 @@ body:has(.os-dialog[open]) {
       t.textContent = C, document.head.appendChild(t);
     }
   }
-  const D = "https://conversionrate-store.github.io/a-b_images/setapp/", A = `.site-navigation__bar {
+  const A = "https://conversionrate-store.github.io/a-b_images/setapp/", D = `.site-navigation__bar {
   background: #1a1a1d;
 }
 
@@ -2371,7 +2385,7 @@ section.header .header__description {
     }
     async addAppsImage() {
       const t = `
-      <div class="header__apps-image"><img src="${D}/apps.webp" alt="Apps Image"></div>`, e = await r(
+      <div class="header__apps-image"><img src="${A}/apps.webp" alt="Apps Image"></div>`, e = await r(
         "section.header .header__logo"
       );
       if (e)
@@ -2417,7 +2431,7 @@ section.header .header__description {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = A, document.head.appendChild(t);
+      t.textContent = D, document.head.appendChild(t);
     }
   }
   const q = `.crs-more {
