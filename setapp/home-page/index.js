@@ -1547,7 +1547,7 @@ section.header .header__description {
     async setFilters() {
       const n = new URLSearchParams(location.search).get("filters");
       n && (await r(".all-apps__filters-bar > button"), document.querySelectorAll(".all-apps__filters-bar > button").forEach((a) => {
-        n.includes(a.value) && a.click();
+        n.includes(a.value) && (console.log(`Clicking button with value: ${a.value}`), a.click());
       }));
     }
   }
