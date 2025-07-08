@@ -1,14 +1,14 @@
 (function() {
   "use strict";
-  const f = (s, e, t, i = "") => {
+  const w = (s, e, t, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: s,
       event_desc: e,
       event_type: t,
       event_loc: i
-    }), y(`Event: ${s} | ${e} | ${t} | ${i}`, "success");
-  }, C = (s) => new Promise((e) => {
+    }), C(`Event: ${s} | ${e} | ${t} | ${i}`, "success");
+  }, y = (s) => new Promise((e) => {
     const t = document.querySelector(s);
     t && e(t);
     const i = new MutationObserver(() => {
@@ -19,7 +19,7 @@
       childList: !0,
       subtree: !0
     });
-  }), w = ({ name: s, dev: e }) => {
+  }), f = ({ name: s, dev: e }) => {
     console.log(
       `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -29,13 +29,13 @@
     if (r = new IntersectionObserver(
       function(d) {
         d[0].isIntersecting === !0 ? a = setTimeout(() => {
-          f(
+          w(
             e,
             d[0].target.dataset.visible || i,
             "view",
             t
           ), r.disconnect();
-        }, n) : (y("Element is not fully visible", "warn"), clearTimeout(a));
+        }, n) : (C("Element is not fully visible", "warn"), clearTimeout(a));
       },
       { threshold: [o] }
     ), typeof s == "string") {
@@ -43,7 +43,7 @@
       d && r.observe(d);
     } else
       r.observe(s);
-  }, y = (s, e = "info") => {
+  }, C = (s, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -125,13 +125,17 @@
   line-height: 24px;
 }
 
+.crs-delivery-countdown .timer > [class$="-word"] {
+  display: none;
+}
+
 .crs-delivery-countdown .icon {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@container (min-width: 540px) {
+@container (min-width: 385px) {
   .crs-delivery-countdown br {
     display: none;
   }
@@ -292,7 +296,7 @@
   const p = {
     // Set to false to use local time instead of UTC
     DAILY_CUTOFF_HOUR: 15,
-    // 4:00 PM cutoff for daily orders
+    // 3:00 PM cutoff for daily orders
     WEEKLY_START_HOUR: 5
     // 5:00 AM Monday start time
   };
@@ -302,20 +306,20 @@
     }
     init() {
       this.checkIsPdpPage().then((e) => {
-        e && (this.addStyles(), C("footer").then(() => {
+        e && (this.addStyles(), y("footer").then(() => {
           this.addDeliveryBadge();
         }));
       });
     }
     async checkIsPdpPage() {
-      return !!await C("product-view");
+      return !!await y("product-view");
     }
     async addDeliveryBadge() {
       if (!this.shouldShowDeliveryBadge()) {
         console.log("Delivery badge hidden due to time restrictions");
         return;
       }
-      const e = await C("product-view-add-to-basket"), t = document.querySelector(".crs-delivery-countdown");
+      const e = await y("product-view-add-to-basket"), t = document.querySelector(".crs-delivery-countdown");
       t && t.remove(), this.deliveryBadgeInstance = new x({
         container: e,
         position: "beforebegin"
@@ -343,7 +347,7 @@
       e.textContent = I, document.head.appendChild(e);
     }
   }
-  w({ name: "Delivery urgency and date", dev: "OS" });
+  f({ name: "Delivery urgency and date", dev: "OS" });
   class H {
     constructor() {
       this.init();
