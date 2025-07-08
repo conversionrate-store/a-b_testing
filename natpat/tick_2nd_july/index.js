@@ -436,6 +436,24 @@
   font-weight: 400;
   line-height: 20px;
 }
+
+section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
+  margin-bottom: 0 !important;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.crs-bundle-subtitle {
+  margin: 9px auto 30px;
+  color: #181717;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+}
 `, A = "1-buzzpatch-kids-3-kids-trail-patch", I = {
     TICK_PATCHES: {
       slug: "trailpatch-kids-tick-repellent-stickers",
@@ -486,7 +504,8 @@
     PRICE_NUM: ".overall-price .price-num",
     PRICE_OFF: ".price-off",
     COMPARE_PRICE: ".compare-price",
-    SAVED_PRICE: ".saved-price"
+    SAVED_PRICE: ".saved-price",
+    BUNDLE_TITLE: "section.lp-tr--purchase h2.lp-tr--mobile"
   };
   class O {
     /**
@@ -558,8 +577,8 @@
         const u = (s / 100).toFixed(d).split("."), v = u[0].replace(
           /(\d)(?=(\d\d\d)+(?!\d))/g,
           "$1" + h
-        ), y = u[1] ? g + u[1] : "";
-        return v + y;
+        ), x = u[1] ? g + u[1] : "";
+        return v + x;
       };
       let i = "";
       const r = e.match(n);
@@ -778,7 +797,7 @@
     }
   }
   const T = "https://conversionrate-store.github.io/a-b_images/natpat/";
-  class N {
+  class L {
     constructor(t) {
       this.priceFormatter = t;
     }
@@ -1004,7 +1023,7 @@
     `;
     }
   }
-  class L {
+  class N {
     /**
      * Attaches event listeners to accordion elements
      */
@@ -1124,12 +1143,12 @@
       if (!s || g) {
         const v = o * d;
         u = i + n.bottom - o + v;
-        const x = Math.abs(u - i), H = r ? m.MOBILE_SCROLL_THRESHOLD : m.DESKTOP_SCROLL_THRESHOLD;
-        if (x > H) {
-          const q = document.documentElement.scrollHeight - o;
+        const y = Math.abs(u - i), q = r ? m.MOBILE_SCROLL_THRESHOLD : m.DESKTOP_SCROLL_THRESHOLD;
+        if (y > q) {
+          const U = document.documentElement.scrollHeight - o;
           u = Math.max(
             0,
-            Math.min(u, q)
+            Math.min(u, U)
           ), b = !0;
         }
       }
@@ -1268,6 +1287,28 @@
   }
   class R {
     constructor() {
+      this.init();
+    }
+    init() {
+      this.changeTitle("Select Package"), this.addSubtitle("48 patches in 1 pack");
+    }
+    getBundleTitle() {
+      return document.querySelector(l.BUNDLE_TITLE);
+    }
+    changeTitle(t) {
+      const e = this.getBundleTitle();
+      console.log("ChangeBundleTitle initialized", e, t), e && (e.textContent = t);
+    }
+    addSubtitle(t) {
+      const e = this.getBundleTitle();
+      if (e) {
+        const n = document.createElement("div");
+        n.className = "crs-bundle-subtitle", n.textContent = t, e.insertAdjacentElement("afterend", n);
+      }
+    }
+  }
+  class M {
+    constructor() {
       this.bundleOption = {
         id: 44402670927916,
         name: "Special Bundle",
@@ -1275,10 +1316,10 @@
         // Will be updated with proper formatting
         description: "New exclusive bundle with extra benefits",
         isBundle: !0
-      }, this.stateManager = new O(), this.priceFormatter = new k(), this.apiService = new B(A, 44402670927916), this.renderer = new N(this.priceFormatter), this.accordionHandler = new L(), this.eventHandler = new D(
+      }, this.stateManager = new O(), this.priceFormatter = new k(), this.apiService = new B(A, 44402670927916), this.renderer = new L(this.priceFormatter), this.accordionHandler = new N(), this.eventHandler = new D(
         this.stateManager,
         this.apiService
-      ), document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.init()) : this.init();
+      ), this.changeBundleTitle = new R(), document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.init()) : this.init();
     }
     /**
      * Initialize the bundle functionality
@@ -1329,10 +1370,10 @@
         (i - o) / i * 100
       ), v = this.priceFormatter.formatMoney(
         t.price_min || o
-      ), y = this.priceFormatter.formatBundleItem(
+      ), x = this.priceFormatter.formatBundleItem(
         e,
         "Tick Patches"
-      ), x = this.priceFormatter.formatBundleItem(
+      ), y = this.priceFormatter.formatBundleItem(
         n,
         "Mosquito Patches"
       );
@@ -1346,8 +1387,8 @@
         formattedComparePrice: g,
         savedAmount: b,
         percentOff: u,
-        tickPatches: y,
-        mosquitoPatches: x,
+        tickPatches: x,
+        mosquitoPatches: y,
         formattedPriceMin: v
       };
     }
@@ -1399,19 +1440,19 @@
       return await this.apiService.isBundleAvailable();
     }
   }
-  const M = "";
+  const F = "";
   _({ name: "Tick - Improve E-Commerce section", dev: "OS" }), S("exp_tick_02");
-  class F {
+  class H {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.device === "mobile" && (this.addStyles(), new R());
+      this.device === "mobile" && (this.addStyles(), new M());
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = M, document.head.appendChild(t);
+      t.textContent = F, document.head.appendChild(t);
     }
   }
-  new F();
+  new H();
 })();
