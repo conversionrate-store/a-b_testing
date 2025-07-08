@@ -1,42 +1,42 @@
 (function() {
   "use strict";
-  const r = (i) => new Promise((t) => {
-    const e = document.querySelector(i);
-    e && t(e);
-    const n = new MutationObserver(() => {
-      const o = document.querySelector(i);
-      o && (t(o), n.disconnect());
+  const r = (o) => new Promise((t) => {
+    const n = document.querySelector(o);
+    n && t(n);
+    const e = new MutationObserver(() => {
+      const a = document.querySelector(o);
+      a && (t(a), e.disconnect());
     });
-    n.observe(document.documentElement, {
+    e.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), y = ({ name: i, dev: t }) => {
+  }), u = ({ name: o, dev: t }) => {
     console.log(
-      `%c EXP: ${i} (DEV: ${t})`,
+      `%c EXP: ${o} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, b = (i) => {
+  }, f = (o) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", o, "variant_1"));
     }, 1e3);
-  }, u = (i, t = "info") => {
-    let e;
+  }, h = (o, t = "info") => {
+    let n;
     switch (t) {
       case "info":
-        e = "color: #3498db;";
+        n = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        n = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        n = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${i}`, `${e} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${o}`, `${n} font-size: 16px; font-weight: 600`);
   }, s = {
     optimize: {
       "Mac Apps": "mac",
@@ -351,1146 +351,44 @@
       platforms: "Web",
       rating: "0"
     }
-  ], v = `.tippy-box,
-.tippy-content {
-  background: transparent !important;
-  /* padding: 0 !important;
-  border: 0; */
-}
-
-.os-popover {
-  width: 100%;
-  max-width: 408px;
-  max-height: 100vh;
-  background-color: #fff;
-  color: #26262b;
-  padding-top: 0;
-  border-radius: 24px;
-  font-size: 14px;
-  z-index: 1000;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: Avenir Next, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, sans-serif;
-  overflow: hidden;
-  overflow-y: auto;
-}
-.os-dialog .os-popover {
-  max-width: 100%;
-}
-.os-available {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-block: 6px;
-  background: #f5f5f5;
-  color: #77767a;
-  text-align: center;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px; /* 128.571% */
-}
-
-.os-popover-close {
-  position: absolute;
-  top: 50%;
-  right: 4px;
-  transform: translateY(-50%);
-  margin-right: 16px;
-  justify-self: end;
-  width: 20px;
-  height: 20px;
-  border: none;
-  background-color: transparent;
-  background-size: cover;
-  background-image: url('https://cdn.setapp.com/master-9f18f44f26fe5f8aa6077a4a8f38ca796e93985f-590/build/main/351e912995feef9e5a79.svg');
-  cursor: pointer;
-}
-
-.os-popover-header-inner {
-  margin-top: 12px;
-  display: flex;
-  gap: 14px;
-  padding-inline: 4px;
-  padding-left: 36px;
-}
-
-.os-popover-header img {
-  width: 96px;
-  height: 96px;
-}
-.os-popover-header h3 {
-  margin: 0;
-  padding: 0;
-  max-width: 209px;
-  color: #26262b;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 32px; 
-  letter-spacing: 1.15px;
-}
-
-.os-popover-header p {
-  margin-top: 6px;
-  margin-bottom: 0;
-  color: #26262b;
-
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
-}
-
-.os-popover-rating {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.os-rating {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #26262b;
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 40.04px;
-}
-
-.os-rating::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 24px;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="%239D9CA2" fill-rule="evenodd" d="M9.637 7.41A6.015 6.015 0 0 0 9 10.11v6.39c0 1.65 1.342 3 3 3h5.343c1.284 0 2.425-.81 2.84-2.025l1.888-5.55c.663-1.935-.785-3.96-2.841-3.96H15v-4.98a1.485 1.485 0 0 0-2.805-.675l-2.558 5.1Zm-5.887.555a2.249 2.249 0 0 0-2.25 2.25v7.035a2.25 2.25 0 1 0 4.5 0v-7.035a2.249 2.249 0 0 0-2.25-2.25Z" clip-rule="evenodd"/></svg>');
-}
-
-.os-rating-amount {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #26262b;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20.02px;
-}
-
-.os-rating-amount::before {
-  content: '';
-  display: block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #26262b;
-}
-
-.os-popover-body {
-  margin-top: 12px;
-  padding-inline: 16px;
-}
-
-.os-popover-body p {
-  margin-bottom: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #ebebec;
-  color: #26262b;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 24px;
-}
-
-.os-popover-body ul {
-  padding-inline: 0 !important;
-  margin-inline: 0 !important;
-  margin-bottom: 0 !important;
-  display: grid;
-  gap: 8px;
-  padding-top: 12px;
-  border-top: 1px solid #ebebec;
-  list-style: none;
-  list-style-position: inside;
-}
-
-.os-popover-body li {
-  margin: 0 !important;
-  padding: 0 !important;
-  color: #26262b;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 450;
-  line-height: 22px;
-  list-style-type: disc !important;
-  list-style-image: none !important;
-}
-
-.os-popover-body a {
-  color: #e6842e;
-}
-
-.os-popover-footer {
-  margin-top: 12px;
-  padding-inline: 16px;
-}
-
-.os-popover-footer-inner {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #ebebec;
-}
-
-.btn-download,
-.btn-learn-more {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 9px 22px;
-  font-size: 16px;
-  line-height: 24px;
-  border: none;
-  border-radius: 4px;
-  transition: color 0.15sease-in-out, background-color 0.15sease-in-out,
-    border-color 0.15sease-in-out, box-shadow 0.15sease-in-out;
-  cursor: pointer;
-}
-
-.btn-download {
-  background-color: #26262b;
-  color: #fff;
-}
-.btn-download:hover {
-  background-color: #36383e;
-}
-
-.btn-learn-more {
-  background-color: #fff;
-  border: 1px solid #26262b;
-  color: #26262b !important;
-  text-decoration: none !important;
-}
-
-.os-popover-security {
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 16px;
-}
-.os-popover-security::before {
-  content: '';
-  width: 15px;
-  height: 17px;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" fill="none"><g clip-path="url(%23a)"><path fill="%2326262B" fill-rule="evenodd" d="M8.064.666a2 2 0 0 0-1.128 0L.5 2.553v6.389a7 7 0 0 0 4.362 6.483l1.884.766a2 2 0 0 0 1.508 0l1.883-.766A7 7 0 0 0 14.5 8.944V2.555L8.064.666ZM7.5 2.585l-5 1.467v4.89a5 5 0 0 0 3.116 4.632l1.884.766V2.585Z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="%23fff" d="M.5.5h14v16H.5z"/></clipPath></defs></svg>');
-}
-
-.os-dialog {
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  padding: 0;
-  border: none;
-  background: rgba(0, 0, 0, 0.2);
-}
-
-/* body:has(#signup-modal.is-open) :is(.os-dialog, .os-dialog::backdrop) {
-  visibility: hidden;
-  pointer-events: none;
-} */
-.os-dialog-inner {
-  display: grid;
-  place-content: end center;
-  height: 100%;
-  overflow-y: auto;
-}
-
-.os-dialog-close {
-  margin-right: 16px;
-  justify-self: end;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: transparent;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" fill="none"><g clip-path="url(%23a)"><path fill="%23fff" fill-rule="evenodd" d="M20 40.02c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20 8.954 20 20 20Zm7.134-27.134a1.25 1.25 0 0 1 0 1.768l-5.366 5.366 5.366 5.366a1.25 1.25 0 0 1-1.768 1.768L20 21.788l-5.366 5.366a1.25 1.25 0 0 1-1.768-1.768l5.366-5.366-5.366-5.366a1.25 1.25 0 0 1 1.768-1.768L20 18.252l5.366-5.366a1.25 1.25 0 0 1 1.768 0Z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="%23fff" d="M0 .02h40v40H0z"/></clipPath></defs></svg>');
-}
-
-.os-dialog-content {
-  margin-top: 12px;
-}
-
-.os-dialog .os-popover {
-  border-radius: 24px 24px 0 0;
-}
-
-body:has(.os-dialog[open]) {
-  overflow: hidden;
-}
-`;
-  class w {
-    constructor() {
-      this.popoverElement = null, this.aborters = [], this.init(), this.aborters = [];
-    }
-    init() {
-      this.addStyles(), this.renderDialog();
-    }
-    content(t) {
-      return (
-        /* HTML */
-        `<div class="os-popover-header">
-        <div class="os-available">
-          Available via Setapp
-          <button class="os-popover-close" type="button"></button>
-        </div>
-
-        <div class="os-popover-header-inner">
-          <img
-            src="${t.imgSrc}"
-            alt=""
-            width="96"
-            height="96"
-            loading="lazy"
-          />
-          <div>
-            <h3>${t.title}</h3>
-            <p>${t.description}</p>
-            <div class="os-popover-rating">
-              ${t.ratingDetails ? (
-          /* HTML */
-          ` <div class="os-rating">
-                      ${t.ratingDetails.percentage}
-                    </div>
-                    <div class="os-rating-amount">
-                      ${t.ratingDetails.total} ratings
-                    </div>`
-        ) : ""}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="os-popover-body">
-        <p>${t.body.text}</p>
-        <ul>
-          ${t.body.list.map((e) => `<li>${e}</li>`).join("")}
-        </ul>
-      </div>
-      <div class="os-popover-footer">
-        <div class="os-popover-footer-inner">
-          <button class="btn-download" id="os-download">
-            Try free for 7 days
-          </button>
-        </div>
-      </div>
-      <div class="os-popover-security">Security-tested</div>`
-      );
-    }
-    returnHtml(t) {
-      return (
-        /* HTML */
-        `
-      <div class="os-popover">${this.content(t)}</div>
-    `
-      );
-    }
-    renderDialog() {
-      var t;
-      this.popoverElement = document.createElement("dialog"), this.popoverElement.classList.add("os-popover--dialog", "os-dialog"), this.popoverElement.id = "os-dialog", this.popoverElement.innerHTML = /* HTML */
-      `
-      <div class="os-dialog-inner">
-        <button class="os-dialog-close" type="button"></button>
-        <div class="os-dialog-content" id="os-dialog-content"></div>
-      </div>
-    `, (t = document.body) == null || t.appendChild(this.popoverElement);
-    }
-    showDialog(t) {
-      var a;
-      t && t !== "latest" && sessionStorage.setItem("os-tooltip-variant", JSON.stringify(t));
-      const n = document.getElementById("os-dialog").querySelector(
-        "#os-dialog-content"
-      ), o = t === "latest" ? JSON.parse(sessionStorage.getItem("os-tooltip-variant")) : t;
-      n.innerHTML = this.returnHtml(o), (a = this.popoverElement) == null || a.showModal(), this.eventListeners();
-    }
-    closeDialog() {
-      if (!this.popoverElement) return;
-      const t = this.popoverElement.querySelector(
-        "#os-dialog-content"
-      );
-      this.popoverElement.close(), t.innerHTML = "", this.aborters.forEach((e) => {
-        e.abort();
-      }), this.aborters = [];
-    }
-    eventListeners() {
-      if (!this.popoverElement) return;
-      const t = document.getElementById("os-dialog"), e = t == null ? void 0 : t.querySelector(
-        'button[type="button"]'
-      );
-      e == null || e.addEventListener("click", () => {
-        this.closeDialog();
-      });
-      const n = new AbortController();
-      this.aborters.push(n);
-      const o = t.querySelector(
-        ".btn-download"
-      );
-      o == null || o.addEventListener(
-        "click",
-        async () => {
-          var p;
-          (p = document.querySelector(".header__cta-button")) == null || p.click();
-          const a = document.querySelector("#signup-modal");
-          if (a) {
-            const c = new MutationObserver((h) => {
-              h.forEach((f) => {
-                f.type === "attributes" && f.attributeName === "aria-hidden" && a.getAttribute("aria-hidden") === "true" && (c.disconnect(), this.showDialog("latest"));
-              });
-            });
-            c.observe(a, { attributes: !0 });
-          }
-        },
-        {
-          signal: n.signal
-        }
-      );
-    }
-    addStyles() {
-      const t = document.createElement("style");
-      t.textContent = v, document.head.appendChild(t);
-    }
-  }
-  const x = [
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/82/40394/icon-1742891157-67e26895a932e.png",
-      title: "Disk Drill",
-      description: "Recover files and avoid data loss",
-      link: "https://setapp.com/apps/disk-drill",
-      ratingDetails: {
-        percentage: "93%",
-        total: "1224"
-      },
-      body: {
-        text: "This first rated data recovery app can bring any kind of data back regardless of the loss cause. Indeed, no matter whether your stuff has gone because of data corruption, unintended removal, and disk utility error, it will help.",
-        list: [
-          "Recover deleted files",
-          "Simple and fast data backup",
-          "Hard drive data recovery",
-          "Powerful data protection"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/217/40765/icon-1730479186-67250452d2169.png",
-      title: "ChronoSync Express",
-      description: "Sync and back up folders",
-      link: "/apps/chronosync-express",
-      ratingDetails: {
-        percentage: "95%",
-        total: "389"
-      },
-      body: {
-        text: "Chronosync Express gives you peace of mind for the security of your files, office and personal data. This consistent application keeps your data safe and updated, no matter where you happen to be.",
-        list: [
-          "Home folder backup or sync",
-          "Easy connection to Macs, iPhones and iPads",
-          "File servers backup and auto mount",
-          "Email and system notifications supported"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png",
-      title: "Backup Pro",
-      description: "Back up only essential files",
-      link: "/apps/get-backup-pro",
-      ratingDetails: {
-        percentage: "86%",
-        total: "281"
-      },
-      body: {
-        text: "Try Get Backup Pro. It's a good mix of backup methods, coming with four varying ways of backups: simple copy, clone, incremental and versioned. Plus, it's used once you need to recover data that has been accidentally deleted from your Mac.",
-        list: [
-          "Backup only those units you want",
-          "Scheduled backups with Stealth mode",
-          "Recover to any computer",
-          "Folder synchronization"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/289/42253/icon-1743678842-67ee6d7aeeda6.png",
-      title: "CloudMounter",
-      description: "Connect cloud storage to Finder",
-      link: "/apps/cloudmounter",
-      ratingDetails: {
-        percentage: "90%",
-        total: "1234"
-      },
-      body: {
-        text: "CloudMounter connects your cloud storage accounts like Google Drive, Dropbox, Amazon S3, OneDrive, and others to your Mac's Finder so you can treat them as regular, local drives.",
-        list: [
-          "Secure cloud data encryption",
-          "Streamlined into your Finder",
-          "Access multiple cloud accounts",
-          "Mount all Cloud storages as local disks"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/222/42263/icon-1743756630-67ef9d568e1e3.png",
-      title: "Downie",
-      description: "Download YouTube videos",
-      link: "/apps/downie",
-      ratingDetails: {
-        percentage: "98%",
-        total: "4372"
-      },
-      body: {
-        text: "Find a video you want to download, then drag and drop the link into the app, or take advantage of a Downie browser extension doing it for you. That's literally all it takes to get that video on your Mac.",
-        list: [
-          "Download YouTube videos",
-          "Download MP4 or just the audio",
-          "Simply drag-and-drop an URL",
-          "Save 4K YouTube videos"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/371/42285/icon-1744023104-67f3ae4007aa4.png",
-      title: "Pulltube",
-      description: "Download and trim videos",
-      link: "https://setapp.com/apps/pulltube",
-      ratingDetails: {
-        percentage: "98%",
-        total: "1478"
-      },
-      body: {
-        text: "Pulltube is a Mac app that enables you to save any type of video and audio content from the top websites like YouTube and Vimeo — in the best quality. 4K, 8K, HD, and 60fps videos are covered.",
-        list: [
-          "Download from 1000+ sites",
-          "Trim your video and audio",
-          "Capture video subtitles",
-          "Download faster via extensions"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/321/42059/icon-1741882724-67d3056489850.png",
-      title: "CleanShot X",
-      description: "Take better screenshots and GIFs",
-      link: "/apps/cleanshot",
-      ratingDetails: {
-        percentage: "99%",
-        total: "11843"
-      },
-      body: {
-        text: "CleanShot is the ultimate screen recording app made for macOS. With its rich toolkit, CleanShot actually feels like 6 apps in one. You can use it to swiftly capture Mac's screen without desktop icons, record and trim video, annotate, save screenshots to dedicated cloud, and more.",
-        list: [
-          "Record screen",
-          "Hide desktop icons",
-          "Annotate, highlight or blur",
-          "Quick Access Overlay"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/328/41359/icon-1734924881-6768da51c8c1a.png",
-      title: "AnyTrans for iOS",
-      description: "Move files between macOS and iOS",
-      link: "/apps/anytrans",
-      body: {
-        text: "The app instantly backups and copies your iPhone content to Mac, as well as transfers data across iOS, iTunes and iCloud. Connect a device and watch your content fly.",
-        list: [
-          "Schedule instant iPhone backups",
-          "Manage iTunes and iCloud content",
-          "Secure management of backups",
-          "Download media from 900+ sites"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/67/41952/icon-1740773686-67c219360b852.png",
-      title: "Ulysses",
-      description: "Write and publish from one app",
-      link: "/apps/ulysses",
-      ratingDetails: {
-        percentage: "99%",
-        total: "2127"
-      },
-      body: {
-        text: "It's an insanely functional writing program, yet it stays completely out of your way when you just need a page to write on. With Ulysses, every step of your story's lifecycle gets easier: you can write undistracted, format with a few keystrokes, and publish without leaving the app.",
-        list: [
-          "Write without distractions",
-          "Stay safe with iCloud sync",
-          "Export beautiful ebooks and PDFs",
-          "Publish to WordPress or Medium"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/554/42201/icon-1743413950-67ea62be54f57.png",
-      title: "Craft",
-      description: "Create and structure documents",
-      link: "/apps/craft",
-      ratingDetails: {
-        percentage: "99%",
-        total: "2127"
-      },
-      body: {
-        text: "Create efficient and visually pleasing documents to track your projects, ideas, plans, and more. File away your items into neatly organized folders or interlink via a master document.",
-        list: [
-          "Share what you are working on",
-          "Use AI assistant",
-          "Structure your items",
-          "Collaborate easily"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/219/42264/icon-1743758208-67efa380b6636.png",
-      title: "Permute",
-      description: "Convert audio, images, and videos",
-      link: "/apps/permute",
-      ratingDetails: {
-        percentage: "98%",
-        total: "3778"
-      },
-      body: {
-        text: "Permute is a quick image, audio, and video converter. You can use it for files of all formats because Permute can convert anything into anything.",
-        list: [
-          "Video converter",
-          "Image converter",
-          "Audio converter",
-          "Video to audio converter"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/566/0/icon-1741357275-67cb00db1ded3.png",
-      title: "Luminar Neo",
-      description: "Improve your photos like a pro",
-      link: "/apps/luminar-neo",
-      ratingDetails: {
-        percentage: "90%",
-        total: "700"
-      },
-      body: {
-        text: "Luminar Neo does everything you need done with your shots — from simple color and vibrancy fixes to more advanced clutter removal, sky replacement, improving the lighting in your photos and more.",
-        list: [
-          "Enhance photos with AI tools",
-          "Utilize extensions",
-          "Get the colors just right",
-          "Use presets"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/299/42088/icon-1742267911-67d8e607487c0.png",
-      title: "CameraBag Pro",
-      description: "Edit photos and videos",
-      link: "/apps/camerabag-pro",
-      ratingDetails: {
-        percentage: "90%",
-        total: "428"
-      },
-      body: {
-        text: "Create breathtaking photos and films with professional one-click filters, or tweak and adjust image settings precisely to impress your friends, colleagues, and clients easier than ever before.",
-        list: [
-          "Professional filters at the ready",
-          "Quick and easy batch changes",
-          "Intuitive adjustment tiles",
-          "Award-winning interface"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/298/8541/icon-1691068510-64cba85e8b087.png",
-      title: "TouchRetouch",
-      description: "Remove objects from photos",
-      link: "/apps/touchretouch",
-      ratingDetails: {
-        percentage: "98%",
-        total: "680"
-      },
-      body: {
-        text: "Don't let a poorly placed trash can or powerline ruin an otherwise perfect photo. With TouchRetouch, your Mac becomes an all-in-one photo retouching studio where you can get your images looking their best.",
-        list: [
-          "Remove unwanted objects",
-          "Crop and edit photos",
-          "Photo retouching in a click",
-          "Line removal"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/433/42254/icon-1743694727-67eeab8756821.png",
-      title: "ClearVPN",
-      description: "Use an intuitive VPN",
-      link: "/apps/clearvpn",
-      ratingDetails: {
-        percentage: "88%",
-        total: "2686"
-      },
-      body: {
-        text: "The app offers simple, ready-made tools that help you spend less time tweaking your VPN's settings and more time actually doing what you want done. Stay more anonymous online, protect your personal information, connect to servers from a specific country and more in a click.",
-        list: [
-          "Deploy a VPN easily",
-          "Change geolocation",
-          "Enjoy perfectly usable speeds",
-          "Keep your data anonymous"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/517/41861/icon-1740384397-67bc288ddd017.png",
-      title: "AddLock",
-      description: "Block annoying browser ads",
-      link: "/apps/adlock",
-      ratingDetails: {
-        percentage: "69%",
-        total: "711"
-      },
-      body: {
-        text: "AdLock — a simple blocker for intrusive pop-up ads, annoying online chats, snoopers, and trackers. Save traffic on autoplay videos and remove unwanted distractions by blocking out ad types you'd like to avoid.",
-        list: [
-          "Block intrusive ads",
-          "Use flexible blocking",
-          "Browse safely",
-          "Remove distractions"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/496/41929/icon-1740575425-67bf12c1bdfa7.png",
-      title: "Pareto Security",
-      description: "Check your security settings",
-      link: "/apps/pareto-security",
-      ratingDetails: {
-        percentage: "97%",
-        total: "634"
-      },
-      body: {
-        text: "Pareto Security checks your device to see if you've utilized all these solutions and lets you know what can be improved. Always keep your Mac security settings up to par with this helpful tool.",
-        list: [
-          "Easy security",
-          "Menu bar interface",
-          "Security checklist",
-          "Automatic checks"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/587/41798/icon-1739292259-67ab7e63760de.png",
-      title: "Secrets 4",
-      description: "Store and manage passwords",
-      link: "/apps/secrets",
-      ratingDetails: {
-        percentage: "77%",
-        total: "151"
-      },
-      body: {
-        text: "Keep your secrets secret with Secrets 4, an updated tool to lock your sensitive information away. Your passwords are not synced to the app's server and are stored on your device or in your iCloud. Easily generate, store, use, and share your passwords.",
-        list: [
-          "Store sensitive information",
-          "Generate passwords",
-          "Share passwords",
-          "Sync between devices"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/194/10197/icon-1711963165-660a7c1d7fdbc.png",
-      title: "Archiver",
-      description: "Compress and unarchive files",
-      link: "/apps/archiver",
-      ratingDetails: {
-        percentage: "97%",
-        total: "1435"
-      },
-      body: {
-        text: "Zip, unpack and encrypt archives, split big files. You will enjoy its smooth interface, compelling features, and a rapid workflow. Definitely one of the today's most feature-rich file extractor and compressor programs.",
-        list: [
-          "Unpack folders and files in a snap",
-          "Compress files to get more space",
-          "Encrypt and password protect archives",
-          "Preview files in archive without their opening"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=1/https://store.setapp.com/app/245/7858/icon-1681236553-6435a249c1fd2.png",
-      title: "BetterZip",
-      description: "Create and encrypt archives",
-      link: "/apps/betterzip",
-      ratingDetails: {
-        percentage: "96%",
-        total: "2353"
-      },
-      body: {
-        text: "Delete the unnecessary files right in the archives, preview with Quick Look, rename or move files or folders there - no need to recompress!",
-        list: [
-          "Convenient ZIP file reader and manager",
-          "Archive comments for ZIP and RAR formats",
-          "Reliable password generator and manager",
-          "Over 30 archive formats support + ISO extractor"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/78/43873/icon-1749713159-684a8107ee73d.png",
-      title: "CleanMyMac",
-      description: "Tidy up your Mac",
-      link: "https://setapp.com/apps/cleanmymac",
-      ratingDetails: {
-        percentage: "97%",
-        total: "15454"
-      },
-      body: {
-        text: "CleanMyMac is an all-in-one Mac care app. Run performance optimization, free up space, eliminate duplicates, and manage apps seamlessly.",
-        list: [
-          "Care smarter",
-          "Steer clear of malware",
-          "Free up space",
-          "Declutter your space"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/144/41794/icon-1739274958-67ab3ace7a0bf.png",
-      title: "iStat Menus",
-      description: "Track CPU, GPU, sensors, etc.",
-      link: "https://setapp.com/apps/istat-menus",
-      ratingDetails: {
-        percentage: "97%",
-        total: "4991"
-      },
-      body: {
-        text: "The most comprehensive Mac monitor to date. iStat Menus is a fully-equipped system data collector that lives in your menu bar and provides vital info about the key indicators.",
-        list: ["CPU & GPU", "Disk usage & activity", "Memory", "Sensors"]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/493/10507/icon-1715515857-6640b1d134f36.png",
-      title: "QuitAll",
-      description: "Speed up Mac by quitting all apps",
-      link: "https://setapp.com/apps/quit-all-mac",
-      ratingDetails: {
-        percentage: "98%",
-        total: "1635"
-      },
-      body: {
-        text: "Love handling all the tasks at the same time but hate closing multiple apps one by one? Or find yourself stuck when your machine stalls due to too many apps running in the background?",
-        list: [
-          "Quick quit",
-          "Handle background apps",
-          "Force quit",
-          "Customize to your needs"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/301/42576/icon-1746973828-6820b484ae86f.png",
-      title: "Endurance",
-      description: "Extend your battery life",
-      link: "https://setapp.com/apps/endurance",
-      ratingDetails: {
-        percentage: "94%",
-        total: "569"
-      },
-      body: {
-        text: "Did you ever wish you could squeeze a little more battery life out of your MacBook? Now there’s Endurance, the app designed to make your laptop battery last longer while improving its overall battery health.",
-        list: [
-          "Lower the lights",
-          "Snooze inactive apps",
-          "Toggle your turbo",
-          "Lessen dependence on Flash"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/483/42676/icon-1747828119-682dbd97182a6.png",
-      title: "AlDente Pro",
-      description: "Set battery charging limits",
-      link: "https://setapp.com/apps/aldente-pro",
-      ratingDetails: {
-        percentage: "98%",
-        total: "2847"
-      },
-      body: {
-        text: "You may have heard that having your device plugged in and at 100% all day long is not the best for the battery. You may also have been trying to make sure you don’t go below 20 or 30% on your battery.",
-        list: [
-          "Set charging limit",
-          "Stop charging when hot",
-          "Run on battery when plugged in",
-          "Monitor status and manage"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/376/42548/icon-1746731563-681d022b89238.png",
-      title: "Mission Control",
-      description: "Close windows from Mission Control",
-      link: "https://setapp.com/apps/mission-control-plus",
-      ratingDetails: {
-        percentage: "98%",
-        total: "968"
-      },
-      body: {
-        text: "Tweak Mac’s native Mission Control feature to make the most out of it. Mission Control Plus is an app that adds the close button to all open windows you can view from Mission Control on Mac. It also covers a few shortcuts for quick actions like closing apps or killing active processes.",
-        list: [
-          "Master Mission Control and improve it",
-          "Useful shortcuts for batch actions",
-          "Close windows in Mission Control",
-          "Enjoy the native experience"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/528/42687/icon-1747926996-682f3fd48a02b.png",
-      title: "WidgetWall",
-      description: "Add widgets to Mac desktop",
-      link: "https://setapp.com/apps/widget-wall",
-      ratingDetails: {
-        percentage: "88%",
-        total: "469"
-      },
-      body: {
-        text: "Customize your Mac desktop with widgets — add favorite apps, pictures, Mac stats, and even websites for quick access. Build your very own widget wall on your desktop with WidgetWall.",
-        list: [
-          "Desktop overlay",
-          "Desktop browser widget",
-          "Quick access to tools",
-          "Easy customization"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/153/42799/icon-1748962599-683f0d271f5a8.png",
-      title: "Bartender",
-      description: "Personalize your menu bar",
-      link: "https://setapp.com/apps/bartender",
-      ratingDetails: {
-        percentage: "99%",
-        total: "14530"
-      },
-      body: {
-        text: "Bartender is a slick utility app and a one-stop menu bar organizer for Mac. It helps to organize, search, and actually use your Mac menu bar icons while also keeping your desktop tidy.",
-        list: [
-          "Customize the macOS menu bar",
-          "Search menu items",
-          "Reorder all icons",
-          "Make your own hotkeys"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/321/42718/icon-1748347773-6835ab7ddfd5d.png",
-      title: "CleanShot X",
-      description: "Take better screenshots and GIFs",
-      link: "https://setapp.com/apps/cleanshot",
-      ratingDetails: {
-        percentage: "99%",
-        total: "12298"
-      },
-      body: {
-        text: "CleanShot is the ultimate screen recording app made for macOS. With its rich toolkit, CleanShot actually feels like 6 apps in one. You can use it to swiftly capture Mac’s screen without desktop icons, record and trim video, annotate, save screenshots to dedicated cloud, and more.",
-        list: [
-          "CleanShot Cloud",
-          "Quick Access Overlay",
-          "Hide desktop icons",
-          "Simple yet powerful"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/428/42692/icon-1747967217-682fdcf1a2474.png",
-      title: "Session",
-      description: "Work in short intervals",
-      link: "https://setapp.com/apps/session",
-      ratingDetails: {
-        percentage: "98%",
-        total: "1943"
-      },
-      body: {
-        text: "Session is a focus app that helps build your productivity momentum. Block distractions, work in short intervals, and take regular breaks to recharge your mind. What makes Session stand out is its huge focus on analytics.",
-        list: [
-          "25 minutes of focused work",
-          "Reflect on your sessions",
-          "Block distractions",
-          "See how you perform over time"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/518/42755/icon-1749071187-6840b55359ae5.png",
-      title: "Nitro PDF Pro",
-      description: "Work with your PDFs",
-      link: "https://setapp.com/apps/nitro-pdf-pro",
-      ratingDetails: {
-        percentage: "89%",
-        total: "2746"
-      },
-      body: {
-        text: "Discover this all-round tool for all your PDF editing needs. Create and edit PDFs in Nitro PDF Pro, merge multiple files into one document, or convert into popular formats. ",
-        list: [
-          "Create and edit PDFs",
-          "Merge PDFs",
-          "Annotate PDFs",
-          "Convert PDFs"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/210/9272/icon-1699433154-654b4ac208ada.png",
-      title: "Get Backup Pro",
-      description: "Back up only essential files",
-      link: "https://setapp.com/apps/get-backup-pro",
-      ratingDetails: {
-        percentage: "86%",
-        total: "288"
-      },
-      body: {
-        text: "You've got a lot of data stored on your computer, right? How about a reliable backup utility for your Mac to be able to resist any kind of data-loss catastrophes? Try Get Backup Pro. It’s a good mix of backup methods, coming with four varying ways of backups: simple copy, clone, incremental and versioned.",
-        list: [
-          "Backup only those units you want",
-          "Folder synchronization",
-          "Incremental and compressed backups",
-          "Scheduled backups with Stealth mode"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/136/40792/icon-1730733142-6728e4563df6a.png",
-      title: "Renamer",
-      description: "Rename a batch of files",
-      link: "https://setapp.com/apps/renamer",
-      ratingDetails: {
-        percentage: "96%",
-        total: "935"
-      },
-      body: {
-        text: "What if you could rename lots of files in a snap? Feels wonderful, right? Renamer makes it possible! This robust application takes the pain out of renaming and managing dozens of files.",
-        list: [
-          "Multiple ways to rename files",
-          "Keep your music organized",
-          "Live preview",
-          "Convert upper and lower cases"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/122/41549/icon-1737112183-678a3a77b43aa.png",
-      title: "CodeRunner",
-      description: "Edit and run code faster",
-      link: "https://setapp.com/apps/coderunner",
-      ratingDetails: {
-        percentage: "96%",
-        total: "1186"
-      },
-      body: {
-        text: "Simplify your software development with the lightning-fast code editor. Write, run, and debug quickly from a single app with out-of-the-box support for more than 25 languages.",
-        list: [
-          "Build smarter",
-          "Debug like a dream",
-          "Beautify your code",
-          "Search docs swiftly"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/606/42481/icon-1746107539-68137c9375583.png",
-      title: "PDF Pals",
-      description: "Chat with your PDFs",
-      link: "https://setapp.com/apps/pdf-pals",
-      ratingDetails: {
-        percentage: "89%",
-        total: "354"
-      },
-      body: {
-        text: "What if the long report you’ve been going over could talk? What if you could just type in some questions and it could give you the answer right away, without having to read (or re-read) it top to bottom? PDF Pals app does exactly that.",
-        list: [
-          "Interact with your PDFs",
-          "No uploads needed",
-          "Get answers with citations",
-          "Customize your chat"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/592/43811/icon-1749109056-68414940d76a1.png",
-      title: "MurmurType",
-      description: "Transcribe your speech",
-      link: "https://setapp.com/apps/murmur",
-      ratingDetails: {
-        percentage: "83%",
-        total: "323"
-      },
-      body: {
-        text: "Got a lot to say and not a lot of time to type it all out? MurmurType is here to help. Record your voice and get the transcription right away. And if you prefer to speak another language, you can set the app to translate your speech into English.",
-        list: [
-          "Easy-to-use interface",
-          "Quick translation",
-          "Automated silence tracker",
-          "Keyboard shortcuts"
-        ]
-      }
-    },
-    {
-      imgSrc: "https://setapp.com/cdn-cgi/image/quality=75,format=auto,width=128,dpr=2/https://store.setapp.com/app/607/main/icon-65719fa98f5e6.png",
-      title: "Ready to Send",
-      description: "Generate draft email replies",
-      link: "https://setapp.com/apps/ready-to-send",
-      body: {
-        text: "Start your day with some work already done using Ready to Send. This web app connects to your Gmail, finds unread emails that need replying, and generates handy drafts. All you need to do is review, edit, and send.",
-        list: [
-          "Get automated email reply drafts",
-          "Disable auto-generated responses",
-          "Customize response style",
-          "Add calendar links automatically"
-        ]
-      }
-    }
-  ], l = ({
-    eventCategory: i,
+  ], p = ({
+    eventCategory: o,
     eventAction: t,
-    eventLabel: e
+    eventLabel: n
   }) => {
-    const n = {
-      eventCategory: i,
+    const e = {
+      eventCategory: o,
       eventAction: t,
-      eventLabel: e
-    }, o = {
+      eventLabel: n
+    }, a = {
       event: "crs-setapp",
-      ...n,
+      ...e,
       eventLabel2: "",
       //cd8
       eventValue: "",
       eventNonInteraction: !0,
       intercomLoaded: !0
     };
-    window.dataLayer.push(o), u("Data pushed to dataLayer", "info"), console.table(n);
-  }, m = (i, t, e, n = 1e3, o = 0.5) => {
-    let a, p;
-    if (a = new IntersectionObserver(
+    window.dataLayer.push(a), h("Data pushed to dataLayer", "info"), console.table(e);
+  }, m = (o, t, n, e = 1e3, a = 0.5) => {
+    let i, l;
+    if (i = new IntersectionObserver(
       function(c) {
-        c[0].isIntersecting === !0 ? p = setTimeout(() => {
-          l({
+        c[0].isIntersecting === !0 ? l = setTimeout(() => {
+          p({
             eventCategory: t,
             eventAction: "View",
-            eventLabel: e
-          }), a.disconnect();
-        }, n) : (u("Element is not fully visible", "warn"), clearTimeout(p));
+            eventLabel: n
+          }), i.disconnect();
+        }, e) : (h("Element is not fully visible", "warn"), clearTimeout(l));
       },
-      { threshold: [o] }
-    ), typeof i == "string") {
-      const c = document.querySelector(i);
-      c && a.observe(c);
+      { threshold: [a] }
+    ), typeof o == "string") {
+      const c = document.querySelector(o);
+      c && i.observe(c);
     } else
-      a.observe(i);
-  }, k = `section.apps {
+      i.observe(o);
+  }, v = `section.apps {
   display: none; /* Hide control section */
 }
 
@@ -1846,7 +744,7 @@ body:has(.os-dialog[open]) {
   justify-content: center;
 }
 `;
-  class S {
+  class b {
     // Block data for the .crs-apps-blocks section
     constructor() {
       this.init();
@@ -1859,7 +757,7 @@ body:has(.os-dialog[open]) {
       if (!t)
         throw new Error("Target element not found for Apps Section");
       if (d == null) return;
-      const e = (
+      const n = (
         /* HTML */
         `<section class="page-content-wrapper crs-apps">
       <div class="crs-apps-content">
@@ -1897,15 +795,15 @@ body:has(.os-dialog[open]) {
       </div>
     </section>`
       );
-      t.insertAdjacentHTML("afterend", e);
+      t.insertAdjacentHTML("afterend", n);
     }
     renderNavigation() {
       return g.map(
-        (n) => (
+        (e) => (
           /* HTML */
           `<li class="crs-apps-nav-item">
-          <a href="#${n.id}" data-title="${n.navTitle}"
-            >${n.navTitle}</a
+          <a href="#${e.id}" data-title="${e.navTitle}"
+            >${e.navTitle}</a
           >
         </li>`
         )
@@ -1974,30 +872,30 @@ body:has(.os-dialog[open]) {
     </div>`
       );
     }
-    renderApps(t, e) {
-      return e.map((n) => d.find((o) => o.name === n)).filter((n) => n !== void 0).map(
-        (n) => (
+    renderApps(t, n) {
+      return n.map((e) => d.find((a) => a.name === e)).filter((e) => e !== void 0).map(
+        (e) => (
           /* HTML */
           `<a
-          href="${n.url}"
+          href="${e.url}"
           class="crs-block-app"
-          data-app-name="${n.name}"
+          data-app-name="${e.name}"
           data-section-title="${t || ""}"
         >
           <div class="crs-block-app-icon">
             <img
-              src="${n.icon}"
-              alt="${n.name}"
+              src="${e.icon}"
+              alt="${e.name}"
               width="80"
               height="80"
               loading="lazy"
             />
           </div>
-          <div class="crs-block-app-name">${n.name}</div>
-          <div class="crs-block-app-description">${n.description}</div>
+          <div class="crs-block-app-name">${e.name}</div>
+          <div class="crs-block-app-description">${e.description}</div>
 
           <div class="crs-block-app-meta">
-            ${n.rating ? (
+            ${e.rating ? (
             /* HTML */
             `<div class="crs-block-app-rating">
                   <img
@@ -2005,88 +903,88 @@ body:has(.os-dialog[open]) {
                     width="16"
                     height="16"
                     src="https://cdn.setapp.com/master-9f18f44f26fe5f8aa6077a4a8f38ca796e93985f-590/build/main/751ecfba46c61061d678.svg"
-                  />${n.rating}%
+                  />${e.rating}%
                 </div>`
           ) : ""}
-            <div class="crs-block-app-platforms">${n.platforms}</div>
+            <div class="crs-block-app-platforms">${e.platforms}</div>
           </div>
         </a>`
         )
       ).join("");
     }
     async events() {
-      const t = (e) => {
-        const n = e.target, o = n.closest(".crs-apps-block"), a = (o == null ? void 0 : o.getAttribute("data-link")) || "";
-        n.closest(".crs-block-apps-list") || (l({
-          eventCategory: n.getAttribute("data-block-title") || "",
+      const t = (n) => {
+        const e = n.target, a = e.closest(".crs-apps-block"), i = (a == null ? void 0 : a.getAttribute("data-link")) || "";
+        e.closest(".crs-block-apps-list") || (p({
+          eventCategory: e.getAttribute("data-block-title") || "",
           eventAction: "Click",
-          eventLabel: n.getAttribute("data-title") || ""
+          eventLabel: e.getAttribute("data-title") || ""
         }), setTimeout(() => {
-          a && (window.location.href = a);
+          i && (window.location.href = i);
         }));
       };
       r(".crs-block-action-button").then(() => {
-        const e = document.querySelectorAll(".crs-apps-block");
+        const n = document.querySelectorAll(".crs-apps-block");
         document.querySelectorAll(
           ".crs-block-action-button"
-        ), e && e.length > 0 && e.forEach((n) => {
-          n.addEventListener("click", t);
+        ), n && n.length > 0 && n.forEach((e) => {
+          e.addEventListener("click", t);
         });
       }), r(".crs-block-action-popup-button").then(() => {
-        const e = document.querySelectorAll(
+        const n = document.querySelectorAll(
           ".crs-block-action-popup-button"
         );
-        e && e.length > 0 && e.forEach((n) => {
-          n.addEventListener("click", () => {
-            var o;
-            (o = document.querySelector(".header__cta-button")) == null || o.click(), l({
-              eventCategory: n.getAttribute("data-block-title") || "",
+        n && n.length > 0 && n.forEach((e) => {
+          e.addEventListener("click", () => {
+            var a;
+            (a = document.querySelector(".header__cta-button")) == null || a.click(), p({
+              eventCategory: e.getAttribute("data-block-title") || "",
               eventAction: "Click",
-              eventLabel: n.getAttribute("data-title") || ""
+              eventLabel: e.getAttribute("data-title") || ""
             });
           });
         });
       }), r(".crs-apps-block").then(() => {
-        document.querySelectorAll(".crs-apps-block").forEach((n, o) => {
-          let a = null;
-          if (o === 0)
-            a = "1";
-          else if (o === 1)
-            a = "2";
-          else if (o === 2)
-            a = null;
-          else if (o === 3)
-            a = "3";
-          else if (o === 4)
-            a = "4";
+        document.querySelectorAll(".crs-apps-block").forEach((e, a) => {
+          let i = null;
+          if (a === 0)
+            i = "1";
+          else if (a === 1)
+            i = "2";
+          else if (a === 2)
+            i = null;
+          else if (a === 3)
+            i = "3";
+          else if (a === 4)
+            i = "4";
           else {
-            if (o === 5)
+            if (a === 5)
               return;
-            a = null;
+            i = null;
           }
-          a && m(n, a, "App blocks");
+          i && m(e, i, "App blocks");
         });
-      }), r(".crs-apps-description").then((e) => {
-        m(e, "What do you want to start with today?", "");
+      }), r(".crs-apps-description").then((n) => {
+        m(n, "What do you want to start with today?", "");
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = k, document.head.append(t);
+      t.textContent = v, document.head.append(t);
     }
     addSmoothScrolling() {
       document.addEventListener("click", (t) => {
-        const n = t.target.closest('.crs-apps-nav a[href^="#"]');
-        if (n) {
-          t.preventDefault(), l({
+        const e = t.target.closest('.crs-apps-nav a[href^="#"]');
+        if (e) {
+          t.preventDefault(), p({
             eventCategory: "What do you want to start with today?",
             eventAction: "Click",
-            eventLabel: n.getAttribute("data-title") || ""
+            eventLabel: e.getAttribute("data-title") || ""
           });
-          const o = n.getAttribute("href");
-          if (o && o !== "#") {
-            const a = document.querySelector(o);
-            a && a.scrollIntoView({
+          const a = e.getAttribute("href");
+          if (a && a !== "#") {
+            const i = document.querySelector(a);
+            i && i.scrollIntoView({
               behavior: "smooth",
               block: "start"
             });
@@ -2101,26 +999,19 @@ body:has(.os-dialog[open]) {
         console.error("Apps blocks container not found");
         return;
       }
-      new w(), t.forEach((e) => {
-        const n = e.querySelector(".crs-block-app-name"), o = e.getAttribute("data-section-title");
-        if (!n) return;
-        if (!x.find(
-          (p) => p.title.includes(n.textContent || "")
-        )) {
-          console.warn("No tooltip variant found for app:", n.textContent);
-          return;
-        }
-        e.addEventListener("click", (p) => {
-          l({
-            eventCategory: o || "",
+      t.forEach((n) => {
+        const e = n.querySelector(".crs-block-app-name"), a = n.getAttribute("data-section-title");
+        e && n.addEventListener("click", (i) => {
+          p({
+            eventCategory: a || "",
             eventAction: "Click",
-            eventLabel: n.textContent || ""
+            eventLabel: e.textContent || ""
           });
         });
       });
     }
   }
-  const C = `.crs-achievs {
+  const x = `.crs-achievs {
   margin-top: 80px;
   width: 100%;
 }
@@ -2226,9 +1117,9 @@ body:has(.os-dialog[open]) {
   background-repeat: no-repeat;
 }
 `;
-  class M {
-    constructor({ container: t, position: e = "afterend" }) {
-      this.container = t, this.position = e, this.init();
+  class w {
+    constructor({ container: t, position: n = "afterend" }) {
+      this.container = t, this.position = n, this.init();
     }
     init() {
       if (!this.container) {
@@ -2281,10 +1172,10 @@ body:has(.os-dialog[open]) {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = C, document.head.appendChild(t);
+      t.textContent = x, document.head.appendChild(t);
     }
   }
-  const A = "https://conversionrate-store.github.io/a-b_images/setapp/", D = `.site-navigation__bar {
+  const y = "https://conversionrate-store.github.io/a-b_images/setapp/", k = `.site-navigation__bar {
   background: #1a1a1d;
 }
 
@@ -2376,7 +1267,7 @@ section.header .header__description {
   background-image: var(--star-image);
 }
 `;
-  class P {
+  class C {
     constructor() {
       this.init();
     }
@@ -2385,11 +1276,11 @@ section.header .header__description {
     }
     async addAppsImage() {
       const t = `
-      <div class="header__apps-image"><img src="${A}/apps.webp" alt="Apps Image"></div>`, e = await r(
+      <div class="header__apps-image"><img src="${y}/apps.webp" alt="Apps Image"></div>`, n = await r(
         "section.header .header__logo"
       );
-      if (e)
-        e.insertAdjacentHTML("beforebegin", t);
+      if (n)
+        n.insertAdjacentHTML("beforebegin", t);
       else
         throw new Error("Target element not found for Apps Image");
     }
@@ -2424,17 +1315,17 @@ section.header .header__description {
       const t = await r(
         "section.header .header__description"
       );
-      t && new M({
+      t && new w({
         container: t,
         position: "afterend"
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = D, document.head.appendChild(t);
+      t.textContent = k, document.head.appendChild(t);
     }
   }
-  const q = `.crs-more {
+  const M = `.crs-more {
   margin-bottom: 120px;
   max-width: 100%;
   color: #fff;
@@ -2510,7 +1401,7 @@ section.header .header__description {
   line-height: 28px;
 }
 `;
-  class E {
+  class A {
     constructor() {
       this.init();
     }
@@ -2637,14 +1528,14 @@ section.header .header__description {
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = q, document.head.appendChild(t);
+      t.textContent = M, document.head.appendChild(t);
     }
   }
-  const T = `.home {
+  const S = `.home {
   background: #1a1a1d;
 }
 `;
-  class z {
+  class _ {
     constructor() {
       this.init();
     }
@@ -2652,13 +1543,17 @@ section.header .header__description {
       this.setFilters();
     }
     async setFilters() {
-      const e = new URLSearchParams(location.search).get("filters");
-      e && (await r(".all-apps__filters-bar > button"), document.querySelectorAll(".all-apps__filters-bar > button").forEach((o) => {
-        e.includes(o.value) && o.click();
-      }));
+      const n = new URLSearchParams(location.search).get("filters");
+      if (n) {
+        await r(".all-apps__filters-bar > button"), document.querySelectorAll(".all-apps__filters-bar > button").forEach((i) => {
+          n.includes(i.value) && i.click();
+        });
+        const a = new URL(location.href);
+        a.searchParams.delete("filters"), history.replaceState({}, "", a.toString());
+      }
     }
   }
-  y({ name: "4th EXP on HP", dev: "OS" }), b("exp_hp");
+  u({ name: "4th EXP on HP", dev: "OS" }), f("exp_hp");
   class $ {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
@@ -2667,13 +1562,13 @@ section.header .header__description {
       if (this.getAppData(), this.device !== "mobile") {
         if (location.pathname === "/")
           try {
-            new P(), new S(), new E(), this.addStyles();
+            new C(), new b(), new A(), this.addStyles();
           } catch (t) {
             console.error("Error initializing sections:", t);
           }
         if (location.pathname.includes("/apps"))
           try {
-            new z();
+            new _();
           } catch (t) {
             console.error("Error initializing AppsPage:", t);
           }
@@ -2681,21 +1576,21 @@ section.header .header__description {
     }
     getAppData() {
       const t = document.querySelectorAll("app-details");
-      Array.from(t).map((e) => {
-        const n = e.getAttribute("name") || "", o = e.getAttribute("iconsrc") || "", a = e.getAttribute("description") || "", p = e.getAttribute("url") || "", c = e.getAttribute("platforms") || "", h = e.getAttribute("rating") || "";
+      Array.from(t).map((n) => {
+        const e = n.getAttribute("name") || "", a = n.getAttribute("iconsrc") || "", i = n.getAttribute("description") || "", l = n.getAttribute("url") || "", c = n.getAttribute("platforms") || "", E = n.getAttribute("rating") || "";
         return {
-          name: n,
-          icon: o,
-          description: a,
-          url: p,
+          name: e,
+          icon: a,
+          description: i,
+          url: l,
           platforms: c,
-          rating: h
+          rating: E
         };
       });
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = T, document.head.appendChild(t);
+      t.textContent = S, document.head.appendChild(t);
     }
   }
   new $();
