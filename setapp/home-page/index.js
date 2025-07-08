@@ -1546,13 +1546,9 @@ section.header .header__description {
     }
     async setFilters() {
       const n = new URLSearchParams(location.search).get("filters");
-      if (n) {
-        await r(".all-apps__filters-bar > button"), document.querySelectorAll(".all-apps__filters-bar > button").forEach((i) => {
-          n.includes(i.value) && i.click();
-        });
-        const a = new URL(location.href);
-        a.searchParams.delete("filters"), history.replaceState({}, "", a.toString());
-      }
+      n && (await r(".all-apps__filters-bar > button"), document.querySelectorAll(".all-apps__filters-bar > button").forEach((a) => {
+        n.includes(a.value) && a.click();
+      }));
     }
   }
   u({ name: "4th EXP on HP", dev: "OS" }), f("exp_hp");
