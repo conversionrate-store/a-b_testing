@@ -295,7 +295,7 @@
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
   const p = {
     // Set to false to use local time instead of UTC
-    DAILY_CUTOFF_HOUR: 19,
+    DAILY_CUTOFF_HOUR: 15,
     // 3:00 PM cutoff for daily orders
     WEEKLY_START_HOUR: 5
     // 5:00 AM Monday start time
