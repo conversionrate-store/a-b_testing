@@ -550,7 +550,7 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
       return t !== null && t.isSelected;
     }
   }
-  class k {
+  class B {
     // Default format, will be updated
     constructor() {
       this.moneyFormat = "${{amount}}", this.moneyFormat = this.getMoneyFormat();
@@ -624,7 +624,7 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
       };
     }
   }
-  class B {
+  class k {
     constructor(t, e) {
       this.bundleSlug = t, this.bundleVariantId = e;
     }
@@ -644,7 +644,7 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
     async fetchProductInfo(t) {
       var e;
       try {
-        const n = window.location.origin, o = await fetch(`${n}/products/${t}.js`);
+        const n = this.getBaseUrl(), o = await fetch(`${n}products/${t}.js`);
         if (o.ok) {
           const i = await o.json(), r = (e = i.variants) == null ? void 0 : e.find(
             (s) => s.id === this.bundleVariantId
@@ -676,17 +676,26 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
       }
     }
     /**
+     * Gets the base URL with locale (e.g., https://www.natpat.com/en-au/ or https://www.natpat.com/)
+     */
+    getBaseUrl() {
+      const { origin: t, pathname: e } = window.location, n = e.match(/^\/[a-z]{2}-[a-z]{2}\//);
+      return n ? `${t}${n[0]}` : `${t}/`;
+    }
+    /**
      * Fetches product information by product slug/ID with specific variant
      */
     async fetchProductInfoWithVariant(t, e) {
       var n;
       try {
-        const o = window.location.origin, i = await fetch(`${o}/products/${t}.js`);
+        const o = this.getBaseUrl();
+        console.log("Base URL:", o);
+        const i = await fetch(`${o}products/${t}.js`);
         if (i.ok) {
           const r = await i.json(), s = (n = r.variants) == null ? void 0 : n.find(
             (d) => d.id === e
           );
-          if (s)
+          if (console.log("Fetched product data:", r), s)
             return {
               id: r.id,
               title: r.title,
@@ -1143,12 +1152,12 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
       if (!s || g) {
         const v = o * d;
         u = i + n.bottom - o + v;
-        const y = Math.abs(u - i), q = r ? m.MOBILE_SCROLL_THRESHOLD : m.DESKTOP_SCROLL_THRESHOLD;
-        if (y > q) {
-          const U = document.documentElement.scrollHeight - o;
+        const y = Math.abs(u - i), U = r ? m.MOBILE_SCROLL_THRESHOLD : m.DESKTOP_SCROLL_THRESHOLD;
+        if (y > U) {
+          const $ = document.documentElement.scrollHeight - o;
           u = Math.max(
             0,
-            Math.min(u, U)
+            Math.min(u, $)
           ), b = !0;
         }
       }
@@ -1316,7 +1325,7 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
         // Will be updated with proper formatting
         description: "New exclusive bundle with extra benefits",
         isBundle: !0
-      }, this.stateManager = new O(), this.priceFormatter = new k(), this.apiService = new B(A, 44402670927916), this.renderer = new L(this.priceFormatter), this.accordionHandler = new N(), this.eventHandler = new D(
+      }, this.stateManager = new O(), this.priceFormatter = new B(), this.apiService = new k(A, 44402670927916), this.renderer = new L(this.priceFormatter), this.accordionHandler = new N(), this.eventHandler = new D(
         this.stateManager,
         this.apiService
       ), this.changeBundleTitle = new R(), document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.init()) : this.init();
@@ -1364,7 +1373,9 @@ section.lp-tr--purchase h2.lp-tr--section-big-title.lp-tr--mobile {
      * Prepares formatted data from API response
      */
     prepareFormattedData(t, e = null, n = null) {
-      const o = t.variant.price, i = t.variant.compare_at_price || o * 2.5, r = t.title || "Special Bundle", s = t.description || "New exclusive bundle with extra benefits", d = this.priceFormatter.formatMoney(o), h = this.priceFormatter.formatMoney(o / 4), g = this.priceFormatter.formatMoney(i), b = this.priceFormatter.formatMoney(
+      const o = t.variant.price, i = t.variant.compare_at_price || o * 2.5, r = t.title || "Special Bundle", s = t.description || "New exclusive bundle with extra benefits", d = this.priceFormatter.formatMoney(o), h = this.priceFormatter.formatMoney(o / 4);
+      console.log("Formatted each price:", h);
+      const g = this.priceFormatter.formatMoney(i), b = this.priceFormatter.formatMoney(
         i - o
       ), u = Math.round(
         (i - o) / i * 100
