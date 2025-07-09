@@ -4,8 +4,8 @@
     const p = document.querySelector(c);
     p && t(p);
     const a = new MutationObserver(() => {
-      const e = document.querySelector(c);
-      e && (t(e), a.disconnect());
+      const o = document.querySelector(c);
+      o && (t(o), a.disconnect());
     });
     a.observe(document.documentElement, {
       childList: !0,
@@ -1845,7 +1845,6 @@
     MIN_KEYWORD_LENGTH: 2,
     MIN_APP_NAME_LENGTH: 3,
     MIN_CONTEXT_LENGTH: 20,
-    CONTEXT_PREVIEW_LENGTH: 200,
     MIN_WORD_LENGTH_FOR_SPLITTING: 2
   }, d = /* @__PURE__ */ new Set([
     "daily",
@@ -1879,12 +1878,7 @@
     ".side-scrolling__banner",
     ".promo-new-banner__content",
     ".action-bar__wrapper",
-    ".site-navigation__bar-cta",
-    "section",
-    "article",
-    "aside",
-    ".content-block",
-    ".widget"
+    ".site-navigation__bar-cta"
   ], y = ["[data-signup-button]", 'a[href*="signup"]'];
   class w {
     constructor(t) {
@@ -1900,12 +1894,8 @@
       return this.appIconMap.get(t.toLowerCase());
     }
     loadAppNames(t) {
-      try {
-        const p = this.extractAppSlugs(t), a = this.extractAppNames(t);
-        this.appNames = [...p, ...a], this.appKeywords = this.generateAppKeywords(this.appNames), this.buildIconMap(t);
-      } catch (p) {
-        console.error("Failed to load apps data:", p), this.loadFallbackAppNames();
-      }
+      const p = this.extractAppSlugs(t), a = this.extractAppNames(t);
+      this.appNames = [...p, ...a], this.appKeywords = this.generateAppKeywords(this.appNames), this.buildIconMap(t);
     }
     extractAppSlugs(t) {
       return t.map((p) => {
@@ -1920,56 +1910,18 @@
       const p = /* @__PURE__ */ new Set();
       return t.forEach((a) => {
         p.add(a.toLowerCase()), p.add(a.replace(/-/g, " ").toLowerCase()), p.add(a.replace(/-/g, "").toLowerCase());
-        const e = a.replace(/-/g, "").replace(/\b\w/g, (o) => o.toUpperCase());
-        p.add(e.toLowerCase()), a.includes("-") && a.split("-").forEach((o) => {
-          o.length > r.MIN_WORD_LENGTH_FOR_SPLITTING && p.add(o.toLowerCase());
+        const o = a.replace(/-/g, "").replace(/\b\w/g, (e) => e.toUpperCase());
+        p.add(o.toLowerCase()), a.includes("-") && a.split("-").forEach((e) => {
+          e.length > r.MIN_WORD_LENGTH_FOR_SPLITTING && p.add(e.toLowerCase());
         });
       }), p;
-    }
-    loadFallbackAppNames() {
-      const t = [
-        "supercharge",
-        "bartender",
-        "cleanshot",
-        "textsniper",
-        "numi",
-        "ulysses",
-        "tableplus",
-        "mindnode",
-        "yoink",
-        "devutils.app",
-        "lungo",
-        "pixelsnap",
-        "dash",
-        "dropzone",
-        "hazeover",
-        "proxyman",
-        "soulver",
-        "snippetslab",
-        "dato",
-        "image2icon",
-        "textsoap",
-        "iconjar",
-        "taskpaper",
-        "snapmotion",
-        "buildwatch",
-        "paste",
-        "downie",
-        "permute",
-        "bettertouchtool",
-        "pulltube",
-        "cleanmymac"
-      ];
-      this.appNames = t, t.forEach((p) => {
-        this.appKeywords.add(p.toLowerCase()), this.appKeywords.add(p.replace(/-/g, " ").toLowerCase()), this.appKeywords.add(p.replace(/\./g, "").toLowerCase());
-      });
     }
     buildIconMap(t) {
       t.forEach((p) => {
         if (p.name && p.icon) {
           this.appIconMap.set(p.name.toLowerCase(), p.icon);
-          const a = p.url.split("/"), e = a[a.length - 1];
-          this.appIconMap.set(e.toLowerCase(), p.icon);
+          const a = p.url.split("/"), o = a[a.length - 1];
+          this.appIconMap.set(o.toLowerCase(), p.icon);
         }
       });
     }
@@ -1983,10 +1935,7 @@
       for (; p && p !== document.body; ) {
         for (const a of f)
           if (p.matches(a))
-            return console.log(
-              `Found context block using selector "${a}":`,
-              p
-            ), p;
+            return p;
         p = p.parentElement;
       }
       for (p = t.parentElement; p && p !== document.body; ) {
@@ -1997,25 +1946,26 @@
       return null;
     }
     analyzeContext(t) {
-      const p = t.textContent || "", a = p.toLowerCase();
-      console.log("Analyzing contextText:", p);
-      const e = this.findMentionedApps(p, a), o = this.filterValidAppMentions(e, p);
+      const p = t.textContent || "", a = p.toLowerCase(), o = this.findMentionedApps(p, a), e = this.filterValidAppMentions(
+        o,
+        p
+      );
       let s = "general", i, n;
-      return o.length === 1 && (s = "specific", i = o[0], n = this.appDataProcessor.getAppIcon(i)), {
+      return e.length === 1 && (s = "specific", i = e[0], n = this.appDataProcessor.getAppIcon(i)), {
         type: s,
         appName: i,
         appIcon: n,
-        mentionedApps: o,
+        mentionedApps: e,
         contextText: p.trim()
       };
     }
     findMentionedApps(t, p) {
       const a = [];
-      return this.appKeywords.forEach((e) => {
-        if (e.length > r.MIN_KEYWORD_LENGTH && p.includes(e)) {
-          if (d.has(e.toLowerCase()) || !this.createWordBoundaryRegex(e).test(t))
+      return this.appKeywords.forEach((o) => {
+        if (o.length > r.MIN_KEYWORD_LENGTH && p.includes(o)) {
+          if (d.has(o.toLowerCase()) || !this.createWordBoundaryRegex(o).test(t))
             return;
-          const s = this.findOriginalAppName(e);
+          const s = this.findOriginalAppName(o);
           if (s && !a.includes(s)) {
             const i = s.toLowerCase();
             !d.has(i) && i.length > r.MIN_APP_NAME_LENGTH && a.push(s);
@@ -2028,7 +1978,7 @@
         a.toLowerCase(),
         a.replace(/-/g, " ").toLowerCase(),
         a.replace(/-/g, "").toLowerCase()
-      ].some((o) => o.length <= r.MIN_APP_NAME_LENGTH || d.has(o) ? !1 : this.createWordBoundaryRegex(o).test(p)));
+      ].some((e) => e.length <= r.MIN_APP_NAME_LENGTH || d.has(e) ? !1 : this.createWordBoundaryRegex(e).test(p)));
     }
     createWordBoundaryRegex(t) {
       const p = t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -2209,8 +2159,8 @@
 }
 `;
   class q {
-    constructor({ container: t, position: p }) {
-      this.isScrolling = !1, this.container = t, this.position = p || "beforeend", this.init();
+    constructor({ container: t, comments: p, position: a }) {
+      this.isScrolling = !1, this.comments = p, this.container = t, this.position = a || "beforeend", this.init();
     }
     init() {
       if (!this.container) {
@@ -2226,43 +2176,29 @@
       <div id="crs-modal-comments" class="crs-modal-comments">
         <div class="header">
           Rated <span class="star"></span>
-          <span class="crs-current-rating">4.8</span
-          > <span class="crs-possible-rating">/ 5</span>
+          <span class="crs-current-rating">4.8</span>
+          <span class="crs-possible-rating">/ 5</span>
           <div class="line"></div>
           100 000+ happy customers
         </div>
         <div class="crs-modal-comments-slider" id="crs-modal-comments-slider">
           <div class="crs-comments">
-            <div class="crs-comment">
-              <div class="crs-comment-header">
-                <div class="crs-comment-like"></div>
-                <div class="crs-comment-author">David Hill</div>
-              </div>
-              <div class="crs-comment-content">
-                I use a bunch of tools in there every day to speed up workflows
-              </div>
-            </div>
-            <div class="crs-comment">
-              <div class="crs-comment-header">
-                <div class="crs-comment-like"></div>
-                <div class="crs-comment-author">Meredith Sweet</div>
-              </div>
-              <div class="crs-comment-content">
-                I discover/get all the awesome apps for my Mac that I use, a lot
-                of them are from Setapp!
-              </div>
-            </div>
-            <div class="crs-comment">
-              <div class="crs-comment-header">
-                <div class="crs-comment-like"></div>
-                <div class="crs-comment-author">Snazzy Labs</div>
-              </div>
-              <div class="crs-comment-content">
-                Hundreds of the best Mac apps out there. Tens of thousands of
-                dollars of software for just a few bucks a month
-              </div>
-            </div>
+            ${this.comments.map(
+          (p) => (
+            /* HTML */
+            `
+                  <div class="crs-comment">
+                    <div class="crs-comment-header">
+                      <div class="crs-comment-like"></div>
+                      <div class="crs-comment-author">${p.author}</div>
+                    </div>
+                    <div class="crs-comment-content">${p.content}</div>
+                  </div>
+                `
+          )
+        ).join("")}
           </div>
+
           <div class="crs-sliders-actions">
             <button></button><button></button><button></button>
           </div>
@@ -2270,20 +2206,22 @@
       </div>
     `
       );
-      console.log("Rendering CommentsSlider with HTML:", this.container), this.container.insertAdjacentHTML(this.position, t);
+      this.container.insertAdjacentHTML(this.position, t);
     }
     initSliderActions() {
-      const t = document.querySelectorAll(".crs-sliders-actions button"), p = document.querySelectorAll(".crs-comment"), a = document.querySelector(".crs-comments");
+      const t = document.querySelectorAll(
+        ".crs-sliders-actions button"
+      ), p = document.querySelectorAll(".crs-comment"), a = document.querySelector(".crs-comments");
       if (!t.length || !p.length || !a) {
         console.error("Slider elements not found");
         return;
       }
-      t[0].classList.add("active"), t.forEach((e, o) => {
-        e.addEventListener("click", () => {
-          this.isScrolling = !0, t.forEach((i) => i.classList.remove("active")), e.classList.add("active");
-          const s = p[o];
+      t[0].classList.add("active"), t.forEach((o, e) => {
+        o.addEventListener("click", () => {
+          this.isScrolling = !0, t.forEach((i) => i.classList.remove("active")), o.classList.add("active");
+          const s = p[e];
           if (s) {
-            const i = s.offsetWidth, n = o * i;
+            const i = s.offsetWidth, n = e * i;
             a.scrollTo({
               left: n,
               behavior: "smooth"
@@ -2293,11 +2231,18 @@
           }
         });
       }), a.addEventListener("scroll", () => {
-        this.isScrolling || this.updateActiveButtonOnScroll(t, p, a);
+        this.isScrolling || this.updateActiveButtonOnScroll(
+          t,
+          p,
+          a
+        );
       });
     }
     updateActiveButtonOnScroll(t, p, a) {
-      const e = a.scrollLeft, o = p[0].offsetWidth, s = Math.round(e / o), i = Math.max(0, Math.min(s, p.length - 1));
+      const o = a.scrollLeft, e = p[0].offsetWidth, s = Math.round(o / e), i = Math.max(
+        0,
+        Math.min(s, p.length - 1)
+      );
       t.forEach((n, m) => {
         m === i ? n.classList.add("active") : n.classList.remove("active");
       });
@@ -2306,25 +2251,30 @@
       var p;
       const t = document.querySelector("#crs-modal-comments");
       if (t) {
-        const a = t.querySelectorAll(".crs-sliders-actions button"), e = t.querySelector(".crs-comments");
-        if (a.forEach((o) => {
+        const a = t.querySelectorAll(
+          ".crs-sliders-actions button"
+        ), o = t.querySelector(".crs-comments");
+        if (a.forEach((e) => {
           var i;
-          const s = o.cloneNode(!0);
-          (i = o.parentNode) == null || i.replaceChild(s, o);
-        }), e) {
-          const o = e.cloneNode(!0);
-          (p = e.parentNode) == null || p.replaceChild(o, e);
+          const s = e.cloneNode(!0);
+          (i = e.parentNode) == null || i.replaceChild(s, e);
+        }), o) {
+          const e = o.cloneNode(!0);
+          (p = o.parentNode) == null || p.replaceChild(
+            e,
+            o
+          );
         }
-        t.remove(), console.log("CommentsSlider removed from DOM with event listeners cleaned up");
+        t.remove();
       }
     }
     hide() {
       const t = document.querySelector("#crs-modal-comments");
-      t && (t.style.visibility = "hidden", console.log("CommentsSlider hidden"));
+      t && (t.style.visibility = "hidden");
     }
     show() {
       const t = document.querySelector("#crs-modal-comments");
-      t && (t.style.visibility = "visible", console.log("CommentsSlider shown"));
+      t && (t.style.visibility = "visible");
     }
     addStyles() {
       const t = document.createElement("style");
@@ -2410,6 +2360,19 @@
       Setapp`
       )
     }
+  ], x = [
+    {
+      author: "David Hill",
+      content: "I use a bunch of tools in there every day to speed up workflows"
+    },
+    {
+      author: "Meredith Sweet",
+      content: "I discover/get all the awesome apps for my Mac that I use, a lot of them are from Setapp!"
+    },
+    {
+      author: "Snazzy Labs",
+      content: "Hundreds of the best Mac apps out there. Tens of thousands of dollars of software for just a few bucks a month"
+    }
   ], v = `.app-context {
   margin-top: 100px;
   margin-inline: auto;
@@ -2465,7 +2428,7 @@
 
 .signup-form {
   margin-bottom: 20px;
-}`, x = "https://cdn.setapp.com/master-7f8a807e5c0ec1d4b2e1f7adfccfae061971e024-560/static/main/images/components/logo/setapp-icon.svg";
+}`, k = "https://cdn.setapp.com/master-7f8a807e5c0ec1d4b2e1f7adfccfae061971e024-560/static/main/images/components/logo/setapp-icon.svg";
   class C {
     constructor({ context: t }) {
       this.modalObserver = null, this.formObserver = null, this.context = t, this.init();
@@ -2474,14 +2437,8 @@
       this.addStyles(), this.analyzeContext(), this.watchModalClose(), this.watchFormVisibility(), this.changeModalTitle();
     }
     analyzeContext() {
-      const { type: t, appName: p, appIcon: a, mentionedApps: e, contextText: o } = this.context;
-      console.log("📊 Context Analysis:", {
-        contextType: t,
-        specificApp: p || "none",
-        appIcon: a || "none",
-        allMentionedApps: e,
-        contextPreview: o.substring(0, r.CONTEXT_PREVIEW_LENGTH) + (o.length > r.CONTEXT_PREVIEW_LENGTH ? "..." : "")
-      }), t === "specific" && this.addAppContextToModal({ appName: p, appIcon: a }), t === "general" && this.addGeneralContextToModal(), this.addCommentsSection();
+      const { type: t, appName: p, appIcon: a, mentionedApps: o, contextText: e } = this.context;
+      t === "specific" && this.addAppContextToModal({ appName: p, appIcon: a }), t === "general" && this.addGeneralContextToModal(), this.addCommentsSection();
     }
     changeModalTitle() {
       var a;
@@ -2490,7 +2447,7 @@
         console.error("Title element not found");
         return;
       }
-      const p = (a = S.find((e) => e.url === location.pathname)) == null ? void 0 : a.title;
+      const p = (a = S.find((o) => o.url === location.pathname)) == null ? void 0 : a.title;
       p && (t.innerHTML = p);
     }
     addAppContextToModal({
@@ -2501,7 +2458,7 @@
         console.error("Popup not found");
         return;
       }
-      const e = document.querySelector("#signup-form-manager"), s = (
+      const o = document.querySelector("#signup-form-manager"), s = (
         /* HTML */
         `
       <div id="app-context" class="app-context">
@@ -2521,7 +2478,7 @@
       </div>
     `
       );
-      e == null || e.insertAdjacentHTML("beforebegin", s);
+      o == null || o.insertAdjacentHTML("beforebegin", s);
     }
     addGeneralContextToModal() {
       if (!document.querySelector("#signup-modal.is-open")) {
@@ -2533,7 +2490,7 @@
         `
       <div id="app-context" class="app-context">
         <img
-          src=${x}
+          src=${k}
           alt="Setapp icon"
           class="logo"
           width="40"
@@ -2553,6 +2510,7 @@
         ".signup-modal__container"
       );
       t && (this.comments = new q({
+        comments: x,
         container: t,
         position: "beforeend"
       }));
@@ -2583,16 +2541,16 @@
       }
       this.modalObserver = new MutationObserver((p) => {
         p.forEach((a) => {
-          var e;
-          a.type === "attributes" && a.attributeName === "class" && (a.target.classList.contains("is-open") || (console.log("Modal closed, removing app context"), this.removeAppContextFromModal(), (e = this.comments) == null || e.remove(), this.stopWatchingModal()));
+          var o;
+          a.type === "attributes" && a.attributeName === "class" && (a.target.classList.contains("is-open") || (this.removeAppContextFromModal(), (o = this.comments) == null || o.remove(), this.stopWatchingModal()));
         });
       }), this.modalObserver.observe(t, {
         attributes: !0,
         attributeFilter: ["class"]
-      }), console.log("Started watching modal for close events");
+      });
     }
     stopWatchingModal() {
-      this.modalObserver && (this.modalObserver.disconnect(), this.modalObserver = null, console.log("Stopped watching modal"));
+      this.modalObserver && (this.modalObserver.disconnect(), this.modalObserver = null);
     }
     watchFormVisibility() {
       const t = document.querySelector(
@@ -2606,12 +2564,10 @@
       }
       this.formObserver = new MutationObserver((p) => {
         p.forEach((a) => {
-          var e, o, s;
+          var o, e, s;
           if (a.type === "attributes" && a.attributeName === "class") {
-            const n = a.target.classList.contains("d-none"), m = ((e = a.oldValue) == null ? void 0 : e.includes("d-none")) || !1;
-            n && !m ? (console.log("Form hidden with d-none class, removing app context"), this.hideAppContext(), (o = this.comments) == null || o.hide()) : !n && m && (console.log(
-              "Form became visible (d-none removed), re-adding app context if needed"
-            ), this.showAppContext(), (s = this.comments) == null || s.show());
+            const n = a.target.classList.contains("d-none"), m = ((o = a.oldValue) == null ? void 0 : o.includes("d-none")) || !1;
+            n && !m ? (this.hideAppContext(), (e = this.comments) == null || e.hide()) : !n && m && (this.showAppContext(), (s = this.comments) == null || s.show());
           }
         });
       }), this.formObserver.observe(t, {
@@ -2619,17 +2575,17 @@
         attributeFilter: ["class"],
         attributeOldValue: !0
         // This allows us to see the previous class value
-      }), console.log("Started watching form for visibility changes");
+      });
     }
     stopWatchingForm() {
-      this.formObserver && (this.formObserver.disconnect(), this.formObserver = null, console.log("Stopped watching form"));
+      this.formObserver && (this.formObserver.disconnect(), this.formObserver = null);
     }
     // Public method to clean up observers when instance is no longer needed
     cleanup() {
       this.stopWatchingModal(), this.stopWatchingForm();
     }
   }
-  class k {
+  class O {
     constructor() {
       this.init();
     }
@@ -2645,36 +2601,52 @@
         y.join(", ")
       ).forEach((p) => {
         p.addEventListener("click", (a) => {
-          a.preventDefault(), console.log("🔍 Signup button clicked, analyzing context...");
-          const e = this.contextAnalyzer.findContextBlock(p);
-          if (e) {
-            const o = this.contextAnalyzer.analyzeContext(e);
-            p.__contextAnalysis = o, l("#signup-modal.is-open").then(() => {
-              new C({ context: o });
+          a.preventDefault();
+          const o = this.contextAnalyzer.findContextBlock(p);
+          if (o) {
+            const e = this.contextAnalyzer.analyzeContext(o);
+            l("#signup-modal.is-open").then(() => {
+              new C({ context: e });
             });
           } else
-            console.log("⚠️ No context block found for element:", p);
+            console.warn("No context block found for element:", p);
         });
       });
     }
   }
-  const O = `article.article {
+  const T = [
+    "/how-to/recover-deleted-photos-from-iphone",
+    "/how-to/download-youtube-videos",
+    "/how-to/how-to-recover-deleted-text-messages-on-iphone",
+    "/how-to/how-to-recover-an-unsaved-word-document-on-mac",
+    "/how-to/convert-youtube-to-mp3",
+    "/how-to/download-facebook-video",
+    "/how-to/how-to-recover-sd-card-on-mac",
+    "/how-to/unblur-an-image",
+    "/how-to/tiktok-banned-reasons-and-solutions",
+    "/how-to/open-rar-files-on-mac"
+  ], A = `article.article {
   overflow-wrap: break-word;
   word-break: keep-all;
 }
 `;
   h({ name: "3rd EXP on Blog", dev: "OS" }), u("exp_blog");
-  class T {
+  class P {
     constructor() {
       this.init();
     }
     init() {
-      new k(), this.addStyles();
+      const t = window.location.pathname;
+      if (!T.includes(t)) {
+        console.warn("This page is not the target page for the test.");
+        return;
+      }
+      new O(), this.addStyles();
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = O, document.head.appendChild(t);
+      t.textContent = A, document.head.appendChild(t);
     }
   }
-  new T();
+  new P();
 })();
