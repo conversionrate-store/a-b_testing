@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const k = `.fixed-button-wrapper,
+  const x = `.fixed-button-wrapper,
 .crown {
   display: none !important;
 }
@@ -61,7 +61,8 @@
   font-weight: 700;
 }
 
-.fixed-ready-block {
+.fixed-ready-block,
+.fixed-error-block {
   display: none;
   position: fixed;
   bottom: 0;
@@ -71,15 +72,18 @@
   padding: 30px 20px;
   z-index: 10;
 }
-.fixed-ready-block.active {
+.fixed-ready-block.active,
+.fixed-error-block.active {
   display: block;
 }
-.fixed-ready-block p {
+.fixed-ready-block p,
+.fixed-error-block p {
   margin: 0 0 16px;
   font-size: 20px;
   font-weight: 700;
 }
-.fixed-ready-block button {
+.fixed-ready-block button,
+.fixed-error-block button {
   width: 100%;
   border-radius: 100px;
   background: #b79625;
@@ -239,28 +243,28 @@
 .price-block p:last-of-type {
   color: #6b21a8;
   font-weight: 700;
-}/*# sourceMappingURL=style.css.map */`, l = (r, e, t, n = "") => {
+}/*# sourceMappingURL=style.css.map */`, l = (i, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: r,
+      event_name: i,
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), C(`Event: ${r} | ${e} | ${t} | ${n}`, "success");
-  }, d = (r) => new Promise((e) => {
-    const t = document.querySelector(r);
+    }), C(`Event: ${i} | ${e} | ${t} | ${n}`, "success");
+  }, d = (i) => new Promise((e) => {
+    const t = document.querySelector(i);
     t && e(t);
     const n = new MutationObserver(() => {
-      const i = document.querySelector(r);
-      i && (e(i), n.disconnect());
+      const r = document.querySelector(i);
+      r && (e(r), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), x = ({ name: r, dev: e }) => {
+  }), y = ({ name: i, dev: e }) => {
     console.log(
-      `%c EXP: ${r} (DEV: ${e})`,
+      `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -269,14 +273,14 @@
       this.elements = e instanceof c ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, t, n) {
-      return typeof t == "function" && (n = t, t = ""), this.elements.forEach((i) => {
-        i.addEventListener(e, function(a) {
+      return typeof t == "function" && (n = t, t = ""), this.elements.forEach((r) => {
+        r.addEventListener(e, function(a) {
           var s;
           if (t !== "") {
             let p = (s = a.target) == null ? void 0 : s.closest(t);
             p && (n == null || n.call(p, a));
           } else
-            n == null || n.call(i, a);
+            n == null || n.call(r, a);
         });
       }), this;
     }
@@ -301,9 +305,9 @@
       return this;
     }
     style(e, t) {
-      const n = e.split("-").map((i, a) => a === 0 ? i : i.charAt(0).toUpperCase() + i.slice(1)).join("");
-      return this.elements.forEach(function(i) {
-        i.style[n] = t;
+      const n = e.split("-").map((r, a) => a === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
+      return this.elements.forEach(function(r) {
+        r.style[n] = t;
       }), this;
     }
     find(e) {
@@ -326,19 +330,19 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const o = (r) => new c(r), v = (r) => {
+  const o = (i) => new c(i), v = (i) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, g = (r, e) => {
-    const t = document.querySelector(r);
+  }, g = (i, e) => {
+    const t = document.querySelector(i);
     if (!t) return;
-    const i = t.getBoundingClientRect().top - 100;
+    const r = t.getBoundingClientRect().top - 100;
     window.scrollBy({
-      top: i,
+      top: r,
       behavior: "smooth"
     });
-  }, C = (r, e = "info") => {
+  }, C = (i, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -354,7 +358,7 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${r}`, `${t} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${i}`, `${t} font-size: 16px; font-weight: 600`);
   }, h = {
     check: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M17.3046 8.19232C17.6708 8.55853 17.6708 9.15216 17.3046 9.51819L11.0153 15.8077C10.649 16.1737 10.0556 16.1737 9.68939 15.8077L6.69543 12.8135C6.32922 12.4475 6.32922 11.8539 6.69543 11.4879C7.06146 11.1216 7.65509 11.1216 8.02112 11.4879L10.3522 13.819L15.9787 8.19232C16.3449 7.82629 16.9385 7.82629 17.3046 8.19232ZM24 12C24 18.633 18.6321 24 12 24C5.367 24 0 18.6321 0 12C0 5.367 5.36792 0 12 0C18.633 0 24 5.36792 24 12ZM22.125 12C22.125 6.40338 17.5959 1.875 12 1.875C6.40338 1.875 1.875 6.40411 1.875 12C1.875 17.5966 6.40411 22.125 12 22.125C17.5966 22.125 22.125 17.5959 22.125 12Z" fill="#047F00"/>
@@ -372,7 +376,7 @@
     download: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21" fill="none">
 <path d="M2 21C1.45 21 0.979167 20.8042 0.5875 20.4125C0.195833 20.0208 0 19.55 0 19V9C0 8.45 0.195833 7.97917 0.5875 7.5875C0.979167 7.19583 1.45 7 2 7H5C5.28333 7 5.52083 7.09583 5.7125 7.2875C5.90417 7.47917 6 7.71667 6 8C6 8.28333 5.90417 8.52083 5.7125 8.7125C5.52083 8.90417 5.28333 9 5 9H2V19H16V9H13C12.7167 9 12.4792 8.90417 12.2875 8.7125C12.0958 8.52083 12 8.28333 12 8C12 7.71667 12.0958 7.47917 12.2875 7.2875C12.4792 7.09583 12.7167 7 13 7H16C16.55 7 17.0208 7.19583 17.4125 7.5875C17.8042 7.97917 18 8.45 18 9V19C18 19.55 17.8042 20.0208 17.4125 20.4125C17.0208 20.8042 16.55 21 16 21H2ZM10 12.175L10.9 11.275C11.0833 11.0917 11.3125 11 11.5875 11C11.8625 11 12.1 11.1 12.3 11.3C12.4833 11.4833 12.575 11.7167 12.575 12C12.575 12.2833 12.4833 12.5167 12.3 12.7L9.7 15.3C9.5 15.5 9.26667 15.6 9 15.6C8.73333 15.6 8.5 15.5 8.3 15.3L5.7 12.7C5.51667 12.5167 5.42083 12.2875 5.4125 12.0125C5.40417 11.7375 5.5 11.5 5.7 11.3C5.88333 11.1167 6.11667 11.025 6.4 11.025C6.68333 11.025 6.91667 11.1167 7.1 11.3L8 12.175V1C8 0.716667 8.09583 0.479167 8.2875 0.2875C8.47917 0.0958333 8.71667 0 9 0C9.28333 0 9.52083 0.0958333 9.7125 0.2875C9.90417 0.479167 10 0.716667 10 1V12.175Z" fill="#B79625"/>
 </svg>`
-  }, I = (
+  }, _ = (
     /* HTML */
     `
   <div class="snap-block">
@@ -383,12 +387,20 @@
     </div>
   </div>
 `
-  ), _ = (
+  ), I = (
     /* HTML */
     `
   <div class="fixed-ready-block">
     <p>Ready to see how it looks on you?</p>
     <button class="ready-button">Generate My Hairstyle ${h.arrow}</button>
+  </div>
+`
+  ), E = (
+    /* HTML */
+    `
+  <div class="fixed-error-block">
+    <p>The face in the photo was not detected.</p>
+    <button class="error-button">Try Again</button>
   </div>
 `
   ), b = (
@@ -431,12 +443,12 @@
     `
   <div class="fixed-top">Please wait for your current hairstyle to finish generating before starting a new one</div>
 `
-  ), u = (r) => (
+  ), u = (i) => (
     /* HTML */
     `
-  <div class="download-photo" data-src="${r}">${h.download}</div>
+  <div class="download-photo" data-src="${i}">${h.download}</div>
 `
-  ), E = (
+  ), T = (
     /* HTML */
     `
   <div class="reviews-block">
@@ -445,37 +457,37 @@
   </div>
 `
   );
-  function T(r) {
-    return r && r.__esModule && Object.prototype.hasOwnProperty.call(r, "default") ? r.default : r;
+  function j(i) {
+    return i && i.__esModule && Object.prototype.hasOwnProperty.call(i, "default") ? i.default : i;
   }
   var f, m;
-  function j() {
-    return m || (m = 1, f = function(r) {
+  function M() {
+    return m || (m = 1, f = function(i) {
       if (!window || window.window !== window)
         throw new Error("This module is only available in browser");
       var e = window.Blob || window.MozBlob || window.WebKitBlob;
       if (!e)
         throw new Error("Blob was not supported");
-      var t = /^data:((.*?)(;charset=.*?)?)(;base64)?,/, n = r.match(t);
+      var t = /^data:((.*?)(;charset=.*?)?)(;base64)?,/, n = i.match(t);
       if (!n)
         throw new Error("invalid dataURI");
-      for (var i = n[2] ? n[1] : "text/plain" + (n[3] || ";charset=utf-8"), a = !!n[4], s = r.slice(n[0].length), p = a ? atob(s) : decodeURIComponent(s), y = [], w = 0; w < p.length; w++)
-        y.push(p.charCodeAt(w));
-      return new e([new Uint8Array(y)], { type: i });
+      for (var r = n[2] ? n[1] : "text/plain" + (n[3] || ";charset=utf-8"), a = !!n[4], s = i.slice(n[0].length), p = a ? atob(s) : decodeURIComponent(s), k = [], w = 0; w < p.length; w++)
+        k.push(p.charCodeAt(w));
+      return new e([new Uint8Array(k)], { type: r });
     }), f;
   }
-  var B = j();
-  const M = /* @__PURE__ */ T(B);
-  v("exp_new_upload_photo"), x({ name: "Hair block", dev: "YK" }), function() {
-    const r = sessionStorage.setItem;
+  var B = M();
+  const A = /* @__PURE__ */ j(B);
+  v("exp_new_upload_photo"), y({ name: "Hair block", dev: "YK" }), function() {
+    const i = sessionStorage.setItem;
     sessionStorage.setItem = function(e, t) {
       const n = new CustomEvent("sessionStorageChange", {
         detail: { key: e, value: t }
       });
-      r.apply(this, arguments), window.dispatchEvent(n);
+      i.apply(this, arguments), window.dispatchEvent(n);
     };
   }();
-  class A {
+  class H {
     constructor() {
       this.lastValue = null, this.intervalId = null;
     }
@@ -489,29 +501,31 @@
       this.intervalId && clearInterval(this.intervalId);
     }
   }
-  class H {
+  class S {
     constructor() {
       this.generationId = null, this.selectedImage = null, this.init();
     }
     async init() {
-      o("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${k}</style>`);
+      o("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${x}</style>`);
       const e = localStorage.getItem("haircut-used");
       e ? this.usedBlocks(e) : this.createHairBlock();
     }
     async createHairBlock() {
-      await d(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", E), o("main").elements[0].insertAdjacentHTML("afterend", _), o(".fixed-ready-block button").on("click", ".ready-button", () => {
+      await d(".page-content"), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", T), o("main").elements[0].insertAdjacentHTML("afterend", I), o("main").elements[0].insertAdjacentHTML("afterend", E), o(".fixed-ready-block button").on("click", ".ready-button", () => {
         this.sendImageToEditor(), l("exp_q2_click_1", "Generate my hairstyle", "click", "Footer");
+      }), o(".fixed-error-block button").on("click", ".error-button", () => {
+        window.ExternalUploader.openUploadModal(), o(".fixed-error-block").removeClass("active");
       }), await d(".img-wrapper"), o(".photos-block-wrapper").on("click", ".img-wrapper", (n) => {
-        var i;
+        var r;
         console.log("click on img"), o(".fixed-ready-block").elements.length === 0 && o(".photo-block img").elements[0] ? (l("exp_q2_click_4", "Try another hairstyle", "click", "After generated"), window.location.pathname = "/user/purchase-credits") : o(".fixed-ready-block").elements.length === 0 && !o(".photo-block img").elements[0] && (o(".hide-label").removeClass("hide-label"), n.target.closest(".img-wrapper").classList.add("hide-label"), l("exp_q2_click_3", "Try another image", "click", "Image loading"), o(".fixed-top").elements[0] || o(".page-content").elements[0].insertAdjacentHTML("beforebegin", L), window.addEventListener("scroll", (a) => {
           window.scrollY < 68 ? o(".fixed-top").attr("style", `top: ${68 - window.scrollY}px; transform: translateY(-100%);`) : o(".fixed-top").attr("style", "top: 0;");
-        })), o(".fixed-ready-block").addClass("active"), this.selectedImage = ((i = n.target.closest(".img-wrapper").querySelector("img.photo-item")) == null ? void 0 : i.getAttribute("src")) || null, console.log("Selected image:", this.selectedImage);
+        })), o(".fixed-ready-block").addClass("active"), this.selectedImage = ((r = n.target.closest(".img-wrapper").querySelector("img.photo-item")) == null ? void 0 : r.getAttribute("src")) || null, console.log("Selected image:", this.selectedImage);
       });
       const e = setInterval(() => {
         window.ExternalUploader && window.ExternalUploader.openUploadModal && (clearInterval(e), window.ExternalUploader.openUploadModal(), l("exp_q2_view", "Image loading", "view", "First screen"));
       }, 100);
-      new A().startWatching("uploadedFile", (n) => {
-        window.ExternalUploader.closeModal(), o(".page-content").elements[0].insertAdjacentHTML("beforebegin", I);
+      new H().startWatching("uploadedFile", (n) => {
+        window.ExternalUploader.closeModal(), o(".snap-block").elements[0] || o(".page-content").elements[0].insertAdjacentHTML("beforebegin", _);
       });
     }
     async sendImageToEditor() {
@@ -519,11 +533,15 @@
       if (!t) return;
       const n = new FormData();
       n.append("file", t), n.append("haircuts", e);
-      const i = await fetch("https://api.dev.therighthairstyles.com/guest_session/create_pack_generation", {
+      const r = await fetch("https://api.therighthairstyles.com/guest_session/create_pack_generation", {
         method: "POST",
         body: n
       }).then((a) => a.json());
-      this.generationId = i.generation_id, o(".snap-block").elements[0].insertAdjacentHTML("afterend", b), o(".snap-block").elements[0].remove(), o(".photo-block").attr(
+      if (!r || !r.generation_id) {
+        o(".fixed-ready-block").removeClass("active"), o(".fixed-error-block").addClass("active"), console.error("Error creating pack generation:", r);
+        return;
+      }
+      this.generationId = r.generation_id, o(".snap-block").elements[0].insertAdjacentHTML("afterend", b), o(".snap-block").elements[0].remove(), o(".photo-block").attr(
         "style",
         `background:linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(${this.selectedImage}) center center no-repeat; background-size: cover;`
       ), o(".fixed-ready-block").elements[0].remove(), o(".try-another").addClass("hide"), o(".reviews-block").elements[0].remove(), o(".try-another button").on("click", () => {
@@ -533,11 +551,11 @@
     async getGenerationPhoto() {
       if (!this.generationId) return;
       const e = setInterval(async () => {
-        var i;
+        var r;
         const n = await (await fetch(
-          `https://api.dev.therighthairstyles.com/guest_session/get_pack_generation?generation_id=${this.generationId}`
+          `https://api.therighthairstyles.com/guest_session/get_pack_generation?generation_id=${this.generationId}`
         )).json();
-        n.length > 0 && !n[0].generation_in_queue && (clearInterval(e), o(".photo-block .timer").elements[0].remove(), o(".try-another").removeClass("hide"), o(".photo-block-wrapper>h3").text("Your new look is ready 🎉"), o(".photo-block-wrapper>h3+p").text("Enjoy your transformation — you look amazing!"), (i = o(".fixed-top").elements[0]) == null || i.remove(), o(".photo-block").attr("style", "background: none"), o(".photo-block").html(`
+        n.length > 0 && !n[0].generation_in_queue && (clearInterval(e), o(".photo-block .timer").elements[0].remove(), o(".try-another").removeClass("hide"), o(".photo-block-wrapper>h3").text("Your new look is ready 🎉"), o(".photo-block-wrapper>h3+p").text("Enjoy your transformation — you look amazing!"), (r = o(".fixed-top").elements[0]) == null || r.remove(), o(".photo-block").attr("style", "background: none"), o(".photo-block").html(`
 					${u(n[0].generated_image_urls[0])}
 					<img src="${n[0].generated_image_urls[0]}" alt="Generated hairstyle" />
 					`), this.downloadPhotoHandler(), localStorage.setItem("haircut-used", n[0].generated_image_urls[0]), l("exp_q2_view_02", "The image has already been generated", "view", "Image loading"));
@@ -565,13 +583,13 @@
         try {
           const t = JSON.parse(e);
           console.log(t);
-          const n = await M(t.dataURL);
+          const n = await A(t.dataURL);
           console.log(n);
-          const i = new File([n], t.name, {
+          const r = new File([n], t.name, {
             type: t.type,
             lastModified: t.lastModified
           });
-          return console.log("file from session storage", i), i;
+          return console.log("file from session storage", r), r;
         } catch (t) {
           console.error("Error while file upload:", t), sessionStorage.removeItem("uploadedFile");
         }
@@ -587,12 +605,12 @@
       o(".download-photo").on("click", async (e) => {
         const t = e.target.closest(".download-photo").getAttribute("data-src");
         if (!t) return;
-        const i = await (await fetch(t)).blob(), a = URL.createObjectURL(i), s = document.createElement("a");
+        const r = await (await fetch(t)).blob(), a = URL.createObjectURL(r), s = document.createElement("a");
         s.href = a, s.download = "my-hairstyle.jpg", document.body.appendChild(s), s.click(), document.body.removeChild(s), URL.revokeObjectURL(a);
       });
     }
   }
-  window.innerWidth < 769 && window.location.pathname.includes("/virtual-styler-test/step-1") && new H(), window.innerWidth < 769 && window.location.pathname.includes("/user/purchase-credits") && localStorage.getItem("haircut-used") && !o(".price-block").elements[0] && d(".page-content").then(() => {
+  window.innerWidth < 769 && window.location.pathname.includes("/virtual-styler-test/step-1") && new S(), window.innerWidth < 769 && window.location.pathname.includes("/user/purchase-credits") && localStorage.getItem("haircut-used") && !o(".price-block").elements[0] && d(".page-content").then(() => {
     o(".page-content").elements[0].insertAdjacentHTML(
       "beforebegin",
       /* HTML */
