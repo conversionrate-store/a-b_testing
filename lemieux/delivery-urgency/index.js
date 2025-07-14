@@ -1,66 +1,66 @@
 (function() {
   "use strict";
-  const w = (s, e, t, i = "") => {
+  const w = (i, t, e, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: s,
-      event_desc: e,
-      event_type: t,
-      event_loc: i
-    }), C(`Event: ${s} | ${e} | ${t} | ${i}`, "success");
-  }, y = (s) => new Promise((e) => {
-    const t = document.querySelector(s);
-    t && e(t);
-    const i = new MutationObserver(() => {
-      const n = document.querySelector(s);
-      n && (e(n), i.disconnect());
+      event_name: i,
+      event_desc: t,
+      event_type: e,
+      event_loc: o
+    }), f(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
+  }, y = (i) => new Promise((t) => {
+    const e = document.querySelector(i);
+    e && t(e);
+    const o = new MutationObserver(() => {
+      const n = document.querySelector(i);
+      n && (t(n), o.disconnect());
     });
-    i.observe(document.documentElement, {
+    o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: s, dev: e }) => {
+  }), v = ({ name: i, dev: t }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${e})`,
+      `%c EXP: ${i} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, b = (s, e, t, i, n = 1e3, o = 0.5) => {
+  }, b = (i, t, e, o, n = 1e3, s = 0.5) => {
     let r, a;
     if (r = new IntersectionObserver(
-      function(d) {
-        d[0].isIntersecting === !0 ? a = setTimeout(() => {
+      function(l) {
+        l[0].isIntersecting === !0 ? a = setTimeout(() => {
           w(
-            e,
-            d[0].target.dataset.visible || i,
+            t,
+            l[0].target.dataset.visible || o,
             "view",
-            t
+            e
           ), r.disconnect();
-        }, n) : (C("Element is not fully visible", "warn"), clearTimeout(a));
+        }, n) : (f("Element is not fully visible", "warn"), clearTimeout(a));
       },
-      { threshold: [o] }
-    ), typeof s == "string") {
-      const d = document.querySelector(s);
-      d && r.observe(d);
+      { threshold: [s] }
+    ), typeof i == "string") {
+      const l = document.querySelector(i);
+      l && r.observe(l);
     } else
-      r.observe(s);
-  }, C = (s, e = "info") => {
-    let t;
-    switch (e) {
+      r.observe(i);
+  }, f = (i, t = "info") => {
+    let e;
+    switch (t) {
       case "info":
-        t = "color: #3498db;";
+        e = "color: #3498db;";
         break;
       case "warn":
-        t = "color: #f39c12;";
+        e = "color: #f39c12;";
         break;
       case "error":
-        t = "color: #e74c3c;";
+        e = "color: #e74c3c;";
         break;
       case "success":
-        t = "color: #2ecc71;";
+        e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
-  }, E = "", S = (
+    console.log(`%c>>> ${i}`, `${e} font-size: 16px; font-weight: 600`);
+  }, x = "", E = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -113,19 +113,40 @@
     </clipPath>
   </defs>
 </svg>`
+  ), S = (
+    /* HTML */
+    `<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="14"
+  height="14"
+  viewBox="0 0 14 14"
+  fill="none"
+>
+  <g clip-path="url(#clip0_209_509)">
+    <path
+      d="M7 0C3.13395 0 0 3.13406 0 7C0 10.8662 3.13395 14 7 14C10.8661 14 14 10.8662 14 7C14 3.13406 10.8661 0 7 0ZM7 3.5C7.48327 3.5 7.875 3.89178 7.875 4.375C7.875 4.85844 7.48327 5.25 7 5.25C6.51673 5.25 6.125 4.85844 6.125 4.375C6.125 3.89178 6.51673 3.5 7 3.5ZM8.3125 10.5H5.6875C5.44589 10.5 5.25 10.3043 5.25 10.0625C5.25 9.82089 5.44589 9.625 5.6875 9.625H6.125V7H5.6875C5.44589 7 5.25 6.80433 5.25 6.5625C5.25 6.32089 5.44589 6.125 5.6875 6.125H7.4375C7.67911 6.125 7.875 6.32089 7.875 6.5625V9.625H8.3125C8.55411 9.625 8.75 9.82089 8.75 10.0625C8.75 10.3043 8.55411 10.5 8.3125 10.5Z"
+      fill="#212121"
+    />
+  </g>
+  <defs>
+    <clipPath id="clip0_209_509">
+      <rect width="14" height="14" fill="white" />
+    </clipPath>
+  </defs>
+</svg>`
   ), D = `.crs-delivery-countdown {
   container-type: inline-size;
   margin-top: 24px;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 13px 16px;
+  padding: 6px 16px;
   background-color: #fff7ec;
   font-size: 16px;
   line-height: 24px;
 }
 
-.crs-delivery-countdown .timer > [class$="-word"] {
+.crs-delivery-countdown .timer > [class$='-word'] {
   display: none;
 }
 
@@ -135,11 +156,18 @@
   align-items: center;
 }
 
-@container (min-width: 385px) {
-  .crs-delivery-countdown br {
+/* .crs-delivery-countdown br.mob {
+  display: none;
+}
+
+@container (max-width: 427px) {
+  .crs-delivery-countdown br.desc {
     display: none;
   }
-}
+  .crs-delivery-countdown br.mob {
+    display: block;
+  }
+} */
 
 .timer-content {
   flex: 1;
@@ -154,7 +182,80 @@
   white-space: nowrap;
 }
 
+/* Tooltip styles */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 6px;
+}
 
+.tooltip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: #595959;
+  cursor: help;
+  transition: color 0.2s ease;
+}
+
+.tooltip-icon:hover {
+  color: #212121;
+}
+
+.tooltip-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-80%);
+  margin-top: 8px;
+  width: 226px;
+  padding: 18px 16px;
+  background: #fff;
+  filter: drop-shadow(0px 2px 12px rgba(0, 0, 0, 0.15));
+
+  color:  #212121;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .tooltip-content {
+   transform: translateX(-88%);
+  }
+}
+.tooltip-content::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 80%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-bottom-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .tooltip-content::after {
+    left: 88%;
+  }
+}
+.tooltip-container:hover .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-content p {
+  margin: 0;
+}
+
+.tooltip-nowrap {
+  white-space: nowrap;
+}
 @media (max-width: 768px) {
   .crs-delivery-countdown {
     padding: 6px 12px;
@@ -167,16 +268,17 @@
     width: 24px;
     height: 24px;
   }
-}`, v = {
+}
+`, C = {
     // Set to false to use local time instead of UTC
     DEADLINE_HOUR: 15,
     // 15:00 - deadline for orders
     DEADLINE_MINUTES: 60
     // 60 minutes
   };
-  class x {
-    constructor({ container: e, position: t }) {
-      this.staticHour = v.DEADLINE_HOUR, this.staticMinutes = v.DEADLINE_MINUTES, this.container = typeof e == "string" ? document.querySelector(e) : e, this.position = t || "beforeend", this.init();
+  class I {
+    constructor({ container: t, position: e }) {
+      this.staticHour = C.DEADLINE_HOUR, this.staticMinutes = C.DEADLINE_MINUTES, this.container = typeof t == "string" ? document.querySelector(t) : t, this.position = e || "beforeend", this.init();
     }
     init() {
       this.container && (this.createCountdownElement(), this.updateCountdown(), this.startCountdownTimer(), this.addStyles());
@@ -192,61 +294,61 @@
       }, 1e3);
     }
     updateCountdown() {
-      const e = this.calculateCountdown();
-      typeof e == "string" ? this.badgeElement && (this.badgeElement.textContent = e) : this.updateCountdownElements(
-        e.hoursText,
-        e.hoursWord,
-        e.minutesText,
-        e.minutesWord,
-        e.secondsText,
-        e.secondsWord,
-        e.deliveryDay
+      const t = this.calculateCountdown();
+      typeof t == "string" ? this.badgeElement && (this.badgeElement.textContent = t) : this.updateCountdownElements(
+        t.hoursText,
+        t.hoursWord,
+        t.minutesText,
+        t.minutesWord,
+        t.secondsText,
+        t.secondsWord,
+        t.deliveryDay
       );
     }
     calculateCountdown() {
-      const t = /* @__PURE__ */ new Date(), i = t.getHours(), n = t.getMinutes(), o = t.getSeconds(), r = t.getDay(), a = -1 * (i - this.staticHour), d = n === 0 ? 0 : this.staticMinutes - n, g = o === 0 ? 0 : 60 - o, u = d.toString().padStart(2, "0"), h = g.toString().padStart(2, "0");
-      let c, l;
-      if (i < this.staticHour && r >= 1 && r <= 5)
-        c = (a - (n === 0 && o === 0 ? 0 : 1)).toString().padStart(2, "0"), l = "TODAY";
-      else if (i >= this.staticHour && r === 5)
-        c = (a + (n === 0 && o === 0 ? 72 : 71)).toString().padStart(2, "0"), l = "on MONDAY";
-      else if (i >= this.staticHour && r >= 1 && r <= 4)
-        c = (a + (n === 0 && o === 0 ? 24 : 23)).toString().padStart(2, "0"), l = "TOMORROW";
+      const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getMinutes(), s = e.getSeconds(), r = e.getDay(), a = -1 * (o - this.staticHour), l = n === 0 ? 0 : this.staticMinutes - n, g = s === 0 ? 0 : 60 - s, h = l.toString().padStart(2, "0"), p = g.toString().padStart(2, "0");
+      let c, d;
+      if (o < this.staticHour && r >= 1 && r <= 5)
+        c = (a - (n === 0 && s === 0 ? 0 : 1)).toString().padStart(2, "0"), d = "TODAY";
+      else if (o >= this.staticHour && r === 5)
+        c = (a + (n === 0 && s === 0 ? 72 : 71)).toString().padStart(2, "0"), d = "on MONDAY";
+      else if (o >= this.staticHour && r >= 1 && r <= 4)
+        c = (a + (n === 0 && s === 0 ? 24 : 23)).toString().padStart(2, "0"), d = "TOMORROW";
       else if (r === 6)
-        c = (a + (n === 0 && o === 0 ? 48 : 47)).toString().padStart(2, "0"), l = "on MONDAY";
+        c = (a + (n === 0 && s === 0 ? 48 : 47)).toString().padStart(2, "0"), d = "on MONDAY";
       else if (r === 0)
-        c = (a + (n === 0 && o === 0 ? 24 : 23)).toString().padStart(2, "0"), l = "on MONDAY";
+        c = (a + (n === 0 && s === 0 ? 24 : 23)).toString().padStart(2, "0"), d = "on MONDAY";
       else {
-        if (i === this.staticHour && r >= 1 && r <= 4)
+        if (o === this.staticHour && r >= 1 && r <= 4)
           return `Order in the next 24 ${this.getHourWord(24)} 00 minutes 00 seconds for dispatch TOMORROW`;
-        c = (a + 24).toString().padStart(2, "0"), l = "TOMORROW";
+        c = (a + 24).toString().padStart(2, "0"), d = "TOMORROW";
       }
-      const m = this.getHourWord(parseInt(c)), _ = this.getMinuteWord(parseInt(u)), L = this.getSecondWord(parseInt(h));
+      const m = this.getHourWord(parseInt(c)), T = this.getMinuteWord(parseInt(h)), M = this.getSecondWord(parseInt(p));
       return {
         hoursText: c,
         hoursWord: m,
-        minutesText: u,
-        minutesWord: _,
-        secondsText: h,
-        secondsWord: L,
-        deliveryDay: l
+        minutesText: h,
+        minutesWord: T,
+        secondsText: p,
+        secondsWord: M,
+        deliveryDay: d
       };
     }
-    getHourWord(e) {
-      return e === 1 ? "hour" : "hours";
+    getHourWord(t) {
+      return t === 1 ? "hour" : "hours";
     }
-    getMinuteWord(e) {
-      return e === 1 ? "minute" : "minutes";
+    getMinuteWord(t) {
+      return t === 1 ? "minute" : "minutes";
     }
-    getSecondWord(e) {
-      return e === 1 ? "second" : "seconds";
+    getSecondWord(t) {
+      return t === 1 ? "second" : "seconds";
     }
     createCountdownElement() {
       this.container && !this.badgeElement && (this.badgeElement = document.createElement("div"), this.badgeElement.className = "crs-delivery-countdown", this.badgeElement.innerHTML = /* HTML */
       `
-        <div class="icon">${S}</div>
+        <div class="icon">${E}</div>
         <div class="timer-content">
-          <span class="text-content">Order within</span>
+          <span class="text-content">Order in the next</span>
           <span class="timer">
             <span class="hours">00</span>
             <span class="hours-word">hours</span>
@@ -258,7 +360,17 @@
             <span class="seconds-word">seconds</span>
           </span>
           <span class="text-content">
-            <br />for <span class="highlight">DELIVERY TOMORROW</span>
+            and choose <br class="mob" />
+            Next Day Delivery for dispatch
+            <span class="tooltip-nowrap">
+              <span class="delivery-day highlight">TODAY</span>
+              <span class="tooltip-container">
+                <span class="tooltip-icon">${S}</span>
+                <span class="tooltip-content">
+                  <p>Delivery to UK mainland only</p>
+                </span>
+              </span></span
+            >
           </span>
         </div>
       `, this.container.insertAdjacentElement(this.position, this.badgeElement), b(
@@ -269,10 +381,10 @@
         0
       ));
     }
-    updateCountdownElements(e, t, i, n, o, r, a) {
+    updateCountdownElements(t, e, o, n, s, r, a) {
       if (this.badgeElement) {
-        const d = this.badgeElement.querySelector(".hours"), g = this.badgeElement.querySelector(".hours-word"), u = this.badgeElement.querySelector(".minutes"), h = this.badgeElement.querySelector(".minutes-word"), c = this.badgeElement.querySelector(".seconds"), l = this.badgeElement.querySelector(".seconds-word"), m = this.badgeElement.querySelector(".delivery-day");
-        d && (d.textContent = e), g && (g.textContent = t), u && (u.textContent = i), h && (h.textContent = n), c && (c.textContent = o), l && (l.textContent = r), m && (m.textContent = a);
+        const l = this.badgeElement.querySelector(".hours"), g = this.badgeElement.querySelector(".hours-word"), h = this.badgeElement.querySelector(".minutes"), p = this.badgeElement.querySelector(".minutes-word"), c = this.badgeElement.querySelector(".seconds"), d = this.badgeElement.querySelector(".seconds-word"), m = this.badgeElement.querySelector(".delivery-day");
+        l && (l.textContent = t), g && (g.textContent = e), h && (h.textContent = o), p && (p.textContent = n), c && (c.textContent = s), d && (d.textContent = r), m && (m.textContent = a);
       }
     }
     // Method for cleaning up interval
@@ -280,33 +392,33 @@
       this.intervalId && (clearInterval(this.intervalId), this.intervalId = void 0);
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.textContent = D, document.head.appendChild(e);
+      const t = document.createElement("style");
+      t.textContent = D, document.head.appendChild(t);
     }
   }
-  const I = `icms-outlet:has(product-view-delivery-coutdown) {
+  const H = `icms-outlet:has(product-view-delivery-coutdown) {
   display: none !important;
 }
 `;
-  (function(s, e, t, i, n, o) {
-    s.hj = s.hj || function() {
-      (s.hj.q = s.hj.q || []).push(arguments);
-    }, s._hjSettings = { hjid: 2667925, hjsv: 6 }, n = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + s._hjSettings.hjid + i + s._hjSettings.hjsv, n && n.appendChild(o);
+  (function(i, t, e, o, n, s) {
+    i.hj = i.hj || function() {
+      (i.hj.q = i.hj.q || []).push(arguments);
+    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, n = t.getElementsByTagName("head")[0], s = t.createElement("script"), s.async = !0, s.src = e + i._hjSettings.hjid + o + i._hjSettings.hjsv, n && n.appendChild(s);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
-  const p = {
+  const u = {
     // Set to false to use local time instead of UTC
     DAILY_CUTOFF_HOUR: 15,
     // 3:00 PM cutoff for daily orders
     WEEKLY_START_HOUR: 5
     // 5:00 AM Monday start time
   };
-  class O {
+  class _ {
     constructor() {
       this.init();
     }
     init() {
-      this.checkIsPdpPage().then((e) => {
-        e && (this.addStyles(), y("footer").then(() => {
+      this.checkIsPdpPage().then((t) => {
+        t && (this.addStyles(), y("footer").then(() => {
           this.addDeliveryBadge();
         }));
       });
@@ -319,9 +431,9 @@
         console.log("Delivery badge hidden due to time restrictions");
         return;
       }
-      const e = await y("product-view-add-to-basket"), t = document.querySelector(".crs-delivery-countdown");
-      t && t.remove(), this.deliveryBadgeInstance = new x({
-        container: e,
+      const t = await y("product-view-add-to-basket"), e = document.querySelector(".crs-delivery-countdown");
+      e && e.remove(), this.deliveryBadgeInstance = new I({
+        container: t,
         position: "beforebegin"
       }), this.startVisibilityMonitoring();
     }
@@ -332,23 +444,23 @@
     }
     hideDeliveryBadge() {
       this.deliveryBadgeInstance && (this.deliveryBadgeInstance.destroy(), this.deliveryBadgeInstance = void 0), this.visibilityCheckInterval && (clearInterval(this.visibilityCheckInterval), this.visibilityCheckInterval = void 0);
-      const e = document.querySelector(".crs-delivery-countdown");
-      e && e.remove();
+      const t = document.querySelector(".crs-delivery-countdown");
+      t && t.remove();
     }
     destroy() {
       this.hideDeliveryBadge();
     }
     shouldShowDeliveryBadge() {
-      const t = /* @__PURE__ */ new Date(), i = t.getHours(), n = t.getDay();
-      return n === 0 || n === 6 ? !1 : n === 1 ? i >= p.WEEKLY_START_HOUR && i < p.DAILY_CUTOFF_HOUR : n >= 2 && n <= 4 || n === 5 ? i < p.DAILY_CUTOFF_HOUR : !1;
+      const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getDay();
+      return n === 0 || n === 6 ? !1 : n === 1 ? o >= u.WEEKLY_START_HOUR && o < u.DAILY_CUTOFF_HOUR : n >= 2 && n <= 4 || n === 5 ? o < u.DAILY_CUTOFF_HOUR : !1;
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.textContent = I, document.head.appendChild(e);
+      const t = document.createElement("style");
+      t.textContent = H, document.head.appendChild(t);
     }
   }
-  f({ name: "Delivery urgency and date", dev: "OS" });
-  class H {
+  v({ name: "Delivery urgency and date", dev: "OS" });
+  class O {
     constructor() {
       this.init();
     }
@@ -358,13 +470,13 @@
       }), this.initChanges();
     }
     initChanges() {
-      new O();
+      new _();
     }
-    pageChangeHandler(e) {
-      let t = window.location.pathname;
+    pageChangeHandler(t) {
+      let e = window.location.pathname;
       new MutationObserver((n) => {
-        n.forEach((o) => {
-          t !== window.location.pathname && (e(), t = window.location.pathname);
+        n.forEach((s) => {
+          e !== window.location.pathname && (t(), e = window.location.pathname);
         });
       }).observe(document.body, {
         childList: !0,
@@ -372,9 +484,9 @@
       });
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.textContent = E, document.head.appendChild(e);
+      const t = document.createElement("style");
+      t.textContent = x, document.head.appendChild(t);
     }
   }
-  new H();
+  new O();
 })();
