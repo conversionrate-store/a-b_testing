@@ -7,8 +7,8 @@
       event_desc: t,
       event_type: e,
       event_loc: o
-    }), f(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
-  }, y = (i) => new Promise((t) => {
+    }), y(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
+  }, f = (i) => new Promise((t) => {
     const e = document.querySelector(i);
     e && t(e);
     const o = new MutationObserver(() => {
@@ -35,7 +35,7 @@
             "view",
             e
           ), r.disconnect();
-        }, n) : (f("Element is not fully visible", "warn"), clearTimeout(a));
+        }, n) : (y("Element is not fully visible", "warn"), clearTimeout(a));
       },
       { threshold: [s] }
     ), typeof i == "string") {
@@ -43,7 +43,7 @@
       l && r.observe(l);
     } else
       r.observe(i);
-  }, f = (i, t = "info") => {
+  }, y = (i, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -215,7 +215,7 @@
   background: #fff;
   filter: drop-shadow(0px 2px 12px rgba(0, 0, 0, 0.15));
 
-  color:  #212121;
+  color: #212121;
   font-family: 'Source Sans 3', sans-serif;
   font-size: 16px;
   line-height: 20px;
@@ -226,7 +226,7 @@
 
 @media (max-width: 768px) {
   .tooltip-content {
-   transform: translateX(-88%);
+    transform: translateX(-88%);
   }
 }
 .tooltip-content::after {
@@ -306,7 +306,7 @@
       );
     }
     calculateCountdown() {
-      const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getMinutes(), s = e.getSeconds(), r = e.getDay(), a = -1 * (o - this.staticHour), l = n === 0 ? 0 : this.staticMinutes - n, g = s === 0 ? 0 : 60 - s, h = l.toString().padStart(2, "0"), p = g.toString().padStart(2, "0");
+      const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getMinutes(), s = e.getSeconds(), r = e.getDay(), a = -1 * (o - this.staticHour), l = n === 0 ? 0 : this.staticMinutes - n, g = s === 0 ? 0 : 60 - s, h = l.toString().padStart(2, "0"), u = g.toString().padStart(2, "0");
       let c, d;
       if (o < this.staticHour && r >= 1 && r <= 5)
         c = (a - (n === 0 && s === 0 ? 0 : 1)).toString().padStart(2, "0"), d = "TODAY";
@@ -323,13 +323,13 @@
           return `Order in the next 24 ${this.getHourWord(24)} 00 minutes 00 seconds for dispatch TOMORROW`;
         c = (a + 24).toString().padStart(2, "0"), d = "TOMORROW";
       }
-      const m = this.getHourWord(parseInt(c)), T = this.getMinuteWord(parseInt(h)), M = this.getSecondWord(parseInt(p));
+      const m = this.getHourWord(parseInt(c)), T = this.getMinuteWord(parseInt(h)), M = this.getSecondWord(parseInt(u));
       return {
         hoursText: c,
         hoursWord: m,
         minutesText: h,
         minutesWord: T,
-        secondsText: p,
+        secondsText: u,
         secondsWord: M,
         deliveryDay: d
       };
@@ -383,8 +383,8 @@
     }
     updateCountdownElements(t, e, o, n, s, r, a) {
       if (this.badgeElement) {
-        const l = this.badgeElement.querySelector(".hours"), g = this.badgeElement.querySelector(".hours-word"), h = this.badgeElement.querySelector(".minutes"), p = this.badgeElement.querySelector(".minutes-word"), c = this.badgeElement.querySelector(".seconds"), d = this.badgeElement.querySelector(".seconds-word"), m = this.badgeElement.querySelector(".delivery-day");
-        l && (l.textContent = t), g && (g.textContent = e), h && (h.textContent = o), p && (p.textContent = n), c && (c.textContent = s), d && (d.textContent = r), m && (m.textContent = a);
+        const l = this.badgeElement.querySelector(".hours"), g = this.badgeElement.querySelector(".hours-word"), h = this.badgeElement.querySelector(".minutes"), u = this.badgeElement.querySelector(".minutes-word"), c = this.badgeElement.querySelector(".seconds"), d = this.badgeElement.querySelector(".seconds-word"), m = this.badgeElement.querySelector(".delivery-day");
+        l && (l.textContent = t), g && (g.textContent = e), h && (h.textContent = o), u && (u.textContent = n), c && (c.textContent = s), d && (d.textContent = r), m && (m.textContent = a);
       }
     }
     // Method for cleaning up interval
@@ -405,7 +405,7 @@
       (i.hj.q = i.hj.q || []).push(arguments);
     }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, n = t.getElementsByTagName("head")[0], s = t.createElement("script"), s.async = !0, s.src = e + i._hjSettings.hjid + o + i._hjSettings.hjsv, n && n.appendChild(s);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
-  const u = {
+  const p = {
     // Set to false to use local time instead of UTC
     DAILY_CUTOFF_HOUR: 15,
     // 3:00 PM cutoff for daily orders
@@ -418,20 +418,20 @@
     }
     init() {
       this.checkIsPdpPage().then((t) => {
-        t && (this.addStyles(), y("footer").then(() => {
+        t && (this.addStyles(), f("footer").then(() => {
           this.addDeliveryBadge();
         }));
       });
     }
     async checkIsPdpPage() {
-      return !!await y("product-view");
+      return !!await f("product-view");
     }
     async addDeliveryBadge() {
       if (!this.shouldShowDeliveryBadge()) {
         console.log("Delivery badge hidden due to time restrictions");
         return;
       }
-      const t = await y("product-view-add-to-basket"), e = document.querySelector(".crs-delivery-countdown");
+      const t = await f("product-view-add-to-basket"), e = document.querySelector(".crs-delivery-countdown");
       e && e.remove(), this.deliveryBadgeInstance = new I({
         container: t,
         position: "beforebegin"
@@ -452,7 +452,7 @@
     }
     shouldShowDeliveryBadge() {
       const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getDay();
-      return n === 0 || n === 6 ? !1 : n === 1 ? o >= u.WEEKLY_START_HOUR && o < u.DAILY_CUTOFF_HOUR : n >= 2 && n <= 4 || n === 5 ? o < u.DAILY_CUTOFF_HOUR : !1;
+      return n === 0 || n === 6 ? !1 : n === 1 ? o >= p.WEEKLY_START_HOUR && o < p.DAILY_CUTOFF_HOUR : n >= 2 && n <= 4 || n === 5 ? o < p.DAILY_CUTOFF_HOUR : !1;
     }
     addStyles() {
       const t = document.createElement("style");
@@ -470,7 +470,7 @@
       }), this.initChanges();
     }
     initChanges() {
-      new _();
+      window.autoInitData.website.defaultCountry === "GB" && new _();
     }
     pageChangeHandler(t) {
       let e = window.location.pathname;
