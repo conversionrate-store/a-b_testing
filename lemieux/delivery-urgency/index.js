@@ -7,8 +7,8 @@
       event_desc: t,
       event_type: e,
       event_loc: o
-    }), y(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
-  }, f = (i) => new Promise((t) => {
+    }), f(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
+  }, y = (i) => new Promise((t) => {
     const e = document.querySelector(i);
     e && t(e);
     const o = new MutationObserver(() => {
@@ -35,7 +35,7 @@
             "view",
             e
           ), r.disconnect();
-        }, n) : (y("Element is not fully visible", "warn"), clearTimeout(a));
+        }, n) : (f("Element is not fully visible", "warn"), clearTimeout(a));
       },
       { threshold: [s] }
     ), typeof i == "string") {
@@ -43,7 +43,7 @@
       l && r.observe(l);
     } else
       r.observe(i);
-  }, y = (i, t = "info") => {
+  }, f = (i, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -361,7 +361,7 @@
           </span>
           <span class="text-content">
             and choose <br class="mob" />
-            Next Day Delivery for dispatch
+            Next Day Delivery to get it by
             <span class="tooltip-nowrap">
               <span class="delivery-day highlight">TODAY</span>
               <span class="tooltip-container">
@@ -399,13 +399,7 @@
   const H = `icms-outlet:has(product-view-delivery-coutdown) {
   display: none !important;
 }
-`;
-  (function(i, t, e, o, n, s) {
-    i.hj = i.hj || function() {
-      (i.hj.q = i.hj.q || []).push(arguments);
-    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, n = t.getElementsByTagName("head")[0], s = t.createElement("script"), s.async = !0, s.src = e + i._hjSettings.hjid + o + i._hjSettings.hjsv, n && n.appendChild(s);
-  })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
-  const p = {
+`, p = {
     // Set to false to use local time instead of UTC
     DAILY_CUTOFF_HOUR: 15,
     // 3:00 PM cutoff for daily orders
@@ -418,20 +412,20 @@
     }
     init() {
       this.checkIsPdpPage().then((t) => {
-        t && (this.addStyles(), f("footer").then(() => {
+        t && (this.addStyles(), y("footer").then(() => {
           this.addDeliveryBadge();
         }));
       });
     }
     async checkIsPdpPage() {
-      return !!await f("product-view");
+      return !!await y("product-view");
     }
     async addDeliveryBadge() {
       if (!this.shouldShowDeliveryBadge()) {
         console.log("Delivery badge hidden due to time restrictions");
         return;
       }
-      const t = await f("product-view-add-to-basket"), e = document.querySelector(".crs-delivery-countdown");
+      const t = await y("product-view-add-to-basket"), e = document.querySelector(".crs-delivery-countdown");
       e && e.remove(), this.deliveryBadgeInstance = new I({
         container: t,
         position: "beforebegin"
@@ -459,7 +453,11 @@
       t.textContent = H, document.head.appendChild(t);
     }
   }
-  v({ name: "Delivery urgency and date", dev: "OS" });
+  v({ name: "Delivery urgency and date", dev: "OS" }), function(i, t, e, o, n, s) {
+    i.hj = i.hj || function() {
+      (i.hj.q = i.hj.q || []).push(arguments);
+    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, n = t.getElementsByTagName("head")[0], s = t.createElement("script"), s.async = !0, s.src = e + i._hjSettings.hjid + o + i._hjSettings.hjsv, n && n.appendChild(s);
+  }(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
   class O {
     constructor() {
       this.init();
