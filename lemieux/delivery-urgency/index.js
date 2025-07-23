@@ -7,8 +7,8 @@
       event_desc: t,
       event_type: e,
       event_loc: o
-    }), f(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
-  }, y = (i) => new Promise((t) => {
+    }), y(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
+  }, m = (i) => new Promise((t) => {
     const e = document.querySelector(i);
     e && t(e);
     const o = new MutationObserver(() => {
@@ -19,23 +19,23 @@
       childList: !0,
       subtree: !0
     });
-  }), v = ({ name: i, dev: t }) => {
+  }), C = ({ name: i, dev: t }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, b = (i, t, e, o, n = 1e3, s = 0.5) => {
-    let r, a;
+  }, v = (i, t, e, o, n = 1e3, s = 0.5) => {
+    let r, c;
     if (r = new IntersectionObserver(
       function(l) {
-        l[0].isIntersecting === !0 ? a = setTimeout(() => {
+        l[0].isIntersecting === !0 ? c = setTimeout(() => {
           w(
             t,
             l[0].target.dataset.visible || o,
             "view",
             e
           ), r.disconnect();
-        }, n) : (f("Element is not fully visible", "warn"), clearTimeout(a));
+        }, n) : (y("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [s] }
     ), typeof i == "string") {
@@ -43,7 +43,7 @@
       l && r.observe(l);
     } else
       r.observe(i);
-  }, f = (i, t = "info") => {
+  }, y = (i, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -60,7 +60,7 @@
         break;
     }
     console.log(`%c>>> ${i}`, `${e} font-size: 16px; font-weight: 600`);
-  }, x = "", E = (
+  }, b = "", x = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +113,7 @@
     </clipPath>
   </defs>
 </svg>`
-  ), S = (
+  ), E = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,7 @@
     </clipPath>
   </defs>
 </svg>`
-  ), D = `.crs-delivery-countdown {
+  ), S = `.crs-delivery-countdown {
   container-type: inline-size;
   margin-top: 24px;
   display: flex;
@@ -269,16 +269,16 @@
     height: 24px;
   }
 }
-`, C = {
+`, f = {
     // Set to false to use local time instead of UTC
     DEADLINE_HOUR: 15,
     // 15:00 - deadline for orders
     DEADLINE_MINUTES: 60
     // 60 minutes
   };
-  class I {
+  class D {
     constructor({ container: t, position: e }) {
-      this.staticHour = C.DEADLINE_HOUR, this.staticMinutes = C.DEADLINE_MINUTES, this.container = typeof t == "string" ? document.querySelector(t) : t, this.position = e || "beforeend", this.init();
+      this.staticHour = f.DEADLINE_HOUR, this.staticMinutes = f.DEADLINE_MINUTES, this.container = typeof t == "string" ? document.querySelector(t) : t, this.position = e || "beforeend", this.init();
     }
     init() {
       this.container && (this.createCountdownElement(), this.updateCountdown(), this.startCountdownTimer(), this.addStyles());
@@ -306,27 +306,27 @@
       );
     }
     calculateCountdown() {
-      const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getMinutes(), s = e.getSeconds(), r = e.getDay(), a = -1 * (o - this.staticHour), l = n === 0 ? 0 : this.staticMinutes - n, g = s === 0 ? 0 : 60 - s, h = l.toString().padStart(2, "0"), u = g.toString().padStart(2, "0");
-      let c, d;
+      const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getMinutes(), s = e.getSeconds(), r = e.getDay(), c = -1 * (o - this.staticHour), l = n === 0 ? 0 : this.staticMinutes - n, g = s === 0 ? 0 : 60 - s, h = l.toString().padStart(2, "0"), u = g.toString().padStart(2, "0");
+      let a, d;
       if (o < this.staticHour && r >= 1 && r <= 5)
-        c = (a - (n === 0 && s === 0 ? 0 : 1)).toString().padStart(2, "0"), d = "TOMORROW";
+        a = (c - (n === 0 && s === 0 ? 0 : 1)).toString().padStart(2, "0"), d = "TODAY";
       else if (o >= this.staticHour && r === 5)
-        c = (a + (n === 0 && s === 0 ? 72 : 71)).toString().padStart(2, "0"), d = "on MONDAY";
+        a = (c + (n === 0 && s === 0 ? 72 : 71)).toString().padStart(2, "0"), d = "on MONDAY";
       else if (o >= this.staticHour && r >= 1 && r <= 4)
-        c = (a + (n === 0 && s === 0 ? 24 : 23)).toString().padStart(2, "0"), d = "TOMORROW";
+        a = (c + (n === 0 && s === 0 ? 24 : 23)).toString().padStart(2, "0"), d = "TOMORROW";
       else if (r === 6)
-        c = (a + (n === 0 && s === 0 ? 48 : 47)).toString().padStart(2, "0"), d = "on MONDAY";
+        a = (c + (n === 0 && s === 0 ? 48 : 47)).toString().padStart(2, "0"), d = "on MONDAY";
       else if (r === 0)
-        c = (a + (n === 0 && s === 0 ? 24 : 23)).toString().padStart(2, "0"), d = "on MONDAY";
+        a = (c + (n === 0 && s === 0 ? 24 : 23)).toString().padStart(2, "0"), d = "on MONDAY";
       else {
         if (o === this.staticHour && r >= 1 && r <= 4)
           return `Order in the next 24 ${this.getHourWord(24)} 00 minutes 00 seconds for dispatch TOMORROW`;
-        c = (a + 24).toString().padStart(2, "0"), d = "TOMORROW";
+        a = (c + 24).toString().padStart(2, "0"), d = "TOMORROW";
       }
-      const m = this.getHourWord(parseInt(c)), M = this.getMinuteWord(parseInt(h)), T = this.getSecondWord(parseInt(u));
+      const _ = this.getHourWord(parseInt(a)), M = this.getMinuteWord(parseInt(h)), T = this.getSecondWord(parseInt(u));
       return {
-        hoursText: c,
-        hoursWord: m,
+        hoursText: a,
+        hoursWord: _,
         minutesText: h,
         minutesWord: M,
         secondsText: u,
@@ -346,7 +346,7 @@
     createCountdownElement() {
       this.container && !this.badgeElement && (this.badgeElement = document.createElement("div"), this.badgeElement.className = "crs-delivery-countdown", this.badgeElement.innerHTML = /* HTML */
       `
-        <div class="icon">${E}</div>
+        <div class="icon">${x}</div>
         <div class="timer-content">
           <span class="text-content">Order in the next</span>
           <span class="timer">
@@ -365,7 +365,7 @@
             <span class="tooltip-nowrap">
               <span class="delivery-day highlight">TOMORROW</span>
               <span class="tooltip-container">
-                <span class="tooltip-icon">${S}</span>
+                <span class="tooltip-icon">${E}</span>
                 <span class="tooltip-content">
                   <p>Delivery to UK mainland only</p>
                 </span>
@@ -373,7 +373,7 @@
             >
           </span>
         </div>
-      `, this.container.insertAdjacentElement(this.position, this.badgeElement), b(
+      `, this.container.insertAdjacentElement(this.position, this.badgeElement), v(
         this.badgeElement,
         "exp_delivery_view_01",
         "PDP",
@@ -381,10 +381,10 @@
         0
       ));
     }
-    updateCountdownElements(t, e, o, n, s, r, a) {
+    updateCountdownElements(t, e, o, n, s, r, c) {
       if (this.badgeElement) {
-        const l = this.badgeElement.querySelector(".hours"), g = this.badgeElement.querySelector(".hours-word"), h = this.badgeElement.querySelector(".minutes"), u = this.badgeElement.querySelector(".minutes-word"), c = this.badgeElement.querySelector(".seconds"), d = this.badgeElement.querySelector(".seconds-word"), m = this.badgeElement.querySelector(".delivery-day");
-        l && (l.textContent = t), g && (g.textContent = e), h && (h.textContent = o), u && (u.textContent = n), c && (c.textContent = s), d && (d.textContent = r), m && (m.textContent = a);
+        const l = this.badgeElement.querySelector(".hours"), g = this.badgeElement.querySelector(".hours-word"), h = this.badgeElement.querySelector(".minutes"), u = this.badgeElement.querySelector(".minutes-word"), a = this.badgeElement.querySelector(".seconds"), d = this.badgeElement.querySelector(".seconds-word");
+        this.badgeElement.querySelector(".delivery-day"), l && (l.textContent = t), g && (g.textContent = e), h && (h.textContent = o), u && (u.textContent = n), a && (a.textContent = s), d && (d.textContent = r);
       }
     }
     // Method for cleaning up interval
@@ -393,10 +393,10 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = D, document.head.appendChild(t);
+      t.textContent = S, document.head.appendChild(t);
     }
   }
-  const H = `icms-outlet:has(product-view-delivery-coutdown) {
+  const I = `icms-outlet:has(product-view-delivery-coutdown) {
   display: none !important;
 }
 `, p = {
@@ -406,27 +406,27 @@
     WEEKLY_START_HOUR: 5
     // 5:00 AM Monday start time
   };
-  class O {
+  class H {
     constructor() {
       this.init();
     }
     init() {
       this.checkIsPdpPage().then((t) => {
-        t && (this.addStyles(), y("footer").then(() => {
+        t && (this.addStyles(), m("footer").then(() => {
           this.addDeliveryBadge();
         }));
       });
     }
     async checkIsPdpPage() {
-      return !!await y("product-view");
+      return !!await m("product-view");
     }
     async addDeliveryBadge() {
       if (!this.shouldShowDeliveryBadge()) {
         console.log("Delivery badge hidden due to time restrictions");
         return;
       }
-      const t = await y("product-view-add-to-basket"), e = document.querySelector(".crs-delivery-countdown");
-      e && e.remove(), this.deliveryBadgeInstance = new I({
+      const t = await m("product-view-add-to-basket"), e = document.querySelector(".crs-delivery-countdown");
+      e && e.remove(), this.deliveryBadgeInstance = new D({
         container: t,
         position: "beforebegin"
       }), this.startVisibilityMonitoring();
@@ -450,15 +450,15 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = H, document.head.appendChild(t);
+      t.textContent = I, document.head.appendChild(t);
     }
   }
-  v({ name: "Delivery urgency and date", dev: "OS" }), function(i, t, e, o, n, s) {
+  C({ name: "Delivery urgency and date", dev: "OS" }), function(i, t, e, o, n, s) {
     i.hj = i.hj || function() {
       (i.hj.q = i.hj.q || []).push(arguments);
     }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, n = t.getElementsByTagName("head")[0], s = t.createElement("script"), s.async = !0, s.src = e + i._hjSettings.hjid + o + i._hjSettings.hjsv, n && n.appendChild(s);
   }(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
-  class _ {
+  class O {
     constructor() {
       this.init();
     }
@@ -468,7 +468,7 @@
       }), this.initChanges();
     }
     initChanges() {
-      window.autoInitData.website.defaultCountry === "GB" && new O();
+      window.autoInitData.website.defaultCountry === "GB" && new H();
     }
     pageChangeHandler(t) {
       let e = window.location.pathname;
@@ -483,8 +483,8 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = x, document.head.appendChild(t);
+      t.textContent = b, document.head.appendChild(t);
     }
   }
-  new _();
+  new O();
 })();
