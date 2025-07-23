@@ -309,7 +309,7 @@
       const e = /* @__PURE__ */ new Date(), o = e.getHours(), n = e.getMinutes(), s = e.getSeconds(), r = e.getDay(), a = -1 * (o - this.staticHour), l = n === 0 ? 0 : this.staticMinutes - n, g = s === 0 ? 0 : 60 - s, h = l.toString().padStart(2, "0"), u = g.toString().padStart(2, "0");
       let c, d;
       if (o < this.staticHour && r >= 1 && r <= 5)
-        c = (a - (n === 0 && s === 0 ? 0 : 1)).toString().padStart(2, "0"), d = "TODAY";
+        c = (a - (n === 0 && s === 0 ? 0 : 1)).toString().padStart(2, "0"), d = "TOMORROW";
       else if (o >= this.staticHour && r === 5)
         c = (a + (n === 0 && s === 0 ? 72 : 71)).toString().padStart(2, "0"), d = "on MONDAY";
       else if (o >= this.staticHour && r >= 1 && r <= 4)
@@ -323,14 +323,14 @@
           return `Order in the next 24 ${this.getHourWord(24)} 00 minutes 00 seconds for dispatch TOMORROW`;
         c = (a + 24).toString().padStart(2, "0"), d = "TOMORROW";
       }
-      const m = this.getHourWord(parseInt(c)), T = this.getMinuteWord(parseInt(h)), M = this.getSecondWord(parseInt(u));
+      const m = this.getHourWord(parseInt(c)), M = this.getMinuteWord(parseInt(h)), T = this.getSecondWord(parseInt(u));
       return {
         hoursText: c,
         hoursWord: m,
         minutesText: h,
-        minutesWord: T,
+        minutesWord: M,
         secondsText: u,
-        secondsWord: M,
+        secondsWord: T,
         deliveryDay: d
       };
     }
@@ -363,7 +363,7 @@
             and choose <br class="mob" />
             Next Day Delivery to get it by
             <span class="tooltip-nowrap">
-              <span class="delivery-day highlight">TODAY</span>
+              <span class="delivery-day highlight">TOMORROW</span>
               <span class="tooltip-container">
                 <span class="tooltip-icon">${S}</span>
                 <span class="tooltip-content">
@@ -406,7 +406,7 @@
     WEEKLY_START_HOUR: 5
     // 5:00 AM Monday start time
   };
-  class _ {
+  class O {
     constructor() {
       this.init();
     }
@@ -458,7 +458,7 @@
       (i.hj.q = i.hj.q || []).push(arguments);
     }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, n = t.getElementsByTagName("head")[0], s = t.createElement("script"), s.async = !0, s.src = e + i._hjSettings.hjid + o + i._hjSettings.hjsv, n && n.appendChild(s);
   }(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_delivery");
-  class O {
+  class _ {
     constructor() {
       this.init();
     }
@@ -468,7 +468,7 @@
       }), this.initChanges();
     }
     initChanges() {
-      window.autoInitData.website.defaultCountry === "GB" && new _();
+      window.autoInitData.website.defaultCountry === "GB" && new O();
     }
     pageChangeHandler(t) {
       let e = window.location.pathname;
@@ -486,5 +486,5 @@
       t.textContent = x, document.head.appendChild(t);
     }
   }
-  new O();
+  new _();
 })();
