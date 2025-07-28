@@ -271,8 +271,8 @@
 }
 `, f = {
     // Set to false to use local time instead of UTC
-    DEADLINE_HOUR: 15,
-    // 15:00 - deadline for orders
+    DEADLINE_HOUR: 14,
+    // 14:00 - deadline for orders
     DEADLINE_MINUTES: 60
     // 60 minutes
   };
