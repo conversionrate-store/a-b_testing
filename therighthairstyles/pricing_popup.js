@@ -712,7 +712,7 @@
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      location.href !== "https://app.therighthairstyles.com/virtual-styler-test/step-1" || this.device === "desktop" || (this.addStyles(), this.initPopup());
+      location.href !== "https://app.therighthairstyles.com/virtual-styler-test/step-1" || this.device === "desktop" || (this.addStyles(), this.initPopup(), this.showPopupDemo());
     }
     initPopup() {
       new f();
