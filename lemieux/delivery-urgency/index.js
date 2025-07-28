@@ -401,8 +401,8 @@
 }
 `, p = {
     // Set to false to use local time instead of UTC
-    DAILY_CUTOFF_HOUR: 15,
-    // 3:00 PM cutoff for daily orders
+    DAILY_CUTOFF_HOUR: 14,
+    // 2:00 PM cutoff for daily orders
     WEEKLY_START_HOUR: 5
     // 5:00 AM Monday start time
   };
