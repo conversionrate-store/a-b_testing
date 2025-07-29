@@ -505,6 +505,7 @@ body:has(.crs-pricing-popup[open]) {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none"><path fill="%23000" d="m12.723 1.376-5.054 4.84 5.571 5.339-.345.361-.347.36L6.946 6.91l-5.601 5.367-.347-.36-.346-.361 5.57-5.338L1.17 1.376 1.86.653l5.085 4.871 5.085-4.87.692.722Z"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
