@@ -121,11 +121,8 @@ body:has(.crs-pricing-popup[open]) {
   max-width: 414px;
   height: 90vh;
   max-height: 90vh;
-  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+
 }
 
 .crs-pricing-popup::backdrop {
@@ -683,7 +680,7 @@ body:has(.crs-pricing-popup[open]) {
         var s;
         const t = document.querySelector(".crs-plan-card.selected");
         if (t) {
-          const r = t.getAttribute("data-plan"), { data: p, error: m } = await g.postPurchase(
+          const r = t.getAttribute("data-plan"), { data: p, error: b } = await g.postPurchase(
             r
           );
           if (p) {
@@ -697,7 +694,7 @@ body:has(.crs-pricing-popup[open]) {
               window.location.href = p.checkout_link;
             }, 200);
           } else
-            console.error(m);
+            console.error(b);
         }
       });
     }
