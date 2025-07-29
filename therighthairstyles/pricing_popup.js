@@ -1,55 +1,55 @@
 (function() {
   "use strict";
-  const r = (s, e, n, t = "") => {
+  const o = (i, n, e, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: s,
-      event_desc: e,
-      event_type: n,
+      event_name: i,
+      event_desc: n,
+      event_type: e,
       event_loc: t
-    }), d(`Event: ${s} | ${e} | ${n} | ${t}`, "success");
-  }, p = ({ name: s, dev: e }) => {
+    }), d(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
+  }, p = ({ name: i, dev: n }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${e})`,
+      `%c EXP: ${i} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, d = (s, e = "info") => {
-    let n;
-    switch (e) {
+  }, d = (i, n = "info") => {
+    let e;
+    switch (n) {
       case "info":
-        n = "color: #3498db;";
+        e = "color: #3498db;";
         break;
       case "warn":
-        n = "color: #f39c12;";
+        e = "color: #f39c12;";
         break;
       case "error":
-        n = "color: #e74c3c;";
+        e = "color: #e74c3c;";
         break;
       case "success":
-        n = "color: #2ecc71;";
+        e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${n} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${i}`, `${e} font-size: 16px; font-weight: 600`);
   }, c = {
     subscription: "https://api.therighthairstyles.com/pg_v3/checkout_subscription_session",
     oneTime: "https://api.therighthairstyles.com/pg_v2/checkout_session"
   }, u = {
-    postPurchase: async (s) => {
-      const e = s === "subscription" ? c.subscription : c.oneTime;
+    postPurchase: async (i) => {
+      const n = i === "subscription" ? c.subscription : c.oneTime;
       try {
-        const n = await fetch(e, {
+        const e = await fetch(n, {
           method: "POST",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ package: s })
+          body: JSON.stringify({ package: i })
         });
-        if (!n.ok)
+        if (!e.ok)
           throw new Error("Failed to fetch data");
-        return { data: await n.json(), error: null };
-      } catch (n) {
-        return { data: null, error: n };
+        return { data: await e.json(), error: null };
+      } catch (e) {
+        return { data: null, error: e };
       }
     }
   }, l = [
@@ -537,7 +537,7 @@ body:has(.crs-pricing-popup[open]) {
       this.render(), this.addStyles(), this.setupPlanSelection(), this.setupBuyButton(), this.setupCloseButton();
     }
     render() {
-      const e = (
+      const n = (
         /* HTML */
         `
       <dialog class="crs-pricing-popup" id="crs-pricing-popup">
@@ -576,32 +576,32 @@ body:has(.crs-pricing-popup[open]) {
             </div>
             <div class="crs-pricing-plans">
               ${l.map(
-          (n) => `
-                  <div class="crs-plan-card" data-plan="${n.id}" data-plan-title="${n.title}" tabindex="0">
-                    ${n.isPopular ? `
+          (e) => `
+                  <div class="crs-plan-card" data-plan="${e.id}" data-plan-title="${e.title}" tabindex="0">
+                    ${e.isPopular ? `
                       <div class="crs-popular-badge">
                         <span class="crs-badge-icon"></span>
                         <span class="crs-badge-text">Most Popular</span>
                       </div>
                     ` : ""}
                     <div class="crs-plan-header">
-                      <h3 class="crs-plan-title">${n.title}</h3>
+                      <h3 class="crs-plan-title">${e.title}</h3>
                       <div class="crs-plan-radio"></div>
                     </div>
                     <ul class="crs-plan-features">
-                      ${n.features.map((t) => `<li>${t}</li>`).join("")}
+                      ${e.features.map((t) => `<li>${t}</li>`).join("")}
                     </ul>
                     <div class="crs-plan-pricing">
                       <div class="crs-price-container">
-                        ${n.pricing.originalPrice ? `<span class="crs-original-price">${n.pricing.originalPrice}</span>` : ""}
+                        ${e.pricing.originalPrice ? `<span class="crs-original-price">${e.pricing.originalPrice}</span>` : ""}
                         <div class="crs-current-price">
-                          <span class="crs-price">${n.pricing.currentPrice}</span>
-                          <span class="crs-price-period">${n.pricing.period}</span>
+                          <span class="crs-price">${e.pricing.currentPrice}</span>
+                          <span class="crs-price-period">${e.pricing.period}</span>
                         </div>
                       </div>
-                      ${n.pricing.savings ? `
+                      ${e.pricing.savings ? `
                         <div class="crs-savings-badge">
-                          <span>${n.pricing.savings}</span>
+                          <span>${e.pricing.savings}</span>
                         </div>
                       ` : ""}
                     </div>
@@ -623,17 +623,17 @@ body:has(.crs-pricing-popup[open]) {
       </dialog>
     `
       );
-      document.body.insertAdjacentHTML("beforeend", e);
+      document.body.insertAdjacentHTML("beforeend", n);
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.textContent = g, document.head.appendChild(e);
+      const n = document.createElement("style");
+      n.textContent = g, document.head.appendChild(n);
     }
     show() {
-      const e = document.querySelector(
+      const n = document.querySelector(
         ".crs-pricing-popup"
       );
-      e && (e.showModal(), r(
+      n && (n.showModal(), o(
         "exp_q2_view_03",
         "Popup Visibility",
         "view",
@@ -641,60 +641,60 @@ body:has(.crs-pricing-popup[open]) {
       ));
     }
     close() {
-      const e = document.querySelector(
+      const n = document.querySelector(
         ".crs-pricing-popup"
       );
-      e && e.close();
+      n && n.close();
     }
     setupPlanSelection() {
       document.querySelectorAll(".crs-plan-card").forEach((t) => {
-        t.addEventListener("click", (i) => {
+        t.addEventListener("click", (s) => {
           this.selectPlan(t);
-        }), t.addEventListener("keydown", (i) => {
-          (i.key === "Enter" || i.key === " ") && (i.preventDefault(), this.selectPlan(t));
+        }), t.addEventListener("keydown", (s) => {
+          (s.key === "Enter" || s.key === " ") && (s.preventDefault(), this.selectPlan(t));
         });
       });
-      const n = document.querySelector(".crs-plan-card");
-      n && (n.classList.add("selected"), this.updateCTAButtonText(n.getAttribute("data-plan")));
+      const e = document.querySelector(".crs-plan-card");
+      e && (e.classList.add("selected"), this.updateCTAButtonText(e.getAttribute("data-plan")));
     }
-    selectPlan(e) {
+    selectPlan(n) {
       document.querySelectorAll(".crs-plan-card").forEach((t) => {
         t.classList.remove("selected");
-      }), e.classList.add("selected"), this.updateCTAButtonText(e.getAttribute("data-plan"));
-      const n = e.getAttribute("data-plan-title");
-      r(
+      }), n.classList.add("selected"), this.updateCTAButtonText(n.getAttribute("data-plan"));
+      const e = n.getAttribute("data-plan-title");
+      o(
         "exp_q2_click_5",
-        n || "",
+        e || "",
         "click",
         "Feel Confident in Every Look Popup"
       );
     }
-    updateCTAButtonText(e) {
-      const n = document.getElementById("crs-popup-buy-btn");
-      if (!n) return;
-      const t = n.querySelector(".crs-button-text");
-      if (!t || !e) return;
-      const i = l.find((o) => o.id === e);
-      i && (t.textContent = i.ctaText);
+    updateCTAButtonText(n) {
+      const e = document.getElementById("crs-popup-buy-btn");
+      if (!e) return;
+      const t = e.querySelector(".crs-button-text");
+      if (!t || !n) return;
+      const s = l.find((r) => r.id === n);
+      s && (t.textContent = s.ctaText);
     }
     setupBuyButton() {
-      const e = document.getElementById("crs-popup-buy-btn");
-      e && e.addEventListener("click", async () => {
+      const n = document.getElementById("crs-popup-buy-btn");
+      n && n.addEventListener("click", async () => {
         var t;
-        const n = document.querySelector(".crs-plan-card.selected");
-        if (n) {
-          const i = n.getAttribute("data-plan"), { data: o, error: x } = await u.postPurchase(
-            i
+        const e = document.querySelector(".crs-plan-card.selected");
+        if (e) {
+          const s = e.getAttribute("data-plan"), { data: r, error: x } = await u.postPurchase(
+            s
           );
-          if (o) {
-            const a = e.querySelector(".crs-button-text");
-            r(
+          if (r) {
+            const a = n.querySelector(".crs-button-text");
+            o(
               "exp_q2_click_6",
               ((t = a == null ? void 0 : a.textContent) == null ? void 0 : t.toLowerCase()) || "",
               "click",
               "Feel Confident in Every Look Popup"
             ), setTimeout(() => {
-              window.location.href = o.checkout_link;
+              window.location.href = r.checkout_link;
             }, 200);
           } else
             console.error(x);
@@ -702,12 +702,12 @@ body:has(.crs-pricing-popup[open]) {
       });
     }
     setupCloseButton() {
-      const e = document.querySelector(".crs-popup-close-btn");
-      e && e.addEventListener("click", () => {
-        const n = e.closest(
+      const n = document.querySelector(".crs-popup-close-btn");
+      n && n.addEventListener("click", () => {
+        const e = n.closest(
           ".crs-pricing-popup"
         );
-        n && (n.close(), r(
+        e && (e.close(), o(
           "exp_q2_click_7",
           "Popup Close",
           "click",
@@ -727,19 +727,9 @@ body:has(.crs-pricing-popup[open]) {
       ) || this.device === "desktop" || (this.addStyles(), this.showPopupHandler());
     }
     showPopupHandler() {
-      const e = () => {
-        const n = document.querySelectorAll(".img-wrapper");
-        n.length > 0 ? n.forEach((t) => {
-          t.addEventListener(
-            "click",
-            (i) => {
-              localStorage.getItem("haircut-used") && (i.preventDefault(), i.stopPropagation(), i.stopImmediatePropagation(), this.popup.show());
-            },
-            !0
-          );
-        }) : setTimeout(e, 100);
-      };
-      e();
+      document.addEventListener("click", (n) => {
+        n.target.closest(".img-wrapper") && localStorage.getItem("haircut-used") && (n.preventDefault(), n.stopPropagation(), n.stopImmediatePropagation(), this.popup.show());
+      }, !0);
     }
     showPopupDemo() {
       document.getElementById(
@@ -747,8 +737,8 @@ body:has(.crs-pricing-popup[open]) {
       );
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.textContent = "", document.head.appendChild(e);
+      const n = document.createElement("style");
+      n.textContent = "", document.head.appendChild(n);
     }
   }
   new h();
