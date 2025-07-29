@@ -1,55 +1,55 @@
 (function() {
   "use strict";
-  const o = (i, n, e, t = "") => {
+  const r = (s, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: i,
-      event_desc: n,
-      event_type: e,
+      event_name: s,
+      event_desc: e,
+      event_type: n,
       event_loc: t
-    }), d(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
-  }, p = ({ name: i, dev: n }) => {
+    }), d(`Event: ${s} | ${e} | ${n} | ${t}`, "success");
+  }, p = ({ name: s, dev: e }) => {
     console.log(
-      `%c EXP: ${i} (DEV: ${n})`,
+      `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, d = (i, n = "info") => {
-    let e;
-    switch (n) {
+  }, d = (s, e = "info") => {
+    let n;
+    switch (e) {
       case "info":
-        e = "color: #3498db;";
+        n = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        n = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        n = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${i}`, `${e} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${s}`, `${n} font-size: 16px; font-weight: 600`);
   }, c = {
     subscription: "https://api.therighthairstyles.com/pg_v3/checkout_subscription_session",
     oneTime: "https://api.therighthairstyles.com/pg_v2/checkout_session"
   }, u = {
-    postPurchase: async (i) => {
-      const n = i === "subscription" ? c.subscription : c.oneTime;
+    postPurchase: async (s) => {
+      const e = s === "subscription" ? c.subscription : c.oneTime;
       try {
-        const e = await fetch(n, {
+        const n = await fetch(e, {
           method: "POST",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ package: i })
+          body: JSON.stringify({ package: s })
         });
-        if (!e.ok)
+        if (!n.ok)
           throw new Error("Failed to fetch data");
-        return { data: await e.json(), error: null };
-      } catch (e) {
-        return { data: null, error: e };
+        return { data: await n.json(), error: null };
+      } catch (n) {
+        return { data: null, error: n };
       }
     }
   }, l = [
@@ -106,6 +106,10 @@
       ctaText: "BUY SMART STYLE PLAN"
     }
   ], g = `/* Figma-Inspired Pricing Popup Styles */
+body:has(.crs-pricing-popup[open]) {
+  overflow: hidden;
+}
+
 .crs-pricing-popup {
   margin-bottom: 0 !important;
   border: none;
@@ -533,99 +537,103 @@
       this.render(), this.addStyles(), this.setupPlanSelection(), this.setupBuyButton(), this.setupCloseButton();
     }
     render() {
-      const n = (
+      const e = (
         /* HTML */
         `
-        <dialog class="crs-pricing-popup" id="crs-pricing-popup">
-          <button class="crs-popup-close-btn" tabindex="0"></button>
-          <div class="crs-popup-container">
-            <div class="crs-popup-header-section">
-              <div class="crs-free-look-notice">
-                <div class="crs-free-look-text">
-                  You've used your first free look!
+      <dialog class="crs-pricing-popup" id="crs-pricing-popup">
+        <button class="crs-popup-close-btn" tabindex="0"></button>
+        <div class="crs-popup-container">
+          <div class="crs-popup-header-section">
+            <div class="crs-free-look-notice">
+              <div class="crs-free-look-text">
+                You've used your first free look!
+                <span class="crs-highlight"
+                  >To try more styles, pick a plan below</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="crs-popup-content-section">
+            <div class="crs-header-content">
+              <div class="crs-header-text">
+                <h2 class="crs-main-title">Feel Confident in Every Look</h2>
+                <div class="crs-subtitle">
+                  No more second-guessing.
                   <span class="crs-highlight"
-                    >To try more styles, pick a plan below</span
+                    >Get the styles that fit you — fast, easy, and
+                    stress-free</span
                   >
                 </div>
               </div>
+              <ul class="crs-benefits-list">
+                <li class="crs-benefit-item">
+                  Save hundreds on stylist consultations
+                </li>
+                <li class="crs-benefit-item">
+                  Find your perfect hairstyle without wasting time
+                </li>
+              </ul>
             </div>
-            <div class="crs-popup-content-section">
-              <div class="crs-header-content">
-                <div class="crs-header-text">
-                  <h2 class="crs-main-title">Feel Confident in Every Look</h2>
-                  <div class="crs-subtitle">
-                    No more second-guessing.
-                    <span class="crs-highlight"
-                      >Get the styles that fit you — fast, easy, and
-                      stress-free</span
-                    >
-                  </div>
-                </div>
-                <ul class="crs-benefits-list">
-                  <li class="crs-benefit-item">
-                    Save hundreds on stylist consultations
-                  </li>
-                  <li class="crs-benefit-item">
-                    Find your perfect hairstyle without wasting time
-                  </li>
-                </ul>
-              </div>
-              <div class="crs-pricing-plans">
-                ${l.map(
-          (e) => `
-                  <div class="crs-plan-card" data-plan="${e.id}" data-plan-title="${e.title}" tabindex="0">
-                    ${e.isPopular ? `
+            <div class="crs-pricing-plans">
+              ${l.map(
+          (n) => `
+                  <div class="crs-plan-card" data-plan="${n.id}" data-plan-title="${n.title}" tabindex="0">
+                    ${n.isPopular ? `
                       <div class="crs-popular-badge">
                         <span class="crs-badge-icon"></span>
                         <span class="crs-badge-text">Most Popular</span>
                       </div>
                     ` : ""}
                     <div class="crs-plan-header">
-                      <h3 class="crs-plan-title">${e.title}</h3>
+                      <h3 class="crs-plan-title">${n.title}</h3>
                       <div class="crs-plan-radio"></div>
                     </div>
                     <ul class="crs-plan-features">
-                      ${e.features.map((t) => `<li>${t}</li>`).join("")}
+                      ${n.features.map((t) => `<li>${t}</li>`).join("")}
                     </ul>
                     <div class="crs-plan-pricing">
                       <div class="crs-price-container">
-                        ${e.pricing.originalPrice ? `<span class="crs-original-price">${e.pricing.originalPrice}</span>` : ""}
+                        ${n.pricing.originalPrice ? `<span class="crs-original-price">${n.pricing.originalPrice}</span>` : ""}
                         <div class="crs-current-price">
-                          <span class="crs-price">${e.pricing.currentPrice}</span>
-                          <span class="crs-price-period">${e.pricing.period}</span>
+                          <span class="crs-price">${n.pricing.currentPrice}</span>
+                          <span class="crs-price-period">${n.pricing.period}</span>
                         </div>
                       </div>
-                      ${e.pricing.savings ? `
+                      ${n.pricing.savings ? `
                         <div class="crs-savings-badge">
-                          <span>${e.pricing.savings}</span>
+                          <span>${n.pricing.savings}</span>
                         </div>
                       ` : ""}
                     </div>
                   </div>
                 `
         ).join("")}
-              </div>
-            </div>
-
-            <div class="crs-popup-footer-section">
-              <button class="crs-cta-button" id="crs-popup-buy-btn" tabindex="0">
-                <span class="crs-button-text">BUY and Generate up to 20 styles</span>
-              </button>
-              <div class="crs-guarantee-text">7-Day Money-Back Guarantee</div>
             </div>
           </div>
-        </dialog>
-      `
+
+          <div class="crs-popup-footer-section">
+            <button class="crs-cta-button" id="crs-popup-buy-btn" tabindex="0">
+              <span class="crs-button-text"
+                >BUY and Generate up to 20 styles</span
+              >
+            </button>
+            <div class="crs-guarantee-text">7-Day Money-Back Guarantee</div>
+          </div>
+        </div>
+      </dialog>
+    `
       );
-      document.body.insertAdjacentHTML("beforeend", n);
+      document.body.insertAdjacentHTML("beforeend", e);
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.textContent = g, document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.textContent = g, document.head.appendChild(e);
     }
     show() {
-      const n = document.querySelector(".crs-pricing-popup");
-      n && (n.showModal(), o(
+      const e = document.querySelector(
+        ".crs-pricing-popup"
+      );
+      e && (e.showModal(), r(
         "exp_q2_view_03",
         "Popup Visibility",
         "view",
@@ -633,58 +641,60 @@
       ));
     }
     close() {
-      const n = document.querySelector(".crs-pricing-popup");
-      n && n.close();
+      const e = document.querySelector(
+        ".crs-pricing-popup"
+      );
+      e && e.close();
     }
     setupPlanSelection() {
       document.querySelectorAll(".crs-plan-card").forEach((t) => {
-        t.addEventListener("click", (s) => {
+        t.addEventListener("click", (i) => {
           this.selectPlan(t);
-        }), t.addEventListener("keydown", (s) => {
-          (s.key === "Enter" || s.key === " ") && (s.preventDefault(), this.selectPlan(t));
+        }), t.addEventListener("keydown", (i) => {
+          (i.key === "Enter" || i.key === " ") && (i.preventDefault(), this.selectPlan(t));
         });
       });
-      const e = document.querySelector(".crs-plan-card");
-      e && (e.classList.add("selected"), this.updateCTAButtonText(e.getAttribute("data-plan")));
+      const n = document.querySelector(".crs-plan-card");
+      n && (n.classList.add("selected"), this.updateCTAButtonText(n.getAttribute("data-plan")));
     }
-    selectPlan(n) {
+    selectPlan(e) {
       document.querySelectorAll(".crs-plan-card").forEach((t) => {
         t.classList.remove("selected");
-      }), n.classList.add("selected"), this.updateCTAButtonText(n.getAttribute("data-plan"));
-      const e = n.getAttribute("data-plan-title");
-      o(
+      }), e.classList.add("selected"), this.updateCTAButtonText(e.getAttribute("data-plan"));
+      const n = e.getAttribute("data-plan-title");
+      r(
         "exp_q2_click_5",
-        e || "",
+        n || "",
         "click",
         "Feel Confident in Every Look Popup"
       );
     }
-    updateCTAButtonText(n) {
-      const e = document.getElementById("crs-popup-buy-btn");
-      if (!e) return;
-      const t = e.querySelector(".crs-button-text");
-      if (!t || !n) return;
-      const s = l.find((r) => r.id === n);
-      s && (t.textContent = s.ctaText);
+    updateCTAButtonText(e) {
+      const n = document.getElementById("crs-popup-buy-btn");
+      if (!n) return;
+      const t = n.querySelector(".crs-button-text");
+      if (!t || !e) return;
+      const i = l.find((o) => o.id === e);
+      i && (t.textContent = i.ctaText);
     }
     setupBuyButton() {
-      const n = document.getElementById("crs-popup-buy-btn");
-      n && n.addEventListener("click", async () => {
+      const e = document.getElementById("crs-popup-buy-btn");
+      e && e.addEventListener("click", async () => {
         var t;
-        const e = document.querySelector(".crs-plan-card.selected");
-        if (e) {
-          const s = e.getAttribute("data-plan"), { data: r, error: x } = await u.postPurchase(
-            s
+        const n = document.querySelector(".crs-plan-card.selected");
+        if (n) {
+          const i = n.getAttribute("data-plan"), { data: o, error: x } = await u.postPurchase(
+            i
           );
-          if (r) {
-            const a = n.querySelector(".crs-button-text");
-            o(
+          if (o) {
+            const a = e.querySelector(".crs-button-text");
+            r(
               "exp_q2_click_6",
               ((t = a == null ? void 0 : a.textContent) == null ? void 0 : t.toLowerCase()) || "",
               "click",
               "Feel Confident in Every Look Popup"
             ), setTimeout(() => {
-              window.location.href = r.checkout_link;
+              window.location.href = o.checkout_link;
             }, 200);
           } else
             console.error(x);
@@ -692,12 +702,12 @@
       });
     }
     setupCloseButton() {
-      const n = document.querySelector(".crs-popup-close-btn");
-      n && n.addEventListener("click", () => {
-        const e = n.closest(
+      const e = document.querySelector(".crs-popup-close-btn");
+      e && e.addEventListener("click", () => {
+        const n = e.closest(
           ".crs-pricing-popup"
         );
-        e && (e.close(), o(
+        n && (n.close(), r(
           "exp_q2_click_7",
           "Popup Close",
           "click",
@@ -709,23 +719,36 @@
   p({ name: "Price Page", dev: "OS" });
   class h {
     constructor() {
-      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
+      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.popup = new f(), this.init();
     }
     init() {
-      !location.href.includes("https://app.therighthairstyles.com/virtual-styler-test/step-1") || this.device === "desktop" || (this.addStyles(), this.initPopup(), this.showPopupDemo());
+      !location.href.includes(
+        "https://app.therighthairstyles.com/virtual-styler-test/step-1"
+      ) || this.device === "desktop" || (this.addStyles(), this.showPopupHandler());
     }
-    initPopup() {
-      new f();
+    showPopupHandler() {
+      const e = () => {
+        const n = document.querySelectorAll(".img-wrapper");
+        n.length > 0 ? n.forEach((t) => {
+          t.addEventListener(
+            "click",
+            (i) => {
+              localStorage.getItem("haircut-used") && (i.preventDefault(), i.stopPropagation(), i.stopImmediatePropagation(), this.popup.show());
+            },
+            !0
+          );
+        }) : setTimeout(e, 100);
+      };
+      e();
     }
     showPopupDemo() {
-      const n = document.getElementById(
+      document.getElementById(
         "crs-pricing-popup"
       );
-      n && n.showModal();
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.textContent = "", document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.textContent = "", document.head.appendChild(e);
     }
   }
   new h();
