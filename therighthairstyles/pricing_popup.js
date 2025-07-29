@@ -7,13 +7,13 @@
       event_desc: n,
       event_type: e,
       event_loc: t
-    }), d(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
-  }, p = ({ name: i, dev: n }) => {
+    }), u(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
+  }, d = ({ name: i, dev: n }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, d = (i, n = "info") => {
+  }, u = (i, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -33,7 +33,7 @@
   }, c = {
     subscription: "https://api.therighthairstyles.com/pg_v3/checkout_subscription_session",
     oneTime: "https://api.therighthairstyles.com/pg_v2/checkout_session"
-  }, u = {
+  }, g = {
     postPurchase: async (i) => {
       const n = i === "subscription" ? c.subscription : c.oneTime;
       try {
@@ -105,7 +105,7 @@
       },
       ctaText: "BUY SMART STYLE PLAN"
     }
-  ], g = `/* Figma-Inspired Pricing Popup Styles */
+  ], f = `/* Figma-Inspired Pricing Popup Styles */
 body:has(.crs-pricing-popup[open]) {
   overflow: hidden;
 }
@@ -532,9 +532,9 @@ body:has(.crs-pricing-popup[open]) {
   }
 }
 `;
-  class f {
+  class h {
     constructor() {
-      this.render(), this.addStyles(), this.setupPlanSelection(), this.setupBuyButton(), this.setupCloseButton();
+      this.scrollPosition = null, this.render(), this.addStyles(), this.setupPlanSelection(), this.setupBuyButton(), this.setupCloseButton();
     }
     render() {
       const n = (
@@ -627,13 +627,13 @@ body:has(.crs-pricing-popup[open]) {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.textContent = g, document.head.appendChild(n);
+      n.textContent = f, document.head.appendChild(n);
     }
     show() {
       const n = document.querySelector(
         ".crs-pricing-popup"
       );
-      n && (n.showModal(), o(
+      n && (this.scrollPosition = window.scrollY, n.showModal(), o(
         "exp_q2_view_03",
         "Popup Visibility",
         "view",
@@ -644,7 +644,7 @@ body:has(.crs-pricing-popup[open]) {
       const n = document.querySelector(
         ".crs-pricing-popup"
       );
-      n && n.close();
+      n && (n.close(), this.scrollPosition !== null && (window.scrollTo(0, this.scrollPosition), this.scrollPosition = null));
     }
     setupPlanSelection() {
       document.querySelectorAll(".crs-plan-card").forEach((t) => {
@@ -678,26 +678,26 @@ body:has(.crs-pricing-popup[open]) {
       s && (t.textContent = s.ctaText);
     }
     setupBuyButton() {
-      const n = document.getElementById("crs-popup-buy-btn");
+      const n = document.getElementById("crs-popup-buy-btn"), e = document.querySelector(".crs-pricing-popup");
       n && n.addEventListener("click", async () => {
-        var t;
-        const e = document.querySelector(".crs-plan-card.selected");
-        if (e) {
-          const s = e.getAttribute("data-plan"), { data: r, error: x } = await u.postPurchase(
-            s
+        var s;
+        const t = document.querySelector(".crs-plan-card.selected");
+        if (t) {
+          const r = t.getAttribute("data-plan"), { data: p, error: m } = await g.postPurchase(
+            r
           );
-          if (r) {
+          if (p) {
             const a = n.querySelector(".crs-button-text");
             o(
               "exp_q2_click_6",
-              ((t = a == null ? void 0 : a.textContent) == null ? void 0 : t.toLowerCase()) || "",
+              ((s = a == null ? void 0 : a.textContent) == null ? void 0 : s.toLowerCase()) || "",
               "click",
               "Feel Confident in Every Look Popup"
-            ), setTimeout(() => {
-              window.location.href = r.checkout_link;
+            ), e.close(), setTimeout(() => {
+              window.location.href = p.checkout_link;
             }, 200);
           } else
-            console.error(x);
+            console.error(m);
         }
       });
     }
@@ -707,7 +707,7 @@ body:has(.crs-pricing-popup[open]) {
         const e = n.closest(
           ".crs-pricing-popup"
         );
-        e && (e.close(), o(
+        e && (e.close(), this.scrollPosition !== null && (window.scrollTo(0, this.scrollPosition), this.scrollPosition = null), o(
           "exp_q2_click_7",
           "Popup Close",
           "click",
@@ -716,10 +716,10 @@ body:has(.crs-pricing-popup[open]) {
       });
     }
   }
-  p({ name: "Price Page", dev: "OS" });
-  class h {
+  d({ name: "Price Page", dev: "OS" });
+  class x {
     constructor() {
-      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.popup = new f(), this.init();
+      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.popup = new h(), this.init();
     }
     init() {
       !location.href.includes(
@@ -741,5 +741,5 @@ body:has(.crs-pricing-popup[open]) {
       n.textContent = "", document.head.appendChild(n);
     }
   }
-  new h();
+  new x();
 })();
