@@ -7,13 +7,17 @@
       event_desc: n,
       event_type: e,
       event_loc: t
-    }), u(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
+    }), g(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
   }, d = ({ name: i, dev: n }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, u = (i, n = "info") => {
+  }, u = (i) => {
+    let n = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", i, "variant_1"));
+    }, 1e3);
+  }, g = (i, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -33,7 +37,7 @@
   }, c = {
     subscription: "https://api.therighthairstyles.com/pg_v3/checkout_subscription_session",
     oneTime: "https://api.therighthairstyles.com/pg_v2/checkout_session"
-  }, g = {
+  }, f = {
     postPurchase: async (i) => {
       const n = i === "subscription" ? c.subscription : c.oneTime;
       try {
@@ -105,7 +109,7 @@
       },
       ctaText: "BUY SMART STYLE PLAN"
     }
-  ], f = `/* Figma-Inspired Pricing Popup Styles */
+  ], h = `/* Figma-Inspired Pricing Popup Styles */
 body:has(.crs-pricing-popup[open]) {
   overflow: hidden;
 }
@@ -530,7 +534,7 @@ body:has(.crs-pricing-popup[open]) {
   }
 }
 `;
-  class h {
+  class x {
     constructor() {
       this.scrollPosition = null, this.render(), this.addStyles(), this.setupPlanSelection(), this.setupBuyButton(), this.setupCloseButton();
     }
@@ -625,7 +629,7 @@ body:has(.crs-pricing-popup[open]) {
     }
     addStyles() {
       const n = document.createElement("style");
-      n.textContent = f, document.head.appendChild(n);
+      n.textContent = h, document.head.appendChild(n);
     }
     show() {
       const n = document.querySelector(
@@ -681,7 +685,7 @@ body:has(.crs-pricing-popup[open]) {
         var s;
         const t = document.querySelector(".crs-plan-card.selected");
         if (t) {
-          const r = t.getAttribute("data-plan"), { data: p, error: b } = await g.postPurchase(
+          const r = t.getAttribute("data-plan"), { data: p, error: m } = await f.postPurchase(
             r
           );
           if (p) {
@@ -695,7 +699,7 @@ body:has(.crs-pricing-popup[open]) {
               window.location.href = p.checkout_link;
             }, 200);
           } else
-            console.error(b);
+            console.error(m);
         }
       });
     }
@@ -714,10 +718,10 @@ body:has(.crs-pricing-popup[open]) {
       });
     }
   }
-  d({ name: "Price Page", dev: "OS" });
-  class x {
+  d({ name: "Price Page", dev: "OS" }), u("exp_pricing_page");
+  class b {
     constructor() {
-      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.popup = new h(), this.init();
+      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.popup = new x(), this.init();
     }
     init() {
       !location.href.includes(
@@ -739,5 +743,5 @@ body:has(.crs-pricing-popup[open]) {
       n.textContent = "", document.head.appendChild(n);
     }
   }
-  new x();
+  new b();
 })();
