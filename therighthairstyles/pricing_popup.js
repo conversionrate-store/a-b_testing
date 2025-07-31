@@ -7,17 +7,17 @@
       event_desc: n,
       event_type: e,
       event_loc: t
-    }), g(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
-  }, d = ({ name: i, dev: n }) => {
+    }), u(`Event: ${i} | ${n} | ${e} | ${t}`, "success");
+  }, p = ({ name: i, dev: n }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, u = (i) => {
+  }, d = (i) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, g = (i, n = "info") => {
+  }, u = (i, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -37,7 +37,7 @@
   }, c = {
     subscription: "https://api.therighthairstyles.com/pg_v3/checkout_subscription_session",
     oneTime: "https://api.therighthairstyles.com/pg_v2/checkout_session"
-  }, f = {
+  }, g = {
     postPurchase: async (i) => {
       const n = i === "subscription" ? c.subscription : c.oneTime;
       try {
@@ -109,12 +109,16 @@
       },
       ctaText: "BUY SMART STYLE PLAN"
     }
-  ], h = `/* Figma-Inspired Pricing Popup Styles */
-body:has(.crs-pricing-popup[open]) {
-  overflow: hidden;
-}
+  ], f = `/* Figma-Inspired Pricing Popup Styles */
 
 .crs-pricing-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
   margin-bottom: 0 !important;
   border: none;
   border-radius: 16px 16px 0 0;
@@ -126,12 +130,22 @@ body:has(.crs-pricing-popup[open]) {
   height: 90vh;
   max-height: 90vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
 }
 
-.crs-pricing-popup::backdrop {
+.crs-popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+.crs-popup-open {
+  display: block !important;
+  animation: popup-slide-in 0.3s ease-out;
 }
 
 .crs-popup-container {
@@ -518,11 +532,6 @@ body:has(.crs-pricing-popup[open]) {
   outline: none;
 }
 
-/* Animation */
-.crs-pricing-popup[open] {
-  animation: popup-slide-in 0.3s ease-out;
-}
-
 @keyframes popup-slide-in {
   from {
     opacity: 0;
@@ -534,15 +543,15 @@ body:has(.crs-pricing-popup[open]) {
   }
 }
 `;
-  class x {
+  class h {
     constructor() {
-      this.scrollPosition = null, this.render(), this.addStyles(), this.setupPlanSelection(), this.setupBuyButton(), this.setupCloseButton();
+      this.scrollPosition = null, this.backdrop = null, this.render(), this.addStyles(), this.setupPlanSelection(), this.setupBuyButton(), this.setupCloseButton();
     }
     render() {
       const n = (
         /* HTML */
         `
-      <dialog class="crs-pricing-popup" id="crs-pricing-popup">
+      <div class="crs-pricing-popup" id="crs-pricing-popup">
         <button class="crs-popup-close-btn" tabindex="0"></button>
         <div class="crs-popup-container">
           <div class="crs-popup-header-section">
@@ -622,20 +631,18 @@ body:has(.crs-pricing-popup[open]) {
             <div class="crs-guarantee-text">7-Day Money-Back Guarantee</div>
           </div>
         </div>
-      </dialog>
+      </div>
     `
       );
       document.body.insertAdjacentHTML("beforeend", n);
     }
     addStyles() {
       const n = document.createElement("style");
-      n.textContent = h, document.head.appendChild(n);
+      n.textContent = f, document.head.appendChild(n);
     }
     show() {
-      const n = document.querySelector(
-        ".crs-pricing-popup"
-      );
-      n && (this.scrollPosition = window.scrollY, n.showModal(), o(
+      const n = document.querySelector(".crs-pricing-popup");
+      n && (this.scrollPosition = window.scrollY, this.createBackdrop(), n.style.display = "block", n.classList.add("crs-popup-open"), document.body.style.overflow = "hidden", document.body.style.position = "fixed", document.body.style.width = "100%", o(
         "exp_q2_view_03",
         "Popup Visibility",
         "view",
@@ -643,10 +650,14 @@ body:has(.crs-pricing-popup[open]) {
       ));
     }
     close() {
-      const n = document.querySelector(
-        ".crs-pricing-popup"
-      );
-      n && (n.close(), this.scrollPosition !== null && (window.scrollTo(0, this.scrollPosition), this.scrollPosition = null));
+      const n = document.querySelector(".crs-pricing-popup");
+      n && (n.style.display = "none", n.classList.remove("crs-popup-open"), this.removeBackdrop(), document.body.style.overflow = "", document.body.style.position = "", document.body.style.width = "", this.scrollPosition !== null && (window.scrollTo(0, this.scrollPosition), this.scrollPosition = null));
+    }
+    createBackdrop() {
+      this.backdrop = document.createElement("div"), this.backdrop.className = "crs-popup-backdrop", this.backdrop.addEventListener("click", () => this.close()), document.body.appendChild(this.backdrop);
+    }
+    removeBackdrop() {
+      this.backdrop && (this.backdrop.remove(), this.backdrop = null);
     }
     setupPlanSelection() {
       document.querySelectorAll(".crs-plan-card").forEach((t) => {
@@ -680,53 +691,50 @@ body:has(.crs-pricing-popup[open]) {
       s && (t.textContent = s.ctaText);
     }
     setupBuyButton() {
-      const n = document.getElementById("crs-popup-buy-btn"), e = document.querySelector(".crs-pricing-popup");
+      const n = document.getElementById("crs-popup-buy-btn");
       n && n.addEventListener("click", async () => {
-        var s;
-        const t = document.querySelector(".crs-plan-card.selected");
-        if (t) {
-          const r = t.getAttribute("data-plan"), { data: p, error: m } = await f.postPurchase(
-            r
+        var t;
+        const e = document.querySelector(".crs-plan-card.selected");
+        if (e) {
+          const s = e.getAttribute("data-plan"), { data: r, error: x } = await g.postPurchase(
+            s
           );
-          if (p) {
+          if (r) {
             const a = n.querySelector(".crs-button-text");
             o(
               "exp_q2_click_6",
-              ((s = a == null ? void 0 : a.textContent) == null ? void 0 : s.toLowerCase()) || "",
+              ((t = a == null ? void 0 : a.textContent) == null ? void 0 : t.toLowerCase()) || "",
               "click",
               "Feel Confident in Every Look Popup"
-            ), e.close(), setTimeout(() => {
-              window.location.href = p.checkout_link;
+            ), this.close(), setTimeout(() => {
+              window.location.href = r.checkout_link;
             }, 200);
           } else
-            console.error(m);
+            console.error(x);
         }
       });
     }
     setupCloseButton() {
       const n = document.querySelector(".crs-popup-close-btn");
       n && n.addEventListener("click", () => {
-        const e = n.closest(
-          ".crs-pricing-popup"
-        );
-        e && (e.close(), this.scrollPosition !== null && (window.scrollTo(0, this.scrollPosition), this.scrollPosition = null), o(
+        this.close(), o(
           "exp_q2_click_7",
           "Popup Close",
           "click",
           "Feel Confident in Every Look Popup"
-        ));
+        );
       });
     }
   }
-  d({ name: "Price Page", dev: "OS" }), u("exp_pricing_page");
+  p({ name: "Price Page", dev: "OS" }), d("exp_pricing_page");
   class b {
     constructor() {
-      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.popup = new x(), this.init();
+      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.popup = new h(), this.init();
     }
     init() {
       !location.href.includes(
         "https://app.therighthairstyles.com/virtual-styler-test/step-1"
-      ) || this.device === "desktop" || (this.addStyles(), this.showPopupHandler());
+      ) || this.device === "desktop" || (this.addStyles(), this.showPopupHandler(), this.showPopupDemo());
     }
     showPopupHandler() {
       document.addEventListener("click", (n) => {
@@ -736,7 +744,7 @@ body:has(.crs-pricing-popup[open]) {
     showPopupDemo() {
       document.getElementById(
         "crs-pricing-popup"
-      );
+      ) && this.popup.show();
     }
     addStyles() {
       const n = document.createElement("style");
