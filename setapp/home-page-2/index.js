@@ -1,27 +1,44 @@
 (function() {
   "use strict";
-  const f = (l) => new Promise((t) => {
-    const a = document.querySelector(l);
+  const y = (m) => new Promise((t) => {
+    const a = document.querySelector(m);
     a && t(a);
     const p = new MutationObserver(() => {
-      const e = document.querySelector(l);
+      const e = document.querySelector(m);
       e && (t(e), p.disconnect());
     });
     p.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), b = ({ name: l, dev: t }) => {
+  }), w = ({ name: m, dev: t }) => {
     console.log(
-      `%c EXP: ${l} (DEV: ${t})`,
+      `%c EXP: ${m} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, y = (l) => {
+  }, _ = (m) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", l, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", m, "variant_1"));
     }, 1e3);
+  }, u = (m, t = "info") => {
+    let a;
+    switch (t) {
+      case "info":
+        a = "color: #3498db;";
+        break;
+      case "warn":
+        a = "color: #f39c12;";
+        break;
+      case "error":
+        a = "color: #e74c3c;";
+        break;
+      case "success":
+        a = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${m}`, `${a} font-size: 16px; font-weight: 600`);
   };
-  class w {
+  class v {
     constructor() {
       this.init();
     }
@@ -47,10 +64,10 @@
       ), a = document.querySelector(
         "section.header .header__buttons-container"
       );
-      console.log(a), a && a.insertAdjacentHTML("afterend", t);
+      a && a.insertAdjacentHTML("afterend", t);
     }
   }
-  const _ = `/* Apps Container */
+  const M = `/* Apps Container */
 .crs__apps-container {
   background: rgba(0, 0, 0, 0.02);
   border-radius: 24px;
@@ -885,7 +902,7 @@
     background-position: -200% 0;
   }
 }
-`, h = [
+`, f = [
     {
       name: "Supercharge",
       description: "Supercharge your Mac",
@@ -3200,7 +3217,7 @@
       tab: "Solve with AI+"
     }
   ];
-  class v {
+  class x {
     constructor() {
       this.appDetailsCache = /* @__PURE__ */ new Map();
     }
@@ -3210,7 +3227,7 @@
     async fetchAppDetails(t) {
       var a, p, e;
       try {
-        const o = await (await fetch(t)).text(), s = new DOMParser().parseFromString(o, "text/html"), c = {
+        const o = await (await fetch(t)).text(), c = new DOMParser().parseFromString(o, "text/html"), s = {
           name: "",
           description: "",
           url: t,
@@ -3222,26 +3239,26 @@
           features: [],
           rawHtml: o,
           sections: {}
-        }, r = s.querySelector(
+        }, r = c.querySelector(
           ".app-screenshots__description-container > div:first-child"
         );
         if (r) {
-          let m = ((a = r.textContent) == null ? void 0 : a.trim()) || "";
-          m = this.filterUnwantedContent(m), c.longDescription = m;
+          let l = ((a = r.textContent) == null ? void 0 : a.trim()) || "";
+          l = this.filterUnwantedContent(l), s.longDescription = l;
         }
-        const g = s.querySelectorAll(
+        const g = c.querySelectorAll(
           ".app-features__items-container h4"
         );
-        c.features = Array.from(g).map((m) => {
-          var u;
-          return ((u = m.textContent) == null ? void 0 : u.trim()) || "";
+        s.features = Array.from(g).map((l) => {
+          var b;
+          return ((b = l.textContent) == null ? void 0 : b.trim()) || "";
         }).slice(0, 4).filter(Boolean);
-        const d = ((e = (p = s.querySelector(".app-rating-stats__amount")) == null ? void 0 : p.textContent) == null ? void 0 : e.trim()) || "";
-        return c.sections = {
-          longDescription: c.longDescription || "",
-          features: c.features || [],
+        const d = ((e = (p = c.querySelector(".app-rating-stats__amount")) == null ? void 0 : p.textContent) == null ? void 0 : e.trim()) || "";
+        return s.sections = {
+          longDescription: s.longDescription || "",
+          features: s.features || [],
           totalRatingAmount: d || ""
-        }, c;
+        }, s;
       } catch (n) {
         throw console.error("Error fetching app details:", n), n;
       }
@@ -3349,30 +3366,68 @@
      */
     async exampleUsage(t) {
       try {
-        const a = await this.getAppDetails(t), p = this.getAppContent(a, "name"), e = this.getAppContent(a, "features"), n = this.getAppSection(a, "screenshots"), o = this.getAppSection(a, "developer"), i = this.getAppSection(a, "version"), s = this.getAllAppSections(a), c = this.getRawHtml(a);
+        const a = await this.getAppDetails(t), p = this.getAppContent(a, "name"), e = this.getAppContent(a, "features"), n = this.getAppSection(a, "screenshots"), o = this.getAppSection(a, "developer"), i = this.getAppSection(a, "version"), c = this.getAllAppSections(a), s = this.getRawHtml(a);
         return {
           appName: p,
           appFeatures: e,
           appScreenshots: n,
           developer: o,
           version: i,
-          allSections: s,
-          rawHtmlLength: c.length
+          allSections: c,
+          rawHtmlLength: s.length
         };
       } catch (a) {
         throw console.error("Error in example usage:", a), a;
       }
     }
   }
-  class M {
+  const h = ({
+    eventCategory: m,
+    eventAction: t,
+    eventLabel: a
+  }) => {
+    const p = {
+      eventCategory: m,
+      eventAction: t,
+      eventLabel: a
+    }, e = {
+      event: "crs-setapp",
+      ...p,
+      eventLabel2: "",
+      //cd8
+      eventValue: "",
+      eventNonInteraction: !0,
+      intercomLoaded: !0
+    };
+    window.dataLayer.push(e), u("Data pushed to dataLayer", "info"), console.table(p);
+  }, q = (m, t, a, p = 1e3, e = 0.5) => {
+    let n, o;
+    if (n = new IntersectionObserver(
+      function(i) {
+        i[0].isIntersecting === !0 ? o = setTimeout(() => {
+          h({
+            eventCategory: t,
+            eventAction: "View",
+            eventLabel: a
+          }), n.disconnect();
+        }, p) : (u("Element is not fully visible", "warn"), clearTimeout(o));
+      },
+      { threshold: [e], rootMargin: "0px 0px -400px 0px" }
+    ), typeof m == "string") {
+      const i = document.querySelector(m);
+      i && n.observe(i);
+    } else
+      n.observe(m);
+  };
+  class k {
     constructor() {
-      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new v(), this.init();
+      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new x(), this.init();
     }
     init() {
       this.addStyles(), this.render(), this.initTabs(), this.initAppCards();
     }
     render() {
-      const t = [...new Set(h.map((n) => n.tab))], a = t.reduce((n, o) => (n[o] = h.filter((i) => i.tab === o), n), {}), p = (
+      const t = [...new Set(f.map((n) => n.tab))], a = t.reduce((n, o) => (n[o] = f.filter((i) => i.tab === o), n), {}), p = (
         /* HTML */
         `
       <div class="crs__apps-container">
@@ -3542,9 +3597,19 @@
       ), e = document.querySelector(
         ".header__cta-button"
       );
-      p && p.addEventListener("click", () => {
-        e == null || e.click();
-      });
+      p && (q(
+        p,
+        "Try it 7 days for free with Setapp",
+        "",
+        0,
+        1
+      ), p.addEventListener("click", () => {
+        e == null || e.click(), h({
+          eventCategory: "Try it 7 days for free with Setapp",
+          eventAction: "click",
+          eventLabel: ""
+        });
+      }));
     }
     initTabs() {
       const t = document.querySelector(".crs__apps-container");
@@ -3557,15 +3622,19 @@
           const i = o.getAttribute("data-tab");
           if (!i) return;
           a.forEach((r) => r.classList.remove("active")), p.forEach((r) => r.classList.remove("active")), o.classList.add("active");
-          const s = t.querySelector(
+          const c = t.querySelector(
             `.crs__tab-panel[data-tab="${i}"]`
           );
-          s && s.classList.add("active"), this.showAppsGridView();
-          const c = t.querySelector(
+          c && c.classList.add("active"), this.showAppsGridView();
+          const s = t.querySelector(
             ".crs__tab-panel.active"
           );
-          if (c) {
-            const r = c.querySelector(".crs__apps-grid-view");
+          if (h({
+            eventCategory: "Tab",
+            eventAction: "click",
+            eventLabel: (s == null ? void 0 : s.getAttribute("data-tab")) || ""
+          }), s) {
+            const r = s.querySelector(".crs__apps-grid-view");
             r && (r.scrollTop = 0);
           }
           setTimeout(() => {
@@ -3584,16 +3653,21 @@
       if (!t) return;
       t.querySelectorAll(".crs__app-card").forEach((p) => {
         p.addEventListener("click", async () => {
-          const e = p.getAttribute("data-name"), n = p.getAttribute("data-url"), o = p.getAttribute("data-iconsrc"), i = p.getAttribute("data-description"), s = p.getAttribute("data-rating"), c = p.getAttribute("data-platforms");
-          if (!e || !n || !o || !i || !s || !c)
+          const e = p.getAttribute("data-name"), n = p.getAttribute("data-url"), o = p.getAttribute("data-iconsrc"), i = p.getAttribute("data-description"), c = p.getAttribute("data-rating"), s = p.getAttribute("data-platforms");
+          if (!e || !n || !o || !i || !c || !s)
             return;
-          const r = c.split(",");
+          h({
+            eventCategory: "App block",
+            eventAction: "click",
+            eventLabel: e
+          });
+          const r = s.split(",");
           await this.showAppDetailsView(
             e,
             n,
             o,
             i,
-            s,
+            c,
             r
           );
         }), p.addEventListener("mouseenter", () => {
@@ -3626,19 +3700,19 @@
       const i = document.querySelector(".crs__apps-container");
       if (!i) return;
       this.clearAppDetailsContent();
-      const s = i.querySelector(".crs__tab-panel.active");
-      if (!s) return;
-      const c = i.querySelector(
+      const c = i.querySelector(".crs__tab-panel.active");
+      if (!c) return;
+      const s = i.querySelector(
         ".crs__tab-buttons-container"
       ), r = i.querySelector(
         ".crs__back-button-nav"
       );
-      c && (c.style.display = "none"), r && r.classList.add("active");
-      const g = s.querySelector(
+      s && (s.style.display = "none"), r && r.classList.add("active");
+      const g = c.querySelector(
         ".crs__apps-grid-view"
       );
       g && (g.style.display = "none");
-      const d = s.querySelector(
+      const d = c.querySelector(
         ".crs__app-details-view"
       );
       d && (d.style.display = "block", d.scrollTop = 0), this.updateAppDetailsContent(
@@ -3649,10 +3723,10 @@
         o
       ), this.showLoadingState();
       try {
-        const m = await this.appDataService.getAppDetails(a);
-        this.hideLoadingState(), this.updateAppDetailsWithParsedData(m), this.initDetailsActions();
-      } catch (m) {
-        console.error("Error fetching app details:", m), this.hideLoadingState(), this.showErrorState();
+        const l = await this.appDataService.getAppDetails(a);
+        this.hideLoadingState(), this.updateAppDetailsWithParsedData(l), this.initDetailsActions();
+      } catch (l) {
+        console.error("Error fetching app details:", l), this.hideLoadingState(), this.showErrorState();
       }
     }
     showAppsGridView() {
@@ -3696,14 +3770,14 @@
       o && (o.textContent = "");
       const i = a.querySelector(".crs__rating-count");
       i && (i.textContent = "");
-      const s = a.querySelector(
+      const c = a.querySelector(
         ".crs__platforms-list"
       );
-      s && (s.innerHTML = "");
-      const c = a.querySelector(
+      c && (c.innerHTML = "");
+      const s = a.querySelector(
         ".crs__app-detail-long-description"
       );
-      c && (c.textContent = "");
+      s && (s.textContent = "");
       const r = a.querySelector(".crs__app-features-list");
       r && (r.innerHTML = "");
     }
@@ -3712,32 +3786,32 @@
       if (!o) return;
       const i = o.querySelector(".crs__tab-panel.active");
       if (!i) return;
-      const s = i.querySelector(
+      const c = i.querySelector(
         ".crs__app-detail-icon-img"
       );
-      s && (s.src = a, s.alt = t);
-      const c = i.querySelector(".crs__app-detail-name");
-      c && (c.textContent = t);
+      c && (c.src = a, c.alt = t);
+      const s = i.querySelector(".crs__app-detail-name");
+      s && (s.textContent = t);
       const r = i.querySelector(
         ".crs__app-detail-description"
       );
       r && (r.textContent = p);
       const g = i.querySelector(".crs__rating-value");
       if (e === "0") {
-        const m = i.querySelector(
+        const l = i.querySelector(
           ".crs__app-detail-rating"
         );
-        m && m.classList.add("d-none");
+        l && l.classList.add("d-none");
       } else g && (g.textContent = `${e}%`);
       const d = i.querySelector(
         ".crs__platforms-list"
       );
       d && n.length > 0 && (d.innerHTML = n.map(
-        (m) => `<span class="crs__platform-badge">${m}</span>`
+        (l) => `<span class="crs__platform-badge">${l}</span>`
       ).join(""));
     }
     updateAppDetailsWithParsedData(t) {
-      var i, s;
+      var i, c;
       const a = document.querySelector(".crs__apps-container");
       if (!a) return;
       const p = a.querySelector(".crs__tab-panel.active");
@@ -3749,9 +3823,9 @@
         t.longDescription
       ));
       const n = p.querySelector(".crs__rating-count");
-      n && ((i = t.sections) != null && i.totalRatingAmount) && (n.textContent = (s = t.sections) == null ? void 0 : s.totalRatingAmount);
+      n && ((i = t.sections) != null && i.totalRatingAmount) && (n.textContent = (c = t.sections) == null ? void 0 : c.totalRatingAmount);
       const o = p.querySelector(".crs__app-features-list");
-      o && t.features && t.features.length > 0 && (o.innerHTML = t.features.map((c) => `<li class="crs__app-feature-item">${c}</li>`).join(""));
+      o && t.features && t.features.length > 0 && (o.innerHTML = t.features.map((s) => `<li class="crs__app-feature-item">${s}</li>`).join(""));
     }
     limitToTwoSentences(t) {
       return this.appDataService.limitToTwoSentences(t);
@@ -3818,7 +3892,7 @@
       return this.appDataService.isCached(t);
     }
     async parseApps() {
-      await f("app-details"), document.querySelectorAll("app-details:not(.d-none)").forEach((a) => {
+      await y("app-details"), document.querySelectorAll("app-details:not(.d-none)").forEach((a) => {
         var p, e, n, o;
         a.getAttribute("name"), a.getAttribute("description"), a.getAttribute("url"), (p = a.getAttribute("iconsrc")) == null || p.replace("quality=75", "quality=100"), a.getAttribute("rating"), (e = a.getAttribute("platforms")) == null || e.split(","), (o = (n = document.querySelector(
           ".applications-categories .applications-categories__item_active"
@@ -3827,10 +3901,10 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = _, document.head.appendChild(t);
+      t.textContent = M, document.head.appendChild(t);
     }
   }
-  const x = `section.header :is(.header__logo, .header__badge),
+  const S = `section.header :is(.header__logo, .header__badge),
 .eney-promo-banner {
   display: none;
 }
@@ -3900,18 +3974,18 @@ section.header .header__buttons-container {
   grid-row: 1 / 5;
 }
 `;
-  b({ name: "Home page", dev: "OS" }), y("exp_hp");
-  class q {
+  w({ name: "Home page", dev: "OS" }), _("exp_hp");
+  class C {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new w(), new M());
+      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new v(), new k());
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = x, document.head.appendChild(t);
+      t.textContent = S, document.head.appendChild(t);
     }
   }
-  new q();
+  new C();
 })();
