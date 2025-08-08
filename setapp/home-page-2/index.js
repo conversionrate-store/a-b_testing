@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const y = (m) => new Promise((t) => {
+  const w = (m) => new Promise((t) => {
     const a = document.querySelector(m);
     a && t(a);
     const p = new MutationObserver(() => {
@@ -11,16 +11,16 @@
       childList: !0,
       subtree: !0
     });
-  }), w = ({ name: m, dev: t }) => {
+  }), _ = ({ name: m, dev: t }) => {
     console.log(
       `%c EXP: ${m} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, _ = (m) => {
+  }, v = (m) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", m, "variant_1"));
     }, 1e3);
-  }, u = (m, t = "info") => {
+  }, M = (m, t = "info") => {
     let a;
     switch (t) {
       case "info":
@@ -38,7 +38,7 @@
     }
     console.log(`%c>>> ${m}`, `${a} font-size: 16px; font-weight: 600`);
   };
-  class v {
+  class x {
     constructor() {
       this.init();
     }
@@ -67,7 +67,7 @@
       a && a.insertAdjacentHTML("afterend", t);
     }
   }
-  const M = `/* Apps Container */
+  const q = `/* Apps Container */
 .crs__apps-container {
   background: rgba(0, 0, 0, 0.02);
   border-radius: 24px;
@@ -350,7 +350,7 @@
   width: calc(100% - 40px);
   height: 100%;
   overflow-y: auto;
-  padding: 24px 4px 237px 4px;
+  padding: 24px 4px 180px 4px;
 }
 
 .crs__apps-container .crs__app-details-content {
@@ -902,7 +902,7 @@
     background-position: -200% 0;
   }
 }
-`, f = [
+`, b = [
     {
       name: "Supercharge",
       description: "Supercharge your Mac",
@@ -3217,7 +3217,7 @@
       tab: "Solve with AI+"
     }
   ];
-  class x {
+  class k {
     constructor() {
       this.appDetailsCache = /* @__PURE__ */ new Map();
     }
@@ -3250,8 +3250,8 @@
           ".app-features__items-container h4"
         );
         s.features = Array.from(g).map((l) => {
-          var b;
-          return ((b = l.textContent) == null ? void 0 : b.trim()) || "";
+          var u;
+          return ((u = l.textContent) == null ? void 0 : u.trim()) || "";
         }).slice(0, 4).filter(Boolean);
         const d = ((e = (p = c.querySelector(".app-rating-stats__amount")) == null ? void 0 : p.textContent) == null ? void 0 : e.trim()) || "";
         return s.sections = {
@@ -3308,12 +3308,12 @@
       return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
     /**
-     * Limit text to two sentences
+     * Limit text to three sentences
      */
-    limitToTwoSentences(t) {
+    limitToThreeSentences(t) {
       if (!t) return "";
       const a = t.split(new RegExp("(?<=[.!?])\\s+")).filter((e) => e.trim().length > 0);
-      return a.length <= 2 ? t : a.slice(0, 2).join(" ") + "...";
+      return a.length <= 3 ? t : a.slice(0, 3).join(" ") + "...";
     }
     /**
      * Clear the cache
@@ -3399,35 +3399,45 @@
       eventNonInteraction: !0,
       intercomLoaded: !0
     };
-    window.dataLayer.push(e), u("Data pushed to dataLayer", "info"), console.table(p);
-  }, q = (m, t, a, p = 1e3, e = 0.5) => {
-    let n, o;
-    if (n = new IntersectionObserver(
-      function(i) {
-        i[0].isIntersecting === !0 ? o = setTimeout(() => {
-          h({
-            eventCategory: t,
-            eventAction: "View",
-            eventLabel: a
-          }), n.disconnect();
-        }, p) : (u("Element is not fully visible", "warn"), clearTimeout(o));
-      },
-      { threshold: [e], rootMargin: "0px 0px -400px 0px" }
-    ), typeof m == "string") {
-      const i = document.querySelector(m);
-      i && n.observe(i);
-    } else
-      n.observe(m);
+    window.dataLayer.push(e), M("Data pushed to dataLayer", "info"), console.table(p);
+  }, S = (m, t, a, p = 1e3) => {
+    var c;
+    let e, n = !1;
+    const o = () => {
+      var y;
+      if (n) return;
+      const s = typeof m == "string" ? document.querySelector(m) : m;
+      if (!s) return;
+      const r = s.closest(".crs__app-details-view");
+      if (!r)
+        return;
+      const g = (y = r.parentElement) == null ? void 0 : y.querySelector(
+        ".crs__pricing-section"
+      );
+      if (!g)
+        return;
+      const d = r.getBoundingClientRect(), l = s.getBoundingClientRect(), u = g.getBoundingClientRect(), D = l.top - d.top, f = l.bottom - d.top, T = u.top - d.top, W = D < d.height && f > 0, z = f <= T, P = f < d.height - 20;
+      W && z && P && (e = setTimeout(() => {
+        h({
+          eventCategory: t,
+          eventAction: "View",
+          eventLabel: a
+        }), n = !0;
+      }, p));
+    }, i = typeof m == "string" ? (c = document.querySelector(m)) == null ? void 0 : c.closest(".crs__app-details-view") : m.closest(".crs__app-details-view");
+    return i && i.addEventListener("scroll", o, { passive: !0 }), window.addEventListener("resize", o, { passive: !0 }), o(), () => {
+      i && i.removeEventListener("scroll", o), window.removeEventListener("resize", o), clearTimeout(e);
+    };
   };
-  class k {
+  class C {
     constructor() {
-      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new x(), this.init();
+      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new k(), this.init();
     }
     init() {
       this.addStyles(), this.render(), this.initTabs(), this.initAppCards();
     }
     render() {
-      const t = [...new Set(f.map((n) => n.tab))], a = t.reduce((n, o) => (n[o] = f.filter((i) => i.tab === o), n), {}), p = (
+      const t = [...new Set(b.map((n) => n.tab))], a = t.reduce((n, o) => (n[o] = b.filter((i) => i.tab === o), n), {}), p = (
         /* HTML */
         `
       <div class="crs__apps-container">
@@ -3597,12 +3607,11 @@
       ), e = document.querySelector(
         ".header__cta-button"
       );
-      p && (q(
+      p && (S(
         p,
         "Try it 7 days for free with Setapp",
         "",
-        0,
-        1
+        0
       ), p.addEventListener("click", () => {
         e == null || e.click(), h({
           eventCategory: "Try it 7 days for free with Setapp",
@@ -3819,7 +3828,7 @@
       const e = p.querySelector(
         ".crs__app-detail-long-description"
       );
-      e && t.longDescription && (e.textContent = this.limitToTwoSentences(
+      e && t.longDescription && (e.textContent = this.limitToThreeSentences(
         t.longDescription
       ));
       const n = p.querySelector(".crs__rating-count");
@@ -3827,8 +3836,8 @@
       const o = p.querySelector(".crs__app-features-list");
       o && t.features && t.features.length > 0 && (o.innerHTML = t.features.map((s) => `<li class="crs__app-feature-item">${s}</li>`).join(""));
     }
-    limitToTwoSentences(t) {
-      return this.appDataService.limitToTwoSentences(t);
+    limitToThreeSentences(t) {
+      return this.appDataService.limitToThreeSentences(t);
     }
     showLoadingState() {
       const t = document.querySelector(".crs__apps-container");
@@ -3892,7 +3901,7 @@
       return this.appDataService.isCached(t);
     }
     async parseApps() {
-      await y("app-details"), document.querySelectorAll("app-details:not(.d-none)").forEach((a) => {
+      await w("app-details"), document.querySelectorAll("app-details:not(.d-none)").forEach((a) => {
         var p, e, n, o;
         a.getAttribute("name"), a.getAttribute("description"), a.getAttribute("url"), (p = a.getAttribute("iconsrc")) == null || p.replace("quality=75", "quality=100"), a.getAttribute("rating"), (e = a.getAttribute("platforms")) == null || e.split(","), (o = (n = document.querySelector(
           ".applications-categories .applications-categories__item_active"
@@ -3901,10 +3910,10 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = M, document.head.appendChild(t);
+      t.textContent = q, document.head.appendChild(t);
     }
   }
-  const S = `section.header :is(.header__logo, .header__badge),
+  const A = `section.header :is(.header__logo, .header__badge),
 .eney-promo-banner {
   display: none;
 }
@@ -3974,18 +3983,18 @@ section.header .header__buttons-container {
   grid-row: 1 / 5;
 }
 `;
-  w({ name: "Home page", dev: "OS" }), _("exp_hp");
-  class C {
+  _({ name: "Home page", dev: "OS" }), v("exp_hp");
+  class O {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new v(), new k());
+      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new x(), new C());
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = S, document.head.appendChild(t);
+      t.textContent = A, document.head.appendChild(t);
     }
   }
-  new C();
+  new O();
 })();
