@@ -1,28 +1,28 @@
 (function() {
   "use strict";
-  const h = (r) => new Promise((n) => {
+  const h = (r) => new Promise((e) => {
     const t = document.querySelector(r);
-    t && n(t);
-    const e = new MutationObserver(() => {
+    t && e(t);
+    const n = new MutationObserver(() => {
       const i = document.querySelector(r);
-      i && (n(i), e.disconnect());
+      i && (e(i), n.disconnect());
     });
-    e.observe(document.documentElement, {
+    n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: r, dev: n }) => {
+  }), y = ({ name: r, dev: e }) => {
     console.log(
-      `%c EXP: ${r} (DEV: ${n})`,
+      `%c EXP: ${r} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, u = (r) => {
-    let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", r, "variant_1"));
+  }, w = (r) => {
+    let e = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, y = (r, n = "info") => {
+  }, _ = (r, e = "info") => {
     let t;
-    switch (n) {
+    switch (e) {
       case "info":
         t = "color: #3498db;";
         break;
@@ -37,7 +37,7 @@
         break;
     }
     console.log(`%c>>> ${r}`, `${t} font-size: 16px; font-weight: 600`);
-  }, _ = `.outer-layout__main.container-fluid:not(
+  }, x = `.outer-layout__main.container-fluid:not(
     :has(.signup-ccr-flow__hidden-item:first-child)
   ),
 .signup-ccr-flow:not(:has(.signup-ccr-flow__hidden-item:first-child)) {
@@ -413,35 +413,35 @@
   top: -65.26%;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0 0h100v100H0z" fill="none"/></svg>');
 }
-`, w = "https://conversionrate-store.github.io/a-b_images/setapp/", g = ({
+`, v = "https://conversionrate-store.github.io/a-b_images/setapp/", g = ({
     eventCategory: r,
-    eventAction: n,
+    eventAction: e,
     eventLabel: t
   }) => {
-    const e = {
+    const n = {
       eventCategory: r,
-      eventAction: n,
+      eventAction: e,
       eventLabel: t
     }, i = {
       event: "crs-setapp",
-      ...e,
+      ...n,
       eventLabel2: "",
       //cd8
       eventValue: "",
       eventNonInteraction: !0,
       intercomLoaded: !0
     };
-    window.dataLayer.push(i), y("Data pushed to dataLayer", "info"), console.table(e);
+    window.dataLayer.push(i), _("Data pushed to dataLayer", "info"), console.table(n);
   };
-  class x {
+  class m {
     constructor() {
       this.init(), this.paymentDetailsElement = null;
     }
     async init() {
       try {
         await this.checkPaymentDetailsPage(), this.addStyles(), this.changeTitle(), this.updatePriceTexts(), this.addPricingBreakdown(), this.addTrialDescription(), this.addDescriptionList(), this.changeCTAButtonText(), this.addWelcomeText(), this.changePricePlanTitleText();
-      } catch (n) {
-        const t = n instanceof Error ? n.message : "Unknown error";
+      } catch (e) {
+        const t = e instanceof Error ? e.message : "Unknown error";
         console.error(t);
       }
     }
@@ -455,14 +455,14 @@
         throw new Error("Not target language");
     }
     addWelcomeText() {
-      const n = sessionStorage.getItem("crs-user-name"), t = (
+      const e = sessionStorage.getItem("crs-user-name"), t = (
         /* HTML */
         `
       <div
         class="crs-signup-payment-details-description__welcome-text"
-        style="${n ? "" : "visibility: hidden;"}"
+        style="${e ? "" : "visibility: hidden;"}"
       >
-        👋 <span class="highlight">Welcome, ${n}!</span> You've just
+        👋 <span class="highlight">Welcome, ${e}!</span> You've just
         unlocked 260+ premium Mac apps. Just activate your trial to start
         enjoying it all.
       </div>
@@ -472,23 +472,23 @@
     }
     changeTitle() {
       var t;
-      const n = (t = this.paymentDetailsElement) == null ? void 0 : t.querySelector(
+      const e = (t = this.paymentDetailsElement) == null ? void 0 : t.querySelector(
         "h3"
       );
-      n && (n.textContent = "Try free for 7 days");
+      e && (e.textContent = "Try free for 7 days");
     }
     changePricePlanTitleText() {
       var t;
-      const n = (t = this.paymentDetailsElement) == null ? void 0 : t.querySelector(
+      const e = (t = this.paymentDetailsElement) == null ? void 0 : t.querySelector(
         ".price-plan-switcher__wrapper > p"
       );
-      n && n.textContent === "Billing period" && (n.textContent = "Choose your plan after 7 days free trial:");
+      e && e.textContent === "Billing period" && (e.textContent = "Choose your plan after 7 days free trial:");
     }
     updatePriceTexts() {
       document.querySelectorAll(".price-plan-switcher h4").forEach((t) => {
-        const e = t.textContent;
-        if (e && e.includes("/mo")) {
-          const i = e.match(/\$[\d.]+/);
+        const n = t.textContent;
+        if (n && n.includes("/mo")) {
+          const i = n.match(/\$[\d.]+/);
           if (i) {
             const c = i[0];
             t.textContent = `${c}/month after trial`;
@@ -498,13 +498,13 @@
     }
     addPricingBreakdown() {
       var o;
-      const n = document.querySelectorAll(".price-plan-switcher h4");
-      let t = "$", e = "0";
-      n.forEach((d) => {
+      const e = document.querySelectorAll(".price-plan-switcher h4");
+      let t = "$", n = "0";
+      e.forEach((d) => {
         const a = d.textContent;
         if (a && a.includes("/month after trial")) {
           const s = a.match(/^([€$£¥])/), l = a.match(/[€$£¥]\s*([\d.]+)/);
-          s && (t = s[1]), l && (e = l[1]);
+          s && (t = s[1]), l && (n = l[1]);
         }
       });
       const i = document.querySelector(
@@ -520,7 +520,7 @@
             const s = a.textContent;
             if (s && s.includes("/month after trial")) {
               const l = s.match(/[€$£¥]\s*([\d.]+)/);
-              l && (e = l[1]);
+              l && (n = l[1]);
             }
           }
         }
@@ -543,7 +543,7 @@
         >
           <div class="crs-pricing-breakdown__label">After 7 days:</div>
           <div class="crs-pricing-breakdown__price">
-            ${t} ${e}
+            ${t} ${n}
           </div>
         </div>
       </div>
@@ -563,12 +563,12 @@
       });
     }
     updatePricingBreakdown() {
-      const n = document.querySelector(".crs-pricing-breakdown");
-      if (!n) return;
+      const e = document.querySelector(".crs-pricing-breakdown");
+      if (!e) return;
       const t = document.querySelector(
         ".price-plan-switcher__input:checked"
       );
-      let e = "$", i = "0";
+      let n = "$", i = "0";
       if (t) {
         const o = document.querySelector(
           `label[for="${t.id}"]`
@@ -578,8 +578,8 @@
           if (a) {
             const s = a.textContent;
             if (s && s.includes("/month after trial")) {
-              const l = s.match(/^([€$£¥])/), m = s.match(/[€$£¥]\s*([\d.]+)/);
-              l && (e = l[1]), m && (i = m[1]);
+              const l = s.match(/^([€$£¥])/), u = s.match(/[€$£¥]\s*([\d.]+)/);
+              l && (n = l[1]), u && (i = u[1]);
             }
           }
         }
@@ -599,20 +599,20 @@
           eventLabel: d
         });
       }
-      const c = n.querySelector(
+      const c = e.querySelector(
         ".crs-pricing-breakdown__currency"
-      ), p = n.querySelector(
+      ), p = e.querySelector(
         ".crs-pricing-breakdown__row--secondary .crs-pricing-breakdown__price"
       );
-      c && (c.textContent = e), p && (p.textContent = `${e} ${i}`);
+      c && (c.textContent = n), p && (p.textContent = `${n} ${i}`);
     }
     changeCTAButtonText() {
-      var t, e;
-      const n = (t = this.paymentDetailsElement) == null ? void 0 : t.querySelector(
+      var t, n;
+      const e = (t = this.paymentDetailsElement) == null ? void 0 : t.querySelector(
         ".btn.btn_primary"
       );
-      if (n && n.textContent === "Start your 7-day trial") {
-        n.insertAdjacentHTML(
+      if (e && e.textContent === "Start your 7-day trial") {
+        e.insertAdjacentHTML(
           "afterend",
           /* HTML */
           `
@@ -624,11 +624,11 @@
         </button>
       `
         );
-        const c = (e = this.paymentDetailsElement) == null ? void 0 : e.querySelector(
+        const c = (n = this.paymentDetailsElement) == null ? void 0 : n.querySelector(
           "#crs-try-free-for-7-days-button"
         );
         c && c.addEventListener("click", () => {
-          n.click(), g({
+          e.click(), g({
             eventCategory: "Payment Info",
             eventAction: "Try Free for 7 Days",
             eventLabel: ""
@@ -637,8 +637,8 @@
       }
     }
     addDescriptionList() {
-      var e;
-      const n = (
+      var n;
+      const e = (
         /* HTML */
         `
       <ul class="crs-signup-payment-details-description__list">
@@ -653,16 +653,16 @@
         </li>
       </ul>
     `
-      ), t = (e = this.paymentDetailsElement) == null ? void 0 : e.querySelector(
+      ), t = (n = this.paymentDetailsElement) == null ? void 0 : n.querySelector(
         ".price-plan-switcher__wrapper"
       );
-      t && t.insertAdjacentHTML("beforebegin", n);
+      t && t.insertAdjacentHTML("beforebegin", e);
     }
     addTrialDescription() {
       var o;
-      const n = /* @__PURE__ */ new Date();
-      n.setDate(n.getDate() + 7);
-      const e = [
+      const e = /* @__PURE__ */ new Date();
+      e.setDate(e.getDate() + 7);
+      const n = [
         "January",
         "February",
         "March",
@@ -675,14 +675,14 @@
         "October",
         "November",
         "December"
-      ][n.getMonth()], i = n.getDate(), c = `${e} ${i}`, p = (
+      ][e.getMonth()], i = e.getDate(), c = `${n} ${i}`, p = (
         /* HTML */
         `
       <div class="crs-trial-description">
         <div class="crs-trial-description__background">
           <div class="crs-trial-description__union-bg">
             <img
-              src="${w}/apps_2.webp"
+              src="${v}/apps_2.webp"
               width="582"
               height="155"
               alt=""
@@ -820,14 +820,14 @@
       (o = this.paymentDetailsElement) == null || o.insertAdjacentHTML("afterend", p);
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.textContent = _, document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.textContent = x, document.head.appendChild(e);
     }
   }
-  const v = `.social-auth-welcome-page {
+  const b = `.social-auth-welcome-page {
   visibility: hidden;
 }`;
-  class b {
+  class f {
     constructor() {
       this.init();
     }
@@ -836,34 +836,51 @@
     }
     async getUserName() {
       var t;
-      const n = await h(".social-auth-welcome-page h3");
-      if (n) {
-        const [e, ...i] = ((t = n.textContent) == null ? void 0 : t.split(",")) || [];
-        sessionStorage.setItem("crs-user-name", e), location.href = "/signup/payment-details";
+      const e = await h(".social-auth-welcome-page h3");
+      if (e) {
+        const [n, ...i] = ((t = e.textContent) == null ? void 0 : t.split(",")) || [];
+        sessionStorage.setItem("crs-user-name", n), location.href = "/signup/payment-details";
       }
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.textContent = v, document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.textContent = b, document.head.appendChild(e);
     }
   }
-  f({ name: "5th EXP on trial flow.", dev: "OS" }), u("exp_trial");
+  y({ name: "5th EXP on trial flow.", dev: "OS" }), w("exp_trial");
   class C {
     constructor() {
-      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
+      this.paymentDetailsInitialized = !1, this.welcomeInitialized = !1, this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.device === "desktop" && (this.addStyles(), this.changePaymentDetailsPage(), this.changeWelcomePage());
+      this.device === "desktop" && (this.addStyles(), this.observePageChange());
+    }
+    observePageChange() {
+      const e = new MutationObserver((t) => {
+        const n = window.location.pathname;
+        if (n.includes("signup/payment-details") && !this.paymentDetailsInitialized) {
+          this.paymentDetailsInitialized = !0, e.disconnect(), new m();
+          return;
+        }
+        if (n.includes("auth/welcome") && !this.welcomeInitialized) {
+          this.welcomeInitialized = !0, e.disconnect(), new f();
+          return;
+        }
+      });
+      e.observe(document.body, {
+        childList: !0,
+        subtree: !0
+      });
     }
     changePaymentDetailsPage() {
-      window.location.pathname.includes("signup/payment-details") && new x();
+      window.location.pathname.includes("signup/payment-details") && new m();
     }
     changeWelcomePage() {
-      window.location.pathname.includes("auth/welcome") && new b();
+      window.location.pathname.includes("auth/welcome") && new f();
     }
     addStyles() {
-      const n = document.createElement("style");
-      n.textContent = "", document.head.appendChild(n);
+      const e = document.createElement("style");
+      e.textContent = "", document.head.appendChild(e);
     }
   }
   new C();
