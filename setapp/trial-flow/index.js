@@ -388,7 +388,6 @@
   color: #ffffff;
   margin: 0;
   padding-bottom: 40px;
-  text-transform: capitalize;
 }
 
 .crs-trial-step:last-child .crs-trial-step__description {
