@@ -1,15 +1,26 @@
 (function() {
   "use strict";
-  const y = ({ name: m, dev: t }) => {
+  const y = (r) => new Promise((t) => {
+    const p = document.querySelector(r);
+    p && t(p);
+    const e = new MutationObserver(() => {
+      const a = document.querySelector(r);
+      a && (t(a), e.disconnect());
+    });
+    e.observe(document.documentElement, {
+      childList: !0,
+      subtree: !0
+    });
+  }), w = ({ name: r, dev: t }) => {
     console.log(
-      `%c EXP: ${m} (DEV: ${t})`,
+      `%c EXP: ${r} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, w = (m) => {
+  }, _ = (r) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", m, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, _ = (m, t = "info") => {
+  }, v = (r, t = "info") => {
     let p;
     switch (t) {
       case "info":
@@ -25,9 +36,9 @@
         p = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${m}`, `${p} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${r}`, `${p} font-size: 16px; font-weight: 600`);
   };
-  class v {
+  class M {
     constructor() {
       this.init();
     }
@@ -56,7 +67,7 @@
       p && p.insertAdjacentHTML("afterend", t);
     }
   }
-  const M = `/* Apps Container */
+  const x = `/* Apps Container */
 .crs__apps-container {
   background: rgba(0, 0, 0, 0.02);
   border-radius: 24px;
@@ -3206,7 +3217,7 @@
       tab: "Solve with AI+"
     }
   ];
-  class x {
+  class q {
     constructor() {
       this.appDetailsCache = /* @__PURE__ */ new Map(), this.allAppsCache = null;
     }
@@ -3290,12 +3301,12 @@
     }
   }
   const h = ({
-    eventCategory: m,
+    eventCategory: r,
     eventAction: t,
     eventLabel: p
   }) => {
     const e = {
-      eventCategory: m,
+      eventCategory: r,
       eventAction: t,
       eventLabel: p
     }, a = {
@@ -3307,51 +3318,51 @@
       eventNonInteraction: !0,
       intercomLoaded: !0
     };
-    window.dataLayer.push(a), _("Data pushed to dataLayer", "info"), console.table(e);
-  }, k = (m, t, p, e = 1e3) => {
+    window.dataLayer.push(a), v("Data pushed to dataLayer", "info"), console.table(e);
+  }, k = (r, t, p, e = 1e3) => {
     var c;
     let a, i = !1;
     const o = () => {
       var b;
       if (i) return;
-      const s = typeof m == "string" ? document.querySelector(m) : m;
+      const s = typeof r == "string" ? document.querySelector(r) : r;
       if (!s) return;
-      const r = s.closest(".crs__app-details-view");
-      if (!r)
+      const m = s.closest(".crs__app-details-view");
+      if (!m)
         return;
-      const g = (b = r.parentElement) == null ? void 0 : b.querySelector(
+      const g = (b = m.parentElement) == null ? void 0 : b.querySelector(
         ".crs__pricing-section"
       );
       if (!g)
         return;
-      const l = r.getBoundingClientRect(), d = s.getBoundingClientRect(), A = g.getBoundingClientRect(), O = d.top - l.top, u = d.bottom - l.top, D = A.top - l.top, W = O < l.height && u > 0, z = u <= D, T = u < l.height - 20;
-      W && z && T && (a = setTimeout(() => {
+      const l = m.getBoundingClientRect(), d = s.getBoundingClientRect(), O = g.getBoundingClientRect(), D = d.top - l.top, u = d.bottom - l.top, W = O.top - l.top, z = D < l.height && u > 0, T = u <= W, P = u < l.height - 20;
+      z && T && P && (a = setTimeout(() => {
         h({
           eventCategory: t,
           eventAction: "View",
           eventLabel: p
         }), i = !0;
       }, e));
-    }, n = typeof m == "string" ? (c = document.querySelector(m)) == null ? void 0 : c.closest(".crs__app-details-view") : m.closest(".crs__app-details-view");
+    }, n = typeof r == "string" ? (c = document.querySelector(r)) == null ? void 0 : c.closest(".crs__app-details-view") : r.closest(".crs__app-details-view");
     return n && n.addEventListener("scroll", o, { passive: !0 }), window.addEventListener("resize", o, { passive: !0 }), o(), () => {
       n && n.removeEventListener("scroll", o), window.removeEventListener("resize", o), clearTimeout(a);
     };
   };
-  class q {
+  class S {
     constructor() {
-      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new x(), this.init().catch((t) => {
+      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new q(), this.init().catch((t) => {
         console.error("Failed to initialize Apps:", t);
       });
     }
     async init() {
-      this.addStyles(), this.render(), this.initTabs(), this.initAppCards();
+      this.addStyles(), await this.render(), this.initTabs(), this.initAppCards();
       try {
         await this.appDataService.getAllAppDetails();
       } catch (t) {
         console.error("❌ Failed to load app details on initialization:", t);
       }
     }
-    render() {
+    async render() {
       const t = [...new Set(f.map((i) => i.tab))], p = t.reduce((i, o) => (i[o] = f.filter((n) => n.tab === o), i), {}), e = (
         /* HTML */
         `
@@ -3507,7 +3518,7 @@
         </div>
       </div>
     `
-      ), a = document.querySelector(
+      ), a = await y(
         "section.header .header__buttons-container"
       );
       a && a.insertAdjacentHTML("afterend", e);
@@ -3545,7 +3556,7 @@
         o.addEventListener("click", () => {
           const n = o.getAttribute("data-tab");
           if (!n) return;
-          p.forEach((r) => r.classList.remove("active")), e.forEach((r) => r.classList.remove("active")), o.classList.add("active");
+          p.forEach((m) => m.classList.remove("active")), e.forEach((m) => m.classList.remove("active")), o.classList.add("active");
           const c = t.querySelector(
             `.crs__tab-panel[data-tab="${n}"]`
           );
@@ -3558,8 +3569,8 @@
             eventAction: "click",
             eventLabel: (s == null ? void 0 : s.getAttribute("data-tab")) || ""
           }), s) {
-            const r = s.querySelector(".crs__apps-grid-view");
-            r && (r.scrollTop = 0);
+            const m = s.querySelector(".crs__apps-grid-view");
+            m && (m.scrollTop = 0);
           }
           setTimeout(() => {
             this.prefetchAllAppsInCurrentTab();
@@ -3585,14 +3596,14 @@
             eventAction: "click",
             eventLabel: a
           });
-          const r = s.split(",");
+          const m = s.split(",");
           await this.showAppDetailsView(
             a,
             i,
             o,
             n,
             c,
-            r
+            m
           );
         });
       });
@@ -3612,10 +3623,10 @@
       if (!c) return;
       const s = n.querySelector(
         ".crs__tab-buttons-container"
-      ), r = n.querySelector(
+      ), m = n.querySelector(
         ".crs__back-button-nav"
       );
-      s && (s.style.display = "none"), r && r.classList.add("active");
+      s && (s.style.display = "none"), m && m.classList.add("active");
       const g = c.querySelector(
         ".crs__apps-grid-view"
       );
@@ -3686,8 +3697,8 @@
         ".crs__app-detail-long-description"
       );
       s && (s.textContent = "");
-      const r = p.querySelector(".crs__app-features-list");
-      r && (r.innerHTML = "");
+      const m = p.querySelector(".crs__app-features-list");
+      m && (m.innerHTML = "");
     }
     updateAppDetailsContent(t, p, e, a, i) {
       const o = document.querySelector(".crs__apps-container");
@@ -3700,10 +3711,10 @@
       c && (c.src = p, c.alt = t);
       const s = n.querySelector(".crs__app-detail-name");
       s && (s.textContent = t);
-      const r = n.querySelector(
+      const m = n.querySelector(
         ".crs__app-detail-description"
       );
-      r && (r.textContent = e);
+      m && (m.textContent = e);
       const g = n.querySelector(".crs__rating-value");
       if (a === "0") {
         const d = n.querySelector(
@@ -3801,10 +3812,10 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = M, document.head.appendChild(t);
+      t.textContent = x, document.head.appendChild(t);
     }
   }
-  const S = `section.header :is(.header__logo, .header__badge),
+  const C = `section.header :is(.header__logo, .header__badge),
 .eney-promo-banner {
   display: none;
 }
@@ -3874,18 +3885,18 @@ section.header .header__buttons-container {
   grid-row: 1 / 5;
 }
 `;
-  y({ name: "Home page", dev: "OS" }), w("exp_hp");
-  class C {
+  w({ name: "Home page", dev: "OS" }), _("exp_hp");
+  class A {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new v(), new q());
+      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new M(), new S());
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = S, document.head.appendChild(t);
+      t.textContent = C, document.head.appendChild(t);
     }
   }
-  new C();
+  new A();
 })();
