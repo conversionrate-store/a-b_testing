@@ -1,33 +1,44 @@
 (function() {
   "use strict";
-  const y = ({ name: m, dev: t }) => {
+  const w = (m) => new Promise((t) => {
+    const a = document.querySelector(m);
+    a && t(a);
+    const p = new MutationObserver(() => {
+      const e = document.querySelector(m);
+      e && (t(e), p.disconnect());
+    });
+    p.observe(document.documentElement, {
+      childList: !0,
+      subtree: !0
+    });
+  }), _ = ({ name: m, dev: t }) => {
     console.log(
       `%c EXP: ${m} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, w = (m) => {
+  }, v = (m) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", m, "variant_1"));
     }, 1e3);
-  }, _ = (m, t = "info") => {
-    let p;
+  }, M = (m, t = "info") => {
+    let a;
     switch (t) {
       case "info":
-        p = "color: #3498db;";
+        a = "color: #3498db;";
         break;
       case "warn":
-        p = "color: #f39c12;";
+        a = "color: #f39c12;";
         break;
       case "error":
-        p = "color: #e74c3c;";
+        a = "color: #e74c3c;";
         break;
       case "success":
-        p = "color: #2ecc71;";
+        a = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${m}`, `${p} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${m}`, `${a} font-size: 16px; font-weight: 600`);
   };
-  class v {
+  class x {
     constructor() {
       this.init();
     }
@@ -50,13 +61,13 @@
         <span>No charges during trial</span>
       </div>
     `
-      ), p = document.querySelector(
+      ), a = document.querySelector(
         "section.header .header__buttons-container"
       );
-      p && p.insertAdjacentHTML("afterend", t);
+      a && a.insertAdjacentHTML("afterend", t);
     }
   }
-  const M = `/* Apps Container */
+  const q = `/* Apps Container */
 .crs__apps-container {
   background: rgba(0, 0, 0, 0.02);
   border-radius: 24px;
@@ -891,7 +902,7 @@
     background-position: -200% 0;
   }
 }
-`, f = [
+`, b = [
     {
       name: "Supercharge",
       description: "Supercharge your Mac",
@@ -3206,69 +3217,103 @@
       tab: "Solve with AI+"
     }
   ];
-  class x {
+  class k {
     constructor() {
-      this.appDetailsCache = /* @__PURE__ */ new Map(), this.allAppsCache = null;
+      this.appDetailsCache = /* @__PURE__ */ new Map();
     }
     /**
-     * Fetch all app details from the JSON endpoint
+     * Fetch app details from the given URL
      */
-    async fetchAllAppDetails() {
+    async fetchAppDetails(t) {
+      var a, p, e;
       try {
-        console.log("🔄 Fetching all app details from JSON endpoint...");
-        const t = await fetch("https://ab.conversionrate.store/setapp/home-page-2/apps.json");
-        if (!t.ok)
-          throw new Error(`HTTP error! status: ${t.status}`);
-        const p = await t.json();
-        console.log(`✅ Successfully fetched ${p.length} apps from JSON endpoint`);
-        const e = p.map((a) => ({
-          name: a.name,
-          description: a.description,
-          url: a.url,
-          icon: a.icon,
-          rating: a.rating,
-          platforms: a.platforms,
-          tab: a.tab,
-          longDescription: a.longDescription || a.description,
-          features: a.features || [],
-          rawHtml: "",
-          // Not needed for static data
-          sections: {
-            longDescription: a.longDescription || a.description,
-            features: a.features || [],
-            totalRatingAmount: a.totalRatingAmount || "0"
-          }
-        }));
-        return this.allAppsCache = e, e.forEach((a) => {
-          this.appDetailsCache.set(a.url, a);
-        }), e;
-      } catch (t) {
-        throw console.error("Error fetching all app details:", t), t;
+        const o = await (await fetch(t)).text(), c = new DOMParser().parseFromString(o, "text/html"), s = {
+          name: "",
+          description: "",
+          url: t,
+          icon: "",
+          rating: "",
+          platforms: [],
+          tab: "",
+          longDescription: "",
+          features: [],
+          rawHtml: o,
+          sections: {}
+        }, r = c.querySelector(
+          ".app-screenshots__description-container > div:first-child"
+        );
+        if (r) {
+          let l = ((a = r.textContent) == null ? void 0 : a.trim()) || "";
+          l = this.filterUnwantedContent(l), s.longDescription = l;
+        }
+        const g = c.querySelectorAll(
+          ".app-features__items-container h4"
+        );
+        s.features = Array.from(g).map((l) => {
+          var u;
+          return ((u = l.textContent) == null ? void 0 : u.trim()) || "";
+        }).slice(0, 4).filter(Boolean);
+        const d = ((e = (p = c.querySelector(".app-rating-stats__amount")) == null ? void 0 : p.textContent) == null ? void 0 : e.trim()) || "";
+        return s.sections = {
+          longDescription: s.longDescription || "",
+          features: s.features || [],
+          totalRatingAmount: d || ""
+        }, s;
+      } catch (n) {
+        throw console.error("Error fetching app details:", n), n;
       }
     }
     /**
-     * Get all app details (cached if available)
-     */
-    async getAllAppDetails() {
-      return this.allAppsCache ? this.allAppsCache : await this.fetchAllAppDetails();
-    }
-    /**
-     * Get app details from cache
+     * Get app details with caching
      */
     async getAppDetails(t) {
       if (this.appDetailsCache.has(t))
         return this.appDetailsCache.get(t);
-      if (this.allAppsCache || await this.getAllAppDetails(), this.appDetailsCache.has(t))
-        return this.appDetailsCache.get(t);
-      throw new Error(`App details not found for: ${t}`);
+      const a = await this.fetchAppDetails(t);
+      return this.appDetailsCache.set(t, a), a;
+    }
+    /**
+     * Prefetch app details in background
+     */
+    async prefetchAppDetails(t) {
+      try {
+        const a = await this.fetchAppDetails(t);
+        this.appDetailsCache.set(t, a);
+      } catch (a) {
+        console.error("Prefetch failed for:", t, a);
+      }
+    }
+    /**
+     * Filter out unwanted content from text
+     */
+    filterUnwantedContent(t) {
+      if (!t) return "";
+      const a = [
+        "**IMPORTANT: if you just upgraded to macOS Big Sur, you need to uninstall TripMode completely from within Setapp, and reinstall it to get TripMode 3**",
+        "IMPORTANT: if you just upgraded to macOS Big Sur, you need to uninstall TripMode completely from within Setapp, and reinstall it to get TripMode 3"
+        // Add more unwanted content here as needed
+      ];
+      let p = t;
+      return a.forEach((e) => {
+        p = p.replace(
+          new RegExp(this.escapeRegExp(e), "gi"),
+          ""
+        );
+      }), p = p.replace(/\s+/g, " ").replace(/\s*\.\s*\.\s*\./g, "...").replace(/\s*,\s*,/g, ",").replace(/^\s*[.,]\s*/g, "").replace(/\s*[.,]\s*$/g, "").trim(), p;
+    }
+    /**
+     * Escape regex special characters
+     */
+    escapeRegExp(t) {
+      return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
     /**
      * Limit text to three sentences
      */
     limitToThreeSentences(t) {
       if (!t) return "";
-      const p = t.split(new RegExp("(?<=[.!?])\\s+")).filter((a) => a.trim().length > 0);
-      return p.length <= 3 ? t : p.slice(0, 3).join(" ") + "...";
+      const a = t.split(new RegExp("(?<=[.!?])\\s+")).filter((e) => e.trim().length > 0);
+      return a.length <= 3 ? t : a.slice(0, 3).join(" ") + "...";
     }
     /**
      * Clear the cache
@@ -3291,71 +3336,108 @@
     isCached(t) {
       return this.appDetailsCache.has(t);
     }
+    /**
+     * Get specific content from fetched app details
+     */
+    getAppContent(t, a) {
+      return t[a] || null;
+    }
+    /**
+     * Get custom section content from parsed data
+     */
+    getAppSection(t, a) {
+      var p;
+      return ((p = t.sections) == null ? void 0 : p[a]) || null;
+    }
+    /**
+     * Get all available sections from parsed app data
+     */
+    getAllAppSections(t) {
+      return t.sections || {};
+    }
+    /**
+     * Get raw HTML content for custom parsing
+     */
+    getRawHtml(t) {
+      return t.rawHtml || "";
+    }
+    /**
+     * Example usage method - demonstrates how to use the fetched data
+     */
+    async exampleUsage(t) {
+      try {
+        const a = await this.getAppDetails(t), p = this.getAppContent(a, "name"), e = this.getAppContent(a, "features"), n = this.getAppSection(a, "screenshots"), o = this.getAppSection(a, "developer"), i = this.getAppSection(a, "version"), c = this.getAllAppSections(a), s = this.getRawHtml(a);
+        return {
+          appName: p,
+          appFeatures: e,
+          appScreenshots: n,
+          developer: o,
+          version: i,
+          allSections: c,
+          rawHtmlLength: s.length
+        };
+      } catch (a) {
+        throw console.error("Error in example usage:", a), a;
+      }
+    }
   }
   const h = ({
     eventCategory: m,
     eventAction: t,
-    eventLabel: p
+    eventLabel: a
   }) => {
-    const e = {
+    const p = {
       eventCategory: m,
       eventAction: t,
-      eventLabel: p
-    }, a = {
+      eventLabel: a
+    }, e = {
       event: "crs-setapp",
-      ...e,
+      ...p,
       eventLabel2: "",
       //cd8
       eventValue: "",
       eventNonInteraction: !0,
       intercomLoaded: !0
     };
-    window.dataLayer.push(a), _("Data pushed to dataLayer", "info"), console.table(e);
-  }, k = (m, t, p, e = 1e3) => {
+    window.dataLayer.push(e), M("Data pushed to dataLayer", "info"), console.table(p);
+  }, S = (m, t, a, p = 1e3) => {
     var c;
-    let a, i = !1;
+    let e, n = !1;
     const o = () => {
-      var b;
-      if (i) return;
+      var y;
+      if (n) return;
       const s = typeof m == "string" ? document.querySelector(m) : m;
       if (!s) return;
       const r = s.closest(".crs__app-details-view");
       if (!r)
         return;
-      const g = (b = r.parentElement) == null ? void 0 : b.querySelector(
+      const g = (y = r.parentElement) == null ? void 0 : y.querySelector(
         ".crs__pricing-section"
       );
       if (!g)
         return;
-      const l = r.getBoundingClientRect(), d = s.getBoundingClientRect(), A = g.getBoundingClientRect(), O = d.top - l.top, u = d.bottom - l.top, D = A.top - l.top, z = O < l.height && u > 0, W = u <= D, T = u < l.height - 20;
-      z && W && T && (a = setTimeout(() => {
+      const d = r.getBoundingClientRect(), l = s.getBoundingClientRect(), u = g.getBoundingClientRect(), D = l.top - d.top, f = l.bottom - d.top, T = u.top - d.top, W = D < d.height && f > 0, z = f <= T, P = f < d.height - 20;
+      W && z && P && (e = setTimeout(() => {
         h({
           eventCategory: t,
           eventAction: "View",
-          eventLabel: p
-        }), i = !0;
-      }, e));
-    }, n = typeof m == "string" ? (c = document.querySelector(m)) == null ? void 0 : c.closest(".crs__app-details-view") : m.closest(".crs__app-details-view");
-    return n && n.addEventListener("scroll", o, { passive: !0 }), window.addEventListener("resize", o, { passive: !0 }), o(), () => {
-      n && n.removeEventListener("scroll", o), window.removeEventListener("resize", o), clearTimeout(a);
+          eventLabel: a
+        }), n = !0;
+      }, p));
+    }, i = typeof m == "string" ? (c = document.querySelector(m)) == null ? void 0 : c.closest(".crs__app-details-view") : m.closest(".crs__app-details-view");
+    return i && i.addEventListener("scroll", o, { passive: !0 }), window.addEventListener("resize", o, { passive: !0 }), o(), () => {
+      i && i.removeEventListener("scroll", o), window.removeEventListener("resize", o), clearTimeout(e);
     };
   };
-  class q {
+  class C {
     constructor() {
-      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new x(), this.init().catch((t) => {
-        console.error("Failed to initialize Apps:", t);
-      });
+      this.currentView = "apps_grid", this.currentAppDetails = null, this.appDataService = new k(), this.init();
     }
-    async init() {
+    init() {
       this.addStyles(), this.render(), this.initTabs(), this.initAppCards();
-      try {
-        console.log("🚀 Loading all app details on initialization..."), await this.appDataService.getAllAppDetails(), console.log("✅ All app details loaded successfully");
-      } catch (t) {
-        console.error("❌ Failed to load app details on initialization:", t);
-      }
     }
     render() {
-      const t = [...new Set(f.map((i) => i.tab))], p = t.reduce((i, o) => (i[o] = f.filter((n) => n.tab === o), i), {}), e = (
+      const t = [...new Set(b.map((n) => n.tab))], a = t.reduce((n, o) => (n[o] = b.filter((i) => i.tab === o), n), {}), p = (
         /* HTML */
         `
       <div class="crs__apps-container">
@@ -3372,9 +3454,9 @@
             <!-- Tab Buttons -->
             <div class="crs__tab-buttons-container">
               ${t.map(
-          (i, o) => `
-                <button class="crs__tab-button ${o === 0 ? "active" : ""}" data-tab="${i}">
-                  ${i}
+          (n, o) => `
+                <button class="crs__tab-button ${o === 0 ? "active" : ""}" data-tab="${n}">
+                  ${n}
                 </button>
               `
         ).join("")}
@@ -3384,36 +3466,36 @@
           <!-- Tab Content -->
           <div class="crs__tab-content">
             ${t.map(
-          (i, o) => (
+          (n, o) => (
             /* HTML */
             `
                   <div
                     class="crs__tab-panel ${o === 0 ? "active" : ""}"
-                    data-tab="${i}"
+                    data-tab="${n}"
                   >
                     <!-- Apps Grid View -->
                     <div class="crs__apps-grid-view">
                       <div class="crs__apps-grid">
-                        ${p[i].map(
-              (n) => (
+                        ${a[n].map(
+              (i) => (
                 /* HTML */
                 `
                               <div
                                 class="crs__app-card"
-                                data-name="${n.name}"
-                                data-description="${n.description}"
-                                data-url="${n.url}"
-                                data-iconsrc="${n.icon}"
-                                data-rating="${n.rating}"
-                                data-platforms="${n.platforms.join(",")}"
+                                data-name="${i.name}"
+                                data-description="${i.description}"
+                                data-url="${i.url}"
+                                data-iconsrc="${i.icon}"
+                                data-rating="${i.rating}"
+                                data-platforms="${i.platforms.join(",")}"
                               >
                                 <div class="crs__app-icon">
-                                  <img src="${n.icon}" alt="${n.name}" />
+                                  <img src="${i.icon}" alt="${i.name}" />
                                 </div>
                                 <div class="crs__app-info">
-                                  <h3 class="crs__app-name">${n.name}</h3>
+                                  <h3 class="crs__app-name">${i.name}</h3>
                                   <p class="crs__app-description">
-                                    ${n.description}
+                                    ${i.description}
                                   </p>
                                 </div>
                               </div>
@@ -3510,28 +3592,28 @@
         </div>
       </div>
     `
-      ), a = document.querySelector(
+      ), e = document.querySelector(
         "section.header .header__buttons-container"
       );
-      a && a.insertAdjacentHTML("afterend", e);
+      e && e.insertAdjacentHTML("afterend", p);
     }
     initDetailsActions() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelector(".crs__tab-panel.active");
-      if (!p) return;
-      const e = p.querySelector(
+      const a = t.querySelector(".crs__tab-panel.active");
+      if (!a) return;
+      const p = a.querySelector(
         ".crs__app-details-actions button"
-      ), a = document.querySelector(
+      ), e = document.querySelector(
         ".header__cta-button"
       );
-      e && (k(
-        e,
+      p && (S(
+        p,
         "Try it 7 days for free with Setapp",
         "",
         0
-      ), e.addEventListener("click", () => {
-        a == null || a.click(), h({
+      ), p.addEventListener("click", () => {
+        e == null || e.click(), h({
           eventCategory: "Try it 7 days for free with Setapp",
           eventAction: "click",
           eventLabel: ""
@@ -3541,16 +3623,16 @@
     initTabs() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelectorAll(".crs__tab-button"), e = t.querySelectorAll(".crs__tab-panel"), a = t.querySelector(".crs__back-button-nav"), i = t.querySelector(
+      const a = t.querySelectorAll(".crs__tab-button"), p = t.querySelectorAll(".crs__tab-panel"), e = t.querySelector(".crs__back-button-nav"), n = t.querySelector(
         ".crs__tab-buttons-container"
       );
-      p.forEach((o) => {
+      a.forEach((o) => {
         o.addEventListener("click", () => {
-          const n = o.getAttribute("data-tab");
-          if (!n) return;
-          p.forEach((r) => r.classList.remove("active")), e.forEach((r) => r.classList.remove("active")), o.classList.add("active");
+          const i = o.getAttribute("data-tab");
+          if (!i) return;
+          a.forEach((r) => r.classList.remove("active")), p.forEach((r) => r.classList.remove("active")), o.classList.add("active");
           const c = t.querySelector(
-            `.crs__tab-panel[data-tab="${n}"]`
+            `.crs__tab-panel[data-tab="${i}"]`
           );
           c && c.classList.add("active"), this.showAppsGridView();
           const s = t.querySelector(
@@ -3568,54 +3650,70 @@
             this.prefetchAllAppsInCurrentTab();
           }, 100);
         });
-      }), a == null || a.addEventListener("click", () => {
+      }), e == null || e.addEventListener("click", () => {
         this.showAppsGridView();
-      }), i == null || i.addEventListener("click", (o) => {
-        const n = o.target;
-        n.classList.contains("crs__tab-button") && !n.classList.contains("active") ? a.classList.add("active") : a.classList.remove("active");
+      }), n == null || n.addEventListener("click", (o) => {
+        const i = o.target;
+        i.classList.contains("crs__tab-button") && !i.classList.contains("active") ? e.classList.add("active") : e.classList.remove("active");
       });
     }
     initAppCards() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      t.querySelectorAll(".crs__app-card").forEach((e) => {
-        e.addEventListener("click", async () => {
-          const a = e.getAttribute("data-name"), i = e.getAttribute("data-url"), o = e.getAttribute("data-iconsrc"), n = e.getAttribute("data-description"), c = e.getAttribute("data-rating"), s = e.getAttribute("data-platforms");
-          if (!a || !i || !o || !n || !c || !s)
+      t.querySelectorAll(".crs__app-card").forEach((p) => {
+        p.addEventListener("click", async () => {
+          const e = p.getAttribute("data-name"), n = p.getAttribute("data-url"), o = p.getAttribute("data-iconsrc"), i = p.getAttribute("data-description"), c = p.getAttribute("data-rating"), s = p.getAttribute("data-platforms");
+          if (!e || !n || !o || !i || !c || !s)
             return;
           h({
             eventCategory: "App block",
             eventAction: "click",
-            eventLabel: a
+            eventLabel: e
           });
           const r = s.split(",");
           await this.showAppDetailsView(
-            a,
-            i,
-            o,
+            e,
             n,
+            o,
+            i,
             c,
             r
           );
+        }), p.addEventListener("mouseenter", () => {
+          const e = p.getAttribute("data-url");
+          e && !this.appDataService.isCached(e) && this.appDataService.prefetchAppDetails(e);
         });
-      });
+      }), this.initIntelligentPrefetching();
     }
-    async prefetchAllAppsInCurrentTab() {
+    async prefetchAppDetails(t) {
       try {
-        await this.appDataService.getAllAppDetails(), console.log("✅ All app details loaded and cached");
-      } catch (t) {
-        console.error("❌ Failed to load all app details:", t);
+        await this.appDataService.prefetchAppDetails(t);
+      } catch (a) {
+        console.error("Prefetch failed for:", t, a);
       }
     }
-    async showAppDetailsView(t, p, e, a, i, o) {
-      const n = document.querySelector(".crs__apps-container");
-      if (!n) return;
+    initIntelligentPrefetching() {
+      this.prefetchAllAppsInCurrentTab();
+    }
+    prefetchAllAppsInCurrentTab() {
+      const t = document.querySelector(".crs__apps-container");
+      if (!t) return;
+      const a = t.querySelector(".crs__tab-panel.active");
+      if (!a) return;
+      a.querySelectorAll(".crs__app-card").forEach((e) => {
+        const n = e.getAttribute("data-url");
+        n && !this.appDataService.isCached(n) && this.appDataService.prefetchAppDetails(n);
+      });
+    }
+    async showAppDetailsView(t, a, p, e, n, o) {
+      const i = document.querySelector(".crs__apps-container");
+      if (!i) return;
       this.clearAppDetailsContent();
-      const c = n.querySelector(".crs__tab-panel.active");
+      const c = i.querySelector(".crs__tab-panel.active");
       if (!c) return;
-      const s = n.querySelector(
+      const s = i.querySelector(
         ".crs__tab-buttons-container"
-      ), r = n.querySelector(
+      ), r = i.querySelector(
         ".crs__back-button-nav"
       );
       s && (s.style.display = "none"), r && r.classList.add("active");
@@ -3623,39 +3721,39 @@
         ".crs__apps-grid-view"
       );
       g && (g.style.display = "none");
-      const l = c.querySelector(
+      const d = c.querySelector(
         ".crs__app-details-view"
       );
-      l && (l.style.display = "block", l.scrollTop = 0), this.updateAppDetailsContent(
+      d && (d.style.display = "block", d.scrollTop = 0), this.updateAppDetailsContent(
         t,
+        p,
         e,
-        a,
-        i,
+        n,
         o
       ), this.showLoadingState();
       try {
-        const d = await this.appDataService.getAppDetails(p);
-        this.hideLoadingState(), this.updateAppDetailsWithParsedData(d), this.initDetailsActions();
-      } catch (d) {
-        console.error("Error getting app details from cache:", d), this.hideLoadingState(), this.showErrorState();
+        const l = await this.appDataService.getAppDetails(a);
+        this.hideLoadingState(), this.updateAppDetailsWithParsedData(l), this.initDetailsActions();
+      } catch (l) {
+        console.error("Error fetching app details:", l), this.hideLoadingState(), this.showErrorState();
       }
     }
     showAppsGridView() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelector(
+      const a = t.querySelector(
         ".crs__tab-buttons-container"
-      ), e = t.querySelector(
+      ), p = t.querySelector(
         ".crs__back-button-nav"
       );
-      p && (p.style.display = "flex"), e && e.classList.remove("active");
-      const a = t.querySelector(".crs__tab-panel.active");
-      if (!a) return;
-      const i = a.querySelector(
+      a && (a.style.display = "flex"), p && p.classList.remove("active");
+      const e = t.querySelector(".crs__tab-panel.active");
+      if (!e) return;
+      const n = e.querySelector(
         ".crs__apps-grid-view"
       );
-      i && (i.style.display = "", i.scrollTop = 0);
-      const o = a.querySelector(
+      n && (n.style.display = "", n.scrollTop = 0);
+      const o = e.querySelector(
         ".crs__app-details-view"
       );
       o && (o.style.display = "none"), setTimeout(() => {
@@ -3665,77 +3763,77 @@
     clearAppDetailsContent() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelector(".crs__tab-panel.active");
-      if (!p) return;
-      const e = p.querySelector(
+      const a = t.querySelector(".crs__tab-panel.active");
+      if (!a) return;
+      const p = a.querySelector(
         ".crs__app-detail-icon-img"
       );
-      e && (e.src = "", e.alt = "");
-      const a = p.querySelector(".crs__app-detail-name");
-      a && (a.textContent = "");
-      const i = p.querySelector(
+      p && (p.src = "", p.alt = "");
+      const e = a.querySelector(".crs__app-detail-name");
+      e && (e.textContent = "");
+      const n = a.querySelector(
         ".crs__app-detail-description"
       );
-      i && (i.textContent = "");
-      const o = p.querySelector(".crs__rating-value");
-      o && (o.textContent = "");
-      const n = p.querySelector(".crs__rating-count");
       n && (n.textContent = "");
-      const c = p.querySelector(
+      const o = a.querySelector(".crs__rating-value");
+      o && (o.textContent = "");
+      const i = a.querySelector(".crs__rating-count");
+      i && (i.textContent = "");
+      const c = a.querySelector(
         ".crs__platforms-list"
       );
       c && (c.innerHTML = "");
-      const s = p.querySelector(
+      const s = a.querySelector(
         ".crs__app-detail-long-description"
       );
       s && (s.textContent = "");
-      const r = p.querySelector(".crs__app-features-list");
+      const r = a.querySelector(".crs__app-features-list");
       r && (r.innerHTML = "");
     }
-    updateAppDetailsContent(t, p, e, a, i) {
+    updateAppDetailsContent(t, a, p, e, n) {
       const o = document.querySelector(".crs__apps-container");
       if (!o) return;
-      const n = o.querySelector(".crs__tab-panel.active");
-      if (!n) return;
-      const c = n.querySelector(
+      const i = o.querySelector(".crs__tab-panel.active");
+      if (!i) return;
+      const c = i.querySelector(
         ".crs__app-detail-icon-img"
       );
-      c && (c.src = p, c.alt = t);
-      const s = n.querySelector(".crs__app-detail-name");
+      c && (c.src = a, c.alt = t);
+      const s = i.querySelector(".crs__app-detail-name");
       s && (s.textContent = t);
-      const r = n.querySelector(
+      const r = i.querySelector(
         ".crs__app-detail-description"
       );
-      r && (r.textContent = e);
-      const g = n.querySelector(".crs__rating-value");
-      if (a === "0") {
-        const d = n.querySelector(
+      r && (r.textContent = p);
+      const g = i.querySelector(".crs__rating-value");
+      if (e === "0") {
+        const l = i.querySelector(
           ".crs__app-detail-rating"
         );
-        d && d.classList.add("d-none");
-      } else g && (g.textContent = `${a}%`);
-      const l = n.querySelector(
+        l && l.classList.add("d-none");
+      } else g && (g.textContent = `${e}%`);
+      const d = i.querySelector(
         ".crs__platforms-list"
       );
-      l && i.length > 0 && (l.innerHTML = i.map(
-        (d) => `<span class="crs__platform-badge">${d}</span>`
+      d && n.length > 0 && (d.innerHTML = n.map(
+        (l) => `<span class="crs__platform-badge">${l}</span>`
       ).join(""));
     }
     updateAppDetailsWithParsedData(t) {
-      var n, c;
-      const p = document.querySelector(".crs__apps-container");
+      var i, c;
+      const a = document.querySelector(".crs__apps-container");
+      if (!a) return;
+      const p = a.querySelector(".crs__tab-panel.active");
       if (!p) return;
-      const e = p.querySelector(".crs__tab-panel.active");
-      if (!e) return;
-      const a = e.querySelector(
+      const e = p.querySelector(
         ".crs__app-detail-long-description"
       );
-      a && t.longDescription && (a.textContent = this.limitToThreeSentences(
+      e && t.longDescription && (e.textContent = this.limitToThreeSentences(
         t.longDescription
       ));
-      const i = e.querySelector(".crs__rating-count");
-      i && ((n = t.sections) != null && n.totalRatingAmount) && (i.textContent = (c = t.sections) == null ? void 0 : c.totalRatingAmount);
-      const o = e.querySelector(".crs__app-features-list");
+      const n = p.querySelector(".crs__rating-count");
+      n && ((i = t.sections) != null && i.totalRatingAmount) && (n.textContent = (c = t.sections) == null ? void 0 : c.totalRatingAmount);
+      const o = p.querySelector(".crs__app-features-list");
       o && t.features && t.features.length > 0 && (o.innerHTML = t.features.map((s) => `<li class="crs__app-feature-item">${s}</li>`).join(""));
     }
     limitToThreeSentences(t) {
@@ -3744,45 +3842,45 @@
     showLoadingState() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelector(".crs__tab-panel.active");
-      if (!p) return;
-      const e = p.querySelector(
+      const a = t.querySelector(".crs__tab-panel.active");
+      if (!a) return;
+      const p = a.querySelector(
         ".crs__app-detail-long-description"
       );
-      e && (e.innerHTML = '<div class="crs__loading-skeleton">Loading description...</div>');
-      const a = p.querySelector(".crs__app-features-list");
-      a && (a.innerHTML = `
+      p && (p.innerHTML = '<div class="crs__loading-skeleton">Loading description...</div>');
+      const e = a.querySelector(".crs__app-features-list");
+      e && (e.innerHTML = `
         <li class="crs__loading-skeleton">Loading features...</li>
         <li class="crs__loading-skeleton">Loading features...</li>
         <li class="crs__loading-skeleton">Loading features...</li>
       `);
-      const i = p.querySelector(".crs__rating-count");
-      i && (i.innerHTML = '<span class="crs__loading-skeleton">Loading...</span>');
+      const n = a.querySelector(".crs__rating-count");
+      n && (n.innerHTML = '<span class="crs__loading-skeleton">Loading...</span>');
     }
     hideLoadingState() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelector(".crs__tab-panel.active");
-      if (!p) return;
-      p.querySelectorAll(
+      const a = t.querySelector(".crs__tab-panel.active");
+      if (!a) return;
+      a.querySelectorAll(
         ".crs__loading-skeleton"
-      ).forEach((a) => {
-        a.remove();
+      ).forEach((e) => {
+        e.remove();
       });
     }
     showErrorState() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelector(".crs__tab-panel.active");
-      if (!p) return;
-      const e = p.querySelector(
+      const a = t.querySelector(".crs__tab-panel.active");
+      if (!a) return;
+      const p = a.querySelector(
         ".crs__app-detail-long-description"
       );
-      e && (e.textContent = "Unable to load additional details.");
-      const a = p.querySelector(".crs__app-features-list");
-      a && (a.innerHTML = '<li class="crs__error-message">Unable to load features.</li>');
-      const i = p.querySelector(".crs__rating-count");
-      i && (i.textContent = "N/A");
+      p && (p.textContent = "Unable to load additional details.");
+      const e = a.querySelector(".crs__app-features-list");
+      e && (e.innerHTML = '<li class="crs__error-message">Unable to load features.</li>');
+      const n = a.querySelector(".crs__rating-count");
+      n && (n.textContent = "N/A");
     }
     /**
      * Clear the app details cache
@@ -3802,12 +3900,20 @@
     isCached(t) {
       return this.appDataService.isCached(t);
     }
+    async parseApps() {
+      await w("app-details"), document.querySelectorAll("app-details:not(.d-none)").forEach((a) => {
+        var p, e, n, o;
+        a.getAttribute("name"), a.getAttribute("description"), a.getAttribute("url"), (p = a.getAttribute("iconsrc")) == null || p.replace("quality=75", "quality=100"), a.getAttribute("rating"), (e = a.getAttribute("platforms")) == null || e.split(","), (o = (n = document.querySelector(
+          ".applications-categories .applications-categories__item_active"
+        )) == null ? void 0 : n.textContent) == null || o.trim();
+      });
+    }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = M, document.head.appendChild(t);
+      t.textContent = q, document.head.appendChild(t);
     }
   }
-  const S = `section.header :is(.header__logo, .header__badge),
+  const A = `section.header :is(.header__logo, .header__badge),
 .eney-promo-banner {
   display: none;
 }
@@ -3877,18 +3983,18 @@ section.header .header__buttons-container {
   grid-row: 1 / 5;
 }
 `;
-  y({ name: "Home page", dev: "OS" }), w("exp_hp");
-  class C {
+  _({ name: "Home page", dev: "OS" }), v("exp_hp");
+  class O {
     constructor() {
       this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new v(), new q());
+      location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new x(), new C());
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = S, document.head.appendChild(t);
+      t.textContent = A, document.head.appendChild(t);
     }
   }
-  new C();
+  new O();
 })();
