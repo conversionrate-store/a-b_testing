@@ -3215,13 +3215,10 @@
      */
     async fetchAllAppDetails() {
       try {
-        console.log("🔄 Fetching all app details from JSON endpoint...");
         const t = await fetch("https://ab.conversionrate.store/setapp/home-page-2/apps.json");
         if (!t.ok)
           throw new Error(`HTTP error! status: ${t.status}`);
-        const p = await t.json();
-        console.log(`✅ Successfully fetched ${p.length} apps from JSON endpoint`);
-        const e = p.map((a) => ({
+        const e = (await t.json()).map((a) => ({
           name: a.name,
           description: a.description,
           url: a.url,
@@ -3327,8 +3324,8 @@
       );
       if (!g)
         return;
-      const l = r.getBoundingClientRect(), d = s.getBoundingClientRect(), A = g.getBoundingClientRect(), O = d.top - l.top, u = d.bottom - l.top, D = A.top - l.top, z = O < l.height && u > 0, W = u <= D, T = u < l.height - 20;
-      z && W && T && (a = setTimeout(() => {
+      const l = r.getBoundingClientRect(), d = s.getBoundingClientRect(), A = g.getBoundingClientRect(), O = d.top - l.top, u = d.bottom - l.top, D = A.top - l.top, W = O < l.height && u > 0, z = u <= D, T = u < l.height - 20;
+      W && z && T && (a = setTimeout(() => {
         h({
           eventCategory: t,
           eventAction: "View",
@@ -3349,7 +3346,7 @@
     async init() {
       this.addStyles(), this.render(), this.initTabs(), this.initAppCards();
       try {
-        console.log("🚀 Loading all app details on initialization..."), await this.appDataService.getAllAppDetails(), console.log("✅ All app details loaded successfully");
+        await this.appDataService.getAllAppDetails();
       } catch (t) {
         console.error("❌ Failed to load app details on initialization:", t);
       }
@@ -3602,7 +3599,7 @@
     }
     async prefetchAllAppsInCurrentTab() {
       try {
-        await this.appDataService.getAllAppDetails(), console.log("✅ All app details loaded and cached");
+        await this.appDataService.getAllAppDetails();
       } catch (t) {
         console.error("❌ Failed to load all app details:", t);
       }
