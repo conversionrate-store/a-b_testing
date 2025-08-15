@@ -236,12 +236,12 @@
 }
 .crs__apps-container .crs__apps-grid {
   margin-inline: 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 262px));
   flex-wrap: wrap;
   gap: 24px;
   flex: 1;
   align-items: flex-start;
-  justify-content: center;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 4px 171px 4px;
@@ -260,7 +260,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0;
-  width: 262px;
+  width: 100%;
   cursor: pointer;
   transition: transform 0.2s ease;
   border-radius: 8px;
@@ -268,11 +268,7 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 1240px) {
-  .crs__apps-container .crs__app-card {
-    width: 46%;
-  }
-}
+
 
 /* .crs__apps-container .crs__app-card:hover {
   background: rgba(255, 255, 255, 0.05);
@@ -3287,7 +3283,7 @@
      */
     limitToThreeSentences(t) {
       if (!t) return "";
-      const p = t.split(new RegExp("(?<=[.!?])\\s+")).filter((i) => i.trim().length > 0);
+      const p = t.split(new RegExp("(?<=[.!?])\\s+")).filter((n) => n.trim().length > 0);
       return p.length <= 3 ? t.replace(/[.!?]+$/, "").trim() + "..." : p.slice(0, 3).join(" ").replace(/[.!?]+$/, "").trim() + "...";
     }
     /**
@@ -3333,10 +3329,10 @@
     window.dataLayer.push(a), v("Data pushed to dataLayer", "info"), console.table(e);
   }, k = (r, t, p, e = 1e3) => {
     var c;
-    let a, i = !1;
+    let a, n = !1;
     const o = () => {
       var b;
-      if (i) return;
+      if (n) return;
       const s = typeof r == "string" ? document.querySelector(r) : r;
       if (!s) return;
       const m = s.closest(".crs__app-details-view");
@@ -3353,11 +3349,11 @@
           eventCategory: t,
           eventAction: "View",
           eventLabel: p
-        }), i = !0;
+        }), n = !0;
       }, e));
-    }, n = typeof r == "string" ? (c = document.querySelector(r)) == null ? void 0 : c.closest(".crs__app-details-view") : r.closest(".crs__app-details-view");
-    return n && n.addEventListener("scroll", o, { passive: !0 }), window.addEventListener("resize", o, { passive: !0 }), o(), () => {
-      n && n.removeEventListener("scroll", o), window.removeEventListener("resize", o), clearTimeout(a);
+    }, i = typeof r == "string" ? (c = document.querySelector(r)) == null ? void 0 : c.closest(".crs__app-details-view") : r.closest(".crs__app-details-view");
+    return i && i.addEventListener("scroll", o, { passive: !0 }), window.addEventListener("resize", o, { passive: !0 }), o(), () => {
+      i && i.removeEventListener("scroll", o), window.removeEventListener("resize", o), clearTimeout(a);
     };
   };
   class S {
@@ -3375,7 +3371,7 @@
       }
     }
     async render() {
-      const t = [...new Set(f.map((i) => i.tab))], p = t.reduce((i, o) => (i[o] = f.filter((n) => n.tab === o), i), {}), e = (
+      const t = [...new Set(f.map((n) => n.tab))], p = t.reduce((n, o) => (n[o] = f.filter((i) => i.tab === o), n), {}), e = (
         /* HTML */
         `
       <div class="crs__apps-container">
@@ -3392,9 +3388,9 @@
             <!-- Tab Buttons -->
             <div class="crs__tab-buttons-container">
               ${t.map(
-          (i, o) => `
-                <button class="crs__tab-button ${o === 0 ? "active" : ""}" data-tab="${i}">
-                  ${i}
+          (n, o) => `
+                <button class="crs__tab-button ${o === 0 ? "active" : ""}" data-tab="${n}">
+                  ${n}
                 </button>
               `
         ).join("")}
@@ -3404,36 +3400,36 @@
           <!-- Tab Content -->
           <div class="crs__tab-content">
             ${t.map(
-          (i, o) => (
+          (n, o) => (
             /* HTML */
             `
                   <div
                     class="crs__tab-panel ${o === 0 ? "active" : ""}"
-                    data-tab="${i}"
+                    data-tab="${n}"
                   >
                     <!-- Apps Grid View -->
                     <div class="crs__apps-grid-view">
                       <div class="crs__apps-grid">
-                        ${p[i].map(
-              (n) => (
+                        ${p[n].map(
+              (i) => (
                 /* HTML */
                 `
                               <div
                                 class="crs__app-card"
-                                data-name="${n.name}"
-                                data-description="${n.description}"
-                                data-url="${n.url}"
-                                data-iconsrc="${n.icon}"
-                                data-rating="${n.rating}"
-                                data-platforms="${n.platforms.join(",")}"
+                                data-name="${i.name}"
+                                data-description="${i.description}"
+                                data-url="${i.url}"
+                                data-iconsrc="${i.icon}"
+                                data-rating="${i.rating}"
+                                data-platforms="${i.platforms.join(",")}"
                               >
                                 <div class="crs__app-icon">
-                                  <img src="${n.icon}" alt="${n.name}" />
+                                  <img src="${i.icon}" alt="${i.name}" />
                                 </div>
                                 <div class="crs__app-info">
-                                  <h3 class="crs__app-name">${n.name}</h3>
+                                  <h3 class="crs__app-name">${i.name}</h3>
                                   <p class="crs__app-description">
-                                    ${n.description}
+                                    ${i.description}
                                   </p>
                                 </div>
                               </div>
@@ -3561,16 +3557,16 @@
     initTabs() {
       const t = document.querySelector(".crs__apps-container");
       if (!t) return;
-      const p = t.querySelectorAll(".crs__tab-button"), e = t.querySelectorAll(".crs__tab-panel"), a = t.querySelector(".crs__back-button-nav"), i = t.querySelector(
+      const p = t.querySelectorAll(".crs__tab-button"), e = t.querySelectorAll(".crs__tab-panel"), a = t.querySelector(".crs__back-button-nav"), n = t.querySelector(
         ".crs__tab-buttons-container"
       );
       p.forEach((o) => {
         o.addEventListener("click", () => {
-          const n = o.getAttribute("data-tab");
-          if (!n) return;
+          const i = o.getAttribute("data-tab");
+          if (!i) return;
           p.forEach((m) => m.classList.remove("active")), e.forEach((m) => m.classList.remove("active")), o.classList.add("active");
           const c = t.querySelector(
-            `.crs__tab-panel[data-tab="${n}"]`
+            `.crs__tab-panel[data-tab="${i}"]`
           );
           c && c.classList.add("active"), this.showAppsGridView();
           const s = t.querySelector(
@@ -3590,9 +3586,9 @@
         });
       }), a == null || a.addEventListener("click", () => {
         this.showAppsGridView();
-      }), i == null || i.addEventListener("click", (o) => {
-        const n = o.target;
-        n.classList.contains("crs__tab-button") && !n.classList.contains("active") ? a.classList.add("active") : a.classList.remove("active");
+      }), n == null || n.addEventListener("click", (o) => {
+        const i = o.target;
+        i.classList.contains("crs__tab-button") && !i.classList.contains("active") ? a.classList.add("active") : a.classList.remove("active");
       });
     }
     initAppCards() {
@@ -3600,8 +3596,8 @@
       if (!t) return;
       t.querySelectorAll(".crs__app-card").forEach((e) => {
         e.addEventListener("click", async () => {
-          const a = e.getAttribute("data-name"), i = e.getAttribute("data-url"), o = e.getAttribute("data-iconsrc"), n = e.getAttribute("data-description"), c = e.getAttribute("data-rating"), s = e.getAttribute("data-platforms");
-          if (!a || !i || !o || !n || !c || !s)
+          const a = e.getAttribute("data-name"), n = e.getAttribute("data-url"), o = e.getAttribute("data-iconsrc"), i = e.getAttribute("data-description"), c = e.getAttribute("data-rating"), s = e.getAttribute("data-platforms");
+          if (!a || !n || !o || !i || !c || !s)
             return;
           h({
             eventCategory: "App block",
@@ -3611,9 +3607,9 @@
           const m = s.split(",");
           await this.showAppDetailsView(
             a,
-            i,
-            o,
             n,
+            o,
+            i,
             c,
             m
           );
@@ -3627,15 +3623,15 @@
         console.error("❌ Failed to load all app details:", t);
       }
     }
-    async showAppDetailsView(t, p, e, a, i, o) {
-      const n = document.querySelector(".crs__apps-container");
-      if (!n) return;
+    async showAppDetailsView(t, p, e, a, n, o) {
+      const i = document.querySelector(".crs__apps-container");
+      if (!i) return;
       this.clearAppDetailsContent();
-      const c = n.querySelector(".crs__tab-panel.active");
+      const c = i.querySelector(".crs__tab-panel.active");
       if (!c) return;
-      const s = n.querySelector(
+      const s = i.querySelector(
         ".crs__tab-buttons-container"
-      ), m = n.querySelector(
+      ), m = i.querySelector(
         ".crs__back-button-nav"
       );
       s && (s.style.display = "none"), m && m.classList.add("active");
@@ -3650,7 +3646,7 @@
         t,
         e,
         a,
-        i,
+        n,
         o
       ), this.showLoadingState();
       try {
@@ -3671,10 +3667,10 @@
       p && (p.style.display = "flex"), e && e.classList.remove("active");
       const a = t.querySelector(".crs__tab-panel.active");
       if (!a) return;
-      const i = a.querySelector(
+      const n = a.querySelector(
         ".crs__apps-grid-view"
       );
-      i && (i.style.display = "", i.scrollTop = 0);
+      n && (n.style.display = "", n.scrollTop = 0);
       const o = a.querySelector(
         ".crs__app-details-view"
       );
@@ -3693,14 +3689,14 @@
       e && (e.src = "", e.alt = "");
       const a = p.querySelector(".crs__app-detail-name");
       a && (a.textContent = "");
-      const i = p.querySelector(
+      const n = p.querySelector(
         ".crs__app-detail-description"
       );
-      i && (i.textContent = "");
+      n && (n.textContent = "");
       const o = p.querySelector(".crs__rating-value");
       o && (o.textContent = "");
-      const n = p.querySelector(".crs__rating-count");
-      n && (n.textContent = "");
+      const i = p.querySelector(".crs__rating-count");
+      i && (i.textContent = "");
       const c = p.querySelector(
         ".crs__platforms-list"
       );
@@ -3712,37 +3708,37 @@
       const m = p.querySelector(".crs__app-features-list");
       m && (m.innerHTML = "");
     }
-    updateAppDetailsContent(t, p, e, a, i) {
+    updateAppDetailsContent(t, p, e, a, n) {
       const o = document.querySelector(".crs__apps-container");
       if (!o) return;
-      const n = o.querySelector(".crs__tab-panel.active");
-      if (!n) return;
-      const c = n.querySelector(
+      const i = o.querySelector(".crs__tab-panel.active");
+      if (!i) return;
+      const c = i.querySelector(
         ".crs__app-detail-icon-img"
       );
       c && (c.src = p, c.alt = t);
-      const s = n.querySelector(".crs__app-detail-name");
+      const s = i.querySelector(".crs__app-detail-name");
       s && (s.textContent = t);
-      const m = n.querySelector(
+      const m = i.querySelector(
         ".crs__app-detail-description"
       );
       m && (m.textContent = e);
-      const g = n.querySelector(".crs__rating-value");
+      const g = i.querySelector(".crs__rating-value");
       if (a === "0") {
-        const d = n.querySelector(
+        const d = i.querySelector(
           ".crs__app-detail-rating"
         );
         d && d.classList.add("d-none");
       } else g && (g.textContent = `${a}%`);
-      const l = n.querySelector(
+      const l = i.querySelector(
         ".crs__platforms-list"
       );
-      l && i.length > 0 && (l.innerHTML = i.map(
+      l && n.length > 0 && (l.innerHTML = n.map(
         (d) => `<span class="crs__platform-badge">${d}</span>`
       ).join(""));
     }
     updateAppDetailsWithParsedData(t) {
-      var n, c;
+      var i, c;
       const p = document.querySelector(".crs__apps-container");
       if (!p) return;
       const e = p.querySelector(".crs__tab-panel.active");
@@ -3754,8 +3750,8 @@
         let s = t.longDescription.replace(/see\s+more/gi, "").replace(/read\s+more/gi, "").replace(/learn\s+more/gi, "").replace(/\s+/g, " ").trim();
         a.textContent = this.limitToThreeSentences(s);
       }
-      const i = e.querySelector(".crs__rating-count");
-      i && ((n = t.sections) != null && n.totalRatingAmount) && (i.textContent = (c = t.sections) == null ? void 0 : c.totalRatingAmount);
+      const n = e.querySelector(".crs__rating-count");
+      n && ((i = t.sections) != null && i.totalRatingAmount) && (n.textContent = (c = t.sections) == null ? void 0 : c.totalRatingAmount);
       const o = e.querySelector(".crs__app-features-list");
       o && t.features && t.features.length > 0 && (o.innerHTML = t.features.map((s) => `<li class="crs__app-feature-item">${s}</li>`).join(""));
     }
@@ -3782,8 +3778,8 @@
         <li class="crs__loading-skeleton">Loading features...</li>
         <li class="crs__loading-skeleton">Loading features...</li>
       `);
-      const i = p.querySelector(".crs__rating-count");
-      i && (i.innerHTML = '<span class="crs__loading-skeleton">Loading...</span>');
+      const n = p.querySelector(".crs__rating-count");
+      n && (n.innerHTML = '<span class="crs__loading-skeleton">Loading...</span>');
     }
     hideLoadingState() {
       const t = document.querySelector(".crs__apps-container");
@@ -3807,8 +3803,8 @@
       e && (e.textContent = "Unable to load additional details.");
       const a = p.querySelector(".crs__app-features-list");
       a && (a.innerHTML = '<li class="crs__error-message">Unable to load features.</li>');
-      const i = p.querySelector(".crs__rating-count");
-      i && (i.textContent = "N/A");
+      const n = p.querySelector(".crs__rating-count");
+      n && (n.textContent = "N/A");
     }
     /**
      * Clear the app details cache
