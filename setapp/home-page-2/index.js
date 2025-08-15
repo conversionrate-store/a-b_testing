@@ -3226,7 +3226,9 @@
      */
     async fetchAllAppDetails() {
       try {
-        const t = await fetch("https://ab.conversionrate.store/setapp/home-page-2/apps.json");
+        const t = await fetch(
+          "https://ab.conversionrate.store/setapp/home-page-2/apps.json"
+        );
         if (!t.ok)
           throw new Error(`HTTP error! status: ${t.status}`);
         const e = (await t.json()).map((a) => ({
@@ -3271,12 +3273,22 @@
       throw new Error(`App details not found for: ${t}`);
     }
     /**
-     * Limit text to three sentences
+     * Limit text to three sentences and always end with "..."
+     * Removes trailing punctuation (., !, ?) before adding ellipsis to avoid "...."
+     * @param text - The text to process
+     * @returns Text limited to three sentences, always ending with "..."
+     * 
+     * @example
+     * limitToThreeSentences("First sentence. Second sentence.");
+     * // Returns: "First sentence. Second sentence..."
+     * 
+     * limitToThreeSentences("First sentence. Second sentence. Third sentence. Fourth sentence.");
+     * // Returns: "First sentence. Second sentence. Third sentence..."
      */
     limitToThreeSentences(t) {
       if (!t) return "";
-      const p = t.split(new RegExp("(?<=[.!?])\\s+")).filter((a) => a.trim().length > 0);
-      return p.length <= 3 ? t : p.slice(0, 3).join(" ") + "...";
+      const p = t.split(new RegExp("(?<=[.!?])\\s+")).filter((i) => i.trim().length > 0);
+      return p.length <= 3 ? t.replace(/[.!?]+$/, "").trim() + "..." : p.slice(0, 3).join(" ").replace(/[.!?]+$/, "").trim() + "...";
     }
     /**
      * Clear the cache
@@ -3738,14 +3750,20 @@
       const a = e.querySelector(
         ".crs__app-detail-long-description"
       );
-      a && t.longDescription && (a.textContent = this.limitToThreeSentences(
-        t.longDescription
-      ));
+      if (a && t.longDescription) {
+        let s = t.longDescription.replace(/see\s+more/gi, "").replace(/read\s+more/gi, "").replace(/learn\s+more/gi, "").replace(/\s+/g, " ").trim();
+        a.textContent = this.limitToThreeSentences(s);
+      }
       const i = e.querySelector(".crs__rating-count");
       i && ((n = t.sections) != null && n.totalRatingAmount) && (i.textContent = (c = t.sections) == null ? void 0 : c.totalRatingAmount);
       const o = e.querySelector(".crs__app-features-list");
       o && t.features && t.features.length > 0 && (o.innerHTML = t.features.map((s) => `<li class="crs__app-feature-item">${s}</li>`).join(""));
     }
+    /**
+     * Limit text to three sentences and always end with "..."
+     * Removes trailing punctuation before adding ellipsis to avoid "...."
+     * This method delegates to the AppDataService implementation
+     */
     limitToThreeSentences(t) {
       return this.appDataService.limitToThreeSentences(t);
     }
