@@ -852,7 +852,10 @@
       this.paymentDetailsInitialized = !1, this.welcomeInitialized = !1, this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
     }
     init() {
-      this.device === "desktop" && (this.addStyles(), this.observePageChange());
+      this.device === "desktop" && (this.addStyles(), this.initializeCurrentPage(), this.observePageChange());
+    }
+    initializeCurrentPage() {
+      window.location.pathname.includes("signup/payment-details") && !this.paymentDetailsInitialized && (this.paymentDetailsInitialized = !0, new m()), window.location.pathname.includes("auth/welcome") && !this.welcomeInitialized && (this.welcomeInitialized = !0, new f());
     }
     observePageChange() {
       const e = new MutationObserver((t) => {
@@ -870,12 +873,6 @@
         childList: !0,
         subtree: !0
       });
-    }
-    changePaymentDetailsPage() {
-      window.location.pathname.includes("signup/payment-details") && new m();
-    }
-    changeWelcomePage() {
-      window.location.pathname.includes("auth/welcome") && new f();
     }
     addStyles() {
       const e = document.createElement("style");
