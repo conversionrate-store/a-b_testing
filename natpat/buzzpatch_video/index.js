@@ -25,6 +25,35 @@
       }
     }, 1e3);
   };
+  const visibilityOfTime = (selector, eventName, visiblePlace, description, time = 1e3, threshold = 0.5) => {
+    let observer;
+    let timer;
+    observer = new IntersectionObserver(
+      function(entries) {
+        if (entries[0].isIntersecting === true) {
+          timer = setTimeout(() => {
+            pushData(
+              eventName,
+              entries[0].target.dataset.visible || description,
+              "view",
+              visiblePlace
+            );
+            observer.disconnect();
+          }, time);
+        } else {
+          log("Element is not fully visible", "warn");
+          clearTimeout(timer);
+        }
+      },
+      { threshold: [threshold] }
+    );
+    {
+      const element = document.querySelector(selector);
+      if (element) {
+        observer.observe(element);
+      }
+    }
+  };
   const log = (text, style = "info") => {
     let color;
     switch (style) {
@@ -459,7 +488,7 @@
       this.currentVideoId = "";
     }
     openModal(id) {
-      pushData("exp_buzz_stories_view", "Stories", "view", "Stories");
+      pushData("exp_buzz_stories_view", "Stories modal", "view", "Stories");
       const activeVideo = $(".lavm-video__item.active");
       if (activeVideo) {
         activeVideo.classList.remove("active");
@@ -578,10 +607,10 @@
       const threshold = 80;
       if (Math.abs(delta) > threshold) {
         if (delta < 0) {
-          pushData("exp_buzz_v7_swipe", "Swipe", "other", "Stories");
+          pushData("exp_buzz_swipe_next", "Swipe Next", "other", "Stories");
           onSwipeLeft == null ? void 0 : onSwipeLeft();
         } else {
-          pushData("exp_buzz_v7_swipe", "Swipe", "other", "Stories");
+          pushData("exp_buzz_swipe_back", "Swipe Back", "other", "Stories");
           onSwipeRight == null ? void 0 : onSwipeRight();
         }
       }
@@ -649,7 +678,7 @@
         const leftArrow = $(".lavm-arrow__left");
         if (leftArrow) {
           leftArrow.addEventListener("click", () => {
-            pushData("exp_buzz_prev", "Previous Video", "click", "Stories");
+            pushData("exp_buzz_click_prev", "Previous Video", "click", "Stories");
             this.videoPlayer.trackVideoWatchTime("left_arrow_clicked");
             this.videoPlayer.playNextVideo();
           });
@@ -659,7 +688,7 @@
         const rightArrow = $(".lavm-arrow__right");
         if (rightArrow) {
           rightArrow.addEventListener("click", () => {
-            pushData("exp_buzz_next", "Next Video", "click", "Stories");
+            pushData("exp_buzz_click_next", "Next Video", "click", "Stories");
             this.videoPlayer.trackVideoWatchTime("right_arrow_clicked");
             this.videoPlayer.playNextVideo();
           });
@@ -821,18 +850,14 @@
       if (loveBuzzPatch) {
         loveBuzzPatch.insertAdjacentHTML("beforebegin", shortsHtml);
       }
+      visibilityOfTime(".lav-shorts", "exp_buzz_view", "PDP", "Visibility", 0);
       $$(".lav-short").forEach((shortEl) => {
         shortEl.addEventListener("click", () => {
           var _a;
           const titleElement = shortEl.querySelector(".lav-short__title");
           if (titleElement) {
             const name = ((_a = titleElement.textContent) == null ? void 0 : _a.trim()) || "";
-            pushData(
-              "exp_buzz_v7_click_01",
-              name,
-              "click",
-              "See BuzzPatch in Real Life"
-            );
+            pushData("exp_buzz_v7_click_01", name, "click", "PDP");
           }
           const id = shortEl.getAttribute("data-id");
           if (id) {
@@ -842,7 +867,6 @@
       });
     }
   }
-  (typeof document !== "undefined" && document.currentScript && document.currentScript.src || typeof location !== "undefined" && location.href || "").replace(".js", ".css");
   const shippingStyles = "/* Shipping Banner Styles */\n.lav-shipping {\n  background: #FEEDD6;\n  text-align: center;\n  padding: 10px;\n  color: #000;\n  font-size: 13px;\n  font-weight: 700;\n  line-height: 16px;\n  letter-spacing: 0.6px;\n  margin-bottom: 20px;\n  margin-top: -5px;\n}\n";
   class ShippingBanner {
     constructor() {
@@ -870,7 +894,6 @@
       }
     }
   }
-  (typeof document !== "undefined" && document.currentScript && document.currentScript.src || typeof location !== "undefined" && location.href || "").replace(".js", ".css");
   const styles = `/* General Layout Styles */
 .js-heading .hand-banner .learn-now, .js-heading+.wave-bg {
   display: none!important;
@@ -1074,3 +1097,4 @@
   }
   new Test();
 })();
+
