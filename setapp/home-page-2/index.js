@@ -3902,7 +3902,7 @@ section.header .header__buttons-container {
   w({ name: "Home page", dev: "OS" }), _("exp_hp");
   class A {
     constructor() {
-      this.device = window.innerWidth < 768 ? "mobile" : "desktop", this.init();
+      this.device = window.innerWidth < 1024 ? "mobile" : "desktop", this.init();
     }
     init() {
       location.pathname !== "/" || this.device === "mobile" || (this.addStyles(), new M(), new S());
