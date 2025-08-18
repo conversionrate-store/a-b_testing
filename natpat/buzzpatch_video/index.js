@@ -857,7 +857,7 @@
           const titleElement = shortEl.querySelector(".lav-short__title");
           if (titleElement) {
             const name = ((_a = titleElement.textContent) == null ? void 0 : _a.trim()) || "";
-            pushData("exp_buzz_v7_click_01", name, "click", "PDP");
+            pushData("exp_buzz_click_01", name, "click", "PDP");
           }
           const id = shortEl.getAttribute("data-id");
           if (id) {
@@ -1097,4 +1097,3 @@
   }
   new Test();
 })();
-
