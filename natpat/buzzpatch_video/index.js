@@ -688,7 +688,7 @@
           leftArrow.addEventListener("click", () => {
             pushData("exp_buzz_v8_click_02", "Previous Video", "click", "Stories");
             this.videoPlayer.trackVideoWatchTime("left_arrow_clicked");
-            this.videoPlayer.playNextVideo();
+            this.videoPlayer.playPrevVideo();
           });
         } else {
           console.warn("Left arrow not found");
