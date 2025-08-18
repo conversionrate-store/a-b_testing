@@ -207,7 +207,7 @@
         if (target.closest(".lav-modal__close")) {
           const videoPlayer = window.currentVideoPlayer;
           if (videoPlayer && typeof videoPlayer.trackVideoWatchTime === "function") {
-            pushData("exp_buzz_v8_click_04", "Modal Close", "view", "modal_closed");
+            pushData("exp_buzz_v8_click_04", "Modal Close", "click", "Stories");
             videoPlayer.trackVideoWatchTime("close_button");
           }
           _Modal.close();
@@ -615,10 +615,10 @@
       const threshold = 80;
       if (Math.abs(delta) > threshold) {
         if (delta < 0) {
-          pushData("exp_buzz_v8_swipe_01", "Swipe Next", "other", "Stories");
+          pushData("exp_buzz_v8_swipe_02", "Swipe Next", "other", "Stories");
           onSwipeLeft == null ? void 0 : onSwipeLeft();
         } else {
-          pushData("exp_buzz_v8_swipe_02", "Swipe Back", "other", "Stories");
+          pushData("exp_buzz_v8_swipe_01", "Swipe Prev", "other", "Stories");
           onSwipeRight == null ? void 0 : onSwipeRight();
         }
       }
