@@ -207,7 +207,7 @@
         if (target.closest(".lav-modal__close")) {
           const videoPlayer = window.currentVideoPlayer;
           if (videoPlayer && typeof videoPlayer.trackVideoWatchTime === "function") {
-            pushData("exp_buzz_modal_close", "Modal Close", "view", "modal_closed");
+            pushData("exp_buzz_v8_click_04", "Modal Close", "view", "modal_closed");
             videoPlayer.trackVideoWatchTime("close_button");
           }
           _Modal.close();
@@ -470,25 +470,27 @@
       var _a;
       if (!this.videoStartTime || !this.currentVideoId) return;
       Math.round((Date.now() - this.videoStartTime) / 1e3);
-      const activeVideo = document.querySelector(".lavm-video__item.active");
+      const activeVideo = document.querySelector(
+        ".lavm-video__item.active"
+      );
       if (!activeVideo) return;
       const videoDuration = activeVideo.duration || 0;
       const videoProgress = Math.round(activeVideo.currentTime || 0);
       const groupId = (_a = activeVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id");
       const videoIndex = activeVideo.getAttribute("data-id");
-      const videoName = this.getVideoName(parseInt(groupId || "0"), parseInt(videoIndex || "0"));
-      const watchText = videoProgress >= Math.round(videoDuration) ? `Video "${videoName}" watched complete` : `Video "${videoName}" watched ${videoProgress}s from ${Math.round(videoDuration)}s`;
-      pushData(
-        "exp_buzz_video_watch",
-        videoName,
-        "view",
-        watchText
+      const videoName = this.getVideoName(
+        parseInt(groupId || "0"),
+        parseInt(videoIndex || "0")
       );
+      const watchText = videoProgress >= Math.round(videoDuration) ? `Video "${videoName}" watched complete` : `Video "${videoName}" watched ${videoProgress}s from ${Math.round(
+        videoDuration
+      )}s`;
+      pushData("exp_buzz_v8_video", videoName, "view", watchText);
       this.videoStartTime = 0;
       this.currentVideoId = "";
     }
     openModal(id) {
-      pushData("exp_buzz_stories_view", "Stories modal", "view", "Stories");
+      pushData("exp_buzz_v8_stories_view", "Stories modal", "view", "Stories");
       const activeVideo = $(".lavm-video__item.active");
       if (activeVideo) {
         activeVideo.classList.remove("active");
@@ -510,7 +512,9 @@
       if (currentActiveGroup) {
         currentActiveGroup.classList.remove("active");
       }
-      const firstVideo = activeGroup.querySelector(".lavm-video__item");
+      const firstVideo = activeGroup.querySelector(
+        ".lavm-video__item"
+      );
       if (!firstVideo) {
         return;
       }
@@ -530,7 +534,9 @@
       currentVideo.classList.remove("active");
       const nextVideo = currentVideo.nextElementSibling;
       if (!currentVideo || !nextVideo) {
-        const nextGroupId = parseInt(((_a = currentVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0") + 1;
+        const nextGroupId = parseInt(
+          ((_a = currentVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0"
+        ) + 1;
         this.playGroupVideo(nextGroupId);
         return;
       }
@@ -547,7 +553,9 @@
       this.trackVideoWatchTime("prev_video");
       const prevVideo = currentVideo.previousElementSibling;
       if (!currentVideo || !prevVideo) {
-        const prevGroupId = parseInt(((_a = currentVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0") - 1;
+        const prevGroupId = parseInt(
+          ((_a = currentVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0"
+        ) - 1;
         if (prevGroupId < 1) return;
         this.playGroupVideo(prevGroupId);
         return;
@@ -607,10 +615,10 @@
       const threshold = 80;
       if (Math.abs(delta) > threshold) {
         if (delta < 0) {
-          pushData("exp_buzz_swipe_next", "Swipe Next", "other", "Stories");
+          pushData("exp_buzz_v8_swipe_01", "Swipe Next", "other", "Stories");
           onSwipeLeft == null ? void 0 : onSwipeLeft();
         } else {
-          pushData("exp_buzz_swipe_back", "Swipe Back", "other", "Stories");
+          pushData("exp_buzz_v8_swipe_02", "Swipe Back", "other", "Stories");
           onSwipeRight == null ? void 0 : onSwipeRight();
         }
       }
@@ -678,7 +686,7 @@
         const leftArrow = $(".lavm-arrow__left");
         if (leftArrow) {
           leftArrow.addEventListener("click", () => {
-            pushData("exp_buzz_click_prev", "Previous Video", "click", "Stories");
+            pushData("exp_buzz_v8_click_02", "Previous Video", "click", "Stories");
             this.videoPlayer.trackVideoWatchTime("left_arrow_clicked");
             this.videoPlayer.playNextVideo();
           });
@@ -688,7 +696,7 @@
         const rightArrow = $(".lavm-arrow__right");
         if (rightArrow) {
           rightArrow.addEventListener("click", () => {
-            pushData("exp_buzz_click_next", "Next Video", "click", "Stories");
+            pushData("exp_buzz_v8_click_03", "Next Video", "click", "Stories");
             this.videoPlayer.trackVideoWatchTime("right_arrow_clicked");
             this.videoPlayer.playNextVideo();
           });
@@ -699,7 +707,7 @@
         if (getItNowBtn) {
           getItNowBtn.addEventListener("click", () => {
             this.videoPlayer.trackVideoWatchTime("cta_button_clicked");
-            pushData("exp_buzz_cta_click", "Get it now", "click", "Stories");
+            pushData("exp_buzz_v8_click_05", "Get it now", "click", "Stories");
             Modal.close();
             const purchaseElement = $("#purchase");
             if (purchaseElement) {
@@ -850,14 +858,14 @@
       if (loveBuzzPatch) {
         loveBuzzPatch.insertAdjacentHTML("beforebegin", shortsHtml);
       }
-      visibilityOfTime(".lav-shorts", "exp_buzz_view", "PDP", "Visibility", 0);
+      visibilityOfTime(".lav-shorts", "exp_buzz_v8_view", "PDP", "Visibility", 0);
       $$(".lav-short").forEach((shortEl) => {
         shortEl.addEventListener("click", () => {
           var _a;
           const titleElement = shortEl.querySelector(".lav-short__title");
           if (titleElement) {
             const name = ((_a = titleElement.textContent) == null ? void 0 : _a.trim()) || "";
-            pushData("exp_buzz_click_01", name, "click", "PDP");
+            pushData("exp_buzz_v8_click_01", name, "click", "PDP");
           }
           const id = shortEl.getAttribute("data-id");
           if (id) {
