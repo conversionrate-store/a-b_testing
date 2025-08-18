@@ -246,6 +246,12 @@
       if (videoPlayer && typeof videoPlayer.trackVideoWatchTime === "function") {
         videoPlayer.trackVideoWatchTime("modal_closed");
       }
+      const videos = document.querySelectorAll(".lav-modal .lavm-video__item");
+      videos.forEach((video) => {
+        if (video instanceof HTMLVideoElement) {
+          video.pause();
+        }
+      });
       const modal = document.querySelector(".lav-modal");
       if (!modal) return;
       modal.classList.remove("active");
@@ -508,6 +514,10 @@
         Modal.close();
         return;
       }
+      $$(".lavm-video__item").forEach((v) => {
+        const vid = v;
+        if (!vid.paused) vid.pause();
+      });
       const currentActiveGroup = $(".lavm-video__group.active");
       if (currentActiveGroup) {
         currentActiveGroup.classList.remove("active");
@@ -531,6 +541,7 @@
       const currentVideo = $(".lavm-video__item.active");
       if (!currentVideo) return;
       this.trackVideoWatchTime("next_video");
+      if (!currentVideo.paused) currentVideo.pause();
       currentVideo.classList.remove("active");
       const nextVideo = currentVideo.nextElementSibling;
       if (!currentVideo || !nextVideo) {
@@ -551,6 +562,7 @@
       const currentVideo = $(".lavm-video__item.active");
       if (!currentVideo) return;
       this.trackVideoWatchTime("prev_video");
+      if (!currentVideo.paused) currentVideo.pause();
       const prevVideo = currentVideo.previousElementSibling;
       if (!currentVideo || !prevVideo) {
         const prevGroupId = parseInt(
