@@ -11,6 +11,25 @@
     });
     log(`Event: ${name} | ${desc} | ${type} | ${loc}`, "success");
   };
+  const waitEl = (selector) => {
+    return new Promise((resolve) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        resolve(element);
+      }
+      const observer = new MutationObserver(() => {
+        const element2 = document.querySelector(selector);
+        if (element2) {
+          resolve(element2);
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    });
+  };
   const startLog = ({ name, dev }) => {
     console.log(
       `%c EXP: ${name} (DEV: ${dev})`,
@@ -102,48 +121,6 @@
       videos: [`${config.dir}/science.mp4`]
     }
   ];
-  async function waitFor(condition, cb = false, customConfig = {}) {
-    const config2 = {
-      ms: 500,
-      // repeat each 0.5 second if condition is false
-      limit: 10,
-      // limit in seconds
-      ...customConfig
-    };
-    if (typeof condition === "function") {
-      if (condition()) {
-        if (typeof cb === "function") cb();
-        return;
-      }
-      return new Promise((resolve) => {
-        let limit = config2.limit * 1e3;
-        const interval = setInterval(function() {
-          if (condition() || limit <= 0) {
-            clearInterval(interval);
-            if (limit > 0 && typeof cb === "function") cb();
-            resolve();
-          }
-          limit -= config2.ms;
-        }, config2.ms);
-      });
-    }
-    if (typeof condition === "string" && (condition.startsWith(".") || condition.startsWith("#"))) {
-      if ($(condition)) {
-        if (typeof cb === "function") cb();
-        return;
-      }
-      return new Promise((resolve) => {
-        const observer = new MutationObserver((mutations, observer2) => {
-          if ($(condition)) {
-            if (typeof cb === "function") cb();
-            observer2.disconnect();
-            resolve();
-          }
-        });
-        observer.observe(document, { childList: true, subtree: true });
-      });
-    }
-  }
   function $(selector, context = document) {
     return context.querySelector(selector);
   }
@@ -1073,10 +1050,6 @@
   display: block;
 }
 `;
-  const globals = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    default: styles
-  }, Symbol.toStringTag, { value: "Module" }));
   startLog({ name: " Video stories", dev: "OS" });
   clarityInterval("exp_video");
   window.lavShortsConfig = lavShortsConfig;
@@ -1085,20 +1058,10 @@
       this.init();
     }
     async init() {
-      await waitFor(() => !!(document.head && document.body), false, { ms: 20 });
-      console.debug("** InitExp **");
-      this.addGlobalStyles();
+      await waitEl("#purchase .form");
       this.initModal();
       this.addShorts();
       this.addStyles();
-    }
-    addGlobalStyles() {
-      Promise.resolve().then(() => globals).then((styles2) => {
-        const styleElement = document.createElement("style");
-        styleElement.classList.add("exp-global-styles");
-        styleElement.textContent = styles2.default;
-        document.head.appendChild(styleElement);
-      });
     }
     initModal() {
       new VideoModal();
