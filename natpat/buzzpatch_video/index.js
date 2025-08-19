@@ -148,9 +148,10 @@
     };
     return svgObj[name] || "";
   }
+  const styles$1 = ".crs-modal {\n  position: fixed;\n  z-index: 999999999999;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background: rgba(0, 0, 0, 0.1);\n  backdrop-filter: blur(3px);\n  -webkit-backdrop-filter: blur(3px);\n  transition: 0.35s;\n  opacity: 0;\n  pointer-events: none;\n  overflow-y: auto;\n  max-height: 100%;\n  display: flex;\n}\n.crs-modal.active {\n  opacity: 1;\n  pointer-events: auto;\n}\n.crs-modal__inner {\n  position: relative;\n  background: #000;\n  max-width: 100%;\n  width: 100%;\n  height: 100%;\n  display: none;\n  margin: auto;\n}\n.crs-modal__inner.active {\n  display: block;\n}\n[data-modal] {\n  cursor: pointer;\n}\n.crs-modal-open {\n  overflow: hidden;\n}\n\n.crs-modal__close {\n  position: absolute;\n  padding: 10px;\n  z-index: 20;\n  right: 10px;\n  top: 23px;\n  cursor: pointer;\n  transition: 0.35s;\n  line-height: 0;\n}\n@media (hover: hover) {\n  .crs-modal__close:hover {\n    opacity: 0.5;\n  }\n}\n\n.crsm-control {\n  position: relative;\n  z-index: 10;\n  padding: 15px 20px;\n}\n.crsm-pagination {\n  display: flex;\n  gap: 4px;\n}\n.crsm-pagination [data-id] {\n  position: relative;\n  border-radius: 100px;\n  background: #fff;\n  height: 6px;\n  flex: 1;\n  min-width: 0;\n}\n.crsm-pagination [data-id]:last-child span {\n}\n.crsm-pagination [data-id]:before {\n  content: '';\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  border-radius: 100px;\n  background: #ff3c81;\n  width: var(--my-width);\n  transition: 0.4s;\n}\n.crsm-pagination span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  opacity: 0;\n  transition: 0.3s;\n  position: relative;\n  color: #fff;\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 16px;\n  top: 19px;\n  pointer-events: none;\n  width: 100%;\n  display: block;\n}\n.crsm-pagination .active[data-id] span {\n  opacity: 1;\n}\n.crsm__btn {\n  height: 48px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  z-index: 10;\n  left: 0;\n  right: 0;\n  bottom: 25px;\n  margin: auto;\n  border-radius: 500px;\n  background: #ff3c81;\n  box-shadow: 0px 4px 15px 0px rgba(72, 67, 69, 0.51);\n  color: #fff;\n  padding: 5px 10px 0;\n  max-width: 210px;\n  text-align: center;\n  font-family: 'DIN Condensed';\n  font-size: 24px;\n  font-weight: 400;\n  line-height: 24px;\n  letter-spacing: 0.48px;\n  text-transform: uppercase;\n}\n.crsm-video {\n  line-height: 0;\n}\n.crsm-video:before,\n.crsm-video:after {\n  content: '';\n  position: absolute;\n  left: 0;\n  right: 0;\n  height: 85px;\n  z-index: 8;\n  pointer-events: none;\n}\n.crsm-video:before {\n  top: 0;\n  background: linear-gradient(\n    0deg,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.6) 100%\n  );\n}\n.crsm-video:after {\n  bottom: 0;\n  background: linear-gradient(\n    0deg,\n    rgba(0, 0, 0, 0.6) 0%,\n    rgba(0, 0, 0, 0) 100%\n  );\n}\n.crsm-video__group {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  display: none;\n}\n.crsm-video__item {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.crsm-video__item.active {\n  z-index: 5;\n}\n.crsm-video__group.active {\n  display: block;\n}\n";
   const _Modal = class _Modal {
     constructor(name, html) {
-      if (!document.querySelector(".lav-modal")) {
+      if (!document.querySelector(".crs-modal")) {
         _Modal.init();
       }
       if (_Modal.list.find((item) => item.name === name)) {
@@ -158,10 +159,10 @@
         return;
       }
       this.el = document.createElement("div");
-      this.el.classList.add("lav-modal__inner", name);
+      this.el.classList.add("crs-modal__inner", name);
       this.name = name;
       this.el.innerHTML = html;
-      const modalContainer = document.querySelector(".lav-modal");
+      const modalContainer = document.querySelector(".crs-modal");
       if (modalContainer) {
         modalContainer.insertAdjacentElement("beforeend", this.el);
       }
@@ -170,18 +171,18 @@
     static init() {
       document.body.insertAdjacentHTML(
         "beforeend",
-        "<div class='lav-modal'></div>"
+        "<div class='crs-modal'></div>"
       );
       document.addEventListener("click", (e) => {
         const target = e.target;
-        if (target.classList.contains("lav-modal")) {
+        if (target.classList.contains("crs-modal")) {
           const videoPlayer = window.currentVideoPlayer;
           if (videoPlayer && typeof videoPlayer.trackVideoWatchTime === "function") {
             videoPlayer.trackVideoWatchTime("click_outside");
           }
           _Modal.close();
         }
-        if (target.closest(".lav-modal__close")) {
+        if (target.closest(".crs-modal__close")) {
           const videoPlayer = window.currentVideoPlayer;
           if (videoPlayer && typeof videoPlayer.trackVideoWatchTime === "function") {
             pushData("exp_buzz_v8_click_04", "Modal Close", "click", "Stories");
@@ -201,8 +202,8 @@
       _Modal.addStyles();
     }
     static open(modalName, cb) {
-      document.body.classList.add("lav-modal-open");
-      const activeModal = document.querySelector(".lav-modal__inner.active");
+      document.body.classList.add("crs-modal-open");
+      const activeModal = document.querySelector(".crs-modal__inner.active");
       if (activeModal) {
         activeModal.classList.remove("active");
       }
@@ -212,7 +213,7 @@
       }
       if (typeof cb === "function") cb();
       setTimeout(() => {
-        const modal = document.querySelector(".lav-modal");
+        const modal = document.querySelector(".crs-modal");
         if (modal) {
           modal.classList.add("active");
         }
@@ -223,203 +224,23 @@
       if (videoPlayer && typeof videoPlayer.trackVideoWatchTime === "function") {
         videoPlayer.trackVideoWatchTime("modal_closed");
       }
-      const videos = document.querySelectorAll(".lav-modal .lavm-video__item");
+      const videos = document.querySelectorAll(".crs-modal .crsm-video__item");
       videos.forEach((video) => {
         if (video instanceof HTMLVideoElement) {
           video.pause();
         }
       });
-      const modal = document.querySelector(".lav-modal");
+      const modal = document.querySelector(".crs-modal");
       if (!modal) return;
       modal.classList.remove("active");
       document.body.style.overflow = "";
-      document.body.classList.remove("lav-modal-open");
+      document.body.classList.remove("crs-modal-open");
       if (cb) cb();
     }
     static addStyles() {
-      const styles2 = (
-        /* css */
-        `
-      .lav-modal {
-        position: fixed;
-        z-index: 999999999999;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background: rgba(0,0,0,.1);
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
-        transition: 0.35s;
-        opacity: 0;
-        pointer-events: none;
-        overflow-y: auto;
-        max-height: 100%;
-        display: flex;
-      }
-      .lav-modal.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .lav-modal__inner {
-        position: relative;
-        background: #000;
-        max-width: 100%;
-        width: 100%;
-        height: 100%;
-        display: none;
-        margin: auto;
-      }
-      .lav-modal__inner.active {
-        display: block;
-      }
-      [data-modal] {
-        cursor: pointer;
-      }
-      .lav-modal-open {
-        overflow: hidden;
-      }
-
-      .lav-modal__close {
-        position: absolute;
-        padding: 10px;
-        z-index: 20;
-        right: 10px;
-        top: 23px;
-        cursor: pointer;
-        transition: 0.35s;
-        line-height: 0;
-      }
-      @media(hover:hover) {
-        .lav-modal__close:hover {
-          opacity: 0.5;
-        }
-      }
-
-      .lavm-control {
-        position: relative;
-        z-index: 10;
-        padding: 15px 20px;
-      }
-      .lavm-pagination {
-        display: flex;
-        gap: 4px;
-      }
-      .lavm-pagination [data-id] {
-        position: relative;
-        border-radius: 100px;
-        background: #FFF;
-        height: 6px;
-        flex: 1;
-        min-width: 0;
-      }
-      .lavm-pagination [data-id]:last-child span {
-
-      }
-      .lavm-pagination [data-id]:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        border-radius: 100px;
-        background: #FF3C81;
-        width: var(--my-width);
-        transition: .4s;
-      }
-      .lavm-pagination span {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        opacity: 0;
-        transition: .3s;
-        position: relative;
-        color: #FFF;
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 16px;
-        top: 19px;
-        pointer-events: none;
-        width: 100%;
-        display: block;
-      }
-      .lavm-pagination .active[data-id] span {
-        opacity: 1;
-      }
-      .lavm__btn {
-        height: 48px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        z-index: 10;
-        left: 0;
-        right: 0;
-        bottom: 25px;
-        margin: auto;
-        border-radius: 500px;
-        background: #FF3C81;
-        box-shadow: 0px 4px 15px 0px rgba(72, 67, 69, 0.51);
-        color: #FFF;
-        padding: 5px 10px 0;
-        max-width: 210px;
-        text-align: center;
-        font-family: "DIN Condensed";
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0.48px;
-        text-transform: uppercase;
-      }
-      .lavm-video {
-        line-height: 0;
-      }
-      .lavm-video:before, .lavm-video:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 85px;
-        z-index: 8;
-        pointer-events: none;
-      }
-      .lavm-video:before {
-        top: 0;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 100%);
-      }
-      .lavm-video:after {
-        bottom: 0;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.00) 100%);
-      }
-      .lavm-video__group {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        display: none;
-      }
-      .lavm-video__item {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .lavm-video__item.active {
-        z-index: 5;
-      }
-      .lavm-video__group.active {
-        display: block;
-      }
-    `
-      );
       const stylesEl = document.createElement("style");
       stylesEl.classList.add("exp-modal");
-      stylesEl.innerHTML = styles2;
+      stylesEl.innerHTML = styles$1;
       document.head.appendChild(stylesEl);
     }
   };
@@ -440,7 +261,7 @@
     startVideoTracking(video) {
       var _a;
       this.videoStartTime = Date.now();
-      this.currentVideoId = `${(_a = video.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")}-${video.getAttribute("data-id")}`;
+      this.currentVideoId = `${(_a = video.closest(".crsm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")}-${video.getAttribute("data-id")}`;
     }
     getVideoName(groupId, videoId) {
       const videoConfigs = window.lavShortsConfig || [];
@@ -459,7 +280,7 @@
       if (!activeVideo) return;
       const videoDuration = activeVideo.duration || 0;
       const videoProgress = Math.round(activeVideo.currentTime || 0);
-      const groupId = (_a = activeVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id");
+      const groupId = (_a = activeVideo.closest(".crsm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id");
       const videoIndex = activeVideo.getAttribute("data-id");
       const videoName = this.getVideoName(
         parseInt(groupId || "0"),
@@ -474,33 +295,33 @@
     }
     openModal(id) {
       pushData("exp_buzz_v8_stories_view", "Stories modal", "view", "Stories");
-      const activeVideo = $(".lavm-video__item.active");
+      const activeVideo = $(".crsm-video__item.active");
       if (activeVideo) {
         activeVideo.classList.remove("active");
       }
-      const activeGroup = $(".lavm-video__group.active");
+      const activeGroup = $(".crsm-video__group.active");
       if (activeGroup) {
         activeGroup.classList.remove("active");
       }
       this.playGroupVideo(id);
-      Modal.open(".lav-shorts__modal");
+      Modal.open(".crs-shorts__modal");
     }
     playGroupVideo(groupId) {
-      const activeGroup = $(`.lavm-video__group[data-group-id="${groupId}"]`);
+      const activeGroup = $(`.crsm-video__group[data-group-id="${groupId}"]`);
       if (!activeGroup) {
         Modal.close();
         return;
       }
-      $$(".lavm-video__item").forEach((v) => {
+      $$(".crsm-video__item").forEach((v) => {
         const vid = v;
         if (!vid.paused) vid.pause();
       });
-      const currentActiveGroup = $(".lavm-video__group.active");
+      const currentActiveGroup = $(".crsm-video__group.active");
       if (currentActiveGroup) {
         currentActiveGroup.classList.remove("active");
       }
       const firstVideo = activeGroup.querySelector(
-        ".lavm-video__item"
+        ".crsm-video__item"
       );
       if (!firstVideo) {
         return;
@@ -515,7 +336,7 @@
     }
     playNextVideo() {
       var _a;
-      const currentVideo = $(".lavm-video__item.active");
+      const currentVideo = $(".crsm-video__item.active");
       if (!currentVideo) return;
       this.trackVideoWatchTime("next_video");
       if (!currentVideo.paused) currentVideo.pause();
@@ -523,7 +344,7 @@
       const nextVideo = currentVideo.nextElementSibling;
       if (!currentVideo || !nextVideo) {
         const nextGroupId = parseInt(
-          ((_a = currentVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0"
+          ((_a = currentVideo.closest(".crsm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0"
         ) + 1;
         this.playGroupVideo(nextGroupId);
         return;
@@ -536,14 +357,14 @@
     }
     playPrevVideo() {
       var _a;
-      const currentVideo = $(".lavm-video__item.active");
+      const currentVideo = $(".crsm-video__item.active");
       if (!currentVideo) return;
       this.trackVideoWatchTime("prev_video");
       if (!currentVideo.paused) currentVideo.pause();
       const prevVideo = currentVideo.previousElementSibling;
       if (!currentVideo || !prevVideo) {
         const prevGroupId = parseInt(
-          ((_a = currentVideo.closest(".lavm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0"
+          ((_a = currentVideo.closest(".crsm-video__group")) == null ? void 0 : _a.getAttribute("data-group-id")) || "0"
         ) - 1;
         if (prevGroupId < 1) return;
         this.playGroupVideo(prevGroupId);
@@ -557,18 +378,18 @@
       this.handlePagination();
     }
     handlePagination() {
-      const activeGroup = $(".lavm-video__group.active");
+      const activeGroup = $(".crsm-video__group.active");
       if (!activeGroup) return;
       const id = parseInt(activeGroup.getAttribute("data-group-id") || "0");
-      const activePagination = $(".lavm-pagination .active[data-id]");
+      const activePagination = $(".crsm-pagination .active[data-id]");
       if (activePagination) {
         activePagination.classList.remove("active");
       }
-      const paginationElements = $$(".lavm-pagination [data-id]");
+      const paginationElements = $$(".crsm-pagination [data-id]");
       paginationElements.forEach((el, index) => {
         if (index + 1 === id) {
-          const videosLength = $$(".lavm-video__group.active video").length;
-          const activeVideo = $(".lavm-video__group.active video.active");
+          const videosLength = $$(".crsm-video__group.active video").length;
+          const activeVideo = $(".crsm-video__group.active video.active");
           if (activeVideo) {
             const activeVideoId = activeVideo.getAttribute("data-id");
             if (activeVideoId) {
@@ -628,11 +449,11 @@
       this.createModal();
     }
     cleanupExistingModal() {
-      const existingModal = document.querySelector(".lav-shorts__modal");
+      const existingModal = document.querySelector(".crs-shorts__modal");
       if (existingModal) {
         existingModal.remove();
       }
-      const existingPagination = document.querySelector(".lavm-pagination");
+      const existingPagination = document.querySelector(".crsm-pagination");
       if (existingPagination) {
         existingPagination.innerHTML = "";
       }
@@ -644,35 +465,32 @@
       const modalHTML = (
         /* html */
         `
-      <div class='lavm-control'>
-        <div class='lavm-pagination'></div>
-        <div class='lav-modal__close'>
+      <div class='crsm-control'>
+        <div class='crsm-pagination'></div>
+        <div class='crs-modal__close'>
           ${getSvg("close")}
         </div>
       </div>
 
-      <div class='lavm-arrow lavm-arrow__left'></div>
-      <div class='lavm-arrow lavm-arrow__right'></div>
+      <div class='crsm-arrow crsm-arrow__left'></div>
+      <div class='crsm-arrow crsm-arrow__right'></div>
 
-      <div class='lavm-video'>
+      <div class='crsm-video'>
       </div>
 
-      <div class='lavm__btn'>
+      <div class='crsm__btn'>
         Get it now!
       </div>
     `
       );
-      new Modal("lav-shorts__modal", modalHTML);
+      new Modal("crs-shorts__modal", modalHTML);
       this.createPagination();
       this.createVideoGroups();
       this.setupArrowEventListeners();
     }
     setupArrowEventListeners() {
       setTimeout(() => {
-        document.querySelectorAll(".lavm-arrow");
-        document.querySelectorAll(".lavm-arrow__left");
-        document.querySelectorAll(".lavm-arrow__right");
-        const leftArrow = $(".lavm-arrow__left");
+        const leftArrow = $(".crsm-arrow__left");
         if (leftArrow) {
           leftArrow.addEventListener("click", () => {
             pushData("exp_buzz_v8_click_02", "Previous Video", "click", "Stories");
@@ -682,7 +500,7 @@
         } else {
           console.warn("Left arrow not found");
         }
-        const rightArrow = $(".lavm-arrow__right");
+        const rightArrow = $(".crsm-arrow__right");
         if (rightArrow) {
           rightArrow.addEventListener("click", () => {
             pushData("exp_buzz_v8_click_03", "Next Video", "click", "Stories");
@@ -692,13 +510,13 @@
         } else {
           console.warn("Right arrow not found");
         }
-        const getItNowBtn = $(".lavm__btn");
+        const getItNowBtn = $(".crsm__btn");
         if (getItNowBtn) {
           getItNowBtn.addEventListener("click", () => {
             this.videoPlayer.trackVideoWatchTime("cta_button_clicked");
             pushData("exp_buzz_v8_click_05", "Get it now", "click", "Stories");
             Modal.close();
-            const purchaseElement = $("#purchase");
+            const purchaseElement = $("#getFormNow");
             if (purchaseElement) {
               purchaseElement.scrollIntoView({
                 behavior: "smooth",
@@ -707,7 +525,7 @@
             }
           });
         }
-        const modalInner = $(".lav-modal__inner");
+        const modalInner = $(".crs-modal__inner");
         if (modalInner) {
           this.videoPlayer.addSwipeListener(
             modalInner,
@@ -718,7 +536,7 @@
       }, 100);
     }
     createPagination() {
-      const paginationContainer = $(".lavm-pagination");
+      const paginationContainer = $(".crsm-pagination");
       if (!paginationContainer) return;
       if (paginationContainer.children.length > 0) {
         return;
@@ -751,25 +569,25 @@
     }
     createVideoGroup(videoConfig) {
       const group = document.createElement("div");
-      group.classList.add("lavm-video__group");
+      group.classList.add("crsm-video__group");
       group.setAttribute("data-group-id", videoConfig.id.toString());
       videoConfig.videos.forEach((src, id) => {
         group.insertAdjacentHTML(
           "beforeend",
           /* html */
           `
-        <video class="lavm-video__item" src="${src}" data-id='${id}' playsinline preload="metadata"></video>
+        <video class="crsm-video__item" src="${src}" data-id='${id}' playsinline preload="metadata"></video>
       `
         );
       });
-      const createdVideos = group.querySelectorAll(".lavm-video__item");
+      const createdVideos = group.querySelectorAll(".crsm-video__item");
       createdVideos.forEach((video, index) => {
       });
-      group.querySelectorAll(".lavm-video__item").forEach((videoEl) => {
+      group.querySelectorAll(".crsm-video__item").forEach((videoEl) => {
         const video = videoEl;
         video.addEventListener("play", (e) => {
           if (!video.paused && video.readyState >= 2) {
-            $$(".lavm-video__item").forEach((otherVideo) => {
+            $$(".crsm-video__item").forEach((otherVideo) => {
               const other = otherVideo;
               if (other !== video && !other.paused && other.readyState >= 2) {
                 other.pause();
@@ -785,7 +603,7 @@
           this.videoPlayer.playNextVideo();
         });
       });
-      const videoContainer = $(".lavm-video");
+      const videoContainer = $(".crsm-video");
       if (videoContainer) {
         videoContainer.appendChild(group);
       }
@@ -793,7 +611,7 @@
   };
   _VideoModal.instance = null;
   let VideoModal = _VideoModal;
-  const shortsStyles = "/* Shorts Section Styles */\n.lav-shorts {\n  margin-inline: -10px;\n  padding-bottom: 13px;\n  overflow: auto;\n}\n\n.lav-shorts__title {\n  padding: 0 15px;\n  text-align: center;\n  color: #0c0b0b;\n  font-family: 'DINEngschrift LT';\n  font-size: 30px;\n  font-weight: 400;\n  line-height: 36px;\n}\n\n.lav-shorts__list {\n  display: grid;\n  grid-template-columns: repeat(3, auto);\n  gap: 12px;\n  padding: 8px 23px;\n  margin-top: 12px;\n  background: #efefef;\n}\n\n.lav-short {\n \n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  width: max-content;\n}\n\n.lav-short__video {\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  border: 2px solid transparent;\n  background: #ff3c81;\n  background: linear-gradient(\n    135deg,\n    rgba(255, 60, 129, 1) 0%,\n    rgba(245, 167, 62, 1) 100%\n  );\n\n  line-height: 0;\n  overflow: hidden;\n}\n\n.lav-short__video svg {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n}\n\n.lav-short__video img {\n  margin: 0 !important;\n  width: 100% !important;\n  height: 100% !important;\n  border-radius: 50%;\n  object-fit: cover;\n \n}\n\n.lav-short__title {\n  color: #000;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 600;\n  line-height: 16px;\n  text-decoration: underline;\n\n}\n";
+  const shortsStyles = "/* Shorts Section Styles */\n.crs-shorts {\n  margin-inline: -10px;\n  padding-bottom: 13px;\n  overflow: auto;\n}\n\n.crs-shorts__title {\n  padding: 0 15px;\n  text-align: center;\n  color: #0c0b0b;\n  font-family: 'DINEngschrift LT';\n  font-size: 30px;\n  font-weight: 400;\n  line-height: 36px;\n}\n\n.crs-shorts__list {\n  display: grid;\n  grid-template-columns: repeat(3, auto);\n  gap: 12px;\n  padding: 8px 23px;\n  margin-top: 12px;\n  background: #efefef;\n}\n\n.crs-short {\n \n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  width: max-content;\n}\n\n.crs-short__video {\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  border: 2px solid transparent;\n  background: #ff3c81;\n  background: linear-gradient(\n    135deg,\n    rgba(255, 60, 129, 1) 0%,\n    rgba(245, 167, 62, 1) 100%\n  );\n\n  line-height: 0;\n  overflow: hidden;\n}\n\n.crs-short__video svg {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n}\n\n.crs-short__video img {\n  margin: 0 !important;\n  width: 100% !important;\n  height: 100% !important;\n  border-radius: 50%;\n  object-fit: cover;\n \n}\n\n.crs-short__title {\n  color: #000;\n  text-align: center;\n  font-size: 12px;\n  font-weight: 600;\n  line-height: 16px;\n  text-decoration: underline;\n  letter-spacing: 0;\n\n}\n";
   class ShortsSection {
     constructor() {
       this.videoModal = new VideoModal();
@@ -813,31 +631,31 @@
       const shortsHtml = (
         /* html */
         `
-      <div class="lav-shorts">
+      <div class="crs-shorts">
         
-        <div class="lav-shorts__list">
-          <div class="lav-short" data-id="1">
-            <div class="lav-short__video">
+        <div class="crs-shorts__list">
+          <div class="crs-short" data-id="1">
+            <div class="crs-short__video">
               
               <img src="${placeholder1Url}">
             </div>
-            <div class="lav-short__title">How It Works</div>
+            <div class="crs-short__title">How It Works</div>
           </div>
 
-          <div class="lav-short" data-id="2">
-            <div class="lav-short__video">
+          <div class="crs-short" data-id="2">
+            <div class="crs-short__video">
              
               <img src="${placeholder2Url}">
             </div>
-            <div class="lav-short__title">What people are saying</div>
+            <div class="crs-short__title">What people are saying</div>
           </div>
 
-          <div class="lav-short" data-id="3">
-            <div class="lav-short__video">
+          <div class="crs-short" data-id="3">
+            <div class="crs-short__video">
               
               <img src="${placeholder3Url}">
             </div>
-            <div class="lav-short__title">The Science Behind</div>
+            <div class="crs-short__title">The Science Behind</div>
           </div>
         </div>
       </div>
@@ -847,11 +665,11 @@
       if (loveBuzzPatch) {
         loveBuzzPatch.insertAdjacentHTML("beforebegin", shortsHtml);
       }
-      visibilityOfTime(".lav-shorts", "exp_buzz_v8_view", "PDP", "Visibility", 0);
-      $$(".lav-short").forEach((shortEl) => {
+      visibilityOfTime(".crs-shorts", "exp_buzz_v8_view", "PDP", "Visibility", 0);
+      $$(".crs-short").forEach((shortEl) => {
         shortEl.addEventListener("click", () => {
           var _a;
-          const titleElement = shortEl.querySelector(".lav-short__title");
+          const titleElement = shortEl.querySelector(".crs-short__title");
           if (titleElement) {
             const name = ((_a = titleElement.textContent) == null ? void 0 : _a.trim()) || "";
             pushData("exp_buzz_v8_click_01", name, "click", "PDP");
@@ -864,7 +682,7 @@
       });
     }
   }
-  const shippingStyles = "/* Shipping Banner Styles */\n.lav-shipping {\n  background: #FEEDD6;\n  text-align: center;\n  padding: 10px;\n  color: #000;\n  font-size: 13px;\n  font-weight: 700;\n  line-height: 16px;\n  letter-spacing: 0.6px;\n  margin-bottom: 20px;\n  margin-top: -5px;\n}\n";
+  const shippingStyles = "/* Shipping Banner Styles */\n.crs-shipping {\n  background: #FEEDD6;\n  text-align: center;\n  padding: 10px;\n  color: #000;\n  font-size: 13px;\n  font-weight: 700;\n  line-height: 16px;\n  letter-spacing: 0.6px;\n  margin-bottom: 20px;\n  margin-top: -5px;\n}\n";
   class ShippingBanner {
     constructor() {
       this.injectStyles();
@@ -880,7 +698,7 @@
       const bannerHtml = (
         /* html */
         `
-      <div class="lav-shipping">
+      <div class="crs-shipping">
         FREE shipping | 30-day Money Back Guarantee
       </div>
     `
@@ -900,8 +718,12 @@
   padding-top: 0;
 }
 
+#getFormNow {
+  scroll-margin-top: 100px;
+}
+
 /* Arrow Navigation Styles */
-.lavm-arrow {
+.crsm-arrow {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -910,27 +732,27 @@
   z-index: 9;
 }
 
-.lavm-arrow__left {
+.crsm-arrow__left {
   left: 0;
 }
 
-.lavm-arrow__right {
+.crsm-arrow__right {
   right: 0;
 }
 
 /* Modal Control Styles */
-.lavm-control {
+.crsm-control {
   position: relative;
   z-index: 10;
   padding: 15px 20px;
 }
 
-.lavm-pagination {
+.crsm-pagination {
   display: flex;
   gap: 4px;
 }
 
-.lavm-pagination [data-id] {
+.crsm-pagination [data-id] {
   position: relative;
   border-radius: 100px;
   background: #FFF;
@@ -939,7 +761,7 @@
   min-width: 0;
 }
 
-.lavm-pagination [data-id]:before {
+.crsm-pagination [data-id]:before {
   content: '';
   position: absolute;
   left: 0;
@@ -951,7 +773,7 @@
   transition: .4s;
 }
 
-.lavm-pagination span {
+.crsm-pagination span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -968,11 +790,11 @@
   display: block;
 }
 
-.lavm-pagination .active[data-id] span {
+.crsm-pagination .active[data-id] span {
   opacity: 1;
 }
 
-.lavm__btn {
+.crsm__btn {
   height: 48px;
   display: flex;
   justify-content: center;
@@ -998,11 +820,11 @@
   text-transform: uppercase;
 }
 
-.lavm-video {
+.crsm-video {
   line-height: 0;
 }
 
-.lavm-video:before, .lavm-video:after {
+.crsm-video:before, .crsm-video:after {
   content: '';
   position: absolute;
   left: 0;
@@ -1012,17 +834,17 @@
   pointer-events: none;
 }
 
-.lavm-video:before {
+.crsm-video:before {
   top: 0;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 100%);
 }
 
-.lavm-video:after {
+.crsm-video:after {
   bottom: 0;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.00) 100%);
 }
 
-.lavm-video__group {
+.crsm-video__group {
   position: absolute;
   left: 0;
   right: 0;
@@ -1031,7 +853,7 @@
   display: none;
 }
 
-.lavm-video__item {
+.crsm-video__item {
   position: absolute;
   left: 0;
   right: 0;
@@ -1042,11 +864,11 @@
   object-fit: cover;
 }
 
-.lavm-video__item.active {
+.crsm-video__item.active {
   z-index: 5;
 }
 
-.lavm-video__group.active {
+.crsm-video__group.active {
   display: block;
 }
 `;
