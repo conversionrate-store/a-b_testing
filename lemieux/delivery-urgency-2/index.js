@@ -7,8 +7,8 @@
       event_desc: e,
       event_type: n,
       event_loc: t
-    }), u(`Event: ${s} | ${e} | ${n} | ${t}`, "success");
-  }, h = (s) => new Promise((e) => {
+    }), g(`Event: ${s} | ${e} | ${n} | ${t}`, "success");
+  }, u = (s) => new Promise((e) => {
     const n = document.querySelector(s);
     n && e(n);
     const t = new MutationObserver(() => {
@@ -35,7 +35,7 @@
             "view",
             n
           ), a.disconnect();
-        }, i) : (u("Element is not fully visible", "warn"), clearTimeout(l));
+        }, i) : (g("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [o] }
     ), typeof s == "string") {
@@ -43,7 +43,7 @@
       r && a.observe(r);
     } else
       a.observe(s);
-  }, u = (s, e = "info") => {
+  }, g = (s, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -324,7 +324,7 @@
 }
 
 
-`, g = {
+`, f = {
     // Set to false to use local time instead of UTC
     DEADLINE_HOUR: 14,
     // 14:00 - deadline for orders
@@ -333,7 +333,7 @@
   };
   class b {
     constructor({ container: e, position: n }) {
-      this.staticHour = g.DEADLINE_HOUR, this.staticMinutes = g.DEADLINE_MINUTES, this.container = typeof e == "string" ? document.querySelector(e) : e, this.position = n || "beforeend", this.init();
+      this.staticHour = f.DEADLINE_HOUR, this.staticMinutes = f.DEADLINE_MINUTES, this.container = typeof e == "string" ? document.querySelector(e) : e, this.position = n || "beforeend", this.init();
     }
     init() {
       this.container && (this.createCountdownElement(), this.updateCountdown(), this.startCountdownTimer(), this.addStyles());
@@ -353,7 +353,7 @@
       );
     }
     calculateCountdown() {
-      const n = /* @__PURE__ */ new Date(), t = n.getHours(), i = n.getMinutes(), o = n.getSeconds(), a = n.getDay(), l = -1 * (t - this.staticHour), r = i === 0 ? 0 : this.staticMinutes - i, D = o === 0 ? 0 : 60 - o, k = r.toString().padStart(2, "0"), _ = D.toString().padStart(2, "0");
+      const n = /* @__PURE__ */ new Date(), t = n.getHours(), i = n.getMinutes(), o = n.getSeconds(), a = n.getDay(), l = -1 * (t - this.staticHour), r = i === 0 ? 0 : this.staticMinutes - i, _ = o === 0 ? 0 : 60 - o, D = r.toString().padStart(2, "0"), k = _.toString().padStart(2, "0");
       let c, d;
       if (t < this.staticHour && a >= 1 && a <= 5)
         c = (l - (i === 0 && o === 0 ? 0 : 1)).toString().padStart(2, "0"), d = "TODAY";
@@ -372,8 +372,8 @@
       }
       return {
         hoursText: c,
-        minutesText: k,
-        secondsText: _,
+        minutesText: D,
+        secondsText: k,
         deliveryDay: d
       };
     }
@@ -457,9 +457,12 @@
   const E = `icms-outlet:has(product-view-delivery-coutdown) {
   display: none !important;
 }
-`, f = {
+`, h = {
     // Set to false to use local time instead of UTC
-    DAILY_CUTOFF_HOUR: 14
+    DAILY_CUTOFF_HOUR: 14,
+    // 2:00 PM cutoff for daily orders
+    WEEKLY_START_HOUR: 5
+    // 5:00 AM Monday start time
   };
   class S {
     constructor() {
@@ -467,20 +470,20 @@
     }
     init() {
       this.checkIsPdpPage().then((e) => {
-        e && (this.addStyles(), h("footer").then(() => {
+        e && (this.addStyles(), u("footer").then(() => {
           this.addDeliveryBadge();
         }));
       });
     }
     async checkIsPdpPage() {
-      return !!await h("product-view");
+      return !!await u("product-view");
     }
     async addDeliveryBadge() {
       if (!this.shouldShowDeliveryBadge()) {
         console.log("Delivery badge hidden due to time restrictions");
         return;
       }
-      const e = await h("product-view-add-to-basket"), n = document.querySelector(".crs-delivery-countdown");
+      const e = await u("product-view-add-to-basket"), n = document.querySelector(".crs-delivery-countdown");
       n && n.remove(), this.deliveryBadgeInstance = new b({
         container: e,
         position: "beforebegin"
@@ -501,7 +504,7 @@
     }
     shouldShowDeliveryBadge() {
       const n = /* @__PURE__ */ new Date(), t = n.getHours(), i = n.getDay();
-      return i === 0 || i === 1 || i === 6 ? !1 : i >= 2 && i <= 4 || i === 5 ? t < f.DAILY_CUTOFF_HOUR : !1;
+      return i === 0 || i === 6 ? !1 : i === 1 ? t >= h.WEEKLY_START_HOUR && t < h.DAILY_CUTOFF_HOUR : i >= 2 && i <= 4 || i === 5 ? t < h.DAILY_CUTOFF_HOUR : !1;
     }
     addStyles() {
       const e = document.createElement("style");
