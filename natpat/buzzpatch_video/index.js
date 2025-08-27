@@ -275,7 +275,7 @@
       if (!this.videoStartTime || !this.currentVideoId) return;
       Math.round((Date.now() - this.videoStartTime) / 1e3);
       const activeVideo = document.querySelector(
-        ".lavm-video__item.active"
+        ".crsm-video__item.active"
       );
       if (!activeVideo) return;
       const videoDuration = activeVideo.duration || 0;
