@@ -842,7 +842,7 @@
     },
     {
       title: "Women",
-      link: "/clothing",
+      link: "/clothing/women/casual-wear",
       template: "featured",
       submenu: [
         {
@@ -1263,7 +1263,7 @@
     },
     {
       title: "Children",
-      link: "/clothing",
+      link: "/clothing/children/casual-wear",
       featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
       featuredTitle: "New Arrival",
       featuredSubtitle: "AW25 Collection",
@@ -1672,7 +1672,7 @@
     },
     {
       title: "Men",
-      link: "/new-in/aw25/men",
+      link: "/clothing/men/casual-wear",
       featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
       featuredTitle: "New Arrival",
       featuredSubtitle: "AW25 Collection",
@@ -5857,3 +5857,4 @@ ul[data-crs-nav-level='third-level'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && new C();
 })();
+
