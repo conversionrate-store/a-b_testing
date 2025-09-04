@@ -5855,6 +5855,5 @@ ul[data-crs-nav-level='third-level'] {
     logInitialization() {
     }
   }
-  window.autoInitData.website.defaultCountry === "GB" && new C();
+  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new C()));
 })();
-
