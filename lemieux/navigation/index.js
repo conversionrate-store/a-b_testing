@@ -4030,7 +4030,7 @@
   }
   class S {
     constructor(e, t, n) {
-      this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 100, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = n, this.currentUrl = location.href;
+      this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = n, this.currentUrl = location.href;
     }
     /**
      * Starts comprehensive monitoring for Angular SPA changes
@@ -4045,7 +4045,7 @@
       this.monitoringInterval = setInterval(() => {
         location.href !== this.currentUrl && (this.currentUrl = location.href, this.handleNavigationChange());
       }, this.checkInterval), window.addEventListener("popstate", () => {
-        setTimeout(() => this.handleNavigationChange(), 100);
+        setTimeout(() => this.handleNavigationChange(), 50);
       }), this.interceptHistoryAPI();
     }
     /**
@@ -4054,9 +4054,9 @@
     interceptHistoryAPI() {
       const e = history.pushState, t = history.replaceState;
       history.pushState = (...n) => {
-        e.apply(history, n), setTimeout(() => this.handleNavigationChange(), 100);
+        e.apply(history, n), setTimeout(() => this.handleNavigationChange(), 50);
       }, history.replaceState = (...n) => {
-        t.apply(history, n), setTimeout(() => this.handleNavigationChange(), 100);
+        t.apply(history, n), setTimeout(() => this.handleNavigationChange(), 50);
       };
     }
     /**
@@ -4184,7 +4184,7 @@
           this.recreateNavigation().catch((t) => {
             console.error("🧪 AB Test: Error in recreateNavigation retry:", t);
           });
-        }, 1e3);
+        }, 500);
       }
     }
     /**
