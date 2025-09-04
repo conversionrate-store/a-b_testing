@@ -4095,10 +4095,14 @@
      * Starts periodic checks for navigation persistence
      */
     startPeriodicChecks() {
-      setInterval(() => {
-        const e = Date.now();
-        e - this.lastCheckTime > 1e3 && (this.lastCheckTime = e, this.checkNavigationPersistence());
-      }, 1e3);
+      const e = Date.now(), t = 3e3, n = setInterval(() => {
+        const i = Date.now();
+        if (i - e > t) {
+          clearInterval(n);
+          return;
+        }
+        i - this.lastCheckTime > 200 && (this.lastCheckTime = i, this.checkNavigationPersistence(), console.log("checkNavigationPersistence"));
+      }, 200);
     }
     /**
      * Handles navigation changes detected by any monitoring method
