@@ -19,7 +19,7 @@
   }, h = [
     {
       title: "Horse",
-      link: "#",
+      link: "/horsewear",
       template: "featured",
       submenu: [
         {
@@ -4244,7 +4244,7 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class T {
+  class I {
     constructor() {
       this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.navigationOrchestrator = new x(this.variant), this.init();
     }
@@ -4412,7 +4412,7 @@
       return ["default", "gifts", "outlet", "color-grid", "featured"];
     }
   }
-  const I = `/* Hide original meganav on desktop */
+  const T = `/* Hide original meganav on desktop */
 @media (min-width: 769px) {
   meganav {
     display: none;
@@ -5836,14 +5836,14 @@ ul[data-crs-nav-level='third-level'] {
   k({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
   class C {
     constructor() {
-      this.navigationVariant = new T(), this.init();
+      this.navigationVariant = new I(), this.init();
     }
     init() {
       this.addStyles(), this.setupGlobalAccess(), this.logInitialization();
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = I, document.head.appendChild(e);
+      e.textContent = T, document.head.appendChild(e);
       const t = document.createElement("style");
       t.textContent = M, document.head.appendChild(t);
       const n = document.createElement("style");
@@ -5855,5 +5855,5 @@ ul[data-crs-nav-level='third-level'] {
     logInitialization() {
     }
   }
-  new C();
+  window.autoInitData.website.defaultCountry === "GB" && new C();
 })();
