@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const h = (p) => new Promise((e) => {
+  const b = (p) => new Promise((e) => {
     const t = document.querySelector(p);
     t && e(t);
     const n = new MutationObserver(() => {
@@ -11,12 +11,12 @@
       childList: !0,
       subtree: !0
     });
-  }), b = ({ name: p, dev: e }) => {
+  }), k = ({ name: p, dev: e }) => {
     console.log(
       `%c EXP: ${p} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, f = [
+  }, h = [
     {
       title: "Horse",
       link: "#",
@@ -2267,8 +2267,8 @@
             {
               title: "Build Your Own",
               link: "/outfit-builder",
-              template: "featured",
-              featuredImage: "https://www.lemieux.com/static/cms/media/IT07094_lifestyle_suededressagesquare_lilac_7-(1)-1.jpg",
+              template: "outfit-builder",
+              featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/outfit-builder-women.webp",
               featuredTitle: "Outfit Builder",
               featuredSubtitle: "For you and your horse"
             },
@@ -2743,7 +2743,7 @@
       ]
     }
   ];
-  class w {
+  class y {
     constructor(e = "B") {
       this.variant = e;
     }
@@ -2752,7 +2752,7 @@
         /* html */
         `
       <ul class="crs-nav-list">
-        ${f.map((i, s) => this.createNavigationItemHTML(i, s)).join("")}
+        ${h.map((i, s) => this.createNavigationItemHTML(i, s)).join("")}
       </ul>
       <div class="crs-mega-menu" style="display: none;"></div>
     `
@@ -2779,11 +2779,11 @@
         ".crs-mega-menu"
       );
       let i = null, s = null;
-      t.forEach((o) => {
-        const l = parseInt(o.getAttribute("data-index") || "0");
-        o.addEventListener("mouseenter", () => {
-          console.log("🧪 AB Test: Mouse entered link:", o.textContent), s && (clearTimeout(s), s = null), i = l, this.showMegaMenu(l);
-        }), o.addEventListener("mouseleave", () => {
+      t.forEach((a) => {
+        const l = parseInt(a.getAttribute("data-index") || "0");
+        a.addEventListener("mouseenter", () => {
+          s && (clearTimeout(s), s = null), i = l, this.showMegaMenu(l);
+        }), a.addEventListener("mouseleave", () => {
           s = window.setTimeout(() => {
             i === l && (this.hideMegaMenu(), i = null);
           }, 100);
@@ -2796,8 +2796,8 @@
     }
     showMegaMenu(e) {
       const t = document.querySelector(".crs-mega-menu");
-      if (console.log("🧪 AB Test: Showing mega menu:", t), !t) return;
-      const n = f[e];
+      if (!t) return;
+      const n = h[e];
       n.submenu && (t.innerHTML = "", t.appendChild(this.createMegaMenuContent(n)), t.style.display = "block", setTimeout(() => {
         t.classList.add("crs-visible");
       }, 10));
@@ -2809,7 +2809,7 @@
       }, 200));
     }
     createMegaMenuContent(e) {
-      var a;
+      var o;
       if (e.template === "gifts") {
         const c = (
           /* html */
@@ -2821,7 +2821,7 @@
         ), u = document.createElement("div");
         return u.innerHTML = c.trim(), u.firstElementChild;
       }
-      const t = this.createSidebarHTML(e), n = (a = e.submenu) == null ? void 0 : a.find(
+      const t = this.createSidebarHTML(e), n = (o = e.submenu) == null ? void 0 : o.find(
         (r) => r.submenu && r.submenu.length > 0
       ), i = n ? this.createMainContentHTML(n, e) : this.createMainContentHTML(e), s = (
         /* html */
@@ -2831,9 +2831,9 @@
         ${i}
       </div>
     `
-      ), o = document.createElement("div");
-      o.innerHTML = s.trim();
-      const l = o.firstElementChild;
+      ), a = document.createElement("div");
+      a.innerHTML = s.trim();
+      const l = a.firstElementChild;
       return this.addSidebarEventListeners(l, e), l;
     }
     createSidebarHTML(e) {
@@ -2841,24 +2841,26 @@
         /* html */
         `
       <div class="crs-mega-menu-sidebar">
-        <div class="crs-sidebar-links">
+        <ul class="crs-sidebar-links">
         ${e.submenu.map((n, i) => {
           var r;
-          const s = n.isNew ? '<span class="crs-new-badge">New</span>' : "", o = ((r = e.submenu) == null ? void 0 : r.findIndex(
+          const s = n.isNew ? '<span class="crs-new-badge">New</span>' : "", a = ((r = e.submenu) == null ? void 0 : r.findIndex(
             (c) => c.submenu && c.submenu.length > 0
-          )) ?? -1, l = i === o ? "crs-active" : "", a = n.submenu && n.submenu.length > 0 ? "data-has-submenu" : "";
+          )) ?? -1, l = i === a ? "crs-active" : "", o = n.submenu && n.submenu.length > 0 ? "data-has-submenu" : "";
           return (
             /* html */
             `
-        <a href="${n.link}" class="crs-sidebar-link ${l}" data-index="${i}" ${a}>
-          ${n.title}
-          ${s}
-        </a>
+        <li>
+          <a href="${n.link}" class="crs-sidebar-link ${l}" data-index="${i}" ${o}>
+            ${n.title}
+            ${s}
+          </a>
+        </li>
       `
           );
         }).join("")}
+        </ul>
       </div>
-        </div>
     `
       ) : "";
     }
@@ -2869,13 +2871,13 @@
       !t.submenu || !i || n.forEach((s) => {
         s.addEventListener("mouseenter", () => {
           var u;
-          const o = parseInt(s.getAttribute("data-index") || "0"), l = t.submenu[o];
+          const a = parseInt(s.getAttribute("data-index") || "0"), l = t.submenu[a];
           n.forEach((d) => d.classList.remove("crs-active")), s.classList.add("crs-active");
-          const a = this.createMainContentHTML(
+          const o = this.createMainContentHTML(
             l,
             t
           ), r = document.createElement("div");
-          r.innerHTML = a;
+          r.innerHTML = o;
           const c = ((u = r.firstElementChild) == null ? void 0 : u.innerHTML) || "";
           i.innerHTML = c;
         });
@@ -2887,17 +2889,17 @@
         return this.createGiftsContentHTML(e);
       if (e.submenu && e.submenu.length > 0)
         if (e.submenu.length >= 5) {
-          const i = e.submenu[0], s = e.submenu[1], o = e.submenu[2], l = e.submenu[3], a = e.submenu[4];
+          const i = e.submenu[0], s = e.submenu[1], a = e.submenu[2], l = e.submenu[3], o = e.submenu[4];
           let r;
           i.template === "featured" || i.template === "outfit-builder" ? r = this.createFeaturedSectionHTML(i) : r = this.createCollectionsSectionHTML(i);
           let c;
           s.template === "color-grid" ? c = this.createColorsSectionHTML(s) : c = this.createCollectionsSectionHTML(s);
           let u;
-          o.template === "color-grid" ? u = this.createColorsSectionHTML(o) : u = this.createCollectionsSectionHTML(o);
+          a.template === "color-grid" ? u = this.createColorsSectionHTML(a) : u = this.createCollectionsSectionHTML(a);
           let d;
           l.template === "featured" || l.template === "outfit-builder" ? d = this.createFeaturedSectionHTML(l) : l.template === "dual-featured" ? d = this.createDualFeaturedSectionHTML(l) : l.template === "triple-featured" ? d = this.createTripleFeaturedSectionHTML(l) : l.template === "product-cards" ? d = this.createProductCardsSectionHTML(l) : d = this.createCollectionsSectionHTML(l);
           let m;
-          return a.template === "featured" || a.template === "outfit-builder" ? m = this.createFeaturedSectionHTML(a) : a.template === "dual-featured" ? m = this.createDualFeaturedSectionHTML(a) : a.template === "triple-featured" ? m = this.createTripleFeaturedSectionHTML(a) : a.template === "product-cards" ? m = this.createProductCardsSectionHTML(a) : m = this.createCollectionsSectionHTML(a), /* html */
+          return o.template === "featured" || o.template === "outfit-builder" ? m = this.createFeaturedSectionHTML(o) : o.template === "dual-featured" ? m = this.createDualFeaturedSectionHTML(o) : o.template === "triple-featured" ? m = this.createTripleFeaturedSectionHTML(o) : o.template === "product-cards" ? m = this.createProductCardsSectionHTML(o) : m = this.createCollectionsSectionHTML(o), /* html */
           `
           <div class="crs-mega-menu-main crs-five-column">
             ${r}
@@ -2908,43 +2910,43 @@
           </div>
         `;
         } else if (e.submenu.length >= 4) {
-          const i = e.submenu[0], s = e.submenu[1], o = e.submenu[2], l = e.submenu[3];
-          let a;
-          i.template === "featured" || i.template === "outfit-builder" ? a = this.createFeaturedSectionHTML(i) : a = this.createCollectionsSectionHTML(i);
+          const i = e.submenu[0], s = e.submenu[1], a = e.submenu[2], l = e.submenu[3];
+          let o;
+          i.template === "featured" || i.template === "outfit-builder" ? o = this.createFeaturedSectionHTML(i) : o = this.createCollectionsSectionHTML(i);
           let r;
           s.template === "color-grid" ? r = this.createColorsSectionHTML(s) : r = this.createCollectionsSectionHTML(s);
           let c;
-          o.template === "color-grid" ? c = this.createColorsSectionHTML(o) : c = this.createCollectionsSectionHTML(o);
+          a.template === "color-grid" ? c = this.createColorsSectionHTML(a) : c = this.createCollectionsSectionHTML(a);
           let u;
           return l.template === "dual-featured" ? u = this.createDualFeaturedSectionHTML(l) : l.template === "triple-featured" ? u = this.createTripleFeaturedSectionHTML(l) : l.template === "product-cards" ? u = this.createProductCardsSectionHTML(l) : u = this.createCollectionsSectionHTML(l), /* html */
           `
           <div class="crs-mega-menu-main crs-four-column">
-            ${a}
+            ${o}
             ${r}
             ${c}
             ${u}
           </div>
         `;
         } else if (e.submenu.length >= 3) {
-          const i = e.submenu[0], s = e.submenu[1], o = e.submenu[2], l = i.template === "multi-color-grid" ? this.createMultiColorGridSectionHTML(i) : i.template === "color-grid" ? this.createColorsSectionHTML(i) : i.template === "stacked-sections" ? this.createStackedSectionsHTML(i) : this.createCollectionsSectionHTML(i), a = s.template === "color-grid" ? this.createColorsSectionHTML(s) : s.template === "multi-color-grid" ? this.createMultiColorGridSectionHTML(s) : s.template === "stacked-sections" ? this.createStackedSectionsHTML(s) : this.createCollectionsSectionHTML(s);
+          const i = e.submenu[0], s = e.submenu[1], a = e.submenu[2], l = i.template === "multi-color-grid" ? this.createMultiColorGridSectionHTML(i) : i.template === "color-grid" ? this.createColorsSectionHTML(i) : i.template === "stacked-sections" ? this.createStackedSectionsHTML(i) : this.createCollectionsSectionHTML(i), o = s.template === "color-grid" ? this.createColorsSectionHTML(s) : s.template === "multi-color-grid" ? this.createMultiColorGridSectionHTML(s) : s.template === "stacked-sections" ? this.createStackedSectionsHTML(s) : this.createCollectionsSectionHTML(s);
           let r;
-          return o.template === "dual-featured" ? r = this.createDualFeaturedSectionHTML(o) : o.template === "triple-featured" ? r = this.createTripleFeaturedSectionHTML(o) : o.template === "product-cards" ? r = this.createProductCardsSectionHTML(o) : o.template === "quad-featured" ? r = this.createQuadFeaturedSectionHTML(o) : r = this.createFeaturedSectionHTML(o), /* html */
+          return a.template === "dual-featured" ? r = this.createDualFeaturedSectionHTML(a) : a.template === "triple-featured" ? r = this.createTripleFeaturedSectionHTML(a) : a.template === "product-cards" ? r = this.createProductCardsSectionHTML(a) : a.template === "quad-featured" ? r = this.createQuadFeaturedSectionHTML(a) : r = this.createFeaturedSectionHTML(a), /* html */
           `
           <div class="crs-mega-menu-main">
             ${l}
-            ${a}
+            ${o}
             ${r}
           </div>
         `;
         } else if (e.submenu.length >= 2) {
           const i = e.submenu[0], s = e.submenu[1];
-          let o;
-          i.template === "featured" || i.template === "outfit-builder" ? o = this.createFeaturedSectionHTML(i) : i.template === "stacked-sections" ? o = this.createStackedSectionsHTML(i) : o = this.createCollectionsSectionHTML(i);
+          let a;
+          i.template === "featured" || i.template === "outfit-builder" ? a = this.createFeaturedSectionHTML(i) : i.template === "stacked-sections" ? a = this.createStackedSectionsHTML(i) : a = this.createCollectionsSectionHTML(i);
           let l;
           return s.template === "triple-featured" ? l = this.createTripleFeaturedSectionHTML(s) : s.template === "dual-featured" ? l = this.createDualFeaturedSectionHTML(s) : s.template === "featured" || s.template === "outfit-builder" ? l = this.createFeaturedSectionHTML(s) : s.template === "product-cards" ? l = this.createProductCardsSectionHTML(s) : s.template === "color-grid" ? l = this.createColorsSectionHTML(s) : s.template === "multi-color-grid" ? l = this.createMultiColorGridSectionHTML(s) : l = this.createCollectionsSectionHTML(s), /* html */
           `
           <div class="crs-mega-menu-main">
-            ${o}
+            ${a}
             ${l}
           </div>
         `;
@@ -2991,13 +2993,13 @@
     createCollectionsSectionHTML(e) {
       var n;
       const t = ((n = e.submenu) == null ? void 0 : n.map((i) => {
-        const s = i.template === "link" ? "crs-view-all-link" : "crs-collection-link", o = i.icon ? `<img src="${i.icon}" alt="${i.title}" class="crs-item-icon-image" />` : "";
+        const s = i.template === "link" ? "crs-view-all-link" : "crs-collection-link", a = i.icon ? `<img src="${i.icon}" alt="${i.title}" class="crs-item-icon-image" />` : "";
         return (
           /* html */
           `
         <li>
           <a href="${i.link}" class="${s}">
-            ${o}
+            ${a}
             <span class="crs-item-text">${i.title}</span>
           </a>
         </li>
@@ -3017,23 +3019,23 @@
       );
     }
     createColorsSectionHTML(e) {
-      var s, o;
+      var s, a;
       const t = ((s = e.colorSwatches) == null ? void 0 : s.map((l) => {
-        const a = l.isNew ? '<span class="crs-new-badge">New</span>' : "";
+        const o = l.isNew ? '<span class="crs-new-badge">New</span>' : "";
         return (
           /* html */
           `
         <div class="crs-color-item">
           <a href="${l.link || "#"}" class="crs-color-link">
             <div class="crs-color-swatch" style="background-color: ${l.color}">
-              ${a}
+              ${o}
             </div>
             <span class="crs-color-name">${l.name}</span>
           </a>
         </div>
       `
         );
-      }).join("")) || "", n = ((o = e.submenu) == null ? void 0 : o.map((l) => l.template === "link" ? (
+      }).join("")) || "", n = ((a = e.submenu) == null ? void 0 : a.map((l) => l.template === "link" ? (
         /* html */
         `
             <li>
@@ -3069,23 +3071,23 @@
       );
     }
     createMultiColorGridSectionHTML(e) {
-      var s, o;
+      var s, a;
       const t = ((s = e.colorSwatches) == null ? void 0 : s.map((l) => {
-        const a = l.isNew ? '<span class="crs-new-badge">New</span>' : "";
+        const o = l.isNew ? '<span class="crs-new-badge">New</span>' : "";
         return (
           /* html */
           `
         <div class="crs-color-item">
           <a href="${l.link || "#"}" class="crs-color-link">
             <div class="crs-color-swatch" style="background-color: ${l.color}">
-              ${a}
+              ${o}
             </div>
             <span class="crs-color-name">${l.name}</span>
           </a>
         </div>
       `
         );
-      }).join("")) || "", n = ((o = e.submenu) == null ? void 0 : o.map((l) => l.template === "link" ? (
+      }).join("")) || "", n = ((a = e.submenu) == null ? void 0 : a.map((l) => l.template === "link" ? (
         /* html */
         `
             <li>
@@ -3120,13 +3122,13 @@
       );
     }
     createFeaturedSectionHTML(e) {
-      const t = e.featuredImage ? `<img src="${e.featuredImage}" alt="${e.featuredTitle || ""}" class="crs-featured-image">` : "", n = e.featuredTitle ? `<h4 class="crs-featured-title">${e.featuredTitle}</h4>` : "", i = e.featuredSubtitle ? `<p class="crs-featured-subtitle">${e.featuredSubtitle}</p>` : "", s = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-featured-action-link">${e.actionLink.text}</a>` : "", o = n || i ? `<div class="crs-featured-main-title">${e.title}</div>` : "", l = n || i || s ? `<div class="crs-featured-text">${i}${n}${s}</div>` : "", a = e.link || "#";
+      const t = e.featuredImage ? `<img src="${e.featuredImage}" alt="${e.featuredTitle || ""}" class="crs-featured-image">` : "", n = e.featuredTitle ? `<h4 class="crs-featured-title">${e.featuredTitle}</h4>` : "", i = e.featuredSubtitle ? `<p class="crs-featured-subtitle">${e.featuredSubtitle}</p>` : "", s = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-featured-action-link">${e.actionLink.text}</a>` : "", a = n || i ? `<div class="crs-featured-main-title">${e.title}</div>` : "", l = n || i || s ? `<div class="crs-featured-text">${i}${n}${s}</div>` : "", o = e.link || "#";
       return e.template === "outfit-builder" ? (
         /* html */
         `
-        <a href="${a}" class="crs-featured-section-link">
+        <a href="${o}" class="crs-featured-section-link">
           <div class="crs-featured-section">
-          ${o}
+          ${a}
           ${t}
           ${l}
           </div>
@@ -3135,9 +3137,9 @@
       ) : (
         /* html */
         `
-      <a href="${a}" class="crs-featured-section-link">
+      <a href="${o}" class="crs-featured-section-link">
         <div class="crs-featured-section">
-          ${o}
+          ${a}
           ${t}
           ${l}
         </div>
@@ -3148,7 +3150,7 @@
     createDualFeaturedSectionHTML(e) {
       if (!e.submenu || e.submenu.length < 2)
         return '<div class="crs-featured-section"></div>';
-      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", s = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", o = t.featuredSubtitle ? `<p class="crs-featured-subtitle">${t.featuredSubtitle}</p>` : "", l = s || o ? `<div class="crs-featured-text">${s}${o}</div>` : "", a = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${r}${c}</div>` : "";
+      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", s = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", a = t.featuredSubtitle ? `<p class="crs-featured-subtitle">${t.featuredSubtitle}</p>` : "", l = s || a ? `<div class="crs-featured-text">${s}${a}</div>` : "", o = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${r}${c}</div>` : "";
       return (
         /* html */
         `
@@ -3158,7 +3160,7 @@
           ${l}
         </div>
         <div class="crs-featured-item">
-          ${a}
+          ${o}
           ${u}
         </div>
       </div>
@@ -3178,13 +3180,13 @@
     createTripleFeaturedSectionHTML(e) {
       if (!e.submenu || e.submenu.length < 3)
         return '<div class="crs-featured-section"></div>';
-      const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], s = e.title && e.showTitle ? `<h3 class="crs-triple-featured-title">${e.title}</h3>` : "", o = (l) => {
-        const a = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", c = l.featuredSubtitle ? `<p class="crs-featured-subtitle">${l.featuredSubtitle}</p>` : "", u = l.actionLink ? `<a href="${l.actionLink.url}" class="crs-featured-action-link">${l.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
+      const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], s = e.title && e.showTitle ? `<h3 class="crs-triple-featured-title">${e.title}</h3>` : "", a = (l) => {
+        const o = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", c = l.featuredSubtitle ? `<p class="crs-featured-subtitle">${l.featuredSubtitle}</p>` : "", u = l.actionLink ? `<a href="${l.actionLink.url}" class="crs-featured-action-link">${l.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
         return (
           /* html */
           `
         <div class="crs-featured-item">
-          ${a}
+          ${o}
           ${d}
         </div>
       `
@@ -3196,9 +3198,9 @@
       <div class="crs-triple-featured-section">
         ${s}
         <div class="crs-triple-featured-items">
-          ${o(t)}
-          ${o(n)}
-          ${o(i)}
+          ${a(t)}
+          ${a(n)}
+          ${a(i)}
         </div>
       </div>
     `
@@ -3207,13 +3209,13 @@
     createQuadFeaturedSectionHTML(e) {
       if (!e.submenu || e.submenu.length < 4)
         return '<div class="crs-quad-featured-section"></div>';
-      const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], s = e.submenu[3], o = (l) => {
-        const a = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", c = l.featuredSubtitle ? `<p class="crs-featured-subtitle">${l.featuredSubtitle}</p>` : "", u = l.actionLink ? `<a href="${l.actionLink.url}" class="crs-featured-action-link">${l.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
+      const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], s = e.submenu[3], a = (l) => {
+        const o = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", c = l.featuredSubtitle ? `<p class="crs-featured-subtitle">${l.featuredSubtitle}</p>` : "", u = l.actionLink ? `<a href="${l.actionLink.url}" class="crs-featured-action-link">${l.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
         return (
           /* html */
           `
         <div class="crs-featured-item">
-          ${a}
+          ${o}
           ${d}
         </div>
       `
@@ -3224,10 +3226,10 @@
         `
       <div class="crs-quad-featured-section">
         <div class="crs-quad-featured-items">
-          ${o(t)}
-          ${o(n)}
-          ${o(i)}
-          ${o(s)}
+          ${a(t)}
+          ${a(n)}
+          ${a(i)}
+          ${a(s)}
         </div>
       </div>
     `
@@ -3237,7 +3239,7 @@
       if (!e.submenu || e.submenu.length === 0)
         return '<div class="crs-product-cards-section"></div>';
       const t = (i) => {
-        const s = i.productImage ? `<img src="${i.productImage}" alt="${i.title}" class="crs-product-image">` : "", o = i.productPrice ? `<div class="crs-product-price">${i.productPrice}</div>` : "", l = i.productColors ? `<div class="crs-product-colors">${i.productColors}</div>` : "", a = i.productStock ? `<div class="crs-product-stock">${i.productStock}</div>` : "";
+        const s = i.productImage ? `<img src="${i.productImage}" alt="${i.title}" class="crs-product-image">` : "", a = i.productPrice ? `<div class="crs-product-price">${i.productPrice}</div>` : "", l = i.productColors ? `<div class="crs-product-colors">${i.productColors}</div>` : "", o = i.productStock ? `<div class="crs-product-stock">${i.productStock}</div>` : "";
         return (
           /* html */
           `
@@ -3247,8 +3249,8 @@
             <div class="crs-product-info">
               <h4 class="crs-product-title">${i.title}</h4>
               ${l}
-              ${o}
               ${a}
+              ${o}
             </div>
           </a>
         </div>
@@ -3334,67 +3336,44 @@
      */
     destroy() {
       const e = document.querySelector(".crs-mega-menu");
-      e && e.remove(), console.log("🧪 AB Test: Desktop navigation cleanup completed");
+      e && e.remove();
     }
   }
-  class k {
+  class v {
     constructor(e = "B") {
       this.mobileNavigationState = "main", this.mobileNavigationHistory = [], this.variant = e;
     }
     async createMobileNavigation() {
       try {
-        const e = await h("off-canvas-menu");
-        if (console.log(
-          "🧪 AB Test: Found off-canvas-menu element:",
-          e
-        ), e) {
+        const e = await b("off-canvas-menu");
+        if (e) {
           let t = e.querySelector(
             "off-canvas-menu-body > div > div > div.flex-grow.flex-column.overflow-y-auto > div:nth-child(2) > ul"
           );
-          if (t || (t = e.querySelector("ul"), console.log("🧪 AB Test: Found ul with simple selector:", t)), t || (t = e.querySelector(
+          if (t || (t = e.querySelector("ul")), t || (t = e.querySelector(
             "off-canvas-menu-body ul"
-          ), console.log(
-            "🧪 AB Test: Found ul with off-canvas-menu-body selector:",
-            t
           )), t) {
-            console.log(
-              "🧪 AB Test: Found ul element, current content:",
-              t.innerHTML.substring(0, 200) + "..."
-            );
-            const n = f.map(
+            const n = h.map(
               (i, s) => this.createMobileNavigationItemHTML(i, s)
             ).join("");
-            return t.innerHTML = n, t.setAttribute("data-crs-nav-level", "main"), console.log(
-              "🧪 AB Test: Replaced ul content with new navigation items"
-            ), this.addMobileEventListeners(e), console.log(
-              "🧪 AB Test: Mobile navigation items injected into existing off-canvas-menu ul"
-            ), document.createElement("div");
-          } else
-            console.warn(
-              "🧪 AB Test: Could not find any ul element in off-canvas-menu"
-            ), console.log(
-              "🧪 AB Test: Available elements in off-canvas-menu:",
-              e.innerHTML.substring(0, 500) + "..."
-            );
+            return t.innerHTML = n, t.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e), document.createElement("div");
+          }
         }
-      } catch (e) {
-        console.warn(
-          "🧪 AB Test: Could not find off-canvas-menu element:",
-          e
-        );
+      } catch {
       }
       return document.createElement("div");
     }
     createMobileNavigationItemHTML(e, t) {
-      const n = e.textColor ? `style="color: ${e.textColor}"` : "", i = e.submenu && e.submenu.length > 0 ? "data-has-submenu" : "";
+      const n = e.textColor ? `style="color: ${e.textColor}"` : "", i = e.submenu && e.submenu.length > 0 ? "data-has-submenu" : "", s = e.icon ? `<img src="${e.icon}" alt="${e.title}" class="crs-mobile-nav-icon">` : "";
       return (
         /* html */
         `
       <li class="crs-mobile-nav-item" ${i} data-index="${t}" data-crs-nav="true">
-        <div class="crs-mobile-nav-link">
+        <a href="${e.link || "#"}" class="crs-mobile-nav-link">
+          ${s}
           <div class="crs-mobile-nav-text" ${n}>${e.title}</div>
           ${i ? '<div class="crs-mobile-chevron">›</div>' : ""}
-        </div>
+        </a>
       </li>
     `
       );
@@ -3402,81 +3381,81 @@
     addMobileEventListeners(e) {
       e.querySelectorAll(
         ".crs-mobile-nav-item[data-has-submenu]"
-      ).forEach((a) => {
-        const r = parseInt(a.getAttribute("data-index") || "0");
-        a.addEventListener("click", (c) => {
-          c.preventDefault(), console.log(`Mobile nav clicked: ${f[r].title}`), this.showMobileSubmenu(r);
+      ).forEach((o) => {
+        const r = parseInt(o.getAttribute("data-index") || "0");
+        o.addEventListener("click", (c) => {
+          c.preventDefault(), this.showMobileSubmenu(r);
         });
       }), e.querySelectorAll(
         ".crs-mobile-nav-item[data-submenu-index]"
-      ).forEach((a) => {
-        const r = parseInt(a.getAttribute("data-index") || "0"), c = parseInt(
-          a.getAttribute("data-submenu-index") || "0"
-        );
-        a.addEventListener("click", (u) => {
-          var g;
-          u.preventDefault();
-          const m = (g = f[r].submenu) == null ? void 0 : g[c];
-          m && (console.log(`Mobile submenu item clicked: ${m.title}`), m.submenu && m.submenu.length > 0 && this.showMobileThirdLevelSubmenu(r, c));
+      ).forEach((o) => {
+        const r = parseInt(o.getAttribute("data-index") || "0"), c = parseInt(
+          o.getAttribute("data-submenu-index") || "0"
+        ), u = o.getAttribute("data-stacked-index");
+        o.addEventListener("click", (d) => {
+          var g, w;
+          d.preventDefault();
+          let f = (g = h[r].submenu) == null ? void 0 : g[c];
+          if (u !== null && (f == null ? void 0 : f.template) === "stacked-sections") {
+            const L = parseInt(u);
+            f = (w = f.submenu) == null ? void 0 : w[L];
+          }
+          f && f.submenu && f.submenu.length > 0 && this.showMobileThirdLevelSubmenu(r, c);
         });
       });
       const i = e.querySelector(
         ".crs-mobile-nav-back"
       );
-      i && i.addEventListener("click", (a) => {
-        a.preventDefault(), console.log("Mobile submenu back button clicked"), this.navigateBack();
+      i && i.addEventListener("click", (o) => {
+        o.preventDefault(), this.navigateBack();
       });
       const s = e.querySelector(
         ".crs-mobile-nav-close"
       );
-      s && s.addEventListener("click", (a) => {
-        a.preventDefault(), console.log("Mobile submenu close button clicked"), this.showMobileMainMenu();
+      s && s.addEventListener("click", (o) => {
+        o.preventDefault(), this.showMobileMainMenu();
       });
-      const o = e.querySelector(
+      const a = e.querySelector(
         ".off-canvas-close"
       );
-      o && o.addEventListener("click", () => {
-        console.log("Mobile menu close button clicked");
+      a && a.addEventListener("click", () => {
       });
       const l = e.querySelector(
         "advanced-commerce-search-form button"
       );
       l && l.addEventListener("click", () => {
-        console.log("Mobile search clicked");
       });
     }
     showMobileSubmenu(e) {
-      const t = f[e];
+      const t = h[e];
       if (!t.submenu || t.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "main" }), this.mobileNavigationState = "submenu";
       const n = document.querySelector("off-canvas-menu");
       if (!n) return;
       const i = this.createMobileSubmenuHTML(t, e), s = n.querySelector("ul");
-      s && (s.innerHTML = i, s.setAttribute("data-crs-nav-level", "submenu"), console.log(`🧪 AB Test: Mobile submenu shown for ${t.title}`), this.addMobileEventListeners(n));
+      s && (s.innerHTML = i, s.setAttribute("data-crs-nav-level", "submenu"), this.addMobileEventListeners(n));
     }
     showMobileMainMenu() {
       this.mobileNavigationState = "main", this.mobileNavigationHistory = [];
       const e = document.querySelector("off-canvas-menu");
       if (!e) return;
-      const t = f.map((i, s) => this.createMobileNavigationItemHTML(i, s)).join(""), n = e.querySelector("ul");
-      n && (n.innerHTML = t, n.setAttribute("data-crs-nav-level", "main"), console.log("🧪 AB Test: Mobile main menu shown"), this.addMobileEventListeners(e));
+      const t = h.map((i, s) => this.createMobileNavigationItemHTML(i, s)).join(""), n = e.querySelector("ul");
+      n && (n.innerHTML = t, n.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e));
     }
     showMobileThirdLevelSubmenu(e, t) {
-      var a;
-      const n = f[e], i = (a = n.submenu) == null ? void 0 : a[t];
+      var o;
+      const n = h[e], i = (o = n.submenu) == null ? void 0 : o[t];
       if (!i || !i.submenu || i.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "submenu", parentIndex: e }), this.mobileNavigationState = "third-level";
       const s = document.querySelector("off-canvas-menu");
       if (!s) return;
-      const o = this.createMobileThirdLevelSubmenuHTML(
+      const a = this.createMobileThirdLevelSubmenuHTML(
         n,
         i,
         e,
         t
       ), l = s.querySelector("ul");
-      l && (l.innerHTML = o, l.setAttribute("data-crs-nav-level", "third-level"), console.log(
-        `🧪 AB Test: Mobile third level submenu shown for ${i.title}`
-      ), this.addMobileEventListeners(s));
+      l && (l.innerHTML = a, l.setAttribute("data-crs-nav-level", "third-level"), this.addMobileEventListeners(s));
     }
     navigateBack() {
       if (this.mobileNavigationHistory.length === 0) {
@@ -3508,14 +3487,14 @@
       switch (e.template) {
         case "dual-featured":
           if (e.submenu && e.submenu.length >= 2) {
-            const a = e.submenu[0], r = e.submenu[1], c = (
+            const o = e.submenu[0], r = e.submenu[1], c = (
               /* html */
               `
             <div class="crs-mobile-featured-item">
-              <div class="crs-mobile-featured-image" style="background-image: url('${a.featuredImage || ""}')"></div>
+              <div class="crs-mobile-featured-image" style="background-image: url('${o.featuredImage || ""}')"></div>
               <div class="crs-mobile-featured-text">
-                <div class="crs-mobile-featured-title">${a.featuredTitle || ""}</div>
-                <div class="crs-mobile-featured-subtitle">${a.featuredSubtitle || ""}</div>
+                <div class="crs-mobile-featured-title">${o.featuredTitle || ""}</div>
+                <div class="crs-mobile-featured-subtitle">${o.featuredSubtitle || ""}</div>
               </div>
             </div>
             <div class="crs-mobile-featured-item">
@@ -3538,14 +3517,14 @@
           break;
         case "triple-featured":
           if (e.submenu && e.submenu.length >= 2) {
-            const a = e.submenu[0], r = e.submenu[1], c = (
+            const o = e.submenu[0], r = e.submenu[1], c = (
               /* html */
               `
             <div class="crs-mobile-featured-item">
-              <div class="crs-mobile-featured-image" style="background-image: url('${a.featuredImage || ""}')"></div>
+              <div class="crs-mobile-featured-image" style="background-image: url('${o.featuredImage || ""}')"></div>
               <div class="crs-mobile-featured-text">
-                <div class="crs-mobile-featured-title">${a.featuredTitle || ""}</div>
-                <div class="crs-mobile-featured-subtitle">${a.featuredSubtitle || ""}</div>
+                <div class="crs-mobile-featured-title">${o.featuredTitle || ""}</div>
+                <div class="crs-mobile-featured-subtitle">${o.featuredSubtitle || ""}</div>
               </div>
             </div>
             <div class="crs-mobile-featured-item">
@@ -3566,8 +3545,52 @@
             );
           }
           break;
+        case "quad-featured":
+          if (e.submenu && e.submenu.length >= 4) {
+            const o = e.submenu[0], r = e.submenu[1], c = e.submenu[2], u = e.submenu[3], d = (
+              /* html */
+              `
+            <div class="crs-mobile-featured-item">
+              <div class="crs-mobile-featured-image" style="background-image: url('${o.featuredImage || ""}')"></div>
+              <div class="crs-mobile-featured-text">
+                <div class="crs-mobile-featured-title">${o.featuredTitle || ""}</div>
+                ${o.actionLink ? `<a href="${o.actionLink.url}" class="crs-mobile-featured-action-link">${o.actionLink.text}</a>` : ""}
+              </div>
+            </div>
+            <div class="crs-mobile-featured-item">
+              <div class="crs-mobile-featured-image" style="background-image: url('${r.featuredImage || ""}')"></div>
+              <div class="crs-mobile-featured-text">
+                <div class="crs-mobile-featured-title">${r.featuredTitle || ""}</div>
+                ${r.actionLink ? `<a href="${r.actionLink.url}" class="crs-mobile-featured-action-link">${r.actionLink.text}</a>` : ""}
+              </div>
+            </div>
+            <div class="crs-mobile-featured-item">
+              <div class="crs-mobile-featured-image" style="background-image: url('${c.featuredImage || ""}')"></div>
+              <div class="crs-mobile-featured-text">
+                <div class="crs-mobile-featured-title">${c.featuredTitle || ""}</div>
+                ${c.actionLink ? `<a href="${c.actionLink.url}" class="crs-mobile-featured-action-link">${c.actionLink.text}</a>` : ""}
+              </div>
+            </div>
+            <div class="crs-mobile-featured-item">
+              <div class="crs-mobile-featured-image" style="background-image: url('${u.featuredImage || ""}')"></div>
+              <div class="crs-mobile-featured-text">
+                <div class="crs-mobile-featured-title">${u.featuredTitle || ""}</div>
+                ${u.actionLink ? `<a href="${u.actionLink.url}" class="crs-mobile-featured-action-link">${u.actionLink.text}</a>` : ""}
+              </div>
+            </div>
+          `
+            );
+            s = i ? (
+              /* html */
+              `<li class="crs-mobile-quad-featured-content" data-crs-nav="true">${d}</li>`
+            ) : (
+              /* html */
+              `<div class="crs-mobile-quad-featured-content" data-crs-nav="true">${d}</div>`
+            );
+          }
+          break;
         case "featured":
-          const o = (
+          const a = (
             /* html */
             `
           <div class="crs-mobile-featured-image" style="background-image: url('${e.featuredImage || ""}')"></div>
@@ -3579,15 +3602,15 @@
           );
           s = i ? (
             /* html */
-            `<li class="crs-mobile-featured-content" data-crs-nav="true">${o}</li>`
+            `<li class="crs-mobile-featured-content" data-crs-nav="true">${a}</li>`
           ) : (
             /* html */
-            `<div class="crs-mobile-featured-content" data-crs-nav="true">${o}</div>`
+            `<div class="crs-mobile-featured-content" data-crs-nav="true">${a}</div>`
           );
           break;
         case "product-cards":
           if (e.submenu && e.submenu.length > 0) {
-            const a = (
+            const o = (
               /* html */
               `
             ${e.submenu.map((r) => (
@@ -3608,10 +3631,10 @@
             );
             s = i ? (
               /* html */
-              `<li class="crs-mobile-product-cards-content" data-crs-nav="true">${a}</li>`
+              `<li class="crs-mobile-product-cards-content" data-crs-nav="true">${o}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-product-cards-content" data-crs-nav="true">${a}</div>`
+              `<div class="crs-mobile-product-cards-content" data-crs-nav="true">${o}</div>`
             );
           }
           break;
@@ -3644,7 +3667,7 @@
     createMobileSubmenuHTML(e, t) {
       let n = "";
       return e.submenu && e.submenu.length > 0 && e.submenu.forEach((i, s) => {
-        const o = i.submenu && i.submenu.length > 0 ? "data-has-submenu" : "";
+        const a = i.submenu && i.submenu.length > 0 ? "data-has-submenu" : "";
         switch (i.template) {
           case "dual-featured":
           case "triple-featured":
@@ -3654,29 +3677,33 @@
           case "color-grid":
           case "multi-color-grid":
           case "stacked-sections":
-            n += /* html */
-            `
-              <li class="crs-mobile-nav-item" data-index="${t}" data-submenu-index="${s}" data-crs-nav="true" ${o}>
-                <div class="crs-mobile-nav-link">
-                  <div class="crs-mobile-nav-text">${i.title}</div>
-                </div>
-              </li>
-            `;
+            i.submenu && i.submenu.length > 0 && i.submenu.forEach((l, o) => {
+              const r = l.submenu && l.submenu.length > 0 ? "data-has-submenu" : "";
+              n += /* html */
+              `
+                  <li class="crs-mobile-nav-item" data-index="${t}" data-submenu-index="${s}" data-stacked-index="${o}" data-crs-nav="true" ${r}>
+                    <a href="${l.link || "#"}" class="crs-mobile-nav-link">
+                      <div class="crs-mobile-nav-text">${l.title}</div>
+                      ${r ? '<div class="crs-mobile-chevron">›</div>' : ""}
+                    </a>
+                  </li>
+                `;
+            });
             break;
           case "outlet":
             i.submenu && i.submenu.length > 0 && (n += /* html */
             `
                 <li class="crs-mobile-submenu-item" data-crs-nav="true">
                   <div class="crs-mobile-submenu-content">
-                    ${i.submenu.map((l, a) => {
+                    ${i.submenu.map((l, o) => {
               if (l.template === "link")
                 return (
                   /* html */
                   `
                           <div class="crs-mobile-submenu-section" data-crs-nav="true">
-                            <div class="crs-mobile-submenu-link">
+                            <a href="${l.link || "#"}" class="crs-mobile-submenu-link">
                               <div class="crs-mobile-submenu-text">${l.title}</div>
-                            </div>
+                            </a>
                           </div>
                         `
                 );
@@ -3685,9 +3712,9 @@
                   /* html */
                   `
                           <div class="crs-mobile-submenu-item" data-crs-nav="true">
-                            <div class="crs-mobile-submenu-link">
+                            <a href="${c.link || "#"}" class="crs-mobile-submenu-link">
                               <div class="crs-mobile-submenu-text">${c.title}</div>
-                            </div>
+                            </a>
                           </div>
                         `
                 )).join("");
@@ -3714,7 +3741,7 @@
             `
                 <li class="crs-mobile-gifts-content" data-crs-nav="true">
                   ${i.submenu.map((l) => {
-              var a;
+              var o;
               if (l.template === "featured") {
                 const r = l.actionLink ? `<a href="${l.actionLink.url}" class="crs-mobile-gifts-action-link">${l.actionLink.text}</a>` : "";
                 return (
@@ -3732,7 +3759,7 @@
                       `
                 );
               } else {
-                const r = ((a = l.submenu) == null ? void 0 : a.map((c) => (
+                const r = ((o = l.submenu) == null ? void 0 : o.map((c) => (
                   /* html */
                   `
                         <div class="crs-mobile-gifts-item" data-crs-nav="true">
@@ -3761,10 +3788,10 @@
           default:
             n += /* html */
             `
-              <li class="crs-mobile-nav-item" ${o} data-index="${t}" data-submenu-index="${s}" data-crs-nav="true">
+              <li class="crs-mobile-nav-item" ${a} data-index="${t}" data-submenu-index="${s}" data-crs-nav="true">
                 <div class="crs-mobile-nav-link">
                   <div class="crs-mobile-nav-text">${i.title}</div>
-                  ${o ? '<div class="crs-mobile-chevron">›</div>' : ""}
+                  ${a ? '<div class="crs-mobile-chevron">›</div>' : ""}
                 </div>
               </li>
             `;
@@ -3787,32 +3814,66 @@
     `;
     }
     createMobileThirdLevelSubmenuHTML(e, t, n, i) {
-      if (["dual-featured", "triple-featured", "quad-featured", "featured", "product-cards"].includes(t.template) && (!t.submenu || t.submenu.length === 0))
+      if (t.template && ["dual-featured", "triple-featured", "quad-featured", "featured", "product-cards"].includes(t.template) && (!t.submenu || t.submenu.length === 0))
         return this.createMobileFeaturedContentHTML(t, n, i);
+      if (t.template && ["dual-featured", "triple-featured", "quad-featured", "featured", "product-cards"].includes(t.template))
+        return this.createMobileFeaturedContentHTML(t, n, i, !1);
       let s = "";
-      return t.submenu && t.submenu.length > 0 && t.submenu.forEach((o, l) => {
-        var a, r;
-        switch (o.template) {
+      return t.submenu && t.submenu.length > 0 && t.submenu.forEach((a, l) => {
+        var o, r;
+        switch (a.template) {
           case "default":
-            const c = ((a = o.submenu) == null ? void 0 : a.map((d) => (
-              /* html */
-              `
-                    <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                      <div class="crs-mobile-third-level-link">
-                        <div class="crs-mobile-third-level-text">${d.title}</div>
-                      </div>
-                    </div>
-                  `
-            )).join("")) || "";
+            const c = ((o = a.submenu) == null ? void 0 : o.map((d) => {
+              const m = d.icon ? `<img src="${d.icon}" alt="${d.title}" class="crs-mobile-nav-icon">` : "";
+              return (
+                /* html */
+                `
+                        <div class="crs-mobile-third-level-item" data-crs-nav="true">
+                          <a href="${d.link || "#"}" class="crs-mobile-third-level-link">
+                            ${m}
+                            <div class="crs-mobile-third-level-text">${d.title}</div>
+                          </a>
+                        </div>
+                      `
+              );
+            }).join("")) || "";
             s += /* html */
             `
               <div class="crs-mobile-third-level-section">
-                <div class="crs-mobile-third-level-title">${o.title}</div>
+                <div class="crs-mobile-third-level-title">${a.title}</div>
                 <div class="crs-mobile-third-level-items">
                   ${c}
                 </div>
               </div>
             `;
+            break;
+          case "stacked-sections":
+            a.submenu && a.submenu.length > 0 && a.submenu.forEach((d) => {
+              var f;
+              const m = ((f = d.submenu) == null ? void 0 : f.map((g) => {
+                const w = g.icon ? `<img src="${g.icon}" alt="${g.title}" class="crs-mobile-nav-icon">` : "";
+                return (
+                  /* html */
+                  `
+                      <div class="crs-mobile-third-level-item" data-crs-nav="true">
+                        <a href="${g.link || "#"}" class="crs-mobile-third-level-link">
+                          ${w}
+                          <div class="crs-mobile-third-level-text">${g.title}</div>
+                        </a>
+                      </div>
+                    `
+                );
+              }).join("")) || "";
+              s += /* html */
+              `
+                  <div class="crs-mobile-third-level-section">
+                    <div class="crs-mobile-third-level-title">${d.title}</div>
+                    <div class="crs-mobile-third-level-items">
+                      ${m}
+                    </div>
+                  </div>
+                `;
+            });
             break;
           case "dual-featured":
           case "triple-featured":
@@ -3820,10 +3881,10 @@
           case "featured":
           case "product-cards":
           case "outfit-builder":
-            s += this.createMobileFeaturedContentHTML(o, n, i, !1);
+            s += this.createMobileFeaturedContentHTML(a, n, i, !1);
             break;
           case "color-grid":
-            const u = ((r = o.colorSwatches) == null ? void 0 : r.map((d) => (
+            const u = ((r = a.colorSwatches) == null ? void 0 : r.map((d) => (
               /* html */
               `
                 <div class="crs-mobile-color-swatch" data-crs-nav="true">
@@ -3839,7 +3900,7 @@
             s += /* html */
             `
               <div class="crs-mobile-third-level-section">
-                <div class="crs-mobile-third-level-title">${o.title}</div>
+                <div class="crs-mobile-third-level-title">${a.title}</div>
                 <div class="crs-mobile-color-swatches">
                   ${u}
                 </div>
@@ -3850,11 +3911,11 @@
             s += /* html */
             `
               <div class="crs-mobile-third-level-section">
-                <div class="crs-mobile-third-level-title">${o.title}</div>
+                <div class="crs-mobile-third-level-title">${a.title}</div>
                 <div class="crs-mobile-third-level-items">
                   <li class="crs-mobile-third-level-item" data-crs-nav="true">
                     <div class="crs-mobile-third-level-link">
-                      <div class="crs-mobile-third-level-text">${o.title}</div>
+                      <div class="crs-mobile-third-level-text">${a.title}</div>
                     </div>
                   </li>
                 </div>
@@ -3895,12 +3956,11 @@
      * Destroys all navigation elements and cleans up
      */
     destroy() {
-      console.log("🧪 AB Test: Mobile navigation cleanup completed");
     }
   }
-  class y {
+  class x {
     constructor(e = "B") {
-      this.variant = e, this.isMobile = this.detectMobile(), this.desktopNavigation = new w(e), this.mobileNavigation = new k(e), this.setupResizeListener();
+      this.variant = e, this.isMobile = this.detectMobile(), this.desktopNavigation = new y(e), this.mobileNavigation = new v(e), this.setupResizeListener();
     }
     detectMobile() {
       return window.innerWidth <= 768;
@@ -3912,37 +3972,23 @@
       });
     }
     async handleViewportChange() {
-      console.log(
-        "🧪 AB Test: Viewport change detected, current isMobile:",
-        this.isMobile
-      );
       const e = document.querySelector("crs-nav");
       if (e) {
-        console.log("🧪 AB Test: Found crs-nav element, recreating navigation"), e.innerHTML = "";
+        e.innerHTML = "";
         const t = await this.createCompleteNavigation();
         e.appendChild(t);
       } else if (console.log(
         "🧪 AB Test: No crs-nav element found, checking for mobile menu integration"
       ), this.isMobile)
         try {
-          const t = await h("off-canvas-menu");
-          console.log(
-            "🧪 AB Test: Found mobile menu during viewport change, integrating"
-          );
-          let n = t.querySelector("ul");
+          let n = (await b("off-canvas-menu")).querySelector("ul");
           if (n) {
-            const i = f.map(
-              (s, o) => this.mobileNavigation.createMobileNavigationItemHTML(s, o)
+            const i = h.map(
+              (s, a) => this.mobileNavigation.createMobileNavigationItemHTML(s, a)
             ).join("");
-            n.innerHTML = i, console.log(
-              "🧪 AB Test: Updated mobile menu ul content during viewport change"
-            );
+            n.innerHTML = i;
           }
-        } catch (t) {
-          console.warn(
-            "🧪 AB Test: Could not find mobile menu during viewport change:",
-            t
-          );
+        } catch {
         }
     }
     /**
@@ -3967,10 +4013,10 @@
      * Destroys all navigation elements and cleans up
      */
     destroy() {
-      this.desktopNavigation.destroy(), this.mobileNavigation.destroy(), console.log("🧪 AB Test: Navigation cleanup completed");
+      this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class v {
+  class S {
     constructor(e, t, n) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 100, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = n, this.currentUrl = location.href;
     }
@@ -3978,16 +4024,16 @@
      * Starts comprehensive monitoring for Angular SPA changes
      */
     startMonitoring() {
-      this.isMonitoring || (console.log("🧪 AB Test: Starting comprehensive navigation monitoring..."), this.isMonitoring = !0, this.startUrlMonitoring(), this.startMutationMonitoring(), this.startPeriodicChecks(), this.monitorAngularRouter());
+      this.isMonitoring || (this.isMonitoring = !0, this.startUrlMonitoring(), this.startMutationMonitoring(), this.startPeriodicChecks(), this.monitorAngularRouter());
     }
     /**
      * Monitors URL changes (Angular router navigation)
      */
     startUrlMonitoring() {
       this.monitoringInterval = setInterval(() => {
-        location.href !== this.currentUrl && (this.currentUrl = location.href, console.log("🧪 AB Test: SPA navigation detected:", this.currentUrl), this.handleNavigationChange());
+        location.href !== this.currentUrl && (this.currentUrl = location.href, this.handleNavigationChange());
       }, this.checkInterval), window.addEventListener("popstate", () => {
-        console.log("🧪 AB Test: Browser navigation detected"), setTimeout(() => this.handleNavigationChange(), 100);
+        setTimeout(() => this.handleNavigationChange(), 100);
       }), this.interceptHistoryAPI();
     }
     /**
@@ -3996,9 +4042,9 @@
     interceptHistoryAPI() {
       const e = history.pushState, t = history.replaceState;
       history.pushState = (...n) => {
-        e.apply(history, n), console.log("🧪 AB Test: pushState intercepted"), setTimeout(() => this.handleNavigationChange(), 100);
+        e.apply(history, n), setTimeout(() => this.handleNavigationChange(), 100);
       }, history.replaceState = (...n) => {
-        t.apply(history, n), console.log("🧪 AB Test: replaceState intercepted"), setTimeout(() => this.handleNavigationChange(), 100);
+        t.apply(history, n), setTimeout(() => this.handleNavigationChange(), 100);
       };
     }
     /**
@@ -4012,9 +4058,7 @@
             var s;
             (i === this.newNav || (s = i.contains) != null && s.call(i, this.newNav)) && (t = !0);
           }), n.target === this.newNav.parentElement && (t = !0)), n.type === "attributes" && n.target === this.newNav && (t = !0);
-        }), t && (console.log(
-          "🧪 AB Test: DOM mutation detected, checking navigation..."
-        ), this.handleNavigationChange());
+        }), t && this.handleNavigationChange();
       }), this.mutationObserver.observe(document.body, {
         childList: !0,
         subtree: !0,
@@ -4029,11 +4073,11 @@
       const e = document.querySelector(
         "[ng-app], [ng-controller], app-root, [ng-version], .ng-scope"
       );
-      e && this.mutationObserver && (console.log("🧪 AB Test: Angular detected, monitoring for changes"), this.mutationObserver.observe(e, {
+      e && this.mutationObserver && this.mutationObserver.observe(e, {
         attributes: !0,
         childList: !0,
         subtree: !0
-      }));
+      });
     }
     /**
      * Starts periodic checks for navigation persistence
@@ -4048,7 +4092,7 @@
      * Handles navigation changes detected by any monitoring method
      */
     handleNavigationChange() {
-      console.log("🧪 AB Test: Handling navigation change..."), this.retryCount = 0, setTimeout(() => {
+      this.retryCount = 0, setTimeout(() => {
         this.checkNavigationPersistence();
       }, 200);
     }
@@ -4058,18 +4102,16 @@
     checkNavigationPersistence() {
       const e = document.querySelector("crs-nav");
       if (!e) {
-        console.log(
-          "🧪 AB Test: crs-nav element not found, attempting to recreate..."
-        ), this.recreateNavigation().catch((t) => {
+        this.recreateNavigation().catch((t) => {
           console.error("🧪 AB Test: Error in recreateNavigation:", t);
         });
         return;
       }
       if (!this.isNavigationProperlyPositioned(e)) {
-        console.log("🧪 AB Test: Navigation position compromised, fixing..."), this.fixNavigationPosition(e);
+        this.fixNavigationPosition(e);
         return;
       }
-      this.isNavigationProperlyStyled(e) || (console.log("🧪 AB Test: Navigation styling compromised, fixing..."), this.fixNavigationStyling(e)), this.retryCount = 0;
+      this.isNavigationProperlyStyled(e) || this.fixNavigationStyling(e), this.retryCount = 0;
     }
     /**
      * Checks if navigation is properly positioned
@@ -4121,12 +4163,10 @@
         );
         return;
       }
-      this.retryCount++, console.log(
-        `🧪 AB Test: Recreating navigation (attempt ${this.retryCount}/${this.maxRetries})`
-      );
+      this.retryCount++;
       try {
         const e = await this.navigationOrchestrator.createCompleteNavigation(), t = document.createElement("crs-nav");
-        t.appendChild(e), t.classList.add("crs-state-ready"), this.injectNavigationNextToMeganav(t), this.newNav = t, console.log("🧪 AB Test: crs-nav element recreated successfully");
+        t.appendChild(e), t.classList.add("crs-state-ready"), this.injectNavigationNextToMeganav(t), this.newNav = t;
       } catch (e) {
         console.error("🧪 AB Test: Error recreating navigation:", e), setTimeout(() => {
           this.recreateNavigation().catch((t) => {
@@ -4141,10 +4181,10 @@
     fixNavigationPosition(e) {
       const t = document.querySelector("meganav"), n = e;
       if (t && t.parentNode)
-        t.nextSibling === e || (console.log("🧪 AB Test: Moving crs-nav element back next to meganav"), t.parentNode.insertBefore(n, t.nextSibling));
+        t.nextSibling === e || t.parentNode.insertBefore(n, t.nextSibling);
       else {
         const i = this.findHeaderElement();
-        i && !i.contains(e) && (console.log("🧪 AB Test: Moving navigation back to header"), i.appendChild(n));
+        i && !i.contains(e) && i.appendChild(n);
       }
     }
     /**
@@ -4161,21 +4201,17 @@
       const t = document.querySelector("meganav");
       if (t && t.parentNode) {
         const n = document.querySelector("crs-nav");
-        n && n.remove(), t.parentNode.insertBefore(e, t.nextSibling), console.log("🧪 AB Test: crs-nav element injected next to meganav");
+        n && n.remove(), t.parentNode.insertBefore(e, t.nextSibling);
       } else {
         const n = this.findHeaderElement();
-        n ? (n.appendChild(e), console.log(
-          "🧪 AB Test: crs-nav element injected into header as fallback"
-        )) : (document.body.appendChild(e), console.log(
-          "🧪 AB Test: crs-nav element appended to body as last resort"
-        ));
+        n ? n.appendChild(e) : document.body.appendChild(e);
       }
     }
     /**
      * Stops all monitoring
      */
     stopMonitoring() {
-      this.isMonitoring && (console.log("🧪 AB Test: Stopping navigation monitoring..."), this.isMonitoring = !1, this.monitoringInterval && (clearInterval(this.monitoringInterval), this.monitoringInterval = null), this.mutationObserver && (this.mutationObserver.disconnect(), this.mutationObserver = null));
+      this.isMonitoring && (this.isMonitoring = !1, this.monitoringInterval && (clearInterval(this.monitoringInterval), this.monitoringInterval = null), this.mutationObserver && (this.mutationObserver.disconnect(), this.mutationObserver = null));
     }
     /**
      * Gets monitoring status
@@ -4193,27 +4229,18 @@
      * Logs current navigation state
      */
     logNavigationState() {
-      const e = document.querySelector("crs-nav"), t = document.querySelector("meganav"), n = this.findHeaderElement();
-      console.log("🧪 AB Test: Navigation Persistence State:", {
-        isMonitoring: this.isMonitoring,
-        crsNavPresent: !!e,
-        meganavPresent: !!t,
-        headerFound: !!n,
-        retryCount: this.retryCount,
-        currentUrl: this.currentUrl,
-        lastCheck: new Date(this.lastCheckTime).toISOString()
-      });
+      document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class x {
+  class I {
     constructor() {
-      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.navigationOrchestrator = new y(this.variant), this.init();
+      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.navigationOrchestrator = new x(this.variant), this.init();
     }
     init() {
       document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.start()) : this.start();
     }
     async start() {
-      console.log("🧪 AB Test: Data-Driven Navigation Menu Redesign - Starting..."), this.findOriginalNavigation(), await this.createAndInjectNavigation(), this.startNavigationMonitoring(), this.isActive = !0, console.log("🧪 AB Test: Data-Driven Navigation Menu Redesign - Active");
+      this.findOriginalNavigation(), await this.createAndInjectNavigation(), this.startNavigationMonitoring(), this.isActive = !0;
     }
     findOriginalNavigation() {
       const e = [
@@ -4221,40 +4248,86 @@
         "off-canvas-menu"
       ];
       for (const t of e)
-        if (this.originalNav = document.querySelector(t), this.originalNav) {
-          console.log(`🧪 AB Test: Found navigation using selector: ${t}`);
+        if (this.originalNav = document.querySelector(t), this.originalNav)
           break;
-        }
       this.originalNav || console.warn("🧪 AB Test: Could not find original navigation");
     }
     async createAndInjectNavigation() {
       try {
-        const e = window.innerWidth <= 768;
-        if (console.log("🧪 AB Test: Current viewport width:", window.innerWidth, "isMobile:", e), e)
-          try {
-            const t = await h("off-canvas-menu");
-            console.log("🧪 AB Test: Found mobile menu, integrating with existing off-canvas-menu structure"), this.newNav = await this.navigationOrchestrator.createCompleteNavigation(), console.log("🧪 AB Test: Mobile navigation integrated with existing off-canvas-menu");
-          } catch {
-            console.warn("🧪 AB Test: Could not find mobile menu, falling back to desktop navigation"), this.newNav = await this.navigationOrchestrator.createCompleteNavigation();
-            const n = document.createElement("crs-nav");
-            n.appendChild(this.newNav), n.classList.add("crs-navigation-system"), n.classList.add("crs-state-ready"), this.newNav = n, this.injectNavigation(), console.log("🧪 AB Test: Desktop navigation injected as fallback");
-          }
+        if (window.innerWidth <= 768)
+          await this.injectMobileNavigation();
         else {
-          this.newNav = await this.navigationOrchestrator.createCompleteNavigation();
+          await this.waitForMeganav(), this.newNav = await this.navigationOrchestrator.createCompleteNavigation();
           const t = document.createElement("crs-nav");
-          t.appendChild(this.newNav), t.classList.add("crs-navigation-system"), t.classList.add("crs-state-ready"), this.newNav = t, this.injectNavigation(), console.log("🧪 AB Test: Desktop navigation injected successfully");
+          t.appendChild(this.newNav), t.classList.add("crs-navigation-system"), t.classList.add("crs-state-ready"), this.newNav = t, this.injectNavigation();
         }
       } catch (e) {
         console.error("🧪 AB Test: Error creating data-driven navigation:", e), this.newNav && this.newNav.classList.add("crs-state-error");
       }
     }
+    async injectMobileNavigation() {
+      for (let n = 1; n <= 5; n++)
+        try {
+          const i = await this.findMobileMenu();
+          if (i) {
+            const s = await this.navigationOrchestrator.createCompleteNavigation();
+            await this.integrateWithMobileMenu(i, s), this.newNav = i;
+            return;
+          }
+        } catch (i) {
+          console.warn(`🧪 AB Test: Mobile injection attempt ${n} failed:`, i), n < 5 && await this.delay(500);
+        }
+      console.warn("🧪 AB Test: All mobile injection attempts failed, creating fallback"), await this.createFallbackMobileNavigation();
+    }
+    async findMobileMenu() {
+      const e = ["off-canvas-menu", ".off-canvas-menu", "[data-mobile-menu]"];
+      for (const t of e)
+        try {
+          const n = await b(t);
+          if (n)
+            return n;
+        } catch {
+        }
+      return null;
+    }
+    async integrateWithMobileMenu(e, t) {
+      var s;
+      let n = e.querySelector("ul");
+      n || (n = document.createElement("ul"), e.appendChild(n));
+      const i = ((s = t.querySelector("ul")) == null ? void 0 : s.innerHTML) || t.innerHTML;
+      i && (n.innerHTML = i, n.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e));
+    }
+    async createFallbackMobileNavigation() {
+      this.newNav = await this.navigationOrchestrator.createCompleteNavigation();
+      const e = document.createElement("crs-nav");
+      e.appendChild(this.newNav), e.classList.add("crs-navigation-system"), e.classList.add("crs-state-ready"), e.classList.add("crs-mobile-fallback"), this.newNav = e, this.injectNavigation();
+    }
+    addMobileEventListeners(e) {
+      e.addEventListener("click", (t) => {
+        t.target.hasAttribute("data-crs-nav") && t.preventDefault();
+      });
+    }
+    delay(e) {
+      return new Promise((t) => setTimeout(t, e));
+    }
+    async waitForMeganav() {
+      for (let n = 1; n <= 10; n++) {
+        try {
+          if (await b("meganav"))
+            return;
+        } catch {
+        }
+        n < 10 && await this.delay(200);
+      }
+      console.warn("🧪 AB Test: Meganav not found after maximum retries, proceeding with fallback");
+    }
     injectNavigation() {
       if (this.newNav)
         if (this.originalNav && this.originalNav.parentNode)
-          this.originalNav.parentNode.insertBefore(this.newNav, this.originalNav.nextSibling), console.log("🧪 AB Test: Navigation placed next to meganav");
+          this.originalNav.parentNode.insertBefore(this.newNav, this.originalNav.nextSibling);
         else {
           const e = document.querySelector("meganav");
-          e && e.parentNode ? (e.parentNode.insertBefore(this.newNav, e.nextSibling), console.log("🧪 AB Test: Navigation placed next to found meganav")) : (document.body.appendChild(this.newNav), console.log("🧪 AB Test: Navigation appended to body as fallback"));
+          e && e.parentNode ? e.parentNode.insertBefore(this.newNav, e.nextSibling) : document.body.appendChild(this.newNav);
         }
     }
     findHeaderElement() {
@@ -4272,14 +4345,14 @@
       return null;
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new v(
+      this.newNav && (this.navigationPersistence = new S(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
       ), this.navigationPersistence.startMonitoring());
     }
     destroy() {
-      this.navigationPersistence && this.navigationPersistence.stopMonitoring(), this.navigationOrchestrator.destroy(), this.newNav && this.newNav.parentNode && this.newNav.parentNode.removeChild(this.newNav), this.isActive = !1, console.log("🧪 AB Test: Data-Driven Navigation Menu Redesign - Destroyed");
+      this.navigationPersistence && this.navigationPersistence.stopMonitoring(), this.navigationOrchestrator.destroy(), this.newNav && this.newNav.parentNode && this.newNav.parentNode.removeChild(this.newNav), this.isActive = !1;
     }
     // Public methods for external control and debugging
     getVariant() {
@@ -4303,13 +4376,7 @@
       };
     }
     logNavigationState() {
-      this.navigationPersistence && this.navigationPersistence.logNavigationState(), console.log("🧪 AB Test: Data-Driven Navigation State:", {
-        mainNavigation: "Horizontal navigation with template support",
-        megaMenu: "Dynamic dropdown with template-based content",
-        templates: "default, gifts, outlet, color-grid, featured",
-        dataStructure: "src/navigation-data.ts",
-        separationOfConcerns: "Data-driven with template-based rendering"
-      });
+      this.navigationPersistence && this.navigationPersistence.logNavigationState();
     }
     // Data-driven navigation control methods
     showMegaMenu() {
@@ -4327,13 +4394,13 @@
       }
     }
     toggleDebugMode() {
-      this.newNav && (this.newNav.classList.toggle("crs-debug"), console.log("🧪 AB Test: Debug mode toggled"));
+      this.newNav && this.newNav.classList.toggle("crs-debug");
     }
     getNavigationTemplates() {
       return ["default", "gifts", "outlet", "color-grid", "featured"];
     }
   }
-  const S = `/* Hide original meganav on desktop */
+  const T = `/* Hide original meganav on desktop */
 @media (min-width: 769px) {
   meganav {
     display: none;
@@ -4344,7 +4411,7 @@
 crs-nav {
   display: block !important;
 }
-`, T = `/* Custom crs-nav element */
+`, N = `/* Custom crs-nav element */
 crs-nav {
   display: block;
   position: relative;
@@ -4371,7 +4438,7 @@ crs-nav {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 40px;
+  gap: 4px;
   height: 100%;
 }
 
@@ -4449,13 +4516,16 @@ crs-nav {
 .crs-sidebar-links {
   display: grid;
   gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .crs-sidebar-link {
   text-decoration: none;
   color: #2e2e2e;
   font-family: baskerville-urw, sans-serif;
   font-size: 20px;
-  display: block;
+
   transition: color 0.3s ease;
   position: relative;
   letter-spacing: 0.5px;
@@ -4508,6 +4578,15 @@ crs-nav {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.crs-gifts-featured-section .crs-featured-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
 }
 
 .crs-gifts-section-title {
@@ -4694,6 +4773,7 @@ crs-nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-right: 56px;
 }
 
 .crs-featured-image {
@@ -4770,7 +4850,6 @@ crs-nav {
   max-width: 230px;
   height: auto;
   border-radius: 4px;
-  margin-bottom: 20px;
 }
 
 :is(
@@ -4785,12 +4864,13 @@ crs-nav {
 }
 
 .crs-featured-item .crs-featured-text {
-  text-align: center;
+
   padding: 0 20px;
 }
 
 .crs-featured-main-title {
   margin-bottom: 22px;
+  width: 100%;
   color: #000;
   font-family: 'baskerville-urw', sans-serif;
   font-size: 20px;
@@ -4812,7 +4892,7 @@ crs-nav {
   font-size: 24px;
   color: #2e2e2e;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Stacked Sections Styles */
@@ -4892,7 +4972,7 @@ crs-nav {
 }
 
 .crs-triple-featured-items .crs-featured-item .crs-featured-text {
-  text-align: center;
+
   padding: 0 10px;
 }
 
@@ -5032,8 +5112,20 @@ crs-nav {
     display: none !important;
   }
 }
-`, I = `/* Mobile Navigation Integration with Existing Structure */
+`, M = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
+
+/* Mobile fallback navigation */
+.crs-mobile-fallback {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  z-index: 9999;
+  overflow-y: auto;
+}
 
 /* Navigation level data attributes for styling */
 
@@ -5084,6 +5176,13 @@ ul[data-crs-nav-level='third-level'] {
   overflow: hidden;
   width: 100%;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.crs-mobile-nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 [data-crs-nav-level='main'] .crs-mobile-nav-link {
@@ -5108,6 +5207,14 @@ ul[data-crs-nav-level='third-level'] {
   color: #000;
   width: 16px;
   height: 16px;
+}
+
+.crs-mobile-nav-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 /* Special colors for Gifts and Outlet */
@@ -5156,7 +5263,6 @@ ul[data-crs-nav-level='third-level'] {
 .crs-mobile-nav-back-section {
   display: flex;
   align-items: center;
-
 }
 
 .crs-mobile-nav-back-icon {
@@ -5201,6 +5307,13 @@ ul[data-crs-nav-level='third-level'] {
   text-align: center;
 }
 
+[data-crs-nav-level='third-level'] .crs-mobile-nav-current {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .crs-mobile-third-level-content {
   height: 100%;
   padding: 24px;
@@ -5232,11 +5345,7 @@ ul[data-crs-nav-level='third-level'] {
   margin: 0;
 }
 
-.crs-mobile-third-level-link {
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
+
 
 .crs-mobile-third-level-text {
   font-size: 16px;
@@ -5426,9 +5535,64 @@ ul[data-crs-nav-level='third-level'] {
   letter-spacing: 0.5px;
 }
 
+/* Mobile Quad Featured Content */
+.crs-mobile-quad-featured-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+
+  padding: 16px;
+}
+
+.crs-mobile-quad-featured-content .crs-mobile-featured-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.crs-mobile-quad-featured-content .crs-mobile-featured-image {
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  aspect-ratio: 230.4/307.2;
+}
+
+.crs-mobile-quad-featured-content .crs-mobile-featured-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 10px;
+}
+
+.crs-mobile-quad-featured-content .crs-mobile-featured-title {
+  font-family: 'Baskerville URW', serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #212121;
+  letter-spacing: 0.5px;
+}
+
+.crs-mobile-quad-featured-content .crs-mobile-featured-action-link {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #212121;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  letter-spacing: 1px;
+  width: fit-content;
+}
+
 /* Mobile Outfit Builder */
 .crs-mobile-outfit-builder-content {
-  margin-top: 24px;
+
+  margin-bottom: 24px;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -5590,7 +5754,7 @@ ul[data-crs-nav-level='third-level'] {
   background: white;
   border-radius: 8px;
   padding: 12px 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .crs-mobile-gifts-link {
@@ -5608,7 +5772,7 @@ ul[data-crs-nav-level='third-level'] {
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .crs-mobile-gifts-featured-section .crs-mobile-gifts-section-title {
@@ -5636,8 +5800,6 @@ ul[data-crs-nav-level='third-level'] {
   text-decoration: underline;
 }
 
-
-
 /* Responsive Design */
 @media (min-width: 769px) {
   /* Hide mobile menu on desktop */
@@ -5646,28 +5808,27 @@ ul[data-crs-nav-level='third-level'] {
   }
 }
 `;
-  b({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
-  class N {
+  k({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
+  class C {
     constructor() {
-      this.navigationVariant = new x(), this.init();
+      this.navigationVariant = new I(), this.init();
     }
     init() {
       this.addStyles(), this.setupGlobalAccess(), this.logInitialization();
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = S, document.head.appendChild(e);
+      e.textContent = T, document.head.appendChild(e);
       const t = document.createElement("style");
-      t.textContent = T, document.head.appendChild(t);
+      t.textContent = N, document.head.appendChild(t);
       const n = document.createElement("style");
-      n.textContent = I, document.head.appendChild(n);
+      n.textContent = M, document.head.appendChild(n);
     }
     setupGlobalAccess() {
       window.navigationVariant = this.navigationVariant;
     }
     logInitialization() {
-      console.log("🧪 AB Test: Data-Driven Navigation Menu Redesign - Loaded"), console.log("🧪 AB Test: Data Structure: src/navigation-data.ts"), console.log("🧪 AB Test: Templates: default, gifts, outlet, color-grid, featured"), console.log("🧪 AB Test: Angular SPA Persistence: Enabled with comprehensive monitoring");
     }
   }
-  new N();
+  new C();
 })();
