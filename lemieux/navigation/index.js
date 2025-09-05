@@ -6014,10 +6014,13 @@ ul[data-crs-nav-level='third-level'] {
   gap: 12px;
 }
 
+.crs-mobile-dual-featured-content .crs-mobile-featured-link {
+  flex: 1;
+}
 .crs-mobile-dual-featured-content .crs-mobile-featured-item {
   display: flex;
   flex-direction: column;
-  flex: 1;
+
 }
 
 .crs-mobile-dual-featured-content .crs-mobile-featured-image {
