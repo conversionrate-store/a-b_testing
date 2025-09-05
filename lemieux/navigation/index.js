@@ -11,12 +11,12 @@
       childList: !0,
       subtree: !0
     });
-  }), x = ({ name: f, dev: e }) => {
+  }), S = ({ name: f, dev: e }) => {
     console.log(
       `%c EXP: ${f} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, p = [
+  }, g = [
     {
       title: "Horse",
       link: "/horsewear",
@@ -837,12 +837,12 @@
               ]
             }
           ]
-        },
-        {
-          title: "Gifts",
-          link: "/gifts/for-horses",
-          template: "default"
         }
+        // {
+        //   title: 'Gifts',
+        //   link: '/gifts/for-horses',
+        //   template: 'default',
+        // },
       ]
     },
     {
@@ -1667,12 +1667,12 @@
               ]
             }
           ]
-        },
-        {
-          title: "Gifts",
-          link: "/gifts/for-children",
-          template: "default"
         }
+        // {
+        //   title: 'Gifts',
+        //   link: '/gifts/for-children',
+        //   template: 'default',
+        // },
       ]
     },
     {
@@ -1869,12 +1869,12 @@
               ]
             }
           ]
-        },
-        {
-          title: "Gifts",
-          link: "/gifts/for-him",
-          template: "default"
         }
+        // {
+        //   title: 'Gifts',
+        //   link: '/gifts/for-him',
+        //   template: 'default',
+        // },
       ]
     },
     {
@@ -2936,7 +2936,7 @@
         }
       ]
     }
-  ], S = (f, e, t, n = "", i = "", l = "") => {
+  ], T = (f, e, t, n = "", i = "", l = "") => {
     window.dataLayer = window.dataLayer || [];
     const a = {
       event_name: f,
@@ -2948,8 +2948,8 @@
     };
     window.dataLayer.push(a), console.table(a);
   };
-  function g(f, e, t, n, i) {
-    S(
+  function p(f, e, t, n, i) {
+    T(
       "exp_nav_click",
       f,
       e,
@@ -2958,7 +2958,7 @@
       i || ""
     );
   }
-  class T {
+  class M {
     constructor(e = "B") {
       this.hideTimeout = null, this.currentIndex = null, this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null, this.variant = e;
     }
@@ -2967,7 +2967,7 @@
         /* html */
         `
       <ul class="crs-nav-list">
-        ${p.map((i, l) => this.createNavigationItemHTML(i, l)).join("")}
+        ${g.map((i, l) => this.createNavigationItemHTML(i, l)).join("")}
       </ul>
       <div class="crs-mega-menu" style="display: none;"></div>
     `
@@ -3030,21 +3030,21 @@
         const l = i.getAttribute("data-analytics");
         if (l) {
           if (i.classList.contains("crs-nav-link"))
-            g(l, "Link", l);
+            p(l, "Link", l);
           else if (i.classList.contains("crs-sidebar-link")) {
             const o = i.getAttribute("data-parent");
-            o && g(l, "Link", o, l);
+            o && p(l, "Link", o, l);
           } else if (i.classList.contains("crs-featured-section-link")) {
             const o = i.getAttribute("data-type"), r = i.getAttribute("data-parent"), c = i.getAttribute("data-grandparent");
-            r && g(l, o, c || r, r, "Image section");
+            r && p(l, o, c || r, r, "Image section");
           } else if (i.classList.contains("crs-color-link")) {
             const o = i.getAttribute("data-parent"), r = i.getAttribute("data-grandparent");
-            o && g(l, "Link", r || o, o, "AW25 Colours");
+            o && p(l, "Link", r || o, o, "AW25 Colours");
           } else if (i.classList.contains("crs-collection-link") || i.classList.contains("crs-view-all-link")) {
             const o = i.getAttribute("data-parent"), r = i.getAttribute("data-grandparent");
             if (o) {
               const c = ((s = (a = i.closest(".crs-collections-section")) == null ? void 0 : a.querySelector(".crs-section-title")) == null ? void 0 : s.textContent) || "";
-              g(l, "Link", r || o, o, c);
+              p(l, "Link", r || o, o, c);
             }
           }
         }
@@ -3053,7 +3053,7 @@
     showMegaMenu(e) {
       const t = document.querySelector(".crs-mega-menu");
       if (!t) return;
-      const n = p[e];
+      const n = g[e];
       if (!n.submenu) return;
       document.querySelectorAll(".crs-nav-link[data-has-submenu]").forEach((a) => a.classList.remove("crs-nav-link-active"));
       const l = document.querySelector(`.crs-nav-link[data-index="${e}"]`);
@@ -3606,7 +3606,10 @@
       e && this.megaMenuMouseEnterHandler && this.megaMenuMouseLeaveHandler && (e.removeEventListener("mouseenter", this.megaMenuMouseEnterHandler), e.removeEventListener("mouseleave", this.megaMenuMouseLeaveHandler)), e && e.remove(), this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null;
     }
   }
-  class M {
+  const y = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+<path d="M15.4665 1.70673L13.9732 0.213395L7.99987 6.18673L2.02654 0.213395L0.533203 1.70673L6.50654 7.68006L0.533203 13.6534L2.02654 15.1467L7.99987 9.1734L13.9732 15.1467L15.4665 13.6534L9.4932 7.68006L15.4665 1.70673Z" fill="black"/>
+</svg>`;
+  class N {
     constructor(e = "B") {
       this.mobileNavigationState = "main", this.eventListeners = [], this.mobileNavigationHistory = [], this.variant = e;
     }
@@ -3621,10 +3624,10 @@
           if (t || (t = e.querySelector("ul")), t || (t = e.querySelector(
             "off-canvas-menu-body ul"
           )), t) {
-            const n = p.map(
+            const n = g.map(
               (i, l) => this.createMobileNavigationItemHTML(i, l)
             ).join("");
-            return t.innerHTML = n, t.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e), document.createElement("div");
+            return t.innerHTML = n, t.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e), this.changeSearchSection(e), document.createElement("div");
           }
         }
       } catch {
@@ -3654,6 +3657,30 @@
         e.removeEventListener(t, n);
       }), this.eventListeners = [];
     }
+    changeSearchSection(e) {
+      try {
+        document.querySelectorAll(
+          "off-canvas-menu .crs-mobile-search-form"
+        ).forEach((l) => {
+          l.remove();
+        });
+        const n = (
+          /* html */
+          `
+        <form class="crs-mobile-search-form" action="/search" method="get">
+        <i _ngcontent-ng-c2405503324="" aria-hidden="true" class="_icon icon-search cursor-pointer _iconOff inline-flex"></i>
+          <input type="text" placeholder="Search" name="q">
+          <button type="submit">Search</button>
+        </form>
+      `
+        ), i = document.querySelector(
+          "off-canvas-menu advanced-commerce-search-form"
+        );
+        i && i.insertAdjacentHTML("beforebegin", n);
+      } catch (t) {
+        console.error("❌ Error modifying search section:", t);
+      }
+    }
     addMobileEventListeners(e) {
       e.querySelectorAll(
         ".crs-mobile-nav-item[data-has-submenu]"
@@ -3668,12 +3695,12 @@
         const c = parseInt(o.getAttribute("data-index") || "0"), u = parseInt(
           o.getAttribute("data-submenu-index") || "0"
         ), d = o.getAttribute("data-stacked-index"), m = (w) => {
-          var y, v;
+          var v, x;
           w.preventDefault();
-          let h = (y = p[c].submenu) == null ? void 0 : y[u];
+          let h = (v = g[c].submenu) == null ? void 0 : v[u];
           if (d !== null && (h == null ? void 0 : h.template) === "stacked-sections") {
-            const R = parseInt(d);
-            h = (v = h.submenu) == null ? void 0 : v[R];
+            const J = parseInt(d);
+            h = (x = h.submenu) == null ? void 0 : x[J];
           }
           h && h.submenu && h.submenu.length > 0 && this.showMobileThirdLevelSubmenu(c, u);
         };
@@ -3686,16 +3713,27 @@
         const o = (r) => {
           r.preventDefault(), this.navigateBack();
         };
-        this.addEventListenerWithCleanup(i, "click", o);
+        this.addEventListenerWithCleanup(
+          i,
+          "click",
+          o
+        );
       }
       const l = e.querySelector(
         ".crs-mobile-nav-close"
       );
       if (l) {
         const o = (r) => {
-          r.preventDefault(), this.showMobileMainMenu();
+          var c;
+          r.preventDefault(), this.showMobileMainMenu(), (c = document.querySelector(
+            'off-canvas-menu button[aria-label="Close"]'
+          )) == null || c.click();
         };
-        this.addEventListenerWithCleanup(l, "click", o);
+        this.addEventListenerWithCleanup(
+          l,
+          "click",
+          o
+        );
       }
       const a = e.querySelector(
         ".off-canvas-close"
@@ -3711,29 +3749,33 @@
       if (s) {
         const o = () => {
         };
-        this.addEventListenerWithCleanup(s, "click", o);
+        this.addEventListenerWithCleanup(
+          s,
+          "click",
+          o
+        );
       }
       this.addMobileAnalyticsTracking(e);
     }
     showMobileSubmenu(e) {
-      const t = p[e];
+      const t = g[e];
       if (!t.submenu || t.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "main" }), this.mobileNavigationState = "submenu";
       const n = document.querySelector("off-canvas-menu");
       if (!n) return;
       const i = this.createMobileSubmenuHTML(t, e), l = n.querySelector("ul");
-      l && (l.innerHTML = i, l.setAttribute("data-crs-nav-level", "submenu"), this.cleanupEventListeners(), this.addMobileEventListeners(n));
+      l && (l.innerHTML = i, l.setAttribute("data-crs-nav-level", "submenu"), this.cleanupEventListeners(), this.addMobileEventListeners(n), this.changeSearchSection(n));
     }
     showMobileMainMenu() {
       this.mobileNavigationState = "main", this.mobileNavigationHistory = [];
       const e = document.querySelector("off-canvas-menu");
       if (!e) return;
-      const t = p.map((i, l) => this.createMobileNavigationItemHTML(i, l)).join(""), n = e.querySelector("ul");
-      n && (n.innerHTML = t, n.setAttribute("data-crs-nav-level", "main"), this.cleanupEventListeners(), this.addMobileEventListeners(e));
+      const t = g.map((i, l) => this.createMobileNavigationItemHTML(i, l)).join(""), n = e.querySelector("ul");
+      n && (n.innerHTML = t, n.setAttribute("data-crs-nav-level", "main"), this.cleanupEventListeners(), this.addMobileEventListeners(e), this.changeSearchSection(e));
     }
     showMobileThirdLevelSubmenu(e, t) {
       var o;
-      const n = p[e], i = (o = n.submenu) == null ? void 0 : o[t];
+      const n = g[e], i = (o = n.submenu) == null ? void 0 : o[t];
       if (!i || !i.submenu || i.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "submenu", parentIndex: e }), this.mobileNavigationState = "third-level";
       const l = document.querySelector("off-canvas-menu");
@@ -3744,7 +3786,7 @@
         e,
         t
       ), s = l.querySelector("ul");
-      s && (s.innerHTML = a, s.setAttribute("data-crs-nav-level", "third-level"), this.cleanupEventListeners(), this.addMobileEventListeners(l));
+      s && (s.innerHTML = a, s.setAttribute("data-crs-nav-level", "third-level"), this.cleanupEventListeners(), this.addMobileEventListeners(l), this.changeSearchSection(l));
     }
     navigateBack() {
       if (this.mobileNavigationHistory.length === 0) {
@@ -3902,9 +3944,10 @@
             const o = (
               /* html */
               `
-            ${e.submenu.map((r) => (
-                /* html */
-                `
+            ${e.submenu.map(
+                (r) => (
+                  /* html */
+                  `
               <div class="crs-mobile-product-card">
                 <div class="crs-mobile-product-image" style="background-image: url('${r.productImage || ""}')"></div>
                 <div class="crs-mobile-product-info">
@@ -3915,7 +3958,8 @@
                 </div>
               </div>
             `
-              )).join("")}
+                )
+              ).join("")}
           `
             );
             l = i ? (
@@ -3997,16 +4041,18 @@
                         `
                 );
               if (s.submenu && s.submenu.length > 0) {
-                const r = s.submenu.map((c) => (
-                  /* html */
-                  `
+                const r = s.submenu.map(
+                  (c) => (
+                    /* html */
+                    `
                           <div class="crs-mobile-submenu-item" data-crs-nav="true">
                             <a href="${c.link || "#"}" class="crs-mobile-submenu-link">
                               <div class="crs-mobile-submenu-text">${c.title}</div>
                             </a>
                           </div>
                         `
-                )).join("");
+                  )
+                ).join("");
                 return (
                   /* html */
                   `
@@ -4048,16 +4094,18 @@
                       `
                 );
               } else {
-                const r = ((o = s.submenu) == null ? void 0 : o.map((c) => (
-                  /* html */
-                  `
+                const r = ((o = s.submenu) == null ? void 0 : o.map(
+                  (c) => (
+                    /* html */
+                    `
                         <div class="crs-mobile-gifts-item" data-crs-nav="true">
                           <div class="crs-mobile-gifts-link">
                             <div class="crs-mobile-gifts-text">${c.title}</div>
                           </div>
                         </div>
                       `
-                )).join("")) || "";
+                  )
+                ).join("")) || "";
                 return (
                   /* html */
                   `
@@ -4092,7 +4140,7 @@
         <div class="crs-mobile-nav-link crs-mobile-nav-back">
           <div class="crs-mobile-nav-back-icon">‹</div>
           <div class="crs-mobile-nav-text">${e.title}</div>
-          <div class="crs-mobile-nav-close">✕</div>
+          <div class="crs-mobile-nav-close">${y}</div>
         </div>
       </li>
       <li class="crs-mobile-second-level-content" data-crs-nav="true">
@@ -4103,10 +4151,31 @@
     `;
     }
     createMobileThirdLevelSubmenuHTML(e, t, n, i) {
-      if (t.template && ["dual-featured", "triple-featured", "quad-featured", "featured", "product-cards"].includes(t.template) && (!t.submenu || t.submenu.length === 0))
-        return this.createMobileFeaturedContentHTML(t, n, i);
-      if (t.template && ["dual-featured", "triple-featured", "quad-featured", "featured", "product-cards"].includes(t.template))
-        return this.createMobileFeaturedContentHTML(t, n, i, !1);
+      if (t.template && [
+        "dual-featured",
+        "triple-featured",
+        "quad-featured",
+        "featured",
+        "product-cards"
+      ].includes(t.template) && (!t.submenu || t.submenu.length === 0))
+        return this.createMobileFeaturedContentHTML(
+          t,
+          n,
+          i
+        );
+      if (t.template && [
+        "dual-featured",
+        "triple-featured",
+        "quad-featured",
+        "featured",
+        "product-cards"
+      ].includes(t.template))
+        return this.createMobileFeaturedContentHTML(
+          t,
+          n,
+          i,
+          !1
+        );
       let l = "";
       return t.submenu && t.submenu.length > 0 && t.submenu.forEach((a, s) => {
         var o, r;
@@ -4170,7 +4239,12 @@
           case "featured":
           case "product-cards":
           case "outfit-builder":
-            l += this.createMobileFeaturedContentHTML(a, n, i, !1);
+            l += this.createMobileFeaturedContentHTML(
+              a,
+              n,
+              i,
+              !1
+            );
             break;
           case "color-grid":
             const u = ((r = a.colorSwatches) == null ? void 0 : r.map((d) => (
@@ -4221,7 +4295,7 @@
             <div class="crs-mobile-nav-parent">${e.title}</div>
           </div>
           <div class="crs-mobile-nav-current">${t.title}</div>
-          <div class="crs-mobile-nav-close">✕</div>
+          <div class="crs-mobile-nav-close">${y}</div>
         </div>
       </li>
       <li class="crs-mobile-third-level-content" data-crs-nav="true">
@@ -4251,13 +4325,24 @@
         const a = l.getAttribute("data-analytics");
         a && setTimeout(() => {
           if (l.classList.contains("crs-mobile-nav-link"))
-            g(a, "Link", a);
+            p(a, "Link", a);
           else if (l.classList.contains("crs-mobile-third-level-link")) {
             const s = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            s && o && g(a, "Link", o, s);
+            s && o && p(
+              a,
+              "Link",
+              o,
+              s
+            );
           } else if (l.classList.contains("crs-mobile-featured-action-link")) {
             const s = l.getAttribute("data-parent");
-            s && g(a, "CTA", s, void 0, "Image section");
+            s && p(
+              a,
+              "CTA",
+              s,
+              void 0,
+              "Image section"
+            );
           }
         }, 10);
       };
@@ -4271,9 +4356,9 @@
       t && t.remove();
     }
   }
-  class N {
+  class L {
     constructor(e = "B") {
-      this.variant = e, this.desktopNavigation = new T(e), this.mobileNavigation = new M(e);
+      this.variant = e, this.desktopNavigation = new M(e), this.mobileNavigation = new N(e);
     }
     /**
      * Creates the complete navigation system
@@ -4373,7 +4458,7 @@
           clearInterval(n);
           return;
         }
-        i - this.lastCheckTime > 200 && (this.lastCheckTime = i, this.checkNavigationPersistence(), console.log("checkNavigationPersistence"));
+        i - this.lastCheckTime > 200 && (this.lastCheckTime = i, this.checkNavigationPersistence());
       }, 200);
     }
     /**
@@ -4458,7 +4543,10 @@
       } catch (e) {
         console.error("🧪 AB Test: Error recreating navigation:", e), setTimeout(() => {
           this.recreateNavigation().catch((t) => {
-            console.error("🧪 AB Test: Error in recreateNavigation retry:", t);
+            console.error(
+              "🧪 AB Test: Error in recreateNavigation retry:",
+              t
+            );
           });
         }, 500);
       }
@@ -4520,9 +4608,9 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class L {
+  class I {
     constructor() {
-      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new N(this.variant), this.init();
+      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new L(this.variant), this.init();
     }
     init() {
       document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.start()) : this.start();
@@ -4532,14 +4620,12 @@
     }
     findOriginalNavigation() {
       const e = ["meganav", "off-canvas-menu"];
-      console.log("🔍 Searching for original navigation...");
       for (const t of e)
-        if (this.originalNav = document.querySelector(t), this.originalNav) {
-          console.log(`✅ Found original navigation: ${t}`);
+        if (this.originalNav = document.querySelector(t), this.originalNav)
           break;
-        } else
-          console.log(`❌ Not found: ${t}`);
-      this.originalNav || console.warn("⚠️ Could not find original navigation, will use fallback injection");
+      this.originalNav || console.warn(
+        "⚠️ Could not find original navigation, will use fallback injection"
+      );
     }
     async createAndInjectNavigation() {
       try {
@@ -4588,7 +4674,7 @@
     async integrateWithMobileMenu(e, t) {
       var l;
       let n = e.querySelector("ul");
-      console.log("mobileMenu", e), n || (n = document.createElement("ul"), e.appendChild(n));
+      n || (n = document.createElement("ul"), e.appendChild(n));
       const i = ((l = t.querySelector("ul")) == null ? void 0 : l.innerHTML) || t.innerHTML;
       i && (n.innerHTML = i, n.setAttribute("data-crs-nav-level", "main"));
     }
@@ -4618,40 +4704,26 @@
         console.warn("⚠️ No navigation to inject");
         return;
       }
-      if (this.findOriginalNavigation(), console.log("📍 Attempting to inject navigation..."), this.originalNav && this.originalNav.parentNode) {
-        if (this.originalNav.parentNode.querySelector("crs-nav, .crs-navigation-system")) {
-          console.log("⚠️ CRS navigation already exists next to meganav, skipping injection");
+      if (this.findOriginalNavigation(), this.originalNav && this.originalNav.parentNode) {
+        if (this.originalNav.parentNode.querySelector(
+          "crs-nav, .crs-navigation-system"
+        ))
           return;
-        }
         this.originalNav.parentNode.insertBefore(
           this.newNav,
           this.originalNav.nextSibling
-        ), console.log("✅ Navigation injected next to original meganav");
+        );
       } else {
         const e = document.querySelector("meganav");
         if (e && e.parentNode) {
-          if (e.parentNode.querySelector("crs-nav, .crs-navigation-system")) {
-            console.log("⚠️ CRS navigation already exists next to meganav (fallback), skipping injection");
+          if (e.parentNode.querySelector(
+            "crs-nav, .crs-navigation-system"
+          ))
             return;
-          }
-          e.parentNode.insertBefore(this.newNav, e.nextSibling), console.log("✅ Navigation injected next to found meganav (fallback)");
+          e.parentNode.insertBefore(this.newNav, e.nextSibling);
         } else
-          document.body.appendChild(this.newNav), console.log("⚠️ Navigation injected to body (last resort)");
+          document.body.appendChild(this.newNav);
       }
-    }
-    findHeaderElement() {
-      const e = [
-        "header",
-        ".banner",
-        ".bg-white.h-\\[70px\\]",
-        '[data-name="Background+Shadow"]'
-      ];
-      for (const t of e) {
-        const n = document.querySelector(t);
-        if (n)
-          return n;
-      }
-      return null;
     }
     startNavigationMonitoring() {
       this.newNav && (this.navigationPersistence = new C(
@@ -4691,22 +4763,20 @@
      * Forces a refresh of the navigation (useful for debugging)
      */
     async forceRefresh() {
-      if (this.isRecreating) {
-        console.log("⏳ Navigation recreation already in progress, skipping force refresh...");
-        return;
-      }
-      console.log("🔄 Forcing navigation refresh..."), this.isRecreating = !0;
-      try {
-        this.cleanupNavigation(), await this.delay(100), await this.createAndInjectNavigation(), this.startNavigationMonitoring(), console.log("✅ Navigation refresh completed");
-      } finally {
-        this.isRecreating = !1;
+      if (!this.isRecreating) {
+        this.isRecreating = !0;
+        try {
+          this.cleanupNavigation(), await this.delay(100), await this.createAndInjectNavigation(), this.startNavigationMonitoring();
+        } finally {
+          this.isRecreating = !1;
+        }
       }
     }
     /**
      * Starts monitoring for window resize events
      */
     startResizeMonitoring() {
-      this.resizeHandler || (this.resizeHandler = this.handleResize.bind(this), window.addEventListener("resize", this.resizeHandler), console.log("📏 Resize monitoring started"));
+      this.resizeHandler || (this.resizeHandler = this.handleResize.bind(this), window.addEventListener("resize", this.resizeHandler));
     }
     /**
      * Handles window resize events with debouncing
@@ -4720,17 +4790,18 @@
      * Checks if we've crossed the breakpoint and recreates navigation if needed
      */
     async checkBreakpointChange() {
-      if (this.isRecreating) {
-        console.log("⏳ Navigation recreation already in progress, skipping...");
+      if (this.isRecreating)
         return;
-      }
-      const e = window.innerWidth, t = e >= this.BREAKPOINT ? "desktop" : "mobile";
-      if (console.log(`🔄 Resize check: ${e}px, current: ${this.currentBreakpoint}, new: ${t}`), this.currentBreakpoint !== null && this.currentBreakpoint !== t) {
-        console.log(`📱💻 Switching from ${this.currentBreakpoint} to ${t}`), this.isRecreating = !0;
+      const t = window.innerWidth >= this.BREAKPOINT ? "desktop" : "mobile";
+      if (this.currentBreakpoint !== null && this.currentBreakpoint !== t) {
+        this.isRecreating = !0;
         try {
-          this.cleanupNavigation(), await this.delay(50), await this.createAndInjectNavigation(), this.startNavigationMonitoring(), console.log(`✅ Successfully switched to ${t} navigation`);
+          this.cleanupNavigation(), await this.delay(50), await this.createAndInjectNavigation(), this.startNavigationMonitoring();
         } catch (n) {
-          console.error(`❌ Error switching to ${t} navigation:`, n);
+          console.error(
+            `❌ Error switching to ${t} navigation:`,
+            n
+          );
         } finally {
           this.isRecreating = !1;
         }
@@ -4741,16 +4812,18 @@
      * Cleans up existing navigation before recreation
      */
     cleanupNavigation() {
-      console.log("🧹 Cleaning up existing navigation..."), this.navigationOrchestrator && this.navigationOrchestrator.destroy(), document.querySelectorAll("crs-nav, .crs-navigation-system").forEach((t) => {
+      this.navigationOrchestrator && this.navigationOrchestrator.destroy(), document.querySelectorAll(
+        "crs-nav, .crs-navigation-system"
+      ).forEach((t) => {
         try {
-          t.remove(), console.log("🗑️ Removed existing navigation element");
+          t.remove();
         } catch (n) {
           console.warn("Warning: Could not remove navigation element:", n);
         }
-      }), this.newNav = null, this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null), console.log("✅ Navigation cleanup completed");
+      }), this.newNav = null, this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null);
     }
   }
-  const I = `meganav {
+  const j = `meganav {
   display: none;
 }
 
@@ -4758,7 +4831,7 @@
 crs-nav {
   display: block !important;
 }
-`, j = `/* Custom crs-nav element */
+`, H = `/* Custom crs-nav element */
 crs-nav {
   display: block;
   position: relative;
@@ -5457,7 +5530,7 @@ crs-nav {
     display: none !important;
   }
 }
-`, H = `/* Mobile Navigation Integration with Existing Structure */
+`, $ = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
 
 /* Mobile fallback navigation */
@@ -5611,7 +5684,7 @@ ul[data-crs-nav-level='third-level'] {
 }
 
 .crs-mobile-nav-back-icon {
-  font-size: 26px;
+  font-size: 36px;
   color: #2e2e2e;
   width: 26px;
   height: 26px;
@@ -5942,7 +6015,6 @@ ul[data-crs-nav-level='third-level'] {
 
 /* Mobile Outfit Builder */
 .crs-mobile-outfit-builder-content {
-
   margin-bottom: 24px;
   display: flex;
   gap: 12px;
@@ -6151,23 +6223,73 @@ ul[data-crs-nav-level='third-level'] {
   text-decoration: underline;
 }
 
-`;
-  x({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
-  class $ {
+off-canvas-menu advanced-commerce-search-form {
+  display: none !important;
+}
+
+.crs-mobile-search-form {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 303px;
+  height: 40px;
+  border-radius: 60px;
+  border: 1px solid #212121;
+}
+
+.crs-mobile-search-form > button {
+  display: none;
+}
+
+.crs-mobile-search-form > input {
+  width: 100%;
+  height: 100%;
+  padding: 7px 12px;
+  padding-left: calc(12px + 18px + 8px);
+}
+
+.crs-mobile-search-form > i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: center;
+  align-items: center;
+  width:18px;
+  height:18px;
+  font-size:24px;
+}
+
+div:has(> .crs-mobile-search-form) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+}
+
+div:has(> .crs-mobile-search-form) [aria-label="Close"] {
+  margin: 0;
+  margin-left: auto;
+}`;
+  S({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
+  class R {
     constructor() {
-      this.navigationVariant = new L(), this.init();
+      this.navigationVariant = new I(), this.init();
     }
     init() {
       this.addStyles();
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = I, document.head.appendChild(e);
+      e.textContent = j, document.head.appendChild(e);
       const t = document.createElement("style");
-      t.textContent = j, document.head.appendChild(t);
+      t.textContent = H, document.head.appendChild(t);
       const n = document.createElement("style");
-      n.textContent = H, document.head.appendChild(n);
+      n.textContent = $, document.head.appendChild(n);
     }
   }
-  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new $()));
+  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new R()));
 })();
