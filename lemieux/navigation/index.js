@@ -1,22 +1,22 @@
 (function() {
   "use strict";
-  const k = (f) => new Promise((e) => {
-    const t = document.querySelector(f);
+  const x = (h) => new Promise((e) => {
+    const t = document.querySelector(h);
     t && e(t);
     const n = new MutationObserver(() => {
-      const i = document.querySelector(f);
+      const i = document.querySelector(h);
       i && (e(i), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), S = ({ name: f, dev: e }) => {
+  }), N = ({ name: h, dev: e }) => {
     console.log(
-      `%c EXP: ${f} (DEV: ${e})`,
+      `%c EXP: ${h} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, g = [
+  }, b = [
     {
       title: "Horse",
       link: "/horsewear",
@@ -404,7 +404,7 @@
         {
           title: "Boots & Bandages",
           link: "/horsewear/boots-bandages",
-          template: "dual-featured",
+          template: "default",
           submenu: [
             {
               title: "Boots",
@@ -487,7 +487,7 @@
         {
           title: "Headcollars",
           link: "/horsewear/headcollars-leadropes",
-          template: "triple-featured",
+          template: "default",
           submenu: [
             {
               title: "Headcollars",
@@ -561,7 +561,7 @@
         {
           title: "Fly Protection",
           link: "/horsewear/fly-protection",
-          template: "triple-featured",
+          template: "default",
           submenu: [
             {
               title: "Shop by Category",
@@ -636,7 +636,7 @@
         {
           title: "Grooming & Care",
           link: "/horsewear/grooming-care",
-          template: "dual-featured",
+          template: "default",
           submenu: [
             {
               title: "Grooming",
@@ -707,7 +707,7 @@
         {
           title: "Stable & Yard",
           link: "/horsewear/stable-yard",
-          template: "dual-featured",
+          template: "default",
           submenu: [
             {
               title: "Stable & Yard",
@@ -771,7 +771,7 @@
         {
           title: "Supplements",
           link: "/horsewear/supplements",
-          template: "product-cards",
+          template: "default",
           submenu: [
             {
               title: "Supplements",
@@ -2936,10 +2936,10 @@
         }
       ]
     }
-  ], T = (f, e, t, n = "", i = "", l = "") => {
+  ], L = (h, e, t, n = "", i = "", l = "") => {
     window.dataLayer = window.dataLayer || [];
     const a = {
-      event_name: f,
+      event_name: h,
       event_desc: e,
       event_type: t,
       event_loc: n,
@@ -2948,17 +2948,17 @@
     };
     window.dataLayer.push(a), console.table(a);
   };
-  function p(f, e, t, n, i) {
-    T(
+  function g(h, e, t, n, i) {
+    L(
       "exp_nav_click",
-      f,
+      h,
       e,
       t,
       n || "",
       i || ""
     );
   }
-  class M {
+  class C {
     constructor(e = "B") {
       this.hideTimeout = null, this.currentIndex = null, this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null, this.variant = e;
     }
@@ -2967,7 +2967,7 @@
         /* html */
         `
       <ul class="crs-nav-list">
-        ${g.map((i, l) => this.createNavigationItemHTML(i, l)).join("")}
+        ${b.map((i, l) => this.createNavigationItemHTML(i, l)).join("")}
       </ul>
       <div class="crs-mega-menu" style="display: none;"></div>
     `
@@ -3030,21 +3030,21 @@
         const l = i.getAttribute("data-analytics");
         if (l) {
           if (i.classList.contains("crs-nav-link"))
-            p(l, "Link", l);
+            g(l, "Link", l);
           else if (i.classList.contains("crs-sidebar-link")) {
             const o = i.getAttribute("data-parent");
-            o && p(l, "Link", o, l);
+            o && g(l, "Link", o, l);
           } else if (i.classList.contains("crs-featured-section-link")) {
             const o = i.getAttribute("data-type"), r = i.getAttribute("data-parent"), c = i.getAttribute("data-grandparent");
-            r && p(l, o, c || r, r, "Image section");
+            r && g(l, o, c || r, r, "Image section");
           } else if (i.classList.contains("crs-color-link")) {
             const o = i.getAttribute("data-parent"), r = i.getAttribute("data-grandparent");
-            o && p(l, "Link", r || o, o, "AW25 Colours");
+            o && g(l, "Link", r || o, o, "AW25 Colours");
           } else if (i.classList.contains("crs-collection-link") || i.classList.contains("crs-view-all-link")) {
             const o = i.getAttribute("data-parent"), r = i.getAttribute("data-grandparent");
             if (o) {
               const c = ((s = (a = i.closest(".crs-collections-section")) == null ? void 0 : a.querySelector(".crs-section-title")) == null ? void 0 : s.textContent) || "";
-              p(l, "Link", r || o, o, c);
+              g(l, "Link", r || o, o, c);
             }
           }
         }
@@ -3053,7 +3053,7 @@
     showMegaMenu(e) {
       const t = document.querySelector(".crs-mega-menu");
       if (!t) return;
-      const n = g[e];
+      const n = b[e];
       if (!n.submenu) return;
       document.querySelectorAll(".crs-nav-link[data-has-submenu]").forEach((a) => a.classList.remove("crs-nav-link-active"));
       const l = document.querySelector(`.crs-nav-link[data-index="${e}"]`);
@@ -3130,16 +3130,16 @@
       );
       !t.submenu || !i || n.forEach((l) => {
         l.addEventListener("mouseenter", () => {
-          var d;
+          var m;
           const a = parseInt(l.getAttribute("data-index") || "0"), s = t.submenu[a], o = s.submenu && s.submenu.length > 0;
-          if (n.forEach((m) => m.classList.remove("crs-active")), !o) return;
+          if (n.forEach((f) => f.classList.remove("crs-active")), !o) return;
           l.classList.add("crs-active");
           const r = this.createMainContentHTML(
             s,
             t
           ), c = document.createElement("div");
           c.innerHTML = r;
-          const u = ((d = c.firstElementChild) == null ? void 0 : d.innerHTML) || "";
+          const u = ((m = c.firstElementChild) == null ? void 0 : m.innerHTML) || "";
           i.innerHTML = u;
         });
       });
@@ -3157,17 +3157,17 @@
           l.template === "color-grid" ? c = this.createColorsSectionHTML(l, e.title, (t == null ? void 0 : t.title) || e.title) : c = this.createCollectionsSectionHTML(l, e.title, (t == null ? void 0 : t.title) || e.title);
           let u;
           a.template === "color-grid" ? u = this.createColorsSectionHTML(a, e.title, (t == null ? void 0 : t.title) || e.title) : u = this.createCollectionsSectionHTML(a, e.title, (t == null ? void 0 : t.title) || e.title);
-          let d;
-          s.template === "featured" || s.template === "outfit-builder" ? d = this.createFeaturedSectionHTML(s, e.title, (t == null ? void 0 : t.title) || e.title) : s.template === "dual-featured" ? d = this.createDualFeaturedSectionHTML(s) : s.template === "triple-featured" ? d = this.createTripleFeaturedSectionHTML(s) : s.template === "product-cards" ? d = this.createProductCardsSectionHTML(s) : d = this.createCollectionsSectionHTML(s, e.title, (t == null ? void 0 : t.title) || e.title);
           let m;
-          return o.template === "featured" || o.template === "outfit-builder" ? m = this.createFeaturedSectionHTML(o, e.title, (t == null ? void 0 : t.title) || e.title) : o.template === "dual-featured" ? m = this.createDualFeaturedSectionHTML(o) : o.template === "triple-featured" ? m = this.createTripleFeaturedSectionHTML(o) : o.template === "product-cards" ? m = this.createProductCardsSectionHTML(o) : m = this.createCollectionsSectionHTML(o, e.title, (t == null ? void 0 : t.title) || e.title), /* html */
+          s.template === "featured" || s.template === "outfit-builder" ? m = this.createFeaturedSectionHTML(s, e.title, (t == null ? void 0 : t.title) || e.title) : s.template === "dual-featured" ? m = this.createDualFeaturedSectionHTML(s) : s.template === "triple-featured" ? m = this.createTripleFeaturedSectionHTML(s) : s.template === "product-cards" ? m = this.createProductCardsSectionHTML(s) : m = this.createCollectionsSectionHTML(s, e.title, (t == null ? void 0 : t.title) || e.title);
+          let f;
+          return o.template === "featured" || o.template === "outfit-builder" ? f = this.createFeaturedSectionHTML(o, e.title, (t == null ? void 0 : t.title) || e.title) : o.template === "dual-featured" ? f = this.createDualFeaturedSectionHTML(o) : o.template === "triple-featured" ? f = this.createTripleFeaturedSectionHTML(o) : o.template === "product-cards" ? f = this.createProductCardsSectionHTML(o) : f = this.createCollectionsSectionHTML(o, e.title, (t == null ? void 0 : t.title) || e.title), /* html */
           `
           <div class="crs-mega-menu-main crs-five-column">
             ${r}
             ${c}
             ${u}
-            ${d}
             ${m}
+            ${f}
           </div>
         `;
         } else if (e.submenu.length >= 4) {
@@ -3407,7 +3407,7 @@
     createDualFeaturedSectionHTML(e) {
       if (!e.submenu || e.submenu.length < 2)
         return '<div class="crs-featured-section"></div>';
-      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", l = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", a = t.featuredSubtitle ? `<p class="crs-featured-subtitle test">${t.featuredSubtitle}</p>` : "", s = l || a ? `<div class="crs-featured-text">${a}${l}</div>` : "", o = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle test">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${c}${r}</div>` : "", d = t.link ? `<a href="${t.link}" class="crs-featured-item-link">
+      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", l = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", a = t.featuredSubtitle ? `<p class="crs-featured-subtitle test">${t.featuredSubtitle}</p>` : "", s = l || a ? `<div class="crs-featured-text">${a}${l}</div>` : "", o = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle test">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${c}${r}</div>` : "", m = t.link ? `<a href="${t.link}" class="crs-featured-item-link">
           <div class="crs-featured-item">
             ${i}
             ${s}
@@ -3415,7 +3415,7 @@
         </a>` : `<div class="crs-featured-item">
           ${i}
           ${s}
-        </div>`, m = n.link ? `<a href="${n.link}" class="crs-featured-item-link">
+        </div>`, f = n.link ? `<a href="${n.link}" class="crs-featured-item-link">
           <div class="crs-featured-item">
             ${o}
             ${u}
@@ -3428,8 +3428,8 @@
         /* html */
         `
       <div class="crs-dual-featured-section">
-        ${d}
         ${m}
+        ${f}
       </div>
     `
       );
@@ -3448,13 +3448,13 @@
       if (!e.submenu || e.submenu.length < 3)
         return '<div class="crs-featured-section"></div>';
       const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], l = e.title && e.showTitle ? `<h3 class="crs-triple-featured-title">${e.title}</h3>` : "", a = (s) => {
-        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle test">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${c}${r}${u}</div>` : "";
+        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle test">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", m = r || c || u ? `<div class="crs-featured-text">${c}${r}${u}</div>` : "";
         return (
           /* html */
           `
         <div class="crs-featured-item">
           ${o}
-          ${d}
+          ${m}
         </div>
       `
         );
@@ -3477,13 +3477,13 @@
       if (!e.submenu || e.submenu.length < 4)
         return '<div class="crs-quad-featured-section"></div>';
       const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], l = e.submenu[3], a = (s) => {
-        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle test">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
+        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle test">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", m = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
         return (
           /* html */
           `
         <div class="crs-featured-item">
           ${o}
-          ${d}
+          ${m}
         </div>
       `
         );
@@ -3606,17 +3606,17 @@
       e && this.megaMenuMouseEnterHandler && this.megaMenuMouseLeaveHandler && (e.removeEventListener("mouseenter", this.megaMenuMouseEnterHandler), e.removeEventListener("mouseleave", this.megaMenuMouseLeaveHandler)), e && e.remove(), this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null;
     }
   }
-  const y = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  const S = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M15.4665 1.70673L13.9732 0.213395L7.99987 6.18673L2.02654 0.213395L0.533203 1.70673L6.50654 7.68006L0.533203 13.6534L2.02654 15.1467L7.99987 9.1734L13.9732 15.1467L15.4665 13.6534L9.4932 7.68006L15.4665 1.70673Z" fill="black"/>
 </svg>`;
-  class N {
+  class I {
     constructor(e = "B") {
       this.mobileNavigationState = "main", this.eventListeners = [], this.mobileNavigationHistory = [], this.variant = e;
     }
     async createMobileNavigation() {
       this.cleanupEventListeners();
       try {
-        const e = await k("off-canvas-menu");
+        const e = await x("off-canvas-menu");
         if (e) {
           let t = e.querySelector(
             "off-canvas-menu-body > div > div > div.flex-grow.flex-column.overflow-y-auto > div:nth-child(2) > ul"
@@ -3624,7 +3624,7 @@
           if (t || (t = e.querySelector("ul")), t || (t = e.querySelector(
             "off-canvas-menu-body ul"
           )), t) {
-            const n = g.map(
+            const n = b.map(
               (i, l) => this.createMobileNavigationItemHTML(i, l)
             ).join("");
             return t.innerHTML = n, t.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e), this.changeSearchSection(e), document.createElement("div");
@@ -3694,17 +3694,17 @@
       ).forEach((o, r) => {
         const c = parseInt(o.getAttribute("data-index") || "0"), u = parseInt(
           o.getAttribute("data-submenu-index") || "0"
-        ), d = o.getAttribute("data-stacked-index"), m = (w) => {
-          var v, x;
-          w.preventDefault();
-          let h = (v = g[c].submenu) == null ? void 0 : v[u];
-          if (d !== null && (h == null ? void 0 : h.template) === "stacked-sections") {
-            const J = parseInt(d);
-            h = (x = h.submenu) == null ? void 0 : x[J];
+        ), m = o.getAttribute("data-stacked-index"), f = (y) => {
+          var v, d;
+          y.preventDefault();
+          let p = (v = b[c].submenu) == null ? void 0 : v[u];
+          if (m !== null && (p == null ? void 0 : p.template) === "stacked-sections") {
+            const w = parseInt(m);
+            p = (d = p.submenu) == null ? void 0 : d[w];
           }
-          h && h.submenu && h.submenu.length > 0 && this.showMobileThirdLevelSubmenu(c, u);
+          p && p.submenu && p.submenu.length > 0 && this.showMobileThirdLevelSubmenu(c, u);
         };
-        o.addEventListener("click", m);
+        o.addEventListener("click", f);
       });
       const i = e.querySelector(
         ".crs-mobile-nav-back"
@@ -3758,7 +3758,7 @@
       this.addMobileAnalyticsTracking(e);
     }
     showMobileSubmenu(e) {
-      const t = g[e];
+      const t = b[e];
       if (!t.submenu || t.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "main" }), this.mobileNavigationState = "submenu";
       const n = document.querySelector("off-canvas-menu");
@@ -3770,12 +3770,12 @@
       this.mobileNavigationState = "main", this.mobileNavigationHistory = [];
       const e = document.querySelector("off-canvas-menu");
       if (!e) return;
-      const t = g.map((i, l) => this.createMobileNavigationItemHTML(i, l)).join(""), n = e.querySelector("ul");
+      const t = b.map((i, l) => this.createMobileNavigationItemHTML(i, l)).join(""), n = e.querySelector("ul");
       n && (n.innerHTML = t, n.setAttribute("data-crs-nav-level", "main"), this.cleanupEventListeners(), this.addMobileEventListeners(e), this.changeSearchSection(e));
     }
     showMobileThirdLevelSubmenu(e, t) {
       var o;
-      const n = g[e], i = (o = n.submenu) == null ? void 0 : o[t];
+      const n = b[e], i = (o = n.submenu) == null ? void 0 : o[t];
       if (!i || !i.submenu || i.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "submenu", parentIndex: e }), this.mobileNavigationState = "third-level";
       const l = document.querySelector("off-canvas-menu");
@@ -3824,15 +3824,15 @@
             <div class="crs-mobile-featured-item">
               <div class="crs-mobile-featured-image" style="background-image: url('${o.featuredImage || ""}')"></div>
               <div class="crs-mobile-featured-text">
+              <div class="crs-mobile-featured-subtitle">${o.featuredSubtitle || ""}</div>
                 <div class="crs-mobile-featured-title">${o.featuredTitle || ""}</div>
-                <div class="crs-mobile-featured-subtitle">${o.featuredSubtitle || ""}</div>
               </div>
             </div>
             <div class="crs-mobile-featured-item">
               <div class="crs-mobile-featured-image" style="background-image: url('${r.featuredImage || ""}')"></div>
               <div class="crs-mobile-featured-text">
+              <div class="crs-mobile-featured-subtitle">${r.featuredSubtitle || ""}</div>
                 <div class="crs-mobile-featured-title">${r.featuredTitle || ""}</div>
-                <div class="crs-mobile-featured-subtitle">${r.featuredSubtitle || ""}</div>
               </div>
             </div>
           `
@@ -3854,15 +3854,16 @@
             <div class="crs-mobile-featured-item">
               <div class="crs-mobile-featured-image" style="background-image: url('${o.featuredImage || ""}')"></div>
               <div class="crs-mobile-featured-text">
+              <div class="crs-mobile-featured-subtitle">${o.featuredSubtitle || ""}</div>
                 <div class="crs-mobile-featured-title">${o.featuredTitle || ""}</div>
-                <div class="crs-mobile-featured-subtitle">${o.featuredSubtitle || ""}</div>
               </div>
             </div>
             <div class="crs-mobile-featured-item">
               <div class="crs-mobile-featured-image" style="background-image: url('${r.featuredImage || ""}')"></div>
               <div class="crs-mobile-featured-text">
-                <div class="crs-mobile-featured-title">${r.featuredTitle || ""}</div>
                 <div class="crs-mobile-featured-subtitle">${r.featuredSubtitle || ""}</div>
+                <div class="crs-mobile-featured-title">${r.featuredTitle || ""}</div>
+             
               </div>
             </div>
           `
@@ -3878,7 +3879,7 @@
           break;
         case "quad-featured":
           if (e.submenu && e.submenu.length >= 4) {
-            const o = e.submenu[0], r = e.submenu[1], c = e.submenu[2], u = e.submenu[3], d = (
+            const o = e.submenu[0], r = e.submenu[1], c = e.submenu[2], u = e.submenu[3], m = (
               /* html */
               `
             <div class="crs-mobile-featured-item">
@@ -3913,10 +3914,10 @@
             );
             l = i ? (
               /* html */
-              `<li class="crs-mobile-quad-featured-content" data-crs-nav="true">${d}</li>`
+              `<li class="crs-mobile-quad-featured-content" data-crs-nav="true">${m}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-quad-featured-content" data-crs-nav="true">${d}</div>`
+              `<div class="crs-mobile-quad-featured-content" data-crs-nav="true">${m}</div>`
             );
           }
           break;
@@ -3926,8 +3927,9 @@
             `
           <div class="crs-mobile-featured-image" style="background-image: url('${e.featuredImage || ""}')"></div>
           <div class="crs-mobile-featured-text">
+          <div class="crs-mobile-featured-subtitle">${e.featuredSubtitle || ""}</div>
             <div class="crs-mobile-featured-title">${e.featuredTitle || ""}</div>
-            <div class="crs-mobile-featured-subtitle">${e.featuredSubtitle || ""}</div>
+       
           </div>
         `
           );
@@ -4009,19 +4011,26 @@
           case "product-cards":
           case "color-grid":
           case "multi-color-grid":
+            n += /* html */
+            `
+              <li class="crs-mobile-nav-item" ${a} data-index="${t}" data-submenu-index="${l}" data-crs-nav="true">
+                <a href="${i.link || "#"}" class="crs-mobile-nav-link" data-analytics="${i.title}">
+                  <div class="crs-mobile-nav-text">${i.title}</div>
+                  ${a ? '<div class="crs-mobile-chevron">›</div>' : ""}
+                </a>
+              </li>
+            `;
+            break;
           case "stacked-sections":
-            i.submenu && i.submenu.length > 0 && i.submenu.forEach((s, o) => {
-              const r = s.submenu && s.submenu.length > 0 ? "data-has-submenu" : "";
-              n += /* html */
-              `
-                  <li class="crs-mobile-nav-item" data-index="${t}" data-submenu-index="${l}" data-stacked-index="${o}" data-crs-nav="true" ${r}>
-                    <a href="${s.link || "#"}" class="crs-mobile-nav-link" data-analytics="${s.title}">
-                      <div class="crs-mobile-nav-text">${s.title}</div>
-                      ${r ? '<div class="crs-mobile-chevron">›</div>' : ""}
-                    </a>
-                  </li>
-                `;
-            });
+            n += /* html */
+            `
+              <li class="crs-mobile-nav-item" ${a} data-index="${t}" data-submenu-index="${l}" data-crs-nav="true">
+                <a href="${i.link || "#"}" class="crs-mobile-nav-link" data-analytics="${i.title}">
+                  <div class="crs-mobile-nav-text">${i.title}</div>
+                  ${a ? '<div class="crs-mobile-chevron">›</div>' : ""}
+                </a>
+              </li>
+            `;
             break;
           case "outlet":
             i.submenu && i.submenu.length > 0 && (n += /* html */
@@ -4140,7 +4149,7 @@
         <div class="crs-mobile-nav-link crs-mobile-nav-back">
           <div class="crs-mobile-nav-back-icon">‹</div>
           <div class="crs-mobile-nav-text">${e.title}</div>
-          <div class="crs-mobile-nav-close">${y}</div>
+          <div class="crs-mobile-nav-close">${S}</div>
         </div>
       </li>
       <li class="crs-mobile-second-level-content" data-crs-nav="true">
@@ -4178,17 +4187,17 @@
         );
       let l = "";
       return t.submenu && t.submenu.length > 0 && t.submenu.forEach((a, s) => {
-        var o, r;
+        var o, r, c, u, m, f, y;
         switch (a.template) {
           case "default":
-            const c = ((o = a.submenu) == null ? void 0 : o.map((d) => {
-              const m = d.icon ? `<img src="${d.icon}" alt="${d.title}" class="crs-mobile-nav-icon">` : "";
+            const T = ((o = a.submenu) == null ? void 0 : o.map((d) => {
+              const w = d.icon ? `<img src="${d.icon}" alt="${d.title}" class="crs-mobile-nav-icon">` : "";
               return (
                 /* html */
                 `
                         <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                          <a href="${d.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${d.title}" data-parent="${a.title}" data-grandparent="${e.title}">
-                            ${m}
+                          <a href="${d.link || "#"}" class="${d.template === "link" ? "crs-mobile-third-level-link crs-view-all-link" : "crs-mobile-third-level-link"}" data-analytics="${d.title}" data-parent="${a.title}" data-grandparent="${e.title}">
+                            ${w}
                             <div class="crs-mobile-third-level-text">${d.title}</div>
                           </a>
                         </div>
@@ -4197,26 +4206,26 @@
             }).join("")) || "";
             l += /* html */
             `
-              <div class="crs-mobile-third-level-section">
+              <div class="crs-mobile-third-level-section" data-title="${a.title}">
                 <div class="crs-mobile-third-level-title">${a.title}</div>
                 <div class="crs-mobile-third-level-items">
-                  ${c}
+                  ${T}
                 </div>
               </div>
             `;
             break;
           case "stacked-sections":
             a.submenu && a.submenu.length > 0 && a.submenu.forEach((d) => {
-              var w;
-              const m = ((w = d.submenu) == null ? void 0 : w.map((b) => {
-                const h = b.icon ? `<img src="${b.icon}" alt="${b.title}" class="crs-mobile-nav-icon">` : "";
+              var M;
+              const w = ((M = d.submenu) == null ? void 0 : M.map((k) => {
+                const B = k.icon ? `<img src="${k.icon}" alt="${k.title}" class="crs-mobile-nav-icon">` : "";
                 return (
                   /* html */
                   `
                       <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                        <a href="${b.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${b.title}" data-parent="${a.title}" data-grandparent="${e.title}">
-                          ${h}
-                          <div class="crs-mobile-third-level-text">${b.title}</div>
+                        <a href="${k.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${k.title}" data-parent="${a.title}" data-grandparent="${e.title}">
+                          ${B}
+                          <div class="crs-mobile-third-level-text">${k.title}</div>
                         </a>
                       </div>
                     `
@@ -4224,10 +4233,10 @@
               }).join("")) || "";
               l += /* html */
               `
-                  <div class="crs-mobile-third-level-section">
+                  <div class="crs-mobile-third-level-section" data-title="${d.title}">
                     <div class="crs-mobile-third-level-title">${d.title}</div>
                     <div class="crs-mobile-third-level-items">
-                      ${m}
+                      ${w}
                     </div>
                   </div>
                 `;
@@ -4247,7 +4256,7 @@
             );
             break;
           case "color-grid":
-            const u = ((r = a.colorSwatches) == null ? void 0 : r.map((d) => (
+            const p = ((r = a.colorSwatches) == null ? void 0 : r.map((d) => (
               /* html */
               `
                 <div class="crs-mobile-color-swatch" data-crs-nav="true">
@@ -4259,13 +4268,27 @@
                   </a>
                 </div>
               `
-            )).join("")) || "";
+            )).join("")) || "", v = (c = a.submenu) != null && c.find(
+              (d) => d.template === "link"
+            ) ? (
+              /* html */
+              `
+                  <ul class="crs-collection-list">
+                    <li>
+                      <a href="${((m = (u = a.submenu) == null ? void 0 : u.find(
+                (d) => d.template === "link"
+              )) == null ? void 0 : m.link) || "#"}" class="crs-collection-link crs-view-all-link">${((y = (f = a.submenu) == null ? void 0 : f.find((d) => d.template === "link")) == null ? void 0 : y.title) || "View All"}</a>
+                    </li>
+                  </ul>
+                `
+            ) : "";
             l += /* html */
             `
               <div class="crs-mobile-third-level-section">
                 <div class="crs-mobile-third-level-title">${a.title}</div>
                 <div class="crs-mobile-color-swatches">
-                  ${u}
+                  ${p}
+                  ${v}
                 </div>
               </div>
             `;
@@ -4295,7 +4318,7 @@
             <div class="crs-mobile-nav-parent">${e.title}</div>
           </div>
           <div class="crs-mobile-nav-current">${t.title}</div>
-          <div class="crs-mobile-nav-close">${y}</div>
+          <div class="crs-mobile-nav-close">${S}</div>
         </div>
       </li>
       <li class="crs-mobile-third-level-content" data-crs-nav="true">
@@ -4325,10 +4348,10 @@
         const a = l.getAttribute("data-analytics");
         a && setTimeout(() => {
           if (l.classList.contains("crs-mobile-nav-link"))
-            p(a, "Link", a);
+            g(a, "Link", a);
           else if (l.classList.contains("crs-mobile-third-level-link")) {
             const s = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            s && o && p(
+            s && o && g(
               a,
               "Link",
               o,
@@ -4336,7 +4359,7 @@
             );
           } else if (l.classList.contains("crs-mobile-featured-action-link")) {
             const s = l.getAttribute("data-parent");
-            s && p(
+            s && g(
               a,
               "CTA",
               s,
@@ -4356,9 +4379,9 @@
       t && t.remove();
     }
   }
-  class L {
+  class j {
     constructor(e = "B") {
-      this.variant = e, this.desktopNavigation = new M(e), this.mobileNavigation = new N(e);
+      this.variant = e, this.desktopNavigation = new C(e), this.mobileNavigation = new I(e);
     }
     /**
      * Creates the complete navigation system
@@ -4385,7 +4408,7 @@
       this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class C {
+  class H {
     constructor(e, t, n) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = n, this.currentUrl = location.href;
     }
@@ -4608,9 +4631,9 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class I {
+  class $ {
     constructor() {
-      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new L(this.variant), this.init();
+      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new j(this.variant), this.init();
     }
     init() {
       document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.start()) : this.start();
@@ -4664,7 +4687,7 @@
     }
     async findMobileMenu() {
       try {
-        const e = await k("off-canvas-menu ul");
+        const e = await x("off-canvas-menu ul");
         if (e)
           return e;
       } catch {
@@ -4689,7 +4712,7 @@
     async waitForMeganav() {
       for (let n = 1; n <= 10; n++) {
         try {
-          if (await k("meganav"))
+          if (await x("meganav"))
             return;
         } catch {
         }
@@ -4726,7 +4749,7 @@
       }
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new C(
+      this.newNav && (this.navigationPersistence = new H(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
@@ -4823,7 +4846,7 @@
       }), this.newNav = null, this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null);
     }
   }
-  const j = `meganav {
+  const R = `meganav {
   display: none;
 }
 
@@ -4831,7 +4854,7 @@
 crs-nav {
   display: block !important;
 }
-`, H = `/* Custom crs-nav element */
+`, J = `/* Custom crs-nav element */
 crs-nav {
   display: block;
   position: relative;
@@ -5530,7 +5553,7 @@ crs-nav {
     display: none !important;
   }
 }
-`, $ = `/* Mobile Navigation Integration with Existing Structure */
+`, O = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
 
 /* Mobile fallback navigation */
@@ -5628,9 +5651,8 @@ ul[data-crs-nav-level='third-level'] {
 }
 
 .crs-mobile-nav-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
   object-fit: contain;
 }
@@ -5733,6 +5755,8 @@ ul[data-crs-nav-level='third-level'] {
 }
 
 .crs-mobile-third-level-content {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   padding: 24px;
   background: white;
@@ -5740,7 +5764,16 @@ ul[data-crs-nav-level='third-level'] {
 }
 
 .crs-mobile-third-level-section {
-  margin-bottom: 32px;
+  order: 1;
+  margin-bottom: 24px;
+}
+
+.crs-mobile-third-level-section[data-title='Collections'] {
+  order: 2;
+}
+
+.crs-mobile-third-level-content > *:not(.crs-mobile-third-level-section) {
+  order: 3;
 }
 
 .crs-mobile-third-level-title {
@@ -5759,8 +5792,25 @@ ul[data-crs-nav-level='third-level'] {
   gap: 10px;
 }
 
+[data-title='Shop by Size'] .crs-mobile-third-level-items {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 .crs-mobile-third-level-item {
   margin: 0;
+}
+
+[data-title='Shop by Size']
+  .crs-mobile-third-level-items
+  .crs-mobile-third-level-item {
+  width: calc(50% - 6px);
+}
+
+[data-title='Shop by Size']
+  .crs-mobile-third-level-items
+  .crs-mobile-third-level-item:last-child {
+  width: 100%;
 }
 
 .crs-mobile-third-level-link {
@@ -5828,17 +5878,15 @@ ul[data-crs-nav-level='third-level'] {
 
 /* Mobile featured content */
 .crs-mobile-featured-content {
-  margin-top: 24px;
 }
 
 .crs-mobile-featured-image {
   width: 100%;
-  height: 220px;
+  height: 457px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin-bottom: 8px;
-  border-radius: 4px;
   object-fit: cover;
 }
 
@@ -5847,27 +5895,25 @@ ul[data-crs-nav-level='third-level'] {
 }
 
 .crs-mobile-featured-title {
-  font-size: 16px;
-  color: #212121;
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-}
-
-.crs-mobile-featured-subtitle {
+  margin-top: 4px;
   font-size: 20px;
   color: #212121;
   font-family: baskerville-urw, sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.5px;
 }
 
+.crs-mobile-featured-subtitle {
+  font-size: 16px;
+  color: #212121;
+
+  line-height: 28px;
+  letter-spacing: 1px;
+}
+
 /* Mobile dual featured content */
 .crs-mobile-dual-featured-content {
-  margin-top: 24px;
   display: flex;
   gap: 12px;
 }
@@ -5891,25 +5937,6 @@ ul[data-crs-nav-level='third-level'] {
 
 .crs-mobile-dual-featured-content .crs-mobile-featured-text {
   padding: 0 10px;
-}
-
-.crs-mobile-dual-featured-content .crs-mobile-featured-title {
-  font-size: 16px;
-  color: #212121;
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-}
-
-.crs-mobile-dual-featured-content .crs-mobile-featured-subtitle {
-  font-size: 20px;
-  color: #212121;
-  font-family: baskerville-urw, sans-serif;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.5px;
 }
 
 /* Mobile triple featured content */
@@ -6083,7 +6110,6 @@ ul[data-crs-nav-level='third-level'] {
 .crs-mobile-product-cards-content {
   margin-top: 24px;
   display: flex;
-  flex-direction: column;
   gap: 16px;
 }
 
@@ -6093,6 +6119,10 @@ ul[data-crs-nav-level='third-level'] {
   background: #f8f9fa;
   border-radius: 8px;
   padding: 16px;
+}
+
+.crs-mobile-product-card:nth-child(3) {
+  display: none;
 }
 
 .crs-mobile-product-image {
@@ -6257,9 +6287,9 @@ off-canvas-menu advanced-commerce-search-form {
   transform: translateY(-50%);
   justify-content: center;
   align-items: center;
-  width:18px;
-  height:18px;
-  font-size:24px;
+  width: 18px;
+  height: 18px;
+  font-size: 24px;
 }
 
 div:has(> .crs-mobile-search-form) {
@@ -6270,26 +6300,27 @@ div:has(> .crs-mobile-search-form) {
   padding: 12px 16px;
 }
 
-div:has(> .crs-mobile-search-form) [aria-label="Close"] {
+div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   margin: 0;
   margin-left: auto;
-}`;
-  S({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
-  class R {
+}
+`;
+  N({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
+  class _ {
     constructor() {
-      this.navigationVariant = new I(), this.init();
+      this.navigationVariant = new $(), this.init();
     }
     init() {
       this.addStyles();
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = j, document.head.appendChild(e);
+      e.textContent = R, document.head.appendChild(e);
       const t = document.createElement("style");
-      t.textContent = H, document.head.appendChild(t);
+      t.textContent = J, document.head.appendChild(t);
       const n = document.createElement("style");
-      n.textContent = $, document.head.appendChild(n);
+      n.textContent = O, document.head.appendChild(n);
     }
   }
-  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new R()));
+  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new _()));
 })();
