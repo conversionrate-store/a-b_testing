@@ -2032,6 +2032,15 @@
                   template: "link"
                 }
               ]
+            },
+            {
+              title: "Toy Pony Collection",
+              link: "/toys/toy-pony-collection",
+              template: "featured",
+              featuredImage: "https://www.lemieux.com/tco-images/unsafe/414x552/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT07142_lifestyle_toyponyrug_cranberry_3-2.jpg",
+              featuredTitle: "Toy Pony Collection",
+              featuredSubtitle: "",
+              actionLink: { text: "View All", url: "/toys/toy-pony-collection" }
             }
           ]
         },
@@ -2206,6 +2215,15 @@
                   template: "link"
                 }
               ]
+            },
+            {
+              title: "Hobby Horse Collection",
+              link: "/toys/hobby-horse",
+              template: "featured",
+              featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/hobby_horse.webp",
+              featuredTitle: "Hobby Horse Collection",
+              featuredSubtitle: "",
+              actionLink: { text: "View All", url: "/toys/hobby-horse" }
             }
           ]
         },
@@ -2255,7 +2273,7 @@
               title: "Tiny Pony Collection",
               link: "/toys/tiny-ponies",
               template: "featured",
-              featuredImage: "https://www.lemieux.com/static/cms/media/Tiny_Pony_Collection_1k.jpg",
+              featuredImage: "https://www.lemieux.com/static/media/catalog/product/g/r/group_lifestyle_pocketponies_3.jpg",
               featuredTitle: "Tiny Pony Collection",
               featuredSubtitle: "",
               actionLink: { text: "View All", url: "/toys/tiny-ponies" }
@@ -2680,9 +2698,9 @@
           template: "featured",
           featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/LM-Web%20Gift%20Vouchers%201x1.jpg",
           featuredTitle: "Gift Vouchers",
-          featuredSubtitle: "Sure to surprise",
+          featuredSubtitle: "Create Your Unique",
           actionLink: {
-            text: "Shop Now",
+            text: "Customise Now",
             url: "/e-gift-card-173"
           }
         },
@@ -3036,15 +3054,19 @@
       const t = document.querySelector(".crs-mega-menu");
       if (!t) return;
       const n = g[e];
-      n.submenu && (t.innerHTML = "", t.appendChild(this.createMegaMenuContent(n)), t.style.display = "block", setTimeout(() => {
+      if (!n.submenu) return;
+      document.querySelectorAll(".crs-nav-link[data-has-submenu]").forEach((a) => a.classList.remove("crs-nav-link-active"));
+      const l = document.querySelector(`.crs-nav-link[data-index="${e}"]`);
+      l && l.classList.add("crs-nav-link-active"), t.innerHTML = "", t.appendChild(this.createMegaMenuContent(n)), t.style.display = "block", setTimeout(() => {
         t.classList.add("crs-visible");
-      }, 10));
+      }, 10);
     }
     hideMegaMenu() {
       const e = document.querySelector(".crs-mega-menu");
-      e && (e.classList.remove("crs-visible"), setTimeout(() => {
+      if (!e) return;
+      document.querySelectorAll(".crs-nav-link[data-has-submenu]").forEach((n) => n.classList.remove("crs-nav-link-active")), e.classList.remove("crs-visible"), setTimeout(() => {
         e.style.display = "none";
-      }, 200));
+      }, 200);
     }
     createMegaMenuContent(e) {
       var o;
@@ -3363,7 +3385,7 @@
     createFeaturedSectionHTML(e, t, n) {
       const i = e.link || "#", l = e.featuredImage ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle || e.title}" data-type="Image" data-parent="${t || e.title}" data-grandparent="${n || ""}"><img src="${e.featuredImage}" alt="${e.featuredTitle || ""}" class="crs-featured-image"></a>` : "", a = e.featuredTitle ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${n || ""}"><h4 class="crs-featured-title">${e.featuredTitle}</h4></a>` : "", s = e.featuredSubtitle ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${n || ""}"><p class="crs-featured-subtitle">${e.featuredSubtitle}</p></a>` : "", o = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-featured-action-link">${e.actionLink.text}</a>` : "", r = a || s ? `<div class="crs-featured-main-title">${e.title}</div>` : "";
       let c;
-      return e.template === "outfit-builder" ? c = a || s || o ? `<div class="crs-featured-text crs-outfit-builder-text">${s}${a}${o}</div>` : "" : c = a || s || o ? `<div class="crs-featured-text">${s}${a}</div>` : "", e.template === "outfit-builder" ? (
+      return e.template === "outfit-builder" ? c = a || s || o ? `<div class="crs-featured-text crs-outfit-builder-text">${s}${a}${o}</div>` : "" : c = a || s || o ? `<div class="crs-featured-text">${o}${s}${a}</div>` : "", e.template === "outfit-builder" ? (
         /* html */
         `
         <div class="crs-featured-section">
@@ -3385,19 +3407,29 @@
     createDualFeaturedSectionHTML(e) {
       if (!e.submenu || e.submenu.length < 2)
         return '<div class="crs-featured-section"></div>';
-      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", l = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", a = t.featuredSubtitle ? `<p class="crs-featured-subtitle">${t.featuredSubtitle}</p>` : "", s = l || a ? `<div class="crs-featured-text">${l}${a}</div>` : "", o = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${r}${c}</div>` : "";
+      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", l = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", a = t.featuredSubtitle ? `<p class="crs-featured-subtitle">${t.featuredSubtitle}</p>` : "", s = l || a ? `<div class="crs-featured-text">${l}${a}</div>` : "", o = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${r}${c}</div>` : "", d = t.link ? `<a href="${t.link}" class="crs-featured-item-link">
+          <div class="crs-featured-item">
+            ${i}
+            ${s}
+          </div>
+        </a>` : `<div class="crs-featured-item">
+          ${i}
+          ${s}
+        </div>`, m = n.link ? `<a href="${n.link}" class="crs-featured-item-link">
+          <div class="crs-featured-item">
+            ${o}
+            ${u}
+          </div>
+        </a>` : `<div class="crs-featured-item">
+          ${o}
+          ${u}
+        </div>`;
       return (
         /* html */
         `
       <div class="crs-dual-featured-section">
-        <div class="crs-featured-item">
-          ${i}
-          ${s}
-        </div>
-        <div class="crs-featured-item">
-          ${o}
-          ${u}
-        </div>
+        ${d}
+        ${m}
       </div>
     `
       );
@@ -4682,6 +4714,8 @@ crs-nav {
   height: 100%;
 }
 
+
+
 .crs-navigation-system {
   position: relative;
   width: 100%;
@@ -4741,6 +4775,11 @@ crs-nav {
 
 .crs-nav-link:hover {
   border-bottom: 2px solid #000;
+}
+
+.crs-nav-link-active {
+  border-bottom: 2px solid #000 !important;
+  color: #000 !important;
 }
 
 /* Template-specific styling */
@@ -4852,28 +4891,32 @@ crs-nav {
 .crs-gifts-featured-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+
 }
 
 .crs-gifts-featured-section .crs-featured-image {
+  margin-top: 22px;
   width: 100%;
   height: 200px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 4px;
+
 }
 
 .crs-gifts-section-title {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   color: #2e2e2e;
-  margin: 0 0 8px 0;
-  line-height: 1.2;
+
+  line-height: 23px;
+  letter-spacing: 0.5px;
 }
 
 .crs-gifts-action-link {
+  margin-top: 8px;
   display: inline-block;
+  padding-inline: 10px;
   font-family: 'Source Sans 3', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -4895,11 +4938,10 @@ crs-nav {
 .crs-featured-action-link {
   display: inline-block;
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 28px;
   font-weight: 400;
   color: #212121;
-  text-decoration: underline;
-  line-height: 1.75;
   letter-spacing: 1px;
   transition: color 0.2s ease;
   align-self: flex-start;
@@ -4943,10 +4985,6 @@ crs-nav {
   font-size: 16px;
   line-height: 28px;
   transition: color 0.3s ease;
-}
-
-.crs-collection-link:hover {
-  color: #8e1538;
 }
 
 .crs-collection-link {
@@ -5100,9 +5138,7 @@ crs-nav {
   transition: color 0.3s ease;
 }
 
-.crs-simple-link:hover {
-  color: #8e1538;
-}
+
 
 /* Dual Featured Section */
 .crs-dual-featured-section {
@@ -5117,6 +5153,15 @@ crs-nav {
   align-items: center;
 }
 
+.crs-featured-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+
+
 .crs-featured-item .crs-featured-image {
   width: 100%;
   max-width: 230px;
@@ -5127,13 +5172,16 @@ crs-nav {
 :is(
     .crs-dual-featured-section,
     .crs-triple-featured-section,
-    .crs-quad-featured-section
+    .crs-quad-featured-section,
+    [data-grandparent="Outlet"]
   )
   img.crs-featured-image {
   width: 230px;
   height: 307px;
   object-fit: cover;
 }
+
+
 
 .crs-featured-item .crs-featured-text {
   padding: 0 20px;
@@ -5150,14 +5198,14 @@ crs-nav {
   letter-spacing: 0.5px;
 }
 
-.crs-featured-item .crs-featured-title {
+/* .crs-featured-item .crs-featured-title {
   font-family: 'Source Sans 3', sans-serif;
   font-size: 18px;
   color: #2e2e2e;
 
   font-weight: 500;
   line-height: 28px;
-}
+} */
 
 .crs-featured-item .crs-featured-subtitle {
   font-family: baskerville-urw, sans-serif;
@@ -5274,9 +5322,7 @@ crs-nav {
   transition: transform 0.2s ease;
 }
 
-.crs-product-link:hover {
-  transform: translateY(-2px);
-}
+
 
 .crs-product-image {
   width: 100%;
