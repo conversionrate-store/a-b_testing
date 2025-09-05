@@ -6089,7 +6089,7 @@ ul[data-crs-nav-level='third-level'] {
 .crs-mobile-quad-featured-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 32px 12px;
 }
 
 .crs-mobile-quad-featured-content .crs-mobile-featured-item {
@@ -6124,6 +6124,7 @@ ul[data-crs-nav-level='third-level'] {
 }
 
 .crs-mobile-quad-featured-content .crs-mobile-featured-action-link {
+  padding-inline: 10px;
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 400;
   font-size: 16px;
