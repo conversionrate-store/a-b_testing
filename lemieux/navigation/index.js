@@ -16,7 +16,7 @@
       `%c EXP: ${f} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, g = [
+  }, p = [
     {
       title: "Horse",
       link: "/horsewear",
@@ -395,7 +395,7 @@
                   template: "featured",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04491_lifestlye_arikasimuwoolcontoureddressagegirth_black_1-4.jpg",
                   featuredTitle: "Girths",
-                  featuredSubtitle: "Best Sellers"
+                  featuredSubtitle: "Best Sellers "
                 }
               ]
             }
@@ -534,24 +534,24 @@
                   title: "Best Sellers",
                   link: "/horsewear/headcollars-leadropes/vogue-headcollars",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06994_lifestyle_vogueheadcollarandleadrope_cranberry_8-3.jpg",
-                  featuredTitle: "Best Sellers",
-                  featuredSubtitle: "Vogue Headcollars",
+                  featuredTitle: "Vogue Headcollars",
+                  featuredSubtitle: "Best Sellers",
                   template: "featured"
                 },
                 {
                   title: "Smart Style",
                   link: "/horsewear/headcollars-leadropes/leather-headcollars",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06976_lifestyle_ropellaheadcollar_lilac_2-3.jpg",
-                  featuredTitle: "Smart Style",
-                  featuredSubtitle: "Leather Headcollars",
+                  featuredTitle: "Leather Headcollars",
+                  featuredSubtitle: "Smart Style",
                   template: "featured"
                 },
                 {
                   title: "New Colours",
                   link: "/horsewear/headcollars-leadropes/finesse-headcollars",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06973_lifestyle_finesse_headcollar_rosemary_cob_02-3.jpg",
-                  featuredTitle: "New Colours",
-                  featuredSubtitle: "Versailles Headcollars",
+                  featuredTitle: "Versailles Headcollars",
+                  featuredSubtitle: "New Colours",
                   template: "featured"
                 }
               ]
@@ -609,24 +609,24 @@
                   title: "Our Favourite",
                   link: "/horsewear/horse-rugs/arika-shower-tek-fly-rug-grey-new",
                   featuredImage: "https://www.lemieux.com/static/cms/media/it04127_lifestyle_arikashower-tekflyrug_grey_4-5.jpg",
-                  featuredTitle: "Our Favourite",
-                  featuredSubtitle: "Arika Shower-Tek Rug",
+                  featuredTitle: "Arika Shower-Tek Rug",
+                  featuredSubtitle: "Our Favourite",
                   template: "featured"
                 },
                 {
                   title: "Most Popular",
                   link: "/horsewear/fly-protection/armourshield-pro-full-fly-mask-grey",
                   featuredImage: "https://www.lemieux.com/static/cms/media/3n6a0380_copy-4.jpg",
-                  featuredTitle: "Most Popular",
-                  featuredSubtitle: "Armourshield Fly Masks",
+                  featuredTitle: "Armourshield Fly Masks",
+                  featuredSubtitle: "Most Popular",
                   template: "featured"
                 },
                 {
                   title: "New Colours",
                   link: "/horsewear/fly-hoods/loire-fly-hoods",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06962_lifestyle_classicflyhood_lilac_7-3.jpg",
-                  featuredTitle: "New Colours",
-                  featuredSubtitle: "Classic Fly Hoods",
+                  featuredTitle: "Classic Fly Hoods",
+                  featuredSubtitle: "New Colours",
                   template: "featured"
                 }
               ]
@@ -688,16 +688,16 @@
                   title: "Most Popular",
                   link: "/horsewear/grooming-care/brushes",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07027_lifestlye_flexiscrubbingbrush_cranberry_1.jpg",
-                  featuredTitle: "Most Popular",
-                  featuredSubtitle: "Flexi Brushes",
+                  featuredTitle: "Flexi Brushes",
+                  featuredSubtitle: "Most Popular",
                   template: "featured"
                 },
                 {
                   title: "Best Selling",
                   link: "/horsewear/grooming-care/grooming-sets",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT03940_lifestyle_eliteprokitgroomingbag_navy_1.jpg",
-                  featuredTitle: "Best Selling",
-                  featuredSubtitle: "Grooming Sets",
+                  featuredTitle: "Grooming Sets",
+                  featuredSubtitle: "Best Selling",
                   template: "featured"
                 }
               ]
@@ -752,8 +752,8 @@
                   title: "Bags of Style",
                   link: "/horsewear/stable-yard/luggage-travel",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04967_lifestyle_twinbridlebag_navy_1NEW-(1).jpg",
-                  featuredTitle: "Bags of Style",
-                  featuredSubtitle: "Pro Luggage",
+                  featuredTitle: "Bags of Stylee",
+                  featuredSubtitle: " Pro Luggage",
                   template: "featured"
                 },
                 {
@@ -761,7 +761,7 @@
                   link: "/horsewear/stable-yard/horse-toys",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT03912_lifestyle_horsetoy_banana_1-1-2.jpg",
                   featuredTitle: "Beat Boredom",
-                  featuredSubtitle: "Horse Stable Toys",
+                  featuredSubtitle: " Horse Stable Toys",
                   template: "featured"
                 }
               ]
@@ -1047,16 +1047,16 @@
                   title: "Autumn in colour",
                   link: "/new-in/aw25/women",
                   featuredImage: "https://www.lemieux.com/static/cms/media/GROUP_lifestyle_britneytop_loireflyhood_juniper-lilac_1p.jpg",
-                  featuredTitle: " Autumn in colour",
-                  featuredSubtitle: "AW25 Collection",
+                  featuredTitle: "AW25 Collection",
+                  featuredSubtitle: "Autumn in colour",
                   template: "featured"
                 },
                 {
                   title: "Ready to Compete",
                   link: "/clothing/women/competition-clothing",
                   featuredImage: "https://www.lemieux.com/static/cms/media/GROUP_lifestyle_showjacket_2g.jpg",
-                  featuredTitle: "Competition Collection",
-                  featuredSubtitle: "Ready to Compete",
+                  featuredTitle: "Ready to Compete",
+                  featuredSubtitle: "Competition Collection",
                   template: "featured"
                 }
               ]
@@ -1111,16 +1111,16 @@
                   title: "New Arrivals",
                   link: "/clothing/footwear/trainers",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04711_lifestyle_fieldridingboot_black_04g.jpg",
-                  featuredTitle: "Riding Boots",
-                  featuredSubtitle: "New Arrivals",
+                  featuredTitle: "New Arrivals",
+                  featuredSubtitle: "Riding Boots",
                   template: "featured"
                 },
                 {
                   title: "Bestselling Footwear",
                   link: "/clothing/footwear/trainers",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06509_lifestyle_traxlitetrainer_pecan_05%20(2)-2.jpg",
-                  featuredTitle: "Trax Lite Trainers",
-                  featuredSubtitle: "Bestselling Footwear",
+                  featuredTitle: "Bestselling Footwear",
+                  featuredSubtitle: "Trax Lite Trainers",
                   template: "featured"
                 }
               ]
@@ -1188,16 +1188,16 @@
                   title: "Best Sellers",
                   link: "/clothing/accessories/clothing-accessories/hat-silks",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06994_lifestyle_vogueheadcollarandleadrope_cranberry_8-3.jpg",
-                  featuredTitle: "Hat Silks",
-                  featuredSubtitle: "Best Sellers",
+                  featuredTitle: "Best Sellers",
+                  featuredSubtitle: "Hat Silks",
                   template: "featured"
                 },
                 {
                   title: "Organised Travel",
                   link: "/clothing/accessories/accessories/rider-luggage?439=luxe",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04979_lifestyle_luxehatbox_black_05-2.webp",
-                  featuredTitle: "Luggage",
-                  featuredSubtitle: "Organised Travel",
+                  featuredTitle: "Organised Travel",
+                  featuredSubtitle: "Luggage",
                   template: "featured"
                 }
               ]
@@ -1361,8 +1361,8 @@
               link: "/new-in/aw25/children",
               template: "featured",
               featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
-              featuredTitle: "AW25 Collection",
-              featuredSubtitle: "New Arrival"
+              featuredTitle: "New Arrival",
+              featuredSubtitle: "AW25 Collection"
             }
           ]
         },
@@ -1506,16 +1506,16 @@
                   title: "3-10 Years",
                   link: "/clothing/children/mini-collection",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07289_lifestyle_minigeorgegilet_rosemary_02h.jpg",
-                  featuredTitle: "Mini Collection",
-                  featuredSubtitle: "3-10 Years",
+                  featuredTitle: "3-10 Years",
+                  featuredSubtitle: "Mini Collection",
                   template: "featured"
                 },
                 {
                   title: "7-14 Years",
                   link: "/clothing/children/young-rider-collection",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07216_lifestyle_young_rider_tammy_teddy_fleece_navy_01f.jpg",
-                  featuredTitle: "Young Rider Collection",
-                  featuredSubtitle: "7-14 Years",
+                  featuredTitle: "7-14 Years",
+                  featuredSubtitle: "Young Rider Collection",
                   template: "featured"
                 }
               ]
@@ -1581,16 +1581,16 @@
                   title: "New In",
                   link: "/clothing/children/accessories",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04547_studiolifestyle_juniorfieldridingboot_black_10o.jpg",
-                  featuredTitle: "Junior Field Riding Boots",
-                  featuredSubtitle: "New In",
+                  featuredTitle: "New In",
+                  featuredSubtitle: "Junior Field Riding Boots",
                   template: "featured"
                 },
                 {
                   title: "Comfort outside the saddle",
                   link: "/clothing/children/accessories/footwear?327=7875",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06514_lifestyle_youthtraxviva_stone_10d.jpg",
-                  featuredTitle: "Youth Trainers",
-                  featuredSubtitle: "Comfort outside the saddle",
+                  featuredTitle: "Comfort outside the saddle",
+                  featuredSubtitle: "Youth Trainers",
                   template: "featured"
                 }
               ]
@@ -1652,16 +1652,16 @@
                   title: "Warm autumn colours",
                   link: "/clothing/accessories/clothing-accessories/caps-hats",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07244_lifestyle_minidoublepombeanie_peachpunch_002p.jpg",
-                  featuredTitle: "Caps & Hats",
-                  featuredSubtitle: "Warm autumn colours",
+                  featuredTitle: "Warm autumn colours",
+                  featuredSubtitle: "Caps & Hats",
                   template: "featured"
                 },
                 {
                   title: "Little best friends",
                   link: "/toys/toy-pony-collection",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06299_product_toypony_storm_1k.jpg",
-                  featuredTitle: "New Toy Ponies",
-                  featuredSubtitle: "Little best friends",
+                  featuredTitle: "Little best friends",
+                  featuredSubtitle: "New Toy Ponies",
                   template: "featured"
                 }
               ]
@@ -1679,8 +1679,8 @@
       title: "Men",
       link: "/clothing/men/casual-wear",
       featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
-      featuredTitle: "AW25 Collection",
-      featuredSubtitle: "New Arrival",
+      featuredTitle: "New Arrival",
+      featuredSubtitle: "AW25 Collection",
       template: "featured",
       submenu: [
         {
@@ -1863,8 +1863,8 @@
                   title: "Luggage",
                   link: "/clothing/men/accessories/bags",
                   featuredImage: "https://www.lemieux.com/static/cms/media/GROUP_lifestyle_eliteluggage_navy_3.jpg",
-                  featuredTitle: "Luggage",
-                  featuredSubtitle: "Perfect Organisation"
+                  featuredTitle: "Perfect Organisation",
+                  featuredSubtitle: "Luggage"
                 }
               ]
             }
@@ -2948,7 +2948,7 @@
     };
     window.dataLayer.push(a), console.table(a);
   };
-  function p(f, e, t, n, i) {
+  function g(f, e, t, n, i) {
     S(
       "exp_nav_click",
       f,
@@ -2967,7 +2967,7 @@
         /* html */
         `
       <ul class="crs-nav-list">
-        ${g.map((i, l) => this.createNavigationItemHTML(i, l)).join("")}
+        ${p.map((i, l) => this.createNavigationItemHTML(i, l)).join("")}
       </ul>
       <div class="crs-mega-menu" style="display: none;"></div>
     `
@@ -3030,21 +3030,21 @@
         const l = i.getAttribute("data-analytics");
         if (l) {
           if (i.classList.contains("crs-nav-link"))
-            p(l, "Link", l);
+            g(l, "Link", l);
           else if (i.classList.contains("crs-sidebar-link")) {
             const o = i.getAttribute("data-parent");
-            o && p(l, "Link", o, l);
+            o && g(l, "Link", o, l);
           } else if (i.classList.contains("crs-featured-section-link")) {
             const o = i.getAttribute("data-type"), r = i.getAttribute("data-parent"), c = i.getAttribute("data-grandparent");
-            r && p(l, o, c || r, r, "Image section");
+            r && g(l, o, c || r, r, "Image section");
           } else if (i.classList.contains("crs-color-link")) {
             const o = i.getAttribute("data-parent"), r = i.getAttribute("data-grandparent");
-            o && p(l, "Link", r || o, o, "AW25 Colours");
+            o && g(l, "Link", r || o, o, "AW25 Colours");
           } else if (i.classList.contains("crs-collection-link") || i.classList.contains("crs-view-all-link")) {
             const o = i.getAttribute("data-parent"), r = i.getAttribute("data-grandparent");
             if (o) {
               const c = ((s = (a = i.closest(".crs-collections-section")) == null ? void 0 : a.querySelector(".crs-section-title")) == null ? void 0 : s.textContent) || "";
-              p(l, "Link", r || o, o, c);
+              g(l, "Link", r || o, o, c);
             }
           }
         }
@@ -3053,7 +3053,7 @@
     showMegaMenu(e) {
       const t = document.querySelector(".crs-mega-menu");
       if (!t) return;
-      const n = g[e];
+      const n = p[e];
       if (!n.submenu) return;
       document.querySelectorAll(".crs-nav-link[data-has-submenu]").forEach((a) => a.classList.remove("crs-nav-link-active"));
       const l = document.querySelector(`.crs-nav-link[data-index="${e}"]`);
@@ -3383,7 +3383,7 @@
       );
     }
     createFeaturedSectionHTML(e, t, n) {
-      const i = e.link || "#", l = e.featuredImage ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle || e.title}" data-type="Image" data-parent="${t || e.title}" data-grandparent="${n || ""}"><img src="${e.featuredImage}" alt="${e.featuredTitle || ""}" class="crs-featured-image"></a>` : "", a = e.featuredTitle ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${n || ""}"><h4 class="crs-featured-title">${e.featuredTitle}</h4></a>` : "", s = e.featuredSubtitle ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${n || ""}"><p class="crs-featured-subtitle">${e.featuredSubtitle}</p></a>` : "", o = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-featured-action-link">${e.actionLink.text}</a>` : "", r = a || s ? `<div class="crs-featured-main-title">${e.title}</div>` : "";
+      const i = e.link || "#", l = e.featuredImage ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle || e.title}" data-type="Image" data-parent="${t || e.title}" data-grandparent="${n || ""}"><img src="${e.featuredImage}" alt="${e.featuredTitle || ""}" class="crs-featured-image"></a>` : "", a = e.featuredTitle ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${n || ""}"><h4 class="crs-featured-title">${e.featuredTitle}</h4></a>` : "", s = e.featuredSubtitle ? `<a href="${i}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${n || ""}"><p class="crs-featured-subtitle test">${e.featuredSubtitle}</p></a>` : "", o = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-featured-action-link">${e.actionLink.text}</a>` : "", r = a || s ? `<div class="crs-featured-main-title">${e.title}</div>` : "";
       let c;
       return e.template === "outfit-builder" ? c = a || s || o ? `<div class="crs-featured-text crs-outfit-builder-text">${s}${a}${o}</div>` : "" : c = a || s || o ? `<div class="crs-featured-text">${o}${s}${a}</div>` : "", e.template === "outfit-builder" ? (
         /* html */
@@ -3407,7 +3407,7 @@
     createDualFeaturedSectionHTML(e) {
       if (!e.submenu || e.submenu.length < 2)
         return '<div class="crs-featured-section"></div>';
-      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", l = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", a = t.featuredSubtitle ? `<p class="crs-featured-subtitle">${t.featuredSubtitle}</p>` : "", s = l || a ? `<div class="crs-featured-text">${l}${a}</div>` : "", o = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${r}${c}</div>` : "", d = t.link ? `<a href="${t.link}" class="crs-featured-item-link">
+      const t = e.submenu[0], n = e.submenu[1], i = t.featuredImage ? `<img src="${t.featuredImage}" alt="${t.featuredTitle || ""}" class="crs-featured-image">` : "", l = t.featuredTitle ? `<h4 class="crs-featured-title">${t.featuredTitle}</h4>` : "", a = t.featuredSubtitle ? `<p class="crs-featured-subtitle test">${t.featuredSubtitle}</p>` : "", s = l || a ? `<div class="crs-featured-text">${a}${l}</div>` : "", o = n.featuredImage ? `<img src="${n.featuredImage}" alt="${n.featuredTitle || ""}" class="crs-featured-image">` : "", r = n.featuredTitle ? `<h4 class="crs-featured-title">${n.featuredTitle}</h4>` : "", c = n.featuredSubtitle ? `<p class="crs-featured-subtitle test">${n.featuredSubtitle}</p>` : "", u = r || c ? `<div class="crs-featured-text">${c}${r}</div>` : "", d = t.link ? `<a href="${t.link}" class="crs-featured-item-link">
           <div class="crs-featured-item">
             ${i}
             ${s}
@@ -3448,7 +3448,7 @@
       if (!e.submenu || e.submenu.length < 3)
         return '<div class="crs-featured-section"></div>';
       const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], l = e.title && e.showTitle ? `<h3 class="crs-triple-featured-title">${e.title}</h3>` : "", a = (s) => {
-        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
+        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle test">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${c}${r}${u}</div>` : "";
         return (
           /* html */
           `
@@ -3477,7 +3477,7 @@
       if (!e.submenu || e.submenu.length < 4)
         return '<div class="crs-quad-featured-section"></div>';
       const t = e.submenu[0], n = e.submenu[1], i = e.submenu[2], l = e.submenu[3], a = (s) => {
-        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
+        const o = s.featuredImage ? `<img src="${s.featuredImage}" alt="${s.featuredTitle || ""}" class="crs-featured-image">` : "", r = s.featuredTitle ? `<h4 class="crs-featured-title">${s.featuredTitle}</h4>` : "", c = s.featuredSubtitle ? `<p class="crs-featured-subtitle test">${s.featuredSubtitle}</p>` : "", u = s.actionLink ? `<a href="${s.actionLink.url}" class="crs-featured-action-link">${s.actionLink.text}</a>` : "", d = r || c || u ? `<div class="crs-featured-text">${r}${c}${u}</div>` : "";
         return (
           /* html */
           `
@@ -3621,7 +3621,7 @@
           if (t || (t = e.querySelector("ul")), t || (t = e.querySelector(
             "off-canvas-menu-body ul"
           )), t) {
-            const n = g.map(
+            const n = p.map(
               (i, l) => this.createMobileNavigationItemHTML(i, l)
             ).join("");
             return t.innerHTML = n, t.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e), document.createElement("div");
@@ -3670,10 +3670,10 @@
         ), d = o.getAttribute("data-stacked-index"), m = (w) => {
           var y, v;
           w.preventDefault();
-          let h = (y = g[c].submenu) == null ? void 0 : y[u];
+          let h = (y = p[c].submenu) == null ? void 0 : y[u];
           if (d !== null && (h == null ? void 0 : h.template) === "stacked-sections") {
-            const J = parseInt(d);
-            h = (v = h.submenu) == null ? void 0 : v[J];
+            const R = parseInt(d);
+            h = (v = h.submenu) == null ? void 0 : v[R];
           }
           h && h.submenu && h.submenu.length > 0 && this.showMobileThirdLevelSubmenu(c, u);
         };
@@ -3716,7 +3716,7 @@
       this.addMobileAnalyticsTracking(e);
     }
     showMobileSubmenu(e) {
-      const t = g[e];
+      const t = p[e];
       if (!t.submenu || t.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "main" }), this.mobileNavigationState = "submenu";
       const n = document.querySelector("off-canvas-menu");
@@ -3728,12 +3728,12 @@
       this.mobileNavigationState = "main", this.mobileNavigationHistory = [];
       const e = document.querySelector("off-canvas-menu");
       if (!e) return;
-      const t = g.map((i, l) => this.createMobileNavigationItemHTML(i, l)).join(""), n = e.querySelector("ul");
+      const t = p.map((i, l) => this.createMobileNavigationItemHTML(i, l)).join(""), n = e.querySelector("ul");
       n && (n.innerHTML = t, n.setAttribute("data-crs-nav-level", "main"), this.cleanupEventListeners(), this.addMobileEventListeners(e));
     }
     showMobileThirdLevelSubmenu(e, t) {
       var o;
-      const n = g[e], i = (o = n.submenu) == null ? void 0 : o[t];
+      const n = p[e], i = (o = n.submenu) == null ? void 0 : o[t];
       if (!i || !i.submenu || i.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "submenu", parentIndex: e }), this.mobileNavigationState = "third-level";
       const l = document.querySelector("off-canvas-menu");
@@ -4251,13 +4251,13 @@
         const a = l.getAttribute("data-analytics");
         a && setTimeout(() => {
           if (l.classList.contains("crs-mobile-nav-link"))
-            p(a, "Link", a);
+            g(a, "Link", a);
           else if (l.classList.contains("crs-mobile-third-level-link")) {
             const s = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            s && o && p(a, "Link", o, s);
+            s && o && g(a, "Link", o, s);
           } else if (l.classList.contains("crs-mobile-featured-action-link")) {
             const s = l.getAttribute("data-parent");
-            s && p(a, "CTA", s, void 0, "Image section");
+            s && g(a, "CTA", s, void 0, "Image section");
           }
         }, 10);
       };
@@ -4300,7 +4300,7 @@
       this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class L {
+  class C {
     constructor(e, t, n) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = n, this.currentUrl = location.href;
     }
@@ -4520,22 +4520,26 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class C {
+  class L {
     constructor() {
-      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.BREAKPOINT = 1100, this.navigationOrchestrator = new N(this.variant), this.init();
+      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new N(this.variant), this.init();
     }
     init() {
       document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.start()) : this.start();
     }
     async start() {
-      this.findOriginalNavigation(), await this.createAndInjectNavigation(), this.startNavigationMonitoring(), this.startResizeMonitoring(), this.isActive = !0;
+      this.findOriginalNavigation(), this.currentBreakpoint = window.innerWidth >= this.BREAKPOINT ? "desktop" : "mobile", await this.createAndInjectNavigation(), this.startNavigationMonitoring(), this.startResizeMonitoring(), this.isActive = !0;
     }
     findOriginalNavigation() {
       const e = ["meganav", "off-canvas-menu"];
+      console.log("🔍 Searching for original navigation...");
       for (const t of e)
-        if (this.originalNav = document.querySelector(t), this.originalNav)
+        if (this.originalNav = document.querySelector(t), this.originalNav) {
+          console.log(`✅ Found original navigation: ${t}`);
           break;
-      this.originalNav || console.warn("🧪 AB Test: Could not find original navigation");
+        } else
+          console.log(`❌ Not found: ${t}`);
+      this.originalNav || console.warn("⚠️ Could not find original navigation, will use fallback injection");
     }
     async createAndInjectNavigation() {
       try {
@@ -4610,16 +4614,30 @@
       );
     }
     injectNavigation() {
-      if (this.newNav)
-        if (this.originalNav && this.originalNav.parentNode)
-          this.originalNav.parentNode.insertBefore(
-            this.newNav,
-            this.originalNav.nextSibling
-          );
-        else {
-          const e = document.querySelector("meganav");
-          e && e.parentNode ? e.parentNode.insertBefore(this.newNav, e.nextSibling) : document.body.appendChild(this.newNav);
+      if (!this.newNav) {
+        console.warn("⚠️ No navigation to inject");
+        return;
+      }
+      if (this.findOriginalNavigation(), console.log("📍 Attempting to inject navigation..."), this.originalNav && this.originalNav.parentNode) {
+        if (this.originalNav.parentNode.querySelector("crs-nav, .crs-navigation-system")) {
+          console.log("⚠️ CRS navigation already exists next to meganav, skipping injection");
+          return;
         }
+        this.originalNav.parentNode.insertBefore(
+          this.newNav,
+          this.originalNav.nextSibling
+        ), console.log("✅ Navigation injected next to original meganav");
+      } else {
+        const e = document.querySelector("meganav");
+        if (e && e.parentNode) {
+          if (e.parentNode.querySelector("crs-nav, .crs-navigation-system")) {
+            console.log("⚠️ CRS navigation already exists next to meganav (fallback), skipping injection");
+            return;
+          }
+          e.parentNode.insertBefore(this.newNav, e.nextSibling), console.log("✅ Navigation injected next to found meganav (fallback)");
+        } else
+          document.body.appendChild(this.newNav), console.log("⚠️ Navigation injected to body (last resort)");
+      }
     }
     findHeaderElement() {
       const e = [
@@ -4636,7 +4654,7 @@
       return null;
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new L(
+      this.newNav && (this.navigationPersistence = new C(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
@@ -4670,10 +4688,25 @@
       this.navigationPersistence && this.navigationPersistence.logNavigationState();
     }
     /**
+     * Forces a refresh of the navigation (useful for debugging)
+     */
+    async forceRefresh() {
+      if (this.isRecreating) {
+        console.log("⏳ Navigation recreation already in progress, skipping force refresh...");
+        return;
+      }
+      console.log("🔄 Forcing navigation refresh..."), this.isRecreating = !0;
+      try {
+        this.cleanupNavigation(), await this.delay(100), await this.createAndInjectNavigation(), this.startNavigationMonitoring(), console.log("✅ Navigation refresh completed");
+      } finally {
+        this.isRecreating = !1;
+      }
+    }
+    /**
      * Starts monitoring for window resize events
      */
     startResizeMonitoring() {
-      this.resizeHandler && window.removeEventListener("resize", this.resizeHandler), this.resizeHandler = this.handleResize.bind(this), window.addEventListener("resize", this.resizeHandler);
+      this.resizeHandler || (this.resizeHandler = this.handleResize.bind(this), window.addEventListener("resize", this.resizeHandler), console.log("📏 Resize monitoring started"));
     }
     /**
      * Handles window resize events with debouncing
@@ -4681,20 +4714,40 @@
     handleResize() {
       this.resizeTimeout && clearTimeout(this.resizeTimeout), this.resizeTimeout = window.setTimeout(() => {
         this.checkBreakpointChange();
-      }, 150);
+      }, 100);
     }
     /**
      * Checks if we've crossed the breakpoint and recreates navigation if needed
      */
     async checkBreakpointChange() {
-      const t = window.innerWidth >= this.BREAKPOINT ? "desktop" : "mobile";
-      this.currentBreakpoint !== null && this.currentBreakpoint !== t && (this.cleanupNavigation(), await this.createAndInjectNavigation(), this.startNavigationMonitoring()), this.currentBreakpoint = t;
+      if (this.isRecreating) {
+        console.log("⏳ Navigation recreation already in progress, skipping...");
+        return;
+      }
+      const e = window.innerWidth, t = e >= this.BREAKPOINT ? "desktop" : "mobile";
+      if (console.log(`🔄 Resize check: ${e}px, current: ${this.currentBreakpoint}, new: ${t}`), this.currentBreakpoint !== null && this.currentBreakpoint !== t) {
+        console.log(`📱💻 Switching from ${this.currentBreakpoint} to ${t}`), this.isRecreating = !0;
+        try {
+          this.cleanupNavigation(), await this.delay(50), await this.createAndInjectNavigation(), this.startNavigationMonitoring(), console.log(`✅ Successfully switched to ${t} navigation`);
+        } catch (n) {
+          console.error(`❌ Error switching to ${t} navigation:`, n);
+        } finally {
+          this.isRecreating = !1;
+        }
+      }
+      this.currentBreakpoint = t;
     }
     /**
      * Cleans up existing navigation before recreation
      */
     cleanupNavigation() {
-      this.navigationOrchestrator.destroy(), this.newNav && (this.newNav.remove(), this.newNav = null), this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeHandler && (window.removeEventListener("resize", this.resizeHandler), this.resizeHandler = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null);
+      console.log("🧹 Cleaning up existing navigation..."), this.navigationOrchestrator && this.navigationOrchestrator.destroy(), document.querySelectorAll("crs-nav, .crs-navigation-system").forEach((t) => {
+        try {
+          t.remove(), console.log("🗑️ Removed existing navigation element");
+        } catch (n) {
+          console.warn("Warning: Could not remove navigation element:", n);
+        }
+      }), this.newNav = null, this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null), console.log("✅ Navigation cleanup completed");
     }
   }
   const I = `meganav {
@@ -5207,14 +5260,7 @@ crs-nav {
   line-height: 28px;
 } */
 
-.crs-featured-item .crs-featured-subtitle {
-  font-family: baskerville-urw, sans-serif;
-  font-size: 24px;
-  color: #2e2e2e;
-  margin: 0;
-  font-weight: 500;
-  line-height: 32px;
-}
+
 
 /* Stacked Sections Styles */
 .crs-stacked-sections {
@@ -6109,7 +6155,7 @@ ul[data-crs-nav-level='third-level'] {
   x({ name: "Navigation Menu Redesign & Interaction", dev: "OS" });
   class $ {
     constructor() {
-      this.navigationVariant = new C(), this.init();
+      this.navigationVariant = new L(), this.init();
     }
     init() {
       this.addStyles();
