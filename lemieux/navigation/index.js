@@ -1055,8 +1055,8 @@
                   title: "Ready to Compete",
                   link: "/clothing/women/competition-clothing",
                   featuredImage: "https://www.lemieux.com/static/cms/media/GROUP_lifestyle_showjacket_2g.jpg",
-                  featuredTitle: "Ready to Compete",
-                  featuredSubtitle: "Competition Collection",
+                  featuredTitle: "Competition Collection",
+                  featuredSubtitle: "Ready to Compete",
                   template: "featured"
                 }
               ]
@@ -1111,16 +1111,16 @@
                   title: "New Arrivals",
                   link: "/clothing/footwear/trainers",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04711_lifestyle_fieldridingboot_black_04g.jpg",
-                  featuredTitle: "New Arrivals",
-                  featuredSubtitle: "Riding Boots",
+                  featuredTitle: "Riding Boots",
+                  featuredSubtitle: "New Arrivals",
                   template: "featured"
                 },
                 {
                   title: "Bestselling Footwear",
                   link: "/clothing/footwear/trainers",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06509_lifestyle_traxlitetrainer_pecan_05%20(2)-2.jpg",
-                  featuredTitle: "Bestselling Footwear",
-                  featuredSubtitle: "Trax Lite Trainers",
+                  featuredTitle: "Trax Lite Trainers",
+                  featuredSubtitle: "Bestselling Footwear",
                   template: "featured"
                 }
               ]
@@ -1188,16 +1188,16 @@
                   title: "Best Sellers",
                   link: "/clothing/accessories/clothing-accessories/hat-silks",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06994_lifestyle_vogueheadcollarandleadrope_cranberry_8-3.jpg",
-                  featuredTitle: "Best Sellers",
-                  featuredSubtitle: "Hat Silks",
+                  featuredTitle: "Hat Silks ",
+                  featuredSubtitle: "Best Sellers",
                   template: "featured"
                 },
                 {
                   title: "Organised Travel",
                   link: "/clothing/accessories/accessories/rider-luggage?439=luxe",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04979_lifestyle_luxehatbox_black_05-2.webp",
-                  featuredTitle: "Organised Travel",
-                  featuredSubtitle: "Luggage",
+                  featuredTitle: "Luggage",
+                  featuredSubtitle: "Organised Travel ",
                   template: "featured"
                 }
               ]
@@ -1361,8 +1361,8 @@
               link: "/new-in/aw25/children",
               template: "featured",
               featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
-              featuredTitle: "New Arrival",
-              featuredSubtitle: "AW25 Collection"
+              featuredTitle: "AW25 Collection",
+              featuredSubtitle: "New Arrival"
             }
           ]
         },
@@ -1506,16 +1506,16 @@
                   title: "3-10 Years",
                   link: "/clothing/children/mini-collection",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07289_lifestyle_minigeorgegilet_rosemary_02h.jpg",
-                  featuredTitle: "3-10 Years",
-                  featuredSubtitle: "Mini Collection",
+                  featuredTitle: "Mini Collection",
+                  featuredSubtitle: "3-10 Years",
                   template: "featured"
                 },
                 {
                   title: "7-14 Years",
                   link: "/clothing/children/young-rider-collection",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07216_lifestyle_young_rider_tammy_teddy_fleece_navy_01f.jpg",
-                  featuredTitle: "7-14 Years",
-                  featuredSubtitle: "Young Rider Collection",
+                  featuredTitle: "Young Rider Collection ",
+                  featuredSubtitle: "7-14 Years",
                   template: "featured"
                 }
               ]
@@ -1581,16 +1581,16 @@
                   title: "New In",
                   link: "/clothing/children/accessories",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04547_studiolifestyle_juniorfieldridingboot_black_10o.jpg",
-                  featuredTitle: "New In",
-                  featuredSubtitle: "Junior Field Riding Boots",
+                  featuredTitle: "Junior Field Riding Boots",
+                  featuredSubtitle: "New In",
                   template: "featured"
                 },
                 {
                   title: "Comfort outside the saddle",
                   link: "/clothing/children/accessories/footwear?327=7875",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06514_lifestyle_youthtraxviva_stone_10d.jpg",
-                  featuredTitle: "Comfort outside the saddle",
-                  featuredSubtitle: "Youth Trainers",
+                  featuredTitle: "Youth Trainers",
+                  featuredSubtitle: "Comfort outside the saddle ",
                   template: "featured"
                 }
               ]
