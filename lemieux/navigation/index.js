@@ -2658,7 +2658,7 @@
       title: "Gifts",
       link: "/gifts",
       template: "gifts",
-      textColor: "#C9830A",
+      // textColor: '#C9830A',
       submenu: [
         {
           title: "Gift Ideas",
@@ -2723,7 +2723,7 @@
       title: "Outlet",
       link: "/lemieux-outlet",
       template: "outlet",
-      textColor: "#8e1538",
+      // textColor: '#8e1538',
       submenu: [
         {
           title: "Shop All",
@@ -3411,11 +3411,11 @@
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : (console.log("🎨 Rendering collections section for:", n), l = this.createCollectionsSectionHTML(
+          ) : l = this.createCollectionsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ));
+          );
           let o;
           return i.template === "triple-featured" ? o = this.createTripleFeaturedSectionHTML(i) : i.template === "dual-featured" ? o = this.createDualFeaturedSectionHTML(
             i,
@@ -3570,7 +3570,6 @@
     }
     createMultiColorGridSectionHTML(e, t, s) {
       var o, a;
-      console.log("colorItem", e);
       const n = ((o = e.colorSwatches) == null ? void 0 : o.map((r) => {
         const u = r.isNew ? '<span class="crs-new-badge">New</span>' : "";
         return (
@@ -5560,6 +5559,10 @@ crs-nav {
   text-decoration: underline;
 }
 
+.crs-featured-text > .crs-featured-action-link:first-child {
+  margin-top: 0;
+}
+
 .crs-featured-action-link:hover {
   color: #000000;
 }
@@ -5702,6 +5705,10 @@ crs-nav {
   padding-right: 56px;
 }
 
+.crs-featured-item:has(.crs-featured-image) {
+  max-width: 335px;
+}
+
 .crs-featured-image {
   width: 100%;
   max-width: 335px;
@@ -5778,6 +5785,16 @@ crs-nav {
   width: 100%;
   max-width: 230px;
   height: auto;
+}
+
+:is(
+    .crs-dual-featured-section,
+    .crs-triple-featured-section,
+    .crs-quad-featured-section,
+    [data-grandparent='Outlet']
+  )
+  .crs-featured-item:has(> .crs-featured-image) {
+  width: 230px;
 }
 
 :is(
@@ -5904,7 +5921,7 @@ crs-nav {
 
 /* Product Cards Section */
 .crs-product-cards-section {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -6871,4 +6888,3 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
 })();
-
