@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const H = (p) => new Promise((e) => {
+  const J = (p) => new Promise((e) => {
     const t = document.querySelector(p);
     t && e(t);
     const s = new MutationObserver(() => {
@@ -11,12 +11,34 @@
       childList: !0,
       subtree: !0
     });
-  }), R = ({ name: p, dev: e }) => {
+  }), O = ({ name: p, dev: e }) => {
     console.log(
       `%c EXP: ${p} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, j = [
+  }, c = {
+    Lilac: "rgb(194, 181, 204)",
+    Cranberry: "rgb(181, 79, 94)",
+    Rosemary: "rgb(110, 117, 110)",
+    Juniper: "rgb(61, 51, 74)",
+    Damson: "rgb(61, 51, 74)",
+    Navy: "rgb(54, 63, 136)",
+    Blossom: "rgb(200, 159, 165)",
+    Lagoon: "rgb(85, 143, 145)",
+    IceBlue: "rgb(84, 116, 143)",
+    HunterGreen: "rgb(30, 91, 18)",
+    White: "rgb(255, 255, 255)",
+    Mimosa: "rgb(224, 201, 146)",
+    Peony: "rgb(166, 110, 122)",
+    Aqua: "rgb(137, 172, 172)",
+    Wisteria: "rgb(175, 164, 206)",
+    Glacier: "rgb(130, 156, 165)",
+    Azure: "rgb(132, 233, 236)",
+    Peacock: "rgb(43, 136, 151)",
+    Sage: "rgb(105, 151, 135)",
+    Fern: "rgb(149, 152, 137)",
+    Alpine: "rgb(74, 65, 42)"
+  }, H = [
     {
       title: "Horse",
       link: "/horsewear",
@@ -58,37 +80,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c2b5cc",
+                  color: c.Lilac,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10146"
                 },
                 {
                   name: "Juniper",
-                  color: "#3d334a",
+                  color: c.Juniper,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10143"
                 },
                 {
                   name: "Rosemary",
-                  color: "#6e756e",
+                  color: c.Rosemary,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10153"
                 },
                 {
                   name: "Damson",
-                  color: "#4d3840",
+                  color: c.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10140"
                 },
                 {
                   name: "Cranberry",
-                  color: "#b54f5e",
+                  color: c.Cranberry,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=11250"
                 },
                 {
                   name: "Navy",
-                  color: "#2c2e3a",
+                  color: c.Navy,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=11251"
                 }
@@ -231,11 +253,11 @@
               ]
             },
             {
-              title: "AW Saddle Pads",
+              title: "AW25 Saddle Pads",
               link: "/new-in/aw25/horse-wear/saddle-pads",
               template: "featured",
               featuredImage: "https://www.lemieux.com/static/cms/media/IT07082_lifestyle_suedeccsquare_cranberry_6-2-1.jpg",
-              featuredTitle: "AW Saddle Pads",
+              featuredTitle: "AW25 Saddle Pads",
               featuredSubtitle: "New Colours"
             }
           ]
@@ -886,37 +908,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c2b5cc",
+                  color: c.Lilac,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10146"
                 },
                 {
                   name: "Juniper",
-                  color: "#3d334a",
+                  color: c.Juniper,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10143"
                 },
                 {
                   name: "Rosemary",
-                  color: "#6e756e",
+                  color: c.Rosemary,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10153"
                 },
                 {
                   name: "Damson",
-                  color: "#4d3840",
+                  color: c.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10140"
                 },
                 {
                   name: "Cranberry",
-                  color: "#b54f5e",
+                  color: c.Cranberry,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=11250"
                 },
                 {
                   name: "Navy",
-                  color: "#2c2e3a",
+                  color: c.Navy,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=11251"
                 }
@@ -1325,37 +1347,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c2b5cc",
+                  color: c.Lilac,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10146"
                 },
                 {
                   name: "Juniper",
-                  color: "#3d334a",
+                  color: c.Juniper,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10143"
                 },
                 {
                   name: "Rosemary",
-                  color: "#6e756e",
+                  color: c.Rosemary,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10153"
                 },
                 {
                   name: "Damson",
-                  color: "#4d3840",
+                  color: c.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10140"
                 },
                 {
                   name: "Cranberry",
-                  color: "#b54f5e",
+                  color: c.Cranberry,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=11250"
                 },
                 {
                   name: "Navy",
-                  color: "#2c2e3a",
+                  color: c.Navy,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=11251"
                 }
@@ -1722,19 +1744,19 @@
               colorSwatches: [
                 {
                   name: "Alpine",
-                  color: "#49412d",
+                  color: c.Alpine,
                   isNew: !0,
                   link: "/new-in/aw25/men?195=8348"
                 },
                 {
                   name: "Damson",
-                  color: "#4a3940",
+                  color: c.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/men?93=10140"
                 },
                 {
                   name: "Navy",
-                  color: "#2c2e39",
+                  color: c.Navy,
                   isNew: !0,
                   link: "/new-in/aw25/men?93=11251"
                 }
@@ -1926,6 +1948,21 @@
               template: "stacked-sections",
               submenu: [
                 {
+                  title: "Toy Pony Collection",
+                  link: "/toys/toy-pony-collection",
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "New In",
+                      link: "/toys/toy-pony-collection?sort=newest"
+                    },
+                    {
+                      title: "AW25 Collection",
+                      link: "/toys/toy-pony-collection?collection=aw25"
+                    }
+                  ]
+                },
+                {
                   title: "Shop by Product",
                   link: "/toys/toy-pony-collection",
                   template: "default",
@@ -1965,21 +2002,6 @@
                       template: "link"
                     }
                   ]
-                },
-                {
-                  title: "Toy Pony Collection",
-                  link: "/toys/toy-pony-collection",
-                  template: "default",
-                  submenu: [
-                    {
-                      title: "New In",
-                      link: "/toys/toy-pony-collection?sort=newest"
-                    },
-                    {
-                      title: "AW25 Collection",
-                      link: "/toys/toy-pony-collection?collection=aw25"
-                    }
-                  ]
                 }
               ]
             },
@@ -1990,43 +2012,43 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c2b5cc",
+                  color: c.Lilac,
                   isNew: !0,
                   link: "/toys/toy-pony-sets/lilac"
                 },
                 {
                   name: "Cranberry",
-                  color: "#b54f5e",
+                  color: c.Cranberry,
                   isNew: !0,
                   link: "/toys/toy-pony-sets/cranberry"
                 },
                 {
                   name: "Blossom",
-                  color: "#c89fa5",
+                  color: c.Blossom,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/blossom"
                 },
                 {
                   name: "Lagoon",
-                  color: "#558f91",
+                  color: c.Lagoon,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/lagoon"
                 },
                 {
                   name: "Ice Blue",
-                  color: "#54748f",
+                  color: c.IceBlue,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/ice-blue"
                 },
                 {
                   name: "Hunter Green",
-                  color: "#1e5b12",
+                  color: c.HunterGreen,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/hunter-green"
                 },
                 {
                   name: "White",
-                  color: "#ffffff",
+                  color: c.White,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/white"
                 }
@@ -2130,6 +2152,21 @@
               template: "stacked-sections",
               submenu: [
                 {
+                  title: "Hobby Horse Collection",
+                  link: "/toys/hobby-horse-collection",
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "New In",
+                      link: "/toys/hobby-horse-collection?sort=newest"
+                    },
+                    {
+                      title: "AW25 Collection",
+                      link: "/toys/hobby-horse-collection?collection=aw25"
+                    }
+                  ]
+                },
+                {
                   title: "Shop by Product",
                   link: "/toys/hobby-horse-collection",
                   template: "default",
@@ -2168,49 +2205,34 @@
                       template: "link"
                     }
                   ]
-                },
-                {
-                  title: "Hobby Horse Collection",
-                  link: "/toys/hobby-horse-collection",
-                  template: "default",
-                  submenu: [
-                    {
-                      title: "New In",
-                      link: "/toys/hobby-horse-collection?sort=newest"
-                    },
-                    {
-                      title: "AW25 Collection",
-                      link: "/toys/hobby-horse-collection?collection=aw25"
-                    }
-                  ]
                 }
               ]
             },
             {
-              title: "Shop by Color",
+              title: "Shop by Colour",
               link: "/toys/hobby-horse-collection",
               template: "color-grid",
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c0b5ca",
+                  color: c.Lilac,
                   isNew: !0,
                   link: "/toys/hobby-horse-collection?color=lilac"
                 },
                 {
                   name: "Cranberry",
-                  color: "#a8555f",
+                  color: c.Cranberry,
                   isNew: !0,
                   link: "/toys/hobby-horse-collection?color=cranberry"
                 },
                 {
                   name: "Blossom",
-                  color: "#c89fa5",
+                  color: c.Blossom,
                   link: "/toys/hobby-horse-collection?color=blossom"
                 },
                 {
                   name: "Lagoon",
-                  color: "#638e90",
+                  color: c.Lagoon,
                   link: "/toys/hobby-horse-collection?color=lagoon"
                 }
               ],
@@ -2364,37 +2386,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#C2B5CC",
+                  color: c.Lilac,
                   isNew: !0,
                   link: "/outfit-builder-outfits/lilac"
                 },
                 {
                   name: "Juniper",
-                  color: "#3d334a",
+                  color: c.Juniper,
                   isNew: !0,
                   link: "/outfit-builder-outfits/juniper"
                 },
                 {
                   name: "Rosemary",
-                  color: "#6e756e",
+                  color: c.Rosemary,
                   isNew: !0,
                   link: "/outfit-builder-outfits/rosemary"
                 },
                 {
                   name: "Damson",
-                  color: "#4d3840",
+                  color: c.Damson,
                   isNew: !0,
                   link: "/outfit-builder-outfits/damson"
                 },
                 {
                   name: "Cranberry",
-                  color: "#b54f5e",
+                  color: c.Cranberry,
                   isNew: !0,
                   link: "/outfit-builder-outfits/cranberry"
                 },
                 {
                   name: "Navy",
-                  color: "#2c2e3a",
+                  color: c.Navy,
                   isNew: !0,
                   link: "/outfit-builder-outfits/navy-cranberry"
                 }
@@ -2445,7 +2467,10 @@
               featuredImage: "https://www.lemieux.com/static/cms/media/Toy-Pony-outfit%20builder.png",
               featuredTitle: "Toy Pony Builder",
               featuredSubtitle: "",
-              actionLink: { text: "Build your toy outfit", url: "/pony-kit-builder" }
+              actionLink: {
+                text: "Build your toy outfit",
+                url: "/pony-kit-builder"
+              }
             }
           ]
         },
@@ -2461,121 +2486,121 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c2b5cc",
+                  color: c.Lilac,
                   isNew: !0,
                   link: "/collections/colour/lilac"
                 },
                 {
                   name: "Cranberry",
-                  color: "#b54f5e",
+                  color: c.Cranberry,
                   isNew: !0,
                   link: "/collections/colour/cranberry"
                 },
                 {
-                  name: "Blossom",
-                  color: "#c89fa5",
-                  isNew: !1,
-                  link: "/collections/colour/blossom"
-                },
-                {
-                  name: "Lagoon",
-                  color: "#638e90",
-                  isNew: !1,
-                  link: "/collections/colour/lagoon"
-                },
-                {
-                  name: "Ice Blue",
-                  color: "#5b738c",
-                  isNew: !1,
-                  link: "/collections/colour/ice-blue"
-                },
-                {
-                  name: "Hunter Green",
-                  color: "#305a1e",
-                  isNew: !1,
-                  link: "/collections/colour/hunter-green"
-                },
-                {
-                  name: "White",
-                  color: "#f0f0f0",
-                  isNew: !1,
-                  link: "/collections/colour/white"
-                },
-                {
-                  name: "Mimosa",
-                  color: "#f4d03f",
-                  isNew: !1,
-                  link: "/collections/colour/mimosa"
-                },
-                {
-                  name: "Peony",
-                  color: "#d7bde2",
-                  isNew: !1,
-                  link: "/collections/colour/peony"
-                },
-                {
-                  name: "Aqua",
-                  color: "#7fb3d3",
-                  isNew: !1,
-                  link: "/collections/colour/aqua"
-                },
-                {
                   name: "Rosemary",
-                  color: "#6e756e",
+                  color: c.Rosemary,
                   isNew: !0,
                   link: "/collections/colour/rosemary"
                 },
                 {
                   name: "Juniper",
-                  color: "#3d334a",
+                  color: c.Juniper,
                   isNew: !0,
                   link: "/collections/colour/juniper"
                 },
                 {
                   name: "Damson",
-                  color: "#4d3840",
+                  color: c.Damson,
                   isNew: !0,
                   link: "/collections/colour/damson"
                 },
                 {
                   name: "Navy",
-                  color: "#2c2e3a",
+                  color: c.Navy,
                   isNew: !0,
                   link: "/collections/colour/navy-cranberry"
                 },
                 {
+                  name: "Blossom",
+                  color: c.Blossom,
+                  isNew: !1,
+                  link: "/collections/colour/blossom"
+                },
+                {
+                  name: "Lagoon",
+                  color: c.Lagoon,
+                  isNew: !1,
+                  link: "/collections/colour/lagoon"
+                },
+                {
+                  name: "Ice Blue",
+                  color: c.IceBlue,
+                  isNew: !1,
+                  link: "/collections/colour/ice-blue"
+                },
+                {
+                  name: "Hunter Green",
+                  color: c.HunterGreen,
+                  isNew: !1,
+                  link: "/collections/colour/hunter-green"
+                },
+                {
+                  name: "White",
+                  color: c.White,
+                  isNew: !1,
+                  link: "/collections/colour/white"
+                },
+                {
+                  name: "Mimosa",
+                  color: c.Mimosa,
+                  isNew: !1,
+                  link: "/collections/colour/mimosa"
+                },
+                {
+                  name: "Peony",
+                  color: c.Peony,
+                  isNew: !1,
+                  link: "/collections/colour/peony"
+                },
+                {
+                  name: "Aqua",
+                  color: c.Aqua,
+                  isNew: !1,
+                  link: "/collections/colour/aqua"
+                },
+                {
                   name: "Wisteria",
-                  color: "#bb8fce",
+                  color: c.Wisteria,
                   isNew: !1,
                   link: "/collections/colour/wisteria"
                 },
                 {
                   name: "Glacier",
-                  color: "#aed6f1",
+                  color: c.Glacier,
                   isNew: !1,
                   link: "/collections/colour/glacier"
                 },
                 {
                   name: "Azure",
-                  color: "#85c1e9",
+                  color: c.Azure,
                   isNew: !1,
                   link: "/collections/colour/azure"
                 },
                 {
                   name: "Peacock",
-                  color: "#17a2b8",
+                  color: c.Peacock,
                   isNew: !1,
                   link: "/collections/colour/peacock"
                 },
                 {
                   name: "Sage",
-                  color: "#a9dfbf",
+                  color: c.Sage,
                   isNew: !1,
                   link: "/collections/colour/sage"
                 },
                 {
                   name: "Fern",
-                  color: "#58d68d",
+                  color: c.Fern,
                   isNew: !1,
                   link: "/collections/colour/fern"
                 }
@@ -2694,19 +2719,19 @@
           ]
         },
         {
-          title: "Not Sure What to Get?",
+          title: "",
           link: "/e-gift-card-173",
           template: "featured",
           featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/LM-Web%20Gift%20Vouchers%201x1.jpg",
           featuredTitle: "Gift Vouchers",
-          featuredSubtitle: "Create Your Unique",
+          featuredSubtitle: "Not Sure What to Get?",
           actionLink: {
             text: "Customise Now",
             url: "/e-gift-card-173"
           }
         },
         {
-          title: "Children Favorite",
+          title: "",
           link: "/gifts/gift-sets",
           template: "featured",
           featuredImage: "https://www.lemieux.com/static/media/catalog/product/g/r/group_lifestyle_toydoll_chloe_maya_olivia_3.jpg",
@@ -2736,7 +2761,7 @@
           template: "default",
           submenu: [
             {
-              title: "",
+              title: "Horse",
               link: "/lemieux-outlet/horse-wear",
               template: "default",
               submenu: [
@@ -2773,26 +2798,35 @@
               ]
             },
             {
-              title: "Featured Horse Outlet",
-              link: "/lemieux-outlet/horse",
-              template: "dual-featured",
-              submenu: [
-                {
-                  title: "All Horse Outlet",
-                  link: "/lemieux-outlet?322=6684",
-                  template: "featured",
-                  featuredImage: "https://www.lemieux.com/tco-images/unsafe/414x552/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/LM-Outlet-25-Long-Logo.jpg",
-                  featuredTitle: "All Horse Outlet"
-                },
-                {
-                  title: "Saddle Pads",
-                  link: "/horse-saddle-pads",
-                  template: "featured",
-                  featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT01183_lifestyle_loirememoryccsquare_mulberry_3.jpg",
-                  featuredTitle: "Saddle Pads"
-                }
-              ]
+              title: "All Horse Outlet",
+              link: "/lemieux-outlet?322=6684",
+              template: "featured",
+              featuredImage: "https://www.lemieux.com/tco-images/unsafe/414x552/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/LM-Outlet-25-Long-Logo.jpg",
+              featuredTitle: "All Horse Outlet"
             }
+            // {
+            //   title: 'Featured Horse Outlet',
+            //   link: '/lemieux-outlet/horse',
+            //   template: 'featured',
+            //   submenu: [
+            //     {
+            //       title: 'All Horse Outlet',
+            //       link: '/lemieux-outlet?322=6684',
+            //       template: 'featured',
+            //       featuredImage:
+            //         'https://www.lemieux.com/tco-images/unsafe/414x552/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/LM-Outlet-25-Long-Logo.jpg',
+            //       featuredTitle: 'All Horse Outlet',
+            //     },
+            //     {
+            //       title: 'Saddle Pads',
+            //       link: '/horse-saddle-pads',
+            //       template: 'featured',
+            //       featuredImage:
+            //         'https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT01183_lifestyle_loirememoryccsquare_mulberry_3.jpg',
+            //       featuredTitle: 'Saddle Pads',
+            //     },
+            //   ],
+            // },
           ]
         },
         {
@@ -2801,7 +2835,7 @@
           template: "default",
           submenu: [
             {
-              title: "",
+              title: "Women",
               link: "/lemieux-outlet/women",
               template: "default",
               submenu: [
@@ -2844,7 +2878,7 @@
           template: "default",
           submenu: [
             {
-              title: "",
+              title: "Children",
               link: "/lemieux-outlet/children",
               template: "default",
               submenu: [
@@ -2860,7 +2894,10 @@
                   title: "Breeches & Pull Ons",
                   link: "/new-in/aw25/children?329=6603"
                 },
-                { title: "Footwear", link: "/clothing/children/accessories/footwear" },
+                {
+                  title: "Footwear",
+                  link: "/clothing/children/accessories/footwear"
+                },
                 {
                   title: "Accessories",
                   link: "/clothing/accessories/clothing-accessories"
@@ -2887,7 +2924,7 @@
           template: "default",
           submenu: [
             {
-              title: "",
+              title: "Men",
               link: "/lemieux-outlet/men",
               template: "default",
               submenu: [
@@ -2922,7 +2959,7 @@
           template: "default",
           submenu: [
             {
-              title: "",
+              title: "Toys",
               link: "/lemieux-outlet/toys",
               template: "default",
               submenu: [
@@ -2949,7 +2986,7 @@
         }
       ]
     }
-  ], O = (p, e, t, s = "", l = "", i = "") => {
+  ], Z = (p, e, t, s = "", l = "", i = "") => {
     window.dataLayer = window.dataLayer || [];
     const n = {
       event: "event-to-ga4",
@@ -2962,8 +2999,8 @@
     };
     window.dataLayer.push(n), console.table(n);
   };
-  function k(p, e, t, s, l) {
-    O(
+  function y(p, e, t, s, l) {
+    Z(
       "exp_nav_click",
       p,
       e,
@@ -2972,7 +3009,7 @@
       l || ""
     );
   }
-  class Z {
+  class W {
     constructor(e = "B") {
       this.hideTimeout = null, this.currentIndex = null, this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null, this.variant = e;
     }
@@ -2981,7 +3018,7 @@
         /* html */
         `
       <ul class="crs-nav-list">
-        ${j.map((l, i) => this.createNavigationItemHTML(l, i)).join("")}
+        ${H.map((l, i) => this.createNavigationItemHTML(l, i)).join("")}
       </ul>
       <div class="crs-mega-menu" style="display: none;"></div>
     `
@@ -3050,27 +3087,27 @@
         const i = l.getAttribute("data-analytics");
         if (i) {
           if (l.classList.contains("crs-nav-link"))
-            k(i, "Link", i);
+            y(i, "Link", i);
           else if (l.classList.contains("crs-sidebar-link")) {
             const a = l.getAttribute("data-parent");
-            a && k(
+            a && y(
               i,
               "Link",
               a,
               i
             );
           } else if (l.classList.contains("crs-featured-section-link")) {
-            const a = l.getAttribute("data-type"), o = l.getAttribute("data-parent"), c = l.getAttribute("data-grandparent");
-            o && k(
+            const a = l.getAttribute("data-type"), o = l.getAttribute("data-parent"), u = l.getAttribute("data-grandparent");
+            o && y(
               i,
               a,
-              c || o,
+              u || o,
               o,
               "Image section"
             );
           } else if (l.classList.contains("crs-color-link")) {
             const a = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            a && k(
+            a && y(
               i,
               "Link",
               a,
@@ -3080,18 +3117,18 @@
           } else if (l.classList.contains("crs-collection-link") || l.classList.contains("crs-view-all-link")) {
             const a = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
             if (a) {
-              const c = ((r = (n = l.closest(".crs-collections-section")) == null ? void 0 : n.querySelector(".crs-section-title")) == null ? void 0 : r.textContent) || "";
-              k(
+              const u = ((r = (n = l.closest(".crs-collections-section")) == null ? void 0 : n.querySelector(".crs-section-title")) == null ? void 0 : r.textContent) || "";
+              y(
                 i,
                 "Link",
                 o || a,
                 a,
-                c
+                u
               );
             }
           } else if (l.classList.contains("crs-featured-action-link")) {
             const a = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            a && k(
+            a && y(
               i,
               "CTA",
               o || a,
@@ -3100,7 +3137,7 @@
             );
           } else if (l.classList.contains("crs-gifts-action-link")) {
             const a = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            a && k(
+            a && y(
               i,
               "CTA",
               o || a,
@@ -3109,7 +3146,7 @@
             );
           } else if (l.classList.contains("crs-featured-item-link")) {
             const a = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            a && k(
+            a && y(
               i,
               "Image",
               o || a,
@@ -3118,7 +3155,7 @@
             );
           } else if (l.classList.contains("crs-product-link")) {
             const a = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
-            a && k(
+            a && y(
               i,
               "Link",
               o || a,
@@ -3132,7 +3169,7 @@
     showMegaMenu(e) {
       const t = document.querySelector(".crs-mega-menu");
       if (!t) return;
-      const s = j[e];
+      const s = H[e];
       if (!s.submenu) return;
       document.querySelectorAll(
         ".crs-nav-link[data-has-submenu]"
@@ -3140,7 +3177,7 @@
       const i = document.querySelector(
         `.crs-nav-link[data-index="${e}"]`
       );
-      i && i.classList.add("crs-nav-link-active"), t.innerHTML = "", t.appendChild(this.createMegaMenuContent(s)), t.style.display = "block", setTimeout(() => {
+      i && i.classList.add("crs-nav-link-active"), t.innerHTML = "", t.appendChild(this.createMegaMenuContent(s)), t.style.display = "block", t.dataset.title = s.title, setTimeout(() => {
         t.classList.add("crs-visible");
       }, 10);
     }
@@ -3156,15 +3193,15 @@
     createMegaMenuContent(e) {
       var a;
       if (e.template === "gifts") {
-        const c = (
+        const u = (
           /* html */
           `
         <div class="crs-mega-menu-content crs-gifts-layout">
           ${this.createMainContentHTML(e)}
         </div>
       `
-        ), m = document.createElement("div");
-        return m.innerHTML = c.trim(), m.firstElementChild;
+        ), f = document.createElement("div");
+        return f.innerHTML = u.trim(), f.firstElementChild;
       }
       const t = this.createSidebarHTML(e), s = (a = e.submenu) == null ? void 0 : a.find(
         (o) => o.submenu && o.submenu.length > 0
@@ -3190,7 +3227,7 @@
         ${e.submenu.map((s, l) => {
           var o;
           const i = s.isNew ? '<span class="crs-new-badge">New</span>' : "", n = ((o = e.submenu) == null ? void 0 : o.findIndex(
-            (c) => c.submenu && c.submenu.length > 0
+            (u) => u.submenu && u.submenu.length > 0
           )) ?? -1, r = l === n ? "crs-active" : "", a = s.submenu && s.submenu.length > 0 ? "data-has-submenu" : "";
           return (
             /* html */
@@ -3215,17 +3252,17 @@
       );
       !t.submenu || !l || s.forEach((i) => {
         i.addEventListener("mouseenter", () => {
-          var h;
+          var g;
           const n = parseInt(i.getAttribute("data-index") || "0"), r = t.submenu[n], a = r.submenu && r.submenu.length > 0;
-          if (s.forEach((w) => w.classList.remove("crs-active")), !a) return;
+          if (s.forEach((k) => k.classList.remove("crs-active")), !a) return;
           i.classList.add("crs-active");
           const o = this.createMainContentHTML(
             r,
             t
-          ), c = document.createElement("div");
-          c.innerHTML = o;
-          const m = ((h = c.firstElementChild) == null ? void 0 : h.innerHTML) || "";
-          l.innerHTML = m;
+          ), u = document.createElement("div");
+          u.innerHTML = o;
+          const f = ((g = u.firstElementChild) == null ? void 0 : g.innerHTML) || "";
+          l.innerHTML = f;
         });
       });
     }
@@ -3250,50 +3287,50 @@
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let c;
-          i.template === "color-grid" ? c = this.createColorsSectionHTML(
+          let u;
+          i.template === "color-grid" ? u = this.createColorsSectionHTML(
             i,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : c = this.createCollectionsSectionHTML(
+          ) : u = this.createCollectionsSectionHTML(
             i,
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let m;
-          n.template === "color-grid" ? m = this.createColorsSectionHTML(
+          let f;
+          n.template === "color-grid" ? f = this.createColorsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : m = this.createCollectionsSectionHTML(
+          ) : f = this.createCollectionsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let h;
-          r.template === "featured" || r.template === "outfit-builder" ? h = this.createFeaturedSectionHTML(
+          let g;
+          r.template === "featured" || r.template === "outfit-builder" ? g = this.createFeaturedSectionHTML(
             r,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : r.template === "dual-featured" ? h = this.createDualFeaturedSectionHTML(
+          ) : r.template === "dual-featured" ? g = this.createDualFeaturedSectionHTML(
             r,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : r.template === "triple-featured" ? h = this.createTripleFeaturedSectionHTML(r) : r.template === "product-cards" ? h = this.createProductCardsSectionHTML(r) : h = this.createCollectionsSectionHTML(
+          ) : r.template === "triple-featured" ? g = this.createTripleFeaturedSectionHTML(r) : r.template === "product-cards" ? g = this.createProductCardsSectionHTML(r) : g = this.createCollectionsSectionHTML(
             r,
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let w;
-          return a.template === "featured" || a.template === "outfit-builder" ? w = this.createFeaturedSectionHTML(
+          let k;
+          return a.template === "featured" || a.template === "outfit-builder" ? k = this.createFeaturedSectionHTML(
             a,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : a.template === "dual-featured" ? w = this.createDualFeaturedSectionHTML(
+          ) : a.template === "dual-featured" ? k = this.createDualFeaturedSectionHTML(
             a,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : a.template === "triple-featured" ? w = this.createTripleFeaturedSectionHTML(a) : a.template === "product-cards" ? w = this.createProductCardsSectionHTML(a) : w = this.createCollectionsSectionHTML(
+          ) : a.template === "triple-featured" ? k = this.createTripleFeaturedSectionHTML(a) : a.template === "product-cards" ? k = this.createProductCardsSectionHTML(a) : k = this.createCollectionsSectionHTML(
             a,
             e.title,
             (t == null ? void 0 : t.title) || e.title
@@ -3301,10 +3338,10 @@
           `
           <div class="crs-mega-menu-main crs-five-column">
             ${o}
-            ${c}
-            ${m}
-            ${h}
-            ${w}
+            ${u}
+            ${f}
+            ${g}
+            ${k}
           </div>
         `;
         } else if (e.submenu.length >= 4) {
@@ -3329,22 +3366,22 @@
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let c;
-          n.template === "color-grid" ? c = this.createColorsSectionHTML(
+          let u;
+          n.template === "color-grid" ? u = this.createColorsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : c = this.createCollectionsSectionHTML(
+          ) : u = this.createCollectionsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let m;
-          return r.template === "dual-featured" ? m = this.createDualFeaturedSectionHTML(
+          let f;
+          return r.template === "dual-featured" ? f = this.createDualFeaturedSectionHTML(
             r,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : r.template === "triple-featured" ? m = this.createTripleFeaturedSectionHTML(r) : r.template === "product-cards" ? m = this.createProductCardsSectionHTML(r) : m = this.createCollectionsSectionHTML(
+          ) : r.template === "triple-featured" ? f = this.createTripleFeaturedSectionHTML(r) : r.template === "product-cards" ? f = this.createProductCardsSectionHTML(r) : f = this.createCollectionsSectionHTML(
             r,
             e.title,
             (t == null ? void 0 : t.title) || e.title
@@ -3353,8 +3390,8 @@
           <div class="crs-mega-menu-main crs-four-column">
             ${a}
             ${o}
-            ${c}
-            ${m}
+            ${u}
+            ${f}
           </div>
         `;
         } else if (e.submenu.length >= 3) {
@@ -3531,14 +3568,14 @@
     createColorsSectionHTML(e, t, s) {
       var r, a;
       const l = ((r = e.colorSwatches) == null ? void 0 : r.map((o) => {
-        const c = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
+        const u = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
         return (
           /* html */
           `
         <div class="crs-color-item">
           <a href="${o.link || "#"}" class="crs-color-link" data-analytics="${o.name}" data-type="Link" data-parent="${t || ""}" data-grandparent="${s || ""}">
           <div class="crs-color-swatch" style="background-color: ${o.color}">
-            ${c}
+            ${u}
           </div>
           <span class="crs-color-name">${o.name}</span>
           </a>
@@ -3583,14 +3620,14 @@
     createMultiColorGridSectionHTML(e, t, s) {
       var r, a;
       const l = ((r = e.colorSwatches) == null ? void 0 : r.map((o) => {
-        const c = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
+        const u = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
         return (
           /* html */
           `
         <div class="crs-color-item">
           <a href="${o.link || "#"}" class="crs-color-link" data-analytics="${o.name}" data-type="Link" data-parent="${t || ""}" data-grandparent="${s || ""}">
           <div class="crs-color-swatch" style="background-color: ${o.color}">
-            ${c}
+            ${u}
           </div>
           <span class="crs-color-name">${o.name}</span>
           </a>
@@ -3633,14 +3670,14 @@
     }
     createFeaturedSectionHTML(e, t, s) {
       const l = e.link || "#", i = e.featuredImage ? `<a href="${l}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle || e.title}" data-type="Image" data-parent="${t || e.title}" data-grandparent="${s || ""}"><img src="${e.featuredImage}" alt="${e.featuredTitle || ""}" class="crs-featured-image"></a>` : "", n = e.featuredTitle ? `<a href="${l}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${s || ""}"><h4 class="crs-featured-title">${e.featuredTitle}</h4></a>` : "", r = e.featuredSubtitle ? `<a href="${l}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${s || ""}"><p class="crs-featured-subtitle test">${e.featuredSubtitle}</p></a>` : "", a = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-featured-action-link" data-analytics="${e.actionLink.text}" data-parent="${t || e.title}" data-grandparent="${s || ""}">${e.actionLink.text}</a>` : "", o = n || r ? `<div class="crs-featured-main-title">${e.title}</div>` : "";
-      let c;
-      return e.template === "outfit-builder" ? c = n || r || a ? `<div class="crs-featured-text crs-outfit-builder-text">${r}${n}${a}</div>` : "" : c = n || r || a ? `<div class="crs-featured-text">${a}${r}${n}</div>` : "", e.template === "outfit-builder" ? (
+      let u;
+      return e.template === "outfit-builder" ? u = n || r || a ? `<div class="crs-featured-text crs-outfit-builder-text">${r}${n}${a}</div>` : "" : u = n || r || a ? `<div class="crs-featured-text">${a}${r}${n}</div>` : "", e.template === "outfit-builder" ? (
         /* html */
         `
-      <div class="crs-featured-section">
+      <div class="crs-featured-section crs-outfit-builder-section">
           ${o}
         ${i}
-        ${c}
+        ${u}
       </div>
     `
       ) : (
@@ -3648,7 +3685,7 @@
         `
       <div class="crs-featured-section">
         ${i}
-        ${c}
+        ${u}
       </div>
     `
       );
@@ -3656,7 +3693,7 @@
     createDualFeaturedSectionHTML(e, t, s) {
       if (!e.submenu || e.submenu.length < 2)
         return '<div class="crs-featured-section"></div>';
-      const l = e.submenu[0], i = e.submenu[1], n = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", a = l.featuredSubtitle ? `<p class="crs-featured-subtitle test">${l.featuredSubtitle}</p>` : "", o = r || a ? `<div class="crs-featured-text">${a}${r}</div>` : "", c = i.featuredImage ? `<img src="${i.featuredImage}" alt="${i.featuredTitle || ""}" class="crs-featured-image">` : "", m = i.featuredTitle ? `<h4 class="crs-featured-title">${i.featuredTitle}</h4>` : "", h = i.featuredSubtitle ? `<p class="crs-featured-subtitle test">${i.featuredSubtitle}</p>` : "", w = m || h ? `<div class="crs-featured-text">${h}${m}</div>` : "", $ = l.link ? `<a href="${l.link}" class="crs-featured-item-link" data-analytics="${l.featuredTitle || l.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
+      const l = e.submenu[0], i = e.submenu[1], n = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", a = l.featuredSubtitle ? `<p class="crs-featured-subtitle test">${l.featuredSubtitle}</p>` : "", o = r || a ? `<div class="crs-featured-text">${a}${r}</div>` : "", u = i.featuredImage ? `<img src="${i.featuredImage}" alt="${i.featuredTitle || ""}" class="crs-featured-image">` : "", f = i.featuredTitle ? `<h4 class="crs-featured-title">${i.featuredTitle}</h4>` : "", g = i.featuredSubtitle ? `<p class="crs-featured-subtitle test">${i.featuredSubtitle}</p>` : "", k = f || g ? `<div class="crs-featured-text">${g}${f}</div>` : "", $ = l.link ? `<a href="${l.link}" class="crs-featured-item-link" data-analytics="${l.featuredTitle || l.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
         <div class="crs-featured-item">
           ${n}
           ${o}
@@ -3664,21 +3701,21 @@
         </a>` : `<div class="crs-featured-item">
           ${n}
           ${o}
-        </div>`, d = i.link ? `<a href="${i.link}" class="crs-featured-item-link" data-analytics="${i.featuredTitle || i.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
+        </div>`, m = i.link ? `<a href="${i.link}" class="crs-featured-item-link" data-analytics="${i.featuredTitle || i.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
         <div class="crs-featured-item">
-          ${c}
-          ${w}
+          ${u}
+          ${k}
         </div>
         </a>` : `<div class="crs-featured-item">
-          ${c}
-          ${w}
+          ${u}
+          ${k}
         </div>`;
       return (
         /* html */
         `
       <div class="crs-dual-featured-section">
         ${$}
-        ${d}
+        ${m}
       </div>
     `
       );
@@ -3703,13 +3740,13 @@
       if (!e.submenu || e.submenu.length < 3)
         return '<div class="crs-featured-section"></div>';
       const t = e.submenu[0], s = e.submenu[1], l = e.submenu[2], i = e.title && e.showTitle ? `<h3 class="crs-triple-featured-title">${e.title}</h3>` : "", n = (r) => {
-        const a = r.featuredImage ? `<img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image">` : "", o = r.featuredTitle ? `<h4 class="crs-featured-title">${r.featuredTitle}</h4>` : "", c = r.featuredSubtitle ? `<p class="crs-featured-subtitle test">${r.featuredSubtitle}</p>` : "", m = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", h = o || c || m ? `<div class="crs-featured-text">${c}${o}${m}</div>` : "";
+        const a = r.featuredImage ? `<img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image">` : "", o = r.featuredTitle ? `<h4 class="crs-featured-title">${r.featuredTitle}</h4>` : "", u = r.featuredSubtitle ? `<p class="crs-featured-subtitle test">${r.featuredSubtitle}</p>` : "", f = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", g = o || u || f ? `<div class="crs-featured-text">${u}${o}${f}</div>` : "";
         return (
           /* html */
           `
         <div class="crs-featured-item">
           ${a}
-          ${h}
+          ${g}
         </div>
       `
         );
@@ -3732,13 +3769,13 @@
       if (!e.submenu || e.submenu.length < 4)
         return '<div class="crs-quad-featured-section"></div>';
       const t = e.submenu[0], s = e.submenu[1], l = e.submenu[2], i = e.submenu[3], n = (r) => {
-        const a = r.featuredImage ? `<img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image">` : "", o = r.featuredTitle ? `<h4 class="crs-featured-title">${r.featuredTitle}</h4>` : "", c = r.featuredSubtitle ? `<p class="crs-featured-subtitle test">${r.featuredSubtitle}</p>` : "", m = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", h = o || c || m ? `<div class="crs-featured-text">${o}${c}${m}</div>` : "";
+        const a = r.featuredImage ? `<img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image">` : "", o = r.featuredTitle ? `<h4 class="crs-featured-title">${r.featuredTitle}</h4>` : "", u = r.featuredSubtitle ? `<p class="crs-featured-subtitle test">${r.featuredSubtitle}</p>` : "", f = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", g = o || u || f ? `<div class="crs-featured-text">${o}${u}${f}</div>` : "";
         return (
           /* html */
           `
         <div class="crs-featured-item">
           ${a}
-          ${h}
+          ${g}
         </div>
       `
         );
@@ -3875,17 +3912,17 @@
       )), e && e.remove(), this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null;
     }
   }
-  const J = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  const R = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M15.4665 1.70673L13.9732 0.213395L7.99987 6.18673L2.02654 0.213395L0.533203 1.70673L6.50654 7.68006L0.533203 13.6534L2.02654 15.1467L7.99987 9.1734L13.9732 15.1467L15.4665 13.6534L9.4932 7.68006L15.4665 1.70673Z" fill="black"/>
 </svg>`;
-  class W {
+  class A {
     constructor(e = "B") {
       this.mobileNavigationState = "main", this.eventListeners = [], this.mobileNavigationHistory = [], this.variant = e;
     }
     async createMobileNavigation() {
       this.cleanupEventListeners();
       try {
-        const e = await H("off-canvas-menu");
+        const e = await J("off-canvas-menu");
         if (e) {
           let t = e.querySelector(
             "off-canvas-menu-body > div > div > div.flex-grow.flex-column.overflow-y-auto > div:nth-child(2) > ul"
@@ -3893,7 +3930,7 @@
           if (t || (t = e.querySelector("ul")), t || (t = e.querySelector(
             "off-canvas-menu-body ul"
           )), t) {
-            const s = j.map(
+            const s = H.map(
               (l, i) => this.createMobileNavigationItemHTML(l, i)
             ).join("");
             return t.innerHTML = s, t.setAttribute("data-crs-nav-level", "main"), this.addMobileEventListeners(e), this.changeSearchSection(e), document.createElement("div");
@@ -3954,25 +3991,25 @@
       e.querySelectorAll(
         ".crs-mobile-nav-item[data-has-submenu]"
       ).forEach((a) => {
-        const o = parseInt(a.getAttribute("data-index") || "0"), c = (m) => {
-          m.preventDefault(), this.showMobileSubmenu(o);
+        const o = parseInt(a.getAttribute("data-index") || "0"), u = (f) => {
+          f.preventDefault(), this.showMobileSubmenu(o);
         };
-        a.hasAttribute("data-has-submenu") && this.addEventListenerWithCleanup(a, "click", c);
+        a.hasAttribute("data-has-submenu") && this.addEventListenerWithCleanup(a, "click", u);
       }), e.querySelectorAll(
         ".crs-mobile-nav-item[data-submenu-index], .crs-mobile-second-level-list .crs-mobile-nav-item[data-submenu-index]"
       ).forEach((a, o) => {
-        const c = parseInt(a.getAttribute("data-index") || "0"), m = parseInt(
+        const u = parseInt(a.getAttribute("data-index") || "0"), f = parseInt(
           a.getAttribute("data-submenu-index") || "0"
-        ), h = a.getAttribute("data-stacked-index"), w = ($) => {
-          var b, g;
-          let u = (b = j[c].submenu) == null ? void 0 : b[m];
-          if (h !== null && (u == null ? void 0 : u.template) === "stacked-sections") {
-            const S = parseInt(h);
-            u = (g = u.submenu) == null ? void 0 : g[S];
+        ), g = a.getAttribute("data-stacked-index"), k = ($) => {
+          var w, b;
+          let d = (w = H[u].submenu) == null ? void 0 : w[f];
+          if (g !== null && (d == null ? void 0 : d.template) === "stacked-sections") {
+            const T = parseInt(g);
+            d = (b = d.submenu) == null ? void 0 : b[T];
           }
-          u && u.submenu && u.submenu.length > 0 && ($.preventDefault(), this.showMobileThirdLevelSubmenu(c, m));
+          d && d.submenu && d.submenu.length > 0 && ($.preventDefault(), this.showMobileThirdLevelSubmenu(u, f));
         };
-        a.addEventListener("click", w);
+        a.addEventListener("click", k);
       });
       const l = e.querySelector(".crs-mobile-nav-back-section") || e.querySelector(".crs-mobile-nav-back");
       if (l) {
@@ -3990,10 +4027,10 @@
       );
       if (i) {
         const a = (o) => {
-          var c;
-          o.preventDefault(), this.showMobileMainMenu(), (c = document.querySelector(
+          var u;
+          o.preventDefault(), this.showMobileMainMenu(), (u = document.querySelector(
             'off-canvas-menu button[aria-label="Close"]'
-          )) == null || c.click();
+          )) == null || u.click();
         };
         this.addEventListenerWithCleanup(
           i,
@@ -4024,7 +4061,7 @@
       this.addMobileAnalyticsTracking(e);
     }
     showMobileSubmenu(e) {
-      const t = j[e];
+      const t = H[e];
       if (!t.submenu || t.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "main" }), this.mobileNavigationState = "submenu";
       const s = document.querySelector("off-canvas-menu");
@@ -4040,12 +4077,12 @@
       this.mobileNavigationState = "main", this.mobileNavigationHistory = [];
       const e = document.querySelector("off-canvas-menu");
       if (!e) return;
-      const t = j.map((l, i) => this.createMobileNavigationItemHTML(l, i)).join(""), s = e.querySelector("ul");
+      const t = H.map((l, i) => this.createMobileNavigationItemHTML(l, i)).join(""), s = e.querySelector("ul");
       s && (s.innerHTML = t, s.setAttribute("data-crs-nav-level", "main"), this.cleanupEventListeners(), this.addMobileEventListeners(e), this.changeSearchSection(e));
     }
     showMobileThirdLevelSubmenu(e, t) {
       var a;
-      const s = j[e], l = (a = s.submenu) == null ? void 0 : a[t];
+      const s = H[e], l = (a = s.submenu) == null ? void 0 : a[t];
       if (!l || !l.submenu || l.submenu.length === 0) return;
       this.mobileNavigationHistory.push({ type: "submenu", parentIndex: e }), this.mobileNavigationState = "third-level";
       const i = document.querySelector("off-canvas-menu");
@@ -4084,7 +4121,7 @@
       }
     }
     createMobileFeaturedContentHTML(e, t, s, l = !0, i, n) {
-      var o, c, m;
+      var o, u, f;
       let r = "", a = "";
       switch (e.showTitle && e.title && (a = /* html */
       `
@@ -4092,52 +4129,62 @@
       `), e.template) {
         case "dual-featured":
           if (e.submenu && e.submenu.length >= 2) {
-            const d = e.submenu[0], u = e.submenu[1], b = (
+            const m = e.submenu[0], d = e.submenu[1], w = (
+              /* html */
+              `
+                    <div class="crs-mobile-featured-image" style="background-image: url('${m.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-text">
+                      <div class="crs-mobile-featured-subtitle">${m.featuredSubtitle || ""}</div>
+                      <div class="crs-mobile-featured-title">${m.featuredTitle || ""}</div>
+                    </div>
+          `
+            ), b = (
               /* html */
               `
                     <div class="crs-mobile-featured-image" style="background-image: url('${d.featuredImage || ""}')"></div>
                     <div class="crs-mobile-featured-text">
                       <div class="crs-mobile-featured-subtitle">${d.featuredSubtitle || ""}</div>
-                      <div class="crs-mobile-featured-title">${d.featuredTitle || ""}</div>
+              <div class="crs-mobile-featured-title">${d.featuredTitle || ""}</div>
                     </div>
           `
-            ), g = (
+            ), T = m.link ? (
               /* html */
-              `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${u.featuredImage || ""}')"></div>
-                    <div class="crs-mobile-featured-text">
-                      <div class="crs-mobile-featured-subtitle">${u.featuredSubtitle || ""}</div>
-              <div class="crs-mobile-featured-title">${u.featuredTitle || ""}</div>
-                    </div>
-          `
-            ), S = d.link ? (
+              `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${w}</div></a>`
+            ) : (
+              /* html */
+              `<div class="crs-mobile-featured-item">${w}</div>`
+            ), M = d.link ? (
               /* html */
               `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${b}</div></a>`
             ) : (
               /* html */
               `<div class="crs-mobile-featured-item">${b}</div>`
-            ), M = u.link ? (
+            ), h = (
               /* html */
-              `<a href="${u.link}" class="crs-mobile-featured-link" data-analytics="${u.featuredTitle || u.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${g}</div></a>`
-            ) : (
-              /* html */
-              `<div class="crs-mobile-featured-item">${g}</div>`
-            ), f = (
-              /* html */
-              `<div class="crs-mobile-dual-featured-items">${S + M}</div>`
+              `<div class="crs-mobile-dual-featured-items">${T + M}</div>`
             );
             r = l ? (
               /* html */
-              `<li class="crs-mobile-dual-featured-content" data-crs-nav="true">${a}${f}</li>`
+              `<li class="crs-mobile-dual-featured-content" data-crs-nav="true">${a}${h}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-dual-featured-content" data-crs-nav="true">${a}${f}</div>`
+              `<div class="crs-mobile-dual-featured-content" data-crs-nav="true">${a}${h}</div>`
             );
           }
           break;
         case "triple-featured":
           if (e.submenu && e.submenu.length >= 2) {
-            const d = e.submenu[0], u = e.submenu[1], g = e.title === "Get the Look" && (i == null ? void 0 : i.title) === "Outfit Builder" && e.submenu.length >= 4, S = (
+            const m = e.submenu[0], d = e.submenu[1], b = e.title === "Get the Look" && (i == null ? void 0 : i.title) === "Outfit Builder" && e.submenu.length >= 4, T = (
+              /* html */
+              `
+                    <div class="crs-mobile-featured-image" style="background-image: url('${m.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-text">
+                      <div class="crs-mobile-featured-subtitle">${m.featuredSubtitle || ""}</div>
+                      <div class="crs-mobile-featured-title">${m.featuredTitle || ""}</div>
+                      ${m.actionLink ? `<a href="${m.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${m.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${m.actionLink.text}</a>` : ""}
+                    </div>
+          `
+            ), M = (
               /* html */
               `
                     <div class="crs-mobile-featured-image" style="background-image: url('${d.featuredImage || ""}')"></div>
@@ -4147,218 +4194,208 @@
                       ${d.actionLink ? `<a href="${d.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${d.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${d.actionLink.text}</a>` : ""}
                     </div>
           `
-            ), M = (
-              /* html */
-              `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${u.featuredImage || ""}')"></div>
-                    <div class="crs-mobile-featured-text">
-                      <div class="crs-mobile-featured-subtitle">${u.featuredSubtitle || ""}</div>
-                      <div class="crs-mobile-featured-title">${u.featuredTitle || ""}</div>
-                      ${u.actionLink ? `<a href="${u.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${u.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${u.actionLink.text}</a>` : ""}
-                    </div>
-          `
             );
-            let N = "", f = "";
-            if (g) {
-              const v = e.submenu[2], x = e.submenu[3];
-              N = /* html */
-              `
-              <div class="crs-mobile-featured-image" style="background-image: url('${v.featuredImage || ""}')"></div>
-              <div class="crs-mobile-featured-text" >
-                      <div class="crs-mobile-featured-subtitle">${v.featuredSubtitle || ""}</div>
-                <div class="crs-mobile-featured-title">${v.featuredTitle || ""}</div>
-                        ${v.actionLink ? `<a href="${v.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${v.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${v.actionLink.text}</a>` : ""}
-                    </div>
-            `, f = /* html */
+            let C = "", h = "";
+            if (b) {
+              const x = e.submenu[2], S = e.submenu[3];
+              C = /* html */
               `
               <div class="crs-mobile-featured-image" style="background-image: url('${x.featuredImage || ""}')"></div>
-              <div class="crs-mobile-featured-text">
-                        <div class="crs-mobile-featured-subtitle">${x.featuredSubtitle || ""}</div>
+              <div class="crs-mobile-featured-text" >
+                      <div class="crs-mobile-featured-subtitle">${x.featuredSubtitle || ""}</div>
                 <div class="crs-mobile-featured-title">${x.featuredTitle || ""}</div>
                         ${x.actionLink ? `<a href="${x.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${x.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${x.actionLink.text}</a>` : ""}
+                    </div>
+            `, h = /* html */
+              `
+              <div class="crs-mobile-featured-image" style="background-image: url('${S.featuredImage || ""}')"></div>
+              <div class="crs-mobile-featured-text">
+                        <div class="crs-mobile-featured-subtitle">${S.featuredSubtitle || ""}</div>
+                <div class="crs-mobile-featured-title">${S.featuredTitle || ""}</div>
+                        ${S.actionLink ? `<a href="${S.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${S.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${S.actionLink.text}</a>` : ""}
                   </div>
             `;
             }
-            let L = "", T, y;
-            if (g) {
-              T = e.submenu[2], y = e.submenu[3];
-              const v = (
+            let N = "", L, v;
+            if (b) {
+              L = e.submenu[2], v = e.submenu[3];
+              const x = (
                 /* html */
                 `
               <div class="crs-mobile-featured-item">
-                ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${S}</a>` : S}
+                ${m.link ? `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${T}</a>` : T}
                   </div>
             `
-              ), x = (
+              ), S = (
                 /* html */
                 `
                   <div class="crs-mobile-featured-item">
-                ${u.link ? `<a href="${u.link}" class="crs-mobile-featured-link" data-analytics="${u.featuredTitle || u.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${M}</a>` : M}
+                ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${M}</a>` : M}
               </div>
             `
-              ), C = (
+              ), j = (
                 /* html */
                 `
               <div class="crs-mobile-featured-item">
-                ${T.link ? `<a href="${T.link}" class="crs-mobile-featured-link" data-analytics="${T.featuredTitle || T.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${N}</a>` : N}
+                ${L.link ? `<a href="${L.link}" class="crs-mobile-featured-link" data-analytics="${L.featuredTitle || L.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${C}</a>` : C}
               </div>
             `
-              ), Y = (
+              ), D = (
                 /* html */
                 `
               <div class="crs-mobile-featured-item">
-                ${y.link ? `<a href="${y.link}" class="crs-mobile-featured-link" data-analytics="${y.featuredTitle || y.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${f}</a>` : f}
+                ${v.link ? `<a href="${v.link}" class="crs-mobile-featured-link" data-analytics="${v.featuredTitle || v.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${h}</a>` : h}
               </div>
             `
               );
-              L = /* html */
-              `<div class="crs-mobile-triple-featured-items crs-mobile-four-items">${v + x + C + Y}</div>`;
+              N = /* html */
+              `<div class="crs-mobile-triple-featured-items crs-mobile-four-items">${x + S + j + D}</div>`;
             } else {
-              const v = d.link ? (
+              const x = m.link ? (
                 /* html */
-                `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${S}</div></a>`
+                `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${T}</div></a>`
               ) : (
                 /* html */
-                `<div class="crs-mobile-featured-item">${S}</div>`
-              ), x = u.link ? (
+                `<div class="crs-mobile-featured-item">${T}</div>`
+              ), S = d.link ? (
                 /* html */
-                `<a href="${u.link}" class="crs-mobile-featured-link" data-analytics="${u.featuredTitle || u.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${M}</div></a>`
+                `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${M}</div></a>`
               ) : (
                 /* html */
                 `<div class="crs-mobile-featured-item">${M}</div>`
               );
-              L = /* html */
-              `<div class="crs-mobile-triple-featured-items">${v + x}</div>`;
+              N = /* html */
+              `<div class="crs-mobile-triple-featured-items">${x + S}</div>`;
             }
             r = l ? (
               /* html */
-              `<li class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${L}</li>`
+              `<li class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${N}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${L}</div>`
+              `<div class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${N}</div>`
             );
           }
           break;
         case "quad-featured":
           if (e.submenu && e.submenu.length >= 4) {
-            const d = e.submenu[0], u = e.submenu[1], b = e.submenu[2], g = e.submenu[3], S = (
+            const m = e.submenu[0], d = e.submenu[1], w = e.submenu[2], b = e.submenu[3], T = (
               /* html */
               `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${d.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-image" style="background-image: url('${m.featuredImage || ""}')"></div>
                     <div class="crs-mobile-featured-text" >
-                      <div class="crs-mobile-featured-title">${d.featuredTitle || ""}</div>
+                      <div class="crs-mobile-featured-title">${m.featuredTitle || ""}</div>
                     </div>
           `
             ), M = (
               /* html */
               `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${u.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-image" style="background-image: url('${d.featuredImage || ""}')"></div>
                     <div class="crs-mobile-featured-text">
-                      <div class="crs-mobile-featured-title">${u.featuredTitle || ""}</div>
+                      <div class="crs-mobile-featured-title">${d.featuredTitle || ""}</div>
+                    </div>
+          `
+            ), C = (
+              /* html */
+              `
+                    <div class="crs-mobile-featured-image" style="background-image: url('${w.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-text">
+                      <div class="crs-mobile-featured-title">${w.featuredTitle || ""}</div>
+            </div>
+          `
+            ), h = (
+              /* html */
+              `
+            <div class="crs-mobile-featured-image" style="background-image: url('${b.featuredImage || ""}')"></div>
+            <div class="crs-mobile-featured-text">
+              <div class="crs-mobile-featured-title">${b.featuredTitle || ""}</div>
                     </div>
           `
             ), N = (
               /* html */
               `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${b.featuredImage || ""}')"></div>
-                    <div class="crs-mobile-featured-text">
-                      <div class="crs-mobile-featured-title">${b.featuredTitle || ""}</div>
-            </div>
-          `
-            ), f = (
-              /* html */
-              `
-            <div class="crs-mobile-featured-image" style="background-image: url('${g.featuredImage || ""}')"></div>
-            <div class="crs-mobile-featured-text">
-              <div class="crs-mobile-featured-title">${g.featuredTitle || ""}</div>
-                    </div>
+            <div class="crs-mobile-featured-item">
+              ${m.link ? `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${T}</a>` : T}
+              ${m.actionLink ? `<a href="${m.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${m.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${m.actionLink.text}</a>` : ""}
+                  </div>
           `
             ), L = (
               /* html */
               `
             <div class="crs-mobile-featured-item">
-              ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${S}</a>` : S}
+              ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${M}</a>` : M}
               ${d.actionLink ? `<a href="${d.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${d.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${d.actionLink.text}</a>` : ""}
-                  </div>
-          `
-            ), T = (
-              /* html */
-              `
-            <div class="crs-mobile-featured-item">
-              ${u.link ? `<a href="${u.link}" class="crs-mobile-featured-link" data-analytics="${u.featuredTitle || u.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${M}</a>` : M}
-              ${u.actionLink ? `<a href="${u.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${u.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${u.actionLink.text}</a>` : ""}
-            </div>
-          `
-            ), y = (
-              /* html */
-              `
-            <div class="crs-mobile-featured-item">
-              ${b.link ? `<a href="${b.link}" class="crs-mobile-featured-link" data-analytics="${b.featuredTitle || b.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${N}</a>` : N}
-              ${b.actionLink ? `<a href="${b.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${b.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${b.actionLink.text}</a>` : ""}
             </div>
           `
             ), v = (
               /* html */
               `
             <div class="crs-mobile-featured-item">
-              ${g.link ? `<a href="${g.link}" class="crs-mobile-featured-link" data-analytics="${g.featuredTitle || g.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${f}</a>` : f}
-              ${g.actionLink ? `<a href="${g.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${g.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${g.actionLink.text}</a>` : ""}
+              ${w.link ? `<a href="${w.link}" class="crs-mobile-featured-link" data-analytics="${w.featuredTitle || w.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${C}</a>` : C}
+              ${w.actionLink ? `<a href="${w.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${w.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${w.actionLink.text}</a>` : ""}
             </div>
           `
-            ), C = (
+            ), x = (
               /* html */
-              `<div class="crs-mobile-quad-featured-items">${L + T + y + v}</div>`
+              `
+            <div class="crs-mobile-featured-item">
+              ${b.link ? `<a href="${b.link}" class="crs-mobile-featured-link" data-analytics="${b.featuredTitle || b.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${h}</a>` : h}
+              ${b.actionLink ? `<a href="${b.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${b.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${b.actionLink.text}</a>` : ""}
+            </div>
+          `
+            ), j = (
+              /* html */
+              `<div class="crs-mobile-quad-featured-items">${N + L + v + x}</div>`
             );
             r = l ? (
               /* html */
-              `<li class="crs-mobile-quad-featured-content" data-crs-nav="true">${a}${C}</li>`
+              `<li class="crs-mobile-quad-featured-content" data-crs-nav="true">${a}${j}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-quad-featured-content" data-crs-nav="true">${a}${C}</div>`
+              `<div class="crs-mobile-quad-featured-content" data-crs-nav="true">${a}${j}</div>`
             );
           }
           break;
         case "featured":
-          const h = (
+          const g = (
             /* html */
             `
                 <div class="crs-mobile-featured-image" style="background-image: url('${e.featuredImage || ""}')"></div>
                 <div class="crs-mobile-featured-text">
-                ${e.actionLink ? `<a href="${((o = e.actionLink) == null ? void 0 : o.url) || ""}" class="crs-mobile-featured-action-link" data-analytics="${((c = e.actionLink) == null ? void 0 : c.text) || ""}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${((m = e.actionLink) == null ? void 0 : m.text) || ""}</a>` : ""}
+                ${e.actionLink ? `<a href="${((o = e.actionLink) == null ? void 0 : o.url) || ""}" class="crs-mobile-featured-action-link" data-analytics="${((u = e.actionLink) == null ? void 0 : u.text) || ""}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${((f = e.actionLink) == null ? void 0 : f.text) || ""}</a>` : ""}
                   <div class="crs-mobile-featured-subtitle">${e.featuredSubtitle || ""}</div>
             <div class="crs-mobile-featured-title">${e.featuredTitle || ""}</div>
        
                 </div>
         `
-          ), w = e.link ? (
+          ), k = e.link ? (
             /* html */
-            `<a href="${e.link}" class="crs-mobile-featured-link" data-analytics="${e.featuredTitle || e.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${h}</a>`
-          ) : h;
+            `<a href="${e.link}" class="crs-mobile-featured-link" data-analytics="${e.featuredTitle || e.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${g}</a>`
+          ) : g;
           r = l ? (
             /* html */
-            `<li class="crs-mobile-featured-content" data-crs-nav="true">${a}${w}</li>`
+            `<li class="crs-mobile-featured-content" data-crs-nav="true">${a}${k}</li>`
           ) : (
             /* html */
-            `<div class="crs-mobile-featured-content" data-crs-nav="true">${a}${w}</div>`
+            `<div class="crs-mobile-featured-content" data-crs-nav="true">${a}${k}</div>`
           );
           break;
         case "product-cards":
           if (e.submenu && e.submenu.length > 0) {
-            const d = (
+            const m = (
               /* html */
               `
             ${e.submenu.map(
-                (u) => (
+                (d) => (
                   /* html */
                   `
                     <div class="crs-mobile-product-card">
-                <a href="${u.link}" class="crs-mobile-product-link" data-analytics="${u.title}" data-parent="${e.title}" data-grandparent="Horse">
-                <div class="crs-mobile-product-image" style="background-image: url('${u.productImage || ""}')"></div>
+                <a href="${d.link}" class="crs-mobile-product-link" data-analytics="${d.title}" data-parent="${e.title}" data-grandparent="Horse">
+                <div class="crs-mobile-product-image" style="background-image: url('${d.productImage || ""}')"></div>
                       <div class="crs-mobile-product-info">
-                        <div class="crs-mobile-product-title">${u.title}</div>
-                  ${u.productColors ? `<div class="crs-mobile-product-colors">${u.productColors}</div>` : ""}
-                  ${u.productPrice ? `<div class="crs-mobile-product-price">${u.productPrice}</div>` : ""}
-                  ${u.productStock ? `<div class="crs-mobile-product-stock">${u.productStock}</div>` : ""}
+                        <div class="crs-mobile-product-title">${d.title}</div>
+                  ${d.productColors ? `<div class="crs-mobile-product-colors">${d.productColors}</div>` : ""}
+                  ${d.productPrice ? `<div class="crs-mobile-product-price">${d.productPrice}</div>` : ""}
+                  ${d.productStock ? `<div class="crs-mobile-product-stock">${d.productStock}</div>` : ""}
                       </div>
                       </a>
                     </div>
@@ -4369,10 +4406,10 @@
             );
             r = l ? (
               /* html */
-              `<li class="crs-mobile-product-cards-content" data-crs-nav="true">${d}</li>`
+              `<li class="crs-mobile-product-cards-content" data-crs-nav="true">${m}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-product-cards-content" data-crs-nav="true">${d}</div>`
+              `<div class="crs-mobile-product-cards-content" data-crs-nav="true">${m}</div>`
             );
           }
           break;
@@ -4419,7 +4456,7 @@
               <div class="crs-mobile-nav-parent">Gifts</div>
                   </div>
             <div class="crs-mobile-nav-current">Gifts</div>
-            <div class="crs-mobile-nav-close">${J}</div>
+            <div class="crs-mobile-nav-close">${R}</div>
                 </li>
         `;
           const n = e.submenu.filter(
@@ -4429,19 +4466,19 @@
           );
           let a = "";
           n.forEach((o) => {
-            var c;
+            var u;
             a += /* html */
             `
             <div class="crs-mobile-third-level-section" data-crs-nav="true">
               <div class="crs-mobile-third-level-title">${o.title}</div>
               <div class="crs-mobile-third-level-items">
-                ${((c = o.submenu) == null ? void 0 : c.map(
-              (m) => (
+                ${((u = o.submenu) == null ? void 0 : u.map(
+              (f) => (
                 /* html */
                 `
                   <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                    <a href="${m.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${m.title}">
-                      <div class="crs-mobile-third-level-text">${m.title}</div>
+                    <a href="${f.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${f.title}">
+                      <div class="crs-mobile-third-level-text">${f.title}</div>
                     </a>
                       </div>
                 `
@@ -4518,7 +4555,7 @@
             `
                 <li class="crs-mobile-submenu-item" data-crs-nav="true">
                   <div class="crs-mobile-submenu-content">
-                    ${n.submenu.map((o, c) => {
+                    ${n.submenu.map((o, u) => {
               if (o.template === "link")
                 return (
                   /* html */
@@ -4531,13 +4568,13 @@
                         `
                 );
               if (o.submenu && o.submenu.length > 0) {
-                const m = o.submenu.map(
-                  (h) => (
+                const f = o.submenu.map(
+                  (g) => (
                     /* html */
                     `
                           <div class="crs-mobile-submenu-item" data-crs-nav="true">
-                            <a href="${h.link || "#"}" class="crs-mobile-submenu-link" data-analytics="${h.title}" data-parent="${(s == null ? void 0 : s.title) || ""}" data-grandparent="${(l == null ? void 0 : l.title) || ""}">
-                              <div class="crs-mobile-submenu-text">${h.title}</div>
+                            <a href="${g.link || "#"}" class="crs-mobile-submenu-link" data-analytics="${g.title}" data-parent="${(s == null ? void 0 : s.title) || ""}" data-grandparent="${(l == null ? void 0 : l.title) || ""}">
+                              <div class="crs-mobile-submenu-text">${g.title}</div>
                             </a>
                             </div>
                         `
@@ -4549,7 +4586,7 @@
                           <div class="crs-mobile-submenu-section" data-crs-nav="true">
                             <div class="crs-mobile-submenu-section-title">${o.title}</div>
                             <div class="crs-mobile-submenu-items">
-                              ${m}
+                              ${f}
                             </div>
                           </div>
                         `
@@ -4579,7 +4616,7 @@
        
           <div class="crs-mobile-nav-back">‹</div>
           <div class="crs-mobile-nav-text">${e.title}</div>
-          <div class="crs-mobile-nav-close">${J}</div>
+          <div class="crs-mobile-nav-close">${R}</div>
       
       </li>
       <li class="crs-mobile-second-level-content" data-crs-nav="true">
@@ -4622,19 +4659,19 @@
         );
       let i = "";
       return t.submenu && t.submenu.length > 0 && t.submenu.forEach((n, r) => {
-        var a, o, c, m, h, w, $, d, u, b, g;
+        var a, o, u, f, g, k, $, m, d, w, b;
         switch (n.template) {
           case "default":
-            const S = ((a = n.submenu) == null ? void 0 : a.map((f) => {
-              var T, y;
-              const L = f.icon ? `<img src="${f.icon}" alt="${f.title}" class="crs-mobile-nav-icon">` : "";
+            const T = ((a = n.submenu) == null ? void 0 : a.map((h) => {
+              var L, v;
+              const N = h.icon ? `<img src="${h.icon}" alt="${h.title}" class="crs-mobile-nav-icon">` : "";
               return (
                 /* html */
                 `
                     <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                          <a href="${f.link || "#"}" class="${f.template === "link" ? "crs-mobile-third-level-link crs-view-all-link" : "crs-mobile-third-level-link"}" data-analytics="${f.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(y = (T = n.submenu) == null ? void 0 : T[r]) == null ? void 0 : y.title}">
-                            ${L}
-                            <div class="crs-mobile-third-level-text">${f.title}</div>
+                          <a href="${h.link || "#"}" class="${h.template === "link" ? "crs-mobile-third-level-link crs-view-all-link" : "crs-mobile-third-level-link"}" data-analytics="${h.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(v = (L = n.submenu) == null ? void 0 : L[r]) == null ? void 0 : v.title}">
+                            ${N}
+                            <div class="crs-mobile-third-level-text">${h.title}</div>
                           </a>
                     </div>
                   `
@@ -4645,24 +4682,24 @@
               <div class="crs-mobile-third-level-section" data-title="${n.title}">
                 <div class="crs-mobile-third-level-title">${n.title}</div>
                 <div class="crs-mobile-third-level-items">
-                  ${S}
+                  ${T}
                 </div>
               </div>
             `;
             break;
           case "stacked-sections":
-            n.submenu && n.submenu.length > 0 && n.submenu.forEach((f) => {
-              var T;
-              const L = ((T = f.submenu) == null ? void 0 : T.map((y) => {
-                var x, C;
-                const v = y.icon ? `<img src="${y.icon}" alt="${y.title}" class="crs-mobile-nav-icon">` : "";
+            n.submenu && n.submenu.length > 0 && n.submenu.forEach((h) => {
+              var L;
+              const N = ((L = h.submenu) == null ? void 0 : L.map((v) => {
+                var S, j;
+                const x = v.icon ? `<img src="${v.icon}" alt="${v.title}" class="crs-mobile-nav-icon">` : "";
                 return (
                   /* html */
                   `
                       <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                        <a href="${y.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${y.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(C = (x = n.submenu) == null ? void 0 : x[r]) == null ? void 0 : C.title}">
-                          ${v}
-                          <div class="crs-mobile-third-level-text">${y.title}</div>
+                        <a href="${v.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${v.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(j = (S = n.submenu) == null ? void 0 : S[r]) == null ? void 0 : j.title}">
+                          ${x}
+                          <div class="crs-mobile-third-level-text">${v.title}</div>
                         </a>
                       </div>
                     `
@@ -4670,10 +4707,10 @@
               }).join("")) || "";
               i += /* html */
               `
-                  <div class="crs-mobile-third-level-section" data-title="${f.title}">
-                    <div class="crs-mobile-third-level-title">${f.title}</div>
+                  <div class="crs-mobile-third-level-section" data-title="${h.title}">
+                    <div class="crs-mobile-third-level-title">${h.title}</div>
                     <div class="crs-mobile-third-level-items">
-                      ${L}
+                      ${N}
                     </div>
                   </div>
                 `;
@@ -4696,28 +4733,28 @@
             break;
           case "color-grid":
           case "multi-color-grid":
-            const M = ((o = n.colorSwatches) == null ? void 0 : o.map((f) => (
+            const M = ((o = n.colorSwatches) == null ? void 0 : o.map((h) => (
               /* html */
               `
                 <div class="crs-mobile-color-swatch" data-crs-nav="true">
-                  <a href="${f.link || "#"}" class="crs-mobile-color-link" data-analytics="${f.name}" data-parent="${e.title}" data-grandparent="${n.title}">
-                  <div class="crs-mobile-color-circle" style="background-color: ${f.color}">
-                    ${f.isNew ? '<div class="crs-mobile-color-new-badge">New</div>' : ""}
+                  <a href="${h.link || "#"}" class="crs-mobile-color-link" data-analytics="${h.name}" data-parent="${e.title}" data-grandparent="${n.title}">
+                  <div class="crs-mobile-color-circle" style="background-color: ${h.color}">
+                    ${h.isNew ? '<div class="crs-mobile-color-new-badge">New</div>' : ""}
                   </div>
-                  <div class="crs-mobile-color-name">${f.name}</div>
+                  <div class="crs-mobile-color-name">${h.name}</div>
                   </a>
                 </div>
               `
-            )).join("")) || "", N = (c = n.submenu) != null && c.find(
-              (f) => f.template === "link"
+            )).join("")) || "", C = (u = n.submenu) != null && u.find(
+              (h) => h.template === "link"
             ) ? (
               /* html */
               `
                   <ul class="crs-collection-list">
                     <li>
-                      <a href="${((h = (m = n.submenu) == null ? void 0 : m.find(
-                (f) => f.template === "link"
-              )) == null ? void 0 : h.link) || "#"}" class="crs-collection-link crs-view-all-link">${(($ = (w = n.submenu) == null ? void 0 : w.find((f) => f.template === "link")) == null ? void 0 : $.title) || "View All"}</a>
+                      <a href="${((g = (f = n.submenu) == null ? void 0 : f.find(
+                (h) => h.template === "link"
+              )) == null ? void 0 : g.link) || "#"}" class="crs-collection-link crs-view-all-link">${(($ = (k = n.submenu) == null ? void 0 : k.find((h) => h.template === "link")) == null ? void 0 : $.title) || "View All"}</a>
                     </li>
                   </ul>
                 `
@@ -4726,9 +4763,9 @@
             `
               <div class="crs-mobile-third-level-section">
                 <div class="crs-mobile-third-level-title">${n.title}</div>
-                <div class="crs-mobile-color-swatches" data-one-column="${(d = n == null ? void 0 : n.colorSwatches) != null && d.length && ((u = n == null ? void 0 : n.colorSwatches) == null ? void 0 : u.length) < 4 ? "true" : "false"}">
+                <div class="crs-mobile-color-swatches" data-one-column="${(m = n == null ? void 0 : n.colorSwatches) != null && m.length && ((d = n == null ? void 0 : n.colorSwatches) == null ? void 0 : d.length) < 4 ? "true" : "false"}">
                   ${M}
-                  ${N}
+                  ${C}
                 </div>
               </div>
             `;
@@ -4740,7 +4777,7 @@
                 <div class="crs-mobile-third-level-title">${n.title}</div>
                 <div class="crs-mobile-third-level-items">
                   <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                    <a href="${n.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${n.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(g = (b = n.submenu) == null ? void 0 : b[r]) == null ? void 0 : g.title}">
+                    <a href="${n.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${n.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(b = (w = n.submenu) == null ? void 0 : w[r]) == null ? void 0 : b.title}">
                       <div class="crs-mobile-third-level-text">${n.title}</div>
                     </a>
                     </div>
@@ -4758,7 +4795,7 @@
             <div class="crs-mobile-nav-parent">${e.title}</div>
           </div>
           <div class="crs-mobile-nav-current">${t.title}</div>
-          <div class="crs-mobile-nav-close">${J}</div>
+          <div class="crs-mobile-nav-close">${R}</div>
         
       </li>
       <li class="crs-mobile-third-level-content" data-crs-nav="true">
@@ -4788,24 +4825,24 @@
         const n = i.getAttribute("data-analytics"), r = i.getAttribute("data-parent");
         n && setTimeout(() => {
           if (i.classList.contains("crs-mobile-nav-link"))
-            r ? k(
+            r ? y(
               n,
               "Link",
               r,
               n
-            ) : k(n, "Link", n);
+            ) : y(n, "Link", n);
           else if (i.classList.contains("crs-mobile-third-level-link")) {
-            const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent"), c = i.getAttribute("data-collection");
-            console.log("collectionData", c), a && o && k(
+            const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent"), u = i.getAttribute("data-collection");
+            console.log("collectionData", u), a && o && y(
               n,
               "Link",
               o,
               a,
-              c || ""
+              u || ""
             );
           } else if (i.classList.contains("crs-mobile-featured-action-link")) {
             const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent");
-            k(
+            y(
               n,
               "CTA",
               o || a || "",
@@ -4814,7 +4851,7 @@
             );
           } else if (i.classList.contains("crs-mobile-color-link")) {
             const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent");
-            a && o && k(
+            a && o && y(
               n,
               "Link",
               a,
@@ -4823,7 +4860,7 @@
             );
           } else if (i.classList.contains("crs-mobile-featured-link")) {
             const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent");
-            k(
+            y(
               n,
               "Image",
               o || a || "",
@@ -4832,7 +4869,7 @@
             );
           } else if (i.classList.contains("crs-mobile-submenu-link")) {
             const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent");
-            a && o && k(
+            a && o && y(
               n,
               "Link",
               o,
@@ -4840,7 +4877,7 @@
             );
           } else if (i.classList.contains("crs-mobile-outfit-builder-link")) {
             const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent");
-            k(
+            y(
               n,
               "CTA",
               o || a || "",
@@ -4849,7 +4886,7 @@
             );
           } else if (i.classList.contains("crs-mobile-product-link")) {
             const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent");
-            k(
+            y(
               n,
               "Link",
               o || a || "",
@@ -4869,9 +4906,9 @@
       t && t.remove();
     }
   }
-  class A {
+  class B {
     constructor(e = "B") {
-      this.variant = e, this.desktopNavigation = new Z(e), this.mobileNavigation = new W(e);
+      this.variant = e, this.desktopNavigation = new W(e), this.mobileNavigation = new A(e);
     }
     /**
      * Creates the complete navigation system
@@ -4898,7 +4935,7 @@
       this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class B {
+  class z {
     constructor(e, t, s) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = s, this.currentUrl = location.href;
     }
@@ -5123,7 +5160,7 @@
   }
   class F {
     constructor() {
-      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new A(this.variant), this.init();
+      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new B(this.variant), this.init();
     }
     init() {
       document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.start()) : this.start();
@@ -5177,7 +5214,7 @@
     }
     async findMobileMenu() {
       try {
-        const e = await H("off-canvas-menu ul");
+        const e = await J("off-canvas-menu ul");
         if (e)
           return e;
       } catch {
@@ -5202,7 +5239,7 @@
     async waitForMeganav() {
       for (let s = 1; s <= 10; s++) {
         try {
-          if (await H("meganav"))
+          if (await J("meganav"))
             return;
         } catch {
         }
@@ -5239,7 +5276,7 @@
       }
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new B(
+      this.newNav && (this.navigationPersistence = new z(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
@@ -5336,7 +5373,7 @@
       }), this.newNav = null, this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null);
     }
   }
-  const z = `meganav {
+  const _ = `meganav {
   display: none;
 }
 
@@ -5344,7 +5381,7 @@
 crs-nav {
   display: block !important;
 }
-`, _ = `/* Custom crs-nav element */
+`, V = `/* Custom crs-nav element */
 crs-nav {
   display: block;
   position: relative;
@@ -5398,7 +5435,7 @@ crs-nav {
   padding-inline: 8px;
   text-decoration: none;
   color: #2e2e2e;
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Sans 3';
   font-size: 18px;
   font-weight: 500;
   border-bottom: 2px solid transparent;
@@ -5495,6 +5532,7 @@ crs-nav {
 .crs-mega-menu-main {
   flex: 1;
   display: flex;
+  gap: 10px;
   padding-block: 44px;
   padding-right: 16px;
 }
@@ -5531,9 +5569,8 @@ crs-nav {
 }
 
 .crs-gifts-featured-section .crs-featured-image {
-  margin-top: 22px;
-  width: 100%;
-  height: 200px;
+  width: 270px;
+  height: 360px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -5728,9 +5765,13 @@ crs-nav {
 }
 
 .crs-featured-section {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  max-width: max-content;
+}
+
+.crs-featured-section:has(+ div) {
   padding-right: 56px;
 }
 
@@ -5792,9 +5833,13 @@ crs-nav {
 
 /* Dual Featured Section */
 .crs-dual-featured-section {
-  flex: 1;
+  flex: 2;
   display: flex;
   gap: 20px;
+}
+
+.crs-collections-section + .crs-dual-featured-section {
+  justify-content: flex-end;
 }
 
 .crs-featured-item {
@@ -5822,8 +5867,18 @@ crs-nav {
     .crs-quad-featured-section,
     [data-grandparent='Outlet']
   )
-  .crs-featured-item:has(> .crs-featured-image) {
-  width: 230px;
+  .crs-featured-item:has(> .crs-featured-image):not(
+    .crs-featured-item-link > .crs-featured-item
+  ),
+:is(
+    .crs-dual-featured-section,
+    .crs-triple-featured-section,
+    .crs-quad-featured-section,
+    [data-grandparent='Outlet']
+  )
+  .crs-featured-item-link:has(> .crs-featured-item) {
+  max-width: 230px;
+  width: 100%;
 }
 
 :is(
@@ -5833,15 +5888,15 @@ crs-nav {
     [data-grandparent='Outlet']
   )
   img.crs-featured-image {
-  width: 230px;
+  width: 100%;
   height: 307px;
   object-fit: cover;
 }
 
 [data-title='Get the Look'] .crs-featured-image {
-  width: 210px !important;
   height: 280px !important;
   min-height: 280px !important;
+  object-position: center left;
 }
 
 .crs-featured-item .crs-featured-text {
@@ -5872,12 +5927,21 @@ crs-nav {
 .crs-stacked-sections {
   flex: 1;
   display: flex;
+  flex-direction: column;
+}
+
+[data-title='Women'] .crs-stacked-sections {
+  flex: 2;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 0;
+  gap: 10px;
 }
 
 .crs-stacked-sections .crs-collections-section {
   margin-bottom: 0;
+}
+
+[data-title='Women'] .crs-stacked-sections .crs-collections-section {
   min-width: max-content;
 }
 
@@ -5885,14 +5949,9 @@ crs-nav {
   margin-bottom: 40px;
 }
 
-.crs-mega-menu-main:has(.crs-stacked-sections + .crs-stacked-sections) .crs-stacked-sections {
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-
 /* Triple Featured Section */
 .crs-triple-featured-section {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -6062,7 +6121,23 @@ crs-nav {
     display: none !important;
   }
 }
-`, V = `/* Mobile Navigation Integration with Existing Structure */
+
+* + .crs-dual-featured-section {
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+* + .crs-featured-section {
+  margin-left: auto;
+
+  align-items: flex-end;
+}
+
+* + .crs-triple-featured-section {
+  margin-left: auto;
+  max-width: max-content;
+}
+`, E = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
 
 /* Mobile fallback navigation */
@@ -6392,7 +6467,6 @@ ul[data-crs-nav-level='third-level'] {
   font-weight: 400;
   line-height: 28px;
   letter-spacing: 1px;
-  text-align: center;
 }
 
 /* Mobile featured section title */
@@ -6900,12 +6974,12 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
 
 /* Gifts Menu Styles - using third-level and dual-featured styles for consistency */
 `;
-  R({ name: "Navigation Menu Redesign & Interaction", dev: "OS" }), (function(p, e, t, s, l, i) {
+  O({ name: "Navigation Menu Redesign & Interaction", dev: "OS" }), (function(p, e, t, s, l, i) {
     p.hj = p.hj || function() {
       (p.hj.q = p.hj.q || []).push(arguments);
     }, p._hjSettings = { hjid: 2667925, hjsv: 6 }, l = e.getElementsByTagName("head")[0], i = e.createElement("script"), i.async = !0, i.src = t + p._hjSettings.hjid + s + p._hjSettings.hjsv, l && l.appendChild(i);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_nav_redesign");
-  class E {
+  class Y {
     constructor() {
       this.navigationVariant = new F(), this.init();
     }
@@ -6914,13 +6988,12 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = z, document.head.appendChild(e);
+      e.textContent = _, document.head.appendChild(e);
       const t = document.createElement("style");
-      t.textContent = _, document.head.appendChild(t);
+      t.textContent = V, document.head.appendChild(t);
       const s = document.createElement("style");
-      s.textContent = V, document.head.appendChild(s);
+      s.textContent = E, document.head.appendChild(s);
     }
   }
-  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new E()));
+  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new Y()));
 })();
-
