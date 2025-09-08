@@ -5883,7 +5883,7 @@ crs-nav {
 
 /* Product Cards Section */
 .crs-product-cards-section {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: row;
   gap: 20px;
