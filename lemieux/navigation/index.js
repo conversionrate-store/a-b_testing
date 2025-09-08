@@ -5398,7 +5398,7 @@ crs-nav {
   padding-inline: 8px;
   text-decoration: none;
   color: #2e2e2e;
-  font-family: baskerville-urw, sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 18px;
   font-weight: 500;
   border-bottom: 2px solid transparent;
