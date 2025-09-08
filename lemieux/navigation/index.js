@@ -5883,7 +5883,7 @@ crs-nav {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 /* Quad Featured Section */
@@ -5904,7 +5904,7 @@ crs-nav {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .crs-triple-featured-items .crs-featured-item .crs-featured-image {
