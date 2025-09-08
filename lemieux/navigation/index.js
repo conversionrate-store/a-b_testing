@@ -5607,6 +5607,10 @@ crs-nav {
   letter-spacing: 0.5px;
 }
 
+.crs-section-title:empty {
+  padding: 0;
+}
+
 .crs-collection-list {
   display: grid;
   gap: 10px;
