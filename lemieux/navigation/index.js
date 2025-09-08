@@ -1875,8 +1875,8 @@
                   title: "Luggage",
                   link: "/clothing/men/accessories/bags",
                   featuredImage: "https://www.lemieux.com/static/cms/media/GROUP_lifestyle_eliteluggage_navy_3.jpg",
-                  featuredTitle: "Perfect Organisation",
-                  featuredSubtitle: "Luggage"
+                  featuredTitle: "Luggage",
+                  featuredSubtitle: "Perfect Organisation"
                 }
               ]
             }
