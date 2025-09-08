@@ -2725,11 +2725,11 @@
       template: "outlet",
       // textColor: '#8e1538',
       submenu: [
-        {
-          title: "Shop All",
-          link: "/lemieux-outlet",
-          template: "link"
-        },
+        // {
+        //   title: 'Shop All',
+        //   link: '/lemieux-outlet',
+        //   template: 'link',
+        // },
         {
           title: "Horse",
           link: "/lemieux-outlet?322=6684",
