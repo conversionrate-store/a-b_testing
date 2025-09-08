@@ -2940,6 +2940,7 @@
   ], O = (p, e, t, s = "", n = "", i = "") => {
     window.dataLayer = window.dataLayer || [];
     const l = {
+      event: "event-to-ga4",
       event_name: p,
       event_desc: e,
       event_type: t,
@@ -6870,3 +6871,4 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
 })();
+
