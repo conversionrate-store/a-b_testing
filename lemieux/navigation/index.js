@@ -4935,7 +4935,7 @@
       this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class z {
+  class F {
     constructor(e, t, s) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = s, this.currentUrl = location.href;
     }
@@ -5158,7 +5158,7 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class F {
+  class z {
     constructor() {
       this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new B(this.variant), this.init();
     }
@@ -5276,7 +5276,7 @@
       }
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new z(
+      this.newNav && (this.navigationPersistence = new F(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
@@ -6593,23 +6593,7 @@ ul[data-crs-nav-level='third-level'] {
   padding: 0 10px;
 }
 
-.crs-mobile-triple-featured-content .crs-mobile-featured-title {
-  font-size: 16px;
-  color: #212121;
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 1px;
-}
 
-.crs-mobile-triple-featured-content .crs-mobile-featured-subtitle {
-  font-size: 20px;
-  color: #212121;
-  font-family: baskerville-urw, sans-serif;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.5px;
-}
 
 :is(.crs-mobile-dual-featured-content, .crs-mobile-triple-featured-content)
   .crs-mobile-featured-action-link {
@@ -6981,7 +6965,7 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_nav_redesign");
   class Y {
     constructor() {
-      this.navigationVariant = new F(), this.init();
+      this.navigationVariant = new z(), this.init();
     }
     init() {
       this.addStyles();
