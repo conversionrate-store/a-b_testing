@@ -2461,13 +2461,13 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c0b5ca",
+                  color: "#c2b5cc",
                   isNew: !0,
                   link: "/collections/colour/lilac"
                 },
                 {
                   name: "Cranberry",
-                  color: "#a8555f",
+                  color: "#b54f5e",
                   isNew: !0,
                   link: "/collections/colour/cranberry"
                 },
@@ -2630,7 +2630,7 @@
                   title: "Dressage",
                   link: "/dressage-essentials",
                   template: "featured",
-                  featuredImage: "https://www.lemieux.com/static/cms/media/IT03739_lifestyle_arikadressagebridle_brown_1%20copy-2-3.jpg",
+                  featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/1g0a1685-1.jpg",
                   featuredTitle: "Dressage",
                   actionLink: {
                     text: "Shop now",
@@ -2641,7 +2641,7 @@
                   title: "Showing",
                   link: "/discipline/showing",
                   template: "featured",
-                  featuredImage: "https://www.lemieux.com/static/cms/media/IT04491_lifestlye_arikasimuwoolcontoureddressagegirth_black_1-4.jpg",
+                  featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Showing_Menu.jpg",
                   featuredTitle: "Showing",
                   actionLink: {
                     text: "Shop now",
@@ -5121,7 +5121,7 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class _ {
+  class F {
     constructor() {
       this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new A(this.variant), this.init();
     }
@@ -5336,7 +5336,7 @@
       }), this.newNav = null, this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null);
     }
   }
-  const F = `meganav {
+  const z = `meganav {
   display: none;
 }
 
@@ -5344,7 +5344,7 @@
 crs-nav {
   display: block !important;
 }
-`, z = `/* Custom crs-nav element */
+`, _ = `/* Custom crs-nav element */
 crs-nav {
   display: block;
   position: relative;
@@ -6907,19 +6907,20 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_nav_redesign");
   class E {
     constructor() {
-      this.navigationVariant = new _(), this.init();
+      this.navigationVariant = new F(), this.init();
     }
     init() {
       this.addStyles();
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = F, document.head.appendChild(e);
+      e.textContent = z, document.head.appendChild(e);
       const t = document.createElement("style");
-      t.textContent = z, document.head.appendChild(t);
+      t.textContent = _, document.head.appendChild(t);
       const s = document.createElement("style");
       s.textContent = V, document.head.appendChild(s);
     }
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new E()));
 })();
+
