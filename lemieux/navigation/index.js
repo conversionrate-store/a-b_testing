@@ -102,11 +102,11 @@
               ]
             },
             {
-              title: "AW Collection",
+              title: "AW25 Collection",
               link: "/new-in/aw25/horse-wear",
               template: "featured",
               featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT08147_lifestyle_loireclassicclosecontactsquare_navycranberry_6-1.jpg",
-              featuredTitle: "AW Collection",
+              featuredTitle: "AW25 Collection",
               featuredSubtitle: "New Arrivals"
             }
           ]
@@ -1990,13 +1990,13 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: "#c0b5ca",
+                  color: "#c2b5cc",
                   isNew: !0,
                   link: "/toys/toy-pony-sets/lilac"
                 },
                 {
                   name: "Cranberry",
-                  color: "#a8555f",
+                  color: "#b54f5e",
                   isNew: !0,
                   link: "/toys/toy-pony-sets/cranberry"
                 },
@@ -2008,25 +2008,25 @@
                 },
                 {
                   name: "Lagoon",
-                  color: "#638e90",
+                  color: "#558f91",
                   isNew: !1,
                   link: "/toys/toy-pony-sets/lagoon"
                 },
                 {
                   name: "Ice Blue",
-                  color: "#5b738c",
+                  color: "#54748f",
                   isNew: !1,
                   link: "/toys/toy-pony-sets/ice-blue"
                 },
                 {
                   name: "Hunter Green",
-                  color: "#305a1e",
+                  color: "#1e5b12",
                   isNew: !1,
                   link: "/toys/toy-pony-sets/hunter-green"
                 },
                 {
                   name: "White",
-                  color: "#f0f0f0",
+                  color: "#ffffff",
                   isNew: !1,
                   link: "/toys/toy-pony-sets/white"
                 }
@@ -5872,16 +5872,22 @@ crs-nav {
 .crs-stacked-sections {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0;
 }
 
 .crs-stacked-sections .crs-collections-section {
   margin-bottom: 0;
+  min-width: max-content;
 }
 
 .crs-stacked-sections .crs-collections-section:not(:last-child) {
   margin-bottom: 40px;
+}
+
+.crs-mega-menu-main:has(.crs-stacked-sections + .crs-stacked-sections) .crs-stacked-sections {
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 /* Triple Featured Section */
