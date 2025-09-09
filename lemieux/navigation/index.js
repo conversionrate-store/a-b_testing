@@ -112,7 +112,7 @@
                   name: "Navy",
                   color: c.NavyNew,
                   isNew: !0,
-                  link: "/collections/colour/navy-cranberry?322=6684"
+                  link: "/new-in/aw25?195=8350&322=6684"
                 }
               ],
               submenu: [
