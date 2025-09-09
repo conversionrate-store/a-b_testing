@@ -22,7 +22,7 @@
     Rosemary: "rgb(110, 117, 110)",
     Juniper: "rgb(61, 51, 74)",
     Damson: "rgb(61, 51, 74)",
-    Navy: "rgb(54, 63, 136)",
+    Navy: "rgb(44, 46, 58)",
     Blossom: "rgb(200, 159, 165)",
     Lagoon: "rgb(85, 143, 145)",
     IceBlue: "rgb(84, 116, 143)",
@@ -1958,7 +1958,7 @@
                     },
                     {
                       title: "AW25 Collection",
-                      link: "/toys/toy-pony-collection?collection=aw25"
+                      link: "/new-in/aw25/toys?327=7048"
                     }
                   ]
                 },
@@ -2162,7 +2162,7 @@
                     },
                     {
                       title: "AW25 Collection",
-                      link: "/toys/hobby-horse-collection?collection=aw25"
+                      link: "/new-in/aw25/toys?327=8293"
                     }
                   ]
                 },
@@ -5434,7 +5434,7 @@ crs-nav {
   height: 100%;
   padding-inline: 8px;
   text-decoration: none;
-  color: #5C5C5C;
+  color: #5c5c5c;
   font-family: 'Source Sans 3', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -5935,11 +5935,23 @@ crs-nav {
   flex-direction: column;
 }
 
-[data-title='Women'] .crs-stacked-sections {
-  flex: 2;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
+@media (min-width: 1680px) {
+  :is([data-title='Women'], [data-title='Toys']) .crs-stacked-sections {
+    flex: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+
+@media (min-width: 1920px) {
+  [data-title='Children'] .crs-stacked-sections {
+    flex: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }
 
 .crs-stacked-sections .crs-collections-section {
