@@ -6369,7 +6369,7 @@ ul[data-crs-nav-level='third-level'] {
   font-size: 22px;
   color: #000;
   font-family: baskerville-urw, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 28px;
   letter-spacing: 0.5px;
   margin-bottom: 20px;
