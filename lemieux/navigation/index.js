@@ -1962,7 +1962,16 @@
                     },
                     {
                       title: "AW25 Collection",
-                      link: "/new-in/aw25/toys?327=7048"
+                      link: "/new-in/aw25/toys?329=6622"
+                    },
+                    {
+                      title: "Pony Bags",
+                      link: "/toys/pony-bag"
+                    },
+                    {
+                      title: "View All",
+                      link: "/toys/toy-pony-collection",
+                      template: "link"
                     }
                   ]
                 },
@@ -1971,34 +1980,42 @@
                   link: "/toys/toy-pony-collection",
                   template: "default",
                   submenu: [
-                    { title: "Toy Ponies", link: "/toys/toy-pony-collection" },
+                    { title: "Toy Ponies", link: "/toys/toy-ponies" },
                     {
                       title: "Toy Pony Tack",
-                      link: "/toys/toy-pony-collection?329=6693"
+                      link: "toys/toy-pony-accessories/tack"
                     },
                     {
                       title: "Toy Pony Grooming Kits",
-                      link: "/toys/toy-pony-collection?329=6694"
+                      link: "/toys/toy-pony-accessories/grooming-kits"
                     },
                     {
                       title: "Toy Pony Saddle Pads",
-                      link: "/toys/toy-pony-collection?329=6695"
+                      link: "/toys/toy-pony-accessories/saddle-pads"
                     },
                     {
                       title: "Toy Pony Fly Hoods",
-                      link: "/toys/toy-pony-collection?329=6696"
+                      link: "/toys/toy-pony-accessories/fly-hoods"
                     },
                     {
                       title: "Toy Pony Boots",
-                      link: "/toys/toy-pony-collection?329=6697"
+                      link: "/toys/toy-pony-accessories/boots"
                     },
                     {
                       title: "Toy Pony Bandages",
-                      link: "/toys/toy-pony-collection?329=6698"
+                      link: " /toys/toy-pony-accessories/bandages"
                     },
                     {
                       title: "Toy Pony Headcollars",
-                      link: "/toys/toy-pony-collection?329=6699"
+                      link: " /toys/toy-pony-accessories/headcollars"
+                    },
+                    {
+                      title: "Toy Pony Rugs",
+                      link: "/toys/toy-pony-accessories/rugs"
+                    },
+                    {
+                      title: "Toy Pony Stable & Yard",
+                      link: "/toys/toy-pony-accessories/stable-yard"
                     },
                     {
                       title: "View All",
@@ -2089,7 +2106,7 @@
                 { title: "Toy Riders", link: "/toys/toy-rider-collection" },
                 {
                   title: "Toy Rider Outfits",
-                  link: "/toys/toy-rider-collection?category=outfits"
+                  link: "/toys/toy-rider-collection?444=10994"
                 },
                 {
                   title: "View All",
@@ -2105,17 +2122,17 @@
               submenu: [
                 {
                   title: "Toy Rider Olivia",
-                  link: "/toys/toy-rider-collection?rider=olivia",
+                  link: "/toys/toy-pony-collection/toy-rider-olivia#selection.color=9200&selection.size=6703",
                   icon: "https://www.lemieux.com/static/cms/media/IT06957-Toy%20Rider%20Olivia-1.png"
                 },
                 {
                   title: "Toy Rider Chloe",
-                  link: "/toys/toy-rider-collection?rider=chloe",
+                  link: "/toys/toy-pony-collection/toy-rider-chloe#selection.color=9197&selection.size=6703",
                   icon: "https://www.lemieux.com/static/cms/media/IT06956-Toy%20Rider%20Chloe-1.png"
                 },
                 {
                   title: "Toy Rider Maya",
-                  link: "/toys/toy-rider-collection?rider=maya",
+                  link: " /toys/toy-pony-collection/toy-rider-maya#selection.color=10974&selection.size=6703",
                   icon: "https://www.lemieux.com/static/cms/media/IT06958-Toy-Rider%20Maya.png"
                 }
               ]
@@ -2127,7 +2144,7 @@
               submenu: [
                 {
                   title: "Best Seller",
-                  link: "/toys/toy-rider-collection?rider=olivia",
+                  link: "/toys/toy-pony-collection/toy-rider-olivia#selection.color=9200&selection.size=6703",
                   featuredImage: "https://www.lemieux.com/static/media/catalog/product/i/t/it06957_lifestyle_toyrider_olivia_3.jpg",
                   featuredTitle: "Toy Rider Olivia",
                   featuredSubtitle: "Best Seller",
@@ -2157,7 +2174,7 @@
               submenu: [
                 {
                   title: "Hobby Horse Collection",
-                  link: "/toys/hobby-horse-collection",
+                  link: "/new-in/aw25/toys?329=7680",
                   template: "default",
                   submenu: [
                     {
@@ -2166,7 +2183,12 @@
                     },
                     {
                       title: "AW25 Collection",
-                      link: "/new-in/aw25/toys?327=8293"
+                      link: "/new-in/aw25/toys?329=7680"
+                    },
+                    {
+                      title: "View All",
+                      link: "/toys/hobby-horse-collection",
+                      template: "link"
                     }
                   ]
                 },
@@ -2177,31 +2199,23 @@
                   submenu: [
                     {
                       title: "Hobby Horses",
-                      link: "/toys/hobby-horse-collection"
+                      link: "/toys/hobby-horse"
                     },
                     {
                       title: "Hobby Horse Tack",
-                      link: "/toys/hobby-horse-collection?category=tack"
+                      link: "/toys/hobby-horse-accessories/tack"
                     },
                     {
                       title: "Hobby Horse Fly Hoods",
-                      link: "/toys/hobby-horse-collection?category=fly-hoods"
+                      link: "/toys/hobby-horse-accessories/fly-hoods"
                     },
                     {
                       title: "Hobby Horse Headcollars",
-                      link: "/toys/hobby-horse-collection?category=headcollars"
+                      link: "/toys/hobby-horse-accessories/headcollars"
                     },
                     {
                       title: "Hobby Horse Rosettes",
-                      link: "/toys/hobby-horse-collection?category=rosettes"
-                    },
-                    {
-                      title: "Hobby Horse Jumps",
-                      link: "/toys/hobby-horse-collection?category=jumps"
-                    },
-                    {
-                      title: "Hat Silks",
-                      link: "/toys/hobby-horse-collection?category=hat-silks"
+                      link: "/hobby-horse-rosette-pack-multi#selection.size=6703"
                     },
                     {
                       title: "View All",
@@ -2221,23 +2235,23 @@
                   name: "Lilac",
                   color: c.Lilac,
                   isNew: !0,
-                  link: "/toys/hobby-horse-collection?color=lilac"
+                  link: "/toys/hobby-horse-collection?93=10146"
                 },
                 {
                   name: "Cranberry",
                   color: c.Cranberry,
                   isNew: !0,
-                  link: "/toys/hobby-horse-collection?color=cranberry"
+                  link: "/toys/hobby-horse-collection?93=11250"
                 },
                 {
                   name: "Blossom",
                   color: c.Blossom,
-                  link: "/toys/hobby-horse-collection?color=blossom"
+                  link: "/toys/hobby-horse-collection?93=8370"
                 },
                 {
                   name: "Lagoon",
                   color: c.Lagoon,
-                  link: "/toys/hobby-horse-collection?color=lagoon"
+                  link: "/toys/hobby-horse-collection?93=8386"
                 }
               ],
               submenu: [
@@ -2250,12 +2264,12 @@
             },
             {
               title: "Hobby Horse Collection",
-              link: "/toys/hobby-horse",
+              link: "/toys/hobby-horse-collection",
               template: "featured",
               featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/hobby_horse.webp",
               featuredTitle: "Hobby Horse Collection",
               featuredSubtitle: "",
-              actionLink: { text: "View All", url: "/toys/hobby-horse" }
+              actionLink: { text: "View All", url: "/toys/hobby-horse-collection" }
             }
           ]
         },
@@ -2271,27 +2285,27 @@
               submenu: [
                 {
                   title: "Tiny Pony Dream",
-                  link: "/toys/tiny-ponies?pony=dream",
+                  link: "/toys/tiny-ponies/tiny-pony-dream",
                   icon: "https://www.lemieux.com/tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Tiny-Pony%20Dream.png"
                 },
                 {
                   title: "Tiny Pony Freya",
-                  link: "/toys/tiny-ponies?pony=freya",
+                  link: "/toys/tiny-ponies/tiny-pony-freya",
                   icon: "https://www.lemieux.com/tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Tiny-Pony%20Freya.png"
                 },
                 {
                   title: "Tiny Pony Sammy",
-                  link: "/toys/tiny-ponies?pony=sammy",
+                  link: " /toys/tiny-ponies/tiny-pony-sam",
                   icon: "https://www.lemieux.com/tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Tiny-Pony%20Sam.png"
                 },
                 {
                   title: "Tiny Pony Skye",
-                  link: "/toys/tiny-ponies?pony=skye",
+                  link: "/toys/tiny-ponies/tiny-pony-skyee",
                   icon: "https://www.lemieux.com/tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Tiny-Pony%20Skye.png"
                 },
                 {
                   title: "Tiny Pony Thomas",
-                  link: "/toys/tiny-ponies?pony=thomas",
+                  link: "/toys/tiny-ponies/tiny-pony-thomas",
                   icon: "https://www.lemieux.com/tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Tiny-Pony%20Thomas.png"
                 },
                 {
@@ -5398,7 +5412,7 @@
 crs-nav {
   display: block !important;
 }
-`, E = `/* Custom crs-nav element */
+`, V = `/* Custom crs-nav element */
 crs-nav {
   display: block;
   position: relative;
@@ -6175,7 +6189,7 @@ crs-nav {
   margin-left: auto;
   max-width: max-content;
 }
-`, V = `/* Mobile Navigation Integration with Existing Structure */
+`, E = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
 
 /* Mobile fallback navigation */
@@ -7012,9 +7026,9 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
       const e = document.createElement("style");
       e.textContent = _, document.head.appendChild(e);
       const t = document.createElement("style");
-      t.textContent = E, document.head.appendChild(t);
+      t.textContent = V, document.head.appendChild(t);
       const s = document.createElement("style");
-      s.textContent = V, document.head.appendChild(s);
+      s.textContent = E, document.head.appendChild(s);
     }
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new Y()));
