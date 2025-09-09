@@ -46,7 +46,7 @@
       submenu: [
         {
           title: "New",
-          link: "#",
+          link: "/new-in/aw25/horse-wear",
           template: "default",
           submenu: [
             {
@@ -993,14 +993,14 @@
                       link: "/clothing/women/casual-wear/shirts-tops"
                     },
                     {
-                      title: "Breeches & Jodhpurs",
-                      link: "/clothing/women/casual-wear/breeches-jodhpurs"
+                      title: "Breeches & Pull Ons",
+                      link: " /clothing/women/casual-wear/breeches-jodhpurs"
                     },
-                    {
-                      title: "Leggings & Pull Ons",
-                      link: "/clothing/women/casual-wear/leggings-breeches"
-                    },
-                    { title: "Hat Silks", link: "#" },
+                    // {
+                    //   title: 'Leggings & Pull Ons',
+                    //   link: '/clothing/women/casual-wear/leggings-breeches',
+                    // },
+                    { title: "Hat Silks", link: "/clothing/women/accessories/hat-silks" },
                     {
                       title: "View All",
                       link: "/clothing/women/casual-wear",
@@ -1016,7 +1016,7 @@
                     { title: "AW25 Collection", link: "/new-in/aw25/women" },
                     {
                       title: "Competition Collection",
-                      link: "/clothing/women/competition-clothing"
+                      link: "/clothing/accessories/clothing-accessories/stocks-scrunchies"
                     },
                     { title: "Activewear", link: "/clothing/activewear" },
                     {
@@ -1095,11 +1095,11 @@
               link: "/clothing/footwear",
               template: "default",
               submenu: [
-                { title: "Riding Boots", link: "#" },
-                { title: "Yard Boots", link: "#" },
+                { title: "Riding Boots", link: "/clothing/footwear/riding-boots" },
+                { title: "Yard Boots", link: "/clothing/footwear/short-boots" },
                 { title: "Trainers", link: "/clothing/footwear/trainers" },
-                { title: "Wellies", link: "#" },
-                { title: "Sliders", link: "#" },
+                { title: "Wellies", link: "/clothing/footwear/wellies" },
+                { title: "Sliders", link: "/clothing/footwear/sliders" },
                 {
                   title: "View All",
                   link: "/clothing/footwear",
@@ -1112,7 +1112,7 @@
               link: "/clothing/footwear",
               template: "default",
               submenu: [
-                { title: "Socks", link: "#" },
+                { title: "Socks", link: "/clothing/footwear/socks" },
                 {
                   title: "Bags",
                   link: "/clothing/footwear/footwear-accessories"
@@ -1131,7 +1131,7 @@
               submenu: [
                 {
                   title: "New Arrivals",
-                  link: "/clothing/footwear/trainers",
+                  link: " /clothing/footwear/riding-boots",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04711_lifestyle_fieldridingboot_black_04g.jpg",
                   featuredTitle: "Riding Boots",
                   featuredSubtitle: "New Arrivals",
@@ -1216,7 +1216,7 @@
                 },
                 {
                   title: "Organised Travel",
-                  link: "/clothing/accessories/accessories/rider-luggage?439=luxe",
+                  link: "/clothing/accessories/accessories/rider-luggage",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04979_lifestyle_luxehatbox_black_05-2.webp",
                   featuredTitle: "Luggage",
                   featuredSubtitle: "Organised Travel ",
