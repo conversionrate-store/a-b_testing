@@ -1416,12 +1416,12 @@
                   template: "default",
                   submenu: [
                     {
-                      title: "Hoodies & Jumpers",
-                      link: "/clothing/children/casual-wear/hoodies-jumpers"
-                    },
-                    {
                       title: "Coats & Jackets",
                       link: "/clothing/children/casual-wear/coats-jackets"
+                    },
+                    {
+                      title: "Hoodies & Jumpers",
+                      link: "/clothing/children/casual-wear/hoodies-jumpers"
                     },
                     {
                       title: "Base Layers",
@@ -1432,7 +1432,7 @@
                       link: "/clothing/children/casual-wear/shirts-tops"
                     },
                     {
-                      title: "Leggings & Breeches",
+                      title: "Breeches & Pull Ons",
                       link: "/clothing/children/casual-wear/leggings-breeches"
                     },
                     {
@@ -1490,6 +1490,10 @@
                     {
                       title: "Breeches & Leggings",
                       link: "/clothing/children/casual-wear/competition-wear?327=6523"
+                    },
+                    {
+                      title: "Socks & Scrunchies",
+                      link: "/clothing/accessories/clothing-accessories/stocks-scrunchies"
                     },
                     {
                       title: "View All",
@@ -1613,7 +1617,7 @@
               submenu: [
                 {
                   title: "New In",
-                  link: "/clothing/children/accessories",
+                  link: "/clothing/children/accessories/footwear?327=7874",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04547_studiolifestyle_juniorfieldridingboot_black_10o.jpg",
                   featuredTitle: "Junior Field Riding Boots",
                   featuredSubtitle: "New In",
@@ -1660,7 +1664,7 @@
                 },
                 {
                   title: "View All",
-                  link: "/clothing/accessories/clothing-accessories",
+                  link: "/clothing/children/accessories",
                   template: "link"
                 }
               ]
@@ -1683,10 +1687,10 @@
               template: "dual-featured",
               submenu: [
                 {
-                  title: "Warm autumn colours",
+                  title: "New AW25 Colours",
                   link: "/clothing/accessories/clothing-accessories/caps-hats",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07244_lifestyle_minidoublepombeanie_peachpunch_002p.jpg",
-                  featuredTitle: "Warm autumn colours",
+                  featuredTitle: "New AW25 Colours",
                   featuredSubtitle: "Caps & Hats",
                   template: "featured"
                 },
@@ -1834,7 +1838,7 @@
               submenu: [
                 {
                   title: "Keep it Casual",
-                  link: "/clothing/men/casual-wear",
+                  link: "/clothing/men/casual-wear/shirts-tops",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07400_lifestyle_mensclassiquepoloshirt_navy_02-4.jpg",
                   featuredTitle: "Mens T-Shirts",
                   featuredSubtitle: "Keep it Casual"
@@ -7015,3 +7019,4 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new Y()));
 })();
+
