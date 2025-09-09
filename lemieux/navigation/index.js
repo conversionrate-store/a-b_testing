@@ -2645,8 +2645,8 @@
               link: "/collections/colour/lilac",
               template: "featured",
               featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/aw25-colour-collection-shop-by-colour.webp",
-              featuredTitle: "New Season",
-              featuredSubtitle: "AW25 Colour Collection"
+              featuredTitle: "AW25 Colour Collection",
+              featuredSubtitle: "New Season"
             }
           ]
         },
