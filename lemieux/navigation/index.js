@@ -112,7 +112,7 @@
                   name: "Navy",
                   color: c.NavyNew,
                   isNew: !0,
-                  link: "/new-in/aw25/horse-wear?93=11251"
+                  link: "/collections/colour/navy-cranberry?322=6684"
                 }
               ],
               submenu: [
@@ -940,7 +940,7 @@
                   name: "Navy",
                   color: c.NavyNew,
                   isNew: !0,
-                  link: "/new-in/aw25/women?93=11251"
+                  link: "/collections/colour/navy-cranberry?322=6691"
                 }
               ],
               submenu: [
@@ -1379,7 +1379,7 @@
                   name: "Navy",
                   color: c.NavyNew,
                   isNew: !0,
-                  link: "/new-in/aw25/children?93=11251"
+                  link: "/collections/colour/navy-cranberry?322=6691"
                 }
               ],
               submenu: [
@@ -1758,7 +1758,7 @@
                   name: "Navy",
                   color: c.NavyNew,
                   isNew: !0,
-                  link: "/new-in/aw25/men?195=8350"
+                  link: "/collections/colour/navy-cranberry?322=6685"
                 }
               ],
               submenu: [
