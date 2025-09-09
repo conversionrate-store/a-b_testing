@@ -22,7 +22,8 @@
     Rosemary: "rgb(110, 117, 110)",
     Juniper: "rgb(61, 51, 74)",
     Damson: "rgb(61, 51, 74)",
-    Navy: "rgb(44, 46, 58)",
+    NavyNew: "rgb(44, 46, 58)",
+    NavyOld: "rgb(54, 63, 136)",
     Blossom: "rgb(200, 159, 165)",
     Lagoon: "rgb(85, 143, 145)",
     IceBlue: "rgb(84, 116, 143)",
@@ -31,13 +32,12 @@
     Mimosa: "rgb(224, 201, 146)",
     Peony: "rgb(166, 110, 122)",
     Aqua: "rgb(137, 172, 172)",
-    Wisteria: "rgb(175, 164, 206)",
     Glacier: "rgb(130, 156, 165)",
-    Azure: "rgb(132, 233, 236)",
-    Peacock: "rgb(43, 136, 151)",
-    Sage: "rgb(105, 151, 135)",
     Fern: "rgb(149, 152, 137)",
-    Alpine: "rgb(74, 65, 42)"
+    Alpine: "rgb(74, 65, 42)",
+    Dusk: "rgb(78, 80, 85)",
+    BenettonBlue: "rgb(40, 98, 204)",
+    Chilli: "rgb(215, 10, 10)"
   }, H = [
     {
       title: "Horse",
@@ -110,7 +110,7 @@
                 },
                 {
                   name: "Navy",
-                  color: c.Navy,
+                  color: c.NavyNew,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=11251"
                 }
@@ -938,7 +938,7 @@
                 },
                 {
                   name: "Navy",
-                  color: c.Navy,
+                  color: c.NavyNew,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=11251"
                 }
@@ -1377,7 +1377,7 @@
                 },
                 {
                   name: "Navy",
-                  color: c.Navy,
+                  color: c.NavyNew,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=11251"
                 }
@@ -1756,9 +1756,9 @@
                 },
                 {
                   name: "Navy",
-                  color: c.Navy,
+                  color: c.NavyNew,
                   isNew: !0,
-                  link: "/new-in/aw25/men?93=11251"
+                  link: "/new-in/aw25/men?195=8350"
                 }
               ],
               submenu: [
@@ -2416,7 +2416,7 @@
                 },
                 {
                   name: "Navy",
-                  color: c.Navy,
+                  color: c.NavyNew,
                   isNew: !0,
                   link: "/outfit-builder-outfits/navy-cranberry"
                 }
@@ -2491,10 +2491,10 @@
                   link: "/collections/colour/lilac"
                 },
                 {
-                  name: "Cranberry",
-                  color: c.Cranberry,
+                  name: "Juniper",
+                  color: c.Juniper,
                   isNew: !0,
-                  link: "/collections/colour/cranberry"
+                  link: "/collections/colour/juniper"
                 },
                 {
                   name: "Rosemary",
@@ -2503,20 +2503,20 @@
                   link: "/collections/colour/rosemary"
                 },
                 {
-                  name: "Juniper",
-                  color: c.Juniper,
-                  isNew: !0,
-                  link: "/collections/colour/juniper"
-                },
-                {
                   name: "Damson",
                   color: c.Damson,
                   isNew: !0,
                   link: "/collections/colour/damson"
                 },
                 {
+                  name: "Cranberry",
+                  color: c.Cranberry,
+                  isNew: !0,
+                  link: "/collections/colour/cranberry"
+                },
+                {
                   name: "Navy",
-                  color: c.Navy,
+                  color: c.NavyNew,
                   isNew: !0,
                   link: "/collections/colour/navy-cranberry"
                 },
@@ -2525,36 +2525,6 @@
                   color: c.Blossom,
                   isNew: !1,
                   link: "/collections/colour/blossom"
-                },
-                {
-                  name: "Lagoon",
-                  color: c.Lagoon,
-                  isNew: !1,
-                  link: "/collections/colour/lagoon"
-                },
-                {
-                  name: "Ice Blue",
-                  color: c.IceBlue,
-                  isNew: !1,
-                  link: "/collections/colour/ice-blue"
-                },
-                {
-                  name: "Hunter Green",
-                  color: c.HunterGreen,
-                  isNew: !1,
-                  link: "/collections/colour/hunter-green"
-                },
-                {
-                  name: "White",
-                  color: c.White,
-                  isNew: !1,
-                  link: "/collections/colour/white"
-                },
-                {
-                  name: "Mimosa",
-                  color: c.Mimosa,
-                  isNew: !1,
-                  link: "/collections/colour/mimosa"
                 },
                 {
                   name: "Peony",
@@ -2569,10 +2539,42 @@
                   link: "/collections/colour/aqua"
                 },
                 {
-                  name: "Wisteria",
-                  color: c.Wisteria,
+                  name: "Lagoon",
+                  color: c.Lagoon,
                   isNew: !1,
-                  link: "/collections/colour/wisteria"
+                  link: "/collections/colour/lagoon"
+                },
+                {
+                  name: "Mimosa",
+                  color: c.Mimosa,
+                  isNew: !1,
+                  link: "/collections/colour/mimosa"
+                },
+                //todo: check link
+                {
+                  name: "Dusk",
+                  color: c.Dusk,
+                  isNew: !1,
+                  link: "/collections/colour/dusk"
+                },
+                {
+                  name: "Fern",
+                  color: c.Fern,
+                  isNew: !1,
+                  link: "/collections/colour/fern"
+                },
+                {
+                  name: "Ice Blue",
+                  color: c.IceBlue,
+                  isNew: !1,
+                  link: "/collections/colour/ice-blue"
+                },
+                // todo: check link
+                {
+                  name: "Alpine",
+                  color: c.Alpine,
+                  isNew: !1,
+                  link: "/collections/colour/alpine"
                 },
                 {
                   name: "Glacier",
@@ -2581,29 +2583,43 @@
                   link: "/collections/colour/glacier"
                 },
                 {
-                  name: "Azure",
-                  color: c.Azure,
+                  name: "Hunter Green",
+                  color: c.HunterGreen,
                   isNew: !1,
-                  link: "/collections/colour/azure"
+                  link: "/collections/colour/hunter-green"
+                },
+                // todo: check link
+                {
+                  name: "Benetton Blue",
+                  color: c.BenettonBlue,
+                  isNew: !1,
+                  link: "/collections/colour/benetton-blue"
                 },
                 {
-                  name: "Peacock",
-                  color: c.Peacock,
+                  name: "Chilli",
+                  color: c.Chilli,
                   isNew: !1,
-                  link: "/collections/colour/peacock"
+                  link: "/collections/colour/chilli"
                 },
                 {
-                  name: "Sage",
-                  color: c.Sage,
+                  name: "Navy",
+                  color: c.NavyOld,
                   isNew: !1,
-                  link: "/collections/colour/sage"
-                },
-                {
-                  name: "Fern",
-                  color: c.Fern,
-                  isNew: !1,
-                  link: "/collections/colour/fern"
+                  link: "/collections/colour/navy"
                 }
+                //10
+                // {
+                //   name: 'Peacock',
+                //   color: colours.Peacock,
+                //   isNew: false,
+                //   link: '/collections/colour/peacock',
+                // },
+                // {
+                //   name: 'Sage',
+                //   color: colours.Sage,
+                //   isNew: false,
+                //   link: '/collections/colour/sage',
+                // },
               ],
               submenu: [
                 { title: "View All", link: "/collections", template: "link" }
@@ -3009,7 +3025,7 @@
       l || ""
     );
   }
-  class W {
+  class B {
     constructor(e = "B") {
       this.hideTimeout = null, this.currentIndex = null, this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null, this.variant = e;
     }
@@ -3915,7 +3931,7 @@
   const R = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M15.4665 1.70673L13.9732 0.213395L7.99987 6.18673L2.02654 0.213395L0.533203 1.70673L6.50654 7.68006L0.533203 13.6534L2.02654 15.1467L7.99987 9.1734L13.9732 15.1467L15.4665 13.6534L9.4932 7.68006L15.4665 1.70673Z" fill="black"/>
 </svg>`;
-  class A {
+  class W {
     constructor(e = "B") {
       this.mobileNavigationState = "main", this.eventListeners = [], this.mobileNavigationHistory = [], this.variant = e;
     }
@@ -4906,9 +4922,9 @@
       t && t.remove();
     }
   }
-  class B {
+  class A {
     constructor(e = "B") {
-      this.variant = e, this.desktopNavigation = new W(e), this.mobileNavigation = new A(e);
+      this.variant = e, this.desktopNavigation = new B(e), this.mobileNavigation = new W(e);
     }
     /**
      * Creates the complete navigation system
@@ -5160,7 +5176,7 @@
   }
   class z {
     constructor() {
-      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new B(this.variant), this.init();
+      this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new A(this.variant), this.init();
     }
     init() {
       document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", () => this.start()) : this.start();
