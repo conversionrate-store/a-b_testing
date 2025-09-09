@@ -16,7 +16,7 @@
       `%c EXP: ${b} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, c = {
+  }, u = {
     Lilac: "rgb(194, 181, 204)",
     Cranberry: "rgb(181, 79, 94)",
     Rosemary: "rgb(110, 117, 110)",
@@ -80,37 +80,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: c.Lilac,
+                  color: u.Lilac,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10146"
                 },
                 {
                   name: "Juniper",
-                  color: c.Juniper,
+                  color: u.Juniper,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10143"
                 },
                 {
                   name: "Rosemary",
-                  color: c.Rosemary,
+                  color: u.Rosemary,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10153"
                 },
                 {
                   name: "Damson",
-                  color: c.Damson,
+                  color: u.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=10140"
                 },
                 {
                   name: "Cranberry",
-                  color: c.Cranberry,
+                  color: u.Cranberry,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?93=11250"
                 },
                 {
                   name: "Navy",
-                  color: c.NavyNew,
+                  color: u.NavyNew,
                   isNew: !0,
                   link: "/new-in/aw25/horse-wear?195=8350"
                 }
@@ -908,37 +908,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: c.Lilac,
+                  color: u.Lilac,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10146"
                 },
                 {
                   name: "Juniper",
-                  color: c.Juniper,
+                  color: u.Juniper,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10143"
                 },
                 {
                   name: "Rosemary",
-                  color: c.Rosemary,
+                  color: u.Rosemary,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10153"
                 },
                 {
                   name: "Damson",
-                  color: c.Damson,
+                  color: u.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=10140"
                 },
                 {
                   name: "Cranberry",
-                  color: c.Cranberry,
+                  color: u.Cranberry,
                   isNew: !0,
                   link: "/new-in/aw25/women?93=11250"
                 },
                 {
                   name: "Navy",
-                  color: c.NavyNew,
+                  color: u.NavyNew,
                   isNew: !0,
                   link: "/new-in/aw25/women?195=8350"
                 }
@@ -1347,37 +1347,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: c.Lilac,
+                  color: u.Lilac,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10146"
                 },
                 {
                   name: "Juniper",
-                  color: c.Juniper,
+                  color: u.Juniper,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10143"
                 },
                 {
                   name: "Rosemary",
-                  color: c.Rosemary,
+                  color: u.Rosemary,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10153"
                 },
                 {
                   name: "Damson",
-                  color: c.Damson,
+                  color: u.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=10140"
                 },
                 {
                   name: "Cranberry",
-                  color: c.Cranberry,
+                  color: u.Cranberry,
                   isNew: !0,
                   link: "/new-in/aw25/children?93=11250"
                 },
                 {
                   name: "Navy",
-                  color: c.NavyNew,
+                  color: u.NavyNew,
                   isNew: !0,
                   link: "/new-in/aw25/children?195=8350"
                 }
@@ -1748,19 +1748,19 @@
               colorSwatches: [
                 {
                   name: "Alpine",
-                  color: c.Alpine,
+                  color: u.Alpine,
                   isNew: !0,
                   link: "/new-in/aw25/men?195=8348"
                 },
                 {
                   name: "Damson",
-                  color: c.Damson,
+                  color: u.Damson,
                   isNew: !0,
                   link: "/new-in/aw25/men?93=10140"
                 },
                 {
                   name: "Navy",
-                  color: c.NavyNew,
+                  color: u.NavyNew,
                   isNew: !0,
                   link: "/new-in/aw25/men?195=8350"
                 }
@@ -2033,43 +2033,43 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: c.Lilac,
+                  color: u.Lilac,
                   isNew: !0,
                   link: "/toys/toy-pony-sets/lilac"
                 },
                 {
                   name: "Cranberry",
-                  color: c.Cranberry,
+                  color: u.Cranberry,
                   isNew: !0,
                   link: "/toys/toy-pony-sets/cranberry"
                 },
                 {
                   name: "Blossom",
-                  color: c.Blossom,
+                  color: u.Blossom,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/blossom"
                 },
                 {
                   name: "Lagoon",
-                  color: c.Lagoon,
+                  color: u.Lagoon,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/lagoon"
                 },
                 {
                   name: "Ice Blue",
-                  color: c.IceBlue,
+                  color: u.IceBlue,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/ice-blue"
                 },
                 {
                   name: "Hunter Green",
-                  color: c.HunterGreen,
+                  color: u.HunterGreen,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/hunter-green"
                 },
                 {
                   name: "White",
-                  color: c.White,
+                  color: u.White,
                   isNew: !1,
                   link: "/toys/toy-pony-sets/white"
                 }
@@ -2233,24 +2233,24 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: c.Lilac,
+                  color: u.Lilac,
                   isNew: !0,
                   link: "/toys/hobby-horse-collection?93=10146"
                 },
                 {
                   name: "Cranberry",
-                  color: c.Cranberry,
+                  color: u.Cranberry,
                   isNew: !0,
                   link: "/toys/hobby-horse-collection?93=11250"
                 },
                 {
                   name: "Blossom",
-                  color: c.Blossom,
+                  color: u.Blossom,
                   link: "/toys/hobby-horse-collection?93=8370"
                 },
                 {
                   name: "Lagoon",
-                  color: c.Lagoon,
+                  color: u.Lagoon,
                   link: "/toys/hobby-horse-collection?93=8386"
                 }
               ],
@@ -2404,37 +2404,37 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: c.Lilac,
+                  color: u.Lilac,
                   isNew: !0,
                   link: "/outfit-builder-outfits/lilac"
                 },
                 {
                   name: "Juniper",
-                  color: c.Juniper,
+                  color: u.Juniper,
                   isNew: !0,
                   link: "/outfit-builder-outfits/juniper"
                 },
                 {
                   name: "Rosemary",
-                  color: c.Rosemary,
+                  color: u.Rosemary,
                   isNew: !0,
                   link: "/outfit-builder-outfits/rosemary"
                 },
                 {
                   name: "Damson",
-                  color: c.Damson,
+                  color: u.Damson,
                   isNew: !0,
                   link: "/outfit-builder-outfits/damson"
                 },
                 {
                   name: "Cranberry",
-                  color: c.Cranberry,
+                  color: u.Cranberry,
                   isNew: !0,
                   link: "/outfit-builder-outfits/cranberry"
                 },
                 {
                   name: "Navy",
-                  color: c.NavyNew,
+                  color: u.NavyNew,
                   isNew: !0,
                   link: "/outfit-builder-outfits/navy-cranberry"
                 }
@@ -2504,121 +2504,121 @@
               colorSwatches: [
                 {
                   name: "Lilac",
-                  color: c.Lilac,
+                  color: u.Lilac,
                   isNew: !0,
                   link: "/collections/colour/lilac"
                 },
                 {
                   name: "Juniper",
-                  color: c.Juniper,
+                  color: u.Juniper,
                   isNew: !0,
                   link: "/collections/colour/juniper"
                 },
                 {
                   name: "Rosemary",
-                  color: c.Rosemary,
+                  color: u.Rosemary,
                   isNew: !0,
                   link: "/collections/colour/rosemary"
                 },
                 {
                   name: "Damson",
-                  color: c.Damson,
+                  color: u.Damson,
                   isNew: !0,
                   link: "/collections/colour/damson"
                 },
                 {
                   name: "Cranberry",
-                  color: c.Cranberry,
+                  color: u.Cranberry,
                   isNew: !0,
                   link: "/collections/colour/cranberry"
                 },
                 {
                   name: "Navy",
-                  color: c.NavyNew,
+                  color: u.NavyNew,
                   isNew: !0,
                   link: "/collections/colour/navy-cranberry"
                 },
                 {
                   name: "Blossom",
-                  color: c.Blossom,
+                  color: u.Blossom,
                   isNew: !1,
                   link: "/collections/colour/blossom"
                 },
                 {
                   name: "Peony",
-                  color: c.Peony,
+                  color: u.Peony,
                   isNew: !1,
                   link: "/collections/colour/peony"
                 },
                 {
                   name: "Aqua",
-                  color: c.Aqua,
+                  color: u.Aqua,
                   isNew: !1,
                   link: "/collections/colour/aqua"
                 },
                 {
                   name: "Lagoon",
-                  color: c.Lagoon,
+                  color: u.Lagoon,
                   isNew: !1,
                   link: "/collections/colour/lagoon"
                 },
                 {
                   name: "Mimosa",
-                  color: c.Mimosa,
+                  color: u.Mimosa,
                   isNew: !1,
                   link: "/collections/colour/mimosa"
                 },
                 {
                   name: "Dusk",
-                  color: c.Dusk,
+                  color: u.Dusk,
                   isNew: !1,
                   link: "/collections/colour/dusk"
                 },
                 {
                   name: "Fern",
-                  color: c.Fern,
+                  color: u.Fern,
                   isNew: !1,
                   link: "/collections/colour/fern"
                 },
                 {
                   name: "Ice Blue",
-                  color: c.IceBlue,
+                  color: u.IceBlue,
                   isNew: !1,
                   link: "/collections/colour/ice-blue"
                 },
                 {
                   name: "Alpine",
-                  color: c.Alpine,
+                  color: u.Alpine,
                   isNew: !1,
                   link: "/collections/colour/alpine"
                 },
                 {
                   name: "Glacier",
-                  color: c.Glacier,
+                  color: u.Glacier,
                   isNew: !1,
                   link: "/collections/colour/glacier"
                 },
                 {
                   name: "Hunter Green",
-                  color: c.HunterGreen,
+                  color: u.HunterGreen,
                   isNew: !1,
                   link: "/collections/colour/hunter-green"
                 },
                 {
                   name: "Benetton Blue",
-                  color: c.BenettonBlue,
+                  color: u.BenettonBlue,
                   isNew: !1,
                   link: "/collections/colour/benetton-blue"
                 },
                 {
                   name: "Chilli",
-                  color: c.Chilli,
+                  color: u.Chilli,
                   isNew: !1,
                   link: "/collections/colour/chilli"
                 },
                 {
                   name: "Navy",
-                  color: c.NavyOld,
+                  color: u.NavyOld,
                   isNew: !1,
                   link: "/collections/colour/navy"
                 }
@@ -2766,7 +2766,7 @@
           link: "/gifts/gift-sets",
           template: "featured",
           featuredImage: "https://www.lemieux.com/static/media/catalog/product/g/r/group_lifestyle_toydoll_chloe_maya_olivia_3.jpg",
-          featuredTitle: "Toy Riders Collection",
+          featuredTitle: "Toy Rider Collection",
           featuredSubtitle: "New Arrival",
           actionLink: {
             text: "View All",
@@ -3128,11 +3128,11 @@
               i
             );
           } else if (l.classList.contains("crs-featured-section-link")) {
-            const a = l.getAttribute("data-type"), o = l.getAttribute("data-parent"), u = l.getAttribute("data-grandparent");
+            const a = l.getAttribute("data-type"), o = l.getAttribute("data-parent"), c = l.getAttribute("data-grandparent");
             o && y(
               i,
               a,
-              u || o,
+              c || o,
               o,
               "Image section"
             );
@@ -3148,13 +3148,13 @@
           } else if (l.classList.contains("crs-collection-link") || l.classList.contains("crs-view-all-link")) {
             const a = l.getAttribute("data-parent"), o = l.getAttribute("data-grandparent");
             if (a) {
-              const u = ((r = (n = l.closest(".crs-collections-section")) == null ? void 0 : n.querySelector(".crs-section-title")) == null ? void 0 : r.textContent) || "";
+              const c = ((r = (n = l.closest(".crs-collections-section")) == null ? void 0 : n.querySelector(".crs-section-title")) == null ? void 0 : r.textContent) || "";
               y(
                 i,
                 "Link",
                 o || a,
                 a,
-                u
+                c
               );
             }
           } else if (l.classList.contains("crs-featured-action-link")) {
@@ -3224,15 +3224,15 @@
     createMegaMenuContent(e) {
       var a;
       if (e.template === "gifts") {
-        const u = (
+        const c = (
           /* html */
           `
         <div class="crs-mega-menu-content crs-gifts-layout">
           ${this.createMainContentHTML(e)}
         </div>
       `
-        ), f = document.createElement("div");
-        return f.innerHTML = u.trim(), f.firstElementChild;
+        ), m = document.createElement("div");
+        return m.innerHTML = c.trim(), m.firstElementChild;
       }
       const t = this.createSidebarHTML(e), s = (a = e.submenu) == null ? void 0 : a.find(
         (o) => o.submenu && o.submenu.length > 0
@@ -3258,7 +3258,7 @@
         ${e.submenu.map((s, l) => {
           var o;
           const i = s.isNew ? '<span class="crs-new-badge">New</span>' : "", n = ((o = e.submenu) == null ? void 0 : o.findIndex(
-            (u) => u.submenu && u.submenu.length > 0
+            (c) => c.submenu && c.submenu.length > 0
           )) ?? -1, r = l === n ? "crs-active" : "", a = s.submenu && s.submenu.length > 0 ? "data-has-submenu" : "";
           return (
             /* html */
@@ -3290,10 +3290,10 @@
           const o = this.createMainContentHTML(
             r,
             t
-          ), u = document.createElement("div");
-          u.innerHTML = o;
-          const f = ((p = u.firstElementChild) == null ? void 0 : p.innerHTML) || "";
-          l.innerHTML = f;
+          ), c = document.createElement("div");
+          c.innerHTML = o;
+          const m = ((p = c.firstElementChild) == null ? void 0 : p.innerHTML) || "";
+          l.innerHTML = m;
         });
       });
     }
@@ -3318,22 +3318,22 @@
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let u;
-          i.template === "color-grid" ? u = this.createColorsSectionHTML(
+          let c;
+          i.template === "color-grid" ? c = this.createColorsSectionHTML(
             i,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : u = this.createCollectionsSectionHTML(
+          ) : c = this.createCollectionsSectionHTML(
             i,
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let f;
-          n.template === "color-grid" ? f = this.createColorsSectionHTML(
+          let m;
+          n.template === "color-grid" ? m = this.createColorsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : f = this.createCollectionsSectionHTML(
+          ) : m = this.createCollectionsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
@@ -3369,8 +3369,8 @@
           `
           <div class="crs-mega-menu-main crs-five-column">
             ${o}
-            ${u}
-            ${f}
+            ${c}
+            ${m}
             ${p}
             ${g}
           </div>
@@ -3397,22 +3397,22 @@
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let u;
-          n.template === "color-grid" ? u = this.createColorsSectionHTML(
+          let c;
+          n.template === "color-grid" ? c = this.createColorsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : u = this.createCollectionsSectionHTML(
+          ) : c = this.createCollectionsSectionHTML(
             n,
             e.title,
             (t == null ? void 0 : t.title) || e.title
           );
-          let f;
-          return r.template === "dual-featured" ? f = this.createDualFeaturedSectionHTML(
+          let m;
+          return r.template === "dual-featured" ? m = this.createDualFeaturedSectionHTML(
             r,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : r.template === "triple-featured" ? f = this.createTripleFeaturedSectionHTML(r) : r.template === "product-cards" ? f = this.createProductCardsSectionHTML(r) : f = this.createCollectionsSectionHTML(
+          ) : r.template === "triple-featured" ? m = this.createTripleFeaturedSectionHTML(r) : r.template === "product-cards" ? m = this.createProductCardsSectionHTML(r) : m = this.createCollectionsSectionHTML(
             r,
             e.title,
             (t == null ? void 0 : t.title) || e.title
@@ -3421,8 +3421,8 @@
           <div class="crs-mega-menu-main crs-four-column">
             ${a}
             ${o}
-            ${u}
-            ${f}
+            ${c}
+            ${m}
           </div>
         `;
         } else if (e.submenu.length >= 3) {
@@ -3599,14 +3599,14 @@
     createColorsSectionHTML(e, t, s) {
       var r, a;
       const l = ((r = e.colorSwatches) == null ? void 0 : r.map((o) => {
-        const u = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
+        const c = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
         return (
           /* html */
           `
         <div class="crs-color-item">
           <a href="${o.link || "#"}" class="crs-color-link" data-analytics="${o.name}" data-type="Link" data-parent="${t || ""}" data-grandparent="${s || ""}">
           <div class="crs-color-swatch" style="background-color: ${o.color}">
-            ${u}
+            ${c}
           </div>
           <span class="crs-color-name">${o.name}</span>
           </a>
@@ -3651,14 +3651,14 @@
     createMultiColorGridSectionHTML(e, t, s) {
       var r, a;
       const l = ((r = e.colorSwatches) == null ? void 0 : r.map((o) => {
-        const u = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
+        const c = o.isNew ? '<span class="crs-new-badge">New</span>' : "";
         return (
           /* html */
           `
         <div class="crs-color-item">
           <a href="${o.link || "#"}" class="crs-color-link" data-analytics="${o.name}" data-type="Link" data-parent="${t || ""}" data-grandparent="${s || ""}">
           <div class="crs-color-swatch" style="background-color: ${o.color}">
-            ${u}
+            ${c}
           </div>
           <span class="crs-color-name">${o.name}</span>
           </a>
@@ -3701,14 +3701,14 @@
     }
     createFeaturedSectionHTML(e, t, s) {
       const l = e.link || "#", i = e.featuredImage ? `<a href="${l}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle || e.title}" data-type="Image" data-parent="${t || e.title}" data-grandparent="${s || ""}"><img src="${e.featuredImage}" alt="${e.featuredTitle || ""}" class="crs-featured-image"></a>` : "", n = e.featuredTitle ? `<a href="${l}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${s || ""}"><h4 class="crs-featured-title">${e.featuredTitle}</h4></a>` : "", r = e.featuredSubtitle ? `<a href="${l}" class="crs-featured-section-link" data-analytics="${e.featuredSubtitle}" data-type="CTA" data-parent="${t || e.title}" data-grandparent="${s || ""}"><p class="crs-featured-subtitle test">${e.featuredSubtitle}</p></a>` : "", a = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-featured-action-link" data-analytics="${e.actionLink.text}" data-parent="${t || e.title}" data-grandparent="${s || ""}">${e.actionLink.text}</a>` : "", o = n || r ? `<div class="crs-featured-main-title">${e.title}</div>` : "";
-      let u;
-      return e.template === "outfit-builder" ? u = n || r || a ? `<div class="crs-featured-text crs-outfit-builder-text">${r}${n}${a}</div>` : "" : u = n || r || a ? `<div class="crs-featured-text">${a}${r}${n}</div>` : "", e.template === "outfit-builder" ? (
+      let c;
+      return e.template === "outfit-builder" ? c = n || r || a ? `<div class="crs-featured-text crs-outfit-builder-text">${r}${n}${a}</div>` : "" : c = n || r || a ? `<div class="crs-featured-text">${a}${r}${n}</div>` : "", e.template === "outfit-builder" ? (
         /* html */
         `
       <div class="crs-featured-section crs-outfit-builder-section">
           ${o}
         ${i}
-        ${u}
+        ${c}
       </div>
     `
       ) : (
@@ -3716,7 +3716,7 @@
         `
       <div class="crs-featured-section">
         ${i}
-        ${u}
+        ${c}
       </div>
     `
       );
@@ -3724,7 +3724,7 @@
     createDualFeaturedSectionHTML(e, t, s) {
       if (!e.submenu || e.submenu.length < 2)
         return '<div class="crs-featured-section"></div>';
-      const l = e.submenu[0], i = e.submenu[1], n = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", a = l.featuredSubtitle ? `<p class="crs-featured-subtitle test">${l.featuredSubtitle}</p>` : "", o = r || a ? `<div class="crs-featured-text">${a}${r}</div>` : "", u = i.featuredImage ? `<img src="${i.featuredImage}" alt="${i.featuredTitle || ""}" class="crs-featured-image">` : "", f = i.featuredTitle ? `<h4 class="crs-featured-title">${i.featuredTitle}</h4>` : "", p = i.featuredSubtitle ? `<p class="crs-featured-subtitle test">${i.featuredSubtitle}</p>` : "", g = f || p ? `<div class="crs-featured-text">${p}${f}</div>` : "", $ = l.link ? `<a href="${l.link}" class="crs-featured-item-link" data-analytics="${l.featuredTitle || l.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
+      const l = e.submenu[0], i = e.submenu[1], n = l.featuredImage ? `<img src="${l.featuredImage}" alt="${l.featuredTitle || ""}" class="crs-featured-image">` : "", r = l.featuredTitle ? `<h4 class="crs-featured-title">${l.featuredTitle}</h4>` : "", a = l.featuredSubtitle ? `<p class="crs-featured-subtitle test">${l.featuredSubtitle}</p>` : "", o = r || a ? `<div class="crs-featured-text">${a}${r}</div>` : "", c = i.featuredImage ? `<img src="${i.featuredImage}" alt="${i.featuredTitle || ""}" class="crs-featured-image">` : "", m = i.featuredTitle ? `<h4 class="crs-featured-title">${i.featuredTitle}</h4>` : "", p = i.featuredSubtitle ? `<p class="crs-featured-subtitle test">${i.featuredSubtitle}</p>` : "", g = m || p ? `<div class="crs-featured-text">${p}${m}</div>` : "", N = l.link ? `<a href="${l.link}" class="crs-featured-item-link" data-analytics="${l.featuredTitle || l.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
         <div class="crs-featured-item">
           ${n}
           ${o}
@@ -3732,21 +3732,21 @@
         </a>` : `<div class="crs-featured-item">
           ${n}
           ${o}
-        </div>`, m = i.link ? `<a href="${i.link}" class="crs-featured-item-link" data-analytics="${i.featuredTitle || i.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
+        </div>`, f = i.link ? `<a href="${i.link}" class="crs-featured-item-link" data-analytics="${i.featuredTitle || i.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}">
         <div class="crs-featured-item">
-          ${u}
+          ${c}
           ${g}
         </div>
         </a>` : `<div class="crs-featured-item">
-          ${u}
+          ${c}
           ${g}
         </div>`;
       return (
         /* html */
         `
       <div class="crs-dual-featured-section">
-        ${$}
-        ${m}
+        ${N}
+        ${f}
       </div>
     `
       );
@@ -3771,7 +3771,7 @@
       if (!e.submenu || e.submenu.length < 3)
         return '<div class="crs-featured-section"></div>';
       const t = e.submenu[0], s = e.submenu[1], l = e.submenu[2], i = e.title && e.showTitle ? `<h3 class="crs-triple-featured-title">${e.title}</h3>` : "", n = (r) => {
-        const a = r.link || "#", o = r.featuredImage ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle || r.title}" data-type="Image" data-parent="${e.title}" data-grandparent=""><img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image"></a>` : "", u = r.featuredTitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><h4 class="crs-featured-title">${r.featuredTitle}</h4></a>` : "", f = r.featuredSubtitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><p class="crs-featured-subtitle test">${r.featuredSubtitle}</p></a>` : "", p = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", g = u || f || p ? `<div class="crs-featured-text">${f}${u}${p}</div>` : "";
+        const a = r.link || "#", o = r.featuredImage ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle || r.title}" data-type="Image" data-parent="${e.title}" data-grandparent=""><img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image"></a>` : "", c = r.featuredTitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><h4 class="crs-featured-title">${r.featuredTitle}</h4></a>` : "", m = r.featuredSubtitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><p class="crs-featured-subtitle test">${r.featuredSubtitle}</p></a>` : "", p = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", g = c || m || p ? `<div class="crs-featured-text">${m}${c}${p}</div>` : "";
         return (
           /* html */
           `
@@ -3800,7 +3800,7 @@
       if (!e.submenu || e.submenu.length < 4)
         return '<div class="crs-quad-featured-section"></div>';
       const t = e.submenu[0], s = e.submenu[1], l = e.submenu[2], i = e.submenu[3], n = (r) => {
-        const a = r.link || "#", o = r.featuredImage ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle || r.title}" data-type="Image" data-parent="${e.title}" data-grandparent=""><img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image"></a>` : "", u = r.featuredTitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><h4 class="crs-featured-title">${r.featuredTitle}</h4></a>` : "", f = r.featuredSubtitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><p class="crs-featured-subtitle test">${r.featuredSubtitle}</p></a>` : "", p = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", g = u || f || p ? `<div class="crs-featured-text">${u}${f}${p}</div>` : "";
+        const a = r.link || "#", o = r.featuredImage ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle || r.title}" data-type="Image" data-parent="${e.title}" data-grandparent=""><img src="${r.featuredImage}" alt="${r.featuredTitle || ""}" class="crs-featured-image"></a>` : "", c = r.featuredTitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><h4 class="crs-featured-title">${r.featuredTitle}</h4></a>` : "", m = r.featuredSubtitle ? `<a href="${a}" class="crs-featured-section-link" data-analytics="${r.featuredSubtitle}" data-type="CTA" data-parent="${e.title}" data-grandparent=""><p class="crs-featured-subtitle test">${r.featuredSubtitle}</p></a>` : "", p = r.actionLink ? `<a href="${r.actionLink.url}" class="crs-featured-action-link" data-analytics="${r.actionLink.text}" data-parent="${e.title}">${r.actionLink.text}</a>` : "", g = c || m || p ? `<div class="crs-featured-text">${c}${m}${p}</div>` : "";
         return (
           /* html */
           `
@@ -3859,20 +3859,42 @@
     createGiftsContentHTML(e, t, s) {
       if (!e.submenu || e.submenu.length === 0)
         return '<div class="crs-mega-menu-main crs-five-column"></div>';
-      const l = (n) => n.template === "featured" || n.template === "outfit-builder" ? this.createGiftsFeaturedSectionHTML(
-        n,
-        e.title,
-        s || e.title
-      ) : this.createCollectionsSectionHTML(
-        n,
+      const l = e.submenu.filter(
+        (o) => o.template === "featured" || o.template === "outfit-builder"
+      ), i = e.submenu.filter(
+        (o) => o.template !== "featured" && o.template !== "outfit-builder"
+      ), n = (o) => this.createCollectionsSectionHTML(
+        o,
         e.title,
         s || e.title
       );
+      let r = "";
+      return l.length > 0 && (r = /* html */
+      `
+        <div class="crs-gifts-featured-sections">
+          ${l.map((c) => this.createGiftsFeaturedItemHTML(c, e.title, s || e.title)).join("")}
+        </div>
+      `), /* html */
+      `
+      <div class="crs-mega-menu-main crs-five-column">
+        ${i.map(n).join("")}
+        ${r}
+      </div>
+    `;
+    }
+    createGiftsFeaturedItemHTML(e, t, s) {
+      const l = e.link || "#", i = e.actionLink ? `<a href="${e.actionLink.url}" class="crs-gifts-action-link" data-analytics="${e.actionLink.text}" data-parent="${t || e.title}" data-grandparent="${s || ""}">${e.actionLink.text}</a>` : "", n = e.featuredImage ? `<a href="${l}" class="crs-gifts-featured-link" data-analytics="${e.featuredTitle || e.title}" data-parent="${t || e.title}" data-grandparent="${s || ""}"><div class="crs-featured-image" style="background-image: url('${e.featuredImage}')"></div></a>` : "";
       return (
         /* html */
         `
-      <div class="crs-mega-menu-main crs-five-column">
-        ${e.submenu.map(l).join("")}
+      <div class="crs-gifts-featured-item">
+        <h3 class="crs-gifts-section-title">${e.title}</h3>
+        ${n}
+        <div class="crs-featured-text">
+          <div class="crs-featured-subtitle">${e.featuredSubtitle || ""}</div>
+          <div class="crs-featured-title">${e.featuredTitle || ""}</div>
+        </div>
+        ${i}
       </div>
     `
       );
@@ -4022,23 +4044,23 @@
       e.querySelectorAll(
         ".crs-mobile-nav-item[data-has-submenu]"
       ).forEach((a) => {
-        const o = parseInt(a.getAttribute("data-index") || "0"), u = (f) => {
-          f.preventDefault(), this.showMobileSubmenu(o);
+        const o = parseInt(a.getAttribute("data-index") || "0"), c = (m) => {
+          m.preventDefault(), this.showMobileSubmenu(o);
         };
-        a.hasAttribute("data-has-submenu") && this.addEventListenerWithCleanup(a, "click", u);
+        a.hasAttribute("data-has-submenu") && this.addEventListenerWithCleanup(a, "click", c);
       }), e.querySelectorAll(
         ".crs-mobile-nav-item[data-submenu-index], .crs-mobile-second-level-list .crs-mobile-nav-item[data-submenu-index]"
       ).forEach((a, o) => {
-        const u = parseInt(a.getAttribute("data-index") || "0"), f = parseInt(
+        const c = parseInt(a.getAttribute("data-index") || "0"), m = parseInt(
           a.getAttribute("data-submenu-index") || "0"
-        ), p = a.getAttribute("data-stacked-index"), g = ($) => {
+        ), p = a.getAttribute("data-stacked-index"), g = (N) => {
           var k, w;
-          let d = (k = H[u].submenu) == null ? void 0 : k[f];
+          let d = (k = H[c].submenu) == null ? void 0 : k[m];
           if (p !== null && (d == null ? void 0 : d.template) === "stacked-sections") {
             const T = parseInt(p);
             d = (w = d.submenu) == null ? void 0 : w[T];
           }
-          d && d.submenu && d.submenu.length > 0 && ($.preventDefault(), this.showMobileThirdLevelSubmenu(u, f));
+          d && d.submenu && d.submenu.length > 0 && (N.preventDefault(), this.showMobileThirdLevelSubmenu(c, m));
         };
         a.addEventListener("click", g);
       });
@@ -4058,10 +4080,10 @@
       );
       if (i) {
         const a = (o) => {
-          var u;
-          o.preventDefault(), this.showMobileMainMenu(), (u = document.querySelector(
+          var c;
+          o.preventDefault(), this.showMobileMainMenu(), (c = document.querySelector(
             'off-canvas-menu button[aria-label="Close"]'
-          )) == null || u.click();
+          )) == null || c.click();
         };
         this.addEventListenerWithCleanup(
           i,
@@ -4152,7 +4174,7 @@
       }
     }
     createMobileFeaturedContentHTML(e, t, s, l = !0, i, n) {
-      var o, u, f;
+      var o, c, m;
       let r = "", a = "";
       switch (e.showTitle && e.title && (a = /* html */
       `
@@ -4160,13 +4182,13 @@
       `), e.template) {
         case "dual-featured":
           if (e.submenu && e.submenu.length >= 2) {
-            const m = e.submenu[0], d = e.submenu[1], k = (
+            const f = e.submenu[0], d = e.submenu[1], k = (
               /* html */
               `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${m.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-image" style="background-image: url('${f.featuredImage || ""}')"></div>
                     <div class="crs-mobile-featured-text">
-                      <div class="crs-mobile-featured-subtitle">${m.featuredSubtitle || ""}</div>
-                      <div class="crs-mobile-featured-title">${m.featuredTitle || ""}</div>
+                      <div class="crs-mobile-featured-subtitle">${f.featuredSubtitle || ""}</div>
+                      <div class="crs-mobile-featured-title">${f.featuredTitle || ""}</div>
                     </div>
           `
             ), w = (
@@ -4178,13 +4200,13 @@
               <div class="crs-mobile-featured-title">${d.featuredTitle || ""}</div>
                     </div>
           `
-            ), T = m.link ? (
+            ), T = f.link ? (
               /* html */
-              `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${k}</div></a>`
+              `<a href="${f.link}" class="crs-mobile-featured-link" data-analytics="${f.featuredTitle || f.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${k}</div></a>`
             ) : (
               /* html */
               `<div class="crs-mobile-featured-item">${k}</div>`
-            ), M = d.link ? (
+            ), L = d.link ? (
               /* html */
               `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${w}</div></a>`
             ) : (
@@ -4192,7 +4214,7 @@
               `<div class="crs-mobile-featured-item">${w}</div>`
             ), h = (
               /* html */
-              `<div class="crs-mobile-dual-featured-items">${T + M}</div>`
+              `<div class="crs-mobile-dual-featured-items">${T + L}</div>`
             );
             r = l ? (
               /* html */
@@ -4205,17 +4227,17 @@
           break;
         case "triple-featured":
           if (e.submenu && e.submenu.length >= 2) {
-            const m = e.submenu[0], d = e.submenu[1], w = e.title === "Get the Look" && (i == null ? void 0 : i.title) === "Outfit Builder" && e.submenu.length >= 4, T = (
+            const f = e.submenu[0], d = e.submenu[1], w = e.title === "Get the Look" && (i == null ? void 0 : i.title) === "Outfit Builder" && e.submenu.length >= 4, T = (
               /* html */
               `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${m.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-image" style="background-image: url('${f.featuredImage || ""}')"></div>
                     <div class="crs-mobile-featured-text">
-                      <div class="crs-mobile-featured-subtitle">${m.featuredSubtitle || ""}</div>
-                      <div class="crs-mobile-featured-title">${m.featuredTitle || ""}</div>
-                      ${m.actionLink ? `<a href="${m.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${m.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${m.actionLink.text}</a>` : ""}
+                      <div class="crs-mobile-featured-subtitle">${f.featuredSubtitle || ""}</div>
+                      <div class="crs-mobile-featured-title">${f.featuredTitle || ""}</div>
+                      ${f.actionLink ? `<a href="${f.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${f.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${f.actionLink.text}</a>` : ""}
                     </div>
           `
-            ), M = (
+            ), L = (
               /* html */
               `
                     <div class="crs-mobile-featured-image" style="background-image: url('${d.featuredImage || ""}')"></div>
@@ -4247,28 +4269,28 @@
                   </div>
             `;
             }
-            let N = "", L, v;
+            let M = "", $, v;
             if (w) {
-              L = e.submenu[2], v = e.submenu[3];
+              $ = e.submenu[2], v = e.submenu[3];
               const x = (
                 /* html */
                 `
               <div class="crs-mobile-featured-item">
-                ${m.link ? `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${T}</a>` : T}
+                ${f.link ? `<a href="${f.link}" class="crs-mobile-featured-link" data-analytics="${f.featuredTitle || f.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${T}</a>` : T}
                   </div>
             `
               ), S = (
                 /* html */
                 `
                   <div class="crs-mobile-featured-item">
-                ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${M}</a>` : M}
+                ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${L}</a>` : L}
               </div>
             `
               ), j = (
                 /* html */
                 `
               <div class="crs-mobile-featured-item">
-                ${L.link ? `<a href="${L.link}" class="crs-mobile-featured-link" data-analytics="${L.featuredTitle || L.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${C}</a>` : C}
+                ${$.link ? `<a href="${$.link}" class="crs-mobile-featured-link" data-analytics="${$.featuredTitle || $.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${C}</a>` : C}
               </div>
             `
               ), D = (
@@ -4279,45 +4301,45 @@
               </div>
             `
               );
-              N = /* html */
+              M = /* html */
               `<div class="crs-mobile-triple-featured-items crs-mobile-four-items">${x + S + j + D}</div>`;
             } else {
-              const x = m.link ? (
+              const x = f.link ? (
                 /* html */
-                `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${T}</div></a>`
+                `<a href="${f.link}" class="crs-mobile-featured-link" data-analytics="${f.featuredTitle || f.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${T}</div></a>`
               ) : (
                 /* html */
                 `<div class="crs-mobile-featured-item">${T}</div>`
               ), S = d.link ? (
                 /* html */
-                `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${M}</div></a>`
+                `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}"><div class="crs-mobile-featured-item">${L}</div></a>`
               ) : (
                 /* html */
-                `<div class="crs-mobile-featured-item">${M}</div>`
+                `<div class="crs-mobile-featured-item">${L}</div>`
               );
-              N = /* html */
+              M = /* html */
               `<div class="crs-mobile-triple-featured-items">${x + S}</div>`;
             }
             r = l ? (
               /* html */
-              `<li class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${N}</li>`
+              `<li class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${M}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${N}</div>`
+              `<div class="crs-mobile-triple-featured-content" data-crs-nav="true">${a}${M}</div>`
             );
           }
           break;
         case "quad-featured":
           if (e.submenu && e.submenu.length >= 4) {
-            const m = e.submenu[0], d = e.submenu[1], k = e.submenu[2], w = e.submenu[3], T = (
+            const f = e.submenu[0], d = e.submenu[1], k = e.submenu[2], w = e.submenu[3], T = (
               /* html */
               `
-                    <div class="crs-mobile-featured-image" style="background-image: url('${m.featuredImage || ""}')"></div>
+                    <div class="crs-mobile-featured-image" style="background-image: url('${f.featuredImage || ""}')"></div>
                     <div class="crs-mobile-featured-text" >
-                      <div class="crs-mobile-featured-title">${m.featuredTitle || ""}</div>
+                      <div class="crs-mobile-featured-title">${f.featuredTitle || ""}</div>
                     </div>
           `
-            ), M = (
+            ), L = (
               /* html */
               `
                     <div class="crs-mobile-featured-image" style="background-image: url('${d.featuredImage || ""}')"></div>
@@ -4341,19 +4363,19 @@
               <div class="crs-mobile-featured-title">${w.featuredTitle || ""}</div>
                     </div>
           `
-            ), N = (
+            ), M = (
               /* html */
               `
             <div class="crs-mobile-featured-item">
-              ${m.link ? `<a href="${m.link}" class="crs-mobile-featured-link" data-analytics="${m.featuredTitle || m.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${T}</a>` : T}
-              ${m.actionLink ? `<a href="${m.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${m.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${m.actionLink.text}</a>` : ""}
+              ${f.link ? `<a href="${f.link}" class="crs-mobile-featured-link" data-analytics="${f.featuredTitle || f.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${T}</a>` : T}
+              ${f.actionLink ? `<a href="${f.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${f.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${f.actionLink.text}</a>` : ""}
                   </div>
           `
-            ), L = (
+            ), $ = (
               /* html */
               `
             <div class="crs-mobile-featured-item">
-              ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${M}</a>` : M}
+              ${d.link ? `<a href="${d.link}" class="crs-mobile-featured-link" data-analytics="${d.featuredTitle || d.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${L}</a>` : L}
               ${d.actionLink ? `<a href="${d.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${d.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${d.actionLink.text}</a>` : ""}
             </div>
           `
@@ -4375,7 +4397,7 @@
           `
             ), j = (
               /* html */
-              `<div class="crs-mobile-quad-featured-items">${N + L + v + x}</div>`
+              `<div class="crs-mobile-quad-featured-items">${M + $ + v + x}</div>`
             );
             r = l ? (
               /* html */
@@ -4392,7 +4414,7 @@
             `
                 <div class="crs-mobile-featured-image" style="background-image: url('${e.featuredImage || ""}')"></div>
                 <div class="crs-mobile-featured-text">
-                ${e.actionLink ? `<a href="${((o = e.actionLink) == null ? void 0 : o.url) || ""}" class="crs-mobile-featured-action-link" data-analytics="${((u = e.actionLink) == null ? void 0 : u.text) || ""}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${((f = e.actionLink) == null ? void 0 : f.text) || ""}</a>` : ""}
+                ${e.actionLink ? `<a href="${((o = e.actionLink) == null ? void 0 : o.url) || ""}" class="crs-mobile-featured-action-link" data-analytics="${((c = e.actionLink) == null ? void 0 : c.text) || ""}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(n == null ? void 0 : n.title) || ""}">${((m = e.actionLink) == null ? void 0 : m.text) || ""}</a>` : ""}
                   <div class="crs-mobile-featured-subtitle">${e.featuredSubtitle || ""}</div>
             <div class="crs-mobile-featured-title">${e.featuredTitle || ""}</div>
        
@@ -4412,7 +4434,7 @@
           break;
         case "product-cards":
           if (e.submenu && e.submenu.length > 0) {
-            const m = (
+            const f = (
               /* html */
               `
             ${e.submenu.map(
@@ -4437,15 +4459,15 @@
             );
             r = l ? (
               /* html */
-              `<li class="crs-mobile-product-cards-content" data-crs-nav="true">${m}</li>`
+              `<li class="crs-mobile-product-cards-content" data-crs-nav="true">${f}</li>`
             ) : (
               /* html */
-              `<div class="crs-mobile-product-cards-content" data-crs-nav="true">${m}</div>`
+              `<div class="crs-mobile-product-cards-content" data-crs-nav="true">${f}</div>`
             );
           }
           break;
         case "outfit-builder":
-          const $ = (
+          const N = (
             /* html */
             `
           <div class="crs-mobile-outfit-builder-image" style="background-image: url('${e.featuredImage || ""}')"></div>
@@ -4458,10 +4480,10 @@
           );
           r = l ? (
             /* html */
-            `<li class="crs-mobile-outfit-builder-content" data-crs-nav="true">${$}</li>`
+            `<li class="crs-mobile-outfit-builder-content" data-crs-nav="true">${N}</li>`
           ) : (
             /* html */
-            `<div class="crs-mobile-outfit-builder-content" data-crs-nav="true">${$}</div>`
+            `<div class="crs-mobile-outfit-builder-content" data-crs-nav="true">${N}</div>`
           );
           break;
         default:
@@ -4497,19 +4519,19 @@
           );
           let a = "";
           n.forEach((o) => {
-            var u;
+            var c;
             a += /* html */
             `
             <div class="crs-mobile-third-level-section" data-crs-nav="true">
               <div class="crs-mobile-third-level-title">${o.title}</div>
               <div class="crs-mobile-third-level-items">
-                ${((u = o.submenu) == null ? void 0 : u.map(
-              (f) => (
+                ${((c = o.submenu) == null ? void 0 : c.map(
+              (m) => (
                 /* html */
                 `
                   <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                    <a href="${f.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${f.title}">
-                      <div class="crs-mobile-third-level-text">${f.title}</div>
+                    <a href="${m.link || "#"}" class="crs-mobile-third-level-link" data-analytics="${m.title}">
+                      <div class="crs-mobile-third-level-text">${m.title}</div>
                     </a>
                       </div>
                 `
@@ -4586,7 +4608,7 @@
             `
                 <li class="crs-mobile-submenu-item" data-crs-nav="true">
                   <div class="crs-mobile-submenu-content">
-                    ${n.submenu.map((o, u) => {
+                    ${n.submenu.map((o, c) => {
               if (o.template === "link")
                 return (
                   /* html */
@@ -4599,7 +4621,7 @@
                         `
                 );
               if (o.submenu && o.submenu.length > 0) {
-                const f = o.submenu.map(
+                const m = o.submenu.map(
                   (p) => (
                     /* html */
                     `
@@ -4617,7 +4639,7 @@
                           <div class="crs-mobile-submenu-section" data-crs-nav="true">
                             <div class="crs-mobile-submenu-section-title">${o.title}</div>
                             <div class="crs-mobile-submenu-items">
-                              ${f}
+                              ${m}
                             </div>
                           </div>
                         `
@@ -4690,18 +4712,18 @@
         );
       let i = "";
       return t.submenu && t.submenu.length > 0 && t.submenu.forEach((n, r) => {
-        var a, o, u, f, p, g, $, m, d, k, w;
+        var a, o, c, m, p, g, N, f, d, k, w;
         switch (n.template) {
           case "default":
             const T = ((a = n.submenu) == null ? void 0 : a.map((h) => {
-              var L, v;
-              const N = h.icon ? `<img src="${h.icon}" alt="${h.title}" class="crs-mobile-nav-icon">` : "";
+              var $, v;
+              const M = h.icon ? `<img src="${h.icon}" alt="${h.title}" class="crs-mobile-nav-icon">` : "";
               return (
                 /* html */
                 `
                     <div class="crs-mobile-third-level-item" data-crs-nav="true">
-                          <a href="${h.link || "#"}" class="${h.template === "link" ? "crs-mobile-third-level-link crs-view-all-link" : "crs-mobile-third-level-link"}" data-analytics="${h.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(v = (L = n.submenu) == null ? void 0 : L[r]) == null ? void 0 : v.title}">
-                            ${N}
+                          <a href="${h.link || "#"}" class="${h.template === "link" ? "crs-mobile-third-level-link crs-view-all-link" : "crs-mobile-third-level-link"}" data-analytics="${h.title}" data-parent="${t.title}" data-grandparent="${e.title}" data-collection="${(v = ($ = n.submenu) == null ? void 0 : $[r]) == null ? void 0 : v.title}">
+                            ${M}
                             <div class="crs-mobile-third-level-text">${h.title}</div>
                           </a>
                     </div>
@@ -4720,8 +4742,8 @@
             break;
           case "stacked-sections":
             n.submenu && n.submenu.length > 0 && n.submenu.forEach((h) => {
-              var L;
-              const N = ((L = h.submenu) == null ? void 0 : L.map((v) => {
+              var $;
+              const M = (($ = h.submenu) == null ? void 0 : $.map((v) => {
                 var S, j;
                 const x = v.icon ? `<img src="${v.icon}" alt="${v.title}" class="crs-mobile-nav-icon">` : "";
                 return (
@@ -4741,7 +4763,7 @@
                   <div class="crs-mobile-third-level-section" data-title="${h.title}">
                     <div class="crs-mobile-third-level-title">${h.title}</div>
                     <div class="crs-mobile-third-level-items">
-                      ${N}
+                      ${M}
                     </div>
                   </div>
                 `;
@@ -4764,7 +4786,7 @@
             break;
           case "color-grid":
           case "multi-color-grid":
-            const M = ((o = n.colorSwatches) == null ? void 0 : o.map((h) => (
+            const L = ((o = n.colorSwatches) == null ? void 0 : o.map((h) => (
               /* html */
               `
                 <div class="crs-mobile-color-swatch" data-crs-nav="true">
@@ -4776,16 +4798,16 @@
                   </a>
                 </div>
               `
-            )).join("")) || "", C = (u = n.submenu) != null && u.find(
+            )).join("")) || "", C = (c = n.submenu) != null && c.find(
               (h) => h.template === "link"
             ) ? (
               /* html */
               `
                   <ul class="crs-collection-list">
                     <li>
-                      <a href="${((p = (f = n.submenu) == null ? void 0 : f.find(
+                      <a href="${((p = (m = n.submenu) == null ? void 0 : m.find(
                 (h) => h.template === "link"
-              )) == null ? void 0 : p.link) || "#"}" class="crs-collection-link crs-view-all-link">${(($ = (g = n.submenu) == null ? void 0 : g.find((h) => h.template === "link")) == null ? void 0 : $.title) || "View All"}</a>
+              )) == null ? void 0 : p.link) || "#"}" class="crs-collection-link crs-view-all-link">${((N = (g = n.submenu) == null ? void 0 : g.find((h) => h.template === "link")) == null ? void 0 : N.title) || "View All"}</a>
                     </li>
                   </ul>
                 `
@@ -4794,8 +4816,8 @@
             `
               <div class="crs-mobile-third-level-section">
                 <div class="crs-mobile-third-level-title">${n.title}</div>
-                <div class="crs-mobile-color-swatches" data-one-column="${(m = n == null ? void 0 : n.colorSwatches) != null && m.length && ((d = n == null ? void 0 : n.colorSwatches) == null ? void 0 : d.length) < 4 ? "true" : "false"}">
-                  ${M}
+                <div class="crs-mobile-color-swatches" data-one-column="${(f = n == null ? void 0 : n.colorSwatches) != null && f.length && ((d = n == null ? void 0 : n.colorSwatches) == null ? void 0 : d.length) < 4 ? "true" : "false"}">
+                  ${L}
                   ${C}
                 </div>
               </div>
@@ -4863,13 +4885,13 @@
               n
             ) : y(n, "Link", n);
           else if (i.classList.contains("crs-mobile-third-level-link")) {
-            const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent"), u = i.getAttribute("data-collection");
-            console.log("collectionData", u), a && o && y(
+            const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent"), c = i.getAttribute("data-collection");
+            console.log("collectionData", c), a && o && y(
               n,
               "Link",
               o,
               a,
-              u || ""
+              c || ""
             );
           } else if (i.classList.contains("crs-mobile-featured-action-link")) {
             const a = i.getAttribute("data-parent"), o = i.getAttribute("data-grandparent");
@@ -5595,12 +5617,19 @@ crs-nav {
 }
 
 /* Gifts featured sections */
-.crs-gifts-featured-section {
+.crs-gifts-featured-sections {
   display: flex;
-  flex-direction: column;
+  gap: 20px;
+  flex: 2;
 }
 
-.crs-gifts-featured-section .crs-featured-image {
+.crs-gifts-featured-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.crs-gifts-featured-item .crs-featured-image {
   width: 270px;
   height: 360px;
   background-size: cover;
@@ -5608,11 +5637,22 @@ crs-nav {
   background-repeat: no-repeat;
 }
 
+.crs-gifts-featured-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.crs-gifts-featured-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
 .crs-gifts-section-title {
   font-size: 20px;
   font-weight: 500;
   color: #2e2e2e;
-
   line-height: 23px;
   letter-spacing: 0.5px;
 }
