@@ -5436,8 +5436,8 @@ crs-nav {
   text-decoration: none;
   color: #5C5C5C;
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 400;
   border-bottom: 2px solid transparent;
   letter-spacing: 1px;
 }
@@ -5672,6 +5672,7 @@ crs-nav {
   font-size: 16px;
   line-height: 28px;
   transition: color 0.3s ease;
+  letter-spacing: 1px;
 }
 
 .crs-collection-link {
@@ -5692,6 +5693,7 @@ crs-nav {
   font-size: 16px;
   line-height: 28px;
   color: #212121;
+  letter-spacing: 1px;
 }
 
 /* Colors Section */
@@ -5728,7 +5730,7 @@ crs-nav {
 
 .crs-color-swatch .crs-new-badge {
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
   font-style: italic;
   font-weight: 400;
   line-height: 21px; /* 140% */
@@ -6982,3 +6984,4 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new Y()));
 })();
+
