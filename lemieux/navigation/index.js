@@ -2748,7 +2748,7 @@
       title: "Outlet",
       link: "/lemieux-outlet",
       template: "outlet",
-      // textColor: '#8e1538',
+      textColor: "#8E1538",
       submenu: [
         // {
         //   title: 'Shop All',
@@ -5381,7 +5381,7 @@
 crs-nav {
   display: block !important;
 }
-`, V = `/* Custom crs-nav element */
+`, E = `/* Custom crs-nav element */
 crs-nav {
   display: block;
   position: relative;
@@ -6142,7 +6142,7 @@ crs-nav {
   margin-left: auto;
   max-width: max-content;
 }
-`, E = `/* Mobile Navigation Integration with Existing Structure */
+`, V = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
 
 /* Mobile fallback navigation */
@@ -6979,9 +6979,9 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
       const e = document.createElement("style");
       e.textContent = _, document.head.appendChild(e);
       const t = document.createElement("style");
-      t.textContent = V, document.head.appendChild(t);
+      t.textContent = E, document.head.appendChild(t);
       const s = document.createElement("style");
-      s.textContent = E, document.head.appendChild(s);
+      s.textContent = V, document.head.appendChild(s);
     }
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new Y()));
