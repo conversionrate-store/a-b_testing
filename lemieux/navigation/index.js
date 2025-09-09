@@ -5730,7 +5730,7 @@ crs-nav {
 
 .crs-color-swatch .crs-new-badge {
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   font-style: italic;
   font-weight: 400;
   line-height: 21px; /* 140% */
