@@ -5739,8 +5739,10 @@ crs-nav {
 
 .crs-color-name {
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 14px;
-  color: #2e2e2e;
+  font-size: 16px;
+  color: #212121;
+  letter-spacing: 1px;
+  line-height: 28px;
 }
 
 .crs-colors-section .crs-collection-list {
@@ -6984,4 +6986,3 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new Y()));
 })();
-
