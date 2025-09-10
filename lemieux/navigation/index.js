@@ -6380,7 +6380,9 @@ crs-nav {
   margin-left: auto;
   max-width: max-content;
 }
-
+.crs-featured-section-link[data-analytics="Build your toy outfit"], .crs-featured-section-link[data-analytics="Toy Pony Builder"] {
+  max-width: 230px;
+}
 
 `, Y = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
@@ -7229,4 +7231,3 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
 })();
-//# sourceMappingURL=index.js.map
