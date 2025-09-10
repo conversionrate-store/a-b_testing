@@ -1955,7 +1955,7 @@
               featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/toy-outfit-builder.webp",
               featuredTitle: "Outfit Builder",
               featuredSubtitle: "Build your toy outfit",
-              actionLink: { text: "Create your outfit", url: "/outfit-builder" }
+              actionLink: { text: "Create your outfit", url: "/pony-kit-builder" }
             }
           ]
         },
@@ -7231,3 +7231,4 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
 })();
+
