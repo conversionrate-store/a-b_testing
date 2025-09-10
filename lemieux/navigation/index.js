@@ -6113,9 +6113,10 @@ crs-nav {
     [data-grandparent='Outlet']
   )
   img.crs-featured-image {
-  width: 100%;
-  height: 307px;
+  /* width: 100%;
+  height: 307px; */
   object-fit: cover;
+  aspect-ratio: 230/307;
 }
 
 [data-title='Get the Look'] .crs-featured-image {
@@ -6245,9 +6246,10 @@ crs-nav {
 .crs-triple-featured-items .crs-featured-item .crs-featured-image {
   /* width: 100%; */
   height: 100%;
-  max-width: 230px;
-  min-height: 307px;
+  /* max-width: 230px;
+  min-height: 307px; */
   height: auto;
+  aspect-ratio: 230/307;
 }
 
 .crs-triple-featured-items .crs-featured-item .crs-featured-text {
@@ -7227,3 +7229,4 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   }
   window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
 })();
+//# sourceMappingURL=index.js.map
