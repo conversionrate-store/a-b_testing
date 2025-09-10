@@ -32,7 +32,10 @@
     Mimosa: "rgb(224, 201, 146)",
     Peony: "rgb(166, 110, 122)",
     Aqua: "rgb(137, 172, 172)",
+    Wisteria: "rgb(175, 164, 206)",
     Glacier: "rgb(130, 156, 165)",
+    Azure: "rgb(132, 233, 236)",
+    Peacock: "rgb(43, 136, 151)",
     Fern: "rgb(149, 152, 137)",
     Alpine: "rgb(74, 65, 42)",
     Dusk: "rgb(78, 80, 85)",
@@ -40,13 +43,16 @@
     Chilli: "rgb(215, 10, 10)",
     Burgundy: "rgb(119, 23, 23)",
     Petrol: "rgb(70, 81, 90)",
+    Ink: "rgb(68, 40, 145)",
+    JayBlue: "rgb(98, 104, 121)",
     Ember: "rgb(124, 36, 57)",
     Cinder: "rgb(59, 55, 57)",
     Ginger: "rgb(142, 99, 32)",
     Sage: "rgb(105, 151, 135)",
     Brown: "rgb(94, 63, 17)",
     Grey: "rgb(184, 184, 184)",
-    Black: "rgb(33, 33, 33)"
+    Black: "rgb(33, 33, 33)",
+    Apricot: "rgb(194, 106, 90)"
   }, H = [
     {
       title: "Horse",
@@ -1706,7 +1712,7 @@
               submenu: [
                 {
                   title: "New AW25 Colours",
-                  link: "/clothing/accessories/clothing-accessories/caps-hats",
+                  link: "/clothing/children/accessories?329=6693",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT07244_lifestyle_minidoublepombeanie_peachpunch_002p.jpg",
                   featuredTitle: "New AW25 Colours",
                   featuredSubtitle: "Caps & Hats",
@@ -1942,7 +1948,7 @@
           title: "Toy Pony Builder",
           link: "/pony-kit-builder",
           template: "outfit-builder",
-          featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x960/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Toy-Pony-outfit%20builder.png",
+          featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/toy-outfit-builder.webp",
           featuredTitle: "Build your toy outfit",
           featuredSubtitle: "Toy Pony Builder",
           submenu: [
@@ -1950,7 +1956,7 @@
               title: "Toy Pony Builder",
               link: "/pony-kit-builder",
               template: "outfit-builder",
-              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x960/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Toy-Pony-outfit%20builder.png",
+              featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/toy-outfit-builder.webp",
               featuredTitle: "Outfit Builder",
               featuredSubtitle: "Build your toy outfit",
               actionLink: { text: "Create your outfit", url: "/outfit-builder" }
@@ -1973,33 +1979,9 @@
                   template: "default",
                   submenu: [
                     {
-                      title: "New In",
-                      link: "/toys/toy-pony-collection?sort=new_in~desc"
-                    },
-                    {
-                      title: "AW25 Collection",
+                      title: "New: AW25 Collection",
                       link: "/new-in/aw25/toys?329=6622"
                     },
-                    {
-                      title: "Pony Bags",
-                      link: "/toys/pony-bag"
-                    },
-                    {
-                      title: "Toy Puppy Collection",
-                      link: "/toys/toy-puppy-collection"
-                    },
-                    {
-                      title: "View All",
-                      link: "/toys/toy-pony-collection",
-                      template: "link"
-                    }
-                  ]
-                },
-                {
-                  title: "Shop by Product",
-                  link: "/toys/toy-pony-collection",
-                  template: "default",
-                  submenu: [
                     { title: "Toy Ponies", link: "/toys/toy-ponies" },
                     {
                       title: "Toy Pony Tack",
@@ -2018,12 +2000,8 @@
                       link: "/toys/toy-pony-accessories/fly-hoods"
                     },
                     {
-                      title: "Toy Pony Boots",
-                      link: "/toys/toy-pony-accessories/boots"
-                    },
-                    {
-                      title: "Toy Pony Bandages",
-                      link: "/toys/toy-pony-accessories/bandages"
+                      title: "Toy Pony Boots & Bandages",
+                      link: "/toys/toy-pony-accessories?444=9281&444=9275"
                     },
                     {
                       title: "Toy Pony Headcollars",
@@ -2042,6 +2020,26 @@
                       link: "/toys/toy-pony-collection",
                       template: "link"
                     }
+                  ]
+                },
+                {
+                  title: "More to Discover",
+                  link: "/toys/toy-pony-collection",
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "Pony Bags",
+                      link: "/toys/pony-bag"
+                    },
+                    {
+                      title: "Toy Puppy Collection",
+                      link: "/toys/toy-puppy-collection"
+                    }
+                    // {
+                    //   title: 'View All',
+                    //   link: '/toys/toy-pony-collection',
+                    //   template: 'link',
+                    // },
                   ]
                 }
               ]
@@ -2198,25 +2196,9 @@
                   template: "default",
                   submenu: [
                     {
-                      title: "New In",
-                      link: "/toys/hobby-horse-collection?sort=new_in~desc"
-                    },
-                    {
-                      title: "AW25 Collection",
+                      title: "New: AW25 Collection",
                       link: "/new-in/aw25/toys?329=7680"
                     },
-                    {
-                      title: "View All",
-                      link: "/toys/hobby-horse-collection",
-                      template: "link"
-                    }
-                  ]
-                },
-                {
-                  title: "Shop by Product",
-                  link: "/toys/hobby-horse-collection",
-                  template: "default",
-                  submenu: [
                     {
                       title: "Hobby Horses",
                       link: "/toys/hobby-horse"
@@ -2244,6 +2226,18 @@
                     }
                   ]
                 }
+                // {
+                //   title: 'Shop by Product',
+                //   link: '/toys/hobby-horse-collection',
+                //   template: 'default',
+                //   submenu: [
+                //     {
+                //       title: 'View All',
+                //       link: '/toys/hobby-horse-collection',
+                //       template: 'link',
+                //     },
+                //   ],
+                // },
               ]
             },
             {
@@ -2520,7 +2514,7 @@
               title: "Toy Pony Outfit Builder",
               link: "/pony-kit-builder",
               template: "outfit-builder",
-              featuredImage: "https://www.lemieux.com/static/cms/media/Toy-Pony-outfit%20builder.png",
+              featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/toy-outfit-builder.webp",
               featuredTitle: "Toy Pony Outfit Builder",
               featuredSubtitle: "",
               actionLink: {
@@ -2547,28 +2541,28 @@
                   link: "/collections/colour/lilac"
                 },
                 {
-                  name: "Juniper",
-                  color: c.Juniper,
-                  isNew: !0,
-                  link: "/collections/colour/juniper"
-                },
-                {
                   name: "Rosemary",
                   color: c.Rosemary,
                   isNew: !0,
                   link: "/collections/colour/rosemary"
                 },
                 {
-                  name: "Damson",
-                  color: c.Damson,
-                  isNew: !0,
-                  link: "/collections/colour/damson"
-                },
-                {
                   name: "Cranberry",
                   color: c.Cranberry,
                   isNew: !0,
                   link: "/collections/colour/cranberry"
+                },
+                {
+                  name: "Juniper",
+                  color: c.Juniper,
+                  isNew: !0,
+                  link: "/collections/colour/juniper"
+                },
+                {
+                  name: "Damson",
+                  color: c.Damson,
+                  isNew: !0,
+                  link: "/collections/colour/damson"
                 },
                 {
                   name: "Navy",
@@ -2583,18 +2577,6 @@
                   link: "/collections/colour/blossom"
                 },
                 {
-                  name: "Peony",
-                  color: c.Peony,
-                  isNew: !1,
-                  link: "/collections/colour/peony"
-                },
-                {
-                  name: "Aqua",
-                  color: c.Aqua,
-                  isNew: !1,
-                  link: "/collections/colour/aqua"
-                },
-                {
                   name: "Lagoon",
                   color: c.Lagoon,
                   isNew: !1,
@@ -2607,65 +2589,22 @@
                   link: "/collections/colour/mimosa"
                 },
                 {
+                  name: "Peony",
+                  color: c.Peony,
+                  isNew: !1,
+                  link: "/collections/colour/peony"
+                },
+                {
+                  name: "Aqua",
+                  color: c.Aqua,
+                  isNew: !1,
+                  link: "/collections/colour/aqua"
+                },
+                {
                   name: "Dusk",
                   color: c.Dusk,
                   isNew: !1,
                   link: "/collections/colour/dusk"
-                },
-                {
-                  name: "Fern",
-                  color: c.Fern,
-                  isNew: !1,
-                  link: "/collections/colour/fern"
-                },
-                {
-                  name: "Ice Blue",
-                  color: c.IceBlue,
-                  isNew: !1,
-                  link: "/collections/colour/ice-blue"
-                },
-                {
-                  name: "Alpine",
-                  color: c.Alpine,
-                  isNew: !1,
-                  link: "/collections/colour/alpine"
-                },
-                {
-                  name: "Glacier",
-                  color: c.Glacier,
-                  isNew: !1,
-                  link: "/collections/colour/glacier"
-                },
-                {
-                  name: "Hunter Green",
-                  color: c.HunterGreen,
-                  isNew: !1,
-                  link: "/collections/colour/hunter-green"
-                },
-                {
-                  name: "Benetton Blue",
-                  color: c.BenettonBlue,
-                  isNew: !1,
-                  link: "/collections/colour/benetton-blue"
-                },
-                {
-                  name: "Chilli",
-                  color: c.Chilli,
-                  isNew: !1,
-                  link: "/collections/colour/chilli"
-                },
-                {
-                  name: "Navy",
-                  color: c.NavyOld,
-                  isNew: !1,
-                  link: "/collections/colour/navy"
-                },
-                //10
-                {
-                  name: "Burgundy",
-                  color: c.Burgundy,
-                  isNew: !1,
-                  link: "/collections/colour/burgundy"
                 },
                 {
                   name: "Petrol",
@@ -2674,22 +2613,58 @@
                   link: "/collections/colour/petrol"
                 },
                 {
-                  name: "Ember",
-                  color: c.Ember,
+                  name: "Jay Blue",
+                  color: c.JayBlue,
                   isNew: !1,
-                  link: "/collections/colour/ember"
+                  link: "/collections/colour/jay-blue"
                 },
                 {
-                  name: "Cinder",
-                  color: c.Cinder,
+                  name: "Navy",
+                  color: c.NavyOld,
                   isNew: !1,
-                  link: "/collections/colour/cinder"
+                  link: "/collections/colour/navy"
                 },
                 {
-                  name: "Ginger",
-                  color: c.Ginger,
+                  name: "Ink",
+                  color: c.Ink,
                   isNew: !1,
-                  link: "/collections/colour/ginger"
+                  link: "/collections/colour/ink"
+                },
+                {
+                  name: "Benetton Blue",
+                  color: c.BenettonBlue,
+                  isNew: !1,
+                  link: "/collections/colour/benetton-blue"
+                },
+                {
+                  name: "Ice Blue",
+                  color: c.IceBlue,
+                  isNew: !1,
+                  link: "/collections/colour/ice-blue"
+                },
+                {
+                  name: "Wisteria",
+                  color: c.Wisteria,
+                  isNew: !1,
+                  link: "/collections/colour/wisteria"
+                },
+                {
+                  name: "Glacier",
+                  color: c.Glacier,
+                  isNew: !1,
+                  link: "/collections/colour/glacier"
+                },
+                {
+                  name: "Azure",
+                  color: c.Azure,
+                  isNew: !1,
+                  link: "/collections/colour/azure"
+                },
+                {
+                  name: "Peacock",
+                  color: c.Peacock,
+                  isNew: !1,
+                  link: "/collections/colour/peacock"
                 },
                 {
                   name: "Sage",
@@ -2698,22 +2673,80 @@
                   link: "/collections/colour/sage"
                 },
                 {
+                  name: "Fern",
+                  color: c.Fern,
+                  isNew: !1,
+                  link: "/collections/colour/fern"
+                },
+                // hunter green
+                {
+                  name: "Hunter Green",
+                  color: c.HunterGreen,
+                  isNew: !1,
+                  link: "/collections/colour/hunter-green"
+                },
+                //
+                {
+                  name: "Alpine",
+                  color: c.Alpine,
+                  isNew: !1,
+                  link: "/collections/colour/alpine"
+                },
+                // ginger
+                {
+                  name: "Ginger",
+                  color: c.Ginger,
+                  isNew: !1,
+                  link: "/collections/colour/ginger"
+                },
+                {
+                  name: "Apricot",
+                  color: c.Apricot,
+                  isNew: !1,
+                  link: "/collections/colour/apricot"
+                },
+                {
+                  name: "Chilli",
+                  color: c.Chilli,
+                  isNew: !1,
+                  link: "/collections/colour/chilli"
+                },
+                //10
+                {
+                  name: "Ember",
+                  color: c.Ember,
+                  isNew: !1,
+                  link: "/collections/colour/ember"
+                },
+                {
+                  name: "Burgundy",
+                  color: c.Burgundy,
+                  isNew: !1,
+                  link: "/collections/colour/burgundy"
+                },
+                {
                   name: "Brown",
                   color: c.Brown,
                   isNew: !1,
                   link: "/collections/colour/brown"
                 },
                 {
-                  name: "Grey",
-                  color: c.Grey,
-                  isNew: !1,
-                  link: "/collections/colour/grey"
-                },
-                {
                   name: "Black",
                   color: c.Black,
                   isNew: !1,
                   link: "/collections/colour/black"
+                },
+                {
+                  name: "Cinder",
+                  color: c.Cinder,
+                  isNew: !1,
+                  link: "/collections/colour/cinder"
+                },
+                {
+                  name: "Grey",
+                  color: c.Grey,
+                  isNew: !1,
+                  link: "/collections/colour/grey"
                 },
                 {
                   name: "White",
@@ -4496,7 +4529,7 @@
             ), v = (
               /* html */
               `
-            <div class="crs-mobile-featured-item test">
+            <div class="crs-mobile-featured-item">
               ${k.link ? `<a href="${k.link}" class="crs-mobile-featured-link" data-analytics="${k.featuredTitle || k.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(l == null ? void 0 : l.title) || ""}">${C}</a>` : C}
               ${k.actionLink ? `<a href="${k.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${k.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(l == null ? void 0 : l.title) || ""}">${k.actionLink.text}</a>` : ""}
             </div>
@@ -4584,7 +4617,7 @@
           const M = (
             /* html */
             `
-          <div class="crs-mobile-outfit-builder-image" style="background-image: url('${e.featuredImage || ""}')"></div>
+          <div class="crs-mobile-outfit-builder-image" data-title="${e.title}" style="background-image: url('${e.featuredImage || ""}')"></div>
           <div class="crs-mobile-outfit-builder-text">
             <div class="crs-mobile-outfit-builder-subtitle">${e.featuredSubtitle || ""}</div>
             <div class="crs-mobile-outfit-builder-title">${e.featuredTitle || ""}</div>
@@ -5102,7 +5135,7 @@
       this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class F {
+  class z {
     constructor(e, t, s) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = s, this.currentUrl = location.href;
     }
@@ -5325,7 +5358,7 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class z {
+  class F {
     constructor() {
       this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new W(this.variant), this.init();
     }
@@ -5443,7 +5476,7 @@
       }
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new F(
+      this.newNav && (this.navigationPersistence = new z(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
@@ -5936,13 +5969,17 @@ crs-nav {
 /* Multi Color Grid Section */
 .crs-multi-color-section {
   flex: 1;
-  max-width: calc(372px * 2 + 20px);
+  /* max-width: calc(372px * 2 + 20px); */
 }
 
 .crs-multi-color-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+}
+
+.crs-mega-menu[data-title="Explore"] .crs-featured-section:has([data-parent="Shop by Colour"]) {
+  display: none;
 }
 
 /* Featured Section */
@@ -7168,7 +7205,7 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_nav_redesign");
   class V {
     constructor() {
-      this.navigationVariant = new z(), this.init();
+      this.navigationVariant = new F(), this.init();
     }
     init() {
       this.addStyles();
