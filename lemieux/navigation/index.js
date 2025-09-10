@@ -11,7 +11,7 @@
       childList: !0,
       subtree: !0
     });
-  }), O = ({ name: b, dev: e }) => {
+  }), B = ({ name: b, dev: e }) => {
     console.log(
       `%c EXP: ${b} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -954,7 +954,7 @@
               submenu: [
                 {
                   title: "View All Colours",
-                  link: "/new-in/aw25/women",
+                  link: "/aw25-collection",
                   template: "link"
                 }
               ]
@@ -997,7 +997,7 @@
                       link: "/clothing/women/casual-wear/base-layers"
                     },
                     {
-                      title: "Tops",
+                      title: "Shirts & Tops",
                       link: "/clothing/women/casual-wear/shirts-tops"
                     },
                     {
@@ -1297,15 +1297,15 @@
                   }
                 },
                 {
-                  title: "Petrol Mixy Riding Outfit",
-                  link: "/outfit-builder#eyJzdGVwIjozLCJoaXN0b3J5Ijp7InByZXZTZWxlY3RlZFNlY3Rpb24iOjc4NTB9LCJjb25maWdPcHRpb24iOiJSaWRlciAmIEhvcnNlIiwicmlkZXIiOnsidGFiSWQiOjU4ODgsIm9wdGlvbk5hbWUiOiJSaWRlciJ9LCJob3JzZSI6eyJ0YWJJZCI6NzgxNCwib3B0aW9uTmFtZSI6IkNoZXN0bnV0In0sIm9wdGlvblRvZ2dsZVN0YXRlIjoiSG9yc2UiLCJjdXJyZW50U2VjdGlvbk9wdGlvbklkIjo3ODUxLCJzZWxlY3Rpb24iOnsiNzg0MiI6eyJwcm9kdWN0SWQiOjMwMTg4LCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDMiOnsicHJvZHVjdElkIjo0MTAzMiwicHJvZHVjdFR5cGUiOiJSaWRlciJ9LCI3ODQ1Ijp7InByb2R1Y3RJZCI6MzQ1MjksInByb2R1Y3RUeXBlIjoiUmlkZXIifSwiNzg0NiI6eyJwcm9kdWN0SWQiOjMzMDcxLCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDkiOnsicHJvZHVjdElkIjo0NDM1MSwicHJvZHVjdFR5cGUiOiJIb3JzZSJ9LCI3ODUwIjp7InByb2R1Y3RJZCI6MzU4MzgsInByb2R1Y3RUeXBlIjoiSG9yc2UifSwiNzg1MSI6eyJwcm9kdWN0SWQiOjMzNTQyLCJwcm9kdWN0VHlwZSI6IkhvcnNlIn0sIjgyODkiOnsicHJvZHVjdElkIjo0MTA0OSwicHJvZHVjdFR5cGUiOiJSaWRlciJ9fX0=",
-                  featuredImage: "https://www.lemieux.com/tco-images/unsafe/1366x1821/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/media/catalog/product/p/e/petrol_mixy_riding_outfit.jpg",
-                  featuredTitle: "Petrol Mixy Riding Outfit",
+                  title: "Brown Crystal Suede Competition Outfit",
+                  link: "https://www.lemieux.com/outfit-builder#eyJzdGVwIjozLCJoaXN0b3J5Ijp7InByZXZTZWxlY3RlZFNlY3Rpb24iOjc4NDZ9LCJjb25maWdPcHRpb24iOiJSaWRlciAmIEhvcnNlIiwicmlkZXIiOnsidGFiSWQiOjU4ODgsIm9wdGlvbk5hbWUiOiJSaWRlciJ9LCJob3JzZSI6eyJ0YWJJZCI6NzgxNCwib3B0aW9uTmFtZSI6IkJheSJ9LCJvcHRpb25Ub2dnbGVTdGF0ZSI6IlJpZGVyIiwiY3VycmVudFNlY3Rpb25PcHRpb25JZCI6MTEzMzUsInNlbGVjdGlvbiI6eyI3ODQzIjp7InByb2R1Y3RJZCI6MTI0NzcsInByb2R1Y3RUeXBlIjoiUmlkZXIifSwiNzg0NSI6eyJwcm9kdWN0SWQiOjYwNTY5LCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDYiOnsicHJvZHVjdElkIjo1MTAzLCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDkiOnsicHJvZHVjdElkIjoyMjQ5MCwicHJvZHVjdFR5cGUiOiJIb3JzZSJ9LCI3ODUwIjp7InByb2R1Y3RJZCI6MTkxNzksInByb2R1Y3RUeXBlIjoiSG9yc2UifSwiMTEzMzUiOnsicHJvZHVjdElkIjozMTg1MCwicHJvZHVjdFR5cGUiOiJSaWRlciJ9fX0=",
+                  featuredImage: "https://www.lemieux.com/tco-images/unsafe/640x853/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/media/catalog/product/b/r/brown_crystal_suede_competition_outfit_builder.jpg",
+                  featuredTitle: "Brown Crystal Suede Competition Outfit",
                   featuredSubtitle: "",
                   template: "featured",
                   actionLink: {
                     text: "Shop This Look",
-                    url: "/outfit-builder#eyJzdGVwIjozLCJoaXN0b3J5Ijp7InByZXZTZWxlY3RlZFNlY3Rpb24iOjc4NTB9LCJjb25maWdPcHRpb24iOiJSaWRlciAmIEhvcnNlIiwicmlkZXIiOnsidGFiSWQiOjU4ODgsIm9wdGlvbk5hbWUiOiJSaWRlciJ9LCJob3JzZSI6eyJ0YWJJZCI6NzgxNCwib3B0aW9uTmFtZSI6IkNoZXN0bnV0In0sIm9wdGlvblRvZ2dsZVN0YXRlIjoiSG9yc2UiLCJjdXJyZW50U2VjdGlvbk9wdGlvbklkIjo3ODUxLCJzZWxlY3Rpb24iOnsiNzg0MiI6eyJwcm9kdWN0SWQiOjMwMTg4LCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDMiOnsicHJvZHVjdElkIjo0MTAzMiwicHJvZHVjdFR5cGUiOiJSaWRlciJ9LCI3ODQ1Ijp7InByb2R1Y3RJZCI6MzQ1MjksInByb2R1Y3RUeXBlIjoiUmlkZXIifSwiNzg0NiI6eyJwcm9kdWN0SWQiOjMzMDcxLCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDkiOnsicHJvZHVjdElkIjo0NDM1MSwicHJvZHVjdFR5cGUiOiJIb3JzZSJ9LCI3ODUwIjp7InByb2R1Y3RJZCI6MzU4MzgsInByb2R1Y3RUeXBlIjoiSG9yc2UifSwiNzg1MSI6eyJwcm9kdWN0SWQiOjMzNTQyLCJwcm9kdWN0VHlwZSI6IkhvcnNlIn0sIjgyODkiOnsicHJvZHVjdElkIjo0MTA0OSwicHJvZHVjdFR5cGUiOiJSaWRlciJ9fX0="
+                    url: "https://www.lemieux.com/outfit-builder#eyJzdGVwIjozLCJoaXN0b3J5Ijp7InByZXZTZWxlY3RlZFNlY3Rpb24iOjc4NDZ9LCJjb25maWdPcHRpb24iOiJSaWRlciAmIEhvcnNlIiwicmlkZXIiOnsidGFiSWQiOjU4ODgsIm9wdGlvbk5hbWUiOiJSaWRlciJ9LCJob3JzZSI6eyJ0YWJJZCI6NzgxNCwib3B0aW9uTmFtZSI6IkJheSJ9LCJvcHRpb25Ub2dnbGVTdGF0ZSI6IlJpZGVyIiwiY3VycmVudFNlY3Rpb25PcHRpb25JZCI6MTEzMzUsInNlbGVjdGlvbiI6eyI3ODQzIjp7InByb2R1Y3RJZCI6MTI0NzcsInByb2R1Y3RUeXBlIjoiUmlkZXIifSwiNzg0NSI6eyJwcm9kdWN0SWQiOjYwNTY5LCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDYiOnsicHJvZHVjdElkIjo1MTAzLCJwcm9kdWN0VHlwZSI6IlJpZGVyIn0sIjc4NDkiOnsicHJvZHVjdElkIjoyMjQ5MCwicHJvZHVjdFR5cGUiOiJIb3JzZSJ9LCI3ODUwIjp7InByb2R1Y3RJZCI6MTkxNzksInByb2R1Y3RUeXBlIjoiSG9yc2UifSwiMTEzMzUiOnsicHJvZHVjdElkIjozMTg1MCwicHJvZHVjdFR5cGUiOiJSaWRlciJ9fX0="
                   }
                 }
               ]
@@ -1399,7 +1399,7 @@
               submenu: [
                 {
                   title: "View All Colours",
-                  link: "/new-in/aw25/children",
+                  link: "/aw25-collection",
                   template: "link"
                 }
               ]
@@ -1473,6 +1473,10 @@
                     {
                       title: "Mini Collection",
                       link: "/clothing/children/mini-collection"
+                    },
+                    {
+                      title: "Young Rider Boys",
+                      link: "/clothing/children/young-mens-collection"
                     },
                     {
                       title: "View All",
@@ -1937,8 +1941,8 @@
         {
           title: "Toy Pony Builder",
           link: "/pony-kit-builder",
-          template: "featured",
-          featuredImage: "https://www.lemieux.com/static/cms/media/Build_your_toy_outfit_Toy_Pony_Builder_1k.jpg",
+          template: "outfit-builder",
+          featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x960/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Toy-Pony-outfit%20builder.png",
           featuredTitle: "Build your toy outfit",
           featuredSubtitle: "Toy Pony Builder",
           submenu: [
@@ -3115,7 +3119,7 @@
         // },
       ]
     }
-  ], B = (b, e, t, s = "", n = "", i = "") => {
+  ], O = (b, e, t, s = "", n = "", i = "") => {
     window.dataLayer = window.dataLayer || [];
     const l = {
       event: "event-to-ga4",
@@ -3129,7 +3133,7 @@
     window.dataLayer.push(l), console.table(l);
   };
   function y(b, e, t, s, n) {
-    B(
+    O(
       "exp_nav_click",
       b,
       e,
@@ -3138,7 +3142,7 @@
       n || ""
     );
   }
-  class Z {
+  class A {
     constructor(e = "B") {
       this.hideTimeout = null, this.currentIndex = null, this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null, this.variant = e;
     }
@@ -4078,7 +4082,7 @@
   const R = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M15.4665 1.70673L13.9732 0.213395L7.99987 6.18673L2.02654 0.213395L0.533203 1.70673L6.50654 7.68006L0.533203 13.6534L2.02654 15.1467L7.99987 9.1734L13.9732 15.1467L15.4665 13.6534L9.4932 7.68006L15.4665 1.70673Z" fill="black"/>
 </svg>`;
-  class A {
+  class Z {
     constructor(e = "B") {
       this.mobileNavigationState = "main", this.eventListeners = [], this.mobileNavigationHistory = [], this.variant = e;
     }
@@ -4403,7 +4407,7 @@
                 ${$.link ? `<a href="${$.link}" class="crs-mobile-featured-link" data-analytics="${$.featuredTitle || $.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(l == null ? void 0 : l.title) || ""}">${C}</a>` : C}
               </div>
             `
-              ), D = (
+              ), G = (
                 /* html */
                 `
               <div class="crs-mobile-featured-item">
@@ -4412,7 +4416,7 @@
             `
               );
               N = /* html */
-              `<div class="crs-mobile-triple-featured-items crs-mobile-four-items">${x + S + j + D}</div>`;
+              `<div class="crs-mobile-triple-featured-items crs-mobile-four-items">${x + S + j + G}</div>`;
             } else {
               const x = m.link ? (
                 /* html */
@@ -4492,7 +4496,7 @@
             ), v = (
               /* html */
               `
-            <div class="crs-mobile-featured-item">
+            <div class="crs-mobile-featured-item test">
               ${k.link ? `<a href="${k.link}" class="crs-mobile-featured-link" data-analytics="${k.featuredTitle || k.title}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(l == null ? void 0 : l.title) || ""}">${C}</a>` : C}
               ${k.actionLink ? `<a href="${k.actionLink.url}" class="crs-mobile-featured-action-link" data-analytics="${k.actionLink.text}" data-parent="${(i == null ? void 0 : i.title) || ""}" data-grandparent="${(l == null ? void 0 : l.title) || ""}">${k.actionLink.text}</a>` : ""}
             </div>
@@ -5071,7 +5075,7 @@
   }
   class W {
     constructor(e = "B") {
-      this.variant = e, this.desktopNavigation = new Z(e), this.mobileNavigation = new A(e);
+      this.variant = e, this.desktopNavigation = new A(e), this.mobileNavigation = new Z(e);
     }
     /**
      * Creates the complete navigation system
@@ -6335,7 +6339,7 @@ crs-nav {
   margin-left: auto;
   max-width: max-content;
 }
-`, V = `/* Mobile Navigation Integration with Existing Structure */
+`, Y = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
 
 /* Mobile fallback navigation */
@@ -6715,6 +6719,7 @@ ul[data-crs-nav-level='third-level'] {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-inline: -8px;
 }
 
 .crs-mobile-dual-featured-items {
@@ -7156,12 +7161,12 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
 
 /* Gifts Menu Styles - using third-level and dual-featured styles for consistency */
 `;
-  O({ name: "Navigation Menu Redesign & Interaction", dev: "OS" }), (function(b, e, t, s, n, i) {
+  B({ name: "Navigation Menu Redesign & Interaction", dev: "OS" }), (function(b, e, t, s, n, i) {
     b.hj = b.hj || function() {
       (b.hj.q = b.hj.q || []).push(arguments);
     }, b._hjSettings = { hjid: 2667925, hjsv: 6 }, n = e.getElementsByTagName("head")[0], i = e.createElement("script"), i.async = !0, i.src = t + b._hjSettings.hjid + s + b._hjSettings.hjsv, n && n.appendChild(i);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_nav_redesign");
-  class Y {
+  class V {
     constructor() {
       this.navigationVariant = new z(), this.init();
     }
@@ -7174,8 +7179,8 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
       const t = document.createElement("style");
       t.textContent = E, document.head.appendChild(t);
       const s = document.createElement("style");
-      s.textContent = V, document.head.appendChild(s);
+      s.textContent = Y, document.head.appendChild(s);
     }
   }
-  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new Y()));
+  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
 })();
