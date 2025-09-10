@@ -2507,7 +2507,7 @@
           template: "outfit-builder",
           submenu: [
             {
-              title: "Toy Pony Outfit Builder",
+              title: "Toy Pony Builder",
               link: "/pony-kit-builder",
               template: "outfit-builder",
               featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/toy-outfit-builder.webp",
@@ -6139,6 +6139,10 @@ crs-nav {
   letter-spacing: 0.5px;
 }
 
+.crs-featured-main-title:empty {
+  margin-bottom: 0;
+}
+
 /* .crs-featured-item .crs-featured-title {
   font-family: 'Source Sans 3', sans-serif;
   font-size: 18px;
@@ -6374,6 +6378,8 @@ crs-nav {
   margin-left: auto;
   max-width: max-content;
 }
+
+
 `, Y = `/* Mobile Navigation Integration with Existing Structure */
 /* We work with the existing off-canvas-menu structure */
 
