@@ -345,7 +345,7 @@
                   title: "Ride & Recover",
                   link: "/horsewear/horse-rugs/cooler-rugs",
                   template: "featured",
-                  featuredImage: "https://www.lemieux.com/static/cms/media/IT01053_lifestyle_carboncoolerrug_black_5g.jpg",
+                  featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/cooler-rugs.jpg",
                   featuredTitle: "Cooler Rugs",
                   featuredSubtitle: "Ride & Recover"
                 }
@@ -497,7 +497,7 @@
                 {
                   title: "Most Popular",
                   link: "/horsewear/boots-bandages/brushing-boots",
-                  featuredImage: "https://www.lemieux.com/static/cms/media/IT07016_lifestyle_arikaoverreachboots_juniper_1-3.jpg",
+                  featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/arika-mesh.jpg",
                   featuredTitle: "Arika Mesh Brushing Boots",
                   featuredSubtitle: "Most Popular",
                   template: "featured"
@@ -644,19 +644,19 @@
                   template: "featured"
                 },
                 {
-                  title: "Most Popular",
-                  link: "/horsewear/fly-protection/armourshield-pro-full-fly-mask-grey#selection.color=6647",
-                  featuredImage: "https://www.lemieux.com/static/cms/media/3n6a0380_copy-4.jpg",
-                  featuredTitle: "Armourshield Fly Masks",
-                  featuredSubtitle: "Most Popular",
-                  template: "featured"
-                },
-                {
                   title: "New Colours",
                   link: "/horsewear/fly-protection/fly-hoods",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06962_lifestyle_classicflyhood_lilac_7-3.jpg",
                   featuredTitle: "Classic Fly Hoods",
                   featuredSubtitle: "New Colours",
+                  template: "featured"
+                },
+                {
+                  title: "Most Popular",
+                  link: "/horsewear/fly-protection/armourshield-pro-full-fly-mask-grey#selection.color=6647",
+                  featuredImage: "https://www.lemieux.com/static/cms/media/3n6a0380_copy-4.jpg",
+                  featuredTitle: "Armourshield Fly Masks",
+                  featuredSubtitle: "Most Popular",
                   template: "featured"
                 }
               ]
@@ -1974,7 +1974,7 @@
                   submenu: [
                     {
                       title: "New In",
-                      link: "/toys/toy-pony-collection?sort=newest"
+                      link: "/toys/toy-pony-collection?sort=new_in~desc"
                     },
                     {
                       title: "AW25 Collection",
@@ -2199,7 +2199,7 @@
                   submenu: [
                     {
                       title: "New In",
-                      link: "/toys/hobby-horse-collection?sort=newest"
+                      link: "/toys/hobby-horse-collection?sort=new_in~desc"
                     },
                     {
                       title: "AW25 Collection",
@@ -2323,7 +2323,7 @@
                 },
                 {
                   title: "Tiny Pony Skye",
-                  link: "/toys/tiny-ponies/tiny-pony-skyee",
+                  link: "/toys/tiny-ponies/tiny-pony-skye#selection.color=11080&selection.size=6703",
                   icon: "https://www.lemieux.com/tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Tiny-Pony%20Skye.png"
                 },
                 {
@@ -2728,7 +2728,7 @@
             },
             {
               title: "Colour Collection",
-              link: "/collections/colour/lilac",
+              link: "/aw25-collection",
               template: "featured",
               featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/aw25-colour-collection-shop-by-colour.webp",
               featuredTitle: "AW25 Colour Collection",
