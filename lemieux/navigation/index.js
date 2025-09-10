@@ -32,10 +32,7 @@
     Mimosa: "rgb(224, 201, 146)",
     Peony: "rgb(166, 110, 122)",
     Aqua: "rgb(137, 172, 172)",
-    Wisteria: "rgb(175, 164, 206)",
     Glacier: "rgb(130, 156, 165)",
-    Azure: "rgb(132, 233, 236)",
-    Peacock: "rgb(43, 136, 151)",
     Fern: "rgb(149, 152, 137)",
     Alpine: "rgb(74, 65, 42)",
     Dusk: "rgb(78, 80, 85)",
@@ -43,8 +40,6 @@
     Chilli: "rgb(215, 10, 10)",
     Burgundy: "rgb(119, 23, 23)",
     Petrol: "rgb(70, 81, 90)",
-    Ink: "rgb(68, 40, 145)",
-    JayBlue: "rgb(98, 104, 121)",
     Ember: "rgb(124, 36, 57)",
     Cinder: "rgb(59, 55, 57)",
     Ginger: "rgb(142, 99, 32)",
@@ -52,7 +47,8 @@
     Brown: "rgb(94, 63, 17)",
     Grey: "rgb(184, 184, 184)",
     Black: "rgb(33, 33, 33)",
-    Apricot: "rgb(194, 106, 90)"
+    Apricot: "rgb(194, 106, 90)",
+    Sienna: "rgb(151, 58, 54)"
   }, H = [
     {
       title: "Horse",
@@ -2541,22 +2537,16 @@
                   link: "/collections/colour/lilac"
                 },
                 {
-                  name: "Rosemary",
-                  color: c.Rosemary,
-                  isNew: !0,
-                  link: "/collections/colour/rosemary"
-                },
-                {
-                  name: "Cranberry",
-                  color: c.Cranberry,
-                  isNew: !0,
-                  link: "/collections/colour/cranberry"
-                },
-                {
                   name: "Juniper",
                   color: c.Juniper,
                   isNew: !0,
                   link: "/collections/colour/juniper"
+                },
+                {
+                  name: "Rosemary",
+                  color: c.Rosemary,
+                  isNew: !0,
+                  link: "/collections/colour/rosemary"
                 },
                 {
                   name: "Damson",
@@ -2565,28 +2555,34 @@
                   link: "/collections/colour/damson"
                 },
                 {
+                  name: "Cranberry",
+                  color: c.Cranberry,
+                  isNew: !0,
+                  link: "/collections/colour/cranberry"
+                },
+                {
                   name: "Navy",
                   color: c.NavyNew,
                   isNew: !0,
                   link: "/collections/colour/navy-cranberry"
                 },
                 {
-                  name: "Blossom",
-                  color: c.Blossom,
+                  name: "Dusk",
+                  color: c.Dusk,
                   isNew: !1,
-                  link: "/collections/colour/blossom"
-                },
-                {
-                  name: "Lagoon",
-                  color: c.Lagoon,
-                  isNew: !1,
-                  link: "/collections/colour/lagoon"
+                  link: "/collections/colour/dusk"
                 },
                 {
                   name: "Mimosa",
                   color: c.Mimosa,
                   isNew: !1,
                   link: "/collections/colour/mimosa"
+                },
+                {
+                  name: "Blossom",
+                  color: c.Blossom,
+                  isNew: !1,
+                  link: "/collections/colour/blossom"
                 },
                 {
                   name: "Peony",
@@ -2601,103 +2597,16 @@
                   link: "/collections/colour/aqua"
                 },
                 {
-                  name: "Dusk",
-                  color: c.Dusk,
+                  name: "Lagoon",
+                  color: c.Lagoon,
                   isNew: !1,
-                  link: "/collections/colour/dusk"
-                },
-                {
-                  name: "Petrol",
-                  color: c.Petrol,
-                  isNew: !1,
-                  link: "/collections/colour/petrol"
-                },
-                {
-                  name: "Jay Blue",
-                  color: c.JayBlue,
-                  isNew: !1,
-                  link: "/collections/colour/jay-blue"
-                },
-                {
-                  name: "Navy",
-                  color: c.NavyOld,
-                  isNew: !1,
-                  link: "/collections/colour/navy"
-                },
-                {
-                  name: "Ink",
-                  color: c.Ink,
-                  isNew: !1,
-                  link: "/collections/colour/ink"
-                },
-                {
-                  name: "Benetton Blue",
-                  color: c.BenettonBlue,
-                  isNew: !1,
-                  link: "/collections/colour/benetton-blue"
-                },
-                {
-                  name: "Ice Blue",
-                  color: c.IceBlue,
-                  isNew: !1,
-                  link: "/collections/colour/ice-blue"
-                },
-                {
-                  name: "Wisteria",
-                  color: c.Wisteria,
-                  isNew: !1,
-                  link: "/collections/colour/wisteria"
-                },
-                {
-                  name: "Glacier",
-                  color: c.Glacier,
-                  isNew: !1,
-                  link: "/collections/colour/glacier"
-                },
-                {
-                  name: "Azure",
-                  color: c.Azure,
-                  isNew: !1,
-                  link: "/collections/colour/azure"
-                },
-                {
-                  name: "Peacock",
-                  color: c.Peacock,
-                  isNew: !1,
-                  link: "/collections/colour/peacock"
-                },
-                {
-                  name: "Sage",
-                  color: c.Sage,
-                  isNew: !1,
-                  link: "/collections/colour/sage"
+                  link: "/collections/colour/lagoon"
                 },
                 {
                   name: "Fern",
                   color: c.Fern,
                   isNew: !1,
                   link: "/collections/colour/fern"
-                },
-                // hunter green
-                {
-                  name: "Hunter Green",
-                  color: c.HunterGreen,
-                  isNew: !1,
-                  link: "/collections/colour/hunter-green"
-                },
-                //
-                {
-                  name: "Alpine",
-                  color: c.Alpine,
-                  isNew: !1,
-                  link: "/collections/colour/alpine"
-                },
-                // ginger
-                {
-                  name: "Ginger",
-                  color: c.Ginger,
-                  isNew: !1,
-                  link: "/collections/colour/ginger"
                 },
                 {
                   name: "Apricot",
@@ -2706,35 +2615,70 @@
                   link: "/collections/colour/apricot"
                 },
                 {
+                  name: "Ice Blue",
+                  color: c.IceBlue,
+                  isNew: !1,
+                  link: "/collections/colour/ice-blue"
+                },
+                {
+                  name: "Benetton Blue",
+                  color: c.BenettonBlue,
+                  isNew: !1,
+                  link: "/collections/colour/benetton-blue"
+                },
+                {
+                  name: "Alpine",
+                  color: c.Alpine,
+                  isNew: !1,
+                  link: "/collections/colour/alpine"
+                },
+                {
+                  name: "Ginger",
+                  color: c.Ginger,
+                  isNew: !1,
+                  link: "/collections/colour/ginger"
+                },
+                {
+                  name: "Sage",
+                  color: c.Sage,
+                  isNew: !1,
+                  link: "/collections/colour/sage"
+                },
+                {
+                  name: "Navy",
+                  color: c.NavyOld,
+                  isNew: !1,
+                  link: "/collections/colour/navy"
+                },
+                {
+                  name: "Hunter Green",
+                  color: c.HunterGreen,
+                  isNew: !1,
+                  link: "/collections/colour/hunter-green"
+                },
+                {
+                  name: "Petrol",
+                  color: c.Petrol,
+                  isNew: !1,
+                  link: "/collections/colour/petrol"
+                },
+                {
+                  name: "Glacier",
+                  color: c.Glacier,
+                  isNew: !1,
+                  link: "/collections/colour/glacier"
+                },
+                {
+                  name: "Sienna",
+                  color: c.Sienna,
+                  isNew: !1,
+                  link: "/collections/colour/sienna"
+                },
+                {
                   name: "Chilli",
                   color: c.Chilli,
                   isNew: !1,
                   link: "/collections/colour/chilli"
-                },
-                //10
-                {
-                  name: "Ember",
-                  color: c.Ember,
-                  isNew: !1,
-                  link: "/collections/colour/ember"
-                },
-                {
-                  name: "Burgundy",
-                  color: c.Burgundy,
-                  isNew: !1,
-                  link: "/collections/colour/burgundy"
-                },
-                {
-                  name: "Brown",
-                  color: c.Brown,
-                  isNew: !1,
-                  link: "/collections/colour/brown"
-                },
-                {
-                  name: "Black",
-                  color: c.Black,
-                  isNew: !1,
-                  link: "/collections/colour/black"
                 },
                 {
                   name: "Cinder",
@@ -2749,11 +2693,65 @@
                   link: "/collections/colour/grey"
                 },
                 {
+                  name: "Brown",
+                  color: c.Brown,
+                  isNew: !1,
+                  link: "/collections/colour/brown"
+                },
+                {
+                  name: "Burgundy",
+                  color: c.Burgundy,
+                  isNew: !1,
+                  link: "/collections/colour/burgundy"
+                },
+                {
+                  name: "Ember",
+                  color: c.Ember,
+                  isNew: !1,
+                  link: "/collections/colour/ember"
+                },
+                {
                   name: "White",
                   color: c.White,
                   isNew: !1,
                   link: "/collections/colour/white"
+                },
+                {
+                  name: "Black",
+                  color: c.Black,
+                  isNew: !1,
+                  link: "/collections/colour/black"
                 }
+                // {
+                //   name: 'Jay Blue',
+                //   color: colours.JayBlue,
+                //   isNew: false,
+                //   link: '/collections/colour/jay-blue',
+                // },
+                // {
+                //   name: 'Ink',
+                //   color: colours.Ink,
+                //   isNew: false,
+                //   link: '/collections/colour/ink',
+                // },
+                // {
+                //   name: 'Wisteria',
+                //   color: colours.Wisteria,
+                //   isNew: false,
+                //   link: '/collections/colour/wisteria',
+                // },
+                // {
+                //   name: 'Azure',
+                //   color: colours.Azure,
+                //   isNew: false,
+                //   link: '/collections/colour/azure',
+                // },
+                // {
+                //   name: 'Peacock',
+                //   color: colours.Peacock,
+                //   isNew: false,
+                //   link: '/collections/colour/peacock',
+                // },
               ]
               // submenu: [
               //   { title: 'View All', link: '/collections', template: 'link' },
@@ -5135,7 +5133,7 @@
       this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class z {
+  class F {
     constructor(e, t, s) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = s, this.currentUrl = location.href;
     }
@@ -5358,7 +5356,7 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class F {
+  class z {
     constructor() {
       this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new W(this.variant), this.init();
     }
@@ -5476,7 +5474,7 @@
       }
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new z(
+      this.newNav && (this.navigationPersistence = new F(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
@@ -6688,6 +6686,10 @@ ul[data-crs-nav-level='third-level'] {
   justify-content: center;
 }
 
+.crs-mobile-color-circle[style='background-color: rgb(255, 255, 255)'] {
+  border: 1px solid #f0f0f0;
+}
+
 .crs-mobile-color-new-badge {
   position: absolute;
   font-size: 15px;
@@ -6832,8 +6834,6 @@ ul[data-crs-nav-level='third-level'] {
 .crs-mobile-triple-featured-content .crs-mobile-featured-text {
   padding: 0 10px;
 }
-
-
 
 :is(.crs-mobile-dual-featured-content, .crs-mobile-triple-featured-content)
   .crs-mobile-featured-action-link {
@@ -7205,7 +7205,7 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_nav_redesign");
   class V {
     constructor() {
-      this.navigationVariant = new F(), this.init();
+      this.navigationVariant = new z(), this.init();
     }
     init() {
       this.addStyles();
