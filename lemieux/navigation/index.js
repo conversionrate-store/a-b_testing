@@ -58,7 +58,6 @@
                   title: "Saddle Pads",
                   link: "/new-in/aw25/horse-wear?329=6617"
                 },
-                { title: "Rugs", link: "/new-in/aw25/horse-wear?329=6616" },
                 { title: "Fly Hoods", link: "/new-in/aw25/horse-wear?329=6605" },
                 { title: "Boots", link: "/new-in/aw25/horse-wear?329=7903" },
                 {
@@ -570,7 +569,7 @@
                 },
                 {
                   title: "New Colours",
-                  link: "/horsewear/headcollars-leadropes/finesse-headcollars",
+                  link: "/horsewear/headcollars-leadropes/comfort-headcollars",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT06973_lifestyle_finesse_headcollar_rosemary_cob_02-3.jpg",
                   featuredTitle: "Versailles Headcollars",
                   featuredSubtitle: "New Colours",
@@ -601,7 +600,7 @@
                 },
                 {
                   title: "Fly Hoods",
-                  link: "/horsewear/fly-hoods/loire-fly-hoods"
+                  link: "/horsewear/fly-protection/fly-hoods"
                 },
                 {
                   title: "Nose Filters",
@@ -779,7 +778,7 @@
                   template: "featured"
                 },
                 {
-                  title: "Beat Boredom",
+                  title: "Horse Stable Toys",
                   link: "/horsewear/stable-yard/horse-toys",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT03912_lifestyle_horsetoy_banana_1-1-2.jpg",
                   featuredTitle: "Horse Stable Toys",
@@ -1000,7 +999,10 @@
                     //   title: 'Leggings & Pull Ons',
                     //   link: '/clothing/women/casual-wear/leggings-breeches',
                     // },
-                    { title: "Hat Silks", link: "/clothing/women/accessories/hat-silks" },
+                    {
+                      title: "Hat Silks",
+                      link: "/clothing/women/accessories/hat-silks"
+                    },
                     {
                       title: "View All",
                       link: "/clothing/women/casual-wear",
@@ -1047,7 +1049,7 @@
                 },
                 {
                   title: "Stocks & Scrunchies",
-                  link: "/clothing/women/competition-clothing/competition-breeches"
+                  link: "/clothing/accessories/clothing-accessories/stocks-scrunchies"
                 },
                 {
                   title: "Competition Accessories",
@@ -1095,7 +1097,10 @@
               link: "/clothing/footwear",
               template: "default",
               submenu: [
-                { title: "Riding Boots", link: "/clothing/footwear/riding-boots" },
+                {
+                  title: "Riding Boots",
+                  link: "/clothing/footwear/riding-boots"
+                },
                 { title: "Yard Boots", link: "/clothing/footwear/short-boots" },
                 { title: "Trainers", link: "/clothing/footwear/trainers" },
                 { title: "Wellies", link: "/clothing/footwear/wellies" },
@@ -1131,7 +1136,7 @@
               submenu: [
                 {
                   title: "New Arrivals",
-                  link: " /clothing/footwear/riding-boots",
+                  link: "/clothing/footwear/riding-boots",
                   featuredImage: "https://www.lemieux.com/static/cms/media/IT04711_lifestyle_fieldridingboot_black_04g.jpg",
                   featuredTitle: "Riding Boots",
                   featuredSubtitle: "New Arrivals",
@@ -1920,27 +1925,25 @@
       link: "/toys",
       template: "featured",
       submenu: [
-        // {
-        //   title: 'Toy Pony Builder',
-        //   link: '/pony-kit-builder',
-        //   template: 'featured',
-        //   featuredImage:
-        //     'https://www.lemieux.com/static/cms/media/Build_your_toy_outfit_Toy_Pony_Builder_1k.jpg',
-        //   featuredTitle: 'Build your toy outfit',
-        //   featuredSubtitle: 'Toy Pony Builder',
-        //   submenu: [
-        //     {
-        //       title: 'Toy Pony Builder',
-        //       link: '/pony-kit-builder',
-        //       template: 'outfit-builder',
-        //       featuredImage:
-        //         'https://www.lemieux.com/tco-images/unsafe/1920x960/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Toy-Pony-outfit%20builder.png',
-        //       featuredTitle: 'Outfit Builder',
-        //       featuredSubtitle: 'Build your toy outfit',
-        //       actionLink: { text: 'Create your outfit', url: '/outfit-builder' },
-        //     },
-        //   ],
-        // },
+        {
+          title: "Toy Pony Builder",
+          link: "/pony-kit-builder",
+          template: "featured",
+          featuredImage: "https://www.lemieux.com/static/cms/media/Build_your_toy_outfit_Toy_Pony_Builder_1k.jpg",
+          featuredTitle: "Build your toy outfit",
+          featuredSubtitle: "Toy Pony Builder",
+          submenu: [
+            {
+              title: "Toy Pony Builder",
+              link: "/pony-kit-builder",
+              template: "outfit-builder",
+              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x960/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Toy-Pony-outfit%20builder.png",
+              featuredTitle: "Outfit Builder",
+              featuredSubtitle: "Build your toy outfit",
+              actionLink: { text: "Create your outfit", url: "/outfit-builder" }
+            }
+          ]
+        },
         {
           title: "Toy Ponies",
           link: "/toys/toy-pony-collection",
@@ -1969,6 +1972,10 @@
                       link: "/toys/pony-bag"
                     },
                     {
+                      title: "Toy Puppy Collection",
+                      link: "/toys/toy-puppy-collection"
+                    },
+                    {
                       title: "View All",
                       link: "/toys/toy-pony-collection",
                       template: "link"
@@ -1983,7 +1990,7 @@
                     { title: "Toy Ponies", link: "/toys/toy-ponies" },
                     {
                       title: "Toy Pony Tack",
-                      link: "toys/toy-pony-accessories/tack"
+                      link: "/toys/toy-pony-accessories/tack"
                     },
                     {
                       title: "Toy Pony Grooming Kits",
@@ -2003,7 +2010,7 @@
                     },
                     {
                       title: "Toy Pony Bandages",
-                      link: " /toys/toy-pony-accessories/bandages"
+                      link: "/toys/toy-pony-accessories/bandages"
                     },
                     {
                       title: "Toy Pony Headcollars",
@@ -2269,7 +2276,10 @@
               featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/hobby_horse.webp",
               featuredTitle: "Hobby Horse Collection",
               featuredSubtitle: "",
-              actionLink: { text: "View All", url: "/toys/hobby-horse-collection" }
+              actionLink: {
+                text: "View All",
+                url: "/toys/hobby-horse-collection"
+              }
             }
           ]
         },
@@ -2390,6 +2400,21 @@
                   link: "/outfit-builder-outfits/palomino",
                   icon: "https://www.lemieux.com/tco-images/unsafe/1920x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Palomino-png-1.png"
                 },
+                // {
+                //   title: 'Appaloosa',
+                //   link: '/outfit-builder-outfits/appaloosa',
+                //   icon: 'https://www.lemieux.com/tco-images/unsafe/128x128/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Appaloosa-png-3.png',
+                // },
+                // {
+                //   title: 'Piebald',
+                //   link: '/outfit-builder-outfits/piebald',
+                //   icon: 'https://www.lemieux.com/tco-images/unsafe/1920x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Piebald-png-3.png',
+                // },
+                // {
+                //   title: 'Skewbald',
+                //   link: '/outfit-builder-outfits/skewbald',
+                //   icon: 'https://www.lemieux.com/tco-images/unsafe/1920x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Skewbald-png-3.png',
+                // },
                 {
                   title: "View All",
                   link: "/outfit-builder-outfits",
@@ -2624,16 +2649,64 @@
                 }
                 //10
                 // {
-                //   name: 'Peacock',
-                //   color: colours.Peacock,
+                //   name: 'Burgundy',
+                //   color: colours.Burgundy,
                 //   isNew: false,
-                //   link: '/collections/colour/peacock',
+                //   link: '/collections/colour/burgundy',
+                // },
+                // {
+                //   name: 'Petrol',
+                //   color: colours.Petrol,
+                //   isNew: false,
+                //   link: '/collections/colour/petrol',
+                // },
+                // {
+                //   name: 'Ember',
+                //   color: colours.Ember,
+                //   isNew: false,
+                //   link: '/collections/colour/ember',
+                // },
+                // {
+                //   name: 'Cinder',
+                //   color: colours.Cinder,
+                //   isNew: false,
+                //   link: '/collections/colour/cinder',
+                // },
+                // {
+                //   name: 'Ginger',
+                //   color: colours.Ginger,
+                //   isNew: false,
+                //   link: '/collections/colour/ginger',
                 // },
                 // {
                 //   name: 'Sage',
                 //   color: colours.Sage,
                 //   isNew: false,
                 //   link: '/collections/colour/sage',
+                // },
+                // {
+                //   name: 'Brown',
+                //   color: colours.Brown,
+                //   isNew: false,
+                //   link: '/collections/colour/brown',
+                // },
+                // {
+                //   name: 'Grey',
+                //   color: colours.Grey,
+                //   isNew: false,
+                //   link: '/collections/colour/grey',
+                // },
+                // {
+                //   name: 'Black',
+                //   color: colours.Black,
+                //   isNew: false,
+                //   link: '/collections/colour/black',
+                // },
+                // {
+                //   name: 'White',
+                //   color: colours.White,
+                //   isNew: false,
+                //   link: '/collections/colour/white',
                 // },
               ],
               submenu: [
@@ -2763,14 +2836,14 @@
         },
         {
           title: "",
-          link: "/gifts/gift-sets",
+          link: "/toys/toy-rider-collection",
           template: "featured",
           featuredImage: "https://www.lemieux.com/static/media/catalog/product/g/r/group_lifestyle_toydoll_chloe_maya_olivia_3.jpg",
           featuredTitle: "Toy Rider Collection",
           featuredSubtitle: "New Arrival",
           actionLink: {
             text: "View All",
-            url: "/gifts/gift-sets"
+            url: "/toys/toy-rider-collection"
           }
         }
       ]
@@ -2971,7 +3044,10 @@
                   title: "Tops, Hoodies & Jumpers",
                   link: "/lemieux-outlet/clothing/men?329=6621"
                 },
-                { title: "Breeches", link: "/lemieux-outlet/clothing/men?327=6523" },
+                {
+                  title: "Breeches",
+                  link: "/lemieux-outlet/clothing/men?327=6523"
+                },
                 {
                   title: "Accessories",
                   link: "/lemieux-outlet/accessories"
@@ -3026,7 +3102,7 @@
         // },
       ]
     }
-  ], Z = (b, e, t, s = "", l = "", i = "") => {
+  ], B = (b, e, t, s = "", l = "", i = "") => {
     window.dataLayer = window.dataLayer || [];
     const n = {
       event: "event-to-ga4",
@@ -3040,7 +3116,7 @@
     window.dataLayer.push(n), console.table(n);
   };
   function y(b, e, t, s, l) {
-    Z(
+    B(
       "exp_nav_click",
       b,
       e,
@@ -3049,7 +3125,7 @@
       l || ""
     );
   }
-  class A {
+  class Z {
     constructor(e = "B") {
       this.hideTimeout = null, this.currentIndex = null, this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null, this.variant = e;
     }
@@ -3977,7 +4053,7 @@
   const R = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M15.4665 1.70673L13.9732 0.213395L7.99987 6.18673L2.02654 0.213395L0.533203 1.70673L6.50654 7.68006L0.533203 13.6534L2.02654 15.1467L7.99987 9.1734L13.9732 15.1467L15.4665 13.6534L9.4932 7.68006L15.4665 1.70673Z" fill="black"/>
 </svg>`;
-  class B {
+  class A {
     constructor(e = "B") {
       this.mobileNavigationState = "main", this.eventListeners = [], this.mobileNavigationHistory = [], this.variant = e;
     }
@@ -4970,7 +5046,7 @@
   }
   class W {
     constructor(e = "B") {
-      this.variant = e, this.desktopNavigation = new A(e), this.mobileNavigation = new B(e);
+      this.variant = e, this.desktopNavigation = new Z(e), this.mobileNavigation = new A(e);
     }
     /**
      * Creates the complete navigation system
