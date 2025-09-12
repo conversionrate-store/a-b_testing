@@ -38,7 +38,7 @@
     }
     console.log(`%c>>> ${u}`, `${t} font-size: 16px; font-weight: 600`);
   }, A = `.crs-reels-section {
-  padding-top: 0;
+  padding-top: 32px;
   padding-bottom: 83px;
   background: linear-gradient(180deg, #f1f3f4 0%, #fff 100%);
 }
@@ -92,10 +92,7 @@
     async render() {
       this.section = document.createElement("section"), this.section.classList.add("js-mobile", "crs-reels-section"), this.section.innerHTML = /* html */
       `
-    <div class="wave-effect js-mobile">
-    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" plerdy-tracking-id="86593067801"><path fill="#F1F3F4" fill-opacity="1" d="M0,128L60,138.7C120,149,240,171,360,165.3C480,160,600,128,720,101.3C840,75,960,53,1080,58.7C1200,64,1320,96,1380,112L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
-      
-    </div>
+    
     <div class="reels-section__container">
       <h2 class="reels-section__title">Watch PetZen Patches in Action</h2>
       <div class="reels-section__content">
@@ -159,7 +156,7 @@
       e.textContent = I, document.head.appendChild(e);
     }
   }
-  const C = `* {
+  const R = `* {
   box-sizing: border-box;
 }
 
@@ -420,7 +417,7 @@
   ), S = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" fill="none"><path fill="#D9D9D9" d="M19.12 13.12 3.344 22.346c-1.333.78-3.01-.181-3.01-1.726V2.059C.333.51 2.018-.45 3.352.338L19.129 9.67c1.313.777 1.308 2.678-.008 3.448Z"/></svg>'
-  ), R = `* {
+  ), z = `* {
   box-sizing: border-box;
 }
 
@@ -624,7 +621,7 @@
         /* html */
         `
       <style>
-        ${R}
+        ${z}
       </style>
       <div class="fullscreen-overlay" id="fullscreen-overlay">
         <div class="fullscreen-video-container" id="fullscreen-video-container">
@@ -753,7 +750,7 @@
   };
   m.currentInstance = null;
   let b = m;
-  class z extends HTMLElement {
+  class C extends HTMLElement {
     constructor() {
       super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new b(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
     }
@@ -768,7 +765,7 @@
         /* html */
         `
     <style>
-      ${C}
+      ${R}
     </style>
     <div class="reels">
       <ul class="reels-list">
@@ -1424,7 +1421,7 @@
       });
     }
     defineCustomElements() {
-      customElements.define("crs-reels", z), customElements.define("crs-product-slider", D), customElements.define("crs-fullscreen-video", b);
+      customElements.define("crs-reels", C), customElements.define("crs-product-slider", D), customElements.define("crs-fullscreen-video", b);
     }
     addStyles() {
       const e = document.createElement("style");
