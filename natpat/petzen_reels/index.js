@@ -1,26 +1,53 @@
 (function() {
   "use strict";
-  const T = (u) => new Promise((e) => {
-    const t = document.querySelector(u);
+  const u = (l, e, t, n = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: l,
+      event_desc: e,
+      event_type: t,
+      event_loc: n
+    }), x(`Event: ${l} | ${e} | ${t} | ${n}`, "success");
+  }, T = (l) => new Promise((e) => {
+    const t = document.querySelector(l);
     t && e(t);
     const n = new MutationObserver(() => {
-      const i = document.querySelector(u);
+      const i = document.querySelector(l);
       i && (e(i), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), _ = ({ name: u, dev: e }) => {
+  }), I = ({ name: l, dev: e }) => {
     console.log(
-      `%c EXP: ${u} (DEV: ${e})`,
+      `%c EXP: ${l} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, $ = (u) => {
+  }, $ = (l) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", u, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", l, "variant_1"));
     }, 1e3);
-  }, x = (u, e = "info") => {
+  }, w = (l, e, t, n, i = 1e3, s = 0.5) => {
+    let o, r;
+    if (o = new IntersectionObserver(
+      function(a) {
+        a[0].isIntersecting === !0 ? r = setTimeout(() => {
+          u(
+            e,
+            a[0].target.dataset.visible || n || "",
+            "view",
+            t
+          ), o.disconnect();
+        }, i) : (x("Element is not fully visible", "warn"), clearTimeout(r));
+      },
+      { threshold: [s] }
+    ), typeof l == "string") {
+      const a = document.querySelector(l);
+      a && o.observe(a);
+    } else
+      o.observe(l);
+  }, x = (l, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -36,8 +63,8 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${u}`, `${t} font-size: 16px; font-weight: 600`);
-  }, A = `.crs-reels-section {
+    console.log(`%c>>> ${l}`, `${t} font-size: 16px; font-weight: 600`);
+  }, P = `.crs-reels-section {
   padding-top: 32px;
   padding-bottom: 83px;
   background: linear-gradient(180deg, #f1f3f4 0%, #fff 100%);
@@ -80,7 +107,7 @@
   min-height: 65px;
 }
 `;
-  class V {
+  class z {
     constructor({
       containerSelector: e,
       position: t
@@ -103,22 +130,34 @@
       <a href="#lptrPurchase" class="lp-pet-zen--btn lp-tr--mobile scroll-to-checkout">GET PET ZEN NOW</a>
       </div>
     </div>
-    `, console.log(this.section), this.container.insertAdjacentElement(this.position, this.section);
+    `, this.container.insertAdjacentElement(this.position, this.section), w(
+        this.section,
+        "exp_petzen_v9_view_1",
+        "Reels section",
+        "Real Stories From Our Customers",
+        0
+      ), w(
+        this.section,
+        "exp_petzen_v9_view_item_1",
+        "Reels section",
+        "1",
+        0
+      );
     }
     stopVideoByScroll() {
       const e = this.section.querySelector("crs-reels"), t = new IntersectionObserver((n) => {
         n.forEach((i) => {
-          console.log(i.isIntersecting), i.isIntersecting || e == null || e.stop(!0);
+          i.isIntersecting || e == null || e.stop(!0);
         });
       });
       this.section && t.observe(this.section);
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = A, document.head.appendChild(e);
+      e.textContent = P, document.head.appendChild(e);
     }
   }
-  const I = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
+  const R = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
   display: none;
 }
 
@@ -126,7 +165,7 @@
   background: #f7f6f4;
 }
 `;
-  class P {
+  class V {
     constructor({
       containerSelector: e,
       position: t
@@ -142,22 +181,28 @@
     <div>
       <crs-product-slider></crs-product-slider>
     </div>
-    `, this.container.insertAdjacentElement(this.position, this.section);
+    `, this.container.insertAdjacentElement(this.position, this.section), w(
+        this.section,
+        "exp_petzen_v9_view_item_2",
+        "Purchase section",
+        "1",
+        0
+      );
     }
     stopVideoByScroll() {
       const e = this.section.querySelector("crs-product-slider"), t = new IntersectionObserver((n) => {
         n.forEach((i) => {
-          console.log(i.isIntersecting), i.isIntersecting || e == null || e.stop(!0);
+          i.isIntersecting || e == null || e.stop(!0);
         });
       });
       this.section && t.observe(this.section);
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = I, document.head.appendChild(e);
+      e.textContent = R, document.head.appendChild(e);
     }
   }
-  const R = `* {
+  const C = `* {
   box-sizing: border-box;
 }
 
@@ -343,82 +388,82 @@
 .reels-pagination-item.active {
   background: #ff3c7f;
 }
-`, l = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels/", L = [
+`, c = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels/", L = [
     {
       id: 1,
-      image: `${l}/gif_petzen_1.gif`,
-      video: `${l}/video_petzen_1.mp4`,
+      image: `${c}/gif_petzen_1.gif`,
+      video: `${c}/video_petzen_1.mp4`,
       text: "...it's great for separation anxiety, it's great for fireworks, it's great just to take that little bit of edge off"
     },
     {
       id: 2,
-      image: `${l}/gif_petzen_2.gif`,
-      video: `${l}/video_petzen_2.mp4`,
+      image: `${c}/gif_petzen_2.gif`,
+      video: `${c}/video_petzen_2.mp4`,
       text: "No more fights, no more messes, no more pee accidents, just a calm, happy cat and a peaceful home"
     },
     {
       id: 3,
-      image: `${l}/gif_petzen_3.gif`,
-      video: `${l}/video_petzen_3.mp4`,
+      image: `${c}/gif_petzen_3.gif`,
+      video: `${c}/video_petzen_3.mp4`,
       text: "Just peel, stick, and calm."
     }
   ], k = [
     {
       id: 1,
       template: "image",
-      image: `${l}/img_petzen_1.webp`
+      image: `${c}/img_petzen_1.webp`
     },
     {
       id: 2,
       template: "video",
       bgColor: "blue",
-      image: `${l}/gif_petzen_1.gif`,
-      video: `${l}/video_petzen_1.mp4`,
+      image: `${c}/gif_petzen_1.gif`,
+      video: `${c}/video_petzen_1.mp4`,
       text: "...it's great for separation anxiety, it's great for fireworks, it's great just to take that little bit of edge off"
     },
     {
       id: 3,
       template: "image",
-      image: `${l}/img_petzen_2.webp`
+      image: `${c}/img_petzen_2.webp`
     },
     {
       id: 4,
       template: "image",
-      image: `${l}/img_petzen_3.webp`
+      image: `${c}/img_petzen_3.webp`
     },
     {
       id: 5,
       template: "video",
       bgColor: "blue",
-      image: `${l}/gif_petzen_2.gif`,
-      video: `${l}/video_petzen_2.mp4`,
+      image: `${c}/gif_petzen_2.gif`,
+      video: `${c}/video_petzen_2.mp4`,
       text: "No more fights, no more messes, no more pee accidents, just a calm, happy cat and a peaceful home"
     },
     {
       id: 6,
       template: "image",
-      image: `${l}/img_petzen_4.webp`
+      image: `${c}/img_petzen_4.webp`
     },
     {
       id: 7,
       template: "video",
       bgColor: "blue",
-      image: `${l}/gif_petzen_3.gif`,
-      video: `${l}/video_petzen_3.mp4`,
+      image: `${c}/gif_petzen_3.gif`,
+      video: `${c}/video_petzen_3.mp4`,
       text: "Just peel, stick, and calm."
     },
     {
       id: 8,
       template: "image",
-      image: `${l}/img_petzen_5.webp`
+      image: `${c}/img_petzen_5.webp`
     }
-  ], E = (
+  ], A = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="none"><path fill="#fff" d="M6.767 23.93c-1.334-1.466-2.134-3.066-2.134-5.733 0-4.667 3.334-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.333 5.467-5.6 7.467.667-.4 1.6-.534 2.534-.4 2.4.266 4.266 2.133 4.266 4.666 0 1.2-.533 2.4-1.333 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Zm13.333 0c-1.333-1.466-2.133-3.066-2.133-5.733 0-4.667 3.333-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.334 5.467-5.6 7.467.666-.4 1.6-.534 2.533-.4 2.4.266 4.267 2.266 4.267 4.666 0 1.2-.534 2.4-1.334 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Z"/></svg>'
-  ), S = (
+  ), E = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" fill="none"><path fill="#D9D9D9" d="M19.12 13.12 3.344 22.346c-1.333.78-3.01-.181-3.01-1.726V2.059C.333.51 2.018-.45 3.352.338L19.129 9.67c1.313.777 1.308 2.678-.008 3.448Z"/></svg>'
-  ), z = `* {
+  ), q = `* {
   box-sizing: border-box;
 }
 
@@ -613,16 +658,17 @@
 }
 
 
-`, m = class m extends HTMLElement {
+`, g = class g extends HTMLElement {
+    // Track what the user actually wants
     constructor() {
-      super(), this.overlay = null, this.videoContainer = null, this.closeButton = null, this.fullscreenVideo = null, this.originalVideo = null, this.isOpen = !1, this.progressBar = null, this.progressFill = null, this.progressHandle = null, this.isDragging = !1, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.init();
+      super(), this.overlay = null, this.videoContainer = null, this.closeButton = null, this.fullscreenVideo = null, this.originalVideo = null, this.isOpen = !1, this.progressBar = null, this.progressFill = null, this.progressHandle = null, this.isDragging = !1, this.currentSection = null, this.currentActiveIndex = 0, this.userIntendedPlayState = !1, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.init();
     }
     render() {
       return (
         /* html */
         `
       <style>
-        ${z}
+        ${q}
       </style>
       <div class="fullscreen-overlay" id="fullscreen-overlay">
         <div class="fullscreen-video-container" id="fullscreen-video-container">
@@ -669,14 +715,14 @@
         n.key === "Escape" && this.isOpen && this.close();
       });
     }
-    open(e, t = !1) {
+    open(e, t = !1, n, i) {
       if (this.isOpen || !e) return;
-      m.closeAll(), this.originalVideo = e, this.isOpen = !0, m.currentInstance = this, this.fullscreenVideo = e.cloneNode(!0), this.fullscreenVideo.classList.add("fullscreen-video"), this.fullscreenVideo.removeAttribute("loop"), this.fullscreenVideo.controls = !1, this.fullscreenVideo.currentTime = e.currentTime;
-      let n = !t;
+      g.closeAll(), this.originalVideo = e, this.isOpen = !0, this.currentSection = n || null, this.currentActiveIndex = i || 0, this.userIntendedPlayState = !e.paused, g.currentInstance = this, this.fullscreenVideo = e.cloneNode(!0), this.fullscreenVideo.classList.add("fullscreen-video"), this.fullscreenVideo.removeAttribute("loop"), this.fullscreenVideo.controls = !1, this.fullscreenVideo.currentTime = e.currentTime;
+      let s = !t;
       t && setTimeout(() => {
-        n = !0;
+        s = !0;
       }, 300), this.fullscreenVideo.addEventListener("click", () => {
-        n && (this.fullscreenVideo.paused ? this.fullscreenVideo.play() : this.fullscreenVideo.pause());
+        s && (this.fullscreenVideo.paused ? (this.fullscreenVideo.play(), this.userIntendedPlayState = !0, this.trackVideoAction("play")) : (this.fullscreenVideo.pause(), this.userIntendedPlayState = !1, this.trackVideoAction("pause")));
       }), this.fullscreenVideo.addEventListener("pause", () => {
       }), this.fullscreenVideo.addEventListener("play", () => {
       }), this.fullscreenVideo.addEventListener("ended", () => {
@@ -685,15 +731,13 @@
         }, 2e3);
       }), this.fullscreenVideo.addEventListener("timeupdate", () => {
         this.updateProgressBar();
-      }), this.videoContainer.appendChild(this.fullscreenVideo), this.setupProgressBar(), this.overlay.classList.add("show");
-      const i = !e.paused;
-      e.pause(), i && this.fullscreenVideo.play().catch(console.warn);
+      }), this.videoContainer.appendChild(this.fullscreenVideo), this.setupProgressBar(), this.overlay.classList.add("show"), e.pause(), this.userIntendedPlayState && this.fullscreenVideo.play().catch(console.warn), this.trackFullscreenAction("open");
     }
     close() {
-      !this.isOpen || !this.fullscreenVideo || !this.originalVideo || (this.originalVideo.currentTime = this.fullscreenVideo.currentTime, this.fullscreenVideo.paused || this.originalVideo.play().catch(console.warn), this.fullscreenVideo.remove(), this.fullscreenVideo = null, this.originalVideo = null, this.isOpen = !1, this.overlay.classList.remove("show"), m.currentInstance === this && (m.currentInstance = null));
+      !this.isOpen || !this.fullscreenVideo || !this.originalVideo || (this.originalVideo.currentTime = this.fullscreenVideo.currentTime, this.userIntendedPlayState && this.originalVideo.play().catch(console.warn), this.trackFullscreenAction("close"), this.fullscreenVideo.remove(), this.fullscreenVideo = null, this.originalVideo = null, this.isOpen = !1, this.overlay.classList.remove("show"), g.currentInstance === this && (g.currentInstance = null));
     }
     static closeAll() {
-      m.currentInstance && m.currentInstance.close();
+      g.currentInstance && g.currentInstance.close();
       const e = document.querySelector("crs-fullscreen-video");
       e && e.close();
     }
@@ -723,15 +767,15 @@
     setupProgressBar() {
       !this.progressBar || !this.progressFill || !this.progressHandle || !this.fullscreenVideo || (this.progressBar.addEventListener("click", (e) => {
         if (this.isDragging) return;
-        const t = this.progressBar.getBoundingClientRect(), o = (e.clientX - t.left) / t.width * this.fullscreenVideo.duration;
-        this.fullscreenVideo.currentTime = o;
+        const t = this.progressBar.getBoundingClientRect(), s = (e.clientX - t.left) / t.width * this.fullscreenVideo.duration;
+        this.fullscreenVideo.currentTime = s;
       }), this.progressHandle.addEventListener("mousedown", (e) => {
         this.isDragging = !0, e.preventDefault();
       }), document.addEventListener("mousemove", (e) => {
         if (!this.isDragging || !this.progressBar || !this.fullscreenVideo)
           return;
-        const t = this.progressBar.getBoundingClientRect(), n = e.clientX - t.left, o = Math.max(0, Math.min(1, n / t.width)) * this.fullscreenVideo.duration;
-        this.fullscreenVideo.currentTime = o;
+        const t = this.progressBar.getBoundingClientRect(), n = e.clientX - t.left, s = Math.max(0, Math.min(1, n / t.width)) * this.fullscreenVideo.duration;
+        this.fullscreenVideo.currentTime = s;
       }), document.addEventListener("mouseup", () => {
         this.isDragging = !1;
       }), this.progressHandle.addEventListener("touchstart", (e) => {
@@ -739,8 +783,8 @@
       }), document.addEventListener("touchmove", (e) => {
         if (!this.isDragging || !this.progressBar || !this.fullscreenVideo)
           return;
-        const t = this.progressBar.getBoundingClientRect(), i = e.touches[0].clientX - t.left, r = Math.max(0, Math.min(1, i / t.width)) * this.fullscreenVideo.duration;
-        this.fullscreenVideo.currentTime = r;
+        const t = this.progressBar.getBoundingClientRect(), i = e.touches[0].clientX - t.left, o = Math.max(0, Math.min(1, i / t.width)) * this.fullscreenVideo.duration;
+        this.fullscreenVideo.currentTime = o;
       }), document.addEventListener("touchend", () => {
         this.isDragging = !1;
       }));
@@ -748,25 +792,45 @@
     isVideoOpen() {
       return this.isOpen;
     }
+    trackVideoAction(e) {
+      if (!this.currentSection) return;
+      const t = this.currentSection === "reels" ? "1" : "2", n = this.currentSection === "reels" ? "Reels section" : "Purchase section";
+      u(
+        `exp_petzen_${e}_${t}`,
+        `${this.currentActiveIndex + 1}`,
+        "click",
+        n
+      );
+    }
+    trackFullscreenAction(e) {
+      if (!this.currentSection) return;
+      const t = this.currentSection === "reels" ? "1" : "2", n = this.currentSection === "reels" ? "Reels section" : "Purchase section";
+      u(
+        `exp_petzen_full_${e}_${t}`,
+        `${this.currentActiveIndex + 1}`,
+        "click",
+        n
+      );
+    }
   };
-  m.currentInstance = null;
-  let b = m;
-  class C extends HTMLElement {
+  g.currentInstance = null;
+  let v = g;
+  class D extends HTMLElement {
     constructor() {
-      super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new b(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
+      super(), this.lastActiveIndex = 0, this.scrollTimeout = null, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new v(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
     }
     getOrCreateFullscreenVideo() {
       let e = document.querySelector(
         "crs-fullscreen-video"
       );
-      return e || (e = new b(), document.body.appendChild(e)), e;
+      return e || (e = new v(), document.body.appendChild(e)), e;
     }
     render() {
       return (
         /* html */
         `
     <style>
-      ${R}
+      ${C}
     </style>
     <div class="reels">
       <ul class="reels-list">
@@ -783,11 +847,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${S}</div>
+                  <div class="item-video-icon">${E}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${E}</div>
+                <div class="info__icon">${A}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -816,32 +880,47 @@
     }
     setupVideoListeners() {
       this.shadowRoot.querySelectorAll(".reels-item").forEach((e) => {
-        const t = e.querySelector(".item-video"), n = e.querySelector("video"), i = { current: 0 }, o = async () => {
+        const t = e.querySelector(".item-video"), n = e.querySelector("video"), i = { current: 0 }, s = async () => {
           clearTimeout(i.current), i.current = window.setTimeout(async () => {
-            const s = t == null ? void 0 : t.getAttribute("data-state");
-            if (s === "on" && n && !n.paused) {
-              n.pause(), t == null || t.setAttribute("data-state", "paused"), console.log("Video paused");
+            const r = t == null ? void 0 : t.getAttribute("data-state");
+            if (r === "on" && n && !n.paused) {
+              n.pause(), t == null || t.setAttribute("data-state", "paused"), console.log("Video paused"), u(
+                "exp_petzen_pause_1",
+                `${this.lastActiveIndex + 1}`,
+                "click",
+                "Reels section"
+              );
               return;
             }
-            if (s === "paused" && n && n.paused)
+            if (r === "paused" && n && n.paused)
               try {
-                await (n == null ? void 0 : n.play()), t == null || t.setAttribute("data-state", "on"), console.log("Video resumed");
+                await (n == null ? void 0 : n.play()), t == null || t.setAttribute("data-state", "on"), console.log("Video resumed"), u(
+                  "exp_petzen_play_1",
+                  `${this.lastActiveIndex + 1}`,
+                  "click",
+                  "Reels section"
+                );
                 return;
               } catch (a) {
                 console.warn("Video resume failed:", a), t == null || t.setAttribute("data-state", "off");
                 return;
               }
-            if (this.stopAllVideos(), n && n.readyState < 2 && (console.log("Loading video..."), n.load(), await new Promise((a) => {
-              const c = () => {
-                n.removeEventListener("loadeddata", c), a(!0);
+            if (this.stopAllVideos(), n && n.readyState < 2 && (n.load(), await new Promise((a) => {
+              const p = () => {
+                n.removeEventListener("loadeddata", p), a(!0);
               };
-              n.addEventListener("loadeddata", c), setTimeout(() => {
-                n.removeEventListener("loadeddata", c), a(!1);
+              n.addEventListener("loadeddata", p), setTimeout(() => {
+                n.removeEventListener("loadeddata", p), a(!1);
               }, 3e3);
             })), n && n.readyState >= 2) {
               t == null || t.setAttribute("data-state", "on");
               try {
-                await (n == null ? void 0 : n.play()), console.log("Video playing successfully");
+                await (n == null ? void 0 : n.play()), u(
+                  "exp_petzen_play_1",
+                  `${this.lastActiveIndex + 1}`,
+                  "click",
+                  "Reels section"
+                );
               } catch (a) {
                 console.warn("Video play failed:", a), t == null || t.setAttribute("data-state", "off");
               }
@@ -851,12 +930,12 @@
               );
           }, 200);
         };
-        t == null || t.addEventListener("click", o), console.log("Item video", t);
-        const r = t == null ? void 0 : t.querySelector(
+        t == null || t.addEventListener("click", s);
+        const o = t == null ? void 0 : t.querySelector(
           ".item-full-screen"
         );
-        r == null || r.addEventListener("click", (s) => {
-          s.stopPropagation(), this.openFullscreen(n, !1);
+        o == null || o.addEventListener("click", (r) => {
+          r.stopPropagation(), this.openFullscreen(n, !1, "reels", this.lastActiveIndex);
         }), this.setupDoubleTapFullscreen(
           t,
           n,
@@ -877,46 +956,72 @@
       const e = this.shadowRoot.querySelector(
         ".reels-list"
       );
-      if (!e) return;
-      let t;
-      e.addEventListener("scroll", () => {
-        clearTimeout(t), t = window.setTimeout(() => {
-          this.updateActivePaginationItem(), this.stopAllVideos();
-        }, 100);
+      e && e.addEventListener("scroll", () => {
+        this.scrollTimeout && clearTimeout(this.scrollTimeout), this.updateActivePaginationItem(), this.stopAllVideos(), this.scrollTimeout = window.setTimeout(() => {
+          this.checkForNewActiveItem();
+        }, 200);
       });
+    }
+    checkForNewActiveItem() {
+      const e = this.getCurrentActiveIndex();
+      e !== this.lastActiveIndex && (this.emitScrollEvent(this.lastActiveIndex, e), this.lastActiveIndex = e);
+    }
+    getCurrentActiveIndex() {
+      const e = this.shadowRoot.querySelector(
+        ".reels-list"
+      ), t = this.shadowRoot.querySelectorAll(".reels-item");
+      if (!e || !t.length) return 0;
+      const n = e.offsetWidth, s = e.scrollLeft + n / 2;
+      let o = 0, r = 1 / 0;
+      return t.forEach((a, p) => {
+        const m = a, b = m.offsetLeft, f = m.offsetWidth, d = b + f / 2, h = Math.abs(s - d);
+        h < r && (r = h, o = p);
+      }), o;
+    }
+    emitScrollEvent(e, t) {
+      const n = new CustomEvent("reelsScroll", {
+        detail: {
+          fromIndex: e,
+          toIndex: t,
+          timestamp: Date.now()
+        },
+        bubbles: !0
+      });
+      this.dispatchEvent(n), console.log(`[Reels] Scrolled from item ${e} to item ${t}`);
+      const i = e < t ? "right" : "left";
+      u(
+        `exp_petzen_swipe_${i}_1`,
+        `${e + 1}`,
+        "swipe",
+        "Reels section"
+      ), u("exp_petzen_view_1", `${t + 1}`, "view", "Reels section");
     }
     scrollToReelItem(e) {
       const t = this.shadowRoot.querySelector(
         ".reels-list"
       ), n = this.shadowRoot.querySelectorAll(".reels-item");
       if (!t || !n[e]) return;
-      const i = n[e], o = i.offsetLeft, r = i.offsetWidth, s = t.offsetWidth, a = o - (s - r) / 2;
+      const i = n[e], s = i.offsetLeft, o = i.offsetWidth, r = t.offsetWidth, a = s - (r - o) / 2;
       t.scrollTo({
         left: a,
         behavior: "smooth"
       });
     }
     updateActivePaginationItem() {
-      const e = this.shadowRoot.querySelector(
-        ".reels-list"
-      ), t = this.shadowRoot.querySelectorAll(".reels-item"), n = this.shadowRoot.querySelectorAll(
+      const e = this.shadowRoot.querySelectorAll(
         ".reels-pagination-item"
       );
-      if (!e || !t.length || !n.length) return;
-      const i = e.offsetWidth, r = e.scrollLeft + i / 2;
-      let s = 0, a = 1 / 0;
-      t.forEach((c, p) => {
-        const v = c, h = v.offsetLeft, d = v.offsetWidth, f = h + d / 2, g = Math.abs(r - f);
-        g < a && (a = g, s = p);
-      }), n.forEach((c, p) => {
-        c.classList.toggle("active", p === s);
+      if (!e.length) return;
+      const t = this.getCurrentActiveIndex();
+      e.forEach((n, i) => {
+        n.classList.toggle("active", i === t);
       });
     }
     initializeActivePagination() {
       const e = this.shadowRoot.querySelectorAll(
         ".reels-pagination-item"
       );
-      e.length > 0 && e[0].classList.add("active");
+      e.length > 0 && e[0].classList.add("active"), this.lastActiveIndex = 0;
     }
     /**
      * Sets up double-tap detection for opening fullscreen mode on mobile devices
@@ -926,26 +1031,26 @@
      * @param clickTimer - Reference to the click timer to cancel single tap when double tap is detected
      */
     setupDoubleTapFullscreen(e, t, n) {
-      let i = 0, o = 0, r, s = 0, a = 0, c = 0;
-      const p = (h) => {
-        const d = h.touches[0];
-        s = Date.now(), a = d.clientX, c = d.clientY;
-      }, v = (h) => {
-        const d = h.changedTouches[0], f = Date.now(), g = f - i, y = f - s, w = Math.sqrt(
-          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - c, 2)
+      let i = 0, s = 0, o, r = 0, a = 0, p = 0;
+      const m = (f) => {
+        const d = f.touches[0];
+        r = Date.now(), a = d.clientX, p = d.clientY;
+      }, b = (f) => {
+        const d = f.changedTouches[0], h = Date.now(), y = h - i, _ = h - r, S = Math.sqrt(
+          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - p, 2)
         );
-        y < 300 && w < 50 && (g < 500 && g > 0 ? (o++, o === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
+        _ < 300 && S < 50 && (y < 500 && y > 0 ? (s++, s === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
           e.classList.remove("double-tap-feedback");
-        }, 300), this.openFullscreen(t, !0)), o = 0)) : o = 1, i = f, clearTimeout(r), r = window.setTimeout(() => {
-          o = 0;
+        }, 300), this.openFullscreen(t, !0, "reels", this.lastActiveIndex)), s = 0)) : s = 1, i = h, clearTimeout(o), o = window.setTimeout(() => {
+          s = 0;
         }, 500));
       };
-      e.addEventListener("touchstart", p, {
+      e.addEventListener("touchstart", m, {
         passive: !0
-      }), e.addEventListener("touchend", v, { passive: !1 });
+      }), e.addEventListener("touchend", b, { passive: !1 });
     }
-    openFullscreen(e, t = !1) {
-      e && this.fullscreenVideo.open(e, t);
+    openFullscreen(e, t = !1, n, i) {
+      e && this.fullscreenVideo.open(e, t, n, i);
     }
     handleVideoPause(e) {
       e.target.pause();
@@ -964,7 +1069,7 @@
       e.target.play();
     }
   }
-  const q = `* {
+  const B = `* {
   box-sizing: border-box;
 }
 
@@ -1173,22 +1278,22 @@
   background: #ff3c7f;
 }
 `;
-  class D extends HTMLElement {
+  class j extends HTMLElement {
     constructor() {
-      super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new b(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
+      super(), this.lastActiveIndex = 0, this.scrollTimeout = null, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new v(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
     }
     getOrCreateFullscreenVideo() {
       let e = document.querySelector(
         "crs-fullscreen-video"
       );
-      return e || (e = new b(), document.body.appendChild(e)), e;
+      return e || (e = new v(), document.body.appendChild(e)), e;
     }
     render() {
       return (
         /* html */
         `
     <style>
-      ${q}
+      ${B}
     </style>
     <div class="product">
       <ul class="product-list">
@@ -1214,11 +1319,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${S}</div>
+                  <div class="item-video-icon">${E}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${E}</div>
+                <div class="info__icon">${A}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -1247,59 +1352,76 @@
     setupVideoListeners() {
       this.shadowRoot.querySelectorAll(".product-item-video").forEach(
         (e) => {
-          const t = e.querySelector(".item-video"), n = e.querySelector("video"), i = { current: 0 }, o = async () => {
+          const t = e.querySelector(".item-video"), n = e.querySelector("video"), i = { current: 0 }, s = async () => {
             clearTimeout(i.current), i.current = window.setTimeout(async () => {
-              const r = t == null ? void 0 : t.getAttribute("data-state");
-              if (r === "on" && n && !n.paused) {
-                n.pause(), t == null || t.setAttribute("data-state", "paused"), console.log("Video paused");
+              const o = t == null ? void 0 : t.getAttribute("data-state");
+              if (o === "on" && n && !n.paused) {
+                n.pause(), t == null || t.setAttribute("data-state", "paused"), console.log("Video paused"), u(
+                  "exp_petzen_pause_1",
+                  `${this.lastActiveIndex + 1}`,
+                  "click",
+                  "Purchase section"
+                );
                 return;
               }
-              if (r === "paused" && n && n.paused)
+              if (o === "paused" && n && n.paused)
                 try {
-                  await (n == null ? void 0 : n.play()), t == null || t.setAttribute("data-state", "on"), console.log("Video resumed");
+                  await (n == null ? void 0 : n.play()), t == null || t.setAttribute("data-state", "on"), console.log("Video resumed"), u(
+                    "exp_petzen_play_1",
+                    `${this.lastActiveIndex + 1}`,
+                    "click",
+                    "Purchase section"
+                  );
                   return;
-                } catch (s) {
-                  console.warn("Video resume failed:", s), t == null || t.setAttribute("data-state", "off");
+                } catch (r) {
+                  console.warn("Video resume failed:", r), t == null || t.setAttribute("data-state", "off");
                   return;
                 }
-              if (this.stopAllVideos(), n && n.readyState < 2 && (console.log("Loading video..."), n.load(), await new Promise((s) => {
+              if (this.stopAllVideos(), n && n.readyState < 2 && (n.load(), await new Promise((r) => {
                 const a = () => {
-                  n.removeEventListener("loadeddata", a), s(!0);
+                  n.removeEventListener("loadeddata", a), r(!0);
                 };
                 n.addEventListener("loadeddata", a), setTimeout(() => {
-                  n.removeEventListener("loadeddata", a), s(!1);
+                  n.removeEventListener("loadeddata", a), r(!1);
                 }, 3e3);
               })), n && n.readyState >= 2) {
-                t == null || t.setAttribute("data-state", "on"), console.log(
-                  "Setting video state to on, readyState:",
-                  n.readyState
-                );
+                t == null || t.setAttribute("data-state", "on");
                 try {
-                  await (n == null ? void 0 : n.play()), console.log("Video playing successfully");
-                } catch (s) {
-                  console.warn("Video play failed:", s), t == null || t.setAttribute("data-state", "off");
+                  await (n == null ? void 0 : n.play()), u(
+                    "exp_petzen_play_1",
+                    `${this.lastActiveIndex + 1}`,
+                    "click",
+                    "Purchase section"
+                  );
+                } catch (r) {
+                  console.warn("Video play failed:", r), t == null || t.setAttribute("data-state", "off");
                 }
               } else
-                console.log(
+                console.warn(
                   "Video still not ready after loading attempt, showing image instead. ReadyState:",
                   n == null ? void 0 : n.readyState
                 );
             }, 200);
           };
           if (t && n) {
-            t.addEventListener("click", o), console.log("Item video click listener added", t);
-            const r = t.querySelector(
+            t.addEventListener("click", s), console.log("Item video click listener added", t);
+            const o = t.querySelector(
               ".item-full-screen"
             );
-            r == null || r.addEventListener("click", (s) => {
-              s.stopPropagation(), this.openFullscreen(n, !1);
+            o == null || o.addEventListener("click", (r) => {
+              r.stopPropagation(), this.openFullscreen(
+                n,
+                !1,
+                "product-slider",
+                this.lastActiveIndex
+              );
             }), this.setupDoubleTapFullscreen(
               t,
               n,
               i
             );
           } else
-            console.log(
+            console.warn(
               "No item video or video element found for product item",
               e,
               { itemVideo: t, video: n }
@@ -1320,68 +1442,99 @@
       const e = this.shadowRoot.querySelector(
         ".product-list"
       );
-      if (!e) return;
-      let t;
-      e.addEventListener("scroll", () => {
-        clearTimeout(t), t = window.setTimeout(() => {
-          this.updateActivePaginationItem(), this.stopAllVideos();
-        }, 100);
+      e && e.addEventListener("scroll", () => {
+        this.scrollTimeout && clearTimeout(this.scrollTimeout), this.updateActivePaginationItem(), this.stopAllVideos(), this.scrollTimeout = window.setTimeout(() => {
+          this.checkForNewActiveItem();
+        }, 200);
       });
+    }
+    checkForNewActiveItem() {
+      const e = this.getCurrentActiveIndex();
+      e !== this.lastActiveIndex && (this.emitScrollEvent(this.lastActiveIndex, e), this.lastActiveIndex = e);
+    }
+    getCurrentActiveIndex() {
+      const e = this.shadowRoot.querySelector(
+        ".product-list"
+      ), t = this.shadowRoot.querySelectorAll(".product-item");
+      if (!e || !t.length) return 0;
+      const n = e.offsetWidth, s = e.scrollLeft + n / 2;
+      let o = 0, r = 1 / 0;
+      return t.forEach((a, p) => {
+        const m = a, b = m.offsetLeft, f = m.offsetWidth, d = b + f / 2, h = Math.abs(s - d);
+        h < r && (r = h, o = p);
+      }), o;
+    }
+    emitScrollEvent(e, t) {
+      const n = new CustomEvent("productSliderScroll", {
+        detail: {
+          fromIndex: e,
+          toIndex: t,
+          timestamp: Date.now()
+        },
+        bubbles: !0
+      });
+      this.dispatchEvent(n);
+      const i = e < t ? "right" : "left";
+      u(
+        `exp_petzen_swipe_${i}_1`,
+        `${e + 1}`,
+        "swipe",
+        "Purchase section"
+      ), u("exp_petzen_view_1", `${t + 1}`, "view", "Purchase section");
     }
     scrollToReelItem(e) {
       const t = this.shadowRoot.querySelector(
         ".product-list"
       ), n = this.shadowRoot.querySelectorAll(".product-item");
       if (!t || !n[e]) return;
-      const i = n[e], o = i.offsetLeft, r = i.offsetWidth, s = t.offsetWidth, a = o - (s - r) / 2;
+      const i = n[e], s = i.offsetLeft, o = i.offsetWidth, r = t.offsetWidth, a = s - (r - o) / 2;
       t.scrollTo({
         left: a,
         behavior: "smooth"
       });
     }
     updateActivePaginationItem() {
-      const e = this.shadowRoot.querySelector(
-        ".product-list"
-      ), t = this.shadowRoot.querySelectorAll(".product-item"), n = this.shadowRoot.querySelectorAll(
+      const e = this.shadowRoot.querySelectorAll(
         ".product-pagination-item"
       );
-      if (!e || !t.length || !n.length) return;
-      const i = e.offsetWidth, r = e.scrollLeft + i / 2;
-      let s = 0, a = 1 / 0;
-      t.forEach((c, p) => {
-        const v = c, h = v.offsetLeft, d = v.offsetWidth, f = h + d / 2, g = Math.abs(r - f);
-        g < a && (a = g, s = p);
-      }), n.forEach((c, p) => {
-        c.classList.toggle("active", p === s);
+      if (!e.length) return;
+      const t = this.getCurrentActiveIndex();
+      e.forEach((n, i) => {
+        n.classList.toggle("active", i === t);
       });
     }
     initializeActivePagination() {
       const e = this.shadowRoot.querySelectorAll(
         ".product-pagination-item"
       );
-      e.length > 0 && e[0].classList.add("active");
+      e.length > 0 && e[0].classList.add("active"), this.lastActiveIndex = 0;
     }
     setupDoubleTapFullscreen(e, t, n) {
-      let i = 0, o = 0, r, s = 0, a = 0, c = 0;
-      const p = (h) => {
-        const d = h.touches[0];
-        s = Date.now(), a = d.clientX, c = d.clientY;
-      }, v = (h) => {
-        const d = h.changedTouches[0], f = Date.now(), g = f - i, y = f - s, w = Math.sqrt(
-          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - c, 2)
+      let i = 0, s = 0, o, r = 0, a = 0, p = 0;
+      const m = (f) => {
+        const d = f.touches[0];
+        r = Date.now(), a = d.clientX, p = d.clientY;
+      }, b = (f) => {
+        const d = f.changedTouches[0], h = Date.now(), y = h - i, _ = h - r, S = Math.sqrt(
+          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - p, 2)
         );
-        y < 300 && w < 50 && (g < 500 && g > 0 ? (o++, o === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
+        _ < 300 && S < 50 && (y < 500 && y > 0 ? (s++, s === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
           e.classList.remove("double-tap-feedback");
-        }, 300), this.openFullscreen(t, !0)), o = 0)) : o = 1, i = f, clearTimeout(r), r = window.setTimeout(() => {
-          o = 0;
+        }, 300), this.openFullscreen(
+          t,
+          !0,
+          "product-slider",
+          this.lastActiveIndex
+        )), s = 0)) : s = 1, i = h, clearTimeout(o), o = window.setTimeout(() => {
+          s = 0;
         }, 500));
       };
-      e.addEventListener("touchstart", p, {
+      e.addEventListener("touchstart", m, {
         passive: !0
-      }), e.addEventListener("touchend", v, { passive: !1 });
+      }), e.addEventListener("touchend", b, { passive: !1 });
     }
-    openFullscreen(e, t = !1) {
-      e && this.fullscreenVideo.open(e, t);
+    openFullscreen(e, t = !1, n, i) {
+      e && this.fullscreenVideo.open(e, t, n, i);
     }
     handleVideoPause(e) {
       e.target.pause();
@@ -1400,9 +1553,9 @@
       e.target.play();
     }
   }
-  const B = "";
-  _({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), $("exp_petzen_reels");
-  class j {
+  const F = "";
+  I({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), $("exp_petzen_reels");
+  class M {
     constructor() {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
     }
@@ -1410,24 +1563,24 @@
       this.device === "desktop" || !location.pathname.includes("zenpatch-pet") || (await T(".lp-tr--purchase"), this.addStyles(), this.defineCustomElements(), this.insertReelsSection(), this.insertCarouselSection());
     }
     insertReelsSection() {
-      new V({
+      new z({
         containerSelector: "section#OurStory",
         position: "afterend"
       });
     }
     insertCarouselSection() {
-      new P({
+      new V({
         containerSelector: ".lp-tr--purchase .row.lp-tr--gray-bg",
         position: "beforebegin"
       });
     }
     defineCustomElements() {
-      customElements.define("crs-reels", C), customElements.define("crs-product-slider", D), customElements.define("crs-fullscreen-video", b);
+      customElements.define("crs-reels", D), customElements.define("crs-product-slider", j), customElements.define("crs-fullscreen-video", v);
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = B, document.head.appendChild(e);
+      e.textContent = F, document.head.appendChild(e);
     }
   }
-  new j();
+  new M();
 })();
