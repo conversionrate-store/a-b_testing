@@ -187,7 +187,7 @@
     `, this.container.insertAdjacentElement(this.position, this.section), x(
         this.section,
         "exp_buzz_v9_view_item_2",
-        "Reels section",
+        "Purchase section",
         "1",
         0
       );
