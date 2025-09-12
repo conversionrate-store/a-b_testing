@@ -1484,7 +1484,7 @@
         `${e + 1}`,
         "swipe",
         "Purchase section"
-      ), u("exp_petzen_view_2", `${t + 1}`, "view", "Purchase section");
+      ), u("exp_petzen_view_item_2", `${t + 1}`, "view", "Purchase section");
     }
     scrollToReelItem(e) {
       const t = this.shadowRoot.querySelector(
