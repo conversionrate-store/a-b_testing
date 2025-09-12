@@ -1357,7 +1357,7 @@
               const o = t == null ? void 0 : t.getAttribute("data-state");
               if (o === "on" && n && !n.paused) {
                 n.pause(), t == null || t.setAttribute("data-state", "paused"), console.log("Video paused"), u(
-                  "exp_petzen_pause_1",
+                  "exp_petzen_pause_2",
                   `${this.lastActiveIndex + 1}`,
                   "click",
                   "Purchase section"
@@ -1367,7 +1367,7 @@
               if (o === "paused" && n && n.paused)
                 try {
                   await (n == null ? void 0 : n.play()), t == null || t.setAttribute("data-state", "on"), console.log("Video resumed"), u(
-                    "exp_petzen_play_1",
+                    "exp_petzen_play_2",
                     `${this.lastActiveIndex + 1}`,
                     "click",
                     "Purchase section"
@@ -1388,7 +1388,7 @@
                 t == null || t.setAttribute("data-state", "on");
                 try {
                   await (n == null ? void 0 : n.play()), u(
-                    "exp_petzen_play_1",
+                    "exp_petzen_play_2",
                     `${this.lastActiveIndex + 1}`,
                     "click",
                     "Purchase section"
@@ -1476,11 +1476,11 @@
       this.dispatchEvent(n);
       const i = e < t ? "right" : "left";
       u(
-        `exp_petzen_swipe_${i}_1`,
+        `exp_petzen_swipe_${i}_2`,
         `${e + 1}`,
         "swipe",
         "Purchase section"
-      ), u("exp_petzen_view_1", `${t + 1}`, "view", "Purchase section");
+      ), u("exp_petzen_view_2", `${t + 1}`, "view", "Purchase section");
     }
     scrollToReelItem(e) {
       const t = this.shadowRoot.querySelector(
