@@ -981,7 +981,7 @@
       u(
         `exp_buzz_v9_swipe_${i}_1`,
         `${e + 1}`,
-        "click",
+        "swipe",
         "Reels section"
       );
     }
@@ -1463,7 +1463,7 @@
       u(
         `exp_buzz_v9_swipe_${i}_2`,
         `${e + 1}`,
-        "click",
+        "swipe",
         "Purchase section"
       );
     }
