@@ -375,7 +375,7 @@
       bgColor: "blue",
       image: `${l}/gif_petzen_1.gif`,
       video: `${l}/video_petzen_1.mp4`,
-      text: "...we went to the park and it was full of mosquitos, but likely we weren’t getting by them because of these cute little patches"
+      text: "...it's great for separation anxiety, it's great for fireworks, it's great just to take that little bit of edge off"
     },
     {
       id: 3,
@@ -393,7 +393,7 @@
       bgColor: "blue",
       image: `${l}/gif_petzen_2.gif`,
       video: `${l}/video_petzen_2.mp4`,
-      text: "No bug bites anymore! A must have product for playing in the backyard"
+      text: "No more fights, no more messes, no more pee accidents, just a calm, happy cat and a peaceful home"
     },
     {
       id: 6,
@@ -403,10 +403,10 @@
     {
       id: 7,
       template: "video",
-      bgColor: "orange",
+      bgColor: "blue",
       image: `${l}/gif_petzen_3.gif`,
       video: `${l}/video_petzen_3.mp4`,
-      text: "This is so much funner using these patches than it is using the aerosol bug spray, which you're also not supposed to use on children"
+      text: "Just peel, stick, and calm."
     },
     {
       id: 8,
