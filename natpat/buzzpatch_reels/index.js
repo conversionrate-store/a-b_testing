@@ -1546,7 +1546,7 @@
     }
   }
   const j = "";
-  T({ name: "New experiment for BuzzPatch with introduction of reels", dev: "OS" }), I("exp_buzz_reels");
+  T({ name: "New experiment for BuzzPatch with introduction of reels", dev: "OS" }), I("exp_tick_02_variant_1");
   class M {
     constructor() {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
