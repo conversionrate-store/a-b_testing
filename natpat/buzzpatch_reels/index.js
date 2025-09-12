@@ -7,7 +7,7 @@
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), w(`Event: ${l} | ${e} | ${t} | ${n}`, "success");
+    }), x(`Event: ${l} | ${e} | ${t} | ${n}`, "success");
   }, E = (l) => new Promise((e) => {
     const t = document.querySelector(l);
     t && e(t);
@@ -28,7 +28,7 @@
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", l, "variant_1"));
     }, 1e3);
-  }, x = (l, e, t, n, i = 1e3, s = 0.5) => {
+  }, w = (l, e, t, n, i = 1e3, s = 0.5) => {
     let o, r;
     if (o = new IntersectionObserver(
       function(a) {
@@ -39,7 +39,7 @@
             "view",
             t
           ), o.disconnect();
-        }, i) : (w("Element is not fully visible", "warn"), clearTimeout(r));
+        }, i) : (x("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [s] }
     ), typeof l == "string") {
@@ -47,7 +47,7 @@
       a && o.observe(a);
     } else
       o.observe(l);
-  }, w = (l, e = "info") => {
+  }, x = (l, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -113,7 +113,7 @@
       containerSelector: e,
       position: t
     }) {
-      this.container = document.querySelector(e), this.position = t, this.container || w(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
+      this.container = document.querySelector(e), this.position = t, this.container || x(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
     }
     init() {
       this.addStyles(), this.render().catch(console.error), this.stopVideoByScroll();
@@ -134,13 +134,13 @@
       <a href="#getFormNow" class="btn js-btn btn-primary get-it" data-crs="btn">get buzzpatch!</a>
       </div>
     </div>
-    `, this.container.insertAdjacentElement(this.position, this.section), x(
+    `, this.container.insertAdjacentElement(this.position, this.section), w(
         this.section,
         "exp_buzz_v9_view_1",
         "Reels section",
         "Real Stories From Our Customers",
         0
-      ), x(
+      ), w(
         this.section,
         "exp_buzz_v9_view_item_1",
         "Reels section",
@@ -165,15 +165,15 @@
       e.textContent = $, document.head.appendChild(e);
     }
   }
-  const R = `#purchase #getNow img.js-mobile {
+  const C = `#purchase #getNow img.js-mobile {
   display: none;
 }`;
-  class C {
+  class R {
     constructor({
       containerSelector: e,
       position: t
     }) {
-      this.container = document.querySelector(e), this.position = t, this.container || w(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
+      this.container = document.querySelector(e), this.position = t, this.container || x(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
     }
     init() {
       this.addStyles(), this.render().catch(console.error), this.stopVideoByScroll();
@@ -184,7 +184,7 @@
     <div>
       <crs-product-slider></crs-product-slider>
     </div>
-    `, this.container.insertAdjacentElement(this.position, this.section), x(
+    `, this.container.insertAdjacentElement(this.position, this.section), w(
         this.section,
         "exp_buzz_v9_view_item_2",
         "Purchase section",
@@ -202,7 +202,7 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = R, document.head.appendChild(e);
+      e.textContent = C, document.head.appendChild(e);
     }
   }
   const V = `* {
@@ -971,17 +971,17 @@
         },
         bubbles: !0
       });
-      this.dispatchEvent(n), u(
-        "exp_buzz_v9_view_item_1",
-        `${t + 1}`,
-        "view",
-        "Reels section"
-      ), console.log(`[Reels] Scrolled from item ${e} to item ${t}`);
+      this.dispatchEvent(n);
       const i = e < t ? "right" : "left";
       u(
         `exp_buzz_v9_swipe_${i}_1`,
         `${e + 1}`,
         "swipe",
+        "Reels section"
+      ), u(
+        "exp_buzz_v9_view_item_1",
+        `${t + 1}`,
+        "view",
         "Reels section"
       );
     }
@@ -1270,7 +1270,9 @@
       super(), this.lastActiveIndex = 0, this.scrollTimeout = null, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
     }
     getOrCreateFullscreenVideo() {
-      let e = document.querySelector("crs-fullscreen-video");
+      let e = document.querySelector(
+        "crs-fullscreen-video"
+      );
       return e || (e = new b(), document.body.appendChild(e)), e;
     }
     render() {
@@ -1394,7 +1396,12 @@
               ".item-full-screen"
             );
             o == null || o.addEventListener("click", (r) => {
-              r.stopPropagation(), this.openFullscreen(n, !1, "product-slider", this.lastActiveIndex);
+              r.stopPropagation(), this.openFullscreen(
+                n,
+                !1,
+                "product-slider",
+                this.lastActiveIndex
+              );
             }), this.setupDoubleTapFullscreen(
               t,
               n,
@@ -1453,17 +1460,17 @@
         },
         bubbles: !0
       });
-      this.dispatchEvent(n), u(
-        "exp_buzz_v9_view_item_2",
-        `${t + 1}`,
-        "view",
-        "Purchase section"
-      ), console.log(`[ProductSlider] Scrolled from item ${e} to item ${t}`);
+      this.dispatchEvent(n);
       const i = e < t ? "right" : "left";
       u(
         `exp_buzz_v9_swipe_${i}_2`,
         `${e + 1}`,
         "swipe",
+        "Purchase section"
+      ), u(
+        "exp_buzz_v9_view_item_2",
+        `${t + 1}`,
+        "view",
         "Purchase section"
       );
     }
@@ -1505,7 +1512,12 @@
         );
         _ < 300 && L < 50 && (y < 500 && y > 0 ? (s++, s === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
           e.classList.remove("double-tap-feedback");
-        }, 300), this.openFullscreen(t, !0, "product-slider", this.lastActiveIndex)), s = 0)) : s = 1, i = p, clearTimeout(o), o = window.setTimeout(() => {
+        }, 300), this.openFullscreen(
+          t,
+          !0,
+          "product-slider",
+          this.lastActiveIndex
+        )), s = 0)) : s = 1, i = p, clearTimeout(o), o = window.setTimeout(() => {
           s = 0;
         }, 500));
       };
@@ -1549,7 +1561,7 @@
       });
     }
     insertCarouselSection() {
-      new C({
+      new R({
         containerSelector: "#purchase #getNow img.js-mobile",
         position: "afterend"
       });
