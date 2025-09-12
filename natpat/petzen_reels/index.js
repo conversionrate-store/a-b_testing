@@ -64,7 +64,7 @@
         break;
     }
     console.log(`%c>>> ${l}`, `${t} font-size: 16px; font-weight: 600`);
-  }, P = `.crs-reels-section {
+  }, z = `.crs-reels-section {
   padding-top: 32px;
   padding-bottom: 83px;
   background: linear-gradient(180deg, #f1f3f4 0%, #fff 100%);
@@ -107,7 +107,7 @@
   min-height: 65px;
 }
 `;
-  class z {
+  class P {
     constructor({
       containerSelector: e,
       position: t
@@ -127,7 +127,7 @@
         <crs-reels></crs-reels>
       </div>
       <div class="reels-section__action">
-      <a href="#lptrPurchase" class="lp-pet-zen--btn lp-tr--mobile scroll-to-checkout">GET PET ZEN NOW</a>
+      <a href="#lptrPurchase" class="lp-pet-zen--btn lp-tr--mobile scroll-to-checkout" data-crs="btn">GET PET ZEN NOW</a>
       </div>
     </div>
     `, this.container.insertAdjacentElement(this.position, this.section), w(
@@ -143,6 +143,10 @@
         "1",
         0
       );
+      const e = document.querySelector('[data-crs="btn"]');
+      e && e.addEventListener("click", () => {
+        u("exp_petzen_get_buzzpatch", "Get Buzzpatch", "click", "Reels section");
+      });
     }
     stopVideoByScroll() {
       const e = this.section.querySelector("crs-reels"), t = new IntersectionObserver((n) => {
@@ -154,7 +158,7 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = P, document.head.appendChild(e);
+      e.textContent = z, document.head.appendChild(e);
     }
   }
   const R = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
@@ -457,10 +461,10 @@
       template: "image",
       image: `${c}/img_petzen_5.webp`
     }
-  ], A = (
+  ], E = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="none"><path fill="#fff" d="M6.767 23.93c-1.334-1.466-2.134-3.066-2.134-5.733 0-4.667 3.334-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.333 5.467-5.6 7.467.667-.4 1.6-.534 2.534-.4 2.4.266 4.266 2.133 4.266 4.666 0 1.2-.533 2.4-1.333 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Zm13.333 0c-1.333-1.466-2.133-3.066-2.133-5.733 0-4.667 3.333-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.334 5.467-5.6 7.467.666-.4 1.6-.534 2.533-.4 2.4.266 4.267 2.266 4.267 4.666 0 1.2-.534 2.4-1.334 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Z"/></svg>'
-  ), E = (
+  ), A = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" fill="none"><path fill="#D9D9D9" d="M19.12 13.12 3.344 22.346c-1.333.78-3.01-.181-3.01-1.726V2.059C.333.51 2.018-.45 3.352.338L19.129 9.67c1.313.777 1.308 2.678-.008 3.448Z"/></svg>'
   ), q = `* {
@@ -847,11 +851,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${E}</div>
+                  <div class="item-video-icon">${A}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${A}</div>
+                <div class="info__icon">${E}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -1319,11 +1323,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${E}</div>
+                  <div class="item-video-icon">${A}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${A}</div>
+                <div class="info__icon">${E}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -1563,7 +1567,7 @@
       this.device === "desktop" || !location.pathname.includes("zenpatch-pet") || (await T(".lp-tr--purchase"), this.addStyles(), this.defineCustomElements(), this.insertReelsSection(), this.insertCarouselSection());
     }
     insertReelsSection() {
-      new z({
+      new P({
         containerSelector: "section#OurStory",
         position: "afterend"
       });
