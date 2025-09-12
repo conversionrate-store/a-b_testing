@@ -132,13 +132,13 @@
     </div>
     `, this.container.insertAdjacentElement(this.position, this.section), w(
         this.section,
-        "exp_petzen_v9_view_1",
+        "exp_petzen_view_1",
         "Reels section",
         "Real Stories From Our Customers",
         0
       ), w(
         this.section,
-        "exp_petzen_v9_view_item_1",
+        "exp_petzen_view_item_1",
         "Reels section",
         "1",
         0
@@ -187,7 +187,7 @@
     </div>
     `, this.container.insertAdjacentElement(this.position, this.section), w(
         this.section,
-        "exp_petzen_v9_view_item_2",
+        "exp_petzen_view_item_2",
         "Purchase section",
         "1",
         0
@@ -998,7 +998,7 @@
         `${e + 1}`,
         "swipe",
         "Reels section"
-      ), u("exp_petzen_view_1", `${t + 1}`, "view", "Reels section");
+      ), u("exp_petzen_view_item_1", `${t + 1}`, "view", "Reels section");
     }
     scrollToReelItem(e) {
       const t = this.shadowRoot.querySelector(
@@ -1558,7 +1558,7 @@
     }
   }
   const F = "";
-  I({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), $("exp_tick_02_variant_1");
+  I({ name: "New experiment for BuzzPatch with introduction of reels", dev: "OS" }), $("exp_tick_02_variant_1");
   class M {
     constructor() {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
