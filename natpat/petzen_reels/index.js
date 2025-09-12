@@ -1554,7 +1554,7 @@
     }
   }
   const F = "";
-  I({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), $("exp_petzen_reels");
+  I({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), $("exp_tick_02_variant_1");
   class M {
     constructor() {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
@@ -1584,4 +1584,3 @@
   }
   new M();
 })();
-
