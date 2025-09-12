@@ -37,7 +37,7 @@
         break;
     }
     console.log(`%c>>> ${u}`, `${t} font-size: 16px; font-weight: 600`);
-  }, V = `.crs-reels-section {
+  }, A = `.crs-reels-section {
   padding-top: 0;
   padding-bottom: 83px;
   background: linear-gradient(180deg, #f1f3f4 0%, #fff 100%);
@@ -54,7 +54,8 @@
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
-  line-height: 26.4px; /* 120% */
+  line-height: 26.4px;
+  text-transform: none;
 }
 
 .reels-section__content {
@@ -78,7 +79,7 @@
   min-height: 65px;
 }
 `;
-  class A {
+  class V {
     constructor({
       containerSelector: e,
       position: t
@@ -96,7 +97,7 @@
       
     </div>
     <div class="reels-section__container">
-      <h2 class="reels-section__title">Real Stories from Our Customers</h2>
+      <h2 class="reels-section__title">Watch PetZen Patches in Action</h2>
       <div class="reels-section__content">
         <crs-reels></crs-reels>
       </div>
@@ -116,10 +117,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = V, document.head.appendChild(e);
+      e.textContent = A, document.head.appendChild(e);
     }
   }
-  const C = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
+  const I = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
   display: none;
 }
 
@@ -127,7 +128,7 @@
   background: #f7f6f4;
 }
 `;
-  class I {
+  class P {
     constructor({
       containerSelector: e,
       position: t
@@ -155,10 +156,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = C, document.head.appendChild(e);
+      e.textContent = I, document.head.appendChild(e);
     }
   }
-  const P = `* {
+  const C = `* {
   box-sizing: border-box;
 }
 
@@ -413,10 +414,10 @@
       template: "image",
       image: `${l}/img_petzen_5.webp`
     }
-  ], S = (
+  ], E = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="none"><path fill="#fff" d="M6.767 23.93c-1.334-1.466-2.134-3.066-2.134-5.733 0-4.667 3.334-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.333 5.467-5.6 7.467.667-.4 1.6-.534 2.534-.4 2.4.266 4.266 2.133 4.266 4.666 0 1.2-.533 2.4-1.333 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Zm13.333 0c-1.333-1.466-2.133-3.066-2.133-5.733 0-4.667 3.333-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.334 5.467-5.6 7.467.666-.4 1.6-.534 2.533-.4 2.4.266 4.267 2.266 4.267 4.666 0 1.2-.534 2.4-1.334 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Z"/></svg>'
-  ), E = (
+  ), S = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" fill="none"><path fill="#D9D9D9" d="M19.12 13.12 3.344 22.346c-1.333.78-3.01-.181-3.01-1.726V2.059C.333.51 2.018-.45 3.352.338L19.129 9.67c1.313.777 1.308 2.678-.008 3.448Z"/></svg>'
   ), R = `* {
@@ -767,7 +768,7 @@
         /* html */
         `
     <style>
-      ${P}
+      ${C}
     </style>
     <div class="reels">
       <ul class="reels-list">
@@ -784,11 +785,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${E}</div>
+                  <div class="item-video-icon">${S}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${S}</div>
+                <div class="info__icon">${E}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -1215,11 +1216,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${E}</div>
+                  <div class="item-video-icon">${S}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${S}</div>
+                <div class="info__icon">${E}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -1411,13 +1412,13 @@
       this.device === "desktop" || !location.pathname.includes("zenpatch-pet") || (await T(".lp-tr--purchase"), this.addStyles(), this.defineCustomElements(), this.insertReelsSection(), this.insertCarouselSection());
     }
     insertReelsSection() {
-      new A({
+      new V({
         containerSelector: "section#OurStory",
         position: "afterend"
       });
     }
     insertCarouselSection() {
-      new I({
+      new P({
         containerSelector: ".lp-tr--purchase .row.lp-tr--gray-bg",
         position: "beforebegin"
       });
