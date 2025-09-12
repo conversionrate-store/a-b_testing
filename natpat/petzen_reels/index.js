@@ -48,9 +48,10 @@
 }
 
 .reels-section__title {
+  margin: 0 !important;
   color: #202020;
   text-align: center;
-  font-family: Barlow;
+  font-family: Barlow !important;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
