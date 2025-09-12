@@ -8,7 +8,7 @@
       event_type: t,
       event_loc: n
     }), x(`Event: ${l} | ${e} | ${t} | ${n}`, "success");
-  }, E = (l) => new Promise((e) => {
+  }, T = (l) => new Promise((e) => {
     const t = document.querySelector(l);
     t && e(t);
     const n = new MutationObserver(() => {
@@ -19,12 +19,12 @@
       childList: !0,
       subtree: !0
     });
-  }), T = ({ name: l, dev: e }) => {
+  }), I = ({ name: l, dev: e }) => {
     console.log(
       `%c EXP: ${l} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, I = (l) => {
+  }, $ = (l) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", l, "variant_1"));
     }, 1e3);
@@ -64,8 +64,8 @@
         break;
     }
     console.log(`%c>>> ${l}`, `${t} font-size: 16px; font-weight: 600`);
-  }, $ = `.crs-reels-section {
-  padding-top: 0;
+  }, P = `.crs-reels-section {
+  padding-top: 32px;
   padding-bottom: 83px;
   background: linear-gradient(180deg, #f1f3f4 0%, #fff 100%);
 }
@@ -75,17 +75,15 @@
 }
 
 .reels-section__title {
-  margin: 0;
-  padding: 0;
-  color: #0c0b0b;
+  margin: 0 !important;
+  color: #202020;
   text-align: center;
-  font-family: 'DINEngschrift LT', sans-serif;
-  font-size: 36px;
+  font-family: Barlow !important;
+  font-size: 22px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 42px; /* 116.667% */
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 26.4px;
+  text-transform: none;
 }
 
 .reels-section__content {
@@ -107,8 +105,9 @@
   align-items: center;
   width: 100%;
   min-height: 65px;
-}`;
-  class P {
+}
+`;
+  class z {
     constructor({
       containerSelector: e,
       position: t
@@ -121,36 +120,29 @@
     async render() {
       this.section = document.createElement("section"), this.section.classList.add("js-mobile", "crs-reels-section"), this.section.innerHTML = /* html */
       `
-    <div class="wave-effect js-mobile">
-    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" plerdy-tracking-id="86593067801"><path fill="#F1F3F4" fill-opacity="1" d="M0,128L60,138.7C120,149,240,171,360,165.3C480,160,600,128,720,101.3C840,75,960,53,1080,58.7C1200,64,1320,96,1380,112L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
-      
-    </div>
+    
     <div class="reels-section__container">
-      <h2 class="reels-section__title">Real Stories from Our Customers</h2>
+      <h2 class="reels-section__title">Watch PetZen Patches in Action</h2>
       <div class="reels-section__content">
         <crs-reels></crs-reels>
       </div>
       <div class="reels-section__action">
-      <a href="#getFormNow" class="btn js-btn btn-primary get-it" data-crs="btn">get buzzpatch!</a>
+      <a href="#lptrPurchase" class="lp-pet-zen--btn lp-tr--mobile scroll-to-checkout">GET PET ZEN NOW</a>
       </div>
     </div>
     `, this.container.insertAdjacentElement(this.position, this.section), w(
         this.section,
-        "exp_buzz_v9_view_1",
+        "exp_petzen_v9_view_1",
         "Reels section",
         "Real Stories From Our Customers",
         0
       ), w(
         this.section,
-        "exp_buzz_v9_view_item_1",
+        "exp_petzen_v9_view_item_1",
         "Reels section",
         "1",
         0
       );
-      const e = document.querySelector('[data-crs="btn"]');
-      console.log("btn", e), e && e.addEventListener("click", () => {
-        u("exp_buzz_v9_get_buzzpatch", "Get Buzzpatch", "click", "Reels section");
-      });
     }
     stopVideoByScroll() {
       const e = this.section.querySelector("crs-reels"), t = new IntersectionObserver((n) => {
@@ -162,13 +154,18 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = $, document.head.appendChild(e);
+      e.textContent = P, document.head.appendChild(e);
     }
   }
-  const C = `#purchase #getNow img.js-mobile {
+  const R = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
   display: none;
-}`;
-  class R {
+}
+
+.crs-product-carousel-section {
+  background: #f7f6f4;
+}
+`;
+  class V {
     constructor({
       containerSelector: e,
       position: t
@@ -186,7 +183,7 @@
     </div>
     `, this.container.insertAdjacentElement(this.position, this.section), w(
         this.section,
-        "exp_buzz_v9_view_item_2",
+        "exp_petzen_v9_view_item_2",
         "Purchase section",
         "1",
         0
@@ -202,10 +199,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = C, document.head.appendChild(e);
+      e.textContent = R, document.head.appendChild(e);
     }
   }
-  const V = `* {
+  const C = `* {
   box-sizing: border-box;
 }
 
@@ -222,6 +219,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .reels-list::-webkit-scrollbar {
   display: none;
 }
@@ -242,7 +240,6 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  height: 100%;;
 }
 
 .item-video {
@@ -391,79 +388,79 @@
 .reels-pagination-item.active {
   background: #ff3c7f;
 }
-`, c = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels/", S = [
+`, c = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels/", L = [
     {
       id: 1,
-      image: `${c}/gif_buzzpatch_1.gif`,
-      video: `${c}/video_buzzpatch_1.mp4`,
-      text: "...we went to the park and it was full of mosquitos, but likely we weren’t getting by them because of these cute little patches"
+      image: `${c}/gif_petzen_1.gif`,
+      video: `${c}/video_petzen_1.mp4`,
+      text: "...it's great for separation anxiety, it's great for fireworks, it's great just to take that little bit of edge off"
     },
     {
       id: 2,
-      image: `${c}/gif_buzzpatch_2.gif`,
-      video: `${c}/video_buzzpatch_2.mp4`,
-      text: "This is so much funner using these patches than it is using the aerosol bug spray, which you're also not supposed to use on children"
+      image: `${c}/gif_petzen_2.gif`,
+      video: `${c}/Video_petzen_2.mp4`,
+      text: "No more fights, no more messes, no more pee accidents, just a calm, happy cat and a peaceful home"
     },
     {
       id: 3,
-      image: `${c}/gif_buzzpatch_3.gif`,
-      video: `${c}/video_buzzpatch_3.mp4`,
-      text: "No bug bites anymore! A must have product for playing in the backyard"
+      image: `${c}/gif_petzen_3.gif`,
+      video: `${c}/video_petzen_3.mp4`,
+      text: "Just peel, stick, and calm."
     }
   ], k = [
     {
       id: 1,
       template: "image",
-      image: `${c}/img_buzzpatch_1.webp`
+      image: `${c}/img_petzen_1.webp`
     },
     {
       id: 2,
       template: "video",
       bgColor: "blue",
-      image: `${c}/gif_buzzpatch_1.gif`,
-      video: `${c}/video_buzzpatch_1.mp4`,
-      text: "...we went to the park and it was full of mosquitos, but likely we weren’t getting by them because of these cute little patches"
+      image: `${c}/gif_petzen_1.gif`,
+      video: `${c}/video_petzen_1.mp4`,
+      text: "...it's great for separation anxiety, it's great for fireworks, it's great just to take that little bit of edge off"
     },
     {
       id: 3,
       template: "image",
-      image: `${c}/img_buzzpatch_2.webp`
+      image: `${c}/img_petzen_2.webp`
     },
     {
       id: 4,
       template: "image",
-      image: `${c}/img_buzzpatch_3.webp`
+      image: `${c}/img_petzen_3.webp`
     },
     {
       id: 5,
       template: "video",
       bgColor: "blue",
-      image: `${c}/gif_buzzpatch_2.gif`,
-      video: `${c}/video_buzzpatch_2.mp4`,
-      text: "No bug bites anymore! A must have product for playing in the backyard"
+      image: `${c}/gif_petzen_2.gif`,
+      video: `${c}/Video_petzen_2.mp4`,
+      text: "No more fights, no more messes, no more pee accidents, just a calm, happy cat and a peaceful home"
     },
     {
       id: 6,
       template: "image",
-      image: `${c}/img_buzzpatch_4.webp`
+      image: `${c}/img_petzen_4.webp`
     },
     {
       id: 7,
       template: "video",
-      bgColor: "orange",
-      image: `${c}/gif_buzzpatch_3.gif`,
-      video: `${c}/video_buzzpatch_3.mp4`,
-      text: "This is so much funner using these patches than it is using the aerosol bug spray, which you're also not supposed to use on children"
+      bgColor: "blue",
+      image: `${c}/gif_petzen_3.gif`,
+      video: `${c}/video_petzen_3.mp4`,
+      text: "Just peel, stick, and calm."
     },
     {
       id: 8,
       template: "image",
-      image: `${c}/img_buzzpatch_5.webp`
+      image: `${c}/img_petzen_5.webp`
     }
-  ], z = (
+  ], A = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="none"><path fill="#fff" d="M6.767 23.93c-1.334-1.466-2.134-3.066-2.134-5.733 0-4.667 3.334-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.333 5.467-5.6 7.467.667-.4 1.6-.534 2.534-.4 2.4.266 4.266 2.133 4.266 4.666 0 1.2-.533 2.4-1.333 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Zm13.333 0c-1.333-1.466-2.133-3.066-2.133-5.733 0-4.667 3.333-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.334 5.467-5.6 7.467.666-.4 1.6-.534 2.533-.4 2.4.266 4.267 2.266 4.267 4.666 0 1.2-.534 2.4-1.334 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Z"/></svg>'
-  ), A = (
+  ), E = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" fill="none"><path fill="#D9D9D9" d="M19.12 13.12 3.344 22.346c-1.333.78-3.01-.181-3.01-1.726V2.059C.333.51 2.018-.45 3.352.338L19.129 9.67c1.313.777 1.308 2.678-.008 3.448Z"/></svg>'
   ), q = `* {
@@ -694,7 +691,19 @@
       );
     }
     init() {
-      this.overlay = this.shadowRoot.getElementById("fullscreen-overlay"), this.videoContainer = this.shadowRoot.getElementById("fullscreen-video-container"), this.closeButton = this.shadowRoot.getElementById("fullscreen-close-button"), this.progressBar = this.shadowRoot.getElementById("video-progress-bar"), this.progressFill = this.shadowRoot.getElementById("video-progress-fill"), this.progressHandle = this.shadowRoot.getElementById("video-progress-handle"), this.setupEventListeners();
+      this.overlay = this.shadowRoot.getElementById(
+        "fullscreen-overlay"
+      ), this.videoContainer = this.shadowRoot.getElementById(
+        "fullscreen-video-container"
+      ), this.closeButton = this.shadowRoot.getElementById(
+        "fullscreen-close-button"
+      ), this.progressBar = this.shadowRoot.getElementById(
+        "video-progress-bar"
+      ), this.progressFill = this.shadowRoot.getElementById(
+        "video-progress-fill"
+      ), this.progressHandle = this.shadowRoot.getElementById(
+        "video-progress-handle"
+      ), this.setupEventListeners();
     }
     setupEventListeners() {
       var e, t;
@@ -733,11 +742,15 @@
       e && e.close();
     }
     showPlayPauseIndicator(e) {
-      const t = this.shadowRoot.querySelector(".play-pause-indicator");
+      const t = this.shadowRoot.querySelector(
+        ".play-pause-indicator"
+      );
       t && (t.textContent = e === "play" ? "▶" : "⏸", t.classList.add("show"));
     }
     hidePlayPauseIndicator() {
-      const e = this.shadowRoot.querySelector(".play-pause-indicator");
+      const e = this.shadowRoot.querySelector(
+        ".play-pause-indicator"
+      );
       e && e.classList.remove("show");
     }
     autoHidePlayPauseIndicator() {
@@ -746,7 +759,8 @@
       }, 2e3);
     }
     updateProgressBar() {
-      if (!this.fullscreenVideo || !this.progressFill || !this.progressHandle) return;
+      if (!this.fullscreenVideo || !this.progressFill || !this.progressHandle)
+        return;
       const e = this.fullscreenVideo.currentTime / this.fullscreenVideo.duration * 100;
       this.progressFill.style.width = `${e}%`, this.progressHandle.style.left = `${e}%`;
     }
@@ -758,7 +772,8 @@
       }), this.progressHandle.addEventListener("mousedown", (e) => {
         this.isDragging = !0, e.preventDefault();
       }), document.addEventListener("mousemove", (e) => {
-        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo) return;
+        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo)
+          return;
         const t = this.progressBar.getBoundingClientRect(), n = e.clientX - t.left, s = Math.max(0, Math.min(1, n / t.width)) * this.fullscreenVideo.duration;
         this.fullscreenVideo.currentTime = s;
       }), document.addEventListener("mouseup", () => {
@@ -766,7 +781,8 @@
       }), this.progressHandle.addEventListener("touchstart", (e) => {
         this.isDragging = !0, e.preventDefault();
       }), document.addEventListener("touchmove", (e) => {
-        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo) return;
+        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo)
+          return;
         const t = this.progressBar.getBoundingClientRect(), i = e.touches[0].clientX - t.left, o = Math.max(0, Math.min(1, i / t.width)) * this.fullscreenVideo.duration;
         this.fullscreenVideo.currentTime = o;
       }), document.addEventListener("touchend", () => {
@@ -780,7 +796,7 @@
       if (!this.currentSection) return;
       const t = this.currentSection === "reels" ? "1" : "2", n = this.currentSection === "reels" ? "Reels section" : "Purchase section";
       u(
-        `exp_buzz_v9_${e}_${t}`,
+        `exp_petzen_${e}_${t}`,
         `${this.currentActiveIndex + 1}`,
         "click",
         n
@@ -790,7 +806,7 @@
       if (!this.currentSection) return;
       const t = this.currentSection === "reels" ? "1" : "2", n = this.currentSection === "reels" ? "Reels section" : "Purchase section";
       u(
-        `exp_buzz_v9_full_${e}_${t}`,
+        `exp_petzen_full_${e}_${t}`,
         `${this.currentActiveIndex + 1}`,
         "click",
         n
@@ -798,27 +814,27 @@
     }
   };
   g.currentInstance = null;
-  let b = g;
+  let v = g;
   class D extends HTMLElement {
     constructor() {
-      super(), this.lastActiveIndex = 0, this.scrollTimeout = null, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
+      super(), this.lastActiveIndex = 0, this.scrollTimeout = null, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new v(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
     }
     getOrCreateFullscreenVideo() {
       let e = document.querySelector(
         "crs-fullscreen-video"
       );
-      return e || (e = new b(), document.body.appendChild(e)), e;
+      return e || (e = new v(), document.body.appendChild(e)), e;
     }
     render() {
       return (
         /* html */
         `
     <style>
-      ${V}
+      ${C}
     </style>
     <div class="reels">
       <ul class="reels-list">
-        ${S.map(
+        ${L.map(
           (e) => (
             /* html */
             `
@@ -831,11 +847,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${A}</div>
+                  <div class="item-video-icon">${E}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${z}</div>
+                <div class="info__icon">${A}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -846,7 +862,7 @@
         
       </ul>
       <div class="reels-pagination">
-        ${S.map(
+        ${L.map(
           (e, t) => (
             /* html */
             `
@@ -869,7 +885,7 @@
             const r = t == null ? void 0 : t.getAttribute("data-state");
             if (r === "on" && n && !n.paused) {
               n.pause(), t == null || t.setAttribute("data-state", "paused"), console.log("Video paused"), u(
-                "exp_buzz_v9_pause_1",
+                "exp_petzen_pause_1",
                 `${this.lastActiveIndex + 1}`,
                 "click",
                 "Reels section"
@@ -879,7 +895,7 @@
             if (r === "paused" && n && n.paused)
               try {
                 await (n == null ? void 0 : n.play()), t == null || t.setAttribute("data-state", "on"), console.log("Video resumed"), u(
-                  "exp_buzz_v9_play_1",
+                  "exp_petzen_play_1",
                   `${this.lastActiveIndex + 1}`,
                   "click",
                   "Reels section"
@@ -889,18 +905,18 @@
                 console.warn("Video resume failed:", a), t == null || t.setAttribute("data-state", "off");
                 return;
               }
-            if (this.stopAllVideos(), n && n.readyState < 2 && (console.log("Loading video..."), n.load(), await new Promise((a) => {
-              const h = () => {
-                n.removeEventListener("loadeddata", h), a(!0);
+            if (this.stopAllVideos(), n && n.readyState < 2 && (n.load(), await new Promise((a) => {
+              const p = () => {
+                n.removeEventListener("loadeddata", p), a(!0);
               };
-              n.addEventListener("loadeddata", h), setTimeout(() => {
-                n.removeEventListener("loadeddata", h), a(!1);
+              n.addEventListener("loadeddata", p), setTimeout(() => {
+                n.removeEventListener("loadeddata", p), a(!1);
               }, 3e3);
             })), n && n.readyState >= 2) {
               t == null || t.setAttribute("data-state", "on");
               try {
                 await (n == null ? void 0 : n.play()), u(
-                  "exp_buzz_v9_play_1",
+                  "exp_petzen_play_1",
                   `${this.lastActiveIndex + 1}`,
                   "click",
                   "Reels section"
@@ -957,9 +973,9 @@
       if (!e || !t.length) return 0;
       const n = e.offsetWidth, s = e.scrollLeft + n / 2;
       let o = 0, r = 1 / 0;
-      return t.forEach((a, h) => {
-        const m = a, v = m.offsetLeft, f = m.offsetWidth, d = v + f / 2, p = Math.abs(s - d);
-        p < r && (r = p, o = h);
+      return t.forEach((a, p) => {
+        const m = a, b = m.offsetLeft, f = m.offsetWidth, d = b + f / 2, h = Math.abs(s - d);
+        h < r && (r = h, o = p);
       }), o;
     }
     emitScrollEvent(e, t) {
@@ -971,19 +987,14 @@
         },
         bubbles: !0
       });
-      this.dispatchEvent(n);
+      this.dispatchEvent(n), console.log(`[Reels] Scrolled from item ${e} to item ${t}`);
       const i = e < t ? "right" : "left";
       u(
-        `exp_buzz_v9_swipe_${i}_1`,
+        `exp_petzen_swipe_${i}_1`,
         `${e + 1}`,
         "swipe",
         "Reels section"
-      ), u(
-        "exp_buzz_v9_view_item_1",
-        `${t + 1}`,
-        "view",
-        "Reels section"
-      );
+      ), u("exp_petzen_view_1", `${t + 1}`, "view", "Reels section");
     }
     scrollToReelItem(e) {
       const t = this.shadowRoot.querySelector(
@@ -1020,23 +1031,23 @@
      * @param clickTimer - Reference to the click timer to cancel single tap when double tap is detected
      */
     setupDoubleTapFullscreen(e, t, n) {
-      let i = 0, s = 0, o, r = 0, a = 0, h = 0;
+      let i = 0, s = 0, o, r = 0, a = 0, p = 0;
       const m = (f) => {
         const d = f.touches[0];
-        r = Date.now(), a = d.clientX, h = d.clientY;
-      }, v = (f) => {
-        const d = f.changedTouches[0], p = Date.now(), y = p - i, _ = p - r, L = Math.sqrt(
-          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - h, 2)
+        r = Date.now(), a = d.clientX, p = d.clientY;
+      }, b = (f) => {
+        const d = f.changedTouches[0], h = Date.now(), y = h - i, _ = h - r, S = Math.sqrt(
+          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - p, 2)
         );
-        _ < 300 && L < 50 && (y < 500 && y > 0 ? (s++, s === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
+        _ < 300 && S < 50 && (y < 500 && y > 0 ? (s++, s === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
           e.classList.remove("double-tap-feedback");
-        }, 300), this.openFullscreen(t, !0, "reels", this.lastActiveIndex)), s = 0)) : s = 1, i = p, clearTimeout(o), o = window.setTimeout(() => {
+        }, 300), this.openFullscreen(t, !0, "reels", this.lastActiveIndex)), s = 0)) : s = 1, i = h, clearTimeout(o), o = window.setTimeout(() => {
           s = 0;
         }, 500));
       };
       e.addEventListener("touchstart", m, {
         passive: !0
-      }), e.addEventListener("touchend", v, { passive: !1 });
+      }), e.addEventListener("touchend", b, { passive: !1 });
     }
     openFullscreen(e, t = !1, n, i) {
       e && this.fullscreenVideo.open(e, t, n, i);
@@ -1058,11 +1069,12 @@
       e.target.play();
     }
   }
-  const F = `* {
+  const B = `* {
   box-sizing: border-box;
 }
 
 .product-list {
+  margin: 0;
   display: flex;
   gap: 8px;
   padding: 0;
@@ -1107,6 +1119,7 @@
   align-items: center;
   gap: 16px;
   padding: 16px 12px;
+  height: 100%;
 }
 
 .item-video {
@@ -1265,22 +1278,22 @@
   background: #ff3c7f;
 }
 `;
-  class B extends HTMLElement {
+  class j extends HTMLElement {
     constructor() {
-      super(), this.lastActiveIndex = 0, this.scrollTimeout = null, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
+      super(), this.lastActiveIndex = 0, this.scrollTimeout = null, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new v(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
     }
     getOrCreateFullscreenVideo() {
       let e = document.querySelector(
         "crs-fullscreen-video"
       );
-      return e || (e = new b(), document.body.appendChild(e)), e;
+      return e || (e = new v(), document.body.appendChild(e)), e;
     }
     render() {
       return (
         /* html */
         `
     <style>
-      ${F}
+      ${B}
     </style>
     <div class="product">
       <ul class="product-list">
@@ -1306,11 +1319,11 @@
      
                   Your browser does not support the video tag.
                 </video>
-                  <div class="item-video-icon">${A}</div>
+                  <div class="item-video-icon">${E}</div>
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${z}</div>
+                <div class="info__icon">${A}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -1344,7 +1357,7 @@
               const o = t == null ? void 0 : t.getAttribute("data-state");
               if (o === "on" && n && !n.paused) {
                 n.pause(), t == null || t.setAttribute("data-state", "paused"), console.log("Video paused"), u(
-                  "exp_buzz_v9_pause_2",
+                  "exp_petzen_pause_2",
                   `${this.lastActiveIndex + 1}`,
                   "click",
                   "Purchase section"
@@ -1354,7 +1367,7 @@
               if (o === "paused" && n && n.paused)
                 try {
                   await (n == null ? void 0 : n.play()), t == null || t.setAttribute("data-state", "on"), console.log("Video resumed"), u(
-                    "exp_buzz_v9_play_2",
+                    "exp_petzen_play_2",
                     `${this.lastActiveIndex + 1}`,
                     "click",
                     "Purchase section"
@@ -1375,7 +1388,7 @@
                 t == null || t.setAttribute("data-state", "on");
                 try {
                   await (n == null ? void 0 : n.play()), u(
-                    "exp_buzz_v9_play_2",
+                    "exp_petzen_play_2",
                     `${this.lastActiveIndex + 1}`,
                     "click",
                     "Purchase section"
@@ -1446,9 +1459,9 @@
       if (!e || !t.length) return 0;
       const n = e.offsetWidth, s = e.scrollLeft + n / 2;
       let o = 0, r = 1 / 0;
-      return t.forEach((a, h) => {
-        const m = a, v = m.offsetLeft, f = m.offsetWidth, d = v + f / 2, p = Math.abs(s - d);
-        p < r && (r = p, o = h);
+      return t.forEach((a, p) => {
+        const m = a, b = m.offsetLeft, f = m.offsetWidth, d = b + f / 2, h = Math.abs(s - d);
+        h < r && (r = h, o = p);
       }), o;
     }
     emitScrollEvent(e, t) {
@@ -1463,16 +1476,11 @@
       this.dispatchEvent(n);
       const i = e < t ? "right" : "left";
       u(
-        `exp_buzz_v9_swipe_${i}_2`,
+        `exp_petzen_swipe_${i}_2`,
         `${e + 1}`,
         "swipe",
         "Purchase section"
-      ), u(
-        "exp_buzz_v9_view_item_2",
-        `${t + 1}`,
-        "view",
-        "Purchase section"
-      );
+      ), u("exp_petzen_view_2", `${t + 1}`, "view", "Purchase section");
     }
     scrollToReelItem(e) {
       const t = this.shadowRoot.querySelector(
@@ -1502,28 +1510,28 @@
       e.length > 0 && e[0].classList.add("active"), this.lastActiveIndex = 0;
     }
     setupDoubleTapFullscreen(e, t, n) {
-      let i = 0, s = 0, o, r = 0, a = 0, h = 0;
+      let i = 0, s = 0, o, r = 0, a = 0, p = 0;
       const m = (f) => {
         const d = f.touches[0];
-        r = Date.now(), a = d.clientX, h = d.clientY;
-      }, v = (f) => {
-        const d = f.changedTouches[0], p = Date.now(), y = p - i, _ = p - r, L = Math.sqrt(
-          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - h, 2)
+        r = Date.now(), a = d.clientX, p = d.clientY;
+      }, b = (f) => {
+        const d = f.changedTouches[0], h = Date.now(), y = h - i, _ = h - r, S = Math.sqrt(
+          Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - p, 2)
         );
-        _ < 300 && L < 50 && (y < 500 && y > 0 ? (s++, s === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
+        _ < 300 && S < 50 && (y < 500 && y > 0 ? (s++, s === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
           e.classList.remove("double-tap-feedback");
         }, 300), this.openFullscreen(
           t,
           !0,
           "product-slider",
           this.lastActiveIndex
-        )), s = 0)) : s = 1, i = p, clearTimeout(o), o = window.setTimeout(() => {
+        )), s = 0)) : s = 1, i = h, clearTimeout(o), o = window.setTimeout(() => {
           s = 0;
         }, 500));
       };
       e.addEventListener("touchstart", m, {
         passive: !0
-      }), e.addEventListener("touchend", v, { passive: !1 });
+      }), e.addEventListener("touchend", b, { passive: !1 });
     }
     openFullscreen(e, t = !1, n, i) {
       e && this.fullscreenVideo.open(e, t, n, i);
@@ -1545,41 +1553,33 @@
       e.target.play();
     }
   }
-  const j = "";
-  T({ name: "New experiment for BuzzPatch with introduction of reels", dev: "OS" }), I("exp_tick_02_variant_1");
+  const F = "";
+  I({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), $("exp_tick_02_variant_1");
   class M {
     constructor() {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
     }
     async init() {
-      this.device === "desktop" || !location.pathname.includes("buzzpatch") || (await E("#purchase .form"), this.addStyles(), this.defineCustomElements(), this.insertReelsSection(), this.changeSutPriceText(), this.insertCarouselSection());
+      this.device === "desktop" || !location.pathname.includes("zenpatch-pet") || (await T(".lp-tr--purchase"), this.addStyles(), this.defineCustomElements(), this.insertReelsSection(), this.insertCarouselSection());
     }
     insertReelsSection() {
-      new P({
-        containerSelector: "section.mosquito-problems",
+      new z({
+        containerSelector: "section#OurStory",
         position: "afterend"
       });
     }
     insertCarouselSection() {
-      new R({
-        containerSelector: "#purchase #getNow img.js-mobile",
-        position: "afterend"
+      new V({
+        containerSelector: ".lp-tr--purchase .row.lp-tr--gray-bg",
+        position: "beforebegin"
       });
     }
     defineCustomElements() {
-      customElements.define("crs-reels", D), customElements.define("crs-product-slider", B), customElements.define("crs-fullscreen-video", b);
+      customElements.define("crs-reels", D), customElements.define("crs-product-slider", j), customElements.define("crs-fullscreen-video", v);
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = j, document.head.appendChild(e);
-    }
-    changeSutPriceText() {
-      const e = document.querySelector("#purchase .prices .js-regular");
-      console.log("controlText", e), e && (e.innerHTML = /* html */
-      `
-        Try BuzzPatch Risk-Free Today <br>
-        If It Doesn’t Work For You — <span style="color: #FF3C81;">It’s Free!</span>
-      `);
+      e.textContent = F, document.head.appendChild(e);
     }
   }
   new M();
