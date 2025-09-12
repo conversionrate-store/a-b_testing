@@ -398,7 +398,7 @@
     {
       id: 2,
       image: `${c}/gif_petzen_2.gif`,
-      video: `${c}/video_petzen_2.mp4`,
+      video: `${c}/Video_petzen_2.mp4`,
       text: "No more fights, no more messes, no more pee accidents, just a calm, happy cat and a peaceful home"
     },
     {
@@ -436,7 +436,7 @@
       template: "video",
       bgColor: "blue",
       image: `${c}/gif_petzen_2.gif`,
-      video: `${c}/video_petzen_2.mp4`,
+      video: `${c}/Video_petzen_2.mp4`,
       text: "No more fights, no more messes, no more pee accidents, just a calm, happy cat and a peaceful home"
     },
     {
@@ -1404,7 +1404,7 @@
             }, 200);
           };
           if (t && n) {
-            t.addEventListener("click", s), console.log("Item video click listener added", t);
+            t.addEventListener("click", s);
             const o = t.querySelector(
               ".item-full-screen"
             );
@@ -1584,3 +1584,4 @@
   }
   new M();
 })();
+
