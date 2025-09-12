@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const S = (u) => new Promise((e) => {
+  const T = (u) => new Promise((e) => {
     const t = document.querySelector(u);
     t && e(t);
     const n = new MutationObserver(() => {
@@ -11,16 +11,16 @@
       childList: !0,
       subtree: !0
     });
-  }), T = ({ name: u, dev: e }) => {
+  }), _ = ({ name: u, dev: e }) => {
     console.log(
       `%c EXP: ${u} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, _ = (u) => {
+  }, $ = (u) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", u, "variant_1"));
     }, 1e3);
-  }, w = (u, e = "info") => {
+  }, x = (u, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -37,7 +37,7 @@
         break;
     }
     console.log(`%c>>> ${u}`, `${t} font-size: 16px; font-weight: 600`);
-  }, $ = `.crs-reels-section {
+  }, V = `.crs-reels-section {
   padding-top: 0;
   padding-bottom: 83px;
   background: linear-gradient(180deg, #f1f3f4 0%, #fff 100%);
@@ -83,7 +83,7 @@
       containerSelector: e,
       position: t
     }) {
-      this.container = document.querySelector(e), this.position = t, this.container || w(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
+      this.container = document.querySelector(e), this.position = t, this.container || x(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
     }
     init() {
       this.addStyles(), this.render().catch(console.error), this.stopVideoByScroll();
@@ -116,10 +116,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = $, document.head.appendChild(e);
+      e.textContent = V, document.head.appendChild(e);
     }
   }
-  const V = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
+  const C = `.lp-tr--purchase .lp-tr--gray-bg img.lp-tr--mobile {
   display: none;
 }
 
@@ -127,12 +127,12 @@
   background: #f7f6f4;
 }
 `;
-  class P {
+  class I {
     constructor({
       containerSelector: e,
       position: t
     }) {
-      this.container = document.querySelector(e), this.position = t, this.container || w(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
+      this.container = document.querySelector(e), this.position = t, this.container || x(`Container with selector ${e} not found`, "error"), this.section = null, this.init();
     }
     init() {
       this.addStyles(), this.render().catch(console.error), this.stopVideoByScroll();
@@ -155,10 +155,10 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = V, document.head.appendChild(e);
+      e.textContent = C, document.head.appendChild(e);
     }
   }
-  const R = `* {
+  const P = `* {
   box-sizing: border-box;
 }
 
@@ -344,7 +344,7 @@
 .reels-pagination-item.active {
   background: #ff3c7f;
 }
-`, l = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels/", x = [
+`, l = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels/", L = [
     {
       id: 1,
       image: `${l}/gif_petzen_1.gif`,
@@ -363,7 +363,7 @@
       video: `${l}/video_petzen_3.mp4`,
       text: "Just peel, stick, and calm."
     }
-  ], L = [
+  ], k = [
     {
       id: 1,
       template: "image",
@@ -413,13 +413,13 @@
       template: "image",
       image: `${l}/img_petzen_5.webp`
     }
-  ], k = (
+  ], S = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="none"><path fill="#fff" d="M6.767 23.93c-1.334-1.466-2.134-3.066-2.134-5.733 0-4.667 3.334-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.333 5.467-5.6 7.467.667-.4 1.6-.534 2.534-.4 2.4.266 4.266 2.133 4.266 4.666 0 1.2-.533 2.4-1.333 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Zm13.333 0c-1.333-1.466-2.133-3.066-2.133-5.733 0-4.667 3.333-8.8 8-10.933l1.2 1.733c-4.4 2.4-5.334 5.467-5.6 7.467.666-.4 1.6-.534 2.533-.4 2.4.266 4.267 2.266 4.267 4.666 0 1.2-.534 2.4-1.334 3.334-.933.933-2 1.333-3.333 1.333-1.467 0-2.8-.667-3.6-1.467Z"/></svg>'
   ), E = (
     /* html */
     '<svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" fill="none"><path fill="#D9D9D9" d="M19.12 13.12 3.344 22.346c-1.333.78-3.01-.181-3.01-1.726V2.059C.333.51 2.018-.45 3.352.338L19.129 9.67c1.313.777 1.308 2.678-.008 3.448Z"/></svg>'
-  ), C = `* {
+  ), R = `* {
   box-sizing: border-box;
 }
 
@@ -614,8 +614,7 @@
 }
 
 
-`;
-  class v extends HTMLElement {
+`, m = class m extends HTMLElement {
     constructor() {
       super(), this.overlay = null, this.videoContainer = null, this.closeButton = null, this.fullscreenVideo = null, this.originalVideo = null, this.isOpen = !1, this.progressBar = null, this.progressFill = null, this.progressHandle = null, this.isDragging = !1, this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.init();
     }
@@ -624,7 +623,7 @@
         /* html */
         `
       <style>
-        ${C}
+        ${R}
       </style>
       <div class="fullscreen-overlay" id="fullscreen-overlay">
         <div class="fullscreen-video-container" id="fullscreen-video-container">
@@ -647,7 +646,19 @@
       );
     }
     init() {
-      this.overlay = this.shadowRoot.getElementById("fullscreen-overlay"), this.videoContainer = this.shadowRoot.getElementById("fullscreen-video-container"), this.closeButton = this.shadowRoot.getElementById("fullscreen-close-button"), this.progressBar = this.shadowRoot.getElementById("video-progress-bar"), this.progressFill = this.shadowRoot.getElementById("video-progress-fill"), this.progressHandle = this.shadowRoot.getElementById("video-progress-handle"), this.setupEventListeners();
+      this.overlay = this.shadowRoot.getElementById(
+        "fullscreen-overlay"
+      ), this.videoContainer = this.shadowRoot.getElementById(
+        "fullscreen-video-container"
+      ), this.closeButton = this.shadowRoot.getElementById(
+        "fullscreen-close-button"
+      ), this.progressBar = this.shadowRoot.getElementById(
+        "video-progress-bar"
+      ), this.progressFill = this.shadowRoot.getElementById(
+        "video-progress-fill"
+      ), this.progressHandle = this.shadowRoot.getElementById(
+        "video-progress-handle"
+      ), this.setupEventListeners();
     }
     setupEventListeners() {
       var e, t;
@@ -661,7 +672,7 @@
     }
     open(e, t = !1) {
       if (this.isOpen || !e) return;
-      this.originalVideo = e, this.isOpen = !0, this.fullscreenVideo = e.cloneNode(!0), this.fullscreenVideo.classList.add("fullscreen-video"), this.fullscreenVideo.removeAttribute("loop"), this.fullscreenVideo.controls = !1, this.fullscreenVideo.currentTime = e.currentTime;
+      m.closeAll(), this.originalVideo = e, this.isOpen = !0, m.currentInstance = this, this.fullscreenVideo = e.cloneNode(!0), this.fullscreenVideo.classList.add("fullscreen-video"), this.fullscreenVideo.removeAttribute("loop"), this.fullscreenVideo.controls = !1, this.fullscreenVideo.currentTime = e.currentTime;
       let n = !t;
       t && setTimeout(() => {
         n = !0;
@@ -680,14 +691,23 @@
       e.pause(), i && this.fullscreenVideo.play().catch(console.warn);
     }
     close() {
-      !this.isOpen || !this.fullscreenVideo || !this.originalVideo || (this.originalVideo.currentTime = this.fullscreenVideo.currentTime, this.fullscreenVideo.paused || this.originalVideo.play().catch(console.warn), this.fullscreenVideo.remove(), this.fullscreenVideo = null, this.originalVideo = null, this.isOpen = !1, this.overlay.classList.remove("show"));
+      !this.isOpen || !this.fullscreenVideo || !this.originalVideo || (this.originalVideo.currentTime = this.fullscreenVideo.currentTime, this.fullscreenVideo.paused || this.originalVideo.play().catch(console.warn), this.fullscreenVideo.remove(), this.fullscreenVideo = null, this.originalVideo = null, this.isOpen = !1, this.overlay.classList.remove("show"), m.currentInstance === this && (m.currentInstance = null));
+    }
+    static closeAll() {
+      m.currentInstance && m.currentInstance.close();
+      const e = document.querySelector("crs-fullscreen-video");
+      e && e.close();
     }
     showPlayPauseIndicator(e) {
-      const t = this.shadowRoot.querySelector(".play-pause-indicator");
+      const t = this.shadowRoot.querySelector(
+        ".play-pause-indicator"
+      );
       t && (t.textContent = e === "play" ? "▶" : "⏸", t.classList.add("show"));
     }
     hidePlayPauseIndicator() {
-      const e = this.shadowRoot.querySelector(".play-pause-indicator");
+      const e = this.shadowRoot.querySelector(
+        ".play-pause-indicator"
+      );
       e && e.classList.remove("show");
     }
     autoHidePlayPauseIndicator() {
@@ -696,7 +716,8 @@
       }, 2e3);
     }
     updateProgressBar() {
-      if (!this.fullscreenVideo || !this.progressFill || !this.progressHandle) return;
+      if (!this.fullscreenVideo || !this.progressFill || !this.progressHandle)
+        return;
       const e = this.fullscreenVideo.currentTime / this.fullscreenVideo.duration * 100;
       this.progressFill.style.width = `${e}%`, this.progressHandle.style.left = `${e}%`;
     }
@@ -708,7 +729,8 @@
       }), this.progressHandle.addEventListener("mousedown", (e) => {
         this.isDragging = !0, e.preventDefault();
       }), document.addEventListener("mousemove", (e) => {
-        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo) return;
+        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo)
+          return;
         const t = this.progressBar.getBoundingClientRect(), n = e.clientX - t.left, o = Math.max(0, Math.min(1, n / t.width)) * this.fullscreenVideo.duration;
         this.fullscreenVideo.currentTime = o;
       }), document.addEventListener("mouseup", () => {
@@ -716,7 +738,8 @@
       }), this.progressHandle.addEventListener("touchstart", (e) => {
         this.isDragging = !0, e.preventDefault();
       }), document.addEventListener("touchmove", (e) => {
-        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo) return;
+        if (!this.isDragging || !this.progressBar || !this.fullscreenVideo)
+          return;
         const t = this.progressBar.getBoundingClientRect(), i = e.touches[0].clientX - t.left, r = Math.max(0, Math.min(1, i / t.width)) * this.fullscreenVideo.duration;
         this.fullscreenVideo.currentTime = r;
       }), document.addEventListener("touchend", () => {
@@ -726,21 +749,29 @@
     isVideoOpen() {
       return this.isOpen;
     }
-  }
+  };
+  m.currentInstance = null;
+  let b = m;
   class z extends HTMLElement {
     constructor() {
-      super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new v(), this.eventListeners();
+      super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new b(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
+    }
+    getOrCreateFullscreenVideo() {
+      let e = document.querySelector(
+        "crs-fullscreen-video"
+      );
+      return e || (e = new b(), document.body.appendChild(e)), e;
     }
     render() {
       return (
         /* html */
         `
     <style>
-      ${R}
+      ${P}
     </style>
     <div class="reels">
       <ul class="reels-list">
-        ${x.map(
+        ${L.map(
           (e) => (
             /* html */
             `
@@ -757,7 +788,7 @@
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${k}</div>
+                <div class="info__icon">${S}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -768,7 +799,7 @@
         
       </ul>
       <div class="reels-pagination">
-        ${x.map(
+        ${L.map(
           (e, t) => (
             /* html */
             `
@@ -876,7 +907,7 @@
       const i = e.offsetWidth, r = e.scrollLeft + i / 2;
       let s = 0, a = 1 / 0;
       t.forEach((c, p) => {
-        const m = c, h = m.offsetLeft, d = m.offsetWidth, f = h + d / 2, g = Math.abs(r - f);
+        const v = c, h = v.offsetLeft, d = v.offsetWidth, f = h + d / 2, g = Math.abs(r - f);
         g < a && (a = g, s = p);
       }), n.forEach((c, p) => {
         c.classList.toggle("active", p === s);
@@ -900,11 +931,11 @@
       const p = (h) => {
         const d = h.touches[0];
         s = Date.now(), a = d.clientX, c = d.clientY;
-      }, m = (h) => {
-        const d = h.changedTouches[0], f = Date.now(), g = f - i, b = f - s, y = Math.sqrt(
+      }, v = (h) => {
+        const d = h.changedTouches[0], f = Date.now(), g = f - i, y = f - s, w = Math.sqrt(
           Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - c, 2)
         );
-        b < 300 && y < 50 && (g < 500 && g > 0 ? (o++, o === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
+        y < 300 && w < 50 && (g < 500 && g > 0 ? (o++, o === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
           e.classList.remove("double-tap-feedback");
         }, 300), this.openFullscreen(t, !0)), o = 0)) : o = 1, i = f, clearTimeout(r), r = window.setTimeout(() => {
           o = 0;
@@ -912,10 +943,10 @@
       };
       e.addEventListener("touchstart", p, {
         passive: !0
-      }), e.addEventListener("touchend", m, { passive: !1 });
+      }), e.addEventListener("touchend", v, { passive: !1 });
     }
     openFullscreen(e, t = !1) {
-      e && (document.querySelector("crs-fullscreen-video") || document.body.appendChild(this.fullscreenVideo), this.fullscreenVideo.open(e, t));
+      e && this.fullscreenVideo.open(e, t);
     }
     handleVideoPause(e) {
       e.target.pause();
@@ -934,7 +965,7 @@
       e.target.play();
     }
   }
-  const I = `* {
+  const q = `* {
   box-sizing: border-box;
 }
 
@@ -984,6 +1015,7 @@
   align-items: center;
   gap: 16px;
   padding: 16px 12px;
+  height: 100%;
 }
 
 .item-video {
@@ -1142,20 +1174,26 @@
   background: #ff3c7f;
 }
 `;
-  class q extends HTMLElement {
+  class D extends HTMLElement {
     constructor() {
-      super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new v(), this.eventListeners();
+      super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = this.render(), this.fullscreenVideo = new b(), this.fullscreenVideo = this.getOrCreateFullscreenVideo(), this.eventListeners();
+    }
+    getOrCreateFullscreenVideo() {
+      let e = document.querySelector(
+        "crs-fullscreen-video"
+      );
+      return e || (e = new b(), document.body.appendChild(e)), e;
     }
     render() {
       return (
         /* html */
         `
     <style>
-      ${I}
+      ${q}
     </style>
     <div class="product">
       <ul class="product-list">
-        ${L.map((e) => e.template === "image" ? (
+        ${k.map((e) => e.template === "image" ? (
           /* html */
           `
               <div class="product-item product-item-image" id="product-item-${e.id}">
@@ -1181,7 +1219,7 @@
                   <div class="item-full-screen" title="Fullscreen">⛶</div>
               </div>
               <div class="item-info">
-                <div class="info__icon">${k}</div>
+                <div class="info__icon">${S}</div>
                 <div class="info__text">${e.text}</div>
               </div>
             </div>
@@ -1191,7 +1229,7 @@
         
       </ul>
       <div class="product-pagination">
-        ${L.map(
+        ${k.map(
           (e, t) => (
             /* html */
             `
@@ -1312,7 +1350,7 @@
       const i = e.offsetWidth, r = e.scrollLeft + i / 2;
       let s = 0, a = 1 / 0;
       t.forEach((c, p) => {
-        const m = c, h = m.offsetLeft, d = m.offsetWidth, f = h + d / 2, g = Math.abs(r - f);
+        const v = c, h = v.offsetLeft, d = v.offsetWidth, f = h + d / 2, g = Math.abs(r - f);
         g < a && (a = g, s = p);
       }), n.forEach((c, p) => {
         c.classList.toggle("active", p === s);
@@ -1329,11 +1367,11 @@
       const p = (h) => {
         const d = h.touches[0];
         s = Date.now(), a = d.clientX, c = d.clientY;
-      }, m = (h) => {
-        const d = h.changedTouches[0], f = Date.now(), g = f - i, b = f - s, y = Math.sqrt(
+      }, v = (h) => {
+        const d = h.changedTouches[0], f = Date.now(), g = f - i, y = f - s, w = Math.sqrt(
           Math.pow(d.clientX - a, 2) + Math.pow(d.clientY - c, 2)
         );
-        b < 300 && y < 50 && (g < 500 && g > 0 ? (o++, o === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
+        y < 300 && w < 50 && (g < 500 && g > 0 ? (o++, o === 2 && (e.getAttribute("data-state") === "on" && !t.paused && (clearTimeout(n.current), e.classList.add("double-tap-feedback"), setTimeout(() => {
           e.classList.remove("double-tap-feedback");
         }, 300), this.openFullscreen(t, !0)), o = 0)) : o = 1, i = f, clearTimeout(r), r = window.setTimeout(() => {
           o = 0;
@@ -1341,10 +1379,10 @@
       };
       e.addEventListener("touchstart", p, {
         passive: !0
-      }), e.addEventListener("touchend", m, { passive: !1 });
+      }), e.addEventListener("touchend", v, { passive: !1 });
     }
     openFullscreen(e, t = !1) {
-      e && (document.querySelector("crs-fullscreen-video") || document.body.appendChild(this.fullscreenVideo), this.fullscreenVideo.open(e, t));
+      e && this.fullscreenVideo.open(e, t);
     }
     handleVideoPause(e) {
       e.target.pause();
@@ -1363,14 +1401,14 @@
       e.target.play();
     }
   }
-  const D = "";
-  T({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), _("exp_petzen_reels");
-  class B {
+  const B = "";
+  _({ name: "New experiment for BuzzPatch with introduction of reels", dev: "ЩІ" }), $("exp_petzen_reels");
+  class j {
     constructor() {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
     }
     async init() {
-      this.device === "desktop" || !location.pathname.includes("zenpatch-pet") || (await S(".lp-tr--purchase"), this.addStyles(), this.defineCustomElements(), this.insertReelsSection(), this.insertCarouselSection());
+      this.device === "desktop" || !location.pathname.includes("zenpatch-pet") || (await T(".lp-tr--purchase"), this.addStyles(), this.defineCustomElements(), this.insertReelsSection(), this.insertCarouselSection());
     }
     insertReelsSection() {
       new A({
@@ -1379,18 +1417,18 @@
       });
     }
     insertCarouselSection() {
-      new P({
+      new I({
         containerSelector: ".lp-tr--purchase .row.lp-tr--gray-bg",
         position: "beforebegin"
       });
     }
     defineCustomElements() {
-      customElements.define("crs-reels", z), customElements.define("crs-product-slider", q), customElements.define("crs-fullscreen-video", v);
+      customElements.define("crs-reels", z), customElements.define("crs-product-slider", D), customElements.define("crs-fullscreen-video", b);
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = D, document.head.appendChild(e);
+      e.textContent = B, document.head.appendChild(e);
     }
   }
-  new B();
+  new j();
 })();
