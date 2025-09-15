@@ -2896,7 +2896,7 @@
       title: "Outlet",
       link: "/lemieux-outlet",
       template: "outlet",
-      textColor: "#8E1538",
+      textColor: "",
       submenu: [
         // {
         //   title: 'Shop All',
