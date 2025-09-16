@@ -69,6 +69,10 @@
                   title: "Saddle Pads",
                   link: "/new-in/aw25/horse-wear?329=6617"
                 },
+                {
+                  title: "Rugs",
+                  link: "/new-in/aw25/horse-wear?329=6616"
+                },
                 { title: "Fly Hoods", link: "/new-in/aw25/horse-wear?329=6605" },
                 { title: "Boots", link: "/new-in/aw25/horse-wear?329=7903" },
                 {
