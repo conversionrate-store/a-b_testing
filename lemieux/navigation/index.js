@@ -2208,6 +2208,10 @@
                       link: "/toys/hobby-horse-accessories/tack"
                     },
                     {
+                      title: "Hobby Horse Rugs",
+                      link: "/toys/hobby-horse-accessories/rugs"
+                    },
+                    {
                       title: "Hobby Horse Fly Hoods",
                       link: "/toys/hobby-horse-accessories/fly-hoods"
                     },
