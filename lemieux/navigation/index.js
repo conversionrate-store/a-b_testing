@@ -7246,5 +7246,5 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
       s.textContent = Y, document.head.appendChild(s);
     }
   }
-  window.autoInitData.website.defaultCountry === "GB" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
+  window.autoInitData.website.defaultCountry === "GB" && window.location.pathname !== "/test/" && (window.navigationInitialized || (window.navigationInitialized = !0, new V()));
 })();
