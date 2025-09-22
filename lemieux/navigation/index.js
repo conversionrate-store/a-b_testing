@@ -56,98 +56,6 @@
       template: "featured",
       submenu: [
         {
-          title: "New",
-          link: "/new-in/aw25/horse-wear",
-          template: "default",
-          submenu: [
-            {
-              title: "AW25 Collection",
-              link: "#",
-              template: "default",
-              submenu: [
-                {
-                  title: "Saddle Pads",
-                  link: "/new-in/aw25/horse-wear?329=6617"
-                },
-                {
-                  title: "Rugs",
-                  link: "/new-in/aw25/horse-wear?329=6616"
-                },
-                { title: "Fly Hoods", link: "/new-in/aw25/horse-wear?329=6605" },
-                { title: "Boots", link: "/new-in/aw25/horse-wear?329=7903" },
-                {
-                  title: "Headcollars",
-                  link: "/new-in/aw25/horse-wear?329=6611"
-                },
-                { title: "Grooming", link: "/new-in/aw25/horse-wear?329=6613" },
-                {
-                  title: "View All",
-                  link: "/new-in/aw25/horse-wear",
-                  template: "link"
-                }
-              ]
-            },
-            {
-              title: "AW25 Colours",
-              link: "#",
-              template: "color-grid",
-              colorSwatches: [
-                {
-                  name: "Lilac",
-                  color: c.Lilac,
-                  isNew: !0,
-                  link: "/new-in/aw25/horse-wear?93=10146"
-                },
-                {
-                  name: "Juniper",
-                  color: c.Juniper,
-                  isNew: !0,
-                  link: "/new-in/aw25/horse-wear?93=10143"
-                },
-                {
-                  name: "Rosemary",
-                  color: c.Rosemary,
-                  isNew: !0,
-                  link: "/new-in/aw25/horse-wear?93=10153"
-                },
-                {
-                  name: "Damson",
-                  color: c.Damson,
-                  isNew: !0,
-                  link: "/new-in/aw25/horse-wear?93=10140"
-                },
-                {
-                  name: "Cranberry",
-                  color: c.Cranberry,
-                  isNew: !0,
-                  link: "/new-in/aw25/horse-wear?93=11250"
-                },
-                {
-                  name: "Navy",
-                  color: c.NavyNew,
-                  isNew: !0,
-                  link: "/new-in/aw25/horse-wear?195=8350"
-                }
-              ],
-              submenu: [
-                {
-                  title: "View All Colours",
-                  link: "/new-in/aw25/horse-wear",
-                  template: "link"
-                }
-              ]
-            },
-            {
-              title: "AW25 Collection",
-              link: "/new-in/aw25/horse-wear",
-              template: "featured",
-              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT08147_lifestyle_loireclassicclosecontactsquare_navycranberry_6-1.jpg",
-              featuredTitle: "AW25 Collection",
-              featuredSubtitle: "New Arrivals"
-            }
-          ]
-        },
-        {
           title: "Saddle Pads",
           link: "/horse-saddle-pads",
           template: "default",
@@ -873,6 +781,124 @@
               ]
             }
           ]
+        },
+        {
+          title: "New",
+          link: "/new-in/aw25/horse-wear",
+          template: "default",
+          submenu: [
+            {
+              title: "AW25 Collection & New Collection",
+              template: "stacked-sections",
+              link: "#",
+              submenu: [
+                {
+                  title: "AW25 Collection",
+                  link: "#",
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "Saddle Pads",
+                      link: "/new-in/aw25/horse-wear?329=6617"
+                    },
+                    {
+                      title: "Rugs",
+                      link: "/new-in/aw25/horse-wear?329=6616"
+                    },
+                    { title: "Fly Hoods", link: "/new-in/aw25/horse-wear?329=6605" },
+                    { title: "Boots", link: "/new-in/aw25/horse-wear?329=7903" },
+                    {
+                      title: "Headcollars",
+                      link: "/new-in/aw25/horse-wear?329=6611"
+                    },
+                    { title: "Grooming", link: "/new-in/aw25/horse-wear?329=6613" },
+                    {
+                      title: "View All",
+                      link: "/new-in/aw25/horse-wear",
+                      template: "link"
+                    }
+                  ]
+                },
+                {
+                  title: "New Collection",
+                  link: "/new-in/aw25/horse-wear",
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "Essence Collection",
+                      link: "/new-in/essence"
+                    },
+                    {
+                      title: "Waterproof Horse Wear",
+                      link: "/new-in/waterproof?322=6684"
+                    },
+                    {
+                      title: "Puissance Collection",
+                      link: "/new-in/puissance-collection"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              title: "AW25 Colours",
+              link: "#",
+              template: "color-grid",
+              colorSwatches: [
+                {
+                  name: "Lilac",
+                  color: c.Lilac,
+                  isNew: !0,
+                  link: "/new-in/aw25/horse-wear?93=10146"
+                },
+                {
+                  name: "Juniper",
+                  color: c.Juniper,
+                  isNew: !0,
+                  link: "/new-in/aw25/horse-wear?93=10143"
+                },
+                {
+                  name: "Rosemary",
+                  color: c.Rosemary,
+                  isNew: !0,
+                  link: "/new-in/aw25/horse-wear?93=10153"
+                },
+                {
+                  name: "Damson",
+                  color: c.Damson,
+                  isNew: !0,
+                  link: "/new-in/aw25/horse-wear?93=10140"
+                },
+                {
+                  name: "Cranberry",
+                  color: c.Cranberry,
+                  isNew: !0,
+                  link: "/new-in/aw25/horse-wear?93=11250"
+                },
+                {
+                  name: "Navy",
+                  color: c.NavyNew,
+                  isNew: !0,
+                  link: "/new-in/aw25/horse-wear?195=8350"
+                }
+              ],
+              submenu: [
+                {
+                  title: "View All Colours",
+                  link: "/new-in/aw25/horse-wear",
+                  template: "link"
+                }
+              ]
+            },
+            {
+              title: "AW25 Collection",
+              link: "/new-in/aw25/horse-wear",
+              template: "featured",
+              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT08147_lifestyle_loireclassicclosecontactsquare_navycranberry_6-1.jpg",
+              featuredTitle: "AW25 Collection",
+              featuredSubtitle: "New Arrivals"
+            }
+          ]
         }
         // {
         //   title: 'Gifts',
@@ -886,95 +912,6 @@
       link: "/clothing/women/casual-wear",
       template: "featured",
       submenu: [
-        {
-          title: "New",
-          link: "/new-in/aw25/women",
-          template: "default",
-          submenu: [
-            {
-              title: "AW25 Collection",
-              link: "/new-in/aw25/women",
-              template: "default",
-              submenu: [
-                { title: "Coats & Jackets", link: "/new-in/aw25/women?329=6604" },
-                {
-                  title: "Tops, Hoodies & Jumpers",
-                  link: "/new-in/aw25/women?329=6621"
-                },
-                {
-                  title: "Breeches & Pull Ons",
-                  link: "/new-in/aw25/women?329=6603"
-                },
-                { title: "Hat Silks", link: "/new-in/aw25/women?329=6610" },
-                { title: "Socks", link: "/new-in/aw25/women?329=6620" },
-                { title: "Accessories", link: "/new-in/aw25/accessories" },
-                {
-                  title: "View All",
-                  link: "/new-in/aw25/women",
-                  template: "link"
-                }
-              ]
-            },
-            {
-              title: "AW25 Colours",
-              link: "/new-in/aw25/women",
-              template: "color-grid",
-              colorSwatches: [
-                {
-                  name: "Lilac",
-                  color: c.Lilac,
-                  isNew: !0,
-                  link: "/new-in/aw25/women?93=10146"
-                },
-                {
-                  name: "Juniper",
-                  color: c.Juniper,
-                  isNew: !0,
-                  link: "/new-in/aw25/women?93=10143"
-                },
-                {
-                  name: "Rosemary",
-                  color: c.Rosemary,
-                  isNew: !0,
-                  link: "/new-in/aw25/women?93=10153"
-                },
-                {
-                  name: "Damson",
-                  color: c.Damson,
-                  isNew: !0,
-                  link: "/new-in/aw25/women?93=10140"
-                },
-                {
-                  name: "Cranberry",
-                  color: c.Cranberry,
-                  isNew: !0,
-                  link: "/new-in/aw25/women?93=11250"
-                },
-                {
-                  name: "Navy",
-                  color: c.NavyNew,
-                  isNew: !0,
-                  link: "/new-in/aw25/women?195=8350"
-                }
-              ],
-              submenu: [
-                {
-                  title: "View All Colours",
-                  link: "/aw25-collection",
-                  template: "link"
-                }
-              ]
-            },
-            {
-              title: "AW25 Collection",
-              link: "/new-in/aw25/women",
-              template: "featured",
-              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/GROUP_lifestyle_frances_quarter_zip_fleece_damson_black_navy_01d.jpg",
-              featuredTitle: "AW25 Collection",
-              featuredSubtitle: "New Arrivals"
-            }
-          ]
-        },
         {
           title: "Clothing",
           link: "/clothing/women/casual-wear",
@@ -1031,6 +968,7 @@
                   template: "default",
                   submenu: [
                     { title: "AW25 Collection", link: "/new-in/aw25/women" },
+                    { title: "Waterproof Clothing", link: "/new-in/waterproof?322=6691" },
                     {
                       title: "Competition Collection",
                       link: "/clothing/accessories/clothing-accessories/stocks-scrunchies"
@@ -1317,89 +1255,76 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      title: "Children",
-      link: "/clothing/children/casual-wear",
-      featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
-      featuredTitle: "AW25 Collection",
-      featuredSubtitle: "New Arrival",
-      template: "featured",
-      submenu: [
+        },
         {
           title: "New",
-          link: "/new-in/aw25/children",
+          link: "/new-in/aw25/women",
           template: "default",
           submenu: [
             {
               title: "AW25 Collection",
-              link: "/new-in/aw25/children",
+              link: "/new-in/aw25/women",
               template: "default",
               submenu: [
-                {
-                  title: "Coats & Jackets",
-                  link: "/new-in/aw25/children?329=6604"
-                },
+                { title: "Coats & Jackets", link: "/new-in/aw25/women?329=6604" },
                 {
                   title: "Tops, Hoodies & Jumpers",
-                  link: "/new-in/aw25/children?329=6621"
+                  link: "/new-in/aw25/women?329=6621"
                 },
                 {
                   title: "Breeches & Pull Ons",
-                  link: "/new-in/aw25/children?329=6603"
+                  link: "/new-in/aw25/women?329=6603"
                 },
-                { title: "Hat Silks", link: "/new-in/aw25/children?329=6610" },
-                { title: "Socks", link: "/new-in/aw25/children?329=6620" },
+                { title: "Hat Silks", link: "/new-in/aw25/women?329=6610" },
+                { title: "Socks", link: "/new-in/aw25/women?329=6620" },
                 { title: "Accessories", link: "/new-in/aw25/accessories" },
                 {
                   title: "View All",
-                  link: "/new-in/aw25/children",
+                  link: "/new-in/aw25/women",
                   template: "link"
                 }
               ]
             },
             {
               title: "AW25 Colours",
-              link: "/new-in/aw25/children",
+              link: "/new-in/aw25/women",
               template: "color-grid",
               colorSwatches: [
                 {
                   name: "Lilac",
                   color: c.Lilac,
                   isNew: !0,
-                  link: "/new-in/aw25/children?93=10146"
+                  link: "/new-in/aw25/women?93=10146"
                 },
                 {
                   name: "Juniper",
                   color: c.Juniper,
                   isNew: !0,
-                  link: "/new-in/aw25/children?93=10143"
+                  link: "/new-in/aw25/women?93=10143"
                 },
                 {
                   name: "Rosemary",
                   color: c.Rosemary,
                   isNew: !0,
-                  link: "/new-in/aw25/children?93=10153"
+                  link: "/new-in/aw25/women?93=10153"
                 },
                 {
                   name: "Damson",
                   color: c.Damson,
                   isNew: !0,
-                  link: "/new-in/aw25/children?93=10140"
+                  link: "/new-in/aw25/women?93=10140"
                 },
                 {
                   name: "Cranberry",
                   color: c.Cranberry,
                   isNew: !0,
-                  link: "/new-in/aw25/children?93=11250"
+                  link: "/new-in/aw25/women?93=11250"
                 },
                 {
                   name: "Navy",
                   color: c.NavyNew,
                   isNew: !0,
-                  link: "/new-in/aw25/children?195=8350"
+                  link: "/new-in/aw25/women?195=8350"
                 }
               ],
               submenu: [
@@ -1411,15 +1336,25 @@
               ]
             },
             {
-              title: "New Arrivals",
-              link: "/new-in/aw25/children",
+              title: "AW25 Collection",
+              link: "/new-in/aw25/women",
               template: "featured",
-              featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
+              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/GROUP_lifestyle_frances_quarter_zip_fleece_damson_black_navy_01d.jpg",
               featuredTitle: "AW25 Collection",
-              featuredSubtitle: "New Arrival"
+              featuredSubtitle: "New Arrivals"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      title: "Children",
+      link: "/clothing/children/casual-wear",
+      featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
+      featuredTitle: "AW25 Collection",
+      featuredSubtitle: "New Arrival",
+      template: "featured",
+      submenu: [
         {
           title: "Clothing",
           link: "/clothing/children/casual-wear",
@@ -1472,6 +1407,7 @@
                   template: "default",
                   submenu: [
                     { title: "AW25 Collection", link: "/new-in/aw25/children" },
+                    { title: "Waterproof Clothing", link: "/new-in/waterproof?322=6691" },
                     {
                       title: "Young Rider Collection",
                       link: "/clothing/children/young-rider-collection"
@@ -1729,6 +1665,98 @@
               ]
             }
           ]
+        },
+        {
+          title: "New",
+          link: "/new-in/aw25/children",
+          template: "default",
+          submenu: [
+            {
+              title: "AW25 Collection",
+              link: "/new-in/aw25/children",
+              template: "default",
+              submenu: [
+                {
+                  title: "Coats & Jackets",
+                  link: "/new-in/aw25/children?329=6604"
+                },
+                {
+                  title: "Tops, Hoodies & Jumpers",
+                  link: "/new-in/aw25/children?329=6621"
+                },
+                {
+                  title: "Breeches & Pull Ons",
+                  link: "/new-in/aw25/children?329=6603"
+                },
+                { title: "Hat Silks", link: "/new-in/aw25/children?329=6610" },
+                { title: "Socks", link: "/new-in/aw25/children?329=6620" },
+                { title: "Accessories", link: "/new-in/aw25/accessories" },
+                {
+                  title: "View All",
+                  link: "/new-in/aw25/children",
+                  template: "link"
+                }
+              ]
+            },
+            {
+              title: "AW25 Colours",
+              link: "/new-in/aw25/children",
+              template: "color-grid",
+              colorSwatches: [
+                {
+                  name: "Lilac",
+                  color: c.Lilac,
+                  isNew: !0,
+                  link: "/new-in/aw25/children?93=10146"
+                },
+                {
+                  name: "Juniper",
+                  color: c.Juniper,
+                  isNew: !0,
+                  link: "/new-in/aw25/children?93=10143"
+                },
+                {
+                  name: "Rosemary",
+                  color: c.Rosemary,
+                  isNew: !0,
+                  link: "/new-in/aw25/children?93=10153"
+                },
+                {
+                  name: "Damson",
+                  color: c.Damson,
+                  isNew: !0,
+                  link: "/new-in/aw25/children?93=10140"
+                },
+                {
+                  name: "Cranberry",
+                  color: c.Cranberry,
+                  isNew: !0,
+                  link: "/new-in/aw25/children?93=11250"
+                },
+                {
+                  name: "Navy",
+                  color: c.NavyNew,
+                  isNew: !0,
+                  link: "/new-in/aw25/children?195=8350"
+                }
+              ],
+              submenu: [
+                {
+                  title: "View All Colours",
+                  link: "/aw25-collection",
+                  template: "link"
+                }
+              ]
+            },
+            {
+              title: "New Arrivals",
+              link: "/new-in/aw25/children",
+              template: "featured",
+              featuredImage: "https://www.lemieux.com/static/cms/media/20241028_LEMIEXAW25_CAMPAIGN_CS_DAY4_LOOK005_0039p.jpg",
+              featuredTitle: "AW25 Collection",
+              featuredSubtitle: "New Arrival"
+            }
+          ]
         }
         // {
         //   title: 'Gifts',
@@ -1745,68 +1773,6 @@
       featuredSubtitle: "AW25 Collection",
       template: "featured",
       submenu: [
-        {
-          title: "New",
-          link: "/new-in/aw25/men",
-          template: "default",
-          submenu: [
-            {
-              title: "AW25 Collection",
-              link: "/new-in/aw25/men",
-              template: "default",
-              submenu: [
-                { title: "Coats & Jackets", link: "/new-in/aw25/men?329=6604" },
-                {
-                  title: "Tops, Hoodies & Jumpers",
-                  link: "/new-in/aw25/men?329=6621"
-                },
-                { title: "Breeches", link: "/new-in/aw25/men?329=6603" },
-                { title: "Accessories", link: "/new-in/aw25/accessories" },
-                { title: "View All", link: "/new-in/aw25/men", template: "link" }
-              ]
-            },
-            {
-              title: "New Colours",
-              link: "/new-in/aw25/men",
-              template: "color-grid",
-              colorSwatches: [
-                {
-                  name: "Alpine",
-                  color: c.Alpine,
-                  isNew: !0,
-                  link: "/new-in/aw25/men?195=8348"
-                },
-                {
-                  name: "Damson",
-                  color: c.Damson,
-                  isNew: !0,
-                  link: "/new-in/aw25/men?93=10140"
-                },
-                {
-                  name: "Navy",
-                  color: c.NavyNew,
-                  isNew: !0,
-                  link: "/new-in/aw25/men?195=8350"
-                }
-              ],
-              submenu: [
-                {
-                  title: "View All Colours",
-                  link: "/new-in/aw25/men",
-                  template: "link"
-                }
-              ]
-            },
-            {
-              title: "AW25 Collection",
-              link: "/new-in/aw25/men",
-              template: "featured",
-              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT07404_lifestyle_mens_showerproof_shacket_alpine_23k.jpg",
-              featuredTitle: "AW25 Collection ",
-              featuredSubtitle: "New Arrival"
-            }
-          ]
-        },
         {
           title: "Clothing",
           link: "/clothing/men/casual-wear",
@@ -1844,6 +1810,7 @@
               template: "default",
               submenu: [
                 { title: "AW25 Collection", link: "/new-in/aw25/men" },
+                { title: "Waterproof Clothing", link: "/new-in/waterproof?322=6685" },
                 {
                   title: "Competition Wear",
                   link: "/clothing/men/casual-wear/competition-wear"
@@ -1929,6 +1896,68 @@
                   featuredSubtitle: "Perfect Organisation"
                 }
               ]
+            }
+          ]
+        },
+        {
+          title: "New",
+          link: "/new-in/aw25/men",
+          template: "default",
+          submenu: [
+            {
+              title: "AW25 Collection",
+              link: "/new-in/aw25/men",
+              template: "default",
+              submenu: [
+                { title: "Coats & Jackets", link: "/new-in/aw25/men?329=6604" },
+                {
+                  title: "Tops, Hoodies & Jumpers",
+                  link: "/new-in/aw25/men?329=6621"
+                },
+                { title: "Breeches", link: "/new-in/aw25/men?329=6603" },
+                { title: "Accessories", link: "/new-in/aw25/accessories" },
+                { title: "View All", link: "/new-in/aw25/men", template: "link" }
+              ]
+            },
+            {
+              title: "New Colours",
+              link: "/new-in/aw25/men",
+              template: "color-grid",
+              colorSwatches: [
+                {
+                  name: "Alpine",
+                  color: c.Alpine,
+                  isNew: !0,
+                  link: "/new-in/aw25/men?195=8348"
+                },
+                {
+                  name: "Damson",
+                  color: c.Damson,
+                  isNew: !0,
+                  link: "/new-in/aw25/men?93=10140"
+                },
+                {
+                  name: "Navy",
+                  color: c.NavyNew,
+                  isNew: !0,
+                  link: "/new-in/aw25/men?195=8350"
+                }
+              ],
+              submenu: [
+                {
+                  title: "View All Colours",
+                  link: "/new-in/aw25/men",
+                  template: "link"
+                }
+              ]
+            },
+            {
+              title: "AW25 Collection",
+              link: "/new-in/aw25/men",
+              template: "featured",
+              featuredImage: "https://www.lemieux.com/tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT07404_lifestyle_mens_showerproof_shacket_alpine_23k.jpg",
+              featuredTitle: "AW25 Collection ",
+              featuredSubtitle: "New Arrival"
             }
           ]
         }
@@ -3627,11 +3656,11 @@
             l,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : l.template === "stacked-sections" ? n = this.createStackedSectionsHTML(
+          ) : l.template === "stacked-sections" ? (console.log("first", l), n = this.createStackedSectionsHTML(
             l,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : l.template === "multi-color-grid" ? n = this.createMultiColorGridSectionHTML(
+          )) : l.template === "multi-color-grid" ? n = this.createMultiColorGridSectionHTML(
             l,
             e.title,
             (t == null ? void 0 : t.title) || e.title
@@ -6171,10 +6200,11 @@ crs-nav {
   flex: 1;
   display: flex;
   flex-direction: column;
+  max-width: 372px;
 }
 
 @media (min-width: 1680px) {
-  :is([data-title='Women'], [data-title='Toys']) .crs-stacked-sections {
+  :is([data-title='Horse'], [data-title='Women'], [data-title='Toys']) .crs-stacked-sections {
     flex: 2;
     flex-direction: row;
     flex-wrap: wrap;
