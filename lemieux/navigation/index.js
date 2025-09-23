@@ -6203,7 +6203,7 @@ crs-nav {
   max-width: 372px;
 }
 
-/* @media (min-width: 1680px) {
+@media (min-width: 1680px) {
   :is([data-title='Horse'], [data-title='Women'], [data-title='Toys']) .crs-stacked-sections {
     flex: 2;
     flex-direction: row;
@@ -6211,16 +6211,17 @@ crs-nav {
     gap: 10px;
     max-width: calc(372px * 2 + 20px);
   }
-} */
+}
 
-/* @media (min-width: 1920px) {
+@media (min-width: 1920px) {
   [data-title='Children'] .crs-stacked-sections {
     flex: 2;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: calc(372px * 2 + 20px);
   }
-} */
+}
 
 .crs-stacked-sections .crs-collections-section {
   margin-bottom: 0;
