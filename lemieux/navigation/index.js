@@ -2366,22 +2366,22 @@
                 {
                   title: "Tiny Beanie Cloudy ",
                   link: "/harlow-tiny-beanie-pony-cloudy",
-                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08847_product_harlowtinybeaniepony_cloudy_01_2_.jpg"
+                  icon: "https://conversionrate-store.github.io/a-b_images/lemieux/tiny_pony_cloudy.png"
                 },
                 {
                   title: "Tiny Beanie Rolo",
                   link: "/harlow-tiny-beanie-pony-rolo",
-                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08844_product_harlowtinybeaniepony_rolo_01_2_.jpg"
+                  icon: "https://conversionrate-store.github.io/a-b_images/lemieux/tiny_pony_rolo.png"
                 },
                 {
                   title: "Tiny Beanie Popcorn",
                   link: "/harlow-tiny-beanie-pony-popcorn",
-                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08845_product_harlowtinybeaniepony_popcorn_01_2_.jpg"
+                  icon: "https://conversionrate-store.github.io/a-b_images/lemieux/tiny_pony_popcorn.png"
                 },
                 {
                   title: "Tiny Beanie Panda",
                   link: "/harlow-tiny-beanie-pony-panda",
-                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08846_product_harlowtinybeaniepony_panda_01_2_.jpg"
+                  icon: "https://conversionrate-store.github.io/a-b_images/lemieux/tiny_pony_panda.png"
                 },
                 {
                   title: "Tiny Beanie Fleece Rug",
