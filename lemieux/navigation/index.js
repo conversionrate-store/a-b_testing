@@ -2215,49 +2215,42 @@
           template: "default",
           submenu: [
             {
-              title: "Shop by Product & Hobby Horse Collection",
-              link: "/toys/hobby-horse-collection",
-              template: "stacked-sections",
+              title: "Hobby Horse Collection",
+              link: "/new-in/aw25/toys?329=7680",
+              template: "default",
               submenu: [
                 {
-                  title: "Hobby Horse Collection",
-                  link: "/new-in/aw25/toys?329=7680",
-                  template: "default",
-                  submenu: [
-                    {
-                      title: "New: AW25 Collection",
-                      link: "/new-in/aw25/toys?329=7680"
-                    },
-                    {
-                      title: "Hobby Horses",
-                      link: "/toys/hobby-horse"
-                    },
-                    {
-                      title: "Hobby Horse Tack",
-                      link: "/toys/hobby-horse-accessories/tack"
-                    },
-                    {
-                      title: "Hobby Horse Rugs",
-                      link: "/toys/hobby-horse-accessories/rugs"
-                    },
-                    {
-                      title: "Hobby Horse Fly Hoods",
-                      link: "/toys/hobby-horse-accessories/fly-hoods"
-                    },
-                    {
-                      title: "Hobby Horse Headcollars",
-                      link: "/toys/hobby-horse-accessories/headcollars"
-                    },
-                    {
-                      title: "Hobby Horse Rosettes",
-                      link: "/hobby-horse-rosette-pack-multi#selection.size=6703"
-                    },
-                    {
-                      title: "View All",
-                      link: "/toys/hobby-horse-collection",
-                      template: "link"
-                    }
-                  ]
+                  title: "New: AW25 Collection",
+                  link: "/new-in/aw25/toys?329=7680"
+                },
+                {
+                  title: "Hobby Horses",
+                  link: "/toys/hobby-horse"
+                },
+                {
+                  title: "Hobby Horse Tack",
+                  link: "/toys/hobby-horse-accessories/tack"
+                },
+                {
+                  title: "Hobby Horse Rugs",
+                  link: "/toys/hobby-horse-accessories/rugs"
+                },
+                {
+                  title: "Hobby Horse Fly Hoods",
+                  link: "/toys/hobby-horse-accessories/fly-hoods"
+                },
+                {
+                  title: "Hobby Horse Headcollars",
+                  link: "/toys/hobby-horse-accessories/headcollars"
+                },
+                {
+                  title: "Hobby Horse Rosettes",
+                  link: "/hobby-horse-rosette-pack-multi#selection.size=6703"
+                },
+                {
+                  title: "View All",
+                  link: "/toys/hobby-horse-collection",
+                  template: "link"
                 }
                 // {
                 //   title: 'Shop by Product',
@@ -2361,6 +2354,43 @@
                 {
                   title: "View All",
                   link: "/toys/tiny-ponies",
+                  template: "link"
+                }
+              ]
+            },
+            {
+              title: "Harlow Tiny Beanie Ponies",
+              link: "/new-in/harlow-collection/toys",
+              template: "default",
+              submenu: [
+                {
+                  title: "Tiny Beanie Cloudy ",
+                  link: "/harlow-tiny-beanie-pony-cloudy",
+                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08847_product_harlowtinybeaniepony_cloudy_01_2_.jpg"
+                },
+                {
+                  title: "Tiny Beanie Rolo",
+                  link: "/harlow-tiny-beanie-pony-rolo",
+                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08844_product_harlowtinybeaniepony_rolo_01_2_.jpg"
+                },
+                {
+                  title: "Tiny Beanie Popcorn",
+                  link: "/harlow-tiny-beanie-pony-popcorn",
+                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08845_product_harlowtinybeaniepony_popcorn_01_2_.jpg"
+                },
+                {
+                  title: "Tiny Beanie Panda",
+                  link: "/harlow-tiny-beanie-pony-panda",
+                  icon: "https://www.lemieux.com/static/media/catalog/product/i/t/it08846_product_harlowtinybeaniepony_panda_01_2_.jpg"
+                },
+                {
+                  title: "Tiny Beanie Fleece Rug",
+                  link: "/harlow-tiny-rugs-2-pack-mint-coral-crush",
+                  icon: "https://conversionrate-store.github.io/a-b_images/lemieux/tiny_pony_rug.png"
+                },
+                {
+                  title: "View All",
+                  link: "/new-in/harlow-collection/toys",
                   template: "link"
                 }
               ]
@@ -5175,7 +5205,7 @@
       this.desktopNavigation.destroy(), this.mobileNavigation.destroy();
     }
   }
-  class F {
+  class _ {
     constructor(e, t, s) {
       this.isMonitoring = !1, this.monitoringInterval = null, this.mutationObserver = null, this.currentUrl = "", this.lastCheckTime = 0, this.checkInterval = 50, this.maxRetries = 5, this.retryCount = 0, this.newNav = e, this.originalNav = t, this.navigationOrchestrator = s, this.currentUrl = location.href;
     }
@@ -5398,7 +5428,7 @@
       document.querySelector("crs-nav"), document.querySelector("meganav"), this.findHeaderElement();
     }
   }
-  class z {
+  class F {
     constructor() {
       this.originalNav = null, this.newNav = null, this.isActive = !1, this.variant = "B", this.navigationPersistence = null, this.currentBreakpoint = null, this.resizeTimeout = null, this.resizeHandler = null, this.isRecreating = !1, this.BREAKPOINT = 1100, this.navigationOrchestrator = new W(this.variant), this.init();
     }
@@ -5516,7 +5546,7 @@
       }
     }
     startNavigationMonitoring() {
-      this.newNav && (this.navigationPersistence = new F(
+      this.newNav && (this.navigationPersistence = new _(
         this.newNav,
         this.originalNav,
         this.navigationOrchestrator
@@ -5613,7 +5643,7 @@
       }), this.newNav = null, this.navigationPersistence && (this.navigationPersistence.stopMonitoring(), this.navigationPersistence = null), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null);
     }
   }
-  const _ = `meganav {
+  const z = `meganav {
   display: none;
 }
 
@@ -7263,14 +7293,14 @@ div:has(> .crs-mobile-search-form) [aria-label='Close'] {
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_nav_redesign");
   class V {
     constructor() {
-      this.navigationVariant = new z(), this.init();
+      this.navigationVariant = new F(), this.init();
     }
     init() {
       this.addStyles();
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = _, document.head.appendChild(e);
+      e.textContent = z, document.head.appendChild(e);
       const t = document.createElement("style");
       t.textContent = E, document.head.appendChild(t);
       const s = document.createElement("style");
