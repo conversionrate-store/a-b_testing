@@ -805,13 +805,19 @@
                       title: "Rugs",
                       link: "/new-in/aw25/horse-wear?329=6616"
                     },
-                    { title: "Fly Hoods", link: "/new-in/aw25/horse-wear?329=6605" },
+                    {
+                      title: "Fly Hoods",
+                      link: "/new-in/aw25/horse-wear?329=6605"
+                    },
                     { title: "Boots", link: "/new-in/aw25/horse-wear?329=7903" },
                     {
                       title: "Headcollars",
                       link: "/new-in/aw25/horse-wear?329=6611"
                     },
-                    { title: "Grooming", link: "/new-in/aw25/horse-wear?329=6613" },
+                    {
+                      title: "Grooming",
+                      link: "/new-in/aw25/horse-wear?329=6613"
+                    },
                     {
                       title: "View All",
                       link: "/new-in/aw25/horse-wear",
@@ -968,7 +974,10 @@
                   template: "default",
                   submenu: [
                     { title: "AW25 Collection", link: "/new-in/aw25/women" },
-                    { title: "Waterproof Clothing", link: "/new-in/waterproof?322=6691" },
+                    {
+                      title: "Waterproof Clothing",
+                      link: "/new-in/waterproof?322=6691"
+                    },
                     {
                       title: "Competition Collection",
                       link: "/clothing/accessories/clothing-accessories/stocks-scrunchies"
@@ -1407,7 +1416,10 @@
                   template: "default",
                   submenu: [
                     { title: "AW25 Collection", link: "/new-in/aw25/children" },
-                    { title: "Waterproof Clothing", link: "/new-in/waterproof?322=6691" },
+                    {
+                      title: "Waterproof Clothing",
+                      link: "/new-in/waterproof?322=6691"
+                    },
                     {
                       title: "Young Rider Collection",
                       link: "/clothing/children/young-rider-collection"
@@ -1623,6 +1635,10 @@
                   link: "/clothing/children/accessories/gloves"
                 },
                 {
+                  title: "Pony Pencil Cases",
+                  link: "/clothing/children/accessories/stationery"
+                },
+                {
                   title: "View All",
                   link: "/clothing/children/accessories",
                   template: "link"
@@ -1810,7 +1826,10 @@
               template: "default",
               submenu: [
                 { title: "AW25 Collection", link: "/new-in/aw25/men" },
-                { title: "Waterproof Clothing", link: "/new-in/waterproof?322=6685" },
+                {
+                  title: "Waterproof Clothing",
+                  link: "/new-in/waterproof?322=6685"
+                },
                 {
                   title: "Competition Wear",
                   link: "/clothing/men/casual-wear/competition-wear"
@@ -1988,7 +2007,10 @@
               featuredImage: "https://conversionrate-store.github.io/a-b_images/lemieux/toy-outfit-builder.webp",
               featuredTitle: "Outfit Builder",
               featuredSubtitle: "Build your toy outfit",
-              actionLink: { text: "Create your outfit", url: "/pony-kit-builder" }
+              actionLink: {
+                text: "Create your outfit",
+                url: "/pony-kit-builder"
+              }
             }
           ]
         },
@@ -2063,6 +2085,10 @@
                     {
                       title: "Toy Puppy Collection",
                       link: "/toys/toy-puppy-collection"
+                    },
+                    {
+                      title: "Pony Pencil Cases",
+                      link: "/clothing/children/accessories/stationery"
                     }
                     // {
                     //   title: 'View All',
