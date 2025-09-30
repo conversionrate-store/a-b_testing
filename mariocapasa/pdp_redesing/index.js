@@ -1,48 +1,58 @@
 (function() {
   "use strict";
-  const h = (f) => new Promise((e) => {
-    const t = document.querySelector(f);
+  const v = (C) => new Promise((e) => {
+    const t = document.querySelector(C);
     t && e(t);
     const n = new MutationObserver(() => {
-      const s = document.querySelector(f);
+      const s = document.querySelector(C);
       s && (e(s), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), O = ({ name: f, dev: e }) => {
+  }), O = ({ name: C, dev: e }) => {
     console.log(
-      `%c EXP: ${f} (DEV: ${e})`,
+      `%c EXP: ${C} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, J = (f) => {
+  }, J = (C) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", f, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", C, "variant_1"));
     }, 1e3);
-  }, P = (f, e = "info") => {
-    let t;
-    switch (e) {
-      case "info":
-        t = "color: #3498db;";
-        break;
-      case "warn":
-        t = "color: #f39c12;";
-        break;
-      case "error":
-        t = "color: #e74c3c;";
-        break;
-      case "success":
-        t = "color: #2ecc71;";
-        break;
-    }
-    console.log(`%c>>> ${f}`, `${t} font-size: 16px; font-weight: 600`);
-  }, X = `.crs-popup-highlight-text {
-  margin-top: 20px;
+  }, X = `variant-picker.variant-picker {
+  display: flex;
+  flex-direction: column;
+}
+
+variant-picker.variant-picker fieldset {
+  order: 3;
+}
+
+variant-picker.variant-picker [data-crs-variant="color"] {
+  order: 1;
+}
+variant-picker.variant-picker [data-crs-variant="size"] {
+  order: 2;
+}
+
+
+
+.crs-popup-btn {
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 16px;
+  text-decoration: underline;
+}
+
+.crs-popup-highlight-text {
+  margin-block: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  height: max-content;
   color: #101e11;
   text-align: center;
   font-family: HelveticaNeueCyr;
@@ -67,32 +77,40 @@
   align-items: center;
 }
 
-.crs-dimension-info-body .media-with-text__media {
+.crs-dimension-info-body .media-with-text__item p.h2 {
+  margin-top: 27px;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
-  max-height: 167px;
+  display: block;
+  color: #000;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.crs-dimension-info-body .media-with-text__media {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
 }
 
 .crs-dimension-info-body .media-with-text__media .media-wrapper {
   display: flex;
   justify-content: center;
   height: 100%;
+  max-height: 287px;
 }
 .crs-dimension-info-body .media-with-text__item {
   height: 100%;
-  max-height: 90dvh
+  max-height: 90dvh;
 }
 
-.crs-dimension-info-body .media-with-text__item  p.h2 {
-  display: none;
-}
 .crs-dimension-info-body .media-with-text__media .media-wrapper img {
   height: 100%;
   object-fit: contain;
 }
 .crs-dimension-info-body .media-with-text__content {
   grid-column: 1 / -1;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
   padding: 0;
   padding-bottom: 45px;
   border-radius: 12px;
@@ -100,10 +118,9 @@
   overflow-y: auto;
 }
 
-.crs-dimension-info-body .media-with-text__content > .prose  {
+.crs-dimension-info-body .media-with-text__content > .prose {
   max-width: 350px;
 }
-
 
 .crs-dimension-info-body .media-with-text__content > .prose p.h2 {
   display: none;
@@ -117,8 +134,24 @@
 }
 
 @media (max-width: 1000px) {
+  .crs-dimension-info-body .media-with-text__item p.h2 {
+    display: none !important;
+  }
+  .crs-dimension-info-body .media-with-text__media .media-wrapper {
+    max-height: 167px;
+  }
   .product-info__variant-picker + .product-info__separator {
     margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .crs-popup-btn {
+    font-size: 14px;
+  }
+
+  .crs-dimension-info-body .media-with-text__content > .prose {
+    max-width: 330px;
   }
 }
 `;
@@ -134,30 +167,17 @@
         ".product-info__variant-picker"
       ), t = e == null ? void 0 : e.querySelector(".variant-picker");
       if (!e || !t) return;
-      const n = t == null ? void 0 : t.querySelectorAll("fieldset");
-      let s = null, i = null;
-      if (n.forEach((o) => {
-        var c;
-        const r = o.querySelector("legend");
-        if (r) {
-          const a = (c = r.textContent) == null ? void 0 : c.toLowerCase().trim();
-          a != null && a.includes("size") ? (s = o, o.dataset.crsVariant = "size") : a != null && a.includes("color") && (i = o, o.dataset.crsVariant = "color");
+      (t == null ? void 0 : t.querySelectorAll("fieldset")).forEach((s) => {
+        var o;
+        const i = s.querySelector("legend");
+        if (i) {
+          const r = (o = i.textContent) == null ? void 0 : o.toLowerCase().trim();
+          r != null && r.includes("size") ? s.dataset.crsVariant = "size" : r != null && r.includes("color") ? s.dataset.crsVariant = "color" : s.dataset.crsVariant = r.replace(":", "");
         }
-      }), s && i) {
-        const o = Array.from(n).indexOf(s), r = Array.from(n).indexOf(i);
-        if (r > o) {
-          const c = n[0];
-          setTimeout(() => {
-            c.insertAdjacentElement(
-              "beforebegin",
-              n[r]
-            );
-          }, 1e3);
-        }
-      }
+      });
     }
     async addViewFabricInfoButton() {
-      const e = await h(
+      const e = await v(
         '[data-crs-variant="color"] .variant-picker__option-info'
       );
       if (!e)
@@ -180,7 +200,7 @@
       });
     }
     async addDimensionInfoButton() {
-      const e = await h(
+      const e = await v(
         '[data-crs-variant="size"] .variant-picker__option-info'
       );
       if (!e)
@@ -243,11 +263,22 @@
       </crs-dialog>
     `
       );
-      const s = document.getElementById("dimension-info-dialog"), i = s.querySelector(".crs-dimension-info-body");
-      s.addEventListener("crs-dialog-open", () => {
-        e && t && i && i.appendChild(t);
-      }), s.addEventListener("crs-dialog-close", () => {
-        e && t && i && e.appendChild(t);
+      const s = (
+        /* HTML */
+        ` <div
+      class="crs-popup-highlight-text"
+    >
+      All sofas come fully assembled
+    </div>`
+      ), i = document.getElementById("dimension-info-dialog"), o = i.querySelector(".crs-dimension-info-body");
+      i.addEventListener("crs-dialog-open", () => {
+        if (e && t && o) {
+          o.appendChild(t);
+          const r = o == null ? void 0 : o.querySelector(".media-with-text__media");
+          r && r.insertAdjacentHTML("beforeend", s);
+        }
+      }), i.addEventListener("crs-dialog-close", () => {
+        e && t && o && e.appendChild(t);
       });
     }
     addStyles() {
@@ -329,11 +360,11 @@
       this.changeReserveAndStockInfoPosition(), this.preOrderInfo(), this.addTopInStock();
     }
     async changeReserveAndStockInfoPosition() {
-      const e = await h(".product-info__inventory"), t = await h(".free_ship.sectional");
+      const e = await v(".product-info__inventory"), t = await v(".free_ship");
       !e || !t || t.insertAdjacentElement("afterend", e);
     }
     async preOrderInfo() {
-      const e = await h(".product-info__inventory");
+      const e = await v(".product-info__inventory");
       if (!e) return;
       const t = e.querySelectorAll(".pre-order-info");
       t.length !== 0 && t.forEach((n) => {
@@ -342,7 +373,7 @@
           /* html */
           '<div class="crs-shipping-schedule">Shipping Schedule</div>'
         ), n.querySelectorAll(":scope > div").forEach((i) => {
-          var o, r, c, a, d;
+          var o, r, c, a;
           if ((o = i.textContent) != null && o.includes("Next batch ship") && i.classList.add(
             "crs-inventory-status",
             "crs-inventory-status--preorder"
@@ -351,24 +382,22 @@
             "crs-inventory-status--instock"
           ), (a = i.textContent) != null && a.includes("Reserved")) {
             i.classList.add("crs-inventory-reserved");
-            const v = (d = i.querySelector(
-              "#reservation-percent"
-            )) == null ? void 0 : d.textContent, C = Number(v) < 10 ? 10 : Number(v) > 90 && Number(v) < 100 ? 90 : Number(v), _ = (
+            const l = "100", y = (
               /* html */
               `
             <div class="crs-inventory-progress-bar">
-              <div class="crs-inventory-progress-bar__fill" style="width: ${v ? Math.ceil(Number(C) / 10) * 10 : 0}%"></div></div>
+              <div class="crs-inventory-progress-bar__fill" style="width: ${Number(l) < 10 ? 3 : Number(l) > 90 && Number(l) < 100 ? 90 : Math.ceil(Number(l) / 10) * 10}%"></div></div>
             </div>
           `
             );
-            i.insertAdjacentHTML("beforeend", _);
+            i.insertAdjacentHTML("beforeend", y);
           }
         });
       });
     }
     async addTopInStock() {
       var o, r;
-      const e = await h(".product-info__payment-terms");
+      const e = await v(".product-info__payment-terms");
       if (!e) return;
       e.insertAdjacentHTML(
         "afterend",
@@ -393,9 +422,9 @@
       );
       if (!n || !s) return;
       const i = async () => {
-        var a, d;
-        const c = await h(".pre-order-info:not([hidden])");
-        c.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), s.innerHTML = ((a = c.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : a.innerHTML) || ""), c.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), n.innerHTML = ((d = c.querySelector(".crs-inventory-status--instock")) == null ? void 0 : d.innerHTML) || "");
+        var a, l;
+        const c = await v(".pre-order-info:not([hidden])");
+        c.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), s.innerHTML = ((a = c.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : a.innerHTML) || ""), c.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), n.innerHTML = ((l = c.querySelector(".crs-inventory-status--instock")) == null ? void 0 : l.innerHTML) || "");
       };
       await i(), document.addEventListener("variant:change", async () => {
         await i();
@@ -427,7 +456,7 @@
 .dialog {
   background-color: #fff;
   border-radius: 12px;
-  max-width: 450px;
+  max-width: 640px;
   width: 100%;
   max-height: 90dvh;
   margin: 16px;
@@ -522,8 +551,8 @@
     }
     async changeMobileGalleryPosition() {
       if (window.innerWidth > 1e3) return;
-      await h('product-gallery[style*="opacity: 1;"]');
-      const e = document.querySelectorAll("product-gallery"), t = await h(
+      await v('product-gallery[style*="opacity: 1;"]');
+      const e = document.querySelectorAll("product-gallery"), t = await v(
         "payment-terms ~ .product-info__separator"
       );
       e.length === 0 || !t || e.forEach((n) => {
@@ -536,13 +565,13 @@
           this.addItemsToGallery();
         }, 1e3);
       }), document.addEventListener("product:updated", () => {
-        P("Product updated, re-adding gallery items"), setTimeout(() => this.addItemsToGallery(), 100);
+        setTimeout(() => this.addItemsToGallery(), 100);
       }), document.addEventListener("visibilitychange", () => {
-        P("Page visibility changed"), document.hidden || setTimeout(() => this.addItemsToGallery(), 100);
+        document.hidden || setTimeout(() => this.addItemsToGallery(), 100);
       });
     }
     async addItemsToGallery() {
-      await h(".media-with-text__media video"), await h(".product product-gallery");
+      await v(".media-with-text__media video"), await v(".product product-gallery");
       const e = document.querySelectorAll(".media-with-text__media video"), t = document.querySelectorAll("product-gallery");
       if (t.length === 0 || e.length === 0) return;
       const n = [];
@@ -556,7 +585,7 @@
             video: o,
             poster: r || ""
           };
-          if (n.find((d) => d.video === o)) return;
+          if (n.find((l) => l.video === o)) return;
           n.push(a);
         }
       }), t.forEach((i) => {
@@ -565,69 +594,69 @@
         );
         if (i.querySelectorAll(".product-gallery__media"), !o || !r) return;
         const a = Array.from(n).slice(0, 2);
-        a.forEach((d) => {
-          const v = (
+        a.forEach((l) => {
+          const g = (
             /* html */
             `
-          <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${d.id}">
-            <img src="${d.poster}" alt="sectional - Amora Open L Sectional - MC - Mario Capasa" srcset="${d.poster}&amp;width=56 56w, ${d.poster}&amp;width=64 64w, ${d.poster}&amp;width=112 112w, ${d.poster}&amp;width=128 128w, ${d.poster}&amp;width=168 168w, ${d.poster}&amp;width=192 192w" width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 56px, 64px" class="object-contain rounded-sm">
+          <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${l.id}">
+            <img src="${l.poster}" alt="sectional - Amora Open L Sectional - MC - Mario Capasa" srcset="${l.poster}&amp;width=56 56w, ${l.poster}&amp;width=64 64w, ${l.poster}&amp;width=112 112w, ${l.poster}&amp;width=128 128w, ${l.poster}&amp;width=168 168w, ${l.poster}&amp;width=192 192w" width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 56px, 64px" class="object-contain rounded-sm">
           </button>`
           );
-          r.insertAdjacentHTML("beforeend", v);
-          const C = (
+          r.insertAdjacentHTML("beforeend", g);
+          const y = (
             /* html */
-            `<div class="product-gallery__media product-gallery__media-crs" data-media-type="image" data-media-id="${d.id}">
-          <video class="crs-gallery-video" src="${d.video}" poster="${d.poster}" autoplay muted loop preload="metadata" loading="lazy"></video>
+            `<div class="product-gallery__media product-gallery__media-crs" data-media-type="image" data-media-id="${l.id}">
+          <video class="crs-gallery-video" src="${l.video}" poster="${l.poster}" autoplay muted loop preload="metadata" loading="lazy"></video>
         </div>`
           );
-          o.insertAdjacentHTML("beforeend", C);
-          const b = r.querySelector(`[data-media-id="${d.id}"]`), _ = o.querySelector(`[data-media-id="${d.id}"]`);
-          b && _ && b.addEventListener("click", () => {
+          o.insertAdjacentHTML("beforeend", y);
+          const m = r.querySelector(`[data-media-id="${l.id}"]`), A = o.querySelector(`[data-media-id="${l.id}"]`);
+          m && A && m.addEventListener("click", () => {
             this.handleThumbnailClick(
               i,
               o,
-              _,
-              b
+              A,
+              m
             );
-          }), c.length > 0 && c.forEach((q) => {
-            q.addEventListener("click", (m) => {
-              const L = m.currentTarget;
-              L !== b && document.querySelectorAll(".product-gallery__thumbnail-crs").forEach((S) => {
-                if (S.classList.contains("is-selected")) {
-                  const x = L.getAttribute("data-media-id"), g = o.querySelector(
-                    `[data-media-id="${x}"]`
+          }), c.length > 0 && c.forEach((H) => {
+            H.addEventListener("click", (w) => {
+              const T = w.currentTarget;
+              T !== m && document.querySelectorAll(".product-gallery__thumbnail-crs").forEach((M) => {
+                if (M.classList.contains("is-selected")) {
+                  const E = T.getAttribute("data-media-id"), b = o.querySelector(
+                    `[data-media-id="${E}"]`
                   );
-                  g && o.scrollTo({
-                    left: g.offsetLeft,
+                  b && o.scrollTo({
+                    left: b.offsetLeft,
                     behavior: "smooth"
-                  }), S.setAttribute("aria-current", "false"), S.classList.remove("is-selected");
-                  const k = i.querySelector("custom-cursor");
-                  k && (k.style.display = "", k.removeAttribute("hidden"));
+                  }), M.setAttribute("aria-current", "false"), M.classList.remove("is-selected");
+                  const L = i.querySelector("custom-cursor");
+                  L && (L.style.display = "", L.removeAttribute("hidden"));
                 }
               });
             });
-          }), document.addEventListener("click", (q) => {
-            const m = i.querySelector("custom-cursor"), L = q.target, S = i.querySelectorAll(".product-gallery__media:not(.product-gallery__media-crs)"), x = S[S.length - 1], g = o.querySelector(`[data-media-id="${a[0].id}"]`), k = a.length > 1 ? o.querySelector(`[data-media-id="${a[1].id}"]`) : null;
-            if (x && x.contains(L) && m && m.classList.contains("is-half-end") && g && (o.scrollTo({
-              left: g.offsetLeft,
+          }), document.addEventListener("click", (H) => {
+            const w = i.querySelector("custom-cursor"), T = H.target, M = i.querySelectorAll(".product-gallery__media:not(.product-gallery__media-crs)"), E = M[M.length - 1], b = o.querySelector(`[data-media-id="${a[0].id}"]`), L = a.length > 1 ? o.querySelector(`[data-media-id="${a[1].id}"]`) : null;
+            if (E && E.contains(T) && w && w.classList.contains("is-half-end") && b && (o.scrollTo({
+              left: b.offsetLeft,
               behavior: "smooth"
-            }), this.updateThumbnailSelection(i, r, a[0].id)), g && g.contains(L)) {
-              if (m && m.classList.contains("is-half-end") && k)
+            }), this.updateThumbnailSelection(i, r, a[0].id)), b && b.contains(T)) {
+              if (w && w.classList.contains("is-half-end") && L)
                 o.scrollTo({
-                  left: k.offsetLeft,
+                  left: L.offsetLeft,
                   behavior: "smooth"
                 }), this.updateThumbnailSelection(i, r, a[1].id);
-              else if (m && m.classList.contains("is-half-start") && x) {
+              else if (w && w.classList.contains("is-half-start") && E) {
                 o.scrollTo({
-                  left: x.offsetLeft,
+                  left: E.offsetLeft,
                   behavior: "smooth"
                 });
-                const F = i.querySelector(`[data-media-id="${x.getAttribute("data-media-id")}"]`);
-                F && this.updateThumbnailSelectionForNative(i, F);
+                const V = i.querySelector(`[data-media-id="${E.getAttribute("data-media-id")}"]`);
+                V && this.updateThumbnailSelectionForNative(i, V);
               }
             }
-            k && k.contains(L) && m && m.classList.contains("is-half-start") && g && (o.scrollTo({
-              left: g.offsetLeft,
+            L && L.contains(T) && w && w.classList.contains("is-half-start") && b && (o.scrollTo({
+              left: b.offsetLeft,
               behavior: "smooth"
             }), this.updateThumbnailSelection(i, r, a[0].id));
           }), this.addScrollDetection(i, o, r, a);
@@ -648,8 +677,8 @@
       for (const c of s) {
         const a = t.querySelector(`[data-media-id="${c.id}"]`);
         if (!a) continue;
-        const d = a.offsetLeft, v = a.offsetWidth;
-        if ((Math.min(d + v, o + i) - Math.max(d, o)) / v > 0.5) {
+        const l = a.offsetLeft, g = a.offsetWidth;
+        if ((Math.min(l + g, o + i) - Math.max(l, o)) / g > 0.5) {
           r = c;
           break;
         }
@@ -700,8 +729,7 @@
       e.textContent = n1, document.head.appendChild(e);
     }
   }
-  const o1 = `
-.crs-data-arrive-badge {
+  const s1 = `.crs-data-arrive-badge {
   margin-top: 24px !important;
   display: flex;
   gap: 4px;
@@ -724,11 +752,17 @@
   height: 18px;
 }
 
-:is(.crs-data-arrive-badge, .crs-warranty-text-container) .tooltip .tooltiptext {
+:is(.crs-data-arrive-badge, .crs-warranty-text-container)
+  .tooltip
+  .tooltiptext {
   left: -214px;
 }
-:is(.crs-data-arrive-badge, .crs-warranty-text-container) .tooltip .tooltiptext::after,
-:is(.crs-data-arrive-badge, .crs-warranty-text-container) .tooltip .tooltiptext::before {
+:is(.crs-data-arrive-badge, .crs-warranty-text-container)
+  .tooltip
+  .tooltiptext::after,
+:is(.crs-data-arrive-badge, .crs-warranty-text-container)
+  .tooltip
+  .tooltiptext::before {
   right: 36px;
 }
 
@@ -747,7 +781,7 @@
 .crs-free-shipping-text {
   color: #000;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 22.4px;
 }
 .crs-free-shipping-text span {
@@ -777,17 +811,28 @@
     right: 46px;
   }
 
-  .crs-warranty-text-container .tooltiptext {
+  .crs-warranty-text-container .tooltip .tooltiptext {
     left: -144px;
   }
 
-  .crs-warranty-text-container .tooltiptext::after,
-  .crs-warranty-text-container .tooltiptext::before {
+  .crs-warranty-text-container .tooltip .tooltiptext::after,
+  .crs-warranty-text-container .tooltip .tooltiptext::before {
     right: 33px !important;
   }
 }
+
+@media (max-width: 450px) {
+  .crs-data-arrive-badge .tooltip .tooltiptext {
+    left: 0;
+  }
+
+  .crs-data-arrive-badge .tooltip .tooltiptext::after,
+  .crs-data-arrive-badge .tooltip .tooltiptext::before {
+    right: 36px;
+  }
+}
 `;
-  class s1 {
+  class o1 {
     constructor() {
       this.init();
     }
@@ -795,7 +840,7 @@
       this.addStyles(), this.addDataArriveElement(), this.changeFreeShippingSection();
     }
     async addDataArriveElement() {
-      const e = await h(".product-info__buy-buttons");
+      const e = await v(".product-info__buy-buttons");
       if (!e) return;
       const t = /* @__PURE__ */ new Date();
       t.setDate(t.getDate() + 10);
@@ -820,7 +865,7 @@
       });
     }
     async changeFreeShippingSection() {
-      const e = await h(".free_ship_sec");
+      const e = await v(".free_ship_sec");
       if (!e) return;
       const t = e.querySelector(".fs_info"), n = e.querySelector(".fs_info2");
       if (n && (n.classList.add("crs-free-shipping-text-container"), n.innerHTML = /* html */
@@ -836,7 +881,7 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = o1, document.head.appendChild(e);
+      e.textContent = s1, document.head.appendChild(e);
     }
   }
   const r1 = `product-quick-add {
@@ -884,12 +929,26 @@ product-quick-add .price-list {
 }
 
 .crs-sticky-variant-swatch label {
+  width: 100%;
+  height: 100%;
   margin: 0;
 }
 
 .crs-sticky-variant-item-wrap {
   display: flex;
   flex-direction: column;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.crs-sticky-variant-label {
+  color: #5c5c5c;
+}
+
+.crs-sticky-variant-value {
+  margin-top: 6px;
+  color: #000;
 }
 
 .crs-sticky-variant-picker-options {
@@ -912,12 +971,13 @@ product-quick-add .price-list {
   align-items: center;
 }
 .crs-sticky-variant-picker-options-list {
+  margin-inline: -17px;
   display: flex;
-  gap: 20px;
-  width: 100%;
+  gap: 8px;
+  width: calc(100% + 34px);
   overflow-y: auto;
-  padding: 12px 2px 2px;
-  -ms-overflow-style: none;
+  padding: 5px 17px 0;
+
 }
 
 .crs-sticky-variant-picker-options-list::-webkit-scrollbar {
@@ -949,8 +1009,12 @@ product-quick-add .price-list {
   background-position: center;
 }
 
+.crs-sticky-variant-picker-options-list label.color-swatch {
+  width: 40px;
+  height: 40px;
+}
 .crs-sticky-variant-picker-options-list label.crs-selected {
-  box-shadow: 0 0 0 2px #1a1a1a;
+  border: 2px solid #1a1a1a;
 }
 
 div#hubspot-messages-iframe-container {
@@ -974,6 +1038,7 @@ product-quick-add .product-quick-add__variant buy-buttons {
 
 product-quick-add .product-quick-add__variant buy-buttons button {
   width: 100%;
+  box-shadow: none;
 }
 
 .crs-sticky-price {
@@ -1010,7 +1075,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
 
   .crs-sticky-variant-picker-options-list {
     flex-shrink: 0;
-    padding: 10px 5px 5px;
+    padding: 5px 20px 0;
   }
 
   .crs-sticky-variant-item {
@@ -1073,55 +1138,74 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ) || "ontouchstart" in window || window.innerWidth <= 768;
     }
     async changeStickySection() {
-      var c, a, d, v;
-      const e = await h("product-quick-add"), t = await h('[data-crs-variant="color"]'), n = await h('[data-crs-variant="size"]'), s = e == null ? void 0 : e.querySelector("price-list"), i = e == null ? void 0 : e.querySelector("variant-media"), o = (a = (c = e == null ? void 0 : e.querySelector("sale-price")) == null ? void 0 : c.textContent) == null ? void 0 : a.replace("Sale price", "").trim(), r = e == null ? void 0 : e.querySelectorAll("button");
-      if (i && i.addEventListener("click", () => {
-        const C = document.querySelector("product-gallery");
-        C && window.scrollTo({
-          top: C.getBoundingClientRect().top,
+      var a, l, g, y;
+      const e = new Promise((m) => setTimeout(m, 1e3)), t = await v("product-quick-add"), n = await Promise.race([
+        v('[data-crs-variant="color"]'),
+        e
+      ]), s = await Promise.race([
+        v('[data-crs-variant="size"]'),
+        e
+      ]), i = t == null ? void 0 : t.querySelector("price-list"), o = t == null ? void 0 : t.querySelector("variant-media"), r = (l = (a = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : a.textContent) == null ? void 0 : l.replace("Sale price", "").trim(), c = t == null ? void 0 : t.querySelectorAll("button");
+      if (o && o.addEventListener("click", () => {
+        const m = document.querySelector("product-gallery");
+        m && window.scrollTo({
+          top: m.getBoundingClientRect().top,
           behavior: "smooth"
         });
-      }), o && r && r.forEach((C) => {
-        const b = C.querySelector(".crs-sticky-price");
-        b && b.remove(), C.insertAdjacentHTML(
+      }), r && c && c.forEach((m) => {
+        const A = m.querySelector(".crs-sticky-price");
+        A && A.remove(), m.insertAdjacentHTML(
           "beforeend",
           /* HTML */
-          ` <div class="crs-sticky-price">${o}</div> `
+          ` <div class="crs-sticky-price">${r}</div> `
         );
-      }), t && n && s) {
-        const C = (v = (d = t.querySelector("variant-option-value")) == null ? void 0 : d.textContent) == null ? void 0 : v.trim(), b = t.querySelectorAll(
+      }), i) {
+        let m, A = [], H = [], w = [], T = [];
+        n instanceof Element && (m = (y = (g = n.querySelector("variant-option-value")) == null ? void 0 : g.textContent) == null ? void 0 : y.trim(), A = n.querySelectorAll(
           ".variant-picker__option-values input"
-        ), _ = t.querySelectorAll(
+        ), w = n.querySelectorAll(
           ".variant-picker__option-values label"
-        ), q = n.querySelectorAll(
+        )), s instanceof Element && (H = s.querySelectorAll(
           ".variant-picker__option-values input"
-        ), m = n.querySelectorAll(
+        ), T = s.querySelectorAll(
           ".variant-picker__option-values label"
-        );
-        let L, S, x, g;
-        b.forEach((p) => {
+        ));
+        let M, E, b, L;
+        A.forEach((p) => {
           var u;
-          p.checked && (S = p.id, L = (u = p.nextElementSibling) == null ? void 0 : u.outerHTML);
-        }), q.forEach((p) => {
-          p.checked && (g = p.id, x = p.value);
+          p.checked && (E = p.id, M = (u = p.nextElementSibling) == null ? void 0 : u.outerHTML);
+        }), H.forEach((p) => {
+          p.checked && (L = p.id, b = p.value);
         });
-        const k = (
+        const V = (
           /* HTML */
           `
         <div class="crs-sticky-variant-picker">
-          <div class="crs-sticky-variant-item crs-sticky-variant-color">
-            <div class="crs-sticky-variant-swatch">${L}</div>
-            <div class="crs-sticky-variant-item-wrap">
-              <div class="crs-sticky-variant-label">Color</div>
-              <div class="crs-sticky-variant-value">${C}</div>
-            </div>
-          </div>
-          <div class="crs-sticky-variant-item crs-sticky-variant-size">
-            <div class="crs-sticky-variant-item-wrap">
-              <div class="crs-sticky-variant-label">Size</div>
-              <div class="crs-sticky-variant-value">${x}</div>
-            </div>
-          </div>
+          ${A.length > 0 ? (
+            /* HTML */
+            `<div
+                class="crs-sticky-variant-item crs-sticky-variant-color"
+              >
+                <div class="crs-sticky-variant-swatch">
+                  ${M}
+                </div>
+                <div class="crs-sticky-variant-item-wrap">
+                  <div class="crs-sticky-variant-label">Color</div>
+                  <div class="crs-sticky-variant-value">${m}</div>
+                </div>
+              </div>`
+          ) : ""}
+          ${H.length > 0 ? (
+            /* HTML */
+            `<div
+                class="crs-sticky-variant-item crs-sticky-variant-size"
+              >
+                <div class="crs-sticky-variant-item-wrap">
+                  <div class="crs-sticky-variant-label">Size</div>
+                  <div class="crs-sticky-variant-value">${b}</div>
+                </div>
+              </div>`
+          ) : ""}
           <div
             hidden
             class="crs-sticky-variant-picker-options"
@@ -1134,14 +1218,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                   Color:
                 </div>
                 <div class="crs-sticky-variant-picker-options-value">
-                  ${C}
+                  ${m}
                 </div>
               </button>
             </div>
             <div class="crs-sticky-variant-picker-options-list">
-              ${Array.from(_).map((p) => {
+              ${Array.from(w).map((p) => {
             const u = p.cloneNode(!0);
-            return p.getAttribute("for") === S && u.classList.add("crs-selected"), u.outerHTML;
+            return p.getAttribute("for") === E && u.classList.add("crs-selected"), u.outerHTML;
           }).join("")}
             </div>
           </div>
@@ -1155,7 +1239,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 <span></span>
                 <div class="crs-sticky-variant-picker-options-label">Size:</div>
                 <div class="crs-sticky-variant-picker-options-value">
-                  ${x}
+                  ${b}
                 </div>
               </button>
               <button class="crs-sticky-variant-picker-option-dimension">
@@ -1163,102 +1247,142 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               </button>
             </div>
             <div class="crs-sticky-variant-picker-options-list">
-              ${Array.from(m).map((p) => {
+              ${Array.from(T).map((p) => {
             const u = p.cloneNode(!0);
-            return p.getAttribute("for") === g && u.classList.add("crs-selected"), u.outerHTML;
+            return p.getAttribute("for") === L && u.classList.add("crs-selected"), u.outerHTML;
           }).join("")}
             </div>
           </div>
         </div>
       `
-        ), F = e.querySelector(
+        ), N = t.querySelector(
           ".crs-sticky-variant-picker"
         );
-        F && F.remove(), s.insertAdjacentHTML("afterend", k), this.initializeDragScroll();
-        const W = e.querySelector(
+        N && N.remove(), i.insertAdjacentHTML("afterend", V), this.initializeDragScroll();
+        const G = t.querySelector(
           ".crs-sticky-variant-picker-options .crs-sticky-variant-picker-option-dimension"
         );
-        W && W.addEventListener("click", () => {
+        G && G.addEventListener("click", () => {
           const p = document.getElementById(
             "dimension-info-dialog"
           );
           p && p.open();
         });
-        const l = e.querySelector(
+        const d = t.querySelector(
           ".crs-sticky-variant-picker"
-        ), $ = l == null ? void 0 : l.querySelector(
+        ), z = d == null ? void 0 : d.querySelector(
           ".crs-sticky-variant-color"
-        ), z = l == null ? void 0 : l.querySelector(
+        ), j = d == null ? void 0 : d.querySelector(
           ".crs-sticky-variant-size"
-        ), j = l == null ? void 0 : l.querySelectorAll(
+        ), B = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options"
-        ), y = l == null ? void 0 : l.querySelector(
+        ), h = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"]'
-        ), w = l == null ? void 0 : l.querySelector(
+        ), f = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"]'
-        ), R = l == null ? void 0 : l.querySelectorAll(
+        ), W = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options-back"
         );
-        $ == null || $.addEventListener("click", () => {
-          y == null || y.removeAttribute("hidden"), w == null || w.setAttribute("hidden", "true");
-        }), z == null || z.addEventListener("click", () => {
-          w == null || w.removeAttribute("hidden"), y == null || y.setAttribute("hidden", "true");
-        }), R == null || R.forEach((p) => {
+        z == null || z.addEventListener("click", () => {
+          h == null || h.removeAttribute("hidden"), f == null || f.setAttribute("hidden", "true"), setTimeout(() => {
+            const p = h == null ? void 0 : h.querySelector(
+              ".crs-sticky-variant-picker-options-list"
+            ), u = h == null ? void 0 : h.querySelector(
+              ".crs-selected"
+            );
+            if (u && p) {
+              const S = p.clientWidth, k = p.scrollLeft, x = u.offsetLeft, I = u.clientWidth, _ = x + I, F = k, D = k + S;
+              let q;
+              if (_ > D)
+                q = _ - S + 10;
+              else if (x < F)
+                q = x;
+              else
+                return;
+              p.scrollTo({
+                left: Math.max(0, q),
+                behavior: "smooth"
+              });
+            }
+          }, 50);
+        }), j == null || j.addEventListener("click", () => {
+          f == null || f.removeAttribute("hidden"), h == null || h.setAttribute("hidden", "true"), setTimeout(() => {
+            const p = f == null ? void 0 : f.querySelector(
+              ".crs-sticky-variant-picker-options-list"
+            ), u = f == null ? void 0 : f.querySelector(
+              ".crs-selected"
+            );
+            if (u && p) {
+              const S = p.clientWidth, k = p.scrollLeft, x = u.offsetLeft, I = u.clientWidth, _ = x + I, F = k, D = k + S;
+              let q;
+              if (_ > D)
+                q = _ - S + 10;
+              else if (x < F)
+                q = x;
+              else
+                return;
+              p.scrollTo({
+                left: Math.max(0, q),
+                behavior: "smooth"
+              });
+            }
+          }, 50);
+        }), W == null || W.forEach((p) => {
           p.addEventListener("click", () => {
-            j == null || j.forEach((u) => {
+            B == null || B.forEach((u) => {
               u.setAttribute("hidden", "true");
             });
           });
         });
-        const H = l == null ? void 0 : l.querySelector(
+        const $ = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"] .crs-sticky-variant-picker-options-list'
-        ), I = l == null ? void 0 : l.querySelector(
+        ), Z = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"] .crs-sticky-variant-picker-options-list'
         );
-        H == null || H.addEventListener("click", (p) => {
-          var M;
+        $ == null || $.addEventListener("click", (p) => {
+          var S;
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
           const u = p.target.closest("label");
           if (u) {
-            const E = u.getAttribute("for");
-            if (E) {
-              const A = document.getElementById(
-                E
+            const k = u.getAttribute("for");
+            if (k) {
+              const x = document.getElementById(
+                k
               );
-              if (A) {
-                A.click(), H.querySelectorAll("label").forEach(
-                  (v1) => v1.classList.remove("crs-selected")
+              if (x) {
+                x.click(), $.querySelectorAll("label").forEach(
+                  (m1) => m1.classList.remove("crs-selected")
                 ), u.classList.add("crs-selected");
-                const T = A.value, D = (M = A.nextElementSibling) == null ? void 0 : M.outerHTML, Z = l == null ? void 0 : l.querySelector(
+                const _ = x.value, F = (S = x.nextElementSibling) == null ? void 0 : S.outerHTML, D = d == null ? void 0 : d.querySelector(
                   ".crs-sticky-variant-color .crs-sticky-variant-value"
-                ), G = l == null ? void 0 : l.querySelector(
+                ), q = d == null ? void 0 : d.querySelector(
                   ".crs-sticky-variant-color .crs-sticky-variant-swatch"
-                ), U = y == null ? void 0 : y.querySelector(
+                ), U = h == null ? void 0 : h.querySelector(
                   ".crs-sticky-variant-picker-options-value"
                 );
-                Z && (Z.textContent = T), G && D && (G.innerHTML = D), U && (U.textContent = T), y == null || y.setAttribute("hidden", "true");
+                D && (D.textContent = _), q && F && (q.innerHTML = F), U && (U.textContent = _), h == null || h.setAttribute("hidden", "true");
               }
             }
           }
-        }), I == null || I.addEventListener("click", (p) => {
+        }), Z == null || Z.addEventListener("click", (p) => {
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
           const u = p.target.closest("label");
           if (u) {
-            const M = u.getAttribute("for");
-            if (M) {
-              const E = document.getElementById(
-                M
+            const S = u.getAttribute("for");
+            if (S) {
+              const k = document.getElementById(
+                S
               );
-              if (E) {
-                E.click(), I.querySelectorAll("label").forEach(
-                  (Z) => Z.classList.remove("crs-selected")
+              if (k) {
+                k.click(), Z.querySelectorAll("label").forEach(
+                  (D) => D.classList.remove("crs-selected")
                 ), u.classList.add("crs-selected");
-                const B = E.value, T = l == null ? void 0 : l.querySelector(
+                const I = k.value, _ = d == null ? void 0 : d.querySelector(
                   ".crs-sticky-variant-size .crs-sticky-variant-value"
-                ), D = w == null ? void 0 : w.querySelector(
+                ), F = f == null ? void 0 : f.querySelector(
                   ".crs-sticky-variant-picker-options-value"
                 );
-                T && (T.textContent = B), D && (D.textContent = B), w == null || w.setAttribute("hidden", "true");
+                _ && (_.textContent = I), F && (F.textContent = I), f == null || f.setAttribute("hidden", "true");
               }
             }
           }
@@ -1590,7 +1714,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     scroll-snap-align: start;
   }
 }
-`, N = {
+`, P = {
     trustpilot: [
       {
         author: "Kendra Fields",
@@ -1666,7 +1790,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         rating: !1
       }
     ]
-  }, V = {
+  }, R = {
     trustpilot: (
       /* HTML */
       `<svg
@@ -1868,7 +1992,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
   };
   class d1 {
     constructor() {
-      this.addStyles(), this.changeReviewPosition(), this.changeTextReviews(), this.initializeTabs(), this.renderReviews("trustpilot");
+      this.addStyles(), this.changeReviewPosition(), this.changeTextReviews(), this.changeVideoReviews();
     }
     changeReviewPosition() {
       const e = document.querySelector(".review-block"), t = document.querySelector(
@@ -1886,7 +2010,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         <div class="crs-review-title">Too Comfortable to Keep Quiet About</div>
         <div class="crs-review-average-rating">
           4.8 average rating
-          <span>${V.averageStars}</span>
+          <span>${R.averageStars}</span>
         </div>
 
         <div class="crs-reviews-tabs">
@@ -1894,10 +2018,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             class="crs-reviews-tab crs-reviews-tab-active"
             data-crs-tab="trustpilot"
           >
-            ${V.trustpilot}
+            ${R.trustpilot}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="yelp">
-            ${V.yelp}
+            ${R.yelp}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="reddit">
             <img
@@ -2014,7 +2138,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       </div>
     `
       );
-      e.insertAdjacentHTML("afterend", t);
+      e.insertAdjacentHTML("afterend", t), this.initializeTabs(), this.renderReviews("trustpilot");
     }
     initializeTabs() {
       const e = document.querySelectorAll(".crs-reviews-tab");
@@ -2044,12 +2168,12 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             "data-crs-item"
           );
           if (c && o && a) {
-            const d = this.getSlideWidth(c);
+            const l = this.getSlideWidth(c);
             o === "next" ? c.scrollTo({
-              left: c.scrollLeft + d,
+              left: c.scrollLeft + l,
               behavior: "smooth"
             }) : o === "prev" && c.scrollTo({
-              left: c.scrollLeft - d,
+              left: c.scrollLeft - l,
               behavior: "smooth"
             }), setTimeout(() => {
               this.updateArrowStates(a);
@@ -2095,14 +2219,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         var r, c;
         const s = ((r = n.querySelector("h2")) == null ? void 0 : r.textContent) || "", i = ((c = n.querySelector("p.wtc")) == null ? void 0 : c.textContent) || "";
         e.push({ author: s, text: i, rating: !0 });
-      }), e.length === 0 ? N.trustpilot : e;
+      }), e.length === 0 ? P.trustpilot : e;
     }
     renderReviews(e) {
       const t = document.querySelector(
         `[data-crs-item="${e}"] .crs-reviews-slider`
       );
       if (!t) return;
-      const s = (e === "trustpilot" ? this.parseTrustpilotReviewData() : N[e]).map((i) => this.createReviewSlide(i, e)).join("");
+      const s = (e === "trustpilot" ? this.parseTrustpilotReviewData() : P[e]).map((i) => this.createReviewSlide(i, e)).join("");
       t.innerHTML = s, t.scrollLeft = 0, this.updateArrowStates(e);
     }
     updateArrowStates(e) {
@@ -2204,6 +2328,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         )
       ).join("");
     }
+    changeVideoReviews() {
+      const e = document.querySelector(".review-block .video-reviews");
+      if (!e) return;
+      const t = e.querySelector(".slider_text_video");
+      if (!t) return;
+      const n = t.swiper;
+      window.innerWidth < 768 && (n.params.slidesPerView = 2, n.update());
+    }
     addStyles() {
       const e = document.createElement("style");
       e.textContent = c1, document.head.appendChild(e);
@@ -2218,8 +2350,16 @@ product-quick-add .product-quick-add__variant buy-buttons button {
 }
 
 .crs-protection-plan-text button {
+  font-weight: 400;
   text-decoration: underline;
-}`;
+}
+
+@media (min-width: 769px) {
+  .pro_bg .btn_pack .protection-package {
+    font-size: 16px !important;
+  }
+}
+`;
   class u1 {
     constructor() {
       this.init();
@@ -2245,28 +2385,79 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       e.textContent = p1, document.head.appendChild(e);
     }
   }
-  const h1 = `
+  class h1 {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.changeTabsOrder();
+    }
+    changeTabsOrder() {
+      var l;
+      const e = (l = document.querySelector(
+        ".tabs-btns-template--19449905938597__ss_product_tabs_2_bAwVpc"
+      )) == null ? void 0 : l.parentElement;
+      if (!e) return;
+      const t = e.querySelector(
+        ".tabs-btns-template--19449905938597__ss_product_tabs_2_bAwVpc"
+      ), n = e.querySelector(
+        ".tabs-items-template--19449905938597__ss_product_tabs_2_bAwVpc"
+      );
+      if (!t || !n) return;
+      const s = Array.from(t.children).find(
+        (g) => {
+          var y;
+          return (y = g.textContent) == null ? void 0 : y.trim().toLowerCase().includes("materials");
+        }
+      ), i = Array.from(t.children).find(
+        (g) => {
+          var y;
+          return (y = g.textContent) == null ? void 0 : y.trim().toLowerCase().includes("dimensions");
+        }
+      ), o = s ? n.querySelector(
+        `[data-id="${s.getAttribute("data-id")}"]`
+      ) : null, r = i ? n.querySelector(
+        `[data-id="${i.getAttribute("data-id")}"]`
+      ) : null;
+      if (!s || !i || !o || !r) {
+        console.warn("Materials or Dimensions tab not found");
+        return;
+      }
+      const c = t.querySelectorAll('[class*="tabs-btn-"]'), a = n.querySelectorAll('[class*="tabs-item-"]');
+      c.forEach((g) => g.classList.remove("active")), a.forEach((g) => g.classList.remove("active")), t.firstChild && t.insertBefore(i, t.firstChild), i.nextSibling ? t.insertBefore(s, i.nextSibling) : t.appendChild(s), n.firstChild && n.insertBefore(r, n.firstChild), r.nextSibling ? n.insertBefore(o, r.nextSibling) : n.appendChild(o), this.updateTabCounts(t), i.classList.add("active"), r.classList.add("active");
+    }
+    updateTabCounts(e) {
+      e.querySelectorAll('[class*="tabs-btn-"]').forEach((n, s) => {
+        n.setAttribute("data-count", s.toString());
+      });
+    }
+  }
+  const f1 = `.shopify-app-block:has( > [data-box-type="CrossSell"]) {
+  display: none;
+}
 
 `;
   O({ name: "New PDP Experiment", dev: "OS" }), J("exp_pdp");
-  class f1 {
+  class v1 {
     constructor() {
       this.init();
     }
     init() {
       this.checkPdpPage().then((e) => {
-        e && (this.addStyles(), this.initComponents(), new K(), new Q(), new i1(), new s1(), new a1(), new d1(), new u1());
+        e && (this.addStyles(), this.initComponents(), new K(), new Q(), new i1(), new o1(), new a1(), new d1(), new u1(), new h1());
       });
     }
     initComponents() {
       customElements.get("crs-dialog") || customElements.define("crs-dialog", t1);
     }
     async checkPdpPage() {
+      if (!location.pathname.includes("/products/"))
+        return !1;
       try {
         if (await Promise.race([
           new Promise((t) => setTimeout(t, 3e3)),
           // Timeout after 3 seconds
-          h("body.template-product")
+          v("body.template-product")
           // Wait for the element to appear
         ]))
           return !0;
@@ -2276,8 +2467,8 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = h1, document.head.appendChild(e);
+      e.textContent = f1, document.head.appendChild(e);
     }
   }
-  new f1();
+  new v1();
 })();
