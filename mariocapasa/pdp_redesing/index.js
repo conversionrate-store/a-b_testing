@@ -7,7 +7,7 @@
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), H(`Event: ${v} | ${e} | ${t} | ${n}`, "success");
+    }), Z(`Event: ${v} | ${e} | ${t} | ${n}`, "success");
   }, w = (v) => new Promise((e) => {
     const t = document.querySelector(v);
     t && e(t);
@@ -39,7 +39,7 @@
             "view",
             t
           ), s.disconnect();
-        }, o) : (H("Element is not fully visible", "warn"), clearTimeout(r));
+        }, o) : (Z("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [i] }
     );
@@ -47,7 +47,7 @@
       const a = document.querySelector(v);
       a && s.observe(a);
     }
-  }, H = (v, e = "info") => {
+  }, Z = (v, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -801,7 +801,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
         }), e.querySelectorAll(".product-gallery__media-crs").forEach((c) => {
           c.classList.remove("is-selected");
         }));
-      this.isClickOnThumbnail || (console.log("not click on thumbnail"), this.debounceTimer && clearTimeout(this.debounceTimer), this.debounceTimer = window.setTimeout(() => {
+      this.isClickOnThumbnail || (this.debounceTimer && clearTimeout(this.debounceTimer), this.debounceTimer = window.setTimeout(() => {
         this.pushCurrentViewData();
       }, 2e3));
     }
@@ -1306,12 +1306,12 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         ), B = o.querySelectorAll(
           ".variant-picker__option-values label"
         ));
-        let P, W, V, G;
+        let P, W, I, G;
         b.forEach((p) => {
           var f;
           p.checked && (W = p.id, P = (f = p.nextElementSibling) == null ? void 0 : f.outerHTML);
         }), E.forEach((p) => {
-          p.checked && (G = p.id, V = p.value);
+          p.checked && (G = p.id, I = p.value);
         });
         const ye = (
           /* HTML */
@@ -1338,7 +1338,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               >
                 <div class="crs-sticky-variant-item-wrap">
                   <div class="crs-sticky-variant-label">Size</div>
-                  <div class="crs-sticky-variant-value">${V}</div>
+                  <div class="crs-sticky-variant-value">${I}</div>
                 </div>
               </div>`
           ) : ""}
@@ -1375,7 +1375,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 <span></span>
                 <div class="crs-sticky-variant-picker-options-label">Size:</div>
                 <div class="crs-sticky-variant-picker-options-value">
-                  ${V}
+                  ${I}
                 </div>
               </button>
               <button class="crs-sticky-variant-picker-option-dimension">
@@ -1406,20 +1406,20 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         });
         const d = t.querySelector(
           ".crs-sticky-variant-picker"
-        ), $ = d == null ? void 0 : d.querySelector(
+        ), V = d == null ? void 0 : d.querySelector(
           ".crs-sticky-variant-color"
-        ), R = d == null ? void 0 : d.querySelector(
+        ), $ = d == null ? void 0 : d.querySelector(
           ".crs-sticky-variant-size"
-        ), z = d == null ? void 0 : d.querySelectorAll(
+        ), R = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options"
         ), C = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"]'
         ), y = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"]'
-        ), Z = d == null ? void 0 : d.querySelectorAll(
+        ), z = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options-back"
         );
-        $ == null || $.addEventListener("click", () => {
+        V == null || V.addEventListener("click", () => {
           C == null || C.removeAttribute("hidden"), y == null || y.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Color", "click", "Sticky"), setTimeout(() => {
             const p = C == null ? void 0 : C.querySelector(
               ".crs-sticky-variant-picker-options-list"
@@ -1441,7 +1441,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               });
             }
           }, 50);
-        }), R == null || R.addEventListener("click", () => {
+        }), $ == null || $.addEventListener("click", () => {
           y == null || y.removeAttribute("hidden"), C == null || C.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Size", "click", "Sticky"), setTimeout(() => {
             const p = y == null ? void 0 : y.querySelector(
               ".crs-sticky-variant-picker-options-list"
@@ -1463,9 +1463,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               });
             }
           }, 50);
-        }), Z == null || Z.forEach((p) => {
+        }), z == null || z.forEach((p) => {
           p.addEventListener("click", () => {
-            z == null || z.forEach((f) => {
+            R == null || R.forEach((f) => {
               f.setAttribute("hidden", "true"), u("exp_pdp_click_17", "Back", "click", "Sticky");
             });
           });
@@ -1928,7 +1928,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         rating: !1
       }
     ]
-  }, I = {
+  }, H = {
     trustpilot: (
       /* HTML */
       `<svg
@@ -2297,7 +2297,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         <div class="crs-review-title">Too Comfortable to Keep Quiet About</div>
         <div class="crs-review-average-rating">
           4.8 average rating
-          <span>${I.averageStars}</span>
+          <span>${H.averageStars}</span>
         </div>
 
         <div class="crs-reviews-tabs">
@@ -2305,10 +2305,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             class="crs-reviews-tab crs-reviews-tab-active"
             data-crs-tab="trustpilot"
           >
-            ${I.trustpilot}
+            ${H.trustpilot}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="yelp">
-            ${I.yelp}
+            ${H.yelp}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="reddit">
             <img
@@ -2719,9 +2719,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           var g;
           return (g = h.textContent) == null ? void 0 : g.trim().toLowerCase().includes("dimensions");
         }
-      );
-      H("test"), console.log({ materialsTab: o, dimensionsTab: i });
-      const s = o ? n.querySelector(
+      ), s = o ? n.querySelector(
         `[data-id="${o.getAttribute("data-id")}"]`
       ) : null, r = i ? n.querySelector(
         `[data-id="${i.getAttribute("data-id")}"]`
