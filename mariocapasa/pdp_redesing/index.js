@@ -1,26 +1,70 @@
 (function() {
   "use strict";
-  const v = (C) => new Promise((e) => {
-    const t = document.querySelector(C);
+  const u = (v, e, t, n = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: v,
+      event_desc: e,
+      event_type: t,
+      event_loc: n
+    }), H(`Event: ${v} | ${e} | ${t} | ${n}`, "success");
+  }, w = (v) => new Promise((e) => {
+    const t = document.querySelector(v);
     t && e(t);
     const n = new MutationObserver(() => {
-      const s = document.querySelector(C);
-      s && (e(s), n.disconnect());
+      const o = document.querySelector(v);
+      o && (e(o), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), O = ({ name: C, dev: e }) => {
+  }), J = ({ name: v, dev: e }) => {
     console.log(
-      `%c EXP: ${C} (DEV: ${e})`,
+      `%c EXP: ${v} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, J = (C) => {
+  }, X = (v) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", C, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", v, "variant_1"));
     }, 1e3);
-  }, X = `variant-picker.variant-picker {
+  }, K = (v, e, t, n, o = 1e3, i = 0.5) => {
+    let s, r;
+    s = new IntersectionObserver(
+      function(a) {
+        a[0].isIntersecting === !0 ? r = setTimeout(() => {
+          u(
+            e,
+            a[0].target.dataset.visible || n,
+            "view",
+            t
+          ), s.disconnect();
+        }, o) : (H("Element is not fully visible", "warn"), clearTimeout(r));
+      },
+      { threshold: [i] }
+    );
+    {
+      const a = document.querySelector(v);
+      a && s.observe(a);
+    }
+  }, H = (v, e = "info") => {
+    let t;
+    switch (e) {
+      case "info":
+        t = "color: #3498db;";
+        break;
+      case "warn":
+        t = "color: #f39c12;";
+        break;
+      case "error":
+        t = "color: #e74c3c;";
+        break;
+      case "success":
+        t = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${v}`, `${t} font-size: 16px; font-weight: 600`);
+  }, Y = `variant-picker.variant-picker {
   display: flex;
   flex-direction: column;
 }
@@ -155,7 +199,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
   }
 }
 `;
-  class K {
+  class Q {
     constructor() {
       this.init(), this.addStyles();
     }
@@ -167,17 +211,17 @@ variant-picker.variant-picker [data-crs-variant="size"] {
         ".product-info__variant-picker"
       ), t = e == null ? void 0 : e.querySelector(".variant-picker");
       if (!e || !t) return;
-      (t == null ? void 0 : t.querySelectorAll("fieldset")).forEach((s) => {
-        var o;
-        const i = s.querySelector("legend");
+      (t == null ? void 0 : t.querySelectorAll("fieldset")).forEach((o) => {
+        var s;
+        const i = o.querySelector("legend");
         if (i) {
-          const r = (o = i.textContent) == null ? void 0 : o.toLowerCase().trim();
-          r != null && r.includes("size") ? s.dataset.crsVariant = "size" : r != null && r.includes("color") ? s.dataset.crsVariant = "color" : s.dataset.crsVariant = r.replace(":", "");
+          const r = (s = i.textContent) == null ? void 0 : s.toLowerCase().trim();
+          r != null && r.includes("size") ? o.dataset.crsVariant = "size" : r != null && r.includes("color") ? o.dataset.crsVariant = "color" : o.dataset.crsVariant = r.replace(":", "");
         }
       });
     }
     async addViewFabricInfoButton() {
-      const e = await v(
+      const e = await w(
         '[data-crs-variant="color"] .variant-picker__option-info'
       );
       if (!e)
@@ -195,12 +239,12 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       const t = document.querySelector(
         '[data-crs-button="view-fabric-info"]'
       ), n = document.getElementById("fabric-info-dialog");
-      t == null || t.addEventListener("click", (s) => {
+      t == null || t.addEventListener("click", (o) => {
         n && n.open();
       });
     }
     async addDimensionInfoButton() {
-      const e = await v(
+      const e = await w(
         '[data-crs-variant="size"] .variant-picker__option-info'
       );
       if (!e)
@@ -218,8 +262,13 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       const t = document.querySelector(
         '[data-crs-button="view-dimension-info"]'
       ), n = document.getElementById("dimension-info-dialog");
-      t == null || t.addEventListener("click", (s) => {
-        n && n.open();
+      t == null || t.addEventListener("click", (o) => {
+        n && (n.open(), u(
+          "exp_pdp_click_5",
+          "View Dimensions",
+          "click",
+          "Dimension info popup"
+        ));
       });
     }
     addFabricInfoPopup() {
@@ -263,30 +312,35 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       </crs-dialog>
     `
       );
-      const s = (
+      const o = (
         /* HTML */
         ` <div
       class="crs-popup-highlight-text"
     >
       All sofas come fully assembled
     </div>`
-      ), i = document.getElementById("dimension-info-dialog"), o = i.querySelector(".crs-dimension-info-body");
+      ), i = document.getElementById("dimension-info-dialog"), s = i.querySelector(".crs-dimension-info-body");
       i.addEventListener("crs-dialog-open", () => {
-        if (e && t && o) {
-          o.appendChild(t);
-          const r = o == null ? void 0 : o.querySelector(".media-with-text__media");
-          r && r.insertAdjacentHTML("beforeend", s);
+        if (e && t && s) {
+          s.appendChild(t);
+          const r = s == null ? void 0 : s.querySelector(
+            ".media-with-text__media"
+          );
+          r && r.insertAdjacentHTML("beforeend", o);
         }
       }), i.addEventListener("crs-dialog-close", () => {
-        e && t && o && e.appendChild(t);
+        e && t && s && e.appendChild(t), u("exp_pdp_click_6", "Close", "click", "Dimension info popup");
+      }), document.addEventListener("click", (r) => {
+        const a = r.target;
+        a && a.closest("#dimension-info-dialog .detail-btn") && u("exp_pdp_click_7", "Size Button", "click", "Dimension info popup");
       });
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = X, document.head.appendChild(e);
+      e.textContent = Y, document.head.appendChild(e);
     }
   }
-  const Y = `.crs-shipping-schedule {
+  const ee = `.crs-shipping-schedule {
   margin-bottom: 14px;
   font-weight: 300;
 }
@@ -352,7 +406,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
   }
 }
 `;
-  class Q {
+  class te {
     constructor() {
       this.init(), this.addStyles();
     }
@@ -360,11 +414,11 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.changeReserveAndStockInfoPosition(), this.preOrderInfo(), this.addTopInStock();
     }
     async changeReserveAndStockInfoPosition() {
-      const e = await v(".product-info__inventory"), t = await v(".free_ship");
+      const e = await w(".product-info__inventory"), t = await w(".free_ship");
       !e || !t || t.insertAdjacentElement("afterend", e);
     }
     async preOrderInfo() {
-      const e = await v(".product-info__inventory");
+      const e = await w(".product-info__inventory");
       if (!e) return;
       const t = e.querySelectorAll(".pre-order-info");
       t.length !== 0 && t.forEach((n) => {
@@ -373,16 +427,16 @@ variant-picker.variant-picker [data-crs-variant="size"] {
           /* html */
           '<div class="crs-shipping-schedule">Shipping Schedule</div>'
         ), n.querySelectorAll(":scope > div").forEach((i) => {
-          var o, r, c, a;
-          if ((o = i.textContent) != null && o.includes("Next batch ship") && i.classList.add(
+          var s, r, a, c;
+          if ((s = i.textContent) != null && s.includes("Next batch ship") && i.classList.add(
             "crs-inventory-status",
             "crs-inventory-status--preorder"
-          ), (r = i.textContent) != null && r.includes("In Stock") && !((c = i.textContent) != null && c.includes("Reserved")) && i.classList.add(
+          ), (r = i.textContent) != null && r.includes("In Stock") && !((a = i.textContent) != null && a.includes("Reserved")) && i.classList.add(
             "crs-inventory-status",
             "crs-inventory-status--instock"
-          ), (a = i.textContent) != null && a.includes("Reserved")) {
+          ), (c = i.textContent) != null && c.includes("Reserved")) {
             i.classList.add("crs-inventory-reserved");
-            const l = "100", y = (
+            const l = "100", g = (
               /* html */
               `
             <div class="crs-inventory-progress-bar">
@@ -390,14 +444,33 @@ variant-picker.variant-picker [data-crs-variant="size"] {
             </div>
           `
             );
-            i.insertAdjacentHTML("beforeend", y);
+            i.insertAdjacentHTML("beforeend", g);
           }
+          n.addEventListener("click", (l) => {
+            const h = l.target;
+            h && h.closest("#prev-batch-container") && u(
+              "exp_pdp_click_9",
+              "Previous Batch",
+              "click",
+              "Shipping Schedule"
+            ), h && h.closest(".crs-inventory-reserved") && u(
+              "exp_pdp_click_9",
+              "Current Batch",
+              "click",
+              "Shipping Schedule"
+            ), h && h.closest("#future-batch-container") && u(
+              "exp_pdp_click_9",
+              "Future Batch",
+              "click",
+              "Shipping Schedule"
+            );
+          });
         });
       });
     }
     async addTopInStock() {
-      var o, r;
-      const e = await v(".product-info__payment-terms");
+      var s, r;
+      const e = await w(".product-info__payment-terms");
       if (!e) return;
       e.insertAdjacentHTML(
         "afterend",
@@ -415,27 +488,31 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       </div>
     `
       );
-      const n = (o = e.parentElement) == null ? void 0 : o.querySelector(
+      const n = (s = e.parentElement) == null ? void 0 : s.querySelector(
         ".crs-top-inventory-status--instock"
-      ), s = (r = e.parentElement) == null ? void 0 : r.querySelector(
+      ), o = (r = e.parentElement) == null ? void 0 : r.querySelector(
         ".crs-top-inventory-status--preorder"
       );
-      if (!n || !s) return;
+      if (!n || !o) return;
       const i = async () => {
-        var a, l;
-        const c = await v(".pre-order-info:not([hidden])");
-        c.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), s.innerHTML = ((a = c.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : a.innerHTML) || ""), c.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), n.innerHTML = ((l = c.querySelector(".crs-inventory-status--instock")) == null ? void 0 : l.innerHTML) || "");
+        var c, l;
+        const a = await w(".pre-order-info:not([hidden])");
+        a.querySelector(".crs-inventory-status--preorder") && (o.removeAttribute("hidden"), n.setAttribute("hidden", ""), o.innerHTML = ((c = a.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : c.innerHTML) || ""), a.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), o.setAttribute("hidden", ""), n.innerHTML = ((l = a.querySelector(".crs-inventory-status--instock")) == null ? void 0 : l.innerHTML) || "");
       };
-      await i(), document.addEventListener("variant:change", async () => {
+      n.addEventListener("click", () => {
+        u("exp_pdp_click_4", "In Stock", "click", "Top info inventory");
+      }), o.addEventListener("click", () => {
+        u("exp_pdp_click_4", "Pre Order", "click", "Top info inventory");
+      }), await i(), document.addEventListener("variant:change", async () => {
         await i();
       });
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = Y, document.head.appendChild(e);
+      e.textContent = ee, document.head.appendChild(e);
     }
   }
-  const e1 = `.dialog-backdrop {
+  const ne = `.dialog-backdrop {
   display: none;
   position: fixed;
   top: 0;
@@ -483,7 +560,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
   object-fit: contain;
 }
 `;
-  class t1 extends HTMLElement {
+  class ie extends HTMLElement {
     constructor() {
       super(), this.attachShadow({ mode: "open" }), this.render();
     }
@@ -491,7 +568,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.shadowRoot && (this.shadowRoot.innerHTML = /* HTML */
       `
       <style>
-        ${e1}
+        ${ne}
       </style>
       <div class="dialog-backdrop">
         <div class="dialog" role="dialog" aria-modal="true">
@@ -511,17 +588,17 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     `);
     }
     connectedCallback() {
-      var e, t, n, s;
-      (t = (e = this.shadowRoot) == null ? void 0 : e.querySelector(".dialog-close")) == null || t.addEventListener("click", () => this.close()), (s = (n = this.shadowRoot) == null ? void 0 : n.querySelector(".dialog-backdrop")) == null || s.addEventListener("click", (i) => {
-        var o;
-        i.target === ((o = this.shadowRoot) == null ? void 0 : o.querySelector(".dialog-backdrop")) && this.close();
+      var e, t, n, o;
+      (t = (e = this.shadowRoot) == null ? void 0 : e.querySelector(".dialog-close")) == null || t.addEventListener("click", () => this.close()), (o = (n = this.shadowRoot) == null ? void 0 : n.querySelector(".dialog-backdrop")) == null || o.addEventListener("click", (i) => {
+        var s;
+        i.target === ((s = this.shadowRoot) == null ? void 0 : s.querySelector(".dialog-backdrop")) && this.close();
       });
     }
     disconnectedCallback() {
-      var e, t, n, s;
-      (t = (e = this.shadowRoot) == null ? void 0 : e.querySelector(".dialog-close")) == null || t.removeEventListener("click", () => this.close()), (s = (n = this.shadowRoot) == null ? void 0 : n.querySelector(".dialog-backdrop")) == null || s.removeEventListener("click", (i) => {
-        var o;
-        i.target === ((o = this.shadowRoot) == null ? void 0 : o.querySelector(".dialog-backdrop")) && this.close();
+      var e, t, n, o;
+      (t = (e = this.shadowRoot) == null ? void 0 : e.querySelector(".dialog-close")) == null || t.removeEventListener("click", () => this.close()), (o = (n = this.shadowRoot) == null ? void 0 : n.querySelector(".dialog-backdrop")) == null || o.removeEventListener("click", (i) => {
+        var s;
+        i.target === ((s = this.shadowRoot) == null ? void 0 : s.querySelector(".dialog-backdrop")) && this.close();
       });
     }
     open() {
@@ -537,12 +614,12 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       ), this.removeAttribute("open");
     }
   }
-  const n1 = `.crs-gallery-video {
+  const oe = `.crs-gallery-video {
   border-radius: 12px;
 }`;
-  class i1 {
+  class se {
     constructor() {
-      this.debounceTimer = null, this.init();
+      this.debounceTimer = null, this.isClickOnThumbnail = !1, this.init();
     }
     init() {
       this.addStyles(), this.listenForShopifyEvents(), setTimeout(() => {
@@ -551,8 +628,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     async changeMobileGalleryPosition() {
       if (window.innerWidth > 1e3) return;
-      await v('product-gallery[style*="opacity: 1;"]');
-      const e = document.querySelectorAll("product-gallery"), t = await v(
+      await w('product-gallery[style*="opacity: 1;"]');
+      const e = document.querySelectorAll("product-gallery"), t = await w(
         "payment-terms ~ .product-info__separator"
       );
       e.length === 0 || !t || e.forEach((n) => {
@@ -571,139 +648,181 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addItemsToGallery() {
-      await v(".media-with-text__media video"), await v(".product product-gallery");
+      await w(".media-with-text__media video"), await w(".product product-gallery");
       const e = document.querySelectorAll(".media-with-text__media video"), t = document.querySelectorAll("product-gallery");
       if (t.length === 0 || e.length === 0) return;
       const n = [];
-      let s = 0;
+      let o = 0;
       e.forEach((i) => {
-        var c;
-        const o = (c = i.querySelector("source")) == null ? void 0 : c.getAttribute("src"), r = i.getAttribute("poster");
-        if (o) {
-          const a = {
-            id: `crs-video-${s++}`,
-            video: o,
+        var a;
+        const s = (a = i.querySelector("source")) == null ? void 0 : a.getAttribute("src"), r = i.getAttribute("poster");
+        if (s) {
+          const c = {
+            id: `crs-video-${o++}`,
+            video: s,
             poster: r || ""
           };
-          if (n.find((l) => l.video === o)) return;
-          n.push(a);
+          if (n.find((l) => l.video === s)) return;
+          n.push(c);
         }
       }), t.forEach((i) => {
-        const o = i.querySelector("media-carousel"), r = i.querySelector("page-dots"), c = i.querySelectorAll(
+        const s = i.querySelector("media-carousel"), r = i.querySelector("page-dots");
+        if (i.querySelectorAll(
           ".product-gallery__thumbnail"
-        );
-        if (i.querySelectorAll(".product-gallery__media"), !o || !r) return;
+        ), !s || !r) return;
         const a = Array.from(n).slice(0, 2);
-        a.forEach((l) => {
-          const g = (
+        r.addEventListener("click", (c) => {
+          c.target.closest(".product-gallery__thumbnail") && (this.isClickOnThumbnail = !0, u(
+            "exp_pdp_click_1",
+            "Gallery thumbnail",
+            "click",
+            "Product Gallery"
+          ), this.pushCurrentViewData(), setTimeout(() => {
+            this.isClickOnThumbnail = !1;
+          }, 1e3));
+        }), s.addEventListener("click", (c) => {
+          c.target.closest(".product-gallery__media");
+        }), a.forEach((c) => {
+          const l = (
             /* html */
             `
-          <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${l.id}">
-            <img src="${l.poster}" alt="sectional - Amora Open L Sectional - MC - Mario Capasa" srcset="${l.poster}&amp;width=56 56w, ${l.poster}&amp;width=64 64w, ${l.poster}&amp;width=112 112w, ${l.poster}&amp;width=128 128w, ${l.poster}&amp;width=168 168w, ${l.poster}&amp;width=192 192w" width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 56px, 64px" class="object-contain rounded-sm">
+          <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${c.id}">
+            <img src="${c.poster}" alt="sectional - Amora Open L Sectional - MC - Mario Capasa" srcset="${c.poster}&amp;width=56 56w, ${c.poster}&amp;width=64 64w, ${c.poster}&amp;width=112 112w, ${c.poster}&amp;width=128 128w, ${c.poster}&amp;width=168 168w, ${c.poster}&amp;width=192 192w" width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 56px, 64px" class="object-contain rounded-sm">
           </button>`
           );
-          r.insertAdjacentHTML("beforeend", g);
-          const y = (
+          r.insertAdjacentHTML("beforeend", l);
+          const h = (
             /* html */
-            `<div class="product-gallery__media product-gallery__media-crs" data-media-type="image" data-media-id="${l.id}">
-          <video class="crs-gallery-video" src="${l.video}" poster="${l.poster}" autoplay muted loop preload="metadata" loading="lazy"></video>
+            `<div class="product-gallery__media product-gallery__media-crs" data-media-type="image" data-media-id="${c.id}">
+          <video class="crs-gallery-video" src="${c.video}" poster="${c.poster}" autoplay muted loop preload="metadata" loading="lazy"></video>
         </div>`
           );
-          o.insertAdjacentHTML("beforeend", y);
-          const m = r.querySelector(`[data-media-id="${l.id}"]`), A = o.querySelector(`[data-media-id="${l.id}"]`);
-          m && A && m.addEventListener("click", () => {
-            this.handleThumbnailClick(
+          s.insertAdjacentHTML("beforeend", h);
+          const g = r.querySelector(`[data-media-id="${c.id}"]`), m = s.querySelector(`[data-media-id="${c.id}"]`);
+          g && m && g.addEventListener("click", () => {
+            this.isClickOnThumbnail = !0, this.handleThumbnailClick(
               i,
-              o,
-              A,
-              m
-            );
-          }), c.length > 0 && c.forEach((H) => {
-            H.addEventListener("click", (w) => {
-              const T = w.currentTarget;
-              T !== m && document.querySelectorAll(".product-gallery__thumbnail-crs").forEach((M) => {
-                if (M.classList.contains("is-selected")) {
-                  const E = T.getAttribute("data-media-id"), b = o.querySelector(
-                    `[data-media-id="${E}"]`
-                  );
-                  b && o.scrollTo({
-                    left: b.offsetLeft,
-                    behavior: "smooth"
-                  }), M.setAttribute("aria-current", "false"), M.classList.remove("is-selected");
-                  const L = i.querySelector("custom-cursor");
-                  L && (L.style.display = "", L.removeAttribute("hidden"));
-                }
+              s,
+              m,
+              g
+            ), setTimeout(() => {
+              this.isClickOnThumbnail = !1;
+            }, 1e3);
+          }), this.addScrollDetection(i, s, r, a);
+        }), document.addEventListener("click", (c) => {
+          const l = i.querySelector("custom-cursor"), h = c.target, g = i.querySelectorAll(
+            ".product-gallery__media:not(.product-gallery__media-crs)"
+          ), m = g[g.length - 1], b = s.querySelector(
+            `[data-media-id="${a[0].id}"]`
+          ), E = a.length > 1 ? s.querySelector(
+            `[data-media-id="${a[1].id}"]`
+          ) : null;
+          if (m && m.contains(h) && l && l.classList.contains("is-half-end") && b && (s.scrollTo({
+            left: b.offsetLeft,
+            behavior: "smooth"
+          }), this.updateThumbnailSelection(i, r, a[0].id)), b && b.contains(h)) {
+            if (l && l.classList.contains("is-half-end") && E)
+              s.scrollTo({
+                left: E.offsetLeft,
+                behavior: "smooth"
+              }), this.updateThumbnailSelection(i, r, a[1].id);
+            else if (l && l.classList.contains("is-half-start") && m) {
+              s.scrollTo({
+                left: m.offsetLeft,
+                behavior: "smooth"
               });
-            });
-          }), document.addEventListener("click", (H) => {
-            const w = i.querySelector("custom-cursor"), T = H.target, M = i.querySelectorAll(".product-gallery__media:not(.product-gallery__media-crs)"), E = M[M.length - 1], b = o.querySelector(`[data-media-id="${a[0].id}"]`), L = a.length > 1 ? o.querySelector(`[data-media-id="${a[1].id}"]`) : null;
-            if (E && E.contains(T) && w && w.classList.contains("is-half-end") && b && (o.scrollTo({
-              left: b.offsetLeft,
-              behavior: "smooth"
-            }), this.updateThumbnailSelection(i, r, a[0].id)), b && b.contains(T)) {
-              if (w && w.classList.contains("is-half-end") && L)
-                o.scrollTo({
-                  left: L.offsetLeft,
-                  behavior: "smooth"
-                }), this.updateThumbnailSelection(i, r, a[1].id);
-              else if (w && w.classList.contains("is-half-start") && E) {
-                o.scrollTo({
-                  left: E.offsetLeft,
-                  behavior: "smooth"
-                });
-                const V = i.querySelector(`[data-media-id="${E.getAttribute("data-media-id")}"]`);
-                V && this.updateThumbnailSelectionForNative(i, V);
-              }
+              const A = i.querySelector(
+                `[data-media-id="${m.getAttribute(
+                  "data-media-id"
+                )}"]`
+              );
+              A && this.updateThumbnailSelectionForNative(
+                i,
+                A
+              );
             }
-            L && L.contains(T) && w && w.classList.contains("is-half-start") && b && (o.scrollTo({
-              left: b.offsetLeft,
-              behavior: "smooth"
-            }), this.updateThumbnailSelection(i, r, a[0].id));
-          }), this.addScrollDetection(i, o, r, a);
+          }
+          E && E.contains(h) && l && l.classList.contains("is-half-start") && b && (s.scrollTo({
+            left: b.offsetLeft,
+            behavior: "smooth"
+          }), this.updateThumbnailSelection(i, r, a[0].id)), (g || b || E) && (l && l.classList.contains("is-half-start") ? (this.isClickOnThumbnail = !0, u(
+            "exp_pdp_click_2",
+            "Gallery Prev",
+            "click",
+            "Product Gallery"
+          ), this.pushCurrentViewData(), setTimeout(() => {
+            this.isClickOnThumbnail = !1;
+          }, 1e3)) : l && l.classList.contains("is-half-end") && (this.isClickOnThumbnail = !0, u(
+            "exp_pdp_click_3",
+            "Gallery Next",
+            "click",
+            "Product Gallery"
+          ), this.pushCurrentViewData()), setTimeout(() => {
+            this.isClickOnThumbnail = !1;
+          }, 1e3));
         });
       });
     }
-    addScrollDetection(e, t, n, s) {
+    addScrollDetection(e, t, n, o) {
       let i;
       t.addEventListener("scroll", () => {
         clearTimeout(i), i = window.setTimeout(() => {
-          this.checkVideoVisibility(e, t, n, s);
+          this.checkVideoVisibility(e, t, n, o);
         }, 100);
       });
     }
-    checkVideoVisibility(e, t, n, s) {
-      const i = t.clientWidth, o = t.scrollLeft;
+    checkVideoVisibility(e, t, n, o) {
+      const i = t.clientWidth, s = t.scrollLeft;
       let r = null;
-      for (const c of s) {
-        const a = t.querySelector(`[data-media-id="${c.id}"]`);
-        if (!a) continue;
-        const l = a.offsetLeft, g = a.offsetWidth;
-        if ((Math.min(l + g, o + i) - Math.max(l, o)) / g > 0.5) {
-          r = c;
+      for (const a of o) {
+        const c = t.querySelector(
+          `[data-media-id="${a.id}"]`
+        );
+        if (!c) continue;
+        const l = c.offsetLeft, h = c.offsetWidth;
+        if ((Math.min(l + h, s + i) - Math.max(l, s)) / h > 0.5) {
+          r = a;
           break;
         }
       }
       if (r) {
-        this.updateThumbnailSelection(e, n, r.id), e.querySelectorAll(".product-gallery__media").forEach((a) => {
-          a.classList.remove("is-selected");
+        this.updateThumbnailSelection(e, n, r.id), e.querySelectorAll(".product-gallery__media").forEach((c) => {
+          c.classList.remove("is-selected");
         });
-        const c = t.querySelector(`[data-media-id="${r.id}"]`);
-        c && c.classList.add("is-selected");
+        const a = t.querySelector(
+          `[data-media-id="${r.id}"]`
+        );
+        a && a.classList.add("is-selected");
       } else
-        e.querySelector(".product-gallery__thumbnail-crs.is-selected") && (e.querySelectorAll(".product-gallery__thumbnail-crs").forEach((a) => {
-          a.setAttribute("aria-current", "false"), a.classList.remove("is-selected");
-        }), e.querySelectorAll(".product-gallery__media-crs").forEach((a) => {
-          a.classList.remove("is-selected");
+        e.querySelector(
+          ".product-gallery__thumbnail-crs.is-selected"
+        ) && (e.querySelectorAll(".product-gallery__thumbnail-crs").forEach((c) => {
+          c.setAttribute("aria-current", "false"), c.classList.remove("is-selected");
+        }), e.querySelectorAll(".product-gallery__media-crs").forEach((c) => {
+          c.classList.remove("is-selected");
         }));
+      this.isClickOnThumbnail || (console.log("not click on thumbnail"), this.debounceTimer && clearTimeout(this.debounceTimer), this.debounceTimer = window.setTimeout(() => {
+        this.pushCurrentViewData();
+      }, 2e3));
     }
-    handleThumbnailClick(e, t, n, s) {
-      e.querySelectorAll(".product-gallery__media").forEach((o) => {
-        o.classList.remove("is-selected");
+    pushCurrentViewData() {
+      document.querySelectorAll(".product-gallery__thumbnail").forEach((e, t) => {
+        e.getAttribute("aria-current") === "true" && u(
+          "exp_pdp_view_1",
+          `Gallery Image ${t + 1}`,
+          "view",
+          "Product Gallery"
+        );
+      });
+    }
+    handleThumbnailClick(e, t, n, o) {
+      e.querySelectorAll(".product-gallery__media").forEach((s) => {
+        s.classList.remove("is-selected");
       }), n.classList.add("is-selected");
       const i = () => {
-        e.querySelectorAll(".product-gallery__thumbnail").forEach((o) => {
-          o.setAttribute("aria-current", "false"), o.classList.remove("is-selected");
-        }), s.classList.add("is-selected"), s.setAttribute("aria-current", "true");
+        e.querySelectorAll(".product-gallery__thumbnail").forEach((s) => {
+          s.setAttribute("aria-current", "false"), s.classList.remove("is-selected");
+        }), o.classList.add("is-selected"), o.setAttribute("aria-current", "true");
       };
       setTimeout(() => {
         i();
@@ -716,8 +835,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       e.querySelectorAll(".product-gallery__thumbnail").forEach((i) => {
         i.setAttribute("aria-current", "false"), i.classList.remove("is-selected");
       });
-      const s = t.querySelector(`[data-media-id="${n}"]`);
-      s && (s.classList.add("is-selected"), s.setAttribute("aria-current", "true"));
+      const o = t.querySelector(`[data-media-id="${n}"]`);
+      o && (o.classList.add("is-selected"), o.setAttribute("aria-current", "true"));
     }
     updateThumbnailSelectionForNative(e, t) {
       e.querySelectorAll(".product-gallery__thumbnail").forEach((n) => {
@@ -726,10 +845,10 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = n1, document.head.appendChild(e);
+      e.textContent = oe, document.head.appendChild(e);
     }
   }
-  const s1 = `.crs-data-arrive-badge {
+  const re = `.crs-data-arrive-badge {
   margin-top: 24px !important;
   display: flex;
   gap: 4px;
@@ -781,12 +900,17 @@ variant-picker.variant-picker [data-crs-variant="size"] {
 .crs-free-shipping-text {
   color: #000;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 22.4px;
 }
 .crs-free-shipping-text span {
   color: #1cb32b;
   text-transform: uppercase;
+}
+
+.free_ship_sec .pro-title {
+  color: #000;
+  font-size: 14px;
 }
 
 @media (max-width: 1000px) {
@@ -832,7 +956,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
   }
 }
 `;
-  class o1 {
+  class ae {
     constructor() {
       this.init();
     }
@@ -840,7 +964,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.addStyles(), this.addDataArriveElement(), this.changeFreeShippingSection();
     }
     async addDataArriveElement() {
-      const e = await v(".product-info__buy-buttons");
+      const e = await w(".product-info__buy-buttons");
       if (!e) return;
       const t = /* @__PURE__ */ new Date();
       t.setDate(t.getDate() + 10);
@@ -859,13 +983,25 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       </div>`
       );
       e.insertAdjacentHTML("beforebegin", i);
-      const o = document.querySelector("#ttt-c");
-      o && o.addEventListener("click", () => {
-        o.classList.toggle("tooltip_clicked");
-      });
+      const s = document.querySelector("#ttt-c");
+      s && (s.addEventListener("click", () => {
+        s.classList.toggle("tooltip_clicked"), u(
+          "exp_pdp_tooltip_1",
+          "Tooltip",
+          "click",
+          "Shipping Info"
+        );
+      }), s.addEventListener("mouseenter", () => {
+        s.classList.toggle("tooltip_clicked"), u(
+          "exp_pdp_tooltip_1",
+          "Tooltip",
+          "click",
+          "Shipping Info"
+        );
+      }));
     }
     async changeFreeShippingSection() {
-      const e = await v(".free_ship_sec");
+      const e = await w(".free_ship_sec");
       if (!e) return;
       const t = e.querySelector(".fs_info"), n = e.querySelector(".fs_info2");
       if (n && (n.classList.add("crs-free-shipping-text-container"), n.innerHTML = /* html */
@@ -875,16 +1011,16 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       </div>
       `), t) {
         t.classList.add("crs-warranty-text-container");
-        const s = t.querySelector(".pro-title");
-        s && (s.textContent = "12 Month Complimentary Warranty");
+        const o = t.querySelector(".pro-title");
+        o && (o.textContent = "12 Month Complimentary Warranty");
       }
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = s1, document.head.appendChild(e);
+      e.textContent = re, document.head.appendChild(e);
     }
   }
-  const r1 = `product-quick-add {
+  const ce = `product-quick-add {
   position: relative;
 }
 
@@ -905,8 +1041,8 @@ product-quick-add .price-list {
 }
 
 .crs-sticky-variant-item::after {
+  flex-shrink: 0;
   content: '';
-  margin-left: 4px;
   width: 6px;
   height: 12px;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" fill="none"><path fill="%23000" stroke="%23000" stroke-width=".2" d="m1.981.787 5.09 5.142.07.07-.07.071-5.09 5.144-.07.07-.072-.07-.881-.891H.761l.168-.17L5.039 6 .928 1.847l-.07-.07.07-.07.91-.92.071-.072.071.072Z"/></svg>');
@@ -1095,7 +1231,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
   }
 }
 `;
-  class a1 {
+  class le {
     constructor() {
       this.init();
     }
@@ -1107,22 +1243,22 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         ".crs-sticky-variant-picker-options-list"
       ).forEach((t) => {
         const n = t;
-        let s = !1, i = 0, o = 0;
+        let o = !1, i = 0, s = 0;
         n.addEventListener("mousedown", (r) => {
-          this.isMobileDevice() || (s = !0, n.classList.add("dragging"), i = r.pageX - n.offsetLeft, o = n.scrollLeft, r.preventDefault());
+          this.isMobileDevice() || (o = !0, n.classList.add("dragging"), i = r.pageX - n.offsetLeft, s = n.scrollLeft, r.preventDefault());
         }), n.addEventListener("mouseleave", () => {
-          s = !1, n.classList.remove("dragging");
+          o = !1, n.classList.remove("dragging");
         }), n.addEventListener("mouseup", () => {
-          s = !1, n.classList.remove("dragging"), setTimeout(() => {
+          o = !1, n.classList.remove("dragging"), setTimeout(() => {
             n.style.scrollSnapType = "x mandatory";
           }, 100);
         }), n.addEventListener("mousemove", (r) => {
-          if (!s) return;
+          if (!o) return;
           r.preventDefault(), n.style.scrollSnapType = "none";
-          const a = (r.pageX - n.offsetLeft - i) * 2;
-          n.scrollLeft = o - a;
+          const c = (r.pageX - n.offsetLeft - i) * 2;
+          n.scrollLeft = s - c;
         }), n.addEventListener("selectstart", (r) => {
-          s && r.preventDefault();
+          o && r.preventDefault();
         }), n.addEventListener(
           "click",
           (r) => {
@@ -1138,56 +1274,56 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ) || "ontouchstart" in window || window.innerWidth <= 768;
     }
     async changeStickySection() {
-      var a, l, g, y;
-      const e = new Promise((m) => setTimeout(m, 1e3)), t = await v("product-quick-add"), n = await Promise.race([
-        v('[data-crs-variant="color"]'),
+      var c, l, h, g;
+      const e = new Promise((m) => setTimeout(m, 1e3)), t = await w("product-quick-add"), n = await Promise.race([
+        w('[data-crs-variant="color"]'),
         e
-      ]), s = await Promise.race([
-        v('[data-crs-variant="size"]'),
+      ]), o = await Promise.race([
+        w('[data-crs-variant="size"]'),
         e
-      ]), i = t == null ? void 0 : t.querySelector("price-list"), o = t == null ? void 0 : t.querySelector("variant-media"), r = (l = (a = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : a.textContent) == null ? void 0 : l.replace("Sale price", "").trim(), c = t == null ? void 0 : t.querySelectorAll("button");
-      if (o && o.addEventListener("click", () => {
+      ]), i = t == null ? void 0 : t.querySelector("price-list"), s = t == null ? void 0 : t.querySelector("variant-media"), r = (l = (c = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : c.textContent) == null ? void 0 : l.replace("Sale price", "").trim(), a = t == null ? void 0 : t.querySelectorAll("button");
+      if (s && s.addEventListener("click", () => {
         const m = document.querySelector("product-gallery");
-        m && window.scrollTo({
+        m && (window.scrollTo({
           top: m.getBoundingClientRect().top,
           behavior: "smooth"
-        });
-      }), r && c && c.forEach((m) => {
-        const A = m.querySelector(".crs-sticky-price");
-        A && A.remove(), m.insertAdjacentHTML(
+        }), u("exp_pdp_click_19", "Product Image", "click", "Sticky"));
+      }), r && a && a.forEach((m) => {
+        const b = m.querySelector(".crs-sticky-price");
+        b && b.remove(), m.insertAdjacentHTML(
           "beforeend",
           /* HTML */
           ` <div class="crs-sticky-price">${r}</div> `
         );
       }), i) {
-        let m, A = [], H = [], w = [], T = [];
-        n instanceof Element && (m = (y = (g = n.querySelector("variant-option-value")) == null ? void 0 : g.textContent) == null ? void 0 : y.trim(), A = n.querySelectorAll(
+        let m, b = [], E = [], A = [], B = [];
+        n instanceof Element && (m = (g = (h = n.querySelector("variant-option-value")) == null ? void 0 : h.textContent) == null ? void 0 : g.trim(), b = n.querySelectorAll(
           ".variant-picker__option-values input"
-        ), w = n.querySelectorAll(
+        ), A = n.querySelectorAll(
           ".variant-picker__option-values label"
-        )), s instanceof Element && (H = s.querySelectorAll(
+        )), o instanceof Element && (E = o.querySelectorAll(
           ".variant-picker__option-values input"
-        ), T = s.querySelectorAll(
+        ), B = o.querySelectorAll(
           ".variant-picker__option-values label"
         ));
-        let M, E, b, L;
-        A.forEach((p) => {
-          var u;
-          p.checked && (E = p.id, M = (u = p.nextElementSibling) == null ? void 0 : u.outerHTML);
-        }), H.forEach((p) => {
-          p.checked && (L = p.id, b = p.value);
+        let P, W, V, G;
+        b.forEach((p) => {
+          var f;
+          p.checked && (W = p.id, P = (f = p.nextElementSibling) == null ? void 0 : f.outerHTML);
+        }), E.forEach((p) => {
+          p.checked && (G = p.id, V = p.value);
         });
-        const V = (
+        const ye = (
           /* HTML */
           `
         <div class="crs-sticky-variant-picker">
-          ${A.length > 0 ? (
+          ${b.length > 0 ? (
             /* HTML */
             `<div
                 class="crs-sticky-variant-item crs-sticky-variant-color"
               >
                 <div class="crs-sticky-variant-swatch">
-                  ${M}
+                  ${P}
                 </div>
                 <div class="crs-sticky-variant-item-wrap">
                   <div class="crs-sticky-variant-label">Color</div>
@@ -1195,14 +1331,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 </div>
               </div>`
           ) : ""}
-          ${H.length > 0 ? (
+          ${E.length > 0 ? (
             /* HTML */
             `<div
                 class="crs-sticky-variant-item crs-sticky-variant-size"
               >
                 <div class="crs-sticky-variant-item-wrap">
                   <div class="crs-sticky-variant-label">Size</div>
-                  <div class="crs-sticky-variant-value">${b}</div>
+                  <div class="crs-sticky-variant-value">${V}</div>
                 </div>
               </div>`
           ) : ""}
@@ -1223,9 +1359,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               </button>
             </div>
             <div class="crs-sticky-variant-picker-options-list">
-              ${Array.from(w).map((p) => {
-            const u = p.cloneNode(!0);
-            return p.getAttribute("for") === E && u.classList.add("crs-selected"), u.outerHTML;
+              ${Array.from(A).map((p) => {
+            const f = p.cloneNode(!0);
+            return p.getAttribute("for") === W && f.classList.add("crs-selected"), f.outerHTML;
           }).join("")}
             </div>
           </div>
@@ -1239,7 +1375,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 <span></span>
                 <div class="crs-sticky-variant-picker-options-label">Size:</div>
                 <div class="crs-sticky-variant-picker-options-value">
-                  ${b}
+                  ${V}
                 </div>
               </button>
               <button class="crs-sticky-variant-picker-option-dimension">
@@ -1247,9 +1383,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               </button>
             </div>
             <div class="crs-sticky-variant-picker-options-list">
-              ${Array.from(T).map((p) => {
-            const u = p.cloneNode(!0);
-            return p.getAttribute("for") === L && u.classList.add("crs-selected"), u.outerHTML;
+              ${Array.from(B).map((p) => {
+            const f = p.cloneNode(!0);
+            return p.getAttribute("for") === G && f.classList.add("crs-selected"), f.outerHTML;
           }).join("")}
             </div>
           </div>
@@ -1258,133 +1394,135 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         ), N = t.querySelector(
           ".crs-sticky-variant-picker"
         );
-        N && N.remove(), i.insertAdjacentHTML("afterend", V), this.initializeDragScroll();
-        const G = t.querySelector(
+        N && N.remove(), i.insertAdjacentHTML("afterend", ye), this.initializeDragScroll();
+        const O = t.querySelector(
           ".crs-sticky-variant-picker-options .crs-sticky-variant-picker-option-dimension"
         );
-        G && G.addEventListener("click", () => {
+        O && O.addEventListener("click", () => {
           const p = document.getElementById(
             "dimension-info-dialog"
           );
-          p && p.open();
+          p && (p.open(), u("exp_pdp_click_18", "View Dimensions", "click", "Sticky"));
         });
         const d = t.querySelector(
           ".crs-sticky-variant-picker"
-        ), z = d == null ? void 0 : d.querySelector(
+        ), $ = d == null ? void 0 : d.querySelector(
           ".crs-sticky-variant-color"
-        ), j = d == null ? void 0 : d.querySelector(
+        ), R = d == null ? void 0 : d.querySelector(
           ".crs-sticky-variant-size"
-        ), B = d == null ? void 0 : d.querySelectorAll(
+        ), z = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options"
-        ), h = d == null ? void 0 : d.querySelector(
+        ), C = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"]'
-        ), f = d == null ? void 0 : d.querySelector(
+        ), y = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"]'
-        ), W = d == null ? void 0 : d.querySelectorAll(
+        ), Z = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options-back"
         );
-        z == null || z.addEventListener("click", () => {
-          h == null || h.removeAttribute("hidden"), f == null || f.setAttribute("hidden", "true"), setTimeout(() => {
-            const p = h == null ? void 0 : h.querySelector(
+        $ == null || $.addEventListener("click", () => {
+          C == null || C.removeAttribute("hidden"), y == null || y.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Color", "click", "Sticky"), setTimeout(() => {
+            const p = C == null ? void 0 : C.querySelector(
               ".crs-sticky-variant-picker-options-list"
-            ), u = h == null ? void 0 : h.querySelector(
+            ), f = C == null ? void 0 : C.querySelector(
               ".crs-selected"
             );
-            if (u && p) {
-              const S = p.clientWidth, k = p.scrollLeft, x = u.offsetLeft, I = u.clientWidth, _ = x + I, F = k, D = k + S;
-              let q;
-              if (_ > D)
-                q = _ - S + 10;
-              else if (x < F)
-                q = x;
+            if (f && p) {
+              const _ = p.clientWidth, k = p.scrollLeft, x = f.offsetLeft, M = f.clientWidth, L = x + M, T = k, q = k + _;
+              let S;
+              if (L > q)
+                S = L - _ + 10;
+              else if (x < T)
+                S = x;
               else
                 return;
               p.scrollTo({
-                left: Math.max(0, q),
+                left: Math.max(0, S),
                 behavior: "smooth"
               });
             }
           }, 50);
-        }), j == null || j.addEventListener("click", () => {
-          f == null || f.removeAttribute("hidden"), h == null || h.setAttribute("hidden", "true"), setTimeout(() => {
-            const p = f == null ? void 0 : f.querySelector(
+        }), R == null || R.addEventListener("click", () => {
+          y == null || y.removeAttribute("hidden"), C == null || C.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Size", "click", "Sticky"), setTimeout(() => {
+            const p = y == null ? void 0 : y.querySelector(
               ".crs-sticky-variant-picker-options-list"
-            ), u = f == null ? void 0 : f.querySelector(
+            ), f = y == null ? void 0 : y.querySelector(
               ".crs-selected"
             );
-            if (u && p) {
-              const S = p.clientWidth, k = p.scrollLeft, x = u.offsetLeft, I = u.clientWidth, _ = x + I, F = k, D = k + S;
-              let q;
-              if (_ > D)
-                q = _ - S + 10;
-              else if (x < F)
-                q = x;
+            if (f && p) {
+              const _ = p.clientWidth, k = p.scrollLeft, x = f.offsetLeft, M = f.clientWidth, L = x + M, T = k, q = k + _;
+              let S;
+              if (L > q)
+                S = L - _ + 10;
+              else if (x < T)
+                S = x;
               else
                 return;
               p.scrollTo({
-                left: Math.max(0, q),
+                left: Math.max(0, S),
                 behavior: "smooth"
               });
             }
           }, 50);
-        }), W == null || W.forEach((p) => {
+        }), Z == null || Z.forEach((p) => {
           p.addEventListener("click", () => {
-            B == null || B.forEach((u) => {
-              u.setAttribute("hidden", "true");
+            z == null || z.forEach((f) => {
+              f.setAttribute("hidden", "true"), u("exp_pdp_click_17", "Back", "click", "Sticky");
             });
           });
         });
-        const $ = d == null ? void 0 : d.querySelector(
+        const F = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"] .crs-sticky-variant-picker-options-list'
-        ), Z = d == null ? void 0 : d.querySelector(
+        ), D = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"] .crs-sticky-variant-picker-options-list'
         );
-        $ == null || $.addEventListener("click", (p) => {
-          var S;
+        F == null || F.addEventListener("click", (p) => {
+          var _;
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
-          const u = p.target.closest("label");
-          if (u) {
-            const k = u.getAttribute("for");
+          const f = p.target.closest("label");
+          if (f) {
+            const k = f.getAttribute("for");
             if (k) {
               const x = document.getElementById(
                 k
               );
               if (x) {
-                x.click(), $.querySelectorAll("label").forEach(
-                  (m1) => m1.classList.remove("crs-selected")
-                ), u.classList.add("crs-selected");
-                const _ = x.value, F = (S = x.nextElementSibling) == null ? void 0 : S.outerHTML, D = d == null ? void 0 : d.querySelector(
+                x.click(), F.querySelectorAll("label").forEach(
+                  (we) => we.classList.remove("crs-selected")
+                ), f.classList.add("crs-selected");
+                const L = x.value, T = (_ = x.nextElementSibling) == null ? void 0 : _.outerHTML, q = d == null ? void 0 : d.querySelector(
                   ".crs-sticky-variant-color .crs-sticky-variant-value"
-                ), q = d == null ? void 0 : d.querySelector(
+                ), S = d == null ? void 0 : d.querySelector(
                   ".crs-sticky-variant-color .crs-sticky-variant-swatch"
-                ), U = h == null ? void 0 : h.querySelector(
+                ), U = C == null ? void 0 : C.querySelector(
                   ".crs-sticky-variant-picker-options-value"
                 );
-                D && (D.textContent = _), q && F && (q.innerHTML = F), U && (U.textContent = _), h == null || h.setAttribute("hidden", "true");
+                q && (q.textContent = L), S && T && (S.innerHTML = T), U && (U.textContent = L), C == null || C.setAttribute("hidden", "true");
               }
             }
+            u("exp_pdp_click_16", "Variant Item", "click", "Sticky Color"), u("exp_pdp_click_16.1", `${f.textContent.trim()}`, "click", "Sticky Color");
           }
-        }), Z == null || Z.addEventListener("click", (p) => {
+        }), D == null || D.addEventListener("click", (p) => {
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
-          const u = p.target.closest("label");
-          if (u) {
-            const S = u.getAttribute("for");
-            if (S) {
+          const f = p.target.closest("label");
+          if (f) {
+            const _ = f.getAttribute("for");
+            if (_) {
               const k = document.getElementById(
-                S
+                _
               );
               if (k) {
-                k.click(), Z.querySelectorAll("label").forEach(
-                  (D) => D.classList.remove("crs-selected")
-                ), u.classList.add("crs-selected");
-                const I = k.value, _ = d == null ? void 0 : d.querySelector(
+                k.click(), D.querySelectorAll("label").forEach(
+                  (q) => q.classList.remove("crs-selected")
+                ), f.classList.add("crs-selected");
+                const M = k.value, L = d == null ? void 0 : d.querySelector(
                   ".crs-sticky-variant-size .crs-sticky-variant-value"
-                ), F = f == null ? void 0 : f.querySelector(
+                ), T = y == null ? void 0 : y.querySelector(
                   ".crs-sticky-variant-picker-options-value"
                 );
-                _ && (_.textContent = I), F && (F.textContent = I), f == null || f.setAttribute("hidden", "true");
+                L && (L.textContent = M), T && (T.textContent = M), y == null || y.setAttribute("hidden", "true");
               }
             }
+            u("exp_pdp_click_16", "Variant Item", "click", "Sticky Size"), u("exp_pdp_click_16.1", `${f.textContent.trim()}`, "click", "Sticky Size");
           }
         });
       }
@@ -1406,10 +1544,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = r1, document.head.appendChild(e);
+      e.textContent = ce, document.head.appendChild(e);
     }
   }
-  const c1 = `/* Reviews Component Styles */
+  const de = `/* Reviews Component Styles */
 
 .review-block .text-reviews {
   display: none;
@@ -1714,7 +1852,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     scroll-snap-align: start;
   }
 }
-`, P = {
+`, j = {
     trustpilot: [
       {
         author: "Kendra Fields",
@@ -1790,7 +1928,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         rating: !1
       }
     ]
-  }, R = {
+  }, I = {
     trustpilot: (
       /* HTML */
       `<svg
@@ -1863,134 +2001,283 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     />
   </svg>`
     )
-  }, l1 = {
-    trustpilot: `<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-  <path d="M19 7.42306H11.9049L9.79148 0.629883L7.52708 7.42306H0.582947L6.16845 11.499L4.05501 18.2922L9.79148 14.0653L15.377 18.2922L13.2635 11.499L19 7.42306Z" fill="#00B67A"/>
-  <path d="M13.7165 13.0086L13.2636 11.499L9.79156 14.0654L13.7165 13.0086Z" fill="#005128"/>
-</svg>`,
-    reddit: `<svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-  <g clip-path="url(#clip0_373_6731)">
-    <path d="M9.43335 0C4.46252 0 0.43335 4.02917 0.43335 9C0.43335 11.485 1.44085 13.735 3.06918 15.3642L1.35502 17.0783C1.01502 17.4183 1.25585 18 1.73668 18H9.43335C14.4042 18 18.4333 13.9708 18.4333 9C18.4333 4.02917 14.4042 0 9.43335 0Z" fill="#FF4500"/>
-    <path d="M14.535 11.0166C15.6957 11.0166 16.6367 10.0756 16.6367 8.9149C16.6367 7.75418 15.6957 6.81323 14.535 6.81323C13.3743 6.81323 12.4333 7.75418 12.4333 8.9149C12.4333 10.0756 13.3743 11.0166 14.535 11.0166Z" fill="url(#paint0_radial_373_6731)"/>
-    <path d="M4.33165 11.0166C5.49237 11.0166 6.43331 10.0756 6.43331 8.9149C6.43331 7.75418 5.49237 6.81323 4.33165 6.81323C3.17093 6.81323 2.22998 7.75418 2.22998 8.9149C2.22998 10.0756 3.17093 11.0166 4.33165 11.0166Z" fill="url(#paint1_radial_373_6731)"/>
-    <path d="M9.43835 15.22C12.7521 15.22 15.4384 13.2053 15.4384 10.72C15.4384 8.23469 12.7521 6.21997 9.43835 6.21997C6.12465 6.21997 3.43835 8.23469 3.43835 10.72C3.43835 13.2053 6.12465 15.22 9.43835 15.22Z" fill="url(#paint2_radial_373_6731)"/>
-    <path d="M7.66503 10.2901C7.63003 11.0468 7.1242 11.3218 6.53503 11.3218C5.94587 11.3218 5.4967 10.9109 5.5317 10.1543C5.5667 9.39759 6.07253 8.90259 6.6617 8.90259C7.25087 8.90259 7.70003 9.53425 7.66503 10.2909V10.2901Z" fill="url(#paint3_radial_373_6731)"/>
-    <path d="M11.2125 10.2901C11.2475 11.0468 11.7533 11.3218 12.3425 11.3218C12.9317 11.3218 13.3808 10.9109 13.3458 10.1543C13.3108 9.39759 12.805 8.90259 12.2158 8.90259C11.6267 8.90259 11.1775 9.53425 11.2125 10.2909V10.2901Z" fill="url(#paint4_radial_373_6731)"/>
-    <path d="M7.06915 9.95169C7.19801 9.95169 7.30248 9.8379 7.30248 9.69753C7.30248 9.55715 7.19801 9.44336 7.06915 9.44336C6.94028 9.44336 6.83582 9.55715 6.83582 9.69753C6.83582 9.8379 6.94028 9.95169 7.06915 9.95169Z" fill="#FFC49C"/>
-    <path d="M12.6175 9.95169C12.7464 9.95169 12.8508 9.8379 12.8508 9.69753C12.8508 9.55715 12.7464 9.44336 12.6175 9.44336C12.4886 9.44336 12.3842 9.55715 12.3842 9.69753C12.3842 9.8379 12.4886 9.95169 12.6175 9.95169Z" fill="#FFC49C"/>
-    <path d="M9.43833 11.9099C8.70833 11.9099 8.00833 11.9457 7.36167 12.0116C7.25083 12.0224 7.18083 12.1374 7.22417 12.2399C7.58667 13.1057 8.44167 13.7141 9.43833 13.7141C10.435 13.7141 11.2908 13.1057 11.6525 12.2399C11.6958 12.1374 11.625 12.0224 11.515 12.0116C10.8675 11.9457 10.1683 11.9099 9.43833 11.9099Z" fill="url(#paint5_radial_373_6731)"/>
-    <path d="M12.7242 5.60822C13.5466 5.60822 14.2133 4.94149 14.2133 4.11905C14.2133 3.29661 13.5466 2.62988 12.7242 2.62988C11.9017 2.62988 11.235 3.29661 11.235 4.11905C11.235 4.94149 11.9017 5.60822 12.7242 5.60822Z" fill="url(#paint6_radial_373_6731)"/>
-    <path d="M9.41674 6.40995C9.23841 6.40995 9.09424 6.33578 9.09424 6.22078C9.09424 4.88661 10.1801 3.80078 11.5142 3.80078C11.6926 3.80078 11.8367 3.94495 11.8367 4.12328C11.8367 4.30161 11.6926 4.44578 11.5142 4.44578C10.5359 4.44578 9.74007 5.24161 9.74007 6.21995C9.74007 6.33495 9.5959 6.40911 9.41757 6.40911L9.41674 6.40995Z" fill="url(#paint7_radial_373_6731)"/>
-    <path d="M5.66837 10.2209C5.70087 9.50759 6.17503 9.04092 6.72587 9.04092C7.24753 9.04092 7.65087 9.57342 7.66587 10.2351C7.68003 9.49509 7.23837 8.90259 6.6617 8.90259C6.08503 8.90259 5.5667 9.40675 5.5317 10.1693C5.4967 10.9318 5.94587 11.3218 6.53503 11.3218C6.5492 11.3218 6.5642 11.3218 6.57837 11.3218C6.0417 11.3084 5.6367 10.9226 5.6692 10.2218L5.66837 10.2209Z" fill="#842123"/>
-    <path d="M13.2084 10.2209C13.1759 9.50759 12.7017 9.04092 12.1509 9.04092C11.6292 9.04092 11.2259 9.57342 11.2109 10.2351C11.1967 9.49509 11.6384 8.90259 12.2151 8.90259C12.8042 8.90259 13.3101 9.40675 13.3451 10.1693C13.3801 10.9318 12.9309 11.3218 12.3417 11.3218C12.3276 11.3218 12.3126 11.3218 12.2984 11.3218C12.8351 11.3084 13.2401 10.9226 13.2076 10.2218L13.2084 10.2209Z" fill="#842123"/>
-  </g>
-  <defs>
-    <radialGradient id="paint0_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14.5792 7.65367) scale(4.24833 3.69605)">
-      <stop stop-color="#FEFFFF"/>
-      <stop offset="0.4" stop-color="#FEFFFF"/>
-      <stop offset="0.51" stop-color="#F9FCFC"/>
-      <stop offset="0.62" stop-color="#EDF3F5"/>
-      <stop offset="0.7" stop-color="#DEE9EC"/>
-      <stop offset="0.72" stop-color="#D8E4E8"/>
-      <stop offset="0.76" stop-color="#CCD8DF"/>
-      <stop offset="0.8" stop-color="#C8D5DD"/>
-      <stop offset="0.83" stop-color="#CCD6DE"/>
-      <stop offset="0.85" stop-color="#D8DBE2"/>
-      <stop offset="0.88" stop-color="#EDE3E9"/>
-      <stop offset="0.9" stop-color="#FFEBEF"/>
-    </radialGradient>
-    <radialGradient id="paint1_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4.37581 1.00615) scale(4.24833 3.69605)">
-      <stop stop-color="#FEFFFF"/>
-      <stop offset="0.4" stop-color="#FEFFFF"/>
-      <stop offset="0.51" stop-color="#F9FCFC"/>
-      <stop offset="0.62" stop-color="#EDF3F5"/>
-      <stop offset="0.7" stop-color="#DEE9EC"/>
-      <stop offset="0.72" stop-color="#D8E4E8"/>
-      <stop offset="0.76" stop-color="#CCD8DF"/>
-      <stop offset="0.8" stop-color="#C8D5DD"/>
-      <stop offset="0.83" stop-color="#CCD6DE"/>
-      <stop offset="0.85" stop-color="#D8DBE2"/>
-      <stop offset="0.88" stop-color="#EDE3E9"/>
-      <stop offset="0.9" stop-color="#FFEBEF"/>
-    </radialGradient>
-    <radialGradient id="paint2_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9.56752 7.12272) scale(12.815 8.9705)">
-      <stop stop-color="#FEFFFF"/>
-      <stop offset="0.4" stop-color="#FEFFFF"/>
-      <stop offset="0.51" stop-color="#F9FCFC"/>
-      <stop offset="0.62" stop-color="#EDF3F5"/>
-      <stop offset="0.7" stop-color="#DEE9EC"/>
-      <stop offset="0.72" stop-color="#D8E4E8"/>
-      <stop offset="0.76" stop-color="#CCD8DF"/>
-      <stop offset="0.8" stop-color="#C8D5DD"/>
-      <stop offset="0.83" stop-color="#CCD6DE"/>
-      <stop offset="0.85" stop-color="#D8DBE2"/>
-      <stop offset="0.88" stop-color="#EDE3E9"/>
-      <stop offset="0.9" stop-color="#FFEBEF"/>
-    </radialGradient>
-    <radialGradient id="paint3_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.65414 10.6263) scale(1.14579 1.65979)">
-      <stop stop-color="#FF6600"/>
-      <stop offset="0.5" stop-color="#FF4500"/>
-      <stop offset="0.7" stop-color="#FC4301"/>
-      <stop offset="0.82" stop-color="#F43F07"/>
-      <stop offset="0.92" stop-color="#E53812"/>
-      <stop offset="1" stop-color="#D4301F"/>
-    </radialGradient>
-    <radialGradient id="paint4_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.2307 10.6263) rotate(180) scale(1.14579 1.65979)">
-      <stop stop-color="#FF6600"/>
-      <stop offset="0.5" stop-color="#FF4500"/>
-      <stop offset="0.7" stop-color="#FC4301"/>
-      <stop offset="0.82" stop-color="#F43F07"/>
-      <stop offset="0.92" stop-color="#E53812"/>
-      <stop offset="1" stop-color="#D4301F"/>
-    </radialGradient>
-    <radialGradient id="paint5_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9.4275 13.966) scale(3.775 2.4915)">
-      <stop stop-color="#172E35"/>
-      <stop offset="0.29" stop-color="#0E1C21"/>
-      <stop offset="0.73" stop-color="#030708"/>
-      <stop offset="1"/>
-    </radialGradient>
-    <radialGradient id="paint6_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.7567 2.73498) scale(3.31417 3.24788)">
-      <stop stop-color="#FEFFFF"/>
-      <stop offset="0.4" stop-color="#FEFFFF"/>
-      <stop offset="0.51" stop-color="#F9FCFC"/>
-      <stop offset="0.62" stop-color="#EDF3F5"/>
-      <stop offset="0.7" stop-color="#DEE9EC"/>
-      <stop offset="0.72" stop-color="#D8E4E8"/>
-      <stop offset="0.76" stop-color="#CCD8DF"/>
-      <stop offset="0.8" stop-color="#C8D5DD"/>
-      <stop offset="0.83" stop-color="#CCD6DE"/>
-      <stop offset="0.85" stop-color="#D8DBE2"/>
-      <stop offset="0.88" stop-color="#EDE3E9"/>
-      <stop offset="0.9" stop-color="#FFEBEF"/>
-    </radialGradient>
-    <radialGradient id="paint7_radial_373_6731" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11.3759 6.08995) scale(2.71667)">
-      <stop offset="0.48" stop-color="#7A9299"/>
-      <stop offset="0.67" stop-color="#172E35"/>
-      <stop offset="0.75"/>
-      <stop offset="0.82" stop-color="#172E35"/>
-    </radialGradient>
-    <clipPath id="clip0_373_6731">
-      <rect width="18" height="18" fill="white" transform="translate(0.43335)"/>
-    </clipPath>
-  </defs>
-</svg>`,
-    yelp: `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="19" viewBox="0 0 15 19" fill="none">
-  <g clip-path="url(#clip0_373_6565)">
-    <mask id="mask0_373_6565" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="15" height="19">
-      <path d="M0.216675 0H14.2167V19H0.216675V0Z" fill="white"/>
-    </mask>
-    <g mask="url(#mask0_373_6565)">
-      <path d="M4.82267 11.3801L5.62367 11.1941C5.65032 11.1888 5.67669 11.1821 5.70267 11.1741C5.92367 11.1147 6.11297 10.9718 6.23068 10.7756C6.34839 10.5793 6.38532 10.345 6.33367 10.1221L6.33067 10.1071C6.30427 10.0005 6.25814 9.89975 6.19467 9.81011C6.10488 9.69644 5.99381 9.60134 5.86767 9.53011C5.71903 9.44543 5.56347 9.3735 5.40267 9.31511L4.52467 8.99511C4.03173 8.81171 3.53704 8.63304 3.04067 8.45911C2.71767 8.34411 2.44467 8.24411 2.20767 8.17011C2.16267 8.15611 2.11267 8.14311 2.07267 8.12911C1.78567 8.04111 1.58367 8.00411 1.41267 8.00311C1.29863 7.9987 1.185 8.01917 1.07967 8.06311C0.970276 8.1108 0.872147 8.18099 0.791673 8.26911C0.751673 8.31511 0.713673 8.36211 0.677673 8.41211C0.609324 8.5175 0.552974 8.6302 0.509673 8.74811C0.34679 9.22921 0.265667 9.7342 0.269673 10.2421C0.273673 10.7021 0.285673 11.2921 0.539673 11.6911C0.60062 11.7936 0.682379 11.8822 0.779673 11.9511C0.959673 12.0751 1.14067 12.0911 1.32967 12.1051C1.61267 12.1251 1.88667 12.0551 2.15967 11.9931L4.82067 11.3791H4.82267V11.3801ZM13.7577 7.13011C13.539 6.67107 13.2449 6.25193 12.8877 5.89011C12.7966 5.80344 12.6963 5.72699 12.5887 5.66211C12.5354 5.6332 12.4807 5.60717 12.4247 5.58411C12.3167 5.53929 12.2001 5.51908 12.0833 5.52496C11.9666 5.53084 11.8526 5.56266 11.7497 5.61811C11.5967 5.69411 11.4307 5.81611 11.2117 6.02011C11.1817 6.05011 11.1427 6.08411 11.1087 6.11611C10.9277 6.28611 10.7257 6.49611 10.4857 6.74111C10.1157 7.11511 9.74967 7.49211 9.38767 7.87311L8.73767 8.54611C8.61899 8.66908 8.51093 8.80189 8.41467 8.94311C8.33267 9.06211 8.27467 9.19611 8.24367 9.33811C8.2259 9.44665 8.22862 9.55756 8.25167 9.66511C8.25167 9.67011 8.25367 9.67511 8.25467 9.67911C8.30597 9.90228 8.44195 10.0968 8.63394 10.2216C8.82592 10.3464 9.05889 10.3918 9.28367 10.3481C9.31058 10.3441 9.33728 10.3387 9.36367 10.3321L12.8257 9.53211C13.0987 9.47011 13.3757 9.41211 13.6207 9.27011C13.7857 9.17511 13.9417 9.08011 14.0487 8.89011C14.1061 8.78518 14.1409 8.66934 14.1507 8.55011C14.2037 8.07911 13.9567 7.54411 13.7577 7.13011ZM7.56067 8.58611C7.81067 8.27111 7.81067 7.80111 7.83267 7.41811C7.90767 6.13611 7.98667 4.85311 8.04867 3.57111C8.07267 3.08511 8.12467 2.60511 8.09567 2.11611C8.07067 1.71211 8.06767 1.24811 7.81267 0.91611C7.36167 0.33311 6.40067 0.38011 5.74567 0.47211C5.54329 0.500004 5.34239 0.537715 5.14367 0.58511C4.94367 0.63311 4.74667 0.68511 4.55367 0.74711C3.92467 0.95311 3.04067 1.33111 2.89167 2.05511C2.80667 2.46511 3.00767 2.88311 3.16267 3.25711C3.35067 3.70911 3.60867 4.11711 3.84267 4.54411C4.46267 5.66911 5.09367 6.78711 5.72267 7.90711C5.91067 8.24111 6.11567 8.66411 6.47967 8.83711C6.50352 8.84766 6.52789 8.857 6.55267 8.86511C6.71498 8.9263 6.89175 8.93815 7.06077 8.89919C7.22979 8.86022 7.38353 8.77218 7.50267 8.64611C7.52305 8.62715 7.54242 8.60712 7.56067 8.58611ZM7.25967 12.0171C7.19609 11.9277 7.11481 11.8522 7.02086 11.7955C6.92691 11.7387 6.82231 11.7019 6.71354 11.6873C6.60477 11.6727 6.49415 11.6805 6.38855 11.7104C6.28295 11.7403 6.18463 11.7916 6.09967 11.8611C5.95817 11.9726 5.83178 12.102 5.72367 12.2461C5.69567 12.2811 5.66967 12.3281 5.63667 12.3591L5.07967 13.1241C4.76467 13.5531 4.45267 13.9831 4.14467 14.4191C3.94367 14.7011 3.76967 14.9391 3.63167 15.1501C3.60567 15.1901 3.57867 15.2341 3.55367 15.2701C3.38867 15.5241 3.29567 15.7101 3.24767 15.8761C3.21175 15.9863 3.20048 16.1031 3.21467 16.2181C3.22987 16.338 3.27044 16.4532 3.33367 16.5561C3.36667 16.6081 3.40367 16.6581 3.44167 16.7061C3.52507 16.802 3.61899 16.8882 3.72167 16.9631C4.10567 17.2301 4.52667 17.4231 4.96967 17.5711C5.33767 17.6931 5.72067 17.7661 6.10867 17.7881C6.23606 17.7921 6.36349 17.782 6.48867 17.7581C6.54867 17.7441 6.60667 17.7281 6.66567 17.7071C6.77865 17.6649 6.88153 17.5995 6.96767 17.5151C7.04945 17.433 7.11226 17.3341 7.15167 17.2251C7.21567 17.0651 7.25867 16.8621 7.28567 16.5601L7.29867 16.4181C7.32067 16.1681 7.33067 15.8731 7.34667 15.5271C7.37367 14.9941 7.39467 14.4641 7.41067 13.9321L7.44667 12.9861C7.46056 12.7594 7.44033 12.5318 7.38667 12.3111C7.36024 12.207 7.31737 12.1077 7.25967 12.0171ZM13.5487 13.4951C13.4327 13.3681 13.2687 13.2411 13.0087 13.0841C12.9707 13.0641 12.9267 13.0351 12.8857 13.0111C12.6697 12.8811 12.4087 12.7441 12.1047 12.5791C11.6373 12.3235 11.1676 12.0722 10.6957 11.8251L9.86167 11.3831C9.81767 11.3701 9.77367 11.3391 9.73367 11.3191C9.57319 11.2374 9.40276 11.1769 9.22667 11.1391C9.12648 11.1203 9.02411 11.1159 8.92267 11.1261C8.75581 11.1521 8.6014 11.2301 8.48145 11.3489C8.36151 11.4678 8.28214 11.6215 8.25467 11.7881C8.24131 11.8937 8.24503 12.0007 8.26567 12.1051C8.30667 12.3271 8.40567 12.5471 8.50867 12.7391L8.95467 13.5731C9.20367 14.0431 9.45467 14.5121 9.71167 14.9781C9.87867 15.2821 10.0167 15.5431 10.1457 15.7581C10.1707 15.7991 10.1987 15.8431 10.2197 15.8801C10.3767 16.1401 10.5037 16.3031 10.6317 16.4201C10.7151 16.4999 10.8147 16.5609 10.9237 16.5991C11.0386 16.6373 11.1602 16.6509 11.2807 16.6391C11.3417 16.6311 11.4027 16.6211 11.4627 16.6071C11.5853 16.5733 11.704 16.5263 11.8167 16.4671C12.1547 16.2771 12.4667 16.0441 12.7447 15.7731C13.0777 15.4451 13.3717 15.0881 13.6007 14.6801C13.6327 14.6221 13.6607 14.5621 13.6837 14.5001C13.7047 14.4431 13.7237 14.3841 13.7387 14.3251C13.7527 14.2651 13.7627 14.2051 13.7697 14.1431C13.7813 14.0233 13.7677 13.9023 13.7297 13.7881C13.6919 13.6784 13.6304 13.5784 13.5497 13.4951H13.5487Z" fill="#FF1A1A"/>
+  }, pe = {
+    trustpilot: (
+      /* HTML */
+      `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="19"
+    height="19"
+    viewBox="0 0 19 19"
+    fill="none"
+  >
+    <path
+      d="M19 7.42306H11.9049L9.79148 0.629883L7.52708 7.42306H0.582947L6.16845 11.499L4.05501 18.2922L9.79148 14.0653L15.377 18.2922L13.2635 11.499L19 7.42306Z"
+      fill="#00B67A"
+    />
+    <path
+      d="M13.7165 13.0086L13.2636 11.499L9.79156 14.0654L13.7165 13.0086Z"
+      fill="#005128"
+    />
+  </svg>`
+    ),
+    reddit: (
+      /* HTML */
+      `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="19"
+    height="18"
+    viewBox="0 0 19 18"
+    fill="none"
+  >
+    <g clip-path="url(#clip0_373_6731)">
+      <path
+        d="M9.43335 0C4.46252 0 0.43335 4.02917 0.43335 9C0.43335 11.485 1.44085 13.735 3.06918 15.3642L1.35502 17.0783C1.01502 17.4183 1.25585 18 1.73668 18H9.43335C14.4042 18 18.4333 13.9708 18.4333 9C18.4333 4.02917 14.4042 0 9.43335 0Z"
+        fill="#FF4500"
+      />
+      <path
+        d="M14.535 11.0166C15.6957 11.0166 16.6367 10.0756 16.6367 8.9149C16.6367 7.75418 15.6957 6.81323 14.535 6.81323C13.3743 6.81323 12.4333 7.75418 12.4333 8.9149C12.4333 10.0756 13.3743 11.0166 14.535 11.0166Z"
+        fill="url(#paint0_radial_373_6731)"
+      />
+      <path
+        d="M4.33165 11.0166C5.49237 11.0166 6.43331 10.0756 6.43331 8.9149C6.43331 7.75418 5.49237 6.81323 4.33165 6.81323C3.17093 6.81323 2.22998 7.75418 2.22998 8.9149C2.22998 10.0756 3.17093 11.0166 4.33165 11.0166Z"
+        fill="url(#paint1_radial_373_6731)"
+      />
+      <path
+        d="M9.43835 15.22C12.7521 15.22 15.4384 13.2053 15.4384 10.72C15.4384 8.23469 12.7521 6.21997 9.43835 6.21997C6.12465 6.21997 3.43835 8.23469 3.43835 10.72C3.43835 13.2053 6.12465 15.22 9.43835 15.22Z"
+        fill="url(#paint2_radial_373_6731)"
+      />
+      <path
+        d="M7.66503 10.2901C7.63003 11.0468 7.1242 11.3218 6.53503 11.3218C5.94587 11.3218 5.4967 10.9109 5.5317 10.1543C5.5667 9.39759 6.07253 8.90259 6.6617 8.90259C7.25087 8.90259 7.70003 9.53425 7.66503 10.2909V10.2901Z"
+        fill="url(#paint3_radial_373_6731)"
+      />
+      <path
+        d="M11.2125 10.2901C11.2475 11.0468 11.7533 11.3218 12.3425 11.3218C12.9317 11.3218 13.3808 10.9109 13.3458 10.1543C13.3108 9.39759 12.805 8.90259 12.2158 8.90259C11.6267 8.90259 11.1775 9.53425 11.2125 10.2909V10.2901Z"
+        fill="url(#paint4_radial_373_6731)"
+      />
+      <path
+        d="M7.06915 9.95169C7.19801 9.95169 7.30248 9.8379 7.30248 9.69753C7.30248 9.55715 7.19801 9.44336 7.06915 9.44336C6.94028 9.44336 6.83582 9.55715 6.83582 9.69753C6.83582 9.8379 6.94028 9.95169 7.06915 9.95169Z"
+        fill="#FFC49C"
+      />
+      <path
+        d="M12.6175 9.95169C12.7464 9.95169 12.8508 9.8379 12.8508 9.69753C12.8508 9.55715 12.7464 9.44336 12.6175 9.44336C12.4886 9.44336 12.3842 9.55715 12.3842 9.69753C12.3842 9.8379 12.4886 9.95169 12.6175 9.95169Z"
+        fill="#FFC49C"
+      />
+      <path
+        d="M9.43833 11.9099C8.70833 11.9099 8.00833 11.9457 7.36167 12.0116C7.25083 12.0224 7.18083 12.1374 7.22417 12.2399C7.58667 13.1057 8.44167 13.7141 9.43833 13.7141C10.435 13.7141 11.2908 13.1057 11.6525 12.2399C11.6958 12.1374 11.625 12.0224 11.515 12.0116C10.8675 11.9457 10.1683 11.9099 9.43833 11.9099Z"
+        fill="url(#paint5_radial_373_6731)"
+      />
+      <path
+        d="M12.7242 5.60822C13.5466 5.60822 14.2133 4.94149 14.2133 4.11905C14.2133 3.29661 13.5466 2.62988 12.7242 2.62988C11.9017 2.62988 11.235 3.29661 11.235 4.11905C11.235 4.94149 11.9017 5.60822 12.7242 5.60822Z"
+        fill="url(#paint6_radial_373_6731)"
+      />
+      <path
+        d="M9.41674 6.40995C9.23841 6.40995 9.09424 6.33578 9.09424 6.22078C9.09424 4.88661 10.1801 3.80078 11.5142 3.80078C11.6926 3.80078 11.8367 3.94495 11.8367 4.12328C11.8367 4.30161 11.6926 4.44578 11.5142 4.44578C10.5359 4.44578 9.74007 5.24161 9.74007 6.21995C9.74007 6.33495 9.5959 6.40911 9.41757 6.40911L9.41674 6.40995Z"
+        fill="url(#paint7_radial_373_6731)"
+      />
+      <path
+        d="M5.66837 10.2209C5.70087 9.50759 6.17503 9.04092 6.72587 9.04092C7.24753 9.04092 7.65087 9.57342 7.66587 10.2351C7.68003 9.49509 7.23837 8.90259 6.6617 8.90259C6.08503 8.90259 5.5667 9.40675 5.5317 10.1693C5.4967 10.9318 5.94587 11.3218 6.53503 11.3218C6.5492 11.3218 6.5642 11.3218 6.57837 11.3218C6.0417 11.3084 5.6367 10.9226 5.6692 10.2218L5.66837 10.2209Z"
+        fill="#842123"
+      />
+      <path
+        d="M13.2084 10.2209C13.1759 9.50759 12.7017 9.04092 12.1509 9.04092C11.6292 9.04092 11.2259 9.57342 11.2109 10.2351C11.1967 9.49509 11.6384 8.90259 12.2151 8.90259C12.8042 8.90259 13.3101 9.40675 13.3451 10.1693C13.3801 10.9318 12.9309 11.3218 12.3417 11.3218C12.3276 11.3218 12.3126 11.3218 12.2984 11.3218C12.8351 11.3084 13.2401 10.9226 13.2076 10.2218L13.2084 10.2209Z"
+        fill="#842123"
+      />
     </g>
-  </g>
-  <defs>
-    <clipPath id="clip0_373_6565">
-      <rect width="14" height="19" fill="white" transform="translate(0.216675)"/>
-    </clipPath>
-  </defs>
-</svg>`
+    <defs>
+      <radialGradient
+        id="paint0_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(14.5792 7.65367) scale(4.24833 3.69605)"
+      >
+        <stop stop-color="#FEFFFF" />
+        <stop offset="0.4" stop-color="#FEFFFF" />
+        <stop offset="0.51" stop-color="#F9FCFC" />
+        <stop offset="0.62" stop-color="#EDF3F5" />
+        <stop offset="0.7" stop-color="#DEE9EC" />
+        <stop offset="0.72" stop-color="#D8E4E8" />
+        <stop offset="0.76" stop-color="#CCD8DF" />
+        <stop offset="0.8" stop-color="#C8D5DD" />
+        <stop offset="0.83" stop-color="#CCD6DE" />
+        <stop offset="0.85" stop-color="#D8DBE2" />
+        <stop offset="0.88" stop-color="#EDE3E9" />
+        <stop offset="0.9" stop-color="#FFEBEF" />
+      </radialGradient>
+      <radialGradient
+        id="paint1_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(4.37581 1.00615) scale(4.24833 3.69605)"
+      >
+        <stop stop-color="#FEFFFF" />
+        <stop offset="0.4" stop-color="#FEFFFF" />
+        <stop offset="0.51" stop-color="#F9FCFC" />
+        <stop offset="0.62" stop-color="#EDF3F5" />
+        <stop offset="0.7" stop-color="#DEE9EC" />
+        <stop offset="0.72" stop-color="#D8E4E8" />
+        <stop offset="0.76" stop-color="#CCD8DF" />
+        <stop offset="0.8" stop-color="#C8D5DD" />
+        <stop offset="0.83" stop-color="#CCD6DE" />
+        <stop offset="0.85" stop-color="#D8DBE2" />
+        <stop offset="0.88" stop-color="#EDE3E9" />
+        <stop offset="0.9" stop-color="#FFEBEF" />
+      </radialGradient>
+      <radialGradient
+        id="paint2_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(9.56752 7.12272) scale(12.815 8.9705)"
+      >
+        <stop stop-color="#FEFFFF" />
+        <stop offset="0.4" stop-color="#FEFFFF" />
+        <stop offset="0.51" stop-color="#F9FCFC" />
+        <stop offset="0.62" stop-color="#EDF3F5" />
+        <stop offset="0.7" stop-color="#DEE9EC" />
+        <stop offset="0.72" stop-color="#D8E4E8" />
+        <stop offset="0.76" stop-color="#CCD8DF" />
+        <stop offset="0.8" stop-color="#C8D5DD" />
+        <stop offset="0.83" stop-color="#CCD6DE" />
+        <stop offset="0.85" stop-color="#D8DBE2" />
+        <stop offset="0.88" stop-color="#EDE3E9" />
+        <stop offset="0.9" stop-color="#FFEBEF" />
+      </radialGradient>
+      <radialGradient
+        id="paint3_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(6.65414 10.6263) scale(1.14579 1.65979)"
+      >
+        <stop stop-color="#FF6600" />
+        <stop offset="0.5" stop-color="#FF4500" />
+        <stop offset="0.7" stop-color="#FC4301" />
+        <stop offset="0.82" stop-color="#F43F07" />
+        <stop offset="0.92" stop-color="#E53812" />
+        <stop offset="1" stop-color="#D4301F" />
+      </radialGradient>
+      <radialGradient
+        id="paint4_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(12.2307 10.6263) rotate(180) scale(1.14579 1.65979)"
+      >
+        <stop stop-color="#FF6600" />
+        <stop offset="0.5" stop-color="#FF4500" />
+        <stop offset="0.7" stop-color="#FC4301" />
+        <stop offset="0.82" stop-color="#F43F07" />
+        <stop offset="0.92" stop-color="#E53812" />
+        <stop offset="1" stop-color="#D4301F" />
+      </radialGradient>
+      <radialGradient
+        id="paint5_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(9.4275 13.966) scale(3.775 2.4915)"
+      >
+        <stop stop-color="#172E35" />
+        <stop offset="0.29" stop-color="#0E1C21" />
+        <stop offset="0.73" stop-color="#030708" />
+        <stop offset="1" />
+      </radialGradient>
+      <radialGradient
+        id="paint6_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(12.7567 2.73498) scale(3.31417 3.24788)"
+      >
+        <stop stop-color="#FEFFFF" />
+        <stop offset="0.4" stop-color="#FEFFFF" />
+        <stop offset="0.51" stop-color="#F9FCFC" />
+        <stop offset="0.62" stop-color="#EDF3F5" />
+        <stop offset="0.7" stop-color="#DEE9EC" />
+        <stop offset="0.72" stop-color="#D8E4E8" />
+        <stop offset="0.76" stop-color="#CCD8DF" />
+        <stop offset="0.8" stop-color="#C8D5DD" />
+        <stop offset="0.83" stop-color="#CCD6DE" />
+        <stop offset="0.85" stop-color="#D8DBE2" />
+        <stop offset="0.88" stop-color="#EDE3E9" />
+        <stop offset="0.9" stop-color="#FFEBEF" />
+      </radialGradient>
+      <radialGradient
+        id="paint7_radial_373_6731"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(11.3759 6.08995) scale(2.71667)"
+      >
+        <stop offset="0.48" stop-color="#7A9299" />
+        <stop offset="0.67" stop-color="#172E35" />
+        <stop offset="0.75" />
+        <stop offset="0.82" stop-color="#172E35" />
+      </radialGradient>
+      <clipPath id="clip0_373_6731">
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.43335)"
+        />
+      </clipPath>
+    </defs>
+  </svg>`
+    ),
+    yelp: (
+      /* HTML */
+      `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="15"
+    height="19"
+    viewBox="0 0 15 19"
+    fill="none"
+  >
+    <g clip-path="url(#clip0_373_6565)">
+      <mask
+        id="mask0_373_6565"
+        style="mask-type:luminance"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="15"
+        height="19"
+      >
+        <path d="M0.216675 0H14.2167V19H0.216675V0Z" fill="white" />
+      </mask>
+      <g mask="url(#mask0_373_6565)">
+        <path
+          d="M4.82267 11.3801L5.62367 11.1941C5.65032 11.1888 5.67669 11.1821 5.70267 11.1741C5.92367 11.1147 6.11297 10.9718 6.23068 10.7756C6.34839 10.5793 6.38532 10.345 6.33367 10.1221L6.33067 10.1071C6.30427 10.0005 6.25814 9.89975 6.19467 9.81011C6.10488 9.69644 5.99381 9.60134 5.86767 9.53011C5.71903 9.44543 5.56347 9.3735 5.40267 9.31511L4.52467 8.99511C4.03173 8.81171 3.53704 8.63304 3.04067 8.45911C2.71767 8.34411 2.44467 8.24411 2.20767 8.17011C2.16267 8.15611 2.11267 8.14311 2.07267 8.12911C1.78567 8.04111 1.58367 8.00411 1.41267 8.00311C1.29863 7.9987 1.185 8.01917 1.07967 8.06311C0.970276 8.1108 0.872147 8.18099 0.791673 8.26911C0.751673 8.31511 0.713673 8.36211 0.677673 8.41211C0.609324 8.5175 0.552974 8.6302 0.509673 8.74811C0.34679 9.22921 0.265667 9.7342 0.269673 10.2421C0.273673 10.7021 0.285673 11.2921 0.539673 11.6911C0.60062 11.7936 0.682379 11.8822 0.779673 11.9511C0.959673 12.0751 1.14067 12.0911 1.32967 12.1051C1.61267 12.1251 1.88667 12.0551 2.15967 11.9931L4.82067 11.3791H4.82267V11.3801ZM13.7577 7.13011C13.539 6.67107 13.2449 6.25193 12.8877 5.89011C12.7966 5.80344 12.6963 5.72699 12.5887 5.66211C12.5354 5.6332 12.4807 5.60717 12.4247 5.58411C12.3167 5.53929 12.2001 5.51908 12.0833 5.52496C11.9666 5.53084 11.8526 5.56266 11.7497 5.61811C11.5967 5.69411 11.4307 5.81611 11.2117 6.02011C11.1817 6.05011 11.1427 6.08411 11.1087 6.11611C10.9277 6.28611 10.7257 6.49611 10.4857 6.74111C10.1157 7.11511 9.74967 7.49211 9.38767 7.87311L8.73767 8.54611C8.61899 8.66908 8.51093 8.80189 8.41467 8.94311C8.33267 9.06211 8.27467 9.19611 8.24367 9.33811C8.2259 9.44665 8.22862 9.55756 8.25167 9.66511C8.25167 9.67011 8.25367 9.67511 8.25467 9.67911C8.30597 9.90228 8.44195 10.0968 8.63394 10.2216C8.82592 10.3464 9.05889 10.3918 9.28367 10.3481C9.31058 10.3441 9.33728 10.3387 9.36367 10.3321L12.8257 9.53211C13.0987 9.47011 13.3757 9.41211 13.6207 9.27011C13.7857 9.17511 13.9417 9.08011 14.0487 8.89011C14.1061 8.78518 14.1409 8.66934 14.1507 8.55011C14.2037 8.07911 13.9567 7.54411 13.7577 7.13011ZM7.56067 8.58611C7.81067 8.27111 7.81067 7.80111 7.83267 7.41811C7.90767 6.13611 7.98667 4.85311 8.04867 3.57111C8.07267 3.08511 8.12467 2.60511 8.09567 2.11611C8.07067 1.71211 8.06767 1.24811 7.81267 0.91611C7.36167 0.33311 6.40067 0.38011 5.74567 0.47211C5.54329 0.500004 5.34239 0.537715 5.14367 0.58511C4.94367 0.63311 4.74667 0.68511 4.55367 0.74711C3.92467 0.95311 3.04067 1.33111 2.89167 2.05511C2.80667 2.46511 3.00767 2.88311 3.16267 3.25711C3.35067 3.70911 3.60867 4.11711 3.84267 4.54411C4.46267 5.66911 5.09367 6.78711 5.72267 7.90711C5.91067 8.24111 6.11567 8.66411 6.47967 8.83711C6.50352 8.84766 6.52789 8.857 6.55267 8.86511C6.71498 8.9263 6.89175 8.93815 7.06077 8.89919C7.22979 8.86022 7.38353 8.77218 7.50267 8.64611C7.52305 8.62715 7.54242 8.60712 7.56067 8.58611ZM7.25967 12.0171C7.19609 11.9277 7.11481 11.8522 7.02086 11.7955C6.92691 11.7387 6.82231 11.7019 6.71354 11.6873C6.60477 11.6727 6.49415 11.6805 6.38855 11.7104C6.28295 11.7403 6.18463 11.7916 6.09967 11.8611C5.95817 11.9726 5.83178 12.102 5.72367 12.2461C5.69567 12.2811 5.66967 12.3281 5.63667 12.3591L5.07967 13.1241C4.76467 13.5531 4.45267 13.9831 4.14467 14.4191C3.94367 14.7011 3.76967 14.9391 3.63167 15.1501C3.60567 15.1901 3.57867 15.2341 3.55367 15.2701C3.38867 15.5241 3.29567 15.7101 3.24767 15.8761C3.21175 15.9863 3.20048 16.1031 3.21467 16.2181C3.22987 16.338 3.27044 16.4532 3.33367 16.5561C3.36667 16.6081 3.40367 16.6581 3.44167 16.7061C3.52507 16.802 3.61899 16.8882 3.72167 16.9631C4.10567 17.2301 4.52667 17.4231 4.96967 17.5711C5.33767 17.6931 5.72067 17.7661 6.10867 17.7881C6.23606 17.7921 6.36349 17.782 6.48867 17.7581C6.54867 17.7441 6.60667 17.7281 6.66567 17.7071C6.77865 17.6649 6.88153 17.5995 6.96767 17.5151C7.04945 17.433 7.11226 17.3341 7.15167 17.2251C7.21567 17.0651 7.25867 16.8621 7.28567 16.5601L7.29867 16.4181C7.32067 16.1681 7.33067 15.8731 7.34667 15.5271C7.37367 14.9941 7.39467 14.4641 7.41067 13.9321L7.44667 12.9861C7.46056 12.7594 7.44033 12.5318 7.38667 12.3111C7.36024 12.207 7.31737 12.1077 7.25967 12.0171ZM13.5487 13.4951C13.4327 13.3681 13.2687 13.2411 13.0087 13.0841C12.9707 13.0641 12.9267 13.0351 12.8857 13.0111C12.6697 12.8811 12.4087 12.7441 12.1047 12.5791C11.6373 12.3235 11.1676 12.0722 10.6957 11.8251L9.86167 11.3831C9.81767 11.3701 9.77367 11.3391 9.73367 11.3191C9.57319 11.2374 9.40276 11.1769 9.22667 11.1391C9.12648 11.1203 9.02411 11.1159 8.92267 11.1261C8.75581 11.1521 8.6014 11.2301 8.48145 11.3489C8.36151 11.4678 8.28214 11.6215 8.25467 11.7881C8.24131 11.8937 8.24503 12.0007 8.26567 12.1051C8.30667 12.3271 8.40567 12.5471 8.50867 12.7391L8.95467 13.5731C9.20367 14.0431 9.45467 14.5121 9.71167 14.9781C9.87867 15.2821 10.0167 15.5431 10.1457 15.7581C10.1707 15.7991 10.1987 15.8431 10.2197 15.8801C10.3767 16.1401 10.5037 16.3031 10.6317 16.4201C10.7151 16.4999 10.8147 16.5609 10.9237 16.5991C11.0386 16.6373 11.1602 16.6509 11.2807 16.6391C11.3417 16.6311 11.4027 16.6211 11.4627 16.6071C11.5853 16.5733 11.704 16.5263 11.8167 16.4671C12.1547 16.2771 12.4667 16.0441 12.7447 15.7731C13.0777 15.4451 13.3717 15.0881 13.6007 14.6801C13.6327 14.6221 13.6607 14.5621 13.6837 14.5001C13.7047 14.4431 13.7237 14.3841 13.7387 14.3251C13.7527 14.2651 13.7627 14.2051 13.7697 14.1431C13.7813 14.0233 13.7677 13.9023 13.7297 13.7881C13.6919 13.6784 13.6304 13.5784 13.5497 13.4951H13.5487Z"
+          fill="#FF1A1A"
+        />
+      </g>
+    </g>
+    <defs>
+      <clipPath id="clip0_373_6565">
+        <rect
+          width="14"
+          height="19"
+          fill="white"
+          transform="translate(0.216675)"
+        />
+      </clipPath>
+    </defs>
+  </svg>`
+    )
   };
-  class d1 {
+  class ue {
     constructor() {
       this.addStyles(), this.changeReviewPosition(), this.changeTextReviews(), this.changeVideoReviews();
     }
@@ -2010,7 +2297,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         <div class="crs-review-title">Too Comfortable to Keep Quiet About</div>
         <div class="crs-review-average-rating">
           4.8 average rating
-          <span>${R.averageStars}</span>
+          <span>${I.averageStars}</span>
         </div>
 
         <div class="crs-reviews-tabs">
@@ -2018,10 +2305,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             class="crs-reviews-tab crs-reviews-tab-active"
             data-crs-tab="trustpilot"
           >
-            ${R.trustpilot}
+            ${I.trustpilot}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="yelp">
-            ${R.yelp}
+            ${I.yelp}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="reddit">
             <img
@@ -2138,7 +2425,17 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       </div>
     `
       );
-      e.insertAdjacentHTML("afterend", t), this.initializeTabs(), this.renderReviews("trustpilot");
+      e.insertAdjacentHTML("afterend", t), this.initializeTabs(), this.renderReviews("trustpilot"), K(
+        ".crs-review",
+        "exp_pdp_view_2",
+        "Reviews",
+        "Visibility",
+        0
+      );
+      const n = document.querySelector(".crs-review-average-rating");
+      n && n.addEventListener("click", () => {
+        u("exp_pdp_click_10", "Rating", "click", "Reviews");
+      });
     }
     initializeTabs() {
       const e = document.querySelectorAll(".crs-reviews-tab");
@@ -2147,13 +2444,13 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           const n = t.getAttribute(
             "data-crs-tab"
           );
-          e.forEach((o) => o.classList.remove("crs-reviews-tab-active")), t.classList.add("crs-reviews-tab-active"), document.querySelectorAll(".crs-review-item").forEach(
-            (o) => o.classList.remove("crs-review-item-active")
+          e.forEach((s) => s.classList.remove("crs-reviews-tab-active")), t.classList.add("crs-reviews-tab-active"), document.querySelectorAll(".crs-review-item").forEach(
+            (s) => s.classList.remove("crs-review-item-active")
           );
           const i = document.querySelector(
             `[data-crs-item="${n}"]`
           );
-          i && i.classList.add("crs-review-item-active"), this.renderReviews(n);
+          i && i.classList.add("crs-review-item-active"), this.renderReviews(n), u("exp_pdp_click_11", n, "click", "Reviews");
         });
       }), this.initializeReadMore(), this.initializeSliderNavigation();
     }
@@ -2162,33 +2459,33 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       (e = document.querySelector(".crs-reviews-content")) == null || e.addEventListener("click", (n) => {
         const i = n.target.closest(".crs-slider-arrow");
         if (i) {
-          const o = i.getAttribute("data-direction"), r = i.closest(".crs-review-item"), c = r == null ? void 0 : r.querySelector(
+          const s = i.getAttribute("data-direction"), r = i.closest(".crs-review-item"), a = r == null ? void 0 : r.querySelector(
             ".crs-reviews-slider"
-          ), a = r == null ? void 0 : r.getAttribute(
+          ), c = r == null ? void 0 : r.getAttribute(
             "data-crs-item"
           );
-          if (c && o && a) {
-            const l = this.getSlideWidth(c);
-            o === "next" ? c.scrollTo({
-              left: c.scrollLeft + l,
+          if (a && s && c) {
+            const l = this.getSlideWidth(a);
+            s === "next" ? (a.scrollTo({
+              left: a.scrollLeft + l,
               behavior: "smooth"
-            }) : o === "prev" && c.scrollTo({
-              left: c.scrollLeft - l,
+            }), u("exp_pdp_click_13", "Next Arrow", "click", "Reviews")) : s === "prev" && (a.scrollTo({
+              left: a.scrollLeft - l,
               behavior: "smooth"
-            }), setTimeout(() => {
-              this.updateArrowStates(a);
+            }), u("exp_pdp_click_14", "Prev Arrow", "click", "Reviews")), setTimeout(() => {
+              this.updateArrowStates(c);
             }, 300);
           }
         }
       }), (t = document.querySelector(".crs-reviews-content")) == null || t.addEventListener(
         "scroll",
         (n) => {
-          const s = n.target;
-          if (s.classList.contains("crs-reviews-slider")) {
-            const i = s.closest(".crs-review-item"), o = i == null ? void 0 : i.getAttribute(
+          const o = n.target;
+          if (o.classList.contains("crs-reviews-slider")) {
+            const i = o.closest(".crs-review-item"), s = i == null ? void 0 : i.getAttribute(
               "data-crs-item"
             );
-            o && this.updateArrowStates(o);
+            s && this.updateArrowStates(s);
           }
         },
         !0
@@ -2202,12 +2499,12 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       document.addEventListener("click", (e) => {
         const t = e.target;
         if (t.classList.contains("crs-review-read-more")) {
-          const n = t.previousElementSibling, s = n.querySelector(
+          const n = t.previousElementSibling, o = n.querySelector(
             ".crs-review-text-short"
           ), i = n.querySelector(
             ".crs-review-text-full"
           );
-          t.textContent === "Read more" ? (s.style.display = "none", i.style.display = "block", t.textContent = "Read less") : (s.style.display = "-webkit-box", i.style.display = "none", t.textContent = "Read more");
+          t.textContent === "Read more" ? (o.style.display = "none", i.style.display = "block", t.textContent = "Read less", u("exp_pdp_click_12", "Read more", "click", "Reviews")) : (o.style.display = "-webkit-box", i.style.display = "none", t.textContent = "Read more");
         }
       });
     }
@@ -2216,49 +2513,49 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       return document.querySelectorAll(
         ".review-block .text-reviews .card .card-content"
       ).forEach((n) => {
-        var r, c;
-        const s = ((r = n.querySelector("h2")) == null ? void 0 : r.textContent) || "", i = ((c = n.querySelector("p.wtc")) == null ? void 0 : c.textContent) || "";
-        e.push({ author: s, text: i, rating: !0 });
-      }), e.length === 0 ? P.trustpilot : e;
+        var r, a;
+        const o = ((r = n.querySelector("h2")) == null ? void 0 : r.textContent) || "", i = ((a = n.querySelector("p.wtc")) == null ? void 0 : a.textContent) || "";
+        e.push({ author: o, text: i, rating: !0 });
+      }), e.length === 0 ? j.trustpilot : e;
     }
     renderReviews(e) {
       const t = document.querySelector(
         `[data-crs-item="${e}"] .crs-reviews-slider`
       );
       if (!t) return;
-      const s = (e === "trustpilot" ? this.parseTrustpilotReviewData() : P[e]).map((i) => this.createReviewSlide(i, e)).join("");
-      t.innerHTML = s, t.scrollLeft = 0, this.updateArrowStates(e);
+      const o = (e === "trustpilot" ? this.parseTrustpilotReviewData() : j[e]).map((i) => this.createReviewSlide(i, e)).join("");
+      t.innerHTML = o, t.scrollLeft = 0, this.updateArrowStates(e);
     }
     updateArrowStates(e) {
       const t = document.querySelector(`[data-crs-item="${e}"]`);
       if (!t) return;
       const n = t.querySelector(
         ".crs-reviews-slider"
-      ), s = t.querySelector(
+      ), o = t.querySelector(
         ".crs-slider-prev"
       ), i = t.querySelector(
         ".crs-slider-next"
       );
-      if (n && (s && (s.style.opacity = n.scrollLeft <= 0 ? "0.3" : "1", s.style.pointerEvents = n.scrollLeft <= 0 ? "none" : "auto"), i)) {
-        const o = n.scrollWidth - n.clientWidth;
-        i.style.opacity = n.scrollLeft >= o ? "0.3" : "1", i.style.pointerEvents = n.scrollLeft >= o ? "none" : "auto";
+      if (n && (o && (o.style.opacity = n.scrollLeft <= 0 ? "0.3" : "1", o.style.pointerEvents = n.scrollLeft <= 0 ? "none" : "auto"), i)) {
+        const s = n.scrollWidth - n.clientWidth;
+        i.style.opacity = n.scrollLeft >= s ? "0.3" : "1", i.style.pointerEvents = n.scrollLeft >= s ? "none" : "auto";
       }
     }
     getSlideWidth(e) {
       const t = e.querySelector(".crs-reviews-slide");
       if (!t) return 0;
-      const n = t.getBoundingClientRect(), s = window.getComputedStyle(e), i = parseInt(s.gap) || 0;
+      const n = t.getBoundingClientRect(), o = window.getComputedStyle(e), i = parseInt(o.gap) || 0;
       return n.width + i;
     }
     createReviewSlide(e, t) {
-      const n = e.rating ? this.generateStars(t) : "", s = l1[t] || "", r = 5 * 7, a = e.text.split(" ").length > r;
+      const n = e.rating ? this.generateStars(t) : "", o = pe[t] || "", r = 5 * 7, c = e.text.split(" ").length > r;
       return (
         /* HTML */
         `
       <div class="crs-reviews-slide">
         <header>
           <div class="crs-review-author">${e.author}</div>
-          <div class="crs-review-icon">${s}</div>
+          <div class="crs-review-icon">${o}</div>
         </header>
         <div class="crs-review-stars">${n}</div>
         <main class="crs-review-text">
@@ -2267,7 +2564,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             ${e.text}
           </div>
         </main>
-        ${a ? '<div class="crs-review-read-more" data-action="read-more">Read more</div>' : ""}
+        ${c ? '<div class="crs-review-read-more" data-action="read-more">Read more</div>' : ""}
       </div>
     `
       );
@@ -2338,10 +2635,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = c1, document.head.appendChild(e);
+      e.textContent = de, document.head.appendChild(e);
     }
   }
-  const p1 = `.crs-protection-plan-text {
+  const he = `.crs-protection-plan-text {
   margin-top: 15px;
   color: #000;
   font-size: 14px;
@@ -2360,7 +2657,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
   }
 }
 `;
-  class u1 {
+  class fe {
     constructor() {
       this.init();
     }
@@ -2376,16 +2673,24 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         `<div class="crs-protection-plan-text">
       Enjoy peace of mind with our all-around protection — covering stains and
       spills, rips, tears and seam separation, liquid marks and rings, pet
-      damage, <button onclick="document.querySelector('#myBtn').click()">and more</button>.
+      damage, <button data-action="crs-protection-modal">and more</button>.
     </div>`
       );
+      const n = document.querySelector(
+        '[data-action="crs-protection-modal"]'
+      ), o = document.querySelector(
+        ".protection-plan-modal"
+      );
+      n && n.addEventListener("click", () => {
+        o && (o.style.display = "block", u("exp_pdp_click_8", "Learn More", "click", "Protection Plan"));
+      });
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = p1, document.head.appendChild(e);
+      e.textContent = he, document.head.appendChild(e);
     }
   }
-  class h1 {
+  class ve {
     constructor() {
       this.init();
     }
@@ -2395,60 +2700,69 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     changeTabsOrder() {
       var l;
       const e = (l = document.querySelector(
-        ".tabs-btns-template--19449905938597__ss_product_tabs_2_bAwVpc"
+        ".product-info__liquid"
       )) == null ? void 0 : l.parentElement;
       if (!e) return;
       const t = e.querySelector(
-        ".tabs-btns-template--19449905938597__ss_product_tabs_2_bAwVpc"
+        '[class*="tabs-btns-template"]'
       ), n = e.querySelector(
-        ".tabs-items-template--19449905938597__ss_product_tabs_2_bAwVpc"
+        '[class*="tabs-items-template"]'
       );
       if (!t || !n) return;
-      const s = Array.from(t.children).find(
-        (g) => {
-          var y;
-          return (y = g.textContent) == null ? void 0 : y.trim().toLowerCase().includes("materials");
+      const o = Array.from(t.children).find(
+        (h) => {
+          var g;
+          return (g = h.textContent) == null ? void 0 : g.trim().toLowerCase().includes("materials");
         }
       ), i = Array.from(t.children).find(
-        (g) => {
-          var y;
-          return (y = g.textContent) == null ? void 0 : y.trim().toLowerCase().includes("dimensions");
+        (h) => {
+          var g;
+          return (g = h.textContent) == null ? void 0 : g.trim().toLowerCase().includes("dimensions");
         }
-      ), o = s ? n.querySelector(
-        `[data-id="${s.getAttribute("data-id")}"]`
+      );
+      H("test"), console.log({ materialsTab: o, dimensionsTab: i });
+      const s = o ? n.querySelector(
+        `[data-id="${o.getAttribute("data-id")}"]`
       ) : null, r = i ? n.querySelector(
         `[data-id="${i.getAttribute("data-id")}"]`
       ) : null;
-      if (!s || !i || !o || !r) {
+      if (!o || !i || !s || !r) {
         console.warn("Materials or Dimensions tab not found");
         return;
       }
-      const c = t.querySelectorAll('[class*="tabs-btn-"]'), a = n.querySelectorAll('[class*="tabs-item-"]');
-      c.forEach((g) => g.classList.remove("active")), a.forEach((g) => g.classList.remove("active")), t.firstChild && t.insertBefore(i, t.firstChild), i.nextSibling ? t.insertBefore(s, i.nextSibling) : t.appendChild(s), n.firstChild && n.insertBefore(r, n.firstChild), r.nextSibling ? n.insertBefore(o, r.nextSibling) : n.appendChild(o), this.updateTabCounts(t), i.classList.add("active"), r.classList.add("active");
+      const a = t.querySelectorAll('[class*="tabs-btn-"]'), c = n.querySelectorAll('[class*="tabs-item-"]');
+      a.forEach((h) => h.classList.remove("active")), c.forEach((h) => h.classList.remove("active")), t.firstChild && t.insertBefore(i, t.firstChild), i.nextSibling ? t.insertBefore(o, i.nextSibling) : t.appendChild(o), n.firstChild && n.insertBefore(r, n.firstChild), r.nextSibling ? n.insertBefore(s, r.nextSibling) : n.appendChild(s), this.updateTabCounts(t), i.classList.add("active"), r.classList.add("active");
     }
     updateTabCounts(e) {
-      e.querySelectorAll('[class*="tabs-btn-"]').forEach((n, s) => {
-        n.setAttribute("data-count", s.toString());
+      e.querySelectorAll('[class*="tabs-btn-"]').forEach((n, o) => {
+        n.setAttribute("data-count", o.toString());
       });
     }
   }
-  const f1 = `.shopify-app-block:has( > [data-box-type="CrossSell"]) {
+  const me = `.shopify-app-block:has( > [data-box-type="CrossSell"]) {
   display: none;
 }
 
-`;
-  O({ name: "New PDP Experiment", dev: "OS" }), J("exp_pdp");
-  class v1 {
+`, ge = () => {
+    let v = 0;
+    function e() {
+      const t = window.scrollY, n = window.innerHeight, o = document.documentElement.scrollHeight, i = (t + n) / o * 100;
+      i >= v + 5 && (v = Math.round(i / 5) * 5, u("exp_pdp_click_scroll", `${v}%`, "other", "PDP")), i >= 100 && window.removeEventListener("scroll", e);
+    }
+    window.addEventListener("scroll", e);
+  };
+  J({ name: "New PDP Experiment", dev: "OS" }), X("exp_pdp");
+  class Ce {
     constructor() {
       this.init();
     }
     init() {
       this.checkPdpPage().then((e) => {
-        e && (this.addStyles(), this.initComponents(), new K(), new Q(), new i1(), new o1(), new a1(), new d1(), new u1(), new h1());
+        e && (this.addStyles(), this.initComponents(), new Q(), new te(), new se(), new ae(), new le(), new ue(), new fe(), new ve(), ge());
       });
     }
     initComponents() {
-      customElements.get("crs-dialog") || customElements.define("crs-dialog", t1);
+      customElements.get("crs-dialog") || customElements.define("crs-dialog", ie);
     }
     async checkPdpPage() {
       if (!location.pathname.includes("/products/"))
@@ -2457,7 +2771,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         if (await Promise.race([
           new Promise((t) => setTimeout(t, 3e3)),
           // Timeout after 3 seconds
-          v("body.template-product")
+          w("body.template-product")
           // Wait for the element to appear
         ]))
           return !0;
@@ -2467,8 +2781,8 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = f1, document.head.appendChild(e);
+      e.textContent = me, document.head.appendChild(e);
     }
   }
-  new v1();
+  new Ce();
 })();
