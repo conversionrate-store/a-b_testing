@@ -2728,9 +2728,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     }
     async changeTabsOrder() {
       var c;
-      await f("#ss-tabs");
+      await f('[class*="tabs-btns-template"]');
       const e = (c = document.querySelector(
-        ".product-info__liquid:has(#ss-tabs)"
+        '.product-info__liquid:has([class*="tabs-btns-template"])'
       )) == null ? void 0 : c.parentElement;
       if (!e) return;
       const t = e.querySelector(
