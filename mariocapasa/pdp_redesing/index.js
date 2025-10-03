@@ -140,7 +140,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
 .crs-dimension-info-body .media-with-text__media .media-wrapper {
   display: flex;
   justify-content: center;
-  height: 100%;
+  height: calc(100% - 45px);
   max-height: 287px;
 }
 .crs-dimension-info-body .media-with-text__item {
@@ -623,9 +623,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     init() {
       this.addStyles(), this.listenForShopifyEvents(), setTimeout(() => {
         this.addItemsToGallery();
-      }, 1500), this.changeMobileGalleryPosition(), setTimeout(() => {
-        this.checkIfNewItemsAdded();
-      }, 2e3);
+      }, 1500), this.changeMobileGalleryPosition();
     }
     async changeMobileGalleryPosition() {
       if (window.innerWidth > 1e3) return;
