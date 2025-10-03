@@ -826,10 +826,18 @@
                   ]
                 },
                 {
-                  title: "New Collection",
+                  title: "New Collections",
                   link: "/new-in/aw25/horse-wear",
                   template: "default",
                   submenu: [
+                    {
+                      title: "Aspen Collection",
+                      link: "/new-in/aspen-collection"
+                    },
+                    {
+                      title: "Glacier ReWind",
+                      link: "/collections/colour/glacier"
+                    },
                     {
                       title: "Essence Collection",
                       link: "/new-in/essence"
@@ -1271,26 +1279,55 @@
           template: "default",
           submenu: [
             {
-              title: "AW25 Collection",
-              link: "/new-in/aw25/women",
-              template: "default",
+              title: "AW25 Collection & New Collections",
+              template: "stacked-sections",
+              link: "#",
               submenu: [
-                { title: "Coats & Jackets", link: "/new-in/aw25/women?329=6604" },
                 {
-                  title: "Tops, Hoodies & Jumpers",
-                  link: "/new-in/aw25/women?329=6621"
-                },
-                {
-                  title: "Breeches & Pull Ons",
-                  link: "/new-in/aw25/women?329=6603"
-                },
-                { title: "Hat Silks", link: "/new-in/aw25/women?329=6610" },
-                { title: "Socks", link: "/new-in/aw25/women?329=6620" },
-                { title: "Accessories", link: "/new-in/aw25/accessories" },
-                {
-                  title: "View All",
+                  title: "AW25 Collection",
                   link: "/new-in/aw25/women",
-                  template: "link"
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "Coats & Jackets",
+                      link: "/new-in/aw25/women?329=6604"
+                    },
+                    {
+                      title: "Tops, Hoodies & Jumpers",
+                      link: "/new-in/aw25/women?329=6621"
+                    },
+                    {
+                      title: "Breeches & Pull Ons",
+                      link: "/new-in/aw25/women?329=6603"
+                    },
+                    { title: "Hat Silks", link: "/new-in/aw25/women?329=6610" },
+                    { title: "Socks", link: "/new-in/aw25/women?329=6620" },
+                    { title: "Accessories", link: "/new-in/aw25/accessories" },
+                    {
+                      title: "View All",
+                      link: "/new-in/aw25/women",
+                      template: "link"
+                    }
+                  ]
+                },
+                {
+                  title: "New Collections",
+                  link: "",
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "Aspen Collection",
+                      link: "/new-in/aspen-collection"
+                    },
+                    {
+                      title: "Glacier ReWind",
+                      link: "/collections/colour/glacier"
+                    },
+                    {
+                      title: "Waterproof Clothing",
+                      link: "/new-in/waterproof?322=6691"
+                    }
+                  ]
                 }
               ]
             },
@@ -1688,29 +1725,58 @@
           template: "default",
           submenu: [
             {
-              title: "AW25 Collection",
-              link: "/new-in/aw25/children",
-              template: "default",
+              title: "AW25 Collection & New Collections",
+              template: "stacked-sections",
+              link: "#",
               submenu: [
                 {
-                  title: "Coats & Jackets",
-                  link: "/new-in/aw25/children?329=6604"
-                },
-                {
-                  title: "Tops, Hoodies & Jumpers",
-                  link: "/new-in/aw25/children?329=6621"
-                },
-                {
-                  title: "Breeches & Pull Ons",
-                  link: "/new-in/aw25/children?329=6603"
-                },
-                { title: "Hat Silks", link: "/new-in/aw25/children?329=6610" },
-                { title: "Socks", link: "/new-in/aw25/children?329=6620" },
-                { title: "Accessories", link: "/new-in/aw25/accessories" },
-                {
-                  title: "View All",
+                  title: "AW25 Collection",
                   link: "/new-in/aw25/children",
-                  template: "link"
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "Coats & Jackets",
+                      link: "/new-in/aw25/children?329=6604"
+                    },
+                    {
+                      title: "Tops, Hoodies & Jumpers",
+                      link: "/new-in/aw25/children?329=6621"
+                    },
+                    {
+                      title: "Breeches & Pull Ons",
+                      link: "/new-in/aw25/children?329=6603"
+                    },
+                    {
+                      title: "Hat Silks",
+                      link: "/new-in/aw25/children?329=6610"
+                    },
+                    { title: "Socks", link: "/new-in/aw25/children?329=6620" },
+                    { title: "Accessories", link: "/new-in/aw25/accessories" },
+                    {
+                      title: "View All",
+                      link: "/new-in/aw25/children",
+                      template: "link"
+                    }
+                  ]
+                },
+                {
+                  title: "New Collections",
+                  link: "",
+                  template: "default",
+                  submenu: [
+                    {
+                      title: "Aspen Collection",
+                      link: "/new-in/aspen-collection"
+                    },
+                    {
+                      title: "Glacier ReWind",
+                      link: "/collections/colour/glacier"
+                    },
+                    {
+                      title: "Waterproof Clothing",
+                      link: "/new-in/waterproof?322=6692"
+                    }
+                  ]
                 }
               ]
             },
@@ -3243,7 +3309,7 @@
         // },
       ]
     }
-  ], O = (b, e, t, s = "", l = "", i = "") => {
+  ], A = (b, e, t, s = "", l = "", i = "") => {
     window.dataLayer = window.dataLayer || [];
     const n = {
       event: "event-to-ga4",
@@ -3257,7 +3323,7 @@
     window.dataLayer.push(n), console.table(n);
   };
   function y(b, e, t, s, l) {
-    O(
+    A(
       "exp_nav_click",
       b,
       e,
@@ -3266,7 +3332,7 @@
       l || ""
     );
   }
-  class A {
+  class O {
     constructor(e = "B") {
       this.hideTimeout = null, this.currentIndex = null, this.megaMenuMouseEnterHandler = null, this.megaMenuMouseLeaveHandler = null, this.variant = e;
     }
@@ -5204,7 +5270,7 @@
   }
   class _ {
     constructor(e = "B") {
-      this.variant = e, this.desktopNavigation = new A(e), this.mobileNavigation = new Z(e);
+      this.variant = e, this.desktopNavigation = new O(e), this.mobileNavigation = new Z(e);
     }
     /**
      * Creates the complete navigation system
