@@ -656,7 +656,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       ]) instanceof HTMLElement && this.addItemsToGallery();
     }
     async addItemsToGallery() {
-      await u(".media-with-text__media video"), await u(".product product-gallery");
+      await u(".media-with-text__media video"), await u(".product product-gallery"), await u(".media-with-text__media video");
       const e = document.querySelectorAll(".media-with-text__media video"), t = document.querySelectorAll("product-gallery");
       if (t.length === 0 || e.length === 0) return;
       const n = [];
@@ -2812,4 +2812,3 @@ product-quick-add .product-quick-add__variant buy-buttons button {
   }
   new Ce();
 })();
-
