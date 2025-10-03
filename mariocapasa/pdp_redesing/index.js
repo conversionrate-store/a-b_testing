@@ -8,7 +8,7 @@
       event_type: t,
       event_loc: n
     }), P(`Event: ${g} | ${e} | ${t} | ${n}`, "success");
-  }, v = (g) => new Promise((e) => {
+  }, f = (g) => new Promise((e) => {
     const t = document.querySelector(g);
     t && e(t);
     const n = new MutationObserver(() => {
@@ -207,8 +207,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.changeVariantPickerOrder(), this.addDimensionInfoPopup(), this.addDimensionInfoButton();
     }
     async changeVariantPickerOrder() {
-      await v(".variant-picker__option");
-      const e = await v(
+      await f(".variant-picker__option");
+      const e = await f(
         ".product-info__variant-picker"
       ), t = e == null ? void 0 : e.querySelector(".variant-picker");
       if (!e || !t) return;
@@ -222,7 +222,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addViewFabricInfoButton() {
-      const e = await v(
+      const e = await f(
         '[data-crs-variant="color"] .variant-picker__option-info'
       );
       if (!e)
@@ -245,8 +245,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addDimensionInfoButton() {
-      await v("crs-dialog#dimension-info-dialog");
-      const e = await v(
+      await f("crs-dialog#dimension-info-dialog");
+      const e = await f(
         '[data-crs-variant="size"] .variant-picker__option-info'
       );
       if (!e)
@@ -301,7 +301,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       document.body.insertAdjacentHTML("beforeend", n);
     }
     async addDimensionInfoPopup() {
-      const e = await v("#dim_detail"), t = e == null ? void 0 : e.querySelector("media-with-text");
+      const e = await f("#dim_detail"), t = e == null ? void 0 : e.querySelector("media-with-text");
       document.body.insertAdjacentHTML(
         "beforeend",
         /* HTML */
@@ -413,11 +413,11 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.changeReserveAndStockInfoPosition(), this.preOrderInfo(), this.addTopInStock();
     }
     async changeReserveAndStockInfoPosition() {
-      const e = await v(".product-info__inventory"), t = await v(".free_ship");
+      const e = await f(".product-info__inventory"), t = await f(".free_ship");
       !e || !t || t.insertAdjacentElement("afterend", e);
     }
     async preOrderInfo() {
-      const e = await v(".product-info__inventory");
+      const e = await f(".product-info__inventory");
       if (!e) return;
       const t = e.querySelectorAll(".pre-order-info");
       t.length !== 0 && t.forEach((n) => {
@@ -446,18 +446,18 @@ variant-picker.variant-picker [data-crs-variant="size"] {
             i.insertAdjacentHTML("beforeend", u);
           }
           n.addEventListener("click", (c) => {
-            const f = c.target;
-            f && f.closest("#prev-batch-container") && h(
+            const v = c.target;
+            v && v.closest("#prev-batch-container") && h(
               "exp_pdp_click_9",
               "Previous Batch",
               "click",
               "Shipping Schedule"
-            ), f && f.closest(".crs-inventory-reserved") && h(
+            ), v && v.closest(".crs-inventory-reserved") && h(
               "exp_pdp_click_9",
               "Current Batch",
               "click",
               "Shipping Schedule"
-            ), f && f.closest("#future-batch-container") && h(
+            ), v && v.closest("#future-batch-container") && h(
               "exp_pdp_click_9",
               "Future Batch",
               "click",
@@ -469,7 +469,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     async addTopInStock() {
       var o, r;
-      const e = await v(".product-info__payment-terms");
+      const e = await f(".product-info__payment-terms");
       if (!e) return;
       e.insertAdjacentHTML(
         "afterend",
@@ -495,7 +495,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       if (!n || !s) return;
       const i = async () => {
         var l, c;
-        const a = await v(".pre-order-info:not([hidden])");
+        const a = await f(".pre-order-info:not([hidden])");
         a.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), s.innerHTML = ((l = a.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : l.innerHTML) || ""), a.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), n.innerHTML = ((c = a.querySelector(".crs-inventory-status--instock")) == null ? void 0 : c.innerHTML) || "");
       };
       n.addEventListener("click", () => {
@@ -623,12 +623,12 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     init() {
       this.addStyles(), this.listenForShopifyEvents(), setTimeout(() => {
         this.addItemsToGallery();
-      }, 1500), this.changeMobileGalleryPosition();
+      }, 1500), this.changeMobileGalleryPosition(), this.checkIfNewItemsAdded();
     }
     async changeMobileGalleryPosition() {
       if (window.innerWidth > 1e3) return;
-      await v('product-gallery[style*="opacity: 1;"]');
-      const e = document.querySelectorAll("product-gallery"), t = await v(
+      await f('product-gallery[style*="opacity: 1;"]');
+      const e = document.querySelectorAll("product-gallery"), t = await f(
         "payment-terms ~ .product-info__separator"
       );
       e.length === 0 || !t || e.forEach((n) => {
@@ -646,8 +646,15 @@ variant-picker.variant-picker [data-crs-variant="size"] {
         document.hidden || setTimeout(() => this.addItemsToGallery(), 100);
       });
     }
+    async checkIfNewItemsAdded() {
+      const e = new Promise((n) => setTimeout(n, 2e3));
+      await Promise.race([
+        e,
+        f("product-gallery .product-gallery__thumbnail-crs")
+      ]) instanceof HTMLElement && this.addItemsToGallery();
+    }
     async addItemsToGallery() {
-      await v(".media-with-text__media video"), await v(".product product-gallery");
+      await f(".media-with-text__media video"), await f(".product product-gallery");
       const e = document.querySelectorAll(".media-with-text__media video"), t = document.querySelectorAll("product-gallery");
       if (t.length === 0 || e.length === 0) return;
       const n = [];
@@ -687,7 +694,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
         }), o.addEventListener("click", (c) => {
           c.target.closest(".product-gallery__media");
         }), l.forEach((c) => {
-          const f = (
+          const v = (
             /* html */
             `
           <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${c.id}">
@@ -696,7 +703,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
           );
           if (r.querySelector(
             `[data-media-id="${c.id}"]`
-          ) || (r.insertAdjacentHTML("beforeend", f), o.querySelector(
+          ) || (r.insertAdjacentHTML("beforeend", v), o.querySelector(
             `[data-media-id="${c.id}"]`
           ))) return;
           const _ = (
@@ -718,7 +725,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
             }, 1e3);
           }), this.addScrollDetection(i, o, r, l);
         }), document.addEventListener("click", (c) => {
-          const f = c.target, u = i.querySelector("custom-cursor"), C = i.querySelector(
+          const v = c.target, u = i.querySelector("custom-cursor"), C = i.querySelector(
             '[is="product-zoom-button"]'
           ), _ = i.querySelectorAll(
             ".product-gallery__media:not(.product-gallery__media-crs)"
@@ -727,10 +734,10 @@ variant-picker.variant-picker [data-crs-variant="size"] {
           ), A = l.length > 1 ? o.querySelector(
             `[data-media-id="${l[1].id}"]`
           ) : null;
-          if (b && b.contains(f) && u && u.classList.contains("is-half-end") && x && (o.scrollTo({
+          if (b && b.contains(v) && u && u.classList.contains("is-half-end") && x && (o.scrollTo({
             left: x.offsetLeft,
             behavior: "smooth"
-          }), this.updateThumbnailSelection(i, r, l[0].id), C == null || C.setAttribute("hidden", "")), x && x.contains(f)) {
+          }), this.updateThumbnailSelection(i, r, l[0].id), C == null || C.setAttribute("hidden", "")), x && x.contains(v)) {
             if (u && u.classList.contains("is-half-end") && A)
               o.scrollTo({
                 left: A.offsetLeft,
@@ -752,7 +759,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
               );
             }
           }
-          A && A.contains(f) && u && u.classList.contains("is-half-start") && x && (o.scrollTo({
+          A && A.contains(v) && u && u.classList.contains("is-half-start") && x && (o.scrollTo({
             left: x.offsetLeft,
             behavior: "smooth"
           }), this.updateThumbnailSelection(i, r, l[0].id)), (_ || x || A) && (u && u.classList.contains("is-half-start") ? (this.isClickOnThumbnail = !0, h(
@@ -789,8 +796,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
           `[data-media-id="${a.id}"]`
         );
         if (!l) continue;
-        const c = l.offsetLeft, f = l.offsetWidth;
-        if ((Math.min(c + f, o + i) - Math.max(c, o)) / f > 0.5) {
+        const c = l.offsetLeft, v = l.offsetWidth;
+        if ((Math.min(c + v, o + i) - Math.max(c, o)) / v > 0.5) {
           r = a;
           break;
         }
@@ -974,7 +981,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.addStyles(), this.addDataArriveElement(), this.changeFreeShippingSection();
     }
     async addDataArriveElement() {
-      const e = await v(".product-info__buy-buttons");
+      const e = await f(".product-info__buy-buttons");
       if (!e) return;
       const t = /* @__PURE__ */ new Date();
       t.setDate(t.getDate() + 10);
@@ -1011,7 +1018,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       }));
     }
     async changeFreeShippingSection() {
-      const e = await v(".free_ship_sec");
+      const e = await f(".free_ship_sec");
       if (!e) return;
       const t = e.querySelector(".fs_info"), n = e.querySelector(".fs_info2");
       if (n && (n.classList.add("crs-free-shipping-text-container"), n.innerHTML = /* html */
@@ -1284,12 +1291,12 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ) || "ontouchstart" in window || window.innerWidth <= 768;
     }
     async changeStickySection() {
-      var l, c, f, u;
-      const e = new Promise((C) => setTimeout(C, 1e3)), t = await v("product-quick-add"), n = await Promise.race([
-        v('[data-crs-variant="color"]'),
+      var l, c, v, u;
+      const e = new Promise((C) => setTimeout(C, 1e3)), t = await f("product-quick-add"), n = await Promise.race([
+        f('[data-crs-variant="color"]'),
         e
       ]), s = await Promise.race([
-        v('[data-crs-variant="size"]'),
+        f('[data-crs-variant="size"]'),
         e
       ]), i = t == null ? void 0 : t.querySelector("price-list"), o = t == null ? void 0 : t.querySelector("variant-media"), r = (c = (l = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : l.textContent) == null ? void 0 : c.replace("Sale price", "").trim(), a = t == null ? void 0 : t.querySelectorAll("button");
       if (o && o.addEventListener("click", () => {
@@ -1307,7 +1314,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         );
       }), i) {
         let C, _ = [], b = [], x = [], A = [];
-        n instanceof Element && (C = (u = (f = n.querySelector("variant-option-value")) == null ? void 0 : f.textContent) == null ? void 0 : u.trim(), _ = n.querySelectorAll(
+        n instanceof Element && (C = (u = (v = n.querySelector("variant-option-value")) == null ? void 0 : v.textContent) == null ? void 0 : u.trim(), _ = n.querySelectorAll(
           ".variant-picker__option-values input"
         ), x = n.querySelectorAll(
           ".variant-picker__option-values label"
@@ -2298,13 +2305,13 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.addStyles(), this.changeReviewPosition(), this.changeTextReviews(), this.changeVideoReviews(), this.changeSKUPosition();
     }
     async changeReviewPosition() {
-      const e = await v(".review-block"), t = await v(
+      const e = await f(".review-block"), t = await f(
         ".product-info__liquid:has(#ss-tabs)"
       );
       e && t && t.insertAdjacentElement("beforebegin", e);
     }
     async changeTextReviews() {
-      const e = await v(".review-block .text-reviews");
+      const e = await f(".review-block .text-reviews");
       if (!e) return;
       const t = (
         /* HTML */
@@ -2642,7 +2649,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ).join("");
     }
     async changeVideoReviews() {
-      const e = await v(".review-block .video-reviews");
+      const e = await f(".review-block .video-reviews");
       if (!e) return;
       const t = e.querySelector(".slider_text_video");
       if (!t) return;
@@ -2650,7 +2657,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       window.innerWidth < 768 && (n.params.slidesPerView = 2, n.update());
     }
     async changeSKUPosition() {
-      const e = await v("variant-sku"), t = await v(".shopify-block:has(.loox-rating )");
+      const e = await f("variant-sku"), t = await f(".shopify-block:has(.loox-rating )");
       !e || !t || t.insertAdjacentElement("beforeend", e);
     }
     addStyles() {
@@ -2685,7 +2692,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.addStyles(), this.addNewText();
     }
     async addNewText() {
-      (await v(".what-cover-form")).insertAdjacentHTML(
+      (await f(".what-cover-form")).insertAdjacentHTML(
         "beforebegin",
         /* HTML */
         `<div class="crs-protection-plan-text">
@@ -2728,14 +2735,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       );
       if (!t || !n) return;
       const s = Array.from(t.children).find(
-        (f) => {
+        (v) => {
           var u;
-          return (u = f.textContent) == null ? void 0 : u.trim().toLowerCase().includes("materials");
+          return (u = v.textContent) == null ? void 0 : u.trim().toLowerCase().includes("materials");
         }
       ), i = Array.from(t.children).find(
-        (f) => {
+        (v) => {
           var u;
-          return (u = f.textContent) == null ? void 0 : u.trim().toLowerCase().includes("dimensions");
+          return (u = v.textContent) == null ? void 0 : u.trim().toLowerCase().includes("dimensions");
         }
       ), o = s ? n.querySelector(
         `[data-id="${s.getAttribute("data-id")}"]`
@@ -2747,7 +2754,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         return;
       }
       const a = t.querySelectorAll('[class*="tabs-btn-"]'), l = n.querySelectorAll('[class*="tabs-item-"]');
-      a.forEach((f) => f.classList.remove("active")), l.forEach((f) => f.classList.remove("active")), t.firstChild && t.insertBefore(i, t.firstChild), i.nextSibling ? t.insertBefore(s, i.nextSibling) : t.appendChild(s), n.firstChild && n.insertBefore(r, n.firstChild), r.nextSibling ? n.insertBefore(o, r.nextSibling) : n.appendChild(o), this.updateTabCounts(t), i.classList.add("active"), r.classList.add("active");
+      a.forEach((v) => v.classList.remove("active")), l.forEach((v) => v.classList.remove("active")), t.firstChild && t.insertBefore(i, t.firstChild), i.nextSibling ? t.insertBefore(s, i.nextSibling) : t.appendChild(s), n.firstChild && n.insertBefore(r, n.firstChild), r.nextSibling ? n.insertBefore(o, r.nextSibling) : n.appendChild(o), this.updateTabCounts(t), i.classList.add("active"), r.classList.add("active");
     }
     updateTabCounts(e) {
       e.querySelectorAll('[class*="tabs-btn-"]').forEach((n, s) => {
@@ -2787,7 +2794,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         if (await Promise.race([
           new Promise((t) => setTimeout(t, 3e3)),
           // Timeout after 3 seconds
-          v("body.template-product")
+          f("body.template-product")
           // Wait for the element to appear
         ]))
           return !0;
