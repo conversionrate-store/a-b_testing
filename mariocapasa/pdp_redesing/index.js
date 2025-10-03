@@ -2842,12 +2842,16 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         }
       };
       await e(), document.addEventListener("limespot:productViewed", async () => {
-        await e();
+        setTimeout(async () => {
+          await e();
+        }, 1e3);
       }), document.addEventListener("variant:change", async () => {
-        await e();
+        setTimeout(async () => {
+          await e();
+        }, 200);
       }), setTimeout(async () => {
         await e();
-      }, 1e3);
+      }, 3e3);
     }
     async removeLoomiAddon() {
     }
