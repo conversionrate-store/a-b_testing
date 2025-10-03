@@ -7,7 +7,7 @@
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), V(`Event: ${g} | ${e} | ${t} | ${n}`, "success");
+    }), $(`Event: ${g} | ${e} | ${t} | ${n}`, "success");
   }, h = (g) => new Promise((e) => {
     const t = document.querySelector(g);
     t && e(t);
@@ -39,7 +39,7 @@
             "view",
             t
           ), o.disconnect();
-        }, s) : (V("Element is not fully visible", "warn"), clearTimeout(r));
+        }, s) : ($("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [i] }
     );
@@ -47,7 +47,7 @@
       const a = document.querySelector(g);
       a && o.observe(a);
     }
-  }, V = (g, e = "info") => {
+  }, $ = (g, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -505,7 +505,7 @@ variant-picker.variant-picker [data-crs-variant='size'] {
       const o = async () => {
         var c, C;
         const l = document.querySelector("sold-out-badge:not([hidden])"), d = await h(".pre-order-info:not([hidden])");
-        d.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), i && i.setAttribute("hidden", ""), s.innerHTML = ((c = d.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : c.innerHTML) || ""), V("isSoldOut " + l), l && (n.setAttribute("hidden", ""), s.setAttribute("hidden", ""), i && i.setAttribute("hidden", "")), d.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), i && i.removeAttribute("hidden"), n.innerHTML = ((C = d.querySelector(".crs-inventory-status--instock")) == null ? void 0 : C.innerHTML) || "");
+        d.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), i && i.setAttribute("hidden", ""), s.innerHTML = ((c = d.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : c.innerHTML) || ""), $("isSoldOut " + l), l && (n.setAttribute("hidden", ""), s.setAttribute("hidden", ""), i && i.setAttribute("hidden", "")), d.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), i && i.removeAttribute("hidden"), n.innerHTML = ((C = d.querySelector(".crs-inventory-status--instock")) == null ? void 0 : C.innerHTML) || "");
       };
       n.addEventListener("click", () => {
         v("exp_pdp_click_4", "In Stock", "click", "Top info inventory");
@@ -725,8 +725,8 @@ variant-picker.variant-picker [data-crs-variant='size'] {
           o.insertAdjacentHTML("beforeend", A);
           const x = r.querySelector(`[data-media-id="${c.id}"]`), k = o.querySelector(`[data-media-id="${c.id}"]`), S = i.querySelectorAll(
             ".product-gallery__media:not(.product-gallery__media-crs)"
-          ), F = S[S.length - 1], H = Array.from(a).reverse().find(($) => !$.classList.contains("product-gallery__thumbnail-crs"));
-          x && k && x.addEventListener("click", () => {
+          ), F = S[S.length - 1], H = Array.from(a).reverse().find((V) => !V.classList.contains("product-gallery__thumbnail-crs"));
+          x && k && (x.addEventListener("click", () => {
             this.isClickOnThumbnail = !0, this.handleThumbnailClick(
               i,
               o,
@@ -735,7 +735,9 @@ variant-picker.variant-picker [data-crs-variant='size'] {
             ), setTimeout(() => {
               this.isClickOnThumbnail = !1;
             }, 1e3);
-          }), H && x && F && H.addEventListener("click", () => {
+          }), r.addEventListener("scroll", (V) => {
+            V.preventDefault();
+          })), H && x && F && H.addEventListener("click", () => {
             this.handleThumbnailClick(
               i,
               o,
@@ -1340,12 +1342,12 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         ), k = s.querySelectorAll(
           ".variant-picker__option-values label"
         ));
-        let S, F, H, $;
+        let S, F, H, V;
         b.forEach((f) => {
           var m;
           f.checked && (F = f.id, S = (m = f.nextElementSibling) == null ? void 0 : m.outerHTML);
         }), A.forEach((f) => {
-          f.checked && ($ = f.id, H = f.value);
+          f.checked && (V = f.id, H = f.value);
         });
         const ye = (
           /* HTML */
@@ -1419,7 +1421,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             <div class="crs-sticky-variant-picker-options-list">
               ${Array.from(k).map((f) => {
             const m = f.cloneNode(!0);
-            return f.getAttribute("for") === $ && m.classList.add("crs-selected"), m.outerHTML;
+            return f.getAttribute("for") === V && m.classList.add("crs-selected"), m.outerHTML;
           }).join("")}
             </div>
           </div>
@@ -2815,10 +2817,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.checkCustomEvents(), this.init();
     }
     checkCustomEvents() {
-      V("Custom Events Logger Initialized");
+      $("Custom Events Logger Initialized");
       const e = EventTarget.prototype.dispatchEvent;
       EventTarget.prototype.dispatchEvent = function(t) {
-        return (t.type.includes("variant") || t.type.includes("product") || t.type.includes("cart")) && V("Shopify Event: " + t.type + " | " + t), e.call(this, t);
+        return (t.type.includes("variant") || t.type.includes("product") || t.type.includes("cart")) && $("Shopify Event: " + t.type + " | " + t), e.call(this, t);
       };
     }
     async addPriceToBtn() {
