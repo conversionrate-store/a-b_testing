@@ -206,8 +206,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     init() {
       this.changeVariantPickerOrder(), this.addDimensionInfoPopup(), this.addDimensionInfoButton();
     }
-    changeVariantPickerOrder() {
-      const e = document.querySelector(
+    async changeVariantPickerOrder() {
+      const e = await g(
         ".product-info__variant-picker"
       ), t = e == null ? void 0 : e.querySelector(".variant-picker");
       if (!e || !t) return;
@@ -298,11 +298,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       );
       document.body.insertAdjacentHTML("beforeend", n);
     }
-    addDimensionInfoPopup() {
-      document.querySelector(
-        ".product-gallery__media img"
-      );
-      const e = document.querySelector("#dim_detail "), t = e == null ? void 0 : e.querySelector("media-with-text");
+    async addDimensionInfoPopup() {
+      const e = await g("#dim_detail"), t = e == null ? void 0 : e.querySelector("media-with-text");
       document.body.insertAdjacentHTML(
         "beforeend",
         /* HTML */
