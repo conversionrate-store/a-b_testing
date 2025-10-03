@@ -2722,7 +2722,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.init();
     }
     init() {
-      this.changeTabsOrder();
+      this.changeTabsOrder(), setTimeout(() => {
+        this.changeTabsOrder();
+      }, 2e3);
     }
     async changeTabsOrder() {
       var c;
