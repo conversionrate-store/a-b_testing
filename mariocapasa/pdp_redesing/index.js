@@ -7,7 +7,7 @@
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), P(`Event: ${g} | ${e} | ${t} | ${n}`, "success");
+    }), H(`Event: ${g} | ${e} | ${t} | ${n}`, "success");
   }, f = (g) => new Promise((e) => {
     const t = document.querySelector(g);
     t && e(t);
@@ -39,7 +39,7 @@
             "view",
             t
           ), o.disconnect();
-        }, s) : (P("Element is not fully visible", "warn"), clearTimeout(r));
+        }, s) : (H("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [i] }
     );
@@ -47,7 +47,7 @@
       const a = document.querySelector(g);
       a && o.observe(a);
     }
-  }, P = (g, e = "info") => {
+  }, H = (g, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -646,6 +646,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
         setTimeout(() => this.addItemsToGallery(), 100);
       }), document.addEventListener("visibilitychange", () => {
         document.hidden || setTimeout(() => this.addItemsToGallery(), 100);
+      }), document.addEventListener("limespot:productViewed", () => {
+        setTimeout(() => this.addItemsToGallery(), 1e3);
       });
     }
     async checkIfNewItemsAdded() {
@@ -1325,12 +1327,12 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         ), A = s.querySelectorAll(
           ".variant-picker__option-values label"
         ));
-        let D, W, $, G;
+        let D, W, R, G;
         _.forEach((h) => {
           var m;
           h.checked && (W = h.id, D = (m = h.nextElementSibling) == null ? void 0 : m.outerHTML);
         }), b.forEach((h) => {
-          h.checked && (G = h.id, $ = h.value);
+          h.checked && (G = h.id, R = h.value);
         });
         const ye = (
           /* HTML */
@@ -1357,7 +1359,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               >
                 <div class="crs-sticky-variant-item-wrap">
                   <div class="crs-sticky-variant-label">Size</div>
-                  <div class="crs-sticky-variant-value">${$}</div>
+                  <div class="crs-sticky-variant-value">${R}</div>
                 </div>
               </div>`
           ) : ""}
@@ -1394,7 +1396,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 <span></span>
                 <div class="crs-sticky-variant-picker-options-label">Size:</div>
                 <div class="crs-sticky-variant-picker-options-value">
-                  ${$}
+                  ${R}
                 </div>
               </button>
               <button class="crs-sticky-variant-picker-option-dimension">
@@ -1425,20 +1427,20 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         });
         const d = t.querySelector(
           ".crs-sticky-variant-picker"
-        ), R = d == null ? void 0 : d.querySelector(
-          ".crs-sticky-variant-color"
         ), z = d == null ? void 0 : d.querySelector(
+          ".crs-sticky-variant-color"
+        ), j = d == null ? void 0 : d.querySelector(
           ".crs-sticky-variant-size"
-        ), j = d == null ? void 0 : d.querySelectorAll(
+        ), Z = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options"
         ), y = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"]'
         ), w = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"]'
-        ), Z = d == null ? void 0 : d.querySelectorAll(
+        ), P = d == null ? void 0 : d.querySelectorAll(
           ".crs-sticky-variant-picker-options-back"
         );
-        R == null || R.addEventListener("click", () => {
+        z == null || z.addEventListener("click", () => {
           y == null || y.removeAttribute("hidden"), w == null || w.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Color", "click", "Sticky"), setTimeout(() => {
             const h = y == null ? void 0 : y.querySelector(
               ".crs-sticky-variant-picker-options-list"
@@ -1460,7 +1462,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               });
             }
           }, 50);
-        }), z == null || z.addEventListener("click", () => {
+        }), j == null || j.addEventListener("click", () => {
           w == null || w.removeAttribute("hidden"), y == null || y.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Size", "click", "Sticky"), setTimeout(() => {
             const h = w == null ? void 0 : w.querySelector(
               ".crs-sticky-variant-picker-options-list"
@@ -1482,19 +1484,19 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               });
             }
           }, 50);
-        }), Z == null || Z.forEach((h) => {
+        }), P == null || P.forEach((h) => {
           h.addEventListener("click", () => {
-            j == null || j.forEach((m) => {
+            Z == null || Z.forEach((m) => {
               m.setAttribute("hidden", "true"), u("exp_pdp_click_17", "Back", "click", "Sticky");
             });
           });
         });
-        const H = d == null ? void 0 : d.querySelector(
+        const I = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"] .crs-sticky-variant-picker-options-list'
-        ), I = d == null ? void 0 : d.querySelector(
+        ), V = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"] .crs-sticky-variant-picker-options-list'
         );
-        H == null || H.addEventListener("click", (h) => {
+        I == null || I.addEventListener("click", (h) => {
           var S;
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
           const m = h.target.closest("label");
@@ -1505,7 +1507,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 L
               );
               if (k) {
-                k.click(), H.querySelectorAll("label").forEach(
+                k.click(), I.querySelectorAll("label").forEach(
                   (we) => we.classList.remove("crs-selected")
                 ), m.classList.add("crs-selected");
                 const E = k.value, q = (S = k.nextElementSibling) == null ? void 0 : S.outerHTML, M = d == null ? void 0 : d.querySelector(
@@ -1520,7 +1522,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             }
             u("exp_pdp_click_16", "Variant Item", "click", "Sticky Color"), u("exp_pdp_click_16.1", `${m.textContent.trim()}`, "click", "Sticky Color");
           }
-        }), I == null || I.addEventListener("click", (h) => {
+        }), V == null || V.addEventListener("click", (h) => {
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
           const m = h.target.closest("label");
           if (m) {
@@ -1530,7 +1532,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 S
               );
               if (L) {
-                L.click(), I.querySelectorAll("label").forEach(
+                L.click(), V.querySelectorAll("label").forEach(
                   (M) => M.classList.remove("crs-selected")
                 ), m.classList.add("crs-selected");
                 const F = L.value, E = d == null ? void 0 : d.querySelector(
@@ -1953,7 +1955,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         rating: !1
       }
     ]
-  }, V = {
+  }, $ = {
     trustpilot: (
       /* HTML */
       `<svg
@@ -2322,7 +2324,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         <div class="crs-review-title">Too Comfortable to Keep Quiet About</div>
         <div class="crs-review-average-rating">
           4.8 average rating
-          <span>${V.averageStars}</span>
+          <span>${$.averageStars}</span>
         </div>
 
         <div class="crs-reviews-tabs">
@@ -2330,10 +2332,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             class="crs-reviews-tab crs-reviews-tab-active"
             data-crs-tab="trustpilot"
           >
-            ${V.trustpilot}
+            ${$.trustpilot}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="yelp">
-            ${V.yelp}
+            ${$.yelp}
           </button>
           <button class="crs-reviews-tab" data-crs-tab="reddit">
             <img
@@ -2784,7 +2786,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
   J({ name: "New PDP Experiment", dev: "OS" }), K("exp_pdp");
   class Ce {
     constructor() {
-      this.init();
+      this.checkCustomEvents(), this.init();
+    }
+    checkCustomEvents() {
+      H("Custom Events Logger Initialized");
+      const e = EventTarget.prototype.dispatchEvent;
+      EventTarget.prototype.dispatchEvent = function(t) {
+        return (t.type.includes("variant") || t.type.includes("product") || t.type.includes("cart")) && H("Shopify Event: " + t.type + " | " + t), e.call(this, t);
+      };
     }
     init() {
       this.checkPdpPage().then((e) => {
