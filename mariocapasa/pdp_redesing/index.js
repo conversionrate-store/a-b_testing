@@ -2729,16 +2729,16 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         `<div class="crs-protection-plan-text">
       Enjoy peace of mind with our all-around protection — covering stains and
       spills, rips, tears and seam separation, liquid marks and rings, pet
-      damage, <button data-action="crs-protection-modal">and more</button>.
+      damage, <button type="button" data-action="crs-protection-modal">and more</button>.
     </div>`
       );
       const n = document.querySelector(
         '[data-action="crs-protection-modal"]'
       ), s = document.querySelector(
-        ".protection-plan-modal"
+        "#myBtn"
       );
-      n && n.addEventListener("click", () => {
-        s && (s.style.display = "block", v("exp_pdp_click_8", "Learn More", "click", "Protection Plan"));
+      n && n.addEventListener("click", (i) => {
+        i.preventDefault(), s && (s.click(), v("exp_pdp_click_8", "Learn More", "click", "Protection Plan"));
       });
     }
     addStyles() {
