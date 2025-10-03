@@ -623,7 +623,9 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     init() {
       this.addStyles(), this.listenForShopifyEvents(), setTimeout(() => {
         this.addItemsToGallery();
-      }, 1500), this.changeMobileGalleryPosition(), this.checkIfNewItemsAdded();
+      }, 1500), this.changeMobileGalleryPosition(), setTimeout(() => {
+        this.checkIfNewItemsAdded();
+      }, 2e3);
     }
     async changeMobileGalleryPosition() {
       if (window.innerWidth > 1e3) return;
