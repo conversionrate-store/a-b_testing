@@ -31,11 +31,11 @@
   }, X = (g, e, t, n, s = 1e3, i = 0.5) => {
     let o, r;
     o = new IntersectionObserver(
-      function(a) {
-        a[0].isIntersecting === !0 ? r = setTimeout(() => {
+      function(c) {
+        c[0].isIntersecting === !0 ? r = setTimeout(() => {
           f(
             e,
-            a[0].target.dataset.visible || n,
+            c[0].target.dataset.visible || n,
             "view",
             t
           ), o.disconnect();
@@ -44,8 +44,8 @@
       { threshold: [i] }
     );
     {
-      const a = document.querySelector(g);
-      a && o.observe(a);
+      const c = document.querySelector(g);
+      c && o.observe(c);
     }
   }, V = (g, e = "info") => {
     let t;
@@ -339,8 +339,8 @@ variant-picker.variant-picker [data-crs-variant='size'] {
       }), i.addEventListener("crs-dialog-close", () => {
         e && t && o && e.appendChild(t), f("exp_pdp_click_6", "Close", "click", "Dimension info popup"), document.body.style.overflow = "";
       }), document.addEventListener("click", (r) => {
-        const a = r.target;
-        a && a.closest("#dimension-info-dialog .detail-btn") && f("exp_pdp_click_7", "Size Button", "click", "Dimension info popup");
+        const c = r.target;
+        c && c.closest("#dimension-info-dialog .detail-btn") && f("exp_pdp_click_7", "Size Button", "click", "Dimension info popup");
       });
     }
     addStyles() {
@@ -435,38 +435,38 @@ variant-picker.variant-picker [data-crs-variant='size'] {
           /* html */
           '<div class="crs-shipping-schedule">Shipping Schedule</div>'
         ), n.querySelectorAll(":scope > div").forEach((i) => {
-          var o, r, a, l;
+          var o, r, c, l;
           if ((o = i.textContent) != null && o.includes("Next batch ship") && i.classList.add(
             "crs-inventory-status",
             "crs-inventory-status--preorder"
-          ), (r = i.textContent) != null && r.includes("In Stock") && !((a = i.textContent) != null && a.includes("Reserved")) && i.classList.add(
+          ), (r = i.textContent) != null && r.includes("In Stock") && !((c = i.textContent) != null && c.includes("Reserved")) && i.classList.add(
             "crs-inventory-status",
             "crs-inventory-status--instock"
           ), (l = i.textContent) != null && l.includes("Reserved")) {
             i.classList.add("crs-inventory-reserved");
-            const h = "100", C = (
+            const d = "100", C = (
               /* html */
               `
             <div class="crs-inventory-progress-bar">
-              <div class="crs-inventory-progress-bar__fill" style="width: ${Number(h) < 10 ? 3 : Number(h) > 90 && Number(h) < 100 ? 90 : Math.ceil(Number(h) / 10) * 10}%"></div></div>
+              <div class="crs-inventory-progress-bar__fill" style="width: ${Number(d) < 10 ? 3 : Number(d) > 90 && Number(d) < 100 ? 90 : Math.ceil(Number(d) / 10) * 10}%"></div></div>
             </div>
           `
             );
             i.insertAdjacentHTML("beforeend", C);
           }
-          n.addEventListener("click", (h) => {
-            const c = h.target;
-            c && c.closest("#prev-batch-container") && f(
+          n.addEventListener("click", (d) => {
+            const a = d.target;
+            a && a.closest("#prev-batch-container") && f(
               "exp_pdp_click_9",
               "Previous Batch",
               "click",
               "Shipping Schedule"
-            ), c && c.closest(".crs-inventory-reserved") && f(
+            ), a && a.closest(".crs-inventory-reserved") && f(
               "exp_pdp_click_9",
               "Current Batch",
               "click",
               "Shipping Schedule"
-            ), c && c.closest("#future-batch-container") && f(
+            ), a && a.closest("#future-batch-container") && f(
               "exp_pdp_click_9",
               "Future Batch",
               "click",
@@ -477,7 +477,7 @@ variant-picker.variant-picker [data-crs-variant='size'] {
       });
     }
     async addTopInStock() {
-      var o, r;
+      var r, c;
       const e = await v(".product-info__payment-terms");
       if (!e) return;
       e.insertAdjacentHTML(
@@ -496,23 +496,23 @@ variant-picker.variant-picker [data-crs-variant='size'] {
       </div>
     `
       );
-      const n = (o = e.parentElement) == null ? void 0 : o.querySelector(
+      const n = (r = e.parentElement) == null ? void 0 : r.querySelector(
         ".crs-top-inventory-status--instock"
-      ), s = (r = e.parentElement) == null ? void 0 : r.querySelector(
+      ), s = (c = e.parentElement) == null ? void 0 : c.querySelector(
         ".crs-top-inventory-status--preorder"
-      );
-      if (!n || !s) return;
-      const i = async () => {
-        var l, h;
-        const a = await v(".pre-order-info:not([hidden])");
-        a.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), s.innerHTML = ((l = a.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : l.innerHTML) || ""), a.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), n.innerHTML = ((h = a.querySelector(".crs-inventory-status--instock")) == null ? void 0 : h.innerHTML) || "");
+      ), i = await v(".crs-data-arrive-badge");
+      if (console.log("arriveDataElement", i), !n || !s) return;
+      const o = async () => {
+        var a, C;
+        const l = document.querySelector("sold-out-badge:not([hidden])"), d = await v(".pre-order-info:not([hidden])");
+        d.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), i && i.setAttribute("hidden", ""), s.innerHTML = ((a = d.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : a.innerHTML) || ""), V("isSoldOut " + l), l && (n.setAttribute("hidden", ""), s.setAttribute("hidden", ""), i && i.setAttribute("hidden", "")), d.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), i && i.removeAttribute("hidden"), n.innerHTML = ((C = d.querySelector(".crs-inventory-status--instock")) == null ? void 0 : C.innerHTML) || "");
       };
       n.addEventListener("click", () => {
         f("exp_pdp_click_4", "In Stock", "click", "Top info inventory");
       }), s.addEventListener("click", () => {
         f("exp_pdp_click_4", "Pre Order", "click", "Top info inventory");
-      }), await i(), document.addEventListener("variant:change", async () => {
-        await i();
+      }), await o(), document.addEventListener("variant:change", async () => {
+        await o();
       });
     }
     addStyles() {
@@ -672,60 +672,60 @@ variant-picker.variant-picker [data-crs-variant='size'] {
       const n = [];
       let s = 0;
       e.forEach((i) => {
-        var a;
-        const o = (a = i.querySelector("source")) == null ? void 0 : a.getAttribute("src"), r = i.getAttribute("poster");
+        var c;
+        const o = (c = i.querySelector("source")) == null ? void 0 : c.getAttribute("src"), r = i.getAttribute("poster");
         if (o) {
           const l = {
             id: `crs-video-${s++}`,
             video: o,
             poster: r || ""
           };
-          if (n.find((h) => h.video === o)) return;
+          if (n.find((d) => d.video === o)) return;
           n.push(l);
         }
       }), t.forEach((i) => {
-        const o = i.querySelector("media-carousel"), r = i.querySelector("page-dots"), a = i.querySelectorAll(
+        const o = i.querySelector("media-carousel"), r = i.querySelector("page-dots"), c = i.querySelectorAll(
           ".product-gallery__thumbnail"
         ), l = i.querySelector(
           '[is="product-zoom-button"]'
         );
         if (!o || !r) return;
-        const h = Array.from(n).slice(0, 2);
-        r.addEventListener("click", (c) => {
-          const d = c.target.closest(".product-gallery__thumbnail");
-          d && (this.isClickOnThumbnail = !0, f(
+        const d = Array.from(n).slice(0, 2);
+        r.addEventListener("click", (a) => {
+          const p = a.target.closest(".product-gallery__thumbnail");
+          p && (this.isClickOnThumbnail = !0, f(
             "exp_pdp_click_1",
             "Gallery thumbnail",
             "click",
             "Product Gallery"
           ), this.pushCurrentViewData(), setTimeout(() => {
             this.isClickOnThumbnail = !1;
-          }, 1e3)), d != null && d.classList.contains("product-gallery__thumbnail-crs") ? l == null || l.setAttribute("hidden", "") : l == null || l.removeAttribute("hidden");
-        }), o.addEventListener("click", (c) => {
-          c.target.closest(".product-gallery__media");
-        }), h.forEach((c) => {
+          }, 1e3)), p != null && p.classList.contains("product-gallery__thumbnail-crs") ? l == null || l.setAttribute("hidden", "") : l == null || l.removeAttribute("hidden");
+        }), o.addEventListener("click", (a) => {
+          a.target.closest(".product-gallery__media");
+        }), d.forEach((a) => {
           const C = (
             /* html */
             `
-          <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${c.id}">
-            <img src="${c.poster}" alt="sectional - Amora Open L Sectional - MC - Mario Capasa" srcset="${c.poster}&amp;width=56 56w, ${c.poster}&amp;width=64 64w, ${c.poster}&amp;width=112 112w, ${c.poster}&amp;width=128 128w, ${c.poster}&amp;width=168 168w, ${c.poster}&amp;width=192 192w" width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 56px, 64px" class="object-contain rounded-sm">
+          <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${a.id}">
+            <img src="${a.poster}" alt="sectional - Amora Open L Sectional - MC - Mario Capasa" srcset="${a.poster}&amp;width=56 56w, ${a.poster}&amp;width=64 64w, ${a.poster}&amp;width=112 112w, ${a.poster}&amp;width=128 128w, ${a.poster}&amp;width=168 168w, ${a.poster}&amp;width=192 192w" width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 56px, 64px" class="object-contain rounded-sm">
           </button>`
-          ), d = r.querySelector(
-            `[data-media-id="${c.id}"]`
+          ), p = r.querySelector(
+            `[data-media-id="${a.id}"]`
           );
-          if (console.log("existingThumbnail", d), d || (r.insertAdjacentHTML("beforeend", C), o.querySelector(
-            `[data-media-id="${c.id}"]`
+          if (console.log("existingThumbnail", p), p || (r.insertAdjacentHTML("beforeend", C), o.querySelector(
+            `[data-media-id="${a.id}"]`
           ))) return;
           const A = (
             /* html */
-            `<div class="product-gallery__media product-gallery__media-crs" data-media-type="image" data-media-id="${c.id}">
-          <video class="crs-gallery-video" src="${c.video}" poster="${c.poster}" autoplay muted loop preload="metadata" loading="lazy"></video>
+            `<div class="product-gallery__media product-gallery__media-crs" data-media-type="image" data-media-id="${a.id}">
+          <video class="crs-gallery-video" src="${a.video}" poster="${a.poster}" autoplay muted loop preload="metadata" loading="lazy"></video>
         </div>`
           );
           o.insertAdjacentHTML("beforeend", A);
-          const x = r.querySelector(`[data-media-id="${c.id}"]`), k = o.querySelector(`[data-media-id="${c.id}"]`), S = i.querySelectorAll(
+          const x = r.querySelector(`[data-media-id="${a.id}"]`), k = o.querySelector(`[data-media-id="${a.id}"]`), S = i.querySelectorAll(
             ".product-gallery__media:not(.product-gallery__media-crs)"
-          ), F = S[S.length - 1], H = Array.from(a).reverse().find(($) => !$.classList.contains("product-gallery__thumbnail-crs"));
+          ), F = S[S.length - 1], H = Array.from(c).reverse().find(($) => !$.classList.contains("product-gallery__thumbnail-crs"));
           x && k && x.addEventListener("click", () => {
             this.isClickOnThumbnail = !0, this.handleThumbnailClick(
               i,
@@ -744,27 +744,27 @@ variant-picker.variant-picker [data-crs-variant='size'] {
             ), setTimeout(() => {
               this.isClickOnThumbnail = !1;
             }, 1e3);
-          }), this.addScrollDetection(i, o, r, h);
-        }), document.addEventListener("click", (c) => {
-          const C = c.target, d = i.querySelector("custom-cursor"), b = i.querySelector(
+          }), this.addScrollDetection(i, o, r, d);
+        }), document.addEventListener("click", (a) => {
+          const C = a.target, p = i.querySelector("custom-cursor"), b = i.querySelector(
             '[is="product-zoom-button"]'
           ), A = i.querySelectorAll(
             ".product-gallery__media:not(.product-gallery__media-crs)"
           ), x = A[A.length - 1], k = o.querySelector(
-            `[data-media-id="${h[0].id}"]`
-          ), S = h.length > 1 ? o.querySelector(
-            `[data-media-id="${h[1].id}"]`
+            `[data-media-id="${d[0].id}"]`
+          ), S = d.length > 1 ? o.querySelector(
+            `[data-media-id="${d[1].id}"]`
           ) : null;
-          if (x && x.contains(C) && d && d.classList.contains("is-half-end") && k && (o.scrollTo({
+          if (x && x.contains(C) && p && p.classList.contains("is-half-end") && k && (o.scrollTo({
             left: k.offsetLeft,
             behavior: "smooth"
-          }), this.updateThumbnailSelection(i, r, h[0].id), b == null || b.setAttribute("hidden", "")), k && k.contains(C)) {
-            if (d && d.classList.contains("is-half-end") && S)
+          }), this.updateThumbnailSelection(i, r, d[0].id), b == null || b.setAttribute("hidden", "")), k && k.contains(C)) {
+            if (p && p.classList.contains("is-half-end") && S)
               o.scrollTo({
                 left: S.offsetLeft,
                 behavior: "smooth"
-              }), this.updateThumbnailSelection(i, r, h[1].id);
-            else if (d && d.classList.contains("is-half-start") && x) {
+              }), this.updateThumbnailSelection(i, r, d[1].id);
+            else if (p && p.classList.contains("is-half-start") && x) {
               o.scrollTo({
                 left: x.offsetLeft,
                 behavior: "smooth"
@@ -780,17 +780,17 @@ variant-picker.variant-picker [data-crs-variant='size'] {
               );
             }
           }
-          S && S.contains(C) && d && d.classList.contains("is-half-start") && k && (o.scrollTo({
+          S && S.contains(C) && p && p.classList.contains("is-half-start") && k && (o.scrollTo({
             left: k.offsetLeft,
             behavior: "smooth"
-          }), this.updateThumbnailSelection(i, r, h[0].id)), (A || k || S) && (d && d.classList.contains("is-half-start") ? (this.isClickOnThumbnail = !0, f(
+          }), this.updateThumbnailSelection(i, r, d[0].id)), (A || k || S) && (p && p.classList.contains("is-half-start") ? (this.isClickOnThumbnail = !0, f(
             "exp_pdp_click_2",
             "Gallery Prev",
             "click",
             "Product Gallery"
           ), this.pushCurrentViewData(), b == null || b.removeAttribute("hidden"), setTimeout(() => {
             this.isClickOnThumbnail = !1;
-          }, 1e3)) : d && d.classList.contains("is-half-end") && (this.isClickOnThumbnail = !0, f(
+          }, 1e3)) : p && p.classList.contains("is-half-end") && (this.isClickOnThumbnail = !0, f(
             "exp_pdp_click_3",
             "Gallery Next",
             "click",
@@ -812,14 +812,14 @@ variant-picker.variant-picker [data-crs-variant='size'] {
     checkVideoVisibility(e, t, n, s) {
       const i = t.clientWidth, o = t.scrollLeft;
       let r = null;
-      for (const a of s) {
+      for (const c of s) {
         const l = t.querySelector(
-          `[data-media-id="${a.id}"]`
+          `[data-media-id="${c.id}"]`
         );
         if (!l) continue;
-        const h = l.offsetLeft, c = l.offsetWidth;
-        if ((Math.min(h + c, o + i) - Math.max(h, o)) / c > 0.5) {
-          r = a;
+        const d = l.offsetLeft, a = l.offsetWidth;
+        if ((Math.min(d + a, o + i) - Math.max(d, o)) / a > 0.5) {
+          r = c;
           break;
         }
       }
@@ -827,10 +827,10 @@ variant-picker.variant-picker [data-crs-variant='size'] {
         this.updateThumbnailSelection(e, n, r.id), e.querySelectorAll(".product-gallery__media").forEach((l) => {
           l.classList.remove("is-selected");
         });
-        const a = t.querySelector(
+        const c = t.querySelector(
           `[data-media-id="${r.id}"]`
         );
-        a && a.classList.add("is-selected");
+        c && c.classList.add("is-selected");
       } else
         e.querySelector(
           ".product-gallery__thumbnail-crs.is-selected"
@@ -1312,30 +1312,30 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ) || "ontouchstart" in window || window.innerWidth <= 768;
     }
     async changeStickySection() {
-      var l, h, c, C;
-      const e = new Promise((d) => setTimeout(d, 1e3)), t = await v("product-quick-add"), n = await Promise.race([
+      var l, d, a, C;
+      const e = new Promise((p) => setTimeout(p, 1e3)), t = await v("product-quick-add"), n = await Promise.race([
         v('[data-crs-variant="color"]'),
         e
       ]), s = await Promise.race([
         v('[data-crs-variant="size"]'),
         e
-      ]), i = t == null ? void 0 : t.querySelector("price-list"), o = t == null ? void 0 : t.querySelector("variant-media"), r = (h = (l = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : l.textContent) == null ? void 0 : h.replace("Sale price", "").trim(), a = t == null ? void 0 : t.querySelectorAll("button");
+      ]), i = t == null ? void 0 : t.querySelector("price-list"), o = t == null ? void 0 : t.querySelector("variant-media"), r = (d = (l = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : l.textContent) == null ? void 0 : d.replace("Sale price", "").trim(), c = t == null ? void 0 : t.querySelectorAll("button");
       if (o && o.addEventListener("click", () => {
-        const d = document.querySelector("product-gallery");
-        d && (window.scrollTo({
-          top: d.getBoundingClientRect().top,
+        const p = document.querySelector("product-gallery");
+        p && (window.scrollTo({
+          top: p.getBoundingClientRect().top,
           behavior: "smooth"
         }), f("exp_pdp_click_19", "Product Image", "click", "Sticky"));
-      }), r && a && a.forEach((d) => {
-        const b = d.querySelector(".crs-sticky-price");
-        b && b.remove(), d.insertAdjacentHTML(
+      }), r && c && c.forEach((p) => {
+        const b = p.querySelector(".crs-sticky-price");
+        b && b.remove(), p.insertAdjacentHTML(
           "beforeend",
           /* HTML */
           ` <div class="crs-sticky-price">${r}</div> `
         );
       }), i) {
-        let d, b = [], A = [], x = [], k = [];
-        n instanceof Element && (d = (C = (c = n.querySelector("variant-option-value")) == null ? void 0 : c.textContent) == null ? void 0 : C.trim(), b = n.querySelectorAll(
+        let p, b = [], A = [], x = [], k = [];
+        n instanceof Element && (p = (C = (a = n.querySelector("variant-option-value")) == null ? void 0 : a.textContent) == null ? void 0 : C.trim(), b = n.querySelectorAll(
           ".variant-picker__option-values input"
         ), x = n.querySelectorAll(
           ".variant-picker__option-values label"
@@ -1365,7 +1365,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 </div>
                 <div class="crs-sticky-variant-item-wrap">
                   <div class="crs-sticky-variant-label">Color</div>
-                  <div class="crs-sticky-variant-value">${d}</div>
+                  <div class="crs-sticky-variant-value">${p}</div>
                 </div>
               </div>`
           ) : ""}
@@ -1392,7 +1392,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                   Color:
                 </div>
                 <div class="crs-sticky-variant-picker-options-value">
-                  ${d}
+                  ${p}
                 </div>
               </button>
             </div>
@@ -1442,19 +1442,19 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           );
           u && (u.open(), f("exp_pdp_click_18", "View Dimensions", "click", "Sticky"));
         });
-        const p = t.querySelector(
+        const h = t.querySelector(
           ".crs-sticky-variant-picker"
-        ), Z = p == null ? void 0 : p.querySelector(
+        ), Z = h == null ? void 0 : h.querySelector(
           ".crs-sticky-variant-color"
-        ), P = p == null ? void 0 : p.querySelector(
+        ), P = h == null ? void 0 : h.querySelector(
           ".crs-sticky-variant-size"
-        ), B = p == null ? void 0 : p.querySelectorAll(
+        ), B = h == null ? void 0 : h.querySelectorAll(
           ".crs-sticky-variant-picker-options"
-        ), y = p == null ? void 0 : p.querySelector(
+        ), y = h == null ? void 0 : h.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"]'
-        ), w = p == null ? void 0 : p.querySelector(
+        ), w = h == null ? void 0 : h.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"]'
-        ), W = p == null ? void 0 : p.querySelectorAll(
+        ), W = h == null ? void 0 : h.querySelectorAll(
           ".crs-sticky-variant-picker-options-back"
         );
         Z == null || Z.addEventListener("click", () => {
@@ -1508,9 +1508,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             });
           });
         });
-        const R = p == null ? void 0 : p.querySelector(
+        const R = h == null ? void 0 : h.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="color"] .crs-sticky-variant-picker-options-list'
-        ), z = p == null ? void 0 : p.querySelector(
+        ), z = h == null ? void 0 : h.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"] .crs-sticky-variant-picker-options-list'
         );
         R == null || R.addEventListener("click", (u) => {
@@ -1527,9 +1527,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 _.click(), R.querySelectorAll("label").forEach(
                   (we) => we.classList.remove("crs-selected")
                 ), m.classList.add("crs-selected");
-                const T = _.value, M = (E = _.nextElementSibling) == null ? void 0 : E.outerHTML, D = p == null ? void 0 : p.querySelector(
+                const T = _.value, M = (E = _.nextElementSibling) == null ? void 0 : E.outerHTML, D = h == null ? void 0 : h.querySelector(
                   ".crs-sticky-variant-color .crs-sticky-variant-value"
-                ), q = p == null ? void 0 : p.querySelector(
+                ), q = h == null ? void 0 : h.querySelector(
                   ".crs-sticky-variant-color .crs-sticky-variant-swatch"
                 ), U = y == null ? void 0 : y.querySelector(
                   ".crs-sticky-variant-picker-options-value"
@@ -1552,7 +1552,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 L.click(), z.querySelectorAll("label").forEach(
                   (D) => D.classList.remove("crs-selected")
                 ), m.classList.add("crs-selected");
-                const I = L.value, T = p == null ? void 0 : p.querySelector(
+                const I = L.value, T = h == null ? void 0 : h.querySelector(
                   ".crs-sticky-variant-size .crs-sticky-variant-value"
                 ), M = w == null ? void 0 : w.querySelector(
                   ".crs-sticky-variant-picker-options-value"
@@ -2503,18 +2503,18 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       (e = document.querySelector(".crs-reviews-content")) == null || e.addEventListener("click", (n) => {
         const i = n.target.closest(".crs-slider-arrow");
         if (i) {
-          const o = i.getAttribute("data-direction"), r = i.closest(".crs-review-item"), a = r == null ? void 0 : r.querySelector(
+          const o = i.getAttribute("data-direction"), r = i.closest(".crs-review-item"), c = r == null ? void 0 : r.querySelector(
             ".crs-reviews-slider"
           ), l = r == null ? void 0 : r.getAttribute(
             "data-crs-item"
           );
-          if (a && o && l) {
-            const h = this.getSlideWidth(a);
-            o === "next" ? (a.scrollTo({
-              left: a.scrollLeft + h,
+          if (c && o && l) {
+            const d = this.getSlideWidth(c);
+            o === "next" ? (c.scrollTo({
+              left: c.scrollLeft + d,
               behavior: "smooth"
-            }), f("exp_pdp_click_13", "Next Arrow", "click", "Reviews")) : o === "prev" && (a.scrollTo({
-              left: a.scrollLeft - h,
+            }), f("exp_pdp_click_13", "Next Arrow", "click", "Reviews")) : o === "prev" && (c.scrollTo({
+              left: c.scrollLeft - d,
               behavior: "smooth"
             }), f("exp_pdp_click_14", "Prev Arrow", "click", "Reviews")), setTimeout(() => {
               this.updateArrowStates(l);
@@ -2557,8 +2557,8 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       return document.querySelectorAll(
         ".review-block .text-reviews .card .card-content"
       ).forEach((n) => {
-        var r, a;
-        const s = ((r = n.querySelector("h2")) == null ? void 0 : r.textContent) || "", i = ((a = n.querySelector("p.wtc")) == null ? void 0 : a.textContent) || "";
+        var r, c;
+        const s = ((r = n.querySelector("h2")) == null ? void 0 : r.textContent) || "", i = ((c = n.querySelector("p.wtc")) == null ? void 0 : c.textContent) || "";
         e.push({ author: s, text: i, rating: !0 });
       }), e.length === 0 ? G.trustpilot : e;
     }
@@ -2746,11 +2746,11 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       }, 2e3);
     }
     async changeTabsOrder() {
-      var h;
+      var d;
       await v('[class*="tabs-btns-template"]');
-      const e = (h = document.querySelector(
+      const e = (d = document.querySelector(
         '.product-info__liquid:has([class*="tabs-btns-template"])'
-      )) == null ? void 0 : h.parentElement;
+      )) == null ? void 0 : d.parentElement;
       if (!e) return;
       const t = e.querySelector(
         '[class*="tabs-btns-template"]'
@@ -2761,14 +2761,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       );
       if (console.log("tabsContent", n), !t || !n) return;
       const s = Array.from(t.children).find(
-        (c) => {
+        (a) => {
           var C;
-          return (C = c.textContent) == null ? void 0 : C.trim().toLowerCase().includes("materials");
+          return (C = a.textContent) == null ? void 0 : C.trim().toLowerCase().includes("materials");
         }
       ), i = Array.from(t.children).find(
-        (c) => {
+        (a) => {
           var C;
-          return (C = c.textContent) == null ? void 0 : C.trim().toLowerCase().includes("dimensions");
+          return (C = a.textContent) == null ? void 0 : C.trim().toLowerCase().includes("dimensions");
         }
       ), o = s ? n.querySelector(
         `[data-id="${s.getAttribute("data-id")}"]`
@@ -2779,8 +2779,8 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         console.warn("Materials or Dimensions tab not found");
         return;
       }
-      const a = t.querySelectorAll('[class*="tabs-btn-"]'), l = n.querySelectorAll('[class*="tabs-item-"]');
-      a.forEach((c) => c.classList.remove("active")), l.forEach((c) => c.classList.remove("active")), t.firstChild && t.insertBefore(i, t.firstChild), i.nextSibling ? t.insertBefore(s, i.nextSibling) : t.appendChild(s), n.firstChild && n.insertBefore(r, n.firstChild), r.nextSibling ? n.insertBefore(o, r.nextSibling) : n.appendChild(o), this.updateTabCounts(t), i.classList.add("active"), r.classList.add("active");
+      const c = t.querySelectorAll('[class*="tabs-btn-"]'), l = n.querySelectorAll('[class*="tabs-item-"]');
+      c.forEach((a) => a.classList.remove("active")), l.forEach((a) => a.classList.remove("active")), t.firstChild && t.insertBefore(i, t.firstChild), i.nextSibling ? t.insertBefore(s, i.nextSibling) : t.appendChild(s), n.firstChild && n.insertBefore(r, n.firstChild), r.nextSibling ? n.insertBefore(o, r.nextSibling) : n.appendChild(o), this.updateTabCounts(t), i.classList.add("active"), r.classList.add("active");
     }
     updateTabCounts(e) {
       e.querySelectorAll('[class*="tabs-btn-"]').forEach((n, s) => {
@@ -2842,4 +2842,3 @@ product-quick-add .product-quick-add__variant buy-buttons button {
   }
   new Ce();
 })();
-//# sourceMappingURL=index.js.map
