@@ -719,7 +719,7 @@ variant-picker.variant-picker [data-crs-variant='size'] {
           const A = (
             /* html */
             `<div class="product-gallery__media product-gallery__media-crs" data-media-type="image" data-media-id="${c.id}">
-          <video class="crs-gallery-video" src="${c.video}" poster="${c.poster}" autoplay muted loop preload="metadata" loading="lazy"></video>
+          <video class="crs-gallery-video" src="${c.video}" poster="${c.poster}" playsinline autoplay muted loop preload="metadata" loading="lazy"></video>
         </div>`
           );
           o.insertAdjacentHTML("beforeend", A);
