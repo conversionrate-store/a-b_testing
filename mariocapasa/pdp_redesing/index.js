@@ -335,8 +335,9 @@ variant-picker.variant-picker [data-crs-variant='size'] {
           );
           r && r.insertAdjacentHTML("beforeend", s);
         }
+        document.body.style.overflow = "hidden";
       }), i.addEventListener("crs-dialog-close", () => {
-        e && t && o && e.appendChild(t), u("exp_pdp_click_6", "Close", "click", "Dimension info popup");
+        e && t && o && e.appendChild(t), u("exp_pdp_click_6", "Close", "click", "Dimension info popup"), document.body.style.overflow = "";
       }), document.addEventListener("click", (r) => {
         const a = r.target;
         a && a.closest("#dimension-info-dialog .detail-btn") && u("exp_pdp_click_7", "Size Button", "click", "Dimension info popup");
