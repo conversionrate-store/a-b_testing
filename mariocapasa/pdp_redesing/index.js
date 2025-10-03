@@ -1,34 +1,34 @@
 (function() {
   "use strict";
-  const h = (m, e, t, n = "") => {
+  const h = (g, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: m,
+      event_name: g,
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), P(`Event: ${m} | ${e} | ${t} | ${n}`, "success");
-  }, g = (m) => new Promise((e) => {
-    const t = document.querySelector(m);
+    }), P(`Event: ${g} | ${e} | ${t} | ${n}`, "success");
+  }, m = (g) => new Promise((e) => {
+    const t = document.querySelector(g);
     t && e(t);
     const n = new MutationObserver(() => {
-      const s = document.querySelector(m);
+      const s = document.querySelector(g);
       s && (e(s), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), J = ({ name: m, dev: e }) => {
+  }), J = ({ name: g, dev: e }) => {
     console.log(
-      `%c EXP: ${m} (DEV: ${e})`,
+      `%c EXP: ${g} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, K = (m) => {
+  }, K = (g) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", m, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", g, "variant_1"));
     }, 1e3);
-  }, X = (m, e, t, n, s = 1e3, i = 0.5) => {
+  }, X = (g, e, t, n, s = 1e3, i = 0.5) => {
     let o, r;
     o = new IntersectionObserver(
       function(a) {
@@ -44,10 +44,10 @@
       { threshold: [i] }
     );
     {
-      const a = document.querySelector(m);
+      const a = document.querySelector(g);
       a && o.observe(a);
     }
-  }, P = (m, e = "info") => {
+  }, P = (g, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -63,7 +63,7 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${m}`, `${t} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${g}`, `${t} font-size: 16px; font-weight: 600`);
   }, Y = `variant-picker.variant-picker {
   display: flex;
   flex-direction: column;
@@ -207,7 +207,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.changeVariantPickerOrder(), this.addDimensionInfoPopup(), this.addDimensionInfoButton();
     }
     async changeVariantPickerOrder() {
-      const e = await g(
+      await m(".variant-picker__option");
+      const e = await m(
         ".product-info__variant-picker"
       ), t = e == null ? void 0 : e.querySelector(".variant-picker");
       if (!e || !t) return;
@@ -221,7 +222,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addViewFabricInfoButton() {
-      const e = await g(
+      const e = await m(
         '[data-crs-variant="color"] .variant-picker__option-info'
       );
       if (!e)
@@ -244,7 +245,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addDimensionInfoButton() {
-      const e = await g(
+      const e = await m(
         '[data-crs-variant="size"] .variant-picker__option-info'
       );
       if (!e)
@@ -299,7 +300,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       document.body.insertAdjacentHTML("beforeend", n);
     }
     async addDimensionInfoPopup() {
-      const e = await g("#dim_detail"), t = e == null ? void 0 : e.querySelector("media-with-text");
+      const e = await m("#dim_detail"), t = e == null ? void 0 : e.querySelector("media-with-text");
       document.body.insertAdjacentHTML(
         "beforeend",
         /* HTML */
@@ -411,11 +412,11 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.changeReserveAndStockInfoPosition(), this.preOrderInfo(), this.addTopInStock();
     }
     async changeReserveAndStockInfoPosition() {
-      const e = await g(".product-info__inventory"), t = await g(".free_ship");
+      const e = await m(".product-info__inventory"), t = await m(".free_ship");
       !e || !t || t.insertAdjacentElement("afterend", e);
     }
     async preOrderInfo() {
-      const e = await g(".product-info__inventory");
+      const e = await m(".product-info__inventory");
       if (!e) return;
       const t = e.querySelectorAll(".pre-order-info");
       t.length !== 0 && t.forEach((n) => {
@@ -467,7 +468,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     async addTopInStock() {
       var o, r;
-      const e = await g(".product-info__payment-terms");
+      const e = await m(".product-info__payment-terms");
       if (!e) return;
       e.insertAdjacentHTML(
         "afterend",
@@ -493,7 +494,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       if (!n || !s) return;
       const i = async () => {
         var l, c;
-        const a = await g(".pre-order-info:not([hidden])");
+        const a = await m(".pre-order-info:not([hidden])");
         a.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), s.innerHTML = ((l = a.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : l.innerHTML) || ""), a.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), n.innerHTML = ((c = a.querySelector(".crs-inventory-status--instock")) == null ? void 0 : c.innerHTML) || "");
       };
       n.addEventListener("click", () => {
@@ -625,8 +626,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     async changeMobileGalleryPosition() {
       if (window.innerWidth > 1e3) return;
-      await g('product-gallery[style*="opacity: 1;"]');
-      const e = document.querySelectorAll("product-gallery"), t = await g(
+      await m('product-gallery[style*="opacity: 1;"]');
+      const e = document.querySelectorAll("product-gallery"), t = await m(
         "payment-terms ~ .product-info__separator"
       );
       e.length === 0 || !t || e.forEach((n) => {
@@ -645,7 +646,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addItemsToGallery() {
-      await g(".media-with-text__media video"), await g(".product product-gallery");
+      await m(".media-with-text__media video"), await m(".product product-gallery"), await new Promise((i) => setTimeout(i, 500));
       const e = document.querySelectorAll(".media-with-text__media video"), t = document.querySelectorAll("product-gallery");
       if (t.length === 0 || e.length === 0) return;
       const n = [];
@@ -968,7 +969,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.addStyles(), this.addDataArriveElement(), this.changeFreeShippingSection();
     }
     async addDataArriveElement() {
-      const e = await g(".product-info__buy-buttons");
+      const e = await m(".product-info__buy-buttons");
       if (!e) return;
       const t = /* @__PURE__ */ new Date();
       t.setDate(t.getDate() + 10);
@@ -1005,7 +1006,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       }));
     }
     async changeFreeShippingSection() {
-      const e = await g(".free_ship_sec");
+      const e = await m(".free_ship_sec");
       if (!e) return;
       const t = e.querySelector(".fs_info"), n = e.querySelector(".fs_info2");
       if (n && (n.classList.add("crs-free-shipping-text-container"), n.innerHTML = /* html */
@@ -1279,11 +1280,11 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     }
     async changeStickySection() {
       var l, c, f, u;
-      const e = new Promise((C) => setTimeout(C, 1e3)), t = await g("product-quick-add"), n = await Promise.race([
-        g('[data-crs-variant="color"]'),
+      const e = new Promise((C) => setTimeout(C, 1e3)), t = await m("product-quick-add"), n = await Promise.race([
+        m('[data-crs-variant="color"]'),
         e
       ]), s = await Promise.race([
-        g('[data-crs-variant="size"]'),
+        m('[data-crs-variant="size"]'),
         e
       ]), i = t == null ? void 0 : t.querySelector("price-list"), o = t == null ? void 0 : t.querySelector("variant-media"), r = (c = (l = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : l.textContent) == null ? void 0 : c.replace("Sale price", "").trim(), a = t == null ? void 0 : t.querySelectorAll("button");
       if (o && o.addEventListener("click", () => {
@@ -2292,13 +2293,13 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.addStyles(), this.changeReviewPosition(), this.changeTextReviews(), this.changeVideoReviews(), this.changeSKUPosition();
     }
     async changeReviewPosition() {
-      const e = await g(".review-block"), t = await g(
+      const e = await m(".review-block"), t = await m(
         ".product-info__liquid:has(#ss-tabs)"
       );
       e && t && t.insertAdjacentElement("beforebegin", e);
     }
     async changeTextReviews() {
-      const e = await g(".review-block .text-reviews");
+      const e = await m(".review-block .text-reviews");
       if (!e) return;
       const t = (
         /* HTML */
@@ -2636,7 +2637,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ).join("");
     }
     async changeVideoReviews() {
-      const e = await g(".review-block .video-reviews");
+      const e = await m(".review-block .video-reviews");
       if (!e) return;
       const t = e.querySelector(".slider_text_video");
       if (!t) return;
@@ -2644,7 +2645,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       window.innerWidth < 768 && (n.params.slidesPerView = 2, n.update());
     }
     async changeSKUPosition() {
-      const e = await g("variant-sku"), t = await g(".shopify-block:has(.loox-rating )");
+      const e = await m("variant-sku"), t = await m(".shopify-block:has(.loox-rating )");
       !e || !t || t.insertAdjacentElement("beforeend", e);
     }
     addStyles() {
@@ -2679,7 +2680,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.addStyles(), this.addNewText();
     }
     async addNewText() {
-      (await g(".what-cover-form")).insertAdjacentHTML(
+      (await m(".what-cover-form")).insertAdjacentHTML(
         "beforebegin",
         /* HTML */
         `<div class="crs-protection-plan-text">
@@ -2754,10 +2755,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
 }
 
 `, ge = () => {
-    let m = 0;
+    let g = 0;
     function e() {
       const t = window.scrollY, n = window.innerHeight, s = document.documentElement.scrollHeight, i = (t + n) / s * 100;
-      i >= m + 5 && (m = Math.round(i / 5) * 5, h("exp_pdp_click_scroll", `${m}%`, "other", "PDP")), i >= 100 && window.removeEventListener("scroll", e);
+      i >= g + 5 && (g = Math.round(i / 5) * 5, h("exp_pdp_click_scroll", `${g}%`, "other", "PDP")), i >= 100 && window.removeEventListener("scroll", e);
     }
     window.addEventListener("scroll", e);
   };
@@ -2781,7 +2782,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         if (await Promise.race([
           new Promise((t) => setTimeout(t, 3e3)),
           // Timeout after 3 seconds
-          g("body.template-product")
+          m("body.template-product")
           // Wait for the element to appear
         ]))
           return !0;
