@@ -2728,7 +2728,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       var c;
       await u("#ss-tabs");
       const e = (c = document.querySelector(
-        ".product-info__liquid"
+        ".product-info__liquid:has(#ss-tabs)"
       )) == null ? void 0 : c.parentElement;
       if (!e) return;
       const t = e.querySelector(
