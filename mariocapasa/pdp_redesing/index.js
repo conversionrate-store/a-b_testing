@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const h = (g, e, t, n = "") => {
+  const u = (g, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: g,
@@ -8,7 +8,7 @@
       event_type: t,
       event_loc: n
     }), P(`Event: ${g} | ${e} | ${t} | ${n}`, "success");
-  }, u = (g) => new Promise((e) => {
+  }, f = (g) => new Promise((e) => {
     const t = document.querySelector(g);
     t && e(t);
     const n = new MutationObserver(() => {
@@ -33,7 +33,7 @@
     o = new IntersectionObserver(
       function(a) {
         a[0].isIntersecting === !0 ? r = setTimeout(() => {
-          h(
+          u(
             e,
             a[0].target.dataset.visible || n,
             "view",
@@ -207,8 +207,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.changeVariantPickerOrder(), this.addDimensionInfoPopup(), this.addDimensionInfoButton();
     }
     async changeVariantPickerOrder() {
-      await u(".variant-picker__option");
-      const e = await u(
+      await f(".variant-picker__option");
+      const e = await f(
         ".product-info__variant-picker"
       ), t = e == null ? void 0 : e.querySelector(".variant-picker");
       if (!e || !t) return;
@@ -222,7 +222,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addViewFabricInfoButton() {
-      const e = await u(
+      const e = await f(
         '[data-crs-variant="color"] .variant-picker__option-info'
       );
       if (!e)
@@ -245,8 +245,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       });
     }
     async addDimensionInfoButton() {
-      await u("crs-dialog#dimension-info-dialog");
-      const e = await u(
+      await f("crs-dialog#dimension-info-dialog");
+      const e = await f(
         '[data-crs-variant="size"] .variant-picker__option-info'
       );
       if (!e)
@@ -265,7 +265,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
         '[data-crs-button="view-dimension-info"]'
       ), n = document.getElementById("dimension-info-dialog");
       t == null || t.addEventListener("click", (s) => {
-        n && (n.open(), h(
+        n && (n.open(), u(
           "exp_pdp_click_5",
           "View Dimensions",
           "click",
@@ -301,7 +301,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       document.body.insertAdjacentHTML("beforeend", n);
     }
     async addDimensionInfoPopup() {
-      const e = await u("#dim_detail"), t = e == null ? void 0 : e.querySelector("media-with-text");
+      const e = await f("#dim_detail"), t = e == null ? void 0 : e.querySelector("media-with-text");
       document.body.insertAdjacentHTML(
         "beforeend",
         /* HTML */
@@ -328,10 +328,10 @@ variant-picker.variant-picker [data-crs-variant="size"] {
           r && r.insertAdjacentHTML("beforeend", s);
         }
       }), i.addEventListener("crs-dialog-close", () => {
-        e && t && o && e.appendChild(t), h("exp_pdp_click_6", "Close", "click", "Dimension info popup");
+        e && t && o && e.appendChild(t), u("exp_pdp_click_6", "Close", "click", "Dimension info popup");
       }), document.addEventListener("click", (r) => {
         const a = r.target;
-        a && a.closest("#dimension-info-dialog .detail-btn") && h("exp_pdp_click_7", "Size Button", "click", "Dimension info popup");
+        a && a.closest("#dimension-info-dialog .detail-btn") && u("exp_pdp_click_7", "Size Button", "click", "Dimension info popup");
       });
     }
     addStyles() {
@@ -413,11 +413,11 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.changeReserveAndStockInfoPosition(), this.preOrderInfo(), this.addTopInStock();
     }
     async changeReserveAndStockInfoPosition() {
-      const e = await u(".product-info__inventory"), t = await u(".free_ship");
+      const e = await f(".product-info__inventory"), t = await f(".free_ship");
       !e || !t || t.insertAdjacentElement("afterend", e);
     }
     async preOrderInfo() {
-      const e = await u(".product-info__inventory");
+      const e = await f(".product-info__inventory");
       if (!e) return;
       const t = e.querySelectorAll(".pre-order-info");
       t.length !== 0 && t.forEach((n) => {
@@ -435,7 +435,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
             "crs-inventory-status--instock"
           ), (l = i.textContent) != null && l.includes("Reserved")) {
             i.classList.add("crs-inventory-reserved");
-            const c = "100", f = (
+            const c = "100", p = (
               /* html */
               `
             <div class="crs-inventory-progress-bar">
@@ -443,21 +443,21 @@ variant-picker.variant-picker [data-crs-variant="size"] {
             </div>
           `
             );
-            i.insertAdjacentHTML("beforeend", f);
+            i.insertAdjacentHTML("beforeend", p);
           }
           n.addEventListener("click", (c) => {
             const v = c.target;
-            v && v.closest("#prev-batch-container") && h(
+            v && v.closest("#prev-batch-container") && u(
               "exp_pdp_click_9",
               "Previous Batch",
               "click",
               "Shipping Schedule"
-            ), v && v.closest(".crs-inventory-reserved") && h(
+            ), v && v.closest(".crs-inventory-reserved") && u(
               "exp_pdp_click_9",
               "Current Batch",
               "click",
               "Shipping Schedule"
-            ), v && v.closest("#future-batch-container") && h(
+            ), v && v.closest("#future-batch-container") && u(
               "exp_pdp_click_9",
               "Future Batch",
               "click",
@@ -469,7 +469,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     async addTopInStock() {
       var o, r;
-      const e = await u(".product-info__payment-terms");
+      const e = await f(".product-info__payment-terms");
       if (!e) return;
       e.insertAdjacentHTML(
         "afterend",
@@ -495,13 +495,13 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       if (!n || !s) return;
       const i = async () => {
         var l, c;
-        const a = await u(".pre-order-info:not([hidden])");
+        const a = await f(".pre-order-info:not([hidden])");
         a.querySelector(".crs-inventory-status--preorder") && (s.removeAttribute("hidden"), n.setAttribute("hidden", ""), s.innerHTML = ((l = a.querySelector(".crs-inventory-status--preorder")) == null ? void 0 : l.innerHTML) || ""), a.querySelector(".crs-inventory-status--instock") && (n.removeAttribute("hidden"), s.setAttribute("hidden", ""), n.innerHTML = ((c = a.querySelector(".crs-inventory-status--instock")) == null ? void 0 : c.innerHTML) || "");
       };
       n.addEventListener("click", () => {
-        h("exp_pdp_click_4", "In Stock", "click", "Top info inventory");
+        u("exp_pdp_click_4", "In Stock", "click", "Top info inventory");
       }), s.addEventListener("click", () => {
-        h("exp_pdp_click_4", "Pre Order", "click", "Top info inventory");
+        u("exp_pdp_click_4", "Pre Order", "click", "Top info inventory");
       }), await i(), document.addEventListener("variant:change", async () => {
         await i();
       });
@@ -629,8 +629,8 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     async changeMobileGalleryPosition() {
       if (window.innerWidth > 1e3) return;
-      await u('product-gallery[style*="opacity: 1;"]');
-      const e = document.querySelectorAll("product-gallery"), t = await u(
+      await f('product-gallery[style*="opacity: 1;"]');
+      const e = document.querySelectorAll("product-gallery"), t = await f(
         "payment-terms ~ .product-info__separator"
       );
       e.length === 0 || !t || e.forEach((n) => {
@@ -652,11 +652,11 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       const e = new Promise((n) => setTimeout(n, 2e3));
       await Promise.race([
         e,
-        u("product-gallery .product-gallery__thumbnail-crs")
+        f("product-gallery .product-gallery__thumbnail-crs")
       ]) instanceof HTMLElement && this.addItemsToGallery();
     }
     async addItemsToGallery() {
-      await u(".media-with-text__media video"), await u(".product product-gallery"), await u(".media-with-text__media video");
+      await f(".media-with-text__media video"), await f(".product product-gallery"), await f(".media-with-text__media video");
       const e = document.querySelectorAll(".media-with-text__media video"), t = document.querySelectorAll("product-gallery");
       if (t.length === 0 || e.length === 0) return;
       const n = [];
@@ -684,15 +684,15 @@ variant-picker.variant-picker [data-crs-variant="size"] {
         if (!o || !r) return;
         const l = Array.from(n).slice(0, 2);
         r.addEventListener("click", (c) => {
-          const f = c.target.closest(".product-gallery__thumbnail");
-          f && (this.isClickOnThumbnail = !0, h(
+          const p = c.target.closest(".product-gallery__thumbnail");
+          p && (this.isClickOnThumbnail = !0, u(
             "exp_pdp_click_1",
             "Gallery thumbnail",
             "click",
             "Product Gallery"
           ), this.pushCurrentViewData(), setTimeout(() => {
             this.isClickOnThumbnail = !1;
-          }, 1e3)), f != null && f.classList.contains("product-gallery__thumbnail-crs") ? a == null || a.setAttribute("hidden", "") : a == null || a.removeAttribute("hidden");
+          }, 1e3)), p != null && p.classList.contains("product-gallery__thumbnail-crs") ? a == null || a.setAttribute("hidden", "") : a == null || a.removeAttribute("hidden");
         }), o.addEventListener("click", (c) => {
           c.target.closest(".product-gallery__media");
         }), l.forEach((c) => {
@@ -702,10 +702,10 @@ variant-picker.variant-picker [data-crs-variant="size"] {
           <button type="button" class="product-gallery__thumbnail product-gallery__thumbnail-crs" aria-current="false" aria-label="" data-media-id="${c.id}">
             <img src="${c.poster}" alt="sectional - Amora Open L Sectional - MC - Mario Capasa" srcset="${c.poster}&amp;width=56 56w, ${c.poster}&amp;width=64 64w, ${c.poster}&amp;width=112 112w, ${c.poster}&amp;width=128 128w, ${c.poster}&amp;width=168 168w, ${c.poster}&amp;width=192 192w" width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 56px, 64px" class="object-contain rounded-sm">
           </button>`
-          );
-          if (r.querySelector(
+          ), p = r.querySelector(
             `[data-media-id="${c.id}"]`
-          ) || (r.insertAdjacentHTML("beforeend", v), o.querySelector(
+          );
+          if (console.log("existingThumbnail", p), p || (r.insertAdjacentHTML("beforeend", v), o.querySelector(
             `[data-media-id="${c.id}"]`
           ))) return;
           const _ = (
@@ -727,7 +727,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
             }, 1e3);
           }), this.addScrollDetection(i, o, r, l);
         }), document.addEventListener("click", (c) => {
-          const v = c.target, f = i.querySelector("custom-cursor"), C = i.querySelector(
+          const v = c.target, p = i.querySelector("custom-cursor"), C = i.querySelector(
             '[is="product-zoom-button"]'
           ), _ = i.querySelectorAll(
             ".product-gallery__media:not(.product-gallery__media-crs)"
@@ -736,16 +736,16 @@ variant-picker.variant-picker [data-crs-variant="size"] {
           ), A = l.length > 1 ? o.querySelector(
             `[data-media-id="${l[1].id}"]`
           ) : null;
-          if (b && b.contains(v) && f && f.classList.contains("is-half-end") && x && (o.scrollTo({
+          if (b && b.contains(v) && p && p.classList.contains("is-half-end") && x && (o.scrollTo({
             left: x.offsetLeft,
             behavior: "smooth"
           }), this.updateThumbnailSelection(i, r, l[0].id), C == null || C.setAttribute("hidden", "")), x && x.contains(v)) {
-            if (f && f.classList.contains("is-half-end") && A)
+            if (p && p.classList.contains("is-half-end") && A)
               o.scrollTo({
                 left: A.offsetLeft,
                 behavior: "smooth"
               }), this.updateThumbnailSelection(i, r, l[1].id);
-            else if (f && f.classList.contains("is-half-start") && b) {
+            else if (p && p.classList.contains("is-half-start") && b) {
               o.scrollTo({
                 left: b.offsetLeft,
                 behavior: "smooth"
@@ -761,17 +761,17 @@ variant-picker.variant-picker [data-crs-variant="size"] {
               );
             }
           }
-          A && A.contains(v) && f && f.classList.contains("is-half-start") && x && (o.scrollTo({
+          A && A.contains(v) && p && p.classList.contains("is-half-start") && x && (o.scrollTo({
             left: x.offsetLeft,
             behavior: "smooth"
-          }), this.updateThumbnailSelection(i, r, l[0].id)), (_ || x || A) && (f && f.classList.contains("is-half-start") ? (this.isClickOnThumbnail = !0, h(
+          }), this.updateThumbnailSelection(i, r, l[0].id)), (_ || x || A) && (p && p.classList.contains("is-half-start") ? (this.isClickOnThumbnail = !0, u(
             "exp_pdp_click_2",
             "Gallery Prev",
             "click",
             "Product Gallery"
           ), this.pushCurrentViewData(), C == null || C.removeAttribute("hidden"), setTimeout(() => {
             this.isClickOnThumbnail = !1;
-          }, 1e3)) : f && f.classList.contains("is-half-end") && (this.isClickOnThumbnail = !0, h(
+          }, 1e3)) : p && p.classList.contains("is-half-end") && (this.isClickOnThumbnail = !0, u(
             "exp_pdp_click_3",
             "Gallery Next",
             "click",
@@ -826,7 +826,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
     }
     pushCurrentViewData() {
       document.querySelectorAll(".product-gallery__thumbnail").forEach((e, t) => {
-        e.getAttribute("aria-current") === "true" && h(
+        e.getAttribute("aria-current") === "true" && u(
           "exp_pdp_view_1",
           `Gallery Image ${t + 1}`,
           "view",
@@ -983,7 +983,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       this.addStyles(), this.addDataArriveElement(), this.changeFreeShippingSection();
     }
     async addDataArriveElement() {
-      const e = await u(".product-info__buy-buttons");
+      const e = await f(".product-info__buy-buttons");
       if (!e) return;
       const t = /* @__PURE__ */ new Date();
       t.setDate(t.getDate() + 10);
@@ -1004,14 +1004,14 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       e.insertAdjacentHTML("beforebegin", i);
       const o = document.querySelector("#ttt-c");
       o && (o.addEventListener("click", () => {
-        o.classList.toggle("tooltip_clicked"), h(
+        o.classList.toggle("tooltip_clicked"), u(
           "exp_pdp_tooltip_1",
           "Tooltip",
           "click",
           "Shipping Info"
         );
       }), o.addEventListener("mouseenter", () => {
-        o.classList.toggle("tooltip_clicked"), h(
+        o.classList.toggle("tooltip_clicked"), u(
           "exp_pdp_tooltip_1",
           "Tooltip",
           "click",
@@ -1020,7 +1020,7 @@ variant-picker.variant-picker [data-crs-variant="size"] {
       }));
     }
     async changeFreeShippingSection() {
-      const e = await u(".free_ship_sec");
+      const e = await f(".free_ship_sec");
       if (!e) return;
       const t = e.querySelector(".fs_info"), n = e.querySelector(".fs_info2");
       if (n && (n.classList.add("crs-free-shipping-text-container"), n.innerHTML = /* html */
@@ -1293,12 +1293,12 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ) || "ontouchstart" in window || window.innerWidth <= 768;
     }
     async changeStickySection() {
-      var l, c, v, f;
-      const e = new Promise((C) => setTimeout(C, 1e3)), t = await u("product-quick-add"), n = await Promise.race([
-        u('[data-crs-variant="color"]'),
+      var l, c, v, p;
+      const e = new Promise((C) => setTimeout(C, 1e3)), t = await f("product-quick-add"), n = await Promise.race([
+        f('[data-crs-variant="color"]'),
         e
       ]), s = await Promise.race([
-        u('[data-crs-variant="size"]'),
+        f('[data-crs-variant="size"]'),
         e
       ]), i = t == null ? void 0 : t.querySelector("price-list"), o = t == null ? void 0 : t.querySelector("variant-media"), r = (c = (l = t == null ? void 0 : t.querySelector("sale-price")) == null ? void 0 : l.textContent) == null ? void 0 : c.replace("Sale price", "").trim(), a = t == null ? void 0 : t.querySelectorAll("button");
       if (o && o.addEventListener("click", () => {
@@ -1306,7 +1306,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         C && (window.scrollTo({
           top: C.getBoundingClientRect().top,
           behavior: "smooth"
-        }), h("exp_pdp_click_19", "Product Image", "click", "Sticky"));
+        }), u("exp_pdp_click_19", "Product Image", "click", "Sticky"));
       }), r && a && a.forEach((C) => {
         const _ = C.querySelector(".crs-sticky-price");
         _ && _.remove(), C.insertAdjacentHTML(
@@ -1316,7 +1316,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         );
       }), i) {
         let C, _ = [], b = [], x = [], A = [];
-        n instanceof Element && (C = (f = (v = n.querySelector("variant-option-value")) == null ? void 0 : v.textContent) == null ? void 0 : f.trim(), _ = n.querySelectorAll(
+        n instanceof Element && (C = (p = (v = n.querySelector("variant-option-value")) == null ? void 0 : v.textContent) == null ? void 0 : p.trim(), _ = n.querySelectorAll(
           ".variant-picker__option-values input"
         ), x = n.querySelectorAll(
           ".variant-picker__option-values label"
@@ -1326,11 +1326,11 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           ".variant-picker__option-values label"
         ));
         let D, W, $, G;
-        _.forEach((p) => {
+        _.forEach((h) => {
           var m;
-          p.checked && (W = p.id, D = (m = p.nextElementSibling) == null ? void 0 : m.outerHTML);
-        }), b.forEach((p) => {
-          p.checked && (G = p.id, $ = p.value);
+          h.checked && (W = h.id, D = (m = h.nextElementSibling) == null ? void 0 : m.outerHTML);
+        }), b.forEach((h) => {
+          h.checked && (G = h.id, $ = h.value);
         });
         const ye = (
           /* HTML */
@@ -1378,9 +1378,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               </button>
             </div>
             <div class="crs-sticky-variant-picker-options-list">
-              ${Array.from(x).map((p) => {
-            const m = p.cloneNode(!0);
-            return p.getAttribute("for") === W && m.classList.add("crs-selected"), m.outerHTML;
+              ${Array.from(x).map((h) => {
+            const m = h.cloneNode(!0);
+            return h.getAttribute("for") === W && m.classList.add("crs-selected"), m.outerHTML;
           }).join("")}
             </div>
           </div>
@@ -1402,9 +1402,9 @@ product-quick-add .product-quick-add__variant buy-buttons button {
               </button>
             </div>
             <div class="crs-sticky-variant-picker-options-list">
-              ${Array.from(A).map((p) => {
-            const m = p.cloneNode(!0);
-            return p.getAttribute("for") === G && m.classList.add("crs-selected"), m.outerHTML;
+              ${Array.from(A).map((h) => {
+            const m = h.cloneNode(!0);
+            return h.getAttribute("for") === G && m.classList.add("crs-selected"), m.outerHTML;
           }).join("")}
             </div>
           </div>
@@ -1418,10 +1418,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           ".crs-sticky-variant-picker-options .crs-sticky-variant-picker-option-dimension"
         );
         O && O.addEventListener("click", () => {
-          const p = document.getElementById(
+          const h = document.getElementById(
             "dimension-info-dialog"
           );
-          p && (p.open(), h("exp_pdp_click_18", "View Dimensions", "click", "Sticky"));
+          h && (h.open(), u("exp_pdp_click_18", "View Dimensions", "click", "Sticky"));
         });
         const d = t.querySelector(
           ".crs-sticky-variant-picker"
@@ -1439,14 +1439,14 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           ".crs-sticky-variant-picker-options-back"
         );
         R == null || R.addEventListener("click", () => {
-          y == null || y.removeAttribute("hidden"), w == null || w.setAttribute("hidden", "true"), h("exp_pdp_click_15", "Color", "click", "Sticky"), setTimeout(() => {
-            const p = y == null ? void 0 : y.querySelector(
+          y == null || y.removeAttribute("hidden"), w == null || w.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Color", "click", "Sticky"), setTimeout(() => {
+            const h = y == null ? void 0 : y.querySelector(
               ".crs-sticky-variant-picker-options-list"
             ), m = y == null ? void 0 : y.querySelector(
               ".crs-selected"
             );
-            if (m && p) {
-              const S = p.clientWidth, L = p.scrollLeft, k = m.offsetLeft, F = m.clientWidth, E = k + F, q = L, M = L + S;
+            if (m && h) {
+              const S = h.clientWidth, L = h.scrollLeft, k = m.offsetLeft, F = m.clientWidth, E = k + F, q = L, M = L + S;
               let T;
               if (E > M)
                 T = E - S + 10;
@@ -1454,21 +1454,21 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 T = k;
               else
                 return;
-              p.scrollTo({
+              h.scrollTo({
                 left: Math.max(0, T),
                 behavior: "smooth"
               });
             }
           }, 50);
         }), z == null || z.addEventListener("click", () => {
-          w == null || w.removeAttribute("hidden"), y == null || y.setAttribute("hidden", "true"), h("exp_pdp_click_15", "Size", "click", "Sticky"), setTimeout(() => {
-            const p = w == null ? void 0 : w.querySelector(
+          w == null || w.removeAttribute("hidden"), y == null || y.setAttribute("hidden", "true"), u("exp_pdp_click_15", "Size", "click", "Sticky"), setTimeout(() => {
+            const h = w == null ? void 0 : w.querySelector(
               ".crs-sticky-variant-picker-options-list"
             ), m = w == null ? void 0 : w.querySelector(
               ".crs-selected"
             );
-            if (m && p) {
-              const S = p.clientWidth, L = p.scrollLeft, k = m.offsetLeft, F = m.clientWidth, E = k + F, q = L, M = L + S;
+            if (m && h) {
+              const S = h.clientWidth, L = h.scrollLeft, k = m.offsetLeft, F = m.clientWidth, E = k + F, q = L, M = L + S;
               let T;
               if (E > M)
                 T = E - S + 10;
@@ -1476,16 +1476,16 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 T = k;
               else
                 return;
-              p.scrollTo({
+              h.scrollTo({
                 left: Math.max(0, T),
                 behavior: "smooth"
               });
             }
           }, 50);
-        }), Z == null || Z.forEach((p) => {
-          p.addEventListener("click", () => {
+        }), Z == null || Z.forEach((h) => {
+          h.addEventListener("click", () => {
             j == null || j.forEach((m) => {
-              m.setAttribute("hidden", "true"), h("exp_pdp_click_17", "Back", "click", "Sticky");
+              m.setAttribute("hidden", "true"), u("exp_pdp_click_17", "Back", "click", "Sticky");
             });
           });
         });
@@ -1494,10 +1494,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         ), I = d == null ? void 0 : d.querySelector(
           '.crs-sticky-variant-picker-options[data-crs-options="size"] .crs-sticky-variant-picker-options-list'
         );
-        H == null || H.addEventListener("click", (p) => {
+        H == null || H.addEventListener("click", (h) => {
           var S;
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
-          const m = p.target.closest("label");
+          const m = h.target.closest("label");
           if (m) {
             const L = m.getAttribute("for");
             if (L) {
@@ -1518,11 +1518,11 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 M && (M.textContent = E), T && q && (T.innerHTML = q), U && (U.textContent = E), y == null || y.setAttribute("hidden", "true");
               }
             }
-            h("exp_pdp_click_16", "Variant Item", "click", "Sticky Color"), h("exp_pdp_click_16.1", `${m.textContent.trim()}`, "click", "Sticky Color");
+            u("exp_pdp_click_16", "Variant Item", "click", "Sticky Color"), u("exp_pdp_click_16.1", `${m.textContent.trim()}`, "click", "Sticky Color");
           }
-        }), I == null || I.addEventListener("click", (p) => {
+        }), I == null || I.addEventListener("click", (h) => {
           this.disableScroll(), setTimeout(() => this.enableScroll(), 100);
-          const m = p.target.closest("label");
+          const m = h.target.closest("label");
           if (m) {
             const S = m.getAttribute("for");
             if (S) {
@@ -1541,7 +1541,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
                 E && (E.textContent = F), q && (q.textContent = F), w == null || w.setAttribute("hidden", "true");
               }
             }
-            h("exp_pdp_click_16", "Variant Item", "click", "Sticky Size"), h("exp_pdp_click_16.1", `${m.textContent.trim()}`, "click", "Sticky Size");
+            u("exp_pdp_click_16", "Variant Item", "click", "Sticky Size"), u("exp_pdp_click_16.1", `${m.textContent.trim()}`, "click", "Sticky Size");
           }
         });
       }
@@ -2307,13 +2307,13 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.addStyles(), this.changeReviewPosition(), this.changeTextReviews(), this.changeVideoReviews(), this.changeSKUPosition();
     }
     async changeReviewPosition() {
-      const e = await u(".review-block"), t = await u(
+      const e = await f(".review-block"), t = await f(
         ".product-info__liquid:has(#ss-tabs)"
       );
       e && t && t.insertAdjacentElement("beforebegin", e);
     }
     async changeTextReviews() {
-      const e = await u(".review-block .text-reviews");
+      const e = await f(".review-block .text-reviews");
       if (!e) return;
       const t = (
         /* HTML */
@@ -2459,7 +2459,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       );
       const n = document.querySelector(".crs-review-average-rating");
       n && n.addEventListener("click", () => {
-        h("exp_pdp_click_10", "Rating", "click", "Reviews");
+        u("exp_pdp_click_10", "Rating", "click", "Reviews");
       });
     }
     initializeTabs() {
@@ -2475,7 +2475,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           const i = document.querySelector(
             `[data-crs-item="${n}"]`
           );
-          i && i.classList.add("crs-review-item-active"), this.renderReviews(n), h("exp_pdp_click_11", n, "click", "Reviews");
+          i && i.classList.add("crs-review-item-active"), this.renderReviews(n), u("exp_pdp_click_11", n, "click", "Reviews");
         });
       }), this.initializeReadMore(), this.initializeSliderNavigation();
     }
@@ -2494,10 +2494,10 @@ product-quick-add .product-quick-add__variant buy-buttons button {
             o === "next" ? (a.scrollTo({
               left: a.scrollLeft + c,
               behavior: "smooth"
-            }), h("exp_pdp_click_13", "Next Arrow", "click", "Reviews")) : o === "prev" && (a.scrollTo({
+            }), u("exp_pdp_click_13", "Next Arrow", "click", "Reviews")) : o === "prev" && (a.scrollTo({
               left: a.scrollLeft - c,
               behavior: "smooth"
-            }), h("exp_pdp_click_14", "Prev Arrow", "click", "Reviews")), setTimeout(() => {
+            }), u("exp_pdp_click_14", "Prev Arrow", "click", "Reviews")), setTimeout(() => {
               this.updateArrowStates(l);
             }, 300);
           }
@@ -2529,7 +2529,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
           ), i = n.querySelector(
             ".crs-review-text-full"
           );
-          t.textContent === "Read more" ? (s.style.display = "none", i.style.display = "block", t.textContent = "Read less", h("exp_pdp_click_12", "Read more", "click", "Reviews")) : (s.style.display = "-webkit-box", i.style.display = "none", t.textContent = "Read more");
+          t.textContent === "Read more" ? (s.style.display = "none", i.style.display = "block", t.textContent = "Read less", u("exp_pdp_click_12", "Read more", "click", "Reviews")) : (s.style.display = "-webkit-box", i.style.display = "none", t.textContent = "Read more");
         }
       });
     }
@@ -2651,7 +2651,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       ).join("");
     }
     async changeVideoReviews() {
-      const e = await u(".review-block .video-reviews");
+      const e = await f(".review-block .video-reviews");
       if (!e) return;
       const t = e.querySelector(".slider_text_video");
       if (!t) return;
@@ -2659,7 +2659,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       window.innerWidth < 768 && (n.params.slidesPerView = 2, n.update());
     }
     async changeSKUPosition() {
-      const e = await u("variant-sku"), t = await u(".shopify-block:has(.loox-rating )");
+      const e = await f("variant-sku"), t = await f(".shopify-block:has(.loox-rating )");
       !e || !t || t.insertAdjacentElement("beforeend", e);
     }
     addStyles() {
@@ -2694,7 +2694,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
       this.addStyles(), this.addNewText();
     }
     async addNewText() {
-      (await u(".what-cover-form")).insertAdjacentHTML(
+      (await f(".what-cover-form")).insertAdjacentHTML(
         "beforebegin",
         /* HTML */
         `<div class="crs-protection-plan-text">
@@ -2709,7 +2709,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         ".protection-plan-modal"
       );
       n && n.addEventListener("click", () => {
-        s && (s.style.display = "block", h("exp_pdp_click_8", "Learn More", "click", "Protection Plan"));
+        s && (s.style.display = "block", u("exp_pdp_click_8", "Learn More", "click", "Protection Plan"));
       });
     }
     addStyles() {
@@ -2728,26 +2728,28 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     }
     async changeTabsOrder() {
       var c;
-      await u("#ss-tabs");
+      await f("#ss-tabs");
       const e = (c = document.querySelector(
         ".product-info__liquid:has(#ss-tabs)"
       )) == null ? void 0 : c.parentElement;
       if (!e) return;
       const t = e.querySelector(
         '[class*="tabs-btns-template"]'
-      ), n = e.querySelector(
+      );
+      console.log("tabsButtons", t);
+      const n = e.querySelector(
         '[class*="tabs-items-template"]'
       );
-      if (!t || !n) return;
+      if (console.log("tabsContent", n), !t || !n) return;
       const s = Array.from(t.children).find(
         (v) => {
-          var f;
-          return (f = v.textContent) == null ? void 0 : f.trim().toLowerCase().includes("materials");
+          var p;
+          return (p = v.textContent) == null ? void 0 : p.trim().toLowerCase().includes("materials");
         }
       ), i = Array.from(t.children).find(
         (v) => {
-          var f;
-          return (f = v.textContent) == null ? void 0 : f.trim().toLowerCase().includes("dimensions");
+          var p;
+          return (p = v.textContent) == null ? void 0 : p.trim().toLowerCase().includes("dimensions");
         }
       ), o = s ? n.querySelector(
         `[data-id="${s.getAttribute("data-id")}"]`
@@ -2775,7 +2777,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
     let g = 0;
     function e() {
       const t = window.scrollY, n = window.innerHeight, s = document.documentElement.scrollHeight, i = (t + n) / s * 100;
-      i >= g + 5 && (g = Math.round(i / 5) * 5, h("exp_pdp_click_scroll", `${g}%`, "other", "PDP")), i >= 100 && window.removeEventListener("scroll", e);
+      i >= g + 5 && (g = Math.round(i / 5) * 5, u("exp_pdp_click_scroll", `${g}%`, "other", "PDP")), i >= 100 && window.removeEventListener("scroll", e);
     }
     window.addEventListener("scroll", e);
   };
@@ -2799,7 +2801,7 @@ product-quick-add .product-quick-add__variant buy-buttons button {
         if (await Promise.race([
           new Promise((t) => setTimeout(t, 3e3)),
           // Timeout after 3 seconds
-          u("body.template-product")
+          f("body.template-product")
           // Wait for the element to appear
         ]))
           return !0;
