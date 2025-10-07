@@ -1,14 +1,14 @@
 (function() {
   "use strict";
-  const p = (t, e, i, s = "") => {
+  const d = (t, e, i, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
       event_desc: e,
       event_type: i,
       event_loc: s
-    }), m(`Event: ${t} | ${e} | ${i} | ${s}`, "success");
-  }, h = (t) => new Promise((e) => {
+    }), v(`Event: ${t} | ${e} | ${i} | ${s}`, "success");
+  }, p = (t) => new Promise((e) => {
     const i = document.querySelector(t);
     i && e(i);
     const s = new MutationObserver(() => {
@@ -19,16 +19,16 @@
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: t, dev: e }) => {
+  }), h = ({ name: t, dev: e }) => {
     console.log(
       `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, v = (t) => {
+  }, g = (t) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", t, "variant_1"));
     }, 1e3);
-  }, m = (t, e = "info") => {
+  }, v = (t, e = "info") => {
     let i;
     switch (e) {
       case "info":
@@ -45,7 +45,7 @@
         break;
     }
     console.log(`%c>>> ${t}`, `${i} font-size: 16px; font-weight: 600`);
-  }, n = "https://conversionrate-store.github.io/a-b_images/natpat", u = `.lp-tr--hero-section {
+  }, n = "https://conversionrate-store.github.io/a-b_images/natpat", m = `.lp-tr--hero-section {
   background: #0d7650;
 }
 
@@ -176,7 +176,7 @@ crs-slider {
   line-height: 24px;
 }
 `;
-  class x {
+  class u {
     constructor() {
       this.section = document.querySelector(
         ".lp-tr--hero-section"
@@ -354,10 +354,10 @@ crs-slider {
       e == null || e.insertAdjacentHTML("afterend", i);
       const s = this.section.querySelector("crs-slider");
       let r = 0;
-      s == null || s.addEventListener("crs-slide-change", (a) => {
-        const l = a.detail.activeSlideIndex;
+      s == null || s.addEventListener("crs-slide-change", (o) => {
+        const l = o.detail.activeSlideIndex;
         clearTimeout(this.activeSlideTimeout), this.activeSlideTimeout = setTimeout(() => {
-          l !== r && p("exp_slider_view_1", `${l}`, "view", "Slider"), r = l;
+          l !== r && d("exp_slider_view_1", `${l}`, "view", "Slider"), r = l;
         }, 300);
       });
     }
@@ -371,10 +371,10 @@ crs-slider {
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = u, document.head.appendChild(e);
+      e.textContent = m, document.head.appendChild(e);
     }
   }
-  const f = `.slider {
+  const x = `.slider {
   --slides-gap: 14px;
   width: 100%;
 }
@@ -397,7 +397,7 @@ crs-slider {
 .slider-track > * {
   flex-shrink: 0;
 }`;
-  class w extends HTMLElement {
+  class f extends HTMLElement {
     constructor() {
       super(), this.attachShadow({ mode: "open" }).innerHTML = this.render();
     }
@@ -406,7 +406,7 @@ crs-slider {
         /* HTML */
         `
       <style>
-        ${f}
+        ${x}
       </style>
       <div class="slider">
         <div class="slider-track">
@@ -417,37 +417,31 @@ crs-slider {
       );
     }
     connectedCallback() {
-      var a;
-      (a = this.shadowRoot) == null || a.querySelector(
-        ".slider-track"
-      );
-      const e = this.querySelectorAll(":scope > *");
-      e == null || e[0].classList.add("active");
-      const i = {
+      const e = this.querySelectorAll(":scope > *"), i = {
         rootMargin: "0px",
         threshold: 1
       }, s = (o) => {
-        o.forEach((l) => {
-          var d;
-          const c = l.target;
-          l.intersectionRatio >= 0.25 ? (c.classList.add("is-visible"), (d = this.shadowRoot) == null || d.dispatchEvent(
+        o.forEach((a) => {
+          var c;
+          const l = a.target;
+          console.log(a), a.isIntersecting ? (l.classList.add("is-visible"), (c = this.shadowRoot) == null || c.dispatchEvent(
             new CustomEvent("crs-slide-change", {
               detail: {
-                activeSlideIndex: Number(c.dataset.slideIndex)
+                activeSlideIndex: Number(l.dataset.slideIndex)
               },
               bubbles: !0,
               composed: !0
             })
-          )) : c.classList.remove("is-visible");
+          )) : l.classList.remove("is-visible");
         });
       }, r = new IntersectionObserver(s, i);
-      e.forEach((o, l) => {
+      e.forEach((o, a) => {
         r.observe(o);
       });
     }
   }
-  g({ name: "PetZen Shopify experiment with slider on 1st screen Shopify", dev: "OS" }), v("exp_slider");
-  class y {
+  h({ name: "PetZen Shopify experiment with slider on 1st screen Shopify", dev: "OS" }), g("exp_slider");
+  class w {
     constructor() {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
     }
@@ -455,16 +449,16 @@ crs-slider {
       this.device !== "desktop" && (this.addStyles(), this.initComponents(), this.initChanges());
     }
     initComponents() {
-      customElements.get("crs-slider") || customElements.define("crs-slider", w);
+      customElements.get("crs-slider") || customElements.define("crs-slider", f);
     }
     async initChanges() {
       const e = new Promise((i) => setTimeout(i, 1e3));
-      await Promise.race([h("lp-tr--hero-section"), e]), new x();
+      await Promise.race([p("lp-tr--hero-section"), e]), new u();
     }
     addStyles() {
       const e = document.createElement("style");
       e.textContent = "", document.head.appendChild(e);
     }
   }
-  new y();
+  new w();
 })();
