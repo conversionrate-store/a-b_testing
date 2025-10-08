@@ -1765,6 +1765,10 @@
                   template: "default",
                   submenu: [
                     {
+                      title: "Disney Inspired Hobby Horses",
+                      link: "/toys/disney-hobby-horses"
+                    },
+                    {
                       title: "Aspen Collection",
                       link: "/new-in/aspen-collection"
                     },
@@ -2311,10 +2315,10 @@
               link: "/new-in/aw25/toys?329=7680",
               template: "default",
               submenu: [
-                {
-                  title: "New: AW25 Collection",
-                  link: "/new-in/aw25/toys?329=7680"
-                },
+                // {
+                //   title: 'New: AW25 Collection',
+                //   link: '/new-in/aw25/toys?329=7680',
+                // },
                 {
                   title: "Hobby Horses",
                   link: "/toys/hobby-horse"
@@ -2358,39 +2362,54 @@
                 // },
               ]
             },
+            // {
+            //   title: 'Shop by Colour',
+            //   link: '/toys/hobby-horse-collection',
+            //   template: 'color-grid',
+            //   colorSwatches: [
+            //     {
+            //       name: 'Lilac',
+            //       color: colours.Lilac,
+            //       isNew: true,
+            //       link: '/toys/hobby-horse-collection?93=10146',
+            //     },
+            //     {
+            //       name: 'Cranberry',
+            //       color: colours.Cranberry,
+            //       isNew: true,
+            //       link: '/toys/hobby-horse-collection?93=11250',
+            //     },
+            //     {
+            //       name: 'Blossom',
+            //       color: colours.Blossom,
+            //       link: '/toys/hobby-horse-collection?93=8370',
+            //     },
+            //     {
+            //       name: 'Lagoon',
+            //       color: colours.Lagoon,
+            //       link: '/toys/hobby-horse-collection?93=8386',
+            //     },
+            //   ],
+            //   submenu: [
+            //     {
+            //       title: 'View All',
+            //       link: '/toys/hobby-horse-collection',
+            //       template: 'link',
+            //     },
+            //   ],
+            // },
             {
-              title: "Shop by Colour",
-              link: "/toys/hobby-horse-collection",
-              template: "color-grid",
-              colorSwatches: [
-                {
-                  name: "Lilac",
-                  color: c.Lilac,
-                  isNew: !0,
-                  link: "/toys/hobby-horse-collection?93=10146"
-                },
-                {
-                  name: "Cranberry",
-                  color: c.Cranberry,
-                  isNew: !0,
-                  link: "/toys/hobby-horse-collection?93=11250"
-                },
-                {
-                  name: "Blossom",
-                  color: c.Blossom,
-                  link: "/toys/hobby-horse-collection?93=8370"
-                },
-                {
-                  name: "Lagoon",
-                  color: c.Lagoon,
-                  link: "/toys/hobby-horse-collection?93=8386"
-                }
-              ],
+              title: "New",
+              link: "",
+              template: "default",
               submenu: [
                 {
-                  title: "View All",
-                  link: "/toys/hobby-horse-collection",
-                  template: "link"
+                  title: "Disney Inspired Hobby Horses",
+                  link: "/toys/disney-hobby-horses"
+                },
+                {
+                  title: "AW25 Collection",
+                  link: "/new-in/aw25/toys?329=7680"
                 }
               ]
             },
