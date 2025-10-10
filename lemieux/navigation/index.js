@@ -3608,6 +3608,8 @@
           u.innerHTML = o;
           const f = ((p = u.firstElementChild) == null ? void 0 : p.innerHTML) || "";
           l.innerHTML = f;
+        }), i.addEventListener("click", (n) => {
+          n.preventDefault();
         });
       });
     }
@@ -3797,11 +3799,11 @@
             l,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          ) : l.template === "stacked-sections" ? (console.log("first", l), n = this.createStackedSectionsHTML(
+          ) : l.template === "stacked-sections" ? n = this.createStackedSectionsHTML(
             l,
             e.title,
             (t == null ? void 0 : t.title) || e.title
-          )) : l.template === "multi-color-grid" ? n = this.createMultiColorGridSectionHTML(
+          ) : l.template === "multi-color-grid" ? n = this.createMultiColorGridSectionHTML(
             l,
             e.title,
             (t == null ? void 0 : t.title) || e.title
