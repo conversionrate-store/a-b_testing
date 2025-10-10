@@ -3007,7 +3007,7 @@
     },
     {
       title: "Gifts",
-      link: "/gifts",
+      link: "/gifting",
       template: "gifts",
       // textColor: '#C9830A',
       submenu: [
