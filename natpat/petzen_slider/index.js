@@ -354,8 +354,8 @@ crs-slider {
       e == null || e.insertAdjacentHTML("afterend", i);
       const s = this.section.querySelector("crs-slider");
       let r = 0;
-      s == null || s.addEventListener("crs-slide-change", (o) => {
-        const l = o.detail.activeSlideIndex;
+      s == null || s.addEventListener("crs-slide-change", (a) => {
+        const l = a.detail.activeSlideIndex;
         clearTimeout(this.activeSlideTimeout), this.activeSlideTimeout = setTimeout(() => {
           l !== r && d("exp_slider_view_1", `${l}`, "view", "Slider"), r = l;
         }, 300);
@@ -420,11 +420,11 @@ crs-slider {
       const e = this.querySelectorAll(":scope > *"), i = {
         rootMargin: "0px",
         threshold: 1
-      }, s = (o) => {
-        o.forEach((a) => {
+      }, s = (a) => {
+        a.forEach((o) => {
           var c;
-          const l = a.target;
-          console.log(a), a.isIntersecting ? (l.classList.add("is-visible"), (c = this.shadowRoot) == null || c.dispatchEvent(
+          const l = o.target;
+          o.isIntersecting ? (l.classList.add("is-visible"), (c = this.shadowRoot) == null || c.dispatchEvent(
             new CustomEvent("crs-slide-change", {
               detail: {
                 activeSlideIndex: Number(l.dataset.slideIndex)
@@ -435,8 +435,8 @@ crs-slider {
           )) : l.classList.remove("is-visible");
         });
       }, r = new IntersectionObserver(s, i);
-      e.forEach((o, a) => {
-        r.observe(o);
+      e.forEach((a, o) => {
+        r.observe(a);
       });
     }
   }
@@ -446,14 +446,14 @@ crs-slider {
       this.device = window.innerWidth > 768 ? "desktop" : "mobile", this.init();
     }
     init() {
-      this.device !== "desktop" && (this.addStyles(), this.initComponents(), this.initChanges());
+      this.device === "desktop" || !location.pathname.includes("zenpatch-pet") || (this.addStyles(), this.initComponents(), this.initChanges());
     }
     initComponents() {
       customElements.get("crs-slider") || customElements.define("crs-slider", f);
     }
     async initChanges() {
-      const e = new Promise((i) => setTimeout(i, 1e3));
-      await Promise.race([p("lp-tr--hero-section"), e]), new u();
+      const e = new Promise((i) => setTimeout(i, 2e3));
+      await Promise.race([p(".lp-tr--hero-section"), e]), new u();
     }
     addStyles() {
       const e = document.createElement("style");
