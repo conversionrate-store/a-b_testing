@@ -1,14 +1,14 @@
 (function() {
   "use strict";
-  const p = (o, t, n, i = "") => {
+  const g = (o, t, n, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: o,
       event_desc: t,
       event_type: n,
       event_loc: i
-    }), l(`Event: ${o} | ${t} | ${n} | ${i}`, "success");
-  }, d = (o) => new Promise((t) => {
+    }), p(`Event: ${o} | ${t} | ${n} | ${i}`, "success");
+  }, l = (o) => new Promise((t) => {
     const n = document.querySelector(o);
     n && t(n);
     const i = new MutationObserver(() => {
@@ -25,17 +25,17 @@
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   }, b = (o, t, n, i, e = 1e3, r = 0.5) => {
-    let s, g;
+    let s, h;
     if (s = new IntersectionObserver(
       function(c) {
-        c[0].isIntersecting === !0 ? g = setTimeout(() => {
-          p(
+        c[0].isIntersecting === !0 ? h = setTimeout(() => {
+          g(
             t,
             c[0].target.dataset.visible || i || "",
             "view",
             n
           ), s.disconnect();
-        }, e) : (l("Element is not fully visible", "warn"), clearTimeout(g));
+        }, e) : (p("Element is not fully visible", "warn"), clearTimeout(h));
       },
       { threshold: [r] }
     ), typeof o == "string") {
@@ -43,7 +43,7 @@
       c && s.observe(c);
     } else
       s.observe(o);
-  }, l = (o, t = "info") => {
+  }, p = (o, t = "info") => {
     let n;
     switch (t) {
       case "info":
@@ -60,9 +60,9 @@
         break;
     }
     console.log(`%c>>> ${o}`, `${n} font-size: 16px; font-weight: 600`);
-  }, f = `.crs-hide {
+  }, y = `.crs-hide {
   display: none !important;
-}`, y = `.crs-hero {
+}`, f = `.crs-hero {
   --gap: 8px;
   display: flex;
   gap: var(--gap);
@@ -288,7 +288,7 @@
     height: auto;
   }
 }
-`, a = "https://conversionrate-store.github.io/a-b_images/lemieux", h = [
+`, a = "https://conversionrate-store.github.io/a-b_images/lemieux", d = [
     {
       id: "new-arrivals",
       href: "/new-in/aw25",
@@ -334,11 +334,11 @@
       location.pathname === "/" && (this.addStyles(), this.changeHeroImageSection());
     }
     async changeHeroImageSection() {
-      const t = await d("page-component-hero-image");
+      const t = await l("page-component-hero-image");
       t && !t.classList.contains("crs-hero") && (t.innerHTML = this.renderNewHeroSection(), this.addEventListeners(t));
     }
     renderNewHeroSection() {
-      const t = h.find((e) => e.id === "new-arrivals"), n = h.filter((e) => e.id !== "new-arrivals"), i = (e) => {
+      const t = d.find((e) => e.id === "new-arrivals"), n = d.filter((e) => e.id !== "new-arrivals"), i = (e) => {
         const r = typeof e.title == "string" ? `<div class="crs-block-title">${e.title}</div>` : `<div class="crs-block-title">
               ${e.title.sub ? `<span class="sub-title">${e.title.sub}</span>` : ""}
               ${e.title.main ? `<span class="main-title">${e.title.main}</span>` : ""}
@@ -372,7 +372,7 @@
       t.querySelectorAll("a.crs-hero-block").forEach((i) => {
         i.addEventListener("click", (e) => {
           const r = i.dataset.title;
-          r && p("exp_hp_hero_click_1", r, "click", "Home page Hero Section");
+          r && g("exp_hp_hero_click_1", r, "click", "Home page Hero Section");
         }), b(
           i,
           "exp_hp_hero_view_1",
@@ -385,7 +385,7 @@
     addStyles() {
       if (document.getElementById("crs-hero-styles")) return;
       const t = document.createElement("style");
-      t.id = "crs-hero-styles", t.innerHTML = y, document.head.appendChild(t);
+      t.id = "crs-hero-styles", t.innerHTML = f, document.head.appendChild(t);
     }
   }
   const v = `[data-crs-hide='true'] {
@@ -412,19 +412,17 @@
       }, 5e3);
     }
     async changeSectionCopy() {
-      const t = await d(".page-view-boundary"), n = t == null ? void 0 : t.querySelectorAll("icms-component");
+      const t = await l(".page-view-boundary"), n = t == null ? void 0 : t.querySelectorAll("icms-component");
       n == null || n.forEach((i) => {
         var r;
         const e = i.querySelector("h1, h3");
         if ((r = e == null ? void 0 : e.textContent) != null && r.includes("Popular Categories")) {
           if (i.dataset.crsTitle = "Popular Categories", e.__crsObserver)
             return;
-          e.textContent = "Popular Categories", l("Setting up MutationObserver for title changes.");
-          const s = new MutationObserver((g) => {
+          e.textContent = "Popular Categories";
+          const s = new MutationObserver((h) => {
             var u;
-            (((u = e.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (l(
-              'Title was changed back to "Shop Popular Categories", reverting to "Popular Categories"'
-            ), e.textContent = "Popular Categories");
+            (((u = e.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (e.textContent = "Popular Categories");
           });
           s.observe(e, {
             childList: !0,
@@ -440,7 +438,7 @@
       });
     }
     async hideSection() {
-      const t = await d(".page-view-boundary"), n = t == null ? void 0 : t.querySelectorAll("icms-component");
+      const t = await l(".page-view-boundary"), n = t == null ? void 0 : t.querySelectorAll("icms-component");
       n == null || n.forEach((i) => {
         const e = i.querySelector("h1, h3");
         x.some(
@@ -471,7 +469,7 @@
     }
     init() {
       this.imagePreloading(), this.interceptHistoryAPI(() => {
-        l("Navigation detected, re-initializing components"), this.initComponents();
+        this.initComponents();
       }), this.initComponents();
     }
     initComponents() {
@@ -486,7 +484,7 @@
       };
     }
     imagePreloading() {
-      h.forEach((t) => {
+      d.forEach((t) => {
         const n = `<link rel="preload" as="image" href="${t.images.mob}" media="(max-width: 700px)" />
       <link rel="preload" as="image" href="${t.images.desktop}" media="(min-width: 701px)" />`;
         document.head.insertAdjacentHTML("beforeend", n);
@@ -494,7 +492,7 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = f, document.head.appendChild(t);
+      t.textContent = y, document.head.appendChild(t);
     }
   }
   new S();
