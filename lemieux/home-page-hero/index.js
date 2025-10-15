@@ -226,9 +226,10 @@
   line-height: 1;
 }
 
-/* [data-crs-title="Popular Categories"] {
-  padding-top: 20px;
-} */
+[data-crs-title='Popular Categories'] {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
 
 @media (max-width: 1100px) {
   .crs-block-title {
