@@ -60,9 +60,9 @@
         break;
     }
     console.log(`%c>>> ${o}`, `${n} font-size: 16px; font-weight: 600`);
-  }, y = `.crs-hide {
+  }, f = `.crs-hide {
   display: none !important;
-}`, f = `.crs-hero {
+}`, y = `.crs-hero {
   --gap: 8px;
   display: flex;
   gap: var(--gap);
@@ -201,12 +201,14 @@
 
 [data-hero='new-arrivals'] .crs-hero-block-text {
   left: 10%;
-  bottom: 30%;
+  bottom: 50%;
+  transform: translateY(50%);
   width: max-content;
 }
 [data-hero='new-arrivals'] .crs-block-title {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 [data-hero='new-arrivals'] .crs-block-title .sub-title {
   text-transform: uppercase;
@@ -385,7 +387,7 @@
     addStyles() {
       if (document.getElementById("crs-hero-styles")) return;
       const t = document.createElement("style");
-      t.id = "crs-hero-styles", t.innerHTML = f, document.head.appendChild(t);
+      t.id = "crs-hero-styles", t.innerHTML = y, document.head.appendChild(t);
     }
   }
   const v = `[data-crs-hide='true'] {
@@ -492,7 +494,7 @@
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = y, document.head.appendChild(t);
+      t.textContent = f, document.head.appendChild(t);
     }
   }
   new S();
