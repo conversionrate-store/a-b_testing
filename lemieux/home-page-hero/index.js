@@ -470,11 +470,16 @@
   overflow-x: auto;
   touch-action: pan-x;
   padding-inline: 12px;
-  min-height: 250px;
+  min-height: max-content;
 
   /* Hide scrollbar */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+[data-crs-title='Popular Categories']  h1 {
+  border: none !important;
+
 }
 
 [data-crs-title='Popular Categories'] swiper::-webkit-scrollbar {
@@ -497,26 +502,28 @@
   display: flex;
 }
 
+
 [data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
   aspect-ratio: 1;
   width: 200px;
+  height: max-content;
 }
 
 @media (min-width: 1390px) {
   [data-crs-title='Popular Categories'] .swiper-initialized {
-    min-height: 400px;
+    min-height: max-content;
   }
   [data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
     flex: 0 0 auto;
     width: calc(100% / 6.2 - 10px);
+    height: max-content;
     aspect-ratio: 1;
   }
 }
 
 
-[data-crs-title="Popular Categories"] page-component-category-carousel {
-  padding-bottom: 0 !important;
-}
+
+
 
  page-component-hero-image:has(vimeo-player) {
   padding-top: 0 !important;
