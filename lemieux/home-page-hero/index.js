@@ -482,7 +482,7 @@
 }
 
 /* Prevent images from blocking mouse drag */
-/* [data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] img {
+[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] img {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
@@ -491,7 +491,7 @@
 /* Keep links clickable but prevent text selection */
 [data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] a {
   user-select: none;
-} */
+}
 
 [data-crs-title='Popular Categories'] .swiper-wrapper {
   display: flex;
@@ -896,18 +896,18 @@
       const e = await d('[data-crs-title="Popular Categories"]');
       e && (e.outerHTML = S);
       const n = document.querySelector(".crs-slider-section .swiper-initialized");
-      if (console.log("box", n), !n) return;
+      if (!n) return;
       n.style.cursor = "grab";
       let s = !1, t, a, r, c;
       n.addEventListener("mousedown", (o) => {
-        o.preventDefault(), s = !0, t = o.pageX, a = o.pageY, r = n.scrollLeft, c = n.scrollTop, n.style.cursor = "grabbing";
+        o.preventDefault(), s = !0, t = o.pageX, a = o.pageY, r = n.scrollLeft, c = n.scrollTop;
       }), n.addEventListener("mouseleave", () => {
         s = !1, n.style.cursor = "grab";
       }), n.addEventListener("mouseup", () => {
         s = !1, n.style.cursor = "grab";
       }), n.addEventListener("mousemove", (o) => {
         if (!s) return;
-        o.preventDefault();
+        o.preventDefault(), n.style.cursor = "grabbing";
         const g = o.pageX, $ = o.pageY, P = (g - t) * 1.5, j = ($ - a) * 1.5;
         n.scrollLeft = r - P, n.scrollTop = c - j;
       }), n.addEventListener("dragstart", (o) => {
@@ -969,4 +969,3 @@
   }
   new E();
 })();
-//# sourceMappingURL=index.js.map
