@@ -167,7 +167,7 @@
     }
     async checkTypeOfSizeButtons() {
       var o;
-      await d("#sizebay-wrapper"), this.abortController.abort(), this.abortController = new AbortController();
+      await d("#sizebay-wrapper");
       const e = document.querySelector("#szb-chart-button"), t = document.querySelector("#szb-vfr-button"), n = document.querySelector(
         "product-configurable-options button"
       ), s = `
@@ -177,15 +177,15 @@
       if (e) {
         n == null || n.classList.add("crs-hide");
         const r = e.closest("sizebay"), c = n == null ? void 0 : n.closest("div");
-        r && c && c.insertAdjacentElement("afterend", r), e.innerHTML = s, t && (t.innerHTML = "<span>Find Your Size</span>", setTimeout(() => {
-          window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, b("szbFindYourSizeButton view"), u(
+        r && c && c.insertAdjacentElement("afterend", r), e.innerHTML = s, t && (t.innerHTML = "<span>Find Your Size</span>", window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, b("szbFindYourSizeButton view"), setTimeout(() => {
+          u(
             t,
             "exp_size_guide_view_2",
             "PDP",
             "Find Your Size Button",
             0
-          ));
-        }, 100), t._crsEvent || (t._crsEvent = !0, t == null || t.addEventListener(
+          );
+        }, 100)), t._crsEvent || (t._crsEvent = !0, t == null || t.addEventListener(
           "click",
           () => {
             l(
@@ -196,15 +196,15 @@
             );
           },
           { signal: this.abortController.signal }
-        ))), setTimeout(() => {
-          window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, u(
+        ))), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
+          u(
             e,
             "exp_size_guide_view_1",
             "PDP",
             "Size Guide Button",
             0
-          ));
-        }, 100), e._crsEvent || (e._crsEvent = !0, e == null || e.addEventListener(
+          );
+        }, 100)), e._crsEvent || (e._crsEvent = !0, e == null || e.addEventListener(
           "click",
           () => {
             l(
@@ -218,22 +218,22 @@
         ));
         return;
       } else
-        n && ((o = n.textContent) != null && o.includes("View size guide")) && (n.innerHTML = s, n.classList.add("crs-size-guide-button"), setTimeout(() => {
-          window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, u(
+        n && ((o = n.textContent) != null && o.includes("View size guide")) && (n.innerHTML = s, n.classList.add("crs-size-guide-button"), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
+          u(
             n,
             "exp_size_guide_view_1",
             "PDP",
             "Size Guide Button",
             0
-          ));
-        }, 100), n._crsEvent || (n._crsEvent = !0, n == null || n.addEventListener(
+          );
+        }, 150)), n._crsEvent || (n._crsEvent = !0, n == null || n.addEventListener(
           "click",
           () => {
             l(
               "exp_size_guide_click_1",
               "Size Guide Button",
               "click",
-              "Size Guide"
+              "PDP"
             );
           },
           { signal: this.abortController.signal }
