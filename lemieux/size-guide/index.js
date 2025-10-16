@@ -1,14 +1,14 @@
 (function() {
   "use strict";
-  const d = (i, e, n, t = "") => {
+  const l = (i, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
       event_desc: e,
       event_type: n,
       event_loc: t
-    }), p(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
-  }, l = (i) => new Promise((e) => {
+    }), b(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
+  }, d = (i) => new Promise((e) => {
     const n = document.querySelector(i);
     n && e(n);
     const t = new MutationObserver(() => {
@@ -19,31 +19,31 @@
       childList: !0,
       subtree: !0
     });
-  }), h = ({ name: i, dev: e }) => {
+  }), p = ({ name: i, dev: e }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   }, u = (i, e, n, t, s = 1e3, o = 0.5) => {
-    let c, r;
-    if (c = new IntersectionObserver(
+    let r, c;
+    if (r = new IntersectionObserver(
       function(a) {
-        a[0].isIntersecting === !0 ? r = setTimeout(() => {
-          d(
+        a[0].isIntersecting === !0 ? c = setTimeout(() => {
+          l(
             e,
             a[0].target.dataset.visible || t || "",
             "view",
             n
-          ), c.disconnect();
-        }, s) : (p("Element is not fully visible", "warn"), clearTimeout(r));
+          ), r.disconnect();
+        }, s) : (b("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [o] }
     ), typeof i == "string") {
       const a = document.querySelector(i);
-      a && c.observe(a);
+      a && r.observe(a);
     } else
-      c.observe(i);
-  }, p = (i, e = "info") => {
+      r.observe(i);
+  }, b = (i, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -60,7 +60,7 @@
         break;
     }
     console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
-  }, b = `sizebay {
+  }, h = `sizebay {
 }
 
 #sizebay-wrapper {
@@ -136,7 +136,7 @@
 `;
   class m {
     constructor() {
-      this.init();
+      this.abortController = new AbortController(), this.init();
     }
     init() {
       this.checkIsProductPage(() => {
@@ -145,16 +145,18 @@
     }
     async checkIsProductPage(e) {
       const n = new Promise((s) => setTimeout(s, 3e3));
-      await Promise.race([n, l("product-view-layout")]) && e();
+      await Promise.race([n, d("product-view-layout")]) && e();
     }
     async observe() {
-      const e = await l(
+      const e = await d(
         "product-configurable-options"
       );
       new MutationObserver((t) => {
         t.forEach((s) => {
           const o = s.target;
-          s.type === "childList" && o && o.id === "sizebay-wrapper" && this.checkTypeOfSizeButtons();
+          s.type === "childList" && o && o.id === "sizebay-wrapper" && !o.querySelector(".crs-size-guide-button") && setTimeout(() => {
+            this.checkTypeOfSizeButtons();
+          }, 100);
         });
       }).observe(e, {
         childList: !0,
@@ -163,6 +165,7 @@
     }
     async checkTypeOfSizeButtons() {
       var o;
+      await d("#sizebay-wrapper"), this.abortController.abort(), this.abortController = new AbortController();
       const e = document.querySelector("#szb-chart-button"), n = document.querySelector("#szb-vfr-button"), t = document.querySelector(
         "product-configurable-options button"
       ), s = `
@@ -171,66 +174,86 @@
     `;
       if (e) {
         t == null || t.classList.add("crs-hide");
-        const c = e.closest("sizebay"), r = t == null ? void 0 : t.closest("div");
-        c && r && r.insertAdjacentElement("afterend", c), e.innerHTML = s, n && (n.innerHTML = "<span>Find Your Size</span>", u(
-          e,
-          "exp_size_guide_view_2",
-          "PDP",
-          "Find Your Size Button",
-          0
-        ), n == null || n.addEventListener("click", () => {
-          d(
-            "exp_size_guide_click_2",
+        const r = e.closest("sizebay"), c = t == null ? void 0 : t.closest("div");
+        r && c && c.insertAdjacentElement("afterend", r), e.innerHTML = s, n && (n.innerHTML = "<span>Find Your Size</span>", setTimeout(() => {
+          window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, b("szbFindYourSizeButton view"), u(
+            n,
+            "exp_size_guide_view_2",
+            "PDP",
             "Find Your Size Button",
-            "click",
-            "PDP"
-          );
-        })), u(
-          e,
-          "exp_size_guide_view_1",
-          "PDP",
-          "Size Guide Button",
-          0
-        ), e == null || e.addEventListener("click", () => {
-          d("exp_size_guide_click_1", "Size Guide Button", "click", "PDP");
-        });
-        return;
-      }
-      if (t && ((o = t.textContent) != null && o.includes("View size guide"))) {
-        if (t.innerHTML = s, t.classList.add("crs-size-guide-button"), t.classList.contains("crs-hide")) return;
-        u(
-          t,
-          "exp_size_guide_view_1",
-          "PDP",
-          "Size Guide Button",
-          0
-        ), t == null || t.addEventListener("click", () => {
-          d(
-            "exp_size_guide_click_1",
+            0
+          ));
+        }, 100), n._crsEvent || (n._crsEvent = !0, n == null || n.addEventListener(
+          "click",
+          () => {
+            l(
+              "exp_size_guide_click_2",
+              "Find Your Size Button",
+              "click",
+              "PDP"
+            );
+          },
+          { signal: this.abortController.signal }
+        ))), setTimeout(() => {
+          window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, u(
+            e,
+            "exp_size_guide_view_1",
+            "PDP",
             "Size Guide Button",
-            "click",
-            "Size Guide"
-          );
-        });
-      }
+            0
+          ));
+        }, 100), e._crsEvent || (e._crsEvent = !0, e == null || e.addEventListener(
+          "click",
+          () => {
+            l(
+              "exp_size_guide_click_1",
+              "Size Guide Button",
+              "click",
+              "PDP"
+            );
+          },
+          { signal: this.abortController.signal }
+        ));
+        return;
+      } else
+        t && ((o = t.textContent) != null && o.includes("View size guide")) && (t.innerHTML = s, t.classList.add("crs-size-guide-button"), setTimeout(() => {
+          window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, u(
+            t,
+            "exp_size_guide_view_1",
+            "PDP",
+            "Size Guide Button",
+            0
+          ));
+        }, 100), t._crsEvent || (t._crsEvent = !0, t == null || t.addEventListener(
+          "click",
+          () => {
+            l(
+              "exp_size_guide_click_1",
+              "Size Guide Button",
+              "click",
+              "Size Guide"
+            );
+          },
+          { signal: this.abortController.signal }
+        )));
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = b, document.head.appendChild(e);
+      e.textContent = h, document.head.appendChild(e);
     }
   }
-  h({ name: "PDP Size Guide Test", dev: "OS" }), (function(i, e, n, t, s, o) {
+  p({ name: "PDP Size Guide Test", dev: "OS" }), (function(i, e, n, t, s, o) {
     i.hj = i.hj || function() {
       (i.hj.q = i.hj.q || []).push(arguments);
     }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = n + i._hjSettings.hjid + t + i._hjSettings.hjsv, s && s.appendChild(o);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_size_guide");
-  class g {
+  class f {
     constructor() {
       this.init();
     }
     init() {
       this.addStyles(), this.interceptHistoryAPI(() => {
-        new m();
+        window._crsVisibilityOfTime_2 = !1, window._crsVisibilityOfTime_1 = !1, new m();
       });
     }
     interceptHistoryAPI(e) {
@@ -246,5 +269,5 @@
       e.textContent = "", document.head.appendChild(e);
     }
   }
-  new g();
+  new f();
 })();
