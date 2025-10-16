@@ -514,8 +514,11 @@
 }
 
 
+[data-crs-title="Popular Categories"] page-component-category-carousel {
+  padding-bottom: 0 !important;
+}
 
-.crs-slider-section + icms-component page-component-hero-image {
+ page-component-hero-image:has(vimeo-player) {
   padding-top: 0 !important;
 }`, S = (
     /* HTML */
