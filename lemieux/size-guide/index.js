@@ -271,7 +271,5 @@
       e.textContent = "", document.head.appendChild(e);
     }
   }
-  window.onload = () => {
-    new f();
-  };
+  new f();
 })();
