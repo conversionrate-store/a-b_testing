@@ -482,16 +482,16 @@
 }
 
 /* Prevent images from blocking mouse drag */
-[data-crs-title='Popular Categories'] .swiper-initialized img {
+/* [data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] img {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
 }
 
 /* Keep links clickable but prevent text selection */
-[data-crs-title='Popular Categories'] .swiper-initialized a {
+[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] a {
   user-select: none;
-}
+} */
 
 [data-crs-title='Popular Categories'] .swiper-wrapper {
   display: flex;
@@ -969,3 +969,4 @@
   }
   new E();
 })();
+//# sourceMappingURL=index.js.map
