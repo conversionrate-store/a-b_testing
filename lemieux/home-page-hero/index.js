@@ -1,51 +1,51 @@
 (function() {
   "use strict";
-  const g = (o, t, n, i = "") => {
+  const u = (i, e, n, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: o,
-      event_desc: t,
+      event_name: i,
+      event_desc: e,
       event_type: n,
-      event_loc: i
-    }), p(`Event: ${o} | ${t} | ${n} | ${i}`, "success");
-  }, l = (o) => new Promise((t) => {
-    const n = document.querySelector(o);
-    n && t(n);
-    const i = new MutationObserver(() => {
-      const e = document.querySelector(o);
-      e && (t(e), i.disconnect());
+      event_loc: s
+    }), h(`Event: ${i} | ${e} | ${n} | ${s}`, "success");
+  }, d = (i) => new Promise((e) => {
+    const n = document.querySelector(i);
+    n && e(n);
+    const s = new MutationObserver(() => {
+      const t = document.querySelector(i);
+      t && (e(t), s.disconnect());
     });
-    i.observe(document.documentElement, {
+    s.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: o, dev: t }) => {
+  }), m = ({ name: i, dev: e }) => {
     console.log(
-      `%c EXP: ${o} (DEV: ${t})`,
+      `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, b = (o, t, n, i, e = 1e3, r = 0.5) => {
-    let s, h;
-    if (s = new IntersectionObserver(
-      function(c) {
-        c[0].isIntersecting === !0 ? h = setTimeout(() => {
-          g(
-            t,
-            c[0].target.dataset.visible || i || "",
+  }, f = (i, e, n, s, t = 1e3, r = 0.5) => {
+    let a, c;
+    if (a = new IntersectionObserver(
+      function(o) {
+        o[0].isIntersecting === !0 ? c = setTimeout(() => {
+          u(
+            e,
+            o[0].target.dataset.visible || s || "",
             "view",
             n
-          ), s.disconnect();
-        }, e) : (p("Element is not fully visible", "warn"), clearTimeout(h));
+          ), a.disconnect();
+        }, t) : (h("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [r] }
-    ), typeof o == "string") {
-      const c = document.querySelector(o);
-      c && s.observe(c);
+    ), typeof i == "string") {
+      const o = document.querySelector(i);
+      o && a.observe(o);
     } else
-      s.observe(o);
-  }, p = (o, t = "info") => {
+      a.observe(i);
+  }, h = (i, e = "info") => {
     let n;
-    switch (t) {
+    switch (e) {
       case "info":
         n = "color: #3498db;";
         break;
@@ -59,10 +59,10 @@
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${o}`, `${n} font-size: 16px; font-weight: 600`);
-  }, f = `.crs-hide {
+    console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
+  }, w = `.crs-hide {
   display: none !important;
-}`, y = `.crs-hero {
+}`, b = `.crs-hero {
   --gap: 8px;
   display: flex;
   gap: var(--gap);
@@ -290,14 +290,14 @@
     height: auto;
   }
 }
-`, a = "https://conversionrate-store.github.io/a-b_images/lemieux", d = [
+`, l = "https://conversionrate-store.github.io/a-b_images/lemieux", p = [
     {
       id: "new-arrivals",
       href: "/new-in/aw25",
       title: { sub: "New Arrivals", main: "AW25", collection: "Collection" },
       images: {
-        desktop: `${a}/hero_new_arrivals_desktop.webp`,
-        mob: `${a}/hero_new_arrivals_desktop.webp`
+        desktop: `${l}/hero_new_arrivals_desktop.webp`,
+        mob: `${l}/hero_new_arrivals_desktop.webp`
       }
     },
     {
@@ -306,7 +306,7 @@
       title: "Clothing",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/i/t/it07156_lifestyle_ladies_base_layer_damson_2.jpg",
-        mob: `${a}/hero_clothing_2.webp`
+        mob: `${l}/hero_clothing_2.webp`
       }
     },
     {
@@ -315,7 +315,7 @@
       title: "Horse Wear",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/a/u/au25day4_12842.jpg",
-        mob: `${a}/hero_horse_wear.webp`
+        mob: `${l}/hero_horse_wear.webp`
       }
     },
     {
@@ -323,12 +323,12 @@
       href: "/toys",
       title: "Toys",
       images: {
-        desktop: `${a}/toys_desk_2.webp`,
-        mob: `${a}/toys_mob.webp`
+        desktop: `${l}/toys_desk_2.webp`,
+        mob: `${l}/toys_mob.webp`
       }
     }
   ];
-  class w {
+  class y {
     constructor() {
       this.init();
     }
@@ -336,22 +336,22 @@
       location.pathname === "/" && (this.addStyles(), this.changeHeroImageSection());
     }
     async changeHeroImageSection() {
-      const t = await l("page-component-hero-image");
-      t && !t.classList.contains("crs-hero") && (t.innerHTML = this.renderNewHeroSection(), this.addEventListeners(t));
+      const e = await d("page-component-hero-image");
+      e && !e.classList.contains("crs-hero") && (e.innerHTML = this.renderNewHeroSection(), this.addEventListeners(e));
     }
     renderNewHeroSection() {
-      const t = d.find((e) => e.id === "new-arrivals"), n = d.filter((e) => e.id !== "new-arrivals"), i = (e) => {
-        const r = typeof e.title == "string" ? `<div class="crs-block-title">${e.title}</div>` : `<div class="crs-block-title">
-              ${e.title.sub ? `<span class="sub-title">${e.title.sub}</span>` : ""}
-              ${e.title.main ? `<span class="main-title">${e.title.main}</span>` : ""}
-              ${e.title.collection ? `<span class="collection-title">${e.title.collection}</span>` : ""}
+      const e = p.find((t) => t.id === "new-arrivals"), n = p.filter((t) => t.id !== "new-arrivals"), s = (t) => {
+        const r = typeof t.title == "string" ? `<div class="crs-block-title">${t.title}</div>` : `<div class="crs-block-title">
+              ${t.title.sub ? `<span class="sub-title">${t.title.sub}</span>` : ""}
+              ${t.title.main ? `<span class="main-title">${t.title.main}</span>` : ""}
+              ${t.title.collection ? `<span class="collection-title">${t.title.collection}</span>` : ""}
             </div>`;
         return `
-        <a href="${e.href}" class="crs-hero-block" data-hero="${e.id}" data-title="${typeof e.title == "string" ? e.title : e.title.sub}">
+        <a href="${t.href}" class="crs-hero-block" data-hero="${t.id}" data-title="${typeof t.title == "string" ? t.title : t.title.sub}">
           <picture>
-            <source media="(min-width: 701px)" srcset="${e.images.desktop}" />
-            <source media="(max-width: 700px)" srcset="${e.images.mob}" />
-            <img src="${e.images.desktop}" alt="${typeof e.title == "string" ? e.title : [e.title.sub, e.title.main, e.title.collection].filter(Boolean).join(" ")}" />
+            <source media="(min-width: 701px)" srcset="${t.images.desktop}" />
+            <source media="(max-width: 700px)" srcset="${t.images.mob}" />
+            <img src="${t.images.desktop}" alt="${typeof t.title == "string" ? t.title : [t.title.sub, t.title.main, t.title.collection].filter(Boolean).join(" ")}" />
           </picture>
           <div class="crs-hero-block-text">
             ${r}
@@ -364,41 +364,46 @@
         /* HTML */
         `
       <div class="crs-hero">
-        <div class="crs-hero-left">${t ? i(t) : ""}</div>
-        <div class="crs-hero-right">${n.map(i).join("")}</div>
+        <div class="crs-hero-left">${e ? s(e) : ""}</div>
+        <div class="crs-hero-right">${n.map(s).join("")}</div>
       </div>
     `
       );
     }
-    addEventListeners(t) {
-      t.querySelectorAll("a.crs-hero-block").forEach((i) => {
-        i.addEventListener("click", (e) => {
-          const r = i.dataset.title;
-          r && g("exp_hp_hero_click_1", r, "click", "Home page Hero Section");
-        }), b(
-          i,
+    addEventListeners(e) {
+      e.querySelectorAll("a.crs-hero-block").forEach((s) => {
+        s.addEventListener("click", (t) => {
+          const r = s.dataset.title;
+          r && u("exp_hp_hero_click_1", r, "click", "Home page Hero Section");
+        }), f(
+          s,
           "exp_hp_hero_view_1",
           "Home page Hero Section",
-          i.dataset.title || "",
+          s.dataset.title || "",
           0
         );
       });
     }
     addStyles() {
       if (document.getElementById("crs-hero-styles")) return;
-      const t = document.createElement("style");
-      t.id = "crs-hero-styles", t.innerHTML = y, document.head.appendChild(t);
+      const e = document.createElement("style");
+      e.id = "crs-hero-styles", e.innerHTML = b, document.head.appendChild(e);
     }
   }
-  const v = `[data-crs-hide='true'] {
+  const v = `[data-crs-hide='true']:not([data-crs-no-hide]) {
   display: none !important;
-}`, x = [
+}
+
+[data-crs-title='Popular Categories']:not([data-crs-no-hide]) {
+  display: none !important;
+}
+`, x = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
     "Journey to the Top"
   ];
-  class k {
+  class _ {
     constructor() {
       this.init();
     }
@@ -406,27 +411,27 @@
       this.addStyles(), this.hideSection(), this.changeSectionCopy(), setTimeout(() => {
         this.changeSectionCopy(), this.addStyles(), this.hideSection();
       }, 1e3);
-      const t = setInterval(() => {
+      const e = setInterval(() => {
         this.changeSectionCopy(), this.addStyles(), this.hideSection();
       }, 500);
       setTimeout(() => {
-        clearInterval(t);
+        clearInterval(e);
       }, 5e3);
     }
     async changeSectionCopy() {
-      const t = await l(".page-view-boundary"), n = t == null ? void 0 : t.querySelectorAll("icms-component");
-      n == null || n.forEach((i) => {
+      const e = await d(".page-view-boundary"), n = e == null ? void 0 : e.querySelectorAll("icms-component");
+      n == null || n.forEach((s) => {
         var r;
-        const e = i.querySelector("h1, h3");
-        if ((r = e == null ? void 0 : e.textContent) != null && r.includes("Popular Categories")) {
-          if (i.dataset.crsTitle = "Popular Categories", e.__crsObserver)
+        const t = s.querySelector("h1, h3");
+        if ((r = t == null ? void 0 : t.textContent) != null && r.includes("Shop Popular Categories")) {
+          if (s.querySelector("vimeo-player") || (s.dataset.crsTitle = "Popular Categories", t.__crsObserver))
             return;
-          e.textContent = "Popular Categories";
-          const s = new MutationObserver((h) => {
-            var u;
-            (((u = e.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (e.textContent = "Popular Categories");
+          t.textContent = "Popular Categories";
+          const a = new MutationObserver((c) => {
+            var g;
+            (((g = t.textContent) == null ? void 0 : g.trim()) || "").includes("Shop Popular Categories") && (t.textContent = "Popular Categories");
           });
-          s.observe(e, {
+          a.observe(t, {
             childList: !0,
             // Watch for child node changes
             subtree: !0,
@@ -435,37 +440,477 @@
             // Watch text node changes
             characterDataOldValue: !0
             // Get old text value
-          }), e.__crsObserver = s;
+          }), t.__crsObserver = a;
         }
       });
     }
     async hideSection() {
-      const t = await l(".page-view-boundary"), n = t == null ? void 0 : t.querySelectorAll("icms-component");
-      n == null || n.forEach((i) => {
-        const e = i.querySelector("h1, h3");
+      const e = await d(".page-view-boundary"), n = e == null ? void 0 : e.querySelectorAll("icms-component");
+      n == null || n.forEach((s) => {
+        const t = s.querySelector("h1, h3");
         x.some(
           (r) => {
-            var s;
-            return (s = e == null ? void 0 : e.textContent) == null ? void 0 : s.includes(r);
+            var a;
+            return (a = t == null ? void 0 : t.textContent) == null ? void 0 : a.includes(r);
           }
-        ) && (i.dataset.crsHide = "true"), n == null || n.forEach((r) => {
-          var s;
-          ((s = r.previousElementSibling) == null ? void 0 : s.dataset.crsHide) === "true" && !r.querySelector("h1, h3") && (r.dataset.crsHide = "true");
+        ) && (s.dataset.crsHide = "true"), n == null || n.forEach((r) => {
+          var a;
+          ((a = r.previousElementSibling) == null ? void 0 : a.dataset.crsHide) === "true" && !r.querySelector("h1, h3") && (r.dataset.crsHide = "true");
         });
       });
     }
     addStyles() {
       if (document.getElementById("crs-hide-section-styles")) return;
-      const t = document.createElement("style");
-      t.id = "crs-hide-section-styles", t.textContent = v, document.head.appendChild(t);
+      const e = document.createElement("style");
+      e.id = "crs-hide-section-styles", e.textContent = v, document.head.appendChild(e);
     }
   }
-  m({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(o, t, n, i, e, r) {
-    o.hj = o.hj || function() {
-      (o.hj.q = o.hj.q || []).push(arguments);
-    }, o._hjSettings = { hjid: 2667925, hjsv: 6 }, e = t.getElementsByTagName("head")[0], r = t.createElement("script"), r.async = !0, r.src = n + o._hjSettings.hjid + i + o._hjSettings.hjsv, e && e.appendChild(r);
+  const k = `[data-crs-title="Popular Categories"] .swiper-initialized {
+  overflow-x: auto;
+  touch-action: pan-x;
+  padding-inline: 12px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer and Edge */
+}
+
+[data-crs-title="Popular Categories"] swiper::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Prevent images from blocking mouse drag */
+[data-crs-title="Popular Categories"] .swiper-initialized img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Keep links clickable but prevent text selection */
+[data-crs-title="Popular Categories"] .swiper-initialized a {
+  user-select: none;
+}`, S = (
+    /* HTML */
+    `<icms-component
+  _ngcontent-ng-c2047601728=""
+  class="ng-star-inserted crs-slider-section"
+  data-crs-title="Popular Categories"
+  data-crs-no-hide
+  ><div>
+    <page-component-category-carousel
+      class="ng-star-inserted"
+      style="display: block; padding-top: 32px; padding-bottom: 32px;"
+      ><div class="wrap-x wrap-l ng-star-inserted">
+        <div class="w-12">
+          <div class="p-t-1 p-b-1 center pos-relative overflow-hidden">
+            <h1
+              class="p-l-12 p-r-12 p-l-4-s p-r-4-s pos-relative w-12-s title-decoration h2 p-t-5-s b-t-s b-col-42-s ng-star-inserted"
+            >
+              Popular Categories
+            </h1>
+            <!---->
+          </div>
+          <div
+            class="m-t m-t-6-s overflow-visible swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden"
+            ><!----><!----><!---->
+            <div
+              class="swiper-wrapper"
+        
+              aria-live="polite"
+            >
+              <!----><!---->
+              <div
+                data-swiper-slide-index="0"
+                class="swiper-slide ng-star-inserted swiper-slide-prev"
+                role="group"
+                aria-label="1 / 7"
+                style="width: 194.688px; margin-right: 10px;"
+              >
+                <!---->
+                <div class="center ng-star-inserted">
+                  <div class="w-12 ratio-1-1 overflow-hidden">
+                    <href
+                      ><!----><!----><a
+                        href="/clothing/women/casual-wear"
+                        tabindex="0"
+                        class="ng-star-inserted"
+                        ><shell
+                          _nghost-ng-c3904987725=""
+                          class="ng-star-inserted"
+                          ><img
+                            _ngcontent-ng-c3904987725=""
+                            alt=""
+                            loading="eager"
+                            fetchpriority="auto" /></shell
+                        ><img
+                          class="rf z-1 df-image ng-star-inserted"
+                          loading="lazy"
+                          src="/tco-images/unsafe/228x228/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/GROUP_lifestyle_philippameshbase_amybrushedlegging_rosemary_1-(3).jpg"
+                          alt=""
+                        /><!----><!----><!----></a
+                      ><!----><!----><!----><!----><!----></href
+                    >
+                  </div>
+                  <href
+                    ><!----><!----><a
+                      href="/clothing/women/casual-wear"
+                      tabindex="0"
+                      class="ng-star-inserted"
+                      ><button class="button-inline m-t-3 ng-star-inserted">
+                        <span class="button__body ng-star-inserted">Women</span
+                        ><!----></button
+                      ><!----></a
+                    ><!----><!----><!----><!----><!----></href
+                  >
+                </div>
+                <!----><!----><!---->
+              </div>
+              <div
+                data-swiper-slide-index="1"
+                class="swiper-slide ng-star-inserted swiper-slide-active"
+                role="group"
+                aria-label="2 / 7"
+                style="width: 194.688px; margin-right: 10px;"
+              >
+                <!---->
+                <div class="center ng-star-inserted">
+                  <div class="w-12 ratio-1-1 overflow-hidden">
+                    <href
+                      ><!----><!----><a
+                        href="/clothing/children/casual-wear"
+                        tabindex="0"
+                        class="ng-star-inserted"
+                        ><shell
+                          _nghost-ng-c3904987725=""
+                          class="ng-star-inserted"
+                          ><img
+                            _ngcontent-ng-c3904987725=""
+                            alt=""
+                            loading="eager"
+                            fetchpriority="auto" /></shell
+                        ><img
+                          class="rf z-1 df-image ng-star-inserted"
+                          loading="lazy"
+                          src="/tco-images/unsafe/228x228/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/GROUP_lifestyle_youngrideravalonhoodie_cranberry_rosemary_2-(1).jpg"
+                          alt=""
+                        /><!----><!----><!----></a
+                      ><!----><!----><!----><!----><!----></href
+                    >
+                  </div>
+                  <href
+                    ><!----><!----><a
+                      href="/clothing/children/casual-wear"
+                      tabindex="0"
+                      class="ng-star-inserted"
+                      ><button class="button-inline m-t-3 ng-star-inserted">
+                        <span class="button__body ng-star-inserted"
+                          >Children</span
+                        ><!----></button
+                      ><!----></a
+                    ><!----><!----><!----><!----><!----></href
+                  >
+                </div>
+                <!----><!----><!---->
+              </div>
+              <div
+                data-swiper-slide-index="2"
+                class="swiper-slide ng-star-inserted swiper-slide-next"
+                role="group"
+                aria-label="3 / 7"
+                style="width: 194.688px; margin-right: 10px;"
+              >
+                <!---->
+                <div class="center ng-star-inserted">
+                  <div class="w-12 ratio-1-1 overflow-hidden">
+                    <href
+                      ><!----><!----><a
+                        href="/horse-saddle-pads"
+                        tabindex="0"
+                        class="ng-star-inserted"
+                        ><shell
+                          _nghost-ng-c3904987725=""
+                          class="ng-star-inserted"
+                          ><img
+                            _ngcontent-ng-c3904987725=""
+                            alt=""
+                            loading="eager"
+                            fetchpriority="auto" /></shell
+                        ><img
+                          class="rf z-1 df-image ng-star-inserted"
+                          loading="lazy"
+                          src="/tco-images/unsafe/228x228/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT07760_lifestyle_finesseeurojumpsquare_black_11.jpg"
+                          alt=""
+                        /><!----><!----><!----></a
+                      ><!----><!----><!----><!----><!----></href
+                    >
+                  </div>
+                  <href
+                    ><!----><!----><a
+                      href="/horse-saddle-pads"
+                      tabindex="0"
+                      class="ng-star-inserted"
+                      ><button class="button-inline m-t-3 ng-star-inserted">
+                        <span class="button__body ng-star-inserted"
+                          >Saddle Pads</span
+                        ><!----></button
+                      ><!----></a
+                    ><!----><!----><!----><!----><!----></href
+                  >
+                </div>
+                <!----><!----><!---->
+              </div>
+              <div
+                data-swiper-slide-index="3"
+                class="swiper-slide ng-star-inserted"
+                role="group"
+                aria-label="4 / 7"
+                style="width: 194.688px; margin-right: 10px;"
+              >
+                <!---->
+                <div class="center ng-star-inserted">
+                  <div class="w-12 ratio-1-1 overflow-hidden">
+                    <href
+                      ><!----><!----><a
+                        href="/horse-rugs"
+                        tabindex="0"
+                        class="ng-star-inserted"
+                        ><shell
+                          _nghost-ng-c3904987725=""
+                          class="ng-star-inserted"
+                          ><img
+                            _ngcontent-ng-c3904987725=""
+                            alt=""
+                            loading="eager"
+                            fetchpriority="auto" /></shell
+                        ><img
+                          class="rf z-1 df-image ng-star-inserted"
+                          loading="lazy"
+                          src="/tco-images/unsafe/228x228/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT07070_lifestyle_arikastormtekrug_navy_4-(1).jpg"
+                          alt=""
+                        /><!----><!----><!----></a
+                      ><!----><!----><!----><!----><!----></href
+                    >
+                  </div>
+                  <href
+                    ><!----><!----><a
+                      href="/horse-rugs"
+                      tabindex="0"
+                      class="ng-star-inserted"
+                      ><button class="button-inline m-t-3 ng-star-inserted">
+                        <span class="button__body ng-star-inserted">Rugs</span
+                        ><!----></button
+                      ><!----></a
+                    ><!----><!----><!----><!----><!----></href
+                  >
+                </div>
+                <!----><!----><!---->
+              </div>
+              <div
+                data-swiper-slide-index="4"
+                class="swiper-slide ng-star-inserted"
+                role="group"
+                aria-label="5 / 7"
+                style="width: 194.688px; margin-right: 10px;"
+              >
+                <!---->
+                <div class="center ng-star-inserted">
+                  <div class="w-12 ratio-1-1 overflow-hidden">
+                    <href
+                      ><!----><!----><a
+                        href="/horsewear/saddlery-tack/bridles"
+                        tabindex="0"
+                        class="ng-star-inserted"
+                        ><shell
+                          _nghost-ng-c3904987725=""
+                          class="ng-star-inserted"
+                          ><img
+                            _ngcontent-ng-c3904987725=""
+                            alt=""
+                            loading="eager"
+                            fetchpriority="auto" /></shell
+                        ><img
+                          class="rf z-1 df-image ng-star-inserted"
+                          loading="lazy"
+                          src="/tco-images/unsafe/228x228/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT04763_lifestyle_kudospatentdressagenoseband_brownwhite_3-(5)-1.jpg"
+                          alt=""
+                        /><!----><!----><!----></a
+                      ><!----><!----><!----><!----><!----></href
+                    >
+                  </div>
+                  <href
+                    ><!----><!----><a
+                      href="/horsewear/saddlery-tack/bridles"
+                      tabindex="0"
+                      class="ng-star-inserted"
+                      ><button class="button-inline m-t-3 ng-star-inserted">
+                        <span class="button__body ng-star-inserted"
+                          >Bridles</span
+                        ><!----></button
+                      ><!----></a
+                    ><!----><!----><!----><!----><!----></href
+                  >
+                </div>
+                <!----><!----><!---->
+              </div>
+              <div
+                data-swiper-slide-index="5"
+                class="swiper-slide ng-star-inserted"
+                role="group"
+                aria-label="6 / 7"
+                style="width: 194.688px; margin-right: 10px;"
+              >
+                <!---->
+                <div class="center ng-star-inserted">
+                  <div class="w-12 ratio-1-1 overflow-hidden">
+                    <href
+                      ><!----><!----><a
+                        href="/clothing/men/casual-wear"
+                        tabindex="0"
+                        class="ng-star-inserted"
+                        ><shell
+                          _nghost-ng-c3904987725=""
+                          class="ng-star-inserted"
+                          ><img
+                            _ngcontent-ng-c3904987725=""
+                            alt=""
+                            loading="eager"
+                            fetchpriority="auto" /></shell
+                        ><img
+                          class="rf z-1 df-image ng-star-inserted"
+                          loading="lazy"
+                          src="/tco-images/unsafe/228x228/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT07404_lifestyle_mens_showerproof_shacket_alpine_18-(2).jpg"
+                          alt=""
+                        /><!----><!----><!----></a
+                      ><!----><!----><!----><!----><!----></href
+                    >
+                  </div>
+                  <href
+                    ><!----><!----><a
+                      href="/clothing/men/casual-wear"
+                      tabindex="0"
+                      class="ng-star-inserted"
+                      ><button class="button-inline m-t-3 ng-star-inserted">
+                        <span class="button__body ng-star-inserted">Men</span
+                        ><!----></button
+                      ><!----></a
+                    ><!----><!----><!----><!----><!----></href
+                  >
+                </div>
+                <!----><!----><!---->
+              </div>
+              <div
+                data-swiper-slide-index="6"
+                class="swiper-slide ng-star-inserted"
+                role="group"
+                aria-label="7 / 7"
+                style="width: 194.688px; margin-right: 10px;"
+              >
+                <!---->
+                <div class="center ng-star-inserted">
+                  <div class="w-12 ratio-1-1 overflow-hidden">
+                    <href
+                      ><!----><!----><a
+                        href="/clothing/accessories/accessories/rider-luggage"
+                        tabindex="0"
+                        class="ng-star-inserted"
+                        ><shell
+                          _nghost-ng-c3904987725=""
+                          class="ng-star-inserted"
+                          ><img
+                            _ngcontent-ng-c3904987725=""
+                            alt=""
+                            loading="eager"
+                            fetchpriority="auto" /></shell
+                        ><img
+                          class="rf z-1 df-image ng-star-inserted"
+                          loading="lazy"
+                          src="/tco-images/unsafe/228x228/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/IT04711_lifestyle_fieldridingboot_black_108-4.jpg"
+                          alt=""
+                        /><!----><!----><!----></a
+                      ><!----><!----><!----><!----><!----></href
+                    >
+                  </div>
+                  <href
+                    ><!----><!----><a
+                      href="/clothing/accessories/accessories/rider-luggage"
+                      tabindex="0"
+                      class="ng-star-inserted"
+                      ><button class="button-inline m-t-3 ng-star-inserted">
+                        <span class="button__body ng-star-inserted"
+                          >Footwear</span
+                        ><!----></button
+                      ><!----></a
+                    ><!----><!----><!----><!----><!----></href
+                  >
+                </div>
+                <!----><!----><!---->
+              </div>
+              <!----><!----><!----><!---->
+            </div>
+            <!----><span
+              class="swiper-notification"
+              aria-live="assertive"
+              aria-atomic="true"
+            ></span
+          ></div>
+        </div>
+      </div>
+      <!----></page-component-category-carousel
+    ><!---->
+  </div></icms-component
+>`
+  );
+  class C {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.addStyles(), this.modifySection();
+    }
+    async modifySection() {
+      const e = await d('[data-crs-title="Popular Categories"]');
+      e && (e.outerHTML = S);
+      const n = document.querySelector(".crs-slider-section .swiper-initialized");
+      if (console.log("box", n), !n) return;
+      n.style.cursor = "grab";
+      let s = !1, t, r, a, c;
+      n.addEventListener("mousedown", (o) => {
+        o.preventDefault(), s = !0, t = o.pageX, r = o.pageY, a = n.scrollLeft, c = n.scrollTop, n.style.cursor = "grabbing";
+      }), n.addEventListener("mouseleave", () => {
+        s = !1, n.style.cursor = "grab";
+      }), n.addEventListener("mouseup", () => {
+        s = !1, n.style.cursor = "grab";
+      }), n.addEventListener("mousemove", (o) => {
+        if (!s) return;
+        o.preventDefault();
+        const g = o.pageX, $ = o.pageY, j = (g - t) * 1.5, H = ($ - r) * 1.5;
+        n.scrollLeft = a - j, n.scrollTop = c - H;
+      }), n.addEventListener("dragstart", (o) => {
+        o.preventDefault();
+      }), n.style.userSelect = "none";
+    }
+    async observe() {
+      new MutationObserver((n) => {
+        n.forEach(async (s) => {
+          (await d(
+            '[data-crs-title="Popular Categories"] swiper'
+          )).querySelector(".crs-swiper-wrapper") || h(
+            "Detected changes in Popular Categories, reapplying modifications"
+          );
+        });
+      }).observe(document, { childList: !0, subtree: !0 }), this.modifySection();
+    }
+    addStyles() {
+      const e = document.createElement("style");
+      e.textContent = k, document.head.appendChild(e);
+    }
+  }
+  m({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(i, e, n, s, t, r) {
+    i.hj = i.hj || function() {
+      (i.hj.q = i.hj.q || []).push(arguments);
+    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, t = e.getElementsByTagName("head")[0], r = e.createElement("script"), r.async = !0, r.src = n + i._hjSettings.hjid + s + i._hjSettings.hjsv, t && t.appendChild(r);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
-  class S {
+  class E {
     constructor() {
       this.init();
     }
@@ -475,27 +920,27 @@
       }), this.initComponents();
     }
     initComponents() {
-      location.pathname === "/" && (this.addStyles(), new w(), new k());
+      location.pathname === "/" && (this.addStyles(), new y(), new _(), new C());
     }
-    interceptHistoryAPI(t) {
-      const n = history.pushState, i = history.replaceState;
-      history.pushState = (...e) => {
-        n.apply(history, e), setTimeout(() => t(), 50);
-      }, history.replaceState = (...e) => {
-        i.apply(history, e), setTimeout(() => t(), 50);
+    interceptHistoryAPI(e) {
+      const n = history.pushState, s = history.replaceState;
+      history.pushState = (...t) => {
+        n.apply(history, t), setTimeout(() => e(), 50);
+      }, history.replaceState = (...t) => {
+        s.apply(history, t), setTimeout(() => e(), 50);
       };
     }
     imagePreloading() {
-      d.forEach((t) => {
-        const n = `<link rel="preload" as="image" href="${t.images.mob}" media="(max-width: 700px)" />
-      <link rel="preload" as="image" href="${t.images.desktop}" media="(min-width: 701px)" />`;
+      p.forEach((e) => {
+        const n = `<link rel="preload" as="image" href="${e.images.mob}" media="(max-width: 700px)" />
+      <link rel="preload" as="image" href="${e.images.desktop}" media="(min-width: 701px)" />`;
         document.head.insertAdjacentHTML("beforeend", n);
       });
     }
     addStyles() {
-      const t = document.createElement("style");
-      t.textContent = f, document.head.appendChild(t);
+      const e = document.createElement("style");
+      e.textContent = w, document.head.appendChild(e);
     }
   }
-  new S();
+  new E();
 })();
