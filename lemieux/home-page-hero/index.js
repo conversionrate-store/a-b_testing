@@ -397,6 +397,7 @@
 [data-crs-title='Popular Categories']:not([data-crs-no-hide]) {
   display: none !important;
 }
+
 `, x = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
@@ -507,11 +508,16 @@
   }
   [data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
     flex: 0 0 auto;
-    width: calc(100% / 7 - 10px);
+    width: calc(100% / 6.2 - 10px);
     aspect-ratio: 1;
   }
 }
-`, S = (
+
+
+
+.crs-slider-section + icms-component page-component-hero-image {
+  padding-top: 0 !important;
+}`, S = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
