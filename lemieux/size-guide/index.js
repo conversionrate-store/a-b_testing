@@ -88,6 +88,7 @@
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
+  outline: none;
 }
 
 :is(#szb-chart-button, #szb-vfr-button) span {
