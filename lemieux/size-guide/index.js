@@ -1,21 +1,21 @@
 (function() {
   "use strict";
-  const l = (i, e, n, t = "") => {
+  const l = (i, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
       event_desc: e,
-      event_type: n,
-      event_loc: t
-    }), b(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
+      event_type: t,
+      event_loc: n
+    }), b(`Event: ${i} | ${e} | ${t} | ${n}`, "success");
   }, d = (i) => new Promise((e) => {
-    const n = document.querySelector(i);
-    n && e(n);
-    const t = new MutationObserver(() => {
+    const t = document.querySelector(i);
+    t && e(t);
+    const n = new MutationObserver(() => {
       const s = document.querySelector(i);
-      s && (e(s), t.disconnect());
+      s && (e(s), n.disconnect());
     });
-    t.observe(document.documentElement, {
+    n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
@@ -24,16 +24,16 @@
       `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, u = (i, e, n, t, s = 1e3, o = 0.5) => {
+  }, u = (i, e, t, n, s = 1e3, o = 0.5) => {
     let r, c;
     if (r = new IntersectionObserver(
       function(a) {
         a[0].isIntersecting === !0 ? c = setTimeout(() => {
           l(
             e,
-            a[0].target.dataset.visible || t || "",
+            a[0].target.dataset.visible || n || "",
             "view",
-            n
+            t
           ), r.disconnect();
         }, s) : (b("Element is not fully visible", "warn"), clearTimeout(c));
       },
@@ -44,22 +44,22 @@
     } else
       r.observe(i);
   }, b = (i, e = "info") => {
-    let n;
+    let t;
     switch (e) {
       case "info":
-        n = "color: #3498db;";
+        t = "color: #3498db;";
         break;
       case "warn":
-        n = "color: #f39c12;";
+        t = "color: #f39c12;";
         break;
       case "error":
-        n = "color: #e74c3c;";
+        t = "color: #e74c3c;";
         break;
       case "success":
-        n = "color: #2ecc71;";
+        t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${i}`, `${t} font-size: 16px; font-weight: 600`);
   }, h = `sizebay {
 }
 
@@ -144,21 +144,23 @@
       });
     }
     async checkIsProductPage(e) {
-      const n = new Promise((s) => setTimeout(s, 3e3));
-      await Promise.race([n, d("product-view-layout")]) && e();
+      const t = new Promise((s) => setTimeout(s, 3e3));
+      await Promise.race([t, d("product-view-layout")]) && e();
     }
     async observe() {
       const e = await d(
         "product-configurable-options"
-      );
-      new MutationObserver((t) => {
-        t.forEach((s) => {
+      ), t = new MutationObserver((n) => {
+        n.forEach((s) => {
           const o = s.target;
           s.type === "childList" && o && o.id === "sizebay-wrapper" && !o.querySelector(".crs-size-guide-button") && setTimeout(() => {
             this.checkTypeOfSizeButtons();
           }, 100);
         });
-      }).observe(e, {
+      });
+      setTimeout(() => {
+        t.disconnect();
+      }, 5e3), t.observe(e, {
         childList: !0,
         subtree: !0
       });
@@ -166,24 +168,24 @@
     async checkTypeOfSizeButtons() {
       var o;
       await d("#sizebay-wrapper"), this.abortController.abort(), this.abortController = new AbortController();
-      const e = document.querySelector("#szb-chart-button"), n = document.querySelector("#szb-vfr-button"), t = document.querySelector(
+      const e = document.querySelector("#szb-chart-button"), t = document.querySelector("#szb-vfr-button"), n = document.querySelector(
         "product-configurable-options button"
       ), s = `
       <span class="crs-desktop">View Size Guide</span>
       <span class="crs-mobile">Size Guide</span>
     `;
       if (e) {
-        t == null || t.classList.add("crs-hide");
-        const r = e.closest("sizebay"), c = t == null ? void 0 : t.closest("div");
-        r && c && c.insertAdjacentElement("afterend", r), e.innerHTML = s, n && (n.innerHTML = "<span>Find Your Size</span>", setTimeout(() => {
+        n == null || n.classList.add("crs-hide");
+        const r = e.closest("sizebay"), c = n == null ? void 0 : n.closest("div");
+        r && c && c.insertAdjacentElement("afterend", r), e.innerHTML = s, t && (t.innerHTML = "<span>Find Your Size</span>", setTimeout(() => {
           window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, b("szbFindYourSizeButton view"), u(
-            n,
+            t,
             "exp_size_guide_view_2",
             "PDP",
             "Find Your Size Button",
             0
           ));
-        }, 100), n._crsEvent || (n._crsEvent = !0, n == null || n.addEventListener(
+        }, 100), t._crsEvent || (t._crsEvent = !0, t == null || t.addEventListener(
           "click",
           () => {
             l(
@@ -216,15 +218,15 @@
         ));
         return;
       } else
-        t && ((o = t.textContent) != null && o.includes("View size guide")) && (t.innerHTML = s, t.classList.add("crs-size-guide-button"), setTimeout(() => {
+        n && ((o = n.textContent) != null && o.includes("View size guide")) && (n.innerHTML = s, n.classList.add("crs-size-guide-button"), setTimeout(() => {
           window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, u(
-            t,
+            n,
             "exp_size_guide_view_1",
             "PDP",
             "Size Guide Button",
             0
           ));
-        }, 100), t._crsEvent || (t._crsEvent = !0, t == null || t.addEventListener(
+        }, 100), n._crsEvent || (n._crsEvent = !0, n == null || n.addEventListener(
           "click",
           () => {
             l(
@@ -242,10 +244,10 @@
       e.textContent = h, document.head.appendChild(e);
     }
   }
-  p({ name: "PDP Size Guide Test", dev: "OS" }), (function(i, e, n, t, s, o) {
+  p({ name: "PDP Size Guide Test", dev: "OS" }), (function(i, e, t, n, s, o) {
     i.hj = i.hj || function() {
       (i.hj.q = i.hj.q || []).push(arguments);
-    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = n + i._hjSettings.hjid + t + i._hjSettings.hjsv, s && s.appendChild(o);
+    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + i._hjSettings.hjid + n + i._hjSettings.hjsv, s && s.appendChild(o);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_size_guide");
   class f {
     constructor() {
@@ -257,11 +259,11 @@
       });
     }
     interceptHistoryAPI(e) {
-      const n = history.pushState, t = history.replaceState;
+      const t = history.pushState, n = history.replaceState;
       history.pushState = (...s) => {
-        n.apply(history, s), setTimeout(() => e(), 50);
-      }, history.replaceState = (...s) => {
         t.apply(history, s), setTimeout(() => e(), 50);
+      }, history.replaceState = (...s) => {
+        n.apply(history, s), setTimeout(() => e(), 50);
       };
     }
     addStyles() {
@@ -269,5 +271,8 @@
       e.textContent = "", document.head.appendChild(e);
     }
   }
-  new f();
+  window.addEventListener("load", () => {
+    new f();
+  });
 })();
+
