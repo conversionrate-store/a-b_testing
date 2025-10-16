@@ -140,7 +140,7 @@
     }
     init() {
       this.checkIsProductPage(() => {
-        this.addStyles(), this.observe();
+        this.addStyles(), this.observe(), this.checkTypeOfSizeButtons();
       });
     }
     async checkIsProductPage(e) {
@@ -271,8 +271,7 @@
       e.textContent = "", document.head.appendChild(e);
     }
   }
-  window.addEventListener("load", () => {
+  window.onload = () => {
     new f();
-  });
+  };
 })();
-
