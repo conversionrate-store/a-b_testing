@@ -24,9 +24,9 @@
       `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, f = (i, e, n, s, t = 1e3, r = 0.5) => {
-    let a, c;
-    if (a = new IntersectionObserver(
+  }, f = (i, e, n, s, t = 1e3, a = 0.5) => {
+    let r, c;
+    if (r = new IntersectionObserver(
       function(o) {
         o[0].isIntersecting === !0 ? c = setTimeout(() => {
           u(
@@ -34,15 +34,15 @@
             o[0].target.dataset.visible || s || "",
             "view",
             n
-          ), a.disconnect();
+          ), r.disconnect();
         }, t) : (h("Element is not fully visible", "warn"), clearTimeout(c));
       },
-      { threshold: [r] }
+      { threshold: [a] }
     ), typeof i == "string") {
       const o = document.querySelector(i);
-      o && a.observe(o);
+      o && r.observe(o);
     } else
-      a.observe(i);
+      r.observe(i);
   }, h = (i, e = "info") => {
     let n;
     switch (e) {
@@ -341,7 +341,7 @@
     }
     renderNewHeroSection() {
       const e = p.find((t) => t.id === "new-arrivals"), n = p.filter((t) => t.id !== "new-arrivals"), s = (t) => {
-        const r = typeof t.title == "string" ? `<div class="crs-block-title">${t.title}</div>` : `<div class="crs-block-title">
+        const a = typeof t.title == "string" ? `<div class="crs-block-title">${t.title}</div>` : `<div class="crs-block-title">
               ${t.title.sub ? `<span class="sub-title">${t.title.sub}</span>` : ""}
               ${t.title.main ? `<span class="main-title">${t.title.main}</span>` : ""}
               ${t.title.collection ? `<span class="collection-title">${t.title.collection}</span>` : ""}
@@ -354,7 +354,7 @@
             <img src="${t.images.desktop}" alt="${typeof t.title == "string" ? t.title : [t.title.sub, t.title.main, t.title.collection].filter(Boolean).join(" ")}" />
           </picture>
           <div class="crs-hero-block-text">
-            ${r}
+            ${a}
             
           </div>
         </a>
@@ -373,8 +373,8 @@
     addEventListeners(e) {
       e.querySelectorAll("a.crs-hero-block").forEach((s) => {
         s.addEventListener("click", (t) => {
-          const r = s.dataset.title;
-          r && u("exp_hp_hero_click_1", r, "click", "Home page Hero Section");
+          const a = s.dataset.title;
+          a && u("exp_hp_hero_click_1", a, "click", "Home page Hero Section");
         }), f(
           s,
           "exp_hp_hero_view_1",
@@ -421,17 +421,17 @@
     async changeSectionCopy() {
       const e = await d(".page-view-boundary"), n = e == null ? void 0 : e.querySelectorAll("icms-component");
       n == null || n.forEach((s) => {
-        var r;
+        var a;
         const t = s.querySelector("h1, h3");
-        if ((r = t == null ? void 0 : t.textContent) != null && r.includes("Shop Popular Categories")) {
+        if ((a = t == null ? void 0 : t.textContent) != null && a.includes("Shop Popular Categories")) {
           if (s.querySelector("vimeo-player") || (s.dataset.crsTitle = "Popular Categories", t.__crsObserver))
             return;
           t.textContent = "Popular Categories";
-          const a = new MutationObserver((c) => {
+          const r = new MutationObserver((c) => {
             var g;
             (((g = t.textContent) == null ? void 0 : g.trim()) || "").includes("Shop Popular Categories") && (t.textContent = "Popular Categories");
           });
-          a.observe(t, {
+          r.observe(t, {
             childList: !0,
             // Watch for child node changes
             subtree: !0,
@@ -440,7 +440,7 @@
             // Watch text node changes
             characterDataOldValue: !0
             // Get old text value
-          }), t.__crsObserver = a;
+          }), t.__crsObserver = r;
         }
       });
     }
@@ -449,13 +449,13 @@
       n == null || n.forEach((s) => {
         const t = s.querySelector("h1, h3");
         x.some(
-          (r) => {
-            var a;
-            return (a = t == null ? void 0 : t.textContent) == null ? void 0 : a.includes(r);
+          (a) => {
+            var r;
+            return (r = t == null ? void 0 : t.textContent) == null ? void 0 : r.includes(a);
           }
-        ) && (s.dataset.crsHide = "true"), n == null || n.forEach((r) => {
-          var a;
-          ((a = r.previousElementSibling) == null ? void 0 : a.dataset.crsHide) === "true" && !r.querySelector("h1, h3") && (r.dataset.crsHide = "true");
+        ) && (s.dataset.crsHide = "true"), n == null || n.forEach((a) => {
+          var r;
+          ((r = a.previousElementSibling) == null ? void 0 : r.dataset.crsHide) === "true" && !a.querySelector("h1, h3") && (a.dataset.crsHide = "true");
         });
       });
     }
@@ -465,31 +465,53 @@
       e.id = "crs-hide-section-styles", e.textContent = v, document.head.appendChild(e);
     }
   }
-  const k = `[data-crs-title="Popular Categories"] .swiper-initialized {
+  const k = `[data-crs-title='Popular Categories'] .swiper-initialized {
   overflow-x: auto;
   touch-action: pan-x;
   padding-inline: 12px;
+  min-height: 250px;
 
   /* Hide scrollbar */
-  scrollbar-width: none;  /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
 
-[data-crs-title="Popular Categories"] swiper::-webkit-scrollbar {
-  display: none;  /* Safari and Chrome */
+[data-crs-title='Popular Categories'] swiper::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 /* Prevent images from blocking mouse drag */
-[data-crs-title="Popular Categories"] .swiper-initialized img {
+[data-crs-title='Popular Categories'] .swiper-initialized img {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
 }
 
 /* Keep links clickable but prevent text selection */
-[data-crs-title="Popular Categories"] .swiper-initialized a {
+[data-crs-title='Popular Categories'] .swiper-initialized a {
   user-select: none;
-}`, S = (
+}
+
+[data-crs-title='Popular Categories'] .swiper-wrapper {
+  display: flex;
+}
+
+[data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
+  aspect-ratio: 1;
+  width: 200px;
+}
+
+@media (min-width: 1390px) {
+  [data-crs-title='Popular Categories'] .swiper-initialized {
+    min-height: 400px;
+  }
+  [data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
+    flex: 0 0 auto;
+    width: calc(100% / 7 - 10px);
+    aspect-ratio: 1;
+  }
+}
+`, S = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
@@ -512,19 +534,16 @@
           </div>
           <div
             class="m-t m-t-6-s overflow-visible swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden"
-            ><!----><!----><!---->
-            <div
-              class="swiper-wrapper"
-        
-              aria-live="polite"
-            >
+          >
+            <!----><!----><!---->
+            <div class="swiper-wrapper" aria-live="polite">
               <!----><!---->
               <div
                 data-swiper-slide-index="0"
                 class="swiper-slide ng-star-inserted swiper-slide-prev"
                 role="group"
                 aria-label="1 / 7"
-                style="width: 194.688px; margin-right: 10px;"
+                style=" margin-right: 10px;"
               >
                 <!---->
                 <div class="center ng-star-inserted">
@@ -570,7 +589,7 @@
                 class="swiper-slide ng-star-inserted swiper-slide-active"
                 role="group"
                 aria-label="2 / 7"
-                style="width: 194.688px; margin-right: 10px;"
+                style=" margin-right: 10px;"
               >
                 <!---->
                 <div class="center ng-star-inserted">
@@ -617,7 +636,7 @@
                 class="swiper-slide ng-star-inserted swiper-slide-next"
                 role="group"
                 aria-label="3 / 7"
-                style="width: 194.688px; margin-right: 10px;"
+                style=" margin-right: 10px;"
               >
                 <!---->
                 <div class="center ng-star-inserted">
@@ -664,7 +683,7 @@
                 class="swiper-slide ng-star-inserted"
                 role="group"
                 aria-label="4 / 7"
-                style="width: 194.688px; margin-right: 10px;"
+                style=" margin-right: 10px;"
               >
                 <!---->
                 <div class="center ng-star-inserted">
@@ -710,7 +729,7 @@
                 class="swiper-slide ng-star-inserted"
                 role="group"
                 aria-label="5 / 7"
-                style="width: 194.688px; margin-right: 10px;"
+                style=" margin-right: 10px;"
               >
                 <!---->
                 <div class="center ng-star-inserted">
@@ -757,7 +776,7 @@
                 class="swiper-slide ng-star-inserted"
                 role="group"
                 aria-label="6 / 7"
-                style="width: 194.688px; margin-right: 10px;"
+                style=" margin-right: 10px;"
               >
                 <!---->
                 <div class="center ng-star-inserted">
@@ -803,7 +822,7 @@
                 class="swiper-slide ng-star-inserted"
                 role="group"
                 aria-label="7 / 7"
-                style="width: 194.688px; margin-right: 10px;"
+                style=" margin-right: 10px;"
               >
                 <!---->
                 <div class="center ng-star-inserted">
@@ -851,8 +870,8 @@
               class="swiper-notification"
               aria-live="assertive"
               aria-atomic="true"
-            ></span
-          ></div>
+            ></span>
+          </div>
         </div>
       </div>
       <!----></page-component-category-carousel
@@ -873,9 +892,9 @@
       const n = document.querySelector(".crs-slider-section .swiper-initialized");
       if (console.log("box", n), !n) return;
       n.style.cursor = "grab";
-      let s = !1, t, r, a, c;
+      let s = !1, t, a, r, c;
       n.addEventListener("mousedown", (o) => {
-        o.preventDefault(), s = !0, t = o.pageX, r = o.pageY, a = n.scrollLeft, c = n.scrollTop, n.style.cursor = "grabbing";
+        o.preventDefault(), s = !0, t = o.pageX, a = o.pageY, r = n.scrollLeft, c = n.scrollTop, n.style.cursor = "grabbing";
       }), n.addEventListener("mouseleave", () => {
         s = !1, n.style.cursor = "grab";
       }), n.addEventListener("mouseup", () => {
@@ -883,8 +902,8 @@
       }), n.addEventListener("mousemove", (o) => {
         if (!s) return;
         o.preventDefault();
-        const g = o.pageX, $ = o.pageY, j = (g - t) * 1.5, H = ($ - r) * 1.5;
-        n.scrollLeft = a - j, n.scrollTop = c - H;
+        const g = o.pageX, $ = o.pageY, P = (g - t) * 1.5, j = ($ - a) * 1.5;
+        n.scrollLeft = r - P, n.scrollTop = c - j;
       }), n.addEventListener("dragstart", (o) => {
         o.preventDefault();
       }), n.style.userSelect = "none";
@@ -905,10 +924,10 @@
       e.textContent = k, document.head.appendChild(e);
     }
   }
-  m({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(i, e, n, s, t, r) {
+  m({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(i, e, n, s, t, a) {
     i.hj = i.hj || function() {
       (i.hj.q = i.hj.q || []).push(arguments);
-    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, t = e.getElementsByTagName("head")[0], r = e.createElement("script"), r.async = !0, r.src = n + i._hjSettings.hjid + s + i._hjSettings.hjsv, t && t.appendChild(r);
+    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, t = e.getElementsByTagName("head")[0], a = e.createElement("script"), a.async = !0, a.src = n + i._hjSettings.hjid + s + i._hjSettings.hjsv, t && t.appendChild(a);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class E {
     constructor() {
