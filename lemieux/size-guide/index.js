@@ -1,14 +1,14 @@
 (function() {
   "use strict";
-  const l = (i, e, n, t = "") => {
+  const a = (i, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
       event_desc: e,
       event_type: n,
       event_loc: t
-    }), b(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
-  }, d = (i) => new Promise((e) => {
+    }), u(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
+  }, l = (i) => new Promise((e) => {
     const n = document.querySelector(i);
     n && e(n);
     const t = new MutationObserver(() => {
@@ -24,26 +24,26 @@
       `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, u = (i, e, n, t, s = 1e3, o = 0.5) => {
-    let c, r;
+  }, d = (i, e, n, t, s = 1e3, o = 0.5) => {
+    let c, b;
     if (c = new IntersectionObserver(
-      function(a) {
-        a[0].isIntersecting === !0 ? r = setTimeout(() => {
-          l(
+      function(r) {
+        r[0].isIntersecting === !0 ? b = setTimeout(() => {
+          a(
             e,
-            a[0].target.dataset.visible || t || "",
+            r[0].target.dataset.visible || t || "",
             "view",
             n
           ), c.disconnect();
-        }, s) : (b("Element is not fully visible", "warn"), clearTimeout(r));
+        }, s) : (u("Element is not fully visible", "warn"), clearTimeout(b));
       },
       { threshold: [o] }
     ), typeof i == "string") {
-      const a = document.querySelector(i);
-      a && c.observe(a);
+      const r = document.querySelector(i);
+      r && c.observe(r);
     } else
       c.observe(i);
-  }, b = (i, e = "info") => {
+  }, u = (i, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -140,20 +140,18 @@
       this.abortController = null, this.checkTypeTimeout = null, this.init();
     }
     init() {
-      this.checkIsProductPage(() => {
-        this.addStyles(), this.observe(), this.checkTypeOfSizeButtons();
+      this.checkIsProductPage(async () => {
+        await l("footer"), this.addStyles(), this.observe(), this.checkTypeOfSizeButtons();
       });
     }
     async checkIsProductPage(e) {
       const n = new Promise((s) => setTimeout(s, 3e3));
-      await Promise.race([n, d("product-view-layout")]) && e();
+      await Promise.race([n, l("product-view-layout")]) && e();
     }
     async observe() {
-      const e = await d(
+      const e = await l(
         "product-configurable-options"
-      );
-      await d("footer");
-      const n = new MutationObserver((t) => {
+      ), n = new MutationObserver((t) => {
         t.forEach((s) => {
           const o = s.target;
           s.type === "childList" && o && o.id === "sizebay-wrapper" && !o.querySelector(".crs-size-guide-button") && (this.checkTypeTimeout && clearTimeout(this.checkTypeTimeout), setTimeout(() => {
@@ -169,8 +167,7 @@
       });
     }
     async checkTypeOfSizeButtons() {
-      var o;
-      await d("#sizebay-wrapper"), this.abortController, this.abortController = new AbortController();
+      await l("#sizebay-wrapper"), this.abortController, this.abortController = new AbortController();
       const e = document.querySelector("#szb-chart-button"), n = document.querySelector("#szb-vfr-button"), t = document.querySelector(".crs-size-guide-button") || document.querySelector(
         "product-configurable-options button"
       ), s = (
@@ -181,9 +178,9 @@
     `
       );
       if (t == null || t.classList.add("crs-hide"), e) {
-        const c = e.closest("sizebay"), r = t == null ? void 0 : t.closest("div");
-        c && r && r.insertAdjacentElement("afterend", c), e.innerHTML = s, n && (n.innerHTML = "<span>Find Your Size</span>", window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, setTimeout(() => {
-          u(
+        const o = e.closest("sizebay"), c = t == null ? void 0 : t.closest("div");
+        o && c && c.insertAdjacentElement("afterend", o), e.innerHTML = s, n && (n.innerHTML = "<span>Find Your Size</span>", window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, setTimeout(() => {
+          d(
             n,
             "exp_size_guide_view_2",
             "PDP",
@@ -193,7 +190,7 @@
         }, 100)), n._crsEvent || (n._crsEvent = !0, n == null || n.addEventListener(
           "click",
           () => {
-            l(
+            a(
               "exp_size_guide_click_2",
               "Find Your Size Button",
               "click",
@@ -201,8 +198,8 @@
             );
           },
           { signal: this.abortController.signal }
-        ))), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, console.log("SZB Size Guide Button viewed"), setTimeout(() => {
-          u(
+        ))), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
+          d(
             e,
             "exp_size_guide_view_1",
             "PDP",
@@ -212,7 +209,7 @@
         }, 100)), e._crsEvent || (e._crsEvent = !0, e == null || e.addEventListener(
           "click",
           () => {
-            l(
+            a(
               "exp_size_guide_click_1",
               "Size Guide Button",
               "click",
@@ -223,8 +220,8 @@
         ));
         return;
       } else
-        console.log("No SZB Size Guide Button found", t, (o = t == null ? void 0 : t.textContent) == null ? void 0 : o.includes("View size guide")), t && (t == null || t.classList.remove("crs-hide"), t.classList.add("crs-size-guide-button"), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
-          u(
+        t && (t == null || t.classList.remove("crs-hide"), t.classList.add("crs-size-guide-button"), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
+          d(
             t,
             "exp_size_guide_view_1",
             "PDP",
@@ -234,7 +231,7 @@
         }, 150)), t._crsEvent || (t._crsEvent = !0, t == null || t.addEventListener(
           "click",
           () => {
-            l(
+            a(
               "exp_size_guide_click_1",
               "Size Guide Button",
               "click",
