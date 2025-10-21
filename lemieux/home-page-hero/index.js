@@ -1,68 +1,83 @@
 (function() {
   "use strict";
-  const u = (i, e, n, s = "") => {
+  const g = (a, e, i, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: i,
+      event_name: a,
       event_desc: e,
-      event_type: n,
+      event_type: i,
       event_loc: s
-    }), h(`Event: ${i} | ${e} | ${n} | ${s}`, "success");
-  }, d = (i) => new Promise((e) => {
-    const n = document.querySelector(i);
-    n && e(n);
+    }), p(`Event: ${a} | ${e} | ${i} | ${s}`, "success");
+  }, o = (a) => new Promise((e) => {
+    const i = document.querySelector(a);
+    i && e(i);
     const s = new MutationObserver(() => {
-      const t = document.querySelector(i);
+      const t = document.querySelector(a);
       t && (e(t), s.disconnect());
     });
     s.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: i, dev: e }) => {
+  }), f = ({ name: a, dev: e }) => {
     console.log(
-      `%c EXP: ${i} (DEV: ${e})`,
+      `%c EXP: ${a} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, f = (i, e, n, s, t = 1e3, a = 0.5) => {
+  }, m = (a, e, i, s, t = 1e3, n = 0.5) => {
     let r, c;
     if (r = new IntersectionObserver(
-      function(o) {
-        o[0].isIntersecting === !0 ? c = setTimeout(() => {
-          u(
+      function(l) {
+        l[0].isIntersecting === !0 ? c = setTimeout(() => {
+          g(
             e,
-            o[0].target.dataset.visible || s || "",
+            l[0].target.dataset.visible || s || "",
             "view",
-            n
+            i
           ), r.disconnect();
-        }, t) : (h("Element is not fully visible", "warn"), clearTimeout(c));
+        }, t) : (p("Element is not fully visible", "warn"), clearTimeout(c));
       },
-      { threshold: [a] }
-    ), typeof i == "string") {
-      const o = document.querySelector(i);
-      o && r.observe(o);
+      { threshold: [n] }
+    ), typeof a == "string") {
+      const l = document.querySelector(a);
+      l && r.observe(l);
     } else
-      r.observe(i);
-  }, h = (i, e = "info") => {
-    let n;
+      r.observe(a);
+  }, p = (a, e = "info") => {
+    let i;
     switch (e) {
       case "info":
-        n = "color: #3498db;";
+        i = "color: #3498db;";
         break;
       case "warn":
-        n = "color: #f39c12;";
+        i = "color: #f39c12;";
         break;
       case "error":
-        n = "color: #e74c3c;";
+        i = "color: #e74c3c;";
         break;
       case "success":
-        n = "color: #2ecc71;";
+        i = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${a}`, `${i} font-size: 16px; font-weight: 600`);
   }, w = `.crs-hide {
   display: none !important;
-}`, b = `.crs-hero {
+}
+
+.crs-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .crs-mobile {
+    display: block;
+  }
+
+  .crs-desktop {
+    display: none;
+  }
+}
+`, y = `.crs-hero {
   --gap: 8px;
   display: flex;
   gap: var(--gap);
@@ -290,14 +305,14 @@
     height: auto;
   }
 }
-`, l = "https://conversionrate-store.github.io/a-b_images/lemieux", p = [
+`, d = "https://conversionrate-store.github.io/a-b_images/lemieux", h = [
     {
       id: "new-arrivals",
       href: "/new-in/aw25",
       title: { sub: "New Arrivals", main: "AW25", collection: "Collection" },
       images: {
-        desktop: `${l}/hero_new_arrivals_desktop.webp`,
-        mob: `${l}/hero_new_arrivals_desktop.webp`
+        desktop: `${d}/hero_new_arrivals_desktop.webp`,
+        mob: `${d}/hero_new_arrivals_desktop.webp`
       }
     },
     {
@@ -306,7 +321,7 @@
       title: "Clothing",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/i/t/it07156_lifestyle_ladies_base_layer_damson_2.jpg",
-        mob: `${l}/hero_clothing_2.webp`
+        mob: `${d}/hero_clothing_2.webp`
       }
     },
     {
@@ -315,7 +330,7 @@
       title: "Horse Wear",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/a/u/au25day4_12842.jpg",
-        mob: `${l}/hero_horse_wear.webp`
+        mob: `${d}/hero_horse_wear.webp`
       }
     },
     {
@@ -323,12 +338,12 @@
       href: "/toys",
       title: "Toys",
       images: {
-        desktop: `${l}/toys_desk_2.webp`,
-        mob: `${l}/toys_mob.webp`
+        desktop: `${d}/toys_desk_2.webp`,
+        mob: `${d}/toys_mob.webp`
       }
     }
   ];
-  class y {
+  class x {
     constructor() {
       this.init();
     }
@@ -336,12 +351,12 @@
       location.pathname === "/" && (this.addStyles(), this.changeHeroImageSection());
     }
     async changeHeroImageSection() {
-      const e = await d("page-component-hero-image");
+      const e = await o("page-component-hero-image");
       e && !e.classList.contains("crs-hero") && (e.innerHTML = this.renderNewHeroSection(), this.addEventListeners(e));
     }
     renderNewHeroSection() {
-      const e = p.find((t) => t.id === "new-arrivals"), n = p.filter((t) => t.id !== "new-arrivals"), s = (t) => {
-        const a = typeof t.title == "string" ? `<div class="crs-block-title">${t.title}</div>` : `<div class="crs-block-title">
+      const e = h.find((t) => t.id === "new-arrivals"), i = h.filter((t) => t.id !== "new-arrivals"), s = (t) => {
+        const n = typeof t.title == "string" ? `<div class="crs-block-title">${t.title}</div>` : `<div class="crs-block-title">
               ${t.title.sub ? `<span class="sub-title">${t.title.sub}</span>` : ""}
               ${t.title.main ? `<span class="main-title">${t.title.main}</span>` : ""}
               ${t.title.collection ? `<span class="collection-title">${t.title.collection}</span>` : ""}
@@ -354,7 +369,7 @@
             <img src="${t.images.desktop}" alt="${typeof t.title == "string" ? t.title : [t.title.sub, t.title.main, t.title.collection].filter(Boolean).join(" ")}" />
           </picture>
           <div class="crs-hero-block-text">
-            ${a}
+            ${n}
             
           </div>
         </a>
@@ -365,7 +380,7 @@
         `
       <div class="crs-hero">
         <div class="crs-hero-left">${e ? s(e) : ""}</div>
-        <div class="crs-hero-right">${n.map(s).join("")}</div>
+        <div class="crs-hero-right">${i.map(s).join("")}</div>
       </div>
     `
       );
@@ -373,9 +388,9 @@
     addEventListeners(e) {
       e.querySelectorAll("a.crs-hero-block").forEach((s) => {
         s.addEventListener("click", (t) => {
-          const a = s.dataset.title;
-          a && u("exp_hp_hero_click_1", a, "click", "Home page Hero Section");
-        }), f(
+          const n = s.dataset.title;
+          n && g("exp_hp_hero_click_1", n, "click", "Home page Hero Section");
+        }), m(
           s,
           "exp_hp_hero_view_1",
           "Home page Hero Section",
@@ -387,7 +402,7 @@
     addStyles() {
       if (document.getElementById("crs-hero-styles")) return;
       const e = document.createElement("style");
-      e.id = "crs-hero-styles", e.innerHTML = b, document.head.appendChild(e);
+      e.id = "crs-hero-styles", e.innerHTML = y, document.head.appendChild(e);
     }
   }
   const v = `[data-crs-hide='true']:not([data-crs-no-hide]) {
@@ -398,13 +413,13 @@
   display: none !important;
 }
 
-`, x = [
+`, _ = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
     "Journey to the Top"
   ];
-  class _ {
+  class b {
     constructor() {
       this.init();
     }
@@ -420,17 +435,17 @@
       }, 5e3);
     }
     async changeSectionCopy() {
-      const e = await d(".page-view-boundary"), n = e == null ? void 0 : e.querySelectorAll("icms-component");
-      n == null || n.forEach((s) => {
-        var a;
+      const e = await o(".page-view-boundary"), i = e == null ? void 0 : e.querySelectorAll(":scope > icms-component");
+      i == null || i.forEach((s) => {
+        var n;
         const t = s.querySelector("h1, h3");
-        if ((a = t == null ? void 0 : t.textContent) != null && a.includes("Shop Popular Categories")) {
+        if ((n = t == null ? void 0 : t.textContent) != null && n.includes("Shop Popular Categories")) {
           if (s.querySelector("vimeo-player") || (s.dataset.crsTitle = "Popular Categories", t.__crsObserver))
             return;
           t.textContent = "Popular Categories";
           const r = new MutationObserver((c) => {
-            var g;
-            (((g = t.textContent) == null ? void 0 : g.trim()) || "").includes("Shop Popular Categories") && (t.textContent = "Popular Categories");
+            var u;
+            (((u = t.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (t.textContent = "Popular Categories");
           });
           r.observe(t, {
             childList: !0,
@@ -446,18 +461,19 @@
       });
     }
     async hideSection() {
-      const e = await d(".page-view-boundary"), n = e == null ? void 0 : e.querySelectorAll("icms-component");
-      n == null || n.forEach((s) => {
-        const t = s.querySelector("h1, h3");
-        x.some(
-          (a) => {
-            var r;
-            return (r = t == null ? void 0 : t.textContent) == null ? void 0 : r.includes(a);
+      const e = await o(".page-view-boundary"), i = e == null ? void 0 : e.querySelectorAll(":scope > icms-component");
+      i == null || i.forEach((s) => {
+        var r;
+        const t = s.querySelector("h1, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
+        _.some(
+          (c) => {
+            var l;
+            return (l = t == null ? void 0 : t.textContent) == null ? void 0 : l.includes(c);
           }
-        ) && (s.dataset.crsHide = "true"), n == null || n.forEach((a) => {
-          var r;
-          ((r = a.previousElementSibling) == null ? void 0 : r.dataset.crsHide) === "true" && !a.querySelector("h1, h3") && (a.dataset.crsHide = "true");
-        });
+        ) && (s.dataset.crsHide = "true"), i == null || i.forEach((c) => {
+          var l;
+          ((l = c.previousElementSibling) == null ? void 0 : l.dataset.crsHide) === "true" && !c.querySelector("h1, h3") && (c.dataset.crsHide = "true");
+        }), n && n.includes("Outfit Builder") && (s.classList.add("crs-target-outfit-builder"), s.innerHTML = "");
       });
     }
     addStyles() {
@@ -466,7 +482,7 @@
       e.id = "crs-hide-section-styles", e.textContent = v, document.head.appendChild(e);
     }
   }
-  const k = `[data-crs-title='Popular Categories'] .swiper-initialized {
+  const S = `[data-crs-title='Popular Categories'] .swiper-initialized {
   overflow-x: auto;
   touch-action: pan-x;
   padding-inline: 12px;
@@ -527,7 +543,7 @@
 
  page-component-hero-image:has(vimeo-player) {
   padding-top: 0 !important;
-}`, S = (
+}`, k = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
@@ -895,7 +911,7 @@
   </div></icms-component
 >`
   );
-  class C {
+  class q {
     constructor() {
       this.init();
     }
@@ -903,33 +919,33 @@
       this.addStyles(), this.modifySection();
     }
     async modifySection() {
-      const e = await d('[data-crs-title="Popular Categories"]');
-      e && (e.outerHTML = S);
-      const n = document.querySelector(".crs-slider-section .swiper-initialized");
-      if (!n) return;
-      n.style.cursor = "grab";
-      let s = !1, t, a, r, c;
-      n.addEventListener("mousedown", (o) => {
-        o.preventDefault(), s = !0, t = o.pageX, a = o.pageY, r = n.scrollLeft, c = n.scrollTop;
-      }), n.addEventListener("mouseleave", () => {
-        s = !1, n.style.cursor = "grab";
-      }), n.addEventListener("mouseup", () => {
-        s = !1, n.style.cursor = "grab";
-      }), n.addEventListener("mousemove", (o) => {
+      const e = await o('[data-crs-title="Popular Categories"]');
+      e && (e.outerHTML = k);
+      const i = document.querySelector(".crs-slider-section .swiper-initialized");
+      if (!i) return;
+      i.style.cursor = "grab";
+      let s = !1, t, n, r, c;
+      i.addEventListener("mousedown", (l) => {
+        l.preventDefault(), s = !0, t = l.pageX, n = l.pageY, r = i.scrollLeft, c = i.scrollTop;
+      }), i.addEventListener("mouseleave", () => {
+        s = !1, i.style.cursor = "grab";
+      }), i.addEventListener("mouseup", () => {
+        s = !1, i.style.cursor = "grab";
+      }), i.addEventListener("mousemove", (l) => {
         if (!s) return;
-        o.preventDefault(), n.style.cursor = "grabbing";
-        const g = o.pageX, $ = o.pageY, P = (g - t) * 1.5, j = ($ - a) * 1.5;
-        n.scrollLeft = r - P, n.scrollTop = c - j;
-      }), n.addEventListener("dragstart", (o) => {
-        o.preventDefault();
-      }), n.style.userSelect = "none";
+        l.preventDefault(), i.style.cursor = "grabbing";
+        const u = l.pageX, O = l.pageY, H = (u - t) * 1.5, L = (O - n) * 1.5;
+        i.scrollLeft = r - H, i.scrollTop = c - L;
+      }), i.addEventListener("dragstart", (l) => {
+        l.preventDefault();
+      }), i.style.userSelect = "none";
     }
     async observe() {
-      new MutationObserver((n) => {
-        n.forEach(async (s) => {
-          (await d(
+      new MutationObserver((i) => {
+        i.forEach(async (s) => {
+          (await o(
             '[data-crs-title="Popular Categories"] swiper'
-          )).querySelector(".crs-swiper-wrapper") || h(
+          )).querySelector(".crs-swiper-wrapper") || p(
             "Detected changes in Popular Categories, reapplying modifications"
           );
         });
@@ -937,13 +953,1079 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = k, document.head.appendChild(e);
+      e.textContent = S, document.head.appendChild(e);
     }
   }
-  m({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(i, e, n, s, t, a) {
-    i.hj = i.hj || function() {
-      (i.hj.q = i.hj.q || []).push(arguments);
-    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, t = e.getElementsByTagName("head")[0], a = e.createElement("script"), a.async = !0, a.src = n + i._hjSettings.hjid + s + i._hjSettings.hjsv, t && t.appendChild(a);
+  const B = `.crs-outfit-section .crs-mobile page-component-text {
+  margin-top: 0 !important;
+}
+
+.crs-outfit-section .crs-mobile h1 {
+  margin-top: 20px;
+}
+`, P = (
+    /* HTML */
+    `
+  <div class="crs-outfit-section">
+    <div class="crs-desktop">
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted"
+        ><div>
+          <cms-row
+            class="ng-star-inserted"
+            style="display: block; margin-top: 64px; margin-left: 28px; margin-right: 28px;"
+            ><div
+              class="ng-star-inserted"
+              style="display: grid; --grid-columns: 12; --grid-column-span: 1; --grid-column-offset: 1; --grid-row-gap: calc(var(--grid-gutter-size, 5px) * 4); --grid-column-gap: calc(var(--grid-gutter-size, 5px) * 12); --grid-auto-flow: row dense; width: 100%; grid-template-columns: [column-start] repeat(var(--grid-columns, 12), 1fr) [column-end]; row-gap: var(--grid-row-gap, 0); column-gap: var(--grid-column-gap, 0); grid-auto-flow: var(--grid-auto-flow, row dense);"
+            >
+              <icms-outlet
+                data-builder="outfit-builder"
+                _nghost-ng-c2047601728=""
+                class="_fullHight ng-star-inserted"
+                style="--grid-column-span: 6; grid-column-start: span var(--grid-column-span, 1); grid-row-start: span var(--grid-row-span, 1); min-width: 0px;"
+                ><!----><icms-component
+                  _ngcontent-ng-c2047601728=""
+                  class="ng-star-inserted"
+                  ><div>
+                    <page-component-hero-image
+                      _nghost-ng-c534717118=""
+                      class="ng-star-inserted"
+                      style="display: block;"
+                      ><div
+                        _ngcontent-ng-c534717118=""
+                        class="overflow-hidden ratio-1-1"
+                      >
+                        <href
+                          _ngcontent-ng-c534717118=""
+                          ngskiphydration=""
+                          class="fill"
+                          ><!----><!---->
+                          <a
+                            href="/outfit-builder"
+                            tabindex="0"
+                            class="ng-star-inserted"
+                            ><div
+                              _ngcontent-ng-c534717118=""
+                              class="fill z-1 ng-star-inserted"
+                            >
+                              <df-image-wrapper
+                                _ngcontent-ng-c534717118=""
+                                _nghost-ng-c3853189133=""
+                                style="overflow: hidden;"
+                                ><shell
+                                  _ngcontent-ng-c3853189133=""
+                                  _nghost-ng-c3904987725=""
+                                  ><img
+                                    _ngcontent-ng-c3904987725=""
+                                    alt=""
+                                    loading="eager"
+                                    fetchpriority="auto" /></shell
+                                ><img
+                                  _ngcontent-ng-c534717118=""
+                                  class="df-image"
+                                  ng-img="true"
+                                  loading="lazy"
+                                  fetchpriority="auto"
+                                  sizes="auto, 568px"
+                                  src="https://www.lemieux.com/static/cms/media/OB-Still 1x1.png"
+                                  srcset="
+                                    /tco-images/unsafe/128x128/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png    128w,
+                                    /tco-images/unsafe/256x256/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png    256w,
+                                    /tco-images/unsafe/384x384/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png    384w,
+                                    /tco-images/unsafe/414x414/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png    414w,
+                                    /tco-images/unsafe/640x640/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png    640w,
+                                    /tco-images/unsafe/750x750/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png    750w,
+                                    /tco-images/unsafe/828x828/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png    828w,
+                                    /tco-images/unsafe/1080x1080/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png 1080w,
+                                    /tco-images/unsafe/1280x1280/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png 1280w,
+                                    /tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png 1366w,
+                                    /tco-images/unsafe/1440x1440/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png 1440w,
+                                    /tco-images/unsafe/1600x1600/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png 1600w,
+                                    /tco-images/unsafe/1920x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png 1920w,
+                                    /tco-images/unsafe/2560x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%201x1.png 2560w
+                                  "
+                                  style="aspect-ratio: 1 / 1;"
+                              /></df-image-wrapper>
+                            </div>
+                            <!----><!----><vimeo-player
+                              _ngcontent-ng-c534717118=""
+                              ngskiphydration="true"
+                              class="z-1 fill is-background video-player-container ng-star-inserted"
+                              style="pointer-events: none;"
+                              ><div data-vimeo-initialized="true">
+                                <iframe
+                                  src="https://player.vimeo.com/video/1128864215?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff&amp;muted=1&amp;autoplay=1&amp;controls=0&amp;loop=1&amp;background=1&amp;app_id=122963"
+                                  width="240"
+                                  height="240"
+                                  frameborder="0"
+                                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                  referrerpolicy="strict-origin-when-cross-origin"
+                                  title="Clothing_Updated_Frame_1x1"
+                                  data-ready="true"
+                                  playsinline="true"
+                                ></iframe>
+                              </div>
+                              <!----><!----><!----></vimeo-player
+                            ><!----><!----><!---->
+                            <div
+                              _ngcontent-ng-c534717118=""
+                              class="fill z-3 flex ng-star-inserted"
+                            >
+                              <div
+                                _ngcontent-ng-c534717118=""
+                                class="flex w-12"
+                              >
+                                <div
+                                  _ngcontent-ng-c534717118=""
+                                  class="w-12 pos-relative"
+                                >
+                                  <text-overlay
+                                    _ngcontent-ng-c534717118=""
+                                    _nghost-ng-c3259544976=""
+                                    class="ng-star-inserted"
+                                    ><div
+                                      _ngcontent-ng-c3259544976=""
+                                      class="pos-absolute z-2 _container pe-none"
+                                      style="top: 77%; left: 0%; right: 0%;"
+                                    >
+                                      <div
+                                        _ngcontent-ng-c3259544976=""
+                                        class="w-12 center h1 ng-star-inserted"
+                                        style="color: rgb(0, 0, 0); font-size: 60px; line-height: 60px; letter-spacing: 2px; margin-left: 1px;"
+                                      >
+                                        Outfit Builder
+                                      </div>
+                                      <!----><!----><!---->
+                                      <div
+                                        _ngcontent-ng-c3259544976=""
+                                        class="w-12 center p-t-3 p1 ng-star-inserted"
+                                        style="color: rgb(0, 0, 0); font-size: 20px; line-height: 20px; letter-spacing: 3px; margin-left: 1.5px;"
+                                      >
+                                        Wear Colour Your Way
+                                      </div>
+                                      <!----><!----><!----><!---->
+                                    </div></text-overlay
+                                  ><!----><!----><text-overlay
+                                    _ngcontent-ng-c534717118=""
+                                    _nghost-ng-c3259544976=""
+                                    class="ng-star-inserted"
+                                    ><div
+                                      _ngcontent-ng-c3259544976=""
+                                      class="pos-absolute z-2 _container pe-none"
+                                      style="top: 92%; left: 0%; right: 0%;"
+                                    >
+                                      <!---->
+                                      <div
+                                        _ngcontent-ng-c3259544976=""
+                                        class="_custom-button pe-none center ng-star-inserted"
+                                        style="--scale: 1.1;"
+                                      >
+                                        <href
+                                          _ngcontent-ng-c3259544976=""
+                                          class="pe-auto"
+                                          ><!----><!----><span
+                                            tabindex="0"
+                                            class="ng-star-inserted"
+                                            ><div
+                                              _ngcontent-ng-c3259544976=""
+                                              class="button-1 ng-star-inserted"
+                                              style="min-width: 0px;"
+                                            >
+                                              <span
+                                                _ngcontent-ng-c3259544976=""
+                                                class="button__body ng-star-inserted"
+                                                >Create Your Outfit</span
+                                              ><!---->
+                                            </div>
+                                            <!----></span
+                                          >
+                                          <!----><!----><!----><!----><!---->
+                                        </href>
+                                      </div>
+                                      <!----><!---->
+                                    </div></text-overlay
+                                  ><!----><!----><!---->
+                                </div>
+                              </div>
+                            </div>
+                            <!----><!----></a
+                          ><!----><!----><!----><!----><!----></href
+                        ><shop-this-look _ngcontent-ng-c534717118=""
+                          ><!----></shop-this-look
+                        >
+                      </div></page-component-hero-image
+                    ><!---->
+                  </div></icms-component
+                ><!----></icms-outlet
+              ><icms-outlet
+                data-builder="pony-builder"
+                _nghost-ng-c2047601728=""
+                class="_fullHight ng-star-inserted"
+                style="--grid-column-span: 6; grid-column-start: span var(--grid-column-span, 1); grid-row-start: span var(--grid-row-span, 1); min-width: 0px;"
+                ><!----><icms-component
+                  _ngcontent-ng-c2047601728=""
+                  class="ng-star-inserted"
+                  ><div>
+                    <page-component-hero-image
+                      _nghost-ng-c534717118=""
+                      class="ng-star-inserted"
+                      style="display: block;"
+                      ><div
+                        _ngcontent-ng-c534717118=""
+                        class="overflow-hidden ratio-1-1"
+                      >
+                        <href
+                          _ngcontent-ng-c534717118=""
+                          ngskiphydration=""
+                          class="fill"
+                          ><!----><!----><a
+                            href="/pony-kit-builder"
+                            tabindex="0"
+                            class="ng-star-inserted"
+                            ><div
+                              _ngcontent-ng-c534717118=""
+                              class="fill z-1 ng-star-inserted"
+                            >
+                              <df-image-wrapper
+                                _ngcontent-ng-c534717118=""
+                                _nghost-ng-c3853189133=""
+                                style="overflow: hidden;"
+                                ><shell
+                                  _ngcontent-ng-c3853189133=""
+                                  _nghost-ng-c3904987725=""
+                                  ><img
+                                    _ngcontent-ng-c3904987725=""
+                                    alt=""
+                                    loading="eager"
+                                    fetchpriority="auto" /></shell
+                                ><img
+                                  _ngcontent-ng-c534717118=""
+                                  class="df-image"
+                                  ng-img="true"
+                                  loading="lazy"
+                                  fetchpriority="auto"
+                                  sizes="auto, 568px"
+                                  src="https://www.lemieux.com/static/cms/media/TPB-Still 1x1.png"
+                                  srcset="
+                                    /tco-images/unsafe/128x128/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png    128w,
+                                    /tco-images/unsafe/256x256/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png    256w,
+                                    /tco-images/unsafe/384x384/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png    384w,
+                                    /tco-images/unsafe/414x414/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png    414w,
+                                    /tco-images/unsafe/640x640/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png    640w,
+                                    /tco-images/unsafe/750x750/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png    750w,
+                                    /tco-images/unsafe/828x828/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png    828w,
+                                    /tco-images/unsafe/1080x1080/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png 1080w,
+                                    /tco-images/unsafe/1280x1280/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png 1280w,
+                                    /tco-images/unsafe/1366x1366/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png 1366w,
+                                    /tco-images/unsafe/1440x1440/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png 1440w,
+                                    /tco-images/unsafe/1600x1600/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png 1600w,
+                                    /tco-images/unsafe/1920x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png 1920w,
+                                    /tco-images/unsafe/2560x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%201x1.png 2560w
+                                  "
+                                  style="aspect-ratio: 1 / 1;"
+                              /></df-image-wrapper>
+                            </div>
+                            <!----><!----><vimeo-player
+                              _ngcontent-ng-c534717118=""
+                              ngskiphydration="true"
+                              class="z-1 fill is-background video-player-container ng-star-inserted"
+                              style="pointer-events: none;"
+                              ><div data-vimeo-initialized="true">
+                                <iframe
+                                  src="https://player.vimeo.com/video/1128863668?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff&amp;muted=1&amp;autoplay=1&amp;controls=0&amp;loop=1&amp;background=1&amp;app_id=122963"
+                                  width="240"
+                                  height="240"
+                                  frameborder="0"
+                                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                  referrerpolicy="strict-origin-when-cross-origin"
+                                  title="Toy_Pony_Updated_Frame_1x1"
+                                  data-ready="true"
+                                  playsinline="true"
+                                ></iframe>
+                              </div>
+                              <!----><!----><!----></vimeo-player
+                            ><!----><!----><!---->
+                            <div
+                              _ngcontent-ng-c534717118=""
+                              class="fill z-3 flex ng-star-inserted"
+                            >
+                              <div
+                                _ngcontent-ng-c534717118=""
+                                class="flex w-12"
+                              >
+                                <div
+                                  _ngcontent-ng-c534717118=""
+                                  class="w-12 pos-relative"
+                                >
+                                  <text-overlay
+                                    _ngcontent-ng-c534717118=""
+                                    _nghost-ng-c3259544976=""
+                                    class="ng-star-inserted"
+                                    ><div
+                                      _ngcontent-ng-c3259544976=""
+                                      class="pos-absolute z-2 _container pe-none"
+                                      style="top: 77%; left: 0%; right: 0%;"
+                                    >
+                                      <div
+                                        _ngcontent-ng-c3259544976=""
+                                        class="w-12 center h1 ng-star-inserted"
+                                        style="color: rgb(0, 0, 0); font-size: 60px; line-height: 60px;"
+                                      >
+                                        Toy Pony Builder
+                                      </div>
+                                      <!----><!----><!---->
+                                      <div
+                                        _ngcontent-ng-c3259544976=""
+                                        class="w-12 center p-t-3 p1 ng-star-inserted"
+                                        style="color: rgb(0, 0, 0); font-size: 20px; line-height: 20px; letter-spacing: 3px; margin-left: 1.5px;"
+                                      >
+                                        Create, play and shop
+                                      </div>
+                                      <!----><!----><!----><!---->
+                                    </div></text-overlay
+                                  ><!----><!----><text-overlay
+                                    _ngcontent-ng-c534717118=""
+                                    _nghost-ng-c3259544976=""
+                                    class="ng-star-inserted"
+                                    ><div
+                                      _ngcontent-ng-c3259544976=""
+                                      class="pos-absolute z-2 _container pe-none"
+                                      style="top: 92%; left: 0%; right: 0%;"
+                                    >
+                                      <!---->
+                                      <div
+                                        _ngcontent-ng-c3259544976=""
+                                        class="_custom-button pe-none center ng-star-inserted"
+                                        style="--scale: 1.1;"
+                                      >
+                                        <href
+                                          _ngcontent-ng-c3259544976=""
+                                          class="pe-auto"
+                                          ><!----><!----><span
+                                            tabindex="0"
+                                            class="ng-star-inserted"
+                                            ><div
+                                              _ngcontent-ng-c3259544976=""
+                                              class="button-1 ng-star-inserted"
+                                              style="min-width: 0px;"
+                                            >
+                                              <span
+                                                _ngcontent-ng-c3259544976=""
+                                                class="button__body ng-star-inserted"
+                                                >Start Building</span
+                                              ><!---->
+                                            </div>
+                                            <!----></span
+                                          ><!----><!----><!----><!----><!----></href
+                                        >
+                                      </div>
+                                      <!----><!---->
+                                    </div></text-overlay
+                                  ><!----><!----><!---->
+                                </div>
+                              </div>
+                            </div>
+                            <!----><!----></a
+                          ><!----><!----><!----><!----><!----></href
+                        ><shop-this-look _ngcontent-ng-c534717118=""
+                          ><!----></shop-this-look
+                        >
+                      </div></page-component-hero-image
+                    ><!---->
+                  </div></icms-component
+                ><!----></icms-outlet
+              ><!---->
+            </div>
+            <!----></cms-row
+          ><!---->
+        </div></icms-component
+      >
+    </div>
+    <div class="crs-mobile">
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted"
+        ><div>
+          <page-component-text
+            class="ng-star-inserted"
+            style="display: block; margin-top: 64px;"
+            ><div class="ng-star-inserted">
+              <div>
+                <!----><span class="w-12 ng-star-inserted"
+                  ><span class="w-12 text cms-html center ng-star-inserted"
+                    ><h1>Outfit Builders</h1></span
+                  ><!----></span
+                ><!---->
+              </div>
+            </div>
+            <!----></page-component-text
+          ><!---->
+        </div></icms-component
+      >
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted"
+        ><div>
+          <page-component-text
+            class="ng-star-inserted"
+            style="display: block; margin-bottom: 16px;"
+            ><div class="ng-star-inserted">
+              <div>
+                <!----><span class="w-12 ng-star-inserted"
+                  ><span class="w-12 text cms-html center ng-star-inserted"
+                    >Create, combine and shop your way</span
+                  ><!----></span
+                ><!---->
+              </div>
+            </div>
+            <!----></page-component-text
+          ><!---->
+        </div></icms-component
+      >
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted" data-builder="outfit-builder"
+        ><div>
+          <page-component-hero-image
+            _nghost-ng-c534717118=""
+            class="ng-star-inserted"
+            style="display: block;"
+            ><div _ngcontent-ng-c534717118="" class="overflow-hidden ratio-3-1">
+              <href _ngcontent-ng-c534717118="" ngskiphydration="" class="fill"
+                ><!----><!----><a
+                  href="/outfit-builder"
+                  tabindex="0"
+                  class="ng-star-inserted"
+                  ><div
+                    _ngcontent-ng-c534717118=""
+                    class="fill z-1 ng-star-inserted"
+                  >
+                    <df-image-wrapper
+                      _ngcontent-ng-c534717118=""
+                      _nghost-ng-c3853189133=""
+                      style="overflow: hidden;"
+                      ><shell
+                        _ngcontent-ng-c3853189133=""
+                        _nghost-ng-c3904987725=""
+                        ><img
+                          _ngcontent-ng-c3904987725=""
+                          alt=""
+                          loading="eager"
+                          fetchpriority="auto" /></shell
+                      ><img
+                        _ngcontent-ng-c534717118=""
+                        class="df-image"
+                        ng-img="true"
+                        loading="lazy"
+                        fetchpriority="auto"
+                        sizes="auto, 100vw"
+                        src="https://www.lemieux.com/static/cms/media/OB-Still 3x1.png"
+                        srcset="
+                          /tco-images/unsafe/414x138/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png   414w,
+                          /tco-images/unsafe/640x213/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png   640w,
+                          /tco-images/unsafe/750x250/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png   750w,
+                          /tco-images/unsafe/828x276/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png   828w,
+                          /tco-images/unsafe/1080x360/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png 1080w,
+                          /tco-images/unsafe/1280x427/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png 1280w,
+                          /tco-images/unsafe/1366x455/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png 1366w,
+                          /tco-images/unsafe/1440x480/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png 1440w,
+                          /tco-images/unsafe/1600x533/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png 1600w,
+                          /tco-images/unsafe/1920x640/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png 1920w,
+                          /tco-images/unsafe/2560x853/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/OB-Still%203x1.png 2560w
+                        "
+                        style="aspect-ratio: 3 / 1;"
+                    /></df-image-wrapper>
+                  </div>
+                  <!----><!----><vimeo-player
+                    _ngcontent-ng-c534717118=""
+                    ngskiphydration="true"
+                    class="z-1 fill is-background video-player-container ng-star-inserted"
+                    style="pointer-events: none;"
+                    ><div data-vimeo-initialized="true">
+                      <iframe
+                        src="https://player.vimeo.com/video/1128868257?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff&amp;muted=1&amp;autoplay=1&amp;controls=0&amp;loop=1&amp;background=1&amp;app_id=122963"
+                        width="426"
+                        height="142"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Clothing_Updated_Frame_3x1"
+                        data-ready="true"
+                        playsinline="true"
+                      ></iframe>
+                    </div>
+                    <!----><!----><!----></vimeo-player
+                  ><!----><!----><!---->
+                  <div
+                    _ngcontent-ng-c534717118=""
+                    class="fill z-3 flex ng-star-inserted"
+                  >
+                    <div _ngcontent-ng-c534717118="" class="flex w-12">
+                      <div
+                        _ngcontent-ng-c534717118=""
+                        class="w-12 pos-relative"
+                      >
+                        <text-overlay
+                          _ngcontent-ng-c534717118=""
+                          _nghost-ng-c3259544976=""
+                          class="ng-star-inserted"
+                          ><div
+                            _ngcontent-ng-c3259544976=""
+                            class="pos-absolute z-2 _container pe-none"
+                            style="top: 60%; left: 59%; right: 0%;"
+                          >
+                            <div
+                              _ngcontent-ng-c3259544976=""
+                              class="w-12 center p-t-0 h4 ng-star-inserted"
+                              style="font-size: 23px; line-height: 23px; letter-spacing: 0px;"
+                            >
+                              OUTFIT BUILDER
+                            </div>
+                            <!----><!----><!----><!---->
+                            <div
+                              _ngcontent-ng-c3259544976=""
+                              class="_custom-button pe-none center p-t-3 ng-star-inserted"
+                              style="--scale: 0.7;"
+                            >
+                              <href _ngcontent-ng-c3259544976="" class="pe-auto"
+                                ><!----><!----><span
+                                  href="/outfit-builder"
+                                  tabindex="0"
+                                  class="ng-star-inserted"
+                                  ><div
+                                    _ngcontent-ng-c3259544976=""
+                                    class="button-1 ng-star-inserted"
+                                    style="min-width: 0px;"
+                                  >
+                                    <span
+                                      _ngcontent-ng-c3259544976=""
+                                      class="button__body ng-star-inserted"
+                                      >Create Here</span
+                                    ><!---->
+                                  </div>
+                                  <!----></span
+                                ><!----><!----><!----><!----><!----></href
+                              >
+                            </div>
+                            <!----><!---->
+                          </div></text-overlay
+                        ><!----><!----><!---->
+                      </div>
+                    </div>
+                  </div>
+                  <!----><!----></a
+                ><!----><!----><!----><!----><!----></href
+              ><shop-this-look _ngcontent-ng-c534717118=""
+                ><!----></shop-this-look
+              >
+            </div></page-component-hero-image
+          ><!---->
+        </div></icms-component
+      >
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted" data-builder="pony-builder"
+        ><div>
+          <page-component-hero-image
+            _nghost-ng-c534717118=""
+            class="ng-star-inserted"
+            style="display: block; margin-top: 16px;"
+            ><div _ngcontent-ng-c534717118="" class="overflow-hidden ratio-3-1">
+              <href _ngcontent-ng-c534717118="" ngskiphydration="" class="fill"
+                ><!----><!----><a
+                  href="/pony-kit-builder"
+                  tabindex="0"
+                  class="ng-star-inserted"
+                  ><div
+                    _ngcontent-ng-c534717118=""
+                    class="fill z-1 ng-star-inserted"
+                  >
+                    <df-image-wrapper
+                      _ngcontent-ng-c534717118=""
+                      _nghost-ng-c3853189133=""
+                      style="overflow: hidden;"
+                      ><shell
+                        _ngcontent-ng-c3853189133=""
+                        _nghost-ng-c3904987725=""
+                        ><img
+                          _ngcontent-ng-c3904987725=""
+                          alt=""
+                          loading="eager"
+                          fetchpriority="auto" /></shell
+                      ><img
+                        _ngcontent-ng-c534717118=""
+                        class="df-image"
+                        ng-img="true"
+                        loading="lazy"
+                        fetchpriority="auto"
+                        sizes="auto, 377px"
+                        src="https://www.lemieux.com/static/cms/media/TPB-Still 3x1.png"
+                        srcset="
+                          /tco-images/unsafe/128x43/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png    128w,
+                          /tco-images/unsafe/256x85/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png    256w,
+                          /tco-images/unsafe/384x128/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png   384w,
+                          /tco-images/unsafe/414x138/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png   414w,
+                          /tco-images/unsafe/640x213/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png   640w,
+                          /tco-images/unsafe/750x250/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png   750w,
+                          /tco-images/unsafe/828x276/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png   828w,
+                          /tco-images/unsafe/1080x360/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png 1080w,
+                          /tco-images/unsafe/1280x427/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png 1280w,
+                          /tco-images/unsafe/1366x455/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png 1366w,
+                          /tco-images/unsafe/1440x480/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png 1440w,
+                          /tco-images/unsafe/1600x533/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png 1600w,
+                          /tco-images/unsafe/1920x640/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png 1920w,
+                          /tco-images/unsafe/2560x853/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/TPB-Still%203x1.png 2560w
+                        "
+                        style="aspect-ratio: 3 / 1;"
+                    /></df-image-wrapper>
+                  </div>
+                  <!----><!----><vimeo-player
+                    _ngcontent-ng-c534717118=""
+                    ngskiphydration="true"
+                    class="z-1 fill is-background video-player-container ng-star-inserted"
+                    style="pointer-events: none;"
+                    ><div data-vimeo-initialized="true">
+                      <iframe
+                        src="https://player.vimeo.com/video/1128867946?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff&amp;muted=1&amp;autoplay=1&amp;controls=0&amp;loop=1&amp;background=1&amp;app_id=122963"
+                        width="426"
+                        height="142"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Toy_Pony_Updated_Frame_3x1"
+                        data-ready="true"
+                        playsinline="true"
+                      ></iframe>
+                    </div>
+                    <!----><!----><!----></vimeo-player
+                  ><!----><!----><!---->
+                  <div
+                    _ngcontent-ng-c534717118=""
+                    class="fill z-3 flex ng-star-inserted"
+                  >
+                    <div _ngcontent-ng-c534717118="" class="flex w-12">
+                      <div
+                        _ngcontent-ng-c534717118=""
+                        class="w-12 pos-relative"
+                      >
+                        <text-overlay
+                          _ngcontent-ng-c534717118=""
+                          _nghost-ng-c3259544976=""
+                          class="ng-star-inserted"
+                          ><div
+                            _ngcontent-ng-c3259544976=""
+                            class="pos-absolute z-2 _container pe-none"
+                            style="top: 60%; right: 59%;"
+                          >
+                            <div
+                              _ngcontent-ng-c3259544976=""
+                              class="w-12 center p-t-0 h4 ng-star-inserted"
+                              style="font-size: 23px; line-height: 23px; letter-spacing: 0px;"
+                            >
+                              TOY PONY BUILDER
+                            </div>
+                            <!----><!----><!----><!---->
+                            <div
+                              _ngcontent-ng-c3259544976=""
+                              class="_custom-button pe-none center p-t-3 ng-star-inserted"
+                              style="--scale: 0.7;"
+                            >
+                              <href _ngcontent-ng-c3259544976="" class="pe-auto"
+                                ><!----><!----><span
+                                  tabindex="0"
+                                  class="ng-star-inserted"
+                                  ><div
+                                    _ngcontent-ng-c3259544976=""
+                                    class="button-1 ng-star-inserted"
+                                    style="min-width: 0px;"
+                                  >
+                                    <span
+                                      _ngcontent-ng-c3259544976=""
+                                      class="button__body ng-star-inserted"
+                                      >Start Building</span
+                                    ><!---->
+                                  </div>
+                                  <!----></span
+                                ><!----><!----><!----><!----><!----></href
+                              >
+                            </div>
+                            <!----><!---->
+                          </div></text-overlay
+                        ><!----><!----><!---->
+                      </div>
+                    </div>
+                  </div>
+                  <!----><!----></a
+                ><!----><!----><!----><!----><!----></href
+              ><shop-this-look _ngcontent-ng-c534717118=""
+                ><!----></shop-this-look
+              >
+            </div></page-component-hero-image
+          ><!---->
+        </div></icms-component
+      >
+    </div>
+  </div>
+`
+  );
+  class z {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.addStyles(), this.render();
+    }
+    async render() {
+      try {
+        const e = await o(".crs-target-outfit-builder"), i = document.querySelector(".crs-outfit-section");
+        i && i.remove();
+        const s = P;
+        e && (e.insertAdjacentHTML("afterbegin", s), document.querySelectorAll('[data-builder="outfit-builder"]').forEach((t) => {
+          const n = t.querySelector("a");
+          m(
+            t,
+            "exp_hp_hero_view_2",
+            "Home Page Outfit Builder",
+            "Outfit Builder Visibility",
+            0
+          ), n && n.addEventListener("click", (r) => {
+            g(
+              "exp_hp_hero_click_2",
+              "Outfit Builder",
+              "click",
+              "Home Page Outfit Builder"
+            );
+          });
+        }), document.querySelectorAll('[data-builder="pony-builder"]').forEach((t) => {
+          const n = t.querySelector("a");
+          m(
+            t,
+            "exp_hp_hero_view_3",
+            "Home Page Outfit Builder",
+            "Toy Pony Builder Visibility",
+            0
+          ), n && n.addEventListener("click", (r) => {
+            g(
+              "exp_hp_hero_click_3",
+              "Toy Pony Builder",
+              "click",
+              "Home Page Outfit Builder"
+            );
+          });
+        }));
+      } catch (e) {
+        const i = e instanceof Error ? e.message : String(e);
+        p(i, "error");
+      }
+    }
+    addStyles() {
+      if (!document.getElementById("crs-outfit-builder-styles")) {
+        const e = document.createElement("style");
+        e.id = "crs-outfit-builder-styles", e.innerHTML = B, document.head.appendChild(e);
+      }
+    }
+  }
+  const T = "", C = (
+    /* HTML */
+    `
+  <icms-component class="crs-christmas-gifts-section">
+    <div class="crs-desktop">
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted"
+        ><div>
+          <page-component-text
+            class="ng-star-inserted"
+            style="display: block; margin-top: 64px;"
+            ><div class="ng-star-inserted">
+              <div>
+                <!----><span class="w-12 ng-star-inserted"
+                  ><span class="w-12 text cms-html center ng-star-inserted"
+                    ><h1>Christmas Gifting</h1></span
+                  ><!----></span
+                ><!---->
+              </div>
+            </div>
+            <!----></page-component-text
+          ><!---->
+        </div></icms-component
+      >
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted"
+        ><div>
+          <page-component-text class="ng-star-inserted" style="display: block;"
+            ><div class="ng-star-inserted">
+              <div class="center">
+                <href class="ng-star-inserted"
+                  ><!----><!----><a
+                    href="/gifts/gift-sets"
+                    tabindex="0"
+                    class="ng-star-inserted"
+                    ><button class="button-inline ng-star-inserted">
+                      <span class="button__body ng-star-inserted"
+                        >Shop Gift Sets</span
+                      ><!----></button
+                    ><!----></a
+                  ><!----><!----><!----><!----><!----></href
+                ><!----><!---->
+              </div>
+            </div>
+            <!----></page-component-text
+          ><!---->
+        </div></icms-component
+      >
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted"
+        ><div>
+          <page-component-hero-image
+            _nghost-ng-c534717118=""
+            class="ng-star-inserted"
+            style="display: block; margin-top: 24px; padding-top: 0px;"
+            ><div _ngcontent-ng-c534717118="" class="overflow-hidden ratio-3-1">
+              <href _ngcontent-ng-c534717118="" ngskiphydration="" class="fill"
+                ><!----><!----><a
+                  href="/gifting"
+                  tabindex="0"
+                  class="ng-star-inserted"
+                  ><div
+                    _ngcontent-ng-c534717118=""
+                    class="fill z-1 ng-star-inserted"
+                  >
+                    <df-image-wrapper
+                      _ngcontent-ng-c534717118=""
+                      _nghost-ng-c3853189133=""
+                      style="overflow: hidden;"
+                      ><shell
+                        _ngcontent-ng-c3853189133=""
+                        _nghost-ng-c3904987725=""
+                        ><img
+                          _ngcontent-ng-c3904987725=""
+                          alt=""
+                          loading="eager"
+                          fetchpriority="auto" /></shell
+                      ><img
+                        _ngcontent-ng-c534717118=""
+                        class="df-image"
+                        ng-img="true"
+                        loading="lazy"
+                        fetchpriority="auto"
+                        sizes="auto, 377px"
+                        src="https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg"
+                        srcset="
+                          /tco-images/unsafe/128x43/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg    128w,
+                          /tco-images/unsafe/256x85/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg    256w,
+                          /tco-images/unsafe/384x128/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg   384w,
+                          /tco-images/unsafe/414x138/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg   414w,
+                          /tco-images/unsafe/640x213/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg   640w,
+                          /tco-images/unsafe/750x250/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg   750w,
+                          /tco-images/unsafe/828x276/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg   828w,
+                          /tco-images/unsafe/1080x360/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg 1080w,
+                          /tco-images/unsafe/1280x427/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg 1280w,
+                          /tco-images/unsafe/1366x455/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg 1366w,
+                          /tco-images/unsafe/1440x480/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg 1440w,
+                          /tco-images/unsafe/1600x533/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg 1600w,
+                          /tco-images/unsafe/1920x640/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg 1920w,
+                          /tco-images/unsafe/2560x853/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/christmasbundleslifestyle_name_variant_010-1.jpg 2560w
+                        "
+                        style="aspect-ratio: 3 / 1;"
+                    /></df-image-wrapper>
+                  </div>
+                  <!----><!----><!----><!----></a
+                ><!----><!----><!----><!----><!----></href
+              ><shop-this-look _ngcontent-ng-c534717118=""
+                ><!----></shop-this-look
+              >
+            </div></page-component-hero-image
+          ><!---->
+        </div></icms-component
+      >
+    </div>
+    <div class="crs-mobile">
+      <icms-component _ngcontent-ng-c2047601728="" class="ng-star-inserted"
+        ><div>
+          <page-component-hero-image
+            _nghost-ng-c534717118=""
+            class="ng-star-inserted"
+            style="display: block; margin-top: 48px; padding-top: 0px;"
+            ><div _ngcontent-ng-c534717118="" class="overflow-hidden ratio-3-4">
+              <href _ngcontent-ng-c534717118="" ngskiphydration="" class="fill"
+                ><!----><!----><a
+                  href="/gifting"
+                  tabindex="0"
+                  class="ng-star-inserted"
+                  ><div
+                    _ngcontent-ng-c534717118=""
+                    class="fill z-1 ng-star-inserted"
+                  >
+                    <df-image-wrapper
+                      _ngcontent-ng-c534717118=""
+                      _nghost-ng-c3853189133=""
+                      style="overflow: hidden;"
+                      ><shell
+                        _ngcontent-ng-c3853189133=""
+                        _nghost-ng-c3904987725=""
+                        ><img
+                          _ngcontent-ng-c3904987725=""
+                          alt=""
+                          loading="eager"
+                          fetchpriority="auto" /></shell
+                      ><img
+                        _ngcontent-ng-c534717118=""
+                        class="df-image"
+                        ng-img="true"
+                        loading="lazy"
+                        fetchpriority="auto"
+                        sizes="auto, 100vw"
+                        src="https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg"
+                        srcset="
+                          /tco-images/unsafe/414x552/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg    414w,
+                          /tco-images/unsafe/640x853/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg    640w,
+                          /tco-images/unsafe/750x1000/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg   750w,
+                          /tco-images/unsafe/828x1104/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg   828w,
+                          /tco-images/unsafe/1080x1440/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg 1080w,
+                          /tco-images/unsafe/1280x1707/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg 1280w,
+                          /tco-images/unsafe/1366x1821/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg 1366w,
+                          /tco-images/unsafe/1440x1920/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg 1440w,
+                          /tco-images/unsafe/1600x2133/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg 1600w,
+                          /tco-images/unsafe/1920x2560/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg 1920w,
+                          /tco-images/unsafe/2560x3413/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/Gifting-3X4-1.jpg 2560w
+                        "
+                        style="aspect-ratio: 0.75 / 1;"
+                    /></df-image-wrapper>
+                  </div>
+                  <!----><!---->
+                  <div
+                    _ngcontent-ng-c534717118=""
+                    class="fill z-3 flex ng-star-inserted"
+                  >
+                    <div _ngcontent-ng-c534717118="" class="flex w-12">
+                      <div
+                        _ngcontent-ng-c534717118=""
+                        class="w-12 pos-relative"
+                      >
+                        <text-overlay
+                          _ngcontent-ng-c534717118=""
+                          _nghost-ng-c3259544976=""
+                          class="ng-star-inserted"
+                          ><div
+                            _ngcontent-ng-c3259544976=""
+                            class="pos-absolute z-2 _container pe-none"
+                            style="top: 73%; left: 0%; right: 0%;"
+                          >
+                            <div
+                              _ngcontent-ng-c3259544976=""
+                              class="w-12 center p-t-0 h4 ng-star-inserted"
+                              style="color: rgb(255, 255, 255); font-size: 55px; line-height: 55px; letter-spacing: 7px; margin-left: 3.5px;"
+                            >
+                              Christmas Gifting
+                            </div>
+                            <!----><!----><!----><!---->
+                          </div></text-overlay
+                        ><!----><!----><text-overlay
+                          _ngcontent-ng-c534717118=""
+                          _nghost-ng-c3259544976=""
+                          class="ng-star-inserted"
+                          ><div
+                            _ngcontent-ng-c3259544976=""
+                            class="pos-absolute z-2 _container pe-none"
+                            style="top: 94%; left: 0%; right: 0%;"
+                          >
+                            <!---->
+                            <div
+                              _ngcontent-ng-c3259544976=""
+                              class="_custom-button pe-none center p-t-0 ng-star-inserted"
+                              style="--scale: 0.7;"
+                            >
+                              <href _ngcontent-ng-c3259544976="" class="pe-auto"
+                                ><!----><!----><span
+                                  href="/gifts/gift-sets"
+                                  tabindex="0"
+                                  class="ng-star-inserted"
+                                  ><div
+                                    _ngcontent-ng-c3259544976=""
+                                    class="button-1 ng-star-inserted"
+                                    style="min-width: 0px;"
+                                  >
+                                    <span
+                                      _ngcontent-ng-c3259544976=""
+                                      class="button__body ng-star-inserted"
+                                      >Shop Gift Sets</span
+                                    ><!---->
+                                  </div>
+                                  <!----></
+                                ><!----><!----><!----><!----><!----></href
+                              >
+                            </div>
+                            <!----><!---->
+                          </div></text-overlay
+                        ><!----><!----><!---->
+                      </div>
+                    </div>
+                  </div>
+                  <!----><!----></a
+                ><!----><!----><!----><!----><!----></href
+              ><shop-this-look _ngcontent-ng-c534717118=""
+                ><!----></shop-this-look
+              >
+            </div></page-component-hero-image
+          ><!---->
+        </div></icms-component
+      >
+    </div>
+  </icms-component>
+`
+  );
+  class j {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.addStyles(), this.render();
+    }
+    async render() {
+      try {
+        const e = await o(".crs-target-outfit-builder"), i = document.querySelector(
+          ".crs-christmas-gifts-section"
+        );
+        if (i && i.remove(), e) {
+          e.insertAdjacentHTML("beforeend", C);
+          const s = document.querySelector(
+            ".crs-christmas-gifts-section"
+          ), t = document.querySelectorAll(
+            '.crs-christmas-gifts-section a[href="/gifting"]'
+          ), n = document.querySelectorAll(
+            '.crs-christmas-gifts-section a[href="/gifts/gift-sets"], .crs-christmas-gifts-section span[href="/gifts/gift-sets"]'
+          );
+          t.forEach((r) => {
+            r.addEventListener("click", (c) => {
+              g(
+                "exp_hp_hero_click_4",
+                "Christmas Gifting",
+                "click",
+                "Home Page Christmas Gifting"
+              );
+            });
+          }), n.forEach((r) => {
+            r.addEventListener("click", (c) => {
+              const l = r.tagName.toLowerCase();
+              g(
+                "exp_hp_hero_click_5",
+                "Shop Gift Sets",
+                "click",
+                "Home Page Christmas Gifting"
+              ), l === "span" && (location.href = "/gifts/gift-sets");
+            });
+          }), s && m(
+            s,
+            "exp_hp_hero_view_4",
+            "Home Page Christmas Gifting",
+            "Visibility",
+            0
+          );
+        }
+      } catch (e) {
+        const i = e instanceof Error ? e.message : String(e);
+        p(i, "error");
+      }
+    }
+    addStyles() {
+      if (!document.getElementById("crs-christmas-gifts-styles")) {
+        const e = document.createElement("style");
+        e.id = "crs-christmas-gifts-styles", e.innerHTML = T, document.head.appendChild(e);
+      }
+    }
+  }
+  f({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(a, e, i, s, t, n) {
+    a.hj = a.hj || function() {
+      (a.hj.q = a.hj.q || []).push(arguments);
+    }, a._hjSettings = { hjid: 2667925, hjsv: 6 }, t = e.getElementsByTagName("head")[0], n = e.createElement("script"), n.async = !0, n.src = i + a._hjSettings.hjid + s + a._hjSettings.hjsv, t && t.appendChild(n);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class E {
     constructor() {
@@ -955,21 +2037,21 @@
       }), this.initComponents();
     }
     initComponents() {
-      location.pathname === "/" && (this.addStyles(), new y(), new _(), new C());
+      location.pathname === "/" && (this.addStyles(), new x(), new b(), new q(), new z(), new j());
     }
     interceptHistoryAPI(e) {
-      const n = history.pushState, s = history.replaceState;
+      const i = history.pushState, s = history.replaceState;
       history.pushState = (...t) => {
-        n.apply(history, t), setTimeout(() => e(), 50);
+        i.apply(history, t), setTimeout(() => e(), 50);
       }, history.replaceState = (...t) => {
         s.apply(history, t), setTimeout(() => e(), 50);
       };
     }
     imagePreloading() {
-      p.forEach((e) => {
-        const n = `<link rel="preload" as="image" href="${e.images.mob}" media="(max-width: 700px)" />
+      h.forEach((e) => {
+        const i = `<link rel="preload" as="image" href="${e.images.mob}" media="(max-width: 700px)" />
       <link rel="preload" as="image" href="${e.images.desktop}" media="(min-width: 701px)" />`;
-        document.head.insertAdjacentHTML("beforeend", n);
+        document.head.insertAdjacentHTML("beforeend", i);
       });
     }
     addStyles() {
