@@ -223,7 +223,7 @@
         ));
         return;
       } else
-        console.log("No SZB Size Guide Button found", t, (o = t == null ? void 0 : t.textContent) == null ? void 0 : o.includes("View size guide")), t && (t == null || t.classList.remove("crs-hide"), t.innerHTML = s, t.classList.add("crs-size-guide-button"), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
+        console.log("No SZB Size Guide Button found", t, (o = t == null ? void 0 : t.textContent) == null ? void 0 : o.includes("View size guide")), t && (t == null || t.classList.remove("crs-hide"), t.classList.add("crs-size-guide-button"), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
           u(
             t,
             "exp_size_guide_view_1",
