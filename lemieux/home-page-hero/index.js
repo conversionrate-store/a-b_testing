@@ -421,7 +421,9 @@
   display: none !important;
 }
 
-`, _ = [
+.crs-top-section:has([href="/journey-to-the-top-yasmin-ingham"]) {
+  display: none !important;
+}`, _ = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
@@ -473,7 +475,7 @@
       t == null || t.forEach((s) => {
         var r;
         const i = s.querySelector("h1, h2, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
-        _.some(
+        s.classList.add("crs-top-section"), _.some(
           (c) => {
             var l;
             return (l = i == null ? void 0 : i.textContent) == null ? void 0 : l.includes(c);
