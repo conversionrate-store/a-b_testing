@@ -2040,12 +2040,16 @@
       this.previousUrl = "", this.init();
     }
     init() {
-      this.previousUrl = "", this.imagePreloading(), this.interceptHistoryAPI(async () => {
+      var e, t, s, i, n, r, c, l;
+      console.log("defaultCountry", ((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((i = (s = window.autoInitData) == null ? void 0 : s.website) == null ? void 0 : i.defaultCountry) !== "US"), !(((r = (n = window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : r.defaultCountry) !== "GB" && ((l = (c = window.autoInitData) == null ? void 0 : c.website) == null ? void 0 : l.defaultCountry) !== "US") && (this.previousUrl = "", this.imagePreloading(), this.interceptHistoryAPI(async () => {
         await o("footer"), g("init components"), this.initComponents();
-      }), this.initComponents();
+      }), this.initComponents());
     }
     initComponents() {
-      location.pathname === "/" && (this.addStyles(), new x(), new b(), new q(), new z(), new j());
+      console.log(
+        "Initializing components",
+        location.pathname === "/" || location.pathname === "/us"
+      ), (location.pathname === "/" || location.pathname === "/us/") && (this.addStyles(), new x(), new b(), new q(), new z(), new j());
     }
     interceptHistoryAPI(e) {
       new MutationObserver(() => {
