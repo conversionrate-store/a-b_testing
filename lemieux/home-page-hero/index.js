@@ -869,7 +869,7 @@
                   <div class="w-12 ratio-1-1 overflow-hidden">
                     <href
                       ><!----><!----><a
-                        href="/clothing/accessories/accessories/rider-luggage"
+                        href="/clothing/footwear"
                         tabindex="0"
                         class="ng-star-inserted"
                         ><shell
@@ -891,7 +891,7 @@
                   </div>
                   <href
                     ><!----><!----><a
-                      href="/clothing/accessories/accessories/rider-luggage"
+                      href="/clothing/footwear"
                       tabindex="0"
                       class="ng-star-inserted"
                       ><button class="button-inline m-t-3 ng-star-inserted">
@@ -971,7 +971,7 @@
 .crs-outfit-section .crs-mobile h1 {
   margin-top: 20px;
 }
-`, z = (
+`, P = (
     /* HTML */
     `
   <div class="crs-outfit-section">
@@ -1667,7 +1667,7 @@
   </div>
 `
   );
-  class P {
+  class z {
     constructor() {
       this.init();
     }
@@ -1678,7 +1678,7 @@
       try {
         const e = await o(".crs-target-outfit-builder"), t = document.querySelector(".crs-outfit-section");
         t && t.remove();
-        const s = z;
+        const s = P;
         e && (e.insertAdjacentHTML("afterbegin", s), document.querySelectorAll('[data-builder="outfit-builder"]').forEach((i) => {
           const n = i.querySelector("a");
           m(
@@ -2008,7 +2008,7 @@
                 "Shop Gift Sets",
                 "click",
                 "Home Page Christmas Gifting"
-              ), l === "span" && (location.href = "/gifts/gift-sets");
+              ), l === "span" && (c.stopPropagation(), c.preventDefault(), c.stopImmediatePropagation(), location.href = "/gifts/gift-sets");
             });
           }), s && m(
             s,
@@ -2045,7 +2045,7 @@
       }), this.initComponents();
     }
     initComponents() {
-      location.pathname === "/" && (this.addStyles(), new x(), new b(), new q(), new P(), new j());
+      location.pathname === "/" && (this.addStyles(), new x(), new b(), new q(), new z(), new j());
     }
     interceptHistoryAPI(e) {
       new MutationObserver(() => {
