@@ -501,7 +501,7 @@
           }
         ) && (s.dataset.crsHide = "true"), t == null || t.forEach((o) => {
           var l;
-          ((l = o.previousElementSibling) == null ? void 0 : l.dataset.crsHide) === "true" && !o.querySelector("h1, h3") && (o.dataset.crsHide = "true");
+          ((l = o.previousElementSibling) == null ? void 0 : l.dataset.crsHide) === "true" && !o.querySelector("h1, h3") && !o.textContent.includes("@lemieuxproductsofficial") && (o.dataset.crsHide = "true"), o.textContent.includes("@lemieuxproductsofficial") && (o.dataset.crsHide = "false");
         }), n && n.includes("Outfit Builder") && (s.classList.add("crs-target-outfit-builder"), s.innerHTML = "");
       });
     }
