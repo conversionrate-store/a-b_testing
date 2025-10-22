@@ -469,7 +469,7 @@
       const e = await o(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(":scope > icms-component");
       t == null || t.forEach((s) => {
         var r;
-        const i = s.querySelector("h1, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
+        const i = s.querySelector("h1, h2, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
         _.some(
           (c) => {
             var l;
