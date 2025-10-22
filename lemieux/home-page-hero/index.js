@@ -1,19 +1,19 @@
 (function() {
   "use strict";
-  const g = (a, e, i, s = "") => {
+  const d = (a, e, t, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: a,
       event_desc: e,
-      event_type: i,
+      event_type: t,
       event_loc: s
-    }), p(`Event: ${a} | ${e} | ${i} | ${s}`, "success");
+    }), g(`Event: ${a} | ${e} | ${t} | ${s}`, "success");
   }, o = (a) => new Promise((e) => {
-    const i = document.querySelector(a);
-    i && e(i);
+    const t = document.querySelector(a);
+    t && e(t);
     const s = new MutationObserver(() => {
-      const t = document.querySelector(a);
-      t && (e(t), s.disconnect());
+      const i = document.querySelector(a);
+      i && (e(i), s.disconnect());
     });
     s.observe(document.documentElement, {
       childList: !0,
@@ -24,18 +24,18 @@
       `%c EXP: ${a} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, m = (a, e, i, s, t = 1e3, n = 0.5) => {
+  }, m = (a, e, t, s, i = 1e3, n = 0.5) => {
     let r, c;
     if (r = new IntersectionObserver(
       function(l) {
         l[0].isIntersecting === !0 ? c = setTimeout(() => {
-          g(
+          d(
             e,
             l[0].target.dataset.visible || s || "",
             "view",
-            i
+            t
           ), r.disconnect();
-        }, t) : (p("Element is not fully visible", "warn"), clearTimeout(c));
+        }, i) : (g("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [n] }
     ), typeof a == "string") {
@@ -43,23 +43,23 @@
       l && r.observe(l);
     } else
       r.observe(a);
-  }, p = (a, e = "info") => {
-    let i;
+  }, g = (a, e = "info") => {
+    let t;
     switch (e) {
       case "info":
-        i = "color: #3498db;";
+        t = "color: #3498db;";
         break;
       case "warn":
-        i = "color: #f39c12;";
+        t = "color: #f39c12;";
         break;
       case "error":
-        i = "color: #e74c3c;";
+        t = "color: #e74c3c;";
         break;
       case "success":
-        i = "color: #2ecc71;";
+        t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${a}`, `${i} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${a}`, `${t} font-size: 16px; font-weight: 600`);
   }, w = `.crs-hide {
   display: none !important;
 }
@@ -305,14 +305,14 @@
     height: auto;
   }
 }
-`, d = "https://conversionrate-store.github.io/a-b_images/lemieux", h = [
+`, p = "https://conversionrate-store.github.io/a-b_images/lemieux", h = [
     {
       id: "new-arrivals",
       href: "/new-in/aw25",
       title: { sub: "New Arrivals", main: "AW25", collection: "Collection" },
       images: {
-        desktop: `${d}/hero_new_arrivals_desktop.webp`,
-        mob: `${d}/hero_new_arrivals_desktop.webp`
+        desktop: `${p}/hero_new_arrivals_desktop.webp`,
+        mob: `${p}/hero_new_arrivals_desktop.webp`
       }
     },
     {
@@ -321,7 +321,7 @@
       title: "Clothing",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/i/t/it07156_lifestyle_ladies_base_layer_damson_2.jpg",
-        mob: `${d}/hero_clothing_2.webp`
+        mob: `${p}/hero_clothing_2.webp`
       }
     },
     {
@@ -330,7 +330,7 @@
       title: "Horse Wear",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/a/u/au25day4_12842.jpg",
-        mob: `${d}/hero_horse_wear.webp`
+        mob: `${p}/hero_horse_wear.webp`
       }
     },
     {
@@ -338,8 +338,8 @@
       href: "/toys",
       title: "Toys",
       images: {
-        desktop: `${d}/toys_desk_2.webp`,
-        mob: `${d}/toys_mob.webp`
+        desktop: `${p}/toys_desk_2.webp`,
+        mob: `${p}/toys_mob.webp`
       }
     }
   ];
@@ -348,25 +348,25 @@
       this.init();
     }
     init() {
-      location.pathname === "/" && (this.addStyles(), this.changeHeroImageSection());
+      this.addStyles(), this.changeHeroImageSection();
     }
     async changeHeroImageSection() {
       const e = await o("page-component-hero-image");
-      e && !e.classList.contains("crs-hero") && (e.innerHTML = this.renderNewHeroSection(), this.addEventListeners(e));
+      e != null && e.querySelector(".crs-hero") || e && (e.innerHTML = this.renderNewHeroSection(), this.addEventListeners(e));
     }
     renderNewHeroSection() {
-      const e = h.find((t) => t.id === "new-arrivals"), i = h.filter((t) => t.id !== "new-arrivals"), s = (t) => {
-        const n = typeof t.title == "string" ? `<div class="crs-block-title">${t.title}</div>` : `<div class="crs-block-title">
-              ${t.title.sub ? `<span class="sub-title">${t.title.sub}</span>` : ""}
-              ${t.title.main ? `<span class="main-title">${t.title.main}</span>` : ""}
-              ${t.title.collection ? `<span class="collection-title">${t.title.collection}</span>` : ""}
+      const e = h.find((i) => i.id === "new-arrivals"), t = h.filter((i) => i.id !== "new-arrivals"), s = (i) => {
+        const n = typeof i.title == "string" ? `<div class="crs-block-title">${i.title}</div>` : `<div class="crs-block-title">
+              ${i.title.sub ? `<span class="sub-title">${i.title.sub}</span>` : ""}
+              ${i.title.main ? `<span class="main-title">${i.title.main}</span>` : ""}
+              ${i.title.collection ? `<span class="collection-title">${i.title.collection}</span>` : ""}
             </div>`;
         return `
-        <a href="${t.href}" class="crs-hero-block" data-hero="${t.id}" data-title="${typeof t.title == "string" ? t.title : t.title.sub}">
+        <a href="${i.href}" class="crs-hero-block" data-hero="${i.id}" data-title="${typeof i.title == "string" ? i.title : i.title.sub}">
           <picture>
-            <source media="(min-width: 701px)" srcset="${t.images.desktop}" />
-            <source media="(max-width: 700px)" srcset="${t.images.mob}" />
-            <img src="${t.images.desktop}" alt="${typeof t.title == "string" ? t.title : [t.title.sub, t.title.main, t.title.collection].filter(Boolean).join(" ")}" />
+            <source media="(min-width: 701px)" srcset="${i.images.desktop}" />
+            <source media="(max-width: 700px)" srcset="${i.images.mob}" />
+            <img src="${i.images.desktop}" alt="${typeof i.title == "string" ? i.title : [i.title.sub, i.title.main, i.title.collection].filter(Boolean).join(" ")}" />
           </picture>
           <div class="crs-hero-block-text">
             ${n}
@@ -380,16 +380,21 @@
         `
       <div class="crs-hero">
         <div class="crs-hero-left">${e ? s(e) : ""}</div>
-        <div class="crs-hero-right">${i.map(s).join("")}</div>
+        <div class="crs-hero-right">${t.map(s).join("")}</div>
       </div>
     `
       );
     }
     addEventListeners(e) {
       e.querySelectorAll("a.crs-hero-block").forEach((s) => {
-        s.addEventListener("click", (t) => {
+        s.addEventListener("click", (i) => {
           const n = s.dataset.title;
-          n && g("exp_hp_hero_click_1", n, "click", "Home page Hero Section");
+          n && d(
+            "exp_hp_hero_click_1",
+            n,
+            "click",
+            "Home page Hero Section"
+          );
         }), m(
           s,
           "exp_hp_hero_view_1",
@@ -435,19 +440,19 @@
       }, 5e3);
     }
     async changeSectionCopy() {
-      const e = await o(".page-view-boundary"), i = e == null ? void 0 : e.querySelectorAll(":scope > icms-component");
-      i == null || i.forEach((s) => {
+      const e = await o(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(":scope > icms-component");
+      t == null || t.forEach((s) => {
         var n;
-        const t = s.querySelector("h1, h3");
-        if ((n = t == null ? void 0 : t.textContent) != null && n.includes("Shop Popular Categories")) {
-          if (s.querySelector("vimeo-player") || (s.dataset.crsTitle = "Popular Categories", t.__crsObserver))
+        const i = s.querySelector("h1, h3");
+        if ((n = i == null ? void 0 : i.textContent) != null && n.includes("Shop Popular Categories")) {
+          if (s.querySelector("vimeo-player") || (s.dataset.crsTitle = "Popular Categories", i.__crsObserver))
             return;
-          t.textContent = "Popular Categories";
+          i.textContent = "Popular Categories";
           const r = new MutationObserver((c) => {
             var u;
-            (((u = t.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (t.textContent = "Popular Categories");
+            (((u = i.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (i.textContent = "Popular Categories");
           });
-          r.observe(t, {
+          r.observe(i, {
             childList: !0,
             // Watch for child node changes
             subtree: !0,
@@ -456,21 +461,21 @@
             // Watch text node changes
             characterDataOldValue: !0
             // Get old text value
-          }), t.__crsObserver = r;
+          }), i.__crsObserver = r;
         }
       });
     }
     async hideSection() {
-      const e = await o(".page-view-boundary"), i = e == null ? void 0 : e.querySelectorAll(":scope > icms-component");
-      i == null || i.forEach((s) => {
+      const e = await o(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(":scope > icms-component");
+      t == null || t.forEach((s) => {
         var r;
-        const t = s.querySelector("h1, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
+        const i = s.querySelector("h1, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
         _.some(
           (c) => {
             var l;
-            return (l = t == null ? void 0 : t.textContent) == null ? void 0 : l.includes(c);
+            return (l = i == null ? void 0 : i.textContent) == null ? void 0 : l.includes(c);
           }
-        ) && (s.dataset.crsHide = "true"), i == null || i.forEach((c) => {
+        ) && (s.dataset.crsHide = "true"), t == null || t.forEach((c) => {
           var l;
           ((l = c.previousElementSibling) == null ? void 0 : l.dataset.crsHide) === "true" && !c.querySelector("h1, h3") && (c.dataset.crsHide = "true");
         }), n && n.includes("Outfit Builder") && (s.classList.add("crs-target-outfit-builder"), s.innerHTML = "");
@@ -921,31 +926,31 @@
     async modifySection() {
       const e = await o('[data-crs-title="Popular Categories"]');
       e && (e.outerHTML = k);
-      const i = document.querySelector(".crs-slider-section .swiper-initialized");
-      if (!i) return;
-      i.style.cursor = "grab";
-      let s = !1, t, n, r, c;
-      i.addEventListener("mousedown", (l) => {
-        l.preventDefault(), s = !0, t = l.pageX, n = l.pageY, r = i.scrollLeft, c = i.scrollTop;
-      }), i.addEventListener("mouseleave", () => {
-        s = !1, i.style.cursor = "grab";
-      }), i.addEventListener("mouseup", () => {
-        s = !1, i.style.cursor = "grab";
-      }), i.addEventListener("mousemove", (l) => {
+      const t = document.querySelector(".crs-slider-section .swiper-initialized");
+      if (!t) return;
+      t.style.cursor = "grab";
+      let s = !1, i, n, r, c;
+      t.addEventListener("mousedown", (l) => {
+        l.preventDefault(), s = !0, i = l.pageX, n = l.pageY, r = t.scrollLeft, c = t.scrollTop;
+      }), t.addEventListener("mouseleave", () => {
+        s = !1, t.style.cursor = "grab";
+      }), t.addEventListener("mouseup", () => {
+        s = !1, t.style.cursor = "grab";
+      }), t.addEventListener("mousemove", (l) => {
         if (!s) return;
-        l.preventDefault(), i.style.cursor = "grabbing";
-        const u = l.pageX, O = l.pageY, H = (u - t) * 1.5, L = (O - n) * 1.5;
-        i.scrollLeft = r - H, i.scrollTop = c - L;
-      }), i.addEventListener("dragstart", (l) => {
+        l.preventDefault(), t.style.cursor = "grabbing";
+        const u = l.pageX, O = l.pageY, H = (u - i) * 1.5, L = (O - n) * 1.5;
+        t.scrollLeft = r - H, t.scrollTop = c - L;
+      }), t.addEventListener("dragstart", (l) => {
         l.preventDefault();
-      }), i.style.userSelect = "none";
+      }), t.style.userSelect = "none";
     }
     async observe() {
-      new MutationObserver((i) => {
-        i.forEach(async (s) => {
+      new MutationObserver((t) => {
+        t.forEach(async (s) => {
           (await o(
             '[data-crs-title="Popular Categories"] swiper'
-          )).querySelector(".crs-swiper-wrapper") || p(
+          )).querySelector(".crs-swiper-wrapper") || g(
             "Detected changes in Popular Categories, reapplying modifications"
           );
         });
@@ -963,7 +968,7 @@
 .crs-outfit-section .crs-mobile h1 {
   margin-top: 20px;
 }
-`, P = (
+`, z = (
     /* HTML */
     `
   <div class="crs-outfit-section">
@@ -1659,7 +1664,7 @@
   </div>
 `
   );
-  class z {
+  class P {
     constructor() {
       this.init();
     }
@@ -1668,35 +1673,35 @@
     }
     async render() {
       try {
-        const e = await o(".crs-target-outfit-builder"), i = document.querySelector(".crs-outfit-section");
-        i && i.remove();
-        const s = P;
-        e && (e.insertAdjacentHTML("afterbegin", s), document.querySelectorAll('[data-builder="outfit-builder"]').forEach((t) => {
-          const n = t.querySelector("a");
+        const e = await o(".crs-target-outfit-builder"), t = document.querySelector(".crs-outfit-section");
+        t && t.remove();
+        const s = z;
+        e && (e.insertAdjacentHTML("afterbegin", s), document.querySelectorAll('[data-builder="outfit-builder"]').forEach((i) => {
+          const n = i.querySelector("a");
           m(
-            t,
+            i,
             "exp_hp_hero_view_2",
             "Home Page Outfit Builder",
             "Outfit Builder Visibility",
             0
           ), n && n.addEventListener("click", (r) => {
-            g(
+            d(
               "exp_hp_hero_click_2",
               "Outfit Builder",
               "click",
               "Home Page Outfit Builder"
             );
           });
-        }), document.querySelectorAll('[data-builder="pony-builder"]').forEach((t) => {
-          const n = t.querySelector("a");
+        }), document.querySelectorAll('[data-builder="pony-builder"]').forEach((i) => {
+          const n = i.querySelector("a");
           m(
-            t,
+            i,
             "exp_hp_hero_view_3",
             "Home Page Outfit Builder",
             "Toy Pony Builder Visibility",
             0
           ), n && n.addEventListener("click", (r) => {
-            g(
+            d(
               "exp_hp_hero_click_3",
               "Toy Pony Builder",
               "click",
@@ -1705,8 +1710,8 @@
           });
         }));
       } catch (e) {
-        const i = e instanceof Error ? e.message : String(e);
-        p(i, "error");
+        const t = e instanceof Error ? e.message : String(e);
+        g(t, "error");
       }
     }
     addStyles() {
@@ -1971,21 +1976,21 @@
     }
     async render() {
       try {
-        const e = await o(".crs-target-outfit-builder"), i = document.querySelector(
+        const e = await o(".crs-target-outfit-builder"), t = document.querySelector(
           ".crs-christmas-gifts-section"
         );
-        if (i && i.remove(), e) {
+        if (t && t.remove(), e) {
           e.insertAdjacentHTML("beforeend", C);
           const s = document.querySelector(
             ".crs-christmas-gifts-section"
-          ), t = document.querySelectorAll(
+          ), i = document.querySelectorAll(
             '.crs-christmas-gifts-section a[href="/gifting"]'
           ), n = document.querySelectorAll(
             '.crs-christmas-gifts-section a[href="/gifts/gift-sets"], .crs-christmas-gifts-section span[href="/gifts/gift-sets"]'
           );
-          t.forEach((r) => {
+          i.forEach((r) => {
             r.addEventListener("click", (c) => {
-              g(
+              d(
                 "exp_hp_hero_click_4",
                 "Christmas Gifting",
                 "click",
@@ -1995,7 +2000,7 @@
           }), n.forEach((r) => {
             r.addEventListener("click", (c) => {
               const l = r.tagName.toLowerCase();
-              g(
+              d(
                 "exp_hp_hero_click_5",
                 "Shop Gift Sets",
                 "click",
@@ -2011,8 +2016,8 @@
           );
         }
       } catch (e) {
-        const i = e instanceof Error ? e.message : String(e);
-        p(i, "error");
+        const t = e instanceof Error ? e.message : String(e);
+        g(t, "error");
       }
     }
     addStyles() {
@@ -2022,36 +2027,34 @@
       }
     }
   }
-  f({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(a, e, i, s, t, n) {
+  f({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(a, e, t, s, i, n) {
     a.hj = a.hj || function() {
       (a.hj.q = a.hj.q || []).push(arguments);
-    }, a._hjSettings = { hjid: 2667925, hjsv: 6 }, t = e.getElementsByTagName("head")[0], n = e.createElement("script"), n.async = !0, n.src = i + a._hjSettings.hjid + s + a._hjSettings.hjsv, t && t.appendChild(n);
+    }, a._hjSettings = { hjid: 2667925, hjsv: 6 }, i = e.getElementsByTagName("head")[0], n = e.createElement("script"), n.async = !0, n.src = t + a._hjSettings.hjid + s + a._hjSettings.hjsv, i && i.appendChild(n);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class E {
     constructor() {
-      this.init();
+      this.previousUrl = "", this.init();
     }
     init() {
-      this.imagePreloading(), this.interceptHistoryAPI(() => {
-        this.initComponents();
+      this.previousUrl = "", this.imagePreloading(), this.interceptHistoryAPI(async () => {
+        await o("footer"), g("init components"), this.initComponents();
       }), this.initComponents();
     }
     initComponents() {
-      location.pathname === "/" && (this.addStyles(), new x(), new b(), new q(), new z(), new j());
+      location.pathname === "/" && (this.addStyles(), new x(), new b(), new q(), new P(), new j());
     }
     interceptHistoryAPI(e) {
-      const i = history.pushState, s = history.replaceState;
-      history.pushState = (...t) => {
-        i.apply(history, t), setTimeout(() => e(), 50);
-      }, history.replaceState = (...t) => {
-        s.apply(history, t), setTimeout(() => e(), 50);
-      };
+      new MutationObserver(() => {
+        const s = location.href;
+        this.previousUrl !== s && (this.previousUrl = s, e());
+      }).observe(document.body, { childList: !0, subtree: !0 });
     }
     imagePreloading() {
       h.forEach((e) => {
-        const i = `<link rel="preload" as="image" href="${e.images.mob}" media="(max-width: 700px)" />
+        const t = `<link rel="preload" as="image" href="${e.images.mob}" media="(max-width: 700px)" />
       <link rel="preload" as="image" href="${e.images.desktop}" media="(min-width: 701px)" />`;
-        document.head.insertAdjacentHTML("beforeend", i);
+        document.head.insertAdjacentHTML("beforeend", t);
       });
     }
     addStyles() {
