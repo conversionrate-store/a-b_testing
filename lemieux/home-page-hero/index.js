@@ -216,7 +216,7 @@
 
 [data-hero='new-arrivals'] .crs-hero-block-text {
   left: 10%;
-  bottom: 50%;
+  bottom: 40%;
   transform: translateY(50%);
   width: max-content;
 }
@@ -266,8 +266,11 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .crs-hero-block-text {
-    bottom: 10px;
+  [data-hero='new-arrivals'] .crs-hero-block-text {
+    left: 5%;
+    bottom: 40%;
+    transform: translateY(50%);
+    width: max-content;
   }
   .crs-block-title {
     font-size: 1.5em;
