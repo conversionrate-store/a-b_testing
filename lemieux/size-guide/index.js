@@ -1,70 +1,79 @@
 (function() {
   "use strict";
-  const a = (i, e, n, t = "") => {
+  const p = (n, e, t, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: i,
+      event_name: n,
       event_desc: e,
-      event_type: n,
-      event_loc: t
-    }), u(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
-  }, l = (i) => new Promise((e) => {
-    const n = document.querySelector(i);
-    n && e(n);
-    const t = new MutationObserver(() => {
-      const s = document.querySelector(i);
-      s && (e(s), t.disconnect());
+      event_type: t,
+      event_loc: i
+    }), d(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
+  }, a = (n) => new Promise((e) => {
+    const t = document.querySelector(n);
+    t && e(t);
+    const i = new MutationObserver(() => {
+      const s = document.querySelector(n);
+      s && (e(s), i.disconnect());
     });
-    t.observe(document.documentElement, {
+    i.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), h = ({ name: i, dev: e }) => {
+  }), f = ({ name: n, dev: e }) => {
     console.log(
-      `%c EXP: ${i} (DEV: ${e})`,
+      `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, d = (i, e, n, t, s = 1e3, o = 0.5) => {
-    let c, b;
-    if (c = new IntersectionObserver(
-      function(r) {
-        r[0].isIntersecting === !0 ? b = setTimeout(() => {
-          a(
+  }, h = (n, e, t, i, s = 1e3, o = 0.5) => {
+    let r, l;
+    if (r = new IntersectionObserver(
+      function(u) {
+        u[0].isIntersecting === !0 ? l = setTimeout(() => {
+          p(
             e,
-            r[0].target.dataset.visible || t || "",
+            u[0].target.dataset.visible || i || "",
             "view",
-            n
-          ), c.disconnect();
-        }, s) : (u("Element is not fully visible", "warn"), clearTimeout(b));
+            t
+          ), r.disconnect();
+        }, s) : (d("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [o] }
-    ), typeof i == "string") {
-      const r = document.querySelector(i);
-      r && c.observe(r);
+    ), typeof n == "string") {
+      const u = document.querySelector(n);
+      u && r.observe(u);
     } else
-      c.observe(i);
-  }, u = (i, e = "info") => {
-    let n;
+      r.observe(n);
+  }, d = (n, e = "info") => {
+    let t;
     switch (e) {
       case "info":
-        n = "color: #3498db;";
+        t = "color: #3498db;";
         break;
       case "warn":
-        n = "color: #f39c12;";
+        t = "color: #f39c12;";
         break;
       case "error":
-        n = "color: #e74c3c;";
+        t = "color: #e74c3c;";
         break;
       case "success":
-        n = "color: #2ecc71;";
+        t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
-  }, p = `sizebay {
+    console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
+  }, m = `.crs-wrap {
+  display: flex;
+  justify-content: space-between;
 }
-
 #sizebay-wrapper {
   margin-top: 0;
+  display: none;
+}
+.sizeguide-only.crs-wrap {
+  justify-content: flex-end;
+}
+
+.sizeguide-only .crs-chart-button {
+  display: none;
 }
 
 .crs-hide {
@@ -72,8 +81,7 @@
 }
 
 .crs-size-guide-button,
-#szb-chart-button,
-#szb-vfr-button {
+.crs-chart-button {
   margin: 0;
   display: inline-flex;
   justify-content: center;
@@ -90,26 +98,31 @@
   letter-spacing: 1px;
   outline: none;
   font-style: normal;
+  text-transform: capitalize;
+  text-decoration: underline;
+  
 }
 
-:is(#szb-chart-button, #szb-vfr-button) span {
-  text-decoration: underline;
-}
+
 .crs-size-guide-button::before {
   content: '';
   width: 22px;
   height: 11px;
   display: inline-block;
+  background-repeat: no-repeat;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="11" viewBox="0 0 22 11" fill="none"><path d="M17.3666 0.659912H20.7V9.65991H0.699951V0.659912H10.7M17.3666 0.659912V3.30697M17.3666 0.659912H14.0333M14.0333 0.659912V4.36579M14.0333 0.659912H10.7M10.7 0.659912V2.77756M10.7 0.659912H7.36662M10.7 0.659912V3.30697M7.36662 0.659912V4.36579M7.36662 0.659912H4.03328M4.03328 0.659912V2.77756V3.30697V0.659912Z" stroke="black"/></svg>');
 }
 
-:is(#szb-chart-button, #szb-vfr-button):hover::before {
-  color: inherit;
+.crs-chart-button::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background-repeat: no-repeat;
+
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"><g clip-path="url(%23a)"><path fill="%23000" d="M17.055 12.158 9.527 7.795v-.324c0-.37.212-.715.552-.899a2.258 2.258 0 0 0 1.188-2.084 2.277 2.277 0 0 0-2.18-2.18 2.25 2.25 0 0 0-1.66.633 2.25 2.25 0 0 0-.696 1.635.527.527 0 0 0 1.055 0c0-.333.132-.644.372-.875.24-.231.556-.352.89-.339.63.024 1.141.536 1.165 1.166a1.21 1.21 0 0 1-.636 1.117A2.083 2.083 0 0 0 8.473 7.47v.324L.945 12.158A1.901 1.901 0 0 0 0 13.798c0 1.045.85 1.895 1.895 1.895h14.21c1.045 0 1.895-.85 1.895-1.895 0-.674-.362-1.303-.945-1.64Zm-.95 2.48H1.895a.842.842 0 0 1-.421-1.568L9 8.71l7.526 4.361a.842.842 0 0 1-.421 1.568Z"/></g><defs><clipPath id="a"><path fill="%23fff" d="M0 0h18v18H0z"/></clipPath></defs></svg>');
 }
-:is(#szb-chart-button, #szb-vfr-button)::before {
-  margin: 0;
-  text-decoration: none;
-}
+
 
 @media (max-width: 1000px) {
   .crs-size-guide-button {
@@ -135,143 +148,126 @@
   }
 }
 `;
-  class m {
+  class g {
     constructor() {
       this.abortController = null, this.checkTypeTimeout = null, this.init();
     }
     init() {
       this.checkIsProductPage(async () => {
-        await l("footer"), this.addStyles(), this.observe(), this.checkTypeOfSizeButtons();
+        await a("#sizebay-container"), d("Size Guide Init"), this.addStyles(), this.observe(), this.renderSizeGuideButtons();
       });
     }
     async checkIsProductPage(e) {
-      const n = new Promise((s) => setTimeout(s, 3e3));
-      await Promise.race([n, l("product-view-layout")]) && e();
+      d("Checking is product page for Size Guide");
+      const t = new Promise((s) => setTimeout(s, 5e3)), i = await Promise.race([t, a("product-view-layout")]);
+      console.log("Size Guide checkIsProductPage result", i), i && e();
     }
     async observe() {
-      const e = await l(
+      const e = await a(
         "product-configurable-options"
-      ), n = new MutationObserver((t) => {
-        t.forEach((s) => {
+      ), t = new MutationObserver((i) => {
+        i.forEach((s) => {
           const o = s.target;
           s.type === "childList" && o && o.id === "sizebay-wrapper" && !o.querySelector(".crs-size-guide-button") && (this.checkTypeTimeout && clearTimeout(this.checkTypeTimeout), setTimeout(() => {
-            this.checkTypeOfSizeButtons();
+            this.renderSizeGuideButtons();
           }, 100));
         });
       });
       setTimeout(() => {
-        n.disconnect();
-      }, 5e3), n.observe(e, {
+        t.disconnect();
+      }, 5e3), t.observe(e, {
         childList: !0,
         subtree: !0
       });
     }
-    async checkTypeOfSizeButtons() {
-      await l("#sizebay-wrapper"), this.abortController, this.abortController = new AbortController();
-      const e = document.querySelector("#szb-chart-button"), n = document.querySelector("#szb-vfr-button"), t = document.querySelector(".crs-size-guide-button") || document.querySelector(
+    async renderSizeGuideButtons() {
+      var l, u;
+      const e = await a("product-configurable-option-dropdown"), t = await a(
         "product-configurable-options button"
-      ), s = (
+      );
+      if (console.log("Size Guide renderSizeGuideButtons", {
+        container: e,
+        regularSizeButton: t
+      }), !t) return;
+      t.classList.add("crs-hide");
+      const i = (
         /* HTML */
         `
-      <span class="crs-desktop">View Size Guide</span>
-      <span class="crs-mobile">View Size Guide</span>
+      <div class="crs-wrap sizeguide-only">
+        <button class="crs-chart-button ">Find Your Size</button>
+        <button class="crs-size-guide-button">View Size Guide</button>
+      </div>
     `
       );
-      if (t == null || t.classList.add("crs-hide"), e) {
-        const o = e.closest("sizebay"), c = t == null ? void 0 : t.closest("div");
-        o && c && c.insertAdjacentElement("afterend", o), e.innerHTML = s, n && (n.innerHTML = "<span>Find Your Size</span>", window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, setTimeout(() => {
-          d(
-            n,
-            "exp_size_guide_view_2",
-            "PDP",
-            "Find Your Size Button",
-            0
-          );
-        }, 100)), n._crsEvent || (n._crsEvent = !0, n == null || n.addEventListener(
+      if (!e) return;
+      const s = document.querySelector(".crs-wrap");
+      s && s.remove(), e.insertAdjacentHTML("beforebegin", i), a("#szb-vfr-button").then(() => {
+        const c = document.querySelector(".crs-wrap");
+        c && c.classList.remove("sizeguide-only");
+      });
+      const o = (l = e.previousElementSibling) == null ? void 0 : l.querySelector(".crs-chart-button"), r = (u = e.previousElementSibling) == null ? void 0 : u.querySelector(
+        ".crs-size-guide-button"
+      );
+      !o || !r || (o == null || o.addEventListener("click", () => {
+        const c = document.querySelector("#szb-vfr-button");
+        c == null || c.click(), p(
+          "exp_size_guide_click_2",
+          "Find Your Size Button",
           "click",
-          () => {
-            a(
-              "exp_size_guide_click_2",
-              "Find Your Size Button",
-              "click",
-              "PDP"
-            );
-          },
-          { signal: this.abortController.signal }
-        ))), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
-          d(
-            e,
-            "exp_size_guide_view_1",
-            "PDP",
-            "Size Guide Button",
-            0
-          );
-        }, 100)), e._crsEvent || (e._crsEvent = !0, e == null || e.addEventListener(
-          "click",
-          () => {
-            a(
-              "exp_size_guide_click_1",
-              "Size Guide Button",
-              "click",
-              "PDP"
-            );
-          },
-          { signal: this.abortController.signal }
-        ));
-        return;
-      } else
-        t && (t == null || t.classList.remove("crs-hide"), t.classList.add("crs-size-guide-button"), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, setTimeout(() => {
-          d(
-            t,
-            "exp_size_guide_view_1",
-            "PDP",
-            "Size Guide Button",
-            0
-          );
-        }, 150)), t._crsEvent || (t._crsEvent = !0, t == null || t.addEventListener(
-          "click",
-          () => {
-            a(
-              "exp_size_guide_click_1",
-              "Size Guide Button",
-              "click",
-              "PDP"
-            );
-          },
-          { signal: this.abortController.signal }
-        )));
+          "PDP"
+        );
+      }), r == null || r.addEventListener("click", () => {
+        const c = document.querySelector("#szb-chart-button"), b = document.querySelector(
+          "product-configurable-options button"
+        );
+        if (p("exp_size_guide_click_1", "Size Guide Button", "click", "PDP"), c) {
+          c.click();
+          return;
+        }
+        b == null || b.click();
+      }), window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, h(
+        o,
+        "exp_size_guide_view_2",
+        "PDP",
+        "Find Your Size Button",
+        0
+      )), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, h(
+        r,
+        "exp_size_guide_view_1",
+        "PDP",
+        "Size Guide Button",
+        0
+      )));
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = p, document.head.appendChild(e);
+      e.textContent = m, document.head.appendChild(e);
     }
   }
-  h({ name: "PDP Size Guide Test", dev: "OS" }), (function(i, e, n, t, s, o) {
-    i.hj = i.hj || function() {
-      (i.hj.q = i.hj.q || []).push(arguments);
-    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = n + i._hjSettings.hjid + t + i._hjSettings.hjsv, s && s.appendChild(o);
+  f({ name: "PDP Size Guide Test", dev: "OS" }), (function(n, e, t, i, s, o) {
+    n.hj = n.hj || function() {
+      (n.hj.q = n.hj.q || []).push(arguments);
+    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(o);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_size_guide");
-  class f {
+  class w {
     constructor() {
-      this.init();
+      this.previousUrl = location.href, this.init();
     }
     init() {
       this.addStyles(), this.interceptHistoryAPI(() => {
-        window._crsVisibilityOfTime_2 = !1, window._crsVisibilityOfTime_1 = !1, new m();
-      });
+        window._crsVisibilityOfTime_2 = !1, window._crsVisibilityOfTime_1 = !1, new g();
+      }), new g();
     }
     interceptHistoryAPI(e) {
-      const n = history.pushState, t = history.replaceState;
-      history.pushState = (...s) => {
-        n.apply(history, s), setTimeout(() => e(), 50);
-      }, history.replaceState = (...s) => {
-        t.apply(history, s), setTimeout(() => e(), 50);
-      };
+      new MutationObserver(() => {
+        const i = location.href;
+        this.previousUrl !== i && (this.previousUrl = i, e());
+      }).observe(document.body, { childList: !0, subtree: !0 });
     }
     addStyles() {
       const e = document.createElement("style");
       e.textContent = "", document.head.appendChild(e);
     }
   }
-  window._crsSizeGuide || (window._crsSizeGuide = !0, new f());
+  window._crsSizeGuide || (window._crsSizeGuide = !0, new w());
 })();
