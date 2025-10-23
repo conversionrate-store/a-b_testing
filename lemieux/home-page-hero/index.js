@@ -1,49 +1,49 @@
 (function() {
   "use strict";
-  const d = (a, e, t, s = "") => {
+  const w = (n, e, t, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: a,
+      event_name: n,
       event_desc: e,
       event_type: t,
-      event_loc: s
-    }), p(`Event: ${a} | ${e} | ${t} | ${s}`, "success");
-  }, o = (a) => new Promise((e) => {
-    const t = document.querySelector(a);
+      event_loc: i
+    }), a(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
+  }, p = (n) => new Promise((e) => {
+    const t = document.querySelector(n);
     t && e(t);
-    const s = new MutationObserver(() => {
-      const i = document.querySelector(a);
-      i && (e(i), s.disconnect());
+    const i = new MutationObserver(() => {
+      const s = document.querySelector(n);
+      s && (e(s), i.disconnect());
     });
-    s.observe(document.documentElement, {
+    i.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: a, dev: e }) => {
+  }), E = ({ name: n, dev: e }) => {
     console.log(
-      `%c EXP: ${a} (DEV: ${e})`,
+      `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, m = (a, e, t, s, i = 1e3, n = 0.5) => {
-    let r, c;
-    if (r = new IntersectionObserver(
-      function(l) {
-        l[0].isIntersecting === !0 ? c = setTimeout(() => {
-          d(
+  }, v = (n, e, t, i, s = 1e3, c = 0.5) => {
+    let g, d;
+    if (g = new IntersectionObserver(
+      function(m) {
+        m[0].isIntersecting === !0 ? d = setTimeout(() => {
+          w(
             e,
-            l[0].target.dataset.visible || s || "",
+            m[0].target.dataset.visible || i || "",
             "view",
             t
-          ), r.disconnect();
-        }, i) : (p("Element is not fully visible", "warn"), clearTimeout(c));
+          ), g.disconnect();
+        }, s) : (a("Element is not fully visible", "warn"), clearTimeout(d));
       },
-      { threshold: [n] }
-    ), typeof a == "string") {
-      const l = document.querySelector(a);
-      l && r.observe(l);
+      { threshold: [c] }
+    ), typeof n == "string") {
+      const m = document.querySelector(n);
+      m && g.observe(m);
     } else
-      r.observe(a);
-  }, p = (a, e = "info") => {
+      g.observe(n);
+  }, a = (n, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -59,8 +59,8 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${a}`, `${t} font-size: 16px; font-weight: 600`);
-  }, w = `.crs-hide {
+    console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
+  }, k = `.crs-hide {
   display: none !important;
 }
 
@@ -77,7 +77,49 @@
     display: none;
   }
 }
-`, y = `.crs-hero {
+`, h = "https://conversionrate-store.github.io/a-b_images/lemieux", y = [
+    {
+      id: "new-arrivals",
+      href: "/new-in/aw25",
+      title: { sub: "New Arrivals", main: "AW25", collection: "Collection" },
+      images: {
+        desktop: `${h}/hero_new_arrivals_desktop.webp`,
+        mob: `${h}/hero_new_arrivals_desktop.webp`
+      }
+    },
+    {
+      id: "clothing",
+      href: "/clothing",
+      title: "Clothing",
+      images: {
+        desktop: "https://www.lemieux.com/static/media/catalog/product/i/t/it07156_lifestyle_ladies_base_layer_damson_2.jpg",
+        mob: `${h}/hero_clothing_2.webp`
+      }
+    },
+    {
+      id: "horse-wear",
+      href: "/horsewear",
+      title: "Horse Wear",
+      images: {
+        desktop: "https://www.lemieux.com/static/media/catalog/product/a/u/au25day4_12842.jpg",
+        mob: `${h}/hero_horse_wear.webp`
+      }
+    },
+    {
+      id: "toys",
+      href: "/toys",
+      title: "Toys",
+      images: {
+        desktop: `${h}/toys_desk_2.webp`,
+        mob: `${h}/toys_mob.webp`
+      }
+    }
+  ];
+  function o(n, e) {
+    const t = n instanceof Error ? n.message : String(n);
+    a(`${e}: ${t}`, "error");
+  }
+  const T = `.crs-hero {
   --gap: 8px;
   display: flex;
   gap: var(--gap);
@@ -308,112 +350,125 @@
     height: auto;
   }
 }
-`, g = "https://conversionrate-store.github.io/a-b_images/lemieux", h = [
-    {
-      id: "new-arrivals",
-      href: "/new-in/aw25",
-      title: { sub: "New Arrivals", main: "AW25", collection: "Collection" },
-      images: {
-        desktop: `${g}/hero_new_arrivals_desktop.webp`,
-        mob: `${g}/hero_new_arrivals_desktop.webp`
-      }
-    },
-    {
-      id: "clothing",
-      href: "/clothing",
-      title: "Clothing",
-      images: {
-        desktop: "https://www.lemieux.com/static/media/catalog/product/i/t/it07156_lifestyle_ladies_base_layer_damson_2.jpg",
-        mob: `${g}/hero_clothing_2.webp`
-      }
-    },
-    {
-      id: "horse-wear",
-      href: "/horsewear",
-      title: "Horse Wear",
-      images: {
-        desktop: "https://www.lemieux.com/static/media/catalog/product/a/u/au25day4_12842.jpg",
-        mob: `${g}/hero_horse_wear.webp`
-      }
-    },
-    {
-      id: "toys",
-      href: "/toys",
-      title: "Toys",
-      images: {
-        desktop: `${g}/toys_desk_2.webp`,
-        mob: `${g}/toys_mob.webp`
-      }
-    }
-  ];
-  class x {
+`, l = class l {
     constructor() {
-      this.init();
+      this.eventsAborter = null;
     }
     init() {
-      this.addStyles(), this.changeHeroImageSection();
+      try {
+        this.addStyles(), this.changeHeroImageSection();
+      } catch (e) {
+        o(e, "Error initializing Hero section");
+      }
     }
     async changeHeroImageSection() {
-      const e = await o("page-component-hero-image");
-      e != null && e.querySelector(".crs-hero") || e && (e.innerHTML = this.renderNewHeroSection(), this.addEventListeners(e));
+      try {
+        const e = await p(l.TARGET_SELECTOR);
+        if (!e) {
+          console.warn(`Target ${l.TARGET_SELECTOR} not found`);
+          return;
+        }
+        if (e.querySelector(l.HERO_CLASS)) {
+          console.log("Hero section already exists, skipping...");
+          return;
+        }
+        this.replaceHeroContent(e), this.setupEventListeners(e);
+      } catch (e) {
+        o(e, "Error changing hero image section");
+      }
+    }
+    replaceHeroContent(e) {
+      this.eventsAborter && this.eventsAborter.abort(), e.innerHTML = this.renderNewHeroSection();
     }
     renderNewHeroSection() {
-      const e = h.find((i) => i.id === "new-arrivals"), t = h.filter((i) => i.id !== "new-arrivals"), s = (i) => {
-        const n = typeof i.title == "string" ? `<div class="crs-block-title">${i.title}</div>` : `<div class="crs-block-title">
-              ${i.title.sub ? `<span class="sub-title">${i.title.sub}</span>` : ""}
-              ${i.title.main ? `<span class="main-title">${i.title.main}</span>` : ""}
-              ${i.title.collection ? `<span class="collection-title">${i.title.collection}</span>` : ""}
-            </div>`;
-        return `
-        <a href="${i.href}" class="crs-hero-block" data-hero="${i.id}" data-title="${typeof i.title == "string" ? i.title : i.title.sub}">
-          <picture>
-            <source media="(min-width: 701px)" srcset="${i.images.desktop}" />
-            <source media="(max-width: 700px)" srcset="${i.images.mob}" />
-            <img src="${i.images.desktop}" alt="${typeof i.title == "string" ? i.title : [i.title.sub, i.title.main, i.title.collection].filter(Boolean).join(" ")}" />
-          </picture>
-          <div class="crs-hero-block-text">
-            ${n}
-            
-          </div>
-        </a>
-      `;
-      };
+      const e = y.find((i) => i.id === "new-arrivals"), t = y.filter((i) => i.id !== "new-arrivals");
       return (
         /* HTML */
         `
       <div class="crs-hero">
-        <div class="crs-hero-left">${e ? s(e) : ""}</div>
-        <div class="crs-hero-right">${t.map(s).join("")}</div>
+        <div class="crs-hero-left">${e ? this.renderItem(e) : ""}</div>
+        <div class="crs-hero-right">
+          ${t.map((i) => this.renderItem(i)).join("")}
+        </div>
       </div>
     `
       );
     }
-    addEventListeners(e) {
-      e.querySelectorAll("a.crs-hero-block").forEach((s) => {
-        s.addEventListener("click", (i) => {
-          const n = s.dataset.title;
-          n && d(
+    renderItem(e) {
+      const t = this.renderTitle(e.title), i = this.generateAltText(e.title);
+      return `
+      <a href="${e.href}" class="crs-hero-block" data-hero="${e.id}" data-title="${this.getDataTitle(e.title)}">
+        <picture>
+          <source media="(min-width: 701px)" srcset="${e.images.desktop}" />
+          <source media="(max-width: 700px)" srcset="${e.images.mob}" />
+          <img src="${e.images.desktop}" alt="${i}" />
+        </picture>
+        <div class="crs-hero-block-text">
+          ${t}
+          
+        </div>
+      </a>
+    `;
+    }
+    renderTitle(e) {
+      return typeof e == "string" ? `<div class="crs-block-title">${e}</div>` : `<div class="crs-block-title">${[
+        e.sub ? `<span class="sub-title">${e.sub}</span>` : "",
+        e.main ? `<span class="main-title">${e.main}</span>` : "",
+        e.collection ? `<span class="collection-title">${e.collection}</span>` : ""
+      ].filter(Boolean).join("")}</div>`;
+    }
+    generateAltText(e) {
+      return typeof e == "string" ? e : [e.sub, e.main, e.collection].filter(Boolean).join(" ");
+    }
+    getDataTitle(e) {
+      return typeof e == "string" ? e : e.sub || "";
+    }
+    setupEventListeners(e) {
+      this.eventsAborter && this.eventsAborter.abort(), this.eventsAborter = new AbortController(), e.querySelectorAll("a.crs-hero-block").forEach((i) => {
+        this.attachClickListener(i), this.attachVisibilityTracking(i);
+      });
+    }
+    attachClickListener(e) {
+      e.addEventListener(
+        "click",
+        (t) => {
+          const i = e.dataset.title;
+          if (!i) {
+            console.warn("No title found for hero link", e);
+            return;
+          }
+          w(
             "exp_hp_hero_click_1",
-            n,
+            i,
             "click",
             "Home page Hero Section"
           );
-        }), m(
-          s,
-          "exp_hp_hero_view_1",
-          "Home page Hero Section",
-          s.dataset.title || "",
-          0
-        );
-      });
+        },
+        { signal: this.eventsAborter.signal }
+      );
+    }
+    attachVisibilityTracking(e) {
+      v(
+        e,
+        "exp_hp_hero_view_1",
+        "Home page Hero Section",
+        e.dataset.title || "",
+        l.VISIBILITY_THRESHOLD
+      );
     }
     addStyles() {
-      if (document.getElementById("crs-hero-styles")) return;
+      if (document.getElementById(l.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = "crs-hero-styles", e.innerHTML = y, document.head.appendChild(e);
+      e.id = l.STYLES_ID, e.textContent = T, document.head.appendChild(e);
     }
-  }
-  const v = `[data-crs-hide='true']:not([data-crs-no-hide]) {
+    destroy() {
+      var e;
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), (e = document == null ? void 0 : document.querySelector(l.HERO_CLASS)) == null || e.remove(), console.log("Hero component destroyed");
+    }
+  };
+  l.STYLES_ID = "crs-hero-styles", l.VISIBILITY_THRESHOLD = 0, l.TARGET_SELECTOR = "page-component-hero-image", l.HERO_CLASS = ".crs-hero";
+  let x = l;
+  const C = `[data-crs-hide='true']:not([data-crs-no-hide]) {
   display: none !important;
 }
 
@@ -427,144 +482,149 @@
 
 /* .page-view-boundary > icms-component:not(.crs-top-section) {
   display: none !important;
-} */`, _ = [
+} */`, q = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
     "Journey to the Top"
-  ];
-  class b {
+  ], u = class u {
     constructor() {
-      this.resizeObserver = null, this.resizeTimeout = null, this.init();
+      this.resizeObserver = null, this.resizeTimeout = null, this.mutationObservers = /* @__PURE__ */ new Set();
     }
     init() {
-      this.addStyles(), this.hideSection(), this.changeSectionCopy(), this.observeResize();
+      try {
+        this.addStyles(), this.hideSection(), this.changeSectionCopy(), this.observeResize();
+      } catch (e) {
+        o(e, "Error initializing Hide Sections");
+      }
     }
-    async changeSectionCopy() {
-      const e = await o(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
-        ":scope > icms-component"
-      );
-      t == null || t.forEach((s) => {
-        var n;
-        const i = s.querySelector("h1, h3");
-        if ((n = i == null ? void 0 : i.textContent) != null && n.includes("Shop Popular Categories")) {
-          if (s.querySelector("vimeo-player") || (s.dataset.crsTitle = "Popular Categories", i.__crsObserver))
-            return;
-          i.textContent = "Popular Categories";
-          const r = new MutationObserver((c) => {
-            var u;
-            (((u = i.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (i.textContent = "Popular Categories");
-          });
-          r.observe(i, {
-            childList: !0,
-            // Watch for child node changes
-            subtree: !0,
-            // Watch descendants too
-            characterData: !0,
-            // Watch text node changes
-            characterDataOldValue: !0
-            // Get old text value
-          }), i.__crsObserver = r;
+    async hideSection() {
+      try {
+        const e = await p(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
+          ":scope > icms-component"
+        );
+        if (!t) {
+          a("No components found in page view boundary", "warn");
+          return;
+        }
+        const i = Array.from(t);
+        this.processInitialComponents(i), this.processChainHiding(i);
+      } catch (e) {
+        o(e, "Error hiding sections");
+      }
+    }
+    processInitialComponents(e) {
+      e.forEach((t) => {
+        try {
+          t.classList.add("crs-top-section"), this.resetHideAttribute(t), this.checkTitleMarkers(t), this.handleOutfitBuilder(t);
+        } catch (i) {
+          o(i, "Processing initial component");
         }
       });
+    }
+    processChainHiding(e) {
+      e.forEach((t) => {
+        var i;
+        try {
+          const s = t.previousElementSibling, c = t.querySelector("h1, h3");
+          if ((i = t.textContent) == null ? void 0 : i.includes(
+            "@lemieuxproductsofficial"
+          )) {
+            t.dataset.crsHide = "false";
+            return;
+          }
+          (s == null ? void 0 : s.dataset.crsHide) === "true" && !c && (t.dataset.crsHide = "true");
+        } catch (s) {
+          o(s, "Processing chain hiding");
+        }
+      });
+    }
+    resetHideAttribute(e) {
+      e.hasAttribute("data-crs-hide") && e.removeAttribute("data-crs-hide");
+    }
+    checkTitleMarkers(e) {
+      const t = e.querySelector("h1, h2, h3");
+      q.some(
+        (i) => {
+          var s;
+          return (s = t == null ? void 0 : t.textContent) == null ? void 0 : s.includes(i);
+        }
+      ) && (e.dataset.crsHide = "true");
+    }
+    handleOutfitBuilder(e) {
+      var i;
+      const t = (i = e.querySelector(".hero")) == null ? void 0 : i.textContent;
+      t != null && t.includes("Outfit Builder") && (e.classList.add("crs-target-outfit-builder"), e.innerHTML = "");
+    }
+    async changeSectionCopy() {
+      try {
+        const e = await p(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
+          ":scope > icms-component"
+        );
+        t == null || t.forEach((i) => {
+          this.processPopularCategoriesTitle(i);
+        });
+      } catch (e) {
+        o(e, "Change section copy");
+      }
+    }
+    processPopularCategoriesTitle(e) {
+      var i;
+      const t = e.querySelector("h1, h3");
+      (i = t == null ? void 0 : t.textContent) != null && i.includes("Shop Popular Categories") && (e.querySelector("vimeo-player") || t.__crsObserver || (e.dataset.crsTitle = "Popular Categories", t.textContent = "Popular Categories", this.setupTitleObserver(t)));
+    }
+    setupTitleObserver(e) {
+      const t = new MutationObserver(() => {
+        var s;
+        (((s = e.textContent) == null ? void 0 : s.trim()) || "").includes("Shop Popular Categories") && (e.textContent = "Popular Categories", setTimeout(() => {
+          this.cleanupObserver(t);
+        }, u.OBSERVER_CLEANUP_MS));
+      });
+      t.observe(e, {
+        childList: !0,
+        subtree: !0,
+        characterData: !0,
+        characterDataOldValue: !0
+      }), this.mutationObservers.add(t), e.__crsObserver = t;
+    }
+    cleanupObserver(e) {
+      e.disconnect(), this.mutationObservers.delete(e);
     }
     observeResize() {
       this.resizeObserver && this.resizeObserver.disconnect();
       const e = () => {
         this.resizeTimeout && clearTimeout(this.resizeTimeout), this.resizeTimeout = window.setTimeout(() => {
-          console.log("Resize detected, re-evaluating sections..."), this.hideSection();
-        }, 500);
+          this.hideSection(), a("Resize detected, sections re-evaluated", "info");
+        }, u.RESIZE_DEBOUNCE_MS);
       };
-      this.resizeObserver = new ResizeObserver(e), o(".page-view-boundary").then((t) => {
-        t && this.resizeObserver && (this.resizeObserver.observe(t), console.log("ResizeObserver attached to .page-view-boundary"));
-      }), this.resizeObserver.observe(document.body);
-    }
-    async hideSection() {
-      const e = await o(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
-        ":scope > icms-component"
-      );
-      t == null || t.forEach((s) => {
-        var r;
-        const i = s.querySelector("h1, h2, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
-        s.classList.add("crs-top-section"), _.some(
-          (c) => {
-            var l;
-            return (l = i == null ? void 0 : i.textContent) == null ? void 0 : l.includes(c);
-          }
-        ) && (s.dataset.crsHide = "true"), t == null || t.forEach((c) => {
-          var l;
-          ((l = c.previousElementSibling) == null ? void 0 : l.dataset.crsHide) === "true" && !c.querySelector("h1, h3") && !c.textContent.includes("@lemieuxproductsofficial") && (c.dataset.crsHide = "true"), c.textContent.includes("@lemieuxproductsofficial") && (c.dataset.crsHide = "false");
-        }), n && n.includes("Outfit Builder") && (s.classList.add("crs-target-outfit-builder"), s.innerHTML = "");
+      this.resizeObserver = new ResizeObserver(e), p(".page-view-boundary").then((t) => {
+        t && this.resizeObserver && (this.resizeObserver.observe(t), a("ResizeObserver attached to page view boundary", "info"));
+      }).catch((t) => {
+        o(t, "Setup resize observer");
       });
+    }
+    destroy() {
+      this.resizeObserver && (this.resizeObserver.disconnect(), this.resizeObserver = null), this.mutationObservers.forEach((e) => e.disconnect()), this.mutationObservers.clear(), this.resizeTimeout && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null), document.querySelectorAll("h1, h3").forEach((e) => {
+        e.__crsObserver && (e.__crsObserver.disconnect(), delete e.__crsObserver);
+      }), document.querySelectorAll("[data-crs-hide]").forEach((e) => {
+        e.removeAttribute("data-crs-hide");
+      }), document.querySelectorAll(".crs-target-outfit-builder").forEach((e) => {
+        e.classList.remove("crs-target-outfit-builder");
+      }), document.querySelectorAll('[data-crs-title="Popular Categories"]').forEach((e) => {
+        e.removeAttribute("data-crs-title");
+      }), document.querySelectorAll(".crs-top-section").forEach((e) => {
+        e.classList.remove("crs-top-section");
+      }), console.log("HideSections component destroyed");
     }
     addStyles() {
       if (document.getElementById("crs-hide-section-styles")) return;
       const e = document.createElement("style");
-      e.id = "crs-hide-section-styles", e.textContent = v, document.head.appendChild(e);
+      e.id = "crs-hide-section-styles", e.textContent = C, document.head.appendChild(e);
     }
-  }
-  const S = `[data-crs-title='Popular Categories'] .swiper-initialized {
-  overflow-x: auto;
-  touch-action: pan-x;
-  padding-inline: 12px;
-  min-height: max-content;
-
-  /* Hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
-}
-
-[data-crs-title='Popular Categories']  h1 {
-  border: none !important;
-
-}
-
-[data-crs-title='Popular Categories'] swiper::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-
-/* Prevent images from blocking mouse drag */
-[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] img {
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* Keep links clickable but prevent text selection */
-[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] a {
-  user-select: none;
-}
-
-[data-crs-title='Popular Categories'] .swiper-wrapper {
-  display: flex;
-}
-
-
-[data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
-  aspect-ratio: 1;
-  width: 200px;
-  height: max-content;
-}
-
-@media (min-width: 1390px) {
-  [data-crs-title='Popular Categories'] .swiper-initialized {
-    min-height: max-content;
-  }
-  [data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
-    flex: 0 0 auto;
-    width: calc(100% / 6.2 - 10px);
-    height: max-content;
-    aspect-ratio: 1;
-  }
-}
-
-
-
-
-
- page-component-hero-image:has(vimeo-player) {
-  padding-top: 0 !important;
-}`, k = (
+  };
+  u.RESIZE_DEBOUNCE_MS = 500, u.OBSERVER_CLEANUP_MS = 1e3;
+  let b = u;
+  const O = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
@@ -931,49 +991,146 @@
     ><!---->
   </div></icms-component
 >`
-  );
-  class q {
-    constructor() {
-      this.init();
-    }
-    init() {
-      this.addStyles(), this.modifySection();
-    }
-    async modifySection() {
-      const e = await o('[data-crs-title="Popular Categories"]');
-      e && (e.outerHTML = k);
-      const t = document.querySelector(".crs-slider-section .swiper-initialized");
-      if (!t) return;
-      t.style.cursor = "grab";
-      let s = !1, i, n, r, c;
-      t.addEventListener("mousedown", (l) => {
-        l.preventDefault(), s = !0, i = l.pageX, n = l.pageY, r = t.scrollLeft, c = t.scrollTop;
-      }), t.addEventListener("mouseleave", () => {
-        s = !1, t.style.cursor = "grab";
-      }), t.addEventListener("mouseup", () => {
-        s = !1, t.style.cursor = "grab";
-      }), t.addEventListener("mousemove", (l) => {
-        if (!s) return;
-        l.preventDefault(), t.style.cursor = "grabbing";
-        const u = l.pageX, E = l.pageY, H = (u - i) * 1.5, L = (E - n) * 1.5;
-        t.scrollLeft = r - H, t.scrollTop = c - L;
-      }), t.addEventListener("dragstart", (l) => {
-        l.preventDefault();
-      }), t.style.userSelect = "none";
-    }
-    addStyles() {
-      const e = document.createElement("style");
-      e.textContent = S, document.head.appendChild(e);
-    }
-  }
-  const z = `.crs-outfit-section .crs-mobile page-component-text {
-  margin-top: 0 !important;
+  ), z = `[data-crs-title='Popular Categories'] .swiper-initialized {
+  overflow-x: auto;
+  touch-action: pan-x;
+  padding-inline: 12px;
+  min-height: max-content;
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
 
-.crs-outfit-section .crs-mobile h1 {
-  margin-top: 20px;
+[data-crs-title='Popular Categories']  h1 {
+  border: none !important;
+
 }
-`, B = (
+
+[data-crs-title='Popular Categories'] swiper::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Prevent images from blocking mouse drag */
+[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Keep links clickable but prevent text selection */
+[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] a {
+  user-select: none;
+}
+
+[data-crs-title='Popular Categories'] .swiper-wrapper {
+  display: flex;
+}
+
+
+[data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
+  aspect-ratio: 1;
+  width: 200px;
+  height: max-content;
+}
+
+@media (min-width: 1390px) {
+  [data-crs-title='Popular Categories'] .swiper-initialized {
+    min-height: max-content;
+  }
+  [data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
+    flex: 0 0 auto;
+    width: calc(100% / 6.2 - 10px);
+    height: max-content;
+    aspect-ratio: 1;
+  }
+}
+
+
+
+
+
+ page-component-hero-image:has(vimeo-player) {
+  padding-top: 0 !important;
+}`, f = class f {
+    constructor() {
+      this.eventsAborter = null;
+    }
+    init() {
+      try {
+        this.addStyles(), this.modifySection();
+      } catch (e) {
+        o(e, "Error initializing Popular Categories");
+      }
+    }
+    async modifySection() {
+      try {
+        const e = await p('[data-crs-title="Popular Categories"]');
+        e && (e.outerHTML = O, this.initSlider());
+      } catch (e) {
+        o(e, "Error modifying Popular Categories section");
+      }
+    }
+    initSlider() {
+      this.eventsAborter && this.eventsAborter.abort(), this.eventsAborter = new AbortController();
+      const e = document.querySelector(
+        ".crs-slider-section .swiper-initialized"
+      );
+      if (!e) {
+        a("Slider box not found for scroll interaction", "warn");
+        return;
+      }
+      e.style.cursor = "grab";
+      let t = !1, i = 0, s = 0, c = 0, g = 0;
+      e.addEventListener(
+        "mousedown",
+        (d) => {
+          d.preventDefault(), t = !0, i = d.pageX, s = d.pageY, c = e.scrollLeft, g = e.scrollTop;
+        },
+        { signal: this.eventsAborter.signal }
+      ), e.addEventListener(
+        "mouseleave",
+        () => {
+          t = !1, e.style.cursor = "grab";
+        },
+        { signal: this.eventsAborter.signal }
+      ), e.addEventListener(
+        "mouseup",
+        () => {
+          t = !1, e.style.cursor = "grab";
+        },
+        { signal: this.eventsAborter.signal }
+      ), e.addEventListener(
+        "mousemove",
+        (d) => {
+          if (!t) return;
+          d.preventDefault(), e.style.cursor = "grabbing";
+          const m = d.pageX, H = d.pageY, R = (m - i) * f.SCROLL_SENSITIVITY, $ = (H - s) * f.SCROLL_SENSITIVITY;
+          e.scrollLeft = c - R, e.scrollTop = g - $;
+        },
+        { signal: this.eventsAborter.signal }
+      ), e.addEventListener(
+        "dragstart",
+        (d) => {
+          d.preventDefault();
+        },
+        { signal: this.eventsAborter.signal }
+      ), e.style.userSelect = "none";
+    }
+    destroy() {
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), document.querySelectorAll(".crs-slider-section").forEach((e) => {
+        e.remove();
+      }), a("PopularCategories component destroyed", "info");
+    }
+    addStyles() {
+      if (document.getElementById("crs-popular-categories-styles")) return;
+      const e = document.createElement("style");
+      e.id = "crs-popular-categories-styles", e.textContent = z, document.head.appendChild(e);
+    }
+  };
+  f.SCROLL_SENSITIVITY = 1;
+  let _ = f;
+  const B = (
     /* HTML */
     `
   <div class="crs-outfit-section">
@@ -1668,65 +1825,100 @@
     </div>
   </div>
 `
-  );
-  class P {
+  ), A = `.crs-outfit-section .crs-mobile page-component-text {
+  margin-top: 0 !important;
+}
+
+.crs-outfit-section .crs-mobile h1 {
+  margin-top: 20px;
+}
+`;
+  class L {
     constructor() {
-      this.init();
+      this.eventsAborter = null;
     }
     init() {
-      this.addStyles(), this.render();
+      try {
+        this.addStyles(), this.render();
+      } catch (e) {
+        o(e, "Error initializing Outfit Builder section");
+      }
     }
     async render() {
       try {
-        const e = await o(".crs-target-outfit-builder"), t = document.querySelector(".crs-outfit-section");
-        t && t.remove();
-        const s = B;
-        e && (e.insertAdjacentHTML("afterbegin", s), document.querySelectorAll('[data-builder="outfit-builder"]').forEach((i) => {
-          const n = i.querySelector("a");
-          m(
-            i,
-            "exp_hp_hero_view_2",
-            "Home Page Outfit Builder",
-            "Outfit Builder Visibility",
-            0
-          ), n && n.addEventListener("click", (r) => {
-            d(
-              "exp_hp_hero_click_2",
-              "Outfit Builder",
-              "click",
-              "Home Page Outfit Builder"
-            );
-          });
-        }), document.querySelectorAll('[data-builder="pony-builder"]').forEach((i) => {
-          const n = i.querySelector("a");
-          m(
-            i,
-            "exp_hp_hero_view_3",
-            "Home Page Outfit Builder",
-            "Toy Pony Builder Visibility",
-            0
-          ), n && n.addEventListener("click", (r) => {
-            d(
-              "exp_hp_hero_click_3",
-              "Toy Pony Builder",
-              "click",
-              "Home Page Outfit Builder"
-            );
-          });
-        }));
+        const e = await p(".crs-target-outfit-builder"), t = document.querySelector(".crs-outfit-section");
+        t && (this.eventsAborter && this.eventsAborter.abort(), t.remove());
+        const i = B;
+        if (e)
+          e.insertAdjacentHTML("afterbegin", i), this.setupEvents();
+        else {
+          a("Container .crs-target-outfit-builder not found", "warn");
+          return;
+        }
       } catch (e) {
-        const t = e instanceof Error ? e.message : String(e);
-        p(t, "error");
+        o(e, "Error rendering Outfit Builder section");
       }
+    }
+    setupEvents() {
+      this.setupBuilderEvents();
+    }
+    setupBuilder(e, t) {
+      document.querySelectorAll(e.selector).forEach((i) => {
+        const s = i.querySelector("a");
+        v(
+          i,
+          e.viewEvent,
+          "Home Page Outfit Builder",
+          e.visibility,
+          0
+        ), s && s.addEventListener(
+          "click",
+          (c) => {
+            w(
+              e.clickEvent,
+              e.name,
+              "click",
+              "Home Page Outfit Builder"
+            );
+          },
+          {
+            signal: t.signal
+          }
+        );
+      });
+    }
+    setupBuilderEvents() {
+      this.eventsAborter && this.eventsAborter.abort(), this.eventsAborter = new AbortController();
+      const e = this.eventsAborter;
+      [
+        {
+          selector: '[data-builder="outfit-builder"]',
+          viewEvent: "exp_hp_hero_view_2",
+          clickEvent: "exp_hp_hero_click_2",
+          name: "Outfit Builder",
+          visibility: "Outfit Builder Visibility"
+        },
+        {
+          selector: '[data-builder="pony-builder"]',
+          viewEvent: "exp_hp_hero_view_3",
+          clickEvent: "exp_hp_hero_click_3",
+          name: "Toy Pony Builder",
+          visibility: "Toy Pony Builder Visibility"
+        }
+      ].forEach((i) => this.setupBuilder(i, e));
+    }
+    destroy() {
+      var e;
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), (e = document.querySelector(".crs-outfit-section")) == null || e.remove();
     }
     addStyles() {
       if (!document.getElementById("crs-outfit-builder-styles")) {
         const e = document.createElement("style");
-        e.id = "crs-outfit-builder-styles", e.innerHTML = z, document.head.appendChild(e);
+        e.id = "crs-outfit-builder-styles", e.textContent = A, document.head.appendChild(e);
       }
     }
   }
-  const T = "", C = (
+  const I = "", P = (
     /* HTML */
     `
   <icms-component class="crs-christmas-gifts-section">
@@ -1971,96 +2163,136 @@
     </div>
   </icms-component>
 `
-  );
-  class O {
+  ), r = class r {
     constructor() {
-      this.init();
+      this.eventsAborter = null, this.linkConfigs = [
+        {
+          selector: 'a[href="/gifting"]',
+          eventId: "exp_hp_hero_click_4",
+          eventDesc: "Christmas Gifting"
+        },
+        {
+          selector: 'a[href="/gifts/gift-sets"], span[href="/gifts/gift-sets"]',
+          eventId: "exp_hp_hero_click_5",
+          eventDesc: "Shop Gift Sets",
+          isSpanNavigation: !0
+        }
+      ];
     }
     init() {
-      this.addStyles(), this.render();
+      try {
+        this.addStyles(), this.render();
+      } catch (e) {
+        this.handleError(e, "Initialization");
+      }
+    }
+    handleError(e, t) {
+      const i = e instanceof Error ? e.message : String(e);
+      a(`ChristmasGifts ${t}: ${i}`, "error");
     }
     async render() {
       try {
-        const e = await o(".crs-target-outfit-builder"), t = document.querySelector(
-          ".crs-christmas-gifts-section"
-        );
-        if (t && t.remove(), e) {
-          e.insertAdjacentHTML("beforeend", C);
-          const s = document.querySelector(
-            ".crs-christmas-gifts-section"
-          ), i = document.querySelectorAll(
-            '.crs-christmas-gifts-section a[href="/gifting"]'
-          ), n = document.querySelectorAll(
-            '.crs-christmas-gifts-section a[href="/gifts/gift-sets"], .crs-christmas-gifts-section span[href="/gifts/gift-sets"]'
-          );
-          i.forEach((r) => {
-            r.addEventListener("click", (c) => {
-              d(
-                "exp_hp_hero_click_4",
-                "Christmas Gifting",
-                "click",
-                "Home Page Christmas Gifting"
-              );
-            });
-          }), n.forEach((r) => {
-            r.addEventListener("click", (c) => {
-              const l = r.tagName.toLowerCase();
-              d(
-                "exp_hp_hero_click_5",
-                "Shop Gift Sets",
-                "click",
-                "Home Page Christmas Gifting"
-              ), l === "span" && (c.stopPropagation(), c.preventDefault(), c.stopImmediatePropagation(), location.href = "/gifts/gift-sets");
-            });
-          }), s && m(
-            s,
-            "exp_hp_hero_view_4",
-            "Home Page Christmas Gifting",
-            "Visibility",
-            0
-          );
+        const e = await p(r.CONTAINER_SELECTOR);
+        if (!e) {
+          a(`Container ${r.CONTAINER_SELECTOR} not found`, "warn");
+          return;
         }
+        this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupVisibilityTracking();
       } catch (e) {
-        const t = e instanceof Error ? e.message : String(e);
-        p(t, "error");
+        this.handleError(e, "Rendering");
       }
+    }
+    cleanupExistingSection() {
+      const e = document.querySelector(
+        r.SECTION_SELECTOR
+      );
+      e && (this.eventsAborter && this.eventsAborter.abort(), e.remove(), a("Existing Christmas gifts section removed", "info"));
+    }
+    insertSection(e) {
+      e.insertAdjacentHTML("beforeend", P), a("Christmas gifts section inserted", "info");
+    }
+    setupEventListeners() {
+      this.eventsAborter && this.eventsAborter.abort(), this.eventsAborter = new AbortController(), this.linkConfigs.forEach((e) => {
+        this.setupLinksForConfig(e);
+      });
+    }
+    setupLinksForConfig(e) {
+      const t = `${r.SECTION_SELECTOR} ${e.selector}`, i = document.querySelectorAll(t);
+      i.forEach((s) => {
+        this.attachClickListener(s, e);
+      }), a(`Setup ${i.length} listeners for: ${e.eventDesc}`, "info");
+    }
+    attachClickListener(e, t) {
+      e.addEventListener(
+        "click",
+        (i) => {
+          w(
+            t.eventId,
+            t.eventDesc,
+            "click",
+            "Home Page Christmas Gifting"
+          ), t.isSpanNavigation && e.tagName.toLowerCase() === "span" && this.handleSpanNavigation(i, e), a(`Click tracked: ${t.eventDesc}`, "info");
+        },
+        { signal: this.eventsAborter.signal }
+      );
+    }
+    handleSpanNavigation(e, t) {
+      e.stopPropagation(), e.preventDefault(), e.stopImmediatePropagation();
+      const i = t.getAttribute("href");
+      i ? window.location.href = i : a("No href found for span navigation", "warn");
+    }
+    setupVisibilityTracking() {
+      const e = document.querySelector(r.SECTION_SELECTOR);
+      e ? (v(
+        e,
+        "exp_hp_hero_view_4",
+        "Home Page Christmas Gifting",
+        "Visibility",
+        r.VISIBILITY_THRESHOLD
+      ), a("Visibility tracking setup for Christmas gifts section", "info")) : a("Christmas gifts section not found for visibility tracking", "warn");
     }
     addStyles() {
-      if (!document.getElementById("crs-christmas-gifts-styles")) {
-        const e = document.createElement("style");
-        e.id = "crs-christmas-gifts-styles", e.innerHTML = T, document.head.appendChild(e);
-      }
+      if (document.getElementById(r.STYLES_ID)) return;
+      const e = document.createElement("style");
+      e.id = r.STYLES_ID, e.textContent = I, document.head.appendChild(e);
     }
-  }
-  f({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(a, e, t, s, i, n) {
-    a.hj = a.hj || function() {
-      (a.hj.q = a.hj.q || []).push(arguments);
-    }, a._hjSettings = { hjid: 2667925, hjsv: 6 }, i = e.getElementsByTagName("head")[0], n = e.createElement("script"), n.async = !0, n.src = t + a._hjSettings.hjid + s + a._hjSettings.hjsv, i && i.appendChild(n);
+    destroy() {
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null);
+      const e = document.querySelector(r.SECTION_SELECTOR);
+      e && e.remove(), a("ChristmasGifts component destroyed", "info");
+    }
+  };
+  r.STYLES_ID = "crs-christmas-gifts-styles", r.CONTAINER_SELECTOR = ".crs-target-outfit-builder", r.SECTION_SELECTOR = ".crs-christmas-gifts-section", r.VISIBILITY_THRESHOLD = 0;
+  let S = r;
+  E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(n, e, t, i, s, c) {
+    n.hj = n.hj || function() {
+      (n.hj.q = n.hj.q || []).push(arguments);
+    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], c = e.createElement("script"), c.async = !0, c.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(c);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class j {
     constructor() {
-      this.previousUrl = "", this.init();
+      this.isInitialized = !1, this.previousUrl = location.href, this.hero = new x(), this.hideSections = new b(), this.popularCategories = new _(), this.outfitBuilder = new L(), this.christmasGifts = new S(), this.init();
     }
     init() {
-      var e, t, s, i, n, r, c, l;
-      console.log("defaultCountry", ((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((i = (s = window.autoInitData) == null ? void 0 : s.website) == null ? void 0 : i.defaultCountry) !== "US"), !(((r = (n = window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : r.defaultCountry) !== "GB" && ((l = (c = window.autoInitData) == null ? void 0 : c.website) == null ? void 0 : l.defaultCountry) !== "US") && (this.previousUrl = "", this.imagePreloading(), this.interceptHistoryAPI(async () => {
-        await o("footer"), p("init components"), this.initComponents();
+      var e, t, i, s;
+      ((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((s = (i = window.autoInitData) == null ? void 0 : i.website) == null ? void 0 : s.defaultCountry) !== "US" || (this.imagePreloading(), this.interceptHistoryAPI(async () => {
+        a("URL change detected, re-initializing components"), this.destroyComponents(), this.initComponents();
       }), this.initComponents());
     }
     initComponents() {
-      console.log(
-        "Initializing components",
-        location.pathname === "/" || location.pathname === "/us"
-      ), (location.pathname === "/" || location.pathname === "/us/") && (this.addStyles(), new x(), new b(), new q(), new P(), new O());
+      (location.pathname === "/" || location.pathname === "/us/") && (a("Initializing homepage components"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
+    }
+    destroyComponents() {
+      this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.christmasGifts.destroy();
     }
     interceptHistoryAPI(e) {
       new MutationObserver(() => {
-        const s = location.href;
-        this.previousUrl !== s && (this.previousUrl = s, e());
-      }).observe(document.body, { childList: !0, subtree: !0 });
+        const i = location.href;
+        this.previousUrl !== i && (this.previousUrl = i, e());
+      }).observe(document.body, { childList: !0 });
     }
     imagePreloading() {
-      h.forEach((e) => {
+      y.forEach((e) => {
         const t = `<link rel="preload" as="image" href="${e.images.mob}" media="(max-width: 700px)" />
       <link rel="preload" as="image" href="${e.images.desktop}" media="(min-width: 701px)" />`;
         document.head.insertAdjacentHTML("beforeend", t);
@@ -2068,7 +2300,7 @@
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = w, document.head.appendChild(e);
+      e.textContent = k, document.head.appendChild(e);
     }
   }
   new j();
