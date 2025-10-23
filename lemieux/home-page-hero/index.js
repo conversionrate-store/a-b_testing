@@ -7,8 +7,8 @@
       event_desc: e,
       event_type: t,
       event_loc: s
-    }), g(`Event: ${a} | ${e} | ${t} | ${s}`, "success");
-  }, c = (a) => new Promise((e) => {
+    }), p(`Event: ${a} | ${e} | ${t} | ${s}`, "success");
+  }, o = (a) => new Promise((e) => {
     const t = document.querySelector(a);
     t && e(t);
     const s = new MutationObserver(() => {
@@ -25,17 +25,17 @@
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   }, m = (a, e, t, s, i = 1e3, n = 0.5) => {
-    let r, o;
+    let r, c;
     if (r = new IntersectionObserver(
       function(l) {
-        l[0].isIntersecting === !0 ? o = setTimeout(() => {
+        l[0].isIntersecting === !0 ? c = setTimeout(() => {
           d(
             e,
             l[0].target.dataset.visible || s || "",
             "view",
             t
           ), r.disconnect();
-        }, i) : (g("Element is not fully visible", "warn"), clearTimeout(o));
+        }, i) : (p("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [n] }
     ), typeof a == "string") {
@@ -43,7 +43,7 @@
       l && r.observe(l);
     } else
       r.observe(a);
-  }, g = (a, e = "info") => {
+  }, p = (a, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -308,14 +308,14 @@
     height: auto;
   }
 }
-`, p = "https://conversionrate-store.github.io/a-b_images/lemieux", h = [
+`, g = "https://conversionrate-store.github.io/a-b_images/lemieux", h = [
     {
       id: "new-arrivals",
       href: "/new-in/aw25",
       title: { sub: "New Arrivals", main: "AW25", collection: "Collection" },
       images: {
-        desktop: `${p}/hero_new_arrivals_desktop.webp`,
-        mob: `${p}/hero_new_arrivals_desktop.webp`
+        desktop: `${g}/hero_new_arrivals_desktop.webp`,
+        mob: `${g}/hero_new_arrivals_desktop.webp`
       }
     },
     {
@@ -324,7 +324,7 @@
       title: "Clothing",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/i/t/it07156_lifestyle_ladies_base_layer_damson_2.jpg",
-        mob: `${p}/hero_clothing_2.webp`
+        mob: `${g}/hero_clothing_2.webp`
       }
     },
     {
@@ -333,7 +333,7 @@
       title: "Horse Wear",
       images: {
         desktop: "https://www.lemieux.com/static/media/catalog/product/a/u/au25day4_12842.jpg",
-        mob: `${p}/hero_horse_wear.webp`
+        mob: `${g}/hero_horse_wear.webp`
       }
     },
     {
@@ -341,8 +341,8 @@
       href: "/toys",
       title: "Toys",
       images: {
-        desktop: `${p}/toys_desk_2.webp`,
-        mob: `${p}/toys_mob.webp`
+        desktop: `${g}/toys_desk_2.webp`,
+        mob: `${g}/toys_mob.webp`
       }
     }
   ];
@@ -354,7 +354,7 @@
       this.addStyles(), this.changeHeroImageSection();
     }
     async changeHeroImageSection() {
-      const e = await c("page-component-hero-image");
+      const e = await o("page-component-hero-image");
       e != null && e.querySelector(".crs-hero") || e && (e.innerHTML = this.renderNewHeroSection(), this.addEventListeners(e));
     }
     renderNewHeroSection() {
@@ -438,18 +438,10 @@
       this.resizeObserver = null, this.resizeTimeout = null, this.init();
     }
     init() {
-      this.addStyles(), this.hideSection(), this.changeSectionCopy(), setTimeout(() => {
-        this.changeSectionCopy(), this.addStyles(), this.hideSection();
-      }, 1e3), this.observeResize();
-      const e = setInterval(() => {
-        this.changeSectionCopy(), this.addStyles(), this.hideSection();
-      }, 500);
-      setTimeout(() => {
-        clearInterval(e);
-      }, 5e3);
+      this.addStyles(), this.hideSection(), this.changeSectionCopy(), this.observeResize();
     }
     async changeSectionCopy() {
-      const e = await c(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
+      const e = await o(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
         ":scope > icms-component"
       );
       t == null || t.forEach((s) => {
@@ -459,7 +451,7 @@
           if (s.querySelector("vimeo-player") || (s.dataset.crsTitle = "Popular Categories", i.__crsObserver))
             return;
           i.textContent = "Popular Categories";
-          const r = new MutationObserver((o) => {
+          const r = new MutationObserver((c) => {
             var u;
             (((u = i.textContent) == null ? void 0 : u.trim()) || "").includes("Shop Popular Categories") && (i.textContent = "Popular Categories");
           });
@@ -481,27 +473,27 @@
       const e = () => {
         this.resizeTimeout && clearTimeout(this.resizeTimeout), this.resizeTimeout = window.setTimeout(() => {
           console.log("Resize detected, re-evaluating sections..."), this.hideSection();
-        }, 150);
+        }, 500);
       };
-      this.resizeObserver = new ResizeObserver(e), c(".page-view-boundary").then((t) => {
+      this.resizeObserver = new ResizeObserver(e), o(".page-view-boundary").then((t) => {
         t && this.resizeObserver && (this.resizeObserver.observe(t), console.log("ResizeObserver attached to .page-view-boundary"));
       }), this.resizeObserver.observe(document.body);
     }
     async hideSection() {
-      const e = await c(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
+      const e = await o(".page-view-boundary"), t = e == null ? void 0 : e.querySelectorAll(
         ":scope > icms-component"
       );
       t == null || t.forEach((s) => {
         var r;
         const i = s.querySelector("h1, h2, h3"), n = (r = s.querySelector(".hero")) == null ? void 0 : r.textContent;
         s.classList.add("crs-top-section"), _.some(
-          (o) => {
+          (c) => {
             var l;
-            return (l = i == null ? void 0 : i.textContent) == null ? void 0 : l.includes(o);
+            return (l = i == null ? void 0 : i.textContent) == null ? void 0 : l.includes(c);
           }
-        ) && (s.dataset.crsHide = "true"), t == null || t.forEach((o) => {
+        ) && (s.dataset.crsHide = "true"), t == null || t.forEach((c) => {
           var l;
-          ((l = o.previousElementSibling) == null ? void 0 : l.dataset.crsHide) === "true" && !o.querySelector("h1, h3") && !o.textContent.includes("@lemieuxproductsofficial") && (o.dataset.crsHide = "true"), o.textContent.includes("@lemieuxproductsofficial") && (o.dataset.crsHide = "false");
+          ((l = c.previousElementSibling) == null ? void 0 : l.dataset.crsHide) === "true" && !c.querySelector("h1, h3") && !c.textContent.includes("@lemieuxproductsofficial") && (c.dataset.crsHide = "true"), c.textContent.includes("@lemieuxproductsofficial") && (c.dataset.crsHide = "false");
         }), n && n.includes("Outfit Builder") && (s.classList.add("crs-target-outfit-builder"), s.innerHTML = "");
       });
     }
@@ -948,14 +940,14 @@
       this.addStyles(), this.modifySection();
     }
     async modifySection() {
-      const e = await c('[data-crs-title="Popular Categories"]');
+      const e = await o('[data-crs-title="Popular Categories"]');
       e && (e.outerHTML = k);
       const t = document.querySelector(".crs-slider-section .swiper-initialized");
       if (!t) return;
       t.style.cursor = "grab";
-      let s = !1, i, n, r, o;
+      let s = !1, i, n, r, c;
       t.addEventListener("mousedown", (l) => {
-        l.preventDefault(), s = !0, i = l.pageX, n = l.pageY, r = t.scrollLeft, o = t.scrollTop;
+        l.preventDefault(), s = !0, i = l.pageX, n = l.pageY, r = t.scrollLeft, c = t.scrollTop;
       }), t.addEventListener("mouseleave", () => {
         s = !1, t.style.cursor = "grab";
       }), t.addEventListener("mouseup", () => {
@@ -964,21 +956,10 @@
         if (!s) return;
         l.preventDefault(), t.style.cursor = "grabbing";
         const u = l.pageX, E = l.pageY, H = (u - i) * 1.5, L = (E - n) * 1.5;
-        t.scrollLeft = r - H, t.scrollTop = o - L;
+        t.scrollLeft = r - H, t.scrollTop = c - L;
       }), t.addEventListener("dragstart", (l) => {
         l.preventDefault();
       }), t.style.userSelect = "none";
-    }
-    async observe() {
-      new MutationObserver((t) => {
-        t.forEach(async (s) => {
-          (await c(
-            '[data-crs-title="Popular Categories"] swiper'
-          )).querySelector(".crs-swiper-wrapper") || g(
-            "Detected changes in Popular Categories, reapplying modifications"
-          );
-        });
-      }).observe(document, { childList: !0, subtree: !0 }), this.modifySection();
     }
     addStyles() {
       const e = document.createElement("style");
@@ -1697,7 +1678,7 @@
     }
     async render() {
       try {
-        const e = await c(".crs-target-outfit-builder"), t = document.querySelector(".crs-outfit-section");
+        const e = await o(".crs-target-outfit-builder"), t = document.querySelector(".crs-outfit-section");
         t && t.remove();
         const s = B;
         e && (e.insertAdjacentHTML("afterbegin", s), document.querySelectorAll('[data-builder="outfit-builder"]').forEach((i) => {
@@ -1735,7 +1716,7 @@
         }));
       } catch (e) {
         const t = e instanceof Error ? e.message : String(e);
-        g(t, "error");
+        p(t, "error");
       }
     }
     addStyles() {
@@ -2000,7 +1981,7 @@
     }
     async render() {
       try {
-        const e = await c(".crs-target-outfit-builder"), t = document.querySelector(
+        const e = await o(".crs-target-outfit-builder"), t = document.querySelector(
           ".crs-christmas-gifts-section"
         );
         if (t && t.remove(), e) {
@@ -2013,7 +1994,7 @@
             '.crs-christmas-gifts-section a[href="/gifts/gift-sets"], .crs-christmas-gifts-section span[href="/gifts/gift-sets"]'
           );
           i.forEach((r) => {
-            r.addEventListener("click", (o) => {
+            r.addEventListener("click", (c) => {
               d(
                 "exp_hp_hero_click_4",
                 "Christmas Gifting",
@@ -2022,14 +2003,14 @@
               );
             });
           }), n.forEach((r) => {
-            r.addEventListener("click", (o) => {
+            r.addEventListener("click", (c) => {
               const l = r.tagName.toLowerCase();
               d(
                 "exp_hp_hero_click_5",
                 "Shop Gift Sets",
                 "click",
                 "Home Page Christmas Gifting"
-              ), l === "span" && (o.stopPropagation(), o.preventDefault(), o.stopImmediatePropagation(), location.href = "/gifts/gift-sets");
+              ), l === "span" && (c.stopPropagation(), c.preventDefault(), c.stopImmediatePropagation(), location.href = "/gifts/gift-sets");
             });
           }), s && m(
             s,
@@ -2041,7 +2022,7 @@
         }
       } catch (e) {
         const t = e instanceof Error ? e.message : String(e);
-        g(t, "error");
+        p(t, "error");
       }
     }
     addStyles() {
@@ -2061,9 +2042,9 @@
       this.previousUrl = "", this.init();
     }
     init() {
-      var e, t, s, i, n, r, o, l;
-      console.log("defaultCountry", ((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((i = (s = window.autoInitData) == null ? void 0 : s.website) == null ? void 0 : i.defaultCountry) !== "US"), !(((r = (n = window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : r.defaultCountry) !== "GB" && ((l = (o = window.autoInitData) == null ? void 0 : o.website) == null ? void 0 : l.defaultCountry) !== "US") && (this.previousUrl = "", this.imagePreloading(), this.interceptHistoryAPI(async () => {
-        await c("footer"), g("init components"), this.initComponents();
+      var e, t, s, i, n, r, c, l;
+      console.log("defaultCountry", ((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((i = (s = window.autoInitData) == null ? void 0 : s.website) == null ? void 0 : i.defaultCountry) !== "US"), !(((r = (n = window.autoInitData) == null ? void 0 : n.website) == null ? void 0 : r.defaultCountry) !== "GB" && ((l = (c = window.autoInitData) == null ? void 0 : c.website) == null ? void 0 : l.defaultCountry) !== "US") && (this.previousUrl = "", this.imagePreloading(), this.interceptHistoryAPI(async () => {
+        await o("footer"), p("init components"), this.initComponents();
       }), this.initComponents());
     }
     initComponents() {
