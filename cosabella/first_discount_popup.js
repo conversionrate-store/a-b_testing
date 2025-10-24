@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const _ = `#attentive_creative {
+  const f = `#attentive_creative {
   display: none !important;
 }
 
@@ -152,6 +152,19 @@ body {
   font-family: Cambon;
   max-width: unset;
 }
+.crs_first_popup_discount .main_content .text_content .step.step_2 .subtitle {
+  font-size: 22px;
+  line-height: 35px;
+  font-family: Cambon;
+}
+.crs_first_popup_discount .main_content .text_content .step.step_2 .subtitle b {
+  color: #d7857a;
+  font-weight: 400;
+}
+.crs_first_popup_discount .main_content .text_content .step.step_2 button {
+  background: #d7857a;
+  color: #000000;
+}
 
 .ss__result__details,
 .product-tile__info {
@@ -240,20 +253,20 @@ body {
 .crs_discount_popup_btn.active {
   opacity: 1;
   pointer-events: auto;
-}/*# sourceMappingURL=style.css.map */`, r = (c) => new Promise((t) => {
-    const n = document.querySelector(c);
+}/*# sourceMappingURL=style.css.map */`, c = (r) => new Promise((t) => {
+    const n = document.querySelector(r);
     n && t(n);
     const e = new MutationObserver(() => {
-      const s = document.querySelector(c);
+      const s = document.querySelector(r);
       s && (t(s), e.disconnect());
     });
     e.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: c, dev: t }) => {
+  }), m = ({ name: r, dev: t }) => {
     console.log(
-      `%c EXP: ${c} (DEV: ${t})`,
+      `%c EXP: ${r} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -319,9 +332,9 @@ body {
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const o = (c) => new l(c), m = (c) => {
+  const o = (r) => new l(r), h = (r) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", c, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
     }, 1e3);
   }, d = {
     close: (
@@ -333,7 +346,7 @@ body {
     </svg>
   `
     )
-  }, h = (
+  }, b = (
     /* HTML */
     `
   <div class="crs_first_popup_overlay">
@@ -358,7 +371,7 @@ body {
           <div class="step_2 step">
             <img src="" alt="" />
             <p class="title">Thank you for signing up!</p>
-            <p class="subtitle">Your 15% OFF welcome discount will be applied at checkout</p>
+            <p class="subtitle">Your <b>15% OFF</b> welcome discount will be applied at checkout</p>
             <button>Go to Products</button>
           </div>
         </div>
@@ -372,7 +385,7 @@ body {
     </div>
   </div>
 `
-  ), b = (
+  ), g = (
     /* HTML */
     `
   <div class="crs_discount_popup_btn">
@@ -381,26 +394,44 @@ body {
   </div>
 `
   );
-  f({ name: "Popup discount", dev: "YK" }), m("popup_discount");
-  class g {
+  m({ name: "Popup discount", dev: "YK" }), h("popup_discount");
+  class x {
     constructor() {
       this.init();
     }
     async init() {
       const t = document.createElement("link");
-      t.rel = "stylesheet", t.href = "https://fonts.googleapis.com/css2?family=Italianno&family=Source+Sans+3:ital@0;1&display=swap", document.head.appendChild(t), document.head.insertAdjacentHTML("beforeend", `<style>${_}</style>`), await r("body"), document.body.insertAdjacentHTML("beforeend", h), document.body.insertAdjacentHTML("beforeend", b), this.addLogic(), this.checkoutListener(), this.firstPopupShow(), this.addPriceDiscount(), this.addPriceDiscountProductSlider(), this.sliderObserver(), this.cartChangePrice(), this.cartChangePriceObserver(), this.priceObserver(".atc-price.js-product-price");
+      t.rel = "stylesheet", t.href = "https://fonts.googleapis.com/css2?family=Italianno&family=Source+Sans+3:ital@0;1&display=swap", document.head.appendChild(t), document.head.insertAdjacentHTML("beforeend", `<style>${f}</style>`), await c("body"), document.body.insertAdjacentHTML("beforeend", b), document.body.insertAdjacentHTML("beforeend", g), this.addLogic(), this.checkoutListener(), this.firstPopupShow(), this.addPriceDiscount(), this.addPriceDiscountProductSlider(), this.sliderObserver(), this.cartChangePrice(), this.cartChangePriceObserver(), this.priceObserver(".atc-price.js-product-price");
     }
     addLogic() {
-      const t = o(".crs_first_popup_overlay"), n = o(".crs_first_popup_overlay .close"), e = o(".crs_first_popup_overlay .get_discount_btn"), s = o('.crs_first_popup_overlay input[name="email"]'), i = o(".crs_first_popup_overlay .step_1"), a = o(".crs_first_popup_overlay .step_2"), p = o(".crs_first_popup_overlay .step_2 button"), u = o(".crs_discount_popup_btn"), x = o(".crs_discount_popup_btn svg");
+      const t = o(".crs_first_popup_overlay"), n = o(".crs_first_popup_overlay .close"), e = o(".crs_first_popup_overlay .get_discount_btn"), s = o('.crs_first_popup_overlay input[name="email"]'), i = o(".crs_first_popup_overlay .step_1"), a = o(".crs_first_popup_overlay .step_2"), p = o(".crs_first_popup_overlay .step_2 button"), u = o(".crs_discount_popup_btn"), v = o(".crs_discount_popup_btn svg");
       n.on("click", () => {
         t.removeClass("active"), u.addClass("active");
       }), u.on("click", () => {
         t.addClass("active"), u.removeClass("active");
-      }), x.on("click", () => {
+      }), v.on("click", () => {
         u.removeClass("active");
       }), e.on("click", () => {
-        const v = s.elements[0].value.trim();
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? (i.removeClass("active"), a.addClass("active"), localStorage.setItem("cosabella_welcome_discount", "0"), this.addPriceDiscount(), this.changeProductPrice(), this.addPriceDiscountProductSlider()) : s.elements[0].classList.add("error");
+        const _ = s.elements[0].value.trim();
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_)) {
+          i.removeClass("active"), a.addClass("active"), localStorage.setItem("cosabella_welcome_discount", "0");
+          const y = {
+            url: window.location.href,
+            email: _
+          };
+          fetch(
+            "https://script.google.com/macros/s/AKfycbxc794IKjZvQYdTDtFDGv7kEzb8DLrSSDLKns45wlf12Znp1dO3HNzY1s3kjyNWgcSG/exec",
+            {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(y)
+            }
+          ), this.addPriceDiscount(), this.changeProductPrice(), this.addPriceDiscountProductSlider();
+        } else
+          s.elements[0].classList.add("error");
       }), e.on("input", () => {
         s.elements[0].classList.remove("error");
       }), p.on("click", () => {
@@ -416,14 +447,14 @@ body {
     async addPriceDiscount() {
       const t = localStorage.getItem("cosabella_welcome_discount");
       if (!t || t === "1") return;
-      await r(".ss__product--wrapper"), o(".ss__product--wrapper").elements.forEach((e) => {
+      await c(".ss__product--wrapper"), o(".ss__product--wrapper").elements.forEach((e) => {
         var i, a, p;
         const s = (i = e.querySelector(".price__value")) == null ? void 0 : i.textContent.split("$")[1];
         s && (e.classList.add("has_discount"), (a = e.querySelector(".ss__result__details")) == null || a.insertAdjacentHTML("beforeend", '<span class="crs_discount_label">-15%</span>'), (p = e.querySelector(".pricing__values")) == null || p.insertAdjacentHTML("beforeend", `<span class="discounted_price">$${(+s * 0.85).toFixed(2)}</span>`));
       });
     }
     async addPriceDiscountProductSlider() {
-      await r(".product-tile__info"), o(".product-tile__info").elements.forEach((n) => {
+      await c(".product-tile__info"), o(".product-tile__info").elements.forEach((n) => {
         var s, i;
         n.insertAdjacentHTML("beforeend", '<span class="crs_discount_label">-15%</span>');
         const e = (s = n.querySelector(".price__value")) == null ? void 0 : s.textContent.split("$")[1];
@@ -431,11 +462,11 @@ body {
       });
     }
     async firstPopupShow() {
-      const t = localStorage.getItem("cosabella_welcome_discount_showed"), n = localStorage.getItem("cosabella_welcome_discount");
-      t || (o(".crs_first_popup_overlay").addClass("active"), localStorage.setItem("cosabella_welcome_discount_showed", "1")), t && !n && o(".crs_discount_popup_btn").addClass("active");
+      const t = await c("#attentive_creative"), n = localStorage.getItem("cosabella_welcome_discount_showed"), e = localStorage.getItem("cosabella_welcome_discount");
+      t && !n && (o(".crs_first_popup_overlay").addClass("active"), localStorage.setItem("cosabella_welcome_discount_showed", "1")), t && n && !e && o(".crs_discount_popup_btn").addClass("active");
     }
     async cartChangePrice() {
-      await r(".total--price");
+      await c(".total--price");
       const t = o(".total--price .total__value").text().split("$")[1];
       !t || o(".total--price .discounted_price").elements.length > 0 || o(".total--price").elements[0].insertAdjacentHTML(
         "beforeend",
@@ -447,7 +478,7 @@ body {
     async changeProductPrice() {
       var s;
       if (localStorage.getItem("cosabella_welcome_discount") !== "0") return;
-      await r(".atc-price.js-product-price");
+      await c(".atc-price.js-product-price");
       const n = o(".atc-price.js-product-price"), e = (s = n.attr("data-oprice")) == null ? void 0 : s.split("$")[1];
       e && (n.text(`$${(+e * 0.85).toFixed(2)}`), o(".form--product__add-to-cart").elements[0] && o(".form--product__add-to-cart").elements[0].insertAdjacentHTML(
         "beforeend",
@@ -455,7 +486,7 @@ body {
       ));
     }
     async sliderObserver() {
-      await r(".js-product-recommendations");
+      await c(".js-product-recommendations");
       const t = document.querySelector(".js-product-recommendations");
       if (console.log(t), !t) return;
       const n = new MutationObserver(async () => {
@@ -464,7 +495,7 @@ body {
       n.observe(t, { childList: !0, subtree: !0 });
     }
     async priceObserver(t) {
-      await r(t);
+      await c(t);
       const n = document.querySelector(t);
       if (!n) return;
       const e = new MutationObserver(async () => {
@@ -473,7 +504,7 @@ body {
       e.observe(n, { childList: !0, subtree: !0 });
     }
     async cartChangePriceObserver() {
-      await r(".cart--flyout");
+      await c(".cart--flyout");
       const t = document.querySelector(".cart--flyout");
       if (console.log(t), !t) return;
       const n = new MutationObserver(async () => {
@@ -482,6 +513,6 @@ body {
       n.observe(t, { childList: !0, subtree: !0 });
     }
   }
-  new g();
+  new x();
 })();
 //# sourceMappingURL=index.js.map
