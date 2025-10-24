@@ -77,7 +77,7 @@
     display: none;
   }
 }
-`, h = "https://conversionrate-store.github.io/a-b_images/lemieux", y = [
+`, h = "https://ab.conversionrate.store/lemieux/home-page-hero/img", y = [
     {
       id: "new-arrivals",
       href: "/new-in/aw25",
@@ -119,7 +119,11 @@
     const t = n instanceof Error ? n.message : String(n);
     a(`${e}: ${t}`, "error");
   }
-  const T = `.crs-hero {
+  const T = `icms-component:has(.crs-hero) > div:not(.crs-hero) {
+  display: none;
+}
+
+.crs-hero {
   --gap: 8px;
   display: flex;
   gap: var(--gap);
@@ -350,9 +354,9 @@
     height: auto;
   }
 }
-`, l = class l {
+`, r = class r {
     constructor() {
-      this.eventsAborter = null;
+      this.eventsAborter = null, this.mutationObserver = null;
     }
     init() {
       try {
@@ -363,22 +367,29 @@
     }
     async changeHeroImageSection() {
       try {
-        const e = await p(l.TARGET_SELECTOR);
+        const e = await p(r.TARGET_SELECTOR);
         if (!e) {
-          console.warn(`Target ${l.TARGET_SELECTOR} not found`);
+          console.warn(`Target ${r.TARGET_SELECTOR} not found`);
           return;
         }
-        if (e.querySelector(l.HERO_CLASS)) {
+        if (e.querySelector(r.HERO_CLASS)) {
           console.log("Hero section already exists, skipping...");
           return;
         }
-        this.replaceHeroContent(e), this.setupEventListeners(e);
+        const i = () => {
+          this.replaceHeroContent(e), this.setupEventListeners(e);
+        };
+        this.mutationObserver = new MutationObserver((s) => {
+          s.forEach(() => {
+            console.log("Hero section missing, replacing...", e.querySelector(r.HERO_CLASS)), e.querySelector(r.HERO_CLASS) || i();
+          });
+        }), this.mutationObserver.observe(e, { childList: !0, subtree: !0 }), i();
       } catch (e) {
         o(e, "Error changing hero image section");
       }
     }
     replaceHeroContent(e) {
-      this.eventsAborter && this.eventsAborter.abort(), e.innerHTML = this.renderNewHeroSection();
+      this.eventsAborter && this.eventsAborter.abort(), console.log("Replacing hero content", e), e.insertAdjacentHTML("beforeend", this.renderNewHeroSection());
     }
     renderNewHeroSection() {
       const e = y.find((i) => i.id === "new-arrivals"), t = y.filter((i) => i.id !== "new-arrivals");
@@ -396,8 +407,15 @@
     }
     renderItem(e) {
       const t = this.renderTitle(e.title), i = this.generateAltText(e.title);
-      return `
-      <a href="${e.href}" class="crs-hero-block" data-hero="${e.id}" data-title="${this.getDataTitle(e.title)}">
+      return (
+        /* HTML */
+        `
+      <a
+        href="${e.href}"
+        class="crs-hero-block"
+        data-hero="${e.id}"
+        data-title="${this.getDataTitle(e.title)}"
+      >
         <picture>
           <source media="(min-width: 701px)" srcset="${e.images.desktop}" />
           <source media="(max-width: 700px)" srcset="${e.images.mob}" />
@@ -408,14 +426,27 @@
           
         </div>
       </a>
-    `;
+    `
+      );
     }
     renderTitle(e) {
-      return typeof e == "string" ? `<div class="crs-block-title">${e}</div>` : `<div class="crs-block-title">${[
-        e.sub ? `<span class="sub-title">${e.sub}</span>` : "",
-        e.main ? `<span class="main-title">${e.main}</span>` : "",
-        e.collection ? `<span class="collection-title">${e.collection}</span>` : ""
-      ].filter(Boolean).join("")}</div>`;
+      return typeof e == "string" ? `<div class="crs-block-title">${e}</div>` : (
+        /* HTML */
+        `<div class="crs-block-title">${[
+          e.sub ? (
+            /* HTML */
+            `<span class="sub-title">${e.sub}</span>`
+          ) : "",
+          e.main ? (
+            /* HTML */
+            `<span class="main-title">${e.main}</span>`
+          ) : "",
+          e.collection ? (
+            /* HTML */
+            `<span class="collection-title">${e.collection}</span>`
+          ) : ""
+        ].filter(Boolean).join("")}</div>`
+      );
     }
     generateAltText(e) {
       return typeof e == "string" ? e : [e.sub, e.main, e.collection].filter(Boolean).join(" ");
@@ -453,21 +484,21 @@
         "exp_hp_hero_view_1",
         "Home page Hero Section",
         e.dataset.title || "",
-        l.VISIBILITY_THRESHOLD
+        r.VISIBILITY_THRESHOLD
       );
     }
     addStyles() {
-      if (document.getElementById(l.STYLES_ID)) return;
+      if (document.getElementById(r.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = l.STYLES_ID, e.textContent = T, document.head.appendChild(e);
+      e.id = r.STYLES_ID, e.textContent = T, document.head.appendChild(e);
     }
     destroy() {
       var e;
-      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), (e = document == null ? void 0 : document.querySelector(l.HERO_CLASS)) == null || e.remove(), console.log("Hero component destroyed");
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.mutationObserver && (this.mutationObserver.disconnect(), this.mutationObserver = null), (e = document == null ? void 0 : document.querySelector(r.HERO_CLASS)) == null || e.remove(), console.log("Hero component destroyed");
     }
   };
-  l.STYLES_ID = "crs-hero-styles", l.VISIBILITY_THRESHOLD = 0, l.TARGET_SELECTOR = "page-component-hero-image", l.HERO_CLASS = ".crs-hero";
-  let x = l;
+  r.STYLES_ID = "crs-hero-styles", r.VISIBILITY_THRESHOLD = 0, r.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", r.HERO_CLASS = ".crs-hero";
+  let x = r;
   const C = `[data-crs-hide='true']:not([data-crs-no-hide]) {
   display: none !important;
 }
@@ -482,7 +513,7 @@
 
 /* .page-view-boundary > icms-component:not(.crs-top-section) {
   display: none !important;
-} */`, q = [
+} */`, O = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
@@ -544,7 +575,7 @@
     }
     checkTitleMarkers(e) {
       const t = e.querySelector("h1, h2, h3");
-      q.some(
+      O.some(
         (i) => {
           var s;
           return (s = t == null ? void 0 : t.textContent) == null ? void 0 : s.includes(i);
@@ -624,7 +655,7 @@
   };
   u.RESIZE_DEBOUNCE_MS = 500, u.OBSERVER_CLEANUP_MS = 1e3;
   let b = u;
-  const O = (
+  const q = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
@@ -1066,7 +1097,7 @@
     async modifySection() {
       try {
         const e = await p('[data-crs-title="Popular Categories"]');
-        e && (e.outerHTML = O, this.initSlider());
+        e && (e.outerHTML = q, this.initSlider());
       } catch (e) {
         o(e, "Error modifying Popular Categories section");
       }
@@ -2163,7 +2194,7 @@
     </div>
   </icms-component>
 `
-  ), r = class r {
+  ), l = class l {
     constructor() {
       this.eventsAborter = null, this.linkConfigs = [
         {
@@ -2192,9 +2223,9 @@
     }
     async render() {
       try {
-        const e = await p(r.CONTAINER_SELECTOR);
+        const e = await p(l.CONTAINER_SELECTOR);
         if (!e) {
-          a(`Container ${r.CONTAINER_SELECTOR} not found`, "warn");
+          a(`Container ${l.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupVisibilityTracking();
@@ -2204,7 +2235,7 @@
     }
     cleanupExistingSection() {
       const e = document.querySelector(
-        r.SECTION_SELECTOR
+        l.SECTION_SELECTOR
       );
       e && (this.eventsAborter && this.eventsAborter.abort(), e.remove(), a("Existing Christmas gifts section removed", "info"));
     }
@@ -2217,7 +2248,7 @@
       });
     }
     setupLinksForConfig(e) {
-      const t = `${r.SECTION_SELECTOR} ${e.selector}`, i = document.querySelectorAll(t);
+      const t = `${l.SECTION_SELECTOR} ${e.selector}`, i = document.querySelectorAll(t);
       i.forEach((s) => {
         this.attachClickListener(s, e);
       }), a(`Setup ${i.length} listeners for: ${e.eventDesc}`, "info");
@@ -2242,28 +2273,28 @@
       i ? window.location.href = i : a("No href found for span navigation", "warn");
     }
     setupVisibilityTracking() {
-      const e = document.querySelector(r.SECTION_SELECTOR);
+      const e = document.querySelector(l.SECTION_SELECTOR);
       e ? (v(
         e,
         "exp_hp_hero_view_4",
         "Home Page Christmas Gifting",
         "Visibility",
-        r.VISIBILITY_THRESHOLD
+        l.VISIBILITY_THRESHOLD
       ), a("Visibility tracking setup for Christmas gifts section", "info")) : a("Christmas gifts section not found for visibility tracking", "warn");
     }
     addStyles() {
-      if (document.getElementById(r.STYLES_ID)) return;
+      if (document.getElementById(l.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = r.STYLES_ID, e.textContent = I, document.head.appendChild(e);
+      e.id = l.STYLES_ID, e.textContent = I, document.head.appendChild(e);
     }
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null);
-      const e = document.querySelector(r.SECTION_SELECTOR);
+      const e = document.querySelector(l.SECTION_SELECTOR);
       e && e.remove(), a("ChristmasGifts component destroyed", "info");
     }
   };
-  r.STYLES_ID = "crs-christmas-gifts-styles", r.CONTAINER_SELECTOR = ".crs-target-outfit-builder", r.SECTION_SELECTOR = ".crs-christmas-gifts-section", r.VISIBILITY_THRESHOLD = 0;
-  let S = r;
+  l.STYLES_ID = "crs-christmas-gifts-styles", l.CONTAINER_SELECTOR = ".crs-target-outfit-builder", l.SECTION_SELECTOR = ".crs-christmas-gifts-section", l.VISIBILITY_THRESHOLD = 0;
+  let S = l;
   E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(n, e, t, i, s, c) {
     n.hj = n.hj || function() {
       (n.hj.q = n.hj.q || []).push(arguments);
