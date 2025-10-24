@@ -7,43 +7,13 @@
       event_desc: e,
       event_type: t,
       event_loc: i
-    }), d(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
-  }, a = (n) => new Promise((e) => {
-    const t = document.querySelector(n);
-    t && e(t);
-    const i = new MutationObserver(() => {
-      const s = document.querySelector(n);
-      s && (e(s), i.disconnect());
-    });
-    i.observe(document.documentElement, {
-      childList: !0,
-      subtree: !0
-    });
-  }), f = ({ name: n, dev: e }) => {
+    }), u(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
+  }, m = ({ name: n, dev: e }) => {
     console.log(
       `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, h = (n, e, t, i, s = 1e3, o = 0.5) => {
-    let r, l;
-    if (r = new IntersectionObserver(
-      function(u) {
-        u[0].isIntersecting === !0 ? l = setTimeout(() => {
-          p(
-            e,
-            u[0].target.dataset.visible || i || "",
-            "view",
-            t
-          ), r.disconnect();
-        }, s) : (d("Element is not fully visible", "warn"), clearTimeout(l));
-      },
-      { threshold: [o] }
-    ), typeof n == "string") {
-      const u = document.querySelector(n);
-      u && r.observe(u);
-    } else
-      r.observe(n);
-  }, d = (n, e = "info") => {
+  }, u = (n, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -60,7 +30,38 @@
         break;
     }
     console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
-  }, m = `.crs-wrap {
+  }, v = (n, e, t, i, s = 1e3, o = 0.5) => {
+    let c, b;
+    if (c = new IntersectionObserver(
+      function(r) {
+        r[0].isIntersecting === !0 ? b = setTimeout(() => {
+          p(
+            e,
+            r[0].target.dataset.visible || i || "",
+            "view",
+            t
+          ), c.disconnect();
+        }, s) : (u("Element is not fully visible", "warn"), clearTimeout(b));
+      },
+      { threshold: [o] }
+    ), typeof n == "string") {
+      const r = document.querySelector(n);
+      r && c.observe(r);
+    } else
+      c.observe(n);
+    return c;
+  }, d = (n) => new Promise((e) => {
+    const t = document.querySelector(n);
+    t && e({ element: t, observer: null });
+    const i = new MutationObserver(() => {
+      const s = document.querySelector(n);
+      s && (e({ element: s, observer: i }), i.disconnect());
+    });
+    i.observe(document.documentElement, {
+      childList: !0,
+      subtree: !0
+    });
+  }), f = `.crs-wrap {
   display: flex;
   justify-content: space-between;
 }
@@ -148,115 +149,143 @@
   }
 }
 `;
-  class g {
+  class y {
     constructor() {
-      this.abortController = null, this.checkTypeTimeout = null, this.init();
+      this.eventsAborter = null, this.visibilityObservers = [], this.waitObservers = [], this.styleElement = null;
     }
     init() {
       this.checkIsProductPage(async () => {
-        await a("#sizebay-container"), d("Size Guide Init"), this.addStyles(), this.observe(), this.renderSizeGuideButtons();
+        await d("#sizebay-container"), this.addStyles(), this.renderSizeGuideButtons();
       });
     }
     async checkIsProductPage(e) {
-      d("Checking is product page for Size Guide");
-      const t = new Promise((s) => setTimeout(s, 5e3)), i = await Promise.race([t, a("product-view-layout")]);
-      console.log("Size Guide checkIsProductPage result", i), i && e();
-    }
-    async observe() {
-      const e = await a(
-        "product-configurable-options"
-      ), t = new MutationObserver((i) => {
-        i.forEach((s) => {
-          const o = s.target;
-          s.type === "childList" && o && o.id === "sizebay-wrapper" && !o.querySelector(".crs-size-guide-button") && (this.checkTypeTimeout && clearTimeout(this.checkTypeTimeout), setTimeout(() => {
-            this.renderSizeGuideButtons();
-          }, 100));
-        });
+      u("Checking is product page for Size Guide");
+      let t;
+      const i = new Promise((s) => {
+        t = setTimeout(s, 5e3);
       });
-      setTimeout(() => {
-        t.disconnect();
-      }, 5e3), t.observe(e, {
-        childList: !0,
-        subtree: !0
-      });
+      try {
+        const s = await Promise.race([
+          i,
+          d("product-view-layout")
+        ]);
+        s && s !== void 0 && e();
+      } finally {
+        clearTimeout(t);
+      }
     }
     async renderSizeGuideButtons() {
-      var l, u;
-      const e = await a("product-configurable-option-dropdown"), t = await a(
-        "product-configurable-options button"
-      );
-      if (console.log("Size Guide renderSizeGuideButtons", {
-        container: e,
-        regularSizeButton: t
-      }), !t) return;
-      t.classList.add("crs-hide");
-      const i = (
-        /* HTML */
-        `
-      <div class="crs-wrap sizeguide-only">
-        <button class="crs-chart-button ">Find Your Size</button>
-        <button class="crs-size-guide-button">View Size Guide</button>
-      </div>
-    `
-      );
-      if (!e) return;
-      const s = document.querySelector(".crs-wrap");
-      s && s.remove(), e.insertAdjacentHTML("beforebegin", i), a("#szb-vfr-button").then(() => {
-        const c = document.querySelector(".crs-wrap");
-        c && c.classList.remove("sizeguide-only");
-      });
-      const o = (l = e.previousElementSibling) == null ? void 0 : l.querySelector(".crs-chart-button"), r = (u = e.previousElementSibling) == null ? void 0 : u.querySelector(
-        ".crs-size-guide-button"
-      );
-      !o || !r || (o == null || o.addEventListener("click", () => {
-        const c = document.querySelector("#szb-vfr-button");
-        c == null || c.click(), p(
-          "exp_size_guide_click_2",
-          "Find Your Size Button",
-          "click",
-          "PDP"
-        );
-      }), r == null || r.addEventListener("click", () => {
-        const c = document.querySelector("#szb-chart-button"), b = document.querySelector(
-          "product-configurable-options button"
-        );
-        if (p("exp_size_guide_click_1", "Size Guide Button", "click", "PDP"), c) {
-          c.click();
+      var e, t;
+      try {
+        const { element: i, observer: s } = await d(
+          "product-configurable-option-dropdown"
+        ), {
+          element: o,
+          observer: c
+        } = await d("product-configurable-options button");
+        if (s && this.waitObservers.push(s), c && this.waitObservers.push(c), document.querySelector(".crs-wrap")) {
+          u("Size guide buttons already rendered", "warn");
           return;
         }
-        b == null || b.click();
-      }), window._crsVisibilityOfTime_2 || (window._crsVisibilityOfTime_2 = !0, h(
-        o,
-        "exp_size_guide_view_2",
-        "PDP",
-        "Find Your Size Button",
-        0
-      )), window._crsVisibilityOfTime_1 || (window._crsVisibilityOfTime_1 = !0, h(
-        r,
-        "exp_size_guide_view_1",
-        "PDP",
-        "Size Guide Button",
-        0
-      )));
+        if (!o || !i) return;
+        o.classList.add("crs-hide");
+        const b = (
+          /* HTML */
+          `
+        <div class="crs-wrap sizeguide-only">
+          <button class="crs-chart-button ">Find Your Size</button>
+          <button class="crs-size-guide-button">View Size Guide</button>
+        </div>
+      `
+        );
+        this.eventsAborter = new AbortController(), i.insertAdjacentHTML("beforebegin", b), d("#szb-vfr-button").then(
+          ({ element: l, observer: a }) => {
+            if (!l) return;
+            const g = document.querySelector(".crs-wrap");
+            g && g.classList.remove("sizeguide-only"), a && this.waitObservers.push(a);
+          }
+        );
+        const r = (e = i.previousElementSibling) == null ? void 0 : e.querySelector(".crs-chart-button"), h = (t = i.previousElementSibling) == null ? void 0 : t.querySelector(
+          ".crs-size-guide-button"
+        );
+        if (!r || !h) return;
+        r == null || r.addEventListener(
+          "click",
+          () => {
+            const l = document.querySelector("#szb-vfr-button");
+            l == null || l.click(), p(
+              "exp_size_guide_click_2",
+              "Find Your Size Button",
+              "click",
+              "PDP"
+            );
+          },
+          {
+            signal: this.eventsAborter.signal
+          }
+        ), h == null || h.addEventListener(
+          "click",
+          () => {
+            const l = document.querySelector("#szb-chart-button"), a = document.querySelector(
+              "product-configurable-options button"
+            );
+            if (p(
+              "exp_size_guide_click_1",
+              "Size Guide Button",
+              "click",
+              "PDP"
+            ), l) {
+              l.click();
+              return;
+            }
+            a == null || a.click();
+          },
+          {
+            signal: this.eventsAborter.signal
+          }
+        );
+        const z = v(
+          r,
+          "exp_size_guide_view_2",
+          "PDP",
+          "Find Your Size Button",
+          0
+        );
+        this.visibilityObservers.push(z);
+        const S = v(
+          h,
+          "exp_size_guide_view_1",
+          "PDP",
+          "Size Guide Button",
+          0
+        );
+        this.visibilityObservers.push(S);
+      } catch {
+        u("Error rendering size guide buttons:", "error");
+      }
+    }
+    destroy() {
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.visibilityObservers.forEach((t) => t.disconnect()), this.visibilityObservers = [], this.waitObservers.forEach((t) => t.disconnect()), this.waitObservers = [], this.styleElement && (this.styleElement.remove(), this.styleElement = null);
+      const e = document.querySelector(".crs-wrap");
+      e && e.remove();
     }
     addStyles() {
-      const e = document.createElement("style");
-      e.textContent = m, document.head.appendChild(e);
+      this.styleElement || (this.styleElement = document.createElement("style"), this.styleElement.textContent = f, document.head.appendChild(this.styleElement));
     }
   }
-  f({ name: "PDP Size Guide Test", dev: "OS" }), (function(n, e, t, i, s, o) {
+  m({ name: "PDP Size Guide Test", dev: "OS" }), (function(n, e, t, i, s, o) {
     n.hj = n.hj || function() {
       (n.hj.q = n.hj.q || []).push(arguments);
     }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(o);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_size_guide");
   class w {
     constructor() {
-      this.previousUrl = location.href, this.init();
+      this.previousUrl = location.href, this.sizeGuide = new y(), this.init();
     }
     init() {
       this.addStyles(), this.interceptHistoryAPI(() => {
-        window._crsVisibilityOfTime_2 = !1, window._crsVisibilityOfTime_1 = !1, new g();
-      }), new g();
+        this.sizeGuide.destroy(), this.sizeGuide.init();
+      }), this.sizeGuide.init();
     }
     interceptHistoryAPI(e) {
       new MutationObserver(() => {
