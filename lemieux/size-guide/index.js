@@ -1,19 +1,19 @@
 (function() {
   "use strict";
-  const p = (n, e, t, i = "") => {
+  const m = (i, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: n,
+      event_name: i,
       event_desc: e,
       event_type: t,
-      event_loc: i
-    }), u(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
-  }, m = ({ name: n, dev: e }) => {
+      event_loc: n
+    }), d(`Event: ${i} | ${e} | ${t} | ${n}`, "success");
+  }, f = ({ name: i, dev: e }) => {
     console.log(
-      `%c EXP: ${n} (DEV: ${e})`,
+      `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, u = (n, e = "info") => {
+  }, d = (i, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -29,39 +29,39 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
-  }, v = (n, e, t, i, s = 1e3, o = 0.5) => {
-    let c, b;
-    if (c = new IntersectionObserver(
-      function(r) {
-        r[0].isIntersecting === !0 ? b = setTimeout(() => {
-          p(
+    console.log(`%c>>> ${i}`, `${t} font-size: 16px; font-weight: 600`);
+  }, g = (i, e, t, n, s = 1e3, c = 0.5) => {
+    let l, b;
+    if (l = new IntersectionObserver(
+      function(o) {
+        o[0].isIntersecting === !0 ? b = setTimeout(() => {
+          m(
             e,
-            r[0].target.dataset.visible || i || "",
+            o[0].target.dataset.visible || n || "",
             "view",
             t
-          ), c.disconnect();
-        }, s) : (u("Element is not fully visible", "warn"), clearTimeout(b));
+          ), l.disconnect();
+        }, s) : (d("Element is not fully visible", "warn"), clearTimeout(b));
       },
-      { threshold: [o] }
-    ), typeof n == "string") {
-      const r = document.querySelector(n);
-      r && c.observe(r);
+      { threshold: [c] }
+    ), typeof i == "string") {
+      const o = document.querySelector(i);
+      o && l.observe(o);
     } else
-      c.observe(n);
-    return c;
-  }, d = (n) => new Promise((e) => {
-    const t = document.querySelector(n);
+      l.observe(i);
+    return l;
+  }, h = (i) => new Promise((e) => {
+    const t = document.querySelector(i);
     t && e({ element: t, observer: null });
-    const i = new MutationObserver(() => {
-      const s = document.querySelector(n);
-      s && (e({ element: s, observer: i }), i.disconnect());
+    const n = new MutationObserver(() => {
+      const s = document.querySelector(i);
+      s && (e({ element: s, observer: n }), n.disconnect());
     });
-    i.observe(document.documentElement, {
+    n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = `.crs-wrap {
+  }), y = `.crs-wrap {
   display: flex;
   justify-content: space-between;
 }
@@ -149,46 +149,46 @@
   }
 }
 `;
-  class y {
+  class w {
     constructor() {
       this.eventsAborter = null, this.visibilityObservers = [], this.waitObservers = [], this.styleElement = null;
     }
     init() {
       this.checkIsProductPage(async () => {
-        await d("#sizebay-container"), this.addStyles(), this.renderSizeGuideButtons();
+        await h("#sizebay-container"), this.addStyles(), this.renderSizeGuideButtons();
       });
     }
     async checkIsProductPage(e) {
-      u("Checking is product page for Size Guide");
-      let t;
-      const i = new Promise((s) => {
-        t = setTimeout(s, 5e3);
-      });
+      var o, a;
+      d("Checking is product page for Size Guide");
+      let t, n = null, s = null;
+      const c = new Promise((r) => {
+        t = setTimeout(() => r("timeout"), 2e3);
+      }), l = h("product-view-layout").then((r) => (n = r.observer, r)), b = h("category-view-layout").then((r) => (s = r.observer, r));
       try {
-        const s = await Promise.race([
-          i,
-          d("product-view-layout")
-        ]);
-        s && s !== void 0 && e();
+        const r = await Promise.race([c, l, b]);
+        r !== "timeout" && ((o = r.element) == null ? void 0 : o.tagName) === "PRODUCT-VIEW-LAYOUT" && e(), (r === "timeout" || ((a = r.element) == null ? void 0 : a.tagName) === "CATEGORY-VIEW-LAYOUT") && (n && n.disconnect(), s && s.disconnect());
+      } catch {
+        d("Error checking is product page for Size Guide:", "error");
       } finally {
-        clearTimeout(t);
+        clearTimeout(t), n && n.disconnect();
       }
     }
     async renderSizeGuideButtons() {
       var e, t;
       try {
-        const { element: i, observer: s } = await d(
+        const { element: n, observer: s } = await h(
           "product-configurable-option-dropdown"
         ), {
-          element: o,
-          observer: c
-        } = await d("product-configurable-options button");
-        if (s && this.waitObservers.push(s), c && this.waitObservers.push(c), document.querySelector(".crs-wrap")) {
-          u("Size guide buttons already rendered", "warn");
+          element: c,
+          observer: l
+        } = await h("product-configurable-options button");
+        if (s && this.waitObservers.push(s), l && this.waitObservers.push(l), document.querySelector(".crs-wrap")) {
+          d("Size guide buttons already rendered", "warn");
           return;
         }
-        if (!o || !i) return;
-        o.classList.add("crs-hide");
+        if (!c || !n) return;
+        c.classList.add("crs-hide");
         const b = (
           /* HTML */
           `
@@ -198,22 +198,22 @@
         </div>
       `
         );
-        this.eventsAborter = new AbortController(), i.insertAdjacentHTML("beforebegin", b), d("#szb-vfr-button").then(
-          ({ element: l, observer: a }) => {
-            if (!l) return;
-            const g = document.querySelector(".crs-wrap");
-            g && g.classList.remove("sizeguide-only"), a && this.waitObservers.push(a);
+        this.eventsAborter = new AbortController(), n.insertAdjacentHTML("beforebegin", b), h("#szb-vfr-button").then(
+          ({ element: u, observer: p }) => {
+            if (!u) return;
+            const v = document.querySelector(".crs-wrap");
+            v && v.classList.remove("sizeguide-only"), p && this.waitObservers.push(p);
           }
         );
-        const r = (e = i.previousElementSibling) == null ? void 0 : e.querySelector(".crs-chart-button"), h = (t = i.previousElementSibling) == null ? void 0 : t.querySelector(
+        const o = (e = n.previousElementSibling) == null ? void 0 : e.querySelector(".crs-chart-button"), a = (t = n.previousElementSibling) == null ? void 0 : t.querySelector(
           ".crs-size-guide-button"
         );
-        if (!r || !h) return;
-        r == null || r.addEventListener(
+        if (!o || !a) return;
+        o == null || o.addEventListener(
           "click",
           () => {
-            const l = document.querySelector("#szb-vfr-button");
-            l == null || l.click(), p(
+            const u = document.querySelector("#szb-vfr-button");
+            u == null || u.click(), m(
               "exp_size_guide_click_2",
               "Find Your Size Button",
               "click",
@@ -223,37 +223,37 @@
           {
             signal: this.eventsAborter.signal
           }
-        ), h == null || h.addEventListener(
+        ), a == null || a.addEventListener(
           "click",
           () => {
-            const l = document.querySelector("#szb-chart-button"), a = document.querySelector(
+            const u = document.querySelector("#szb-chart-button"), p = document.querySelector(
               "product-configurable-options button"
             );
-            if (p(
+            if (m(
               "exp_size_guide_click_1",
               "Size Guide Button",
               "click",
               "PDP"
-            ), l) {
-              l.click();
+            ), u) {
+              u.click();
               return;
             }
-            a == null || a.click();
+            p == null || p.click();
           },
           {
             signal: this.eventsAborter.signal
           }
         );
-        const z = v(
-          r,
+        const r = g(
+          o,
           "exp_size_guide_view_2",
           "PDP",
           "Find Your Size Button",
           0
         );
-        this.visibilityObservers.push(z);
-        const S = v(
-          h,
+        this.visibilityObservers.push(r);
+        const S = g(
+          a,
           "exp_size_guide_view_1",
           "PDP",
           "Size Guide Button",
@@ -261,7 +261,7 @@
         );
         this.visibilityObservers.push(S);
       } catch {
-        u("Error rendering size guide buttons:", "error");
+        d("Error rendering size guide buttons:", "error");
       }
     }
     destroy() {
@@ -270,17 +270,17 @@
       e && e.remove();
     }
     addStyles() {
-      this.styleElement || (this.styleElement = document.createElement("style"), this.styleElement.textContent = f, document.head.appendChild(this.styleElement));
+      this.styleElement || (this.styleElement = document.createElement("style"), this.styleElement.textContent = y, document.head.appendChild(this.styleElement));
     }
   }
-  m({ name: "PDP Size Guide Test", dev: "OS" }), (function(n, e, t, i, s, o) {
-    n.hj = n.hj || function() {
-      (n.hj.q = n.hj.q || []).push(arguments);
-    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(o);
+  f({ name: "PDP Size Guide Test", dev: "OS" }), (function(i, e, t, n, s, c) {
+    i.hj = i.hj || function() {
+      (i.hj.q = i.hj.q || []).push(arguments);
+    }, i._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], c = e.createElement("script"), c.async = !0, c.src = t + i._hjSettings.hjid + n + i._hjSettings.hjsv, s && s.appendChild(c);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_size_guide");
-  class w {
+  class z {
     constructor() {
-      this.previousUrl = location.href, this.sizeGuide = new y(), this.init();
+      this.previousUrl = location.href, this.sizeGuide = new w(), this.init();
     }
     init() {
       this.addStyles(), this.interceptHistoryAPI(() => {
@@ -289,8 +289,8 @@
     }
     interceptHistoryAPI(e) {
       new MutationObserver(() => {
-        const i = location.href;
-        this.previousUrl !== i && (this.previousUrl = i, e());
+        const n = location.href;
+        this.previousUrl !== n && (this.previousUrl = n, e());
       }).observe(document.body, { childList: !0, subtree: !0 });
     }
     addStyles() {
@@ -298,5 +298,5 @@
       e.textContent = "", document.head.appendChild(e);
     }
   }
-  window._crsSizeGuide || (window._crsSizeGuide = !0, new w());
+  window._crsSizeGuide || (window._crsSizeGuide = !0, new z());
 })();
