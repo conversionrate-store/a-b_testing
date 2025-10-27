@@ -417,9 +417,9 @@
         data-title="${this.getDataTitle(e.title)}"
       >
         <picture>
-          <source media="(min-width: 701px)" srcset="${e.images.desktop}" />
-          <source media="(max-width: 700px)" srcset="${e.images.mob}" />
-          <img src="${e.images.desktop}" alt="${i}" />
+          <source media="(min-width: 701px)" srcset="${e.images.desktop}" fetchpriority="high" />
+          <source media="(max-width: 700px)" srcset="${e.images.mob}" fetchpriority="high" />
+          <img src="${e.images.desktop}" alt="${i}" fetchpriority="high" />
         </picture>
         <div class="crs-hero-block-text">
           ${t}
