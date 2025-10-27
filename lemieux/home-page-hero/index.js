@@ -7,7 +7,7 @@
       event_desc: e,
       event_type: t,
       event_loc: i
-    }), a(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
+    }), d(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
   }, p = (n) => new Promise((e) => {
     const t = document.querySelector(n);
     t && e(t);
@@ -24,26 +24,26 @@
       `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, v = (n, e, t, i, s = 1e3, c = 0.5) => {
-    let g, d;
+  }, v = (n, e, t, i, s = 1e3, o = 0.5) => {
+    let g, c;
     if (g = new IntersectionObserver(
       function(m) {
-        m[0].isIntersecting === !0 ? d = setTimeout(() => {
+        m[0].isIntersecting === !0 ? c = setTimeout(() => {
           w(
             e,
             m[0].target.dataset.visible || i || "",
             "view",
             t
           ), g.disconnect();
-        }, s) : (a("Element is not fully visible", "warn"), clearTimeout(d));
+        }, s) : (d("Element is not fully visible", "warn"), clearTimeout(c));
       },
-      { threshold: [c] }
+      { threshold: [o] }
     ), typeof n == "string") {
       const m = document.querySelector(n);
       m && g.observe(m);
     } else
       g.observe(n);
-  }, a = (n, e = "info") => {
+  }, d = (n, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -115,9 +115,9 @@
       }
     }
   ];
-  function o(n, e) {
+  function l(n, e) {
     const t = n instanceof Error ? n.message : String(n);
-    a(`${e}: ${t}`, "error");
+    d(`${e}: ${t}`, "error");
   }
   const T = `icms-component:has(.crs-hero) > div:not(.crs-hero) {
   display: none;
@@ -362,7 +362,7 @@
       try {
         this.addStyles(), this.changeHeroImageSection();
       } catch (e) {
-        o(e, "Error initializing Hero section");
+        l(e, "Error initializing Hero section");
       }
     }
     async changeHeroImageSection() {
@@ -372,24 +372,22 @@
           console.warn(`Target ${r.TARGET_SELECTOR} not found`);
           return;
         }
-        if (e.querySelector(r.HERO_CLASS)) {
-          console.log("Hero section already exists, skipping...");
+        if (e.querySelector(r.HERO_CLASS))
           return;
-        }
         const i = () => {
           this.replaceHeroContent(e), this.setupEventListeners(e);
         };
         this.mutationObserver = new MutationObserver((s) => {
           s.forEach(() => {
-            console.log("Hero section missing, replacing...", e.querySelector(r.HERO_CLASS)), e.querySelector(r.HERO_CLASS) || i();
+            e.querySelector(r.HERO_CLASS) || i();
           });
         }), this.mutationObserver.observe(e, { childList: !0, subtree: !0 }), i();
       } catch (e) {
-        o(e, "Error changing hero image section");
+        l(e, "Error changing hero image section");
       }
     }
     replaceHeroContent(e) {
-      this.eventsAborter && this.eventsAborter.abort(), console.log("Replacing hero content", e), e.insertAdjacentHTML("beforeend", this.renderNewHeroSection());
+      this.eventsAborter && this.eventsAborter.abort(), e.insertAdjacentHTML("beforeend", this.renderNewHeroSection());
     }
     renderNewHeroSection() {
       const e = y.find((i) => i.id === "new-arrivals"), t = y.filter((i) => i.id !== "new-arrivals");
@@ -494,7 +492,7 @@
     }
     destroy() {
       var e;
-      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.mutationObserver && (this.mutationObserver.disconnect(), this.mutationObserver = null), (e = document == null ? void 0 : document.querySelector(r.HERO_CLASS)) == null || e.remove(), console.log("Hero component destroyed");
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.mutationObserver && (this.mutationObserver.disconnect(), this.mutationObserver = null), (e = document == null ? void 0 : document.querySelector(r.HERO_CLASS)) == null || e.remove();
     }
   };
   r.STYLES_ID = "crs-hero-styles", r.VISIBILITY_THRESHOLD = 0, r.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", r.HERO_CLASS = ".crs-hero";
@@ -526,7 +524,7 @@
       try {
         this.addStyles(), this.hideSection(), this.changeSectionCopy(), this.observeResize();
       } catch (e) {
-        o(e, "Error initializing Hide Sections");
+        l(e, "Error initializing Hide Sections");
       }
     }
     async hideSection() {
@@ -535,13 +533,13 @@
           ":scope > icms-component"
         );
         if (!t) {
-          a("No components found in page view boundary", "warn");
+          d("No components found in page view boundary", "warn");
           return;
         }
         const i = Array.from(t);
         this.processInitialComponents(i), this.processChainHiding(i);
       } catch (e) {
-        o(e, "Error hiding sections");
+        l(e, "Error hiding sections");
       }
     }
     processInitialComponents(e) {
@@ -549,7 +547,7 @@
         try {
           t.classList.add("crs-top-section"), this.resetHideAttribute(t), this.checkTitleMarkers(t), this.handleOutfitBuilder(t);
         } catch (i) {
-          o(i, "Processing initial component");
+          l(i, "Processing initial component");
         }
       });
     }
@@ -557,16 +555,16 @@
       e.forEach((t) => {
         var i;
         try {
-          const s = t.previousElementSibling, c = t.querySelector("h1, h3");
+          const s = t.previousElementSibling, o = t.querySelector("h1, h3");
           if ((i = t.textContent) == null ? void 0 : i.includes(
             "@lemieuxproductsofficial"
           )) {
             t.dataset.crsHide = "false";
             return;
           }
-          (s == null ? void 0 : s.dataset.crsHide) === "true" && !c && (t.dataset.crsHide = "true");
+          (s == null ? void 0 : s.dataset.crsHide) === "true" && !o && (t.dataset.crsHide = "true");
         } catch (s) {
-          o(s, "Processing chain hiding");
+          l(s, "Processing chain hiding");
         }
       });
     }
@@ -596,7 +594,7 @@
           this.processPopularCategoriesTitle(i);
         });
       } catch (e) {
-        o(e, "Change section copy");
+        l(e, "Change section copy");
       }
     }
     processPopularCategoriesTitle(e) {
@@ -625,13 +623,13 @@
       this.resizeObserver && this.resizeObserver.disconnect();
       const e = () => {
         this.resizeTimeout && clearTimeout(this.resizeTimeout), this.resizeTimeout = window.setTimeout(() => {
-          this.hideSection(), a("Resize detected, sections re-evaluated", "info");
+          this.hideSection();
         }, u.RESIZE_DEBOUNCE_MS);
       };
       this.resizeObserver = new ResizeObserver(e), p(".page-view-boundary").then((t) => {
-        t && this.resizeObserver && (this.resizeObserver.observe(t), a("ResizeObserver attached to page view boundary", "info"));
+        t && this.resizeObserver && this.resizeObserver.observe(t);
       }).catch((t) => {
-        o(t, "Setup resize observer");
+        l(t, "Setup resize observer");
       });
     }
     destroy() {
@@ -645,7 +643,7 @@
         e.removeAttribute("data-crs-title");
       }), document.querySelectorAll(".crs-top-section").forEach((e) => {
         e.classList.remove("crs-top-section");
-      }), console.log("HideSections component destroyed");
+      });
     }
     addStyles() {
       if (document.getElementById("crs-hide-section-styles")) return;
@@ -1091,7 +1089,7 @@
       try {
         this.addStyles(), this.modifySection();
       } catch (e) {
-        o(e, "Error initializing Popular Categories");
+        l(e, "Error initializing Popular Categories");
       }
     }
     async modifySection() {
@@ -1099,7 +1097,7 @@
         const e = await p('[data-crs-title="Popular Categories"]');
         e && (e.outerHTML = q, this.initSlider());
       } catch (e) {
-        o(e, "Error modifying Popular Categories section");
+        l(e, "Error modifying Popular Categories section");
       }
     }
     initSlider() {
@@ -1108,15 +1106,15 @@
         ".crs-slider-section .swiper-initialized"
       );
       if (!e) {
-        a("Slider box not found for scroll interaction", "warn");
+        d("Slider box not found for scroll interaction", "warn");
         return;
       }
       e.style.cursor = "grab";
-      let t = !1, i = 0, s = 0, c = 0, g = 0;
+      let t = !1, i = 0, s = 0, o = 0, g = 0;
       e.addEventListener(
         "mousedown",
-        (d) => {
-          d.preventDefault(), t = !0, i = d.pageX, s = d.pageY, c = e.scrollLeft, g = e.scrollTop;
+        (c) => {
+          c.preventDefault(), t = !0, i = c.pageX, s = c.pageY, o = e.scrollLeft, g = e.scrollTop;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
@@ -1133,17 +1131,17 @@
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "mousemove",
-        (d) => {
+        (c) => {
           if (!t) return;
-          d.preventDefault(), e.style.cursor = "grabbing";
-          const m = d.pageX, H = d.pageY, R = (m - i) * f.SCROLL_SENSITIVITY, $ = (H - s) * f.SCROLL_SENSITIVITY;
-          e.scrollLeft = c - R, e.scrollTop = g - $;
+          c.preventDefault(), e.style.cursor = "grabbing";
+          const m = c.pageX, H = c.pageY, R = (m - i) * f.SCROLL_SENSITIVITY, $ = (H - s) * f.SCROLL_SENSITIVITY;
+          e.scrollLeft = o - R, e.scrollTop = g - $;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "dragstart",
-        (d) => {
-          d.preventDefault();
+        (c) => {
+          c.preventDefault();
         },
         { signal: this.eventsAborter.signal }
       ), e.style.userSelect = "none";
@@ -1151,7 +1149,7 @@
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), document.querySelectorAll(".crs-slider-section").forEach((e) => {
         e.remove();
-      }), a("PopularCategories component destroyed", "info");
+      });
     }
     addStyles() {
       if (document.getElementById("crs-popular-categories-styles")) return;
@@ -1872,7 +1870,7 @@
       try {
         this.addStyles(), this.render();
       } catch (e) {
-        o(e, "Error initializing Outfit Builder section");
+        l(e, "Error initializing Outfit Builder section");
       }
     }
     async render() {
@@ -1883,11 +1881,11 @@
         if (e)
           e.insertAdjacentHTML("afterbegin", i), this.setupEvents();
         else {
-          a("Container .crs-target-outfit-builder not found", "warn");
+          d("Container .crs-target-outfit-builder not found", "warn");
           return;
         }
       } catch (e) {
-        o(e, "Error rendering Outfit Builder section");
+        l(e, "Error rendering Outfit Builder section");
       }
     }
     setupEvents() {
@@ -1904,7 +1902,7 @@
           0
         ), s && s.addEventListener(
           "click",
-          (c) => {
+          (o) => {
             w(
               e.clickEvent,
               e.name,
@@ -2194,7 +2192,7 @@
     </div>
   </icms-component>
 `
-  ), l = class l {
+  ), a = class a {
     constructor() {
       this.eventsAborter = null, this.linkConfigs = [
         {
@@ -2219,13 +2217,13 @@
     }
     handleError(e, t) {
       const i = e instanceof Error ? e.message : String(e);
-      a(`ChristmasGifts ${t}: ${i}`, "error");
+      d(`ChristmasGifts ${t}: ${i}`, "error");
     }
     async render() {
       try {
-        const e = await p(l.CONTAINER_SELECTOR);
+        const e = await p(a.CONTAINER_SELECTOR);
         if (!e) {
-          a(`Container ${l.CONTAINER_SELECTOR} not found`, "warn");
+          d(`Container ${a.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupVisibilityTracking();
@@ -2235,12 +2233,12 @@
     }
     cleanupExistingSection() {
       const e = document.querySelector(
-        l.SECTION_SELECTOR
+        a.SECTION_SELECTOR
       );
-      e && (this.eventsAborter && this.eventsAborter.abort(), e.remove(), a("Existing Christmas gifts section removed", "info"));
+      e && (this.eventsAborter && this.eventsAborter.abort(), e.remove());
     }
     insertSection(e) {
-      e.insertAdjacentHTML("beforeend", P), a("Christmas gifts section inserted", "info");
+      e.insertAdjacentHTML("beforeend", P);
     }
     setupEventListeners() {
       this.eventsAborter && this.eventsAborter.abort(), this.eventsAborter = new AbortController(), this.linkConfigs.forEach((e) => {
@@ -2248,10 +2246,10 @@
       });
     }
     setupLinksForConfig(e) {
-      const t = `${l.SECTION_SELECTOR} ${e.selector}`, i = document.querySelectorAll(t);
-      i.forEach((s) => {
+      const t = `${a.SECTION_SELECTOR} ${e.selector}`;
+      document.querySelectorAll(t).forEach((s) => {
         this.attachClickListener(s, e);
-      }), a(`Setup ${i.length} listeners for: ${e.eventDesc}`, "info");
+      });
     }
     attachClickListener(e, t) {
       e.addEventListener(
@@ -2262,7 +2260,7 @@
             t.eventDesc,
             "click",
             "Home Page Christmas Gifting"
-          ), t.isSpanNavigation && e.tagName.toLowerCase() === "span" && this.handleSpanNavigation(i, e), a(`Click tracked: ${t.eventDesc}`, "info");
+          ), t.isSpanNavigation && e.tagName.toLowerCase() === "span" && this.handleSpanNavigation(i, e);
         },
         { signal: this.eventsAborter.signal }
       );
@@ -2270,35 +2268,35 @@
     handleSpanNavigation(e, t) {
       e.stopPropagation(), e.preventDefault(), e.stopImmediatePropagation();
       const i = t.getAttribute("href");
-      i ? window.location.href = i : a("No href found for span navigation", "warn");
+      i ? window.location.href = i : d("No href found for span navigation", "warn");
     }
     setupVisibilityTracking() {
-      const e = document.querySelector(l.SECTION_SELECTOR);
-      e ? (v(
+      const e = document.querySelector(a.SECTION_SELECTOR);
+      e && v(
         e,
         "exp_hp_hero_view_4",
         "Home Page Christmas Gifting",
         "Visibility",
-        l.VISIBILITY_THRESHOLD
-      ), a("Visibility tracking setup for Christmas gifts section", "info")) : a("Christmas gifts section not found for visibility tracking", "warn");
+        a.VISIBILITY_THRESHOLD
+      );
     }
     addStyles() {
-      if (document.getElementById(l.STYLES_ID)) return;
+      if (document.getElementById(a.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = l.STYLES_ID, e.textContent = I, document.head.appendChild(e);
+      e.id = a.STYLES_ID, e.textContent = I, document.head.appendChild(e);
     }
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null);
-      const e = document.querySelector(l.SECTION_SELECTOR);
-      e && e.remove(), a("ChristmasGifts component destroyed", "info");
+      const e = document.querySelector(a.SECTION_SELECTOR);
+      e && e.remove();
     }
   };
-  l.STYLES_ID = "crs-christmas-gifts-styles", l.CONTAINER_SELECTOR = ".crs-target-outfit-builder", l.SECTION_SELECTOR = ".crs-christmas-gifts-section", l.VISIBILITY_THRESHOLD = 0;
-  let S = l;
-  E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(n, e, t, i, s, c) {
+  a.STYLES_ID = "crs-christmas-gifts-styles", a.CONTAINER_SELECTOR = ".crs-target-outfit-builder", a.SECTION_SELECTOR = ".crs-christmas-gifts-section", a.VISIBILITY_THRESHOLD = 0;
+  let S = a;
+  E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(n, e, t, i, s, o) {
     n.hj = n.hj || function() {
       (n.hj.q = n.hj.q || []).push(arguments);
-    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], c = e.createElement("script"), c.async = !0, c.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(c);
+    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(o);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class j {
     constructor() {
@@ -2307,11 +2305,11 @@
     init() {
       var e, t, i, s;
       ((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((s = (i = window.autoInitData) == null ? void 0 : i.website) == null ? void 0 : s.defaultCountry) !== "US" || (this.imagePreloading(), this.interceptHistoryAPI(async () => {
-        a("URL change detected, re-initializing components"), this.destroyComponents(), this.initComponents();
+        this.destroyComponents(), this.initComponents();
       }), this.initComponents());
     }
     initComponents() {
-      (location.pathname === "/" || location.pathname === "/us/") && (a("Initializing homepage components"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
+      (location.pathname === "/" || location.pathname === "/us/") && (this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
     }
     destroyComponents() {
       this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.christmasGifts.destroy();
