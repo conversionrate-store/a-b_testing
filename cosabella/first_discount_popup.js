@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const f = `#attentive_creative {
+  const m = `#attentive_creative {
   display: none !important;
 }
 
@@ -253,36 +253,44 @@ body {
 .crs_discount_popup_btn.active {
   opacity: 1;
   pointer-events: auto;
-}/*# sourceMappingURL=style.css.map */`, c = (r) => new Promise((t) => {
-    const n = document.querySelector(r);
+}/*# sourceMappingURL=style.css.map */`, l = (i, t, n, e = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: i,
+      event_desc: t,
+      event_type: n,
+      event_loc: e
+    }), g(`Event: ${i} | ${t} | ${n} | ${e}`, "success");
+  }, r = (i) => new Promise((t) => {
+    const n = document.querySelector(i);
     n && t(n);
     const e = new MutationObserver(() => {
-      const s = document.querySelector(r);
-      s && (t(s), e.disconnect());
+      const o = document.querySelector(i);
+      o && (t(o), e.disconnect());
     });
     e.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: r, dev: t }) => {
+  }), h = ({ name: i, dev: t }) => {
     console.log(
-      `%c EXP: ${r} (DEV: ${t})`,
+      `%c EXP: ${i} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class l {
+  class u {
     constructor(t) {
-      this.elements = t instanceof l ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
+      this.elements = t instanceof u ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
     }
     on(t, n, e) {
-      return typeof n == "function" && (e = n, n = ""), this.elements.forEach((s) => {
-        s.addEventListener(t, function(i) {
+      return typeof n == "function" && (e = n, n = ""), this.elements.forEach((o) => {
+        o.addEventListener(t, function(c) {
           var a;
           if (n !== "") {
-            let p = (a = i.target) == null ? void 0 : a.closest(n);
-            p && (e == null || e.call(p, i));
+            let p = (a = c.target) == null ? void 0 : a.closest(n);
+            p && (e == null || e.call(p, c));
           } else
-            e == null || e.call(s, i);
+            e == null || e.call(o, c);
         });
       }), this;
     }
@@ -303,18 +311,18 @@ body {
     }
     each(t) {
       for (let n of this.elements)
-        t(new l(n), this.elements.indexOf(n));
+        t(new u(n), this.elements.indexOf(n));
       return this;
     }
     style(t, n) {
-      const e = t.split("-").map((s, i) => i === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
-      return this.elements.forEach(function(s) {
-        s.style[e] = n;
+      const e = t.split("-").map((o, c) => c === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+      return this.elements.forEach(function(o) {
+        o.style[e] = n;
       }), this;
     }
     find(t) {
       const n = this.elements.map((e) => Array.from(e.querySelectorAll(t)));
-      return new l(n.flat());
+      return new u(n.flat());
     }
     attr(t, n) {
       return n ? (this.elements.forEach(function(e) {
@@ -332,11 +340,28 @@ body {
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const o = (r) => new l(r), h = (r) => {
+  const s = (i) => new u(i), b = (i) => {
     let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, d = {
+  }, g = (i, t = "info") => {
+    let n;
+    switch (t) {
+      case "info":
+        n = "color: #3498db;";
+        break;
+      case "warn":
+        n = "color: #f39c12;";
+        break;
+      case "error":
+        n = "color: #e74c3c;";
+        break;
+      case "success":
+        n = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
+  }, _ = {
     close: (
       /* HTML */
       `
@@ -346,7 +371,7 @@ body {
     </svg>
   `
     )
-  }, b = (
+  }, x = (
     /* HTML */
     `
   <div class="crs_first_popup_overlay">
@@ -359,7 +384,7 @@ body {
           />
         </div>
         <div class="text_content">
-          <span class="close"> ${d.close}</span>
+          <span class="close"> ${_.close}</span>
           <img src="https://creatives.attn.tv/cosabella/Cosabella_logo_9c0d0398.svg" alt="logo" class="logo" />
           <div class="step_1 step active">
             <p class="title">Unlock</p>
@@ -385,39 +410,39 @@ body {
     </div>
   </div>
 `
-  ), g = (
+  ), v = (
     /* HTML */
     `
   <div class="crs_discount_popup_btn">
     <span>Get 15% OFF</span>
-    ${d.close}
+    ${_.close}
   </div>
 `
   );
-  m({ name: "Popup discount", dev: "YK" }), h("popup_discount");
-  class x {
+  h({ name: "Popup discount", dev: "YK" }), b("popup_discount");
+  class y {
     constructor() {
       this.init();
     }
     async init() {
       const t = document.createElement("link");
-      t.rel = "stylesheet", t.href = "https://fonts.googleapis.com/css2?family=Italianno&family=Source+Sans+3:ital@0;1&display=swap", document.head.appendChild(t), document.head.insertAdjacentHTML("beforeend", `<style>${f}</style>`), await c("body"), document.body.insertAdjacentHTML("beforeend", b), document.body.insertAdjacentHTML("beforeend", g), this.addLogic(), this.checkoutListener(), this.firstPopupShow(), this.addPriceDiscount(), this.addPriceDiscountProductSlider(), this.sliderObserver(), this.cartChangePrice(), this.cartChangePriceObserver(), this.priceObserver(".atc-price.js-product-price");
+      t.rel = "stylesheet", t.href = "https://fonts.googleapis.com/css2?family=Italianno&family=Source+Sans+3:ital@0;1&display=swap", document.head.appendChild(t), document.head.insertAdjacentHTML("beforeend", `<style>${m}</style>`), await r("body"), document.body.insertAdjacentHTML("beforeend", x), document.body.insertAdjacentHTML("beforeend", v), this.addLogic(), this.checkoutListener(), this.firstPopupShow(), this.addPriceDiscount(), this.addPriceDiscountProductSlider(), this.sliderObserver(), this.cartChangePrice(), this.cartChangePriceObserver(), this.priceObserver(".atc-price.js-product-price");
     }
     addLogic() {
-      const t = o(".crs_first_popup_overlay"), n = o(".crs_first_popup_overlay .close"), e = o(".crs_first_popup_overlay .get_discount_btn"), s = o('.crs_first_popup_overlay input[name="email"]'), i = o(".crs_first_popup_overlay .step_1"), a = o(".crs_first_popup_overlay .step_2"), p = o(".crs_first_popup_overlay .step_2 button"), u = o(".crs_discount_popup_btn"), v = o(".crs_discount_popup_btn svg");
+      const t = s(".crs_first_popup_overlay"), n = s(".crs_first_popup_overlay .close"), e = s(".crs_first_popup_overlay .get_discount_btn"), o = s('.crs_first_popup_overlay input[name="email"]'), c = s(".crs_first_popup_overlay .step_1"), a = s(".crs_first_popup_overlay .step_2"), p = s(".crs_first_popup_overlay .step_2 button"), d = s(".crs_discount_popup_btn"), w = s(".crs_discount_popup_btn svg");
       n.on("click", () => {
-        t.removeClass("active"), u.addClass("active");
-      }), u.on("click", () => {
-        t.addClass("active"), u.removeClass("active");
-      }), v.on("click", () => {
-        u.removeClass("active");
+        t.removeClass("active"), d.addClass("active"), l("exp_discount_04", "Close 1 step popup", "click", "15 off popup");
+      }), d.on("click", () => {
+        t.addClass("active"), d.removeClass("active");
+      }), w.on("click", () => {
+        d.removeClass("active");
       }), e.on("click", () => {
-        const _ = s.elements[0].value.trim();
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_)) {
-          i.removeClass("active"), a.addClass("active"), localStorage.setItem("cosabella_welcome_discount", "0");
-          const y = {
+        const f = o.elements[0].value.trim();
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f)) {
+          c.removeClass("active"), a.addClass("active"), localStorage.setItem("cosabella_welcome_discount", "0");
+          const k = {
             url: window.location.href,
-            email: _
+            email: f
           };
           fetch(
             "https://script.google.com/macros/s/AKfycbxc794IKjZvQYdTDtFDGv7kEzb8DLrSSDLKns45wlf12Znp1dO3HNzY1s3kjyNWgcSG/exec",
@@ -427,15 +452,17 @@ body {
               headers: {
                 "Content-Type": "application/json"
               },
-              body: JSON.stringify(y)
+              body: JSON.stringify(k)
             }
-          ), this.addPriceDiscount(), this.changeProductPrice(), this.addPriceDiscountProductSlider();
+          ), this.addPriceDiscount(), this.changeProductPrice(), this.addPriceDiscountProductSlider(), l("exp_discount_03", "Claim now", "submit", "15 off popup"), l("exp_discount_05", "2 step", "view", "15 off popup");
         } else
-          s.elements[0].classList.add("error");
+          o.elements[0].classList.add("error");
       }), e.on("input", () => {
-        s.elements[0].classList.remove("error");
+        o.elements[0].classList.remove("error");
       }), p.on("click", () => {
-        t.removeClass("active");
+        t.removeClass("active"), l("exp_discount_06", "Go to products", "click", "15 off popup");
+      }), o.on("click", () => {
+        l("exp_discount_02", "Email input", "click", "15 off popup");
       });
     }
     checkoutListener() {
@@ -447,28 +474,28 @@ body {
     async addPriceDiscount() {
       const t = localStorage.getItem("cosabella_welcome_discount");
       if (!t || t === "1") return;
-      await c(".ss__product--wrapper"), o(".ss__product--wrapper").elements.forEach((e) => {
-        var i, a, p;
-        const s = (i = e.querySelector(".price__value")) == null ? void 0 : i.textContent.split("$")[1];
-        s && (e.classList.add("has_discount"), (a = e.querySelector(".ss__result__details")) == null || a.insertAdjacentHTML("beforeend", '<span class="crs_discount_label">-15%</span>'), (p = e.querySelector(".pricing__values")) == null || p.insertAdjacentHTML("beforeend", `<span class="discounted_price">$${(+s * 0.85).toFixed(2)}</span>`));
+      await r(".ss__product--wrapper"), s(".ss__product--wrapper").elements.forEach((e) => {
+        var c, a, p;
+        const o = (c = e.querySelector(".price__value")) == null ? void 0 : c.textContent.split("$")[1];
+        o && (e.classList.add("has_discount"), (a = e.querySelector(".ss__result__details")) == null || a.insertAdjacentHTML("beforeend", '<span class="crs_discount_label">-15%</span>'), (p = e.querySelector(".pricing__values")) == null || p.insertAdjacentHTML("beforeend", `<span class="discounted_price">$${(+o * 0.85).toFixed(2)}</span>`));
       });
     }
     async addPriceDiscountProductSlider() {
-      await c(".product-tile__info"), o(".product-tile__info").elements.forEach((n) => {
-        var s, i;
+      await r(".product-tile__info"), s(".product-tile__info").elements.forEach((n) => {
+        var o, c;
         n.insertAdjacentHTML("beforeend", '<span class="crs_discount_label">-15%</span>');
-        const e = (s = n.querySelector(".price__value")) == null ? void 0 : s.textContent.split("$")[1];
-        e && (n.querySelector(".discounted_price") || (i = n.querySelector(".pricing__values")) == null || i.insertAdjacentHTML("beforeend", `<span class="discounted_price">$${(+e * 0.85).toFixed(2)}</span>`));
+        const e = (o = n.querySelector(".price__value")) == null ? void 0 : o.textContent.split("$")[1];
+        e && (n.querySelector(".discounted_price") || (c = n.querySelector(".pricing__values")) == null || c.insertAdjacentHTML("beforeend", `<span class="discounted_price">$${(+e * 0.85).toFixed(2)}</span>`));
       });
     }
     async firstPopupShow() {
-      const t = await c("#attentive_creative"), n = localStorage.getItem("cosabella_welcome_discount_showed"), e = localStorage.getItem("cosabella_welcome_discount");
-      t && !n && (o(".crs_first_popup_overlay").addClass("active"), localStorage.setItem("cosabella_welcome_discount_showed", "1")), t && n && !e && o(".crs_discount_popup_btn").addClass("active");
+      const t = await r("#attentive_creative"), n = localStorage.getItem("cosabella_welcome_discount_showed"), e = localStorage.getItem("cosabella_welcome_discount");
+      t && !n && (s(".crs_first_popup_overlay").addClass("active"), localStorage.setItem("cosabella_welcome_discount_showed", "1"), l("exp_discount_01", "1 step", "view", "15 off popup")), t && n && !e && s(".crs_discount_popup_btn").addClass("active");
     }
     async cartChangePrice() {
-      await c(".total--price");
-      const t = o(".total--price .total__value").text().split("$")[1];
-      !t || o(".total--price .discounted_price").elements.length > 0 || o(".total--price").elements[0].insertAdjacentHTML(
+      await r(".total--price");
+      const t = s(".total--price .total__value").text().split("$")[1];
+      !t || s(".total--price .discounted_price").elements.length > 0 || s(".total--price").elements[0].insertAdjacentHTML(
         "beforeend",
         `<span class="discounted_price">
 				$${(+t * 0.85).toFixed(2)}
@@ -476,17 +503,17 @@ body {
       );
     }
     async changeProductPrice() {
-      var s;
+      var o;
       if (localStorage.getItem("cosabella_welcome_discount") !== "0") return;
-      await c(".atc-price.js-product-price");
-      const n = o(".atc-price.js-product-price"), e = (s = n.attr("data-oprice")) == null ? void 0 : s.split("$")[1];
-      e && (n.text(`$${(+e * 0.85).toFixed(2)}`), o(".form--product__add-to-cart").elements[0] && o(".form--product__add-to-cart").elements[0].insertAdjacentHTML(
+      await r(".atc-price.js-product-price");
+      const n = s(".atc-price.js-product-price"), e = (o = n.attr("data-oprice")) == null ? void 0 : o.split("$")[1];
+      e && (n.text(`$${(+e * 0.85).toFixed(2)}`), s(".form--product__add-to-cart").elements[0] && s(".form--product__add-to-cart").elements[0].insertAdjacentHTML(
         "beforeend",
         '<span class="crs_discount_label">-15%</span>'
       ));
     }
     async sliderObserver() {
-      await c(".js-product-recommendations");
+      await r(".js-product-recommendations");
       const t = document.querySelector(".js-product-recommendations");
       if (console.log(t), !t) return;
       const n = new MutationObserver(async () => {
@@ -495,7 +522,7 @@ body {
       n.observe(t, { childList: !0, subtree: !0 });
     }
     async priceObserver(t) {
-      await c(t);
+      await r(t);
       const n = document.querySelector(t);
       if (!n) return;
       const e = new MutationObserver(async () => {
@@ -504,7 +531,7 @@ body {
       e.observe(n, { childList: !0, subtree: !0 });
     }
     async cartChangePriceObserver() {
-      await c(".cart--flyout");
+      await r(".cart--flyout");
       const t = document.querySelector(".cart--flyout");
       if (console.log(t), !t) return;
       const n = new MutationObserver(async () => {
@@ -513,6 +540,6 @@ body {
       n.observe(t, { childList: !0, subtree: !0 });
     }
   }
-  new x();
+  new y();
 })();
 //# sourceMappingURL=index.js.map
