@@ -7,7 +7,7 @@
       event_desc: e,
       event_type: t,
       event_loc: i
-    }), d(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
+    }), l(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
   }, p = (n) => new Promise((e) => {
     const t = document.querySelector(n);
     t && e(t);
@@ -24,26 +24,26 @@
       `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, v = (n, e, t, i, s = 1e3, o = 0.5) => {
-    let g, c;
+  }, v = (n, e, t, i, s = 1e3, c = 0.5) => {
+    let g, d;
     if (g = new IntersectionObserver(
       function(m) {
-        m[0].isIntersecting === !0 ? c = setTimeout(() => {
+        m[0].isIntersecting === !0 ? d = setTimeout(() => {
           w(
             e,
             m[0].target.dataset.visible || i || "",
             "view",
             t
           ), g.disconnect();
-        }, s) : (d("Element is not fully visible", "warn"), clearTimeout(c));
+        }, s) : (l("Element is not fully visible", "warn"), clearTimeout(d));
       },
-      { threshold: [o] }
+      { threshold: [c] }
     ), typeof n == "string") {
       const m = document.querySelector(n);
       m && g.observe(m);
     } else
       g.observe(n);
-  }, d = (n, e = "info") => {
+  }, l = (n, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -115,9 +115,9 @@
       }
     }
   ];
-  function l(n, e) {
+  function o(n, e) {
     const t = n instanceof Error ? n.message : String(n);
-    d(`${e}: ${t}`, "error");
+    l(`${e}: ${t}`, "error");
   }
   const T = `icms-component:has(.crs-hero) > div:not(.crs-hero) {
   display: none;
@@ -362,7 +362,7 @@
       try {
         this.addStyles(), this.changeHeroImageSection();
       } catch (e) {
-        l(e, "Error initializing Hero section");
+        o(e, "Error initializing Hero section");
       }
     }
     async changeHeroImageSection() {
@@ -383,7 +383,7 @@
           });
         }), this.mutationObserver.observe(e, { childList: !0, subtree: !0 }), i();
       } catch (e) {
-        l(e, "Error changing hero image section");
+        o(e, "Error changing hero image section");
       }
     }
     replaceHeroContent(e) {
@@ -524,7 +524,7 @@
       try {
         this.addStyles(), this.hideSection(), this.changeSectionCopy(), this.observeResize();
       } catch (e) {
-        l(e, "Error initializing Hide Sections");
+        o(e, "Error initializing Hide Sections");
       }
     }
     async hideSection() {
@@ -533,13 +533,13 @@
           ":scope > icms-component"
         );
         if (!t) {
-          d("No components found in page view boundary", "warn");
+          l("No components found in page view boundary", "warn");
           return;
         }
         const i = Array.from(t);
         this.processInitialComponents(i), this.processChainHiding(i);
       } catch (e) {
-        l(e, "Error hiding sections");
+        o(e, "Error hiding sections");
       }
     }
     processInitialComponents(e) {
@@ -547,7 +547,7 @@
         try {
           t.classList.add("crs-top-section"), this.resetHideAttribute(t), this.checkTitleMarkers(t), this.handleOutfitBuilder(t);
         } catch (i) {
-          l(i, "Processing initial component");
+          o(i, "Processing initial component");
         }
       });
     }
@@ -555,16 +555,16 @@
       e.forEach((t) => {
         var i;
         try {
-          const s = t.previousElementSibling, o = t.querySelector("h1, h3");
+          const s = t.previousElementSibling, c = t.querySelector("h1, h3");
           if ((i = t.textContent) == null ? void 0 : i.includes(
             "@lemieuxproductsofficial"
           )) {
             t.dataset.crsHide = "false";
             return;
           }
-          (s == null ? void 0 : s.dataset.crsHide) === "true" && !o && (t.dataset.crsHide = "true");
+          (s == null ? void 0 : s.dataset.crsHide) === "true" && !c && (t.dataset.crsHide = "true");
         } catch (s) {
-          l(s, "Processing chain hiding");
+          o(s, "Processing chain hiding");
         }
       });
     }
@@ -594,7 +594,7 @@
           this.processPopularCategoriesTitle(i);
         });
       } catch (e) {
-        l(e, "Change section copy");
+        o(e, "Change section copy");
       }
     }
     processPopularCategoriesTitle(e) {
@@ -629,7 +629,7 @@
       this.resizeObserver = new ResizeObserver(e), p(".page-view-boundary").then((t) => {
         t && this.resizeObserver && this.resizeObserver.observe(t);
       }).catch((t) => {
-        l(t, "Setup resize observer");
+        o(t, "Setup resize observer");
       });
     }
     destroy() {
@@ -1089,7 +1089,7 @@
       try {
         this.addStyles(), this.modifySection();
       } catch (e) {
-        l(e, "Error initializing Popular Categories");
+        o(e, "Error initializing Popular Categories");
       }
     }
     async modifySection() {
@@ -1097,7 +1097,7 @@
         const e = await p('[data-crs-title="Popular Categories"]');
         e && (e.outerHTML = q, this.initSlider());
       } catch (e) {
-        l(e, "Error modifying Popular Categories section");
+        o(e, "Error modifying Popular Categories section");
       }
     }
     initSlider() {
@@ -1106,15 +1106,15 @@
         ".crs-slider-section .swiper-initialized"
       );
       if (!e) {
-        d("Slider box not found for scroll interaction", "warn");
+        l("Slider box not found for scroll interaction", "warn");
         return;
       }
       e.style.cursor = "grab";
-      let t = !1, i = 0, s = 0, o = 0, g = 0;
+      let t = !1, i = 0, s = 0, c = 0, g = 0;
       e.addEventListener(
         "mousedown",
-        (c) => {
-          c.preventDefault(), t = !0, i = c.pageX, s = c.pageY, o = e.scrollLeft, g = e.scrollTop;
+        (d) => {
+          d.preventDefault(), t = !0, i = d.pageX, s = d.pageY, c = e.scrollLeft, g = e.scrollTop;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
@@ -1131,17 +1131,17 @@
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "mousemove",
-        (c) => {
+        (d) => {
           if (!t) return;
-          c.preventDefault(), e.style.cursor = "grabbing";
-          const m = c.pageX, H = c.pageY, R = (m - i) * f.SCROLL_SENSITIVITY, $ = (H - s) * f.SCROLL_SENSITIVITY;
-          e.scrollLeft = o - R, e.scrollTop = g - $;
+          d.preventDefault(), e.style.cursor = "grabbing";
+          const m = d.pageX, H = d.pageY, R = (m - i) * f.SCROLL_SENSITIVITY, $ = (H - s) * f.SCROLL_SENSITIVITY;
+          e.scrollLeft = c - R, e.scrollTop = g - $;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "dragstart",
-        (c) => {
-          c.preventDefault();
+        (d) => {
+          d.preventDefault();
         },
         { signal: this.eventsAborter.signal }
       ), e.style.userSelect = "none";
@@ -1870,7 +1870,7 @@
       try {
         this.addStyles(), this.render();
       } catch (e) {
-        l(e, "Error initializing Outfit Builder section");
+        o(e, "Error initializing Outfit Builder section");
       }
     }
     async render() {
@@ -1881,11 +1881,11 @@
         if (e)
           e.insertAdjacentHTML("afterbegin", i), this.setupEvents();
         else {
-          d("Container .crs-target-outfit-builder not found", "warn");
+          l("Container .crs-target-outfit-builder not found", "warn");
           return;
         }
       } catch (e) {
-        l(e, "Error rendering Outfit Builder section");
+        o(e, "Error rendering Outfit Builder section");
       }
     }
     setupEvents() {
@@ -1902,7 +1902,7 @@
           0
         ), s && s.addEventListener(
           "click",
-          (o) => {
+          (c) => {
             w(
               e.clickEvent,
               e.name,
@@ -2217,13 +2217,13 @@
     }
     handleError(e, t) {
       const i = e instanceof Error ? e.message : String(e);
-      d(`ChristmasGifts ${t}: ${i}`, "error");
+      l(`ChristmasGifts ${t}: ${i}`, "error");
     }
     async render() {
       try {
         const e = await p(a.CONTAINER_SELECTOR);
         if (!e) {
-          d(`Container ${a.CONTAINER_SELECTOR} not found`, "warn");
+          l(`Container ${a.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupVisibilityTracking();
@@ -2268,7 +2268,7 @@
     handleSpanNavigation(e, t) {
       e.stopPropagation(), e.preventDefault(), e.stopImmediatePropagation();
       const i = t.getAttribute("href");
-      i ? window.location.href = i : d("No href found for span navigation", "warn");
+      i ? window.location.href = i : l("No href found for span navigation", "warn");
     }
     setupVisibilityTracking() {
       const e = document.querySelector(a.SECTION_SELECTOR);
@@ -2293,23 +2293,23 @@
   };
   a.STYLES_ID = "crs-christmas-gifts-styles", a.CONTAINER_SELECTOR = ".crs-target-outfit-builder", a.SECTION_SELECTOR = ".crs-christmas-gifts-section", a.VISIBILITY_THRESHOLD = 0;
   let S = a;
-  E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(n, e, t, i, s, o) {
+  E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(n, e, t, i, s, c) {
     n.hj = n.hj || function() {
       (n.hj.q = n.hj.q || []).push(arguments);
-    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(o);
+    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], c = e.createElement("script"), c.async = !0, c.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(c);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class j {
     constructor() {
-      this.isInitialized = !1, this.previousUrl = location.href, this.hero = new x(), this.hideSections = new b(), this.popularCategories = new _(), this.outfitBuilder = new L(), this.christmasGifts = new S(), this.init();
+      this.isInitialized = !1, l("Test constructor initialized"), this.previousUrl = location.href, this.hero = new x(), this.hideSections = new b(), this.popularCategories = new _(), this.outfitBuilder = new L(), this.christmasGifts = new S(), this.init();
     }
     init() {
       var e, t, i, s;
-      ((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((s = (i = window.autoInitData) == null ? void 0 : i.website) == null ? void 0 : s.defaultCountry) !== "US" || (this.imagePreloading(), this.interceptHistoryAPI(async () => {
+      l("Test initialized"), !(((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((s = (i = window.autoInitData) == null ? void 0 : i.website) == null ? void 0 : s.defaultCountry) !== "US") && (this.imagePreloading(), this.interceptHistoryAPI(async () => {
         this.destroyComponents(), this.initComponents();
       }), this.initComponents());
     }
     initComponents() {
-      (location.pathname === "/" || location.pathname === "/us/") && (d("Initializing components for homepage"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
+      (location.pathname === "/" || location.pathname === "/us/") && (l("Initializing components for homepage"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
     }
     destroyComponents() {
       this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.christmasGifts.destroy();
