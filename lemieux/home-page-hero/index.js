@@ -2309,7 +2309,7 @@
       }), this.initComponents());
     }
     initComponents() {
-      (location.pathname === "/" || location.pathname === "/us/") && (this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
+      (location.pathname === "/" || location.pathname === "/us/") && (d("Initializing components for homepage"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
     }
     destroyComponents() {
       this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.christmasGifts.destroy();
