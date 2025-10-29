@@ -511,7 +511,7 @@
 
 /* .page-view-boundary > icms-component:not(.crs-top-section) {
   display: none !important;
-} */`, C = [
+} */`, q = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
@@ -573,7 +573,7 @@
     }
     checkTitleMarkers(e) {
       const t = e.querySelector("h1, h2, h3");
-      C.some(
+      q.some(
         (i) => {
           var s;
           return (s = t == null ? void 0 : t.textContent) == null ? void 0 : s.includes(i);
@@ -653,7 +653,7 @@
   };
   u.RESIZE_DEBOUNCE_MS = 500, u.OBSERVER_CLEANUP_MS = 1e3;
   let b = u;
-  const q = (
+  const C = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
@@ -1095,7 +1095,7 @@
     async modifySection() {
       try {
         const e = await p('[data-crs-title="Popular Categories"]');
-        e && (e.outerHTML = q, this.initSlider());
+        e && (e.outerHTML = C, this.initSlider());
       } catch (e) {
         l(e, "Error modifying Popular Categories section");
       }
@@ -1862,7 +1862,7 @@
   margin-top: 20px;
 }
 `;
-  class I {
+  class L {
     constructor() {
       this.eventsAborter = null;
     }
@@ -1947,7 +1947,7 @@
       }
     }
   }
-  const L = "", P = (
+  const P = "", I = (
     /* HTML */
     `
   <icms-component class="crs-christmas-gifts-section">
@@ -2238,7 +2238,7 @@
       e && (this.eventsAborter && this.eventsAborter.abort(), e.remove());
     }
     insertSection(e) {
-      e.insertAdjacentHTML("beforeend", P);
+      e.insertAdjacentHTML("beforeend", I);
     }
     setupEventListeners() {
       this.eventsAborter && this.eventsAborter.abort(), this.eventsAborter = new AbortController(), this.linkConfigs.forEach((e) => {
@@ -2283,7 +2283,7 @@
     addStyles() {
       if (document.getElementById(a.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = a.STYLES_ID, e.textContent = L, document.head.appendChild(e);
+      e.id = a.STYLES_ID, e.textContent = P, document.head.appendChild(e);
     }
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null);
@@ -2300,23 +2300,15 @@
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class j {
     constructor() {
-      this.isInitialized = !1, this.previousUrl = location.href, this.hero = new x(), this.hideSections = new b(), this.popularCategories = new _(), this.outfitBuilder = new I(), this.christmasGifts = new S(), this.init();
-    }
-    waitAutoInitData() {
-      return new Promise((e) => {
-        const t = () => {
-          window.autoInitData && window.autoInitData.website && window.autoInitData.website.defaultCountry ? e() : setTimeout(t, 100);
-        };
-        t();
-      });
+      this.previousUrl = location.href, this.hero = new x(), this.hideSections = new b(), this.popularCategories = new _(), this.outfitBuilder = new L(), this.christmasGifts = new S(), this.init();
     }
     async init() {
-      await this.waitAutoInitData(), this.imagePreloading(), this.interceptHistoryAPI(async () => {
+      this.imagePreloading(), this.interceptHistoryAPI(async () => {
         this.destroyComponents(), this.initComponents();
       }), this.initComponents();
     }
     initComponents() {
-      (location.pathname === "/" || location.pathname === "/us/") && (d("Initializing components for homepage"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
+      (location.pathname === "/" || location.pathname === "/us/") && (this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
     }
     destroyComponents() {
       this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.christmasGifts.destroy();
