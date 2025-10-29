@@ -497,7 +497,7 @@
   };
   r.STYLES_ID = "crs-hero-styles", r.VISIBILITY_THRESHOLD = 0, r.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", r.HERO_CLASS = ".crs-hero";
   let x = r;
-  const C = `[data-crs-hide='true']:not([data-crs-no-hide]) {
+  const O = `[data-crs-hide='true']:not([data-crs-no-hide]) {
   display: none !important;
 }
 
@@ -511,7 +511,7 @@
 
 /* .page-view-boundary > icms-component:not(.crs-top-section) {
   display: none !important;
-} */`, O = [
+} */`, q = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
@@ -573,7 +573,7 @@
     }
     checkTitleMarkers(e) {
       const t = e.querySelector("h1, h2, h3");
-      O.some(
+      q.some(
         (i) => {
           var s;
           return (s = t == null ? void 0 : t.textContent) == null ? void 0 : s.includes(i);
@@ -648,12 +648,12 @@
     addStyles() {
       if (document.getElementById("crs-hide-section-styles")) return;
       const e = document.createElement("style");
-      e.id = "crs-hide-section-styles", e.textContent = C, document.head.appendChild(e);
+      e.id = "crs-hide-section-styles", e.textContent = O, document.head.appendChild(e);
     }
   };
   u.RESIZE_DEBOUNCE_MS = 500, u.OBSERVER_CLEANUP_MS = 1e3;
   let b = u;
-  const q = (
+  const C = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
@@ -1095,7 +1095,7 @@
     async modifySection() {
       try {
         const e = await p('[data-crs-title="Popular Categories"]');
-        e && (e.outerHTML = q, this.initSlider());
+        e && (e.outerHTML = C, this.initSlider());
       } catch (e) {
         o(e, "Error modifying Popular Categories section");
       }
@@ -1947,7 +1947,7 @@
       }
     }
   }
-  const I = "", P = (
+  const P = "", I = (
     /* HTML */
     `
   <icms-component class="crs-christmas-gifts-section">
@@ -2238,7 +2238,7 @@
       e && (this.eventsAborter && this.eventsAborter.abort(), e.remove());
     }
     insertSection(e) {
-      e.insertAdjacentHTML("beforeend", P);
+      e.insertAdjacentHTML("beforeend", I);
     }
     setupEventListeners() {
       this.eventsAborter && this.eventsAborter.abort(), this.eventsAborter = new AbortController(), this.linkConfigs.forEach((e) => {
@@ -2283,7 +2283,7 @@
     addStyles() {
       if (document.getElementById(a.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = a.STYLES_ID, e.textContent = I, document.head.appendChild(e);
+      e.id = a.STYLES_ID, e.textContent = P, document.head.appendChild(e);
     }
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null);
@@ -2303,10 +2303,9 @@
       this.isInitialized = !1, l("Test constructor initialized"), this.previousUrl = location.href, this.hero = new x(), this.hideSections = new b(), this.popularCategories = new _(), this.outfitBuilder = new L(), this.christmasGifts = new S(), this.init();
     }
     init() {
-      var e, t, i, s;
-      l("Test initialized"), !(((t = (e = window.autoInitData) == null ? void 0 : e.website) == null ? void 0 : t.defaultCountry) !== "GB" && ((s = (i = window.autoInitData) == null ? void 0 : i.website) == null ? void 0 : s.defaultCountry) !== "US") && (this.imagePreloading(), this.interceptHistoryAPI(async () => {
+      l("Test initialized"), this.imagePreloading(), this.interceptHistoryAPI(async () => {
         this.destroyComponents(), this.initComponents();
-      }), this.initComponents());
+      }), this.initComponents();
     }
     initComponents() {
       (location.pathname === "/" || location.pathname === "/us/") && (l("Initializing components for homepage"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
