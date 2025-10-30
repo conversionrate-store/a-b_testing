@@ -1,49 +1,49 @@
 (function() {
   "use strict";
-  const w = (n, e, t, i = "") => {
+  const w = (s, e, t, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: n,
+      event_name: s,
       event_desc: e,
       event_type: t,
       event_loc: i
-    }), d(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
-  }, p = (n) => new Promise((e) => {
-    const t = document.querySelector(n);
+    }), d(`Event: ${s} | ${e} | ${t} | ${i}`, "success");
+  }, p = (s) => new Promise((e) => {
+    const t = document.querySelector(s);
     t && e(t);
     const i = new MutationObserver(() => {
-      const s = document.querySelector(n);
-      s && (e(s), i.disconnect());
+      const n = document.querySelector(s);
+      n && (e(n), i.disconnect());
     });
     i.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), E = ({ name: n, dev: e }) => {
+  }), E = ({ name: s, dev: e }) => {
     console.log(
-      `%c EXP: ${n} (DEV: ${e})`,
+      `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, v = (n, e, t, i, s = 1e3, o = 0.5) => {
-    let g, c;
+  }, v = (s, e, t, i, n = 1e3, a = 0.5) => {
+    let g, o;
     if (g = new IntersectionObserver(
       function(m) {
-        m[0].isIntersecting === !0 ? c = setTimeout(() => {
+        m[0].isIntersecting === !0 ? o = setTimeout(() => {
           w(
             e,
             m[0].target.dataset.visible || i || "",
             "view",
             t
           ), g.disconnect();
-        }, s) : (d("Element is not fully visible", "warn"), clearTimeout(c));
+        }, n) : (d("Element is not fully visible", "warn"), clearTimeout(o));
       },
-      { threshold: [o] }
-    ), typeof n == "string") {
-      const m = document.querySelector(n);
+      { threshold: [a] }
+    ), typeof s == "string") {
+      const m = document.querySelector(s);
       m && g.observe(m);
     } else
-      g.observe(n);
-  }, d = (n, e = "info") => {
+      g.observe(s);
+  }, d = (s, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -59,7 +59,7 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
   }, k = `.crs-hide {
   display: none !important;
 }
@@ -115,8 +115,8 @@
       }
     }
   ];
-  function l(n, e) {
-    const t = n instanceof Error ? n.message : String(n);
+  function c(s, e) {
+    const t = s instanceof Error ? s.message : String(s);
     d(`${e}: ${t}`, "error");
   }
   const T = `icms-component:has(.crs-hero) > div:not(.crs-hero) {
@@ -354,7 +354,7 @@
     height: auto;
   }
 }
-`, r = class r {
+`, l = class l {
     constructor() {
       this.eventsAborter = null, this.mutationObserver = null;
     }
@@ -362,28 +362,28 @@
       try {
         this.addStyles(), this.changeHeroImageSection();
       } catch (e) {
-        l(e, "Error initializing Hero section");
+        c(e, "Error initializing Hero section");
       }
     }
     async changeHeroImageSection() {
       try {
-        const e = await p(r.TARGET_SELECTOR);
+        const e = await p(l.TARGET_SELECTOR);
         if (!e) {
-          console.warn(`Target ${r.TARGET_SELECTOR} not found`);
+          console.warn(`Target ${l.TARGET_SELECTOR} not found`);
           return;
         }
-        if (e.querySelector(r.HERO_CLASS))
+        if (e.querySelector(l.HERO_CLASS))
           return;
         const i = () => {
           this.replaceHeroContent(e), this.setupEventListeners(e);
         };
-        this.mutationObserver = new MutationObserver((s) => {
-          s.forEach(() => {
-            e.querySelector(r.HERO_CLASS) || i();
+        this.mutationObserver = new MutationObserver((n) => {
+          n.forEach(() => {
+            e.querySelector(l.HERO_CLASS) || i();
           });
         }), this.mutationObserver.observe(e, { childList: !0, subtree: !0 }), i();
       } catch (e) {
-        l(e, "Error changing hero image section");
+        c(e, "Error changing hero image section");
       }
     }
     replaceHeroContent(e) {
@@ -482,22 +482,22 @@
         "exp_hp_hero_view_1",
         "Home page Hero Section",
         e.dataset.title || "",
-        r.VISIBILITY_THRESHOLD
+        l.VISIBILITY_THRESHOLD
       );
     }
     addStyles() {
-      if (document.getElementById(r.STYLES_ID)) return;
+      if (document.getElementById(l.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = r.STYLES_ID, e.textContent = T, document.head.appendChild(e);
+      e.id = l.STYLES_ID, e.textContent = T, document.head.appendChild(e);
     }
     destroy() {
       var e;
-      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.mutationObserver && (this.mutationObserver.disconnect(), this.mutationObserver = null), (e = document == null ? void 0 : document.querySelector(r.HERO_CLASS)) == null || e.remove();
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.mutationObserver && (this.mutationObserver.disconnect(), this.mutationObserver = null), (e = document == null ? void 0 : document.querySelector(l.HERO_CLASS)) == null || e.remove();
     }
   };
-  r.STYLES_ID = "crs-hero-styles", r.VISIBILITY_THRESHOLD = 0, r.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", r.HERO_CLASS = ".crs-hero";
-  let x = r;
-  const O = `[data-crs-hide='true']:not([data-crs-no-hide]) {
+  l.STYLES_ID = "crs-hero-styles", l.VISIBILITY_THRESHOLD = 0, l.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", l.HERO_CLASS = ".crs-hero";
+  let x = l;
+  const C = `[data-crs-hide='true']:not([data-crs-no-hide]) {
   display: none !important;
 }
 
@@ -511,7 +511,7 @@
 
 /* .page-view-boundary > icms-component:not(.crs-top-section) {
   display: none !important;
-} */`, C = [
+} */`, O = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
@@ -524,7 +524,7 @@
       try {
         this.addStyles(), this.hideSection(), this.changeSectionCopy(), this.observeResize();
       } catch (e) {
-        l(e, "Error initializing Hide Sections");
+        c(e, "Error initializing Hide Sections");
       }
     }
     async hideSection() {
@@ -539,7 +539,7 @@
         const i = Array.from(t);
         this.processInitialComponents(i), this.processChainHiding(i);
       } catch (e) {
-        l(e, "Error hiding sections");
+        c(e, "Error hiding sections");
       }
     }
     processInitialComponents(e) {
@@ -547,24 +547,24 @@
         try {
           t.classList.add("crs-top-section"), this.resetHideAttribute(t), this.checkTitleMarkers(t), this.handleOutfitBuilder(t);
         } catch (i) {
-          l(i, "Processing initial component");
+          c(i, "Processing initial component");
         }
       });
     }
     processChainHiding(e) {
       e.forEach((t) => {
-        var i;
+        var i, n;
         try {
-          const s = t.previousElementSibling, o = t.querySelector("h1, h3");
+          const a = t.previousElementSibling, g = t.querySelector("h1, h3");
           if ((i = t.textContent) == null ? void 0 : i.includes(
             "@lemieuxproductsofficial"
           )) {
             t.dataset.crsHide = "false";
             return;
           }
-          (s == null ? void 0 : s.dataset.crsHide) === "true" && !o && (t.dataset.crsHide = "true");
-        } catch (s) {
-          l(s, "Processing chain hiding");
+          (n = t.textContent) != null && n.includes("Shop Popular Categories") && t.dataset.crsNoHide !== "true" && (t.dataset.crsHide = "true"), (a == null ? void 0 : a.dataset.crsHide) === "true" && !g && (t.dataset.crsHide = "true");
+        } catch (a) {
+          c(a, "Processing chain hiding");
         }
       });
     }
@@ -573,10 +573,10 @@
     }
     checkTitleMarkers(e) {
       const t = e.querySelector("h1, h2, h3");
-      C.some(
+      O.some(
         (i) => {
-          var s;
-          return (s = t == null ? void 0 : t.textContent) == null ? void 0 : s.includes(i);
+          var n;
+          return (n = t == null ? void 0 : t.textContent) == null ? void 0 : n.includes(i);
         }
       ) && (e.dataset.crsHide = "true");
     }
@@ -594,7 +594,7 @@
           this.processPopularCategoriesTitle(i);
         });
       } catch (e) {
-        l(e, "Change section copy");
+        c(e, "Change section copy");
       }
     }
     processPopularCategoriesTitle(e) {
@@ -604,8 +604,8 @@
     }
     setupTitleObserver(e) {
       const t = new MutationObserver(() => {
-        var s;
-        (((s = e.textContent) == null ? void 0 : s.trim()) || "").includes("Shop Popular Categories") && (e.textContent = "Popular Categories", setTimeout(() => {
+        var n;
+        (((n = e.textContent) == null ? void 0 : n.trim()) || "").includes("Shop Popular Categories") && (e.textContent = "Popular Categories", setTimeout(() => {
           this.cleanupObserver(t);
         }, u.OBSERVER_CLEANUP_MS));
       });
@@ -629,7 +629,7 @@
       this.resizeObserver = new ResizeObserver(e), p(".page-view-boundary").then((t) => {
         t && this.resizeObserver && this.resizeObserver.observe(t);
       }).catch((t) => {
-        l(t, "Setup resize observer");
+        c(t, "Setup resize observer");
       });
     }
     destroy() {
@@ -648,7 +648,7 @@
     addStyles() {
       if (document.getElementById("crs-hide-section-styles")) return;
       const e = document.createElement("style");
-      e.id = "crs-hide-section-styles", e.textContent = O, document.head.appendChild(e);
+      e.id = "crs-hide-section-styles", e.textContent = C, document.head.appendChild(e);
     }
   };
   u.RESIZE_DEBOUNCE_MS = 500, u.OBSERVER_CLEANUP_MS = 1e3;
@@ -1021,8 +1021,9 @@
   </div></icms-component
 >`
   ), z = `[data-crs-title='Popular Categories'] .swiper-initialized {
+  overflow: hidden;
   overflow-x: auto;
-  touch-action: pan-x;
+  touch-action: initial;
   padding-inline: 12px;
   min-height: max-content;
 
@@ -1031,9 +1032,8 @@
   -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
 
-[data-crs-title='Popular Categories']  h1 {
+[data-crs-title='Popular Categories'] h1 {
   border: none !important;
-
 }
 
 [data-crs-title='Popular Categories'] swiper::-webkit-scrollbar {
@@ -1041,21 +1041,29 @@
 }
 
 /* Prevent images from blocking mouse drag */
-[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] img {
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
+/* only on not touch devices */
+@media (pointer: fine) {
+  [data-crs-title='Popular Categories'] .swiper-initialized {
+    touch-action: pan-x;
+  }
+  [data-crs-title='Popular Categories']
+    .swiper-initialized[style*='grabbing']
+    img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }
 
 /* Keep links clickable but prevent text selection */
-[data-crs-title='Popular Categories'] .swiper-initialized[style*="grabbing"] a {
+[data-crs-title='Popular Categories'] .swiper-initialized[style*='grabbing'] a {
   user-select: none;
 }
 
 [data-crs-title='Popular Categories'] .swiper-wrapper {
   display: flex;
+  padding-block: 5px;
 }
-
 
 [data-crs-title='Popular Categories'] .swiper-wrapper .swiper-slide {
   aspect-ratio: 1;
@@ -1063,11 +1071,10 @@
   height: max-content;
 }
 
-[data-crs-title='Popular Categories'] > div:not(.crs-category-carousel-wrapper) {
+[data-crs-title='Popular Categories']
+  > div:not(.crs-category-carousel-wrapper) {
   display: none;
 }
-
-
 
 @media (min-width: 1390px) {
   [data-crs-title='Popular Categories'] .swiper-initialized {
@@ -1081,13 +1088,10 @@
   }
 }
 
-
-
-
-
- page-component-hero-image:has(vimeo-player) {
+page-component-hero-image:has(vimeo-player) {
   padding-top: 0 !important;
-}`, f = class f {
+}
+`, f = class f {
     constructor() {
       this.eventsAborter = null;
     }
@@ -1095,7 +1099,7 @@
       try {
         this.addStyles(), this.modifySection();
       } catch (e) {
-        l(e, "Error initializing Popular Categories");
+        c(e, "Error initializing Popular Categories");
       }
     }
     async modifySection() {
@@ -1103,7 +1107,7 @@
         const e = await p('[data-crs-title="Popular Categories"]');
         e && (e.outerHTML = q, this.initSlider());
       } catch (e) {
-        l(e, "Error modifying Popular Categories section");
+        c(e, "Error modifying Popular Categories section");
       }
     }
     initSlider() {
@@ -1116,11 +1120,11 @@
         return;
       }
       e.style.cursor = "grab";
-      let t = !1, i = 0, s = 0, o = 0, g = 0;
+      let t = !1, i = 0, n = 0, a = 0, g = 0;
       e.addEventListener(
         "mousedown",
-        (c) => {
-          c.preventDefault(), t = !0, i = c.pageX, s = c.pageY, o = e.scrollLeft, g = e.scrollTop;
+        (o) => {
+          o.preventDefault(), t = !0, i = o.pageX, n = o.pageY, a = e.scrollLeft, g = e.scrollTop;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
@@ -1137,17 +1141,17 @@
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "mousemove",
-        (c) => {
+        (o) => {
           if (!t) return;
-          c.preventDefault(), e.style.cursor = "grabbing";
-          const m = c.pageX, H = c.pageY, R = (m - i) * f.SCROLL_SENSITIVITY, $ = (H - s) * f.SCROLL_SENSITIVITY;
-          e.scrollLeft = o - R, e.scrollTop = g - $;
+          o.preventDefault(), e.style.cursor = "grabbing";
+          const m = o.pageX, H = o.pageY, R = (m - i) * f.SCROLL_SENSITIVITY, $ = (H - n) * f.SCROLL_SENSITIVITY;
+          e.scrollLeft = a - R, e.scrollTop = g - $;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "dragstart",
-        (c) => {
-          c.preventDefault();
+        (o) => {
+          o.preventDefault();
         },
         { signal: this.eventsAborter.signal }
       ), e.style.userSelect = "none";
@@ -1876,7 +1880,7 @@
       try {
         this.addStyles(), this.render();
       } catch (e) {
-        l(e, "Error initializing Outfit Builder section");
+        c(e, "Error initializing Outfit Builder section");
       }
     }
     async render() {
@@ -1891,7 +1895,7 @@
           return;
         }
       } catch (e) {
-        l(e, "Error rendering Outfit Builder section");
+        c(e, "Error rendering Outfit Builder section");
       }
     }
     setupEvents() {
@@ -1899,16 +1903,16 @@
     }
     setupBuilder(e, t) {
       document.querySelectorAll(e.selector).forEach((i) => {
-        const s = i.querySelector("a");
+        const n = i.querySelector("a");
         v(
           i,
           e.viewEvent,
           "Home Page Outfit Builder",
           e.visibility,
           0
-        ), s && s.addEventListener(
+        ), n && n.addEventListener(
           "click",
-          (o) => {
+          (a) => {
             w(
               e.clickEvent,
               e.name,
@@ -2198,7 +2202,7 @@
     </div>
   </icms-component>
 `
-  ), a = class a {
+  ), r = class r {
     constructor() {
       this.eventsAborter = null, this.linkConfigs = [
         {
@@ -2227,9 +2231,9 @@
     }
     async render() {
       try {
-        const e = await p(a.CONTAINER_SELECTOR);
+        const e = await p(r.CONTAINER_SELECTOR);
         if (!e) {
-          d(`Container ${a.CONTAINER_SELECTOR} not found`, "warn");
+          d(`Container ${r.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupVisibilityTracking();
@@ -2239,7 +2243,7 @@
     }
     cleanupExistingSection() {
       const e = document.querySelector(
-        a.SECTION_SELECTOR
+        r.SECTION_SELECTOR
       );
       e && (this.eventsAborter && this.eventsAborter.abort(), e.remove());
     }
@@ -2252,9 +2256,9 @@
       });
     }
     setupLinksForConfig(e) {
-      const t = `${a.SECTION_SELECTOR} ${e.selector}`;
-      document.querySelectorAll(t).forEach((s) => {
-        this.attachClickListener(s, e);
+      const t = `${r.SECTION_SELECTOR} ${e.selector}`;
+      document.querySelectorAll(t).forEach((n) => {
+        this.attachClickListener(n, e);
       });
     }
     attachClickListener(e, t) {
@@ -2277,32 +2281,32 @@
       i ? window.location.href = i : d("No href found for span navigation", "warn");
     }
     setupVisibilityTracking() {
-      const e = document.querySelector(a.SECTION_SELECTOR);
+      const e = document.querySelector(r.SECTION_SELECTOR);
       e && v(
         e,
         "exp_hp_hero_view_4",
         "Home Page Christmas Gifting",
         "Visibility",
-        a.VISIBILITY_THRESHOLD
+        r.VISIBILITY_THRESHOLD
       );
     }
     addStyles() {
-      if (document.getElementById(a.STYLES_ID)) return;
+      if (document.getElementById(r.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = a.STYLES_ID, e.textContent = P, document.head.appendChild(e);
+      e.id = r.STYLES_ID, e.textContent = P, document.head.appendChild(e);
     }
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null);
-      const e = document.querySelector(a.SECTION_SELECTOR);
+      const e = document.querySelector(r.SECTION_SELECTOR);
       e && e.remove();
     }
   };
-  a.STYLES_ID = "crs-christmas-gifts-styles", a.CONTAINER_SELECTOR = ".crs-target-outfit-builder", a.SECTION_SELECTOR = ".crs-christmas-gifts-section", a.VISIBILITY_THRESHOLD = 0;
-  let S = a;
-  E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(n, e, t, i, s, o) {
-    n.hj = n.hj || function() {
-      (n.hj.q = n.hj.q || []).push(arguments);
-    }, n._hjSettings = { hjid: 2667925, hjsv: 6 }, s = e.getElementsByTagName("head")[0], o = e.createElement("script"), o.async = !0, o.src = t + n._hjSettings.hjid + i + n._hjSettings.hjsv, s && s.appendChild(o);
+  r.STYLES_ID = "crs-christmas-gifts-styles", r.CONTAINER_SELECTOR = ".crs-target-outfit-builder", r.SECTION_SELECTOR = ".crs-christmas-gifts-section", r.VISIBILITY_THRESHOLD = 0;
+  let S = r;
+  E({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(s, e, t, i, n, a) {
+    s.hj = s.hj || function() {
+      (s.hj.q = s.hj.q || []).push(arguments);
+    }, s._hjSettings = { hjid: 2667925, hjsv: 6 }, n = e.getElementsByTagName("head")[0], a = e.createElement("script"), a.async = !0, a.src = t + s._hjSettings.hjid + i + s._hjSettings.hjsv, n && n.appendChild(a);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
   class j {
     constructor() {
