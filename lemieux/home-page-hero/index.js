@@ -511,7 +511,7 @@
 
 /* .page-view-boundary > icms-component:not(.crs-top-section) {
   display: none !important;
-} */`, q = [
+} */`, C = [
     "Disney Inspired Hobby Horses",
     "Explore LeMieux Toys",
     "NEW SEASON",
@@ -573,7 +573,7 @@
     }
     checkTitleMarkers(e) {
       const t = e.querySelector("h1, h2, h3");
-      q.some(
+      C.some(
         (i) => {
           var s;
           return (s = t == null ? void 0 : t.textContent) == null ? void 0 : s.includes(i);
@@ -653,14 +653,14 @@
   };
   u.RESIZE_DEBOUNCE_MS = 500, u.OBSERVER_CLEANUP_MS = 1e3;
   let b = u;
-  const C = (
+  const q = (
     /* HTML */
     `<icms-component
   _ngcontent-ng-c2047601728=""
   class="ng-star-inserted crs-slider-section"
   data-crs-title="Popular Categories"
   data-crs-no-hide
-  ><div>
+  ><div class="crs-category-carousel-wrapper">
     <page-component-category-carousel
       class="ng-star-inserted"
       style="display: block; padding-top: 32px; padding-bottom: 32px;"
@@ -1063,6 +1063,12 @@
   height: max-content;
 }
 
+[data-crs-title='Popular Categories'] > div:not(.crs-category-carousel-wrapper) {
+  display: none;
+}
+
+
+
 @media (min-width: 1390px) {
   [data-crs-title='Popular Categories'] .swiper-initialized {
     min-height: max-content;
@@ -1095,7 +1101,7 @@
     async modifySection() {
       try {
         const e = await p('[data-crs-title="Popular Categories"]');
-        e && (e.outerHTML = C, this.initSlider());
+        e && (e.outerHTML = q, this.initSlider());
       } catch (e) {
         l(e, "Error modifying Popular Categories section");
       }
