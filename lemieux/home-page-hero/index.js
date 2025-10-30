@@ -2314,7 +2314,17 @@
       }), this.initComponents();
     }
     initComponents() {
-      (location.pathname === "/" || location.pathname === "/us/") && (this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init());
+      (location.pathname === "/" || location.pathname === "/us/") && this.waitAutoInitData().then(() => {
+        this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.outfitBuilder.init(), this.christmasGifts.init();
+      });
+    }
+    waitAutoInitData() {
+      return new Promise((e) => {
+        const t = () => {
+          window.autoInitData && window.autoInitData.website ? e() : window.setTimeout(t, 100);
+        };
+        t();
+      });
     }
     destroyComponents() {
       this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.christmasGifts.destroy();
