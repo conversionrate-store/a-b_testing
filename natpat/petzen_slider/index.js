@@ -1,36 +1,36 @@
 (function() {
   "use strict";
-  const d = (s, t, e, n = "") => {
+  const d = (s, n, e, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: s,
-      event_desc: t,
+      event_desc: n,
       event_type: e,
-      event_loc: n
-    }), m(`Event: ${s} | ${t} | ${e} | ${n}`, "success");
-  }, p = (s) => new Promise((t) => {
+      event_loc: t
+    }), m(`Event: ${s} | ${n} | ${e} | ${t}`, "success");
+  }, p = (s) => new Promise((n) => {
     const e = document.querySelector(s);
-    e && t(e);
-    const n = new MutationObserver(() => {
+    e && n(e);
+    const t = new MutationObserver(() => {
       const a = document.querySelector(s);
-      a && (t(a), n.disconnect());
+      a && (n(a), t.disconnect());
     });
-    n.observe(document.documentElement, {
+    t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: s, dev: t }) => {
+  }), g = ({ name: s, dev: n }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${t})`,
+      `%c EXP: ${s} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   }, h = (s) => {
-    let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", s, "variant_1"));
+    let n = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", s, "variant_1"));
     }, 1e3);
-  }, m = (s, t = "info") => {
+  }, m = (s, n = "info") => {
     let e;
-    switch (t) {
+    switch (n) {
       case "info":
         e = "color: #3498db;";
         break;
@@ -47,7 +47,7 @@
     console.log(`%c>>> ${s}`, `${e} font-size: 16px; font-weight: 600`);
   }, c = "https://conversionrate-store.github.io/a-b_images/natpat", u = `.lp-tr--hero-section {
   background: #0d7650;
-  padding: 30px 0 300px !important;
+  padding: 30px 0 280px !important;
 }
 
 .lp-tr--hero-section :is(.lp-tr--main-title, .lp-tr--hero-lists) {
@@ -56,7 +56,8 @@
 
 .lp-tr--float-right-img {
   bottom: 10px !important;
-  filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 100px rgba(255, 255, 255, 0.3));
 }
 
 .lp-tr--hero-section .lp-tr--btn {
@@ -71,6 +72,10 @@
 .lp-tr--learn-more-btn {
   margin-top: 0 !important;
   margin-bottom: 20px !important;
+}
+
+.lp-tr--learn-more-btn:hover, .lp-tr--learn-more-btn:focus {
+  color: #fff !important;
 }
 
 .lp-tr--learn-more-btn img {
@@ -169,7 +174,7 @@ crs-slider {
   text-align: center;
   font-size: 22px;
   font-weight: 700;
-  line-height: 26px;
+  line-height: 28px;
 }
 
 .crs-slide-description {
@@ -222,6 +227,12 @@ crs-slider {
   gap: 16px;
 }
 
+.crs-slide-solution-grid .crs-icon img {
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
 .crs-slide-solution-grid .crs-text {
   color: #fff;
   text-align: center;
@@ -254,7 +265,7 @@ crs-slider {
   z-index: 2;
   text-align: center;
   color: #000;
-  font-family: "DIN Next", sans-serif ;
+  font-family: 'DIN Next', sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px; /* 120% */
@@ -289,7 +300,7 @@ crs-slider {
         src: "best-product.webp",
         width: "100%",
         height: "auto",
-        style: "margin-top: -8px; margin-right: -27px"
+        style: "margin-top: -11px; margin-right: -27px"
       },
       templates: ["with-background", "full"],
       backgroundImage: {
@@ -376,58 +387,58 @@ crs-slider {
       this.addStyles(), this.changeHeaderSectionImages(), this.addSlider();
     }
     addSlider() {
-      const t = this.section.querySelector(".lp-tr--main-title"), e = (
+      const n = this.section.querySelector(".lp-tr--main-title"), e = (
         /* HTML */
         ` <crs-slider>
       ${x.map((r, o) => this.renderSlide(r, o)).join("")}
     </crs-slider>`
       );
-      t == null || t.insertAdjacentHTML("afterend", e);
-      const n = this.section.querySelector("crs-slider");
+      n == null || n.insertAdjacentHTML("afterend", e), d("exp_slider_view_1", "1", "view", "Slider");
+      const t = this.section.querySelector("crs-slider");
       let a = 0;
-      n == null || n.addEventListener("crs-slide-change", (r) => {
+      t == null || t.addEventListener("crs-slide-change", (r) => {
         const i = r.detail.activeSlideIndex;
         clearTimeout(this.activeSlideTimeout), this.activeSlideTimeout = setTimeout(() => {
           i !== a && d("exp_slider_view_1", `${i}`, "view", "Slider"), a = i;
-        }, 300);
-      }), n == null || n.addEventListener("click", (r) => {
+        }, 1e3);
+      }), t == null || t.addEventListener("click", (r) => {
         var l;
         const o = r.target, i = (l = o.closest(".crs-slide")) == null ? void 0 : l.dataset.slideIndex;
         !o.closest(".crs-action-button") || !i || (console.log("Slide action clicked:", i), d("exp_slider_click_1", `${i}`, "click", "Slider"));
       });
     }
-    renderSlide(t, e) {
+    renderSlide(n, e) {
       var a, r, o;
-      const n = [];
-      if (t.title) {
-        const i = (t.title.includes("crs-highlight"), "crs-slide-title");
-        n.push(`<div class="${i}">${t.title}</div>`);
+      const t = [];
+      if (n.title) {
+        const i = (n.title.includes("crs-highlight"), "crs-slide-title");
+        t.push(`<div class="${i}">${n.title}</div>`);
       }
-      if (t.subtitle && n.push(
-        `<div class="crs-slide-subtitle">${t.subtitle}</div>`
-      ), t.description && n.push(
-        `<div class="crs-slide-description">${t.description}</div>`
-      ), t.image) {
-        const i = t.image.style ? `style="${t.image.style}"` : "";
-        n.push(`
+      if (n.subtitle && t.push(
+        `<div class="crs-slide-subtitle">${n.subtitle}</div>`
+      ), n.description && t.push(
+        `<div class="crs-slide-description">${n.description}</div>`
+      ), n.image) {
+        const i = n.image.style ? `style="${n.image.style}"` : "";
+        t.push(`
         <img
-          src="${c}/${t.image.src}"
+          src="${c}/${n.image.src}"
           alt=""
-          width="${t.image.width}"
-          height="${t.image.height}"
+          width="${n.image.width}"
+          height="${n.image.height}"
           loading="lazy"
           ${i}
-          class="${t != null && t.image.templates ? t.image.templates.join(" ") : ""}"
+          class="${n != null && n.image.templates ? n.image.templates.join(" ") : ""}"
         />
       `);
       }
-      return t.list && n.push(`
+      return n.list && t.push(`
         <ul class="crs-slide-description-list">
-          ${t.list.map((i) => `<li>${i}</li>`).join("")}
+          ${n.list.map((i) => `<li>${i}</li>`).join("")}
         </ul>
-      `), t.grid && n.push(`
+      `), n.grid && t.push(`
         <div class="crs-slide-solution-grid">
-          ${t.grid.map(
+          ${n.grid.map(
         (i) => `
             <div class="crs-item">
               <div class="crs-icon">
@@ -444,7 +455,7 @@ crs-slider {
           `
       ).join("")}
         </div>
-      `), t.action && ((a = t.action.templates) != null && a.includes("with-image") ? n.push(
+      `), n.action && ((a = n.action.templates) != null && a.includes("with-image") ? t.push(
         /* HTML */
         `
           <div class="crs-action">
@@ -466,32 +477,32 @@ crs-slider {
             </picture>
             <a
               href="#lptrPurchase"
-              class="crs-action-button ${(r = t.action.templates) != null && r.includes(
+              class="crs-action-button ${(r = n.action.templates) != null && r.includes(
           "secondary"
         ) ? " crs-action-button-secondary" : " crs-action-button-primary"}"
-              >${t.action.text}</a
+              >${n.action.text}</a
             >
           </div>
         `
-      ) : n.push(
+      ) : t.push(
         /* HTML */
         `<div class="crs-action">
             <a
               href="#lptrPurchase"
-              class="crs-action-button ${(o = t.action.templates) != null && o.includes(
+              class="crs-action-button ${(o = n.action.templates) != null && o.includes(
           "secondary"
         ) ? " crs-action-button-secondary" : " crs-action-button-primary"}"
-              >${t.action.text}</a
+              >${n.action.text}</a
             >
           </div>`
       )), `
-      <div class="crs-slide ${t != null && t.templates ? t.templates.join(" ") : ""}" data-slide-index="${e}" style="${t.backgroundImage ? `background-image: url('${c}/${t.backgroundImage.src}');` : ""}">
-        ${n.join("")}
+      <div class="crs-slide ${n != null && n.templates ? n.templates.join(" ") : ""}" data-slide-index="${e + 1}" style="${n.backgroundImage ? `background-image: url('${c}/${n.backgroundImage.src}');` : ""}">
+        ${t.join("")}
       </div>
     `;
     }
     changeHeaderSectionImages() {
-      const t = this.section.querySelector(
+      const n = this.section.querySelector(
         ".lp-tr--float-right-img"
       );
       this.section.querySelector(
@@ -500,11 +511,11 @@ crs-slider {
       const e = this.section.querySelector(
         ".lp-tr--learn-more-btn img"
       );
-      t && (t.src = `${c}/lp-pet-zen--dog-cat.webp`), e && (e.src = `${c}/arrow_down.svg`);
+      n && (n.src = `${c}/lp-pet-zen--dog-cat.webp`), e && (e.src = `${c}/arrow_down.svg`);
     }
     addStyles() {
-      const t = document.createElement("style");
-      t.textContent = u, document.head.appendChild(t);
+      const n = document.createElement("style");
+      n.textContent = u, document.head.appendChild(n);
     }
   }
   const b = `.slider {
@@ -543,7 +554,7 @@ crs-slider {
 }`;
   class w extends HTMLElement {
     constructor() {
-      super(), this.attachShadow({ mode: "open" }).innerHTML = this.render();
+      super(), this.initialLoad = !0, this.attachShadow({ mode: "open" }).innerHTML = this.render();
     }
     render() {
       return (
@@ -564,25 +575,32 @@ crs-slider {
       );
     }
     connectedCallback() {
-      const t = this.querySelectorAll(":scope > *"), e = {
+      const n = this.querySelectorAll(":scope > *"), e = {
         rootMargin: "0px",
         threshold: 1
-      }, n = (r) => {
+      }, t = (r) => {
         r.forEach((o) => {
           var l;
           const i = o.target;
-          o.isIntersecting ? (i.classList.add("is-visible"), (l = this.shadowRoot) == null || l.dispatchEvent(
-            new CustomEvent("crs-slide-change", {
-              detail: {
-                activeSlideIndex: Number(i.dataset.slideIndex)
-              },
-              bubbles: !0,
-              composed: !0
-            })
-          )) : i.classList.remove("is-visible");
+          if (o.isIntersecting) {
+            if (i.classList.add("is-visible"), this.initialLoad) {
+              this.initialLoad = !1;
+              return;
+            }
+            (l = this.shadowRoot) == null || l.dispatchEvent(
+              new CustomEvent("crs-slide-change", {
+                detail: {
+                  activeSlideIndex: Number(i.dataset.slideIndex)
+                },
+                bubbles: !0,
+                composed: !0
+              })
+            );
+          } else
+            i.classList.remove("is-visible");
         });
-      }, a = new IntersectionObserver(n, e);
-      t.forEach((r, o) => {
+      }, a = new IntersectionObserver(t, e);
+      n.forEach((r, o) => {
         a.observe(r);
       });
     }
@@ -600,12 +618,12 @@ crs-slider {
       customElements.get("crs-slider") || customElements.define("crs-slider", w);
     }
     async initChanges() {
-      const t = new Promise((e) => setTimeout(e, 2e3));
-      await Promise.race([p(".lp-tr--hero-section"), t]), new f();
+      const n = new Promise((e) => setTimeout(e, 2e3));
+      await Promise.race([p(".lp-tr--hero-section"), n]), new f();
     }
     addStyles() {
-      const t = document.createElement("style");
-      t.textContent = v, document.head.appendChild(t);
+      const n = document.createElement("style");
+      n.textContent = v, document.head.appendChild(n);
     }
   }
   new y();
