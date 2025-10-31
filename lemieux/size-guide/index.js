@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const m = (i, e, t, n = "") => {
+  const g = (i, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
@@ -30,26 +30,26 @@
         break;
     }
     console.log(`%c>>> ${i}`, `${t} font-size: 16px; font-weight: 600`);
-  }, g = (i, e, t, n, s = 1e3, c = 0.5) => {
-    let l, b;
-    if (l = new IntersectionObserver(
+  }, m = (i, e, t, n, s = 1e3, c = 0.5) => {
+    let a, b;
+    if (a = new IntersectionObserver(
       function(o) {
         o[0].isIntersecting === !0 ? b = setTimeout(() => {
-          m(
+          g(
             e,
             o[0].target.dataset.visible || n || "",
             "view",
             t
-          ), l.disconnect();
+          ), a.disconnect();
         }, s) : (d("Element is not fully visible", "warn"), clearTimeout(b));
       },
       { threshold: [c] }
     ), typeof i == "string") {
       const o = document.querySelector(i);
-      o && l.observe(o);
+      o && a.observe(o);
     } else
-      l.observe(i);
-    return l;
+      a.observe(i);
+    return a;
   }, h = (i) => new Promise((e) => {
     const t = document.querySelector(i);
     t && e({ element: t, observer: null });
@@ -159,15 +159,15 @@
       });
     }
     async checkIsProductPage(e) {
-      var o, a;
+      var o, l;
       d("Checking is product page for Size Guide");
       let t, n = null, s = null;
       const c = new Promise((r) => {
         t = setTimeout(() => r("timeout"), 2e3);
-      }), l = h("product-view-layout").then((r) => (n = r.observer, r)), b = h("category-view-layout").then((r) => (s = r.observer, r));
+      }), a = h("product-view-layout").then((r) => (n = r.observer, r)), b = h("category-view-layout").then((r) => (s = r.observer, r));
       try {
-        const r = await Promise.race([c, l, b]);
-        r !== "timeout" && ((o = r.element) == null ? void 0 : o.tagName) === "PRODUCT-VIEW-LAYOUT" && e(), (r === "timeout" || ((a = r.element) == null ? void 0 : a.tagName) === "CATEGORY-VIEW-LAYOUT") && (n && n.disconnect(), s && s.disconnect());
+        const r = await Promise.race([c, a, b]);
+        r !== "timeout" && ((o = r.element) == null ? void 0 : o.tagName) === "PRODUCT-VIEW-LAYOUT" && e(), (r === "timeout" || ((l = r.element) == null ? void 0 : l.tagName) === "CATEGORY-VIEW-LAYOUT") && (n && n.disconnect(), s && s.disconnect());
       } catch {
         d("Error checking is product page for Size Guide:", "error");
       } finally {
@@ -181,9 +181,9 @@
           "product-configurable-option-dropdown"
         ), {
           element: c,
-          observer: l
+          observer: a
         } = await h("product-configurable-options button");
-        if (s && this.waitObservers.push(s), l && this.waitObservers.push(l), document.querySelector(".crs-wrap")) {
+        if (s && this.waitObservers.push(s), a && this.waitObservers.push(a), document.querySelector(".crs-wrap")) {
           d("Size guide buttons already rendered", "warn");
           return;
         }
@@ -205,15 +205,15 @@
             v && v.classList.remove("sizeguide-only"), p && this.waitObservers.push(p);
           }
         );
-        const o = (e = n.previousElementSibling) == null ? void 0 : e.querySelector(".crs-chart-button"), a = (t = n.previousElementSibling) == null ? void 0 : t.querySelector(
+        const o = (e = n.previousElementSibling) == null ? void 0 : e.querySelector(".crs-chart-button"), l = (t = n.previousElementSibling) == null ? void 0 : t.querySelector(
           ".crs-size-guide-button"
         );
-        if (!o || !a) return;
+        if (!o || !l) return;
         o == null || o.addEventListener(
           "click",
           () => {
             const u = document.querySelector("#szb-vfr-button");
-            u == null || u.click(), m(
+            u == null || u.click(), g(
               "exp_size_guide_click_2",
               "Find Your Size Button",
               "click",
@@ -223,13 +223,13 @@
           {
             signal: this.eventsAborter.signal
           }
-        ), a == null || a.addEventListener(
+        ), l == null || l.addEventListener(
           "click",
           () => {
             const u = document.querySelector("#szb-chart-button"), p = document.querySelector(
               "product-configurable-options button"
             );
-            if (m(
+            if (g(
               "exp_size_guide_click_1",
               "Size Guide Button",
               "click",
@@ -244,7 +244,7 @@
             signal: this.eventsAborter.signal
           }
         );
-        const r = g(
+        const r = m(
           o,
           "exp_size_guide_view_2",
           "PDP",
@@ -252,8 +252,8 @@
           0
         );
         this.visibilityObservers.push(r);
-        const S = g(
-          a,
+        const S = m(
+          l,
           "exp_size_guide_view_1",
           "PDP",
           "Size Guide Button",
@@ -283,15 +283,28 @@
       this.previousUrl = location.href, this.sizeGuide = new w(), this.init();
     }
     init() {
-      this.addStyles(), this.interceptHistoryAPI(() => {
-        this.sizeGuide.destroy(), this.sizeGuide.init();
-      }), this.sizeGuide.init();
+      this.checkTargetCountry().then(() => {
+        this.addStyles(), this.interceptHistoryAPI(() => {
+          this.sizeGuide.destroy(), this.sizeGuide.init();
+        }), this.sizeGuide.init();
+      });
     }
     interceptHistoryAPI(e) {
       new MutationObserver(() => {
         const n = location.href;
         this.previousUrl !== n && (this.previousUrl = n, e());
       }).observe(document.body, { childList: !0, subtree: !0 });
+    }
+    checkTargetCountry() {
+      return new Promise((e) => {
+        const t = setInterval(() => {
+          if (window.autoInitData && window.autoInitData.website) {
+            clearInterval(t);
+            const n = window.autoInitData.website.defaultCountry;
+            (n === "US" || n === "GB") && e();
+          }
+        }, 500);
+      });
     }
     addStyles() {
       const e = document.createElement("style");
