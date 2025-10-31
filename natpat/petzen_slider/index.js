@@ -74,7 +74,8 @@
   margin-bottom: 20px !important;
 }
 
-.lp-tr--learn-more-btn:hover, .lp-tr--learn-more-btn:focus {
+.lp-tr--learn-more-btn:hover,
+.lp-tr--learn-more-btn:focus {
   color: #fff !important;
 }
 
@@ -101,7 +102,7 @@ crs-slider {
   padding: 24px 16px;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  font-family: 'D-DIN', sans-serif;
+  font-family: 'DIN Next', sans-serif;
   background: #084730;
   color: #fff;
   overflow: hidden;
@@ -179,9 +180,10 @@ crs-slider {
 
 .crs-slide-description {
   margin-top: 6px;
+  margin-inline: -2px;
   font-size: 14px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 22px;
   text-align: center;
 }
 
@@ -327,7 +329,7 @@ crs-slider {
       }
     },
     {
-      title: "Proven to Calm Pets <br />in Stressful Moments",
+      title: 'Proven to <span class="crs-highlight">Calm Pets</span> <br />in Stressful Moments',
       grid: [
         { icon: "noise.svg", text: "Loud noise" },
         { icon: "fireworks.svg", text: "Fireworks" },
