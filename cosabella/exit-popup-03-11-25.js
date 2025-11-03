@@ -226,7 +226,7 @@
       childList: !0,
       subtree: !0
     });
-  }), x = ({ name: o, dev: t }) => {
+  }), m = ({ name: o, dev: t }) => {
     console.log(
       `%c EXP: ${o} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -294,11 +294,11 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const s = (o) => new c(o), m = (o) => {
+  const s = (o) => new c(o), x = (o) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", o, "variant_1"));
     }, 1e3);
-  }, f = (o, t) => {
+  }, _ = (o, t) => {
     const e = o === window ? window : document.querySelector(o);
     let n, i, r, p, a;
     function l() {
@@ -307,7 +307,7 @@
     l(), e.addEventListener("scroll", function() {
       i = o === window ? this.scrollY : this.scrollTop, a = i > n ? "down" : "up", n != null && (p = i - n), n = i, clearTimeout(r), r = setTimeout(l, 50), t(Math.abs(p), a);
     });
-  }, _ = (o, t = "info") => {
+  }, f = (o, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -346,12 +346,12 @@
           <p>We’ve reserved this item for you for the next 20 minutes.</p>
           <div class="time">
             <div class="minutes">
-              <span>09</span>
+              <span>20</span>
               min
             </div>
             :
             <div class="seconds">
-              <span>59</span>
+              <span>00</span>
               sec
             </div>
           </div>
@@ -378,13 +378,13 @@
   </div>
 `
   );
-  x({ name: "Exit popup", dev: "YK" }), m("popup_exit");
+  m({ name: "Exit popup", dev: "YK" }), x("popup_exit");
   class v {
     constructor() {
       this.init(), this.addExitEvent();
     }
     async init() {
-      await u("body"), _("started"), s("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_exit_popup_style">${d}</style>`), s("body").elements[0].insertAdjacentHTML("beforeend", h), s(".crs_exit_popup_overlay .close").on("click", () => {
+      await u("body"), f("started"), s("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_exit_popup_style">${d}</style>`), s("body").elements[0].insertAdjacentHTML("beforeend", h), s(".crs_exit_popup_overlay .close").on("click", () => {
         s(".crs_exit_popup_overlay").elements[0].classList.remove("active");
       }), s(".crs_exit_popup_overlay").on("click", (t) => {
         t.target === s(".crs_exit_popup_overlay").elements[0] && s(".crs_exit_popup_overlay").elements[0].classList.remove("active");
@@ -393,9 +393,17 @@
     addExitEvent() {
       document.addEventListener("mouseout", (t) => {
         t.relatedTarget || this.startPopup();
-      }), window.innerWidth < 768 && f(window, (t, e) => {
+      }), window.innerWidth < 768 && _(window, (t, e) => {
         t > 100 && this.startPopup();
       });
+    }
+    startTimer() {
+      let t = 1200;
+      const e = setInterval(() => {
+        t--, s(".crs_exit_popup_overlay .minutes span").elements[0].textContent = String(
+          Math.floor(t / 60)
+        ).padStart(2, "0"), s(".crs_exit_popup_overlay .seconds span").elements[0].textContent = String(t % 60).padStart(2, "0"), t <= 0 && (this.startPopup(), clearInterval(e));
+      }, 1e3);
     }
     async startPopup() {
       const t = s(".crs_exit_popup_overlay").elements[0];
@@ -414,7 +422,7 @@
             price: i.price / 100
           })
         );
-      });
+      }), this.startTimer();
     }
   }
   new v();
