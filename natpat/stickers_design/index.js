@@ -312,7 +312,7 @@
       this.priceFormatter = new P(), this.productData = null, this.chosenDesign = "Design 1", this.chosenPackage = "3 Packs", this.chosenVariantId = null, this.scrollGalleryTimerId = null, this.productService = new x(), this.init();
     }
     async init() {
-      this.productData = await this.getProductDetails(), this.productData && (this.addStyles(), await Promise.all([
+      this.productData = await this.getProductDetails(), this.productData && (this.addStyles(), console.log("ver: 1"), await Promise.all([
         this.addNewImagesToProductGallery(),
         this.render(this.productData)
       ]), this.chooseVariantId(), this.getVariantId(), this.changeLinkAddToCart(), this.handleAdultPacks());
@@ -574,4 +574,3 @@
   let h = g;
   new h();
 })();
-//# sourceMappingURL=index.js.map
