@@ -532,11 +532,11 @@
     scrollToGallery(t) {
       console.log("Scrolling to gallery:", t);
       const e = document.querySelectorAll("#purchaseSlide");
-      e && e.forEach((n) => {
+      !e || e.length === 0 || e.forEach((n) => {
         const s = window.jQuery(n), i = s.find(".slick-slide").index(
           s.find(`.crs-slick-slide-item[data-title="${t}"]`)
         );
-        i !== -1 && s.slick("slickGoTo", i);
+        console.log("Found slide index:", i), i !== -1 && s.slick("slickGoTo", i);
       });
     }
     addStyles() {
@@ -545,7 +545,7 @@
     }
   }
   const D = "";
-  w({ name: "Validation of Mosquito sticker designs for Australia", dev: "OS" }), b("exp_stickers_design");
+  w({ name: "Validation of Mosquito sticker designs for Australia", dev: "OS" }), b("exp_design");
   const m = class m {
     constructor() {
       this.init();
