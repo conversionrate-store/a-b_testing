@@ -533,7 +533,10 @@
       console.log("Scrolling to gallery:", t);
       const e = document.querySelectorAll("#purchaseSlide");
       !e || e.length === 0 || e.forEach((n) => {
-        const s = window.jQuery(n), i = s.find(".slick-slide").index(
+        console.log("productGallery:", n);
+        const s = window.jQuery(n);
+        console.log("Gallery jQuery object:", s);
+        const i = s.find(".slick-slide").index(
           s.find(`.crs-slick-slide-item[data-title="${t}"]`)
         );
         console.log("Found slide index:", i), i !== -1 && s.slick("slickGoTo", i);
