@@ -7,7 +7,7 @@
       event_desc: t,
       event_type: e,
       event_loc: n
-    }), k(`Event: ${c} | ${t} | ${e} | ${n}`, "success");
+    }), w(`Event: ${c} | ${t} | ${e} | ${n}`, "success");
   }, y = (c) => new Promise((t) => {
     const e = document.querySelector(c);
     e && t(e);
@@ -19,7 +19,7 @@
       childList: !0,
       subtree: !0
     });
-  }), w = ({ name: c, dev: t }) => {
+  }), k = ({ name: c, dev: t }) => {
     console.log(
       `%c EXP: ${c} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -39,7 +39,7 @@
             "view",
             e
           ), r.disconnect();
-        }, s) : (k("Element is not fully visible", "warn"), clearTimeout(o));
+        }, s) : (w("Element is not fully visible", "warn"), clearTimeout(o));
       },
       { threshold: [i] }
     );
@@ -47,7 +47,7 @@
       const a = document.querySelector(c);
       a && r.observe(a);
     }
-  }, k = (c, t = "info") => {
+  }, w = (c, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -296,7 +296,7 @@
     font-size: 24px;
   } 
 }
-`, g = {
+`, m = {
     "Design 1": "https://conversionrate-store.github.io/a-b_images/natpat/design_1.webp",
     "Design 2": "https://conversionrate-store.github.io/a-b_images/natpat/design_2.webp",
     "Design 3": "https://conversionrate-store.github.io/a-b_images/natpat/design_3.webp",
@@ -367,7 +367,7 @@
       }));
     }
     renderProductDesigns(t, e, n) {
-      const s = g[t];
+      const s = m[t];
       return s ? (
         /* HTML */
         `
@@ -495,13 +495,13 @@
       });
     }
     async addNewImagesToProductGallery() {
-      await y("#purchaseSlide");
+      console.log("Adding new images to product gallery"), await y("#purchaseSlide");
       const t = document.querySelectorAll("#purchaseSlide");
-      !t || t.length === 0 || t.forEach(async (e) => {
+      console.log("Found product galleries:", t), !(!t || t.length === 0) && t.forEach(async (e) => {
         const n = window.jQuery(e);
         if (n.hasClass("slick-initialized"))
-          for (const s in g) {
-            const i = s, r = g[s], o = (
+          for (const s in m) {
+            const i = s, r = m[s], o = (
               /* HTML */
               `<div
             class="crs-slick-slide-item"
@@ -548,8 +548,8 @@
     }
   }
   const D = "";
-  w({ name: "Validation of Mosquito sticker designs for Australia", dev: "OS" }), b("exp_design");
-  const m = class m {
+  k({ name: "Validation of Mosquito sticker designs for Australia", dev: "OS" }), b("exp_design");
+  const g = class g {
     constructor() {
       this.init();
     }
@@ -561,7 +561,7 @@
     }
     isTargetCountries() {
       const t = window.location.pathname;
-      return m.targetLocales.some(
+      return g.targetLocales.some(
         (e) => t.includes(`/${e}/`)
       );
     }
@@ -570,7 +570,8 @@
       t.textContent = D, document.head.appendChild(t);
     }
   };
-  m.targetLocales = ["en-au"];
-  let h = m;
+  g.targetLocales = ["en-au"];
+  let h = g;
   new h();
 })();
+//# sourceMappingURL=index.js.map
