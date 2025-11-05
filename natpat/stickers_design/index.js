@@ -7,7 +7,7 @@
       event_desc: t,
       event_type: e,
       event_loc: n
-    }), w(`Event: ${c} | ${t} | ${e} | ${n}`, "success");
+    }), k(`Event: ${c} | ${t} | ${e} | ${n}`, "success");
   }, y = (c) => new Promise((t) => {
     const e = document.querySelector(c);
     e && t(e);
@@ -19,7 +19,7 @@
       childList: !0,
       subtree: !0
     });
-  }), k = ({ name: c, dev: t }) => {
+  }), w = ({ name: c, dev: t }) => {
     console.log(
       `%c EXP: ${c} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -39,7 +39,7 @@
             "view",
             e
           ), r.disconnect();
-        }, s) : (w("Element is not fully visible", "warn"), clearTimeout(o));
+        }, s) : (k("Element is not fully visible", "warn"), clearTimeout(o));
       },
       { threshold: [i] }
     );
@@ -47,7 +47,7 @@
       const a = document.querySelector(c);
       a && r.observe(a);
     }
-  }, w = (c, t = "info") => {
+  }, k = (c, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -495,7 +495,7 @@
       });
     }
     async addNewImagesToProductGallery() {
-      console.log("Adding new images to product gallery"), await y("#purchaseSlide");
+      console.log("Adding new images to product gallery"), await y("#purchaseSlide.slick-initialized");
       const t = document.querySelectorAll("#purchaseSlide");
       console.log("Found product galleries:", t), !(!t || t.length === 0) && t.forEach(async (e) => {
         const n = window.jQuery(e);
@@ -548,7 +548,7 @@
     }
   }
   const D = "";
-  k({ name: "Validation of Mosquito sticker designs for Australia", dev: "OS" }), b("exp_design");
+  w({ name: "Validation of Mosquito sticker designs for Australia", dev: "OS" }), b("exp_design");
   const g = class g {
     constructor() {
       this.init();
