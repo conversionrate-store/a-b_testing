@@ -29,23 +29,23 @@
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", c, "variant_1"));
     }, 1e3);
   }, v = (c, t, e, n, s = 1e3, i = 0.5) => {
-    let r, o;
+    let r, a;
     r = new IntersectionObserver(
-      function(a) {
-        a[0].isIntersecting === !0 ? o = setTimeout(() => {
+      function(o) {
+        o[0].isIntersecting === !0 ? a = setTimeout(() => {
           f(
             t,
-            a[0].target.dataset.visible || n,
+            o[0].target.dataset.visible || n,
             "view",
             e
           ), r.disconnect();
-        }, s) : (k("Element is not fully visible", "warn"), clearTimeout(o));
+        }, s) : (k("Element is not fully visible", "warn"), clearTimeout(a));
       },
       { threshold: [i] }
     );
     {
-      const a = document.querySelector(c);
-      a && r.observe(a);
+      const o = document.querySelector(c);
+      o && r.observe(o);
     }
   }, k = (c, t = "info") => {
     let e;
@@ -108,14 +108,14 @@
      */
     formatMoney(t) {
       typeof t == "string" && (t = t.replace(".", ""));
-      const e = this.moneyFormat, n = /\{\{\s*(\w+)\s*\}\}/, s = (o, a = 2, l = ",", d = ".") => {
-        if (isNaN(o) || o == null)
+      const e = this.moneyFormat, n = /\{\{\s*(\w+)\s*\}\}/, s = (a, o = 2, l = ",", d = ".") => {
+        if (isNaN(a) || a == null)
           return "0";
-        const u = (o / 100).toFixed(a).split("."), I = u[0].replace(
+        const u = (a / 100).toFixed(o).split("."), S = u[0].replace(
           /(\d)(?=(\d\d\d)+(?!\d))/g,
           "$1" + l
         ), T = u[1] ? d + u[1] : "";
-        return I + T;
+        return S + T;
       };
       let i = "";
       const r = e.match(n);
@@ -296,7 +296,7 @@
     font-size: 24px;
   } 
 }
-`, m = {
+`, g = {
     "Design 1": "https://conversionrate-store.github.io/a-b_images/natpat/design_1.webp",
     "Design 2": "https://conversionrate-store.github.io/a-b_images/natpat/design_2.webp",
     "Design 3": "https://conversionrate-store.github.io/a-b_images/natpat/design_3.webp",
@@ -307,20 +307,20 @@
     "3 Packs": 3,
     "4 Packs": 4
   };
-  class S {
+  class D {
     constructor() {
       this.priceFormatter = new P(), this.productData = null, this.chosenDesign = "Design 1", this.chosenPackage = "3 Packs", this.chosenVariantId = null, this.scrollGalleryTimerId = null, this.productService = new x(), this.init();
     }
     async init() {
-      this.productData = await this.getProductDetails(), this.productData && (this.addStyles(), console.log("ver: 1"), await Promise.all([
+      this.productData = await this.getProductDetails(), this.productData && (this.addStyles(), await Promise.all([
         this.addNewImagesToProductGallery(),
         this.render(this.productData)
       ]), this.chooseVariantId(), this.getVariantId(), this.changeLinkAddToCart(), this.handleAdultPacks());
     }
     async render(t) {
       const e = t.options.find(
-        (o) => o.name === "Package"
-      ), n = t.options.find((o) => o.name === "Design");
+        (a) => a.name === "Package"
+      ), n = t.options.find((a) => a.name === "Design");
       if (!e) return;
       const s = await y("#getFormNow .form-group");
       if (!s) return;
@@ -341,12 +341,12 @@
       const i = document.querySelector(
         ".crs-design-options"
       ), r = document.querySelector(".crs-package-options");
-      !i || !r || (n == null || n.values.forEach((o, a) => {
+      !i || !r || (n == null || n.values.forEach((a, o) => {
         const l = t.variants.find(
-          (p) => p.options.includes(o) && p.options.includes("3 Packs")
+          (p) => p.options.includes(a) && p.options.includes("3 Packs")
         );
         if (!l) return;
-        const d = this.renderProductDesigns(o, a, l);
+        const d = this.renderProductDesigns(a, o, l);
         d && (i == null || i.insertAdjacentHTML("beforeend", d));
       }), v(
         ".crs-design-options-container",
@@ -354,12 +354,12 @@
         "PDP Design",
         "Visibility",
         0
-      ), e.values.forEach((o, a) => {
+      ), e.values.forEach((a, o) => {
         const l = t.variants.find(
-          (u) => u.options.includes(o) && u.options.includes("Design 1")
+          (u) => u.options.includes(a) && u.options.includes("Design 1")
         );
         if (!l) return;
-        const d = this.renderProductPackages(o, a, l);
+        const d = this.renderProductPackages(a, o, l);
         if (!d) return;
         r == null || r.insertAdjacentHTML("beforeend", d), r.querySelector(
           'input[type="radio"]'
@@ -367,7 +367,7 @@
       }));
     }
     renderProductDesigns(t, e, n) {
-      const s = m[t];
+      const s = g[t];
       return s ? (
         /* HTML */
         `
@@ -430,23 +430,23 @@
         if (r && (this.scrollGalleryTimerId && clearTimeout(this.scrollGalleryTimerId), this.scrollGalleryTimerId = setTimeout(() => {
           this.scrollToGallery(r);
         }, 300)), !i) return;
-        const o = i.getAttribute("data-value");
-        o && (this.chosenDesign = o, this.getVariantId(), this.changeLinkAddToCart(), f("exp_design_click_1", o, "click", "PDP Design"));
+        const a = i.getAttribute("data-value");
+        a && (this.chosenDesign = a, this.getVariantId(), this.changeLinkAddToCart(), f("exp_design_click_1", a, "click", "PDP Design"));
       }), e == null || e.addEventListener("change", (n) => {
         const i = n.target.closest("input");
         if (!i) return;
         const r = i.getAttribute("data-value");
         if (!r) return;
-        const o = Array.from(
+        const a = Array.from(
           document.querySelectorAll(
             ".js-packs:not(.js-designs):not(.crs-js-packs):not(.pack-option)"
           )
-        ).find((a) => a.textContent.includes(r));
-        if (o) {
-          const a = o.querySelector(
+        ).find((o) => o.textContent.includes(r));
+        if (a) {
+          const o = a.querySelector(
             "label"
           );
-          a && a.click();
+          o && o.click();
         }
         this.chosenPackage = r, this.getVariantId(), this.changeLinkAddToCart();
       });
@@ -467,8 +467,8 @@
         e.href = l;
         return;
       }
-      const o = `${n}${this.chosenVariantId}:1${i}`;
-      e.href = o;
+      const a = `${n}${this.chosenVariantId}:1${i}`;
+      e.href = a;
     }
     getVariantId() {
       if (!this.productData || !this.chosenDesign || !this.chosenPackage)
@@ -495,13 +495,13 @@
       });
     }
     async addNewImagesToProductGallery() {
-      console.log("Adding new images to product gallery"), await y("#purchaseSlide.slick-initialized");
+      await y("#purchaseSlide.slick-initialized");
       const t = document.querySelectorAll("#purchaseSlide");
-      console.log("Found product galleries:", t), !(!t || t.length === 0) && t.forEach(async (e) => {
+      !t || t.length === 0 || t.forEach(async (e) => {
         const n = window.jQuery(e);
         if (n.hasClass("slick-initialized"))
-          for (const s in m) {
-            const i = s, r = m[s], o = (
+          for (const s in g) {
+            const i = s, r = g[s], a = (
               /* HTML */
               `<div
             class="crs-slick-slide-item"
@@ -520,9 +520,9 @@
           </div>`
             );
             try {
-              n.slick("slickAdd", o);
-            } catch (a) {
-              console.error("Error adding slide to slick:", a);
+              n.slick("slickAdd", a);
+            } catch (o) {
+              console.error("Error adding slide to slick:", o);
             }
           }
         else
@@ -530,16 +530,12 @@
       });
     }
     scrollToGallery(t) {
-      console.log("Scrolling to gallery:", t);
       const e = document.querySelectorAll("#purchaseSlide");
       !e || e.length === 0 || e.forEach((n) => {
-        console.log("productGallery:", n);
-        const s = window.jQuery(n);
-        console.log("Gallery jQuery object:", s);
-        const i = s.find(".slick-slide").index(
+        const s = window.jQuery(n), i = s.find(".slick-slide").index(
           s.find(`.crs-slick-slide-item[data-title="${t}"]`)
         );
-        console.log("Found slide index:", i), i !== -1 && s.slick("slickGoTo", i);
+        i !== -1 && s.slick("slickGoTo", i);
       });
     }
     addStyles() {
@@ -547,30 +543,30 @@
       t.textContent = $, document.head.appendChild(t);
     }
   }
-  const D = "";
+  const I = "";
   w({ name: "Validation of Mosquito sticker designs for Australia", dev: "OS" }), b("exp_design");
-  const g = class g {
+  const m = class m {
     constructor() {
       this.init();
     }
     init() {
-      !this.isTargetCountries() || !this.isTargetPage() || (this.addStyles(), new S());
+      !this.isTargetCountries() || !this.isTargetPage() || (this.addStyles(), new D());
     }
     isTargetPage() {
       return window.location.pathname.includes("/buzzpatch");
     }
     isTargetCountries() {
       const t = window.location.pathname;
-      return g.targetLocales.some(
+      return m.targetLocales.some(
         (e) => t.includes(`/${e}/`)
       );
     }
     addStyles() {
       const t = document.createElement("style");
-      t.textContent = D, document.head.appendChild(t);
+      t.textContent = I, document.head.appendChild(t);
     }
   };
-  g.targetLocales = ["en-au"];
-  let h = g;
+  m.targetLocales = ["en-au"];
+  let h = m;
   new h();
 })();
