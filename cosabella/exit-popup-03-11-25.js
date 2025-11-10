@@ -17,7 +17,7 @@
   background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 100000;
   display: flex;
   opacity: 0;
   pointer-events: none;
@@ -99,7 +99,7 @@
   }
 }
 .crs_exit_popup .title {
-  color: #c6073e;
+  color: #4f1b2d;
   font-size: 32px;
   margin-bottom: 12px;
   text-transform: uppercase;
@@ -112,7 +112,7 @@
 .crs_exit_popup .timer {
   padding: 16px;
   border: 1px dashed #dedede;
-  background: #fbf8f0;
+  background: #f2ebd6;
 }
 .crs_exit_popup .timer p {
   font-size: 16px;
@@ -139,7 +139,7 @@
   color: #000;
 }
 .crs_exit_popup .timer .time > div span {
-  color: #c6073e;
+  color: #4f1b2d;
 }
 .crs_exit_popup .go_to_checkout {
   display: flex;
@@ -226,7 +226,7 @@
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: o, dev: t }) => {
+  }), x = ({ name: o, dev: t }) => {
     console.log(
       `%c EXP: ${o} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -294,7 +294,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const s = (o) => new c(o), x = (o) => {
+  const s = (o) => new c(o), m = (o) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", o, "variant_1"));
     }, 1e3);
@@ -378,7 +378,7 @@
   </div>
 `
   );
-  m({ name: "Exit popup", dev: "YK" }), x("popup_exit");
+  x({ name: "Exit popup", dev: "YK" }), m("popup_exit");
   class v {
     constructor() {
       this.init(), this.addExitEvent();
@@ -413,12 +413,12 @@
       t.classList.add("active"), localStorage.setItem("exitPopupShown", "true");
       const n = s(".crs_exit_popup_overlay .cart_list").elements[0];
       n.innerHTML = "", e.items.forEach((i) => {
-        n.insertAdjacentHTML(
+        console.log(i), n.insertAdjacentHTML(
           "beforeend",
           g({
             image: i.image,
             name: i.title,
-            variant: "test",
+            variant: i.variant_title,
             price: i.price / 100
           })
         );
