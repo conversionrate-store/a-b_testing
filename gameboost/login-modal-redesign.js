@@ -53,8 +53,8 @@
   border-radius: 8px;
 }
 .crs-modal-image img {
-  width: 285px;
-  height: 285px;
+  width: 284px;
+  height: 284px;
   object-fit: cover;
   border-radius: 8px;
   overflow: hidden;
@@ -423,46 +423,44 @@
     async waitLoginModal(e = "buy", t = "PDP", i = document, n = !1) {
       try {
         document.body.classList.add("crs-modal-open-waiting");
-        const a = await new Promise((s, o) => {
-          const c = '[id*="reka-dialog-content"][data-state="open"]:has(input[autofocus])', m = document.querySelector(c);
-          if (m) {
-            s(m);
+        const a = await new Promise((s, r) => {
+          const l = '[id*="reka-dialog-content"][data-state="open"]:has(input[autofocus])', d = document.querySelector(l);
+          if (d) {
+            s(d);
             return;
           }
-          const d = new MutationObserver(() => {
-            const f = document.querySelector(c);
+          const g = new MutationObserver(() => {
+            const f = document.querySelector(l);
             if (f) {
-              d.disconnect();
-              const p = this.pendingModalObservers.indexOf(d);
+              g.disconnect();
+              const p = this.pendingModalObservers.indexOf(g);
               p > -1 && this.pendingModalObservers.splice(p, 1), s(f);
             }
           });
-          this.pendingModalObservers.push(d), d.observe(document.documentElement, {
+          this.pendingModalObservers.push(g), g.observe(document.documentElement, {
             childList: !0,
             subtree: !0
           });
-        });
-        console.log("Login modal detected:", a);
-        const l = a.querySelectorAll("h2"), r = a.querySelector(
+        }), c = a.querySelectorAll("h2"), o = a.querySelector(
           'div[style*="background-image"]'
         );
-        if (a.dataset.crsModalType = e, l.forEach((s) => {
-          console.log("login title", s), s && s.textContent === "Login" && (s.innerHTML = e === "buy" ? "Login to to Buy and Save your Purchase" : "Login to Unlock the <br> Chat with Seller"), s && s.textContent === "Create Account" && (s.innerHTML = e === "buy" ? "Create an Account to Save your Purchase" : "Create an Account <br> to Chat with Seller");
+        if (a.dataset.crsModalType = e, c.forEach((s) => {
+          console.log("login title", s), s && s.textContent === "Login" && (s.innerHTML = e === "buy" ? "Login to Buy and Save your Purchase" : "Login to Unlock the <br> Chat with Seller"), s && s.textContent === "Create Account" && (s.innerHTML = e === "buy" ? "Create an Account to Save your Purchase" : "Create an Account <br> to Chat with Seller");
         }), e === "buy") {
-          if (r) {
-            const { title: s, imageSrc: o, backgroundClasses: c } = this.getProductData(
+          if (o) {
+            const { title: s, imageSrc: r, backgroundClasses: l } = this.getProductData(
               t,
               i
             );
-            if (console.log("Product Data:", { title: s, imageSrc: o }), !o)
+            if (console.log("Product Data:", { title: s, imageSrc: r }), !r)
               return;
-            r.style.backgroundImage = "none", r.classList.add("crs-modal-bg"), r.innerHTML = /* HTML */
+            o.style.backgroundImage = "none", o.classList.add("crs-modal-bg"), o.innerHTML = /* HTML */
             `
             <div class="crs-modal-bg-wrap buy">
               <div
-                class="crs-modal-image  ${c || ""}"
+                class="crs-modal-image  ${l || ""}"
               >
-                <img src="${o}" alt="" width="284" height="284" />
+                <img src="${r}" alt="" width="284" height="284" />
               </div>
 
               <div class="crs-modal-title">${s}</div>
@@ -472,35 +470,35 @@
         } else {
           const {
             avatarSrc: s,
-            sellerName: o,
-            sellerTier: c,
-            isOnline: m,
-            statusText: d,
+            sellerName: r,
+            sellerTier: l,
+            isOnline: d,
+            statusText: g,
             isVerified: f,
             rating: p,
             reviewCount: v,
             reviewText: y,
             totalSales: S
           } = this.getSellerData();
-          if (r)
-            if (r.style.backgroundImage = "none", r.classList.add("crs-modal-bg"), r.innerHTML = /* HTML */
+          if (o)
+            if (o.style.backgroundImage = "none", o.classList.add("crs-modal-bg"), o.innerHTML = /* HTML */
             `
             <div class="crs-modal-bg-wrap crs-modal-seller">
               <div class="crs-modal-seller-avatar">
                 <img
                   src="${s}"
-                  alt="${o}"
+                  alt="${r}"
                   width="44"
                   height="44"
                 />
                 <div
-                  class="crs-modal-seller-status${m ? " online" : " offline"}"
+                  class="crs-modal-seller-status${d ? " online" : " offline"}"
                 >
-                  <span class="sr-only"> ${d} </span>
+                  <span class="sr-only"> ${g} </span>
                 </div>
               </div>
               <div class="crs-modal-seller-name">
-                ${o}
+                ${r}
                 ${f ? (
               /* HTML */
               `<i
@@ -518,7 +516,7 @@
               <div class="crs-modal-seller-message-title">Message</div>
               <div class="crs-modal-seller-message-content">
                 <div class="crs-modal-seller-message-typing">
-                  ${o} is typing
+                  ${r} is typing
                   <span class="crs-modal-seller-message-dots">
                     <span class="crs-modal-seller-message-dot"></span>
                     <span class="crs-modal-seller-message-dot"></span>
@@ -527,7 +525,7 @@
                 </div>
                 <div class="crs-modal-message">
                   <div class="crs-message-avatar">
-                    <img src="${s}" alt="${o}" />
+                    <img src="${s}" alt="${r}" />
                   </div>
                   <div class="crs-message-content">
                     hey, what question do you have ?
@@ -536,20 +534,20 @@
               </div>
             </div>
           `, n) {
-              const g = r.querySelector(
+              const m = o.querySelector(
                 ".crs-modal-seller-message-typing"
-              ), h = r.querySelector(
+              ), h = o.querySelector(
                 ".crs-modal-message"
               );
-              g && g.classList.add("hidden"), h && h.classList.add("show");
+              m && m.classList.add("hidden"), h && h.classList.add("show");
             } else
               setTimeout(() => {
-                const g = r.querySelector(
+                const m = o.querySelector(
                   ".crs-modal-seller-message-typing"
-                ), h = r.querySelector(
+                ), h = o.querySelector(
                   ".crs-modal-message"
                 );
-                g && g.classList.add("hidden"), h && h.classList.add("show");
+                m && m.classList.add("hidden"), h && h.classList.add("show");
               }, 3e3);
         }
       } catch (a) {
@@ -565,69 +563,69 @@
     getProductData(e = "PDP", t = document) {
       var i, n;
       if (e === "PDP") {
-        const a = this.getPdpTitle(), l = this.getPdpImageSrc();
-        return { title: a, imageSrc: l };
+        const a = this.getPdpTitle(), c = this.getPdpImageSrc();
+        return { title: a, imageSrc: c };
       }
       if (e === "PLP") {
         const a = t.querySelector(
           ".text-sm.text-foreground\\/80.line-clamp-2.h-\\[40px\\]"
-        ), l = t.querySelector(
+        ), c = t.querySelector(
           'img[src*="https://gameboost.com/cdn-cgi/image"]'
         );
         return {
           title: a && a.textContent || "",
-          imageSrc: l ? l.src : ""
+          imageSrc: c ? c.src : ""
         };
       }
       if (e === "MODAL") {
         const a = t.querySelector(
           ".text-lg.font-semibold.font-display"
-        ), l = t.querySelector(
+        ), c = t.querySelector(
           'img[src*="steamcommunity"]'
-        ), r = (n = (i = t.querySelector(
+        ), o = (n = (i = t.querySelector(
           'img[src*="steamcommunity"]'
         )) == null ? void 0 : i.parentElement) == null ? void 0 : n.className, s = (() => {
-          if (!r) return "";
-          const o = r.split(/\s+/), c = o.findIndex((d) => d === "bg-gradient");
-          if (c === -1) return "";
-          const m = [o[c]];
-          return c + 1 < o.length && m.push(o[c + 1]), m.join(" ");
+          if (!o) return "";
+          const r = o.split(/\s+/), l = r.findIndex((g) => g === "bg-gradient");
+          if (l === -1) return "";
+          const d = [r[l]];
+          return l + 1 < r.length && d.push(r[l + 1]), d.join(" ");
         })();
         return {
           title: a && a.innerHTML || "",
-          imageSrc: l ? l.src : "",
+          imageSrc: c ? c.src : "",
           backgroundClasses: s
         };
       }
     }
     getSellerData() {
-      var C, L, q, M, P, T, A;
+      var C, q, L, M, P, T, A;
       const e = document.querySelector(
         '.bg-card:has(a[href*="seller"])'
       ), t = e == null ? void 0 : e.querySelector('img[src*="avatar"]'), i = e == null ? void 0 : e.querySelector(
         'a[href*="seller"] .text-sm.font-medium.truncate.text-foreground'
       ), n = e == null ? void 0 : e.querySelector(
         ".text-xs.truncate.text-muted-foreground"
-      ), a = ((C = n == null ? void 0 : n.textContent) == null ? void 0 : C.trim()) || "", l = e == null ? void 0 : e.querySelector(
+      ), a = ((C = n == null ? void 0 : n.textContent) == null ? void 0 : C.trim()) || "", c = e == null ? void 0 : e.querySelector(
         ".bg-success-light.ring-success-ring"
-      ), r = !!l, s = ((L = l == null ? void 0 : l.textContent) == null ? void 0 : L.trim().replace(/\s+/g, " ")) || "", o = !!(i != null && i.querySelector(".fa-badge-check")), c = (q = e == null ? void 0 : e.querySelector(".fa-thumbs-up")) == null ? void 0 : q.parentElement, d = (((M = c == null ? void 0 : c.textContent) == null ? void 0 : M.trim()) || "").match(/([\d.]+)%/), f = d ? parseFloat(d[1]) : 0, p = Array.from(
+      ), o = !!c, s = ((q = c == null ? void 0 : c.textContent) == null ? void 0 : q.trim().replace(/\s+/g, " ")) || "", r = !!(i != null && i.querySelector(".fa-badge-check")), l = (L = e == null ? void 0 : e.querySelector(".fa-thumbs-up")) == null ? void 0 : L.parentElement, g = (((M = l == null ? void 0 : l.textContent) == null ? void 0 : M.trim()) || "").match(/([\d.]+)%/), f = g ? parseFloat(g[1]) : 0, p = Array.from(
         (e == null ? void 0 : e.querySelectorAll(".text-muted-foreground")) || []
       ).find((w) => {
         var x;
         return (x = w.textContent) == null ? void 0 : x.includes("Reviews");
-      }), v = ((P = p == null ? void 0 : p.textContent) == null ? void 0 : P.trim()) || "", y = v.match(/([\d,]+)\s+Reviews/), S = y ? y[1].replace(/,/g, "") : "0", g = Array.from(
+      }), v = ((P = p == null ? void 0 : p.textContent) == null ? void 0 : P.trim()) || "", y = v.match(/([\d,]+)\s+Reviews/), S = y ? y[1].replace(/,/g, "") : "0", m = Array.from(
         (e == null ? void 0 : e.querySelectorAll("dd")) || []
       ).find((w) => {
         var x;
         return (x = w.textContent) == null ? void 0 : x.includes("Sold");
-      }), k = (((T = g == null ? void 0 : g.textContent) == null ? void 0 : T.trim()) || "").match(/([\d,]+)\s+Sold/), j = k ? k[1].replace(/,/g, "") : "0";
+      }), k = (((T = m == null ? void 0 : m.textContent) == null ? void 0 : T.trim()) || "").match(/([\d,]+)\s+Sold/), j = k ? k[1].replace(/,/g, "") : "0";
       return {
         avatarSrc: t ? t.src : "",
         sellerName: i && ((A = i.textContent) == null ? void 0 : A.replace(/\s*\u{f058}\s*$/u, "").trim()) || "",
         sellerTier: a,
-        isOnline: r,
+        isOnline: o,
         statusText: s,
-        isVerified: o,
+        isVerified: r,
         rating: f,
         reviewCount: S,
         reviewText: v,
@@ -669,11 +667,11 @@
       (e = this.eventsAborder) == null || e.abort(), this.eventsAborder = new AbortController(), document.addEventListener(
         "click",
         (t) => {
-          var a, l, r, s;
+          var a, c, o, s, r, l;
           const i = t.target;
-          if (i.closest("nav")) return;
+          if (i.closest("nav") || !((c = (a = document.querySelector("nav button:has(.fa-arrow-right)")) == null ? void 0 : a.textContent) != null && c.includes("Log in"))) return;
           const n = i.closest("button");
-          if (n && (n.querySelector(".fa-cart-shopping-fast") || (a = n == null ? void 0 : n.textContent) != null && a.includes("Buy") && !n.closest("a") && !n.closest('[data-state="open"]') || (l = n.parentElement) != null && l.classList.contains("fixed") && !n.querySelector(".fa-messages")) && (b("Detected click on buy button, waiting for login modal..."), this.waitLoginModal("buy", "PDP")), n && n.classList.contains("text-foreground") && n.closest("[data-crs-modal-type]") && (b(
+          if (n && (n.querySelector(".fa-cart-shopping-fast") || (o = n == null ? void 0 : n.textContent) != null && o.includes("Buy") && !n.closest("a") && !n.closest('[data-state="open"]') || (s = n.parentElement) != null && s.classList.contains("fixed") && !n.querySelector(".fa-messages")) && (b("Detected click on buy button, waiting for login modal..."), this.waitLoginModal("buy", "PDP")), n && n.classList.contains("text-foreground") && n.closest("[data-crs-modal-type]") && (b(
             "Detected click on login modal button, waiting for login modal..."
           ), this.waitLoginModal(
             n.closest("[data-crs-modal-type]").dataset.crsModalType,
@@ -683,15 +681,15 @@
             // Skip animation when switching between login/signup
           )), (n && n.querySelector(".fa-message") || n != null && n.querySelector(".fa-messages") && n.closest(".fixed")) && (b("Detected click on message button, waiting for login modal..."), this.waitLoginModal("message")), n && n.querySelector(".fa-arrow-right") && n.closest("a")) {
             b("Button is inside a link, ignoring click event.");
-            const o = n.closest("a");
-            o && this.waitLoginModal("buy", "PLP", o);
+            const d = n.closest("a");
+            d && this.waitLoginModal("buy", "PLP", d);
           }
-          if (n && ((s = (r = n.textContent) == null ? void 0 : r.toLowerCase()) != null && s.includes("buy")) && n.closest('[data-state="open"]')) {
+          if (n && ((l = (r = n.textContent) == null ? void 0 : r.toLowerCase()) != null && l.includes("buy")) && n.closest('[data-state="open"]')) {
             b(
               "Detected click on buy button in modal, waiting for login modal..."
             );
-            const o = n.closest('[data-state="open"]');
-            this.waitLoginModal("buy", "MODAL", o);
+            const d = n.closest('[data-state="open"]');
+            this.waitLoginModal("buy", "MODAL", d);
           }
         },
         {
