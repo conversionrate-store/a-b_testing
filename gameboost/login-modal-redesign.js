@@ -119,6 +119,7 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
 }
 
 [data-crs-modal-type='message'] > div {
+  max-height: 90dvh;
   border-radius: 0.75rem;
   background-color: var(--crs-color-bg-card);
 }
