@@ -466,6 +466,7 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
     user-select: none;
     pointer-events: none;
     background: var(--crs-color-close-2btn) !important;
+    color: #000;
   }
 
   [data-crs-modal-type='message'] button:has(.fa-xmark):not(.crs-close-mobile) {
