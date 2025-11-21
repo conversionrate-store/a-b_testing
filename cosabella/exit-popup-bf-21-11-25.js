@@ -380,7 +380,7 @@
   </div>
 `
   );
-  x({ name: "Exit popup", dev: "YK" }), m("popup_exit");
+  x({ name: "Exit popup BF", dev: "YK" }), m("popup_exit_bf");
   class v {
     constructor() {
       this.init(), this.addExitEvent();
