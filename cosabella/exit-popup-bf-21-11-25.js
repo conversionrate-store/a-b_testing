@@ -7,6 +7,9 @@
   .template-product .js-product-field-size .form--product__dropdown-toggle-wrapper2 {
     z-index: 999999 !important;
   }
+  #attentive_overlay {
+    z-index: 999999 !important;
+  }
 }
 .crs_exit_popup_overlay {
   position: fixed;
@@ -300,7 +303,7 @@
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", o, "variant_1"));
     }, 1e3);
-  }, f = (o, t) => {
+  }, _ = (o, t) => {
     const e = o === window ? window : document.querySelector(o);
     let n, i, r, p, a;
     function l() {
@@ -309,7 +312,7 @@
     l(), e.addEventListener("scroll", function() {
       i = o === window ? this.scrollY : this.scrollTop, a = i > n ? "down" : "up", n != null && (p = i - n), n = i, clearTimeout(r), r = setTimeout(l, 50), t(Math.abs(p), a);
     });
-  }, _ = (o, t = "info") => {
+  }, f = (o, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -386,7 +389,7 @@
       this.init(), this.addExitEvent();
     }
     async init() {
-      await u("body"), _("started"), s("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_exit_popup_style">${d}</style>`), s("body").elements[0].insertAdjacentHTML("beforeend", h), s(".crs_exit_popup_overlay .close").on("click", () => {
+      await u("body"), f("started"), s("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_exit_popup_style">${d}</style>`), s("body").elements[0].insertAdjacentHTML("beforeend", h), s(".crs_exit_popup_overlay .close").on("click", () => {
         s(".crs_exit_popup_overlay").elements[0].classList.remove("active");
       }), s(".crs_exit_popup_overlay").on("click", (t) => {
         t.target === s(".crs_exit_popup_overlay").elements[0] && s(".crs_exit_popup_overlay").elements[0].classList.remove("active");
@@ -395,7 +398,7 @@
     addExitEvent() {
       document.addEventListener("mouseout", (t) => {
         t.relatedTarget || this.startPopup();
-      }), window.innerWidth < 768 && f(window, (t, e) => {
+      }), window.innerWidth < 768 && _(window, (t, e) => {
         t > 100 && this.startPopup();
       });
     }
