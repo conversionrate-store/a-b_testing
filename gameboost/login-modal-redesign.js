@@ -7,8 +7,8 @@
       event_desc: e,
       event_type: t,
       event_loc: o
-    }), z(`Event: ${m} | ${e} | ${t} | ${o}`, "success");
-  }, $ = (m) => new Promise((e) => {
+    }), O(`Event: ${m} | ${e} | ${t} | ${o}`, "success");
+  }, A = (m) => new Promise((e) => {
     const t = document.querySelector(m);
     t && e(t);
     const o = new MutationObserver(() => {
@@ -19,16 +19,16 @@
       childList: !0,
       subtree: !0
     });
-  }), I = ({ name: m, dev: e }) => {
+  }), $ = ({ name: m, dev: e }) => {
     console.log(
       `%c EXP: ${m} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, O = (m) => {
+  }, I = (m) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", m, "variant_1"));
     }, 1e3);
-  }, z = (m, e = "info") => {
+  }, O = (m, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -495,10 +495,9 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
   }
 }
 `;
-  I({ name: "Іmproved registration / account creation flow", dev: "OS" }), O("exp_login_modal");
-  const C = {
+  $({ name: "Іmproved registration / account creation flow", dev: "OS" }), I("exp_login_modal");
+  const z = {
     regexpLinks: {
-      pdp: /^https:\/\/gameboost\.com\/[^/]+\/(top-up|accounts|items|gems)\/[A-Za-z0-9-]+\/?(?:\?.*)?(?:#.*)?$/,
       items: /^https:\/\/gameboost\.com\/(?:[^/]+\/)?[^/]+\/items\/[A-Za-z0-9-]+\/?(?:\?.*)?(?:#.*)?$/
     }
   };
@@ -513,12 +512,12 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
     }
     async checkUserLoggedIn() {
       var e, t;
-      return await $("nav button"), !((t = (e = document.querySelector("nav button:has(.fa-arrow-right)")) == null ? void 0 : e.textContent) != null && t.includes("Log in"));
+      return await A("nav button"), !((t = (e = document.querySelector("nav button:has(.fa-arrow-right)")) == null ? void 0 : e.textContent) != null && t.includes("Log in"));
     }
-    async waitLoginModal(e = "buy", t = "PDP", o = document, n = !1, r) {
+    async waitLoginModal(e = "buy", t = "PDP", o = document, n = !1, s) {
       try {
         document.body.classList.add("crs-modal-open-waiting");
-        const c = (r == null ? void 0 : r.title) || "", u = (r == null ? void 0 : r.imageSrc) || "", l = await new Promise((a, g) => {
+        const c = (s == null ? void 0 : s.title) || "", u = (s == null ? void 0 : s.imageSrc) || "", d = await new Promise((a, g) => {
           const p = '[id*="reka-dialog-content"][data-state="open"]:has(input[autofocus])', y = document.querySelector(p);
           if (y) {
             a(y);
@@ -536,42 +535,42 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
             childList: !0,
             subtree: !0
           });
-        }), i = l.querySelectorAll("h2"), s = l.querySelector(
+        }), i = d.querySelectorAll("h2"), r = d.querySelector(
           'div[style*="background-image"]'
         );
-        l.dataset.crsModalType = e;
-        let d = !1;
+        d.dataset.crsModalType = e;
+        let l = !1;
         if (i.forEach((a) => {
-          a && a.textContent === "Login" && (e === "buy" ? (a.innerHTML = "Login to Buy and Save your Purchase", d || (S(
+          a && a.textContent === "Login" && (e === "buy" ? (a.innerHTML = "Login to Buy and Save your Purchase", l || (S(
             "exp_login_to_buy_view",
             "Login to Buy and Save your Purchase",
             "view",
             "Registration Popup"
-          ), d = !0)) : (a.innerHTML = "Login to Unlock the <br> Chat with Seller", d || (S(
+          ), l = !0)) : (a.innerHTML = "Login to Unlock the <br> Chat with Seller", l || (S(
             "exp_login_to_chat_view",
             "Login to Unlock the Chat with Seller",
             "view",
             "Registration Popup"
-          ), d = !0))), a && a.textContent === "Create Account" && (e === "buy" ? (a.innerHTML = "Create an Account to Save your Purchase", d || (S(
+          ), l = !0))), a && a.textContent === "Create Account" && (e === "buy" ? (a.innerHTML = "Create an Account to Save your Purchase", l || (S(
             "exp_create_acc_to_save_view",
             "Create an Account to Save your Purchase",
             "view",
             "Registration Popup"
-          ), d = !0)) : (a.innerHTML = "Create an Account <br> to Chat with Seller", d || (S(
+          ), l = !0)) : (a.innerHTML = "Create an Account <br> to Chat with Seller", l || (S(
             "exp_create_acc_to_chat_view",
             "Create an Account to Chat with Seller",
             "view",
             "Registration Popup"
-          ), d = !0)));
+          ), l = !0)));
         }), e === "buy") {
-          if (s) {
+          if (r) {
             const { title: a, imageSrc: g, backgroundClasses: p } = this.getProductData(
               t,
               o
             );
             if (!g && (!u || u.trim() === ""))
               return;
-            l.dataset.bg = g || u, l.dataset.productTitle = a || (r == null ? void 0 : r.title) || "", s.style.backgroundImage = "none", s.classList.add("crs-modal-bg"), s.innerHTML = /* HTML */
+            d.dataset.bg = g || u, d.dataset.productTitle = a || (s == null ? void 0 : s.title) || "", r.style.backgroundImage = "none", r.classList.add("crs-modal-bg"), r.innerHTML = /* HTML */
             `
             <div class="crs-modal-bg-wrap buy">
               <div
@@ -600,13 +599,13 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
             rating: h,
             reviewCount: B,
             reviewText: k,
-            totalSales: q
+            totalSales: C
           } = this.getSellerData();
-          if (s)
-            if (s.style.backgroundImage = "none", l.querySelector(".crs-close-mobile") || l.insertAdjacentHTML(
+          if (r)
+            if (r.style.backgroundImage = "none", d.querySelector(".crs-close-mobile") || d.insertAdjacentHTML(
               "afterbegin",
               '<button type="button" class="crs-close-mobile inline-flex items-center justify-center text-sm transition-colors focus:outline focus:outline-offset-2 focus-visible:outline outline-none disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden font-medium active:translate-y-px whitespace-nowrap bg-secondary-light hover:bg-secondary-light-hover text-secondary-light-foreground focus:outline-secondary absolute top-3 right-3 z-10 p-1 w-7 h-7 rounded-full md:text-white/80 sm:w-7 sm:h-7"><span class="sr-only">Close</span><i class="fa-solid fa-xmark"></i></button>'
-            ), s.classList.add("crs-modal-bg"), s.innerHTML = /* HTML */
+            ), r.classList.add("crs-modal-bg"), r.innerHTML = /* HTML */
             `
             <div class="crs-modal-bg-wrap crs-modal-seller">
               <div class="crs-modal-seller-avatar">
@@ -659,17 +658,17 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
               </div>
             </div>
           `, n) {
-              const b = s.querySelector(
+              const b = r.querySelector(
                 ".crs-modal-seller-message-typing"
-              ), x = s.querySelector(
+              ), x = r.querySelector(
                 ".crs-modal-message"
               );
               b && b.classList.add("hidden"), x && x.classList.add("show");
             } else
               setTimeout(() => {
-                const b = s.querySelector(
+                const b = r.querySelector(
                   ".crs-modal-seller-message-typing"
-                ), x = s.querySelector(
+                ), x = r.querySelector(
                   ".crs-modal-message"
                 );
                 b && b.classList.add("hidden"), x && x.classList.add("show");
@@ -688,73 +687,73 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
     getProductData(e = "PDP", t = document) {
       var o, n;
       if (e === "PDP") {
-        const r = this.getPdpTitle(), c = this.getPdpImageSrc();
-        return { title: r, imageSrc: c };
+        const s = this.getPdpTitle(), c = this.getPdpImageSrc();
+        return { title: s, imageSrc: c };
       }
       if (e === "PLP") {
-        const r = t.querySelector(
+        const s = t.querySelector(
           ".text-sm.text-foreground\\/80.line-clamp-2.h-\\[40px\\]"
         ), c = t.querySelector(
           'img[src*="https://gameboost.com/cdn-cgi/image"]'
         );
         return {
-          title: r && r.textContent || "",
+          title: s && s.textContent || "",
           imageSrc: c ? c.src : ""
         };
       }
       if (e === "MODAL") {
-        const r = t.querySelector(
+        const s = t.querySelector(
           ".text-lg.font-semibold.font-display"
         ), c = t.querySelector(
           'img[src*="steamcommunity"]'
         ), u = (n = (o = t.querySelector(
           'img[src*="steamcommunity"]'
-        )) == null ? void 0 : o.parentElement) == null ? void 0 : n.className, l = (() => {
+        )) == null ? void 0 : o.parentElement) == null ? void 0 : n.className, d = (() => {
           if (!u) return "";
-          const i = u.split(/\s+/), s = i.findIndex((a) => a === "bg-gradient");
-          if (s === -1) return "";
-          const d = [i[s]];
-          return s + 1 < i.length && d.push(i[s + 1]), d.join(" ");
+          const i = u.split(/\s+/), r = i.findIndex((a) => a === "bg-gradient");
+          if (r === -1) return "";
+          const l = [i[r]];
+          return r + 1 < i.length && l.push(i[r + 1]), l.join(" ");
         })();
         return {
-          title: r && r.innerHTML || "",
+          title: s && s.innerHTML || "",
           imageSrc: c ? c.src : "",
-          backgroundClasses: l
+          backgroundClasses: d
         };
       }
     }
     getSellerData() {
-      var b, x, M, P, T, A, _;
+      var b, x, q, M, P, T, _;
       const e = document.querySelector(
         '.bg-card:has(a[href*="seller"])'
       ), t = e == null ? void 0 : e.querySelector('img[src*="avatar"]'), o = e == null ? void 0 : e.querySelector(
         'a[href*="seller"] .text-sm.font-medium.truncate.text-foreground'
       ), n = e == null ? void 0 : e.querySelector(
         ".text-xs.truncate.text-muted-foreground"
-      ), r = ((b = n == null ? void 0 : n.textContent) == null ? void 0 : b.trim()) || "", c = e == null ? void 0 : e.querySelector(
+      ), s = ((b = n == null ? void 0 : n.textContent) == null ? void 0 : b.trim()) || "", c = e == null ? void 0 : e.querySelector(
         ".bg-success-light.ring-success-ring"
-      ), u = !!c, l = ((x = c == null ? void 0 : c.textContent) == null ? void 0 : x.trim().replace(/\s+/g, " ")) || "", i = !!(o != null && o.querySelector(".fa-badge-check")), s = (M = e == null ? void 0 : e.querySelector(".fa-thumbs-up")) == null ? void 0 : M.parentElement, a = (((P = s == null ? void 0 : s.textContent) == null ? void 0 : P.trim()) || "").match(/([\d.]+)%/), g = a ? parseFloat(a[1]) : 0, p = Array.from(
+      ), u = !!c, d = ((x = c == null ? void 0 : c.textContent) == null ? void 0 : x.trim().replace(/\s+/g, " ")) || "", i = !!(o != null && o.querySelector(".fa-badge-check")), r = (q = e == null ? void 0 : e.querySelector(".fa-thumbs-up")) == null ? void 0 : q.parentElement, a = (((M = r == null ? void 0 : r.textContent) == null ? void 0 : M.trim()) || "").match(/([\d.]+)%/), g = a ? parseFloat(a[1]) : 0, p = Array.from(
         (e == null ? void 0 : e.querySelectorAll(".text-muted-foreground")) || []
       ).find((L) => {
         var w;
         return (w = L.textContent) == null ? void 0 : w.includes("Reviews");
-      }), y = ((T = p == null ? void 0 : p.textContent) == null ? void 0 : T.trim()) || "", f = y.match(/([\d,]+)\s+Reviews/), v = f ? f[1].replace(/,/g, "") : "0", h = Array.from(
+      }), y = ((P = p == null ? void 0 : p.textContent) == null ? void 0 : P.trim()) || "", f = y.match(/([\d,]+)\s+Reviews/), v = f ? f[1].replace(/,/g, "") : "0", h = Array.from(
         (e == null ? void 0 : e.querySelectorAll("dd")) || []
       ).find((L) => {
         var w;
         return (w = L.textContent) == null ? void 0 : w.includes("Sold");
-      }), k = (((A = h == null ? void 0 : h.textContent) == null ? void 0 : A.trim()) || "").match(/([\d,]+)\s+Sold/), q = k ? k[1].replace(/,/g, "") : "0";
+      }), k = (((T = h == null ? void 0 : h.textContent) == null ? void 0 : T.trim()) || "").match(/([\d,]+)\s+Sold/), C = k ? k[1].replace(/,/g, "") : "0";
       return {
         avatarSrc: t ? t.src : "",
         sellerName: o && ((_ = o.textContent) == null ? void 0 : _.replace(/\s*\u{f058}\s*$/u, "").trim()) || "",
-        sellerTier: r,
+        sellerTier: s,
         isOnline: u,
-        statusText: l,
+        statusText: d,
         isVerified: i,
         rating: g,
         reviewCount: v,
         reviewText: y,
-        totalSales: q
+        totalSales: C
       };
     }
     getPdpTitle() {
@@ -771,7 +770,7 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
         if (n)
           return n.src;
       }
-      if (location.href.match(C.regexpLinks.items)) {
+      if (location.href.match(z.regexpLinks.items)) {
         const n = document.head.querySelector(
           'meta[property="og:image"]'
         );
@@ -792,21 +791,21 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
       (e = this.eventsAborder) == null || e.abort(), this.eventsAborder = new AbortController(), !location.href.includes("checkout") && (this.addStyles(), document.addEventListener(
         "click",
         (t) => {
-          var r, c, u, l;
+          var s, c, u, d;
           const o = t.target;
           if (o.closest("nav")) return;
           const n = o.closest("button:not(.crs-close-mobile)");
-          if (n && (n.querySelector(".fa-cart-shopping-fast") || (r = n == null ? void 0 : n.textContent) != null && r.includes("Buy") && !n.closest("a") && !n.closest('[data-state="open"]') || (c = n.parentElement) != null && c.classList.contains("fixed") && !n.querySelector(".fa-messages")) && this.waitLoginModal("buy", "PDP"), n && n.classList.contains("text-foreground") && n.closest("[data-crs-modal-type]")) {
-            const i = n.closest("[data-crs-modal-type]"), s = i.dataset.bg || "", d = i.dataset.productTitle;
+          if (n && (n.querySelector(".fa-cart-shopping-fast") || (s = n == null ? void 0 : n.textContent) != null && s.includes("Buy") && !n.closest("a") && !n.closest('[data-state="open"]') || (c = n.parentElement) != null && c.classList.contains("fixed") && !n.querySelector(".fa-messages")) && this.waitLoginModal("buy", "PDP"), n && n.classList.contains("text-foreground") && n.closest("[data-crs-modal-type]")) {
+            const i = n.closest("[data-crs-modal-type]"), r = i.dataset.bg || "", l = i.dataset.productTitle;
             this.waitLoginModal(
               n.closest("[data-crs-modal-type]").dataset.crsModalType,
-              location.href.match(C.regexpLinks.pdp) ? "PDP" : "PLP",
+              l ? "PLP" : "PDP",
               document,
               !0,
               // Skip animation when switching between login/signup
               {
-                title: d,
-                imageSrc: s
+                title: l,
+                imageSrc: r
               }
             );
           }
@@ -814,7 +813,7 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
             const i = n.closest("a");
             i && this.waitLoginModal("buy", "PLP", i);
           }
-          if (n && ((l = (u = n.textContent) == null ? void 0 : u.toLowerCase()) != null && l.includes("buy")) && n.closest('[data-state="open"]')) {
+          if (n && ((d = (u = n.textContent) == null ? void 0 : u.toLowerCase()) != null && d.includes("buy")) && n.closest('[data-state="open"]')) {
             const i = n.closest('[data-state="open"]');
             this.waitLoginModal("buy", "MODAL", i);
           }
