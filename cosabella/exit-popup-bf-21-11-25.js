@@ -90,6 +90,7 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
+  z-index: 1;
 }
 .crs_exit_popup .close svg {
   width: 100%;
