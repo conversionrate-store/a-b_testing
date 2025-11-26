@@ -65,7 +65,7 @@
 }
 @media (max-width: 768px) {
   .crs_exit_popup .image {
-    background: url("https://conversionrate-store.github.io/a-b_images/cosabella/bf-m.webp") center center no-repeat;
+    background: url("https://conversionrate-store.github.io/a-b_images/cosabella/bf-m.webp") right center no-repeat;
     background-size: cover;
     height: 230px;
     padding: 115px 0;
