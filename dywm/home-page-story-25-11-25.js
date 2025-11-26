@@ -1,87 +1,87 @@
 (function() {
   "use strict";
-  const h = (t) => new Promise((n) => {
-    const e = document.querySelector(t);
-    e && n(e);
+  const h = (n) => new Promise((e) => {
+    const t = document.querySelector(n);
+    t && e(t);
     const i = new MutationObserver(() => {
-      const s = document.querySelector(t);
-      s && (n(s), i.disconnect());
+      const s = document.querySelector(n);
+      s && (e(s), i.disconnect());
     });
     i.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: t, dev: n }) => {
+  }), m = ({ name: n, dev: e }) => {
     console.log(
-      `%c EXP: ${t} (DEV: ${n})`,
+      `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
   class a {
-    constructor(n) {
-      this.elements = n instanceof a ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+    constructor(e) {
+      this.elements = e instanceof a ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(n, e, i) {
-      return typeof e == "function" && (i = e, e = ""), this.elements.forEach((s) => {
-        s.addEventListener(n, function(g) {
+    on(e, t, i) {
+      return typeof t == "function" && (i = t, t = ""), this.elements.forEach((s) => {
+        s.addEventListener(e, function(g) {
           var f;
-          if (e !== "") {
-            let u = (f = g.target) == null ? void 0 : f.closest(e);
+          if (t !== "") {
+            let u = (f = g.target) == null ? void 0 : f.closest(t);
             u && (i == null || i.call(u, g));
           } else
             i == null || i.call(s, g);
         });
       }), this;
     }
-    addClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.add(n);
+    addClass(e) {
+      return this.elements.forEach(function(t) {
+        t.classList.add(e);
       }), this;
     }
-    removeClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.remove(n);
+    removeClass(e) {
+      return this.elements.forEach(function(t) {
+        t.classList.remove(e);
       }), this;
     }
-    toggleClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.toggle(n);
+    toggleClass(e) {
+      return this.elements.forEach(function(t) {
+        t.classList.toggle(e);
       }), this;
     }
-    each(n) {
-      for (let e of this.elements)
-        n(new a(e), this.elements.indexOf(e));
+    each(e) {
+      for (let t of this.elements)
+        e(new a(t), this.elements.indexOf(t));
       return this;
     }
-    style(n, e) {
-      const i = n.split("-").map((s, g) => g === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
+    style(e, t) {
+      const i = e.split("-").map((s, g) => g === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
       return this.elements.forEach(function(s) {
-        s.style[i] = e;
+        s.style[i] = t;
       }), this;
     }
-    find(n) {
-      const e = this.elements.map((i) => Array.from(i.querySelectorAll(n)));
-      return new a(e.flat());
+    find(e) {
+      const t = this.elements.map((i) => Array.from(i.querySelectorAll(e)));
+      return new a(t.flat());
     }
-    attr(n, e) {
-      return e ? (this.elements.forEach(function(i) {
-        i.setAttribute(n, e);
-      }), this) : this.elements[0].getAttribute(n);
+    attr(e, t) {
+      return t ? (this.elements.forEach(function(i) {
+        i.setAttribute(e, t);
+      }), this) : this.elements[0].getAttribute(e);
     }
-    text(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.textContent = n;
+    text(e) {
+      return e ? (this.elements.forEach(function(t) {
+        t.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
-    html(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.innerHTML = n;
+    html(e) {
+      return e ? (this.elements.forEach(function(t) {
+        t.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const C = (t) => new a(t), w = (t) => {
-    let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
+  const C = (n) => new a(n), b = (n) => {
+    let e = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", n, "variant_1"));
     }, 1e3);
   }, p = "https://conversionrate-store.github.io/a-b_images/dywm/", o = {
     grief: {
@@ -96,7 +96,7 @@
     },
     binds: {
       img: "blissful_binds.webp",
-      link: "https://www.doyogawithme.com/content/blissful-binds",
+      link: "/content/blissful-binds",
       title: "Blissful Binds",
       description: "Vinyasa  •  Power Yoga  •  Reclining Heart Ppener",
       coach: "Fiji McAlpine",
@@ -106,7 +106,7 @@
     },
     benefits: {
       img: "benefits.webp",
-      link: "",
+      link: "/yoga-series/explore-benefits-meditation",
       title: "Explore the Benefits of Meditation",
       description: "This series teaches you how to establish a regular meditation practice, returning to the fundamentals and exposing you to different teachers and styles.",
       coach: "3 Days",
@@ -117,7 +117,7 @@
     },
     soar: {
       img: "soar_intro.webp",
-      link: "",
+      link: "/yoga-challenges/soar-into-2024",
       title: "Soar Into 2024",
       description: "Lorem ipsum dolor sit amet consectetur. Magna ut a suspendisse eget aenean egestas et tellus.",
       coach: "3 Days",
@@ -128,9 +128,9 @@
     },
     sleep1: {
       img: "music1.webp",
-      link: "",
+      link: "/content/meditative-rest-sleep-magic",
       title: "Meditative Rest and Sleep Magic",
-      coach: "Julia Crouch",
+      coach: "Jennifer Piercy",
       star: "5.0",
       time: "3 Tracks",
       icon: 1,
@@ -138,33 +138,33 @@
     },
     sleep2: {
       img: "music2.webp",
-      link: "",
-      title: "Meditative Rest and Sleep Magic",
-      coach: "Julia Crouch",
+      link: "/content/find-your-inner-power",
+      title: "Find Your Inner Power",
+      coach: "JDavid Procyshyn",
       star: "5.0",
-      time: "3 Tracks",
+      time: "4 Tracks",
       icon: 1,
       tracks: !0
     },
     connection: {
-      img: "connection.webp",
-      link: "",
-      title: "Connection",
-      description: "",
-      coach: "3 Days",
+      img: "embrace.webp",
+      link: "/content/embrace-the-edge-2026-yoga-retreat",
+      title: "Embrace the Edge 2026",
+      description: "Chacala, Nayarit, Mexico",
+      coach: "Feb 14, 2026 - Feb 21, 2026",
       star: "5.0",
-      time: "60 m/day",
+      time: "",
       icon: 2,
       list: !0
     },
     hormonal: {
-      img: "hormonal.webp",
-      link: "",
-      title: "Yoga for the Female Hormonal Cycle",
-      description: "",
-      coach: "3 Days",
+      img: "elevate.webp",
+      link: "/content/elevate-your-teaching-retreat-2026",
+      title: "Elevate Your Teaching Retreat",
+      description: "Duncan, BC, Canada",
+      coach: "Jun 16, 2026 - Jun 19, 2026",
       star: "5.0",
-      time: "60 m/day",
+      time: "",
       icon: 2,
       list: !0
     }
@@ -241,40 +241,40 @@
     music: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path d="M13.9727 10.0625C13.9727 11.2656 12.7969 12.25 11.375 12.25C9.92578 12.25 8.75 11.2656 8.75 10.0625C8.75 8.85938 9.92578 7.90234 11.375 7.90234C11.6758 7.90234 11.9492 7.95703 12.25 8.03906V4.07422L5.25 6.125L5.22266 11.8398C5.22266 13.043 4.07422 14 2.59766 14C1.12109 14 0 13.043 0 11.8125C0 10.6094 1.14844 9.65234 2.59766 9.65234C2.89844 9.65234 3.19922 9.70703 3.47266 9.78906V3.47266C3.47266 3.11719 3.74609 2.73438 4.07422 2.625L12.7969 0.0546875C12.9062 0.0273438 13.043 0 13.125 0C13.5898 0 13.9727 0.410156 14 0.875L13.9727 10.0625Z" fill="white"/>
 		</svg>`
-  }, r = (t) => (
+  }, r = (n) => (
     /* HTML */
     `
     <div class="crs_card_block">
-      <div class="crs_img_container ${t.list ? "crs_list_img" : ""}">
-        <img src="${p}${t.img}" alt="${t.title}" />
-        ${t.tracks ? "" : (
+      <div class="crs_img_container ${n.list ? "crs_list_img" : ""}">
+        <img src="${p}${n.img}" alt="${n.title}" />
+        ${n.tracks ? "" : (
       /* HTML */
       ` <div class="crs_rate">${c.rate} Beginner I</div> `
     )}
-        <div class="crs_time">${t.tracks ? c.music : c.clock} ${t.time}</div>
+        <div class="crs_time">${n.tracks ? c.music : c.clock} ${n.time}</div>
       </div>
-      <a href="${t.link}" class="crs_card_title">
-        <b>${t.title}</b>
-        <span> ${c.star} ${t.star} </span>
+      <a href="${n.link}" class="crs_card_title">
+        <b>${n.title}</b>
+        <span> ${c.star} ${n.star} </span>
       </a>
-      ${t.description ? `<p class="crs_card_description">${t.description}</p>` : ""}
-      <p class="crs_coach">${t.icon === 1 ? c.icon1 : c.icon2} ${t.coach}</p>
+      ${n.description ? `<p class="crs_card_description">${n.description}</p>` : ""}
+      <p class="crs_coach">${n.icon === 1 ? c.icon1 : c.icon2} ${n.coach}</p>
     </div>
   `
-  ), d = (t) => (
+  ), d = (n) => (
     /* HTML */
     `
-    <div class="crs_content_block ${t.bg ? "crs_bg" : ""}">
+    <div class="crs_content_block ${n.bg ? "crs_bg" : ""}">
       <p class="crs_label">
-        <img src="${p}${t.icon}" alt="Icon" />
-        ${t.label}
+        <img src="${p}${n.icon}" alt="Icon" />
+        ${n.label}
       </p>
-      <h2 class="crs_title">${t.title}</h2>
-      <p class="crs_description">${t.description}</p>
-      <a href="${t.buttonLink}" class="crs_button">${t.buttonText}</a>
+      <h2 class="crs_title">${n.title}</h2>
+      <p class="crs_description">${n.description}</p>
+      <a href="${n.buttonLink}" class="crs_button">${n.buttonText}</a>
     </div>
   `
-  ), b = (
+  ), w = (
     /* HTML */
     `
   <section class="crs_story">
@@ -506,16 +506,20 @@
   .crs_button {
     width: 100%;
   }
+}
+.crs_retreats_block .crs_rate,
+.crs_retreats_block .crs_time {
+  display: none;
 }/*# sourceMappingURL=style.css.map */`;
-  m({ name: "Home page story", dev: "YK" }), w("dywm_home_page_block");
-  class x {
+  m({ name: "Home page story", dev: "YK" }), b("dywm_home_page_block");
+  class v {
     constructor() {
       this.init();
     }
     async init() {
-      await h("body"), document.body.insertAdjacentHTML("afterbegin", `<style class="crs_style">${_}</style>`), await h(".sfc-frontPageAnon__whatMovesYou.sfc-section"), C(".sfc-frontPageAnon__whatMovesYou.sfc-section").elements[0].insertAdjacentHTML("afterend", b);
+      await h("body"), document.body.insertAdjacentHTML("afterbegin", `<style class="crs_style">${_}</style>`), await h(".sfc-frontPageAnon__whatMovesYou.sfc-section"), C(".sfc-frontPageAnon__whatMovesYou.sfc-section").elements[0].insertAdjacentHTML("afterend", w);
     }
   }
-  new x();
+  new v();
 })();
 //# sourceMappingURL=index.js.map
