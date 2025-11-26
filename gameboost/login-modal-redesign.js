@@ -421,8 +421,10 @@ html.light [data-crs-modal-type='buy'] button:has(.fa-xmark) {
 
   .crs-modal-bg-wrap:not(.crs-modal-seller) {
     flex-direction: row;
+    justify-content: flex-start;
     gap: 16px;
-    max-width: 400px;
+    width: 100%;
+    max-width: 100%;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--crs-color-border-mobile);
   }
