@@ -346,7 +346,7 @@
       <div class="image"></div>
       <div class="content">
         <p class="title">Wait!</p>
-        <p>Your selected items are nearly sold out this Black Friday.</p>
+        <p>Don't go just yet! Your selected items are nearly sold out</p>
         <div class="timer">
           <p>We’ve reserved this item for you for the next 20 minutes.</p>
           <div class="time">
