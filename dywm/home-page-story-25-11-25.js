@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const h = (n) => new Promise((e) => {
+  const p = (n) => new Promise((e) => {
     const t = document.querySelector(n);
     t && e(t);
     const i = new MutationObserver(() => {
@@ -83,7 +83,7 @@
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", n, "variant_1"));
     }, 1e3);
-  }, p = "https://conversionrate-store.github.io/a-b_images/dywm/", o = {
+  }, h = "https://conversionrate-store.github.io/a-b_images/dywm/", o = {
     grief: {
       img: "yoga_grief.webp",
       link: "/content/yoga-for-grief",
@@ -109,9 +109,9 @@
       link: "/yoga-series/explore-benefits-meditation",
       title: "Explore the Benefits of Meditation",
       description: "This series teaches you how to establish a regular meditation practice, returning to the fundamentals and exposing you to different teachers and styles.",
-      coach: "3 Days",
+      coach: "14 Days",
       star: "5.0",
-      time: "60 m/day",
+      time: "20 m/day",
       icon: 2,
       list: !0
     },
@@ -119,8 +119,8 @@
       img: "soar_intro.webp",
       link: "/yoga-challenges/soar-into-2024",
       title: "Soar Into 2024",
-      description: "Lorem ipsum dolor sit amet consectetur. Magna ut a suspendisse eget aenean egestas et tellus.",
-      coach: "3 Days",
+      description: "We have designed this intermediate challenge to bring you back to your mat to create a consistent and strong daily practice that will help set the foundation of the year to come.",
+      coach: "14 Days",
       star: "5.0",
       time: "60 m/day",
       icon: 2,
@@ -246,7 +246,7 @@
     `
     <div class="crs_card_block">
       <div class="crs_img_container ${n.list ? "crs_list_img" : ""}">
-        <img src="${p}${n.img}" alt="${n.title}" />
+        <img src="${h}${n.img}" alt="${n.title}" />
         ${n.tracks ? "" : (
       /* HTML */
       ` <div class="crs_rate">${c.rate} Beginner I</div> `
@@ -266,7 +266,7 @@
     `
     <div class="crs_content_block ${n.bg ? "crs_bg" : ""}">
       <p class="crs_label">
-        <img src="${p}${n.icon}" alt="Icon" />
+        <img src="${h}${n.icon}" alt="Icon" />
         ${n.label}
       </p>
       <h2 class="crs_title">${n.title}</h2>
@@ -287,7 +287,7 @@
     <div class="crs_wellness_block">
       <div class="crs_container">
         <div class="crs_wellness_img">
-          <img src="${p}wellness.webp" alt="Wellness Program" />
+          <img src="${h}wellness.webp" alt="Wellness Program" />
         </div>
         ${d(l.wellness)}
       </div>
@@ -512,14 +512,14 @@
   display: none;
 }/*# sourceMappingURL=style.css.map */`;
   m({ name: "Home page story", dev: "YK" }), b("dywm_home_page_block");
-  class v {
+  class y {
     constructor() {
       this.init();
     }
     async init() {
-      await h("body"), document.body.insertAdjacentHTML("afterbegin", `<style class="crs_style">${_}</style>`), await h(".sfc-frontPageAnon__whatMovesYou.sfc-section"), C(".sfc-frontPageAnon__whatMovesYou.sfc-section").elements[0].insertAdjacentHTML("afterend", w);
+      await p("body"), document.body.insertAdjacentHTML("afterbegin", `<style class="crs_style">${_}</style>`), await p(".sfc-frontPageAnon__whatMovesYou.sfc-section"), C(".sfc-frontPageAnon__whatMovesYou.sfc-section").elements[0].insertAdjacentHTML("afterend", w);
     }
   }
-  new v();
+  new y();
 })();
 //# sourceMappingURL=index.js.map
