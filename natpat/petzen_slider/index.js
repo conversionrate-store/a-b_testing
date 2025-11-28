@@ -70,7 +70,7 @@
 }
 
 .lp-tr--hero-section .container-fluid {
-  margin-top: 46px;
+  margin-top: 20px;
 }
 
 .lp-tr--learn-more-btn {
@@ -122,8 +122,9 @@ crs-slider {
   width: calc(100% + 32px);
 }
 .crs-slide-wrap img.offset-1 {
-  margin-top: -11px;
-  margin-right: -27px;
+  position: relative;
+  top: -17px;
+  right: -4px;
 }
 .crs-slide-wrap img.top-33 {
   margin-top: -33px;
