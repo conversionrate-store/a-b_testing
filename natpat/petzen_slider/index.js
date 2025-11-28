@@ -121,7 +121,10 @@ crs-slider {
   margin-inline: -16px;
   width: calc(100% + 32px);
 }
-
+.crs-slide-wrap img.offset-1 {
+  margin-top: -11px;
+  margin-right: -27px;
+}
 .crs-slide-wrap img.top-33 {
   margin-top: -33px;
 }
@@ -334,7 +337,7 @@ crs-slider {
         src: "best-product.webp",
         width: "100%",
         height: "auto",
-        style: "margin-top: -11px; margin-right: -27px"
+        templates: ["offset-1"]
       },
       templates: ["with-background", "full"],
       backgroundImage: {
