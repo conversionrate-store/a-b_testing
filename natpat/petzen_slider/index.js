@@ -122,9 +122,7 @@ crs-slider {
   width: calc(100% + 32px);
 }
 .crs-slide-wrap img.offset-1 {
-  position: relative;
-  top: -17px;
-  right: -4px;
+  object-position: right -4px top -17px;
 }
 .crs-slide-wrap img.top-33 {
   margin-top: -33px;
