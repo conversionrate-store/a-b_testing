@@ -65,7 +65,7 @@
 }
 @media (max-width: 768px) {
   .crs_exit_popup .image {
-    background: url("https://conversionrate-store.github.io/a-b_images/cosabella/bf-m.webp") right center no-repeat;
+    background: url("https://conversionrate-store.github.io/a-b_images/cosabella/bf-m.webp") center center no-repeat;
     background-size: cover;
     height: 230px;
     padding: 115px 0;
@@ -346,8 +346,8 @@
 </span>
       <div class="image"></div>
       <div class="content">
-        <p class="title">Wait!</p>
-        <p>Don't go just yet! Your selected items are nearly sold out</p>
+        <p class="title">Don't go just yet!</p>
+        <p>Your selected items are nearly sold out</p>
         <div class="timer">
           <p>We’ve reserved this item for you for the next 20 minutes.</p>
           <div class="time">
