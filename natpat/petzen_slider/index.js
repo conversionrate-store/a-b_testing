@@ -1,21 +1,21 @@
 (function() {
   "use strict";
-  const d = (s, n, e, t = "") => {
+  const l = (s, n, t, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: s,
       event_desc: n,
-      event_type: e,
-      event_loc: t
-    }), m(`Event: ${s} | ${n} | ${e} | ${t}`, "success");
+      event_type: t,
+      event_loc: e
+    }), m(`Event: ${s} | ${n} | ${t} | ${e}`, "success");
   }, p = (s) => new Promise((n) => {
-    const e = document.querySelector(s);
-    e && n(e);
-    const t = new MutationObserver(() => {
-      const a = document.querySelector(s);
-      a && (n(a), t.disconnect());
+    const t = document.querySelector(s);
+    t && n(t);
+    const e = new MutationObserver(() => {
+      const i = document.querySelector(s);
+      i && (n(i), e.disconnect());
     });
-    t.observe(document.documentElement, {
+    e.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
@@ -29,24 +29,24 @@
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", s, "variant_1"));
     }, 1e3);
   }, m = (s, n = "info") => {
-    let e;
+    let t;
     switch (n) {
       case "info":
-        e = "color: #3498db;";
+        t = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        t = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        t = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${e} font-size: 16px; font-weight: 600`);
-  }, c = "https://conversionrate-store.github.io/a-b_images/natpat", u = `.lp-tr--hero-section {
-  background: #0d7650;
+    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
+  }, a = "https://conversionrate-store.github.io/a-b_images/natpat", u = `.lp-tr--hero-section {
+  background: #1c6f5c !important;
   padding: 30px 0 280px !important;
 }
 
@@ -56,8 +56,8 @@
 
 .lp-tr--float-right-img {
   bottom: 10px !important;
-  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1))
-    drop-shadow(0 0 100px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 150px rgba(255, 255, 255, 0.3));
 }
 
 .lp-tr--hero-section .lp-tr--btn {
@@ -67,6 +67,10 @@
 .lp-tr--hero-section .lp-tr--kids-tick-mb-img {
   max-width: 241px !important;
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.6));
+}
+
+.lp-tr--hero-section .container-fluid {
+  margin-top: 46px;
 }
 
 .lp-tr--learn-more-btn {
@@ -87,10 +91,12 @@
 crs-slider {
   display: block;
   margin-inline: -30px;
-  margin-bottom: 40px;
   width: calc(100% + 60px);
 }
 .crs-slide {
+  position: relative;
+}
+.crs-slide-wrap {
   position: relative;
   scroll-snap-align: center;
   flex-shrink: 0;
@@ -98,7 +104,7 @@ crs-slider {
   flex-direction: column;
   align-items: center;
   width: 300px;
-  min-height: 393px;
+  min-height: 379px;
   padding: 24px 16px;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -108,53 +114,53 @@ crs-slider {
   overflow: hidden;
 }
 
-.crs-slide.wide {
+.crs-slide-wrap.wide {
   width: 320px;
 }
-.crs-slide img.full {
+.crs-slide-wrap img.full {
   margin-inline: -16px;
   width: calc(100% + 32px);
 }
 
-.crs-slide img.top-33 {
+.crs-slide-wrap img.top-33 {
   margin-top: -33px;
 }
 
-.crs-slide.full {
+.crs-slide-wrap.full {
   padding: 0;
   padding-bottom: 24px;
 }
 
-.crs-slide.full img {
+.crs-slide-wrap.full img {
   height: 100%;
 }
 
-.crs-slide.with-background {
+.crs-slide-wrap.with-background {
   background-size: cover;
-  background-position: center;
+  background-position: top;
   border: none;
 }
 
-.crs-slide.transparent {
+.crs-slide-wrap.transparent {
   background: transparent;
   border: none;
 }
 
-.crs-slide.blue-bg {
+.crs-slide-wrap.blue-bg {
   background: #183ea9 -1.353px 108.024px / 100% 67.749% no-repeat;
 }
 
-.crs-slide.custom-padding-1 {
+.crs-slide-wrap.custom-padding-1 {
   padding: 12px;
   padding-bottom: 0;
 }
 
-.crs-slide.custom-padding-2 {
+.crs-slide-wrap.custom-padding-2 {
   padding: 16px;
   padding-bottom: 24px;
 }
 
-.crs-slide:is([data-slide-index='5'], [data-slide-index='6']) {
+.crs-slide-wrap:is([data-slide-index='5'], [data-slide-index='6']) {
   justify-content: center;
 }
 
@@ -185,6 +191,7 @@ crs-slider {
   font-weight: 400;
   line-height: 22px;
   text-align: center;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .crs-slide-description-list {
@@ -256,11 +263,13 @@ crs-slider {
   margin-bottom: -32px;
 }
 .crs-action-button {
+  margin-top: -30px;
+  margin-inline: auto;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-inline: 0;
+  width: max-content;
   min-height: 52px;
   padding: 14px 20px;
   border-radius: 50px;
@@ -272,14 +281,34 @@ crs-slider {
   font-weight: 700;
   line-height: 24px; /* 120% */
   text-transform: uppercase;
-}
-
-.crs-action-button-primary {
   background: #ffa311;
+  box-shadow: 0 4px 24px 0 rgba(255, 255, 255, 0.55);
 }
 
-.crs-action-button-secondary {
-  background: #f3dd1d;
+.crs-action-button:hover,
+.crs-action-button:focus {
+  color: #000;
+}
+.slider-swipe-indicator {
+  position: absolute;
+  top: 149px;
+  right: calc(-87px / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  width: 87px;
+  height: 87px;
+  border-radius: 50%;
+  background: rgba(50, 125, 108, 0.36);
+  backdrop-filter: blur(2px);
+  z-index: 9;
+}
+
+.slider-swipe-indicator img {
+  width: 63px;
+  height: 63px;
+  object-fit: contain;
 }
 `, x = [
     {
@@ -287,15 +316,18 @@ crs-slider {
       subtitle: "No More Stressing, <br />No Matter Where They Go!",
       list: [
         "For Dogs & Cats",
+        "All-Day Calming Effect",
         "Easy Peel & Stick",
-        "100% Natural & Safe",
-        "Gentle Anxiety Relief"
+        "100% Natural & Safe"
       ],
       templates: ["transparent", "custom-padding-1"],
-      action: {
-        text: "Get Zen Stickers Now",
-        templates: ["primary", "with-image"]
-      }
+      image: {
+        src: "//www.natpat.com/cdn/shop/files/header-mobile-zp-pet-stickers.png?v=7126975986313487252",
+        width: "108%",
+        height: "auto",
+        style: "margin-top: 24px;"
+      },
+      animationHand: !0
     },
     {
       image: {
@@ -307,10 +339,6 @@ crs-slider {
       templates: ["with-background", "full"],
       backgroundImage: {
         src: "bg-2.webp"
-      },
-      action: {
-        text: "Get Zen Stickers Now",
-        templates: ["secondary"]
       }
     },
     {
@@ -323,10 +351,7 @@ crs-slider {
         templates: ["full"],
         style: "margin-top: -33px; margin-bottom: -20px;"
       },
-      templates: ["blue-bg", "custom-padding-2", "wide"],
-      action: {
-        text: "Get Zen Stickers Now"
-      }
+      templates: ["blue-bg", "custom-padding-2", "wide"]
     },
     {
       title: 'Proven to <span class="crs-highlight">Calm Pets</span> <br />in Stressful Moments',
@@ -340,9 +365,13 @@ crs-slider {
           text: "Unfamiliar <br />pets / people"
         },
         { icon: "vet_visit.svg", text: "Vet Visits" }
-      ],
-      action: {
-        text: "Get Zen Stickers Now"
+      ]
+    },
+    {
+      image: {
+        src: "zenpatch_great_for.webp",
+        width: "100%",
+        height: "auto"
       }
     },
     {
@@ -353,19 +382,6 @@ crs-slider {
         width: "100%",
         height: "auto",
         style: "margin-top: 22px;"
-      },
-      action: {
-        text: "Get Zen Stickers Now"
-      }
-    },
-    {
-      image: {
-        src: "zenpatch_great_for.webp",
-        width: "100%",
-        height: "auto"
-      },
-      action: {
-        text: "Get Zen Stickers Now"
       }
     },
     {
@@ -373,15 +389,12 @@ crs-slider {
         src: "zenpatch_result.webp",
         width: "100%",
         height: "auto"
-      },
-      action: {
-        text: "Get Zen Stickers Now"
       }
     }
   ];
   class f {
     constructor() {
-      this.section = document.querySelector(
+      this.activeSlideIndex = 1, this.section = document.querySelector(
         ".lp-tr--hero-section"
       ), this.init();
     }
@@ -389,42 +402,58 @@ crs-slider {
       this.addStyles(), this.changeHeaderSectionImages(), this.addSlider();
     }
     addSlider() {
-      const n = this.section.querySelector(".lp-tr--main-title"), e = (
+      const n = this.section.querySelector(".lp-tr--main-title"), t = (
         /* HTML */
-        ` <crs-slider>
-      ${x.map((r, o) => this.renderSlide(r, o)).join("")}
-    </crs-slider>`
+        `
+      <crs-slider>
+        ${x.map((r, o) => this.renderSlide(r, o)).join("")}
+      </crs-slider>
+      <a href="#lptrPurchase" class="crs-action-button "
+        >Get Zen Stickers Now</a
+      >
+    `
       );
-      n == null || n.insertAdjacentHTML("afterend", e), d("exp_slider_view_1", "1", "view", "Slider");
-      const t = this.section.querySelector("crs-slider");
-      let a = 0;
-      t == null || t.addEventListener("crs-slide-change", (r) => {
-        const i = r.detail.activeSlideIndex;
-        clearTimeout(this.activeSlideTimeout), this.activeSlideTimeout = setTimeout(() => {
-          i !== a && d("exp_slider_view_1", `${i}`, "view", "Slider"), a = i;
+      n == null || n.insertAdjacentHTML("afterend", t), l("exp_slider_view_1", "1", "view", "Slider");
+      const e = this.section.querySelector("crs-slider"), i = this.section.querySelector(".crs-action-button");
+      let c = 0;
+      e == null || e.addEventListener("crs-slide-change", (r) => {
+        const o = r;
+        this.activeSlideIndex = o.detail.activeSlideIndex, clearTimeout(this.activeSlideTimeout), this.activeSlideTimeout = setTimeout(() => {
+          this.activeSlideIndex !== c && l(
+            "exp_slider_view_1",
+            `${this.activeSlideIndex}`,
+            "view",
+            "Slider"
+          ), c = this.activeSlideIndex;
         }, 1e3);
-      }), t == null || t.addEventListener("click", (r) => {
-        var l;
-        const o = r.target, i = (l = o.closest(".crs-slide")) == null ? void 0 : l.dataset.slideIndex;
-        !o.closest(".crs-action-button") || !i || (console.log("Slide action clicked:", i), d("exp_slider_click_1", `${i}`, "click", "Slider"));
+      }), i == null || i.addEventListener("click", (r) => {
+        l(
+          "exp_slider_click_1",
+          `${this.activeSlideIndex}`,
+          "click",
+          "Slider"
+        );
       });
     }
-    renderSlide(n, e) {
-      var a, r, o;
-      const t = [];
+    renderSlide(n, t) {
+      const e = [];
       if (n.title) {
         const i = (n.title.includes("crs-highlight"), "crs-slide-title");
-        t.push(`<div class="${i}">${n.title}</div>`);
+        e.push(`<div class="${i}">${n.title}</div>`);
       }
-      if (n.subtitle && t.push(
+      if (n.subtitle && e.push(
         `<div class="crs-slide-subtitle">${n.subtitle}</div>`
-      ), n.description && t.push(
+      ), n.description && e.push(
         `<div class="crs-slide-description">${n.description}</div>`
-      ), n.image) {
+      ), n.list && e.push(`
+        <ul class="crs-slide-description-list">
+          ${n.list.map((i) => `<li>${i}</li>`).join("")}
+        </ul>
+      `), n.image) {
         const i = n.image.style ? `style="${n.image.style}"` : "";
-        t.push(`
+        e.push(`
         <img
-          src="${c}/${n.image.src}"
+          src="${n.image.src.startsWith("//") ? n.image.src : `${a}/${n.image.src}`}"
           alt=""
           width="${n.image.width}"
           height="${n.image.height}"
@@ -434,18 +463,14 @@ crs-slider {
         />
       `);
       }
-      return n.list && t.push(`
-        <ul class="crs-slide-description-list">
-          ${n.list.map((i) => `<li>${i}</li>`).join("")}
-        </ul>
-      `), n.grid && t.push(`
+      return n.grid && e.push(`
         <div class="crs-slide-solution-grid">
           ${n.grid.map(
         (i) => `
             <div class="crs-item">
               <div class="crs-icon">
                 <img
-                  src="${c}/${i.icon}"
+                  src="${a}/${i.icon}"
                   alt=""
                   width="32"
                   height="32"
@@ -457,49 +482,27 @@ crs-slider {
           `
       ).join("")}
         </div>
-      `), n.action && ((a = n.action.templates) != null && a.includes("with-image") ? t.push(
+      `), /* HTML */
+      `
+      <div class="crs-slide" data-slide-index="${t + 1}">
+        <div
+          class="crs-slide-wrap  ${n != null && n.templates ? n.templates.join(" ") : ""}"
+          style="${n.backgroundImage ? `background-image: url('${a}/${n.backgroundImage.src}');` : ""}"
+        >
+          ${e.join("")}
+        </div>
+        ${n != null && n.animationHand ? (
         /* HTML */
-        `
-          <div class="crs-action">
-            <picture>
-              <source
-                srcset="
-                  data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
-                "
-                media="(min-width: 768px)"
-              />
+        ` <div class="slider-swipe-indicator">
               <img
-                src="//www.natpat.com/cdn/shop/files/header-mobile-zp-pet-stickers.png?v=7126975986313487252"
+                src="${a}/swipe_left.gif"
                 alt=""
-                class="crs-action-image"
-                width="294"
-                height="171"
-                fetchpriority="high"
+                width="79"
+                height="79"
+                loading="lazy"
               />
-            </picture>
-            <a
-              href="#lptrPurchase"
-              class="crs-action-button ${(r = n.action.templates) != null && r.includes(
-          "secondary"
-        ) ? " crs-action-button-secondary" : " crs-action-button-primary"}"
-              >${n.action.text}</a
-            >
-          </div>
-        `
-      ) : t.push(
-        /* HTML */
-        `<div class="crs-action">
-            <a
-              href="#lptrPurchase"
-              class="crs-action-button ${(o = n.action.templates) != null && o.includes(
-          "secondary"
-        ) ? " crs-action-button-secondary" : " crs-action-button-primary"}"
-              >${n.action.text}</a
-            >
-          </div>`
-      )), `
-      <div class="crs-slide ${n != null && n.templates ? n.templates.join(" ") : ""}" data-slide-index="${e + 1}" style="${n.backgroundImage ? `background-image: url('${c}/${n.backgroundImage.src}');` : ""}">
-        ${t.join("")}
+            </div>`
+      ) : ""}
       </div>
     `;
     }
@@ -510,10 +513,10 @@ crs-slider {
       this.section.querySelector(
         ".lp-tr--kids-tick-mb-img.lp-tr--mobile"
       );
-      const e = this.section.querySelector(
+      const t = this.section.querySelector(
         ".lp-tr--learn-more-btn img"
       );
-      n && (n.src = `${c}/lp-pet-zen--dog-cat.webp`), e && (e.src = `${c}/arrow_down.svg`);
+      n && (n.src = `${a}/lp-pet-zen--dog-cat.webp`), t && (t.src = `${a}/arrow_down.svg`);
     }
     addStyles() {
       const n = document.createElement("style");
@@ -544,16 +547,7 @@ crs-slider {
 .slider-track > * {
   flex-shrink: 0;
 }
-
-.slider-swipe-indicator {
-  position: absolute;
-  right: 13px;
-  bottom: -70px;
-  display: flex;
-  justify-content: flex-end;
-  pointer-events: none;
-  
-}`;
+`;
   class w extends HTMLElement {
     constructor() {
       super(), this.initialLoad = !0, this.attachShadow({ mode: "open" }).innerHTML = this.render();
@@ -569,41 +563,38 @@ crs-slider {
         <div class="slider-track">
           <slot></slot>
         </div>
-        <div class="slider-swipe-indicator">
-          <img src="${c}/swipe_left.gif" alt="" width="79" height="79" loading="lazy" />
-        </div>
       </div>
     `
       );
     }
     connectedCallback() {
-      const n = this.querySelectorAll(":scope > *"), e = {
+      const n = this.querySelectorAll(":scope > *"), t = {
         rootMargin: "0px",
         threshold: 1
-      }, t = (r) => {
-        r.forEach((o) => {
-          var l;
-          const i = o.target;
-          if (o.isIntersecting) {
-            if (i.classList.add("is-visible"), this.initialLoad) {
+      }, e = (c) => {
+        c.forEach((r) => {
+          var d;
+          const o = r.target;
+          if (r.isIntersecting) {
+            if (o.classList.add("is-visible"), this.initialLoad) {
               this.initialLoad = !1;
               return;
             }
-            (l = this.shadowRoot) == null || l.dispatchEvent(
+            (d = this.shadowRoot) == null || d.dispatchEvent(
               new CustomEvent("crs-slide-change", {
                 detail: {
-                  activeSlideIndex: Number(i.dataset.slideIndex)
+                  activeSlideIndex: Number(o.dataset.slideIndex)
                 },
                 bubbles: !0,
                 composed: !0
               })
             );
           } else
-            i.classList.remove("is-visible");
+            o.classList.remove("is-visible");
         });
-      }, a = new IntersectionObserver(t, e);
-      n.forEach((r, o) => {
-        a.observe(r);
+      }, i = new IntersectionObserver(e, t);
+      n.forEach((c, r) => {
+        i.observe(c);
       });
     }
   }
@@ -620,7 +611,7 @@ crs-slider {
       customElements.get("crs-slider") || customElements.define("crs-slider", w);
     }
     async initChanges() {
-      const n = new Promise((e) => setTimeout(e, 2e3));
+      const n = new Promise((t) => setTimeout(t, 2e3));
       await Promise.race([p(".lp-tr--hero-section"), n]), new f();
     }
     addStyles() {
