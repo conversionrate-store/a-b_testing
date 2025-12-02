@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const p = (s, t, n, e = "") => {
+  const d = (s, t, n, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: s,
@@ -12,8 +12,8 @@
     const n = document.querySelector(s);
     n && t(n);
     const e = new MutationObserver(() => {
-      const r = document.querySelector(s);
-      r && (t(r), e.disconnect());
+      const a = document.querySelector(s);
+      a && (t(a), e.disconnect());
     });
     e.observe(document.documentElement, {
       childList: !0,
@@ -28,18 +28,18 @@
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", s, "variant_1"));
     }, 1e3);
-  }, _ = (s, t, n, e, r = 1e3, o = 0.5) => {
-    let i, a;
+  }, _ = (s, t, n, e, a = 1e3, o = 0.5) => {
+    let i, r;
     if (i = new IntersectionObserver(
       function(c) {
-        c[0].isIntersecting === !0 ? a = setTimeout(() => {
-          p(
+        c[0].isIntersecting === !0 ? r = setTimeout(() => {
+          d(
             t,
             c[0].target.dataset.visible || e,
             "view",
             n
           ), i.disconnect();
-        }, r) : (g("Element is not fully visible", "warn"), clearTimeout(a));
+        }, a) : (g("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [o] }
     ), typeof s == "string") {
@@ -111,8 +111,8 @@
         })
       });
       if (!n.ok) {
-        const r = await n.json().catch(() => ({}));
-        throw new Error(`HTTP error! status: ${n.status}, details: ${JSON.stringify(r)}`);
+        const a = await n.json().catch(() => ({}));
+        throw new Error(`HTTP error! status: ${n.status}, details: ${JSON.stringify(a)}`);
       }
       return { data: await n.json(), error: null };
     } catch (n) {
@@ -130,33 +130,33 @@
     async updateQuantity(t, n) {
       if (n < 0)
         return console.error("Quantity cannot be negative"), null;
-      const { data: e, error: r } = await C(t, n);
-      return r || !e ? (console.error("Error updating cart quantity:", r), null) : await this.enrichCartWithCompareAt(e);
+      const { data: e, error: a } = await C(t, n);
+      return a || !e ? (console.error("Error updating cart quantity:", a), null) : await this.enrichCartWithCompareAt(e);
     }
     async enrichCartWithCompareAt(t) {
       const n = [...new Set(t.items.map((o) => o.handle))], e = /* @__PURE__ */ new Map();
       await Promise.all(
         n.map(async (o) => {
-          const { data: i, error: a } = await x(o);
-          if (a || !i) {
-            console.error(`Error fetching product for handle ${o}:`, a);
+          const { data: i, error: r } = await x(o);
+          if (r || !i) {
+            console.error(`Error fetching product for handle ${o}:`, r);
             return;
           }
           e.set(o, i);
         })
       );
-      const r = t.items.map((o) => {
+      const a = t.items.map((o) => {
         var l;
-        const i = e.get(o.handle), a = (l = i == null ? void 0 : i.variants) == null ? void 0 : l.find(
-          (d) => Number(d.id) === o.variant_id
-        ), c = a != null && a.compare_at_price ? Math.round(parseFloat(a.compare_at_price) * 100) : null;
+        const i = e.get(o.handle), r = (l = i == null ? void 0 : i.variants) == null ? void 0 : l.find(
+          (p) => Number(p.id) === o.variant_id
+        ), c = r != null && r.compare_at_price ? Math.round(parseFloat(r.compare_at_price) * 100) : null;
         return {
           ...o,
           compare_at_price: c,
           price_varies: i == null ? void 0 : i.price_varies
         };
       });
-      return { ...t, items: r };
+      return { ...t, items: a };
     }
   }
   const b = `#cart-notification
@@ -394,7 +394,7 @@
   min-height: max-content;
 }
 
-#cart-notification[data-item-count="0"] .customer_note {
+#cart-notification[data-item-count='0'] .customer_note {
   display: none;
 }
 
@@ -657,6 +657,11 @@
   .crs-tooltip .crs-tooltip-text::after {
     right: 8px;
   }
+
+  /* Checkout button section */
+  #cart-notification .cnp_bottom {
+    display: block !important;
+  }
 }
 `;
   class k {
@@ -900,19 +905,34 @@
       this.addStyles(), this.initChanges();
     }
     initChanges() {
-      this.dynamicCartChanges(), this.cartChange(), document.addEventListener("cart:updated", this.handleCartUpdate.bind(this)), $(document).on(
+      this.dynamicCartChanges(), this.cartChange(), document.addEventListener("cart:updated", this.handleCartUpdate.bind(this));
+      let t = !1;
+      $(document).on(
         "click",
         ".custom_cnp .cnp_del",
         this.handleItemDelete.bind(this)
       ), $(document).on("click", ".cart-notification__close", () => {
-        p("exp_slide_cart_close", "Close", "click", "Slide Cart");
+        t || d("exp_slide_cart_close", "Close", "click", "Slide Cart"), t = !1;
       }), $(document).on(
         "click",
         '#cart-notification .cart-notification__links button[name="checkout"]',
         () => {
-          p("exp_slide_cart_checkout", "Checkout", "click", "Slide Cart");
+          d("exp_slide_cart_checkout", "Checkout", "click", "Slide Cart");
         }
-      );
+      ), document.addEventListener("click", (n) => {
+        const e = n.target, a = document.querySelector("#cart-notification");
+        if (!(a && a.contains(e)) && !(e != null && e.closest("sticky-header")) && a != null && a.closest("cart-notification.atc")) {
+          const o = a.querySelector(
+            ".cart-notification__close"
+          );
+          t = !0, o == null || o.click(), d(
+            "exp_slide_cart_backgr_close",
+            "Background Close",
+            "click",
+            "Slide Cart"
+          );
+        }
+      });
     }
     async cartChange() {
       var e;
@@ -938,21 +958,21 @@
       const n = t.querySelector("p"), e = t.querySelector("#note");
       if (!n || !e) return;
       n.textContent = "Please, specify your request";
-      const r = document.createElement("div");
-      r.className = "note-accordion-content", r.style.display = "none", r.appendChild(n.cloneNode(!0)), r.appendChild(e);
+      const a = document.createElement("div");
+      a.className = "note-accordion-content", a.style.display = "none", a.appendChild(n.cloneNode(!0)), a.appendChild(e);
       const o = document.createElement("div");
       o.className = "note-accordion-trigger", o.innerHTML = /* HTML */
       `
       <span>Have a special request for your order?</span>
-    `, t.innerHTML = "", t.appendChild(o), t.appendChild(r), o.addEventListener("click", (i) => {
-        i.preventDefault(), r.style.display !== "none" ? (r.style.display = "none", o.classList.remove("active")) : (r.style.display = "block", o.classList.add("active")), p(
+    `, t.innerHTML = "", t.appendChild(o), t.appendChild(a), o.addEventListener("click", (i) => {
+        i.preventDefault(), a.style.display !== "none" ? (a.style.display = "none", o.classList.remove("active")) : (a.style.display = "block", o.classList.add("active")), d(
           "exp_slide_cart_special_request",
           "Have a special request for your order?",
           "click",
           "Slide Cart"
         );
       }), e.addEventListener("change", () => {
-        p(
+        d(
           "exp_slide_cart_sp_request_input",
           "Special request",
           "input",
@@ -982,8 +1002,8 @@
       await this.changeCartItems(), this.handleFreeShippingStatus(), this.addItemsCount(this.cartData);
     }
     handleFreeShippingStatus() {
-      var e, r, o, i;
-      const t = (e = this.cartElement) == null ? void 0 : e.querySelector(".congraz"), n = (r = this.cartElement) == null ? void 0 : r.querySelector(
+      var e, a, o, i;
+      const t = (e = this.cartElement) == null ? void 0 : e.querySelector(".congraz"), n = (a = this.cartElement) == null ? void 0 : a.querySelector(
         ".cart-notification__links .totals .tas"
       );
       if (t && t.style.display !== "none")
@@ -993,8 +1013,8 @@
         );
       else {
         g("Free shipping not achieved");
-        const a = (i = this.cartElement) == null ? void 0 : i.querySelector(".crs-free-shipping");
-        a && a.remove();
+        const r = (i = this.cartElement) == null ? void 0 : i.querySelector(".crs-free-shipping");
+        r && r.remove();
       }
     }
     updateCartPrices() {
@@ -1003,12 +1023,12 @@
         ".noOfCartItems, .cart-count-bubble span"
       );
       t.length > 0 && t.forEach((e) => {
-        var r, o, i;
-        e.classList.contains(".visually-hidden") ? e.textContent = `${((r = this.cartData) == null ? void 0 : r.item_count) || 0} ${((o = this.cartData) == null ? void 0 : o.item_count) === 1 ? "item" : "items"}` : e.textContent = String(((i = this.cartData) == null ? void 0 : i.item_count) || 0);
+        var a, o, i;
+        e.classList.contains(".visually-hidden") ? e.textContent = `${((a = this.cartData) == null ? void 0 : a.item_count) || 0} ${((o = this.cartData) == null ? void 0 : o.item_count) === 1 ? "item" : "items"}` : e.textContent = String(((i = this.cartData) == null ? void 0 : i.item_count) || 0);
       }), this.cartData.items.forEach((e) => {
-        const r = document.querySelector(`[id="${e.variant_id}"]`);
-        if (!r) return;
-        const o = r.querySelector(
+        const a = document.querySelector(`[id="${e.variant_id}"]`);
+        if (!a) return;
+        const o = a.querySelector(
           ".cnp_product_repeat dt"
         );
         o && (o.textContent = String(e.quantity));
@@ -1022,22 +1042,22 @@
     }
     updateFreeShippingProgress() {
       if (!this.cartData) return;
-      const t = 2e4, n = this.cartData.total_price || 0, e = t - n, r = Math.min(
+      const t = 2e4, n = this.cartData.total_price || 0, e = t - n, a = Math.min(
         n / t * 100,
         100
       ), o = document.querySelector(".bcb"), i = document.querySelector(".bcg");
       if (o && i) {
-        o.style.width = `${r}%`, i.style.width = `${100 - r}%`;
+        o.style.width = `${a}%`, i.style.width = `${100 - a}%`;
         const l = o.querySelector("img");
-        l && (n <= t ? l.style.right = `${95 - r}%` : l.style.right = "0%");
+        l && (n <= t ? l.style.right = `${95 - a}%` : l.style.right = "0%");
       }
-      const a = document.querySelector(".buyToEnjoy"), c = document.querySelector(".congraz");
+      const r = document.querySelector(".buyToEnjoy"), c = document.querySelector(".congraz");
       if (n >= t)
-        a && (a.style.display = "none"), c && (c.style.display = "block");
+        r && (r.style.display = "none"), c && (c.style.display = "block");
       else {
-        if (a) {
+        if (r) {
           const l = (e / 100).toFixed(2);
-          a.innerHTML = `You're <b>${this.currencyIcon}${l}</b> away from free shipping!`, a.style.display = "block";
+          r.innerHTML = `You're <b>${this.currencyIcon}${l}</b> away from free shipping!`, r.style.display = "block";
         }
         c && (c.style.display = "none");
       }
@@ -1049,7 +1069,7 @@
             const e = await Promise.race([
               f(`[id="${t.variant_id}"]`),
               new Promise(
-                (r) => setTimeout(() => r(null), 2e3)
+                (a) => setTimeout(() => a(null), 2e3)
               )
             ]);
             if (!e) return;
@@ -1068,13 +1088,13 @@
       );
     }
     async changeCartItem(t, n) {
-      const e = t.querySelector(".cart-notification-product__name"), r = t.querySelector(
+      const e = t.querySelector(".cart-notification-product__name"), a = t.querySelector(
         ".cart-notification-product__image img"
       ), o = t.querySelector(".cnp_del"), i = t.querySelector(".cnp_desc");
       if (e) {
-        const a = document.createElement("a");
-        a.href = `/products/${n.handle}`, a.textContent = e.textContent || "", e.innerHTML = "", e.appendChild(a), a.addEventListener("click", (c) => {
-          p(
+        const r = document.createElement("a");
+        r.href = `/products/${n.handle}`, r.textContent = e.textContent || "", e.innerHTML = "", e.appendChild(r), r.addEventListener("click", (c) => {
+          d(
             "exp_slide_cart_item_title",
             e.textContent,
             "click",
@@ -1082,12 +1102,12 @@
           );
         });
       }
-      if (r) {
-        const a = document.createElement("a");
-        a.href = `/products/${n.handle}`;
-        const c = r.parentElement;
-        c && (c.replaceChild(a, r), a.appendChild(r)), a.addEventListener("click", (l) => {
-          l.preventDefault(), p(
+      if (a) {
+        const r = document.createElement("a");
+        r.href = `/products/${n.handle}`;
+        const c = a.parentElement;
+        c && (c.replaceChild(r, a), r.appendChild(a)), r.addEventListener("click", (l) => {
+          l.preventDefault(), d(
             "exp_slide_cart_item_image",
             (e == null ? void 0 : e.textContent) || "",
             "click",
@@ -1095,15 +1115,15 @@
           );
         });
       }
-      if (o && o.addEventListener("click", (a) => {
-        p(
+      if (o && o.addEventListener("click", (r) => {
+        d(
           "exp_slide_cart_item_remove",
           (e == null ? void 0 : e.textContent) || "",
           "click",
           "Slide Cart"
         );
       }), n.price_varies && n.compare_at_price > n.price) {
-        const a = t.querySelector(".cnp_desc dl"), c = t.querySelector(
+        const r = t.querySelector(".cnp_desc dl"), c = t.querySelector(
           ".cnp_desc dl .cnp_price dt"
         ), l = t.querySelector(
           ".cnp_desc dl .cnp_price dd .currency"
@@ -1114,7 +1134,7 @@
           >
           <span class="crs-old-price-value"
             >${(n.compare_at_price / 1e4).toFixed(2)}</span
-          >`, c.classList.add("crs-old-price")), a && !a.querySelector(".crs-sale-badge") && a.insertAdjacentHTML(
+          >`, c.classList.add("crs-old-price")), r && !r.querySelector(".crs-sale-badge") && r.insertAdjacentHTML(
           "afterend",
           this.cartRenderer.saleBadge()
         );
@@ -1124,9 +1144,9 @@
           "beforeend",
           this.cartRenderer.warrantyMessage()
         );
-        const a = i.querySelector(".crs-tooltip"), c = a == null ? void 0 : a.querySelector(".crs-icon");
+        const r = i.querySelector(".crs-tooltip"), c = r == null ? void 0 : r.querySelector(".crs-icon");
         c && c.addEventListener("mouseenter", (l) => {
-          p(
+          d(
             "exp_slide_cart_lt_warr_tooltip",
             "Lifetime Warranty Info",
             "click",
@@ -1136,8 +1156,8 @@
       }
     }
     async addQuantityControls(t, n, e) {
-      const r = t.querySelector(".cart-item__quantity");
-      r && r && r.remove();
+      const a = t.querySelector(".cart-item__quantity");
+      a && a && a.remove();
       const o = t.querySelector(
         ".cart-notification-product__image"
       );
@@ -1148,46 +1168,46 @@
       );
       const i = t.querySelector(
         `input[data-quantity-variant-id="${n.variant_id}"]`
-      ), a = t.querySelector(
+      ), r = t.querySelector(
         '.quantity__button[name="minus"]'
       ), c = t.querySelector('.quantity__button[name="plus"]');
-      n.quantity === 1 && (a == null || a.classList.add("disabled"));
+      n.quantity === 1 && (r == null || r.classList.add("disabled"));
       let l = null;
-      a == null || a.addEventListener("click", (d) => {
-        d.preventDefault(), d.stopImmediatePropagation(), d.stopPropagation(), l = "button";
+      r == null || r.addEventListener("click", (p) => {
+        p.preventDefault(), p.stopImmediatePropagation(), p.stopPropagation(), l = "button";
         const u = t.querySelector(
           `input[data-quantity-variant-id="${n.variant_id}"]`
         ), h = Math.max(0, parseInt(u.value) - 1);
-        i.value = String(h), p("exp_slide_cart_quantity", "minus", "click", "Slide Cart"), h === 1 && (a == null || a.classList.add("disabled")), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
+        i.value = String(h), d("exp_slide_cart_quantity", "minus", "click", "Slide Cart"), h === 1 && (r == null || r.classList.add("disabled")), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
           this.handleQuantityChange(n.key, n.variant_id, h);
         }, 300);
-      }), c == null || c.addEventListener("click", (d) => {
-        d.preventDefault(), d.stopImmediatePropagation(), d.stopPropagation(), l = "button";
+      }), c == null || c.addEventListener("click", (p) => {
+        p.preventDefault(), p.stopImmediatePropagation(), p.stopPropagation(), l = "button";
         const u = t.querySelector(
           `input[data-quantity-variant-id="${n.variant_id}"]`
         ), h = parseInt(u.value) + 1;
-        i.value = String(h), h > 1 && (a == null || a.classList.remove("disabled")), p("exp_slide_cart_quantity", "plus", "click", "Slide Cart"), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
+        i.value = String(h), h > 1 && (r == null || r.classList.remove("disabled")), d("exp_slide_cart_quantity", "plus", "click", "Slide Cart"), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
           this.handleQuantityChange(n.key, n.variant_id, h);
         }, 300);
-      }), i == null || i.addEventListener("change", (d) => {
-        const u = parseInt(d.target.value);
-        isNaN(u) || u < 0 || (l === "input" && p("exp_slide_cart_quantity", "custom", "click", "Slide Cart"), l = "input", clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
+      }), i == null || i.addEventListener("change", (p) => {
+        const u = parseInt(p.target.value);
+        isNaN(u) || u < 0 || (l === "input" && d("exp_slide_cart_quantity", "custom", "click", "Slide Cart"), l = "input", clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
           this.handleQuantityChange(n.key, n.variant_id, u);
         }, 300));
-      }), i == null || i.addEventListener("focus", (d) => {
+      }), i == null || i.addEventListener("focus", (p) => {
         l = "input";
-      }), i == null || i.addEventListener("blur", (d) => {
+      }), i == null || i.addEventListener("blur", (p) => {
         l = null;
       });
     }
     async handleQuantityChange(t, n, e) {
       if (e < 0) return;
-      const r = document.querySelector(`[data-line-key="${t}"]`);
-      if (!r) {
+      const a = document.querySelector(`[data-line-key="${t}"]`);
+      if (!a) {
         console.error("Quantity controls not found for line key:", t);
         return;
       }
-      const o = r.querySelectorAll(".qty-btn");
+      const o = a.querySelectorAll(".qty-btn");
       o.forEach((i) => i.setAttribute("disabled", "true"));
       try {
         const i = await this.cartService.updateQuantity(
@@ -1196,12 +1216,12 @@
         );
         if (i) {
           this.cartData = i, this.addItemsCount(i);
-          const a = i.items.find(
+          const r = i.items.find(
             (c) => c.key === t
           );
           setTimeout(() => {
-            const c = r.querySelector(".qty-value");
-            if (c && a && (c.textContent = String(a.quantity)), e === 0) {
+            const c = a.querySelector(".qty-value");
+            if (c && r && (c.textContent = String(r.quantity)), e === 0) {
               const l = document.querySelector(`[id="${n}"]`);
               l && l instanceof HTMLElement && (l.style.transition = "opacity 0.3s ease", l.style.opacity = "0", setTimeout(() => l.remove(), 300));
             }
