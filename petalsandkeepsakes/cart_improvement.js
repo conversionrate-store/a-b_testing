@@ -405,8 +405,8 @@
   width: 100%;
   padding: 0;
   padding-block: 24px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 14px !important;
+  font-weight: 500 !important;
   color: rgba(18, 18, 18, 0.75);
   border: none;
   background-color: transparent;
@@ -932,8 +932,8 @@
       n.textContent = "Please, specify your request";
       const r = document.createElement("div");
       r.className = "note-accordion-content", r.style.display = "none", r.appendChild(n.cloneNode(!0)), r.appendChild(e);
-      const i = document.createElement("button");
-      i.className = "note-accordion-trigger", i.type = "button", i.innerHTML = /* HTML */
+      const i = document.createElement("div");
+      i.className = "note-accordion-trigger", i.innerHTML = /* HTML */
       `
       <span>Have a special request for your order?</span>
     `, t.innerHTML = "", t.appendChild(i), t.appendChild(r), i.addEventListener("click", (o) => {
