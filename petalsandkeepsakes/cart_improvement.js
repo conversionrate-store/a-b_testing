@@ -534,7 +534,7 @@
 /*  Warranty message */
 .crs-warranty-message {
   margin-top: auto;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
