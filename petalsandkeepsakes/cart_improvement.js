@@ -921,7 +921,7 @@
         }
       ), document.addEventListener("click", (n) => {
         const e = n.target, a = document.querySelector("#cart-notification");
-        if (!(a && a.contains(e)) && !(e != null && e.closest("sticky-header")) && a != null && a.closest("cart-notification.atc")) {
+        if (!(a && a.contains(e)) && !(e != null && e.closest("sticky-header") || e != null && e.closest(".product-form__submit")) && a != null && a.classList.contains("active")) {
           const o = a.querySelector(
             ".cart-notification__close"
           );
