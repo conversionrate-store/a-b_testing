@@ -390,6 +390,10 @@
   min-height: max-content;
 }
 
+#cart-notification[data-item-count="0"] .customer_note {
+  display: none;
+}
+
 #cart-notification .customer_note .note-accordion-content p {
   color: rgba(18, 18, 18, 0.75);
   font-size: 14px;
