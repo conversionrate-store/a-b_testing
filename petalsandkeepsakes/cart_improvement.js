@@ -936,8 +936,8 @@
       i.className = "note-accordion-trigger", i.type = "button", i.innerHTML = /* HTML */
       `
       <span>Have a special request for your order?</span>
-    `, t.innerHTML = "", t.appendChild(i), t.appendChild(r), i.addEventListener("click", () => {
-        r.style.display !== "none" ? (r.style.display = "none", i.classList.remove("active")) : (r.style.display = "block", i.classList.add("active")), d(
+    `, t.innerHTML = "", t.appendChild(i), t.appendChild(r), i.addEventListener("click", (o) => {
+        o.preventDefault(), r.style.display !== "none" ? (r.style.display = "none", i.classList.remove("active")) : (r.style.display = "block", i.classList.add("active")), d(
           "exp_slide_cart_special_request",
           "Have a special request for your order?",
           "click",
