@@ -244,6 +244,8 @@
 }
 
 #cart-notification .cart-notification-product {
+  margin-bottom: 0;
+
   padding-bottom: 0;
   height: auto;
 }
