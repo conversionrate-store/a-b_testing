@@ -1253,7 +1253,7 @@
 shopify-accelerated-checkout-cart > *:not(shop-pay-wallet-button) {
   display: none !important;
 }`;
-  m({ name: "Cart and Navigation improvement", dev: "OS" }), y("exp_cart_nav");
+  m({ name: "Cart and Navigation improvement", dev: "OS" }), y("exp_cart");
   const E = ["/checkout"];
   class L {
     constructor() {
