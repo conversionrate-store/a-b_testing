@@ -978,7 +978,7 @@
     }
     handleItemDelete() {
       setTimeout(async () => {
-        this.handleFreeShippingStatus(), this.cartData = await this.cartService.getCartData(), this.cartData && this.addItemsCount(this.cartData);
+        this.handleFreeShippingStatus(), this.cartData = await this.cartService.getCartData(), this.cartData && (this.addItemsCount(this.cartData), this.handleEmptyCart());
       }, 1e3);
     }
     addItemsCount(t) {
