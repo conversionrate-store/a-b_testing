@@ -7,7 +7,7 @@
       event_desc: t,
       event_type: n,
       event_loc: e
-    }), g(`Event: ${s} | ${t} | ${n} | ${e}`, "success");
+    }), m(`Event: ${s} | ${t} | ${n} | ${e}`, "success");
   }, f = (s) => new Promise((t) => {
     const n = document.querySelector(s);
     n && t(n);
@@ -19,7 +19,7 @@
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: s, dev: t }) => {
+  }), g = ({ name: s, dev: t }) => {
     console.log(
       `%c EXP: ${s} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -39,7 +39,7 @@
             "view",
             n
           ), i.disconnect();
-        }, a) : (g("Element is not fully visible", "warn"), clearTimeout(r));
+        }, a) : (m("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [o] }
     ), typeof s == "string") {
@@ -47,7 +47,7 @@
       c && i.observe(c);
     } else
       i.observe(s);
-  }, g = (s, t = "info") => {
+  }, m = (s, t = "info") => {
     let n;
     switch (t) {
       case "info":
@@ -64,7 +64,7 @@
         break;
     }
     console.log(`%c>>> ${s}`, `${n} font-size: 16px; font-weight: 600`);
-  }, w = async () => {
+  }, x = async () => {
     try {
       const s = await fetch("/cart.js", {
         method: "GET",
@@ -81,7 +81,7 @@
         error: s instanceof Error ? s : new Error("Unknown error")
       };
     }
-  }, x = async (s) => {
+  }, w = async (s) => {
     try {
       const t = await fetch(`/products/${s}.js`, {
         credentials: "same-origin"
@@ -124,7 +124,7 @@
   };
   class v {
     async getCartData() {
-      const { data: t, error: n } = await w();
+      const { data: t, error: n } = await x();
       return n || !t ? (console.error("Error fetching cart data:", n), null) : await this.enrichCartWithCompareAt(t);
     }
     async updateQuantity(t, n) {
@@ -137,7 +137,7 @@
       const n = [...new Set(t.items.map((o) => o.handle))], e = /* @__PURE__ */ new Map();
       await Promise.all(
         n.map(async (o) => {
-          const { data: i, error: r } = await x(o);
+          const { data: i, error: r } = await w(o);
           if (r || !i) {
             console.error(`Error fetching product for handle ${o}:`, r);
             return;
@@ -391,12 +391,12 @@
 /* Customer Note Accordion */
 #cart-notification .customer_note {
   margin-top: 0;
-  overflow: hidden;
   width: 100%;
   min-height: max-content;
 }
 
-#cart-notification[data-item-count='0'] .customer_note {
+#cart-notification[data-item-count='0']
+  :is(.customer_note, .cart-notification__links) {
   display: none;
 }
 
@@ -614,6 +614,32 @@
   display: none;
 }
 
+.cart-notification-product.custom_cnp.bg_light_black {
+  width: 100%;
+  margin: 0;
+  padding-block: 93px !important;
+}
+
+.crs-shop-bestsellers {
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 24px;
+  width: 211px;
+  max-width: 100%;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-family: Assistant;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px; /* 120% */
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   #cart-notification
     :is(
@@ -661,9 +687,9 @@
   }
 
   /* Checkout button section */
-  #cart-notification .cnp_bottom {
+  /* #cart-notification .cnp_bottom {
     display: block !important;
-  }
+  } */
 }
 `;
   class k {
@@ -1001,7 +1027,26 @@
         if (t = await this.cartService.getCartData(), !t) return;
         this.cartData = t;
       }
-      await this.changeCartItems(), this.handleFreeShippingStatus(), this.addItemsCount(this.cartData);
+      await this.changeCartItems(), this.handleFreeShippingStatus(), this.addItemsCount(this.cartData), this.handleEmptyCart();
+    }
+    async handleEmptyCart() {
+      const t = await Promise.race([
+        f("#cart-notification"),
+        new Promise((a) => setTimeout(() => a(null), 2e3))
+      ]);
+      if (!t) return;
+      const n = t.querySelector(
+        ".remove_mini_cart_on_close"
+      );
+      n && (t.querySelector(".crs-shop-bestsellers") || n.insertAdjacentHTML(
+        "afterend",
+        /* HTML */
+        `<a
+      href="/collections/all-memorial-jewelry"
+      class="crs-shop-bestsellers"
+      >Shop Bestsellers</a
+    >`
+      ));
     }
     handleFreeShippingStatus() {
       var e, a, o, i;
@@ -1014,7 +1059,7 @@
           this.cartRenderer.freeShippingMessage()
         );
       else {
-        g("Free shipping not achieved");
+        m("Free shipping not achieved");
         const r = (i = this.cartElement) == null ? void 0 : i.querySelector(".crs-free-shipping");
         r && r.remove();
       }
@@ -1253,7 +1298,7 @@
 shopify-accelerated-checkout-cart > *:not(shop-pay-wallet-button) {
   display: none !important;
 }`;
-  m({ name: "Cart and Navigation improvement", dev: "OS" }), y("exp_cart");
+  g({ name: "Cart and Navigation improvement", dev: "OS" }), y("exp_cart");
   const E = ["/checkout"];
   class L {
     constructor() {
