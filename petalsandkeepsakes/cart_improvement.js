@@ -1,13 +1,13 @@
 (function() {
   "use strict";
-  const d = (s, t, n, e = "") => {
+  const p = (s, t, n, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: s,
       event_desc: t,
       event_type: n,
       event_loc: e
-    }), m(`Event: ${s} | ${t} | ${n} | ${e}`, "success");
+    }), g(`Event: ${s} | ${t} | ${n} | ${e}`, "success");
   }, f = (s) => new Promise((t) => {
     const n = document.querySelector(s);
     n && t(n);
@@ -19,7 +19,7 @@
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: s, dev: t }) => {
+  }), m = ({ name: s, dev: t }) => {
     console.log(
       `%c EXP: ${s} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -33,13 +33,13 @@
     if (i = new IntersectionObserver(
       function(c) {
         c[0].isIntersecting === !0 ? r = setTimeout(() => {
-          d(
+          p(
             t,
             c[0].target.dataset.visible || e,
             "view",
             n
           ), i.disconnect();
-        }, a) : (m("Element is not fully visible", "warn"), clearTimeout(r));
+        }, a) : (g("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [o] }
     ), typeof s == "string") {
@@ -47,7 +47,7 @@
       c && i.observe(c);
     } else
       i.observe(s);
-  }, m = (s, t = "info") => {
+  }, g = (s, t = "info") => {
     let n;
     switch (t) {
       case "info":
@@ -64,7 +64,7 @@
         break;
     }
     console.log(`%c>>> ${s}`, `${n} font-size: 16px; font-weight: 600`);
-  }, x = async () => {
+  }, w = async () => {
     try {
       const s = await fetch("/cart.js", {
         method: "GET",
@@ -81,7 +81,7 @@
         error: s instanceof Error ? s : new Error("Unknown error")
       };
     }
-  }, w = async (s) => {
+  }, x = async (s) => {
     try {
       const t = await fetch(`/products/${s}.js`, {
         credentials: "same-origin"
@@ -124,7 +124,7 @@
   };
   class v {
     async getCartData() {
-      const { data: t, error: n } = await x();
+      const { data: t, error: n } = await w();
       return n || !t ? (console.error("Error fetching cart data:", n), null) : await this.enrichCartWithCompareAt(t);
     }
     async updateQuantity(t, n) {
@@ -137,7 +137,7 @@
       const n = [...new Set(t.items.map((o) => o.handle))], e = /* @__PURE__ */ new Map();
       await Promise.all(
         n.map(async (o) => {
-          const { data: i, error: r } = await w(o);
+          const { data: i, error: r } = await x(o);
           if (r || !i) {
             console.error(`Error fetching product for handle ${o}:`, r);
             return;
@@ -148,7 +148,7 @@
       const a = t.items.map((o) => {
         var l;
         const i = e.get(o.handle), r = (l = i == null ? void 0 : i.variants) == null ? void 0 : l.find(
-          (p) => Number(p.id) === o.variant_id
+          (d) => Number(d.id) === o.variant_id
         ), c = r != null && r.compare_at_price ? Math.round(parseFloat(r.compare_at_price) * 100) : null;
         return {
           ...o,
@@ -605,10 +605,11 @@
   border-top-color: #eecede;
 }
 
-.crs-tooltip:hover .crs-tooltip-text {
+:is(.crs-tooltip:hover, .crs-tooltip.visible) .crs-tooltip-text {
   opacity: 1;
   visibility: visible;
 }
+
 
 .cart-item__error-text:empty + svg {
   display: none;
@@ -766,7 +767,11 @@
           </button>
         </div>
       </div>
-      <div class="cart-item__error" id="Line-item-error-${n + 1}" role="alert">
+      <div
+        class="cart-item__error"
+        id="Line-item-error-${n + 1}"
+        role="alert"
+      >
         <small class="cart-item__error-text"></small>
         <svg
           aria-hidden="true"
@@ -885,7 +890,7 @@
           />
         </svg>
       </span>
-      Lifetime Warranty Included
+      <span class="crs-warranty-message-text">Lifetime Warranty Included </span>
       <span class="crs-tooltip"
         ><span class="crs-icon">
           <svg
@@ -940,12 +945,12 @@
         ".custom_cnp .cnp_del",
         this.handleItemDelete.bind(this)
       ), $(document).on("click", ".cart-notification__close", () => {
-        t || d("exp_slide_cart_close", "Close", "click", "Slide Cart"), t = !1;
+        t || p("exp_slide_cart_close", "Close", "click", "Slide Cart"), t = !1;
       }), $(document).on(
         "click",
         '#cart-notification .cart-notification__links button[name="checkout"]',
         () => {
-          d("exp_slide_cart_checkout", "Checkout", "click", "Slide Cart");
+          p("exp_slide_cart_checkout", "Checkout", "click", "Slide Cart");
         }
       ), document.addEventListener("click", (n) => {
         const e = n.target, a = document.querySelector("#cart-notification");
@@ -953,7 +958,7 @@
           const o = a.querySelector(
             ".cart-notification__close"
           );
-          t = !0, o == null || o.click(), d(
+          t = !0, o == null || o.click(), p(
             "exp_slide_cart_backgr_close",
             "Background Close",
             "click",
@@ -993,14 +998,14 @@
       `
       <span>Have a special request for your order?</span>
     `, t.innerHTML = "", t.appendChild(o), t.appendChild(a), o.addEventListener("click", (i) => {
-        i.preventDefault(), a.style.display !== "none" ? (a.style.display = "none", o.classList.remove("active")) : (a.style.display = "block", o.classList.add("active")), d(
+        i.preventDefault(), a.style.display !== "none" ? (a.style.display = "none", o.classList.remove("active")) : (a.style.display = "block", o.classList.add("active")), p(
           "exp_slide_cart_special_request",
           "Have a special request for your order?",
           "click",
           "Slide Cart"
         );
       }), e.addEventListener("change", () => {
-        d(
+        p(
           "exp_slide_cart_sp_request_input",
           "Special request",
           "input",
@@ -1059,7 +1064,7 @@
           this.cartRenderer.freeShippingMessage()
         );
       else {
-        m("Free shipping not achieved");
+        g("Free shipping not achieved");
         const r = (i = this.cartElement) == null ? void 0 : i.querySelector(".crs-free-shipping");
         r && r.remove();
       }
@@ -1141,7 +1146,7 @@
       if (e) {
         const r = document.createElement("a");
         r.href = `/products/${n.handle}`, r.textContent = e.textContent || "", e.innerHTML = "", e.appendChild(r), r.addEventListener("click", (c) => {
-          d(
+          p(
             "exp_slide_cart_item_title",
             e.textContent,
             "click",
@@ -1154,7 +1159,7 @@
         r.href = `/products/${n.handle}`;
         const c = a.parentElement;
         c && (c.replaceChild(r, a), r.appendChild(a)), r.addEventListener("click", (l) => {
-          l.preventDefault(), d(
+          l.preventDefault(), p(
             "exp_slide_cart_item_image",
             (e == null ? void 0 : e.textContent) || "",
             "click",
@@ -1163,7 +1168,7 @@
         });
       }
       if (o && o.addEventListener("click", (r) => {
-        d(
+        p(
           "exp_slide_cart_item_remove",
           (e == null ? void 0 : e.textContent) || "",
           "click",
@@ -1181,7 +1186,7 @@
           >
           <span class="crs-old-price-value"
             >${(n.compare_at_price / 1e4).toFixed(2)}</span
-          >`, c.classList.add("crs-old-price")), r && !r.querySelector(".crs-sale-badge") && r.insertAdjacentHTML(
+          >`, c.classList.add("crs-old-price")), i && r && !i.querySelector(".crs-sale-badge") && r.insertAdjacentHTML(
           "afterend",
           this.cartRenderer.saleBadge()
         );
@@ -1191,15 +1196,26 @@
           "beforeend",
           this.cartRenderer.warrantyMessage()
         );
-        const r = i.querySelector(".crs-tooltip"), c = r == null ? void 0 : r.querySelector(".crs-icon");
-        c && c.addEventListener("mouseenter", (l) => {
-          d(
+        const r = i.querySelector(
+          ".crs-warranty-message"
+        ), c = i.querySelector(".crs-tooltip"), l = c == null ? void 0 : c.querySelector(".crs-icon");
+        l && l.addEventListener("mouseenter", (d) => {
+          window.matchMedia("(hover: hover)").matches && (console.log("Tooltip hover"), p(
+            "exp_slide_cart_lt_warr_tooltip",
+            "Lifetime Warranty Info",
+            "click",
+            "Slide Cart"
+          ));
+        }), r && (r.addEventListener("click", (d) => {
+          d.preventDefault(), d.stopPropagation(), c == null || c.classList.toggle("visible"), p(
             "exp_slide_cart_lt_warr_tooltip",
             "Lifetime Warranty Info",
             "click",
             "Slide Cart"
           );
-        });
+        }), document.addEventListener("click", (d) => {
+          !r.contains(d.target) && !(c != null && c.contains(d.target)) && (c == null || c.classList.remove("visible"));
+        }));
       }
     }
     async addQuantityControls(t, n, e) {
@@ -1220,30 +1236,30 @@
       ), c = t.querySelector('.quantity__button[name="plus"]');
       n.quantity === 1 && (r == null || r.classList.add("disabled"));
       let l = null;
-      r == null || r.addEventListener("click", (p) => {
-        p.preventDefault(), p.stopImmediatePropagation(), p.stopPropagation(), l = "button";
+      r == null || r.addEventListener("click", (d) => {
+        d.preventDefault(), d.stopImmediatePropagation(), d.stopPropagation(), l = "button";
         const u = t.querySelector(
           `input[data-quantity-variant-id="${n.variant_id}"]`
         ), h = Math.max(0, parseInt(u.value) - 1);
-        i.value = String(h), d("exp_slide_cart_quantity", "minus", "click", "Slide Cart"), h === 1 && (r == null || r.classList.add("disabled")), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
+        i.value = String(h), p("exp_slide_cart_quantity", "minus", "click", "Slide Cart"), h === 1 && (r == null || r.classList.add("disabled")), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
           this.handleQuantityChange(n.key, n.variant_id, h);
         }, 300);
-      }), c == null || c.addEventListener("click", (p) => {
-        p.preventDefault(), p.stopImmediatePropagation(), p.stopPropagation(), l = "button";
+      }), c == null || c.addEventListener("click", (d) => {
+        d.preventDefault(), d.stopImmediatePropagation(), d.stopPropagation(), l = "button";
         const u = t.querySelector(
           `input[data-quantity-variant-id="${n.variant_id}"]`
         ), h = parseInt(u.value) + 1;
-        i.value = String(h), h > 1 && (r == null || r.classList.remove("disabled")), d("exp_slide_cart_quantity", "plus", "click", "Slide Cart"), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
+        i.value = String(h), h > 1 && (r == null || r.classList.remove("disabled")), p("exp_slide_cart_quantity", "plus", "click", "Slide Cart"), clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
           this.handleQuantityChange(n.key, n.variant_id, h);
         }, 300);
-      }), i == null || i.addEventListener("change", (p) => {
-        const u = parseInt(p.target.value);
-        isNaN(u) || u < 0 || (l === "input" && d("exp_slide_cart_quantity", "custom", "click", "Slide Cart"), l = "input", clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
+      }), i == null || i.addEventListener("change", (d) => {
+        const u = parseInt(d.target.value);
+        isNaN(u) || u < 0 || (l === "input" && p("exp_slide_cart_quantity", "custom", "click", "Slide Cart"), l = "input", clearTimeout(i._debounceTimeout), i._debounceTimeout = setTimeout(() => {
           this.handleQuantityChange(n.key, n.variant_id, u);
         }, 300));
-      }), i == null || i.addEventListener("focus", (p) => {
+      }), i == null || i.addEventListener("focus", (d) => {
         l = "input";
-      }), i == null || i.addEventListener("blur", (p) => {
+      }), i == null || i.addEventListener("blur", (d) => {
         l = null;
       });
     }
@@ -1298,7 +1314,7 @@
 shopify-accelerated-checkout-cart > *:not(shop-pay-wallet-button) {
   display: none !important;
 }`;
-  g({ name: "Cart and Navigation improvement", dev: "OS" }), y("exp_cart");
+  m({ name: "Cart and Navigation improvement", dev: "OS" }), y("exp_cart");
   const E = ["/checkout"];
   class L {
     constructor() {
