@@ -1044,16 +1044,28 @@
       if (!t) return;
       const n = t.querySelector(
         ".remove_mini_cart_on_close"
-      );
-      n && (t.querySelector(".crs-shop-bestsellers") || n.insertAdjacentHTML(
-        "afterend",
+      ), e = (
         /* HTML */
         `<a
       href="/collections/all-memorial-jewelry"
       class="crs-shop-bestsellers"
       >Shop Bestsellers</a
     >`
-      ));
+      );
+      if (n && !t.querySelector(".crs-shop-bestsellers")) {
+        n.insertAdjacentHTML("afterend", e);
+        const a = t.querySelector(
+          ".crs-shop-bestsellers"
+        );
+        a && a.addEventListener("click", (o) => {
+          p(
+            "exp_slide_cart_shop_bestsellers",
+            "Shop Bestsellers",
+            "click",
+            "Slide Cart"
+          );
+        });
+      }
     }
     handleFreeShippingStatus() {
       var e, a, o, i;
