@@ -1,14 +1,14 @@
 (function() {
   "use strict";
-  const b = (i, e, n, t = "") => {
+  const m = (i, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
       event_desc: e,
       event_type: n,
       event_loc: t
-    }), S(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
-  }, x = (i) => new Promise((e) => {
+    }), j(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
+  }, y = (i) => new Promise((e) => {
     const n = document.querySelector(i);
     n && e(n);
     const t = new MutationObserver(() => {
@@ -19,15 +19,15 @@
       childList: !0,
       subtree: !0
     });
-  }), L = ({ name: i, dev: e }) => {
+  }), A = ({ name: i, dev: e }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class d {
+  class f {
     constructor(e) {
-      this.elements = e instanceof d ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof f ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, n, t) {
       return typeof n == "function" && (t = n, n = ""), this.elements.forEach((r) => {
@@ -58,7 +58,7 @@
     }
     each(e) {
       for (let n of this.elements)
-        e(new d(n), this.elements.indexOf(n));
+        e(new f(n), this.elements.indexOf(n));
       return this;
     }
     style(e, n) {
@@ -69,7 +69,7 @@
     }
     find(e) {
       const n = this.elements.map((t) => Array.from(t.querySelectorAll(e)));
-      return new d(n.flat());
+      return new f(n.flat());
     }
     attr(e, n) {
       return n ? (this.elements.forEach(function(t) {
@@ -87,11 +87,11 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const s = (i) => new d(i), A = (i) => {
+  const s = (i) => new f(i), S = (i) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, S = (i, e = "info") => {
+  }, j = (i, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -108,14 +108,14 @@
         break;
     }
     console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
-  }, w = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", z = {
+  }, x = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", z = {
     back: `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
 		<path d="M0 8.00005C0 8.30737 0.117512 8.56956 0.361583 8.80456L7.4124 15.7017C7.60228 15.9006 7.85533 16 8.14459 16C8.73227 16 9.19324 15.5481 9.19324 14.9515C9.19324 14.6622 9.07568 14.4 8.8769 14.2012L2.52204 8.00005L8.8769 1.79888C9.07568 1.59096 9.19324 1.32882 9.19324 1.03955C9.19324 0.451984 8.73227 0 8.14459 0C7.85533 0 7.60228 0.0994383 7.4124 0.298303L0.361583 7.19554C0.117512 7.43054 0.00903668 7.69274 0 8.00005Z" fill="white"/>
 		</svg>`,
     down: `<svg xmlns="http://www.w3.org/2000/svg" width="17" height="11" viewBox="0 0 17 11" fill="none">
 		<path d="M0.729492 0.68396L8.22949 8.68396L15.7295 0.68396" stroke="#09233E" stroke-width="2"/>
 		</svg>`
-  }, j = (
+  }, M = (
     /* HTML */
     `
   <div class="crs_quiz_container">
@@ -123,7 +123,7 @@
       <div class="crs_quiz_max_width">
         <div class="crs_quiz_logo">
           ${z.back}
-          <img src="${w}logo.svg" alt="Quiz Header" />
+          <img src="${x}logo.svg" alt="Quiz Header" />
         </div>
         <div class="crs_quiz_progress">
           <div class="crs_quiz_progress_bar"></div>
@@ -141,8 +141,8 @@
           <button class="crs_start_quiz">YES — Check If I Qualify</button>
           <button class="crs_cancel_quiz">No, I don’t need financing</button>
         </div>
-        <img src="${w}/quiz_rating.webp" alt="rating" class="crs_rating_m" />
-        <img src="${w}/quiz_rating_d.webp" alt="rating" class="crs_rating_d" />
+        <img src="${x}/quiz_rating.webp" alt="rating" class="crs_rating_m" />
+        <img src="${x}/quiz_rating_d.webp" alt="rating" class="crs_rating_d" />
       </div>
     </div>
     <div class="crs_quiz_steps">
@@ -154,7 +154,7 @@
     </div>
   </div>
 `
-  ), M = (i, e, n) => {
+  ), F = (i, e, n) => {
     let t = "";
     return n ? t = n.map(
       (r) => (
@@ -196,8 +196,7 @@
       <div class="crs_quiz_answers">${t}</div>
     </div>
   `;
-  }, F = `.crs_quiz_container {
-  position: fixed;
+  }, H = `.crs_quiz_container {
   top: 0;
   left: 0;
   width: 100%;
@@ -525,7 +524,7 @@
   line-height: 1;
   font-size: 12px;
 }/*# sourceMappingURL=style.css.map */`;
-  L({ name: "Quiz", dev: "YK" }), A("quiz_hard_money");
+  A({ name: "Quiz", dev: "YK" }), S("quiz_hard_money");
   const p = [
     {
       question: "Do you already have a property picked out?",
@@ -567,64 +566,67 @@
       relation: "amount_of_money_to_invest_in_real_estate_"
     },
     {
-      question: "Fill out the application for a free pre-qualification consultation for 100% financing"
+      question: "Fill out the application for a free<br/>pre-qualification consultation for 100% financing"
     }
   ];
-  class H {
+  class T {
     constructor() {
       this.answers = [], this.init(), this.step = 0, this.setup();
     }
     async init() {
-      await x("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${F}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", j);
+      await y("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${H}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", M);
     }
     async setup() {
-      await x(".crs_quiz_container");
+      await y(".crs_quiz_container");
       const e = s(".crs_first_screen"), n = s(".crs_quiz_steps"), t = s(".crs_quiz_logo svg"), r = s(".crs_start_quiz"), l = s(".crs_quiz_progress"), o = s(".crs_cancel_quiz"), a = s(".crs_quiz_steps button");
       o.on("click", () => {
-        b("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), window.location.pathname = "/";
+        m("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), window.location.pathname = "/";
       }), t.on("click", () => {
-        this.setStep(this.step - 1), this.step === 0 && (e.addClass("active"), n.removeClass("active"), t.removeClass("active"), l.removeClass("active")), this.step -= 1;
+        this.setStep(this.step - 1), this.step === 0 && (e.addClass("active"), n.removeClass("active"), t.removeClass("active"), l.removeClass("active")), this.step -= 1, a.text("Continue");
       }), r.on("click", () => {
-        e.removeClass("active"), n.addClass("active"), t.addClass("active"), l.addClass("active"), this.setStep(this.step), b("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
+        e.removeClass("active"), n.addClass("active"), t.addClass("active"), l.addClass("active"), this.setStep(this.step), m("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
       }), a.on("click", () => {
-        var c, f, u, y;
+        var c, h, u, q;
         if (this.step < p.length - 1) {
           s(".crs_error").removeClass("active");
-          const h = n.elements[0].querySelector('input[type="radio"]:checked');
-          if (h)
-            p[this.step].relation && (s(`[name="${p[this.step].relation}"]`).elements[0].value = h.getAttribute("value") || "");
-          else {
+          const b = n.elements[0].querySelector('input[type="radio"]:checked');
+          if (b) {
+            if (p[this.step].relation) {
+              const _ = s(`[name="${p[this.step].relation}"]`).elements[0];
+              _.tagName === "SELECT" && (_.value = b.getAttribute("value") || "", _.classList.remove("is-placeholder"), _.dispatchEvent(new Event("change", { bubbles: !0 })));
+            }
+          } else {
             s(".crs_error").addClass("active");
             return;
           }
-          this.answers[this.step] = h.getAttribute("value") || "", this.setStep(this.step + 1), this.step += 1, b(
+          this.answers[this.step] = b.getAttribute("value") || "", this.setStep(this.step + 1), this.step += 1, m(
             `exp_quiz_hard_money_step_${this.step}`,
-            ((f = (c = h.closest("label")) == null ? void 0 : c.querySelector("div")) == null ? void 0 : f.textContent) || "",
+            ((h = (c = b.closest("label")) == null ? void 0 : c.querySelector("div")) == null ? void 0 : h.textContent) || "",
             "success",
             `quiz_step_${this.step}`
-          );
+          ), this.step === p.length - 1 && a.text("Apply Now");
         } else {
-          let m = !1;
+          let g = !1;
           if (n.elements[0].querySelectorAll(
             ".crs_quiz_answer_input_label input"
-          ).forEach((_) => {
-            var g, v;
-            if (_.value === "") {
-              if (m = !0, (g = _.closest("label")) != null && g.querySelector(".crs_input_error")) return;
-              (v = _.closest("label")) == null || v.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
+          ).forEach((d) => {
+            var v, w;
+            if (d.value === "") {
+              if (g = !0, (v = d.closest("label")) != null && v.querySelector(".crs_input_error")) return;
+              (w = d.closest("label")) == null || w.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
             }
           }), n.elements[0].querySelector('select[name="crs_state"]').value === "") {
-            if (m = !0, (u = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) != null && u.querySelector(".crs_input_error"))
+            if (g = !0, (u = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) != null && u.querySelector(".crs_input_error"))
               return;
-            (y = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) == null || y.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
+            (q = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) == null || q.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
           }
-          if (m) return;
-          const q = s(".hs-error-msg").elements;
-          q.length !== 0 && q.forEach((_) => {
-            var $, k, C, E;
-            const g = (($ = _.textContent) == null ? void 0 : $.toLowerCase()) || "", v = ((C = (k = _.closest(".hs-form-field")) == null ? void 0 : k.querySelector("input")) == null ? void 0 : C.getAttribute("name")) || "";
-            (E = s(`input[data-relation="${v}"]`).elements[0].closest("label")) == null || E.insertAdjacentHTML("beforeend", `<p class="crs_input_error">${g}</p>`);
-          }), b("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), s(".hs_submit input").elements[0].click();
+          if (g) return;
+          const $ = s(".hs-error-msg").elements;
+          $.length !== 0 && $.forEach((d) => {
+            var k, E, C, L;
+            const v = ((k = d.textContent) == null ? void 0 : k.toLowerCase()) || "", w = ((C = (E = d.closest(".hs-form-field")) == null ? void 0 : E.querySelector("input")) == null ? void 0 : C.getAttribute("name")) || "";
+            (L = s(`input[data-relation="${w}"]`).elements[0].closest("label")) == null || L.insertAdjacentHTML("beforeend", `<p class="crs_input_error">${v}</p>`);
+          }), m("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), s(".hs_submit input").elements[0].click();
         }
       });
     }
@@ -633,7 +635,7 @@
         label: o.textContent || "",
         value: o.getAttribute("value") || ""
       })), t = s(".crs_quiz_step_container"), r = s(".crs_quiz_progress_bar");
-      t.html(M(e + 1, p[e].question, p[e].answers));
+      t.html(F(e + 1, p[e].question, p[e].answers));
       const l = (e + 1) / p.length * 100;
       if (r.elements[0].style.width = `${l}%`, this.answers[e] && s(`input[value="${this.answers[e]}"]`).elements[0].setAttribute("checked", "true"), e === p.length - 1) {
         const o = s('select[name="crs_state"]').elements[0];
@@ -642,16 +644,18 @@
           c.value = a.value, c.textContent = a.label, o.appendChild(c);
         }), o.addEventListener("change", () => {
           var a;
-          (a = s(".crs_quiz_answer_select_label .crs_input_error").elements[0]) == null || a.remove(), s('select[name="your_state__united_states__"]').elements[0].value = o.value;
+          (a = s(".crs_quiz_answer_select_label .crs_input_error").elements[0]) == null || a.remove(), s('select[name="your_state__united_states__"]').elements[0].value = o.value, s('select[name="your_state__united_states__"]').elements[0].dispatchEvent(
+            new Event("change", { bubbles: !0 })
+          );
         }), s(".crs_quiz_answer_input_label input").on("input", (a) => {
-          const c = a.target, f = c.getAttribute("data-relation") || "";
-          s(`input[name="${f}"]`).elements[0].value = c.value, s(`input[name="${f}"]`).elements[0].dispatchEvent(new Event("input")), s(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((u) => u == null ? void 0 : u.remove());
+          const c = a.target, h = c.getAttribute("data-relation") || "";
+          s(`input[name="${h}"]`).elements[0].value = c.value, s(`input[name="${h}"]`).elements[0].dispatchEvent(new Event("input")), s(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((u) => u == null ? void 0 : u.remove());
         });
       }
     }
     async setFormField() {
     }
   }
-  new H();
+  new T();
 })();
 //# sourceMappingURL=index.js.map
