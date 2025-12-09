@@ -197,6 +197,7 @@
     </div>
   `;
   }, H = `.crs_quiz_container {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
