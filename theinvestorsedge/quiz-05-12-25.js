@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const m = (i, e, n, t = "") => {
+  const f = (i, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
@@ -8,7 +8,7 @@
       event_type: n,
       event_loc: t
     }), j(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
-  }, y = (i) => new Promise((e) => {
+  }, z = (i) => new Promise((e) => {
     const n = document.querySelector(i);
     n && e(n);
     const t = new MutationObserver(() => {
@@ -25,9 +25,9 @@
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class f {
+  class h {
     constructor(e) {
-      this.elements = e instanceof f ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof h ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, n, t) {
       return typeof n == "function" && (t = n, n = ""), this.elements.forEach((r) => {
@@ -58,7 +58,7 @@
     }
     each(e) {
       for (let n of this.elements)
-        e(new f(n), this.elements.indexOf(n));
+        e(new h(n), this.elements.indexOf(n));
       return this;
     }
     style(e, n) {
@@ -69,7 +69,7 @@
     }
     find(e) {
       const n = this.elements.map((t) => Array.from(t.querySelectorAll(e)));
-      return new f(n.flat());
+      return new h(n.flat());
     }
     attr(e, n) {
       return n ? (this.elements.forEach(function(t) {
@@ -87,7 +87,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const s = (i) => new f(i), S = (i) => {
+  const s = (i) => new h(i), S = (i) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", i, "variant_1"));
     }, 1e3);
@@ -108,21 +108,21 @@
         break;
     }
     console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
-  }, x = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", z = {
+  }, x = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", y = {
     back: `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
 		<path d="M0 8.00005C0 8.30737 0.117512 8.56956 0.361583 8.80456L7.4124 15.7017C7.60228 15.9006 7.85533 16 8.14459 16C8.73227 16 9.19324 15.5481 9.19324 14.9515C9.19324 14.6622 9.07568 14.4 8.8769 14.2012L2.52204 8.00005L8.8769 1.79888C9.07568 1.59096 9.19324 1.32882 9.19324 1.03955C9.19324 0.451984 8.73227 0 8.14459 0C7.85533 0 7.60228 0.0994383 7.4124 0.298303L0.361583 7.19554C0.117512 7.43054 0.00903668 7.69274 0 8.00005Z" fill="white"/>
 		</svg>`,
     down: `<svg xmlns="http://www.w3.org/2000/svg" width="17" height="11" viewBox="0 0 17 11" fill="none">
 		<path d="M0.729492 0.68396L8.22949 8.68396L15.7295 0.68396" stroke="#09233E" stroke-width="2"/>
 		</svg>`
-  }, M = (
+  }, F = (
     /* HTML */
     `
   <div class="crs_quiz_container">
     <div class="crs_quiz_header">
       <div class="crs_quiz_max_width">
         <div class="crs_quiz_logo">
-          ${z.back}
+          ${y.back}
           <img src="${x}logo.svg" alt="Quiz Header" />
         </div>
         <div class="crs_quiz_progress">
@@ -154,7 +154,7 @@
     </div>
   </div>
 `
-  ), F = (i, e, n) => {
+  ), M = (i, e, n) => {
     let t = "";
     return n ? t = n.map(
       (r) => (
@@ -187,7 +187,7 @@
       <label class="crs_quiz_answer_select_label">
         <span>Your State</span>
         <select name="crs_state" placeholder="Select your state"></select>
-        ${z.down}
+        ${y.down}
       </label>
     `, /* HTML */
     `
@@ -575,34 +575,38 @@
       this.answers = [], this.init(), this.step = 0, this.setup();
     }
     async init() {
-      await y("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${H}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", M);
+      await z("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${H}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", F), f("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen");
     }
     async setup() {
-      await y(".crs_quiz_container");
+      await z(".crs_quiz_container");
       const e = s(".crs_first_screen"), n = s(".crs_quiz_steps"), t = s(".crs_quiz_logo svg"), r = s(".crs_start_quiz"), l = s(".crs_quiz_progress"), o = s(".crs_cancel_quiz"), a = s(".crs_quiz_steps button");
       o.on("click", () => {
-        m("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), window.location.pathname = "/";
+        f("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), window.location.pathname = "/";
       }), t.on("click", () => {
-        this.setStep(this.step - 1), this.step === 0 && (e.addClass("active"), n.removeClass("active"), t.removeClass("active"), l.removeClass("active")), this.step -= 1, a.text("Continue");
+        if (this.setStep(this.step - 1), this.step === 0) {
+          e.addClass("active"), n.removeClass("active"), t.removeClass("active"), l.removeClass("active");
+          return;
+        }
+        this.step -= 1, a.text("Continue");
       }), r.on("click", () => {
-        e.removeClass("active"), n.addClass("active"), t.addClass("active"), l.addClass("active"), this.setStep(this.step), m("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
+        e.removeClass("active"), n.addClass("active"), t.addClass("active"), l.addClass("active"), this.setStep(this.step), f("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
       }), a.on("click", () => {
-        var c, h, u, q;
+        var c, b, u, q;
         if (this.step < p.length - 1) {
           s(".crs_error").removeClass("active");
-          const b = n.elements[0].querySelector('input[type="radio"]:checked');
-          if (b) {
+          const m = n.elements[0].querySelector('input[type="radio"]:checked');
+          if (m) {
             if (p[this.step].relation) {
               const _ = s(`[name="${p[this.step].relation}"]`).elements[0];
-              _.tagName === "SELECT" && (_.value = b.getAttribute("value") || "", _.classList.remove("is-placeholder"), _.dispatchEvent(new Event("change", { bubbles: !0 })));
+              _.tagName === "SELECT" && (_.value = m.getAttribute("value") || "", _.classList.remove("is-placeholder"), _.dispatchEvent(new Event("change", { bubbles: !0 })));
             }
           } else {
             s(".crs_error").addClass("active");
             return;
           }
-          this.answers[this.step] = b.getAttribute("value") || "", this.setStep(this.step + 1), this.step += 1, m(
+          this.answers[this.step] = m.getAttribute("value") || "", this.setStep(this.step + 1), this.step += 1, f(
             `exp_quiz_hard_money_step_${this.step}`,
-            ((h = (c = b.closest("label")) == null ? void 0 : c.querySelector("div")) == null ? void 0 : h.textContent) || "",
+            ((b = (c = m.closest("label")) == null ? void 0 : c.querySelector("div")) == null ? void 0 : b.textContent) || "",
             "success",
             `quiz_step_${this.step}`
           ), this.step === p.length - 1 && a.text("Apply Now");
@@ -627,16 +631,17 @@
             var k, E, C, L;
             const v = ((k = d.textContent) == null ? void 0 : k.toLowerCase()) || "", w = ((C = (E = d.closest(".hs-form-field")) == null ? void 0 : E.querySelector("input")) == null ? void 0 : C.getAttribute("name")) || "";
             (L = s(`input[data-relation="${w}"]`).elements[0].closest("label")) == null || L.insertAdjacentHTML("beforeend", `<p class="crs_input_error">${v}</p>`);
-          }), m("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), s(".hs_submit input").elements[0].click();
+          }), f("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), s(".hs_submit input").elements[0].click();
         }
       });
     }
     async setStep(e) {
+      if (e < 0) return;
       const n = s('select[name="your_state__united_states__"] option').elements.map((o) => ({
         label: o.textContent || "",
         value: o.getAttribute("value") || ""
       })), t = s(".crs_quiz_step_container"), r = s(".crs_quiz_progress_bar");
-      t.html(F(e + 1, p[e].question, p[e].answers));
+      t.html(M(e + 1, p[e].question, p[e].answers));
       const l = (e + 1) / p.length * 100;
       if (r.elements[0].style.width = `${l}%`, this.answers[e] && s(`input[value="${this.answers[e]}"]`).elements[0].setAttribute("checked", "true"), e === p.length - 1) {
         const o = s('select[name="crs_state"]').elements[0];
@@ -649,8 +654,8 @@
             new Event("change", { bubbles: !0 })
           );
         }), s(".crs_quiz_answer_input_label input").on("input", (a) => {
-          const c = a.target, h = c.getAttribute("data-relation") || "";
-          s(`input[name="${h}"]`).elements[0].value = c.value, s(`input[name="${h}"]`).elements[0].dispatchEvent(new Event("input")), s(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((u) => u == null ? void 0 : u.remove());
+          const c = a.target, b = c.getAttribute("data-relation") || "";
+          s(`input[name="${b}"]`).elements[0].value = c.value, s(`input[name="${b}"]`).elements[0].dispatchEvent(new Event("input")), s(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((u) => u == null ? void 0 : u.remove());
         });
       }
     }
