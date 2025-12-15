@@ -1,51 +1,78 @@
 (function() {
   "use strict";
-  const d = (r) => new Promise((e) => {
+  const m = (r, e, t, o = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: r,
+      event_desc: e,
+      event_type: t,
+      event_loc: o
+    }), n(`Event: ${r} | ${e} | ${t} | ${o}`, "success");
+  }, f = (r) => new Promise((e) => {
     const t = document.querySelector(r);
     t && e(t);
-    const s = new MutationObserver(() => {
+    const o = new MutationObserver(() => {
       const a = document.querySelector(r);
-      a && (e(a), s.disconnect());
+      a && (e(a), o.disconnect());
     });
-    s.observe(document.documentElement, {
+    o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: r, dev: e }) => {
+  }), h = ({ name: r, dev: e }) => {
     console.log(
       `%c EXP: ${r} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, f = async (r) => {
-    const e = (t) => new Promise((s, a) => {
+  }, u = async (r) => {
+    const e = (t) => new Promise((o, a) => {
       const p = t.split(".").pop();
       if (p === "js") {
         if (Array.from(document.scripts).map(
-          (n) => n.src.toLowerCase()
+          (i) => i.src.toLowerCase()
         ).includes(t.toLowerCase()))
-          return i(`Script ${t} allready downloaded!`, "success"), s("");
-        const o = document.createElement("script");
-        o.src = t, o.onload = s, o.onerror = a, o.async = !0, document.head.appendChild(o);
+          return n(`Script ${t} allready downloaded!`, "success"), o("");
+        const s = document.createElement("script");
+        s.src = t, s.onload = o, s.onerror = a, s.async = !0, document.head.appendChild(s);
       } else if (p === "css") {
         if (Array.from(document.styleSheets).map(
-          (n) => {
-            var l;
-            return (l = n.href) == null ? void 0 : l.toLowerCase();
+          (i) => {
+            var d;
+            return (d = i.href) == null ? void 0 : d.toLowerCase();
           }
         ).includes(t.toLowerCase()))
-          return i(`Style ${t} allready downloaded!`, "success"), s("");
-        const o = document.createElement("link");
-        o.rel = "stylesheet", o.href = t, o.onload = s, o.onerror = a, document.head.appendChild(o);
+          return n(`Style ${t} allready downloaded!`, "success"), o("");
+        const s = document.createElement("link");
+        s.rel = "stylesheet", s.href = t, s.onload = o, s.onerror = a, document.head.appendChild(s);
       }
     });
     for (const t of r)
-      i(t), await e(t), i(`Loaded librari ${t}`);
-    i("All libraries loaded!", "success");
-  }, h = (r) => {
+      n(t), await e(t), n(`Loaded librari ${t}`);
+    n("All libraries loaded!", "success");
+  }, w = (r) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, i = (r, e = "info") => {
+  }, y = (r, e, t, o, a = 1e3, p = 0.5) => {
+    let c, s;
+    c = new IntersectionObserver(
+      function(i) {
+        i[0].isIntersecting === !0 ? s = setTimeout(() => {
+          m(
+            e,
+            i[0].target.dataset.visible || o,
+            "view",
+            t
+          ), c.disconnect();
+        }, a) : (n("Element is not fully visible", "warn"), clearTimeout(s));
+      },
+      { threshold: [p] }
+    );
+    {
+      const i = document.querySelector(r);
+      i && c.observe(i);
+    }
+  }, n = (r, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -62,7 +89,7 @@
         break;
     }
     console.log(`%c>>> ${r}`, `${t} font-size: 16px; font-weight: 600`);
-  }, c = {
+  }, l = {
     "/en-au/products/allergypatch-allergy-relief-stickers": {
       scriptUrl: "https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=qual&product_id=2122",
       frame: (
@@ -175,23 +202,23 @@
     `
       )
     }
-  }, u = "";
-  m({ name: "Reviews from clinicians", dev: "OS" }), h("exp-clinician-reviews");
-  const w = (r) => r in c;
-  class y {
+  }, _ = "";
+  h({ name: "Reviews from clinicians", dev: "OS" }), w("exp-clin-rev");
+  const g = (r) => r in l;
+  class b {
     constructor() {
       this.init();
     }
     init() {
-      w(location.pathname) && (i("Injecting testimonials frame..."), this.injectFrame(), this.addStyles());
+      g(location.pathname) && (this.injectFrame(), this.addStyles());
     }
     async injectFrame() {
-      const e = await d("#judgeme_product_reviews");
+      const e = await f("#judgeme_product_reviews");
       if (!e) return;
       const t = e.closest("section");
-      if (console.log("targetSection", t), !t) return;
-      const s = location.pathname, a = c[s];
-      await f([a.scriptUrl + ".js"]), console.log("Loaded testimonials script"), t.insertAdjacentHTML(
+      if (!t) return;
+      const o = location.pathname, a = l[o];
+      await u([a.scriptUrl + ".js"]), t.insertAdjacentHTML(
         "beforebegin",
         /* HTML */
         `<section class="fr-testimonials">
@@ -205,12 +232,18 @@
         </style>
         <div class="page-width">${a.frame}</div>
       </section>`
+      ), y(
+        ".fr-testimonials",
+        "exp_clin_rev_view_1",
+        "Clinician Reviewed",
+        "Visibility",
+        0
       );
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = u, document.head.appendChild(e);
+      e.textContent = _, document.head.appendChild(e);
     }
   }
-  new y();
+  new b();
 })();
