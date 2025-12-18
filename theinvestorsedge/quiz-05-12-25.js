@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const f = (i, e, n, t = "") => {
+  const h = (i, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: i,
@@ -25,9 +25,9 @@
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class h {
+  class b {
     constructor(e) {
-      this.elements = e instanceof h ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof b ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, n, t) {
       return typeof n == "function" && (t = n, n = ""), this.elements.forEach((r) => {
@@ -58,7 +58,7 @@
     }
     each(e) {
       for (let n of this.elements)
-        e(new h(n), this.elements.indexOf(n));
+        e(new b(n), this.elements.indexOf(n));
       return this;
     }
     style(e, n) {
@@ -69,7 +69,7 @@
     }
     find(e) {
       const n = this.elements.map((t) => Array.from(t.querySelectorAll(e)));
-      return new h(n.flat());
+      return new b(n.flat());
     }
     attr(e, n) {
       return n ? (this.elements.forEach(function(t) {
@@ -87,7 +87,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const s = (i) => new h(i), S = (i) => {
+  const s = (i) => new b(i), S = (i) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", i, "variant_1"));
     }, 1e3);
@@ -575,13 +575,13 @@
       this.answers = [], this.init(), this.step = 0, this.setup();
     }
     async init() {
-      await z("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${H}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", F), f("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen");
+      await z("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${H}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", F), h("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen");
     }
     async setup() {
       await z(".crs_quiz_container");
       const e = s(".crs_first_screen"), n = s(".crs_quiz_steps"), t = s(".crs_quiz_logo svg"), r = s(".crs_start_quiz"), l = s(".crs_quiz_progress"), o = s(".crs_cancel_quiz"), a = s(".crs_quiz_steps button");
       o.on("click", () => {
-        f("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), window.location.pathname = "/";
+        h("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), window.location.pathname = "/";
       }), t.on("click", () => {
         if (this.setStep(this.step - 1), this.step === 0) {
           e.addClass("active"), n.removeClass("active"), t.removeClass("active"), l.removeClass("active");
@@ -589,24 +589,24 @@
         }
         this.step -= 1, a.text("Continue");
       }), r.on("click", () => {
-        e.removeClass("active"), n.addClass("active"), t.addClass("active"), l.addClass("active"), this.setStep(this.step), f("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
+        e.removeClass("active"), n.addClass("active"), t.addClass("active"), l.addClass("active"), this.setStep(this.step), h("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
       }), a.on("click", () => {
-        var c, b, u, q;
+        var c, u, _, q;
         if (this.step < p.length - 1) {
           s(".crs_error").removeClass("active");
           const m = n.elements[0].querySelector('input[type="radio"]:checked');
           if (m) {
             if (p[this.step].relation) {
-              const _ = s(`[name="${p[this.step].relation}"]`).elements[0];
-              _.tagName === "SELECT" && (_.value = m.getAttribute("value") || "", _.classList.remove("is-placeholder"), _.dispatchEvent(new Event("change", { bubbles: !0 })));
+              const d = s(`[name="${p[this.step].relation}"]`).elements[0];
+              d.tagName === "SELECT" && (d.value = m.getAttribute("value") || "", d.classList.remove("is-placeholder"), d.dispatchEvent(new Event("change", { bubbles: !0 })));
             }
           } else {
             s(".crs_error").addClass("active");
             return;
           }
-          this.answers[this.step] = m.getAttribute("value") || "", this.setStep(this.step + 1), this.step += 1, f(
+          this.answers[this.step] = m.getAttribute("value") || "", this.setStep(this.step + 1), this.step += 1, h(
             `exp_quiz_hard_money_step_${this.step}`,
-            ((b = (c = m.closest("label")) == null ? void 0 : c.querySelector("div")) == null ? void 0 : b.textContent) || "",
+            ((u = (c = m.closest("label")) == null ? void 0 : c.querySelector("div")) == null ? void 0 : u.textContent) || "",
             "success",
             `quiz_step_${this.step}`
           ), this.step === p.length - 1 && a.text("Apply Now");
@@ -614,24 +614,24 @@
           let g = !1;
           if (n.elements[0].querySelectorAll(
             ".crs_quiz_answer_input_label input"
-          ).forEach((d) => {
+          ).forEach((f) => {
             var v, w;
-            if (d.value === "") {
-              if (g = !0, (v = d.closest("label")) != null && v.querySelector(".crs_input_error")) return;
-              (w = d.closest("label")) == null || w.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
+            if (f.value === "") {
+              if (g = !0, (v = f.closest("label")) != null && v.querySelector(".crs_input_error")) return;
+              (w = f.closest("label")) == null || w.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
             }
           }), n.elements[0].querySelector('select[name="crs_state"]').value === "") {
-            if (g = !0, (u = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) != null && u.querySelector(".crs_input_error"))
+            if (g = !0, (_ = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) != null && _.querySelector(".crs_input_error"))
               return;
             (q = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) == null || q.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
           }
           if (g) return;
           const $ = s(".hs-error-msg").elements;
-          $.length !== 0 && $.forEach((d) => {
+          $.length !== 0 && $.forEach((f) => {
             var k, E, C, L;
-            const v = ((k = d.textContent) == null ? void 0 : k.toLowerCase()) || "", w = ((C = (E = d.closest(".hs-form-field")) == null ? void 0 : E.querySelector("input")) == null ? void 0 : C.getAttribute("name")) || "";
+            const v = ((k = f.textContent) == null ? void 0 : k.toLowerCase()) || "", w = ((C = (E = f.closest(".hs-form-field")) == null ? void 0 : E.querySelector("input")) == null ? void 0 : C.getAttribute("name")) || "";
             (L = s(`input[data-relation="${w}"]`).elements[0].closest("label")) == null || L.insertAdjacentHTML("beforeend", `<p class="crs_input_error">${v}</p>`);
-          }), f("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), s(".hs_submit input").elements[0].click();
+          }), h("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), s(".hs_submit input").elements[0].click();
         }
       });
     }
@@ -654,8 +654,8 @@
             new Event("change", { bubbles: !0 })
           );
         }), s(".crs_quiz_answer_input_label input").on("input", (a) => {
-          const c = a.target, b = c.getAttribute("data-relation") || "";
-          s(`input[name="${b}"]`).elements[0].value = c.value, s(`input[name="${b}"]`).elements[0].dispatchEvent(new Event("input")), s(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((u) => u == null ? void 0 : u.remove());
+          const c = a.target, u = c.getAttribute("data-relation") || "";
+          s(`input[name="${u}"]`).elements[0].value = u === "firstname" ? c.value + " A/B" : c.value, s(`input[name="${u}"]`).elements[0].dispatchEvent(new Event("input")), s(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((_) => _ == null ? void 0 : _.remove());
         });
       }
     }
