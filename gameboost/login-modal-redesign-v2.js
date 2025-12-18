@@ -60,7 +60,7 @@
   --crs-bg-modal-secondary: #0e1015;
   --crs-bg-modal-seller: #192233;
   --crs-bg-input: #13151b;
-  --crs-bg-input-seller: #192233;
+  --crs-bg-input-seller: #13151b;
 
   /* ============================================
      TEXT COLORS
