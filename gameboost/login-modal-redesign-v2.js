@@ -226,19 +226,21 @@ body.crs-modal-open-waiting
 }
 
 html:not(.light) .crs-modal input.bg-field {
-  min-height: 3.25rem;
   background-color: var(--crs-bg-input) !important;
   border: none;
   box-shadow: 0 0 0 1px #282a2f, 0 1px 2px 0 var(--crs-shadow-light);
 }
 
-.crs-modal input.bg-field {
+.crs-modal[data-crs-modal-purpose='signup'] input.bg-field,
+.crs-modal[data-crs-modal-purpose='signup'] button[type='submit'] {
   min-height: 3.25rem;
 }
 
-.crs-modal button[type='submit'] {
-  min-height: 3.25rem;
+.crs-modal[data-crs-modal-purpose='login'] input.bg-field,
+.crs-modal[data-crs-modal-purpose='login'] button[type='submit'] {
+  min-height: 2.75rem;
 }
+
 html:not(.light) .crs-modal[data-crs-modal-type='message'] input.bg-field {
   background-color: var(--crs-bg-input-seller) !important;
 }
@@ -565,6 +567,7 @@ html.light .crs-modal-seller-message-content {
 html:not(.light) .crs-modal .space-y-8:has(form) > div:first-child a {
   background-color: var(--crs-bg-btn-social);
 }
+
 html:not(.light)
   .crs-modal[data-crs-modal-type='message']
   .space-y-8:has(form)
@@ -591,6 +594,10 @@ html:not(.light)
 
 [data-crs-modal-purpose='login'] .space-y-8:has(form) > div:first-child {
   flex-wrap: wrap;
+}
+
+[data-crs-modal-purpose="login"] .space-y-8:has(form) > div:first-child a {
+  min-height: 3rem;
 }
 
 [data-crs-modal-purpose='login']
