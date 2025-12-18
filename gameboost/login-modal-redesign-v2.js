@@ -142,7 +142,9 @@ body.crs-modal-open-waiting
 }
 
 /* add delay */
- [id*='reka-dialog-content'][data-state='open']:not([data-crs-modal-purpose="signup"]) {
+[id*='reka-dialog-content'][data-state='open']:not(
+    [data-crs-modal-purpose='signup']
+  ) {
   opacity: 0;
   animation: fadeIn 0.1s ease-out 0.2s forwards;
 }
@@ -230,7 +232,11 @@ html:not(.light) .crs-modal input.bg-field {
   box-shadow: 0 0 0 1px #282a2f, 0 1px 2px 0 var(--crs-shadow-light);
 }
 
-.crs-modal[data-crs-modal-type='message'] input.bg-field {
+.crs-modal input.bg-field {
+  min-height: 3.25rem;
+}
+
+.crs-modal button[type='submit'] {
   min-height: 3.25rem;
 }
 html:not(.light) .crs-modal[data-crs-modal-type='message'] input.bg-field {
