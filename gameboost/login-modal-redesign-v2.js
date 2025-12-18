@@ -1368,7 +1368,7 @@ html:not(.light)
       return null;
     }
   }
-  B({ name: "Іmproved registration / account creation flow", dev: "OS" }), E("exp_login_modal");
+  B({ name: "Іmproved registration / account creation flow v2", dev: "OS" }), E("exp_login_modal");
   class D {
     constructor() {
       this.eventsAborder = new AbortController(), this.popupChanges = new O(), this.init();
