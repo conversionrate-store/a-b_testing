@@ -1047,6 +1047,7 @@ html:not(.light)
       initialData: i = {},
       preventAutoClickSignup: o = !1
     }) {
+      this.modalAbortController = new AbortController();
       try {
         const r = (i == null ? void 0 : i.title) || "", l = (i == null ? void 0 : i.imageSrc) || "", a = await new Promise((d, b) => {
           const u = '[id*="reka-dialog-content"][data-state="open"]:has(input[autofocus]):not([data-crs-modal-type])', x = document.querySelector(u);
