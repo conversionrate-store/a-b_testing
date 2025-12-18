@@ -1434,7 +1434,7 @@ html:not(.light)
       let e = location.href;
       this.pageObserver = new MutationObserver(() => {
         if (location.href !== e) {
-          e = location.href, this.popupChanges.cleanup();
+          e = location.href;
           const s = document.getElementById("crs-styles");
           s && s.remove(), this.initChanges();
         }
