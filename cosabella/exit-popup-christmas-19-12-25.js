@@ -76,13 +76,14 @@
   position: relative;
   padding: 40px;
   background: url("https://conversionrate-store.github.io/a-b_images/cosabella/christmas-tree.svg") top right 40px no-repeat;
-  background-size: 900px;
+  background-size: 90px;
 }
 @media (max-width: 768px) {
   .crs_exit_popup .content {
     padding: 24px;
     display: flex;
     flex-direction: column;
+    background: url("https://conversionrate-store.github.io/a-b_images/cosabella/christmas-tree.svg") top right 10px no-repeat;
   }
 }
 .crs_exit_popup .close {
@@ -109,6 +110,7 @@
   font-size: 32px;
   margin-bottom: 12px;
   text-transform: uppercase;
+  line-height: 1.3;
 }
 .crs_exit_popup .title + p {
   color: #000;
