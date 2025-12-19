@@ -1,16 +1,16 @@
 (function() {
   "use strict";
-  const k = (g, e, t, s = "") => {
+  const C = (g, e, a, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: g,
       event_desc: e,
-      event_type: t,
+      event_type: a,
       event_loc: s
-    }), z(`Event: ${g} | ${e} | ${t} | ${s}`, "success");
-  }, $ = (g) => new Promise((e) => {
-    const t = document.querySelector(g);
-    t && e(t);
+    }), j(`Event: ${g} | ${e} | ${a} | ${s}`, "success");
+  }, E = (g) => new Promise((e) => {
+    const a = document.querySelector(g);
+    a && e(a);
     const s = new MutationObserver(() => {
       const n = document.querySelector(g);
       n && (e(n), s.disconnect());
@@ -19,33 +19,33 @@
       childList: !0,
       subtree: !0
     });
-  }), B = ({ name: g, dev: e }) => {
+  }), $ = ({ name: g, dev: e }) => {
     console.log(
       `%c EXP: ${g} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, E = (g) => {
+  }, B = (g) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", g, "variant_1"));
     }, 1e3);
-  }, z = (g, e = "info") => {
-    let t;
+  }, j = (g, e = "info") => {
+    let a;
     switch (e) {
       case "info":
-        t = "color: #3498db;";
+        a = "color: #3498db;";
         break;
       case "warn":
-        t = "color: #f39c12;";
+        a = "color: #f39c12;";
         break;
       case "error":
-        t = "color: #e74c3c;";
+        a = "color: #e74c3c;";
         break;
       case "success":
-        t = "color: #2ecc71;";
+        a = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${g}`, `${t} font-size: 16px; font-weight: 600`);
-  }, R = `:root {
+    console.log(`%c>>> ${g}`, `${a} font-size: 16px; font-weight: 600`);
+  }, z = `:root {
   /* ============================================
      TYPOGRAPHY & FONT FAMILY
      ============================================ */
@@ -185,6 +185,7 @@ body.crs-modal-open-waiting
   object-fit: cover;
   border-radius: 8px;
   overflow: hidden;
+  object-position: top;
 }
 
 .crs-modal-wrap.buy {
@@ -596,7 +597,7 @@ html:not(.light)
   flex-wrap: wrap;
 }
 
-[data-crs-modal-purpose="login"] .space-y-8:has(form) > div:first-child a {
+[data-crs-modal-purpose='login'] .space-y-8:has(form) > div:first-child a {
   min-height: 3rem;
 }
 
@@ -866,7 +867,7 @@ html:not(.light)
     max-width: 100%;
   }
 }
-`, j = {
+`, R = {
     regexpLinks: {
       items: /^https:\/\/gameboost\.com\/(?:[^/]+\/)?[^/]+\/items\/[A-Za-z0-9-]+\/?(?:\?.*)?(?:#.*)?$/
     }
@@ -894,27 +895,27 @@ html:not(.light)
     }
     buyModalBackground({
       backgroundClasses: e,
-      imageSrc: t,
+      imageSrc: a,
       initialBg: s,
       initTitle: n,
-      title: i,
-      isInstantDelivery: o,
+      title: o,
+      isInstantDelivery: d,
       isWarrantyAvailable: r
     }) {
-      var a;
-      const l = document.querySelector('nav[aria-label="Breadcrumb"]');
+      var t;
+      const i = document.querySelector('nav[aria-label="Breadcrumb"]');
       return (
         /* HTML */
         `
       <div class="crs-modal-bg-wrap buy">
-        <div class="crs-modal-title">${n || i}</div>
+        <div class="crs-modal-title">${n || o}</div>
         <div
           class="crs-modal-image  ${e || ""}"
         >
-          <img src="${t || s}" alt="" width="284" height="284" />
+          <img src="${a || s}" alt="" width="284" height="284" />
         </div>
         <div class="crs-modal-badges">
-          ${o ? (
+          ${d ? (
           /* HTML */
           `
                 <div class="crs-modal-badge crs-modal-badge-instant-delivery">
@@ -926,7 +927,7 @@ html:not(.light)
                 </div>
               `
         ) : ""}
-          ${o && r ? (
+          ${d && r ? (
           /* HTML */
           '<div class="crs-modal-badge-separator"></div>'
         ) : ""}
@@ -935,7 +936,7 @@ html:not(.light)
           `
                 <div class="crs-modal-badge crs-modal-badge-warranty">
                   <i class="fa-solid fa-shield-halved"></i>
-                  ${l && ((a = l.textContent) != null && a.includes("Game Keys")) ? "<span>Valid Key <br> Guarantee</span>" : `<span>
+                  ${i && ((t = i.textContent) != null && t.includes("Game Keys")) ? "<span>Valid Key <br> Guarantee</span>" : `<span>
                     14-days <br />
                     Warranty Included
                   </span>`}
@@ -949,11 +950,11 @@ html:not(.light)
     }
     sellerOverModal({
       avatarSrc: e,
-      sellerName: t,
+      sellerName: a,
       isOnline: s,
       isVerified: n,
-      reviewText: i,
-      rating: o,
+      reviewText: o,
+      rating: d,
       statusText: r
     }) {
       return (
@@ -972,7 +973,7 @@ html:not(.light)
           <div class="crs-modal-seller-avatar">
             <img
               src="${e}"
-              alt="${t}"
+              alt="${a}"
               width="55"
               height="55"
             />
@@ -983,7 +984,7 @@ html:not(.light)
             </div>
           </div>
           <div class="crs-modal-seller-name">
-            Message ${t}
+            Message ${a}
             ${n ? (
           /* HTML */
           `<i
@@ -991,10 +992,10 @@ html:not(.light)
                 ></i>`
         ) : ""}
           </div>
-          <div class="crs-modal-seller-reviews-count">${i}</div>
+          <div class="crs-modal-seller-reviews-count">${o}</div>
 
           <div class="crs-modal-seller-rating">
-            <i class="mr-0.5 fa-solid fa-thumbs-up"></i>${o}%
+            <i class="mr-0.5 fa-solid fa-thumbs-up"></i>${d}%
           </div>
         </div>
         <div class="crs-modal-seller-message">
@@ -1004,7 +1005,7 @@ html:not(.light)
           </div>
           <div class="crs-modal-seller-message-content">
             <div class="crs-modal-seller-message-typing">
-              ${t} is typing
+              ${a} is typing
               <span class="crs-modal-seller-message-dots">
                 <span class="crs-modal-seller-message-dot"></span>
                 <span class="crs-modal-seller-message-dot"></span>
@@ -1013,7 +1014,7 @@ html:not(.light)
             </div>
             <div class="crs-modal-message">
               <div class="crs-message-avatar">
-                <img src="${e}" alt="${t}" />
+                <img src="${e}" alt="${a}" />
               </div>
               <div class="crs-message-content">
                 hey, what question do you have ?
@@ -1051,118 +1052,118 @@ html:not(.light)
     }
     cleanup() {
       var e;
-      (e = this.modalAbortController) == null || e.abort(), this.modalAbortController = void 0, this.pendingModalObservers.forEach((t) => t.disconnect()), this.pendingModalObservers = [];
+      (e = this.modalAbortController) == null || e.abort(), this.modalAbortController = void 0, this.pendingModalObservers.forEach((a) => a.disconnect()), this.pendingModalObservers = [];
     }
     async init({
       type: e = "buy",
-      location: t = "PDP",
+      location: a = "PDP",
       context: s = document,
       skipAnimation: n = !1,
-      initialData: i = {},
-      preventAutoClickSignup: o = !1
+      initialData: o = {},
+      preventAutoClickSignup: d = !1
     }) {
       this.modalAbortController = new AbortController();
       try {
-        const r = (i == null ? void 0 : i.title) || "", l = (i == null ? void 0 : i.imageSrc) || "", a = await new Promise((d, b) => {
-          const u = '[id*="reka-dialog-content"][data-state="open"]:has(input[autofocus]):not([data-crs-modal-type])', x = document.querySelector(u);
+        const r = (o == null ? void 0 : o.title) || "", i = (o == null ? void 0 : o.imageSrc) || "", t = await new Promise((c, b) => {
+          const h = '[id*="reka-dialog-content"][data-state="open"]:has(input[autofocus]):not([data-crs-modal-type])', x = document.querySelector(h);
           if (x) {
-            d(x);
+            c(x);
             return;
           }
-          const c = new MutationObserver(() => {
-            const y = document.querySelector(u);
+          const l = new MutationObserver(() => {
+            const y = document.querySelector(h);
             if (y) {
-              c.disconnect();
-              const w = this.pendingModalObservers.indexOf(c);
-              w > -1 && this.pendingModalObservers.splice(w, 1), d(y);
+              l.disconnect();
+              const w = this.pendingModalObservers.indexOf(l);
+              w > -1 && this.pendingModalObservers.splice(w, 1), c(y);
             }
           });
-          this.pendingModalObservers.push(c), c.observe(document.documentElement, {
+          this.pendingModalObservers.push(l), l.observe(document.documentElement, {
             childList: !0,
             subtree: !0
           });
-        }), m = a.querySelector(":scope > div"), f = a.querySelector(
+        }), m = t.querySelector(":scope > div"), p = t.querySelector(
           "button:has(.fa-xmark):not(.crs-close-mobile)"
-        ), C = a.querySelectorAll("h2"), h = a.querySelector(
+        ), S = t.querySelectorAll("h2"), f = t.querySelector(
           'div[style*="background-image"]'
         );
-        a.classList.add("crs-modal"), a.dataset.crsModalType = e;
-        let p = !1;
-        const q = a.querySelector(
+        t.classList.add("crs-modal"), t.dataset.crsModalType = e;
+        let u = !1;
+        const q = t.querySelector(
           ".text-foreground.hover\\:underline"
         );
         if (e === "buy") {
-          if (h) {
+          if (f) {
             const {
-              title: d,
+              title: c,
               imageSrc: b,
-              backgroundClasses: u,
+              backgroundClasses: h,
               isInstantDelivery: x,
-              isWarrantyAvailable: c
-            } = this.getProductData(t, s);
-            (b || l && l.trim() !== "" || P) && (a.dataset.bg = b || l || P, a.dataset.productTitle = (i == null ? void 0 : i.title) || d || "", h.style.backgroundImage = "none", h.classList.add("crs-modal-bg"), h.innerHTML = this.popupRenderer.buyModalBackground({
-              backgroundClasses: u,
+              isWarrantyAvailable: l
+            } = this.getProductData(a, s);
+            (b || i && i.trim() !== "" || P) && (t.dataset.bg = b || i || P, t.dataset.productTitle = (o == null ? void 0 : o.title) || c || "", f.style.backgroundImage = "none", f.classList.add("crs-modal-bg"), f.innerHTML = this.popupRenderer.buyModalBackground({
+              backgroundClasses: h,
               imageSrc: b,
-              initialBg: l || P,
+              initialBg: i || P,
               initTitle: r,
-              title: d,
+              title: c,
               isInstantDelivery: x,
-              isWarrantyAvailable: c
+              isWarrantyAvailable: l
             }));
           }
         } else {
           const {
-            avatarSrc: d,
+            avatarSrc: c,
             sellerName: b,
-            sellerTier: u,
+            sellerTier: h,
             isOnline: x,
-            statusText: c,
+            statusText: l,
             isVerified: y,
             rating: w,
             reviewCount: L,
             reviewText: T,
             totalSales: I
           } = this.getSellerData();
-          if (h && m) {
-            h.style.backgroundImage = "none", h.classList.add("crs-modal-bg");
-            const A = a.querySelector(".crs-modal-seller");
-            A && A.remove(), a.dataset.crsModalPurpose === "signup" && m.classList.add("hidden"), m.insertAdjacentHTML(
+          if (f && m) {
+            f.style.backgroundImage = "none", f.classList.add("crs-modal-bg");
+            const A = t.querySelector(".crs-modal-seller");
+            A && A.remove(), t.dataset.crsModalPurpose === "signup" && m.classList.add("hidden"), m.insertAdjacentHTML(
               "afterend",
               this.popupRenderer.sellerOverModal({
-                avatarSrc: d,
+                avatarSrc: c,
                 sellerName: b,
                 isOnline: x,
                 isVerified: y,
                 reviewText: T,
                 rating: w,
-                statusText: c
+                statusText: l
               })
             );
-            const _ = a.querySelector(
+            const _ = t.querySelector(
               ".crs-modal-seller-msg-close"
-            ), M = a.querySelector(
+            ), M = t.querySelector(
               "#sign-up-to-chat"
             );
             if (_ && _.addEventListener(
               "click",
               () => {
-                k(
+                C(
                   "exp_create_acc_to_chat_close",
                   "Create an Account to Chat Step 1 Close",
                   "click",
                   "Registration Popup"
-                ), f == null || f.click();
+                ), p == null || p.click();
               },
               { signal: this.modalAbortController.signal }
             ), M && M.addEventListener(
               "click",
               () => {
-                k(
+                C(
                   "exp_create_acc_to_chat_click",
                   "Sign Up to Chat",
                   "click",
                   "Registration Popup"
-                ), m.classList.remove("hidden"), k(
+                ), m.classList.remove("hidden"), C(
                   "exp_create_acc_to_chat_view_2",
                   "Create an Account to Chat Step 2",
                   "view",
@@ -1171,78 +1172,78 @@ html:not(.light)
               },
               { signal: this.modalAbortController.signal }
             ), n) {
-              const S = a.querySelector(
+              const k = t.querySelector(
                 ".crs-modal-seller-message-typing"
-              ), v = a.querySelector(
+              ), v = t.querySelector(
                 ".crs-modal-message"
               );
-              S && S.classList.add("hidden"), v && v.classList.add("show");
+              k && k.classList.add("hidden"), v && v.classList.add("show");
             } else
               setTimeout(() => {
-                const S = a.querySelector(
+                const k = t.querySelector(
                   ".crs-modal-seller-message-typing"
-                ), v = a.querySelector(
+                ), v = t.querySelector(
                   ".crs-modal-message"
                 );
-                S && S.classList.add("hidden"), v && v.classList.add("show");
+                k && k.classList.add("hidden"), v && v.classList.add("show");
               }, 4e3);
           }
         }
-        C.forEach((d) => {
-          var b, u;
-          if (d && d.textContent === "Login") {
-            a.dataset.crsModalPurpose = "login";
+        S.forEach((c) => {
+          var b, h;
+          if (c && c.textContent === "Login") {
+            t.dataset.crsModalPurpose = "login";
             const x = e === "buy";
-            if (q && !o) {
+            if (q && !d) {
               q.click();
               return;
             }
-            x ? (d.innerHTML = "Login to Buy", p || (k(
+            x ? (c.innerHTML = "Login to Buy", u || (C(
               "exp_login_to_buy_view",
               "Login to Buy",
               "view",
               "Registration Popup"
-            ), p = !0)) : (d.innerHTML = "Login to Chat", p || (k(
+            ), u = !0)) : (c.innerHTML = "Login to Chat", u || (C(
               "exp_login_to_chat_view",
               "Login to Chat",
               "view",
               "Registration Popup"
-            ), p = !0));
-            const c = a.querySelector(
+            ), u = !0));
+            const l = t.querySelector(
               '.space-y-8:has(form) > div:first-child a[href*="google"]'
             );
-            c && !c.querySelector(".crs-google-login-text") && c.insertAdjacentHTML(
+            l && !l.querySelector(".crs-google-login-text") && l.insertAdjacentHTML(
               "beforeend",
               '<span class="crs-google-login-text">Log in with Google</span>'
             );
           }
-          if (d && d.textContent === "Create Account") {
-            a.dataset.crsModalPurpose = "signup", e === "buy" ? (d.innerHTML = "Create an Account to Buy", p || (k(
+          if (c && c.textContent === "Create Account") {
+            t.dataset.crsModalPurpose = "signup", e === "buy" ? (c.innerHTML = "Create an Account to Buy", u || (C(
               "exp_create_acc_to_save_view",
               "Create an Account to Buy",
               "view",
               "Registration Popup"
-            ), p = !0)) : (d.innerHTML = "Create an Account to Chat", p || (p = !0, k(
+            ), u = !0)) : (c.innerHTML = "Create an Account to Chat", u || (u = !0, C(
               "exp_create_acc_to_chat_view_1",
               "Create an Account to Chat Step 1",
               "view",
               "Registration Popup"
             )));
-            const c = a.querySelector(
+            const l = t.querySelector(
               '.relative:has(> input[placeholder="Username - Optional"])'
             );
-            if (c) {
-              (b = c.parentElement) == null || b.insertAdjacentHTML(
+            if (l) {
+              (b = l.parentElement) == null || b.insertAdjacentHTML(
                 "afterbegin",
                 this.popupRenderer.addUserNameButton()
-              ), c.classList.add("hidden");
-              const L = a.querySelector(
+              ), l.classList.add("hidden");
+              const L = t.querySelector(
                 ".crs-add-username"
               );
               L.addEventListener(
                 "click",
                 () => {
-                  c.classList.remove("hidden"), L.classList.add("hidden"), k(
+                  l.classList.remove("hidden"), L.classList.add("hidden"), C(
                     "exp_create_acc_to_save_click",
                     "Add Username",
                     "click",
@@ -1252,12 +1253,12 @@ html:not(.light)
                 { signal: this.modalAbortController.signal }
               );
             }
-            const y = a.querySelector(
+            const y = t.querySelector(
               ".space-y-8:has(form) > div:last-of-type > div"
             );
             y && (y.textContent = "Or Create an Account with:");
-            const w = a.querySelector(".space-y-8 form > span");
-            w && y && ((u = y.parentElement) == null || u.insertAdjacentElement(
+            const w = t.querySelector(".space-y-8 form > span");
+            w && y && ((h = y.parentElement) == null || h.insertAdjacentElement(
               "afterend",
               w
             ));
@@ -1273,46 +1274,51 @@ html:not(.light)
         }, 100);
       }
     }
-    getProductData(e = "PDP", t = document) {
-      var s, n, i;
+    getProductData(e = "PDP", a = document) {
+      var s, n, o, d;
       if (e === "PDP") {
-        const o = this.getPdpTitle(), r = this.getPdpImageSrc(), l = document.querySelector('nav[aria-label="Breadcrumb"]');
-        let a = !!t.querySelector(".ring-1 .fa-bolt"), m = !!t.querySelector(
+        const r = this.getPdpTitle(), i = this.getPdpImageSrc(), t = document.querySelector('nav[aria-label="Breadcrumb"]');
+        let m = !!a.querySelector(".ring-1 .fa-bolt"), p = !!a.querySelector(
           ".ring-1 .fa-shield-halved"
         );
-        return l && ((s = l.textContent) != null && s.includes("Game Keys")) && (m = !0, a = !0), { title: o, imageSrc: r, isInstantDelivery: a, isWarrantyAvailable: m };
+        return window.location.pathname.includes("/keys") && ((s = document.querySelector("h2")) == null ? void 0 : s.textContent) === "Clair Obscur: Expedition 33" ? {
+          title: "Clair Obscur: Expedition 33",
+          imageSrc: "https://cdn.gameboost.com/igdb/covers/305152/co9gam.jpg",
+          isInstantDelivery: !0,
+          isWarrantyAvailable: !0
+        } : (t && ((n = t.textContent) != null && n.includes("Game Keys")) && (p = !0, m = !0), { title: r, imageSrc: i, isInstantDelivery: m, isWarrantyAvailable: p });
       }
       if (e === "PLP") {
-        const o = t.querySelector(
+        const r = a.querySelector(
           ".text-sm.text-foreground\\/80.line-clamp-2.h-\\[40px\\]"
-        ), r = t.querySelector(
+        ), i = a.querySelector(
           'img[src*="https://gameboost.com/cdn-cgi/image"]'
-        ), l = !!t.querySelector(".fa-bolt");
+        ), t = !!a.querySelector(".fa-bolt");
         return {
-          title: o && o.textContent || "",
-          imageSrc: r ? r.src : "",
-          isInstantDelivery: l,
-          isWarrantyAvailable: l
+          title: r && r.textContent || "",
+          imageSrc: i ? i.src : "",
+          isInstantDelivery: t,
+          isWarrantyAvailable: t
         };
       }
       if (e === "MODAL") {
-        const o = t.querySelector(
+        const r = a.querySelector(
           ".text-lg.font-semibold.font-display"
-        ), r = t.querySelector(
+        ), i = a.querySelector(
           'img[src*="steamcommunity"]'
-        ), l = (i = (n = t.querySelector(
+        ), t = (d = (o = a.querySelector(
           'img[src*="steamcommunity"]'
-        )) == null ? void 0 : n.parentElement) == null ? void 0 : i.className, a = (() => {
-          if (!l) return "";
-          const m = l.split(/\s+/), f = m.findIndex((h) => h === "bg-gradient");
-          if (f === -1) return "";
-          const C = [m[f]];
-          return f + 1 < m.length && C.push(m[f + 1]), C.join(" ");
+        )) == null ? void 0 : o.parentElement) == null ? void 0 : d.className, m = (() => {
+          if (!t) return "";
+          const p = t.split(/\s+/), S = p.findIndex((u) => u === "bg-gradient");
+          if (S === -1) return "";
+          const f = [p[S]];
+          return S + 1 < p.length && f.push(p[S + 1]), f.join(" ");
         })();
         return {
-          title: o && o.innerHTML || "",
-          imageSrc: r ? r.src : "",
-          backgroundClasses: a
+          title: r && r.innerHTML || "",
+          imageSrc: i ? i.src : "",
+          backgroundClasses: m
         };
       }
     }
@@ -1320,31 +1326,31 @@ html:not(.light)
       var w, L, T, I, A, _, M;
       const e = document.querySelector(
         '.bg-card:has(a[href*="seller"])'
-      ), t = e == null ? void 0 : e.querySelector('img[src*="avatar"]'), s = e == null ? void 0 : e.querySelector(
+      ), a = e == null ? void 0 : e.querySelector('img[src*="avatar"]'), s = e == null ? void 0 : e.querySelector(
         'a[href*="seller"] .text-sm.font-medium.truncate.text-foreground'
       ), n = e == null ? void 0 : e.querySelector(
         ".text-xs.truncate.text-muted-foreground"
-      ), i = ((w = n == null ? void 0 : n.textContent) == null ? void 0 : w.trim()) || "", o = e == null ? void 0 : e.querySelector(
+      ), o = ((w = n == null ? void 0 : n.textContent) == null ? void 0 : w.trim()) || "", d = e == null ? void 0 : e.querySelector(
         ".bg-success-light.ring-success-ring"
-      ), r = !!o, l = ((L = o == null ? void 0 : o.textContent) == null ? void 0 : L.trim().replace(/\s+/g, " ")) || "", a = !!(s != null && s.querySelector(".fa-badge-check")), m = (T = e == null ? void 0 : e.querySelector(".fa-thumbs-up")) == null ? void 0 : T.parentElement, C = (((I = m == null ? void 0 : m.textContent) == null ? void 0 : I.trim()) || "").match(/([\d.]+)%/), h = C ? parseFloat(C[1]) : 0, p = Array.from(
+      ), r = !!d, i = ((L = d == null ? void 0 : d.textContent) == null ? void 0 : L.trim().replace(/\s+/g, " ")) || "", t = !!(s != null && s.querySelector(".fa-badge-check")), m = (T = e == null ? void 0 : e.querySelector(".fa-thumbs-up")) == null ? void 0 : T.parentElement, S = (((I = m == null ? void 0 : m.textContent) == null ? void 0 : I.trim()) || "").match(/([\d.]+)%/), f = S ? parseFloat(S[1]) : 0, u = Array.from(
         (e == null ? void 0 : e.querySelectorAll(".text-muted-foreground")) || []
-      ).find((S) => {
+      ).find((k) => {
         var v;
-        return (v = S.textContent) == null ? void 0 : v.includes("Reviews");
-      }), q = ((A = p == null ? void 0 : p.textContent) == null ? void 0 : A.trim()) || "", d = q.match(/([\d,]+)\s+Reviews/), b = d ? d[1].replace(/,/g, "") : "0", u = Array.from(
+        return (v = k.textContent) == null ? void 0 : v.includes("Reviews");
+      }), q = ((A = u == null ? void 0 : u.textContent) == null ? void 0 : A.trim()) || "", c = q.match(/([\d,]+)\s+Reviews/), b = c ? c[1].replace(/,/g, "") : "0", h = Array.from(
         (e == null ? void 0 : e.querySelectorAll("dd")) || []
-      ).find((S) => {
+      ).find((k) => {
         var v;
-        return (v = S.textContent) == null ? void 0 : v.includes("Sold");
-      }), c = (((_ = u == null ? void 0 : u.textContent) == null ? void 0 : _.trim()) || "").match(/([\d,]+)\s+Sold/), y = c ? c[1].replace(/,/g, "") : "0";
+        return (v = k.textContent) == null ? void 0 : v.includes("Sold");
+      }), l = (((_ = h == null ? void 0 : h.textContent) == null ? void 0 : _.trim()) || "").match(/([\d,]+)\s+Sold/), y = l ? l[1].replace(/,/g, "") : "0";
       return {
-        avatarSrc: t ? t.src : "",
+        avatarSrc: a ? a.src : "",
         sellerName: s && ((M = s.textContent) == null ? void 0 : M.replace(/\s*\u{f058}\s*$/u, "").trim()) || "",
-        sellerTier: i,
+        sellerTier: o,
         isOnline: r,
-        statusText: l,
-        isVerified: a,
-        rating: h,
+        statusText: i,
+        isVerified: t,
+        rating: f,
         reviewCount: b,
         reviewText: q,
         totalSales: y
@@ -1358,22 +1364,22 @@ html:not(.light)
       var s;
       const e = document.querySelector(
         '[aria-roledescription="carousel"]:not(:has(a))'
-      ), t = ((s = document.querySelector("h1")) == null ? void 0 : s.textContent) || "";
+      ), a = ((s = document.querySelector("h1")) == null ? void 0 : s.textContent) || "";
       if (e) {
         const n = e.querySelector("img");
         if (n)
           return n.src;
       }
-      if (location.href.match(j.regexpLinks.items)) {
+      if (location.href.match(R.regexpLinks.items)) {
         const n = document.head.querySelector(
           'meta[property="og:image"]'
         );
         if (n)
           return n.content;
       }
-      if (document.querySelector('img[alt="' + t + '"]')) {
+      if (document.querySelector('img[alt="' + a + '"]')) {
         const n = document.querySelector(
-          'img[alt="' + t + '"]'
+          'img[alt="' + a + '"]'
         );
         if (n)
           return n.src;
@@ -1381,7 +1387,7 @@ html:not(.light)
       return null;
     }
   }
-  B({ name: "Іmproved registration / account creation flow v2", dev: "OS" }), E("exp_login_modal");
+  $({ name: "Іmproved registration / account creation flow v2", dev: "OS" }), B("exp_login_modal");
   class D {
     constructor() {
       this.eventsAborder = new AbortController(), this.popupChanges = new O(), this.init();
@@ -1392,20 +1398,20 @@ html:not(.light)
       });
     }
     async checkUserLoggedIn() {
-      var e, t;
-      return await $("nav button"), !((t = (e = document.querySelector("nav button:has(.fa-arrow-right)")) == null ? void 0 : e.textContent) != null && t.includes("Log in"));
+      var e, a;
+      return await E("nav button"), !((a = (e = document.querySelector("nav button:has(.fa-arrow-right)")) == null ? void 0 : e.textContent) != null && a.includes("Log in"));
     }
     async initChanges() {
       var e;
       (e = this.eventsAborder) == null || e.abort(), this.eventsAborder = new AbortController(), !location.href.includes("checkout") && (this.addStyles(), document.addEventListener(
         "click",
-        (t) => {
-          var i, o, r, l;
-          const s = t.target;
+        (a) => {
+          var o, d, r, i;
+          const s = a.target;
           if (s.closest("nav")) return;
           const n = s.closest("button:not(.crs-close-mobile)");
-          if (n && (n.querySelector(".fa-cart-shopping-fast") || (i = n == null ? void 0 : n.textContent) != null && i.includes("Buy") && !n.closest("a") && !n.closest('[data-state="open"]') || (o = n.parentElement) != null && o.classList.contains("fixed") && !n.querySelector(".fa-messages")) && (document.body.classList.add("crs-modal-open-waiting"), new O().init({ type: "buy", location: "PDP" })), n && n.classList.contains("text-foreground") && n.closest("[data-crs-modal-type]")) {
-            const a = n.closest("[data-crs-modal-type]"), m = a.dataset.bg || "", f = a.dataset.productTitle;
+          if (n && (n.querySelector(".fa-cart-shopping-fast") || (o = n == null ? void 0 : n.textContent) != null && o.includes("Buy") && !n.closest("a") && !n.closest('[data-state="open"]') || (d = n.parentElement) != null && d.classList.contains("fixed") && !n.querySelector(".fa-messages")) && (document.body.classList.add("crs-modal-open-waiting"), new O().init({ type: "buy", location: "PDP" })), n && n.classList.contains("text-foreground") && n.closest("[data-crs-modal-type]")) {
+            const t = n.closest("[data-crs-modal-type]"), m = t.dataset.bg || "", p = t.dataset.productTitle;
             document.body.classList.add("crs-modal-open-waiting"), this.popupChanges.init({
               type: n.closest("[data-crs-modal-type]").dataset.crsModalType,
               location: "PDP",
@@ -1413,26 +1419,26 @@ html:not(.light)
               skipAnimation: !1,
               // Skip animation when switching between login/signup
               initialData: {
-                title: f,
+                title: p,
                 imageSrc: m
               },
               preventAutoClickSignup: !0
             });
           }
           if ((n && n.querySelector(".fa-message") || n != null && n.querySelector(".fa-messages") && n.closest(".fixed")) && (document.body.classList.add("crs-modal-open-waiting"), this.popupChanges.init({ type: "message" })), n && n.querySelector(".fa-arrow-right") && n.closest("a")) {
-            const a = n.closest("a");
-            a && (document.body.classList.add("crs-modal-open-waiting"), this.popupChanges.init({
+            const t = n.closest("a");
+            t && (document.body.classList.add("crs-modal-open-waiting"), this.popupChanges.init({
               type: "buy",
               location: "PLP",
-              context: a
+              context: t
             }));
           }
-          if (n && ((l = (r = n.textContent) == null ? void 0 : r.toLowerCase()) != null && l.includes("buy")) && n.closest('[data-state="open"]')) {
-            const a = n.closest('[data-state="open"]');
+          if (n && ((i = (r = n.textContent) == null ? void 0 : r.toLowerCase()) != null && i.includes("buy")) && n.closest('[data-state="open"]')) {
+            const t = n.closest('[data-state="open"]');
             document.body.classList.add("crs-modal-open-waiting"), this.popupChanges.init({
               type: "buy",
               location: "MODAL",
-              context: a
+              context: t
             });
           }
         },
@@ -1442,8 +1448,8 @@ html:not(.light)
       ));
     }
     observePageChanges() {
-      var t;
-      (t = this.pageObserver) == null || t.disconnect();
+      var a;
+      (a = this.pageObserver) == null || a.disconnect();
       let e = location.href;
       this.pageObserver = new MutationObserver(() => {
         if (location.href !== e) {
@@ -1458,7 +1464,7 @@ html:not(.light)
     }
     addStyles() {
       const e = document.createElement("style");
-      e.id = "crs-styles", e.textContent = R, document.head.appendChild(e);
+      e.id = "crs-styles", e.textContent = z, document.head.appendChild(e);
     }
   }
   window.__crsTestInitialized || (window.__crsTestInitialized = !0, new D());
