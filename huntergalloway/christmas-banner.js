@@ -160,7 +160,7 @@
           </p>
         </div>
       `
-      ), window.getComputedStyle(l("header").elements[0]).position === "fixed" && (l(".crs-christmas-banner").elements[0].style.margin = "110px auto -80px");
+      ), window.getComputedStyle(l("header").elements[0]).position === "fixed" && window.innerWidth > 768 && (l(".crs-christmas-banner").elements[0].style.margin = "110px auto -80px");
     }
   }
   new d();
