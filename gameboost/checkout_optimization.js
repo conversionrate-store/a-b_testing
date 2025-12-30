@@ -670,5 +670,5 @@ section[aria-labelledby='section-two-heading']
       n.textContent = C, document.head.appendChild(n);
     }
   }
-  new S();
+  window.__crsTestInitialized || (window.__crsTestInitialized = !0, new S());
 })();
