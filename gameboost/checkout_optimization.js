@@ -1,34 +1,34 @@
 (function() {
   "use strict";
-  const b = (o, n, e, t = "") => {
+  const b = (r, n, e, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: o,
+      event_name: r,
       event_desc: n,
       event_type: e,
       event_loc: t
-    }), v(`Event: ${o} | ${n} | ${e} | ${t}`, "success");
-  }, c = (o) => new Promise((n) => {
-    const e = document.querySelector(o);
+    }), v(`Event: ${r} | ${n} | ${e} | ${t}`, "success");
+  }, c = (r) => new Promise((n) => {
+    const e = document.querySelector(r);
     e && n(e);
     const t = new MutationObserver(() => {
-      const i = document.querySelector(o);
+      const i = document.querySelector(r);
       i && (n(i), t.disconnect());
     });
     t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), y = ({ name: o, dev: n }) => {
+  }), y = ({ name: r, dev: n }) => {
     console.log(
-      `%c EXP: ${o} (DEV: ${n})`,
+      `%c EXP: ${r} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, f = (o) => {
+  }, f = (r) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", o, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, v = (o, n = "info") => {
+  }, v = (r, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -44,7 +44,7 @@
         e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${o}`, `${e} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${r}`, `${e} font-size: 16px; font-weight: 600`);
   }, w = `section[aria-labelledby='section-one-heading'] {
   grid-column: 2 / 3;
   grid-row: 1 / 1;
@@ -414,7 +414,7 @@ section[aria-labelledby='section-two-heading']
       ), e = this.container.querySelector(
         "[aria-labelledby='section-two-heading'] > div"
       );
-      console.log("Header:", n, e), n && (n.classList.add("crs-left-header"), e == null || e.prepend(n));
+      n && (n.classList.add("crs-left-header"), e == null || e.prepend(n));
     }
     changeWarrantyTextPosition() {
       if (!this.container) return;
@@ -502,12 +502,12 @@ section[aria-labelledby='section-two-heading']
           ), p = document.createElement("hr");
           p.className = "crs-product-benefits-divider", s && ((t = i[0].textContent) != null && t.includes("Instant delivery") && (i[0].querySelector("span").textContent = "Instant delivery"), s.append(i[0]), i != null && i[1] && s.append(p, i[1])), i.forEach((m) => {
             var g;
-            const u = m.querySelector(".fa-circle-question"), r = m.querySelector("span");
-            if (u && r) {
+            const u = m.querySelector(".fa-circle-question"), o = m.querySelector("span");
+            if (u && o) {
               const d = document.createElement("div");
-              d.className = "crs-product-benefit-with-tooltip", (g = r.parentElement) == null || g.insertBefore(d, r), d.appendChild(r), d.appendChild(u);
+              d.className = "crs-product-benefit-with-tooltip", (g = o.parentElement) == null || g.insertBefore(d, o), d.appendChild(o), d.appendChild(u);
             }
-            r != null && r.textContent.includes("14-days") && (r.innerHTML = r.innerHTML.replace(
+            o != null && o.textContent.includes("14-days") && (o.innerHTML = o.innerHTML.replace(
               "14-days",
               "14-days<br>"
             ));
