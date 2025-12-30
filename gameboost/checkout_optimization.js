@@ -281,7 +281,8 @@ div:has(> a[href*='trustpilot']) {
   background: hsl(var(--border));
 }
 
-ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary {
+ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary,
+ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary-hover {
   border-radius: 1111px;
 }
 
