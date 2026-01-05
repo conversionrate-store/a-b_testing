@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const y = (r, n, e, t = "") => {
+  const b = (r, n, e, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: r,
@@ -19,7 +19,7 @@
       childList: !0,
       subtree: !0
     });
-  }), b = ({ name: r, dev: n }) => {
+  }), y = ({ name: r, dev: n }) => {
     console.log(
       `%c EXP: ${r} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -356,7 +356,9 @@ section[aria-labelledby='section-two-heading']
   height: 100%;
   background: hsl(var(--background));
 }
-
+section[aria-labelledby='section-one-heading'] > div > button {
+  margin-top: 1.5rem;
+}
 @media (max-width: 1024px) {
   section[aria-labelledby='section-two-heading']
     dl
@@ -546,7 +548,7 @@ section[aria-labelledby='section-two-heading']
 .pm-more-button-container {
   display: none;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 /* More payment methods button */
@@ -647,7 +649,7 @@ section[aria-labelledby='section-two-heading']
       ), this.expandIfSelectedIsHidden(n, e);
       const t = e.querySelector(".pm-more-button");
       t == null || t.addEventListener("click", () => {
-        this.togglePaymentMethods(n, e), y("exp_payment_more", "More payment methods", "click", "Checkout");
+        this.togglePaymentMethods(n, e), b("exp_payment_more", "More payment methods", "click", "Checkout");
       });
     }
     expandIfSelectedIsHidden(n, e) {
@@ -671,7 +673,7 @@ section[aria-labelledby='section-two-heading']
     }
   }
   const C = "";
-  b({ name: "2nd iteration Optimized checkout flow", dev: "OS" }), f("exp_checkout");
+  y({ name: "2nd iteration Optimized checkout flow", dev: "OS" }), f("exp_checkout");
   class S {
     constructor() {
       this.init();
