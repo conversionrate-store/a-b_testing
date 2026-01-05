@@ -304,7 +304,8 @@ ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary-light {
   }
 }
 
-section[aria-labelledby='section-two-heading'] dl {
+section[aria-labelledby='section-two-heading'] dl:not(.sm\\:hidden) {
+  
   display: grid;
   gap: 0.81rem;
 }
@@ -416,6 +417,7 @@ section[aria-labelledby='section-two-heading']
       );
       !n || !t || (n.classList.add("crs-checkout-button"), t.appendChild(n), t.appendChild(e));
     }
+    // private hideSubtotal() {}
     changeHeaderPosition() {
       if (!this.container) return;
       const n = this.container.querySelector(
