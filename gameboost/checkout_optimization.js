@@ -218,14 +218,14 @@ div:has(> a[href*='trustpilot']) {
 }
 
 .crs-product-container > div > div:has(h3) p {
-  transform: translateY(-0.8lh);
+  transform: translateY(-0.9lh);
   font-size: 1.125rem;
   letter-spacing: -0.04688rem;
 }
 
 @media (max-width: 1024px) {
   .crs-product-container > div > div:has(h3) p {
-    transform: translateY(-1.2lh);
+    transform: translateY(-0.9lh);
     font-size: 1rem;
     letter-spacing: 0;
   }
