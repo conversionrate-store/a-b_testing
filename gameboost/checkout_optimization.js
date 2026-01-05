@@ -219,11 +219,15 @@ div:has(> a[href*='trustpilot']) {
 
 .crs-product-container > div > div:has(h3) p {
   transform: translateY(-0.8lh);
+  font-size: 1.125rem;
+  letter-spacing: -0.04688rem;
 }
 
 @media (max-width: 1024px) {
   .crs-product-container > div > div:has(h3) p {
     transform: translateY(-1.2lh);
+    font-size: 1rem;
+    letter-spacing: 0;
   }
 }
 
@@ -325,6 +329,41 @@ section[aria-labelledby='section-two-heading'] dl > div {
 }
 
 section[aria-labelledby='section-two-heading']
+  dl:not(.sm\\:hidden)
+  div:last-child
+  > div:first-child
+  * {
+  font-size: 1.125rem;
+  letter-spacing: -0.04688rem;
+}
+
+@media (max-width: 1024px) {
+  section[aria-labelledby='section-two-heading']
+    dl:not(.sm\\:hidden)
+    div:last-child
+    > div:first-child
+    * {
+    font-size: 1.125rem;
+    letter-spacing: 0;
+  }
+
+  section[aria-labelledby='section-two-heading']
+    dl:not(.sm\\:hidden)
+    div:last-child
+    > div:first-child
+    dt {
+    font-size: 1rem;
+  }
+
+  section[aria-labelledby='section-two-heading']
+    dl:not(.sm\\:hidden)
+    div:last-child
+    > div:first-child
+    dd {
+    font-size: 1.25rem;
+  }
+}
+section[aria-labelledby='section-two-heading']
   dl
   div:has(> [alt='Coins'])::before {
   content: 'Cashback: ';
@@ -372,9 +411,7 @@ section[aria-labelledby='section-one-heading'] > div > button {
     height: 100%;
     background: hsl(var(--card));
   }
-}
 
-@media (max-width: 1024px) {
   section[aria-labelledby='section-one-heading'] > div div:has(.fa-lock) {
     margin-bottom: 3.5rem;
   }
@@ -404,8 +441,8 @@ section[aria-labelledby='section-one-heading'] > div > button {
             ".crs-checkout-button:not([disabled])"
           );
           if (!a) return;
-          const s = e.textContent || "";
-          a.dataset.price = s.trim();
+          const d = e.textContent || "";
+          a.dataset.price = d.trim();
         }
       };
       t();
@@ -517,15 +554,15 @@ section[aria-labelledby='section-one-heading'] > div > button {
           class="crs-product-benefits"
         ></div>`
           );
-          const s = e.querySelector(
+          const d = e.querySelector(
             ".crs-product-benefits"
           ), p = document.createElement("hr");
-          p.className = "crs-product-benefits-divider", s && ((t = i[0].textContent) != null && t.includes("Instant delivery") && (i[0].querySelector("span").textContent = "Instant delivery"), s.append(i[0]), i != null && i[1] && s.append(p, i[1])), i.forEach((m) => {
+          p.className = "crs-product-benefits-divider", d && ((t = i[0].textContent) != null && t.includes("Instant delivery") && (i[0].querySelector("span").textContent = "Instant delivery"), d.append(i[0]), i != null && i[1] && d.append(p, i[1])), i.forEach((m) => {
             var g;
             const u = m.querySelector(".fa-circle-question"), o = m.querySelector("span");
             if (u && o) {
-              const d = document.createElement("div");
-              d.className = "crs-product-benefit-with-tooltip", (g = o.parentElement) == null || g.insertBefore(d, o), d.appendChild(o), d.appendChild(u);
+              const s = document.createElement("div");
+              s.className = "crs-product-benefit-with-tooltip", (g = o.parentElement) == null || g.insertBefore(s, o), s.appendChild(o), s.appendChild(u);
             }
             o != null && o.textContent.includes("Instant delivery") && (o.innerHTML = o.innerHTML.replace(
               "Instant delivery",
