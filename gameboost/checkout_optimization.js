@@ -258,6 +258,10 @@ div:has(> a[href*='trustpilot']) {
   justify-content: center;
   gap: 0.5rem;
 }
+
+.crs-product-benefits > div:has(.crs-product-benefit-with-tooltip) {
+  flex: 1.5;
+}
 .crs-product-benefits:has(> div:only-child) > div {
   flex-direction: row;
 }
@@ -297,11 +301,11 @@ div:has(> a[href*='trustpilot']) {
   background: hsl(var(--border));
 }
 
-@media (max-width: 410px) {
+/* @media (max-width: 410px) {
   .crs-product-benefits-divider {
     margin-inline: 2rem;
   }
-}
+} */
 ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary,
 ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary-hover {
   border-radius: 1111px;
