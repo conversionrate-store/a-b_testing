@@ -1,34 +1,34 @@
 (function() {
   "use strict";
-  const b = (o, n, e, t = "") => {
+  const b = (r, n, e, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: o,
+      event_name: r,
       event_desc: n,
       event_type: e,
       event_loc: t
-    }), v(`Event: ${o} | ${n} | ${e} | ${t}`, "success");
-  }, c = (o) => new Promise((n) => {
-    const e = document.querySelector(o);
+    }), v(`Event: ${r} | ${n} | ${e} | ${t}`, "success");
+  }, c = (r) => new Promise((n) => {
+    const e = document.querySelector(r);
     e && n(e);
     const t = new MutationObserver(() => {
-      const i = document.querySelector(o);
+      const i = document.querySelector(r);
       i && (n(i), t.disconnect());
     });
     t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), y = ({ name: o, dev: n }) => {
+  }), f = ({ name: r, dev: n }) => {
     console.log(
-      `%c EXP: ${o} (DEV: ${n})`,
+      `%c EXP: ${r} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, f = (o) => {
+  }, y = (r) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", o, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, v = (o, n = "info") => {
+  }, v = (r, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -44,7 +44,7 @@
         e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${o}`, `${e} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${r}`, `${e} font-size: 16px; font-weight: 600`);
   }, w = `html.blue {
   --primary-light-foreground: 217 100% 70%;
 }
@@ -159,10 +159,10 @@ div:has(> a[href*='trustpilot']) {
 
 @media (max-width: 1024px) {
   .crs-product-container {
-    display: grid;
+    display: grid !important;
     grid-template-columns: 6.375rem auto;
-    gap: 0 1rem;
-    padding-bottom: 1.12rem;
+    gap: 0 1rem !important;
+    padding-bottom: 1.12rem !important;
   }
 }
 .crs-product-container > img {
@@ -241,6 +241,7 @@ div:has(> a[href*='trustpilot']) {
 @media (max-width: 1024px) {
   .crs-product-benefits {
     margin-top: 1.5rem !important;
+    margin-inline: 1.5rem;
     grid-column: 1 / 3;
   }
 }
@@ -250,6 +251,7 @@ div:has(> a[href*='trustpilot']) {
 }
 
 .crs-product-benefits > div {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -284,6 +286,8 @@ div:has(> a[href*='trustpilot']) {
 .crs-product-benefits > div span {
   text-align: center;
   text-wrap: balance;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
 }
 
 .crs-product-benefits-divider {
@@ -293,6 +297,11 @@ div:has(> a[href*='trustpilot']) {
   background: hsl(var(--border));
 }
 
+@media (max-width: 410px) {
+  .crs-product-benefits-divider {
+    margin-inline: 2rem;
+  }
+}
 ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary,
 ul:has(.crs-product-container) + div.space-y-0 > .bg-secondary-hover {
   border-radius: 1111px;
@@ -576,15 +585,15 @@ section[aria-labelledby='section-one-heading'] > div > button {
           ), m = document.createElement("hr");
           m.className = "crs-product-benefits-divider", d && ((t = i[0].textContent) != null && t.includes("Instant delivery") && (i[0].querySelector("span").textContent = "Instant delivery"), d.append(i[0]), i != null && i[1] && d.append(m, i[1])), i.forEach((p) => {
             var g;
-            const u = p.querySelector(".fa-circle-question"), r = p.querySelector("span");
-            if (u && r) {
+            const u = p.querySelector(".fa-circle-question"), o = p.querySelector("span");
+            if (u && o) {
               const s = document.createElement("div");
-              s.className = "crs-product-benefit-with-tooltip", (g = r.parentElement) == null || g.insertBefore(s, r), s.appendChild(r), s.appendChild(u);
+              s.className = "crs-product-benefit-with-tooltip", (g = o.parentElement) == null || g.insertBefore(s, o), s.appendChild(o), s.appendChild(u);
             }
-            r != null && r.textContent.includes("Instant delivery") && (r.innerHTML = r.innerHTML.replace(
+            o != null && o.textContent.includes("Instant delivery") && (o.innerHTML = o.innerHTML.replace(
               "Instant delivery",
               "Instant<br> delivery"
-            )), r != null && r.textContent.includes("14-days") && (r.innerHTML = r.innerHTML.replace(
+            )), o != null && o.textContent.includes("14-days") && (o.innerHTML = o.innerHTML.replace(
               "14-days",
               "14-days<br>"
             ));
@@ -727,7 +736,7 @@ section[aria-labelledby='section-one-heading'] > div > button {
     }
   }
   const C = "";
-  y({ name: "2nd iteration Optimized checkout flow", dev: "OS" }), f("exp_checkout");
+  f({ name: "2nd iteration Optimized checkout flow", dev: "OS" }), y("exp_checkout");
   class S {
     constructor() {
       this.init();
