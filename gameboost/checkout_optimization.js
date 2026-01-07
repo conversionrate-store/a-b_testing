@@ -250,6 +250,12 @@ div:has(> a[href*='trustpilot']) {
   justify-content: flex-start;
 }
 
+@media (max-width: 1024px) {
+  .crs-product-benefits:has(> div:only-child) {
+    margin-inline: 0;
+  }
+}
+
 .crs-product-benefits > div {
   flex: 1;
   display: flex;
@@ -264,6 +270,7 @@ div:has(> a[href*='trustpilot']) {
 }
 .crs-product-benefits:has(> div:only-child) > div {
   flex-direction: row;
+  justify-content: flex-start;
 }
 
 .crs-product-benefits:has(> div:only-child) > div > div {
