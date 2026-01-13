@@ -376,8 +376,10 @@
       });
     }
     async checkCode() {
-      if (this.code.length === 4)
-        if (this.checkingCode = !0, (await this.checkCodeRequest("+1" + this.phoneNumber, this.code).then((n) => n.json())).success)
+      if (this.code.length === 4) {
+        this.checkingCode = !0;
+        const e = await this.checkCodeRequest("+1" + this.phoneNumber, this.code).then((n) => n.json());
+        if (e.success && e.verificationCheck.valid)
           d("Verification code correct"), this.phoneChecked = !0, document.querySelectorAll(".verification-input .input-field").forEach((n) => {
             n.disabled = !0;
           }), o(".verification-timer").elements[0].insertAdjacentHTML(
@@ -393,6 +395,7 @@
             '<div class="verification-error">Incorrect verification code</div>'
           );
         }
+      }
     }
     startTimer() {
       const e = document.querySelector(".timer-text"), n = document.querySelector(".resend-link");
