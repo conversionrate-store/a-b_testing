@@ -158,7 +158,7 @@
   </div>
 `
   ), b = `.hs_mobilephone .input {
-  position: relative;
+  display: none;
 }
 
 .crs-phone-input-container {
