@@ -1,19 +1,27 @@
 (function() {
   "use strict";
-  const p = (r) => new Promise((e) => {
-    const n = document.querySelector(r);
+  const p = (s, e, n, t = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: s,
+      event_desc: e,
+      event_type: n,
+      event_loc: t
+    }), l(`Event: ${s} | ${e} | ${n} | ${t}`, "success");
+  }, h = (s) => new Promise((e) => {
+    const n = document.querySelector(s);
     n && e(n);
     const t = new MutationObserver(() => {
-      const i = document.querySelector(r);
+      const i = document.querySelector(s);
       i && (e(i), t.disconnect());
     });
     t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), u = ({ name: r, dev: e }) => {
+  }), v = ({ name: s, dev: e }) => {
     console.log(
-      `%c EXP: ${r} (DEV: ${e})`,
+      `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -23,13 +31,13 @@
     }
     on(e, n, t) {
       return typeof n == "function" && (t = n, n = ""), this.elements.forEach((i) => {
-        i.addEventListener(e, function(s) {
+        i.addEventListener(e, function(o) {
           var c;
           if (n !== "") {
-            let l = (c = s.target) == null ? void 0 : c.closest(n);
-            l && (t == null || t.call(l, s));
+            let d = (c = o.target) == null ? void 0 : c.closest(n);
+            d && (t == null || t.call(d, o));
           } else
-            t == null || t.call(i, s);
+            t == null || t.call(i, o);
         });
       }), this;
     }
@@ -54,7 +62,7 @@
       return this;
     }
     style(e, n) {
-      const t = e.split("-").map((i, s) => s === 0 ? i : i.charAt(0).toUpperCase() + i.slice(1)).join("");
+      const t = e.split("-").map((i, o) => o === 0 ? i : i.charAt(0).toUpperCase() + i.slice(1)).join("");
       return this.elements.forEach(function(i) {
         i.style[t] = n;
       }), this;
@@ -79,11 +87,11 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const o = (r) => new a(r), v = (r) => {
+  const r = (s) => new a(s), m = (s) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", s, "variant_1"));
     }, 1e3);
-  }, d = (r, e = "info") => {
+  }, l = (s, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -99,8 +107,8 @@
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${r}`, `${n} font-size: 16px; font-weight: 600`);
-  }, h = {
+    console.log(`%c>>> ${s}`, `${n} font-size: 16px; font-weight: 600`);
+  }, f = {
     resendIcon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
 <path d="M12.2841 4.65524C11.3914 3.94094 10.3076 3.375 9 3.375C5.8934 3.375 3.375 5.89339 3.375 9C3.375 12.1066 5.8934 14.625 9 14.625C11.4412 14.625 13.521 13.0691 14.2985 10.8942C14.4379 10.5041 14.8313 10.2426 15.2365 10.3285L15.9701 10.484C16.3754 10.5699 16.6377 10.9697 16.5134 11.3648C15.509 14.5584 12.5262 16.875 9 16.875C4.65076 16.875 1.125 13.3492 1.125 9C1.125 4.65076 4.65076 1.125 9 1.125C11.0876 1.125 12.7137 2.07635 13.8834 3.05595L15.2197 1.71967C15.4342 1.50517 15.7568 1.441 16.037 1.55709C16.3173 1.67317 16.5 1.94665 16.5 2.25V6.375C16.5 6.78921 16.1642 7.125 15.75 7.125H11.625C11.3217 7.125 11.0482 6.94227 10.9321 6.66201C10.8161 6.38176 10.8802 6.05917 11.0947 5.84467L12.2841 4.65524Z" fill="#59B4E5"/>
 </svg>`,
@@ -114,7 +122,7 @@
 </clipPath>
 </defs>
 </svg>`
-  }, m = (
+  }, g = (
     /* HTML */
     `
   <div class="crs-phone-input-container">
@@ -122,7 +130,7 @@
     <button class="send-code-button">Send code</button>
   </div>
 `
-  ), g = (
+  ), b = (
     /* HTML */
     `
   <div class="verification-container">
@@ -152,12 +160,12 @@
       </div>
     </div>
     <div class="verification-resend">
-      ${h.resendIcon}
+      ${f.resendIcon}
       <span class="resend-link">Resend verification code</span>
     </div>
   </div>
 `
-  ), b = `.hs_mobilephone .input {
+  ), x = `.hs_mobilephone .input {
   display: none;
 }
 
@@ -326,37 +334,37 @@
   align-items: center;
   gap: 8px;
 }/*# sourceMappingURL=style.css.map */`;
-  u({ name: "Phone validation", dev: "YK" }), v("phone_validation");
-  class x {
+  v({ name: "Phone validation", dev: "YK" }), m("phone_validation");
+  class y {
     constructor() {
       this.timerInterval = null, this.timeLeft = 59, this.phoneChecked = !1, this.code = "", this.phoneNumber = "", this.checkingCode = !1, this.init();
     }
     async init() {
-      await p("body"), o("body").elements[0].insertAdjacentHTML("beforeend", `<style>${b}</style>`), await p(".hs_mobilephone"), o(".hs_mobilephone").elements[0].insertAdjacentHTML("beforeend", m), o(".hs_mobilephone").elements[0].insertAdjacentHTML("beforeend", g);
-      const e = o(".hs_mobilephone .crs-phone-input-field").elements[0];
-      o(".send-code-button").elements[0].addEventListener("click", async (n) => {
-        var s;
+      await h("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${x}</style>`), await h(".hs_mobilephone"), r(".hs_mobilephone").elements[0].insertAdjacentHTML("beforeend", g), r(".hs_mobilephone").elements[0].insertAdjacentHTML("beforeend", b);
+      const e = r(".hs_mobilephone .crs-phone-input-field").elements[0];
+      r(".send-code-button").elements[0].addEventListener("click", async (n) => {
+        var o;
         n.preventDefault();
         const t = e.value.trim();
         if (!this.isValidUSPhone(t)) {
-          d("Invalid US phone number");
+          l("Invalid US phone number");
           const c = document.querySelector(".phone-error") || document.querySelector(".hs_mobilephone .hs-error-msg");
           setTimeout(() => {
-            var l, f;
-            !c && !document.querySelector(".hs_mobilephone .hs-error-msg") && ((f = (l = e.parentElement) == null ? void 0 : l.parentElement) == null || f.insertAdjacentHTML(
+            var d, u;
+            !c && !document.querySelector(".hs_mobilephone .hs-error-msg") && ((u = (d = e.parentElement) == null ? void 0 : d.parentElement) == null || u.insertAdjacentHTML(
               "beforeend",
               '<div class="phone-error">Please enter a valid phone number</div>'
             ));
-          }, 500);
+          }, 500), p("exp_sms_invalid_phone", "Invalid phone", "click", "Schedule now Form");
           return;
         }
-        (s = document.querySelector(".phone-error")) == null || s.remove();
+        (o = document.querySelector(".phone-error")) == null || o.remove();
         const i = this.normalizeUSPhone(t);
-        d(`US phone validated: ${i}`), o(".verification-container").elements[0].classList.add("active"), this.getCodeRequest("+1" + i), this.phoneNumber = i, this.startTimer();
+        l(`US phone validated: ${i}`), r(".verification-container").elements[0].classList.add("active"), this.getCodeRequest("+1" + i), this.phoneNumber = i, this.startTimer(), p("exp_sms_send_code", "Send code", "click", "Schedule now Form");
       }), e.addEventListener("input", () => {
         var n;
         (n = document.querySelector(".phone-error")) == null || n.remove();
-      }), this.setupInputNavigation(), this.setupResendLink(), o(".hs_submit input").elements[0].addEventListener("click", async (n) => {
+      }), this.setupInputNavigation(), this.setupResendLink(), r(".hs_submit input").elements[0].addEventListener("click", async (n) => {
         this.phoneChecked;
       });
     }
@@ -365,13 +373,13 @@
       e.forEach((n, t) => {
         n.addEventListener("input", async (i) => {
           if (this.checkingCode) return;
-          const s = i.target;
-          s.value = s.value.replace(/[^0-9]/g, ""), s.value.length === 1 && t < e.length - 1 && e[t + 1].focus(), this.code = "", e.forEach((c) => {
+          const o = i.target;
+          o.value = o.value.replace(/[^0-9]/g, ""), o.value.length === 1 && t < e.length - 1 && e[t + 1].focus(), this.code = "", e.forEach((c) => {
             this.code += c.value;
           }), this.checkCode();
         }), n.addEventListener("keydown", (i) => {
-          const s = i.target;
-          i.key === "Backspace" && s.value === "" && t > 0 && e[t - 1].focus();
+          const o = i.target;
+          i.key === "Backspace" && o.value === "" && t > 0 && e[t - 1].focus();
         });
       });
     }
@@ -380,17 +388,17 @@
         this.checkingCode = !0;
         const e = await this.checkCodeRequest("+1" + this.phoneNumber, this.code).then((n) => n.json());
         if (e.success && e.verificationCheck.valid)
-          d("Verification code correct"), this.phoneChecked = !0, document.querySelectorAll(".verification-input .input-field").forEach((n) => {
+          l("Verification code correct"), this.phoneChecked = !0, document.querySelectorAll(".verification-input .input-field").forEach((n) => {
             n.disabled = !0;
-          }), o(".verification-timer").elements[0].insertAdjacentHTML(
+          }), r(".verification-timer").elements[0].insertAdjacentHTML(
             "afterend",
-            `<div class="phone-verified">${h.checkIcon} Phone verified</div>`
-          ), o(".verification-timer").style("display", "none"), o(".verification-resend").style("display", "none"), o(".hs_mobilephone .input input").elements[0].value = "+1" + this.phoneNumber, o(".hs_mobilephone .input input").elements[0].dispatchEvent(
+            `<div class="phone-verified">${f.checkIcon} Phone verified</div>`
+          ), r(".verification-timer").style("display", "none"), r(".verification-resend").style("display", "none"), r(".hs_mobilephone .input input").elements[0].value = "+1" + this.phoneNumber, r(".hs_mobilephone .input input").elements[0].dispatchEvent(
             new Event("input", { bubbles: !0 })
           );
         else {
           if (this.checkingCode = !1, document.querySelector(".verification-error")) return;
-          o(".verification-timer").elements[0].insertAdjacentHTML(
+          r(".verification-timer").elements[0].insertAdjacentHTML(
             "afterend",
             '<div class="verification-error">Incorrect verification code</div>'
           );
@@ -416,14 +424,14 @@
         const t = document.querySelectorAll(".verification-input .input-field");
         t.forEach((i) => {
           i.value = "";
-        }), t.length > 0 && t[0].focus(), d("Resend verification code clicked");
+        }), t.length > 0 && t[0].focus(), l("Resend verification code clicked");
       });
     }
     isValidUSPhone(e) {
       const n = this.normalizeUSPhone(e);
       if (n.length !== 10) return !1;
-      const t = n.slice(0, 3), i = n.slice(3, 6), s = n.slice(6);
-      return /^[2-9]\d{2}$/.test(t) && /^[2-9]\d{2}$/.test(i) && /^\d{4}$/.test(s);
+      const t = n.slice(0, 3), i = n.slice(3, 6), o = n.slice(6);
+      return /^[2-9]\d{2}$/.test(t) && /^[2-9]\d{2}$/.test(i) && /^\d{4}$/.test(o);
     }
     normalizeUSPhone(e) {
       const n = e.replace(/\D/g, "");
@@ -448,6 +456,6 @@
       });
     }
   }
-  new x();
+  new y();
 })();
 //# sourceMappingURL=index.js.map
