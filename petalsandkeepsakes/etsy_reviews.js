@@ -7,7 +7,7 @@
       event_desc: e,
       event_type: t,
       event_loc: s
-    }), b(`Event: ${i} | ${e} | ${t} | ${s}`, "success");
+    }), _(`Event: ${i} | ${e} | ${t} | ${s}`, "success");
   }, T = (i) => new Promise((e) => {
     const t = document.querySelector(i);
     t && e(t);
@@ -28,40 +28,40 @@
     const t = (s) => new Promise((n, o) => {
       {
         if (Array.from(document.scripts).map(
-          (c) => c.src.toLowerCase()
+          (a) => a.src.toLowerCase()
         ).includes(s.toLowerCase()))
-          return b(`Script ${s} allready downloaded!`, "success"), n("");
-        const a = document.createElement("script");
-        a.src = s, a.defer = !0, a.onload = n, a.onerror = o, document.head.appendChild(a);
+          return _(`Script ${s} allready downloaded!`, "success"), n("");
+        const c = document.createElement("script");
+        c.src = s, c.defer = !0, c.onload = n, c.onerror = o, document.head.appendChild(c);
       }
     });
     for (const s of i)
-      b(s), await t(s), b(`Loaded librari ${s}`);
-    b("All libraries loaded!", "success");
+      _(s), await t(s), _(`Loaded librari ${s}`);
+    _("All libraries loaded!", "success");
   }, Q = (i) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", i, "variant_1"));
     }, 1e3);
   }, Y = (i, e, t, s, n = 1e3, o = 0.5) => {
-    let r, a;
+    let r, c;
     r = new IntersectionObserver(
-      function(c) {
-        c[0].isIntersecting === !0 ? a = setTimeout(() => {
+      function(a) {
+        a[0].isIntersecting === !0 ? c = setTimeout(() => {
           u(
             e,
-            c[0].target.dataset.visible || s,
+            a[0].target.dataset.visible || s,
             "view",
             t
           ), r.disconnect();
-        }, n) : (b("Element is not fully visible", "warn"), clearTimeout(a));
+        }, n) : (_("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [o] }
     );
     {
-      const c = document.querySelector(i);
-      c && r.observe(c);
+      const a = document.querySelector(i);
+      a && r.observe(a);
     }
-  }, b = (i, e = "info") => {
+  }, _ = (i, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -348,7 +348,7 @@ body:has(.crs-reviews[data-open]) {
    */
   const $ = globalThis, V = (i) => i, R = $.trustedTypes, z = R ? R.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, se = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", N = Array.isArray, ne = (i) => N(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", O = `[ 	
 \f\r]`, k = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, D = /-->/g, q = />/g, y = RegExp(`>|${O}(?:([^\\s"'>=/]+)(${O}*=${O}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), U = /'/g, Z = /"/g, F = /^(?:script|style|textarea|title)$/i, ie = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), B = ie(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), _ = m.createTreeWalker(m, 129);
+\f\r"'\`<>=]|("|')|))|$)`, "g"), U = /'/g, Z = /"/g, F = /^(?:script|style|textarea|title)$/i, ie = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), B = ie(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), f = m.createTreeWalker(m, 129);
   function X(i, e) {
     if (!N(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
     return z !== void 0 ? z.createHTML(e) : e;
@@ -356,12 +356,12 @@ body:has(.crs-reviews[data-open]) {
   const re = (i, e) => {
     const t = i.length - 1, s = [];
     let n, o = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", r = k;
-    for (let a = 0; a < t; a++) {
-      const c = i[a];
+    for (let c = 0; c < t; c++) {
+      const a = i[c];
       let h, p, l = -1, g = 0;
-      for (; g < c.length && (r.lastIndex = g, p = r.exec(c), p !== null); ) g = r.lastIndex, r === k ? p[1] === "!--" ? r = D : p[1] !== void 0 ? r = q : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === D || r === q ? r = k : (r = y, n = void 0);
-      const w = r === y && i[a + 1].startsWith("/>") ? " " : "";
-      o += r === k ? c + se : l >= 0 ? (s.push(h), c.slice(0, l) + W + c.slice(l) + v + w) : c + v + (l === -2 ? a : w);
+      for (; g < a.length && (r.lastIndex = g, p = r.exec(a), p !== null); ) g = r.lastIndex, r === k ? p[1] === "!--" ? r = D : p[1] !== void 0 ? r = q : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === D || r === q ? r = k : (r = y, n = void 0);
+      const w = r === y && i[c + 1].startsWith("/>") ? " " : "";
+      o += r === k ? a + se : l >= 0 ? (s.push(h), a.slice(0, l) + W + a.slice(l) + v + w) : a + v + (l === -2 ? c : w);
     }
     return [X(i, o + (i[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), s];
   };
@@ -370,29 +370,29 @@ body:has(.crs-reviews[data-open]) {
       let n;
       this.parts = [];
       let o = 0, r = 0;
-      const a = e.length - 1, c = this.parts, [h, p] = re(e, t);
-      if (this.el = S.createElement(h, s), _.currentNode = this.el.content, t === 2 || t === 3) {
+      const c = e.length - 1, a = this.parts, [h, p] = re(e, t);
+      if (this.el = S.createElement(h, s), f.currentNode = this.el.content, t === 2 || t === 3) {
         const l = this.el.content.firstChild;
         l.replaceWith(...l.childNodes);
       }
-      for (; (n = _.nextNode()) !== null && c.length < a; ) {
+      for (; (n = f.nextNode()) !== null && a.length < c; ) {
         if (n.nodeType === 1) {
           if (n.hasAttributes()) for (const l of n.getAttributeNames()) if (l.endsWith(W)) {
             const g = p[r++], w = n.getAttribute(l).split(v), L = /([.?@])?(.*)/.exec(g);
-            c.push({ type: 1, index: o, name: L[2], strings: w, ctor: L[1] === "." ? ce : L[1] === "?" ? ae : L[1] === "@" ? le : I }), n.removeAttribute(l);
-          } else l.startsWith(v) && (c.push({ type: 6, index: o }), n.removeAttribute(l));
+            a.push({ type: 1, index: o, name: L[2], strings: w, ctor: L[1] === "." ? ae : L[1] === "?" ? ce : L[1] === "@" ? le : I }), n.removeAttribute(l);
+          } else l.startsWith(v) && (a.push({ type: 6, index: o }), n.removeAttribute(l));
           if (F.test(n.tagName)) {
             const l = n.textContent.split(v), g = l.length - 1;
             if (g > 0) {
               n.textContent = R ? R.emptyScript : "";
-              for (let w = 0; w < g; w++) n.append(l[w], A()), _.nextNode(), c.push({ type: 2, index: ++o });
+              for (let w = 0; w < g; w++) n.append(l[w], A()), f.nextNode(), a.push({ type: 2, index: ++o });
               n.append(l[g], A());
             }
           }
-        } else if (n.nodeType === 8) if (n.data === j) c.push({ type: 2, index: o });
+        } else if (n.nodeType === 8) if (n.data === j) a.push({ type: 2, index: o });
         else {
           let l = -1;
-          for (; (l = n.data.indexOf(v, l + 1)) !== -1; ) c.push({ type: 7, index: o }), l += v.length - 1;
+          for (; (l = n.data.indexOf(v, l + 1)) !== -1; ) a.push({ type: 7, index: o }), l += v.length - 1;
         }
         o++;
       }
@@ -402,12 +402,12 @@ body:has(.crs-reviews[data-open]) {
       return s.innerHTML = e, s;
     }
   }
-  function f(i, e, t = i, s) {
-    var r, a;
+  function b(i, e, t = i, s) {
+    var r, c;
     if (e === E) return e;
     let n = s !== void 0 ? (r = t._$Co) == null ? void 0 : r[s] : t._$Cl;
     const o = x(e) ? void 0 : e._$litDirective$;
-    return (n == null ? void 0 : n.constructor) !== o && ((a = n == null ? void 0 : n._$AO) == null || a.call(n, !1), o === void 0 ? n = void 0 : (n = new o(i), n._$AT(i, t, s)), s !== void 0 ? (t._$Co ?? (t._$Co = []))[s] = n : t._$Cl = n), n !== void 0 && (e = f(i, n._$AS(i, e.values), n, s)), e;
+    return (n == null ? void 0 : n.constructor) !== o && ((c = n == null ? void 0 : n._$AO) == null || c.call(n, !1), o === void 0 ? n = void 0 : (n = new o(i), n._$AT(i, t, s)), s !== void 0 ? (t._$Co ?? (t._$Co = []))[s] = n : t._$Cl = n), n !== void 0 && (e = b(i, n._$AS(i, e.values), n, s)), e;
   }
   class oe {
     constructor(e, t) {
@@ -421,16 +421,16 @@ body:has(.crs-reviews[data-open]) {
     }
     u(e) {
       const { el: { content: t }, parts: s } = this._$AD, n = ((e == null ? void 0 : e.creationScope) ?? m).importNode(t, !0);
-      _.currentNode = n;
-      let o = _.nextNode(), r = 0, a = 0, c = s[0];
-      for (; c !== void 0; ) {
-        if (r === c.index) {
+      f.currentNode = n;
+      let o = f.nextNode(), r = 0, c = 0, a = s[0];
+      for (; a !== void 0; ) {
+        if (r === a.index) {
           let h;
-          c.type === 2 ? h = new H(o, o.nextSibling, this, e) : c.type === 1 ? h = new c.ctor(o, c.name, c.strings, this, e) : c.type === 6 && (h = new de(o, this, e)), this._$AV.push(h), c = s[++a];
+          a.type === 2 ? h = new H(o, o.nextSibling, this, e) : a.type === 1 ? h = new a.ctor(o, a.name, a.strings, this, e) : a.type === 6 && (h = new de(o, this, e)), this._$AV.push(h), a = s[++c];
         }
-        r !== (c == null ? void 0 : c.index) && (o = _.nextNode(), r++);
+        r !== (a == null ? void 0 : a.index) && (o = f.nextNode(), r++);
       }
-      return _.currentNode = m, n;
+      return f.currentNode = m, n;
     }
     p(e) {
       let t = 0;
@@ -457,7 +457,7 @@ body:has(.crs-reviews[data-open]) {
       return this._$AB;
     }
     _$AI(e, t = this) {
-      e = f(this, e, t), x(e) ? e === d || e == null || e === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : e !== this._$AH && e !== E && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : ne(e) ? this.k(e) : this._(e);
+      e = b(this, e, t), x(e) ? e === d || e == null || e === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : e !== this._$AH && e !== E && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : ne(e) ? this.k(e) : this._(e);
     }
     O(e) {
       return this._$AA.parentNode.insertBefore(e, this._$AB);
@@ -473,8 +473,8 @@ body:has(.crs-reviews[data-open]) {
       const { values: t, _$litType$: s } = e, n = typeof s == "number" ? this._$AC(e) : (s.el === void 0 && (s.el = S.createElement(X(s.h, s.h[0]), this.options)), s);
       if (((o = this._$AH) == null ? void 0 : o._$AD) === n) this._$AH.p(t);
       else {
-        const r = new oe(n, this), a = r.u(this.options);
-        r.p(t), this.T(a), this._$AH = r;
+        const r = new oe(n, this), c = r.u(this.options);
+        r.p(t), this.T(c), this._$AH = r;
       }
     }
     _$AC(e) {
@@ -513,11 +513,11 @@ body:has(.crs-reviews[data-open]) {
     _$AI(e, t = this, s, n) {
       const o = this.strings;
       let r = !1;
-      if (o === void 0) e = f(this, e, t, 0), r = !x(e) || e !== this._$AH && e !== E, r && (this._$AH = e);
+      if (o === void 0) e = b(this, e, t, 0), r = !x(e) || e !== this._$AH && e !== E, r && (this._$AH = e);
       else {
-        const a = e;
-        let c, h;
-        for (e = o[0], c = 0; c < o.length - 1; c++) h = f(this, a[s + c], t, c), h === E && (h = this._$AH[c]), r || (r = !x(h) || h !== this._$AH[c]), h === d ? e = d : e !== d && (e += (h ?? "") + o[c + 1]), this._$AH[c] = h;
+        const c = e;
+        let a, h;
+        for (e = o[0], a = 0; a < o.length - 1; a++) h = b(this, c[s + a], t, a), h === E && (h = this._$AH[a]), r || (r = !x(h) || h !== this._$AH[a]), h === d ? e = d : e !== d && (e += (h ?? "") + o[a + 1]), this._$AH[a] = h;
       }
       r && !n && this.j(e);
     }
@@ -525,7 +525,7 @@ body:has(.crs-reviews[data-open]) {
       e === d ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
     }
   }
-  class ce extends I {
+  class ae extends I {
     constructor() {
       super(...arguments), this.type = 3;
     }
@@ -533,7 +533,7 @@ body:has(.crs-reviews[data-open]) {
       this.element[this.name] = e === d ? void 0 : e;
     }
   }
-  class ae extends I {
+  class ce extends I {
     constructor() {
       super(...arguments), this.type = 4;
     }
@@ -546,7 +546,7 @@ body:has(.crs-reviews[data-open]) {
       super(e, t, s, n, o), this.type = 5;
     }
     _$AI(e, t = this) {
-      if ((e = f(this, e, t, 0) ?? d) === E) return;
+      if ((e = b(this, e, t, 0) ?? d) === E) return;
       const s = this._$AH, n = e === d && s !== d || e.capture !== s.capture || e.once !== s.once || e.passive !== s.passive, o = e !== d && (s === d || n);
       n && this.element.removeEventListener(this.name, this, s), o && this.element.addEventListener(this.name, this, e), this._$AH = e;
     }
@@ -563,7 +563,7 @@ body:has(.crs-reviews[data-open]) {
       return this._$AM._$AU;
     }
     _$AI(e) {
-      f(this, e);
+      b(this, e);
     }
   }
   const M = $.litHtmlPolyfillSupport;
@@ -602,6 +602,7 @@ body:has(.crs-reviews[data-open]) {
 }
 
 .crs-reviews-badge {
+  font-family: Assistant, sans-serif;
   margin-bottom: 20px;
 }
 
@@ -631,6 +632,7 @@ body:has(.crs-reviews[data-open]) {
 }
 
 .crs-reviews-badge .crs-footer .crs-button {
+  font-family: Assistant, sans-serif;
   color: #5a31f4;
   text-align: center;
   font-size: 15px;
