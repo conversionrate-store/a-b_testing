@@ -348,7 +348,9 @@ body:has(.crs-reviews[data-open]) {
   transform: translate(-50%, -50%);
   width: 1066px;
   max-width: 90%;
+
   height: max-content;
+  max-height: 100dvh;
 }
 
 @media (max-width: 450px) {
@@ -356,6 +358,12 @@ body:has(.crs-reviews[data-open]) {
     max-width: 95%;
   }
 }
+
+.crs-reviews .reputon-reviews-body {
+  height: calc(100dvh - 93px - 64px - 70px);
+}
+
+
 
 .crs-reviews .crs-close {
   --close-btn-color: rgb(226, 226, 226);
