@@ -415,7 +415,10 @@ body:has(.crs-reviews[data-open]) {
   background: #00000091;
   opacity: 1;
 }
-`;
+
+.reputon-modal-content {
+  transform: scale(1) !important;
+}`;
   class de {
     constructor() {
       this.seenReviewIndexes = /* @__PURE__ */ new Set(), this.pendingReviewTimers = /* @__PURE__ */ new Map(), this.init();
