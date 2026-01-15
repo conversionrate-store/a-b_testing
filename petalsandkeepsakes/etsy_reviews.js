@@ -8,7 +8,7 @@
       event_type: t,
       event_loc: s
     }), b(`Event: ${i} | ${e} | ${t} | ${s}`, "success");
-  }, P = (i) => new Promise((e) => {
+  }, O = (i) => new Promise((e) => {
     const t = document.querySelector(i);
     t && e(t);
     const s = new MutationObserver(() => {
@@ -84,11 +84,11 @@
    * Copyright 2017 Google LLC
    * SPDX-License-Identifier: BSD-3-Clause
    */
-  const $ = globalThis, V = (i) => i, R = $.trustedTypes, z = R ? R.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, ee = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", O = Array.isArray, te = (i) => O(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", B = `[ 	
-\f\r]`, k = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, q = /-->/g, D = />/g, y = RegExp(`>|${B}(?:([^\\s"'>=/]+)(${B}*=${B}*(?:[^ 	
+  const $ = globalThis, V = (i) => i, R = $.trustedTypes, z = R ? R.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, ee = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", B = Array.isArray, te = (i) => B(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", M = `[ 	
+\f\r]`, k = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, D = /-->/g, q = />/g, y = RegExp(`>|${M}(?:([^\\s"'>=/]+)(${M}*=${M}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), U = /'/g, Z = /"/g, F = /^(?:script|style|textarea|title)$/i, se = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), T = se(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), _ = m.createTreeWalker(m, 129);
   function X(i, e) {
-    if (!O(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
+    if (!B(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
     return z !== void 0 ? z.createHTML(e) : e;
   }
   const ne = (i, e) => {
@@ -97,7 +97,7 @@
     for (let a = 0; a < t; a++) {
       const c = i[a];
       let h, p, l = -1, g = 0;
-      for (; g < c.length && (r.lastIndex = g, p = r.exec(c), p !== null); ) g = r.lastIndex, r === k ? p[1] === "!--" ? r = q : p[1] !== void 0 ? r = D : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === q || r === D ? r = k : (r = y, n = void 0);
+      for (; g < c.length && (r.lastIndex = g, p = r.exec(c), p !== null); ) g = r.lastIndex, r === k ? p[1] === "!--" ? r = D : p[1] !== void 0 ? r = q : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === D || r === q ? r = k : (r = y, n = void 0);
       const w = r === y && i[a + 1].startsWith("/>") ? " " : "";
       o += r === k ? c + ee : l >= 0 ? (s.push(h), c.slice(0, l) + W + c.slice(l) + v + w) : c + v + (l === -2 ? a : w);
     }
@@ -220,7 +220,7 @@
       return t === void 0 && G.set(e.strings, t = new S(e)), t;
     }
     k(e) {
-      O(this._$AH) || (this._$AH = [], this._$AR());
+      B(this._$AH) || (this._$AH = [], this._$AR());
       const t = this._$AH;
       let s, n = 0;
       for (const o of e) n === t.length ? t.push(s = new H(this.O(A()), this.O(A()), this, this.options)) : s = t[n], s._$AI(o), n++;
@@ -304,8 +304,8 @@
       f(this, e);
     }
   }
-  const M = $.litHtmlPolyfillSupport;
-  M == null || M(S, H), ($.litHtmlVersions ?? ($.litHtmlVersions = [])).push("3.3.2");
+  const P = $.litHtmlPolyfillSupport;
+  P == null || P(S, H), ($.litHtmlVersions ?? ($.litHtmlVersions = [])).push("3.3.2");
   const C = (i, e, t) => {
     const s = (t == null ? void 0 : t.renderBefore) ?? e;
     let n = s._$litPart$;
@@ -646,7 +646,7 @@ body:has(.crs-reviews[data-open]) {
     init() {
       this.render();
     }
-    render() {
+    async render() {
       const e = T`<style>
         ${he}
       </style>
@@ -661,13 +661,13 @@ body:has(.crs-reviews[data-open]) {
           data-font="theme"
           data-show-avatar="true"
         ></div>
-      </div>`, t = document.querySelector("product-form form"), s = t == null ? void 0 : t.querySelector(".dwa");
+      </div>`, t = await O("product-form form"), s = t == null ? void 0 : t.querySelector(".dwa");
       t && (C(e, t, {
         renderBefore: s ?? void 0
       }), this.changeWidgetBody(), this.changeWidgetFooter());
     }
     async changeWidgetBody() {
-      const e = await P(".crs-reviews-badge .reputon-reviews-body");
+      const e = await O(".crs-reviews-badge .reputon-reviews-body");
       if (!e) return;
       e.innerHTML = "";
       const t = T`<div class="crs-body">
@@ -708,7 +708,7 @@ body:has(.crs-reviews[data-open]) {
       );
     }
     async changeWidgetFooter() {
-      const e = await P(
+      const e = await O(
         ".crs-reviews-badge .reputon-reviews-footer"
       );
       if (!e) return;
