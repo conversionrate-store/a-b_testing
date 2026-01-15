@@ -8,7 +8,7 @@
       event_type: t,
       event_loc: s
     }), b(`Event: ${i} | ${e} | ${t} | ${s}`, "success");
-  }, O = (i) => new Promise((e) => {
+  }, L = (i) => new Promise((e) => {
     const t = document.querySelector(i);
     t && e(t);
     const s = new MutationObserver(() => {
@@ -78,243 +78,7 @@
         break;
     }
     console.log(`%c>>> ${i}`, `${t} font-size: 16px; font-weight: 600`);
-  };
-  /**
-   * @license
-   * Copyright 2017 Google LLC
-   * SPDX-License-Identifier: BSD-3-Clause
-   */
-  const $ = globalThis, V = (i) => i, R = $.trustedTypes, z = R ? R.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, ee = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", B = Array.isArray, te = (i) => B(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", M = `[ 	
-\f\r]`, k = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, D = /-->/g, q = />/g, y = RegExp(`>|${M}(?:([^\\s"'>=/]+)(${M}*=${M}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), U = /'/g, Z = /"/g, F = /^(?:script|style|textarea|title)$/i, se = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), T = se(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), _ = m.createTreeWalker(m, 129);
-  function X(i, e) {
-    if (!B(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
-    return z !== void 0 ? z.createHTML(e) : e;
-  }
-  const ne = (i, e) => {
-    const t = i.length - 1, s = [];
-    let n, o = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", r = k;
-    for (let a = 0; a < t; a++) {
-      const c = i[a];
-      let h, p, l = -1, g = 0;
-      for (; g < c.length && (r.lastIndex = g, p = r.exec(c), p !== null); ) g = r.lastIndex, r === k ? p[1] === "!--" ? r = D : p[1] !== void 0 ? r = q : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === D || r === q ? r = k : (r = y, n = void 0);
-      const w = r === y && i[a + 1].startsWith("/>") ? " " : "";
-      o += r === k ? c + ee : l >= 0 ? (s.push(h), c.slice(0, l) + W + c.slice(l) + v + w) : c + v + (l === -2 ? a : w);
-    }
-    return [X(i, o + (i[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), s];
-  };
-  class S {
-    constructor({ strings: e, _$litType$: t }, s) {
-      let n;
-      this.parts = [];
-      let o = 0, r = 0;
-      const a = e.length - 1, c = this.parts, [h, p] = ne(e, t);
-      if (this.el = S.createElement(h, s), _.currentNode = this.el.content, t === 2 || t === 3) {
-        const l = this.el.content.firstChild;
-        l.replaceWith(...l.childNodes);
-      }
-      for (; (n = _.nextNode()) !== null && c.length < a; ) {
-        if (n.nodeType === 1) {
-          if (n.hasAttributes()) for (const l of n.getAttributeNames()) if (l.endsWith(W)) {
-            const g = p[r++], w = n.getAttribute(l).split(v), L = /([.?@])?(.*)/.exec(g);
-            c.push({ type: 1, index: o, name: L[2], strings: w, ctor: L[1] === "." ? re : L[1] === "?" ? oe : L[1] === "@" ? ce : I }), n.removeAttribute(l);
-          } else l.startsWith(v) && (c.push({ type: 6, index: o }), n.removeAttribute(l));
-          if (F.test(n.tagName)) {
-            const l = n.textContent.split(v), g = l.length - 1;
-            if (g > 0) {
-              n.textContent = R ? R.emptyScript : "";
-              for (let w = 0; w < g; w++) n.append(l[w], A()), _.nextNode(), c.push({ type: 2, index: ++o });
-              n.append(l[g], A());
-            }
-          }
-        } else if (n.nodeType === 8) if (n.data === j) c.push({ type: 2, index: o });
-        else {
-          let l = -1;
-          for (; (l = n.data.indexOf(v, l + 1)) !== -1; ) c.push({ type: 7, index: o }), l += v.length - 1;
-        }
-        o++;
-      }
-    }
-    static createElement(e, t) {
-      const s = m.createElement("template");
-      return s.innerHTML = e, s;
-    }
-  }
-  function f(i, e, t = i, s) {
-    var r, a;
-    if (e === E) return e;
-    let n = s !== void 0 ? (r = t._$Co) == null ? void 0 : r[s] : t._$Cl;
-    const o = x(e) ? void 0 : e._$litDirective$;
-    return (n == null ? void 0 : n.constructor) !== o && ((a = n == null ? void 0 : n._$AO) == null || a.call(n, !1), o === void 0 ? n = void 0 : (n = new o(i), n._$AT(i, t, s)), s !== void 0 ? (t._$Co ?? (t._$Co = []))[s] = n : t._$Cl = n), n !== void 0 && (e = f(i, n._$AS(i, e.values), n, s)), e;
-  }
-  class ie {
-    constructor(e, t) {
-      this._$AV = [], this._$AN = void 0, this._$AD = e, this._$AM = t;
-    }
-    get parentNode() {
-      return this._$AM.parentNode;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    u(e) {
-      const { el: { content: t }, parts: s } = this._$AD, n = ((e == null ? void 0 : e.creationScope) ?? m).importNode(t, !0);
-      _.currentNode = n;
-      let o = _.nextNode(), r = 0, a = 0, c = s[0];
-      for (; c !== void 0; ) {
-        if (r === c.index) {
-          let h;
-          c.type === 2 ? h = new H(o, o.nextSibling, this, e) : c.type === 1 ? h = new c.ctor(o, c.name, c.strings, this, e) : c.type === 6 && (h = new ae(o, this, e)), this._$AV.push(h), c = s[++a];
-        }
-        r !== (c == null ? void 0 : c.index) && (o = _.nextNode(), r++);
-      }
-      return _.currentNode = m, n;
-    }
-    p(e) {
-      let t = 0;
-      for (const s of this._$AV) s !== void 0 && (s.strings !== void 0 ? (s._$AI(e, s, t), t += s.strings.length - 2) : s._$AI(e[t])), t++;
-    }
-  }
-  class H {
-    get _$AU() {
-      var e;
-      return ((e = this._$AM) == null ? void 0 : e._$AU) ?? this._$Cv;
-    }
-    constructor(e, t, s, n) {
-      this.type = 2, this._$AH = d, this._$AN = void 0, this._$AA = e, this._$AB = t, this._$AM = s, this.options = n, this._$Cv = (n == null ? void 0 : n.isConnected) ?? !0;
-    }
-    get parentNode() {
-      let e = this._$AA.parentNode;
-      const t = this._$AM;
-      return t !== void 0 && (e == null ? void 0 : e.nodeType) === 11 && (e = t.parentNode), e;
-    }
-    get startNode() {
-      return this._$AA;
-    }
-    get endNode() {
-      return this._$AB;
-    }
-    _$AI(e, t = this) {
-      e = f(this, e, t), x(e) ? e === d || e == null || e === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : e !== this._$AH && e !== E && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : te(e) ? this.k(e) : this._(e);
-    }
-    O(e) {
-      return this._$AA.parentNode.insertBefore(e, this._$AB);
-    }
-    T(e) {
-      this._$AH !== e && (this._$AR(), this._$AH = this.O(e));
-    }
-    _(e) {
-      this._$AH !== d && x(this._$AH) ? this._$AA.nextSibling.data = e : this.T(m.createTextNode(e)), this._$AH = e;
-    }
-    $(e) {
-      var o;
-      const { values: t, _$litType$: s } = e, n = typeof s == "number" ? this._$AC(e) : (s.el === void 0 && (s.el = S.createElement(X(s.h, s.h[0]), this.options)), s);
-      if (((o = this._$AH) == null ? void 0 : o._$AD) === n) this._$AH.p(t);
-      else {
-        const r = new ie(n, this), a = r.u(this.options);
-        r.p(t), this.T(a), this._$AH = r;
-      }
-    }
-    _$AC(e) {
-      let t = G.get(e.strings);
-      return t === void 0 && G.set(e.strings, t = new S(e)), t;
-    }
-    k(e) {
-      B(this._$AH) || (this._$AH = [], this._$AR());
-      const t = this._$AH;
-      let s, n = 0;
-      for (const o of e) n === t.length ? t.push(s = new H(this.O(A()), this.O(A()), this, this.options)) : s = t[n], s._$AI(o), n++;
-      n < t.length && (this._$AR(s && s._$AB.nextSibling, n), t.length = n);
-    }
-    _$AR(e = this._$AA.nextSibling, t) {
-      var s;
-      for ((s = this._$AP) == null ? void 0 : s.call(this, !1, !0, t); e !== this._$AB; ) {
-        const n = V(e).nextSibling;
-        V(e).remove(), e = n;
-      }
-    }
-    setConnected(e) {
-      var t;
-      this._$AM === void 0 && (this._$Cv = e, (t = this._$AP) == null || t.call(this, e));
-    }
-  }
-  class I {
-    get tagName() {
-      return this.element.tagName;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    constructor(e, t, s, n, o) {
-      this.type = 1, this._$AH = d, this._$AN = void 0, this.element = e, this.name = t, this._$AM = n, this.options = o, s.length > 2 || s[0] !== "" || s[1] !== "" ? (this._$AH = Array(s.length - 1).fill(new String()), this.strings = s) : this._$AH = d;
-    }
-    _$AI(e, t = this, s, n) {
-      const o = this.strings;
-      let r = !1;
-      if (o === void 0) e = f(this, e, t, 0), r = !x(e) || e !== this._$AH && e !== E, r && (this._$AH = e);
-      else {
-        const a = e;
-        let c, h;
-        for (e = o[0], c = 0; c < o.length - 1; c++) h = f(this, a[s + c], t, c), h === E && (h = this._$AH[c]), r || (r = !x(h) || h !== this._$AH[c]), h === d ? e = d : e !== d && (e += (h ?? "") + o[c + 1]), this._$AH[c] = h;
-      }
-      r && !n && this.j(e);
-    }
-    j(e) {
-      e === d ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
-    }
-  }
-  class re extends I {
-    constructor() {
-      super(...arguments), this.type = 3;
-    }
-    j(e) {
-      this.element[this.name] = e === d ? void 0 : e;
-    }
-  }
-  class oe extends I {
-    constructor() {
-      super(...arguments), this.type = 4;
-    }
-    j(e) {
-      this.element.toggleAttribute(this.name, !!e && e !== d);
-    }
-  }
-  class ce extends I {
-    constructor(e, t, s, n, o) {
-      super(e, t, s, n, o), this.type = 5;
-    }
-    _$AI(e, t = this) {
-      if ((e = f(this, e, t, 0) ?? d) === E) return;
-      const s = this._$AH, n = e === d && s !== d || e.capture !== s.capture || e.once !== s.once || e.passive !== s.passive, o = e !== d && (s === d || n);
-      n && this.element.removeEventListener(this.name, this, s), o && this.element.addEventListener(this.name, this, e), this._$AH = e;
-    }
-    handleEvent(e) {
-      var t;
-      typeof this._$AH == "function" ? this._$AH.call(((t = this.options) == null ? void 0 : t.host) ?? this.element, e) : this._$AH.handleEvent(e);
-    }
-  }
-  class ae {
-    constructor(e, t, s) {
-      this.element = e, this.type = 6, this._$AN = void 0, this._$AM = t, this.options = s;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    _$AI(e) {
-      f(this, e);
-    }
-  }
-  const P = $.litHtmlPolyfillSupport;
-  P == null || P(S, H), ($.litHtmlVersions ?? ($.litHtmlVersions = [])).push("3.3.2");
-  const C = (i, e, t) => {
-    const s = (t == null ? void 0 : t.renderBefore) ?? e;
-    let n = s._$litPart$;
-    if (n === void 0) {
-      const o = (t == null ? void 0 : t.renderBefore) ?? null;
-      s._$litPart$ = n = new H(e.insertBefore(A(), o), o, void 0, t ?? {});
-    }
-    return n._$AI(i), n;
-  }, le = `.crs-reviews {
+  }, ee = `.crs-reviews {
   position: fixed;
   top: 0;
   left: 0;
@@ -425,7 +189,7 @@ body:has(.crs-reviews[data-open]) {
 .reputon-modal-content {
   transform: scale(1) !important;
 }`;
-  class de {
+  class te {
     constructor() {
       this.seenReviewIndexes = /* @__PURE__ */ new Set(), this.pendingReviewTimers = /* @__PURE__ */ new Map(), this.init();
     }
@@ -433,8 +197,10 @@ body:has(.crs-reviews[data-open]) {
       this.render();
     }
     render() {
-      const e = T`<style>
-        ${le}
+      const e = (
+        /* HTML */
+        `<style>
+        ${ee}
       </style>
       <div class="crs-reviews" id="crs-reviews-dialog">
         <div class="crs-reviews-content">
@@ -451,10 +217,9 @@ body:has(.crs-reviews[data-open]) {
             data-show-avatar="true"
           ></div>
         </div>
-      </div>`;
-      C(e, document.body, {
-        renderBefore: null
-      }), this.eventListeners(), this.trackReviewVisibility();
+      </div>`
+      );
+      document.body.insertAdjacentHTML("beforeend", `${e}`), this.eventListeners(), this.trackReviewVisibility();
     }
     eventListeners() {
       const e = document.getElementById(
@@ -576,7 +341,242 @@ body:has(.crs-reviews[data-open]) {
       });
     }
   }
-  const N = "https://conversionrate-store.github.io/a-b_images/petalsandkeepsakes", he = `.crs-badge-text {
+  /**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+  const $ = globalThis, V = (i) => i, T = $.trustedTypes, z = T ? T.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, se = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", N = Array.isArray, ne = (i) => N(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", O = `[ 	
+\f\r]`, k = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, D = /-->/g, q = />/g, y = RegExp(`>|${O}(?:([^\\s"'>=/]+)(${O}*=${O}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), U = /'/g, Z = /"/g, F = /^(?:script|style|textarea|title)$/i, ie = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), B = ie(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), _ = m.createTreeWalker(m, 129);
+  function X(i, e) {
+    if (!N(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
+    return z !== void 0 ? z.createHTML(e) : e;
+  }
+  const re = (i, e) => {
+    const t = i.length - 1, s = [];
+    let n, o = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", r = k;
+    for (let a = 0; a < t; a++) {
+      const c = i[a];
+      let h, p, l = -1, g = 0;
+      for (; g < c.length && (r.lastIndex = g, p = r.exec(c), p !== null); ) g = r.lastIndex, r === k ? p[1] === "!--" ? r = D : p[1] !== void 0 ? r = q : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === D || r === q ? r = k : (r = y, n = void 0);
+      const w = r === y && i[a + 1].startsWith("/>") ? " " : "";
+      o += r === k ? c + se : l >= 0 ? (s.push(h), c.slice(0, l) + W + c.slice(l) + v + w) : c + v + (l === -2 ? a : w);
+    }
+    return [X(i, o + (i[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), s];
+  };
+  class S {
+    constructor({ strings: e, _$litType$: t }, s) {
+      let n;
+      this.parts = [];
+      let o = 0, r = 0;
+      const a = e.length - 1, c = this.parts, [h, p] = re(e, t);
+      if (this.el = S.createElement(h, s), _.currentNode = this.el.content, t === 2 || t === 3) {
+        const l = this.el.content.firstChild;
+        l.replaceWith(...l.childNodes);
+      }
+      for (; (n = _.nextNode()) !== null && c.length < a; ) {
+        if (n.nodeType === 1) {
+          if (n.hasAttributes()) for (const l of n.getAttributeNames()) if (l.endsWith(W)) {
+            const g = p[r++], w = n.getAttribute(l).split(v), C = /([.?@])?(.*)/.exec(g);
+            c.push({ type: 1, index: o, name: C[2], strings: w, ctor: C[1] === "." ? ce : C[1] === "?" ? ae : C[1] === "@" ? le : R }), n.removeAttribute(l);
+          } else l.startsWith(v) && (c.push({ type: 6, index: o }), n.removeAttribute(l));
+          if (F.test(n.tagName)) {
+            const l = n.textContent.split(v), g = l.length - 1;
+            if (g > 0) {
+              n.textContent = T ? T.emptyScript : "";
+              for (let w = 0; w < g; w++) n.append(l[w], A()), _.nextNode(), c.push({ type: 2, index: ++o });
+              n.append(l[g], A());
+            }
+          }
+        } else if (n.nodeType === 8) if (n.data === j) c.push({ type: 2, index: o });
+        else {
+          let l = -1;
+          for (; (l = n.data.indexOf(v, l + 1)) !== -1; ) c.push({ type: 7, index: o }), l += v.length - 1;
+        }
+        o++;
+      }
+    }
+    static createElement(e, t) {
+      const s = m.createElement("template");
+      return s.innerHTML = e, s;
+    }
+  }
+  function f(i, e, t = i, s) {
+    var r, a;
+    if (e === E) return e;
+    let n = s !== void 0 ? (r = t._$Co) == null ? void 0 : r[s] : t._$Cl;
+    const o = x(e) ? void 0 : e._$litDirective$;
+    return (n == null ? void 0 : n.constructor) !== o && ((a = n == null ? void 0 : n._$AO) == null || a.call(n, !1), o === void 0 ? n = void 0 : (n = new o(i), n._$AT(i, t, s)), s !== void 0 ? (t._$Co ?? (t._$Co = []))[s] = n : t._$Cl = n), n !== void 0 && (e = f(i, n._$AS(i, e.values), n, s)), e;
+  }
+  class oe {
+    constructor(e, t) {
+      this._$AV = [], this._$AN = void 0, this._$AD = e, this._$AM = t;
+    }
+    get parentNode() {
+      return this._$AM.parentNode;
+    }
+    get _$AU() {
+      return this._$AM._$AU;
+    }
+    u(e) {
+      const { el: { content: t }, parts: s } = this._$AD, n = ((e == null ? void 0 : e.creationScope) ?? m).importNode(t, !0);
+      _.currentNode = n;
+      let o = _.nextNode(), r = 0, a = 0, c = s[0];
+      for (; c !== void 0; ) {
+        if (r === c.index) {
+          let h;
+          c.type === 2 ? h = new H(o, o.nextSibling, this, e) : c.type === 1 ? h = new c.ctor(o, c.name, c.strings, this, e) : c.type === 6 && (h = new de(o, this, e)), this._$AV.push(h), c = s[++a];
+        }
+        r !== (c == null ? void 0 : c.index) && (o = _.nextNode(), r++);
+      }
+      return _.currentNode = m, n;
+    }
+    p(e) {
+      let t = 0;
+      for (const s of this._$AV) s !== void 0 && (s.strings !== void 0 ? (s._$AI(e, s, t), t += s.strings.length - 2) : s._$AI(e[t])), t++;
+    }
+  }
+  class H {
+    get _$AU() {
+      var e;
+      return ((e = this._$AM) == null ? void 0 : e._$AU) ?? this._$Cv;
+    }
+    constructor(e, t, s, n) {
+      this.type = 2, this._$AH = d, this._$AN = void 0, this._$AA = e, this._$AB = t, this._$AM = s, this.options = n, this._$Cv = (n == null ? void 0 : n.isConnected) ?? !0;
+    }
+    get parentNode() {
+      let e = this._$AA.parentNode;
+      const t = this._$AM;
+      return t !== void 0 && (e == null ? void 0 : e.nodeType) === 11 && (e = t.parentNode), e;
+    }
+    get startNode() {
+      return this._$AA;
+    }
+    get endNode() {
+      return this._$AB;
+    }
+    _$AI(e, t = this) {
+      e = f(this, e, t), x(e) ? e === d || e == null || e === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : e !== this._$AH && e !== E && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : ne(e) ? this.k(e) : this._(e);
+    }
+    O(e) {
+      return this._$AA.parentNode.insertBefore(e, this._$AB);
+    }
+    T(e) {
+      this._$AH !== e && (this._$AR(), this._$AH = this.O(e));
+    }
+    _(e) {
+      this._$AH !== d && x(this._$AH) ? this._$AA.nextSibling.data = e : this.T(m.createTextNode(e)), this._$AH = e;
+    }
+    $(e) {
+      var o;
+      const { values: t, _$litType$: s } = e, n = typeof s == "number" ? this._$AC(e) : (s.el === void 0 && (s.el = S.createElement(X(s.h, s.h[0]), this.options)), s);
+      if (((o = this._$AH) == null ? void 0 : o._$AD) === n) this._$AH.p(t);
+      else {
+        const r = new oe(n, this), a = r.u(this.options);
+        r.p(t), this.T(a), this._$AH = r;
+      }
+    }
+    _$AC(e) {
+      let t = G.get(e.strings);
+      return t === void 0 && G.set(e.strings, t = new S(e)), t;
+    }
+    k(e) {
+      N(this._$AH) || (this._$AH = [], this._$AR());
+      const t = this._$AH;
+      let s, n = 0;
+      for (const o of e) n === t.length ? t.push(s = new H(this.O(A()), this.O(A()), this, this.options)) : s = t[n], s._$AI(o), n++;
+      n < t.length && (this._$AR(s && s._$AB.nextSibling, n), t.length = n);
+    }
+    _$AR(e = this._$AA.nextSibling, t) {
+      var s;
+      for ((s = this._$AP) == null ? void 0 : s.call(this, !1, !0, t); e !== this._$AB; ) {
+        const n = V(e).nextSibling;
+        V(e).remove(), e = n;
+      }
+    }
+    setConnected(e) {
+      var t;
+      this._$AM === void 0 && (this._$Cv = e, (t = this._$AP) == null || t.call(this, e));
+    }
+  }
+  class R {
+    get tagName() {
+      return this.element.tagName;
+    }
+    get _$AU() {
+      return this._$AM._$AU;
+    }
+    constructor(e, t, s, n, o) {
+      this.type = 1, this._$AH = d, this._$AN = void 0, this.element = e, this.name = t, this._$AM = n, this.options = o, s.length > 2 || s[0] !== "" || s[1] !== "" ? (this._$AH = Array(s.length - 1).fill(new String()), this.strings = s) : this._$AH = d;
+    }
+    _$AI(e, t = this, s, n) {
+      const o = this.strings;
+      let r = !1;
+      if (o === void 0) e = f(this, e, t, 0), r = !x(e) || e !== this._$AH && e !== E, r && (this._$AH = e);
+      else {
+        const a = e;
+        let c, h;
+        for (e = o[0], c = 0; c < o.length - 1; c++) h = f(this, a[s + c], t, c), h === E && (h = this._$AH[c]), r || (r = !x(h) || h !== this._$AH[c]), h === d ? e = d : e !== d && (e += (h ?? "") + o[c + 1]), this._$AH[c] = h;
+      }
+      r && !n && this.j(e);
+    }
+    j(e) {
+      e === d ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
+    }
+  }
+  class ce extends R {
+    constructor() {
+      super(...arguments), this.type = 3;
+    }
+    j(e) {
+      this.element[this.name] = e === d ? void 0 : e;
+    }
+  }
+  class ae extends R {
+    constructor() {
+      super(...arguments), this.type = 4;
+    }
+    j(e) {
+      this.element.toggleAttribute(this.name, !!e && e !== d);
+    }
+  }
+  class le extends R {
+    constructor(e, t, s, n, o) {
+      super(e, t, s, n, o), this.type = 5;
+    }
+    _$AI(e, t = this) {
+      if ((e = f(this, e, t, 0) ?? d) === E) return;
+      const s = this._$AH, n = e === d && s !== d || e.capture !== s.capture || e.once !== s.once || e.passive !== s.passive, o = e !== d && (s === d || n);
+      n && this.element.removeEventListener(this.name, this, s), o && this.element.addEventListener(this.name, this, e), this._$AH = e;
+    }
+    handleEvent(e) {
+      var t;
+      typeof this._$AH == "function" ? this._$AH.call(((t = this.options) == null ? void 0 : t.host) ?? this.element, e) : this._$AH.handleEvent(e);
+    }
+  }
+  class de {
+    constructor(e, t, s) {
+      this.element = e, this.type = 6, this._$AN = void 0, this._$AM = t, this.options = s;
+    }
+    get _$AU() {
+      return this._$AM._$AU;
+    }
+    _$AI(e) {
+      f(this, e);
+    }
+  }
+  const M = $.litHtmlPolyfillSupport;
+  M == null || M(S, H), ($.litHtmlVersions ?? ($.litHtmlVersions = [])).push("3.3.2");
+  const P = (i, e, t) => {
+    const s = (t == null ? void 0 : t.renderBefore) ?? e;
+    let n = s._$litPart$;
+    if (n === void 0) {
+      const o = (t == null ? void 0 : t.renderBefore) ?? null;
+      s._$litPart$ = n = new H(e.insertBefore(A(), o), o, void 0, t ?? {});
+    }
+    return n._$AI(i), n;
+  }, I = "https://conversionrate-store.github.io/a-b_images/petalsandkeepsakes", he = `.crs-badge-text {
   margin-top: 10px;
   color: rgba(18, 18, 18, 0.75);
   text-align: center;
@@ -647,7 +647,7 @@ body:has(.crs-reviews[data-open]) {
       this.render();
     }
     async render() {
-      const e = T`<style>
+      const e = B`<style>
         ${he}
       </style>
       <div class="crs-badge-text">We are proud makers · Etsy Star Seller</div>
@@ -661,46 +661,46 @@ body:has(.crs-reviews[data-open]) {
           data-font="theme"
           data-show-avatar="true"
         ></div>
-      </div>`, t = await O("product-form form"), s = t == null ? void 0 : t.querySelector(".dwa");
-      t && (C(e, t, {
+      </div>`, t = await L("product-form form"), s = t == null ? void 0 : t.querySelector(".dwa");
+      t && (P(e, t, {
         renderBefore: s ?? void 0
       }), this.changeWidgetBody(), this.changeWidgetFooter());
     }
     async changeWidgetBody() {
-      const e = await O(".crs-reviews-badge .reputon-reviews-body");
+      const e = await L(".crs-reviews-badge .reputon-reviews-body");
       if (!e) return;
       e.innerHTML = "";
-      const t = T`<div class="crs-body">
+      const t = B`<div class="crs-body">
       <img
-        src="${N}/widget_1.webp"
+        src="${I}/widget_1.webp"
         alt=""
         width="60"
         height="60"
         loading="lazy"
       />
       <img
-        src="${N}/widget_2.webp"
+        src="${I}/widget_2.webp"
         alt=""
         width="60"
         height="60"
         loading="lazy"
       />
       <img
-        src="${N}/widget_3.webp"
+        src="${I}/widget_3.webp"
         alt=""
         width="60"
         height="60"
         loading="lazy"
       />
       <img
-        src="${N}/widget_4.webp"
+        src="${I}/widget_4.webp"
         alt=""
         width="60"
         height="60"
         loading="lazy"
       />
     </div>`;
-      C(t, e), Y(
+      P(t, e), Y(
         ".crs-reviews-badge",
         "exp_etsy_badge_view",
         "Etsy Reviews Badge",
@@ -708,17 +708,17 @@ body:has(.crs-reviews[data-open]) {
       );
     }
     async changeWidgetFooter() {
-      const e = await O(
+      const e = await L(
         ".crs-reviews-badge .reputon-reviews-footer"
       );
       if (!e) return;
       e.innerHTML = "";
-      const t = T`<div class="crs-footer">
+      const t = B`<div class="crs-footer">
       <button type="button" class="crs-button" id="crs-reviews-trigger">
         See All Reviews
       </button>
     </div>`;
-      C(t, e);
+      P(t, e);
       const s = document.getElementById("crs-reviews-trigger");
       s == null || s.addEventListener("click", () => {
         document.getElementById(
@@ -741,7 +741,7 @@ body:has(.crs-reviews[data-open]) {
       location.pathname.includes("/products/") && (this.addStyles(), this.initChanges());
     }
     initChanges() {
-      new de(), new pe(), this.loadDependencies();
+      new te(), new pe(), this.loadDependencies();
     }
     async loadDependencies() {
       try {
