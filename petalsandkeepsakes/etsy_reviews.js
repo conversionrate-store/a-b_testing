@@ -342,6 +342,7 @@ body:has(.crs-reviews[data-open]) {
 }
 
 .crs-reviews-content {
+  --max-height: 100dvh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -350,17 +351,18 @@ body:has(.crs-reviews[data-open]) {
   max-width: 90%;
 
   height: max-content;
-  max-height: 100dvh;
+  max-height: 90%;
+  max-height: var(--max-height);
 }
 
 @media (max-width: 450px) {
   .crs-reviews-content {
-    max-width: 95%;
+    --max-height: 90dvh;
   }
 }
 
 .crs-reviews .reputon-reviews-body {
-  height: calc(100dvh - 93px - 64px - 70px);
+  height: calc(var(--max-height) - 93px - 64px - 70px);
 }
 
 
