@@ -8,7 +8,7 @@
       event_type: t,
       event_loc: s
     }), b(`Event: ${i} | ${e} | ${t} | ${s}`, "success");
-  }, L = (i) => new Promise((e) => {
+  }, T = (i) => new Promise((e) => {
     const t = document.querySelector(i);
     t && e(t);
     const s = new MutationObserver(() => {
@@ -346,7 +346,7 @@ body:has(.crs-reviews[data-open]) {
    * Copyright 2017 Google LLC
    * SPDX-License-Identifier: BSD-3-Clause
    */
-  const $ = globalThis, V = (i) => i, T = $.trustedTypes, z = T ? T.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, se = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", N = Array.isArray, ne = (i) => N(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", O = `[ 	
+  const $ = globalThis, V = (i) => i, R = $.trustedTypes, z = R ? R.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, se = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", N = Array.isArray, ne = (i) => N(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", O = `[ 	
 \f\r]`, k = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, D = /-->/g, q = />/g, y = RegExp(`>|${O}(?:([^\\s"'>=/]+)(${O}*=${O}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), U = /'/g, Z = /"/g, F = /^(?:script|style|textarea|title)$/i, ie = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), B = ie(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), _ = m.createTreeWalker(m, 129);
   function X(i, e) {
@@ -378,13 +378,13 @@ body:has(.crs-reviews[data-open]) {
       for (; (n = _.nextNode()) !== null && c.length < a; ) {
         if (n.nodeType === 1) {
           if (n.hasAttributes()) for (const l of n.getAttributeNames()) if (l.endsWith(W)) {
-            const g = p[r++], w = n.getAttribute(l).split(v), C = /([.?@])?(.*)/.exec(g);
-            c.push({ type: 1, index: o, name: C[2], strings: w, ctor: C[1] === "." ? ce : C[1] === "?" ? ae : C[1] === "@" ? le : R }), n.removeAttribute(l);
+            const g = p[r++], w = n.getAttribute(l).split(v), L = /([.?@])?(.*)/.exec(g);
+            c.push({ type: 1, index: o, name: L[2], strings: w, ctor: L[1] === "." ? ce : L[1] === "?" ? ae : L[1] === "@" ? le : I }), n.removeAttribute(l);
           } else l.startsWith(v) && (c.push({ type: 6, index: o }), n.removeAttribute(l));
           if (F.test(n.tagName)) {
             const l = n.textContent.split(v), g = l.length - 1;
             if (g > 0) {
-              n.textContent = T ? T.emptyScript : "";
+              n.textContent = R ? R.emptyScript : "";
               for (let w = 0; w < g; w++) n.append(l[w], A()), _.nextNode(), c.push({ type: 2, index: ++o });
               n.append(l[g], A());
             }
@@ -500,7 +500,7 @@ body:has(.crs-reviews[data-open]) {
       this._$AM === void 0 && (this._$Cv = e, (t = this._$AP) == null || t.call(this, e));
     }
   }
-  class R {
+  class I {
     get tagName() {
       return this.element.tagName;
     }
@@ -525,7 +525,7 @@ body:has(.crs-reviews[data-open]) {
       e === d ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
     }
   }
-  class ce extends R {
+  class ce extends I {
     constructor() {
       super(...arguments), this.type = 3;
     }
@@ -533,7 +533,7 @@ body:has(.crs-reviews[data-open]) {
       this.element[this.name] = e === d ? void 0 : e;
     }
   }
-  class ae extends R {
+  class ae extends I {
     constructor() {
       super(...arguments), this.type = 4;
     }
@@ -541,7 +541,7 @@ body:has(.crs-reviews[data-open]) {
       this.element.toggleAttribute(this.name, !!e && e !== d);
     }
   }
-  class le extends R {
+  class le extends I {
     constructor(e, t, s, n, o) {
       super(e, t, s, n, o), this.type = 5;
     }
@@ -576,7 +576,7 @@ body:has(.crs-reviews[data-open]) {
       s._$litPart$ = n = new H(e.insertBefore(A(), o), o, void 0, t ?? {});
     }
     return n._$AI(i), n;
-  }, I = "https://conversionrate-store.github.io/a-b_images/petalsandkeepsakes", he = `.crs-badge-text {
+  }, C = "https://conversionrate-store.github.io/a-b_images/petalsandkeepsakes", he = `.crs-badge-text {
   margin-top: 10px;
   color: rgba(18, 18, 18, 0.75);
   text-align: center;
@@ -661,39 +661,39 @@ body:has(.crs-reviews[data-open]) {
           data-font="theme"
           data-show-avatar="true"
         ></div>
-      </div>`, t = await L("product-form form"), s = t == null ? void 0 : t.querySelector(".dwa");
+      </div>`, t = await T("product-form form"), s = t == null ? void 0 : t.querySelector(".dwa");
       t && (P(e, t, {
         renderBefore: s ?? void 0
       }), this.changeWidgetBody(), this.changeWidgetFooter());
     }
     async changeWidgetBody() {
-      const e = await L(".crs-reviews-badge .reputon-reviews-body");
+      const e = await T(".crs-reviews-badge .reputon-reviews-body");
       if (!e) return;
       e.innerHTML = "";
       const t = B`<div class="crs-body">
       <img
-        src="${I}/widget_1.webp"
+        src="${C}/widget_1.webp"
         alt=""
         width="60"
         height="60"
         loading="lazy"
       />
       <img
-        src="${I}/widget_2.webp"
+        src="${C}/widget_2.webp"
         alt=""
         width="60"
         height="60"
         loading="lazy"
       />
       <img
-        src="${I}/widget_3.webp"
+        src="${C}/widget_3.webp"
         alt=""
         width="60"
         height="60"
         loading="lazy"
       />
       <img
-        src="${I}/widget_4.webp"
+        src="${C}/widget_4.webp"
         alt=""
         width="60"
         height="60"
@@ -708,7 +708,7 @@ body:has(.crs-reviews[data-open]) {
       );
     }
     async changeWidgetFooter() {
-      const e = await L(
+      const e = await T(
         ".crs-reviews-badge .reputon-reviews-footer"
       );
       if (!e) return;
@@ -737,8 +737,8 @@ body:has(.crs-reviews[data-open]) {
     constructor() {
       this.init();
     }
-    init() {
-      location.pathname.includes("/products/") && (this.addStyles(), this.initChanges());
+    async init() {
+      location.pathname.includes("/products/") && (await T("sticky-header"), this.addStyles(), this.initChanges());
     }
     initChanges() {
       new te(), new pe(), this.loadDependencies();
