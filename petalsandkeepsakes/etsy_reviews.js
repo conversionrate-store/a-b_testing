@@ -318,7 +318,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999999999;
+  z-index: 2147483647;
   display: none;
   align-items: center;
   justify-content: center;
@@ -408,7 +408,7 @@ body:has(.crs-reviews[data-open]) {
 }
 
 .reputon-etsy-reviews-widget .reputon-modal {
-  z-index: 9999999999;
+  z-index: 2147483647;
 }
 
 .reputon-modal-backdrop {
