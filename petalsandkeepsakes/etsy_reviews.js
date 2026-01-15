@@ -84,7 +84,7 @@
    * Copyright 2017 Google LLC
    * SPDX-License-Identifier: BSD-3-Clause
    */
-  const $ = globalThis, V = (i) => i, R = $.trustedTypes, z = R ? R.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", g = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + g, ee = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", O = Array.isArray, te = (i) => O(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", B = `[ 	
+  const $ = globalThis, V = (i) => i, R = $.trustedTypes, z = R ? R.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, W = "$lit$", v = `lit$${Math.random().toFixed(9).slice(2)}$`, j = "?" + v, ee = `<${j}>`, m = document, A = () => m.createComment(""), x = (i) => i === null || typeof i != "object" && typeof i != "function", O = Array.isArray, te = (i) => O(i) || typeof (i == null ? void 0 : i[Symbol.iterator]) == "function", B = `[ 	
 \f\r]`, k = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, q = /-->/g, D = />/g, y = RegExp(`>|${B}(?:([^\\s"'>=/]+)(${B}*=${B}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), U = /'/g, Z = /"/g, F = /^(?:script|style|textarea|title)$/i, se = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), T = se(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), _ = m.createTreeWalker(m, 129);
   function X(i, e) {
@@ -96,10 +96,10 @@
     let n, o = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", r = k;
     for (let a = 0; a < t; a++) {
       const c = i[a];
-      let h, p, l = -1, v = 0;
-      for (; v < c.length && (r.lastIndex = v, p = r.exec(c), p !== null); ) v = r.lastIndex, r === k ? p[1] === "!--" ? r = q : p[1] !== void 0 ? r = D : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === q || r === D ? r = k : (r = y, n = void 0);
+      let h, p, l = -1, g = 0;
+      for (; g < c.length && (r.lastIndex = g, p = r.exec(c), p !== null); ) g = r.lastIndex, r === k ? p[1] === "!--" ? r = q : p[1] !== void 0 ? r = D : p[2] !== void 0 ? (F.test(p[2]) && (n = RegExp("</" + p[2], "g")), r = y) : p[3] !== void 0 && (r = y) : r === y ? p[0] === ">" ? (r = n ?? k, l = -1) : p[1] === void 0 ? l = -2 : (l = r.lastIndex - p[2].length, h = p[1], r = p[3] === void 0 ? y : p[3] === '"' ? Z : U) : r === Z || r === U ? r = y : r === q || r === D ? r = k : (r = y, n = void 0);
       const w = r === y && i[a + 1].startsWith("/>") ? " " : "";
-      o += r === k ? c + ee : l >= 0 ? (s.push(h), c.slice(0, l) + W + c.slice(l) + g + w) : c + g + (l === -2 ? a : w);
+      o += r === k ? c + ee : l >= 0 ? (s.push(h), c.slice(0, l) + W + c.slice(l) + v + w) : c + v + (l === -2 ? a : w);
     }
     return [X(i, o + (i[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), s];
   };
@@ -116,21 +116,21 @@
       for (; (n = _.nextNode()) !== null && c.length < a; ) {
         if (n.nodeType === 1) {
           if (n.hasAttributes()) for (const l of n.getAttributeNames()) if (l.endsWith(W)) {
-            const v = p[r++], w = n.getAttribute(l).split(g), L = /([.?@])?(.*)/.exec(v);
+            const g = p[r++], w = n.getAttribute(l).split(v), L = /([.?@])?(.*)/.exec(g);
             c.push({ type: 1, index: o, name: L[2], strings: w, ctor: L[1] === "." ? re : L[1] === "?" ? oe : L[1] === "@" ? ce : I }), n.removeAttribute(l);
-          } else l.startsWith(g) && (c.push({ type: 6, index: o }), n.removeAttribute(l));
+          } else l.startsWith(v) && (c.push({ type: 6, index: o }), n.removeAttribute(l));
           if (F.test(n.tagName)) {
-            const l = n.textContent.split(g), v = l.length - 1;
-            if (v > 0) {
+            const l = n.textContent.split(v), g = l.length - 1;
+            if (g > 0) {
               n.textContent = R ? R.emptyScript : "";
-              for (let w = 0; w < v; w++) n.append(l[w], A()), _.nextNode(), c.push({ type: 2, index: ++o });
-              n.append(l[v], A());
+              for (let w = 0; w < g; w++) n.append(l[w], A()), _.nextNode(), c.push({ type: 2, index: ++o });
+              n.append(l[g], A());
             }
           }
         } else if (n.nodeType === 8) if (n.data === j) c.push({ type: 2, index: o });
         else {
           let l = -1;
-          for (; (l = n.data.indexOf(g, l + 1)) !== -1; ) c.push({ type: 7, index: o }), l += g.length - 1;
+          for (; (l = n.data.indexOf(v, l + 1)) !== -1; ) c.push({ type: 7, index: o }), l += v.length - 1;
         }
         o++;
       }
@@ -322,8 +322,8 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 0;
   border: none;
   background: #00000091;
