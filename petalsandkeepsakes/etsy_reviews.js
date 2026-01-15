@@ -365,6 +365,12 @@ body:has(.crs-reviews[data-open]) {
   height: calc(var(--max-height) - 93px - 64px - 70px);
 }
 
+@media (max-width: 748px) {
+  .crs-reviews .reputon-reviews-body {
+    max-height: 600px;
+  }
+}
+
 
 
 .crs-reviews .crs-close {
