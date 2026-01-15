@@ -357,7 +357,7 @@ body:has(.crs-reviews[data-open]) {
 
 @media (max-width: 450px) {
   .crs-reviews-content {
-    --max-height: 90dvh;
+    --max-height: 95dvh;
   }
 }
 
