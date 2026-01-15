@@ -452,7 +452,9 @@ body:has(.crs-reviews[data-open]) {
           ></div>
         </div>
       </div>`;
-      C(e, document.body), this.eventListeners(), this.trackReviewVisibility();
+      C(e, document.body, {
+        renderBefore: null
+      }), this.eventListeners(), this.trackReviewVisibility();
     }
     eventListeners() {
       const e = document.getElementById(
@@ -472,9 +474,7 @@ body:has(.crs-reviews[data-open]) {
           "click",
           "Etsy Reviews Popup"
         )), s.closest(".reputon-product-image") || s.closest(".reputon-reviews-images-container")) {
-          const o = (n = s.closest("[data-crs-review-index]")) == null ? void 0 : n.getAttribute(
-            "data-crs-review-index"
-          );
+          const o = (n = s.closest("[data-crs-review-index]")) == null ? void 0 : n.getAttribute("data-crs-review-index");
           u(
             "exp_etsy_popup_image_click",
             "Review " + (o ? `${o}` : ""),
