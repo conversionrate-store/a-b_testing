@@ -215,6 +215,10 @@
 }
 #home_quiz .step_4 form p.crs_phone_error.active {
   display: block;
+}
+
+.step_4 #phone {
+  display: none;
 }/*# sourceMappingURL=style.css.map */`, a = (o, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
@@ -329,7 +333,6 @@
   <div class="crs_phone_validation">
     <div class="crs_phone_container">
       <div class="crs_phone_input_wrapper">
-        <label class="crs_phone_label">Enter your Phone</label>
         <div class="crs_phone_input_container">
           <input type="tel" class="crs_phone_input" placeholder="+61 4XX XXX XXX" maxlength="15" />
           <button class="crs_send_code_btn">Send code</button>
