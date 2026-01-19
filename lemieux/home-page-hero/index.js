@@ -145,7 +145,6 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   display: none;
 }
 
-
 .crs-hero {
   --gap: 8px;
   --header-height: 62px;
@@ -316,7 +315,9 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
       'clothing horse'
       'footwear horse';
   }
-
+  [data-hero='winter-essentials'] img {
+    object-position: 85% 0;
+  }
   [data-hero='clothing'] {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -357,11 +358,11 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   }
 
   [data-hero='winter-essentials'] .crs-block-title .main-title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 
   [data-hero='winter-essentials'] .crs-block-title .sub-title {
-    font-size: 0.5rem;
+    font-size: 0.65rem;
   }
 
   [data-hero='winter-essentials'] .crs-block-btn {
