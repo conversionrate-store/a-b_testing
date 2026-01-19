@@ -284,7 +284,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   font-size: 1.125rem;
   letter-spacing: 0.0625rem;
   box-shadow: #00000080 0 2px 5px;
-  transform: scale(1.1) translate(0.7rem, 0)
+  transform: scale(1.1) translate(0.7rem, 0);
 }
 
 [data-crs-title='Popular Categories'] {
@@ -328,6 +328,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   [data-hero='clothing'] img {
     height: auto;
     aspect-ratio: 412 / 409;
+    object-position: 0 -19px;
   }
   [data-hero='footwear'] {
     grid-column: 1 / 2;
