@@ -384,7 +384,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   data-crs-no-hide
   >${t}</icms-component
 >`
-  ), G = class G {
+  ), H = class H {
     constructor() {
       this.eventsAborter = null;
     }
@@ -398,9 +398,9 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async addNewHeroSection() {
       try {
-        const e = await W(G.TARGET_SELECTOR);
+        const e = await W(H.TARGET_SELECTOR);
         if (!e) {
-          console.warn(`Target ${G.TARGET_SELECTOR} not found`);
+          console.warn(`Target ${H.TARGET_SELECTOR} not found`);
           return;
         }
         (() => {
@@ -411,7 +411,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
       }
     }
     replaceHeroContent(e) {
-      const s = e.querySelector(G.HERO_CLASS);
+      const s = e.querySelector(H.HERO_CLASS);
       s && s.remove(), this.eventsAborter && this.eventsAborter.abort(), e.insertAdjacentHTML(
         "beforebegin",
         Ye(this.renderNewHeroSection())
@@ -533,21 +533,21 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
         "exp_hp_hero_view_1",
         "Home page Hero Section",
         e.dataset.title || "",
-        G.VISIBILITY_THRESHOLD
+        H.VISIBILITY_THRESHOLD
       );
     }
     addStyles() {
-      if (document.getElementById(G.STYLES_ID)) return;
+      if (document.getElementById(H.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = G.STYLES_ID, e.textContent = Fe, document.head.appendChild(e);
+      e.id = H.STYLES_ID, e.textContent = Fe, document.head.appendChild(e);
     }
     destroy() {
       var e;
-      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), (e = document == null ? void 0 : document.querySelector(G.HERO_CLASS)) == null || e.remove();
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), console.log("Removing Hero section"), (e = document == null ? void 0 : document.querySelector(H.HERO_CLASS)) == null || e.remove();
     }
   };
-  G.STYLES_ID = "crs-hero-styles", G.VISIBILITY_THRESHOLD = 0, G.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", G.HERO_CLASS = ".crs-hero-section";
-  let ce = G;
+  H.STYLES_ID = "crs-hero-styles", H.VISIBILITY_THRESHOLD = 0, H.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", H.HERO_CLASS = ".crs-hero-section";
+  let ce = H;
   const We = `[data-crs-hide='true']:not([data-crs-no-hide]) {
   display: none !important;
 }
@@ -3889,7 +3889,7 @@ page-component-hero-image:has(vimeo-player) {
       !r || r.destroyed || y.target === this && (r.wrapperEl.removeEventListener("transitionend", r.onSlideToWrapperTransitionEnd), r.onSlideToWrapperTransitionEnd = null, delete r.onSlideToWrapperTransitionEnd, r.transitionEnd(s, f));
     }), r.wrapperEl.addEventListener("transitionend", r.onSlideToWrapperTransitionEnd)), !0;
   }
-  function Gt(t = 0, e, s = !0, i) {
+  function Ht(t = 0, e, s = !0, i) {
     typeof t == "string" && (t = parseInt(t, 10));
     const n = this;
     if (n.destroyed) return;
@@ -3933,7 +3933,7 @@ page-component-hero-image:has(vimeo-player) {
       n.slideTo(l, e, s, i);
     }), n;
   }
-  function Ht(t, e = !0, s) {
+  function Gt(t, e = !0, s) {
     const i = this, {
       enabled: n,
       params: r,
@@ -4034,8 +4034,8 @@ page-component-hero-image:has(vimeo-player) {
   }
   var Ft = {
     slideTo: qt,
-    slideToLoop: Gt,
-    slideNext: Ht,
+    slideToLoop: Ht,
+    slideNext: Gt,
     slidePrev: Vt,
     slideReset: Nt,
     slideToClosest: jt,
@@ -4700,7 +4700,7 @@ page-component-hero-image:has(vimeo-player) {
   }
   var ws = {
     checkOverflow: vs
-  }, Ge = {
+  }, He = {
     init: !0,
     direction: "horizontal",
     oneWayMovement: !1,
@@ -4852,7 +4852,7 @@ page-component-hero-image:has(vimeo-player) {
     checkOverflow: ws,
     classes: ms
   }, Se = {};
-  class H {
+  class G {
     constructor(...e) {
       let s, i;
       e.length === 1 && e[0].constructor && Object.prototype.toString.call(e[0]).slice(8, -1) === "Object" ? i = e[0] : [s, i] = e, i || (i = {}), i = q({}, i), s && !i.el && (i.el = s);
@@ -4863,7 +4863,7 @@ page-component-hero-image:has(vimeo-player) {
           const m = q({}, i, {
             el: u
           });
-          a.push(new H(m));
+          a.push(new G(m));
         }), a;
       }
       const r = this;
@@ -4882,7 +4882,7 @@ page-component-hero-image:has(vimeo-player) {
           emit: r.emit.bind(r)
         });
       });
-      const o = q({}, Ge, l);
+      const o = q({}, He, l);
       return r.params = q({}, o, Se, i), r.originalParams = q({}, r.params), r.passedParams = q({}, i), r.params && r.params.on && Object.keys(r.params.on).forEach((a) => {
         r.on(a, r.params.on[a]);
       }), r.params && r.params.onAny && r.onAny(r.params.onAny), Object.assign(r, {
@@ -5142,23 +5142,23 @@ page-component-hero-image:has(vimeo-player) {
       return Se;
     }
     static get defaults() {
-      return Ge;
+      return He;
     }
     static installModule(e) {
-      H.prototype.__modules__ || (H.prototype.__modules__ = []);
-      const s = H.prototype.__modules__;
+      G.prototype.__modules__ || (G.prototype.__modules__ = []);
+      const s = G.prototype.__modules__;
       typeof e == "function" && s.indexOf(e) < 0 && s.push(e);
     }
     static use(e) {
-      return Array.isArray(e) ? (e.forEach((s) => H.installModule(s)), H) : (H.installModule(e), H);
+      return Array.isArray(e) ? (e.forEach((s) => G.installModule(s)), G) : (G.installModule(e), G);
     }
   }
   Object.keys(xe).forEach((t) => {
     Object.keys(xe[t]).forEach((e) => {
-      H.prototype[e] = xe[t][e];
+      G.prototype[e] = xe[t][e];
     });
-  }), H.use([gt, ht]);
-  function He(t, e, s, i) {
+  }), G.use([gt, ht]);
+  function Ge(t, e, s, i) {
     return t.params.createElements && Object.keys(i).forEach((n) => {
       if (!s[n] && s.auto === !0) {
         let r = N(t.el, `.${i[n]}`)[0];
@@ -5218,7 +5218,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     function u() {
       const d = t.params.navigation;
-      if (t.params.navigation = He(t, t.originalParams.navigation, t.params.navigation, {
+      if (t.params.navigation = Ge(t, t.originalParams.navigation, t.params.navigation, {
         nextEl: "swiper-button-next",
         prevEl: "swiper-button-prev"
       }), !(d.nextEl || d.prevEl)) return;
@@ -5444,7 +5444,7 @@ page-component-hero-image:has(vimeo-player) {
       }), c.type !== "custom" && i("paginationRender", h[0]);
     }
     function d() {
-      t.params.pagination = He(t, t.originalParams.pagination, t.params.pagination, {
+      t.params.pagination = Ge(t, t.originalParams.pagination, t.params.pagination, {
         el: "swiper-pagination"
       });
       const c = t.params.pagination;
@@ -5609,7 +5609,7 @@ page-component-hero-image:has(vimeo-player) {
       );
       if (!e) return;
       const s = e.querySelector(".swiper");
-      s && (this.swiperInstance = new H(s, {
+      s && (this.swiperInstance = new G(s, {
         modules: [ys, xs],
         loop: !0,
         centeredSlides: !0,
@@ -5706,8 +5706,8 @@ page-component-hero-image:has(vimeo-player) {
       }), this.initComponents();
     }
     initComponents() {
-      (location.pathname === "/" || location.pathname === "/us/") && this.waitAutoInitData().then(() => {
-        this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.discipline.init(), this.outfitBuilder.init();
+      location.pathname === "/" && this.waitAutoInitData().then(() => {
+        console.log("Initializing homepage components"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.discipline.init(), this.outfitBuilder.init();
       });
     }
     waitAutoInitData() {
@@ -5719,7 +5719,7 @@ page-component-hero-image:has(vimeo-player) {
       });
     }
     destroyComponents() {
-      this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.discipline.destroy();
+      console.log("Destroying components"), this.hero.destroy(), this.hideSections.destroy(), this.popularCategories.destroy(), this.outfitBuilder.destroy(), this.discipline.destroy();
     }
     interceptHistoryAPI(e) {
       new MutationObserver(() => {
