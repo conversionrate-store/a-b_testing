@@ -5531,12 +5531,12 @@ page-component-hero-image:has(vimeo-player) {
         },
         {
           selector: ".model-carousel-prev-3",
-          eventId: "exp_hp_discipline_nav_prev",
+          eventId: "exp_hp_discipline_prev",
           eventDesc: "Previous"
         },
         {
           selector: ".model-carousel-next-3",
-          eventId: "exp_hp_discipline_nav_next",
+          eventId: "exp_hp_discipline_next",
           eventDesc: "Next"
         }
       ];
@@ -5645,8 +5645,8 @@ page-component-hero-image:has(vimeo-player) {
           "click",
           () => {
             this.swiperInstance.slideToLoop(n), this.updatePaginationState(s), J(
-              "exp_hp_discipline_pagination_click",
-              `Page ${n + 1}`,
+              "exp_hp_discipline_pag_click",
+              `Slide ${n + 1}`,
               "click",
               "Home Page Discipline"
             );
