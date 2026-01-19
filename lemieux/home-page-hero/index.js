@@ -1238,6 +1238,7 @@ page-component-hero-image:has(vimeo-player) {
 @media (max-width: 768px) {
   [data-crs-title='Popular Categories'] page-component-category-carousel {
     margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 }`, Q = class Q {
     constructor() {
