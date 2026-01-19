@@ -8,7 +8,7 @@
       event_type: s,
       event_loc: i
     }), j(`Event: ${t} | ${e} | ${s} | ${i}`, "success");
-  }, W = (t) => new Promise((e) => {
+  }, R = (t) => new Promise((e) => {
     const s = document.querySelector(t);
     s && e(s);
     const i = new MutationObserver(() => {
@@ -77,7 +77,7 @@
     display: none;
   }
 }
-`, R = "https://ab.conversionrate.store/lemieux/home-page-hero/img", oe = [
+`, F = "https://ab.conversionrate.store/lemieux/home-page-hero/img", oe = [
     {
       id: "winter-essentials",
       href: "/new-in/winter-essentials",
@@ -87,8 +87,8 @@
         href: "/new-in/winter-essentials"
       },
       images: {
-        desktop: `${R}/hero_winter_essential.webp`,
-        mob: `${R}/hero_winter_essentials_mob.webp`
+        desktop: `${F}/hero_winter_essential.webp`,
+        mob: `${F}/hero_winter_essentials_mob.webp`
       }
     },
     {
@@ -96,8 +96,8 @@
       href: "/clothing",
       title: "Clothing",
       images: {
-        desktop: `${R}/hero_clothing.webp`,
-        mob: `${R}/hero_clothing.webp`
+        desktop: `${F}/hero_clothing.webp`,
+        mob: `${F}/hero_clothing.webp`
       }
     },
     {
@@ -105,8 +105,8 @@
       href: "/horsewear",
       title: "Horse",
       images: {
-        desktop: `${R}/hero_horse.webp`,
-        mob: `${R}/hero_horse.webp`
+        desktop: `${F}/hero_horse.webp`,
+        mob: `${F}/hero_horse.webp`
       }
     },
     {
@@ -114,8 +114,8 @@
       href: "/footwear",
       title: "Footwear",
       images: {
-        desktop: `${R}/hero_footwear.webp`,
-        mob: `${R}/hero_footwear.webp`
+        desktop: `${F}/hero_footwear.webp`,
+        mob: `${F}/hero_footwear.webp`
       }
     }
   ];
@@ -244,7 +244,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
 }
 
 [data-hero='winter-essentials'] .crs-hero-block-text {
-  left: 5%;
+  left: 3%;
   bottom: 50%;
   transform: translateY(50%);
   width: max-content;
@@ -259,6 +259,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
 [data-hero='winter-essentials'] .crs-block-title .sub-title {
   text-transform: capitalize;
   font-family: source-sans-3, sans-serif;
+  font-size: 1.5rem;
   line-height: 1;
   text-align: left;
 }
@@ -267,7 +268,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   margin: 0;
   text-transform: uppercase;
   text-align: left;
-  font-size: 2em;
+  font-size: 3.2rem;
   line-height: 1;
 }
 
@@ -278,11 +279,12 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
 }
 
 [data-hero='winter-essentials'] .crs-block-btn {
-  margin-top: 1.5em;
+  margin-top: 2.5rem;
   padding-inline: 3rem;
   font-size: 1.125rem;
   letter-spacing: 0.0625rem;
   box-shadow: #00000080 0 2px 5px;
+  transform: scale(1.1) translate(0.7rem, 0)
 }
 
 [data-crs-title='Popular Categories'] {
@@ -398,7 +400,8 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async addNewHeroSection() {
       try {
-        const e = await W($.TARGET_SELECTOR);
+        await R('[data-crs-marker="winter-sale"]');
+        const e = await R($.TARGET_SELECTOR);
         if (!e) {
           console.warn(`Target ${$.TARGET_SELECTOR} not found`);
           return;
@@ -582,7 +585,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async hideSection() {
       try {
-        const e = await W(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
+        const e = await R(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
           ":scope > icms-component"
         );
         if (!s) {
@@ -623,7 +626,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async changeSectionCopy() {
       try {
-        const e = await W(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
+        const e = await R(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
           ":scope > icms-component"
         );
         s == null || s.forEach((i) => {
@@ -662,7 +665,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
           this.hideSection();
         }, K.RESIZE_DEBOUNCE_MS);
       };
-      this.resizeObserver = new ResizeObserver(e), W(".page-view-boundary").then((s) => {
+      this.resizeObserver = new ResizeObserver(e), R(".page-view-boundary").then((s) => {
         s && this.resizeObserver && this.resizeObserver.observe(s);
       }).catch((s) => {
         V(s, "Setup resize observer");
@@ -1248,7 +1251,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     async modifySection() {
       try {
-        const e = await W(".crs-hero-section");
+        const e = await R(".crs-hero-section");
         e && (e.insertAdjacentHTML("afterend", Xe), this.initSlider());
       } catch (e) {
         V(e, "Error modifying Popular Categories section");
@@ -2041,7 +2044,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     async render() {
       try {
-        const e = await W('[data-crs-marker="winter-sale"]'), s = document.querySelector(".crs-outfit-section");
+        const e = await R('[data-crs-marker="winter-sale"]'), s = document.querySelector(".crs-outfit-section");
         s && (this.eventsAborter && this.eventsAborter.abort(), s.remove());
         const i = Ke;
         if (e)
@@ -3126,7 +3129,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     return s;
   }
-  function F(t, e) {
+  function Y(t, e) {
     return D().getComputedStyle(t, null).getPropertyValue(e);
   }
   function re(t) {
@@ -3352,7 +3355,7 @@ page-component-hero-image:has(vimeo-player) {
     const t = this;
     let e, s;
     const i = t.el;
-    typeof t.params.width < "u" && t.params.width !== null ? e = t.params.width : e = i.clientWidth, typeof t.params.height < "u" && t.params.height !== null ? s = t.params.height : s = i.clientHeight, !(e === 0 && t.isHorizontal() || s === 0 && t.isVertical()) && (e = e - parseInt(F(i, "padding-left") || 0, 10) - parseInt(F(i, "padding-right") || 0, 10), s = s - parseInt(F(i, "padding-top") || 0, 10) - parseInt(F(i, "padding-bottom") || 0, 10), Number.isNaN(e) && (e = 0), Number.isNaN(s) && (s = 0), Object.assign(t, {
+    typeof t.params.width < "u" && t.params.width !== null ? e = t.params.width : e = i.clientWidth, typeof t.params.height < "u" && t.params.height !== null ? s = t.params.height : s = i.clientHeight, !(e === 0 && t.isHorizontal() || s === 0 && t.isVertical()) && (e = e - parseInt(Y(i, "padding-left") || 0, 10) - parseInt(Y(i, "padding-right") || 0, 10), s = s - parseInt(Y(i, "padding-top") || 0, 10) - parseInt(Y(i, "padding-bottom") || 0, 10), Number.isNaN(e) && (e = 0), Number.isNaN(s) && (s = 0), Object.assign(t, {
       width: e,
       height: s,
       size: t.isHorizontal() ? e : s
@@ -3389,7 +3392,7 @@ page-component-hero-image:has(vimeo-player) {
     for (let S = 0; S < m; S += 1) {
       y = 0;
       const _ = u[S];
-      if (!(_ && (C && t.grid.updateSlide(S, _, u), F(_, "display") === "none"))) {
+      if (!(_ && (C && t.grid.updateSlide(S, _, u), Y(_, "display") === "none"))) {
         if (o && s.slidesPerView === "auto")
           s.virtual.slidesPerViewAutoSlideSize && (y = s.virtual.slidesPerViewAutoSlideSize), y && _ && (s.roundLengths && (y = Math.floor(y)), _.style[t.getDirectionLabel("width")] = `${y}px`);
         else if (s.slidesPerView === "auto") {
@@ -3403,10 +3406,10 @@ page-component-hero-image:has(vimeo-player) {
               y = B + P + A;
             else {
               const {
-                clientWidth: Y,
+                clientWidth: W,
                 offsetWidth: Ts
               } = _;
-              y = B + Ne + U + P + A + (Ts - Y);
+              y = B + Ne + U + P + A + (Ts - W);
             }
           }
           I && (_.style.transform = I), z && (_.style.webkitTransform = z), s.roundLengths && (y = Math.floor(y));
@@ -4140,8 +4143,8 @@ page-component-hero-image:has(vimeo-player) {
         const A = P - Math.floor(P / L) * L;
         if (k) {
           const q = L - A - 1;
-          for (let Y = u.length - 1; Y >= 0; Y -= 1)
-            u[Y].column === q && C.push(Y);
+          for (let W = u.length - 1; W >= 0; W -= 1)
+            u[W].column === q && C.push(W);
         } else
           C.push(L - A - 1);
       }
@@ -4149,8 +4152,8 @@ page-component-hero-image:has(vimeo-player) {
       B = Math.max(U - (L - x * 2), b), S && (B = Math.max(B, h - L + c + 1));
       for (let P = 0; P < B; P += 1) {
         const A = P - Math.floor(P / L) * L;
-        k ? u.forEach((q, Y) => {
-          q.column === A && y.push(Y);
+        k ? u.forEach((q, W) => {
+          q.column === A && y.push(W);
         }) : y.push(A);
       }
     }
@@ -5111,9 +5114,9 @@ page-component-hero-image:has(vimeo-player) {
         hostEl: s.isElement ? i.parentNode.host : i,
         mounted: !0,
         // RTL
-        rtl: i.dir.toLowerCase() === "rtl" || F(i, "direction") === "rtl",
-        rtlTranslate: s.params.direction === "horizontal" && (i.dir.toLowerCase() === "rtl" || F(i, "direction") === "rtl"),
-        wrongRTL: F(l, "display") === "-webkit-box"
+        rtl: i.dir.toLowerCase() === "rtl" || Y(i, "direction") === "rtl",
+        rtlTranslate: s.params.direction === "horizontal" && (i.dir.toLowerCase() === "rtl" || Y(i, "direction") === "rtl"),
+        wrongRTL: Y(l, "display") === "-webkit-box"
       }), !0;
     }
     init(e) {
@@ -5558,7 +5561,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     async render() {
       try {
-        const e = await W(O.CONTAINER_SELECTOR);
+        const e = await R(O.CONTAINER_SELECTOR);
         if (!e) {
           j(`Container ${O.CONTAINER_SELECTOR} not found`, "warn");
           return;
@@ -5708,11 +5711,11 @@ page-component-hero-image:has(vimeo-player) {
     async init() {
       this.imagePreloading(), this.interceptHistoryAPI(async () => {
         this.destroyComponents(), this.initComponents();
-      }), this.initComponents();
+      }), this.destroyComponents(), this.initComponents();
     }
     initComponents() {
       location.pathname === "/" && this.waitAutoInitData().then(() => {
-        console.log("Initializing homepage components"), this.addStyles(), this.hero.init(), this.hideSections.init(), this.popularCategories.init(), this.discipline.init(), this.outfitBuilder.init();
+        console.log("Initializing homepage components"), this.addStyles(), this.hideSections.init(), this.hero.init(), this.popularCategories.init(), this.discipline.init(), this.outfitBuilder.init();
       });
     }
     waitAutoInitData() {
