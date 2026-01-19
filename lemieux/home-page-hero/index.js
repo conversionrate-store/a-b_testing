@@ -3042,7 +3042,7 @@ page-component-hero-image:has(vimeo-player) {
   function at(t) {
     return typeof window < "u" && typeof window.HTMLElement < "u" ? t instanceof HTMLElement : t && (t.nodeType === 1 || t.nodeType === 11);
   }
-  function G(...t) {
+  function H(...t) {
     const e = Object(t[0]), s = ["__proto__", "constructor", "prototype"];
     for (let i = 1; i < t.length; i += 1) {
       const n = t[i];
@@ -3050,7 +3050,7 @@ page-component-hero-image:has(vimeo-player) {
         const r = Object.keys(Object(n)).filter((l) => s.indexOf(l) < 0);
         for (let l = 0, o = r.length; l < o; l += 1) {
           const a = r[l], u = Object.getOwnPropertyDescriptor(n, a);
-          u !== void 0 && u.enumerable && (te(e[a]) && te(n[a]) ? n[a].__swiper__ ? e[a] = n[a] : G(e[a], n[a]) : !te(e[a]) && te(n[a]) ? (e[a] = {}, n[a].__swiper__ ? e[a] = n[a] : G(e[a], n[a])) : e[a] = n[a]);
+          u !== void 0 && u.enumerable && (te(e[a]) && te(n[a]) ? n[a].__swiper__ ? e[a] = n[a] : H(e[a], n[a]) : !te(e[a]) && te(n[a]) ? (e[a] = {}, n[a].__swiper__ ? e[a] = n[a] : H(e[a], n[a])) : e[a] = n[a]);
         }
       }
     }
@@ -3899,7 +3899,7 @@ page-component-hero-image:has(vimeo-player) {
       !r || r.destroyed || y.target === this && (r.wrapperEl.removeEventListener("transitionend", r.onSlideToWrapperTransitionEnd), r.onSlideToWrapperTransitionEnd = null, delete r.onSlideToWrapperTransitionEnd, r.transitionEnd(s, f));
     }), r.wrapperEl.addEventListener("transitionend", r.onSlideToWrapperTransitionEnd)), !0;
   }
-  function Gt(t = 0, e, s = !0, i) {
+  function Ht(t = 0, e, s = !0, i) {
     typeof t == "string" && (t = parseInt(t, 10));
     const n = this;
     if (n.destroyed) return;
@@ -3943,7 +3943,7 @@ page-component-hero-image:has(vimeo-player) {
       n.slideTo(l, e, s, i);
     }), n;
   }
-  function Ht(t, e = !0, s) {
+  function Gt(t, e = !0, s) {
     const i = this, {
       enabled: n,
       params: r,
@@ -4044,8 +4044,8 @@ page-component-hero-image:has(vimeo-player) {
   }
   var Ft = {
     slideTo: qt,
-    slideToLoop: Gt,
-    slideNext: Ht,
+    slideToLoop: Ht,
+    slideNext: Gt,
     slidePrev: Vt,
     slideReset: Nt,
     slideToClosest: jt,
@@ -4607,7 +4607,7 @@ page-component-hero-image:has(vimeo-player) {
       C && !y && t[k].disable(), !C && y && t[k].enable();
     });
     const c = p.direction && p.direction !== i.direction, f = i.loop && (p.slidesPerView !== i.slidesPerView || c), h = i.loop;
-    c && s && t.changeDirection(), G(t.params, p);
+    c && s && t.changeDirection(), H(t.params, p);
     const b = t.params.enabled, x = t.params.loop;
     Object.assign(t, {
       allowTouchMove: t.params.allowTouchMove,
@@ -4710,7 +4710,7 @@ page-component-hero-image:has(vimeo-player) {
   }
   var ws = {
     checkOverflow: vs
-  }, Ge = {
+  }, He = {
     init: !0,
     direction: "horizontal",
     oneWayMovement: !1,
@@ -4835,18 +4835,18 @@ page-component-hero-image:has(vimeo-player) {
     return function(i = {}) {
       const n = Object.keys(i)[0], r = i[n];
       if (typeof r != "object" || r === null) {
-        G(e, i);
+        H(e, i);
         return;
       }
       if (t[n] === !0 && (t[n] = {
         enabled: !0
       }), n === "navigation" && t[n] && t[n].enabled && !t[n].prevEl && !t[n].nextEl && (t[n].auto = !0), ["pagination", "scrollbar"].indexOf(n) >= 0 && t[n] && t[n].enabled && !t[n].el && (t[n].auto = !0), !(n in t && "enabled" in r)) {
-        G(e, i);
+        H(e, i);
         return;
       }
       typeof t[n] == "object" && !("enabled" in t[n]) && (t[n].enabled = !0), t[n] || (t[n] = {
         enabled: !1
-      }), G(e, i);
+      }), H(e, i);
     };
   }
   const xe = {
@@ -4862,18 +4862,18 @@ page-component-hero-image:has(vimeo-player) {
     checkOverflow: ws,
     classes: ms
   }, Se = {};
-  class H {
+  class G {
     constructor(...e) {
       let s, i;
-      e.length === 1 && e[0].constructor && Object.prototype.toString.call(e[0]).slice(8, -1) === "Object" ? i = e[0] : [s, i] = e, i || (i = {}), i = G({}, i), s && !i.el && (i.el = s);
+      e.length === 1 && e[0].constructor && Object.prototype.toString.call(e[0]).slice(8, -1) === "Object" ? i = e[0] : [s, i] = e, i || (i = {}), i = H({}, i), s && !i.el && (i.el = s);
       const n = X();
       if (i.el && typeof i.el == "string" && n.querySelectorAll(i.el).length > 1) {
         const a = [];
         return n.querySelectorAll(i.el).forEach((u) => {
-          const m = G({}, i, {
+          const m = H({}, i, {
             el: u
           });
-          a.push(new H(m));
+          a.push(new G(m));
         }), a;
       }
       const r = this;
@@ -4892,8 +4892,8 @@ page-component-hero-image:has(vimeo-player) {
           emit: r.emit.bind(r)
         });
       });
-      const o = G({}, Ge, l);
-      return r.params = G({}, o, Se, i), r.originalParams = G({}, r.params), r.passedParams = G({}, i), r.params && r.params.on && Object.keys(r.params.on).forEach((a) => {
+      const o = H({}, He, l);
+      return r.params = H({}, o, Se, i), r.originalParams = H({}, r.params), r.passedParams = H({}, i), r.params && r.params.on && Object.keys(r.params.on).forEach((a) => {
         r.on(a, r.params.on[a]);
       }), r.params && r.params.onAny && r.onAny(r.params.onAny), Object.assign(r, {
         enabled: r.params.enabled,
@@ -5146,29 +5146,29 @@ page-component-hero-image:has(vimeo-player) {
       }), e !== !1 && (i.el && typeof i.el != "string" && (i.el.swiper = null), it(i)), i.destroyed = !0), null;
     }
     static extendDefaults(e) {
-      G(Se, e);
+      H(Se, e);
     }
     static get extendedDefaults() {
       return Se;
     }
     static get defaults() {
-      return Ge;
+      return He;
     }
     static installModule(e) {
-      H.prototype.__modules__ || (H.prototype.__modules__ = []);
-      const s = H.prototype.__modules__;
+      G.prototype.__modules__ || (G.prototype.__modules__ = []);
+      const s = G.prototype.__modules__;
       typeof e == "function" && s.indexOf(e) < 0 && s.push(e);
     }
     static use(e) {
-      return Array.isArray(e) ? (e.forEach((s) => H.installModule(s)), H) : (H.installModule(e), H);
+      return Array.isArray(e) ? (e.forEach((s) => G.installModule(s)), G) : (G.installModule(e), G);
     }
   }
   Object.keys(xe).forEach((t) => {
     Object.keys(xe[t]).forEach((e) => {
-      H.prototype[e] = xe[t][e];
+      G.prototype[e] = xe[t][e];
     });
-  }), H.use([gt, ht]);
-  function He(t, e, s, i) {
+  }), G.use([gt, ht]);
+  function Ge(t, e, s, i) {
     return t.params.createElements && Object.keys(i).forEach((n) => {
       if (!s[n] && s.auto === !0) {
         let r = N(t.el, `.${i[n]}`)[0];
@@ -5228,7 +5228,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     function u() {
       const d = t.params.navigation;
-      if (t.params.navigation = He(t, t.originalParams.navigation, t.params.navigation, {
+      if (t.params.navigation = Ge(t, t.originalParams.navigation, t.params.navigation, {
         nextEl: "swiper-button-next",
         prevEl: "swiper-button-prev"
       }), !(d.nextEl || d.prevEl)) return;
@@ -5454,7 +5454,7 @@ page-component-hero-image:has(vimeo-player) {
       }), c.type !== "custom" && i("paginationRender", h[0]);
     }
     function d() {
-      t.params.pagination = He(t, t.originalParams.pagination, t.params.pagination, {
+      t.params.pagination = Ge(t, t.originalParams.pagination, t.params.pagination, {
         el: "swiper-pagination"
       });
       const c = t.params.pagination;
@@ -5619,7 +5619,7 @@ page-component-hero-image:has(vimeo-player) {
       );
       if (!e) return;
       const s = e.querySelector(".swiper");
-      s && (this.swiperInstance = new H(s, {
+      s && (this.swiperInstance = new G(s, {
         modules: [ys, xs],
         loop: !0,
         centeredSlides: !0,
@@ -5713,7 +5713,7 @@ page-component-hero-image:has(vimeo-player) {
     async init() {
       this.imagePreloading(), this.interceptHistoryAPI(async () => {
         this.destroyComponents(), this.initComponents();
-      }), this.destroyComponents(), this.initComponents();
+      }), this.destroyComponents, this.initComponents();
     }
     initComponents() {
       location.pathname === "/" && this.waitAutoInitData().then(() => {
@@ -5723,7 +5723,7 @@ page-component-hero-image:has(vimeo-player) {
     waitAutoInitData() {
       return new Promise((e) => {
         const s = () => {
-          window.autoInitData && window.autoInitData.website && document.querySelector("footer") ? e() : window.setTimeout(s, 100);
+          window.autoInitData && window.autoInitData.website && document.querySelector("page-component-colour-selector") ? e() : window.setTimeout(s, 100);
         };
         s();
       });
@@ -5765,5 +5765,7 @@ page-component-hero-image:has(vimeo-player) {
       e.textContent = Re, e.id = "crs-homepage-hero-styles", document.head.appendChild(e);
     }
   }
-  window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, new Ss());
+  window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, new Ss()), window.onload = () => {
+    console.log("Homepage Hero Test Loaded (test)");
+  };
 })();
