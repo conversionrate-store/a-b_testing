@@ -5738,5 +5738,5 @@ page-component-hero-image:has(vimeo-player) {
       e.textContent = Re, document.head.appendChild(e);
     }
   }
-  window._crsTestInitialized || (window._crsTestInitialized = !0, new Ss());
+  window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, new Ss());
 })();
