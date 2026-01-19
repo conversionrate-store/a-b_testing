@@ -5718,7 +5718,7 @@ page-component-hero-image:has(vimeo-player) {
     waitAutoInitData() {
       return new Promise((e) => {
         const s = () => {
-          window.autoInitData && window.autoInitData.website ? e() : window.setTimeout(s, 100);
+          window.autoInitData && window.autoInitData.website && document.querySelector("footer") ? e() : window.setTimeout(s, 100);
         };
         s();
       });
