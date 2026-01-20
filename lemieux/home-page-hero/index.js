@@ -3142,7 +3142,7 @@ page-component-hero-image:has(vimeo-player) {
       return s;
     }
   }
-  function Oe(t, e) {
+  function ze(t, e) {
     const s = [];
     let i = t.parentElement;
     for (; i; )
@@ -3169,14 +3169,14 @@ page-component-hero-image:has(vimeo-player) {
       touch: !!("ontouchstart" in t || t.DocumentTouch && e instanceof t.DocumentTouch)
     };
   }
-  function ze() {
+  function Oe() {
     return me || (me = gt()), me;
   }
   let ve;
   function ht({
     userAgent: t
   } = {}) {
-    const e = ze(), s = D(), i = s.navigator.platform, n = t || s.navigator.userAgent, r = {
+    const e = Oe(), s = D(), i = s.navigator.platform, n = t || s.navigator.userAgent, r = {
       ios: !1,
       android: !1
     }, l = s.screen.width, o = s.screen.height, a = n.match(/(Android);?[\s\/]+([\d.]+)?/);
@@ -3282,7 +3282,7 @@ page-component-hero-image:has(vimeo-player) {
     }, o = () => {
       if (t.params.observer) {
         if (t.params.observeParents) {
-          const u = Oe(t.hostEl);
+          const u = ze(t.hostEl);
           for (let m = 0; m < u.length; m += 1)
             l(u[m]);
         }
@@ -3399,8 +3399,8 @@ page-component-hero-image:has(vimeo-player) {
           s.virtual.slidesPerViewAutoSlideSize && (y = s.virtual.slidesPerViewAutoSlideSize), y && _ && (s.roundLengths && (y = Math.floor(y)), _.style[t.getDirectionLabel("width")] = `${y}px`);
         else if (s.slidesPerView === "auto") {
           I && (_.style[t.getDirectionLabel("width")] = "");
-          const E = getComputedStyle(_), P = _.style.transform, O = _.style.webkitTransform;
-          if (P && (_.style.transform = "none"), O && (_.style.webkitTransform = "none"), s.roundLengths)
+          const E = getComputedStyle(_), P = _.style.transform, z = _.style.webkitTransform;
+          if (P && (_.style.transform = "none"), z && (_.style.webkitTransform = "none"), s.roundLengths)
             y = t.isHorizontal() ? ge(_, "width") : ge(_, "height");
           else {
             const B = e(E, "width"), Fe = e(E, "padding-left"), K = e(E, "padding-right"), L = e(E, "margin-left"), A = e(E, "margin-right"), H = E.getPropertyValue("box-sizing");
@@ -3414,7 +3414,7 @@ page-component-hero-image:has(vimeo-player) {
               y = B + Fe + K + L + A + (ks - X);
             }
           }
-          P && (_.style.transform = P), O && (_.style.webkitTransform = O), s.roundLengths && (y = Math.floor(y));
+          P && (_.style.transform = P), z && (_.style.webkitTransform = z), s.roundLengths && (y = Math.floor(y));
         } else
           y = (f - (s.slidesPerView - 1) * h) / s.slidesPerView, s.roundLengths && (y = Math.floor(y)), _ && (_.style[t.getDirectionLabel("width")] = `${y}px`);
         _ && (_.swiperSlideSize = y), d.push(y), s.centeredSlides ? (b = b + y / 2 + S / 2 + h, S === 0 && T !== 0 && (b = b - f / 2 - h), T === 0 && (b = b - f / 2 - h), Math.abs(b) < 1 / 1e3 && (b = 0), s.roundLengths && (b = Math.floor(b)), k % s.slidesPerGroup === 0 && p.push(b), w.push(b)) : (s.roundLengths && (b = Math.floor(b)), (k - Math.min(t.params.slidesPerGroupSkip, k)) % t.params.slidesPerGroup === 0 && p.push(b), w.push(b), b = b + y + h), t.virtualSize += y + h, S = y, k += 1;
@@ -3460,10 +3460,10 @@ page-component-hero-image:has(vimeo-player) {
       const _ = (g || 0) + (v || 0);
       if (T + _ < f) {
         const E = (f - T - _) / 2;
-        p.forEach((P, O) => {
-          p[O] = P - E;
-        }), w.forEach((P, O) => {
-          w[O] = P + E;
+        p.forEach((P, z) => {
+          p[z] = P - E;
+        }), w.forEach((P, z) => {
+          w[z] = P + E;
         });
       }
     }
@@ -3721,7 +3721,7 @@ page-component-hero-image:has(vimeo-player) {
     updateActiveIndex: Lt,
     updateClickedSlide: Pt
   };
-  function Ot(t = this.isHorizontal() ? "x" : "y") {
+  function zt(t = this.isHorizontal() ? "x" : "y") {
     const e = this, {
       params: s,
       rtlTranslate: i,
@@ -3735,7 +3735,7 @@ page-component-hero-image:has(vimeo-player) {
     let l = ot(r, t);
     return l += e.cssOverflowAdjustment(), i && (l = -l), l || 0;
   }
-  function zt(t, e) {
+  function Ot(t, e) {
     const s = this, {
       rtlTranslate: i,
       params: n,
@@ -3787,8 +3787,8 @@ page-component-hero-image:has(vimeo-player) {
     }), r.wrapperEl.addEventListener("transitionend", r.onTranslateToWrapperTransitionEnd))), !0;
   }
   var Dt = {
-    getTranslate: Ot,
-    setTranslate: zt,
+    getTranslate: zt,
+    setTranslate: Ot,
     minTranslate: Mt,
     maxTranslate: At,
     translateTo: Bt
@@ -4137,10 +4137,10 @@ page-component-hero-image:has(vimeo-player) {
     let _ = T ? c : a.activeIndex;
     typeof n > "u" ? n = a.getSlideIndex(u.find((L) => L.classList.contains(d.slideActiveClass))) : _ = n;
     const E = s === "next" || !s, P = s === "prev" || !s;
-    let O = 0, B = 0;
+    let z = 0, B = 0;
     const K = (k ? u[n].column : n) + (f && typeof i > "u" ? -h / 2 + 0.5 : 0);
     if (K < S) {
-      O = Math.max(S - K, b);
+      z = Math.max(S - K, b);
       for (let L = 0; L < S - K; L += 1) {
         const A = L - Math.floor(L / I) * I;
         if (k) {
@@ -4170,8 +4170,8 @@ page-component-hero-image:has(vimeo-player) {
     }), d.watchSlidesProgress && a.updateSlidesOffset(), e) {
       if (C.length > 0 && P) {
         if (typeof t > "u") {
-          const L = a.slidesGrid[_], H = a.slidesGrid[_ + O] - L;
-          o ? a.setTranslate(a.translate - H) : (a.slideTo(_ + Math.ceil(O), 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
+          const L = a.slidesGrid[_], H = a.slidesGrid[_ + z] - L;
+          o ? a.setTranslate(a.translate - H) : (a.slideTo(_ + Math.ceil(z), 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
         } else if (i) {
           const L = k ? C.length / d.grid.rows : C.length;
           a.slideTo(a.activeIndex + L, 0, !1, !0), a.touchEventsData.currentTranslate = a.translate;
@@ -4877,7 +4877,7 @@ page-component-hero-image:has(vimeo-player) {
         }), a;
       }
       const r = this;
-      r.__swiper__ = !0, r.support = ze(), r.device = Me({
+      r.__swiper__ = !0, r.support = Oe(), r.device = Me({
         userAgent: i.userAgent
       }), r.browser = Ae(), r.eventsListeners = {}, r.eventsAnyListeners = [], r.modules = [...r.__modules__], i.modules && Array.isArray(i.modules) && r.modules.push(...i.modules);
       const l = {};
@@ -5394,7 +5394,7 @@ page-component-hero-image:has(vimeo-player) {
         if (f.dynamicBullets && (r = ge(y[0], t.isHorizontal() ? "width" : "height"), h.forEach((E) => {
           E.style[t.isHorizontal() ? "width" : "height"] = `${r * (f.dynamicMainBullets + 4)}px`;
         }), f.dynamicMainBullets > 1 && S !== void 0 && (l += b - (S || 0), l > f.dynamicMainBullets - 1 ? l = f.dynamicMainBullets - 1 : l < 0 && (l = 0)), I = Math.max(b - l, 0), T = I + (Math.min(y.length, f.dynamicMainBullets) - 1), _ = (T + I) / 2), y.forEach((E) => {
-          const P = [...["", "-next", "-next-next", "-prev", "-prev-prev", "-main"].map((O) => `${f.bulletActiveClass}${O}`)].map((O) => typeof O == "string" && O.includes(" ") ? O.split(" ") : O).flat();
+          const P = [...["", "-next", "-next-next", "-prev", "-prev-prev", "-main"].map((z) => `${f.bulletActiveClass}${z}`)].map((z) => typeof z == "string" && z.includes(" ") ? z.split(" ") : z).flat();
           E.classList.remove(...P);
         }), h.length > 1)
           y.forEach((E) => {
@@ -5403,19 +5403,19 @@ page-component-hero-image:has(vimeo-player) {
           });
         else {
           const E = y[b];
-          if (E && E.classList.add(...f.bulletActiveClass.split(" ")), t.isElement && y.forEach((P, O) => {
-            P.setAttribute("part", O === b ? "bullet-active" : "bullet");
+          if (E && E.classList.add(...f.bulletActiveClass.split(" ")), t.isElement && y.forEach((P, z) => {
+            P.setAttribute("part", z === b ? "bullet-active" : "bullet");
           }), f.dynamicBullets) {
-            const P = y[I], O = y[T];
+            const P = y[I], z = y[T];
             for (let B = I; B <= T; B += 1)
               y[B] && y[B].classList.add(...`${f.bulletActiveClass}-main`.split(" "));
-            a(P, "prev"), a(O, "next");
+            a(P, "prev"), a(z, "next");
           }
         }
         if (f.dynamicBullets) {
-          const E = Math.min(y.length, f.dynamicMainBullets + 4), P = (r * E - r) / 2 - _ * r, O = c ? "right" : "left";
+          const E = Math.min(y.length, f.dynamicMainBullets + 4), P = (r * E - r) / 2 - _ * r, z = c ? "right" : "left";
           y.forEach((B) => {
-            B.style[t.isHorizontal() ? O : "top"] = `${P}px`;
+            B.style[t.isHorizontal() ? z : "top"] = `${P}px`;
           });
         }
       }
@@ -5429,8 +5429,8 @@ page-component-hero-image:has(vimeo-player) {
           f.progressbarOpposite ? T = t.isHorizontal() ? "vertical" : "horizontal" : T = t.isHorizontal() ? "horizontal" : "vertical";
           const _ = (b + 1) / C;
           let E = 1, P = 1;
-          T === "horizontal" ? E = _ : P = _, y.querySelectorAll(Q(f.progressbarFillClass)).forEach((O) => {
-            O.style.transform = `translate3d(0,0,0) scaleX(${E}) scaleY(${P})`, O.style.transitionDuration = `${t.params.speed}ms`;
+          T === "horizontal" ? E = _ : P = _, y.querySelectorAll(Q(f.progressbarFillClass)).forEach((z) => {
+            z.style.transform = `translate3d(0,0,0) scaleX(${E}) scaleY(${P})`, z.style.transitionDuration = `${t.params.speed}ms`;
           });
         }
         f.type === "custom" && f.renderCustom ? (he(y, f.renderCustom(t, b + 1, C)), I === 0 && i("paginationRender", y)) : (I === 0 && i("paginationRender", y), i("paginationUpdate", y)), t.params.watchOverflow && t.enabled && y.classList[t.isLocked ? "add" : "remove"](f.lockClass);
@@ -5460,7 +5460,7 @@ page-component-hero-image:has(vimeo-player) {
       const c = t.params.pagination;
       if (!c.el) return;
       let f;
-      typeof c.el == "string" && t.isElement && (f = t.el.querySelector(c.el)), !f && typeof c.el == "string" && (f = [...document.querySelectorAll(c.el)]), f || (f = c.el), !(!f || f.length === 0) && (t.params.uniqueNavElements && typeof c.el == "string" && Array.isArray(f) && f.length > 1 && (f = [...t.el.querySelectorAll(c.el)], f.length > 1 && (f = f.find((h) => Oe(h, ".swiper")[0] === t.el))), Array.isArray(f) && f.length === 1 && (f = f[0]), Object.assign(t.pagination, {
+      typeof c.el == "string" && t.isElement && (f = t.el.querySelector(c.el)), !f && typeof c.el == "string" && (f = [...document.querySelectorAll(c.el)]), f || (f = c.el), !(!f || f.length === 0) && (t.params.uniqueNavElements && typeof c.el == "string" && Array.isArray(f) && f.length > 1 && (f = [...t.el.querySelectorAll(c.el)], f.length > 1 && (f = f.find((h) => ze(h, ".swiper")[0] === t.el))), Array.isArray(f) && f.length === 1 && (f = f[0]), Object.assign(t.pagination, {
         el: f
       }), f = M(f), f.forEach((h) => {
         c.type === "bullets" && c.clickable && h.classList.add(...(c.clickableClass || "").split(" ")), h.classList.add(c.modifierClass + c.type), h.classList.add(t.isHorizontal() ? c.horizontalClass : c.verticalClass), c.type === "bullets" && c.dynamicBullets && (h.classList.add(`${c.modifierClass}${c.type}-dynamic`), l = 0, c.dynamicMainBullets < 1 && (c.dynamicMainBullets = 1)), c.type === "progressbar" && c.progressbarOpposite && h.classList.add(c.progressbarOppositeClass), c.clickable && h.addEventListener("click", m), t.enabled || h.classList.add(c.lockClass);
@@ -5530,7 +5530,7 @@ page-component-hero-image:has(vimeo-player) {
       destroy: g
     });
   }
-  const z = class z {
+  const O = class O {
     constructor() {
       this.eventsAborter = null, this.swiperInstance = null, this.slideChangeHandler = null, this.linkConfigs = [
         {
@@ -5563,9 +5563,9 @@ page-component-hero-image:has(vimeo-player) {
     }
     async render() {
       try {
-        const e = await j(z.CONTAINER_SELECTOR);
+        const e = await j(O.CONTAINER_SELECTOR);
         if (!e) {
-          R(`Container ${z.CONTAINER_SELECTOR} not found`, "warn");
+          R(`Container ${O.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupPagination(), this.setupVisibilityTracking();
@@ -5574,12 +5574,12 @@ page-component-hero-image:has(vimeo-player) {
       }
     }
     cleanupExistingSection() {
-      const e = document.querySelector(z.SECTION_SELECTOR);
+      const e = document.querySelector(O.SECTION_SELECTOR);
       e && (this.eventsAborter && this.eventsAborter.abort(), e.remove());
     }
     insertSection(e) {
       e.insertAdjacentHTML(
-        z.INSERTION_POSITION,
+        O.INSERTION_POSITION,
         st
       ), this.initSwiper();
     }
@@ -5589,7 +5589,7 @@ page-component-hero-image:has(vimeo-player) {
       });
     }
     setupLinksForConfig(e) {
-      const s = `${z.SECTION_SELECTOR} ${e.selector}`;
+      const s = `${O.SECTION_SELECTOR} ${e.selector}`;
       document.querySelectorAll(s).forEach((n) => {
         this.attachClickListener(n, e);
       });
@@ -5615,7 +5615,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     initSwiper() {
       const e = document.querySelector(
-        z.SECTION_SELECTOR
+        O.SECTION_SELECTOR
       );
       if (!e) return;
       const s = e.querySelector(".swiper");
@@ -5642,7 +5642,7 @@ page-component-hero-image:has(vimeo-player) {
       }));
     }
     setupPagination() {
-      const e = document.querySelector(z.SECTION_SELECTOR);
+      const e = document.querySelector(O.SECTION_SELECTOR);
       if (!e || !this.swiperInstance) return;
       const s = e.querySelectorAll(".carousel-dot");
       if (s.length === 0) {
@@ -5677,29 +5677,29 @@ page-component-hero-image:has(vimeo-player) {
     }
     setupVisibilityTracking() {
       const e = document.querySelector(
-        z.SECTION_SELECTOR
+        O.SECTION_SELECTOR
       );
       e && oe(
         e,
         "exp_hp_discipline_view",
         "Home Page Discipline",
         "Visibility",
-        z.VISIBILITY_THRESHOLD
+        O.VISIBILITY_THRESHOLD
       );
     }
     addStyles() {
-      if (document.getElementById(z.STYLES_ID)) return;
+      if (document.getElementById(O.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = z.STYLES_ID, e.textContent = it, document.head.appendChild(e);
+      e.id = O.STYLES_ID, e.textContent = it, document.head.appendChild(e);
     }
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.swiperInstance && (this.slideChangeHandler && (this.swiperInstance.off("slideChange", this.slideChangeHandler), this.slideChangeHandler = null), this.swiperInstance.destroy(), this.swiperInstance = null);
-      const e = document.querySelector(z.SECTION_SELECTOR);
+      const e = document.querySelector(O.SECTION_SELECTOR);
       e && e.remove();
     }
   };
-  z.STYLES_ID = "crs-discipline-styles", z.CONTAINER_SELECTOR = "icms-component:has(fashion-recommendations)", z.INSERTION_POSITION = "afterend", z.SECTION_SELECTOR = ".crs-discipline-section", z.VISIBILITY_THRESHOLD = 0;
-  let _e = z;
+  O.STYLES_ID = "crs-discipline-styles", O.CONTAINER_SELECTOR = "icms-component:has(fashion-recommendations)", O.INSERTION_POSITION = "afterend", O.SECTION_SELECTOR = ".crs-discipline-section", O.VISIBILITY_THRESHOLD = 0;
+  let _e = O;
   const Es = `/* Keep light swatches legible */
 .crs-colours-section .swatch-inner--huge.is-light-bg {
 	border: 1px solid #d9d9d9;
@@ -5796,24 +5796,28 @@ page-component-hero-image:has(vimeo-player) {
           r.image,
           r.insertAfter
         );
-      this.setupMutationObserver(), this.isTouchDevice && this.attachExistingSwatchListeners();
+      this.setupMutationObserver(), this.attachExistingSwatchListeners();
     }
     attachExistingSwatchListeners() {
       if (!this.swatchContainer) return;
       const e = this.swatchContainer.querySelectorAll(".swatch-outer"), s = Array.from(this.addedSwatches.values());
       e.forEach((i) => {
+        var r;
         const n = i.closest("._swatchContainer");
         if (n) {
-          const r = n.parentElement;
-          if (!s.includes(r)) {
-            const l = () => {
-              this.ensureHeroImages(), this.clearNewSwatchSelection(), this.resetHeroImage();
-            }, o = () => {
-              this.ensureHeroImages(), this.clearNewSwatchSelection(), this.resetHeroImage();
+          const l = n.parentElement;
+          if (!s.includes(l)) {
+            const o = n.querySelector(".color-tile__tooltip"), a = ((r = o == null ? void 0 : o.textContent) == null ? void 0 : r.trim()) || "", u = () => {
+              this.ensureHeroImages(), this.clearNewSwatchSelection(), this.resetHeroImage(), this.isTouchDevice && a && this.addHeroLabel(a);
+            }, m = () => {
+              this.ensureHeroImages(), this.clearNewSwatchSelection(), this.resetHeroImage(), !this.isTouchDevice && a && this.addHeroLabel(a);
+            }, p = () => {
+              this.isTouchDevice || this.removeHeroLabel();
             };
-            n.addEventListener("click", l), n.addEventListener("mouseenter", o), this.existingSwatchListeners.set(n, {
-              click: l,
-              mouseenter: o
+            n.addEventListener("click", u), n.addEventListener("mouseenter", m), n.addEventListener("mouseleave", p), this.existingSwatchListeners.set(n, {
+              click: u,
+              mouseenter: m,
+              mouseleave: p
             });
           }
         }
@@ -5919,13 +5923,13 @@ page-component-hero-image:has(vimeo-player) {
       const p = m.firstElementChild, w = p == null ? void 0 : p.querySelector("._swatchContainer");
       if (w) {
         const v = (f) => {
-          this.isTouchDevice ? (this.ensureHeroImages(), this.selectedSwatchName === s ? window.location.href = n : (f.preventDefault(), this.selectSwatch(s, r, p))) : window.location.href = n;
+          this.isTouchDevice ? (this.ensureHeroImages(), this.selectedSwatchName === s ? window.location.href = n : (f.preventDefault(), this.selectSwatch(s, r, p), this.addHeroLabel(s))) : window.location.href = n;
         }, x = () => {
           this.isTouchDevice || setTimeout(() => {
-            this.ensureHeroImages(), this.addSwatchCheckedClasses(p), this.setHeroImage(r);
+            this.ensureHeroImages(), this.addSwatchCheckedClasses(p), this.setHeroImage(r), this.addHeroLabel(s);
           }, 0);
         }, c = () => {
-          this.isTouchDevice || (this.removeSwatchCheckedClasses(p), this.resetHeroImage());
+          this.isTouchDevice || (this.removeSwatchCheckedClasses(p), this.resetHeroImage(), this.removeHeroLabel());
         };
         w.addEventListener("click", v), w.addEventListener("mouseenter", x), w.addEventListener("mouseleave", c), w._clickHandler = v, w._mouseEnterHandler = x, w._mouseLeaveHandler = c;
       }
@@ -5977,9 +5981,38 @@ page-component-hero-image:has(vimeo-player) {
         (e == null ? void 0 : e.querySelectorAll("img.df-image")) || []
       );
     }
+    addHeroLabel(e) {
+      if (!this.targetSection) return;
+      this.removeHeroLabel();
+      let s = this.targetSection.querySelector("href.fill");
+      if (s && s.parentNode) {
+        const n = document.createElement("div");
+        n.className = "bg-col-w p-t-10 p-b-10 p-l-10 p-r-12 pos-absolute top-50 left-10 z-4 overflow-wrap ng-star-inserted", n.innerHTML = `<p class="hero">${e}</p>`, s.parentNode.insertBefore(n, s);
+        return;
+      }
+      const i = this.targetSection.querySelector("swiper");
+      if (i && i.parentNode) {
+        const n = document.createElement("div");
+        n.className = "bg-col-w p-a-2 pos-absolute z-1 bottom-10 left-50 z-4 ng-star-inserted", n.innerHTML = `<p class="hero center-s">${e}</p>`, i.parentNode.insertBefore(
+          n,
+          i.nextSibling
+        );
+      }
+    }
+    removeHeroLabel() {
+      this.targetSection && (this.targetSection.querySelectorAll(
+        ".bg-col-w.p-t-10.p-b-10.p-l-10.p-r-12.pos-absolute.top-50.left-10.z-4.overflow-wrap.ng-star-inserted"
+      ).forEach((i) => {
+        i.querySelector("p.hero") && i.parentNode && i.parentNode.removeChild(i);
+      }), this.targetSection.querySelectorAll(
+        ".bg-col-w.p-a-2.pos-absolute.z-1.bottom-10.left-50.z-4.ng-star-inserted"
+      ).forEach((i) => {
+        i.querySelector("p.hero.center-s") && i.parentNode && i.parentNode.removeChild(i);
+      }));
+    }
     destroy() {
       this.swatchContainerObserver && (this.swatchContainerObserver.disconnect(), this.swatchContainerObserver = null), this.existingSwatchListeners.forEach((e, s) => {
-        s.removeEventListener("click", e.click), s.removeEventListener("mouseenter", e.mouseenter);
+        s.removeEventListener("click", e.click), s.removeEventListener("mouseenter", e.mouseenter), s.removeEventListener("mouseleave", e.mouseleave);
       }), this.existingSwatchListeners.clear(), this.addedSwatches.forEach((e, s) => {
         if (!document.contains(e))
           return;
