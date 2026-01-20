@@ -5953,7 +5953,7 @@ page-component-hero-image:has(vimeo-player) {
         const e = window.innerWidth > 700;
         this.isDesktop !== e && (this.isDesktop = e, this.resizeDebounceTimer !== null && clearTimeout(this.resizeDebounceTimer), this.resizeDebounceTimer = window.setTimeout(() => {
           this.destroyComponents(), this.initComponents(), this.resizeDebounceTimer = null;
-        }, 300));
+        }, 1e3));
       });
     }
     initComponents() {
