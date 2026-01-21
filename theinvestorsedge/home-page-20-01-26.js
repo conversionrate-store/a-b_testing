@@ -214,26 +214,31 @@
     margin-bottom: -10px;
     line-height: 28px;
   }
-}/*# sourceMappingURL=style.css.map */`, c = (s) => new Promise((n) => {
-    const e = document.querySelector(s);
+}
+
+.row-number-39 .pwr-rich-text p:last-of-type {
+  margin-inline: auto;
+  max-width: 650px;
+}/*# sourceMappingURL=style.css.map */`, c = (o) => new Promise((n) => {
+    const e = document.querySelector(o);
     e && n(e);
     const t = new MutationObserver(() => {
-      const r = document.querySelector(s);
+      const r = document.querySelector(o);
       r && (n(r), t.disconnect());
     });
     t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: s, dev: n }) => {
+  }), f = ({ name: o, dev: n }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${n})`,
+      `%c EXP: ${o} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class o {
+  class s {
     constructor(n) {
-      this.elements = n instanceof o ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+      this.elements = n instanceof s ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
     on(n, e, t) {
       return typeof e == "function" && (t = e, e = ""), this.elements.forEach((r) => {
@@ -264,7 +269,7 @@
     }
     each(n) {
       for (let e of this.elements)
-        n(new o(e), this.elements.indexOf(e));
+        n(new s(e), this.elements.indexOf(e));
       return this;
     }
     style(n, e) {
@@ -275,7 +280,7 @@
     }
     find(n) {
       const e = this.elements.map((t) => Array.from(t.querySelectorAll(n)));
-      return new o(e.flat());
+      return new s(e.flat());
     }
     attr(n, e) {
       return e ? (this.elements.forEach(function(t) {
@@ -293,9 +298,9 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const i = (s) => new o(s), u = (s) => {
+  const i = (o) => new s(o), u = (o) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", s, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", o, "variant_1"));
     }, 1e3);
   }, l = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", b = (
     /* HTML */
@@ -358,7 +363,7 @@
       await c("body"), i("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${d}</style>`), await c("h1.pwr-hero__title"), i(".body-wrapper").elements[0].insertAdjacentHTML("beforeend", b), i("h1.pwr-hero__title").elements[0].insertAdjacentHTML("afterend", `${h}`), i(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentElement(
         "afterbegin",
         i(".row-number-2 .row-number-5 .pwr-sec__title").elements[0]
-      ), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-8").elements[0]), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-6").elements[0]), i(".row-number-52").elements[0].insertAdjacentHTML("afterend", w), i(".row-number-6 .pwr-rich-text p:nth-of-type(4)").elements[0].insertAdjacentHTML(
+      ), await c(".row-number-65"), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-8").elements[0]), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-6").elements[0]), i(".row-number-52").elements[0].insertAdjacentHTML("afterend", w), i(".row-number-6 .pwr-rich-text p:nth-of-type(4)").elements[0].insertAdjacentHTML(
         "afterend",
         '<a class="crs_link_button" href="/100-hard-money-financing">Check if you qualify</a>'
       ), await c(".row-number-65 .pwr-sec-cta--content .pwr-sec-cta__cta-wrapper"), i(".row-number-65 .pwr-sec-cta--content .pwr-sec-cta__cta-wrapper").elements[0].insertAdjacentHTML(
