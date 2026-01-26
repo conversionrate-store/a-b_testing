@@ -7,7 +7,7 @@
       event_desc: t,
       event_type: e,
       event_loc: o
-    }), C(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
+    }), B(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
   }, b = (i) => new Promise((t) => {
     const e = document.querySelector(i);
     e && t(e);
@@ -19,18 +19,18 @@
       childList: !0,
       subtree: !0
     });
-  }), R = ({ name: i, dev: t }) => {
+  }), z = ({ name: i, dev: t }) => {
     console.log(
       `%c EXP: ${i} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, z = (i) => {
+  }, G = (i) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, G = (i, t, e, o, s = 1e3, a = 0.5) => {
+  }, C = (i, t, e, o, s = 1e3, a = 0.5) => {
     let n, r;
-    n = new IntersectionObserver(
+    if (n = new IntersectionObserver(
       function(l) {
         l[0].isIntersecting === !0 ? r = setTimeout(() => {
           g(
@@ -39,15 +39,15 @@
             "view",
             e
           ), n.disconnect();
-        }, s) : (C("Element is not fully visible", "warn"), clearTimeout(r));
+        }, s) : (B("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [a] }
-    );
-    {
+    ), typeof i == "string") {
       const l = document.querySelector(i);
       l && n.observe(l);
-    }
-  }, C = (i, t = "info") => {
+    } else
+      n.observe(i);
+  }, B = (i, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -77,7 +77,7 @@
   display: none;
 }
 
-/* Grid layout - desktop only (min-width: 768px) */
+
 @media (min-width: 768px) {
   .game-grid-container {
     display: grid !important;
@@ -218,6 +218,9 @@
   display: inline-block;
 }
 
+.category-link:hover {
+  background: hsl(var(--secondary-light-hover))
+}
 @media (max-width: 768px) {
   .game-keys-scroll-container > div {
     min-width: 143px;
@@ -365,8 +368,8 @@
           m.after(f), (A = m.parentElement) == null || A.classList.add("crs-popular-games");
           const h = document.createElement("div");
           h.className = "game-slider-split-nav";
-          const T = "inline-flex items-center justify-center transition-colors focus:outline focus:outline-offset-2 focus-visible:outline outline-none disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden font-medium whitespace-nowrap bg-secondary hover:bg-secondary-hover text-secondary-foreground ring-1 ring-secondary-ring shadow-sm focus:outline-secondary text-sm touch-manipulation absolute h-8 w-8 rounded-full p-0 top-1/2 -translate-y-1/2 active:-translate-y-[calc(50%-1px)]", y = document.createElement("button");
-          y.type = "button", y.className = `${T} -left-2 sm:-left-4`, y.innerHTML = '<i class="text-current fa-solid fa-angle-left"></i><span class="sr-only">Previous Slide</span>';
+          const R = "inline-flex items-center justify-center transition-colors focus:outline focus:outline-offset-2 focus-visible:outline outline-none disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden font-medium whitespace-nowrap bg-secondary hover:bg-secondary-hover text-secondary-foreground ring-1 ring-secondary-ring shadow-sm focus:outline-secondary text-sm touch-manipulation absolute h-8 w-8 rounded-full p-0 top-1/2 -translate-y-1/2 active:-translate-y-[calc(50%-1px)]", y = document.createElement("button");
+          y.type = "button", y.className = `${R} -left-2 sm:-left-4`, y.innerHTML = '<i class="text-current fa-solid fa-angle-left"></i><span class="sr-only">Previous Slide</span>';
           const W = (k) => {
             g("exp_hp_game_slider_prev", "Previous Button", "click", "Popular Games"), k.preventDefault(), k.stopPropagation();
             const x = d.querySelector("[aria-roledescription='slide']");
@@ -380,7 +383,7 @@
           };
           this.addTrackedEventListener(y, "click", W), h.appendChild(y);
           const w = document.createElement("button");
-          w.type = "button", w.className = `${T} -right-2 sm:-right-4`, w.innerHTML = '<i class="text-current fa-solid fa-angle-right"></i><span class="sr-only">Next Slide</span>';
+          w.type = "button", w.className = `${R} -right-2 sm:-right-4`, w.innerHTML = '<i class="text-current fa-solid fa-angle-right"></i><span class="sr-only">Next Slide</span>';
           const F = (k) => {
             g("exp_hp_game_slider_next", "Next Button", "click", "Popular Games"), k.preventDefault(), k.stopPropagation();
             const x = d.querySelector("[aria-roledescription='slide']");
@@ -874,7 +877,7 @@
       if (!t || t.hasAttribute(p.CONTAINER_MARKER))
         return;
       const e = this.detectCurrency(), o = O(e);
-      t.insertAdjacentHTML("afterend", o), t.setAttribute(p.CONTAINER_MARKER, "true"), this.initializeSlider();
+      t.insertAdjacentHTML("afterend", o), t.setAttribute(p.CONTAINER_MARKER, "true"), C(".crs-game-keys", "exp_hp_key_view", "Game Keys", "Visibility", 0), this.initializeSlider();
     }
     initializeSlider() {
       if (this.scrollContainer = document.querySelector(".game-keys-scroll-container"), this.prevButton = document.querySelector('[data-game-keys-nav="prev"]'), this.nextButton = document.querySelector('[data-game-keys-nav="next"]'), !this.scrollContainer || !this.prevButton || !this.nextButton) return;
@@ -1070,7 +1073,7 @@
     </div>
     `
       );
-      t.insertAdjacentHTML("afterend", e), t.setAttribute(v.CONTAINER_MARKER, "true"), G(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-card-link").forEach((a) => {
+      t.insertAdjacentHTML("afterend", e), t.setAttribute(v.CONTAINER_MARKER, "true"), C(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-card-link").forEach((a) => {
         var l;
         const n = (l = a.nextElementSibling) == null ? void 0 : l.querySelector(".game-service-name"), r = (n == null ? void 0 : n.textContent) || "Unknown";
         this.addTrackedEventListener(a, "click", () => g("exp_hp_service_card_click", r, "click", "Browse All Games Services"));
@@ -1345,8 +1348,8 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       t && (this.searchFocusHandler && (t.removeEventListener("focus", this.searchFocusHandler), this.searchFocusHandler = null), this.searchBlurHandler && (t.removeEventListener("blur", this.searchBlurHandler), this.searchBlurHandler = null), this.searchInputHandler && (t.removeEventListener("input", this.searchInputHandler), this.searchInputHandler = null));
     }
   }
-  R({ name: "Іmproved homepage UX/UI and copy", dev: "OS" }), z("exp_hp");
-  class B {
+  z({ name: "Іmproved homepage UX/UI and copy", dev: "OS" }), G("exp_hp");
+  class T {
     constructor() {
       this.init();
     }
@@ -1377,6 +1380,6 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
     }
   }
   window.onload = () => {
-    new B();
-  }, new B();
+    new T();
+  }, new T();
 })();
