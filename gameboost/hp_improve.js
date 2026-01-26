@@ -155,6 +155,7 @@
 }
 
 .game-categories-title {
+  display: block;
   margin-top: 12px;
   font-size: 14px;
   font-weight: 600;
