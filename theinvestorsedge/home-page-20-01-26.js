@@ -219,20 +219,28 @@
 .row-number-39 .pwr-rich-text p:last-of-type {
   margin-inline: auto;
   max-width: 650px;
-}/*# sourceMappingURL=style.css.map */`, c = (o) => new Promise((n) => {
-    const e = document.querySelector(o);
+}/*# sourceMappingURL=style.css.map */`, f = (r, n, e, t = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: r,
+      event_desc: n,
+      event_type: e,
+      event_loc: t
+    }), h(`Event: ${r} | ${n} | ${e} | ${t}`, "success");
+  }, c = (r) => new Promise((n) => {
+    const e = document.querySelector(r);
     e && n(e);
     const t = new MutationObserver(() => {
-      const r = document.querySelector(o);
-      r && (n(r), t.disconnect());
+      const o = document.querySelector(r);
+      o && (n(o), t.disconnect());
     });
     t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: o, dev: n }) => {
+  }), u = ({ name: r, dev: n }) => {
     console.log(
-      `%c EXP: ${o} (DEV: ${n})`,
+      `%c EXP: ${r} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -241,14 +249,14 @@
       this.elements = n instanceof s ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
     on(n, e, t) {
-      return typeof e == "function" && (t = e, e = ""), this.elements.forEach((r) => {
-        r.addEventListener(n, function(a) {
+      return typeof e == "function" && (t = e, e = ""), this.elements.forEach((o) => {
+        o.addEventListener(n, function(a) {
           var p;
           if (e !== "") {
             let m = (p = a.target) == null ? void 0 : p.closest(e);
             m && (t == null || t.call(m, a));
           } else
-            t == null || t.call(r, a);
+            t == null || t.call(o, a);
         });
       }), this;
     }
@@ -273,9 +281,9 @@
       return this;
     }
     style(n, e) {
-      const t = n.split("-").map((r, a) => a === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
-      return this.elements.forEach(function(r) {
-        r.style[t] = e;
+      const t = n.split("-").map((o, a) => a === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+      return this.elements.forEach(function(o) {
+        o.style[t] = e;
       }), this;
     }
     find(n) {
@@ -298,11 +306,28 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const i = (o) => new s(o), u = (o) => {
+  const i = (r) => new s(r), b = (r) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", o, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, l = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", b = (
+  }, h = (r, n = "info") => {
+    let e;
+    switch (n) {
+      case "info":
+        e = "color: #3498db;";
+        break;
+      case "warn":
+        e = "color: #f39c12;";
+        break;
+      case "error":
+        e = "color: #e74c3c;";
+        break;
+      case "success":
+        e = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${r}`, `${e} font-size: 16px; font-weight: 600`);
+  }, l = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", w = (
     /* HTML */
     `
   <div class="sticky-block">
@@ -312,7 +337,7 @@
     </div>
   </div>
 `
-  ), h = (
+  ), y = (
     /* HTML */
     `
   <div class="crs-hero-block">
@@ -323,7 +348,7 @@
     <img src="${l}clients_m.svg" alt="Clients" class="img_clients_m" />
   </div>
 `
-  ), w = (
+  ), g = (
     /* HTML */
     `
   <div class="crs-between-block">
@@ -333,8 +358,8 @@
   </div>
 `
   );
-  f({ name: "Home Page Update", dev: "YK" }), u("home_page_update");
-  const y = [
+  u({ name: "Home Page Update", dev: "YK" }), b("home_page_update");
+  const x = [
     "Randy - <span>around $60,000</span>",
     "Dalisa - <span>$40,000 - $60,000 in profit</span>",
     "Ptolemy - <span>$80,000 to $100,000 in profit</span>",
@@ -342,7 +367,7 @@
     "Charles - <span>around $70,000</span>",
     "Stacy - <span>expecting to make $30,000 to $65,000</span>"
   ];
-  class g {
+  class k {
     constructor() {
       this.init();
     }
@@ -355,15 +380,15 @@
       if (!n) return;
       const e = document.querySelectorAll(".crs_link_button:not(.sticky-block .crs_link_button)");
       let t = !1;
-      e.forEach((r) => {
-        this.isElementVisible(r) && (t = !0);
+      e.forEach((o) => {
+        this.isElementVisible(o) && (t = !0);
       }), t ? n.classList.add("crs-hidden") : n.classList.remove("crs-hidden");
     }
     async init() {
-      await c("body"), i("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${d}</style>`), await c("h1.pwr-hero__title"), i(".body-wrapper").elements[0].insertAdjacentHTML("beforeend", b), i("h1.pwr-hero__title").elements[0].insertAdjacentHTML("afterend", `${h}`), i(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentElement(
+      await c("body"), i("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${d}</style>`), await c("h1.pwr-hero__title"), i(".body-wrapper").elements[0].insertAdjacentHTML("beforeend", w), i("h1.pwr-hero__title").elements[0].insertAdjacentHTML("afterend", `${y}`), i(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentElement(
         "afterbegin",
         i(".row-number-2 .row-number-5 .pwr-sec__title").elements[0]
-      ), await c(".row-number-65"), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-8").elements[0]), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-6").elements[0]), i(".row-number-52").elements[0].insertAdjacentHTML("afterend", w), i(".row-number-6 .pwr-rich-text p:nth-of-type(4)").elements[0].insertAdjacentHTML(
+      ), await c(".row-number-65"), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-8").elements[0]), i(".row-number-55").elements[0].insertAdjacentElement("afterend", i(".row-number-6").elements[0]), i(".row-number-52").elements[0].insertAdjacentHTML("afterend", g), i(".row-number-6 .pwr-rich-text p:nth-of-type(4)").elements[0].insertAdjacentHTML(
         "afterend",
         '<a class="crs_link_button" href="/100-hard-money-financing">Check if you qualify</a>'
       ), await c(".row-number-65 .pwr-sec-cta--content .pwr-sec-cta__cta-wrapper"), i(".row-number-65 .pwr-sec-cta--content .pwr-sec-cta__cta-wrapper").elements[0].insertAdjacentHTML(
@@ -372,10 +397,21 @@
       ), i(
         ".row-number-49 .embed_container, .row-number-52 .embed_container, .row-number-55 .embed_container"
       ).elements.forEach((n, e) => {
-        n.insertAdjacentHTML("beforebegin", `<h3 class="crs-video-title">${y[e]}</h3>`);
+        n.insertAdjacentHTML("beforebegin", `<h3 class="crs-video-title">${x[e]}</h3>`);
+      }), i(".crs_link_button").elements.forEach((n, e) => {
+        const t = [
+          "First screen",
+          "Start your journey to a profitable flip",
+          "About The Investor`s Edge",
+          "Under the FAQs",
+          "Sticky block"
+        ];
+        n.addEventListener("click", () => {
+          f(`exp_new_hp_click_0${e + 1}`, "Check if you qualify", "click", t[e] || "");
+        });
       }), window.addEventListener("scroll", () => this.handleStickyVisibility()), this.handleStickyVisibility();
     }
   }
-  new g();
+  new k();
 })();
 //# sourceMappingURL=index.js.map
