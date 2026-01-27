@@ -8,7 +8,7 @@
       event_type: e,
       event_loc: o
     }), A(`Event: ${r} | ${t} | ${e} | ${o}`, "success");
-  }, d = (r) => new Promise((t) => {
+  }, p = (r) => new Promise((t) => {
     const e = document.querySelector(r);
     e && t(e);
     const o = new MutationObserver(() => {
@@ -279,7 +279,7 @@
           s.querySelectorAll("[aria-roledescription='slide']:has(.game-card-group):not(:has(.game-key-group))")
         );
         if (a.length === 0) return;
-        const i = this.orderSlides(a).map((b) => b.slide);
+        const i = this.orderSlides(a).map((d) => d.slide);
         s.setAttribute(c.GRID_MARKER, "true"), (g = (l = s.closest('[aria-roledescription="carousel"]')) == null ? void 0 : l.parentElement) == null || g.classList.add("crs-popular-games"), o ? this.currentLayout = "mobile" : (s.classList.add("game-grid-container"), this.applyGridVisibility(i, c.GRID_BATCH_SIZE), this.attachLoadMore(s, i), this.currentLayout = "desktop");
       });
     }
@@ -395,7 +395,7 @@
     }
   };
   c.STYLES_MARKER = "game-cards-styles-injected", c.ENHANCED_MARKER = "data-categories-enhanced", c.GRID_MARKER = "data-gridified", c.GRID_BUTTON_ATTR = "data-grid-button", c.GRID_BATCH_SIZE = 12, c.MOBILE_BREAKPOINT = 768, c.RESIZE_DEBOUNCE_MS = 250;
-  let v = c;
+  let y = c;
   const T = [
     {
       name: "ARC Raiders (Steam)",
@@ -812,8 +812,8 @@
       if (!this.scrollContainer || this.isAnimating) return;
       const e = this.scrollContainer.querySelector('[role="group"]');
       if (!e) return;
-      const o = e.offsetWidth, s = 16, n = this.scrollContainer.querySelectorAll('[role="group"]').length, i = (o + s) * n - s, l = ((f = this.scrollContainer.parentElement) == null ? void 0 : f.offsetWidth) || 0, b = Math.max(0, i - l + 12), k = t * (o + s), u = Math.min(k, b);
-      this.isAnimating = !0, this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = `translateX(-${u}px)`, this.prevTranslate = -u, this.currentTranslate = -u, setTimeout(() => {
+      const o = e.offsetWidth, s = 16, n = this.scrollContainer.querySelectorAll('[role="group"]').length, i = (o + s) * n - s, l = ((f = this.scrollContainer.parentElement) == null ? void 0 : f.offsetWidth) || 0, d = Math.max(0, i - l + 12), v = t * (o + s), u = Math.min(v, d);
+      v >= d && u === d && (this.currentSlide = Math.floor(d / (o + s))), this.isAnimating = !0, this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = `translateX(-${u}px)`, this.prevTranslate = -u, this.currentTranslate = -u, setTimeout(() => {
         this.isAnimating = !1;
       }, 500);
     }
@@ -833,16 +833,16 @@
       this.isDragging = !1;
       const e = this.currentTranslate - this.prevTranslate, s = Date.now() - this.touchStartTime, a = Math.abs(e) / s, n = this.scrollContainer.querySelector('[role="group"]');
       if (!n) return;
-      const i = n.offsetWidth, l = 16, b = this.scrollContainer.querySelectorAll('[role="group"]').length - 1, k = -this.currentTranslate;
-      let u = Math.round(k / (i + l));
+      const i = n.offsetWidth, l = 16, d = this.scrollContainer.querySelectorAll('[role="group"]').length - 1, v = -this.currentTranslate;
+      let u = Math.round(v / (i + l));
       if (a > 1.5) {
         const f = Math.min(3, Math.ceil(a / 1.5));
         e < 0 ? u = u + f : e > 0 && (u = u - f);
       }
-      this.currentSlide = Math.max(0, Math.min(b, u)), this.slideToPosition(this.currentSlide);
+      this.currentSlide = Math.max(0, Math.min(d, u)), this.slideToPosition(this.currentSlide);
     }
     async render() {
-      const t = await d(".crs-popular-games");
+      const t = await p(".crs-popular-games");
       if (!t || t.hasAttribute(h.CONTAINER_MARKER))
         return;
       const e = this.detectCurrency(), o = M(e);
@@ -882,7 +882,7 @@
     }
   };
   h.CONTAINER_MARKER = "data-game-keys-rendered", h.STYLES_MARKER = "game-keys-styles-injected";
-  let y = h;
+  let w = h;
   const H = [
     {
       name: "Accounts",
@@ -1052,7 +1052,7 @@
     height: 22px;
   }
 }
-`, p = class p {
+`, b = class b {
     constructor() {
       this.eventHandlers = [], this.init();
     }
@@ -1060,8 +1060,8 @@
       this.addStyles(), this.render();
     }
     async render() {
-      const t = await d(".crs-game-keys");
-      if (!t || t.hasAttribute(p.CONTAINER_MARKER))
+      const t = await p(".crs-game-keys");
+      if (!t || t.hasAttribute(b.CONTAINER_MARKER))
         return;
       const e = (
         /* HTML */
@@ -1075,7 +1075,7 @@
     </div>
     `
       );
-      t.insertAdjacentHTML("afterend", e), t.setAttribute(p.CONTAINER_MARKER, "true"), x(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-card-link").forEach((a) => {
+      t.insertAdjacentHTML("afterend", e), t.setAttribute(b.CONTAINER_MARKER, "true"), x(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-card-link").forEach((a) => {
         var l;
         const n = (l = a.nextElementSibling) == null ? void 0 : l.querySelector(".game-service-name"), i = (n == null ? void 0 : n.textContent) || "Unknown";
         this.addTrackedEventListener(a, "click", () => m("exp_hp_service_card_click", i, "click", "Browse All Games Services"));
@@ -1116,8 +1116,8 @@
       }), this.eventHandlers = [];
     }
   };
-  p.CONTAINER_MARKER = "data-game-services-rendered";
-  let w = p;
+  b.CONTAINER_MARKER = "data-game-services-rendered";
+  let k = b;
   const G = `.crs-hero > a {
   /* display: none; Ask about it */
   margin-bottom: 0;
@@ -1294,7 +1294,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       this.addStyles(), this.getHeroSection(), this.changeSearchInput(), this.changeSubTitle(), this.addWarrantyBadge();
     }
     async getHeroSection() {
-      const t = await d('img[src*="bg-light.webp"]');
+      const t = await p('img[src*="bg-light.webp"]');
       if (t) {
         const e = t.nextElementSibling;
         e != null && e.classList.contains("crs-hero") || e == null || e.classList.add("crs-hero");
@@ -1304,7 +1304,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
     }
     async changeSearchInput() {
       var s, a;
-      const t = await d('input[name="search"]');
+      const t = await p('input[name="search"]');
       t.classList.contains("crs-hero-search-input") || t.classList.add("crs-hero-search-input");
       let e = (s = t.parentElement) == null ? void 0 : s.querySelector("[data-typing-effect]");
       e || (e = document.createElement("span"), e.className = "typing-effect", e.setAttribute("data-typing-effect", "true"), (a = t.parentElement) == null || a.insertBefore(e, t), this.searchFocusHandler = () => {
@@ -1319,11 +1319,11 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       });
     }
     async changeSubTitle() {
-      const t = await d("h1 + div");
+      const t = await p("h1 + div");
       t && !t.classList.contains("crs-hero-subtitle") && t.classList.add("crs-hero-subtitle");
     }
     async addWarrantyBadge() {
-      const t = await d(".crs-hero"), e = t == null ? void 0 : t.querySelector(":scope > a");
+      const t = await p(".crs-hero"), e = t == null ? void 0 : t.querySelector(":scope > a");
       if (!t || t.querySelector(".crs-warranty-badge")) return;
       const o = (
         /* HTML */
@@ -1367,7 +1367,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       return t === "/" || t === "" || t === "/index.html";
     }
     initializeEnhancements() {
-      this.isHomePage() && (new D(), new v(), new y(), new w());
+      this.isHomePage() && (new D(), new y(), new w(), new k());
     }
     setupSPANavigation() {
       window.addEventListener("popstate", () => {
