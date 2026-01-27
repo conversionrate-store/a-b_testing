@@ -115,7 +115,7 @@
   }
 
   .game-grid-container:has(.game-grid-preview) {
-    margin-bottom: calc((var(--game-card-height) /  1.4) * -1);
+    margin-bottom: calc((280px / 2) * -1);
   }
 
   .game-grid-preview {
@@ -124,9 +124,9 @@
     mask-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.15) 0%,
-      transparent 100%
+      transparent 90%
     );
-    height: 50%;
+    height: 219px;
     overflow: hidden;
   }
 
@@ -673,7 +673,7 @@
     );
   }
   const D = `.crs-game-keys {
-  margin-top: 4.375rem !important;
+  margin-top: 6.375rem !important;
 }
 
 @media (min-width: 1290px) {
