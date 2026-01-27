@@ -888,7 +888,11 @@
     }
     openQuiz() {
       const e = t(".crs_quiz_container").elements[0];
-      e && (e.style.display = "flex", document.body.style.overflow = "hidden", _("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen"));
+      if (e) {
+        e.style.display = "flex", document.body.style.overflow = "hidden";
+        const n = t(".crs_first_screen").elements[0], s = t(".crs_quiz_steps").elements[0], i = t(".crs_quiz_logo svg").elements[0], c = t(".crs_quiz_progress").elements[0];
+        n && s && i && c && (n.classList.remove("active"), s.classList.add("active"), i.classList.add("active"), c.classList.add("active"), this.setStep(0)), _("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen");
+      }
     }
     closeQuiz() {
       const e = t(".crs_quiz_container").elements[0];
@@ -900,15 +904,15 @@
       u.on("click", () => {
         _("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), this.closeQuiz();
       }), s.on("click", () => {
-        if (this.setStep(this.step - 1), this.step === 0) {
-          e.addClass("active"), n.removeClass("active"), s.removeClass("active"), c.removeClass("active");
+        if (this.step === 0) {
+          this.closeQuiz();
           return;
         }
-        this.step -= 1, l.text("Continue");
+        this.step -= 1, this.setStep(this.step), l.text("Continue");
       }), i.on("click", () => {
         e.removeClass("active"), n.addClass("active"), s.addClass("active"), c.addClass("active"), this.setStep(this.step), _("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
       }), l.on("click", () => {
-        var m, a, o, z, b, f, E, C, A;
+        var m, a, o, z, b, f, E, L, C;
         if (this.step < p.length - 1) {
           t(".crs_error").removeClass("active");
           const v = n.elements[0].querySelector('input[type="radio"]:checked');
@@ -945,15 +949,15 @@
           if (((f = n.elements[0].querySelector('select[name="crs_hear_about_us"]')) == null ? void 0 : f.value) === "") {
             if (y = !0, (E = n.elements[0].querySelector('select[name="crs_hear_about_us"]').closest("label")) != null && E.querySelector(".crs_input_error"))
               return;
-            (C = n.elements[0].querySelector('select[name="crs_hear_about_us"]').closest("label")) == null || C.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
+            (L = n.elements[0].querySelector('select[name="crs_hear_about_us"]').closest("label")) == null || L.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
           }
           if (y) return;
-          const L = t(".hs-error-msg").elements;
-          L.length !== 0 && L.forEach((h) => {
-            var S, j, H, T, M;
-            const k = ((S = h.textContent) == null ? void 0 : S.toLowerCase()) || "", q = ((H = (j = h.closest(".hs-form-field")) == null ? void 0 : j.querySelector("input")) == null ? void 0 : H.getAttribute("name")) || "";
+          const S = t(".hs-error-msg").elements;
+          S.length !== 0 && S.forEach((h) => {
+            var A, j, H, T, M;
+            const k = ((A = h.textContent) == null ? void 0 : A.toLowerCase()) || "", q = ((H = (j = h.closest(".hs-form-field")) == null ? void 0 : j.querySelector("input")) == null ? void 0 : H.getAttribute("name")) || "";
             (M = (T = t(`input[data-relation="${q}"]`).elements[0]) == null ? void 0 : T.closest("label")) == null || M.insertAdjacentHTML("beforeend", `<p class="crs_input_error">${k}</p>`);
-          }), _("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), (A = t(".hs_submit input").elements[0]) == null || A.click();
+          }), _("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), (C = t(".hs_submit input").elements[0]) == null || C.click();
         }
       });
     }
