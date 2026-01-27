@@ -1,14 +1,14 @@
 (function() {
   "use strict";
-  const m = (r, t, e, o = "") => {
+  const g = (r, t, e, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: r,
       event_desc: t,
       event_type: e,
       event_loc: o
-    }), A(`Event: ${r} | ${t} | ${e} | ${o}`, "success");
-  }, p = (r) => new Promise((t) => {
+    }), S(`Event: ${r} | ${t} | ${e} | ${o}`, "success");
+  }, b = (r) => new Promise((t) => {
     const e = document.querySelector(r);
     e && t(e);
     const o = new MutationObserver(() => {
@@ -19,35 +19,35 @@
       childList: !0,
       subtree: !0
     });
-  }), S = ({ name: r, dev: t }) => {
+  }), C = ({ name: r, dev: t }) => {
     console.log(
       `%c EXP: ${r} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, E = (r) => {
+  }, L = (r) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, x = (r, t, e, o, s = 1e3, a = 0.5) => {
-    let n, i;
+  }, A = (r, t, e, o, s = 1e3, a = 0.5) => {
+    let n, c;
     if (n = new IntersectionObserver(
-      function(l) {
-        l[0].isIntersecting === !0 ? i = setTimeout(() => {
-          m(
+      function(m) {
+        m[0].isIntersecting === !0 ? c = setTimeout(() => {
+          g(
             t,
-            l[0].target.dataset.visible || o,
+            m[0].target.dataset.visible || o,
             "view",
             e
           ), n.disconnect();
-        }, s) : (A("Element is not fully visible", "warn"), clearTimeout(i));
+        }, s) : (S("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [a] }
     ), typeof r == "string") {
-      const l = document.querySelector(r);
-      l && n.observe(l);
+      const m = document.querySelector(r);
+      m && n.observe(m);
     } else
       n.observe(r);
-  }, A = (r, t = "info") => {
+  }, S = (r, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -64,12 +64,12 @@
         break;
     }
     console.log(`%c>>> ${r}`, `${e} font-size: 16px; font-weight: 600`);
-  }, I = `
+  }, R = `
 @media (max-width: 768px) {
   .crs-popular-games, .crs-popular-games ~ div {
     padding-inline: 12px;
   }
-}`, C = `@media (min-width: 1290px) {
+}`, T = `@media (min-width: 1290px) {
   .crs-popular-games {
     padding-inline: 0.6rem;
   }
@@ -98,17 +98,40 @@
     margin: 0;
     display: grid !important;
     grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
     column-gap: 1rem;
     row-gap: 1.4rem;
     transform: translate3d(0, 0, 0) !important;
+    transition: margin-bottom 0.5s ease;
+  }
+
+  .game-grid-container [aria-roledescription='slide'] {
+    transition: opacity 0.5s ease, height 0.5s ease, mask-image 0.5s ease;
   }
 
   .game-grid-hidden {
     display: none !important;
   }
 
+  .game-grid-container:has(.game-grid-preview) {
+    margin-bottom: calc((var(--game-card-height) /  1.4) * -1);
+  }
+
+  .game-grid-preview {
+    position: relative;
+    pointer-events: none;
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      transparent 100%
+    );
+    height: 50%;
+    overflow: hidden;
+  }
+
   .game-grid-load-more {
-    margin-block: 32px 10px;
+    margin-block: 0;
     margin-inline: auto;
     display: flex;
     justify-content: center;
@@ -215,25 +238,25 @@
     display: none;
   }
 }
-`, L = /* @__PURE__ */ JSON.parse('[{"name":"Fortnite","url":"https://gameboost.com/fortnite","slug":"fortnite","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/fortnite/accounts"},{"title":"Items","url":"https://gameboost.com/fortnite/items"},{"title":"V-Bucks","url":"https://gameboost.com/fortnite/v-bucks"}]},{"name":"Grand Theft Auto V","url":"https://gameboost.com/grand-theft-auto-v","slug":"grand-theft-auto-v","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/grand-theft-auto-v/accounts"}]},{"name":"Steal A Brainrot","url":"https://gameboost.com/steal-a-brainrot","slug":"steal-a-brainrot","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/steal-a-brainrot/accounts"},{"title":"Items","url":"https://gameboost.com/steal-a-brainrot/items"}]},{"name":"Valorant","url":"https://gameboost.com/valorant","slug":"valorant","priority":1,"categories":[{"title":"Boosting","url":"https://gameboost.com/valorant/boosting"},{"title":"Accounts","url":"https://gameboost.com/valorant/accounts"},{"title":"Points","url":"https://gameboost.com/valorant/top-up"}]},{"name":"Clash Of Clans","url":"https://gameboost.com/clash-of-clans","slug":"clash-of-clans","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/clash-of-clans/accounts"},{"title":"Clans","url":"https://gameboost.com/clash-of-clans/items"},{"title":"Gems","url":"https://gameboost.com/clash-of-clans/top-up"}]},{"name":"Call Of Duty","url":"https://gameboost.com/call-of-duty","slug":"call-of-duty","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/call-of-duty/accounts"},{"title":"Items","url":"https://gameboost.com/call-of-duty/items"},{"title":"CoD Points","url":"https://gameboost.com/call-of-duty/cod-points"}]},{"name":"League Of Legends","url":"https://gameboost.com/league-of-legends","slug":"league-of-legends","priority":2,"categories":[{"title":"Boosting","url":"https://gameboost.com/league-of-legends/boosting"},{"title":"Accounts","url":"https://gameboost.com/league-of-legends/accounts"},{"title":"Items","url":"https://gameboost.com/league-of-legends/items"},{"title":"Riot Points","url":"https://gameboost.com/league-of-legends/top-up"}]},{"name":"Clash Royale","url":"https://gameboost.com/clash-royale","slug":"clash-royale","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/clash-royale/accounts"},{"title":"Gems","url":"https://gameboost.com/clash-royale/gems"}]},{"name":"Roblox","url":"https://gameboost.com/roblox","slug":"roblox","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/roblox/accounts"},{"title":"Robux","url":"https://gameboost.com/roblox/robux"},{"title":"Items","url":"https://gameboost.com/roblox/items"}]},{"name":"Brawl Stars","url":"https://gameboost.com/brawl-stars","slug":"brawl-stars","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/brawl-stars/accounts"},{"title":"Gems","url":"https://gameboost.com/brawl-stars/gems"}]},{"name":"Raid Shadow Legends","url":"https://gameboost.com/raid-shadow-legends","slug":"raid-shadow-legends","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/raid-shadow-legends/accounts"}]},{"name":"Pubg Mobile","url":"https://gameboost.com/pubg-mobile","slug":"pubg-mobile","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/pubg-mobile/accounts"},{"title":"Items","url":"https://gameboost.com/pubg-mobile/items"},{"title":"UC","url":"https://gameboost.com/pubg-mobile/top-up"}]},{"name":"Plants Vs Brainrots","url":"https://gameboost.com/plants-vs-brainrots","slug":"plants-vs-brainrots","categories":[{"title":"Items","url":"https://gameboost.com/plants-vs-brainrots/items"}]},{"name":"Apex Legends","url":"https://gameboost.com/apex-legends","slug":"apex-legends","categories":[{"title":"Boosting","url":"https://gameboost.com/apex-legends/boosting"},{"title":"Accounts","url":"https://gameboost.com/apex-legends/accounts"},{"title":"Coins","url":"https://gameboost.com/apex-legends/coins"}]},{"name":"Grow A Garden","url":"https://gameboost.com/grow-a-garden","slug":"grow-a-garden","categories":[{"title":"Accounts","url":"https://gameboost.com/grow-a-garden/accounts"},{"title":"Items","url":"https://gameboost.com/grow-a-garden/items"},{"title":"Tokens","url":"https://gameboost.com/grow-a-garden/tokens"}]},{"name":"Rainbow Six Siege","url":"https://gameboost.com/rainbow-six-siege","slug":"rainbow-six-siege","categories":[{"title":"Accounts","url":"https://gameboost.com/rainbow-six-siege/accounts"},{"title":"Credits","url":"https://gameboost.com/rainbow-six-siege/top-up"}]},{"name":"Genshin Impact","url":"https://gameboost.com/genshin-impact","slug":"genshin-impact","categories":[{"title":"Accounts","url":"https://gameboost.com/genshin-impact/accounts"},{"title":"Crystal","url":"https://gameboost.com/genshin-impact/top-up"}]},{"name":"Rocket League","url":"https://gameboost.com/rocket-league","slug":"rocket-league","categories":[{"title":"Boosting","url":"https://gameboost.com/rocket-league/boosting"},{"title":"Credits","url":"https://gameboost.com/rocket-league/credits"},{"title":"Accounts","url":"https://gameboost.com/rocket-league/accounts"}]},{"name":"Overwatch 2","url":"https://gameboost.com/overwatch-2","slug":"overwatch-2","categories":[{"title":"Boosting","url":"https://gameboost.com/overwatch-2/boosting"},{"title":"Accounts","url":"https://gameboost.com/overwatch-2/accounts"},{"title":"Coins","url":"https://gameboost.com/overwatch-2/coins"}]},{"name":"Old School Runescape","url":"https://gameboost.com/old-school-runescape","slug":"old-school-runescape","categories":[{"title":"Gold","url":"https://gameboost.com/old-school-runescape/gold"},{"title":"Accounts","url":"https://gameboost.com/old-school-runescape/accounts"},{"title":"Items","url":"https://gameboost.com/old-school-runescape/items"}]},{"name":"Rust","url":"https://gameboost.com/rust","slug":"rust","categories":[{"title":"Accounts","url":"https://gameboost.com/rust/accounts"},{"title":"Items","url":"https://gameboost.com/rust/items"}]},{"name":"Pokemon Go","url":"https://gameboost.com/pokemon-go","slug":"pokemon-go","categories":[{"title":"Accounts","url":"https://gameboost.com/pokemon-go/accounts"},{"title":"Items","url":"https://gameboost.com/pokemon-go/items"},{"title":"PokeCoins","url":"https://gameboost.com/pokemon-go/top-up"}]},{"name":"Honkai Star Rail","url":"https://gameboost.com/honkai-star-rail","slug":"honkai-star-rail","categories":[{"title":"Accounts","url":"https://gameboost.com/honkai-star-rail/accounts"},{"title":"Oneiric Shard","url":"https://gameboost.com/honkai-star-rail/top-up"}]},{"name":"Minecraft","url":"https://gameboost.com/minecraft","slug":"minecraft","categories":[{"title":"Accounts","url":"https://gameboost.com/minecraft/accounts"},{"title":"Items","url":"https://gameboost.com/minecraft/items"},{"title":"Hypixel Coins","url":"https://gameboost.com/minecraft/hypixel-coins"}]},{"name":"Free Fire","url":"https://gameboost.com/free-fire","slug":"free-fire","categories":[{"title":"Accounts","url":"https://gameboost.com/free-fire/accounts"},{"title":"Diamonds","url":"https://gameboost.com/free-fire/top-up"}]},{"name":"Nba 2k","url":"https://gameboost.com/nba-2k","slug":"nba-2k","categories":[{"title":"Accounts","url":"https://gameboost.com/nba-2k/accounts"}]},{"name":"Dragonball Legends","url":"https://gameboost.com/dragonball-legends","slug":"dragonball-legends","categories":[{"title":"Accounts","url":"https://gameboost.com/dragonball-legends/accounts"}]},{"name":"Summoners War","url":"https://gameboost.com/summoners-war","slug":"summoners-war","categories":[{"title":"Accounts","url":"https://gameboost.com/summoners-war/accounts"}]},{"name":"Mobile Legends","url":"https://gameboost.com/mobile-legends","slug":"mobile-legends","categories":[{"title":"Accounts","url":"https://gameboost.com/mobile-legends/accounts"},{"title":"Diamonds","url":"https://gameboost.com/mobile-legends/top-up"}]},{"name":"Escape From Tarkov","url":"https://gameboost.com/escape-from-tarkov","slug":"escape-from-tarkov","categories":[{"title":"Accounts","url":"https://gameboost.com/escape-from-tarkov/accounts"},{"title":"Roubles","url":"https://gameboost.com/escape-from-tarkov/roubles"},{"title":"Items","url":"https://gameboost.com/escape-from-tarkov/items"}]},{"name":"One Piece Bounty Rush","url":"https://gameboost.com/one-piece-bounty-rush","slug":"one-piece-bounty-rush","categories":[{"title":"Accounts","url":"https://gameboost.com/one-piece-bounty-rush/accounts"}]},{"name":"Forza Horizon 5","url":"https://gameboost.com/forza-horizon-5","slug":"forza-horizon-5","categories":[{"title":"Accounts","url":"https://gameboost.com/forza-horizon-5/accounts"},{"title":"Credits","url":"https://gameboost.com/forza-horizon-5/credits"}]},{"name":"Red Dead Redemption 2","url":"https://gameboost.com/red-dead-redemption-2","slug":"red-dead-redemption-2","categories":[{"title":"Accounts","url":"https://gameboost.com/red-dead-redemption-2/accounts"}]},{"name":"Dota 2","url":"https://gameboost.com/dota-2","slug":"dota-2","categories":[{"title":"Accounts","url":"https://gameboost.com/dota-2/accounts"},{"title":"Items","url":"https://gameboost.com/dota-2/items"}]},{"name":"Hay Day","url":"https://gameboost.com/hay-day","slug":"hay-day","categories":[{"title":"Accounts","url":"https://gameboost.com/hay-day/accounts"},{"title":"Items","url":"https://gameboost.com/hay-day/items"}]},{"name":"War Thunder","url":"https://gameboost.com/war-thunder","slug":"war-thunder","categories":[{"title":"Accounts","url":"https://gameboost.com/war-thunder/accounts"}]},{"name":"Destiny 2","url":"https://gameboost.com/destiny-2","slug":"destiny-2","categories":[{"title":"Accounts","url":"https://gameboost.com/destiny-2/accounts"},{"title":"Silver","url":"https://gameboost.com/destiny-2/silver"},{"title":"Items","url":"https://gameboost.com/destiny-2/items"}]},{"name":"Squad Busters","url":"https://gameboost.com/squad-busters","slug":"squad-busters","categories":[{"title":"Accounts","url":"https://gameboost.com/squad-busters/accounts"}]},{"name":"World Of Tanks","url":"https://gameboost.com/world-of-tanks","slug":"world-of-tanks","categories":[{"title":"Accounts","url":"https://gameboost.com/world-of-tanks/accounts"}]},{"name":"Xdefiant","url":"https://gameboost.com/xdefiant","slug":"xdefiant","categories":[{"title":"Accounts","url":"https://gameboost.com/xdefiant/accounts"}]},{"name":"Diablo 4","url":"https://gameboost.com/diablo-4","slug":"diablo-4","categories":[{"title":"Accounts","url":"https://gameboost.com/diablo-4/accounts"},{"title":"Gold","url":"https://gameboost.com/diablo-4/gold"},{"title":"Items","url":"https://gameboost.com/diablo-4/items"}]},{"name":"Warframe","url":"https://gameboost.com/warframe","slug":"warframe","categories":[{"title":"Items","url":"https://gameboost.com/warframe/items"},{"title":"Platinum","url":"https://gameboost.com/warframe/platinum"},{"title":"Accounts","url":"https://gameboost.com/warframe/accounts"}]},{"name":"The Elder Scrolls","url":"https://gameboost.com/the-elder-scrolls","slug":"the-elder-scrolls","categories":[{"title":"Gold","url":"https://gameboost.com/the-elder-scrolls/gold"},{"title":"Items","url":"https://gameboost.com/the-elder-scrolls/items"},{"title":"Accounts","url":"https://gameboost.com/the-elder-scrolls/accounts"}]},{"name":"Lost Ark","url":"https://gameboost.com/lost-ark","slug":"lost-ark","categories":[{"title":"Gold","url":"https://gameboost.com/lost-ark/gold"},{"title":"Items","url":"https://gameboost.com/lost-ark/items"}]},{"name":"Fallout 76","url":"https://gameboost.com/fallout-76","slug":"fallout-76","categories":[{"title":"Items","url":"https://gameboost.com/fallout-76/items"},{"title":"Atoms","url":"https://gameboost.com/fallout-76/top-up"},{"title":"Accounts","url":"https://gameboost.com/fallout-76/accounts"}]},{"name":"Growtopia","url":"https://gameboost.com/growtopia","slug":"growtopia","categories":[{"title":"Items","url":"https://gameboost.com/growtopia/items"},{"title":"Locks","url":"https://gameboost.com/growtopia/locks"},{"title":"Accounts","url":"https://gameboost.com/growtopia/accounts"}]},{"name":"Final Fantasy Xiv","url":"https://gameboost.com/final-fantasy-xiv","slug":"final-fantasy-xiv","categories":[{"title":"Accounts","url":"https://gameboost.com/final-fantasy-xiv/accounts"},{"title":"Gil","url":"https://gameboost.com/final-fantasy-xiv/gil"},{"title":"Items","url":"https://gameboost.com/final-fantasy-xiv/items"}]},{"name":"Zenless Zone Zero","url":"https://gameboost.com/zenless-zone-zero","slug":"zenless-zone-zero","categories":[{"title":"Accounts","url":"https://gameboost.com/zenless-zone-zero/accounts"},{"title":"Monochrome","url":"https://gameboost.com/zenless-zone-zero/top-up"}]},{"name":"Fc 25","url":"https://gameboost.com/fc-25","slug":"fc-25","categories":[{"title":"Coins","url":"https://gameboost.com/fc-25/coins"},{"title":"Accounts","url":"https://gameboost.com/fc-25/accounts"}]},{"name":"World Of Warcraft","url":"https://gameboost.com/world-of-warcraft","slug":"world-of-warcraft","categories":[{"title":"Gold","url":"https://gameboost.com/world-of-warcraft/gold"},{"title":"Items","url":"https://gameboost.com/world-of-warcraft/items"}]},{"name":"Wow Season Of Discovery","url":"https://gameboost.com/wow-season-of-discovery","slug":"wow-season-of-discovery","categories":[{"title":"Gold","url":"https://gameboost.com/wow-season-of-discovery/gold"},{"title":"Accounts","url":"https://gameboost.com/wow-season-of-discovery/accounts"}]},{"name":"Teamfight Tactics","url":"https://gameboost.com/teamfight-tactics","slug":"teamfight-tactics","categories":[{"title":"Boosting","url":"https://gameboost.com/teamfight-tactics/boosting"}]},{"name":"Lol Wild Rift","url":"https://gameboost.com/lol-wild-rift","slug":"lol-wild-rift","categories":[{"title":"Boosting","url":"https://gameboost.com/lol-wild-rift/boosting"},{"title":"Accounts","url":"https://gameboost.com/lol-wild-rift/accounts"},{"title":"Wild Cores","url":"https://gameboost.com/lol-wild-rift/wild-cores"}]},{"name":"Counter Strike 2","url":"https://gameboost.com/counter-strike-2","slug":"counter-strike-2","categories":[{"title":"Skins","url":"https://gameboost.com/counter-strike-2/skins"},{"title":"Accounts","url":"https://gameboost.com/counter-strike-2/accounts"},{"title":"Karambit","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=karambit"},{"title":"M9 bayonets","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=m9-bayonet"},{"title":"Bayonets","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=bayonet"},{"title":"Butterfly Knife","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=butterfly-knife"},{"title":"AWP","url":"https://gameboost.com/counter-strike-2/skins?category=rifle&subCategory=awp"}]},{"name":"Rise Of Kingdoms","url":"https://gameboost.com/rise-of-kingdoms","slug":"rise-of-kingdoms","categories":[{"title":"Accounts","url":"https://gameboost.com/rise-of-kingdoms/accounts"}]},{"name":"Black Desert","url":"https://gameboost.com/black-desert","slug":"black-desert","categories":[{"title":"Accounts","url":"https://gameboost.com/black-desert/accounts"},{"title":"Items","url":"https://gameboost.com/black-desert/items"},{"title":"Silver","url":"https://gameboost.com/black-desert/silver"}]},{"name":"Last Epoch","url":"https://gameboost.com/last-epoch","slug":"last-epoch","categories":[{"title":"Gold","url":"https://gameboost.com/last-epoch/gold"},{"title":"Items","url":"https://gameboost.com/last-epoch/items"}]},{"name":"Dayz","url":"https://gameboost.com/dayz","slug":"dayz","categories":[{"title":"Accounts","url":"https://gameboost.com/dayz/accounts"}]},{"name":"Boom Beach","url":"https://gameboost.com/boom-beach","slug":"boom-beach","categories":[{"title":"Accounts","url":"https://gameboost.com/boom-beach/accounts"}]},{"name":"Diablo 2","url":"https://gameboost.com/diablo-2","slug":"diablo-2","categories":[{"title":"Items","url":"https://gameboost.com/diablo-2/items"}]},{"name":"Path Of Exile","url":"https://gameboost.com/path-of-exile","slug":"path-of-exile","categories":[{"title":"Items","url":"https://gameboost.com/path-of-exile/items"},{"title":"Orbs","url":"https://gameboost.com/path-of-exile/currency"},{"title":"Accounts","url":"https://gameboost.com/path-of-exile/accounts"}]},{"name":"Neopets","url":"https://gameboost.com/neopets","slug":"neopets","categories":[{"title":"Items","url":"https://gameboost.com/neopets/items"}]},{"name":"Runescape 3","url":"https://gameboost.com/runescape-3","slug":"runescape-3","categories":[{"title":"Gold","url":"https://gameboost.com/runescape-3/gold"},{"title":"Items","url":"https://gameboost.com/runescape-3/items"},{"title":"Accounts","url":"https://gameboost.com/runescape-3/accounts"}]},{"name":"Ark Survival Evolved","url":"https://gameboost.com/ark-survival-evolved","slug":"ark-survival-evolved","categories":[{"title":"Items","url":"https://gameboost.com/ark-survival-evolved/items"}]},{"name":"New World","url":"https://gameboost.com/new-world","slug":"new-world","categories":[{"title":"Coins","url":"https://gameboost.com/new-world/coins"},{"title":"Items","url":"https://gameboost.com/new-world/items"}]},{"name":"Albion Online","url":"https://gameboost.com/albion-online","slug":"albion-online","categories":[{"title":"Silver","url":"https://gameboost.com/albion-online/silver"},{"title":"Accounts","url":"https://gameboost.com/albion-online/accounts"},{"title":"Items","url":"https://gameboost.com/albion-online/items"}]},{"name":"Call Of Duty Mobile","url":"https://gameboost.com/call-of-duty-mobile","slug":"call-of-duty-mobile","categories":[{"title":"Accounts","url":"https://gameboost.com/call-of-duty-mobile/accounts"},{"title":"CP","url":"https://gameboost.com/call-of-duty-mobile/cp"}]},{"name":"Throne And Liberty","url":"https://gameboost.com/throne-and-liberty","slug":"throne-and-liberty","categories":[{"title":"Lucent","url":"https://gameboost.com/throne-and-liberty/lucent"},{"title":"Accounts","url":"https://gameboost.com/throne-and-liberty/accounts"}]},{"name":"Diablo Immortal","url":"https://gameboost.com/diablo-immortal","slug":"diablo-immortal","categories":[{"title":"Platinum","url":"https://gameboost.com/diablo-immortal/platinum"},{"title":"Accounts","url":"https://gameboost.com/diablo-immortal/accounts"}]},{"name":"Wow Hardcore","url":"https://gameboost.com/wow-hardcore","slug":"wow-hardcore","categories":[{"title":"Gold","url":"https://gameboost.com/wow-hardcore/gold"}]},{"name":"Trove Online","url":"https://gameboost.com/trove-online","slug":"trove-online","categories":[{"title":"Flux","url":"https://gameboost.com/trove-online/flux"}]},{"name":"Dofus","url":"https://gameboost.com/dofus","slug":"dofus","categories":[{"title":"Kamas","url":"https://gameboost.com/dofus/kamas"}]},{"name":"Wow Classic Era","url":"https://gameboost.com/wow-classic-era","slug":"wow-classic-era","categories":[{"title":"Gold","url":"https://gameboost.com/wow-classic-era/gold"},{"title":"Accounts","url":"https://gameboost.com/wow-classic-era/accounts"},{"title":"Items","url":"https://gameboost.com/wow-classic-era/items"}]},{"name":"Path Of Exile 2","url":"https://gameboost.com/path-of-exile-2","slug":"path-of-exile-2","categories":[{"title":"Items","url":"https://gameboost.com/path-of-exile-2/items"},{"title":"Orbs","url":"https://gameboost.com/path-of-exile-2/orbs"},{"title":"Accounts","url":"https://gameboost.com/path-of-exile-2/accounts"}]},{"name":"Marvel Rivals","url":"https://gameboost.com/marvel-rivals","slug":"marvel-rivals","categories":[{"title":"Boosting","url":"https://gameboost.com/marvel-rivals/boosting"},{"title":"Accounts","url":"https://gameboost.com/marvel-rivals/accounts"},{"title":"Lattices","url":"https://gameboost.com/marvel-rivals/top-up"}]},{"name":"Star Wars The Old Republic","url":"https://gameboost.com/star-wars-the-old-republic","slug":"star-wars-the-old-republic","categories":[{"title":"Credits","url":"https://gameboost.com/star-wars-the-old-republic/credits"}]},{"name":"Dark And Darker","url":"https://gameboost.com/dark-and-darker","slug":"dark-and-darker","categories":[{"title":"Gold","url":"https://gameboost.com/dark-and-darker/gold"},{"title":"Items","url":"https://gameboost.com/dark-and-darker/items"},{"title":"Accounts","url":"https://gameboost.com/dark-and-darker/accounts"}]},{"name":"Deadlock","url":"https://gameboost.com/deadlock","slug":"deadlock","categories":[{"title":"Accounts","url":"https://gameboost.com/deadlock/accounts"}]},{"name":"Fragpunk","url":"https://gameboost.com/fragpunk","slug":"fragpunk","categories":[{"title":"Accounts","url":"https://gameboost.com/fragpunk/accounts"}]},{"name":"Wuthering Waves","url":"https://gameboost.com/wuthering-waves","slug":"wuthering-waves","categories":[{"title":"Accounts","url":"https://gameboost.com/wuthering-waves/accounts"},{"title":"Lunite","url":"https://gameboost.com/wuthering-waves/top-up"}]},{"name":"Wow Mists Of Pandaria","url":"https://gameboost.com/wow-mists-of-pandaria","slug":"wow-mists-of-pandaria","categories":[{"title":"Items","url":"https://gameboost.com/wow-mists-of-pandaria/items"},{"title":"Gold","url":"https://gameboost.com/wow-mists-of-pandaria/gold"},{"title":"Accounts","url":"https://gameboost.com/wow-mists-of-pandaria/accounts"}]},{"name":"Dune Awakening","url":"https://gameboost.com/dune-awakening","slug":"dune-awakening","categories":[{"title":"Solari","url":"https://gameboost.com/dune-awakening/solari"},{"title":"Items","url":"https://gameboost.com/dune-awakening/items"}]},{"name":"99 Nights In The Forest","url":"https://gameboost.com/99-nights-in-the-forest","slug":"99-nights-in-the-forest","categories":[{"title":"Diamonds","url":"https://gameboost.com/99-nights-in-the-forest/diamonds"}]},{"name":"Fc 26","url":"https://gameboost.com/fc-26","slug":"fc-26","categories":[{"title":"Accounts","url":"https://gameboost.com/fc-26/accounts"},{"title":"Coins","url":"https://gameboost.com/fc-26/fc-coins"}]},{"name":"8 Ball Pool","url":"https://gameboost.com/8-ball-pool","slug":"8-ball-pool","categories":[{"title":"Accounts","url":"https://gameboost.com/8-ball-pool/accounts"},{"title":"Coins","url":"https://gameboost.com/8-ball-pool/coins"}]},{"name":"Borderlands 4","url":"https://gameboost.com/borderlands-4","slug":"borderlands-4","categories":[{"title":"Items","url":"https://gameboost.com/borderlands-4/items"},{"title":"Money","url":"https://gameboost.com/borderlands-4/money"},{"title":"Accounts","url":"https://gameboost.com/borderlands-4/accounts"}]},{"name":"Adopt Me","url":"https://gameboost.com/adopt-me","slug":"adopt-me","categories":[{"title":"Items","url":"https://gameboost.com/adopt-me/items"},{"title":"Accounts","url":"https://gameboost.com/adopt-me/accounts"}]},{"name":"Blox Fruits","url":"https://gameboost.com/blox-fruits","slug":"blox-fruits","categories":[{"title":"Accounts","url":"https://gameboost.com/blox-fruits/accounts"},{"title":"Items","url":"https://gameboost.com/blox-fruits/items"}]},{"name":"Type Soul","url":"https://gameboost.com/type-soul","slug":"type-soul","categories":[{"title":"Items","url":"https://gameboost.com/type-soul/items"}]},{"name":"2XKO","url":"https://gameboost.com/2xko","slug":"2xko","categories":[{"title":"Accounts","url":"https://gameboost.com/2xko/accounts"}]},{"name":"Murder Mystery 2","url":"https://gameboost.com/murder-mystery-2","slug":"murder-mystery-2","categories":[{"title":"Items","url":"https://gameboost.com/murder-mystery-2/items"}]},{"name":"Blade Ball","url":"https://gameboost.com/blade-ball","slug":"blade-ball","categories":[{"title":"Items","url":"https://gameboost.com/blade-ball/items"},{"title":"Tokens","url":"https://gameboost.com/blade-ball/tokens"}]},{"name":"Fisch","url":"https://gameboost.com/fisch","slug":"fisch","categories":[{"title":"Items","url":"https://gameboost.com/fisch/items"},{"title":"Money","url":"https://gameboost.com/fisch/money"},{"title":"Accounts","url":"https://gameboost.com/fisch/accounts"}]},{"name":"Arknights","url":"https://gameboost.com/arknights","slug":"arknights","categories":[{"title":"Accounts","url":"https://gameboost.com/arknights/accounts"}]},{"name":"Toilet Tower Defense","url":"https://gameboost.com/toilet-tower-defense","slug":"toilet-tower-defense","categories":[{"title":"Gems","url":"https://gameboost.com/toilet-tower-defense/gems"}]},{"name":"Star Citizen","url":"https://gameboost.com/star-citizen","slug":"star-citizen","categories":[{"title":"aUEC","url":"https://gameboost.com/star-citizen/auec"}]},{"name":"Pet Simulator 99","url":"https://gameboost.com/pet-simulator-99","slug":"pet-simulator-99","categories":[{"title":"Gems","url":"https://gameboost.com/pet-simulator-99/gems"},{"title":"Items","url":"https://gameboost.com/pet-simulator-99/items"}]},{"name":"Mortal Online 2","url":"https://gameboost.com/mortal-online-2","slug":"mortal-online-2","categories":[{"title":"Gold","url":"https://gameboost.com/mortal-online-2/gold"}]},{"name":"Pets Go","url":"https://gameboost.com/pets-go","slug":"pets-go","categories":[{"title":"Diamonds","url":"https://gameboost.com/pets-go/diamonds"}]},{"name":"Battlefield","url":"https://gameboost.com/battlefield","slug":"battlefield","categories":[{"title":"Accounts","url":"https://gameboost.com/battlefield/accounts"},{"title":"Items","url":"https://gameboost.com/battlefield/items"}]},{"name":"Efootball","url":"https://gameboost.com/efootball","slug":"efootball","categories":[{"title":"Accounts","url":"https://gameboost.com/efootball/accounts"}]},{"name":"Pokemon Tcg Pocket","url":"https://gameboost.com/pokemon-tcg-pocket","slug":"pokemon-tcg-pocket","categories":[{"title":"Accounts","url":"https://gameboost.com/pokemon-tcg-pocket/accounts"}]},{"name":"Bubble Gum Simulator Infinity","url":"https://gameboost.com/bubble-gum-simulator-infinity","slug":"bubble-gum-simulator-infinity","categories":[{"title":"Items","url":"https://gameboost.com/bubble-gum-simulator-infinity/items"}]},{"name":"Jailbreak","url":"https://gameboost.com/jailbreak","slug":"jailbreak","categories":[{"title":"Items","url":"https://gameboost.com/jailbreak/items"},{"title":"Accounts","url":"https://gameboost.com/jailbreak/accounts"}]},{"name":"Garden Tower Defense","url":"https://gameboost.com/garden-tower-defense","slug":"garden-tower-defense","categories":[{"title":"Items","url":"https://gameboost.com/garden-tower-defense/items"}]},{"name":"Anime Last Stand","url":"https://gameboost.com/anime-last-stand","slug":"anime-last-stand","categories":[{"title":"Items","url":"https://gameboost.com/anime-last-stand/items"}]},{"name":"Anime Vanguards","url":"https://gameboost.com/anime-vanguards","slug":"anime-vanguards","categories":[{"title":"Items","url":"https://gameboost.com/anime-vanguards/items"},{"title":"Accounts","url":"https://gameboost.com/anime-vanguards/accounts"}]},{"name":"Roblox Rivals","url":"https://gameboost.com/roblox-rivals","slug":"roblox-rivals","categories":[{"title":"Items","url":"https://gameboost.com/roblox-rivals/items"}]},{"name":"Build A Zoo","url":"https://gameboost.com/build-a-zoo","slug":"build-a-zoo","categories":[{"title":"Items","url":"https://gameboost.com/build-a-zoo/items"}]},{"name":"Ink Game","url":"https://gameboost.com/ink-game","slug":"ink-game","categories":[{"title":"Items","url":"https://gameboost.com/ink-game/items"}]},{"name":"Blue Lock Rivals","url":"https://gameboost.com/blue-lock-rivals","slug":"blue-lock-rivals","categories":[{"title":"Items","url":"https://gameboost.com/blue-lock-rivals/items"}]},{"name":"Guild Wars 2","url":"https://gameboost.com/guild-wars-2","slug":"guild-wars-2","categories":[{"title":"Gold","url":"https://gameboost.com/guild-wars-2/gold"}]},{"name":"Dead By Daylight","url":"https://gameboost.com/dead-by-daylight","slug":"dead-by-daylight","categories":[{"title":"Accounts","url":"https://gameboost.com/dead-by-daylight/accounts"},{"title":"Auric Cells","url":"https://gameboost.com/dead-by-daylight/auric-cells"}]},{"name":"Uma Musume Pretty Derby","url":"https://gameboost.com/uma-musume-pretty-derby","slug":"uma-musume-pretty-derby","categories":[{"title":"Accounts","url":"https://gameboost.com/uma-musume-pretty-derby/accounts"}]},{"name":"Elden Ring","url":"https://gameboost.com/elden-ring","slug":"elden-ring","categories":[{"title":"Runes","url":"https://gameboost.com/elden-ring/runes"},{"title":"Items","url":"https://gameboost.com/elden-ring/items"},{"title":"Accounts","url":"https://gameboost.com/elden-ring/accounts"}]},{"name":"Eve Online","url":"https://gameboost.com/eve-online","slug":"eve-online","categories":[{"title":"ISK","url":"https://gameboost.com/eve-online/isk"}]},{"name":"Eve Echoes","url":"https://gameboost.com/eve-echoes","slug":"eve-echoes","categories":[{"title":"ISK","url":"https://gameboost.com/eve-echoes/isk"}]},{"name":"Donutsmp","url":"https://gameboost.com/donutsmp","slug":"donutsmp","categories":[{"title":"Money","url":"https://gameboost.com/donutsmp/money"},{"title":"Accounts","url":"https://gameboost.com/donutsmp/accounts"}]},{"name":"Creatures Of Sonaria","url":"https://gameboost.com/creatures-of-sonaria","slug":"creatures-of-sonaria","categories":[{"title":"Mushrooms","url":"https://gameboost.com/creatures-of-sonaria/mushrooms"},{"title":"Items","url":"https://gameboost.com/creatures-of-sonaria/items"}]},{"name":"Honor Of Kings","url":"https://gameboost.com/honor-of-kings","slug":"honor-of-kings","categories":[{"title":"Tokens","url":"https://gameboost.com/honor-of-kings/tokens"}]},{"name":"Pokemon Go Stardust","url":"https://gameboost.com/pokemon-go-stardust","slug":"pokemon-go-stardust","categories":[{"title":"Stardust","url":"https://gameboost.com/pokemon-go-stardust/stardust"}]},{"name":"Temtem","url":"https://gameboost.com/temtem","slug":"temtem","categories":[]},{"name":"Torchlight Infinite","url":"https://gameboost.com/torchlight-infinite","slug":"torchlight-infinite","categories":[{"title":"Flame Elementium","url":"https://gameboost.com/torchlight-infinite/flame-elementium"}]},{"name":"Blade Soul Neo","url":"https://gameboost.com/blade-soul-neo","slug":"blade-soul-neo","categories":[{"title":"Divine Gems","url":"https://gameboost.com/blade-soul-neo/divine-gems"}]},{"name":"Runescape Bonds","url":"https://gameboost.com/runescape-bonds","slug":"runescape-bonds","categories":[{"title":"Bonds","url":"https://gameboost.com/runescape-bonds/bonds"}]},{"name":"Arc Raiders","url":"https://gameboost.com/arc-raiders","slug":"arc-raiders","categories":[{"title":"Items","url":"https://gameboost.com/arc-raiders/items"},{"title":"Coins","url":"https://gameboost.com/arc-raiders/coins"},{"title":"Accounts","url":"https://gameboost.com/arc-raiders/accounts"}]},{"name":"Goddess Of Victory Nikke","url":"https://gameboost.com/goddess-of-victory-nikke","slug":"goddess-of-victory-nikke","categories":[{"title":"Accounts","url":"https://gameboost.com/goddess-of-victory-nikke/accounts"}]},{"name":"Epic Seven","url":"https://gameboost.com/epic-seven","slug":"epic-seven","categories":[{"title":"Accounts","url":"https://gameboost.com/epic-seven/accounts"}]},{"name":"Identity V","url":"https://gameboost.com/identity-v","slug":"identity-v","categories":[{"title":"Echoes","url":"https://gameboost.com/identity-v/echoes"},{"title":"Accounts","url":"https://gameboost.com/identity-v/accounts"}]},{"name":"Blood Strike","url":"https://gameboost.com/blood-strike","slug":"blood-strike","categories":[{"title":"Gold","url":"https://gameboost.com/blood-strike/gold"},{"title":"Accounts","url":"https://gameboost.com/blood-strike/accounts"}]},{"name":"Whiteout Survival","url":"https://gameboost.com/whiteout-survival","slug":"whiteout-survival","categories":[{"title":"Frost Stars","url":"https://gameboost.com/whiteout-survival/frost-stars"},{"title":"Accounts","url":"https://gameboost.com/whiteout-survival/accounts"}]},{"name":"Super Sus","url":"https://gameboost.com/super-sus","slug":"super-sus","categories":[{"title":"Goldstars","url":"https://gameboost.com/super-sus/goldstars"}]},{"name":"Delta Force","url":"https://gameboost.com/delta-force","slug":"delta-force","categories":[{"title":"Delta Coins","url":"https://gameboost.com/delta-force/delta-coins"},{"title":"Accounts","url":"https://gameboost.com/delta-force/accounts"}]},{"name":"Bleach Brave Souls","url":"https://gameboost.com/bleach-brave-souls","slug":"bleach-brave-souls","categories":[{"title":"Accounts","url":"https://gameboost.com/bleach-brave-souls/accounts"}]},{"name":"Cookie Run Kingdom","url":"https://gameboost.com/cookie-run-kingdom","slug":"cookie-run-kingdom","categories":[{"title":"Accounts","url":"https://gameboost.com/cookie-run-kingdom/accounts"}]},{"name":"Jujutsu Kaisen Phantom Parade","url":"https://gameboost.com/jujutsu-kaisen-phantom-parade","slug":"jujutsu-kaisen-phantom-parade","categories":[{"title":"Accounts","url":"https://gameboost.com/jujutsu-kaisen-phantom-parade/accounts"}]},{"name":"The Seven Deadly Sins","url":"https://gameboost.com/the-seven-deadly-sins","slug":"the-seven-deadly-sins","categories":[{"title":"Accounts","url":"https://gameboost.com/the-seven-deadly-sins/accounts"}]},{"name":"Dragon Ball Z Dokkan Battle","url":"https://gameboost.com/dragon-ball-z-dokkan-battle","slug":"dragon-ball-z-dokkan-battle","categories":[{"title":"Accounts","url":"https://gameboost.com/dragon-ball-z-dokkan-battle/accounts"}]},{"name":"Sea Of Thieves","url":"https://gameboost.com/sea-of-thieves","slug":"sea-of-thieves","categories":[{"title":"Accounts","url":"https://gameboost.com/sea-of-thieves/accounts"}]},{"name":"Yu Gi Oh Master Duel","url":"https://gameboost.com/yu-gi-oh-master-duel","slug":"yu-gi-oh-master-duel","categories":[{"title":"Accounts","url":"https://gameboost.com/yu-gi-oh-master-duel/accounts"}]},{"name":"Ea Sports Fc Mobile","url":"https://gameboost.com/ea-sports-fc-mobile","slug":"ea-sports-fc-mobile","categories":[{"title":"Accounts","url":"https://gameboost.com/ea-sports-fc-mobile/accounts"}]},{"name":"All Star Tower Defense X","url":"https://gameboost.com/all-star-tower-defense-x","slug":"all-star-tower-defense-x","categories":[{"title":"Accounts","url":"https://gameboost.com/all-star-tower-defense-x/accounts"}]},{"name":"Watcher Of Realms","url":"https://gameboost.com/watcher-of-realms","slug":"watcher-of-realms","categories":[{"title":"Accounts","url":"https://gameboost.com/watcher-of-realms/accounts"}]},{"name":"Where Winds Meet","url":"https://gameboost.com/where-winds-meet","slug":"where-winds-meet","categories":[{"title":"Accounts","url":"https://gameboost.com/where-winds-meet/accounts"}]},{"name":"Fish It","url":"https://gameboost.com/fish-it","slug":"fish-it","categories":[{"title":"Items","url":"https://gameboost.com/fish-it/items"}]},{"name":"Ayakashi Rumble","url":"https://gameboost.com/ayakashi-rumble","slug":"ayakashi-rumble","categories":[{"title":"Accounts","url":"https://gameboost.com/ayakashi-rumble/accounts"}]},{"name":"Fate Grand Order","url":"https://gameboost.com/fate-grand-order","slug":"fate-grand-order","categories":[{"title":"Accounts","url":"https://gameboost.com/fate-grand-order/accounts"}]},{"name":"Stella Sora","url":"https://gameboost.com/stella-sora","slug":"stella-sora","categories":[{"title":"Accounts","url":"https://gameboost.com/stella-sora/accounts"}]},{"name":"The Forge","url":"https://gameboost.com/the-forge","slug":"the-forge","categories":[{"title":"Accounts","url":"https://gameboost.com/the-forge/accounts"},{"title":"Items","url":"https://gameboost.com/the-forge/items"}]},{"name":"Marvel Contest Of Champions","url":"https://gameboost.com/marvel-contest-of-champions","slug":"marvel-contest-of-champions","categories":[{"title":"Accounts","url":"https://gameboost.com/marvel-contest-of-champions/accounts"}]},{"name":"World Of Warships","url":"https://gameboost.com/world-of-warships","slug":"world-of-warships","categories":[{"title":"Accounts","url":"https://gameboost.com/world-of-warships/accounts"}]},{"name":"Volleyball Legends","url":"https://gameboost.com/volleyball-legends","slug":"volleyball-legends","categories":[{"title":"Accounts","url":"https://gameboost.com/volleyball-legends/accounts"},{"title":"Items","url":"https://gameboost.com/volleyball-legends/items"}]},{"name":"Metin 2","url":"https://gameboost.com/metin-2","slug":"metin-2","categories":[{"title":"Accounts","url":"https://gameboost.com/metin-2/accounts"}]},{"name":"Escape Tsunami For Brainrots","url":"https://gameboost.com/escape-tsunami-for-brainrots","slug":"escape-tsunami-for-brainrots","categories":[{"title":"Items","url":"https://gameboost.com/escape-tsunami-for-brainrots/items"}]},{"name":"Monopoly Go","url":"https://gameboost.com/monopoly-go","slug":"monopoly-go","categories":[{"title":"Items","url":"https://gameboost.com/monopoly-go/items"}]},{"name":"Last War Survival","url":"https://gameboost.com/last-war-survival","slug":"last-war-survival","categories":[{"title":"Accounts","url":"https://gameboost.com/last-war-survival/accounts"}]},{"name":"Wartune Ultra","url":"https://gameboost.com/wartune-ultra","slug":"wartune-ultra","categories":[{"title":"Accounts","url":"https://gameboost.com/wartune-ultra/accounts"}]},{"name":"Zula","url":"https://gameboost.com/zula","slug":"zula","categories":[{"title":"Accounts","url":"https://gameboost.com/zula/accounts"}]},{"name":"Car Parking Multiplayer","url":"https://gameboost.com/car-parking-multiplayer","slug":"car-parking-multiplayer","categories":[{"title":"Accounts","url":"https://gameboost.com/car-parking-multiplayer/accounts"}]},{"name":"Darkorbit","url":"https://gameboost.com/darkorbit","slug":"darkorbit","categories":[{"title":"Accounts","url":"https://gameboost.com/darkorbit/accounts"}]},{"name":"Knight Online","url":"https://gameboost.com/knight-online","slug":"knight-online","categories":[{"title":"Items","url":"https://gameboost.com/knight-online/items"},{"title":"Gold Bars","url":"https://gameboost.com/knight-online/gold-bars"},{"title":"Accounts","url":"https://gameboost.com/knight-online/accounts"}]},{"name":"Tap Simulator","url":"https://gameboost.com/tap-simulator","slug":"tap-simulator","categories":[{"title":"Items","url":"https://gameboost.com/tap-simulator/items"}]},{"name":"Bee Swarm Simulator","url":"https://gameboost.com/bee-swarm-simulator","slug":"bee-swarm-simulator","categories":[{"title":"Items","url":"https://gameboost.com/bee-swarm-simulator/items"},{"title":"Accounts","url":"https://gameboost.com/bee-swarm-simulator/accounts"}]},{"name":"Among Us","url":"https://gameboost.com/among-us","slug":"among-us","categories":[]},{"name":"Animal Crossing New Horizons","url":"https://gameboost.com/animal-crossing-new-horizons","slug":"animal-crossing-new-horizons","categories":[]},{"name":"Arena Of Valor","url":"https://gameboost.com/arena-of-valor","slug":"arena-of-valor","categories":[]},{"name":"Assassins Creed Valhalla","url":"https://gameboost.com/assassins-creed-valhalla","slug":"assassins-creed-valhalla","categories":[]},{"name":"Back 4 Blood","url":"https://gameboost.com/back-4-blood","slug":"back-4-blood","categories":[]},{"name":"Battlefield 2042","url":"https://gameboost.com/battlefield-2042","slug":"battlefield-2042","categories":[]},{"name":"Brawlhalla","url":"https://gameboost.com/brawlhalla","slug":"brawlhalla","categories":[]},{"name":"Chess","url":"https://gameboost.com/chess","slug":"chess","categories":[]},{"name":"Fc 24","url":"https://gameboost.com/fc-24","slug":"fc-24","categories":[]},{"name":"Gta 6","url":"https://gameboost.com/gta-6","slug":"gta-6","categories":[]},{"name":"Monster Strike","url":"https://gameboost.com/monster-strike","slug":"monster-strike","categories":[]},{"name":"Professional Baseball Spirits A","url":"https://gameboost.com/professional-baseball-spirits-a","slug":"professional-baseball-spirits-a","categories":[]},{"name":"Steam","url":"https://gameboost.com/steam","slug":"steam","categories":[]},{"name":"Wow Cataclysm","url":"https://gameboost.com/wow-cataclysm","slug":"wow-cataclysm","categories":[]},{"name":"Xbox","url":"https://gameboost.com/xbox","slug":"xbox","categories":[]},{"name":"Last Island of Survival","url":"https://gameboost.com/last-island-of-survival","slug":"last-island-of-survival","categories":[{"title":"Accounts","url":"https://gameboost.com/last-island-of-survival/accounts"}]},{"name":"Royale Online ","url":"https://gameboost.com/royale-online/","slug":"royale-online","categories":[{"title":"Accounts","url":"https://gameboost.com/royale-online/accounts"}]},{"name":"Standoff 2","url":"https://gameboost.com/standoff-2","slug":"standoff-2","categories":[{"title":"Accounts","url":"https://gameboost.com/standoff-2/accounts"},{"title":"Gold","url":"https://gameboost.com/standoff-2/gold"}]},{"name":"WolfTeam","url":"https://gameboost.com/wolfteam","slug":"wolfteam","categories":[{"title":"Accounts","url":"https://gameboost.com/wolfteam/accounts"},{"title":"Cash","url":"https://gameboost.com/wolfteam/cash"}]},{"name":"Pokemon Legends: Z-A","url":"https://gameboost.com/pokemon-legends-z-a","slug":"pokemon-legends-z-a","categories":[{"title":"Items","url":"https://gameboost.com/pokemon-legends-z-a/items"}]},{"name":"Universal Tower Defense","url":"https://gameboost.com/universal-tower-defense","slug":"universal-tower-defense","categories":[{"title":"Items","url":"https://gameboost.com/universal-tower-defense/items"}]},{"name":"Anime Fighting Simulator: Endless","url":"https://gameboost.com/anime-fighting-simulator-endless/items","slug":"anime-fighting-simulator-endless","categories":[{"title":"Items","url":"https://gameboost.com/anime-fighting-simulator-endless/items"}]},{"name":"Attack on Titan Revolution","url":"https://gameboost.com/attack-on-titan-revolution","slug":"attack-on-titan-revolution","categories":[{"title":"Items","url":"https://gameboost.com/attack-on-titan-revolution/items"}]},{"name":"Hypershot","url":"https://gameboost.com/hypershot","slug":"hypershot","categories":[{"title":"Items","url":"https://gameboost.com/hypershot/items"}]},{"name":"Arknights Endfield","url":"https://gameboost.com/arknights-endfield","slug":"arknights-endfield","categories":[{"title":"Accounts","url":"https://gameboost.com/arknights-endfield/accounts"}]}]'), c = class c {
+`, B = /* @__PURE__ */ JSON.parse('[{"name":"Fortnite","url":"https://gameboost.com/fortnite","slug":"fortnite","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/fortnite/accounts"},{"title":"Items","url":"https://gameboost.com/fortnite/items"},{"title":"V-Bucks","url":"https://gameboost.com/fortnite/v-bucks"}]},{"name":"Grand Theft Auto V","url":"https://gameboost.com/grand-theft-auto-v","slug":"grand-theft-auto-v","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/grand-theft-auto-v/accounts"}]},{"name":"Steal A Brainrot","url":"https://gameboost.com/steal-a-brainrot","slug":"steal-a-brainrot","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/steal-a-brainrot/accounts"},{"title":"Items","url":"https://gameboost.com/steal-a-brainrot/items"}]},{"name":"Valorant","url":"https://gameboost.com/valorant","slug":"valorant","priority":1,"categories":[{"title":"Boosting","url":"https://gameboost.com/valorant/boosting"},{"title":"Accounts","url":"https://gameboost.com/valorant/accounts"},{"title":"Points","url":"https://gameboost.com/valorant/top-up"}]},{"name":"Clash Of Clans","url":"https://gameboost.com/clash-of-clans","slug":"clash-of-clans","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/clash-of-clans/accounts"},{"title":"Clans","url":"https://gameboost.com/clash-of-clans/items"},{"title":"Gems","url":"https://gameboost.com/clash-of-clans/top-up"}]},{"name":"Call Of Duty","url":"https://gameboost.com/call-of-duty","slug":"call-of-duty","priority":1,"categories":[{"title":"Accounts","url":"https://gameboost.com/call-of-duty/accounts"},{"title":"Items","url":"https://gameboost.com/call-of-duty/items"},{"title":"CoD Points","url":"https://gameboost.com/call-of-duty/cod-points"}]},{"name":"League Of Legends","url":"https://gameboost.com/league-of-legends","slug":"league-of-legends","priority":2,"categories":[{"title":"Boosting","url":"https://gameboost.com/league-of-legends/boosting"},{"title":"Accounts","url":"https://gameboost.com/league-of-legends/accounts"},{"title":"Items","url":"https://gameboost.com/league-of-legends/items"},{"title":"Riot Points","url":"https://gameboost.com/league-of-legends/top-up"}]},{"name":"Clash Royale","url":"https://gameboost.com/clash-royale","slug":"clash-royale","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/clash-royale/accounts"},{"title":"Gems","url":"https://gameboost.com/clash-royale/gems"}]},{"name":"Roblox","url":"https://gameboost.com/roblox","slug":"roblox","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/roblox/accounts"},{"title":"Robux","url":"https://gameboost.com/roblox/robux"},{"title":"Items","url":"https://gameboost.com/roblox/items"}]},{"name":"Brawl Stars","url":"https://gameboost.com/brawl-stars","slug":"brawl-stars","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/brawl-stars/accounts"},{"title":"Gems","url":"https://gameboost.com/brawl-stars/gems"}]},{"name":"Raid Shadow Legends","url":"https://gameboost.com/raid-shadow-legends","slug":"raid-shadow-legends","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/raid-shadow-legends/accounts"}]},{"name":"Pubg Mobile","url":"https://gameboost.com/pubg-mobile","slug":"pubg-mobile","priority":2,"categories":[{"title":"Accounts","url":"https://gameboost.com/pubg-mobile/accounts"},{"title":"Items","url":"https://gameboost.com/pubg-mobile/items"},{"title":"UC","url":"https://gameboost.com/pubg-mobile/top-up"}]},{"name":"Plants Vs Brainrots","url":"https://gameboost.com/plants-vs-brainrots","slug":"plants-vs-brainrots","categories":[{"title":"Items","url":"https://gameboost.com/plants-vs-brainrots/items"}]},{"name":"Apex Legends","url":"https://gameboost.com/apex-legends","slug":"apex-legends","categories":[{"title":"Boosting","url":"https://gameboost.com/apex-legends/boosting"},{"title":"Accounts","url":"https://gameboost.com/apex-legends/accounts"},{"title":"Coins","url":"https://gameboost.com/apex-legends/coins"}]},{"name":"Grow A Garden","url":"https://gameboost.com/grow-a-garden","slug":"grow-a-garden","categories":[{"title":"Accounts","url":"https://gameboost.com/grow-a-garden/accounts"},{"title":"Items","url":"https://gameboost.com/grow-a-garden/items"},{"title":"Tokens","url":"https://gameboost.com/grow-a-garden/tokens"}]},{"name":"Rainbow Six Siege","url":"https://gameboost.com/rainbow-six-siege","slug":"rainbow-six-siege","categories":[{"title":"Accounts","url":"https://gameboost.com/rainbow-six-siege/accounts"},{"title":"Credits","url":"https://gameboost.com/rainbow-six-siege/top-up"}]},{"name":"Genshin Impact","url":"https://gameboost.com/genshin-impact","slug":"genshin-impact","categories":[{"title":"Accounts","url":"https://gameboost.com/genshin-impact/accounts"},{"title":"Crystal","url":"https://gameboost.com/genshin-impact/top-up"}]},{"name":"Rocket League","url":"https://gameboost.com/rocket-league","slug":"rocket-league","categories":[{"title":"Boosting","url":"https://gameboost.com/rocket-league/boosting"},{"title":"Credits","url":"https://gameboost.com/rocket-league/credits"},{"title":"Accounts","url":"https://gameboost.com/rocket-league/accounts"}]},{"name":"Overwatch 2","url":"https://gameboost.com/overwatch-2","slug":"overwatch-2","categories":[{"title":"Boosting","url":"https://gameboost.com/overwatch-2/boosting"},{"title":"Accounts","url":"https://gameboost.com/overwatch-2/accounts"},{"title":"Coins","url":"https://gameboost.com/overwatch-2/coins"}]},{"name":"Old School Runescape","url":"https://gameboost.com/old-school-runescape","slug":"old-school-runescape","categories":[{"title":"Gold","url":"https://gameboost.com/old-school-runescape/gold"},{"title":"Accounts","url":"https://gameboost.com/old-school-runescape/accounts"},{"title":"Items","url":"https://gameboost.com/old-school-runescape/items"}]},{"name":"Rust","url":"https://gameboost.com/rust","slug":"rust","categories":[{"title":"Accounts","url":"https://gameboost.com/rust/accounts"},{"title":"Items","url":"https://gameboost.com/rust/items"}]},{"name":"Pokemon Go","url":"https://gameboost.com/pokemon-go","slug":"pokemon-go","categories":[{"title":"Accounts","url":"https://gameboost.com/pokemon-go/accounts"},{"title":"Items","url":"https://gameboost.com/pokemon-go/items"},{"title":"PokeCoins","url":"https://gameboost.com/pokemon-go/top-up"}]},{"name":"Honkai Star Rail","url":"https://gameboost.com/honkai-star-rail","slug":"honkai-star-rail","categories":[{"title":"Accounts","url":"https://gameboost.com/honkai-star-rail/accounts"},{"title":"Oneiric Shard","url":"https://gameboost.com/honkai-star-rail/top-up"}]},{"name":"Minecraft","url":"https://gameboost.com/minecraft","slug":"minecraft","categories":[{"title":"Accounts","url":"https://gameboost.com/minecraft/accounts"},{"title":"Items","url":"https://gameboost.com/minecraft/items"},{"title":"Hypixel Coins","url":"https://gameboost.com/minecraft/hypixel-coins"}]},{"name":"Free Fire","url":"https://gameboost.com/free-fire","slug":"free-fire","categories":[{"title":"Accounts","url":"https://gameboost.com/free-fire/accounts"},{"title":"Diamonds","url":"https://gameboost.com/free-fire/top-up"}]},{"name":"Nba 2k","url":"https://gameboost.com/nba-2k","slug":"nba-2k","categories":[{"title":"Accounts","url":"https://gameboost.com/nba-2k/accounts"}]},{"name":"Dragonball Legends","url":"https://gameboost.com/dragonball-legends","slug":"dragonball-legends","categories":[{"title":"Accounts","url":"https://gameboost.com/dragonball-legends/accounts"}]},{"name":"Summoners War","url":"https://gameboost.com/summoners-war","slug":"summoners-war","categories":[{"title":"Accounts","url":"https://gameboost.com/summoners-war/accounts"}]},{"name":"Mobile Legends","url":"https://gameboost.com/mobile-legends","slug":"mobile-legends","categories":[{"title":"Accounts","url":"https://gameboost.com/mobile-legends/accounts"},{"title":"Diamonds","url":"https://gameboost.com/mobile-legends/top-up"}]},{"name":"Escape From Tarkov","url":"https://gameboost.com/escape-from-tarkov","slug":"escape-from-tarkov","categories":[{"title":"Accounts","url":"https://gameboost.com/escape-from-tarkov/accounts"},{"title":"Roubles","url":"https://gameboost.com/escape-from-tarkov/roubles"},{"title":"Items","url":"https://gameboost.com/escape-from-tarkov/items"}]},{"name":"One Piece Bounty Rush","url":"https://gameboost.com/one-piece-bounty-rush","slug":"one-piece-bounty-rush","categories":[{"title":"Accounts","url":"https://gameboost.com/one-piece-bounty-rush/accounts"}]},{"name":"Forza Horizon 5","url":"https://gameboost.com/forza-horizon-5","slug":"forza-horizon-5","categories":[{"title":"Accounts","url":"https://gameboost.com/forza-horizon-5/accounts"},{"title":"Credits","url":"https://gameboost.com/forza-horizon-5/credits"}]},{"name":"Red Dead Redemption 2","url":"https://gameboost.com/red-dead-redemption-2","slug":"red-dead-redemption-2","categories":[{"title":"Accounts","url":"https://gameboost.com/red-dead-redemption-2/accounts"}]},{"name":"Dota 2","url":"https://gameboost.com/dota-2","slug":"dota-2","categories":[{"title":"Accounts","url":"https://gameboost.com/dota-2/accounts"},{"title":"Items","url":"https://gameboost.com/dota-2/items"}]},{"name":"Hay Day","url":"https://gameboost.com/hay-day","slug":"hay-day","categories":[{"title":"Accounts","url":"https://gameboost.com/hay-day/accounts"},{"title":"Items","url":"https://gameboost.com/hay-day/items"}]},{"name":"War Thunder","url":"https://gameboost.com/war-thunder","slug":"war-thunder","categories":[{"title":"Accounts","url":"https://gameboost.com/war-thunder/accounts"}]},{"name":"Destiny 2","url":"https://gameboost.com/destiny-2","slug":"destiny-2","categories":[{"title":"Accounts","url":"https://gameboost.com/destiny-2/accounts"},{"title":"Silver","url":"https://gameboost.com/destiny-2/silver"},{"title":"Items","url":"https://gameboost.com/destiny-2/items"}]},{"name":"Squad Busters","url":"https://gameboost.com/squad-busters","slug":"squad-busters","categories":[{"title":"Accounts","url":"https://gameboost.com/squad-busters/accounts"}]},{"name":"World Of Tanks","url":"https://gameboost.com/world-of-tanks","slug":"world-of-tanks","categories":[{"title":"Accounts","url":"https://gameboost.com/world-of-tanks/accounts"}]},{"name":"Xdefiant","url":"https://gameboost.com/xdefiant","slug":"xdefiant","categories":[{"title":"Accounts","url":"https://gameboost.com/xdefiant/accounts"}]},{"name":"Diablo 4","url":"https://gameboost.com/diablo-4","slug":"diablo-4","categories":[{"title":"Accounts","url":"https://gameboost.com/diablo-4/accounts"},{"title":"Gold","url":"https://gameboost.com/diablo-4/gold"},{"title":"Items","url":"https://gameboost.com/diablo-4/items"}]},{"name":"Warframe","url":"https://gameboost.com/warframe","slug":"warframe","categories":[{"title":"Items","url":"https://gameboost.com/warframe/items"},{"title":"Platinum","url":"https://gameboost.com/warframe/platinum"},{"title":"Accounts","url":"https://gameboost.com/warframe/accounts"}]},{"name":"The Elder Scrolls","url":"https://gameboost.com/the-elder-scrolls","slug":"the-elder-scrolls","categories":[{"title":"Gold","url":"https://gameboost.com/the-elder-scrolls/gold"},{"title":"Items","url":"https://gameboost.com/the-elder-scrolls/items"},{"title":"Accounts","url":"https://gameboost.com/the-elder-scrolls/accounts"}]},{"name":"Lost Ark","url":"https://gameboost.com/lost-ark","slug":"lost-ark","categories":[{"title":"Gold","url":"https://gameboost.com/lost-ark/gold"},{"title":"Items","url":"https://gameboost.com/lost-ark/items"}]},{"name":"Fallout 76","url":"https://gameboost.com/fallout-76","slug":"fallout-76","categories":[{"title":"Items","url":"https://gameboost.com/fallout-76/items"},{"title":"Atoms","url":"https://gameboost.com/fallout-76/top-up"},{"title":"Accounts","url":"https://gameboost.com/fallout-76/accounts"}]},{"name":"Growtopia","url":"https://gameboost.com/growtopia","slug":"growtopia","categories":[{"title":"Items","url":"https://gameboost.com/growtopia/items"},{"title":"Locks","url":"https://gameboost.com/growtopia/locks"},{"title":"Accounts","url":"https://gameboost.com/growtopia/accounts"}]},{"name":"Final Fantasy Xiv","url":"https://gameboost.com/final-fantasy-xiv","slug":"final-fantasy-xiv","categories":[{"title":"Accounts","url":"https://gameboost.com/final-fantasy-xiv/accounts"},{"title":"Gil","url":"https://gameboost.com/final-fantasy-xiv/gil"},{"title":"Items","url":"https://gameboost.com/final-fantasy-xiv/items"}]},{"name":"Zenless Zone Zero","url":"https://gameboost.com/zenless-zone-zero","slug":"zenless-zone-zero","categories":[{"title":"Accounts","url":"https://gameboost.com/zenless-zone-zero/accounts"},{"title":"Monochrome","url":"https://gameboost.com/zenless-zone-zero/top-up"}]},{"name":"Fc 25","url":"https://gameboost.com/fc-25","slug":"fc-25","categories":[{"title":"Coins","url":"https://gameboost.com/fc-25/coins"},{"title":"Accounts","url":"https://gameboost.com/fc-25/accounts"}]},{"name":"World Of Warcraft","url":"https://gameboost.com/world-of-warcraft","slug":"world-of-warcraft","categories":[{"title":"Gold","url":"https://gameboost.com/world-of-warcraft/gold"},{"title":"Items","url":"https://gameboost.com/world-of-warcraft/items"}]},{"name":"Wow Season Of Discovery","url":"https://gameboost.com/wow-season-of-discovery","slug":"wow-season-of-discovery","categories":[{"title":"Gold","url":"https://gameboost.com/wow-season-of-discovery/gold"},{"title":"Accounts","url":"https://gameboost.com/wow-season-of-discovery/accounts"}]},{"name":"Teamfight Tactics","url":"https://gameboost.com/teamfight-tactics","slug":"teamfight-tactics","categories":[{"title":"Boosting","url":"https://gameboost.com/teamfight-tactics/boosting"}]},{"name":"Lol Wild Rift","url":"https://gameboost.com/lol-wild-rift","slug":"lol-wild-rift","categories":[{"title":"Boosting","url":"https://gameboost.com/lol-wild-rift/boosting"},{"title":"Accounts","url":"https://gameboost.com/lol-wild-rift/accounts"},{"title":"Wild Cores","url":"https://gameboost.com/lol-wild-rift/wild-cores"}]},{"name":"Counter Strike 2","url":"https://gameboost.com/counter-strike-2","slug":"counter-strike-2","categories":[{"title":"Skins","url":"https://gameboost.com/counter-strike-2/skins"},{"title":"Accounts","url":"https://gameboost.com/counter-strike-2/accounts"},{"title":"Karambit","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=karambit"},{"title":"M9 bayonets","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=m9-bayonet"},{"title":"Bayonets","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=bayonet"},{"title":"Butterfly Knife","url":"https://gameboost.com/counter-strike-2/skins?category=knife&subCategory=butterfly-knife"},{"title":"AWP","url":"https://gameboost.com/counter-strike-2/skins?category=rifle&subCategory=awp"}]},{"name":"Rise Of Kingdoms","url":"https://gameboost.com/rise-of-kingdoms","slug":"rise-of-kingdoms","categories":[{"title":"Accounts","url":"https://gameboost.com/rise-of-kingdoms/accounts"}]},{"name":"Black Desert","url":"https://gameboost.com/black-desert","slug":"black-desert","categories":[{"title":"Accounts","url":"https://gameboost.com/black-desert/accounts"},{"title":"Items","url":"https://gameboost.com/black-desert/items"},{"title":"Silver","url":"https://gameboost.com/black-desert/silver"}]},{"name":"Last Epoch","url":"https://gameboost.com/last-epoch","slug":"last-epoch","categories":[{"title":"Gold","url":"https://gameboost.com/last-epoch/gold"},{"title":"Items","url":"https://gameboost.com/last-epoch/items"}]},{"name":"Dayz","url":"https://gameboost.com/dayz","slug":"dayz","categories":[{"title":"Accounts","url":"https://gameboost.com/dayz/accounts"}]},{"name":"Boom Beach","url":"https://gameboost.com/boom-beach","slug":"boom-beach","categories":[{"title":"Accounts","url":"https://gameboost.com/boom-beach/accounts"}]},{"name":"Diablo 2","url":"https://gameboost.com/diablo-2","slug":"diablo-2","categories":[{"title":"Items","url":"https://gameboost.com/diablo-2/items"}]},{"name":"Path Of Exile","url":"https://gameboost.com/path-of-exile","slug":"path-of-exile","categories":[{"title":"Items","url":"https://gameboost.com/path-of-exile/items"},{"title":"Orbs","url":"https://gameboost.com/path-of-exile/currency"},{"title":"Accounts","url":"https://gameboost.com/path-of-exile/accounts"}]},{"name":"Neopets","url":"https://gameboost.com/neopets","slug":"neopets","categories":[{"title":"Items","url":"https://gameboost.com/neopets/items"}]},{"name":"Runescape 3","url":"https://gameboost.com/runescape-3","slug":"runescape-3","categories":[{"title":"Gold","url":"https://gameboost.com/runescape-3/gold"},{"title":"Items","url":"https://gameboost.com/runescape-3/items"},{"title":"Accounts","url":"https://gameboost.com/runescape-3/accounts"}]},{"name":"Ark Survival Evolved","url":"https://gameboost.com/ark-survival-evolved","slug":"ark-survival-evolved","categories":[{"title":"Items","url":"https://gameboost.com/ark-survival-evolved/items"}]},{"name":"New World","url":"https://gameboost.com/new-world","slug":"new-world","categories":[{"title":"Coins","url":"https://gameboost.com/new-world/coins"},{"title":"Items","url":"https://gameboost.com/new-world/items"}]},{"name":"Albion Online","url":"https://gameboost.com/albion-online","slug":"albion-online","categories":[{"title":"Silver","url":"https://gameboost.com/albion-online/silver"},{"title":"Accounts","url":"https://gameboost.com/albion-online/accounts"},{"title":"Items","url":"https://gameboost.com/albion-online/items"}]},{"name":"Call Of Duty Mobile","url":"https://gameboost.com/call-of-duty-mobile","slug":"call-of-duty-mobile","categories":[{"title":"Accounts","url":"https://gameboost.com/call-of-duty-mobile/accounts"},{"title":"CP","url":"https://gameboost.com/call-of-duty-mobile/cp"}]},{"name":"Throne And Liberty","url":"https://gameboost.com/throne-and-liberty","slug":"throne-and-liberty","categories":[{"title":"Lucent","url":"https://gameboost.com/throne-and-liberty/lucent"},{"title":"Accounts","url":"https://gameboost.com/throne-and-liberty/accounts"}]},{"name":"Diablo Immortal","url":"https://gameboost.com/diablo-immortal","slug":"diablo-immortal","categories":[{"title":"Platinum","url":"https://gameboost.com/diablo-immortal/platinum"},{"title":"Accounts","url":"https://gameboost.com/diablo-immortal/accounts"}]},{"name":"Wow Hardcore","url":"https://gameboost.com/wow-hardcore","slug":"wow-hardcore","categories":[{"title":"Gold","url":"https://gameboost.com/wow-hardcore/gold"}]},{"name":"Trove Online","url":"https://gameboost.com/trove-online","slug":"trove-online","categories":[{"title":"Flux","url":"https://gameboost.com/trove-online/flux"}]},{"name":"Dofus","url":"https://gameboost.com/dofus","slug":"dofus","categories":[{"title":"Kamas","url":"https://gameboost.com/dofus/kamas"}]},{"name":"Wow Classic Era","url":"https://gameboost.com/wow-classic-era","slug":"wow-classic-era","categories":[{"title":"Gold","url":"https://gameboost.com/wow-classic-era/gold"},{"title":"Accounts","url":"https://gameboost.com/wow-classic-era/accounts"},{"title":"Items","url":"https://gameboost.com/wow-classic-era/items"}]},{"name":"Path Of Exile 2","url":"https://gameboost.com/path-of-exile-2","slug":"path-of-exile-2","categories":[{"title":"Items","url":"https://gameboost.com/path-of-exile-2/items"},{"title":"Orbs","url":"https://gameboost.com/path-of-exile-2/orbs"},{"title":"Accounts","url":"https://gameboost.com/path-of-exile-2/accounts"}]},{"name":"Marvel Rivals","url":"https://gameboost.com/marvel-rivals","slug":"marvel-rivals","categories":[{"title":"Boosting","url":"https://gameboost.com/marvel-rivals/boosting"},{"title":"Accounts","url":"https://gameboost.com/marvel-rivals/accounts"},{"title":"Lattices","url":"https://gameboost.com/marvel-rivals/top-up"}]},{"name":"Star Wars The Old Republic","url":"https://gameboost.com/star-wars-the-old-republic","slug":"star-wars-the-old-republic","categories":[{"title":"Credits","url":"https://gameboost.com/star-wars-the-old-republic/credits"}]},{"name":"Dark And Darker","url":"https://gameboost.com/dark-and-darker","slug":"dark-and-darker","categories":[{"title":"Gold","url":"https://gameboost.com/dark-and-darker/gold"},{"title":"Items","url":"https://gameboost.com/dark-and-darker/items"},{"title":"Accounts","url":"https://gameboost.com/dark-and-darker/accounts"}]},{"name":"Deadlock","url":"https://gameboost.com/deadlock","slug":"deadlock","categories":[{"title":"Accounts","url":"https://gameboost.com/deadlock/accounts"}]},{"name":"Fragpunk","url":"https://gameboost.com/fragpunk","slug":"fragpunk","categories":[{"title":"Accounts","url":"https://gameboost.com/fragpunk/accounts"}]},{"name":"Wuthering Waves","url":"https://gameboost.com/wuthering-waves","slug":"wuthering-waves","categories":[{"title":"Accounts","url":"https://gameboost.com/wuthering-waves/accounts"},{"title":"Lunite","url":"https://gameboost.com/wuthering-waves/top-up"}]},{"name":"Wow Mists Of Pandaria","url":"https://gameboost.com/wow-mists-of-pandaria","slug":"wow-mists-of-pandaria","categories":[{"title":"Items","url":"https://gameboost.com/wow-mists-of-pandaria/items"},{"title":"Gold","url":"https://gameboost.com/wow-mists-of-pandaria/gold"},{"title":"Accounts","url":"https://gameboost.com/wow-mists-of-pandaria/accounts"}]},{"name":"Dune Awakening","url":"https://gameboost.com/dune-awakening","slug":"dune-awakening","categories":[{"title":"Solari","url":"https://gameboost.com/dune-awakening/solari"},{"title":"Items","url":"https://gameboost.com/dune-awakening/items"}]},{"name":"99 Nights In The Forest","url":"https://gameboost.com/99-nights-in-the-forest","slug":"99-nights-in-the-forest","categories":[{"title":"Diamonds","url":"https://gameboost.com/99-nights-in-the-forest/diamonds"}]},{"name":"Fc 26","url":"https://gameboost.com/fc-26","slug":"fc-26","categories":[{"title":"Accounts","url":"https://gameboost.com/fc-26/accounts"},{"title":"Coins","url":"https://gameboost.com/fc-26/fc-coins"}]},{"name":"8 Ball Pool","url":"https://gameboost.com/8-ball-pool","slug":"8-ball-pool","categories":[{"title":"Accounts","url":"https://gameboost.com/8-ball-pool/accounts"},{"title":"Coins","url":"https://gameboost.com/8-ball-pool/coins"}]},{"name":"Borderlands 4","url":"https://gameboost.com/borderlands-4","slug":"borderlands-4","categories":[{"title":"Items","url":"https://gameboost.com/borderlands-4/items"},{"title":"Money","url":"https://gameboost.com/borderlands-4/money"},{"title":"Accounts","url":"https://gameboost.com/borderlands-4/accounts"}]},{"name":"Adopt Me","url":"https://gameboost.com/adopt-me","slug":"adopt-me","categories":[{"title":"Items","url":"https://gameboost.com/adopt-me/items"},{"title":"Accounts","url":"https://gameboost.com/adopt-me/accounts"}]},{"name":"Blox Fruits","url":"https://gameboost.com/blox-fruits","slug":"blox-fruits","categories":[{"title":"Accounts","url":"https://gameboost.com/blox-fruits/accounts"},{"title":"Items","url":"https://gameboost.com/blox-fruits/items"}]},{"name":"Type Soul","url":"https://gameboost.com/type-soul","slug":"type-soul","categories":[{"title":"Items","url":"https://gameboost.com/type-soul/items"}]},{"name":"2XKO","url":"https://gameboost.com/2xko","slug":"2xko","categories":[{"title":"Accounts","url":"https://gameboost.com/2xko/accounts"}]},{"name":"Murder Mystery 2","url":"https://gameboost.com/murder-mystery-2","slug":"murder-mystery-2","categories":[{"title":"Items","url":"https://gameboost.com/murder-mystery-2/items"}]},{"name":"Blade Ball","url":"https://gameboost.com/blade-ball","slug":"blade-ball","categories":[{"title":"Items","url":"https://gameboost.com/blade-ball/items"},{"title":"Tokens","url":"https://gameboost.com/blade-ball/tokens"}]},{"name":"Fisch","url":"https://gameboost.com/fisch","slug":"fisch","categories":[{"title":"Items","url":"https://gameboost.com/fisch/items"},{"title":"Money","url":"https://gameboost.com/fisch/money"},{"title":"Accounts","url":"https://gameboost.com/fisch/accounts"}]},{"name":"Arknights","url":"https://gameboost.com/arknights","slug":"arknights","categories":[{"title":"Accounts","url":"https://gameboost.com/arknights/accounts"}]},{"name":"Toilet Tower Defense","url":"https://gameboost.com/toilet-tower-defense","slug":"toilet-tower-defense","categories":[{"title":"Gems","url":"https://gameboost.com/toilet-tower-defense/gems"}]},{"name":"Star Citizen","url":"https://gameboost.com/star-citizen","slug":"star-citizen","categories":[{"title":"aUEC","url":"https://gameboost.com/star-citizen/auec"}]},{"name":"Pet Simulator 99","url":"https://gameboost.com/pet-simulator-99","slug":"pet-simulator-99","categories":[{"title":"Gems","url":"https://gameboost.com/pet-simulator-99/gems"},{"title":"Items","url":"https://gameboost.com/pet-simulator-99/items"}]},{"name":"Mortal Online 2","url":"https://gameboost.com/mortal-online-2","slug":"mortal-online-2","categories":[{"title":"Gold","url":"https://gameboost.com/mortal-online-2/gold"}]},{"name":"Pets Go","url":"https://gameboost.com/pets-go","slug":"pets-go","categories":[{"title":"Diamonds","url":"https://gameboost.com/pets-go/diamonds"}]},{"name":"Battlefield","url":"https://gameboost.com/battlefield","slug":"battlefield","categories":[{"title":"Accounts","url":"https://gameboost.com/battlefield/accounts"},{"title":"Items","url":"https://gameboost.com/battlefield/items"}]},{"name":"Efootball","url":"https://gameboost.com/efootball","slug":"efootball","categories":[{"title":"Accounts","url":"https://gameboost.com/efootball/accounts"}]},{"name":"Pokemon Tcg Pocket","url":"https://gameboost.com/pokemon-tcg-pocket","slug":"pokemon-tcg-pocket","categories":[{"title":"Accounts","url":"https://gameboost.com/pokemon-tcg-pocket/accounts"}]},{"name":"Bubble Gum Simulator Infinity","url":"https://gameboost.com/bubble-gum-simulator-infinity","slug":"bubble-gum-simulator-infinity","categories":[{"title":"Items","url":"https://gameboost.com/bubble-gum-simulator-infinity/items"}]},{"name":"Jailbreak","url":"https://gameboost.com/jailbreak","slug":"jailbreak","categories":[{"title":"Items","url":"https://gameboost.com/jailbreak/items"},{"title":"Accounts","url":"https://gameboost.com/jailbreak/accounts"}]},{"name":"Garden Tower Defense","url":"https://gameboost.com/garden-tower-defense","slug":"garden-tower-defense","categories":[{"title":"Items","url":"https://gameboost.com/garden-tower-defense/items"}]},{"name":"Anime Last Stand","url":"https://gameboost.com/anime-last-stand","slug":"anime-last-stand","categories":[{"title":"Items","url":"https://gameboost.com/anime-last-stand/items"}]},{"name":"Anime Vanguards","url":"https://gameboost.com/anime-vanguards","slug":"anime-vanguards","categories":[{"title":"Items","url":"https://gameboost.com/anime-vanguards/items"},{"title":"Accounts","url":"https://gameboost.com/anime-vanguards/accounts"}]},{"name":"Roblox Rivals","url":"https://gameboost.com/roblox-rivals","slug":"roblox-rivals","categories":[{"title":"Items","url":"https://gameboost.com/roblox-rivals/items"}]},{"name":"Build A Zoo","url":"https://gameboost.com/build-a-zoo","slug":"build-a-zoo","categories":[{"title":"Items","url":"https://gameboost.com/build-a-zoo/items"}]},{"name":"Ink Game","url":"https://gameboost.com/ink-game","slug":"ink-game","categories":[{"title":"Items","url":"https://gameboost.com/ink-game/items"}]},{"name":"Blue Lock Rivals","url":"https://gameboost.com/blue-lock-rivals","slug":"blue-lock-rivals","categories":[{"title":"Items","url":"https://gameboost.com/blue-lock-rivals/items"}]},{"name":"Guild Wars 2","url":"https://gameboost.com/guild-wars-2","slug":"guild-wars-2","categories":[{"title":"Gold","url":"https://gameboost.com/guild-wars-2/gold"}]},{"name":"Dead By Daylight","url":"https://gameboost.com/dead-by-daylight","slug":"dead-by-daylight","categories":[{"title":"Accounts","url":"https://gameboost.com/dead-by-daylight/accounts"},{"title":"Auric Cells","url":"https://gameboost.com/dead-by-daylight/auric-cells"}]},{"name":"Uma Musume Pretty Derby","url":"https://gameboost.com/uma-musume-pretty-derby","slug":"uma-musume-pretty-derby","categories":[{"title":"Accounts","url":"https://gameboost.com/uma-musume-pretty-derby/accounts"}]},{"name":"Elden Ring","url":"https://gameboost.com/elden-ring","slug":"elden-ring","categories":[{"title":"Runes","url":"https://gameboost.com/elden-ring/runes"},{"title":"Items","url":"https://gameboost.com/elden-ring/items"},{"title":"Accounts","url":"https://gameboost.com/elden-ring/accounts"}]},{"name":"Eve Online","url":"https://gameboost.com/eve-online","slug":"eve-online","categories":[{"title":"ISK","url":"https://gameboost.com/eve-online/isk"}]},{"name":"Eve Echoes","url":"https://gameboost.com/eve-echoes","slug":"eve-echoes","categories":[{"title":"ISK","url":"https://gameboost.com/eve-echoes/isk"}]},{"name":"Donutsmp","url":"https://gameboost.com/donutsmp","slug":"donutsmp","categories":[{"title":"Money","url":"https://gameboost.com/donutsmp/money"},{"title":"Accounts","url":"https://gameboost.com/donutsmp/accounts"}]},{"name":"Creatures Of Sonaria","url":"https://gameboost.com/creatures-of-sonaria","slug":"creatures-of-sonaria","categories":[{"title":"Mushrooms","url":"https://gameboost.com/creatures-of-sonaria/mushrooms"},{"title":"Items","url":"https://gameboost.com/creatures-of-sonaria/items"}]},{"name":"Honor Of Kings","url":"https://gameboost.com/honor-of-kings","slug":"honor-of-kings","categories":[{"title":"Tokens","url":"https://gameboost.com/honor-of-kings/tokens"}]},{"name":"Pokemon Go Stardust","url":"https://gameboost.com/pokemon-go-stardust","slug":"pokemon-go-stardust","categories":[{"title":"Stardust","url":"https://gameboost.com/pokemon-go-stardust/stardust"}]},{"name":"Temtem","url":"https://gameboost.com/temtem","slug":"temtem","categories":[]},{"name":"Torchlight Infinite","url":"https://gameboost.com/torchlight-infinite","slug":"torchlight-infinite","categories":[{"title":"Flame Elementium","url":"https://gameboost.com/torchlight-infinite/flame-elementium"}]},{"name":"Blade Soul Neo","url":"https://gameboost.com/blade-soul-neo","slug":"blade-soul-neo","categories":[{"title":"Divine Gems","url":"https://gameboost.com/blade-soul-neo/divine-gems"}]},{"name":"Runescape Bonds","url":"https://gameboost.com/runescape-bonds","slug":"runescape-bonds","categories":[{"title":"Bonds","url":"https://gameboost.com/runescape-bonds/bonds"}]},{"name":"Arc Raiders","url":"https://gameboost.com/arc-raiders","slug":"arc-raiders","categories":[{"title":"Items","url":"https://gameboost.com/arc-raiders/items"},{"title":"Coins","url":"https://gameboost.com/arc-raiders/coins"},{"title":"Accounts","url":"https://gameboost.com/arc-raiders/accounts"}]},{"name":"Goddess Of Victory Nikke","url":"https://gameboost.com/goddess-of-victory-nikke","slug":"goddess-of-victory-nikke","categories":[{"title":"Accounts","url":"https://gameboost.com/goddess-of-victory-nikke/accounts"}]},{"name":"Epic Seven","url":"https://gameboost.com/epic-seven","slug":"epic-seven","categories":[{"title":"Accounts","url":"https://gameboost.com/epic-seven/accounts"}]},{"name":"Identity V","url":"https://gameboost.com/identity-v","slug":"identity-v","categories":[{"title":"Echoes","url":"https://gameboost.com/identity-v/echoes"},{"title":"Accounts","url":"https://gameboost.com/identity-v/accounts"}]},{"name":"Blood Strike","url":"https://gameboost.com/blood-strike","slug":"blood-strike","categories":[{"title":"Gold","url":"https://gameboost.com/blood-strike/gold"},{"title":"Accounts","url":"https://gameboost.com/blood-strike/accounts"}]},{"name":"Whiteout Survival","url":"https://gameboost.com/whiteout-survival","slug":"whiteout-survival","categories":[{"title":"Frost Stars","url":"https://gameboost.com/whiteout-survival/frost-stars"},{"title":"Accounts","url":"https://gameboost.com/whiteout-survival/accounts"}]},{"name":"Super Sus","url":"https://gameboost.com/super-sus","slug":"super-sus","categories":[{"title":"Goldstars","url":"https://gameboost.com/super-sus/goldstars"}]},{"name":"Delta Force","url":"https://gameboost.com/delta-force","slug":"delta-force","categories":[{"title":"Delta Coins","url":"https://gameboost.com/delta-force/delta-coins"},{"title":"Accounts","url":"https://gameboost.com/delta-force/accounts"}]},{"name":"Bleach Brave Souls","url":"https://gameboost.com/bleach-brave-souls","slug":"bleach-brave-souls","categories":[{"title":"Accounts","url":"https://gameboost.com/bleach-brave-souls/accounts"}]},{"name":"Cookie Run Kingdom","url":"https://gameboost.com/cookie-run-kingdom","slug":"cookie-run-kingdom","categories":[{"title":"Accounts","url":"https://gameboost.com/cookie-run-kingdom/accounts"}]},{"name":"Jujutsu Kaisen Phantom Parade","url":"https://gameboost.com/jujutsu-kaisen-phantom-parade","slug":"jujutsu-kaisen-phantom-parade","categories":[{"title":"Accounts","url":"https://gameboost.com/jujutsu-kaisen-phantom-parade/accounts"}]},{"name":"The Seven Deadly Sins","url":"https://gameboost.com/the-seven-deadly-sins","slug":"the-seven-deadly-sins","categories":[{"title":"Accounts","url":"https://gameboost.com/the-seven-deadly-sins/accounts"}]},{"name":"Dragon Ball Z Dokkan Battle","url":"https://gameboost.com/dragon-ball-z-dokkan-battle","slug":"dragon-ball-z-dokkan-battle","categories":[{"title":"Accounts","url":"https://gameboost.com/dragon-ball-z-dokkan-battle/accounts"}]},{"name":"Sea Of Thieves","url":"https://gameboost.com/sea-of-thieves","slug":"sea-of-thieves","categories":[{"title":"Accounts","url":"https://gameboost.com/sea-of-thieves/accounts"}]},{"name":"Yu Gi Oh Master Duel","url":"https://gameboost.com/yu-gi-oh-master-duel","slug":"yu-gi-oh-master-duel","categories":[{"title":"Accounts","url":"https://gameboost.com/yu-gi-oh-master-duel/accounts"}]},{"name":"Ea Sports Fc Mobile","url":"https://gameboost.com/ea-sports-fc-mobile","slug":"ea-sports-fc-mobile","categories":[{"title":"Accounts","url":"https://gameboost.com/ea-sports-fc-mobile/accounts"}]},{"name":"All Star Tower Defense X","url":"https://gameboost.com/all-star-tower-defense-x","slug":"all-star-tower-defense-x","categories":[{"title":"Accounts","url":"https://gameboost.com/all-star-tower-defense-x/accounts"}]},{"name":"Watcher Of Realms","url":"https://gameboost.com/watcher-of-realms","slug":"watcher-of-realms","categories":[{"title":"Accounts","url":"https://gameboost.com/watcher-of-realms/accounts"}]},{"name":"Where Winds Meet","url":"https://gameboost.com/where-winds-meet","slug":"where-winds-meet","categories":[{"title":"Accounts","url":"https://gameboost.com/where-winds-meet/accounts"}]},{"name":"Fish It","url":"https://gameboost.com/fish-it","slug":"fish-it","categories":[{"title":"Items","url":"https://gameboost.com/fish-it/items"}]},{"name":"Ayakashi Rumble","url":"https://gameboost.com/ayakashi-rumble","slug":"ayakashi-rumble","categories":[{"title":"Accounts","url":"https://gameboost.com/ayakashi-rumble/accounts"}]},{"name":"Fate Grand Order","url":"https://gameboost.com/fate-grand-order","slug":"fate-grand-order","categories":[{"title":"Accounts","url":"https://gameboost.com/fate-grand-order/accounts"}]},{"name":"Stella Sora","url":"https://gameboost.com/stella-sora","slug":"stella-sora","categories":[{"title":"Accounts","url":"https://gameboost.com/stella-sora/accounts"}]},{"name":"The Forge","url":"https://gameboost.com/the-forge","slug":"the-forge","categories":[{"title":"Accounts","url":"https://gameboost.com/the-forge/accounts"},{"title":"Items","url":"https://gameboost.com/the-forge/items"}]},{"name":"Marvel Contest Of Champions","url":"https://gameboost.com/marvel-contest-of-champions","slug":"marvel-contest-of-champions","categories":[{"title":"Accounts","url":"https://gameboost.com/marvel-contest-of-champions/accounts"}]},{"name":"World Of Warships","url":"https://gameboost.com/world-of-warships","slug":"world-of-warships","categories":[{"title":"Accounts","url":"https://gameboost.com/world-of-warships/accounts"}]},{"name":"Volleyball Legends","url":"https://gameboost.com/volleyball-legends","slug":"volleyball-legends","categories":[{"title":"Accounts","url":"https://gameboost.com/volleyball-legends/accounts"},{"title":"Items","url":"https://gameboost.com/volleyball-legends/items"}]},{"name":"Metin 2","url":"https://gameboost.com/metin-2","slug":"metin-2","categories":[{"title":"Accounts","url":"https://gameboost.com/metin-2/accounts"}]},{"name":"Escape Tsunami For Brainrots","url":"https://gameboost.com/escape-tsunami-for-brainrots","slug":"escape-tsunami-for-brainrots","categories":[{"title":"Items","url":"https://gameboost.com/escape-tsunami-for-brainrots/items"}]},{"name":"Monopoly Go","url":"https://gameboost.com/monopoly-go","slug":"monopoly-go","categories":[{"title":"Items","url":"https://gameboost.com/monopoly-go/items"}]},{"name":"Last War Survival","url":"https://gameboost.com/last-war-survival","slug":"last-war-survival","categories":[{"title":"Accounts","url":"https://gameboost.com/last-war-survival/accounts"}]},{"name":"Wartune Ultra","url":"https://gameboost.com/wartune-ultra","slug":"wartune-ultra","categories":[{"title":"Accounts","url":"https://gameboost.com/wartune-ultra/accounts"}]},{"name":"Zula","url":"https://gameboost.com/zula","slug":"zula","categories":[{"title":"Accounts","url":"https://gameboost.com/zula/accounts"}]},{"name":"Car Parking Multiplayer","url":"https://gameboost.com/car-parking-multiplayer","slug":"car-parking-multiplayer","categories":[{"title":"Accounts","url":"https://gameboost.com/car-parking-multiplayer/accounts"}]},{"name":"Darkorbit","url":"https://gameboost.com/darkorbit","slug":"darkorbit","categories":[{"title":"Accounts","url":"https://gameboost.com/darkorbit/accounts"}]},{"name":"Knight Online","url":"https://gameboost.com/knight-online","slug":"knight-online","categories":[{"title":"Items","url":"https://gameboost.com/knight-online/items"},{"title":"Gold Bars","url":"https://gameboost.com/knight-online/gold-bars"},{"title":"Accounts","url":"https://gameboost.com/knight-online/accounts"}]},{"name":"Tap Simulator","url":"https://gameboost.com/tap-simulator","slug":"tap-simulator","categories":[{"title":"Items","url":"https://gameboost.com/tap-simulator/items"}]},{"name":"Bee Swarm Simulator","url":"https://gameboost.com/bee-swarm-simulator","slug":"bee-swarm-simulator","categories":[{"title":"Items","url":"https://gameboost.com/bee-swarm-simulator/items"},{"title":"Accounts","url":"https://gameboost.com/bee-swarm-simulator/accounts"}]},{"name":"Among Us","url":"https://gameboost.com/among-us","slug":"among-us","categories":[]},{"name":"Animal Crossing New Horizons","url":"https://gameboost.com/animal-crossing-new-horizons","slug":"animal-crossing-new-horizons","categories":[]},{"name":"Arena Of Valor","url":"https://gameboost.com/arena-of-valor","slug":"arena-of-valor","categories":[]},{"name":"Assassins Creed Valhalla","url":"https://gameboost.com/assassins-creed-valhalla","slug":"assassins-creed-valhalla","categories":[]},{"name":"Back 4 Blood","url":"https://gameboost.com/back-4-blood","slug":"back-4-blood","categories":[]},{"name":"Battlefield 2042","url":"https://gameboost.com/battlefield-2042","slug":"battlefield-2042","categories":[]},{"name":"Brawlhalla","url":"https://gameboost.com/brawlhalla","slug":"brawlhalla","categories":[]},{"name":"Chess","url":"https://gameboost.com/chess","slug":"chess","categories":[]},{"name":"Fc 24","url":"https://gameboost.com/fc-24","slug":"fc-24","categories":[]},{"name":"Gta 6","url":"https://gameboost.com/gta-6","slug":"gta-6","categories":[]},{"name":"Monster Strike","url":"https://gameboost.com/monster-strike","slug":"monster-strike","categories":[]},{"name":"Professional Baseball Spirits A","url":"https://gameboost.com/professional-baseball-spirits-a","slug":"professional-baseball-spirits-a","categories":[]},{"name":"Steam","url":"https://gameboost.com/steam","slug":"steam","categories":[]},{"name":"Wow Cataclysm","url":"https://gameboost.com/wow-cataclysm","slug":"wow-cataclysm","categories":[]},{"name":"Xbox","url":"https://gameboost.com/xbox","slug":"xbox","categories":[]},{"name":"Last Island of Survival","url":"https://gameboost.com/last-island-of-survival","slug":"last-island-of-survival","categories":[{"title":"Accounts","url":"https://gameboost.com/last-island-of-survival/accounts"}]},{"name":"Royale Online ","url":"https://gameboost.com/royale-online/","slug":"royale-online","categories":[{"title":"Accounts","url":"https://gameboost.com/royale-online/accounts"}]},{"name":"Standoff 2","url":"https://gameboost.com/standoff-2","slug":"standoff-2","categories":[{"title":"Accounts","url":"https://gameboost.com/standoff-2/accounts"},{"title":"Gold","url":"https://gameboost.com/standoff-2/gold"}]},{"name":"WolfTeam","url":"https://gameboost.com/wolfteam","slug":"wolfteam","categories":[{"title":"Accounts","url":"https://gameboost.com/wolfteam/accounts"},{"title":"Cash","url":"https://gameboost.com/wolfteam/cash"}]},{"name":"Pokemon Legends: Z-A","url":"https://gameboost.com/pokemon-legends-z-a","slug":"pokemon-legends-z-a","categories":[{"title":"Items","url":"https://gameboost.com/pokemon-legends-z-a/items"}]},{"name":"Universal Tower Defense","url":"https://gameboost.com/universal-tower-defense","slug":"universal-tower-defense","categories":[{"title":"Items","url":"https://gameboost.com/universal-tower-defense/items"}]},{"name":"Anime Fighting Simulator: Endless","url":"https://gameboost.com/anime-fighting-simulator-endless/items","slug":"anime-fighting-simulator-endless","categories":[{"title":"Items","url":"https://gameboost.com/anime-fighting-simulator-endless/items"}]},{"name":"Attack on Titan Revolution","url":"https://gameboost.com/attack-on-titan-revolution","slug":"attack-on-titan-revolution","categories":[{"title":"Items","url":"https://gameboost.com/attack-on-titan-revolution/items"}]},{"name":"Hypershot","url":"https://gameboost.com/hypershot","slug":"hypershot","categories":[{"title":"Items","url":"https://gameboost.com/hypershot/items"}]},{"name":"Arknights Endfield","url":"https://gameboost.com/arknights-endfield","slug":"arknights-endfield","categories":[{"title":"Accounts","url":"https://gameboost.com/arknights-endfield/accounts"}]}]'), i = class i {
     constructor() {
-      this.games = L, this.currentLayout = null, this.resizeTimeout = null, this.eventHandlers = [], this.resizeHandler = null, this.gamesByUrl = /* @__PURE__ */ new Map(), this.gamesBySlug = /* @__PURE__ */ new Map(), this.gameIndices = /* @__PURE__ */ new Map(), this.games.forEach((t, e) => {
+      this.games = B, this.currentLayout = null, this.resizeTimeout = null, this.eventHandlers = [], this.resizeHandler = null, this.gamesByUrl = /* @__PURE__ */ new Map(), this.gamesBySlug = /* @__PURE__ */ new Map(), this.gameIndices = /* @__PURE__ */ new Map(), this.games.forEach((t, e) => {
         const o = this.normalizeHref(t.url);
         this.gamesByUrl.set(o, t), t.slug && this.gamesBySlug.set(t.slug, t), this.gameIndices.set(t, e);
       }), this.addStyles(), this.enhanceGameCards(), this.transformPopularGamesGrid(), this.setupResizeListener();
     }
     addStyles() {
-      if (document.getElementById(c.STYLES_MARKER))
+      if (document.getElementById(i.STYLES_MARKER))
         return;
       const t = document.createElement("style");
-      t.id = c.STYLES_MARKER, t.textContent = C, document.head.appendChild(t);
+      t.id = i.STYLES_MARKER, t.textContent = T, document.head.appendChild(t);
     }
     enhanceGameCards() {
       document.querySelectorAll(
-        `.game-card-group:not([${c.ENHANCED_MARKER}]):not(.game-key-group)`
+        `.game-card-group:not([${i.ENHANCED_MARKER}]):not(.game-key-group)`
       ).forEach((e) => {
         const o = e, s = this.findGameByHref(o.href), a = (s == null ? void 0 : s.name) || o.href;
-        this.addTrackedEventListener(e, "click", () => m("exp_hp_game_card_click", a, "click", "Popular Games")), s && s.categories && s.categories.length > 0 && (this.addCategoryLinks(e, s), this.addTitle(e, s.name), e.setAttribute(c.ENHANCED_MARKER, "true"));
+        this.addTrackedEventListener(e, "click", () => g("exp_hp_game_card_click", a, "click", "Popular Games")), s && s.categories && s.categories.length > 0 && (this.addCategoryLinks(e, s), this.addTitle(e, s.name), e.setAttribute(i.ENHANCED_MARKER, "true"));
       });
     }
     addTitle(t, e) {
@@ -243,7 +266,7 @@
       );
       t.insertAdjacentHTML("afterend", o);
       const s = t.nextElementSibling;
-      s && s.classList.contains("game-categories-title") && this.addTrackedEventListener(s, "click", () => m("exp_hp_game_title_click", e, "click", "Popular Games"));
+      s && s.classList.contains("game-categories-title") && this.addTrackedEventListener(s, "click", () => g("exp_hp_game_title_click", e, "click", "Popular Games"));
     }
     addCategoryLinks(t, e) {
       const o = e.categories || [];
@@ -254,9 +277,9 @@
         );
         t.insertAdjacentHTML("afterend", s);
         const a = t.nextElementSibling;
-        a && a.classList.contains("game-categories") && a.querySelectorAll(".category-link").forEach((i) => {
-          const l = i.textContent || "Unknown";
-          this.addTrackedEventListener(i, "click", () => m("exp_hp_game_category_click", l, "click", e.name));
+        a && a.classList.contains("game-categories") && a.querySelectorAll(".category-link").forEach((c) => {
+          const m = c.textContent || "Unknown";
+          this.addTrackedEventListener(c, "click", () => g("exp_hp_game_category_click", m, "click", e.name));
         });
       }
     }
@@ -271,22 +294,24 @@
       if (t.length === 0) return;
       const e = Array.from(
         new Set(t.map((s) => s.parentElement).filter(Boolean))
-      ), o = window.innerWidth < c.MOBILE_BREAKPOINT;
+      ), o = window.innerWidth < i.MOBILE_BREAKPOINT;
       e.forEach((s) => {
-        var l, g;
-        if (s.hasAttribute(c.GRID_MARKER)) return;
+        var m, u;
+        if (s.hasAttribute(i.GRID_MARKER)) return;
         const a = Array.from(
           s.querySelectorAll("[aria-roledescription='slide']:has(.game-card-group):not(:has(.game-key-group))")
         );
         if (a.length === 0) return;
-        const i = this.orderSlides(a).map((d) => d.slide);
-        s.setAttribute(c.GRID_MARKER, "true"), (g = (l = s.closest('[aria-roledescription="carousel"]')) == null ? void 0 : l.parentElement) == null || g.classList.add("crs-popular-games"), o ? this.currentLayout = "mobile" : (s.classList.add("game-grid-container"), this.applyGridVisibility(i, c.GRID_BATCH_SIZE), this.attachLoadMore(s, i), this.currentLayout = "desktop");
+        const c = this.orderSlides(a).map((d) => d.slide);
+        s.setAttribute(i.GRID_MARKER, "true"), (u = (m = s.closest('[aria-roledescription="carousel"]')) == null ? void 0 : m.parentElement) == null || u.classList.add("crs-popular-games"), o ? this.currentLayout = "mobile" : (s.classList.add("game-grid-container"), this.applyGridVisibility(c, i.GRID_BATCH_SIZE), this.attachLoadMore(s, c), this.currentLayout = "desktop", requestAnimationFrame(() => {
+          this.setCardHeightProperty();
+        }));
       });
     }
     orderSlides(t) {
       const e = t.map((o, s) => {
-        const a = o.querySelector(".game-card-group:not(.game-key-group)"), n = (a == null ? void 0 : a.href) || "", i = n ? this.findGameByHref(n) : void 0, l = i ? this.gameIndices.get(i) ?? Number.POSITIVE_INFINITY : Number.POSITIVE_INFINITY, g = (i == null ? void 0 : i.priority) ?? 3;
-        return { slide: o, order: l, priority: g, originalIndex: s };
+        const a = o.querySelector(".game-card-group:not(.game-key-group)"), n = (a == null ? void 0 : a.href) || "", c = n ? this.findGameByHref(n) : void 0, m = c ? this.gameIndices.get(c) ?? Number.POSITIVE_INFINITY : Number.POSITIVE_INFINITY, u = (c == null ? void 0 : c.priority) ?? 3;
+        return { slide: o, order: m, priority: u, originalIndex: s };
       });
       return e.sort((o, s) => o.order === s.order ? o.originalIndex - s.originalIndex : o.order - s.order), e.forEach(({ slide: o }) => {
         var s;
@@ -295,27 +320,30 @@
     }
     applyGridVisibility(t, e) {
       t.forEach((o, s) => {
-        const a = s >= e;
-        o.classList.toggle("game-grid-hidden", a);
+        const a = s >= e + i.GRID_PREVIEW_SIZE, n = s >= e && s < e + i.GRID_PREVIEW_SIZE;
+        o.classList.toggle("game-grid-hidden", a), o.classList.toggle("game-grid-preview", n), n ? o.setAttribute(i.GRID_PREVIEW_MARKER, "true") : o.removeAttribute(i.GRID_PREVIEW_MARKER);
       });
     }
     attachLoadMore(t, e) {
       var n;
       const o = t.nextElementSibling;
-      if (o && o.getAttribute(c.GRID_BUTTON_ATTR) === "true")
+      if (o && o.getAttribute(i.GRID_BUTTON_ATTR) === "true")
         return;
       const s = document.createElement("button");
-      s.className = "inline-flex items-center justify-center transition-colors focus:outline focus:outline-offset-2 focus-visible:outline outline-none disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden font-medium active:translate-y-px whitespace-nowrap bg-primary hover:bg-primary-hover text-primary-foreground shadow-sm focus:outline-primary py-2 text-sm rounded-full px-6 h-9 sm:h-10 game-grid-load-more", s.setAttribute(c.GRID_BUTTON_ATTR, "true"), s.type = "button", s.textContent = "Load more";
+      s.className = "inline-flex items-center justify-center transition-colors focus:outline focus:outline-offset-2 focus-visible:outline outline-none disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden font-medium active:translate-y-px whitespace-nowrap bg-primary hover:bg-primary-hover text-primary-foreground shadow-sm focus:outline-primary py-2 text-sm rounded-full px-6 h-9 sm:h-10 game-grid-load-more", s.setAttribute(i.GRID_BUTTON_ATTR, "true"), s.type = "button", s.textContent = "Show More Popular Games";
       const a = () => {
-        m("exp_hp_game_load_more_click", "Load more", "click", "Popular Games");
-        const i = e.filter((g) => g.classList.contains("game-grid-hidden"));
-        if (i.length === 0) {
-          this.removeTrackedEventListener(s, "click", a), s.remove();
-          return;
-        }
-        i.slice(0, c.GRID_BATCH_SIZE).forEach((g) => {
-          g.classList.remove("game-grid-hidden");
-        }), e.filter((g) => g.classList.contains("game-grid-hidden")).length === 0 && (this.removeTrackedEventListener(s, "click", a), s.remove());
+        g("exp_hp_game_load_more_click", "Load more", "click", "Popular Games"), e.filter((l) => l.classList.contains("game-grid-preview")).forEach((l) => {
+          l.classList.remove("game-grid-preview"), l.removeAttribute(i.GRID_PREVIEW_MARKER);
+        });
+        const u = e.filter(
+          (l) => !l.classList.contains("game-grid-hidden") && !l.classList.contains("game-grid-preview")
+        ).length + i.GRID_PREVIEW_SIZE, f = e.length - u > 0;
+        e.forEach((l, y) => {
+          const Z = f ? y >= u + i.GRID_PREVIEW_SIZE : y >= u, I = f && y >= u && y < u + i.GRID_PREVIEW_SIZE;
+          l.classList.toggle("game-grid-hidden", Z), l.classList.toggle("game-grid-preview", I), I ? l.setAttribute(i.GRID_PREVIEW_MARKER, "true") : l.removeAttribute(i.GRID_PREVIEW_MARKER);
+        }), e.filter((l) => l.classList.contains("game-grid-hidden")).length === 0 && (e.forEach((l) => {
+          l.classList.remove("game-grid-preview"), l.removeAttribute(i.GRID_PREVIEW_MARKER);
+        }), this.removeTrackedEventListener(s, "click", a), s.remove());
       };
       this.addTrackedEventListener(s, "click", a), (n = t.parentElement) == null || n.insertBefore(s, t.nextSibling);
     }
@@ -345,30 +373,38 @@
       this.resizeHandler = () => {
         this.resizeTimeout !== null && clearTimeout(this.resizeTimeout), this.resizeTimeout = window.setTimeout(() => {
           this.handleResize(), this.resizeTimeout = null;
-        }, c.RESIZE_DEBOUNCE_MS);
+        }, i.RESIZE_DEBOUNCE_MS);
       }, window.addEventListener("resize", this.resizeHandler);
     }
     handleResize() {
-      const e = window.innerWidth < c.MOBILE_BREAKPOINT ? "mobile" : "desktop";
-      this.currentLayout === e || this.currentLayout === null || this.switchLayout(e);
+      const t = window.innerWidth < i.MOBILE_BREAKPOINT, e = t ? "mobile" : "desktop";
+      if (this.currentLayout === e || this.currentLayout === null) {
+        t || requestAnimationFrame(() => {
+          this.setCardHeightProperty();
+        });
+        return;
+      }
+      this.switchLayout(e), t || requestAnimationFrame(() => {
+        this.setCardHeightProperty();
+      });
     }
     switchLayout(t) {
       Array.from(
-        document.querySelectorAll(`[${c.GRID_MARKER}]`)
+        document.querySelectorAll(`[${i.GRID_MARKER}]`)
       ).forEach((o) => {
         if (Array.from(
           o.querySelectorAll("[aria-roledescription='slide']")
         ).length === 0) return;
         this.currentLayout === "desktop" ? this.cleanupDesktopLayout(o) : this.currentLayout === "mobile" && this.cleanupMobileLayout(o);
-        const a = this.collectAllSlides(o), i = this.orderSlides(a).map((l) => l.slide);
-        t === "mobile" || (o.classList.add("game-grid-container"), this.applyGridVisibility(i, c.GRID_BATCH_SIZE), this.attachLoadMore(o, i));
+        const a = this.collectAllSlides(o), c = this.orderSlides(a).map((m) => m.slide);
+        t === "mobile" || (o.classList.add("game-grid-container"), this.applyGridVisibility(c, i.GRID_BATCH_SIZE), this.attachLoadMore(o, c));
       }), this.currentLayout = t;
     }
     cleanupDesktopLayout(t) {
       t.classList.remove("game-grid-container");
       const e = t.nextElementSibling;
-      e && e.getAttribute(c.GRID_BUTTON_ATTR) === "true" && e.remove(), t.querySelectorAll("[aria-roledescription='slide']").forEach((s) => {
-        s.classList.remove("game-grid-hidden");
+      e && e.getAttribute(i.GRID_BUTTON_ATTR) === "true" && e.remove(), t.querySelectorAll("[aria-roledescription='slide']").forEach((s) => {
+        s.classList.remove("game-grid-hidden", "game-grid-preview"), s.removeAttribute(i.GRID_PREVIEW_MARKER);
       });
     }
     cleanupMobileLayout(t) {
@@ -377,6 +413,13 @@
       return Array.from(
         t.querySelectorAll("[aria-roledescription='slide']")
       );
+    }
+    async setCardHeightProperty() {
+      const t = await b('.crs-popular-games [aria-roledescription="slide"]');
+      if (t) {
+        const e = t.offsetHeight;
+        e > 0 && document.documentElement.style.setProperty("--game-card-height", `${e}px`);
+      }
     }
     addTrackedEventListener(t, e, o) {
       t.addEventListener(e, o), this.eventHandlers.push({ element: t, event: e, handler: o });
@@ -394,9 +437,9 @@
       }), this.eventHandlers = [], this.resizeHandler && (window.removeEventListener("resize", this.resizeHandler), this.resizeHandler = null), this.resizeTimeout !== null && (clearTimeout(this.resizeTimeout), this.resizeTimeout = null);
     }
   };
-  c.STYLES_MARKER = "game-cards-styles-injected", c.ENHANCED_MARKER = "data-categories-enhanced", c.GRID_MARKER = "data-gridified", c.GRID_BUTTON_ATTR = "data-grid-button", c.GRID_BATCH_SIZE = 12, c.MOBILE_BREAKPOINT = 768, c.RESIZE_DEBOUNCE_MS = 250;
-  let y = c;
-  const T = [
+  i.STYLES_MARKER = "game-cards-styles-injected", i.ENHANCED_MARKER = "data-categories-enhanced", i.GRID_MARKER = "data-gridified", i.GRID_BUTTON_ATTR = "data-grid-button", i.GRID_PREVIEW_MARKER = "data-grid-preview", i.GRID_BATCH_SIZE = 12, i.GRID_PREVIEW_SIZE = 6, i.MOBILE_BREAKPOINT = 768, i.RESIZE_DEBOUNCE_MS = 250;
+  let w = i;
+  const M = [
     {
       name: "ARC Raiders (Steam)",
       url: "https://gameboost.com/arc-raiders-steam-00-38620",
@@ -531,7 +574,7 @@
       price: { eur: "€12,46", usd: "$14.63" }
     }
   ];
-  function B(r, t = "eur") {
+  function H(r, t = "eur") {
     const e = r.isRegionDanger ? "text-danger-light-foreground" : "text-muted-foreground";
     return (
       /* HTML */
@@ -578,7 +621,7 @@
   `
     );
   }
-  function M(r = "eur") {
+  function D(r = "eur") {
     return (
       /* HTML */
       `
@@ -587,7 +630,7 @@
       <div class="relative mt-4 w-full game-keys-slider-container">
         <div class="game-keys-wrapper">
           <div class="game-keys-scroll-container">
-            ${T.map((t) => B(t, r)).join("")}
+            ${M.map((t) => H(t, r)).join("")}
             <div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0 pl-1 py-1 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-[calc(100%/7)]">
               <a href="/keys" class="relative flex flex-col items-start w-auto gap-3 p-1 px-1.5 leading-5 game-card-group game-key-group group game-keys-cta-slide">
                 <div class="game-keys-cta-content">
@@ -629,7 +672,7 @@
   `
     );
   }
-  const R = `.crs-game-keys {
+  const z = `.crs-game-keys {
   margin-top: 4.375rem !important;
 }
 
@@ -789,7 +832,7 @@
   line-height: 24px;
   text-decoration: none;
 }
-`, h = class h {
+`, p = class p {
     constructor() {
       this.scrollContainer = null, this.prevButton = null, this.nextButton = null, this.prevHandler = null, this.nextHandler = null, this.eventHandlers = [], this.currentSlide = 0, this.isAnimating = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.isDragging = !1, this.currentTranslate = 0, this.prevTranslate = 0, this.touchStartTime = 0, this.touchStartY = 0, this.hasDeterminedDirection = !1, this.init();
     }
@@ -808,12 +851,12 @@
       return "eur";
     }
     slideToPosition(t) {
-      var f;
+      var l;
       if (!this.scrollContainer || this.isAnimating) return;
       const e = this.scrollContainer.querySelector('[role="group"]');
       if (!e) return;
-      const o = e.offsetWidth, s = 16, n = this.scrollContainer.querySelectorAll('[role="group"]').length, i = (o + s) * n - s, l = ((f = this.scrollContainer.parentElement) == null ? void 0 : f.offsetWidth) || 0, d = Math.max(0, i - l + 12), v = t * (o + s), u = Math.min(v, d);
-      v >= d && u === d && (this.currentSlide = Math.floor(d / (o + s))), this.isAnimating = !0, this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = `translateX(-${u}px)`, this.prevTranslate = -u, this.currentTranslate = -u, setTimeout(() => {
+      const o = e.offsetWidth, s = 16, n = this.scrollContainer.querySelectorAll('[role="group"]').length, c = (o + s) * n - s, m = ((l = this.scrollContainer.parentElement) == null ? void 0 : l.offsetWidth) || 0, d = Math.max(0, c - m + 12), f = t * (o + s), h = Math.min(f, d);
+      f >= d && h === d && (this.currentSlide = Math.floor(d / (o + s))), this.isAnimating = !0, this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = `translateX(-${h}px)`, this.prevTranslate = -h, this.currentTranslate = -h, setTimeout(() => {
         this.isAnimating = !1;
       }, 500);
     }
@@ -841,38 +884,38 @@
       this.isDragging = !1;
       const e = this.currentTranslate - this.prevTranslate, s = Date.now() - this.touchStartTime, a = Math.abs(e) / s, n = this.scrollContainer.querySelector('[role="group"]');
       if (!n) return;
-      const i = n.offsetWidth, l = 16, d = this.scrollContainer.querySelectorAll('[role="group"]').length - 1, v = -this.currentTranslate;
-      let u = Math.round(v / (i + l));
+      const c = n.offsetWidth, m = 16, d = this.scrollContainer.querySelectorAll('[role="group"]').length - 1, f = -this.currentTranslate;
+      let h = Math.round(f / (c + m));
       if (a > 1.5) {
-        const f = Math.min(3, Math.ceil(a / 1.5));
-        e < 0 ? u = u + f : e > 0 && (u = u - f);
+        const l = Math.min(3, Math.ceil(a / 1.5));
+        e < 0 ? h = h + l : e > 0 && (h = h - l);
       }
-      this.currentSlide = Math.max(0, Math.min(d, u)), this.slideToPosition(this.currentSlide);
+      this.currentSlide = Math.max(0, Math.min(d, h)), this.slideToPosition(this.currentSlide);
     }
     async render() {
-      const t = await p(".crs-popular-games");
-      if (!t || t.hasAttribute(h.CONTAINER_MARKER))
+      const t = await b(".crs-popular-games");
+      if (!t || t.hasAttribute(p.CONTAINER_MARKER))
         return;
-      const e = this.detectCurrency(), o = M(e);
-      t.insertAdjacentHTML("afterend", o), t.setAttribute(h.CONTAINER_MARKER, "true"), x(".crs-game-keys", "exp_hp_key_view", "Game Keys", "Visibility", 0), this.initializeSlider();
+      const e = this.detectCurrency(), o = D(e);
+      t.insertAdjacentHTML("afterend", o), t.setAttribute(p.CONTAINER_MARKER, "true"), A(".crs-game-keys", "exp_hp_key_view", "Game Keys", "Visibility", 0), this.initializeSlider();
     }
     initializeSlider() {
       if (this.scrollContainer = document.querySelector(".game-keys-scroll-container"), this.prevButton = document.querySelector('[data-game-keys-nav="prev"]'), this.nextButton = document.querySelector('[data-game-keys-nav="next"]'), !this.scrollContainer || !this.prevButton || !this.nextButton) return;
       this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = "translateX(0)", this.addTrackedEventListener(this.scrollContainer, "touchstart", this.handleTouchStart.bind(this)), this.addTrackedEventListener(this.scrollContainer, "touchmove", this.handleTouchMove.bind(this)), this.addTrackedEventListener(this.scrollContainer, "touchend", this.handleTouchEnd.bind(this)), this.prevHandler = (s) => {
-        m("exp_hp_key_slider_prev", "Previous Button", "click", "Game Keys"), s.preventDefault(), s.stopPropagation(), this.currentSlide > 0 && !this.isAnimating && (this.currentSlide--, this.slideToPosition(this.currentSlide));
+        g("exp_hp_key_slider_prev", "Previous Button", "click", "Game Keys"), s.preventDefault(), s.stopPropagation(), this.currentSlide > 0 && !this.isAnimating && (this.currentSlide--, this.slideToPosition(this.currentSlide));
       }, this.nextHandler = (s) => {
-        var i;
-        m("exp_hp_key_slider_next", "Next Button", "click", "Game Keys"), s.preventDefault(), s.stopPropagation();
-        const a = (i = this.scrollContainer) == null ? void 0 : i.querySelectorAll('[role="group"]'), n = ((a == null ? void 0 : a.length) || 0) - 1;
+        var c;
+        g("exp_hp_key_slider_next", "Next Button", "click", "Game Keys"), s.preventDefault(), s.stopPropagation();
+        const a = (c = this.scrollContainer) == null ? void 0 : c.querySelectorAll('[role="group"]'), n = ((a == null ? void 0 : a.length) || 0) - 1;
         this.currentSlide < n && !this.isAnimating && (this.currentSlide++, this.slideToPosition(this.currentSlide));
       }, this.prevButton.addEventListener("click", this.prevHandler), this.nextButton.addEventListener("click", this.nextHandler), this.isDragging = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.currentTranslate = 0, this.prevTranslate = 0, document.querySelectorAll(".game-key-group:not(.game-keys-cta-slide)").forEach((s) => {
-        const a = s, n = a.querySelector(".text-sm.font-medium"), i = (n == null ? void 0 : n.textContent) || a.href;
-        this.addTrackedEventListener(s, "click", () => m("exp_hp_key_card_click", i, "click", "Game Keys"));
+        const a = s, n = a.querySelector(".text-sm.font-medium"), c = (n == null ? void 0 : n.textContent) || a.href;
+        this.addTrackedEventListener(s, "click", () => g("exp_hp_key_card_click", c, "click", "Game Keys"));
       });
       const e = document.querySelector(".game-keys-cta-slide");
-      e && this.addTrackedEventListener(e, "click", () => m("exp_hp_key_cta_slide_click", "View All Game Keys", "click", "Game Keys"));
+      e && this.addTrackedEventListener(e, "click", () => g("exp_hp_key_cta_slide_click", "View All Game Keys", "click", "Game Keys"));
       const o = document.querySelector(".game-keys-view-all");
-      o && this.addTrackedEventListener(o, "click", () => m("exp_hp_key_view_all_click", "View All Game Keys", "click", "Game Keys"));
+      o && this.addTrackedEventListener(o, "click", () => g("exp_hp_key_view_all_click", "View All Game Keys", "click", "Game Keys"));
     }
     addTrackedEventListener(t, e, o) {
       t.addEventListener(e, o), this.eventHandlers.push({ element: t, event: e, handler: o });
@@ -883,15 +926,15 @@
       }), this.eventHandlers = [], this.scrollContainer = null, this.prevButton = null, this.nextButton = null, this.prevHandler = null, this.nextHandler = null, this.currentSlide = 0, this.isAnimating = !1, this.isDragging = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.touchStartY = 0, this.hasDeterminedDirection = !1, this.currentTranslate = 0, this.prevTranslate = 0, this.touchStartTime = 0;
     }
     addStyles() {
-      if (document.getElementById(h.STYLES_MARKER))
+      if (document.getElementById(p.STYLES_MARKER))
         return;
       const t = document.createElement("style");
-      t.id = h.STYLES_MARKER, t.innerHTML = R, document.head.appendChild(t);
+      t.id = p.STYLES_MARKER, t.innerHTML = z, document.head.appendChild(t);
     }
   };
-  h.CONTAINER_MARKER = "data-game-keys-rendered", h.STYLES_MARKER = "game-keys-styles-injected";
-  let w = h;
-  const H = [
+  p.CONTAINER_MARKER = "data-game-keys-rendered", p.STYLES_MARKER = "game-keys-styles-injected";
+  let k = p;
+  const G = [
     {
       name: "Accounts",
       url: "/services/accounts",
@@ -933,7 +976,7 @@
       url: "https://gameboost.com/keys",
       icon: "https://cdn.gameboost.com/static/game-services/cs-skins.webp?v=2"
     }
-  ], z = `
+  ], P = `
 .crs-game-services {
   margin-top: 4rem !important;
 }
@@ -1060,7 +1103,7 @@
     height: 22px;
   }
 }
-`, b = class b {
+`, v = class v {
     constructor() {
       this.eventHandlers = [], this.init();
     }
@@ -1068,8 +1111,8 @@
       this.addStyles(), this.render();
     }
     async render() {
-      const t = await p(".crs-game-keys");
-      if (!t || t.hasAttribute(b.CONTAINER_MARKER))
+      const t = await b(".crs-game-keys");
+      if (!t || t.hasAttribute(v.CONTAINER_MARKER))
         return;
       const e = (
         /* HTML */
@@ -1083,17 +1126,17 @@
     </div>
     `
       );
-      t.insertAdjacentHTML("afterend", e), t.setAttribute(b.CONTAINER_MARKER, "true"), x(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-card-link").forEach((a) => {
-        var l;
-        const n = (l = a.nextElementSibling) == null ? void 0 : l.querySelector(".game-service-name"), i = (n == null ? void 0 : n.textContent) || "Unknown";
-        this.addTrackedEventListener(a, "click", () => m("exp_hp_service_card_click", i, "click", "Browse All Games Services"));
+      t.insertAdjacentHTML("afterend", e), t.setAttribute(v.CONTAINER_MARKER, "true"), A(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-card-link").forEach((a) => {
+        var m;
+        const n = (m = a.nextElementSibling) == null ? void 0 : m.querySelector(".game-service-name"), c = (n == null ? void 0 : n.textContent) || "Unknown";
+        this.addTrackedEventListener(a, "click", () => g("exp_hp_service_card_click", c, "click", "Browse All Games Services"));
       }), document.querySelectorAll(".game-service-name-link").forEach((a) => {
-        const n = a.querySelector(".game-service-name"), i = (n == null ? void 0 : n.textContent) || "Unknown";
-        this.addTrackedEventListener(a, "click", () => m("exp_hp_service_name_click", i, "click", "Browse All Games Services"));
+        const n = a.querySelector(".game-service-name"), c = (n == null ? void 0 : n.textContent) || "Unknown";
+        this.addTrackedEventListener(a, "click", () => g("exp_hp_service_name_click", c, "click", "Browse All Games Services"));
       });
     }
     renderServiceCards() {
-      return H.map((t) => (
+      return G.map((t) => (
         /* HTML */
         `
       <div data-service-name="${t.name.toLowerCase().replace(/\s+/g, "-")}">
@@ -1113,7 +1156,7 @@
       if (document.head.querySelector("style[data-game-services-styles]"))
         return;
       const t = document.createElement("style");
-      t.setAttribute("data-game-services-styles", "true"), t.textContent = z, document.head.appendChild(t);
+      t.setAttribute("data-game-services-styles", "true"), t.textContent = P, document.head.appendChild(t);
     }
     addTrackedEventListener(t, e, o) {
       t.addEventListener(e, o), this.eventHandlers.push({ element: t, event: e, handler: o });
@@ -1124,9 +1167,9 @@
       }), this.eventHandlers = [];
     }
   };
-  b.CONTAINER_MARKER = "data-game-services-rendered";
-  let k = b;
-  const D = `.crs-hero > a {
+  v.CONTAINER_MARKER = "data-game-services-rendered";
+  let x = v;
+  const _ = `.crs-hero > a {
   /* display: none; Ask about it */
   margin-bottom: 0;
 }
@@ -1294,7 +1337,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
   background-repeat: no-repeat;
 }
 `;
-  class G {
+  class j {
     constructor() {
       this.eventHandlers = [], this.searchFocusHandler = null, this.searchBlurHandler = null, this.searchInputHandler = null, this.init();
     }
@@ -1302,7 +1345,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       this.addStyles(), this.getHeroSection(), this.changeSearchInput(), this.changeSubTitle(), this.addWarrantyBadge();
     }
     async getHeroSection() {
-      const t = await p('img[src*="bg-light.webp"]');
+      const t = await b('img[src*="bg-light.webp"]');
       if (t) {
         const e = t.nextElementSibling;
         e != null && e.classList.contains("crs-hero") || e == null || e.classList.add("crs-hero");
@@ -1312,7 +1355,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
     }
     async changeSearchInput() {
       var s, a;
-      const t = await p('input[name="search"]');
+      const t = await b('input[name="search"]');
       t.classList.contains("crs-hero-search-input") || t.classList.add("crs-hero-search-input");
       let e = (s = t.parentElement) == null ? void 0 : s.querySelector("[data-typing-effect]");
       e || (e = document.createElement("span"), e.className = "typing-effect", e.setAttribute("data-typing-effect", "true"), (a = t.parentElement) == null || a.insertBefore(e, t), this.searchFocusHandler = () => {
@@ -1323,15 +1366,15 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
         t.value && (e.style.display = "none");
       }, t.addEventListener("input", this.searchInputHandler));
       const o = document.querySelector(".crs-hero-services-container");
-      o && o.querySelectorAll('a[href*="/services/"]').forEach((i) => {
+      o && o.querySelectorAll('a[href*="/services/"]').forEach((c) => {
       });
     }
     async changeSubTitle() {
-      const t = await p("h1 + div");
+      const t = await b("h1 + div");
       t && !t.classList.contains("crs-hero-subtitle") && t.classList.add("crs-hero-subtitle");
     }
     async addWarrantyBadge() {
-      const t = await p(".crs-hero"), e = t == null ? void 0 : t.querySelector(":scope > a");
+      const t = await b(".crs-hero"), e = t == null ? void 0 : t.querySelector(":scope > a");
       if (!t || t.querySelector(".crs-warranty-badge")) return;
       const o = (
         /* HTML */
@@ -1345,7 +1388,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       if (document.head.querySelector("style[data-hero-styles]"))
         return;
       const t = document.createElement("style");
-      t.setAttribute("data-hero-styles", "true"), t.textContent = D, document.head.appendChild(t);
+      t.setAttribute("data-hero-styles", "true"), t.textContent = _, document.head.appendChild(t);
     }
     addTrackedEventListener(t, e, o) {
       t.addEventListener(e, o), this.eventHandlers.push({ element: t, event: e, handler: o });
@@ -1358,8 +1401,8 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       t && (this.searchFocusHandler && (t.removeEventListener("focus", this.searchFocusHandler), this.searchFocusHandler = null), this.searchBlurHandler && (t.removeEventListener("blur", this.searchBlurHandler), this.searchBlurHandler = null), this.searchInputHandler && (t.removeEventListener("input", this.searchInputHandler), this.searchInputHandler = null));
     }
   }
-  S({ name: "Іmproved homepage UX/UI and copy", dev: "OS" }), E("exp_hp");
-  class j {
+  C({ name: "Іmproved homepage UX/UI and copy", dev: "OS" }), L("exp_hp");
+  class E {
     constructor() {
       this.init();
     }
@@ -1368,14 +1411,14 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
     }
     addGlobalStyles() {
       const t = document.createElement("style");
-      t.textContent = I, document.head.appendChild(t);
+      t.textContent = R, document.head.appendChild(t);
     }
     isHomePage() {
       const t = window.location.pathname;
       return t === "/" || t === "" || t === "/index.html";
     }
     initializeEnhancements() {
-      this.isHomePage() && (new G(), new y(), new w(), new k());
+      this.isHomePage() && (new j(), new w(), new k(), new x());
     }
     setupSPANavigation() {
       window.addEventListener("popstate", () => {
@@ -1390,6 +1433,6 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
     }
   }
   window.onload = () => {
-    new j();
-  };
+    new E();
+  }, new E();
 })();
