@@ -1189,6 +1189,12 @@
 .crs-hero {
   padding-bottom: 0 !important;
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .crs-hero {
+    padding-bottom: 3rem !important;
+  }
+}
 @media (max-width: 768px) {
   .crs-hero {
     padding-top: 6.5rem !important;
