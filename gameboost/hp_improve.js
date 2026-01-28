@@ -835,7 +835,7 @@
       this.scrollContainer = null, this.prevButton = null, this.nextButton = null, this.prevHandler = null, this.nextHandler = null, this.eventHandlers = [], this.currentSlide = 0, this.isAnimating = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.isDragging = !1, this.currentTranslate = 0, this.prevTranslate = 0, this.touchStartTime = 0, this.touchStartY = 0, this.hasDeterminedDirection = !1, this.init();
     }
     init() {
-      console.log("Initializing GameKeys enhancement..."), this.addStyles(), this.render();
+      this.addStyles(), this.render();
     }
     async fetchData() {
       try {
@@ -1339,7 +1339,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
 
 @media (max-width: 525px) {
   .crs-warranty-badge {
-    gap: 4px;
+    gap: 6px;
     color: #66a1ff;
     font-size: 12px;
     line-height: 18px;
