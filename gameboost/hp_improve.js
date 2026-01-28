@@ -1337,7 +1337,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
   display: none;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 525px) {
   .crs-warranty-badge {
     gap: 4px;
     color: #66a1ff;
@@ -1355,7 +1355,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path fill="%2366A1FF" d="M7.999.47c.146 0 .281.029.406.088l5.906 2.353c.354.137.636.353.844.647.23.294.344.637.344 1.03.02 1-.157 2.176-.532 3.529-.375 1.353-1.052 2.666-2.03 3.94-.96 1.295-2.334 2.364-4.126 3.207a1.96 1.96 0 0 1-1.625 0c-1.791-.843-3.166-1.912-4.125-3.206-.979-1.275-1.656-2.588-2.031-3.941-.375-1.353-.552-2.53-.531-3.53 0-.392.114-.735.344-1.03.208-.293.49-.509.843-.646L7.593.558A.942.942 0 0 1 7.999.47Zm0 1.97v11.118c1.416-.687 2.531-1.56 3.343-2.618.792-1.059 1.355-2.147 1.688-3.265.313-1.137.469-2.156.469-3.058l-5.5-2.177Z"/></svg>');
   background-repeat: no-repeat;
 }
-@media (max-width: 520px) {
+@media (max-width: 525px) {
   .crs-warranty-badge::before {
     margin-bottom: 3px;
     width: 11px;
