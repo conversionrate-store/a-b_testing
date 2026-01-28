@@ -449,21 +449,9 @@
       isRegionDanger: !0,
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€27,62", usd: "$32.43" },
-      originalPrice: { eur: "€39,99", usd: "$46.95" },
+      price: { eur: "€27,52", usd: "$32.96" },
+      originalPrice: { eur: "€39,99", usd: "$47.89" },
       discount: "-31%"
-    },
-    {
-      name: "Battlefield 6 (PC) - EA App Key - GLOBAL",
-      url: "https://gameboost.com/battlefield-6-pc-ea-app-key-global-00-37814",
-      coverImage: "https://cdn.gameboost.com/igdb/covers/317407/coa5zt.jpg",
-      coverSrcset: "https://gameboost.com/cdn-cgi/image/width=190,height=266/https://cdn.gameboost.com/igdb/covers/317407/coa5zt.jpg?v=3 190w, https://gameboost.com/cdn-cgi/image/width=354,height=473/https://cdn.gameboost.com/igdb/covers/317407/coa5zt.jpg?v=3 354w",
-      region: "Global",
-      platform: "EA Launcher",
-      platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/ea-app.svg",
-      price: { eur: "€55,86", usd: "$65.57" },
-      originalPrice: { eur: "€69,99", usd: "$82.17" },
-      discount: "-20%"
     },
     {
       name: "Clair Obscur: Expedition 33 (Steam)",
@@ -474,9 +462,9 @@
       isRegionDanger: !0,
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€23,79", usd: "$27.93" },
-      originalPrice: { eur: "€49,99", usd: "$58.69" },
-      discount: "-52%"
+      price: { eur: "€23,67", usd: "$28.35" },
+      originalPrice: { eur: "€49,99", usd: "$59.87" },
+      discount: "-53%"
     },
     {
       name: "Escape From Tarkov (Steam)",
@@ -486,7 +474,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€40,87", usd: "$47.98" }
+      price: { eur: "€41,96", usd: "$50.25" }
     },
     {
       name: "Europa Universalis V (Steam)",
@@ -497,31 +485,9 @@
       isRegionDanger: !0,
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€46,39", usd: "$54.46" },
-      originalPrice: { eur: "€59,99", usd: "$70.43" },
+      price: { eur: "€46,39", usd: "$55.55" },
+      originalPrice: { eur: "€59,99", usd: "$71.84" },
       discount: "-23%"
-    },
-    {
-      name: "Solo Leveling: Arise Overdrive (Steam)",
-      url: "https://gameboost.com/solo-leveling-arise-overdrive-steam-00-44338",
-      coverImage: "https://cdn.gameboost.com/igdb/covers/349302/coakb8.jpg",
-      coverSrcset: "https://gameboost.com/cdn-cgi/image/width=190,height=266/https://cdn.gameboost.com/igdb/covers/349302/coakb8.jpg?v=3 190w, https://gameboost.com/cdn-cgi/image/width=354,height=473/https://cdn.gameboost.com/igdb/covers/349302/coakb8.jpg?v=3 354w",
-      region: "Global",
-      platform: "Steam",
-      platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€30,96", usd: "$36.35" }
-    },
-    {
-      name: "Terra Invicta (Steam)",
-      url: "https://gameboost.com/terra-invicta-steam-00-28291",
-      coverImage: "https://cdn.gameboost.com/igdb/covers/124042/co9fgo.jpg",
-      coverSrcset: "https://gameboost.com/cdn-cgi/image/width=190,height=266/https://cdn.gameboost.com/igdb/covers/124042/co9fgo.jpg?v=3 190w, https://gameboost.com/cdn-cgi/image/width=354,height=473/https://cdn.gameboost.com/igdb/covers/124042/co9fgo.jpg?v=3 354w",
-      region: "Global",
-      platform: "Steam",
-      platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€15,10", usd: "$17.73" },
-      originalPrice: { eur: "€39,99", usd: "$46.95" },
-      discount: "-62%"
     },
     {
       name: "Quarantine Zone: The Last Check (Steam)",
@@ -531,7 +497,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€13,38", usd: "$15.78" }
+      price: { eur: "€13,21", usd: "$15.57" }
     },
     {
       name: "Mio: Memories in Orbit (PC) - Steam Key - GLOBAL",
@@ -541,7 +507,29 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€13,99", usd: "$16.43" }
+      price: { eur: "€12,88", usd: "$15.42" }
+    },
+    {
+      name: "Solo Leveling: Arise Overdrive (Steam)",
+      url: "https://gameboost.com/solo-leveling-arise-overdrive-steam-00-44338",
+      coverImage: "https://cdn.gameboost.com/igdb/covers/349302/coakb8.jpg",
+      coverSrcset: "https://gameboost.com/cdn-cgi/image/width=190,height=266/https://cdn.gameboost.com/igdb/covers/349302/coakb8.jpg?v=3 190w, https://gameboost.com/cdn-cgi/image/width=354,height=473/https://cdn.gameboost.com/igdb/covers/349302/coakb8.jpg?v=3 354w",
+      region: "Global",
+      platform: "Steam",
+      platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
+      price: { eur: "€30,67", usd: "$36.73" }
+    },
+    {
+      name: "Terra Invicta (Steam)",
+      url: "https://gameboost.com/terra-invicta-steam-00-28291",
+      coverImage: "https://cdn.gameboost.com/igdb/covers/124042/co9fgo.jpg",
+      coverSrcset: "https://gameboost.com/cdn-cgi/image/width=190,height=266/https://cdn.gameboost.com/igdb/covers/124042/co9fgo.jpg?v=3 190w, https://gameboost.com/cdn-cgi/image/width=354,height=473/https://cdn.gameboost.com/igdb/covers/124042/co9fgo.jpg?v=3 354w",
+      region: "Global",
+      platform: "Steam",
+      platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
+      price: { eur: "€14,98", usd: "$17.94" },
+      originalPrice: { eur: "€39,99", usd: "$47.89" },
+      discount: "-63%"
     },
     {
       name: "Kejora (Steam)",
@@ -551,7 +539,17 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€10,40", usd: "$12.21" }
+      price: { eur: "€10,40", usd: "$12.45" }
+    },
+    {
+      name: "Turnbound Steam Key - GLOBAL",
+      url: "https://gameboost.com/turnbound-steam-key-global-00-60637",
+      coverImage: "https://cdn.gameboost.com/igdb/covers/369783/coaqv1.jpg",
+      coverSrcset: "https://gameboost.com/cdn-cgi/image/width=190,height=266/https://cdn.gameboost.com/igdb/covers/369783/coaqv1.jpg?v=3 190w, https://gameboost.com/cdn-cgi/image/width=354,height=473/https://cdn.gameboost.com/igdb/covers/369783/coaqv1.jpg?v=3 354w",
+      region: "Global",
+      platform: "Steam",
+      platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
+      price: { eur: "€6,50", usd: "$7.78" }
     },
     {
       name: "Pathologic 3 (PC) - Steam Key - GLOBAL",
@@ -561,7 +559,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€8,64", usd: "$10.14" }
+      price: { eur: "€8,59", usd: "$10.29" }
     },
     {
       name: "UNBEATABLE (Steam)",
@@ -571,7 +569,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€12,46", usd: "$14.63" }
+      price: { eur: "€12,36", usd: "$14.63" }
     }
   ];
   function H(r, t = "eur") {
