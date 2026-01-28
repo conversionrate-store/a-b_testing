@@ -835,7 +835,16 @@
       this.scrollContainer = null, this.prevButton = null, this.nextButton = null, this.prevHandler = null, this.nextHandler = null, this.eventHandlers = [], this.currentSlide = 0, this.isAnimating = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.isDragging = !1, this.currentTranslate = 0, this.prevTranslate = 0, this.touchStartTime = 0, this.touchStartY = 0, this.hasDeterminedDirection = !1, this.init();
     }
     init() {
-      this.addStyles(), this.render();
+      console.log("Initializing GameKeys enhancement..."), this.addStyles(), this.render();
+    }
+    async fetchData() {
+      try {
+        console.log("Fetching game keys data from /keys endpoint...");
+        const e = await (await fetch("/keys")).text(), s = new DOMParser().parseFromString(e, "text/html");
+        console.log("Parsed /keys page title:", s.title), console.log("Fetched game keys data:", e);
+      } catch (t) {
+        console.error("Error fetching game keys data:", t);
+      }
     }
     detectCurrency() {
       const t = document.querySelector('header button:has(img[alt="en"])');
@@ -977,8 +986,7 @@
       url: "https://gameboost.com/keys",
       icon: "https://cdn.gameboost.com/static/game-services/cs-skins.webp?v=2"
     }
-  ], _ = `
-.crs-game-services {
+  ], _ = `.crs-game-services {
   margin-top: 4rem !important;
 }
 
@@ -994,7 +1002,14 @@
 }
 
 .game-services-grid {
+  /* justify-content: center; */
   gap: 22px;
+}
+
+@media (max-width: 1200px) {
+  .game-services-grid {
+    justify-content: center;
+  }
 }
 
 .game-service-card-link {
@@ -1099,7 +1114,7 @@
     line-height: 20px;
   }
 
-  .crs-game-service-container  {
+  .crs-game-service-container {
     width: 24px;
     height: 22px;
   }
