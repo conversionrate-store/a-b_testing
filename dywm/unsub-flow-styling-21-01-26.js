@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const u = `.sfc-dialog__dialog::backdrop {
+  const g = `.sfc-dialog__dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -47,6 +47,9 @@
 }
 
 @media (max-width: 768px) {
+  .sfc-unsubscribeFlowEntryDialog__heading {
+    padding-right: 46px;
+  }
   .sfc-unsubscribeFlowEntryDialog__inner .sfc-unsubscribeFlowEntryDialog__bodySecondary {
     margin: 13px 0;
   }
@@ -190,7 +193,7 @@
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: s, dev: n }) => {
+  }), u = ({ name: s, dev: n }) => {
     console.log(
       `%c EXP: ${s} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -263,13 +266,13 @@
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", s, "variant_1"));
     }, 1e3);
   };
-  g({ name: "DYWM Unsubscribe Style Update", dev: "YK" }), p("unsub_style_update");
+  u({ name: "DYWM Unsubscribe Style Update", dev: "YK" }), p("unsub_style_update");
   class b {
     constructor() {
       this.init();
     }
     async init() {
-      await r("body"), c("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${u}</style>`), window.location.pathname.includes("/cancel") && (await r("#edit-reason"), c("label").elements.forEach((n) => {
+      await r("body"), c("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${g}</style>`), window.location.pathname.includes("/cancel") && (await r("#edit-reason"), c("label").elements.forEach((n) => {
         n.insertAdjacentHTML("afterbegin", '<span class="pointer"></span>');
       }), c(".sfc-cancellationPageFeatures__iconWrapper").elements.forEach((n, e) => {
         n.insertAdjacentHTML(
