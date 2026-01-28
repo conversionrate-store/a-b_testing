@@ -52,7 +52,7 @@
 }
 @media (min-width: 768px) {
   .spark_hero__title {
-    font-size: 48px !important;
+    font-size: 42px !important;
   }
 }
 .spark_hero__subtitle {
