@@ -903,10 +903,10 @@
     initializeSlider() {
       if (this.scrollContainer = document.querySelector(".game-keys-scroll-container"), this.prevButton = document.querySelector('[data-game-keys-nav="prev"]'), this.nextButton = document.querySelector('[data-game-keys-nav="next"]'), !this.scrollContainer || !this.prevButton || !this.nextButton) return;
       this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = "translateX(0)", this.addTrackedEventListener(this.scrollContainer, "touchstart", this.handleTouchStart.bind(this)), this.addTrackedEventListener(this.scrollContainer, "touchmove", this.handleTouchMove.bind(this)), this.addTrackedEventListener(this.scrollContainer, "touchend", this.handleTouchEnd.bind(this)), this.prevHandler = (s) => {
-        u("exp_hp_key_slider_prev", "Previous Button", "click", "Game Keys"), s.preventDefault(), s.stopPropagation(), this.currentSlide > 0 && !this.isAnimating && (this.currentSlide--, this.slideToPosition(this.currentSlide));
+        u("exp_hp_key_slider_prev", "Next Slide", "click", "Game Keys"), s.preventDefault(), s.stopPropagation(), this.currentSlide > 0 && !this.isAnimating && (this.currentSlide--, this.slideToPosition(this.currentSlide));
       }, this.nextHandler = (s) => {
         var c;
-        u("exp_hp_key_slider_next", "Next Button", "click", "Game Keys"), s.preventDefault(), s.stopPropagation();
+        u("exp_hp_key_slider_next", "Previous Slide", "click", "Game Keys"), s.preventDefault(), s.stopPropagation();
         const a = (c = this.scrollContainer) == null ? void 0 : c.querySelectorAll('[role="group"]'), i = ((a == null ? void 0 : a.length) || 0) - 1;
         this.currentSlide < i && !this.isAnimating && (this.currentSlide++, this.slideToPosition(this.currentSlide));
       }, this.prevButton.addEventListener("click", this.prevHandler), this.nextButton.addEventListener("click", this.nextHandler), this.isDragging = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.currentTranslate = 0, this.prevTranslate = 0, document.querySelectorAll(".game-key-group:not(.game-keys-cta-slide)").forEach((s) => {
