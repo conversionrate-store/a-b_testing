@@ -21,7 +21,7 @@
 @media (min-width: 768px) {
   .spark_hero__container {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     gap: 60px;
   }
 }
@@ -118,7 +118,7 @@
   justify-content: center;
 }
 .spark_hero__image picture {
-  width: 100%;
+  width: 95%;
   display: block;
 }
 .spark_hero__image img {
@@ -433,6 +433,24 @@
   .spark_quiz_next {
     font-size: 20px;
   }
+}
+
+.spark_quiz_spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=style.css.map */`, d = (a) => new Promise((n) => {
     const e = document.querySelector(a);
     e && n(e);
@@ -529,7 +547,10 @@
         <p class="spark_hero__subtitle">while saving time on communications, billing, finance, etc?</p>
 
         <div class="spark_hero__buttons">
-          <a href="https://sparkmembership.com/pricing/" class="spark_hero__btn spark_hero__btn--primary">Yes, show me how!</a>
+          <a href="https://sparkmembership.com/pricing/" class="spark_hero__btn spark_hero__btn--primary"
+            >Yes, show me how!</a
+          >
+          <button class="spark_hero__btn spark_hero__btn--secondary">No, thanks</button>
         </div>
       </div>
 
@@ -578,7 +599,7 @@
 `
   );
   f({ name: "Spark Quiz", dev: "YK" }), h("spark_quiz");
-  const x = [
+  const k = [
     {
       step: 1,
       title: "Primary Discipline",
@@ -641,12 +662,15 @@
       ]
     }
   ];
-  class k {
+  class x {
     constructor() {
       this.currentStep = 1, this.quizData = {}, this.init();
     }
     async init() {
-      await d("body"), r("body").elements[0].insertAdjacentHTML("afterend", `<style>${_}</style>`), window.location.pathname === "/" && (await d(".mcill-hero"), r(".mcill-hero").elements[0].insertAdjacentHTML("afterend", m)), window.location.href.includes("/pricing/") && (r("body").style("opacity", "0"), this.initQuiz(), this.openQuiz());
+      await d("body"), r("body").elements[0].insertAdjacentHTML("afterend", `<style>${_}</style>`), window.location.pathname === "/" && (await d(".mcill-hero"), r(".mcill-hero").elements[0].insertAdjacentHTML("afterend", m), await d(".spark_hero__btn--secondary"), r(".spark_hero__btn--secondary").on("click", () => {
+        const e = r(".spark_hero").elements[0].nextElementSibling;
+        e && e.scrollIntoView({ behavior: "smooth", block: "start" });
+      })), window.location.href.includes("/pricing/") && (r("body").style("opacity", "0"), this.initQuiz(), this.openQuiz());
     }
     initQuiz() {
       document.body.insertAdjacentHTML("beforeend", b), r(".spark_quiz_back").on("click", () => this.prevStep()), this.renderStep();
@@ -658,7 +682,7 @@
       r(".spark_quiz_popup").elements[0].classList.remove("active"), document.body.style.overflow = "";
     }
     renderStep() {
-      const n = x[this.currentStep - 1], e = r(".spark_quiz_content").elements[0];
+      const n = k[this.currentStep - 1], e = r(".spark_quiz_content").elements[0];
       r(".spark_quiz_step").text(`${this.currentStep}/6`), r(".spark_quiz_progress_bar").elements[0].style.width = `${this.currentStep / 6 * 100}%`, this.currentStep === 1 ? r(".spark_quiz_back").elements[0].style.visibility = "hidden" : r(".spark_quiz_back").elements[0].style.visibility = "visible";
       let t = `
       <h2 class="spark_quiz_title">${n.title}</h2>
@@ -745,6 +769,6 @@
       e && e.click();
     }
   }
-  new k();
+  new x();
 })();
 //# sourceMappingURL=index.js.map
