@@ -1337,7 +1337,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
   display: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 520px) {
   .crs-warranty-badge {
     gap: 4px;
     color: #66a1ff;
