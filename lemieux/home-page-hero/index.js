@@ -2174,7 +2174,7 @@ page-component-hero-image:has(vimeo-player) {
           <!---->
           <p
             _ngcontent-ng-c4242216762=""
-            class="m-t-10-m p1 wrap-s p-t-2-s ng-star-inserted"
+            class="m-t-10 m-t-2-s p1 wrap-s p-t-2-s ng-star-inserted"
           >
             A wide range of products for horse and rider designed for optimum
             comfort and performance in your chosen discipline
