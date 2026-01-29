@@ -52,14 +52,14 @@
         var g, m, p, f;
         const u = o.querySelector(".card-gif"), c = o.querySelector("video"), d = o.querySelector(".card-box > p"), h = o.querySelector(".fullscreen-btn");
         u && c && d && (console.log("Updating card item", (g = r[t]) == null ? void 0 : g.previewImageSrc), u.src = ((m = r[t]) == null ? void 0 : m.previewImageSrc) || "", c.src = ((p = r[t]) == null ? void 0 : p.videoSrc) || "", d.textContent = `${((f = r[t]) == null ? void 0 : f.description) || d.textContent}`, h && h.addEventListener("click", async () => {
-          var v, w;
+          var w, v;
           console.log("Full screen button clicked");
           const s = await a(
             "#fullscreen-video"
           );
           s && (console.log("video", c), c.pause(), document.querySelectorAll("video").forEach((S) => {
             S !== s && S.pause();
-          }), s.src = ((v = r[t]) == null ? void 0 : v.videoSrc) || "", console.log("fullScreenVideo", s), console.log("Setting video to full screen and playing", ((w = r[t]) == null ? void 0 : w.videoSrc) || ""), setTimeout(() => {
+          }), s.src = ((w = r[t]) == null ? void 0 : w.videoSrc) || "", console.log("fullScreenVideo", s), console.log("Setting video to full screen and playing", ((v = r[t]) == null ? void 0 : v.videoSrc) || ""), setTimeout(() => {
             s.play();
           }, 100));
         }));
@@ -89,5 +89,7 @@
       e.textContent = _, document.head.appendChild(e);
     }
   }
-  new k();
+  window.onload = () => {
+    new k();
+  };
 })();
