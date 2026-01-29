@@ -449,7 +449,7 @@
       isRegionDanger: !0,
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€27,54", usd: "$32.97" },
+      price: { eur: "€27,50", usd: "$32.92" },
       originalPrice: { eur: "€39,99", usd: "$47.88" },
       discount: "-31%"
     },
@@ -497,7 +497,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€13,99", usd: "$16.75" }
+      price: { eur: "€14,08", usd: "$16.86" }
     },
     {
       name: "Mio: Memories in Orbit (PC) - Steam Key - GLOBAL",
@@ -507,7 +507,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€12,53", usd: "$15.00" }
+      price: { eur: "€12,46", usd: "$14.92" }
     },
     {
       name: "Solo Leveling: Arise Overdrive (Steam)",
