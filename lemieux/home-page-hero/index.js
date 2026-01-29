@@ -345,7 +345,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 55%;
     height: 100%;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
     z-index: 1;
