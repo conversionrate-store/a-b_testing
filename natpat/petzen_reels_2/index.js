@@ -1,26 +1,26 @@
 (function() {
   "use strict";
-  const c = (t) => new Promise((e) => {
-    const a = document.querySelector(t);
-    a && e(a);
-    const n = new MutationObserver(() => {
-      const i = document.querySelector(t);
-      i && (e(i), n.disconnect());
+  const a = (t) => new Promise((e) => {
+    const l = document.querySelector(t);
+    l && e(l);
+    const i = new MutationObserver(() => {
+      const n = document.querySelector(t);
+      n && (e(n), i.disconnect());
     });
-    n.observe(document.documentElement, {
+    i.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), y = ({ name: t, dev: e }) => {
+  }), v = ({ name: t, dev: e }) => {
     console.log(
       `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, S = (t) => {
+  }, y = (t) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", t, "variant_1"));
     }, 1e3);
-  }, r = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels_2", s = [
+  }, r = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels_2", c = [
     {
       previewImageSrc: `${r}/preview_1.gif`,
       videoSrc: `${r}/reels_1.mp4`,
@@ -37,7 +37,7 @@
       description: "My friend told me about these calming stickers and I was like, whatever, sure, put one in her little locket before a storm last week, and she actually settled? Like, she still noticed it, but she wasn't panicking. I'm not saying it's magic, but we actually slept through a thunderstorm."
     }
   ];
-  class b {
+  class S {
     constructor() {
       this.elements = null, this.init();
     }
@@ -48,47 +48,71 @@
       this.elements && this.elements.forEach((e) => this.updateCardItems(e));
     }
     updateCardItems(e) {
-      e.querySelectorAll(".card-item").forEach((n, i) => {
-        var p, g, f;
-        const h = n.querySelector(".card-gif"), l = n.querySelector("video"), d = n.querySelector(".card-box > p"), m = n.querySelector(".fullscreen-btn");
-        h && l && d && (h.src = ((p = s[i]) == null ? void 0 : p.previewImageSrc) || "", l.src = ((g = s[i]) == null ? void 0 : g.videoSrc) || "", d.textContent = `${((f = s[i]) == null ? void 0 : f.description) || d.textContent}`, m && m.addEventListener("click", async () => {
+      e.querySelectorAll(".card-item").forEach((i, n) => {
+        var m, g, p;
+        const o = i.querySelector(".card-gif"), s = i.querySelector("video"), h = i.querySelector(".card-box > p"), u = i.querySelector(".fullscreen-btn");
+        o && s && h && (o.src = ((m = c[n]) == null ? void 0 : m.previewImageSrc) || "", s.src = ((g = c[n]) == null ? void 0 : g.videoSrc) || "", h.textContent = `${((p = c[n]) == null ? void 0 : p.description) || h.textContent}`, u && u.addEventListener("click", async () => {
           var w;
-          const o = await c(
+          const d = await a(
             "#fullscreen-video"
           );
-          o && (l.pause(), document.querySelectorAll("video").forEach((v) => {
-            v !== o && v.pause();
-          }), o.src = ((w = s[i]) == null ? void 0 : w.videoSrc) || "", setTimeout(() => {
-            o.play();
+          d && (s.pause(), document.querySelectorAll("video").forEach((f) => {
+            f !== d && f.pause();
+          }), d.src = ((w = c[n]) == null ? void 0 : w.videoSrc) || "", setTimeout(() => {
+            d.play();
           }, 100));
         }));
       });
     }
     async getTargetSection() {
       this.elements = [
-        await c("#in-action-cards"),
-        await c("#in-action-slider")
+        await a("#in-action-cards"),
+        await a("#in-action-slider")
       ];
     }
   }
-  const I = "";
-  y({ name: "New PetZen - Social Proof Reels", dev: "OS" }), S("exp_reels");
-  class u {
+  class I {
+    constructor() {
+      this.elements = null, this.init();
+    }
+    async init() {
+      await this.getTargetSection(), this.changeCardItems();
+    }
+    changeCardItems() {
+      this.elements && this.elements.forEach((e) => this.updateCardItems(e));
+    }
+    updateCardItems(e) {
+      e.querySelectorAll(".card-item").forEach((i, n) => {
+        var s;
+        const o = i.querySelector(".card-gif");
+        o && (o.src = ((s = c[n]) == null ? void 0 : s.previewImageSrc) || "");
+      });
+    }
+    async getTargetSection() {
+      this.elements = [
+        await a("#in-action-cards"),
+        await a("#in-action-slider")
+      ];
+    }
+  }
+  const b = "";
+  v({ name: "New PetZen - Social Proof Reels", dev: "OS" }), y("exp_reels");
+  class C {
     constructor() {
       this.init();
     }
     init() {
-      this.isTargetPage() && (this.addStyles(), new b());
+      this.isTargetPage() && (this.addStyles(), new S());
     }
     isTargetPage() {
       return location.pathname.includes("zenpatch-pet");
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = I, document.head.appendChild(e);
+      e.textContent = b, document.head.appendChild(e);
     }
   }
-  new u(), window.onload = () => {
-    new u();
+  new I(), window.onload = () => {
+    new C();
   };
 })();
