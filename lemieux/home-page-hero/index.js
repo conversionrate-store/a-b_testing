@@ -347,7 +347,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     left: 0;
     width: 55%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
     z-index: 1;
   }
   [data-hero='clothing'] {
