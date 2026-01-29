@@ -369,7 +369,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   }
   [data-hero='winter-essentials'] .crs-hero-block-text {
     left: 3%;
-    bottom: 40%;
+    bottom: 45%;
     transform: translateY(50%);
     width: max-content;
   }
@@ -396,6 +396,16 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   }
   .crs-hero-block-text {
     bottom: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  [data-hero='winter-essentials'] .crs-block-title .main-title {
+    font-size: 1.6rem;
+  }
+
+  [data-hero='winter-essentials'] .crs-block-title .sub-title {
+    font-size: 0.6rem;
   }
 }
 `, Ue = (t) => (
