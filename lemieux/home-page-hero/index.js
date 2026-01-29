@@ -77,11 +77,30 @@
     display: none;
   }
 }
-`, W = "https://ab.conversionrate.store/lemieux/home-page-hero/img", ce = [
+
+@media (min-width: 1100px) {
+  [data-crs-marker='winter-sale'] page-component-hero-image > div {
+    min-height: 260px;
+  }
+  [data-crs-marker='winter-sale'] page-component-hero-image df-image-wrapper,
+  [data-crs-marker='winter-sale']
+    page-component-hero-image
+    df-image-wrapper
+    img {
+    height: 100%;
+  }
+}
+
+@media (min-width: 1100px) {
+  [data-crs-marker='winter-sale'] page-component-hero-image > div {
+    min-height: 360px;
+  }
+
+}`, W = "https://ab.conversionrate.store/lemieux/home-page-hero/img", ce = [
     {
       id: "winter-essentials",
       href: "/new-in/winter-essentials",
-      title: { sub: "Performance in all Weather", main: "Winter Essentials" },
+      title: { sub: "Performance in all Weathers", main: "Winter Essentials" },
       button: {
         text: "Explore Now",
         href: "/new-in/winter-essentials"
@@ -361,19 +380,19 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   }
 
   [data-hero='winter-essentials'] .crs-block-title .main-title {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   [data-hero='winter-essentials'] .crs-block-title .sub-title {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
 
   [data-hero='winter-essentials'] .crs-block-btn {
     margin-top: 1rem;
     padding-block: 0;
     padding-inline: 1.5rem;
-    scale: 0.6;
-    transform: translate(-2.6rem, 0);
+    scale: 0.75;
+    transform: translate(-1.6rem, 0);
   }
   .crs-hero-block-text {
     bottom: 5px;
@@ -973,7 +992,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
                   <div class="w-12 ratio-1-1 overflow-hidden">
                     <href
                       ><!----><!----><a
-                        href="/horse-rugs"
+                        href="/horsewear/boots-bandages"
                         tabindex="0"
                         class="ng-star-inserted"
                         ><shell
@@ -995,7 +1014,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
                   </div>
                   <href
                     ><!----><!----><a
-                      href="/horse-rugs"
+                      href="/horsewear/boots-bandages"
                       tabindex="0"
                       class="ng-star-inserted"
                       ><button class="button-inline m-t-3 ng-star-inserted">
@@ -2145,7 +2164,7 @@ page-component-hero-image:has(vimeo-player) {
           <!---->
           <p
             _ngcontent-ng-c4242216762=""
-            class="p1 wrap-s p-t-2-s ng-star-inserted"
+            class="m-t-10-l p1 wrap-s p-t-2-s ng-star-inserted"
           >
             A wide range of products for horse and rider designed for optimum
             comfort and performance in your chosen discipline
