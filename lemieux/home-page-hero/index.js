@@ -24,25 +24,25 @@
       `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, oe = (t, e, s, i, n = 1e3, r = 0.5) => {
-    let l, o;
-    if (l = new IntersectionObserver(
+  }, le = (t, e, s, i, n = 1e3, r = 0.5) => {
+    let o, l;
+    if (o = new IntersectionObserver(
       function(a) {
-        a[0].isIntersecting === !0 ? o = setTimeout(() => {
+        a[0].isIntersecting === !0 ? l = setTimeout(() => {
           Z(
             e,
             a[0].target.dataset.visible || i || "",
             "view",
             s
-          ), l.disconnect();
-        }, n) : (R("Element is not fully visible", "warn"), clearTimeout(o));
+          ), o.disconnect();
+        }, n) : (R("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [r] }
     ), typeof t == "string") {
       const a = document.querySelector(t);
-      a && l.observe(a);
+      a && o.observe(a);
     } else
-      l.observe(t);
+      o.observe(t);
   }, R = (t, e = "info") => {
     let s;
     switch (e) {
@@ -339,6 +339,17 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   [data-hero='winter-essentials'] img {
     object-position: 85% 0;
   }
+
+  [data-hero='winter-essentials']::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    z-index: 1;
+  }
   [data-hero='clothing'] {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -372,6 +383,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     bottom: 45%;
     transform: translateY(50%);
     width: max-content;
+    z-index: 2;
   }
 
   [data-hero='winter-essentials'] .crs-block-title {
@@ -561,7 +573,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
       );
     }
     attachVisibilityTracking(e) {
-      oe(
+      le(
         e,
         "exp_hp_hero_view_1",
         "Home page Hero Section",
@@ -1298,11 +1310,11 @@ page-component-hero-image:has(vimeo-player) {
         return;
       }
       e.style.cursor = "grab";
-      let s = !1, i = 0, n = 0, r = 0, l = 0;
+      let s = !1, i = 0, n = 0, r = 0, o = 0;
       e.addEventListener(
         "mousedown",
-        (o) => {
-          o.preventDefault(), s = !0, i = o.pageX, n = o.pageY, r = e.scrollLeft, l = e.scrollTop;
+        (l) => {
+          l.preventDefault(), s = !0, i = l.pageX, n = l.pageY, r = e.scrollLeft, o = e.scrollTop;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
@@ -1319,17 +1331,17 @@ page-component-hero-image:has(vimeo-player) {
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "mousemove",
-        (o) => {
+        (l) => {
           if (!s) return;
-          o.preventDefault(), e.style.cursor = "grabbing";
-          const a = o.pageX, u = o.pageY, m = (a - i) * ee.SCROLL_SENSITIVITY, p = (u - n) * ee.SCROLL_SENSITIVITY;
-          e.scrollLeft = r - m, e.scrollTop = l - p;
+          l.preventDefault(), e.style.cursor = "grabbing";
+          const a = l.pageX, u = l.pageY, m = (a - i) * ee.SCROLL_SENSITIVITY, p = (u - n) * ee.SCROLL_SENSITIVITY;
+          e.scrollLeft = r - m, e.scrollTop = o - p;
         },
         { signal: this.eventsAborter.signal }
       ), e.addEventListener(
         "dragstart",
-        (o) => {
-          o.preventDefault();
+        (l) => {
+          l.preventDefault();
         },
         { signal: this.eventsAborter.signal }
       ), e.style.userSelect = "none";
@@ -2094,7 +2106,7 @@ page-component-hero-image:has(vimeo-player) {
     setupBuilder(e, s) {
       document.querySelectorAll(e.selector).forEach((i) => {
         const n = i.querySelector("a");
-        oe(
+        le(
           i,
           e.viewEvent,
           "Home Page Outfit Builder",
@@ -3054,16 +3066,16 @@ page-component-hero-image:has(vimeo-player) {
   function te() {
     return Date.now();
   }
-  function lt(t) {
+  function ot(t) {
     const e = D();
     let s;
     return e.getComputedStyle && (s = e.getComputedStyle(t, null)), !s && t.currentStyle && (s = t.currentStyle), s || (s = t.style), s;
   }
-  function ot(t, e = "x") {
+  function lt(t, e = "x") {
     const s = D();
     let i, n, r;
-    const l = lt(t);
-    return s.WebKitCSSMatrix ? (n = l.transform || l.webkitTransform, n.split(",").length > 6 && (n = n.split(", ").map((o) => o.replace(",", ".")).join(", ")), r = new s.WebKitCSSMatrix(n === "none" ? "" : n)) : (r = l.MozTransform || l.OTransform || l.MsTransform || l.msTransform || l.transform || l.getPropertyValue("transform").replace("translate(", "matrix(1, 0, 0, 1,"), i = r.toString().split(",")), e === "x" && (s.WebKitCSSMatrix ? n = r.m41 : i.length === 16 ? n = parseFloat(i[12]) : n = parseFloat(i[4])), e === "y" && (s.WebKitCSSMatrix ? n = r.m42 : i.length === 16 ? n = parseFloat(i[13]) : n = parseFloat(i[5])), n || 0;
+    const o = ot(t);
+    return s.WebKitCSSMatrix ? (n = o.transform || o.webkitTransform, n.split(",").length > 6 && (n = n.split(", ").map((l) => l.replace(",", ".")).join(", ")), r = new s.WebKitCSSMatrix(n === "none" ? "" : n)) : (r = o.MozTransform || o.OTransform || o.MsTransform || o.msTransform || o.transform || o.getPropertyValue("transform").replace("translate(", "matrix(1, 0, 0, 1,"), i = r.toString().split(",")), e === "x" && (s.WebKitCSSMatrix ? n = r.m41 : i.length === 16 ? n = parseFloat(i[12]) : n = parseFloat(i[4])), e === "y" && (s.WebKitCSSMatrix ? n = r.m42 : i.length === 16 ? n = parseFloat(i[13]) : n = parseFloat(i[5])), n || 0;
   }
   function se(t) {
     return typeof t == "object" && t !== null && t.constructor && Object.prototype.toString.call(t).slice(8, -1) === "Object";
@@ -3076,9 +3088,9 @@ page-component-hero-image:has(vimeo-player) {
     for (let i = 1; i < t.length; i += 1) {
       const n = t[i];
       if (n != null && !ct(n)) {
-        const r = Object.keys(Object(n)).filter((l) => s.indexOf(l) < 0);
-        for (let l = 0, o = r.length; l < o; l += 1) {
-          const a = r[l], u = Object.getOwnPropertyDescriptor(n, a);
+        const r = Object.keys(Object(n)).filter((o) => s.indexOf(o) < 0);
+        for (let o = 0, l = r.length; o < l; o += 1) {
+          const a = r[o], u = Object.getOwnPropertyDescriptor(n, a);
           u !== void 0 && u.enumerable && (se(e[a]) && se(n[a]) ? n[a].__swiper__ ? e[a] = n[a] : $(e[a], n[a]) : !se(e[a]) && se(n[a]) ? (e[a] = {}, n[a].__swiper__ ? e[a] = n[a] : $(e[a], n[a])) : e[a] = n[a]);
         }
       }
@@ -3094,12 +3106,12 @@ page-component-hero-image:has(vimeo-player) {
     side: s
   }) {
     const i = D(), n = -t.translate;
-    let r = null, l;
-    const o = t.params.speed;
+    let r = null, o;
+    const l = t.params.speed;
     t.wrapperEl.style.scrollSnapType = "none", i.cancelAnimationFrame(t.cssModeFrameID);
     const a = e > n ? "next" : "prev", u = (p, w) => a === "next" && p >= w || a === "prev" && p <= w, m = () => {
-      l = (/* @__PURE__ */ new Date()).getTime(), r === null && (r = l);
-      const p = Math.max(Math.min((l - r) / o, 1), 0), w = 0.5 - Math.cos(p * Math.PI) / 2;
+      o = (/* @__PURE__ */ new Date()).getTime(), r === null && (r = o);
+      const p = Math.max(Math.min((o - r) / l, 1), 0), w = 0.5 - Math.cos(p * Math.PI) / 2;
       let d = n + w * (e - n);
       if (u(d, e) && (d = e), t.wrapperEl.scrollTo({
         [s]: d
@@ -3208,12 +3220,12 @@ page-component-hero-image:has(vimeo-player) {
     const e = Oe(), s = D(), i = s.navigator.platform, n = t || s.navigator.userAgent, r = {
       ios: !1,
       android: !1
-    }, l = s.screen.width, o = s.screen.height, a = n.match(/(Android);?[\s\/]+([\d.]+)?/);
+    }, o = s.screen.width, l = s.screen.height, a = n.match(/(Android);?[\s\/]+([\d.]+)?/);
     let u = n.match(/(iPad)(?!\1).*OS\s([\d_]+)/);
     const m = n.match(/(iPod)(.*OS\s([\d_]+))?/), p = !u && n.match(/(iPhone\sOS|iOS)\s([\d_]+)/), w = i === "Win32";
     let d = i === "MacIntel";
     const g = ["1024x1366", "1366x1024", "834x1194", "1194x834", "834x1112", "1112x834", "768x1024", "1024x768", "820x1180", "1180x820", "810x1080", "1080x810"];
-    return !u && d && e.touch && g.indexOf(`${l}x${o}`) >= 0 && (u = n.match(/(Version)\/([\d.]+)/), u || (u = [0, 1, "13_0_0"]), d = !1), a && !w && (r.os = "android", r.android = !0), (u || p || m) && (r.os = "ios", r.ios = !0), r;
+    return !u && d && e.touch && g.indexOf(`${o}x${l}`) >= 0 && (u = n.match(/(Version)\/([\d.]+)/), u || (u = [0, 1, "13_0_0"]), d = !1), a && !w && (r.os = "android", r.android = !0), (u || p || m) && (r.os = "ios", r.ios = !0), r;
   }
   function Me(t = {}) {
     return ve || (ve = ht(t)), ve;
@@ -3223,21 +3235,21 @@ page-component-hero-image:has(vimeo-player) {
     const t = D(), e = Me();
     let s = !1;
     function i() {
-      const o = t.navigator.userAgent.toLowerCase();
-      return o.indexOf("safari") >= 0 && o.indexOf("chrome") < 0 && o.indexOf("android") < 0;
+      const l = t.navigator.userAgent.toLowerCase();
+      return l.indexOf("safari") >= 0 && l.indexOf("chrome") < 0 && l.indexOf("android") < 0;
     }
     if (i()) {
-      const o = String(t.navigator.userAgent);
-      if (o.includes("Version/")) {
-        const [a, u] = o.split("Version/")[1].split(" ")[0].split(".").map((m) => Number(m));
+      const l = String(t.navigator.userAgent);
+      if (l.includes("Version/")) {
+        const [a, u] = l.split("Version/")[1].split(" ")[0].split(".").map((m) => Number(m));
         s = a < 16 || a === 16 && u < 2;
       }
     }
-    const n = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(t.navigator.userAgent), r = i(), l = r || n && e.ios;
+    const n = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(t.navigator.userAgent), r = i(), o = r || n && e.ios;
     return {
       isSafari: s || r,
       needPerspectiveFix: s,
-      need3dFix: l,
+      need3dFix: o,
       isWebView: n
     };
   }
@@ -3251,9 +3263,9 @@ page-component-hero-image:has(vimeo-player) {
   }) {
     const i = D();
     let n = null, r = null;
-    const l = () => {
+    const o = () => {
       !t || t.destroyed || !t.initialized || (s("beforeResize"), s("resize"));
-    }, o = () => {
+    }, l = () => {
       !t || t.destroyed || !t.initialized || (n = new ResizeObserver((m) => {
         r = i.requestAnimationFrame(() => {
           const {
@@ -3267,7 +3279,7 @@ page-component-hero-image:has(vimeo-player) {
             target: c
           }) => {
             c && c !== t.el || (d = x ? x.width : (v[0] || v).inlineSize, g = x ? x.height : (v[0] || v).blockSize);
-          }), (d !== p || g !== w) && l();
+          }), (d !== p || g !== w) && o();
         });
       }), n.observe(t.el));
     }, a = () => {
@@ -3277,12 +3289,12 @@ page-component-hero-image:has(vimeo-player) {
     };
     e("init", () => {
       if (t.params.resizeObserver && typeof i.ResizeObserver < "u") {
-        o();
+        l();
         return;
       }
-      i.addEventListener("resize", l), i.addEventListener("orientationchange", u);
+      i.addEventListener("resize", o), i.addEventListener("orientationchange", u);
     }), e("destroy", () => {
-      a(), i.removeEventListener("resize", l), i.removeEventListener("orientationchange", u);
+      a(), i.removeEventListener("resize", o), i.removeEventListener("orientationchange", u);
     });
   }
   function wt({
@@ -3291,7 +3303,7 @@ page-component-hero-image:has(vimeo-player) {
     on: s,
     emit: i
   }) {
-    const n = [], r = D(), l = (u, m = {}) => {
+    const n = [], r = D(), o = (u, m = {}) => {
       const p = r.MutationObserver || r.WebkitMutationObserver, w = new p((d) => {
         if (t.__preventObserver__) return;
         if (d.length === 1) {
@@ -3308,16 +3320,16 @@ page-component-hero-image:has(vimeo-player) {
         childList: t.isElement || (typeof m.childList > "u" ? !0 : m).childList,
         characterData: typeof m.characterData > "u" ? !0 : m.characterData
       }), n.push(w);
-    }, o = () => {
+    }, l = () => {
       if (t.params.observer) {
         if (t.params.observeParents) {
           const u = ze(t.hostEl);
           for (let m = 0; m < u.length; m += 1)
-            l(u[m]);
+            o(u[m]);
         }
-        l(t.hostEl, {
+        o(t.hostEl, {
           childList: t.params.observeSlideChildren
-        }), l(t.wrapperEl, {
+        }), o(t.wrapperEl, {
           attributes: !1
         });
       }
@@ -3330,7 +3342,7 @@ page-component-hero-image:has(vimeo-player) {
       observer: !1,
       observeParents: !1,
       observeSlideChildren: !1
-    }), s("init", o), s("destroy", a);
+    }), s("init", l), s("destroy", a);
   }
   var bt = {
     on(t, e, s) {
@@ -3373,11 +3385,11 @@ page-component-hero-image:has(vimeo-player) {
       const e = this;
       if (!e.eventsListeners || e.destroyed || !e.eventsListeners) return e;
       let s, i, n;
-      return typeof t[0] == "string" || Array.isArray(t[0]) ? (s = t[0], i = t.slice(1, t.length), n = e) : (s = t[0].events, i = t[0].data, n = t[0].context || e), i.unshift(n), (Array.isArray(s) ? s : s.split(" ")).forEach((l) => {
-        e.eventsAnyListeners && e.eventsAnyListeners.length && e.eventsAnyListeners.forEach((o) => {
-          o.apply(n, [l, ...i]);
-        }), e.eventsListeners && e.eventsListeners[l] && e.eventsListeners[l].forEach((o) => {
-          o.apply(n, i);
+      return typeof t[0] == "string" || Array.isArray(t[0]) ? (s = t[0], i = t.slice(1, t.length), n = e) : (s = t[0].events, i = t[0].data, n = t[0].context || e), i.unshift(n), (Array.isArray(s) ? s : s.split(" ")).forEach((o) => {
+        e.eventsAnyListeners && e.eventsAnyListeners.length && e.eventsAnyListeners.forEach((l) => {
+          l.apply(n, [o, ...i]);
+        }), e.eventsListeners && e.eventsListeners[o] && e.eventsListeners[o].forEach((l) => {
+          l.apply(n, i);
         });
       }), e;
     }
@@ -3401,8 +3413,8 @@ page-component-hero-image:has(vimeo-player) {
       wrapperEl: i,
       slidesEl: n,
       rtlTranslate: r,
-      wrongRTL: l
-    } = t, o = t.virtual && s.virtual.enabled, a = o ? t.virtual.slides.length : t.slides.length, u = V(n, `.${t.params.slideClass}, swiper-slide`), m = o ? t.virtual.slides.length : u.length;
+      wrongRTL: o
+    } = t, l = t.virtual && s.virtual.enabled, a = l ? t.virtual.slides.length : t.slides.length, u = V(n, `.${t.params.slideClass}, swiper-slide`), m = l ? t.virtual.slides.length : u.length;
     let p = [];
     const w = [], d = [];
     let g = s.slidesOffsetBefore;
@@ -3424,7 +3436,7 @@ page-component-hero-image:has(vimeo-player) {
       y = 0;
       const _ = u[T];
       if (!(_ && (C && t.grid.updateSlide(T, _, u), Y(_, "display") === "none"))) {
-        if (o && s.slidesPerView === "auto")
+        if (l && s.slidesPerView === "auto")
           s.virtual.slidesPerViewAutoSlideSize && (y = s.virtual.slidesPerViewAutoSlideSize), y && _ && (s.roundLengths && (y = Math.floor(y)), _.style[t.getDirectionLabel("width")] = `${y}px`);
         else if (s.slidesPerView === "auto") {
           I && (_.style[t.getDirectionLabel("width")] = "");
@@ -3449,7 +3461,7 @@ page-component-hero-image:has(vimeo-player) {
         _ && (_.swiperSlideSize = y), d.push(y), s.centeredSlides ? (b = b + y / 2 + S / 2 + h, S === 0 && T !== 0 && (b = b - f / 2 - h), T === 0 && (b = b - f / 2 - h), Math.abs(b) < 1 / 1e3 && (b = 0), s.roundLengths && (b = Math.floor(b)), k % s.slidesPerGroup === 0 && p.push(b), w.push(b)) : (s.roundLengths && (b = Math.floor(b)), (k - Math.min(t.params.slidesPerGroupSkip, k)) % t.params.slidesPerGroup === 0 && p.push(b), w.push(b), b = b + y + h), t.virtualSize += y + h, S = y, k += 1;
       }
     }
-    if (t.virtualSize = Math.max(t.virtualSize, f) + v, r && l && (s.effect === "slide" || s.effect === "coverflow") && (i.style.width = `${t.virtualSize + h}px`), s.setWrapperSize && (i.style[t.getDirectionLabel("width")] = `${t.virtualSize + h}px`), C && t.grid.updateWrapperSize(y, p), !s.centeredSlides) {
+    if (t.virtualSize = Math.max(t.virtualSize, f) + v, r && o && (s.effect === "slide" || s.effect === "coverflow") && (i.style.width = `${t.virtualSize + h}px`), s.setWrapperSize && (i.style[t.getDirectionLabel("width")] = `${t.virtualSize + h}px`), C && t.grid.updateWrapperSize(y, p), !s.centeredSlides) {
       const T = [];
       for (let _ = 0; _ < p.length; _ += 1) {
         let E = p[_];
@@ -3457,7 +3469,7 @@ page-component-hero-image:has(vimeo-player) {
       }
       p = T, Math.floor(t.virtualSize - f) - Math.floor(p[p.length - 1]) > 1 && p.push(t.virtualSize - f);
     }
-    if (o && s.loop) {
+    if (l && s.loop) {
       const T = d[0] + h;
       if (s.slidesPerGroup > 1) {
         const _ = Math.ceil((t.virtual.slidesBefore + t.virtual.slidesAfter) / s.slidesPerGroup), E = T * s.slidesPerGroup;
@@ -3506,7 +3518,7 @@ page-component-hero-image:has(vimeo-player) {
       const T = -t.snapGrid[0], _ = -t.slidesGrid[0];
       t.snapGrid = t.snapGrid.map((E) => E + T), t.slidesGrid = t.slidesGrid.map((E) => E + _);
     }
-    if (m !== a && t.emit("slidesLengthChange"), p.length !== x && (t.params.watchOverflow && t.checkOverflow(), t.emit("snapGridLengthChange")), w.length !== c && t.emit("slidesGridLengthChange"), s.watchSlidesProgress && t.updateSlidesOffset(), t.emit("slidesUpdated"), !o && !s.cssMode && (s.effect === "slide" || s.effect === "fade")) {
+    if (m !== a && t.emit("slidesLengthChange"), p.length !== x && (t.params.watchOverflow && t.checkOverflow(), t.emit("snapGridLengthChange")), w.length !== c && t.emit("slidesGridLengthChange"), s.watchSlidesProgress && t.updateSlidesOffset(), t.emit("slidesUpdated"), !l && !s.cssMode && (s.effect === "slide" || s.effect === "fade")) {
       const T = `${s.containerModifierClass}backface-hidden`, _ = t.el.classList.contains(T);
       m <= s.maxBackfaceHiddenSlides ? _ || t.el.classList.add(T) : _ && t.el.classList.remove(T);
     }
@@ -3515,24 +3527,24 @@ page-component-hero-image:has(vimeo-player) {
     const e = this, s = [], i = e.virtual && e.params.virtual.enabled;
     let n = 0, r;
     typeof t == "number" ? e.setTransition(t) : t === !0 && e.setTransition(e.params.speed);
-    const l = (o) => i ? e.slides[e.getSlideIndexByData(o)] : e.slides[o];
+    const o = (l) => i ? e.slides[e.getSlideIndexByData(l)] : e.slides[l];
     if (e.params.slidesPerView !== "auto" && e.params.slidesPerView > 1)
       if (e.params.centeredSlides)
-        (e.visibleSlides || []).forEach((o) => {
-          s.push(o);
+        (e.visibleSlides || []).forEach((l) => {
+          s.push(l);
         });
       else
         for (r = 0; r < Math.ceil(e.params.slidesPerView); r += 1) {
-          const o = e.activeIndex + r;
-          if (o > e.slides.length && !i) break;
-          s.push(l(o));
+          const l = e.activeIndex + r;
+          if (l > e.slides.length && !i) break;
+          s.push(o(l));
         }
     else
-      s.push(l(e.activeIndex));
+      s.push(o(e.activeIndex));
     for (r = 0; r < s.length; r += 1)
       if (typeof s[r] < "u") {
-        const o = s[r].offsetHeight;
-        n = o > n ? o : n;
+        const l = s[r].offsetHeight;
+        n = l > n ? l : n;
       }
     (n || n === 0) && (e.wrapperEl.style.height = `${n}px`);
   }
@@ -3552,15 +3564,15 @@ page-component-hero-image:has(vimeo-player) {
     } = e;
     if (i.length === 0) return;
     typeof i[0].swiperSlideOffset > "u" && e.updateSlidesOffset();
-    let l = -t;
-    n && (l = t), e.visibleSlidesIndexes = [], e.visibleSlides = [];
-    let o = s.spaceBetween;
-    typeof o == "string" && o.indexOf("%") >= 0 ? o = parseFloat(o.replace("%", "")) / 100 * e.size : typeof o == "string" && (o = parseFloat(o));
+    let o = -t;
+    n && (o = t), e.visibleSlidesIndexes = [], e.visibleSlides = [];
+    let l = s.spaceBetween;
+    typeof l == "string" && l.indexOf("%") >= 0 ? l = parseFloat(l.replace("%", "")) / 100 * e.size : typeof l == "string" && (l = parseFloat(l));
     for (let a = 0; a < i.length; a += 1) {
       const u = i[a];
       let m = u.swiperSlideOffset;
       s.cssMode && s.centeredSlides && (m -= i[0].swiperSlideOffset);
-      const p = (l + (s.centeredSlides ? e.minTranslate() : 0) - m) / (u.swiperSlideSize + o), w = (l - r[0] + (s.centeredSlides ? e.minTranslate() : 0) - m) / (u.swiperSlideSize + o), d = -(l - m), g = d + e.slidesSizesGrid[a], v = d >= 0 && d <= e.size - e.slidesSizesGrid[a], x = d >= 0 && d < e.size - 1 || g > 1 && g <= e.size || d <= 0 && g >= e.size;
+      const p = (o + (s.centeredSlides ? e.minTranslate() : 0) - m) / (u.swiperSlideSize + l), w = (o - r[0] + (s.centeredSlides ? e.minTranslate() : 0) - m) / (u.swiperSlideSize + l), d = -(o - m), g = d + e.slidesSizesGrid[a], v = d >= 0 && d <= e.size - e.slidesSizesGrid[a], x = d >= 0 && d < e.size - 1 || g > 1 && g <= e.size || d <= 0 && g >= e.size;
       x && (e.visibleSlides.push(u), e.visibleSlidesIndexes.push(a)), Be(u, x, s.slideVisibleClass), Be(u, v, s.slideFullyVisibleClass), u.progress = n ? -p : p, u.originalProgress = n ? -w : w;
     }
   }
@@ -3574,27 +3586,27 @@ page-component-hero-image:has(vimeo-player) {
     let {
       progress: n,
       isBeginning: r,
-      isEnd: l,
-      progressLoop: o
+      isEnd: o,
+      progressLoop: l
     } = e;
-    const a = r, u = l;
+    const a = r, u = o;
     if (i === 0)
-      n = 0, r = !0, l = !0;
+      n = 0, r = !0, o = !0;
     else {
       n = (t - e.minTranslate()) / i;
       const m = Math.abs(t - e.minTranslate()) < 1, p = Math.abs(t - e.maxTranslate()) < 1;
-      r = m || n <= 0, l = p || n >= 1, m && (n = 0), p && (n = 1);
+      r = m || n <= 0, o = p || n >= 1, m && (n = 0), p && (n = 1);
     }
     if (s.loop) {
       const m = e.getSlideIndexByData(0), p = e.getSlideIndexByData(e.slides.length - 1), w = e.slidesGrid[m], d = e.slidesGrid[p], g = e.slidesGrid[e.slidesGrid.length - 1], v = Math.abs(t);
-      v >= w ? o = (v - w) / g : o = (v + g - d) / g, o > 1 && (o -= 1);
+      v >= w ? l = (v - w) / g : l = (v + g - d) / g, l > 1 && (l -= 1);
     }
     Object.assign(e, {
       progress: n,
-      progressLoop: o,
+      progressLoop: l,
       isBeginning: r,
-      isEnd: l
-    }), (s.watchSlidesProgress || s.centeredSlides && s.autoHeight) && e.updateSlidesProgress(t), r && !a && e.emit("reachBeginning toEdge"), l && !u && e.emit("reachEnd toEdge"), (a && !r || u && !l) && e.emit("fromEdge"), e.emit("progress", n);
+      isEnd: o
+    }), (s.watchSlidesProgress || s.centeredSlides && s.autoHeight) && e.updateSlidesProgress(t), r && !a && e.emit("reachBeginning toEdge"), o && !u && e.emit("reachEnd toEdge"), (a && !r || u && !o) && e.emit("fromEdge"), e.emit("progress", n);
   }
   const be = (t, e, s) => {
     e && !t.classList.contains(s) ? t.classList.add(s) : !e && t.classList.contains(s) && t.classList.remove(s);
@@ -3605,21 +3617,21 @@ page-component-hero-image:has(vimeo-player) {
       params: s,
       slidesEl: i,
       activeIndex: n
-    } = t, r = t.virtual && s.virtual.enabled, l = t.grid && s.grid && s.grid.rows > 1, o = (p) => V(i, `.${s.slideClass}${p}, swiper-slide${p}`)[0];
+    } = t, r = t.virtual && s.virtual.enabled, o = t.grid && s.grid && s.grid.rows > 1, l = (p) => V(i, `.${s.slideClass}${p}, swiper-slide${p}`)[0];
     let a, u, m;
     if (r)
       if (s.loop) {
         let p = n - t.virtual.slidesBefore;
-        p < 0 && (p = t.virtual.slides.length + p), p >= t.virtual.slides.length && (p -= t.virtual.slides.length), a = o(`[data-swiper-slide-index="${p}"]`);
+        p < 0 && (p = t.virtual.slides.length + p), p >= t.virtual.slides.length && (p -= t.virtual.slides.length), a = l(`[data-swiper-slide-index="${p}"]`);
       } else
-        a = o(`[data-swiper-slide-index="${n}"]`);
+        a = l(`[data-swiper-slide-index="${n}"]`);
     else
-      l ? (a = e.find((p) => p.column === n), m = e.find((p) => p.column === n + 1), u = e.find((p) => p.column === n - 1)) : a = e[n];
-    a && (l || (m = ft(a, `.${s.slideClass}, swiper-slide`)[0], s.loop && !m && (m = e[0]), u = pt(a, `.${s.slideClass}, swiper-slide`)[0], s.loop && !u === 0 && (u = e[e.length - 1]))), e.forEach((p) => {
+      o ? (a = e.find((p) => p.column === n), m = e.find((p) => p.column === n + 1), u = e.find((p) => p.column === n - 1)) : a = e[n];
+    a && (o || (m = ft(a, `.${s.slideClass}, swiper-slide`)[0], s.loop && !m && (m = e[0]), u = pt(a, `.${s.slideClass}, swiper-slide`)[0], s.loop && !u === 0 && (u = e[e.length - 1]))), e.forEach((p) => {
       be(p, p === a, s.slideActiveClass), be(p, p === m, s.slideNextClass), be(p, p === u, s.slidePrevClass);
     }), t.emitSlidesClasses();
   }
-  const le = (t, e) => {
+  const oe = (t, e) => {
     if (!t || t.destroyed || !t.params) return;
     const s = () => t.isElement ? "swiper-slide" : `.${t.params.slideClass}`, i = e.closest(s());
     if (i) {
@@ -3640,23 +3652,23 @@ page-component-hero-image:has(vimeo-player) {
     e = Math.min(e, s);
     const i = t.params.slidesPerView === "auto" ? t.slidesPerViewDynamic() : Math.ceil(t.params.slidesPerView), n = t.activeIndex;
     if (t.params.grid && t.params.grid.rows > 1) {
-      const l = n, o = [l - e];
-      o.push(...Array.from({
+      const o = n, l = [o - e];
+      l.push(...Array.from({
         length: e
-      }).map((a, u) => l + i + u)), t.slides.forEach((a, u) => {
-        o.includes(a.column) && ye(t, u);
+      }).map((a, u) => o + i + u)), t.slides.forEach((a, u) => {
+        l.includes(a.column) && ye(t, u);
       });
       return;
     }
     const r = n + i - 1;
     if (t.params.rewind || t.params.loop)
-      for (let l = n - e; l <= r + e; l += 1) {
-        const o = (l % s + s) % s;
-        (o < n || o > r) && ye(t, o);
+      for (let o = n - e; o <= r + e; o += 1) {
+        const l = (o % s + s) % s;
+        (l < n || l > r) && ye(t, l);
       }
     else
-      for (let l = Math.max(n - e, 0); l <= Math.min(r + e, s - 1); l += 1)
-        l !== n && (l > r || l < n) && ye(t, l);
+      for (let o = Math.max(n - e, 0); o <= Math.min(r + e, s - 1); o += 1)
+        o !== n && (o > r || o < n) && ye(t, o);
   };
   function kt(t) {
     const {
@@ -3673,8 +3685,8 @@ page-component-hero-image:has(vimeo-player) {
       snapGrid: i,
       params: n,
       activeIndex: r,
-      realIndex: l,
-      snapIndex: o
+      realIndex: o,
+      snapIndex: l
     } = e;
     let a = t, u;
     const m = (d) => {
@@ -3688,7 +3700,7 @@ page-component-hero-image:has(vimeo-player) {
       u = d + Math.floor((a - d) / n.slidesPerGroup);
     }
     if (u >= i.length && (u = i.length - 1), a === r && !e.params.loop) {
-      u !== o && (e.snapIndex = u, e.emit("snapIndexChange"));
+      u !== l && (e.snapIndex = u, e.emit("snapIndexChange"));
       return;
     }
     if (a === r && e.params.loop && e.virtual && e.params.virtual.enabled) {
@@ -3709,30 +3721,30 @@ page-component-hero-image:has(vimeo-player) {
     } else
       w = a;
     Object.assign(e, {
-      previousSnapIndex: o,
+      previousSnapIndex: l,
       snapIndex: u,
-      previousRealIndex: l,
+      previousRealIndex: o,
       realIndex: w,
       previousIndex: r,
       activeIndex: a
-    }), e.initialized && xe(e), e.emit("activeIndexChange"), e.emit("snapIndexChange"), (e.initialized || e.params.runCallbacksOnInit) && (l !== w && e.emit("realIndexChange"), e.emit("slideChange"));
+    }), e.initialized && xe(e), e.emit("activeIndexChange"), e.emit("snapIndexChange"), (e.initialized || e.params.runCallbacksOnInit) && (o !== w && e.emit("realIndexChange"), e.emit("slideChange"));
   }
   function Pt(t, e) {
     const s = this, i = s.params;
     let n = t.closest(`.${i.slideClass}, swiper-slide`);
-    !n && s.isElement && e && e.length > 1 && e.includes(t) && [...e.slice(e.indexOf(t) + 1, e.length)].forEach((o) => {
-      !n && o.matches && o.matches(`.${i.slideClass}, swiper-slide`) && (n = o);
+    !n && s.isElement && e && e.length > 1 && e.includes(t) && [...e.slice(e.indexOf(t) + 1, e.length)].forEach((l) => {
+      !n && l.matches && l.matches(`.${i.slideClass}, swiper-slide`) && (n = l);
     });
-    let r = !1, l;
+    let r = !1, o;
     if (n) {
-      for (let o = 0; o < s.slides.length; o += 1)
-        if (s.slides[o] === n) {
-          r = !0, l = o;
+      for (let l = 0; l < s.slides.length; l += 1)
+        if (s.slides[l] === n) {
+          r = !0, o = l;
           break;
         }
     }
     if (n && r)
-      s.clickedSlide = n, s.virtual && s.params.virtual.enabled ? s.clickedIndex = parseInt(n.getAttribute("data-swiper-slide-index"), 10) : s.clickedIndex = l;
+      s.clickedSlide = n, s.virtual && s.params.virtual.enabled ? s.clickedIndex = parseInt(n.getAttribute("data-swiper-slide-index"), 10) : s.clickedIndex = o;
     else {
       s.clickedSlide = void 0, s.clickedIndex = void 0;
       return;
@@ -3761,22 +3773,22 @@ page-component-hero-image:has(vimeo-player) {
       return i ? -n : n;
     if (s.cssMode)
       return n;
-    let l = ot(r, t);
-    return l += e.cssOverflowAdjustment(), i && (l = -l), l || 0;
+    let o = lt(r, t);
+    return o += e.cssOverflowAdjustment(), i && (o = -o), o || 0;
   }
   function Ot(t, e) {
     const s = this, {
       rtlTranslate: i,
       params: n,
       wrapperEl: r,
-      progress: l
+      progress: o
     } = s;
-    let o = 0, a = 0;
+    let l = 0, a = 0;
     const u = 0;
-    s.isHorizontal() ? o = i ? -t : t : a = t, n.roundLengths && (o = Math.floor(o), a = Math.floor(a)), s.previousTranslate = s.translate, s.translate = s.isHorizontal() ? o : a, n.cssMode ? r[s.isHorizontal() ? "scrollLeft" : "scrollTop"] = s.isHorizontal() ? -o : -a : n.virtualTranslate || (s.isHorizontal() ? o -= s.cssOverflowAdjustment() : a -= s.cssOverflowAdjustment(), r.style.transform = `translate3d(${o}px, ${a}px, ${u}px)`);
+    s.isHorizontal() ? l = i ? -t : t : a = t, n.roundLengths && (l = Math.floor(l), a = Math.floor(a)), s.previousTranslate = s.translate, s.translate = s.isHorizontal() ? l : a, n.cssMode ? r[s.isHorizontal() ? "scrollLeft" : "scrollTop"] = s.isHorizontal() ? -l : -a : n.virtualTranslate || (s.isHorizontal() ? l -= s.cssOverflowAdjustment() : a -= s.cssOverflowAdjustment(), r.style.transform = `translate3d(${l}px, ${a}px, ${u}px)`);
     let m;
     const p = s.maxTranslate() - s.minTranslate();
-    p === 0 ? m = 0 : m = (t - s.minTranslate()) / p, m !== l && s.updateProgress(t), s.emit("setTranslate", s.translate, e);
+    p === 0 ? m = 0 : m = (t - s.minTranslate()) / p, m !== o && s.updateProgress(t), s.emit("setTranslate", s.translate, e);
   }
   function Mt() {
     return -this.snapGrid[0];
@@ -3786,17 +3798,17 @@ page-component-hero-image:has(vimeo-player) {
   }
   function Bt(t = 0, e = this.params.speed, s = !0, i = !0, n) {
     const r = this, {
-      params: l,
-      wrapperEl: o
+      params: o,
+      wrapperEl: l
     } = r;
-    if (r.animating && l.preventInteractionOnTransition)
+    if (r.animating && o.preventInteractionOnTransition)
       return !1;
     const a = r.minTranslate(), u = r.maxTranslate();
     let m;
-    if (i && t > a ? m = a : i && t < u ? m = u : m = t, r.updateProgress(m), l.cssMode) {
+    if (i && t > a ? m = a : i && t < u ? m = u : m = t, r.updateProgress(m), o.cssMode) {
       const p = r.isHorizontal();
       if (e === 0)
-        o[p ? "scrollLeft" : "scrollTop"] = -m;
+        l[p ? "scrollLeft" : "scrollTop"] = -m;
       else {
         if (!r.support.smoothScroll)
           return Ie({
@@ -3804,7 +3816,7 @@ page-component-hero-image:has(vimeo-player) {
             targetPosition: -m,
             side: p ? "left" : "top"
           }), !0;
-        o.scrollTo({
+        l.scrollTo({
           [p ? "left" : "top"]: -m,
           behavior: "smooth"
         });
@@ -3836,8 +3848,8 @@ page-component-hero-image:has(vimeo-player) {
       activeIndex: n,
       previousIndex: r
     } = t;
-    let l = s;
-    l || (n > r ? l = "next" : n < r ? l = "prev" : l = "reset"), t.emit(`transition${i}`), e && l === "reset" ? t.emit(`slideResetTransition${i}`) : e && n !== r && (t.emit(`slideChangeTransition${i}`), l === "next" ? t.emit(`slideNextTransition${i}`) : t.emit(`slidePrevTransition${i}`));
+    let o = s;
+    o || (n > r ? o = "next" : n < r ? o = "prev" : o = "reset"), t.emit(`transition${i}`), e && o === "reset" ? t.emit(`slideResetTransition${i}`) : e && n !== r && (t.emit(`slideChangeTransition${i}`), o === "next" ? t.emit(`slideNextTransition${i}`) : t.emit(`slidePrevTransition${i}`));
   }
   function Ht(t = !0, e) {
     const s = this, {
@@ -3869,10 +3881,10 @@ page-component-hero-image:has(vimeo-player) {
   function Nt(t = 0, e, s = !0, i, n) {
     typeof t == "string" && (t = parseInt(t, 10));
     const r = this;
-    let l = t;
-    l < 0 && (l = 0);
+    let o = t;
+    o < 0 && (o = 0);
     const {
-      params: o,
+      params: l,
       snapGrid: a,
       slidesGrid: u,
       previousIndex: m,
@@ -3881,27 +3893,27 @@ page-component-hero-image:has(vimeo-player) {
       wrapperEl: d,
       enabled: g
     } = r;
-    if (!g && !i && !n || r.destroyed || r.animating && o.preventInteractionOnTransition)
+    if (!g && !i && !n || r.destroyed || r.animating && l.preventInteractionOnTransition)
       return !1;
     typeof e > "u" && (e = r.params.speed);
-    const v = Math.min(r.params.slidesPerGroupSkip, l);
-    let x = v + Math.floor((l - v) / r.params.slidesPerGroup);
+    const v = Math.min(r.params.slidesPerGroupSkip, o);
+    let x = v + Math.floor((o - v) / r.params.slidesPerGroup);
     x >= a.length && (x = a.length - 1);
     const c = -a[x];
-    if (o.normalizeSlideIndex)
+    if (l.normalizeSlideIndex)
       for (let C = 0; C < u.length; C += 1) {
         const y = -Math.floor(c * 100), I = Math.floor(u[C] * 100), T = Math.floor(u[C + 1] * 100);
-        typeof u[C + 1] < "u" ? y >= I && y < T - (T - I) / 2 ? l = C : y >= I && y < T && (l = C + 1) : y >= I && (l = C);
+        typeof u[C + 1] < "u" ? y >= I && y < T - (T - I) / 2 ? o = C : y >= I && y < T && (o = C + 1) : y >= I && (o = C);
       }
-    if (r.initialized && l !== p && (!r.allowSlideNext && (w ? c > r.translate && c > r.minTranslate() : c < r.translate && c < r.minTranslate()) || !r.allowSlidePrev && c > r.translate && c > r.maxTranslate() && (p || 0) !== l))
+    if (r.initialized && o !== p && (!r.allowSlideNext && (w ? c > r.translate && c > r.minTranslate() : c < r.translate && c < r.minTranslate()) || !r.allowSlidePrev && c > r.translate && c > r.maxTranslate() && (p || 0) !== o))
       return !1;
-    l !== (m || 0) && s && r.emit("beforeSlideChangeStart"), r.updateProgress(c);
+    o !== (m || 0) && s && r.emit("beforeSlideChangeStart"), r.updateProgress(c);
     let f;
-    l > p ? f = "next" : l < p ? f = "prev" : f = "reset";
+    o > p ? f = "next" : o < p ? f = "prev" : f = "reset";
     const h = r.virtual && r.params.virtual.enabled;
     if (!(h && n) && (w && -c === r.translate || !w && c === r.translate))
-      return r.updateActiveIndex(l), o.autoHeight && r.updateAutoHeight(), r.updateSlidesClasses(), o.effect !== "slide" && r.setTranslate(c), f !== "reset" && (r.transitionStart(s, f), r.transitionEnd(s, f)), !1;
-    if (o.cssMode) {
+      return r.updateActiveIndex(o), l.autoHeight && r.updateAutoHeight(), r.updateSlidesClasses(), l.effect !== "slide" && r.setTranslate(c), f !== "reset" && (r.transitionStart(s, f), r.transitionEnd(s, f)), !1;
+    if (l.cssMode) {
       const C = r.isHorizontal(), y = w ? c : -c;
       if (e === 0)
         h && (r.wrapperEl.style.scrollSnapType = "none", r._immediateVirtual = !0), h && !r._cssModeVirtualInitialSet && r.params.initialSlide > 0 ? (r._cssModeVirtualInitialSet = !0, requestAnimationFrame(() => {
@@ -3924,7 +3936,7 @@ page-component-hero-image:has(vimeo-player) {
       return !0;
     }
     const k = Ae().isSafari;
-    return h && !n && k && r.isElement && r.virtual.update(!1, !1, l), r.setTransition(e), r.setTranslate(c), r.updateActiveIndex(l), r.updateSlidesClasses(), r.emit("beforeTransitionStart", e, i), r.transitionStart(s, f), e === 0 ? r.transitionEnd(s, f) : r.animating || (r.animating = !0, r.onSlideToWrapperTransitionEnd || (r.onSlideToWrapperTransitionEnd = function(y) {
+    return h && !n && k && r.isElement && r.virtual.update(!1, !1, o), r.setTransition(e), r.setTranslate(c), r.updateActiveIndex(o), r.updateSlidesClasses(), r.emit("beforeTransitionStart", e, i), r.transitionStart(s, f), e === 0 ? r.transitionEnd(s, f) : r.animating || (r.animating = !0, r.onSlideToWrapperTransitionEnd || (r.onSlideToWrapperTransitionEnd = function(y) {
       !r || r.destroyed || y.target === this && (r.wrapperEl.removeEventListener("transitionend", r.onSlideToWrapperTransitionEnd), r.onSlideToWrapperTransitionEnd = null, delete r.onSlideToWrapperTransitionEnd, r.transitionEnd(s, f));
     }), r.wrapperEl.addEventListener("transitionend", r.onSlideToWrapperTransitionEnd)), !0;
   }
@@ -3934,17 +3946,17 @@ page-component-hero-image:has(vimeo-player) {
     if (n.destroyed) return;
     typeof e > "u" && (e = n.params.speed);
     const r = n.grid && n.params.grid && n.params.grid.rows > 1;
-    let l = t;
+    let o = t;
     if (n.params.loop)
       if (n.virtual && n.params.virtual.enabled)
-        l = l + n.virtual.slidesBefore;
+        o = o + n.virtual.slidesBefore;
       else {
-        let o;
+        let l;
         if (r) {
-          const v = l * n.params.grid.rows;
-          o = n.slides.find((x) => x.getAttribute("data-swiper-slide-index") * 1 === v).column;
+          const v = o * n.params.grid.rows;
+          l = n.slides.find((x) => x.getAttribute("data-swiper-slide-index") * 1 === v).column;
         } else
-          o = n.getSlideIndexByData(l);
+          l = n.getSlideIndexByData(o);
         const a = r ? Math.ceil(n.slides.length / n.params.grid.rows) : n.slides.length, {
           centeredSlides: u,
           slidesOffsetBefore: m,
@@ -3952,39 +3964,39 @@ page-component-hero-image:has(vimeo-player) {
         } = n.params, w = u || !!m || !!p;
         let d = n.params.slidesPerView;
         d === "auto" ? d = n.slidesPerViewDynamic() : (d = Math.ceil(parseFloat(n.params.slidesPerView, 10)), w && d % 2 === 0 && (d = d + 1));
-        let g = a - o < d;
-        if (w && (g = g || o < Math.ceil(d / 2)), i && w && n.params.slidesPerView !== "auto" && !r && (g = !1), g) {
-          const v = w ? o < n.activeIndex ? "prev" : "next" : o - n.activeIndex - 1 < n.params.slidesPerView ? "next" : "prev";
+        let g = a - l < d;
+        if (w && (g = g || l < Math.ceil(d / 2)), i && w && n.params.slidesPerView !== "auto" && !r && (g = !1), g) {
+          const v = w ? l < n.activeIndex ? "prev" : "next" : l - n.activeIndex - 1 < n.params.slidesPerView ? "next" : "prev";
           n.loopFix({
             direction: v,
             slideTo: !0,
-            activeSlideIndex: v === "next" ? o + 1 : o - a + 1,
+            activeSlideIndex: v === "next" ? l + 1 : l - a + 1,
             slideRealIndex: v === "next" ? n.realIndex : void 0
           });
         }
         if (r) {
-          const v = l * n.params.grid.rows;
-          l = n.slides.find((x) => x.getAttribute("data-swiper-slide-index") * 1 === v).column;
+          const v = o * n.params.grid.rows;
+          o = n.slides.find((x) => x.getAttribute("data-swiper-slide-index") * 1 === v).column;
         } else
-          l = n.getSlideIndexByData(l);
+          o = n.getSlideIndexByData(o);
       }
     return requestAnimationFrame(() => {
-      n.slideTo(l, e, s, i);
+      n.slideTo(o, e, s, i);
     }), n;
   }
   function jt(t, e = !0, s) {
     const i = this, {
       enabled: n,
       params: r,
-      animating: l
+      animating: o
     } = i;
     if (!n || i.destroyed) return i;
     typeof t > "u" && (t = i.params.speed);
-    let o = r.slidesPerGroup;
-    r.slidesPerView === "auto" && r.slidesPerGroup === 1 && r.slidesPerGroupAuto && (o = Math.max(i.slidesPerViewDynamic("current", !0), 1));
-    const a = i.activeIndex < r.slidesPerGroupSkip ? 1 : o, u = i.virtual && r.virtual.enabled;
+    let l = r.slidesPerGroup;
+    r.slidesPerView === "auto" && r.slidesPerGroup === 1 && r.slidesPerGroupAuto && (l = Math.max(i.slidesPerViewDynamic("current", !0), 1));
+    const a = i.activeIndex < r.slidesPerGroupSkip ? 1 : l, u = i.virtual && r.virtual.enabled;
     if (r.loop) {
-      if (l && !u && r.loopPreventsSliding) return !1;
+      if (o && !u && r.loopPreventsSliding) return !1;
       if (i.loopFix({
         direction: "next"
       }), i._clientLeft = i.wrapperEl.clientLeft, i.activeIndex === i.slides.length - 1 && r.cssMode)
@@ -3998,8 +4010,8 @@ page-component-hero-image:has(vimeo-player) {
     const i = this, {
       params: n,
       snapGrid: r,
-      slidesGrid: l,
-      rtlTranslate: o,
+      slidesGrid: o,
+      rtlTranslate: l,
       enabled: a,
       animating: u
     } = i;
@@ -4012,7 +4024,7 @@ page-component-hero-image:has(vimeo-player) {
         direction: "prev"
       }), i._clientLeft = i.wrapperEl.clientLeft;
     }
-    const p = o ? i.translate : -i.translate;
+    const p = l ? i.translate : -i.translate;
     function w(f) {
       return f < 0 ? -Math.floor(Math.abs(f)) : Math.floor(f);
     }
@@ -4025,7 +4037,7 @@ page-component-hero-image:has(vimeo-player) {
       }), typeof f < "u" && (x = v ? r[f] : r[f > 0 ? f - 1 : f]);
     }
     let c = 0;
-    if (typeof x < "u" && (c = l.indexOf(x), c < 0 && (c = i.activeIndex - 1), n.slidesPerView === "auto" && n.slidesPerGroup === 1 && n.slidesPerGroupAuto && (c = c - i.slidesPerViewDynamic("previous", !0) + 1, c = Math.max(c, 0))), n.rewind && i.isBeginning) {
+    if (typeof x < "u" && (c = o.indexOf(x), c < 0 && (c = i.activeIndex - 1), n.slidesPerView === "auto" && n.slidesPerGroup === 1 && n.slidesPerGroupAuto && (c = c - i.slidesPerViewDynamic("previous", !0) + 1, c = Math.max(c, 0))), n.rewind && i.isBeginning) {
       const f = i.params.virtual && i.params.virtual.enabled && i.virtual ? i.virtual.slides.length - 1 : i.slides.length - 1;
       return i.slideTo(f, t, e, s);
     } else if (n.loop && i.activeIndex === 0 && n.cssMode)
@@ -4044,12 +4056,12 @@ page-component-hero-image:has(vimeo-player) {
     if (n.destroyed) return;
     typeof t > "u" && (t = n.params.speed);
     let r = n.activeIndex;
-    const l = Math.min(n.params.slidesPerGroupSkip, r), o = l + Math.floor((r - l) / n.params.slidesPerGroup), a = n.rtlTranslate ? n.translate : -n.translate;
-    if (a >= n.snapGrid[o]) {
-      const u = n.snapGrid[o], m = n.snapGrid[o + 1];
+    const o = Math.min(n.params.slidesPerGroupSkip, r), l = o + Math.floor((r - o) / n.params.slidesPerGroup), a = n.rtlTranslate ? n.translate : -n.translate;
+    if (a >= n.snapGrid[l]) {
+      const u = n.snapGrid[l], m = n.snapGrid[l + 1];
       a - u > (m - u) * i && (r += n.params.slidesPerGroup);
     } else {
-      const u = n.snapGrid[o - 1], m = n.snapGrid[o];
+      const u = n.snapGrid[l - 1], m = n.snapGrid[l];
       a - u <= (m - u) * i && (r -= n.params.slidesPerGroup);
     }
     return r = Math.max(r, 0), r = Math.min(r, n.slidesGrid.length - 1), n.slideTo(r, t, e, s);
@@ -4062,10 +4074,10 @@ page-component-hero-image:has(vimeo-player) {
       slidesEl: s
     } = t, i = e.slidesPerView === "auto" ? t.slidesPerViewDynamic() : e.slidesPerView;
     let n = t.getSlideIndexWhenGrid(t.clickedIndex), r;
-    const l = t.isElement ? "swiper-slide" : `.${e.slideClass}`, o = t.grid && t.params.grid && t.params.grid.rows > 1;
+    const o = t.isElement ? "swiper-slide" : `.${e.slideClass}`, l = t.grid && t.params.grid && t.params.grid.rows > 1;
     if (e.loop) {
       if (t.animating) return;
-      r = parseInt(t.clickedSlide.getAttribute("data-swiper-slide-index"), 10), e.centeredSlides ? t.slideToLoop(r) : n > (o ? (t.slides.length - i) / 2 - (t.params.grid.rows - 1) : t.slides.length - i) ? (t.loopFix(), n = t.getSlideIndex(V(s, `${l}[data-swiper-slide-index="${r}"]`)[0]), Pe(() => {
+      r = parseInt(t.clickedSlide.getAttribute("data-swiper-slide-index"), 10), e.centeredSlides ? t.slideToLoop(r) : n > (l ? (t.slides.length - i) / 2 - (t.params.grid.rows - 1) : t.slides.length - i) ? (t.loopFix(), n = t.getSlideIndex(V(s, `${o}[data-swiper-slide-index="${r}"]`)[0]), Pe(() => {
         t.slideTo(n);
       })) : t.slideTo(n);
     } else
@@ -4090,14 +4102,14 @@ page-component-hero-image:has(vimeo-player) {
       V(n, `.${i.slideClass}, swiper-slide`).forEach((g, v) => {
         g.setAttribute("data-swiper-slide-index", v);
       });
-    }, l = () => {
+    }, o = () => {
       const d = V(n, `.${i.slideBlankClass}`);
       d.forEach((g) => {
         g.remove();
       }), d.length > 0 && (s.recalcSlides(), s.updateSlides());
-    }, o = s.grid && i.grid && i.grid.rows > 1;
-    i.loopAddBlankSlides && (i.slidesPerGroup > 1 || o) && l();
-    const a = i.slidesPerGroup * (o ? i.grid.rows : 1), u = s.slides.length % a !== 0, m = o && s.slides.length % i.grid.rows !== 0, p = (d) => {
+    }, l = s.grid && i.grid && i.grid.rows > 1;
+    i.loopAddBlankSlides && (i.slidesPerGroup > 1 || l) && o();
+    const a = i.slidesPerGroup * (l ? i.grid.rows : 1), u = s.slides.length % a !== 0, m = l && s.slides.length % i.grid.rows !== 0, p = (d) => {
       for (let g = 0; g < d; g += 1) {
         const v = s.isElement ? re("swiper-slide", [i.slideBlankClass]) : re("div", [i.slideClass, i.slideBlankClass]);
         s.slidesEl.append(v);
@@ -4133,8 +4145,8 @@ page-component-hero-image:has(vimeo-player) {
     setTranslate: i,
     activeSlideIndex: n,
     initial: r,
-    byController: l,
-    byMousewheel: o
+    byController: o,
+    byMousewheel: l
   } = {}) {
     const a = this;
     if (!a.params.loop) return;
@@ -4200,7 +4212,7 @@ page-component-hero-image:has(vimeo-player) {
       if (C.length > 0 && P) {
         if (typeof t > "u") {
           const L = a.slidesGrid[_], H = a.slidesGrid[_ + z] - L;
-          o ? a.setTranslate(a.translate - H) : (a.slideTo(_ + Math.ceil(z), 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
+          l ? a.setTranslate(a.translate - H) : (a.slideTo(_ + Math.ceil(z), 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
         } else if (i) {
           const L = k ? C.length / d.grid.rows : C.length;
           a.slideTo(a.activeIndex + L, 0, !1, !0), a.touchEventsData.currentTranslate = a.translate;
@@ -4208,13 +4220,13 @@ page-component-hero-image:has(vimeo-player) {
       } else if (y.length > 0 && E)
         if (typeof t > "u") {
           const L = a.slidesGrid[_], H = a.slidesGrid[_ - B] - L;
-          o ? a.setTranslate(a.translate - H) : (a.slideTo(_ - B, 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
+          l ? a.setTranslate(a.translate - H) : (a.slideTo(_ - B, 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
         } else {
           const L = k ? y.length / d.grid.rows : y.length;
           a.slideTo(a.activeIndex - L, 0, !1, !0);
         }
     }
-    if (a.allowSlidePrev = m, a.allowSlideNext = p, a.controller && a.controller.control && !l) {
+    if (a.allowSlidePrev = m, a.allowSlideNext = p, a.controller && a.controller.control && !o) {
       const L = {
         slideRealIndex: t,
         direction: s,
@@ -4286,8 +4298,8 @@ page-component-hero-image:has(vimeo-player) {
   function qe(t, e, s) {
     const i = D(), {
       params: n
-    } = t, r = n.edgeSwipeDetection, l = n.edgeSwipeThreshold;
-    return r && (s <= l || s >= i.innerWidth - l) ? r === "prevent" ? (e.preventDefault(), !0) : !1 : !0;
+    } = t, r = n.edgeSwipeDetection, o = n.edgeSwipeThreshold;
+    return r && (s <= o || s >= i.innerWidth - o) ? r === "prevent" ? (e.preventDefault(), !0) : !1 : !0;
   }
   function is(t) {
     const e = this, s = U();
@@ -4305,10 +4317,10 @@ page-component-hero-image:has(vimeo-player) {
     }
     const {
       params: r,
-      touches: l,
-      enabled: o
+      touches: o,
+      enabled: l
     } = e;
-    if (!o || !r.simulateTouch && i.pointerType === "mouse" || e.animating && r.preventInteractionOnTransition)
+    if (!l || !r.simulateTouch && i.pointerType === "mouse" || e.animating && r.preventInteractionOnTransition)
       return;
     !e.animating && r.cssMode && r.loop && e.loopFix();
     let a = i.target;
@@ -4322,8 +4334,8 @@ page-component-hero-image:has(vimeo-player) {
     }
     if (r.swipeHandler && !a.closest(r.swipeHandler))
       return;
-    l.currentX = i.pageX, l.currentY = i.pageY;
-    const d = l.currentX, g = l.currentY;
+    o.currentX = i.pageX, o.currentY = i.pageY;
+    const d = o.currentX, g = o.currentY;
     if (!qe(e, i, d))
       return;
     Object.assign(n, {
@@ -4332,7 +4344,7 @@ page-component-hero-image:has(vimeo-player) {
       allowTouchCallbacks: !0,
       isScrolling: void 0,
       startMoving: void 0
-    }), l.startX = d, l.startY = g, n.touchStartTime = te(), e.allowClick = !0, e.updateSize(), e.swipeDirection = void 0, r.threshold > 0 && (n.allowThresholdMove = !1);
+    }), o.startX = d, o.startY = g, n.touchStartTime = te(), e.allowClick = !0, e.updateSize(), e.swipeDirection = void 0, r.threshold > 0 && (n.allowThresholdMove = !1);
     let v = !0;
     a.matches(n.focusableElements) && (v = !1, a.nodeName === "SELECT" && (n.isTouched = !1)), s.activeElement && s.activeElement.matches(n.focusableElements) && s.activeElement !== a && (i.pointerType === "mouse" || i.pointerType !== "mouse" && !a.matches(n.focusableElements)) && s.activeElement.blur();
     const x = v && e.allowTouchMove && r.touchStartPreventDefault;
@@ -4342,10 +4354,10 @@ page-component-hero-image:has(vimeo-player) {
     const e = U(), s = this, i = s.touchEventsData, {
       params: n,
       touches: r,
-      rtlTranslate: l,
-      enabled: o
+      rtlTranslate: o,
+      enabled: l
     } = s;
-    if (!o || !n.simulateTouch && t.pointerType === "mouse") return;
+    if (!l || !n.simulateTouch && t.pointerType === "mouse") return;
     let a = t;
     if (a.originalEvent && (a = a.originalEvent), a.type === "pointermove" && (i.touchId !== null || a.pointerId !== i.pointerId))
       return;
@@ -4379,9 +4391,9 @@ page-component-hero-image:has(vimeo-player) {
           return;
         }
       } else {
-        if (l && (m > r.startX && -s.translate <= s.maxTranslate() || m < r.startX && -s.translate >= s.minTranslate()))
+        if (o && (m > r.startX && -s.translate <= s.maxTranslate() || m < r.startX && -s.translate >= s.minTranslate()))
           return;
-        if (!l && (m < r.startX && s.translate <= s.maxTranslate() || m > r.startX && s.translate >= s.minTranslate()))
+        if (!o && (m < r.startX && s.translate <= s.maxTranslate() || m > r.startX && s.translate >= s.minTranslate()))
           return;
       }
     if (e.activeElement && e.activeElement.matches(i.focusableElements) && e.activeElement !== a.target && a.pointerType !== "mouse" && e.activeElement.blur(), e.activeElement && a.target === e.activeElement && a.target.matches(i.focusableElements)) {
@@ -4403,7 +4415,7 @@ page-component-hero-image:has(vimeo-player) {
       return;
     s.allowClick = !1, !n.cssMode && a.cancelable && a.preventDefault(), n.touchMoveStopPropagation && !n.nested && a.stopPropagation();
     let g = s.isHorizontal() ? w : d, v = s.isHorizontal() ? r.currentX - r.previousX : r.currentY - r.previousY;
-    n.oneWayMovement && (g = Math.abs(g) * (l ? 1 : -1), v = Math.abs(v) * (l ? 1 : -1)), r.diff = g, g *= n.touchRatio, l && (g = -g, v = -v);
+    n.oneWayMovement && (g = Math.abs(g) * (o ? 1 : -1), v = Math.abs(v) * (o ? 1 : -1)), r.diff = g, g *= n.touchRatio, o && (g = -g, v = -v);
     const x = s.touchesDirection;
     s.swipeDirection = g > 0 ? "prev" : "next", s.touchesDirection = v > 0 ? "prev" : "next";
     const c = s.params.loop && !n.cssMode, f = s.touchesDirection === "next" && s.allowSlideNext || s.touchesDirection === "prev" && s.allowSlidePrev;
@@ -4469,18 +4481,18 @@ page-component-hero-image:has(vimeo-player) {
       return;
     s.pointerId = null, s.touchId = null;
     const {
-      params: l,
-      touches: o,
+      params: o,
+      touches: l,
       rtlTranslate: a,
       slidesGrid: u,
       enabled: m
     } = e;
-    if (!m || !l.simulateTouch && i.pointerType === "mouse") return;
+    if (!m || !o.simulateTouch && i.pointerType === "mouse") return;
     if (s.allowTouchCallbacks && e.emit("touchEnd", i), s.allowTouchCallbacks = !1, !s.isTouched) {
-      s.isMoved && l.grabCursor && e.setGrabCursor(!1), s.isMoved = !1, s.startMoving = !1;
+      s.isMoved && o.grabCursor && e.setGrabCursor(!1), s.isMoved = !1, s.startMoving = !1;
       return;
     }
-    l.grabCursor && s.isMoved && s.isTouched && (e.allowSlideNext === !0 || e.allowSlidePrev === !0) && e.setGrabCursor(!1);
+    o.grabCursor && s.isMoved && s.isTouched && (e.allowSlideNext === !0 || e.allowSlidePrev === !0) && e.setGrabCursor(!1);
     const p = te(), w = p - s.touchStartTime;
     if (e.allowClick) {
       const S = i.path || i.composedPath && i.composedPath();
@@ -4488,15 +4500,15 @@ page-component-hero-image:has(vimeo-player) {
     }
     if (s.lastClickTime = te(), Pe(() => {
       e.destroyed || (e.allowClick = !0);
-    }), !s.isTouched || !s.isMoved || !e.swipeDirection || o.diff === 0 && !s.loopSwapReset || s.currentTranslate === s.startTranslate && !s.loopSwapReset) {
+    }), !s.isTouched || !s.isMoved || !e.swipeDirection || l.diff === 0 && !s.loopSwapReset || s.currentTranslate === s.startTranslate && !s.loopSwapReset) {
       s.isTouched = !1, s.isMoved = !1, s.startMoving = !1;
       return;
     }
     s.isTouched = !1, s.isMoved = !1, s.startMoving = !1;
     let d;
-    if (l.followFinger ? d = a ? e.translate : -e.translate : d = -s.currentTranslate, l.cssMode)
+    if (o.followFinger ? d = a ? e.translate : -e.translate : d = -s.currentTranslate, o.cssMode)
       return;
-    if (l.freeMode && l.freeMode.enabled) {
+    if (o.freeMode && o.freeMode.enabled) {
       e.freeMode.onTouchEnd({
         currentPos: d
       });
@@ -4504,21 +4516,21 @@ page-component-hero-image:has(vimeo-player) {
     }
     const g = d >= -e.maxTranslate() && !e.params.loop;
     let v = 0, x = e.slidesSizesGrid[0];
-    for (let S = 0; S < u.length; S += S < l.slidesPerGroupSkip ? 1 : l.slidesPerGroup) {
-      const k = S < l.slidesPerGroupSkip - 1 ? 1 : l.slidesPerGroup;
+    for (let S = 0; S < u.length; S += S < o.slidesPerGroupSkip ? 1 : o.slidesPerGroup) {
+      const k = S < o.slidesPerGroupSkip - 1 ? 1 : o.slidesPerGroup;
       typeof u[S + k] < "u" ? (g || d >= u[S] && d < u[S + k]) && (v = S, x = u[S + k] - u[S]) : (g || d >= u[S]) && (v = S, x = u[u.length - 1] - u[u.length - 2]);
     }
     let c = null, f = null;
-    l.rewind && (e.isBeginning ? f = l.virtual && l.virtual.enabled && e.virtual ? e.virtual.slides.length - 1 : e.slides.length - 1 : e.isEnd && (c = 0));
-    const h = (d - u[v]) / x, b = v < l.slidesPerGroupSkip - 1 ? 1 : l.slidesPerGroup;
-    if (w > l.longSwipesMs) {
-      if (!l.longSwipes) {
+    o.rewind && (e.isBeginning ? f = o.virtual && o.virtual.enabled && e.virtual ? e.virtual.slides.length - 1 : e.slides.length - 1 : e.isEnd && (c = 0));
+    const h = (d - u[v]) / x, b = v < o.slidesPerGroupSkip - 1 ? 1 : o.slidesPerGroup;
+    if (w > o.longSwipesMs) {
+      if (!o.longSwipes) {
         e.slideTo(e.activeIndex);
         return;
       }
-      e.swipeDirection === "next" && (h >= l.longSwipesRatio ? e.slideTo(l.rewind && e.isEnd ? c : v + b) : e.slideTo(v)), e.swipeDirection === "prev" && (h > 1 - l.longSwipesRatio ? e.slideTo(v + b) : f !== null && h < 0 && Math.abs(h) > l.longSwipesRatio ? e.slideTo(f) : e.slideTo(v));
+      e.swipeDirection === "next" && (h >= o.longSwipesRatio ? e.slideTo(o.rewind && e.isEnd ? c : v + b) : e.slideTo(v)), e.swipeDirection === "prev" && (h > 1 - o.longSwipesRatio ? e.slideTo(v + b) : f !== null && h < 0 && Math.abs(h) > o.longSwipesRatio ? e.slideTo(f) : e.slideTo(v));
     } else {
-      if (!l.shortSwipes) {
+      if (!o.shortSwipes) {
         e.slideTo(e.activeIndex);
         return;
       }
@@ -4536,10 +4548,10 @@ page-component-hero-image:has(vimeo-player) {
       allowSlideNext: i,
       allowSlidePrev: n,
       snapGrid: r
-    } = t, l = t.virtual && t.params.virtual.enabled;
+    } = t, o = t.virtual && t.params.virtual.enabled;
     t.allowSlideNext = !0, t.allowSlidePrev = !0, t.updateSize(), t.updateSlides(), t.updateSlidesClasses();
-    const o = l && e.loop;
-    (e.slidesPerView === "auto" || e.slidesPerView > 1) && t.isEnd && !t.isBeginning && !t.params.centeredSlides && !o ? t.slideTo(t.slides.length - 1, 0, !1, !0) : t.params.loop && !l ? t.slideToLoop(t.realIndex, 0, !1, !0) : t.slideTo(t.activeIndex, 0, !1, !0), t.autoplay && t.autoplay.running && t.autoplay.paused && (clearTimeout(t.autoplay.resizeTimeout), t.autoplay.resizeTimeout = setTimeout(() => {
+    const l = o && e.loop;
+    (e.slidesPerView === "auto" || e.slidesPerView > 1) && t.isEnd && !t.isBeginning && !t.params.centeredSlides && !l ? t.slideTo(t.slides.length - 1, 0, !1, !0) : t.params.loop && !o ? t.slideToLoop(t.realIndex, 0, !1, !0) : t.slideTo(t.activeIndex, 0, !1, !0), t.autoplay && t.autoplay.running && t.autoplay.paused && (clearTimeout(t.autoplay.resizeTimeout), t.autoplay.resizeTimeout = setTimeout(() => {
       t.autoplay && t.autoplay.running && t.autoplay.paused && t.autoplay.resume();
     }, 500)), t.allowSlidePrev = n, t.allowSlideNext = i, t.params.watchOverflow && r !== t.snapGrid && t.checkOverflow();
   }
@@ -4547,7 +4559,7 @@ page-component-hero-image:has(vimeo-player) {
     const e = this;
     e.enabled && (e.allowClick || (e.params.preventClicks && t.preventDefault(), e.params.preventClicksPropagation && e.animating && (t.stopPropagation(), t.stopImmediatePropagation())));
   }
-  function ls() {
+  function os() {
     const t = this, {
       wrapperEl: e,
       rtlTranslate: s,
@@ -4559,9 +4571,9 @@ page-component-hero-image:has(vimeo-player) {
     const r = t.maxTranslate() - t.minTranslate();
     r === 0 ? n = 0 : n = (t.translate - t.minTranslate()) / r, n !== t.progress && t.updateProgress(s ? -t.translate : t.translate), t.emit("setTranslate", t.translate, !1);
   }
-  function os(t) {
+  function ls(t) {
     const e = this;
-    le(e, t.target), !(e.params.cssMode || e.params.slidesPerView !== "auto" && !e.params.autoHeight) && e.update();
+    oe(e, t.target), !(e.params.cssMode || e.params.slidesPerView !== "auto" && !e.params.autoHeight) && e.update();
   }
   function cs() {
     const t = this;
@@ -4572,21 +4584,21 @@ page-component-hero-image:has(vimeo-player) {
       params: i,
       el: n,
       wrapperEl: r,
-      device: l
-    } = t, o = !!i.nested, a = e === "on" ? "addEventListener" : "removeEventListener", u = e;
+      device: o
+    } = t, l = !!i.nested, a = e === "on" ? "addEventListener" : "removeEventListener", u = e;
     !n || typeof n == "string" || (s[a]("touchstart", t.onDocumentTouchStart, {
       passive: !1,
-      capture: o
+      capture: l
     }), n[a]("touchstart", t.onTouchStart, {
       passive: !1
     }), n[a]("pointerdown", t.onTouchStart, {
       passive: !1
     }), s[a]("touchmove", t.onTouchMove, {
       passive: !1,
-      capture: o
+      capture: l
     }), s[a]("pointermove", t.onTouchMove, {
       passive: !1,
-      capture: o
+      capture: l
     }), s[a]("touchend", t.onTouchEnd, {
       passive: !0
     }), s[a]("pointerup", t.onTouchEnd, {
@@ -4601,7 +4613,7 @@ page-component-hero-image:has(vimeo-player) {
       passive: !0
     }), s[a]("contextmenu", t.onTouchEnd, {
       passive: !0
-    }), (i.preventClicks || i.preventClicksPropagation) && n[a]("click", t.onClick, !0), i.cssMode && r[a]("scroll", t.onScroll), i.updateOnWindowResize ? t[u](l.ios || l.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", He, !0) : t[u]("observerUpdate", He, !0), n[a]("load", t.onLoad, {
+    }), (i.preventClicks || i.preventClicksPropagation) && n[a]("click", t.onClick, !0), i.cssMode && r[a]("scroll", t.onScroll), i.updateOnWindowResize ? t[u](o.ios || o.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", He, !0) : t[u]("observerUpdate", He, !0), n[a]("load", t.onLoad, {
       capture: !0
     }));
   };
@@ -4609,7 +4621,7 @@ page-component-hero-image:has(vimeo-player) {
     const t = this, {
       params: e
     } = t;
-    t.onTouchStart = is.bind(t), t.onTouchMove = ns.bind(t), t.onTouchEnd = rs.bind(t), t.onDocumentTouchStart = cs.bind(t), e.cssMode && (t.onScroll = ls.bind(t)), t.onClick = as.bind(t), t.onLoad = os.bind(t), $e(t, "on");
+    t.onTouchStart = is.bind(t), t.onTouchMove = ns.bind(t), t.onTouchEnd = rs.bind(t), t.onDocumentTouchStart = cs.bind(t), e.cssMode && (t.onScroll = os.bind(t)), t.onClick = as.bind(t), t.onLoad = ls.bind(t), $e(t, "on");
   }
   function us() {
     $e(this, "off");
@@ -4627,7 +4639,7 @@ page-component-hero-image:has(vimeo-player) {
       el: n
     } = t, r = i.breakpoints;
     if (!r || r && Object.keys(r).length === 0) return;
-    const l = U(), o = i.breakpointsBase === "window" || !i.breakpointsBase ? i.breakpointsBase : "container", a = ["window", "container"].includes(i.breakpointsBase) || !i.breakpointsBase ? t.el : l.querySelector(i.breakpointsBase), u = t.getBreakpoint(r, o, a);
+    const o = U(), l = i.breakpointsBase === "window" || !i.breakpointsBase ? i.breakpointsBase : "container", a = ["window", "container"].includes(i.breakpointsBase) || !i.breakpointsBase ? t.el : o.querySelector(i.breakpointsBase), u = t.getBreakpoint(r, l, a);
     if (!u || t.currentBreakpoint === u) return;
     const p = (u in r ? r[u] : void 0) || t.originalParams, w = Ge(t, i), d = Ge(t, p), g = t.params.grabCursor, v = p.grabCursor, x = i.enabled;
     w && !d ? (n.classList.remove(`${i.containerModifierClass}grid`, `${i.containerModifierClass}grid-column`), t.emitContainerClasses()) : !w && d && (n.classList.add(`${i.containerModifierClass}grid`), (p.grid.fill && p.grid.fill === "column" || !p.grid.fill && i.grid.fill === "column") && n.classList.add(`${i.containerModifierClass}grid-column`), t.emitContainerClasses()), g && !v ? t.unsetGrabCursor() : !g && v && t.setGrabCursor(), ["navigation", "pagination", "scrollbar"].forEach((k) => {
@@ -4647,25 +4659,25 @@ page-component-hero-image:has(vimeo-player) {
   function gs(t, e = "window", s) {
     if (!t || e === "container" && !s) return;
     let i = !1;
-    const n = D(), r = e === "window" ? n.innerHeight : s.clientHeight, l = Object.keys(t).map((o) => {
-      if (typeof o == "string" && o.indexOf("@") === 0) {
-        const a = parseFloat(o.substr(1));
+    const n = D(), r = e === "window" ? n.innerHeight : s.clientHeight, o = Object.keys(t).map((l) => {
+      if (typeof l == "string" && l.indexOf("@") === 0) {
+        const a = parseFloat(l.substr(1));
         return {
           value: r * a,
-          point: o
+          point: l
         };
       }
       return {
-        value: o,
-        point: o
+        value: l,
+        point: l
       };
     });
-    l.sort((o, a) => parseInt(o.value, 10) - parseInt(a.value, 10));
-    for (let o = 0; o < l.length; o += 1) {
+    o.sort((l, a) => parseInt(l.value, 10) - parseInt(a.value, 10));
+    for (let l = 0; l < o.length; l += 1) {
       const {
         point: a,
         value: u
-      } = l[o];
+      } = o[l];
       e === "window" ? n.matchMedia(`(min-width: ${u}px)`).matches && (i = a) : u <= s.clientWidth && (i = a);
     }
     return i || "max";
@@ -4689,7 +4701,7 @@ page-component-hero-image:has(vimeo-player) {
       rtl: i,
       el: n,
       device: r
-    } = t, l = ms(["initialized", s.direction, {
+    } = t, o = ms(["initialized", s.direction, {
       "free-mode": t.params.freeMode && s.freeMode.enabled
     }, {
       autoheight: s.autoHeight
@@ -4710,7 +4722,7 @@ page-component-hero-image:has(vimeo-player) {
     }, {
       "watch-progress": s.watchSlidesProgress
     }], s.containerModifierClass);
-    e.push(...l), n.classList.add(...e), t.emitContainerClasses();
+    e.push(...o), n.classList.add(...e), t.emitContainerClasses();
   }
   function ws() {
     const t = this, {
@@ -4909,20 +4921,20 @@ page-component-hero-image:has(vimeo-player) {
       r.__swiper__ = !0, r.support = Oe(), r.device = Me({
         userAgent: i.userAgent
       }), r.browser = Ae(), r.eventsListeners = {}, r.eventsAnyListeners = [], r.modules = [...r.__modules__], i.modules && Array.isArray(i.modules) && r.modules.push(...i.modules);
-      const l = {};
+      const o = {};
       r.modules.forEach((a) => {
         a({
           params: i,
           swiper: r,
-          extendParams: Ss(i, l),
+          extendParams: Ss(i, o),
           on: r.on.bind(r),
           once: r.once.bind(r),
           off: r.off.bind(r),
           emit: r.emit.bind(r)
         });
       });
-      const o = $({}, Ne, l);
-      return r.params = $({}, o, Te, i), r.originalParams = $({}, r.params), r.passedParams = $({}, i), r.params && r.params.on && Object.keys(r.params.on).forEach((a) => {
+      const l = $({}, Ne, o);
+      return r.params = $({}, l, Te, i), r.originalParams = $({}, r.params), r.passedParams = $({}, i), r.params && r.params.on && Object.keys(r.params.on).forEach((a) => {
         r.on(a, r.params.on[a]);
       }), r.params && r.params.onAny && r.onAny(r.params.onAny), Object.assign(r, {
         enabled: r.params.enabled,
@@ -5040,8 +5052,8 @@ page-component-hero-image:has(vimeo-player) {
     setProgress(e, s) {
       const i = this;
       e = Math.min(Math.max(e, 0), 1);
-      const n = i.minTranslate(), l = (i.maxTranslate() - n) * e + n;
-      i.translateTo(l, typeof s > "u" ? 0 : s), i.updateActiveIndex(), i.updateSlidesClasses();
+      const n = i.minTranslate(), o = (i.maxTranslate() - n) * e + n;
+      i.translateTo(o, typeof s > "u" ? 0 : s), i.updateActiveIndex(), i.updateSlidesClasses();
     }
     emitContainerClasses() {
       const e = this;
@@ -5069,8 +5081,8 @@ page-component-hero-image:has(vimeo-player) {
       const i = this, {
         params: n,
         slides: r,
-        slidesGrid: l,
-        slidesSizesGrid: o,
+        slidesGrid: o,
+        slidesSizesGrid: l,
         size: a,
         activeIndex: u
       } = i;
@@ -5084,10 +5096,10 @@ page-component-hero-image:has(vimeo-player) {
           r[d] && !w && (p += r[d].swiperSlideSize, m += 1, p > a && (w = !0));
       } else if (e === "current")
         for (let p = u + 1; p < r.length; p += 1)
-          (s ? l[p] + o[p] - l[u] < a : l[p] - l[u] < a) && (m += 1);
+          (s ? o[p] + l[p] - o[u] < a : o[p] - o[u] < a) && (m += 1);
       else
         for (let p = u - 1; p >= 0; p -= 1)
-          l[u] - l[p] < a && (m += 1);
+          o[u] - o[p] < a && (m += 1);
       return m;
     }
     update() {
@@ -5097,20 +5109,20 @@ page-component-hero-image:has(vimeo-player) {
         snapGrid: s,
         params: i
       } = e;
-      i.breakpoints && e.setBreakpoint(), [...e.el.querySelectorAll('[loading="lazy"]')].forEach((l) => {
-        l.complete && le(e, l);
+      i.breakpoints && e.setBreakpoint(), [...e.el.querySelectorAll('[loading="lazy"]')].forEach((o) => {
+        o.complete && oe(e, o);
       }), e.updateSize(), e.updateSlides(), e.updateProgress(), e.updateSlidesClasses();
       function n() {
-        const l = e.rtlTranslate ? e.translate * -1 : e.translate, o = Math.min(Math.max(l, e.maxTranslate()), e.minTranslate());
-        e.setTranslate(o), e.updateActiveIndex(), e.updateSlidesClasses();
+        const o = e.rtlTranslate ? e.translate * -1 : e.translate, l = Math.min(Math.max(o, e.maxTranslate()), e.minTranslate());
+        e.setTranslate(l), e.updateActiveIndex(), e.updateSlidesClasses();
       }
       let r;
       if (i.freeMode && i.freeMode.enabled && !i.cssMode)
         n(), i.autoHeight && e.updateAutoHeight();
       else {
         if ((i.slidesPerView === "auto" || i.slidesPerView > 1) && e.isEnd && !i.centeredSlides) {
-          const l = e.virtual && i.virtual.enabled ? e.virtual.slides : e.slides;
-          r = e.slideTo(l.length - 1, 0, !1, !0);
+          const o = e.virtual && i.virtual.enabled ? e.virtual.slides : e.slides;
+          r = e.slideTo(o.length - 1, 0, !1, !0);
         } else
           r = e.slideTo(e.activeIndex, 0, !1, !0);
         r || n();
@@ -5135,19 +5147,19 @@ page-component-hero-image:has(vimeo-player) {
         return !1;
       i.swiper = s, i.parentNode && i.parentNode.host && i.parentNode.host.nodeName === s.params.swiperElementNodeName.toUpperCase() && (s.isElement = !0);
       const n = () => `.${(s.params.wrapperClass || "").trim().split(" ").join(".")}`;
-      let l = i && i.shadowRoot && i.shadowRoot.querySelector ? i.shadowRoot.querySelector(n()) : V(i, n())[0];
-      return !l && s.params.createElements && (l = re("div", s.params.wrapperClass), i.append(l), V(i, `.${s.params.slideClass}`).forEach((o) => {
-        l.append(o);
+      let o = i && i.shadowRoot && i.shadowRoot.querySelector ? i.shadowRoot.querySelector(n()) : V(i, n())[0];
+      return !o && s.params.createElements && (o = re("div", s.params.wrapperClass), i.append(o), V(i, `.${s.params.slideClass}`).forEach((l) => {
+        o.append(l);
       })), Object.assign(s, {
         el: i,
-        wrapperEl: l,
-        slidesEl: s.isElement && !i.parentNode.host.slideSlots ? i.parentNode.host : l,
+        wrapperEl: o,
+        slidesEl: s.isElement && !i.parentNode.host.slideSlots ? i.parentNode.host : o,
         hostEl: s.isElement ? i.parentNode.host : i,
         mounted: !0,
         // RTL
         rtl: i.dir.toLowerCase() === "rtl" || Y(i, "direction") === "rtl",
         rtlTranslate: s.params.direction === "horizontal" && (i.dir.toLowerCase() === "rtl" || Y(i, "direction") === "rtl"),
-        wrongRTL: Y(l, "display") === "-webkit-box"
+        wrongRTL: Y(o, "display") === "-webkit-box"
       }), !0;
     }
     init(e) {
@@ -5156,8 +5168,8 @@ page-component-hero-image:has(vimeo-player) {
       s.emit("beforeInit"), s.params.breakpoints && s.setBreakpoint(), s.addClasses(), s.updateSize(), s.updateSlides(), s.params.watchOverflow && s.checkOverflow(), s.params.grabCursor && s.enabled && s.setGrabCursor(), s.params.loop && s.virtual && s.params.virtual.enabled ? s.slideTo(s.params.initialSlide + s.virtual.slidesBefore, 0, s.params.runCallbacksOnInit, !1, !0) : s.slideTo(s.params.initialSlide, 0, s.params.runCallbacksOnInit, !1, !0), s.params.loop && s.loopCreate(void 0, !0), s.attachEvents();
       const n = [...s.el.querySelectorAll('[loading="lazy"]')];
       return s.isElement && n.push(...s.hostEl.querySelectorAll('[loading="lazy"]')), n.forEach((r) => {
-        r.complete ? le(s, r) : r.addEventListener("load", (l) => {
-          le(s, l.target);
+        r.complete ? oe(s, r) : r.addEventListener("load", (o) => {
+          oe(s, o.target);
         });
       }), xe(s), s.initialized = !0, xe(s), s.emit("init"), s.emit("afterInit"), s;
     }
@@ -5165,10 +5177,10 @@ page-component-hero-image:has(vimeo-player) {
       const i = this, {
         params: n,
         el: r,
-        wrapperEl: l,
-        slides: o
+        wrapperEl: o,
+        slides: l
       } = i;
-      return typeof i.params > "u" || i.destroyed || (i.emit("beforeDestroy"), i.initialized = !1, i.detachEvents(), n.loop && i.loopDestroy(), s && (i.removeClasses(), r && typeof r != "string" && r.removeAttribute("style"), l && l.removeAttribute("style"), o && o.length && o.forEach((a) => {
+      return typeof i.params > "u" || i.destroyed || (i.emit("beforeDestroy"), i.initialized = !1, i.detachEvents(), n.loop && i.loopDestroy(), s && (i.removeClasses(), r && typeof r != "string" && r.removeAttribute("style"), o && o.removeAttribute("style"), l && l.length && l.forEach((a) => {
         a.classList.remove(n.slideVisibleClass, n.slideFullyVisibleClass, n.slideActiveClass, n.slideNextClass, n.slidePrevClass), a.removeAttribute("style"), a.removeAttribute("data-swiper-slide-index");
       })), i.emit("destroy"), Object.keys(i.eventsListeners).forEach((a) => {
         i.off(a);
@@ -5238,7 +5250,7 @@ page-component-hero-image:has(vimeo-player) {
         x && (x.classList[g ? "add" : "remove"](...v.disabledClass.split(" ")), x.tagName === "BUTTON" && (x.disabled = g), t.params.watchOverflow && t.enabled && x.classList[t.isLocked ? "add" : "remove"](v.lockClass));
       });
     }
-    function l() {
+    function o() {
       const {
         nextEl: d,
         prevEl: g
@@ -5249,7 +5261,7 @@ page-component-hero-image:has(vimeo-player) {
       }
       r(g, t.isBeginning && !t.params.rewind), r(d, t.isEnd && !t.params.rewind);
     }
-    function o(d) {
+    function l(d) {
       d.preventDefault(), !(t.isBeginning && !t.params.loop && !t.params.rewind) && (t.slidePrev(), i("navigationPrev"));
     }
     function a(d) {
@@ -5272,7 +5284,7 @@ page-component-hero-image:has(vimeo-player) {
             const h = document.createElement("div");
             he(h, je), c.appendChild(h.querySelector("svg")), h.remove();
           }
-          c.addEventListener("click", f === "next" ? a : o);
+          c.addEventListener("click", f === "next" ? a : l);
         }
         !t.enabled && c && c.classList.add(...d.lockClass.split(" "));
       };
@@ -5285,14 +5297,14 @@ page-component-hero-image:has(vimeo-player) {
       } = t.navigation;
       d = M(d), g = M(g);
       const v = (x, c) => {
-        x.removeEventListener("click", c === "next" ? a : o), x.classList.remove(...t.params.navigation.disabledClass.split(" "));
+        x.removeEventListener("click", c === "next" ? a : l), x.classList.remove(...t.params.navigation.disabledClass.split(" "));
       };
       d.forEach((x) => v(x, "next")), g.forEach((x) => v(x, "prev"));
     }
     s("init", () => {
-      t.params.navigation.enabled === !1 ? w() : (u(), l());
+      t.params.navigation.enabled === !1 ? w() : (u(), o());
     }), s("toEdge fromEdge lock unlock", () => {
-      l();
+      o();
     }), s("destroy", () => {
       m();
     }), s("enable disable", () => {
@@ -5301,7 +5313,7 @@ page-component-hero-image:has(vimeo-player) {
         prevEl: g
       } = t.navigation;
       if (d = M(d), g = M(g), t.enabled) {
-        l();
+        o();
         return;
       }
       [...d, ...g].filter((v) => !!v).forEach((v) => v.classList.add(t.params.navigation.lockClass));
@@ -5324,14 +5336,14 @@ page-component-hero-image:has(vimeo-player) {
       }
     });
     const p = () => {
-      t.el.classList.remove(...t.params.navigation.navigationDisabledClass.split(" ")), u(), l();
+      t.el.classList.remove(...t.params.navigation.navigationDisabledClass.split(" ")), u(), o();
     }, w = () => {
       t.el.classList.add(...t.params.navigation.navigationDisabledClass.split(" ")), m();
     };
     Object.assign(t.navigation, {
       enable: p,
       disable: w,
-      update: l,
+      update: o,
       init: u,
       destroy: m
     });
@@ -5381,8 +5393,8 @@ page-component-hero-image:has(vimeo-player) {
       el: null,
       bullets: []
     };
-    let r, l = 0;
-    function o() {
+    let r, o = 0;
+    function l() {
       return !t.params.pagination.el || !t.pagination.el || Array.isArray(t.pagination.el) && t.pagination.el.length === 0;
     }
     function a(c, f) {
@@ -5412,7 +5424,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     function p() {
       const c = t.rtl, f = t.params.pagination;
-      if (o()) return;
+      if (l()) return;
       let h = t.pagination.el;
       h = M(h);
       let b, S;
@@ -5422,7 +5434,7 @@ page-component-hero-image:has(vimeo-player) {
         let I, T, _;
         if (f.dynamicBullets && (r = ge(y[0], t.isHorizontal() ? "width" : "height"), h.forEach((E) => {
           E.style[t.isHorizontal() ? "width" : "height"] = `${r * (f.dynamicMainBullets + 4)}px`;
-        }), f.dynamicMainBullets > 1 && S !== void 0 && (l += b - (S || 0), l > f.dynamicMainBullets - 1 ? l = f.dynamicMainBullets - 1 : l < 0 && (l = 0)), I = Math.max(b - l, 0), T = I + (Math.min(y.length, f.dynamicMainBullets) - 1), _ = (T + I) / 2), y.forEach((E) => {
+        }), f.dynamicMainBullets > 1 && S !== void 0 && (o += b - (S || 0), o > f.dynamicMainBullets - 1 ? o = f.dynamicMainBullets - 1 : o < 0 && (o = 0)), I = Math.max(b - o, 0), T = I + (Math.min(y.length, f.dynamicMainBullets) - 1), _ = (T + I) / 2), y.forEach((E) => {
           const P = [...["", "-next", "-next-next", "-prev", "-prev-prev", "-main"].map((z) => `${f.bulletActiveClass}${z}`)].map((z) => typeof z == "string" && z.includes(" ") ? z.split(" ") : z).flat();
           E.classList.remove(...P);
         }), h.length > 1)
@@ -5467,7 +5479,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     function w() {
       const c = t.params.pagination;
-      if (o()) return;
+      if (l()) return;
       const f = t.virtual && t.params.virtual.enabled ? t.virtual.slides.length : t.grid && t.params.grid.rows > 1 ? t.slides.length / Math.ceil(t.params.grid.rows) : t.slides.length;
       let h = t.pagination.el;
       h = M(h);
@@ -5492,12 +5504,12 @@ page-component-hero-image:has(vimeo-player) {
       typeof c.el == "string" && t.isElement && (f = t.el.querySelector(c.el)), !f && typeof c.el == "string" && (f = [...document.querySelectorAll(c.el)]), f || (f = c.el), !(!f || f.length === 0) && (t.params.uniqueNavElements && typeof c.el == "string" && Array.isArray(f) && f.length > 1 && (f = [...t.el.querySelectorAll(c.el)], f.length > 1 && (f = f.find((h) => ze(h, ".swiper")[0] === t.el))), Array.isArray(f) && f.length === 1 && (f = f[0]), Object.assign(t.pagination, {
         el: f
       }), f = M(f), f.forEach((h) => {
-        c.type === "bullets" && c.clickable && h.classList.add(...(c.clickableClass || "").split(" ")), h.classList.add(c.modifierClass + c.type), h.classList.add(t.isHorizontal() ? c.horizontalClass : c.verticalClass), c.type === "bullets" && c.dynamicBullets && (h.classList.add(`${c.modifierClass}${c.type}-dynamic`), l = 0, c.dynamicMainBullets < 1 && (c.dynamicMainBullets = 1)), c.type === "progressbar" && c.progressbarOpposite && h.classList.add(c.progressbarOppositeClass), c.clickable && h.addEventListener("click", m), t.enabled || h.classList.add(c.lockClass);
+        c.type === "bullets" && c.clickable && h.classList.add(...(c.clickableClass || "").split(" ")), h.classList.add(c.modifierClass + c.type), h.classList.add(t.isHorizontal() ? c.horizontalClass : c.verticalClass), c.type === "bullets" && c.dynamicBullets && (h.classList.add(`${c.modifierClass}${c.type}-dynamic`), o = 0, c.dynamicMainBullets < 1 && (c.dynamicMainBullets = 1)), c.type === "progressbar" && c.progressbarOpposite && h.classList.add(c.progressbarOppositeClass), c.clickable && h.addEventListener("click", m), t.enabled || h.classList.add(c.lockClass);
       }));
     }
     function g() {
       const c = t.params.pagination;
-      if (o()) return;
+      if (l()) return;
       let f = t.pagination.el;
       f && (f = M(f), f.forEach((h) => {
         h.classList.remove(c.hiddenClass), h.classList.remove(c.modifierClass + c.type), h.classList.remove(t.isHorizontal() ? c.horizontalClass : c.verticalClass), c.clickable && (h.classList.remove(...(c.clickableClass || "").split(" ")), h.removeEventListener("click", m));
@@ -5630,7 +5642,7 @@ page-component-hero-image:has(vimeo-player) {
           let n = s.eventDesc;
           if (e instanceof HTMLAnchorElement && e.href) {
             const r = e.href.match(/\/discipline\/([\w-]+)/);
-            r && r[1] && (n = r[1].split("-").map((l) => l.charAt(0).toUpperCase() + l.slice(1)).join(" "));
+            r && r[1] && (n = r[1].split("-").map((o) => o.charAt(0).toUpperCase() + o.slice(1)).join(" "));
           }
           Z(
             s.eventId,
@@ -5708,7 +5720,7 @@ page-component-hero-image:has(vimeo-player) {
       const e = document.querySelector(
         O.SECTION_SELECTOR
       );
-      e && oe(
+      e && le(
         e,
         "exp_hp_discipline_view",
         "Home Page Discipline",
@@ -5834,9 +5846,9 @@ page-component-hero-image:has(vimeo-player) {
         var r;
         const n = i.closest("._swatchContainer");
         if (n) {
-          const l = n.parentElement;
-          if (!s.includes(l)) {
-            const o = n.querySelector(".color-tile__tooltip"), a = ((r = o == null ? void 0 : o.textContent) == null ? void 0 : r.trim()) || "", u = () => {
+          const o = n.parentElement;
+          if (!s.includes(o)) {
+            const l = n.querySelector(".color-tile__tooltip"), a = ((r = l == null ? void 0 : l.textContent) == null ? void 0 : r.trim()) || "", u = () => {
               this.ensureHeroImages(), this.clearNewSwatchSelection(), this.resetHeroImage(), this.isTouchDevice && a && this.addHeroLabel(a);
             }, m = () => {
               this.ensureHeroImages(), this.clearNewSwatchSelection(), this.resetHeroImage(), !this.isTouchDevice && a && this.addHeroLabel(a);
@@ -5900,12 +5912,12 @@ page-component-hero-image:has(vimeo-player) {
     }
     selectSwatch(e, s, i) {
       if (this.ensureHeroImages(), this.swatchContainer) {
-        const l = this.swatchContainer.querySelectorAll(
+        const o = this.swatchContainer.querySelectorAll(
           ".swatch-inner--huge"
-        ), o = this.swatchContainer.querySelectorAll(".swatch-outer");
-        l.forEach((a) => {
+        ), l = this.swatchContainer.querySelectorAll(".swatch-outer");
+        o.forEach((a) => {
           a.classList.remove("is-checked");
-        }), o.forEach((a) => {
+        }), l.forEach((a) => {
           a.classList.remove("b-col-b"), a.classList.add("b-col-t");
         });
       }
@@ -5917,10 +5929,10 @@ page-component-hero-image:has(vimeo-player) {
         const n = this.swatchContainer.querySelectorAll(
           ".swatch-inner--huge"
         ), r = this.swatchContainer.querySelectorAll(".swatch-outer");
-        n.forEach((l) => {
-          l.classList.remove("is-checked");
-        }), r.forEach((l) => {
-          l.classList.remove("b-col-b"), l.classList.add("b-col-t");
+        n.forEach((o) => {
+          o.classList.remove("is-checked");
+        }), r.forEach((o) => {
+          o.classList.remove("b-col-b"), o.classList.add("b-col-t");
         });
       }
       const s = e.querySelector(".swatch-inner--huge"), i = e.querySelector(".swatch-outer");
@@ -5930,20 +5942,20 @@ page-component-hero-image:has(vimeo-player) {
       const s = e.querySelector(".swatch-inner--huge"), i = e.querySelector(".swatch-outer");
       s && s.classList.remove("is-checked"), i && (i.classList.remove("b-col-b"), i.classList.add("b-col-t"));
     }
-    insertColourSwatch(e, s, i, n, r, l) {
+    insertColourSwatch(e, s, i, n, r, o) {
       var g;
-      const o = e.querySelectorAll(":scope > div");
+      const l = e.querySelectorAll(":scope > div");
       let a = -1;
-      for (let v = 0; v < o.length; v++) {
-        const x = o[v].querySelector(".color-tile__tooltip");
-        if (((g = x == null ? void 0 : x.textContent) == null ? void 0 : g.trim()) === l) {
+      for (let v = 0; v < l.length; v++) {
+        const x = l[v].querySelector(".color-tile__tooltip");
+        if (((g = x == null ? void 0 : x.textContent) == null ? void 0 : g.trim()) === o) {
           a = v;
           break;
         }
       }
       if (a === -1) {
         console.warn(
-          `ColoursSection: Could not find anchor colour "${l}" for "${s}"`
+          `ColoursSection: Could not find anchor colour "${o}" for "${s}"`
         );
         return;
       }
@@ -5962,7 +5974,7 @@ page-component-hero-image:has(vimeo-player) {
         };
         w.addEventListener("click", v), w.addEventListener("mouseenter", x), w.addEventListener("mouseleave", c), w._clickHandler = v, w._mouseEnterHandler = x, w._mouseLeaveHandler = c;
       }
-      const d = o[a];
+      const d = l[a];
       p && d.parentNode && (d.parentNode.insertBefore(
         p,
         d.nextSibling
@@ -6047,8 +6059,8 @@ page-component-hero-image:has(vimeo-player) {
           return;
         const i = e.querySelector("._swatchContainer");
         if (i) {
-          const n = i._clickHandler, r = i._mouseEnterHandler, l = i._mouseLeaveHandler;
-          n && i.removeEventListener("click", n), r && i.removeEventListener("mouseenter", r), l && i.removeEventListener("mouseleave", l), delete i._clickHandler, delete i._mouseEnterHandler, delete i._mouseLeaveHandler;
+          const n = i._clickHandler, r = i._mouseEnterHandler, o = i._mouseLeaveHandler;
+          n && i.removeEventListener("click", n), r && i.removeEventListener("mouseenter", r), o && i.removeEventListener("mouseleave", o), delete i._clickHandler, delete i._mouseEnterHandler, delete i._mouseLeaveHandler;
         }
         e.parentNode && e.parentNode.removeChild(e);
       }), this.addedSwatches.clear(), this.selectedSwatchName = null, this.targetSection = null, this.swatchContainer = null, this.heroImages = [];
