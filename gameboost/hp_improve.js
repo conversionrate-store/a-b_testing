@@ -449,8 +449,8 @@
       isRegionDanger: !0,
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€27,52", usd: "$32.94" },
-      originalPrice: { eur: "€39,99", usd: "$47.87" },
+      price: { eur: "€27,54", usd: "$32.97" },
+      originalPrice: { eur: "€39,99", usd: "$47.88" },
       discount: "-31%"
     },
     {
@@ -462,8 +462,8 @@
       isRegionDanger: !0,
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€23,67", usd: "$28.33" },
-      originalPrice: { eur: "€49,99", usd: "$59.83" },
+      price: { eur: "€23,67", usd: "$28.34" },
+      originalPrice: { eur: "€49,99", usd: "$59.85" },
       discount: "-53%"
     },
     {
@@ -474,7 +474,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€41,96", usd: "$50.22" }
+      price: { eur: "€45,13", usd: "$54.03" }
     },
     {
       name: "Europa Universalis V (Steam)",
@@ -485,8 +485,8 @@
       isRegionDanger: !0,
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€46,39", usd: "$55.53" },
-      originalPrice: { eur: "€59,99", usd: "$71.80" },
+      price: { eur: "€46,39", usd: "$55.54" },
+      originalPrice: { eur: "€59,99", usd: "$71.82" },
       discount: "-23%"
     },
     {
@@ -497,7 +497,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€13,21", usd: "$15.81" }
+      price: { eur: "€13,99", usd: "$16.75" }
     },
     {
       name: "Mio: Memories in Orbit (PC) - Steam Key - GLOBAL",
@@ -507,7 +507,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€12,88", usd: "$15.42" }
+      price: { eur: "€12,53", usd: "$15.00" }
     },
     {
       name: "Solo Leveling: Arise Overdrive (Steam)",
@@ -517,7 +517,7 @@
       region: "Global",
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
-      price: { eur: "€30,67", usd: "$36.71" }
+      price: { eur: "€30,67", usd: "$36.72" }
     },
     {
       name: "Terra Invicta (Steam)",
@@ -528,7 +528,7 @@
       platform: "Steam",
       platformIcon: "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
       price: { eur: "€14,98", usd: "$17.93" },
-      originalPrice: { eur: "€39,99", usd: "$47.87" },
+      originalPrice: { eur: "€39,99", usd: "$47.88" },
       discount: "-63%"
     },
     {
@@ -836,15 +836,6 @@
     }
     init() {
       this.addStyles(), this.render();
-    }
-    async fetchData() {
-      try {
-        console.log("Fetching game keys data from /keys endpoint...");
-        const e = await (await fetch("/keys")).text(), s = new DOMParser().parseFromString(e, "text/html");
-        console.log("Parsed /keys page title:", s.title), console.log("Fetched game keys data:", e);
-      } catch (t) {
-        console.error("Error fetching game keys data:", t);
-      }
     }
     detectCurrency() {
       const t = document.querySelector('header button:has(img[alt="en"])');
