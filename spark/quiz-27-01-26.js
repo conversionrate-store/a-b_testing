@@ -1,6 +1,9 @@
 (function() {
   "use strict";
-  const _ = `.mcill-hero {
+  const _ = `#lp-pom-image-16,
+#lp-pom-button-15,
+#lp-pom-text-14,
+#lp-pom-image-17 {
   display: none;
 }
 
@@ -40,7 +43,7 @@
 }
 @media (min-width: 768px) {
   .spark_hero__logo img {
-    height: 50px;
+    height: 70px;
   }
 }
 .spark_hero__title {
@@ -451,7 +454,7 @@
   to {
     transform: rotate(360deg);
   }
-}/*# sourceMappingURL=style.css.map */`, d = (a) => new Promise((n) => {
+}/*# sourceMappingURL=style.css.map */`, c = (a) => new Promise((n) => {
     const e = document.querySelector(a);
     e && n(e);
     const t = new MutationObserver(() => {
@@ -530,16 +533,22 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const r = (a) => new l(a), h = (a) => {
+  const r = (a) => new l(a), m = (a) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
     }, 1e3);
-  }, c = "https://conversionrate-store.github.io/a-b_images/spark/", m = (
+  }, d = "https://conversionrate-store.github.io/a-b_images/spark/", h = (
     /* HTML */
     `
   <section class="spark_hero">
     <div class="spark_hero__container">
       <div class="spark_hero__content">
+        <div class="spark_hero__logo">
+          <img
+            src="https://d9hhrg4mnvzow.cloudfront.net/try.sparkmembership.com/spark-software/6215cf2b-logo-svg-recreated.svg"
+            alt="Spark Membership"
+          />
+        </div>
         <h1 class="spark_hero__title">
           Do you want to turn more prospects into active students for your Martial Arts Studio
         </h1>
@@ -547,7 +556,7 @@
         <p class="spark_hero__subtitle">while saving time on communications, billing, finance, etc?</p>
 
         <div class="spark_hero__buttons">
-          <a href="https://sparkmembership.com/pricing/" class="spark_hero__btn spark_hero__btn--primary"
+          <a href="https://sparkmembership.com/pricing" class="spark_hero__btn spark_hero__btn--primary"
             >Yes, show me how!</a
           >
           <button class="spark_hero__btn spark_hero__btn--secondary">No, thanks</button>
@@ -556,12 +565,12 @@
 
       <div class="spark_hero__image">
         <picture>
-          <source media="(min-width: 768px)" srcset="${c}home_d.webp" />
-          <img src="${c}home_m.webp" alt="Spark Platform" />
+          <source media="(min-width: 768px)" srcset="${d}home_d.webp" />
+          <img src="${d}home_m.webp" alt="Spark Platform" />
         </picture>
 
         <div class="spark_hero__badge">
-          <img src="${c}schedule.svg" alt="Trial" />
+          <img src="${d}schedule.svg" alt="Trial" />
           <span class="spark_hero__badge-label">30 DAYS FREE</span>
         </div>
       </div>
@@ -576,7 +585,7 @@
     <div class="spark_quiz_modal">
       <div class="spark_quiz_header">
         <div class="spark_quiz_back">
-          <img src="${c}back.svg" alt="Back" />
+          <img src="${d}back.svg" alt="Back" />
           Back
         </div>
         <img
@@ -584,7 +593,7 @@
           alt="Spark"
           class="spark_quiz_logo"
         />
-        <span class="spark_quiz_step">1/6</span>
+        <span class="spark_quiz_step">1/5</span>
       </div>
 
       <div class="spark_quiz_progress">
@@ -598,7 +607,7 @@
   </div>
 `
   );
-  f({ name: "Spark Quiz", dev: "YK" }), h("spark_quiz");
+  f({ name: "Spark Quiz", dev: "YK" }), m("spark_quiz");
   const k = [
     {
       step: 1,
@@ -667,16 +676,19 @@
       this.currentStep = 1, this.quizData = {}, this.init();
     }
     async init() {
-      await d("body"), r("body").elements[0].insertAdjacentHTML("afterend", `<style>${_}</style>`), window.location.pathname === "/" && (await d(".mcill-hero"), r(".mcill-hero").elements[0].insertAdjacentHTML("afterend", m), await d(".spark_hero__btn--secondary"), r(".spark_hero__btn--secondary").on("click", () => {
-        const e = r(".spark_hero").elements[0].nextElementSibling;
-        e && e.scrollIntoView({ behavior: "smooth", block: "start" });
-      })), window.location.href.includes("/pricing/") && (r("body").style("opacity", "0"), this.initQuiz(), this.openQuiz());
+      await c("body"), r("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${_}</style>`), window.location.href === "https://try.sparkmembership.com/spark-software/" && (await c(".lp-positioned-content"), r(".lp-positioned-content").elements[0].insertAdjacentHTML("afterbegin", h), await c(".spark_hero__btn--secondary"), r(".spark_hero__btn--secondary").on("click", () => {
+        r(".spark_hero").elements[0];
+        const n = r("#lp-pom-block-18").elements[0];
+        n && n.scrollIntoView({ behavior: "smooth", block: "start" });
+      }), await c("#lp-pom-button-264"), r("#lp-pom-button-264, #lp-pom-button-273").on("click", (n) => {
+        n.preventDefault(), window.location.href = "https://sparkmembership.com/pricing";
+      })), window.location.href.includes("/pricing") && (this.initQuiz(), this.openQuiz());
     }
     initQuiz() {
       document.body.insertAdjacentHTML("beforeend", b), r(".spark_quiz_back").on("click", () => this.prevStep()), this.renderStep();
     }
     openQuiz() {
-      r(".spark_quiz_popup").elements[0].classList.add("active"), document.body.style.overflow = "hidden", r("body").style("opacity", "1");
+      r(".spark_quiz_popup").elements[0].classList.add("active"), document.body.style.overflow = "hidden";
     }
     closeQuiz() {
       r(".spark_quiz_popup").elements[0].classList.remove("active"), document.body.style.overflow = "";
