@@ -1,43 +1,43 @@
 (function() {
   "use strict";
-  const a = (t) => new Promise((e) => {
-    const l = document.querySelector(t);
+  const a = (n) => new Promise((e) => {
+    const l = document.querySelector(n);
     l && e(l);
-    const i = new MutationObserver(() => {
-      const n = document.querySelector(t);
-      n && (e(n), i.disconnect());
+    const o = new MutationObserver(() => {
+      const t = document.querySelector(n);
+      t && (e(t), o.disconnect());
     });
-    i.observe(document.documentElement, {
+    o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), y = ({ name: t, dev: e }) => {
+  }), y = ({ name: n, dev: e }) => {
     console.log(
-      `%c EXP: ${t} (DEV: ${e})`,
+      `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, S = (t) => {
+  }, b = (n) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", t, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", n, "variant_1"));
     }, 1e3);
-  }, o = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels_2", r = [
+  }, i = "https://conversionrate-store.github.io/a-b_images/natpat/video/reels_2", r = [
     {
-      previewImageSrc: `${o}/preview_1.gif`,
-      videoSrc: `${o}/reels_1.mp4`,
+      previewImageSrc: `${i}/preview_1.gif`,
+      videoSrc: `${i}/reels_1.mp4`,
       description: "Car rides used to be, panting, drooling, shaking the whole thing. I put one of those calming stickers in her locket before we left and she just, curled up."
     },
     {
-      previewImageSrc: `${o}/preview_2.gif`,
-      videoSrc: `${o}/reels_2.mp4`,
+      previewImageSrc: `${i}/preview_2.gif`,
+      videoSrc: `${i}/reels_2.mp4`,
       description: "My cat hates being groomed, like, hates it. Freezes up, won't come out of the carrier, the whole thing. I tried the calming patch before the appointment, and, The groomer actually said she did better than ever."
     },
     {
-      previewImageSrc: `${o}/preview_3.gif`,
-      videoSrc: `${o}/reels_3.mp4`,
+      previewImageSrc: `${i}/preview_3.gif`,
+      videoSrc: `${i}/reels_3.mp4`,
       description: "My friend told me about these calming stickers and I was like, whatever, sure, put one in her little locket before a storm last week, and she actually settled? Like, she still noticed it, but she wasn't panicking. I'm not saying it's magic, but we actually slept through a thunderstorm."
     }
   ];
-  class b {
+  class I {
     constructor() {
       this.elements = null, this.init();
     }
@@ -48,18 +48,18 @@
       this.elements && this.elements.forEach((e) => this.updateCardItems(e));
     }
     updateCardItems(e) {
-      e.querySelectorAll(".card-item").forEach((i, n) => {
+      e.querySelectorAll(".card-item").forEach((o, t) => {
         var g, m, p, f;
-        const u = i.querySelector(".card-gif"), c = i.querySelector("video"), d = i.querySelector(".card-box > p"), h = i.querySelector(".fullscreen-btn");
-        u && c && d && (console.log("Updating card item", (g = r[n]) == null ? void 0 : g.previewImageSrc), u.src = ((m = r[n]) == null ? void 0 : m.previewImageSrc) || "", c.src = ((p = r[n]) == null ? void 0 : p.videoSrc) || "", d.textContent = `${((f = r[n]) == null ? void 0 : f.description) || d.textContent}`, h && h.addEventListener("click", async () => {
-          var w;
+        const u = o.querySelector(".card-gif"), c = o.querySelector("video"), d = o.querySelector(".card-box > p"), h = o.querySelector(".fullscreen-btn");
+        u && c && d && (console.log("Updating card item", (g = r[t]) == null ? void 0 : g.previewImageSrc), u.src = ((m = r[t]) == null ? void 0 : m.previewImageSrc) || "", c.src = ((p = r[t]) == null ? void 0 : p.videoSrc) || "", d.textContent = `${((f = r[t]) == null ? void 0 : f.description) || d.textContent}`, h && h.addEventListener("click", async () => {
+          var v, w;
           console.log("Full screen button clicked");
           const s = await a(
             "#fullscreen-video"
           );
-          s && (console.log("video", c), c.pause(), document.querySelectorAll("video").forEach((v) => {
-            v !== s && v.pause();
-          }), s.src = ((w = r[n]) == null ? void 0 : w.videoSrc) || "", console.log("fullScreenVideo", s), setTimeout(() => {
+          s && (console.log("video", c), c.pause(), document.querySelectorAll("video").forEach((S) => {
+            S !== s && S.pause();
+          }), s.src = ((v = r[t]) == null ? void 0 : v.videoSrc) || "", console.log("fullScreenVideo", s), console.log("Setting video to full screen and playing", ((w = r[t]) == null ? void 0 : w.videoSrc) || ""), setTimeout(() => {
             s.play();
           }, 100));
         }));
@@ -72,22 +72,22 @@
       ];
     }
   }
-  const I = "";
-  y({ name: "New PetZen - Social Proof Reels", dev: "OS" }), S("exp_reels");
-  class _ {
+  const _ = "";
+  y({ name: "New PetZen - Social Proof Reels", dev: "OS" }), b("exp_reels");
+  class k {
     constructor() {
       this.init();
     }
     init() {
-      this.isTargetPage() && (this.addStyles(), new b());
+      this.isTargetPage() && (this.addStyles(), new I());
     }
     isTargetPage() {
       return location.pathname.includes("zenpatch-pet");
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = I, document.head.appendChild(e);
+      e.textContent = _, document.head.appendChild(e);
     }
   }
-  new _();
+  new k();
 })();
