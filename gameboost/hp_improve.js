@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const u = (r, t, e, o = "") => {
+  const h = (r, t, e, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: r,
@@ -8,7 +8,7 @@
       event_type: e,
       event_loc: o
     }), E(`Event: ${r} | ${t} | ${e} | ${o}`, "success");
-  }, f = (r) => new Promise((t) => {
+  }, v = (r) => new Promise((t) => {
     const e = document.querySelector(r);
     e && t(e);
     const o = new MutationObserver(() => {
@@ -33,7 +33,7 @@
     if (i = new IntersectionObserver(
       function(m) {
         m[0].isIntersecting === !0 ? c = setTimeout(() => {
-          u(
+          h(
             t,
             m[0].target.dataset.visible || o,
             "view",
@@ -256,7 +256,12 @@
         `.game-card-group:not([${n.ENHANCED_MARKER}]):not(.game-key-group)`
       ).forEach((e) => {
         const o = e, s = this.findGameByHref(o.href);
-        s != null && s.name || o.href, s && s.categories && s.categories.length > 0 && (this.addCategoryLinks(e, s), this.addTitle(e, s.name), e.setAttribute(n.ENHANCED_MARKER, "true"));
+        if (e.setAttribute(n.ENHANCED_MARKER, "true"), !s) {
+          const a = e.closest('[aria-roledescription="slide"]');
+          a && (a.style.display = "none");
+          return;
+        }
+        s.name, s.categories && s.categories.length > 0 && (this.addCategoryLinks(e, s), this.addTitle(e, s.name));
       });
     }
     addTitle(t, e) {
@@ -266,7 +271,7 @@
       );
       t.insertAdjacentHTML("afterend", o);
       const s = t.nextElementSibling;
-      s && s.classList.contains("game-categories-title") && this.addTrackedEventListener(s, "click", () => u("exp_hp_game_title_click", e, "click", "Popular Games"));
+      s && s.classList.contains("game-categories-title") && this.addTrackedEventListener(s, "click", () => h("exp_hp_game_title_click", e, "click", "Popular Games"));
     }
     addCategoryLinks(t, e) {
       const o = e.categories || [];
@@ -279,7 +284,7 @@
         const a = t.nextElementSibling;
         a && a.classList.contains("game-categories") && a.querySelectorAll(".category-link").forEach((c) => {
           const m = c.textContent || "Unknown";
-          this.addTrackedEventListener(c, "click", () => u("exp_hp_game_category_click", m, "click", e.name));
+          this.addTrackedEventListener(c, "click", () => h("exp_hp_game_category_click", m, "click", e.name));
         });
       }
     }
@@ -296,21 +301,29 @@
         new Set(t.map((s) => s.parentElement).filter(Boolean))
       ), o = window.innerWidth < n.MOBILE_BREAKPOINT;
       e.forEach((s) => {
-        var m, g;
+        var g, p;
         if (s.hasAttribute(n.GRID_MARKER)) return;
         const a = Array.from(
           s.querySelectorAll("[aria-roledescription='slide']:has(.game-card-group):not(:has(.game-key-group))")
         );
         if (a.length === 0) return;
-        const c = this.orderSlides(a).map((y) => y.slide);
-        s.setAttribute(n.GRID_MARKER, "true"), (g = (m = s.closest('[aria-roledescription="carousel"]')) == null ? void 0 : m.parentElement) == null || g.classList.add("crs-popular-games"), o ? this.currentLayout = "mobile" : (s.classList.add("game-grid-container"), this.applyGridVisibility(c, n.GRID_BATCH_SIZE), this.attachLoadMore(s, c), this.currentLayout = "desktop", requestAnimationFrame(() => {
+        const i = a.filter((u) => {
+          const d = u.querySelector(".game-card-group:not(.game-key-group)");
+          return d ? this.findGameByHref(d.href) ? !0 : (u.style.display = "none", !1) : !1;
+        });
+        if (i.length === 0) return;
+        const m = this.orderSlides(i).map((u) => u.slide);
+        s.setAttribute(n.GRID_MARKER, "true"), (p = (g = s.closest('[aria-roledescription="carousel"]')) == null ? void 0 : g.parentElement) == null || p.classList.add("crs-popular-games"), o ? this.currentLayout = "mobile" : (s.classList.add("game-grid-container"), this.applyGridVisibility(m, n.GRID_BATCH_SIZE), this.attachLoadMore(s, m), this.currentLayout = "desktop", requestAnimationFrame(() => {
           this.setCardHeightProperty();
         }));
       });
     }
     orderSlides(t) {
       const e = t.map((o, s) => {
-        const a = o.querySelector(".game-card-group:not(.game-key-group)"), i = (a == null ? void 0 : a.href) || "", c = i ? this.findGameByHref(i) : void 0, m = c ? this.gameIndices.get(c) ?? Number.POSITIVE_INFINITY : Number.POSITIVE_INFINITY, g = (c == null ? void 0 : c.priority) ?? 3;
+        const a = o.querySelector(".game-card-group:not(.game-key-group)"), i = (a == null ? void 0 : a.href) || "", c = i ? this.findGameByHref(i) : void 0;
+        if (!c)
+          return { slide: o, order: Number.POSITIVE_INFINITY, priority: 999, originalIndex: s };
+        const m = this.gameIndices.get(c) ?? Number.POSITIVE_INFINITY, g = c.priority ?? 3;
         return { slide: o, order: m, priority: g, originalIndex: s };
       });
       return e.sort((o, s) => o.order === s.order ? o.originalIndex - s.originalIndex : o.order - s.order), e.forEach(({ slide: o }) => {
@@ -332,14 +345,14 @@
       const s = document.createElement("button");
       s.className = "inline-flex items-center justify-center transition-colors focus:outline focus:outline-offset-2 focus-visible:outline outline-none disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden font-medium active:translate-y-px whitespace-nowrap bg-primary hover:bg-primary-hover text-primary-foreground shadow-sm focus:outline-primary py-2 text-sm rounded-full px-6 h-9 sm:h-10 game-grid-load-more", s.setAttribute(n.GRID_BUTTON_ATTR, "true"), s.type = "button", s.textContent = "Show More Popular Games";
       const a = () => {
-        u("exp_hp_game_load_more_click", "Load more", "click", "Popular Games"), e.filter((l) => l.classList.contains("game-grid-preview")).forEach((l) => {
+        h("exp_hp_game_load_more_click", "Load more", "click", "Popular Games"), e.filter((l) => l.classList.contains("game-grid-preview")).forEach((l) => {
           l.classList.remove("game-grid-preview"), l.removeAttribute(n.GRID_PREVIEW_MARKER);
         });
         const g = e.filter(
           (l) => !l.classList.contains("game-grid-hidden") && !l.classList.contains("game-grid-preview")
-        ).length + n.GRID_PREVIEW_SIZE, h = e.length - g > 0;
-        e.forEach((l, p) => {
-          const w = h ? p >= g + n.GRID_PREVIEW_SIZE : p >= g, C = h && p >= g && p < g + n.GRID_PREVIEW_SIZE;
+        ).length + n.GRID_PREVIEW_SIZE, u = e.length - g > 0;
+        e.forEach((l, b) => {
+          const w = u ? b >= g + n.GRID_PREVIEW_SIZE : b >= g, C = u && b >= g && b < g + n.GRID_PREVIEW_SIZE;
           l.classList.toggle("game-grid-hidden", w), l.classList.toggle("game-grid-preview", C), C ? l.setAttribute(n.GRID_PREVIEW_MARKER, "true") : l.removeAttribute(n.GRID_PREVIEW_MARKER);
         }), e.filter((l) => l.classList.contains("game-grid-hidden")).length === 0 && (e.forEach((l) => {
           l.classList.remove("game-grid-preview"), l.removeAttribute(n.GRID_PREVIEW_MARKER);
@@ -396,8 +409,11 @@
           o.querySelectorAll("[aria-roledescription='slide']")
         ).length === 0) return;
         this.currentLayout === "desktop" ? this.cleanupDesktopLayout(o) : this.currentLayout === "mobile" && this.cleanupMobileLayout(o);
-        const a = this.collectAllSlides(o), c = this.orderSlides(a).map((m) => m.slide);
-        t === "mobile" || (o.classList.add("game-grid-container"), this.applyGridVisibility(c, n.GRID_BATCH_SIZE), this.attachLoadMore(o, c));
+        const i = this.collectAllSlides(o).filter((g) => {
+          const p = g.querySelector(".game-card-group:not(.game-key-group)");
+          return p ? !!this.findGameByHref(p.href) : !1;
+        }), m = this.orderSlides(i).map((g) => g.slide);
+        t === "mobile" || (o.classList.add("game-grid-container"), this.applyGridVisibility(m, n.GRID_BATCH_SIZE), this.attachLoadMore(o, m));
       }), this.currentLayout = t;
     }
     cleanupDesktopLayout(t) {
@@ -415,7 +431,7 @@
       );
     }
     async setCardHeightProperty() {
-      const t = await f('.crs-popular-games [aria-roledescription="slide"]');
+      const t = await v('.crs-popular-games [aria-roledescription="slide"]');
       if (t) {
         const e = t.offsetHeight;
         e > 0 && document.documentElement.style.setProperty("--game-card-height", `${e}px`);
@@ -619,7 +635,7 @@
   `
     );
   }
-  function z(r = "eur") {
+  function G(r = "eur") {
     return (
       /* HTML */
       `
@@ -670,7 +686,7 @@
   `
     );
   }
-  const G = `.crs-game-keys {
+  const z = `.crs-game-keys {
   margin-top: 6.375rem !important;
 }
 
@@ -830,7 +846,7 @@
   line-height: 24px;
   text-decoration: none;
 }
-`, b = class b {
+`, f = class f {
     constructor() {
       this.scrollContainer = null, this.prevButton = null, this.nextButton = null, this.prevHandler = null, this.nextHandler = null, this.eventHandlers = [], this.currentSlide = 0, this.isAnimating = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.isDragging = !1, this.currentTranslate = 0, this.prevTranslate = 0, this.touchStartTime = 0, this.touchStartY = 0, this.hasDeterminedDirection = !1, this.init();
     }
@@ -849,13 +865,13 @@
       return "eur";
     }
     slideToPosition(t, e) {
-      var p;
+      var b;
       if (!this.scrollContainer || this.isAnimating) return;
       const o = this.scrollContainer.querySelector('[role="group"]');
       if (!o) return;
-      const s = o.offsetWidth, a = 16, c = this.scrollContainer.querySelectorAll('[role="group"]').length, m = (s + a) * c - a, g = ((p = this.scrollContainer.parentElement) == null ? void 0 : p.offsetWidth) || 0, h = Math.max(0, m - g + 12), d = t * (s + a), l = Math.min(d, h);
-      d >= h && l === h && (this.currentSlide = Math.floor(h / (s + a))), this.isAnimating = !0, this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = `translateX(-${l}px)`, this.prevTranslate = -l, this.currentTranslate = -l, setTimeout(() => {
-        this.isAnimating = !1, e === "next" ? u("exp_hp_key_scroll_next", "Slider Scroll Next", "other", "Game Keys") : e === "prev" && u("exp_hp_key_scroll_prev", "Slider Scroll Previous", "other", "Game Keys");
+      const s = o.offsetWidth, a = 16, c = this.scrollContainer.querySelectorAll('[role="group"]').length, m = (s + a) * c - a, g = ((b = this.scrollContainer.parentElement) == null ? void 0 : b.offsetWidth) || 0, u = Math.max(0, m - g + 12), d = t * (s + a), l = Math.min(d, u);
+      d >= u && l === u && (this.currentSlide = Math.floor(u / (s + a))), this.isAnimating = !0, this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = `translateX(-${l}px)`, this.prevTranslate = -l, this.currentTranslate = -l, setTimeout(() => {
+        this.isAnimating = !1, e === "next" ? h("exp_hp_key_scroll_next", "Slider Scroll Next", "other", "Game Keys") : e === "prev" && h("exp_hp_key_scroll_prev", "Slider Scroll Previous", "other", "Game Keys");
       }, 500);
     }
     handleTouchStart(t) {
@@ -882,41 +898,41 @@
       this.isDragging = !1;
       const e = this.currentTranslate - this.prevTranslate, s = Date.now() - this.touchStartTime, a = Math.abs(e) / s, i = this.scrollContainer.querySelector('[role="group"]');
       if (!i) return;
-      const c = i.offsetWidth, m = 16, y = this.scrollContainer.querySelectorAll('[role="group"]').length - 1, h = -this.currentTranslate;
-      let d = Math.round(h / (c + m));
+      const c = i.offsetWidth, m = 16, p = this.scrollContainer.querySelectorAll('[role="group"]').length - 1, u = -this.currentTranslate;
+      let d = Math.round(u / (c + m));
       if (a > 1.5) {
         const w = Math.min(3, Math.ceil(a / 1.5));
         e < 0 ? d = d + w : e > 0 && (d = d - w);
       }
       const l = this.currentSlide;
-      this.currentSlide = Math.max(0, Math.min(y, d));
-      const p = this.currentSlide > l ? "next" : this.currentSlide < l ? "prev" : void 0;
-      this.slideToPosition(this.currentSlide, p);
+      this.currentSlide = Math.max(0, Math.min(p, d));
+      const b = this.currentSlide > l ? "next" : this.currentSlide < l ? "prev" : void 0;
+      this.slideToPosition(this.currentSlide, b);
     }
     async render() {
-      const t = await f(".crs-popular-games");
-      if (!t || t.hasAttribute(b.CONTAINER_MARKER))
+      const t = await v(".crs-popular-games");
+      if (!t || t.hasAttribute(f.CONTAINER_MARKER))
         return;
-      const e = this.detectCurrency(), o = z(e);
-      t.insertAdjacentHTML("afterend", o), t.setAttribute(b.CONTAINER_MARKER, "true"), S(".crs-game-keys", "exp_hp_key_view", "Game Keys", "Visibility", 0), this.initializeSlider();
+      const e = this.detectCurrency(), o = G(e);
+      t.insertAdjacentHTML("afterend", o), t.setAttribute(f.CONTAINER_MARKER, "true"), S(".crs-game-keys", "exp_hp_key_view", "Game Keys", "Visibility", 0), this.initializeSlider();
     }
     initializeSlider() {
       if (this.scrollContainer = document.querySelector(".game-keys-scroll-container"), this.prevButton = document.querySelector('[data-game-keys-nav="prev"]'), this.nextButton = document.querySelector('[data-game-keys-nav="next"]'), !this.scrollContainer || !this.prevButton || !this.nextButton) return;
       this.scrollContainer.style.transition = "transform 0.5s ease-in-out", this.scrollContainer.style.transform = "translateX(0)", this.addTrackedEventListener(this.scrollContainer, "touchstart", this.handleTouchStart.bind(this)), this.addTrackedEventListener(this.scrollContainer, "touchmove", this.handleTouchMove.bind(this)), this.addTrackedEventListener(this.scrollContainer, "touchend", this.handleTouchEnd.bind(this)), this.prevHandler = (s) => {
-        u("exp_hp_key_slider_prev", "Previous Slide", "click", "Game Keys"), s.preventDefault(), s.stopPropagation(), this.currentSlide > 0 && !this.isAnimating && (this.currentSlide--, this.slideToPosition(this.currentSlide));
+        h("exp_hp_key_slider_prev", "Previous Slide", "click", "Game Keys"), s.preventDefault(), s.stopPropagation(), this.currentSlide > 0 && !this.isAnimating && (this.currentSlide--, this.slideToPosition(this.currentSlide));
       }, this.nextHandler = (s) => {
         var c;
-        u("exp_hp_key_slider_next", "Next Slide", "click", "Game Keys"), s.preventDefault(), s.stopPropagation();
+        h("exp_hp_key_slider_next", "Next Slide", "click", "Game Keys"), s.preventDefault(), s.stopPropagation();
         const a = (c = this.scrollContainer) == null ? void 0 : c.querySelectorAll('[role="group"]'), i = ((a == null ? void 0 : a.length) || 0) - 1;
         this.currentSlide < i && !this.isAnimating && (this.currentSlide++, this.slideToPosition(this.currentSlide));
       }, this.prevButton.addEventListener("click", this.prevHandler), this.nextButton.addEventListener("click", this.nextHandler), this.isDragging = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.currentTranslate = 0, this.prevTranslate = 0, document.querySelectorAll(".game-key-group:not(.game-keys-cta-slide)").forEach((s) => {
         const a = s, i = a.querySelector(".text-sm.font-medium"), c = (i == null ? void 0 : i.textContent) || a.href;
-        this.addTrackedEventListener(s, "click", () => u("exp_hp_key_card_click", c, "click", "Game Keys"));
+        this.addTrackedEventListener(s, "click", () => h("exp_hp_key_card_click", c, "click", "Game Keys"));
       });
       const e = document.querySelector(".game-keys-cta-slide");
-      e && this.addTrackedEventListener(e, "click", () => u("exp_hp_key_cta_slide_click", "View All Game Keys", "click", "Game Keys"));
+      e && this.addTrackedEventListener(e, "click", () => h("exp_hp_key_cta_slide_click", "View All Game Keys", "click", "Game Keys"));
       const o = document.querySelector(".game-keys-view-all");
-      o && this.addTrackedEventListener(o, "click", () => u("exp_hp_key_view_all_click", "View All Game Keys", "click", "Game Keys"));
+      o && this.addTrackedEventListener(o, "click", () => h("exp_hp_key_view_all_click", "View All Game Keys", "click", "Game Keys"));
     }
     addTrackedEventListener(t, e, o) {
       t.addEventListener(e, o), this.eventHandlers.push({ element: t, event: e, handler: o });
@@ -927,14 +943,14 @@
       }), this.eventHandlers = [], this.scrollContainer = null, this.prevButton = null, this.nextButton = null, this.prevHandler = null, this.nextHandler = null, this.currentSlide = 0, this.isAnimating = !1, this.isDragging = !1, this.touchStartX = 0, this.touchCurrentX = 0, this.touchStartY = 0, this.hasDeterminedDirection = !1, this.currentTranslate = 0, this.prevTranslate = 0, this.touchStartTime = 0;
     }
     addStyles() {
-      if (document.getElementById(b.STYLES_MARKER))
+      if (document.getElementById(f.STYLES_MARKER))
         return;
       const t = document.createElement("style");
-      t.id = b.STYLES_MARKER, t.innerHTML = G, document.head.appendChild(t);
+      t.id = f.STYLES_MARKER, t.innerHTML = z, document.head.appendChild(t);
     }
   };
-  b.CONTAINER_MARKER = "data-game-keys-rendered", b.STYLES_MARKER = "game-keys-styles-injected";
-  let x = b;
+  f.CONTAINER_MARKER = "data-game-keys-rendered", f.STYLES_MARKER = "game-keys-styles-injected";
+  let x = f;
   const P = [
     {
       name: "Accounts",
@@ -1110,7 +1126,7 @@
     height: 22px;
   }
 }
-`, v = class v {
+`, y = class y {
     constructor() {
       this.eventHandlers = [], this.init();
     }
@@ -1118,8 +1134,8 @@
       this.addStyles(), this.render();
     }
     async render() {
-      const t = await f(".crs-game-keys");
-      if (!t || t.hasAttribute(v.CONTAINER_MARKER))
+      const t = await v(".crs-game-keys");
+      if (!t || t.hasAttribute(y.CONTAINER_MARKER))
         return;
       const e = (
         /* HTML */
@@ -1133,10 +1149,10 @@
     </div>
     `
       );
-      t.insertAdjacentHTML("afterend", e), t.setAttribute(v.CONTAINER_MARKER, "true"), S(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-link").forEach((s) => {
+      t.insertAdjacentHTML("afterend", e), t.setAttribute(y.CONTAINER_MARKER, "true"), S(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-link").forEach((s) => {
         var c;
         const a = (c = s.nextElementSibling) == null ? void 0 : c.querySelector(".game-service-name"), i = (a == null ? void 0 : a.textContent) || "Unknown";
-        this.addTrackedEventListener(s, "click", () => u("exp_hp_service_card_click", i, "click", "Browse All Games Services"));
+        this.addTrackedEventListener(s, "click", () => h("exp_hp_service_card_click", i, "click", "Browse All Games Services"));
       });
     }
     renderServiceCards() {
@@ -1171,8 +1187,8 @@
       }), this.eventHandlers = [];
     }
   };
-  v.CONTAINER_MARKER = "data-game-services-rendered";
-  let A = v;
+  y.CONTAINER_MARKER = "data-game-services-rendered";
+  let A = y;
   const j = `.crs-hero > a {
   /* display: none; Ask about it */
   margin-bottom: 0;
@@ -1363,7 +1379,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       this.addStyles(), this.getHeroSection(), this.changeSearchInput(), this.changeSubTitle(), this.addWarrantyBadge();
     }
     async getHeroSection() {
-      const t = await f('img[src*="bg-light.webp"]');
+      const t = await v('img[src*="bg-light.webp"]');
       if (t) {
         const e = t.nextElementSibling;
         e != null && e.classList.contains("crs-hero") || e == null || e.classList.add("crs-hero");
@@ -1373,7 +1389,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
     }
     async changeSearchInput() {
       var s, a;
-      const t = await f('input[name="search"]');
+      const t = await v('input[name="search"]');
       t.classList.contains("crs-hero-search-input") || t.classList.add("crs-hero-search-input");
       let e = (s = t.parentElement) == null ? void 0 : s.querySelector("[data-typing-effect]");
       e || (e = document.createElement("span"), e.className = "typing-effect", e.setAttribute("data-typing-effect", "true"), (a = t.parentElement) == null || a.insertBefore(e, t), this.searchFocusHandler = () => {
@@ -1388,11 +1404,11 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       });
     }
     async changeSubTitle() {
-      const t = await f("h1 + div");
+      const t = await v("h1 + div");
       t && !t.classList.contains("crs-hero-subtitle") && t.classList.add("crs-hero-subtitle");
     }
     async addWarrantyBadge() {
-      const t = await f(".crs-hero"), e = t == null ? void 0 : t.querySelector(":scope > a");
+      const t = await v(".crs-hero"), e = t == null ? void 0 : t.querySelector(":scope > a");
       if (!t || t.querySelector(".crs-warranty-badge")) return;
       const o = (
         /* HTML */
