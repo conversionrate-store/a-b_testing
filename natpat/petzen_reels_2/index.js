@@ -11,12 +11,12 @@
       childList: !0,
       subtree: !0
     });
-  }), S = ({ name: s, dev: e }) => {
+  }), y = ({ name: s, dev: e }) => {
     console.log(
       `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, y = (s) => {
+  }, I = (s) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", s, "variant_1"));
     }, 1e3);
@@ -37,7 +37,7 @@
       description: "My friend told me about these calming stickers and I was like, whatever, sure, put one in her little locket before a storm last week, and she actually settled? Like, she still noticed it, but she wasn't panicking. I'm not saying it's magic, but we actually slept through a thunderstorm."
     }
   ];
-  class I {
+  class v {
     constructor() {
       this.elements = null, this.slider = null, this.resumeTimeouts = /* @__PURE__ */ new WeakMap(), this.videoDurations = /* @__PURE__ */ new WeakMap(), this.init();
     }
@@ -79,16 +79,16 @@
     }
     updateCardItems(e) {
       e.querySelectorAll(".card-item").forEach((t, i) => {
-        var m, p, g;
-        const l = t.querySelector(".card-gif"), n = t.querySelector("video"), u = t.querySelector(".card-box > p"), h = t.querySelector(".fullscreen-btn");
-        l && n && u && (l.src = ((m = c[i]) == null ? void 0 : m.previewImageSrc) || "", n.src = ((p = c[i]) == null ? void 0 : p.videoSrc) || "", n.load(), u.textContent = `${((g = c[i]) == null ? void 0 : g.description) || u.textContent}`, this.setupVideoAutoPause(n), h && h.addEventListener("click", async () => {
-          var w;
+        var p, g, w;
+        const l = t.querySelector(".card-gif"), n = t.querySelector("video"), u = t.querySelector(".card-box > p"), m = t.querySelector(".fullscreen-btn");
+        l && n && u && (l.src = ((p = c[i]) == null ? void 0 : p.previewImageSrc) || "", n.src = ((g = c[i]) == null ? void 0 : g.videoSrc) || "", n.load(), u.textContent = `${((w = c[i]) == null ? void 0 : w.description) || u.textContent}`, this.setupVideoAutoPause(n), m && m.addEventListener("click", async () => {
+          var f;
           const d = await a(
             "#fullscreen-video"
           );
-          d && (n.pause(), document.querySelectorAll("video").forEach((f) => {
-            f !== d && f.pause();
-          }), d.src = ((w = c[i]) == null ? void 0 : w.videoSrc) || "", d.load(), setTimeout(() => {
+          d && (n.pause(), document.querySelectorAll("video").forEach((S) => {
+            S !== d && S.pause();
+          }), d.src = ((f = c[i]) == null ? void 0 : f.videoSrc) || "", d.load(), setTimeout(() => {
             d.play();
           }, 100));
         }));
@@ -101,7 +101,7 @@
       ];
     }
   }
-  class v {
+  class b {
     constructor() {
       this.elements = null, this.init();
     }
@@ -125,24 +125,24 @@
       ];
     }
   }
-  const b = "";
-  S({ name: "New PetZen - Social Proof Reels", dev: "OS" }), y("exp_reels");
-  class k {
+  const k = "";
+  y({ name: "New PetZen - Social Proof Reels", dev: "OS" }), I("exp_reels");
+  class h {
     constructor() {
       this.init();
     }
     init() {
-      this.isTargetPage() && (this.addStyles(), new I());
+      this.isTargetPage() && (this.addStyles(), new v());
     }
     isTargetPage() {
       return location.pathname.includes("zenpatch-pet");
     }
     addStyles() {
       const e = document.createElement("style");
-      e.textContent = b, document.head.appendChild(e);
+      e.textContent = k, document.head.appendChild(e);
     }
   }
-  new v(), window.onload = () => {
-    new k();
+  new b(), new h(), window.onload = () => {
+    new h();
   };
 })();
