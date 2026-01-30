@@ -108,7 +108,7 @@
 .crs-hero-block span {
   display: block;
   font-size: 16px;
-  margin-bottom: 12px;
+  margin: 40px 0 12px;
 }
 
 @media (max-width: 768px) {
@@ -678,7 +678,7 @@
     /* HTML */
     `
   <div class="crs-hero-block">
-    <p>with no money down using 100% hard-money financing.</p>
+    <p>With little to no money down and up to 100% Hard Money financing</p>
     <button class="crs_link_button crs_open_quiz">Check if you qualify</button>
     <span>Featured in:</span>
     <img src="${x}clients_d.svg" alt="Clients" class="img_clients_d" />
