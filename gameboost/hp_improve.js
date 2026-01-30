@@ -1532,7 +1532,5 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       };
     }
   }
-  window.onload = () => {
-    new $();
-  };
+  new $();
 })();
