@@ -7,7 +7,7 @@
       event_desc: t,
       event_type: e,
       event_loc: o
-    }), T(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
+    }), R(`Event: ${i} | ${t} | ${e} | ${o}`, "success");
   }, v = (i) => new Promise((t) => {
     const e = document.querySelector(i);
     e && t(e);
@@ -28,7 +28,7 @@
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, R = (i, t, e, o, s = 1e3, a = 0.5) => {
+  }, L = (i, t, e, o, s = 1e3, a = 0.5) => {
     let n, c;
     if (n = new IntersectionObserver(
       function(g) {
@@ -39,7 +39,7 @@
             "view",
             e
           ), n.disconnect();
-        }, s) : (T("Element is not fully visible", "warn"), clearTimeout(c));
+        }, s) : (R("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [a] }
     ), typeof i == "string") {
@@ -47,7 +47,7 @@
       g && n.observe(g);
     } else
       n.observe(i);
-  }, T = (i, t = "info") => {
+  }, R = (i, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -352,8 +352,8 @@
           (l) => !l.classList.contains("game-grid-hidden") && !l.classList.contains("game-grid-preview")
         ).length + r.GRID_PREVIEW_SIZE, h = e.length - m > 0;
         e.forEach((l, u) => {
-          const y = h ? u >= m + r.GRID_PREVIEW_SIZE : u >= m, x = h && u >= m && u < m + r.GRID_PREVIEW_SIZE;
-          l.classList.toggle("game-grid-hidden", y), l.classList.toggle("game-grid-preview", x), x ? l.setAttribute(r.GRID_PREVIEW_MARKER, "true") : l.removeAttribute(r.GRID_PREVIEW_MARKER);
+          const y = h ? u >= m + r.GRID_PREVIEW_SIZE : u >= m, k = h && u >= m && u < m + r.GRID_PREVIEW_SIZE;
+          l.classList.toggle("game-grid-hidden", y), l.classList.toggle("game-grid-preview", k), k ? l.setAttribute(r.GRID_PREVIEW_MARKER, "true") : l.removeAttribute(r.GRID_PREVIEW_MARKER);
         }), e.filter((l) => l.classList.contains("game-grid-hidden")).length === 0 && (e.forEach((l) => {
           l.classList.remove("game-grid-preview"), l.removeAttribute(r.GRID_PREVIEW_MARKER);
         }), this.removeTrackedEventListener(s, "click", a), s.remove());
@@ -454,7 +454,7 @@
     }
   };
   r.STYLES_MARKER = "game-cards-styles-injected", r.ENHANCED_MARKER = "data-categories-enhanced", r.GRID_MARKER = "data-gridified", r.GRID_BUTTON_ATTR = "data-grid-button", r.GRID_PREVIEW_MARKER = "data-grid-preview", r.GRID_BATCH_SIZE = 12, r.GRID_PREVIEW_SIZE = 6, r.MOBILE_BREAKPOINT = 768, r.RESIZE_DEBOUNCE_MS = 250;
-  let E = r;
+  let S = r;
   const P = [
     {
       name: "ARC Raiders (Steam)",
@@ -588,7 +588,11 @@
       price: { eur: "€12,36", usd: "$14.79" }
     }
   ];
-  function _(i, t = "eur") {
+  function _(i) {
+    const t = i.replace(/[\s€$£]/g, "").replace(",", ".").trim(), e = parseFloat(t);
+    return !Number.isNaN(e) && e === 0;
+  }
+  function Z(i, t = "eur") {
     const e = i.isRegionDanger ? "text-danger-light-foreground" : "text-muted-foreground";
     return (
       /* HTML */
@@ -626,7 +630,7 @@
             <div class="text-base font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-l from-foreground to-secondary-foreground light:from-muted-foreground light:to-foreground light:bg-gradient-to-br">
               ${i.price[t]}
             </div>
-            ${i.originalPrice ? `<div class="text-base line-through text-muted-foreground">${i.originalPrice[t]}</div>` : ""}
+            ${i.originalPrice && i.originalPrice[t] && !_(i.originalPrice[t]) ? `<div class="text-base line-through text-muted-foreground">${i.originalPrice[t]}</div>` : ""}
             ${i.discount ? `<div class="flex items-center px-2 font-sans text-sm rounded-full bg-primary text-primary-foreground">${i.discount}</div>` : ""}
           </div>
         </div>
@@ -644,7 +648,7 @@
       <div class="relative mt-4 w-full game-keys-slider-container">
         <div class="game-keys-wrapper">
           <div class="game-keys-scroll-container">
-            ${(t && t.length > 0 ? t : P).map((o) => _(o, i)).join("")}
+            ${(t && t.length > 0 ? t : P).map((o) => Z(o, i)).join("")}
             <div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0 pl-1 py-1 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-[calc(100%/7)]">
               <a href="/keys" class="relative flex flex-col items-start w-auto gap-3 p-1 px-1.5 leading-5 game-card-group game-key-group group game-keys-cta-slide">
                 <div class="game-keys-cta-content">
@@ -686,7 +690,7 @@
   `
     );
   }
-  const Z = `.crs-game-keys {
+  const O = `.crs-game-keys {
   margin-top: 6.375rem !important;
 }
 
@@ -870,6 +874,11 @@
         }
       }
     }
+    /** True if price string is zero (e.g. "0", "€0,00", "$0.00", "0,00"). */
+    isZeroPrice(t) {
+      const e = t.replace(/[\s€$£]/g, "").replace(",", ".").trim(), o = parseFloat(e);
+      return !Number.isNaN(o) && o === 0;
+    }
     /** String from field (string or object with name/title/label/value). */
     str(t) {
       if (t == null) return "";
@@ -890,19 +899,19 @@
         if (!Array.isArray(b) || b.length === 0) return [];
         const h = "https://gameboost.com", d = "https://gameboost.com/cdn-cgi/image";
         return b.map((l) => {
-          const u = l ?? {}, y = u.sub_platform ?? {}, x = u.local_price ?? {}, A = u.retail_price ?? u.local_retail_price, F = u.discount_percentage ?? {}, L = this.str(u.route_key ?? u.slug), S = this.str(u.cover_image_url), B = this.str(x.format);
+          const u = l ?? {}, y = u.sub_platform ?? {}, k = u.local_price ?? {}, T = u.retail_price ?? u.local_retail_price, W = u.discount_percentage ?? {}, C = this.str(u.route_key ?? u.slug), x = this.str(u.cover_image_url), B = this.str(k.format), A = T ? this.str(T.format) : "", q = A && !this.isZeroPrice(A);
           return {
             name: this.str(u.title ?? u.name) || "Game",
-            url: L.startsWith("http") ? L : `${h}/${L.replace(/^\//, "")}`,
-            coverImage: S,
-            coverSrcset: S ? `${d}/width=190,height=266/${S}?v=3 190w, ${d}/width=354,height=473/${S}?v=3 354w` : "",
+            url: C.startsWith("http") ? C : `${h}/${C.replace(/^\//, "")}`,
+            coverImage: x,
+            coverSrcset: x ? `${d}/width=190,height=266/${x}?v=3 190w, ${d}/width=354,height=473/${x}?v=3 354w` : "",
             region: this.str(u.region) || "Global",
             isRegionDanger: u.is_available_in_client_region === !1,
             platform: this.str(y.name) || "Steam",
             platformIcon: this.str(y.image_url) || "https://cdn.gameboost.com/static/game-keys/drm/steam.svg",
             price: { eur: B, usd: B },
-            originalPrice: A && this.str(A.format) ? { eur: this.str(A.format), usd: this.str(A.format) } : void 0,
-            discount: this.str(F.format) || void 0
+            originalPrice: q ? { eur: A, usd: A } : void 0,
+            discount: this.str(W.format) || void 0
           };
         });
       } catch {
@@ -980,7 +989,7 @@
       if (!e || e.hasAttribute(p.CONTAINER_MARKER))
         return;
       const o = this.detectCurrency(), s = j(o, t);
-      e.insertAdjacentHTML("afterend", s), e.setAttribute(p.CONTAINER_MARKER, "true"), R(".crs-game-keys", "exp_hp_key_view", "Game Keys", "Visibility", 0), this.initializeSlider();
+      e.insertAdjacentHTML("afterend", s), e.setAttribute(p.CONTAINER_MARKER, "true"), L(".crs-game-keys", "exp_hp_key_view", "Game Keys", "Visibility", 0), this.initializeSlider();
     }
     initializeSlider() {
       if (this.scrollContainer = document.querySelector(".game-keys-scroll-container"), this.prevButton = document.querySelector('[data-game-keys-nav="prev"]'), this.nextButton = document.querySelector('[data-game-keys-nav="next"]'), !this.scrollContainer || !this.prevButton || !this.nextButton) return;
@@ -1012,12 +1021,12 @@
       if (document.getElementById(p.STYLES_MARKER))
         return;
       const t = document.createElement("style");
-      t.id = p.STYLES_MARKER, t.innerHTML = Z, document.head.appendChild(t);
+      t.id = p.STYLES_MARKER, t.innerHTML = O, document.head.appendChild(t);
     }
   };
   p.CONTAINER_MARKER = "data-game-keys-rendered", p.STYLES_MARKER = "game-keys-styles-injected", p._initInProgress = !1;
-  let I = p;
-  const O = [
+  let E = p;
+  const K = [
     {
       name: "Accounts",
       url: "/services/accounts",
@@ -1059,7 +1068,7 @@
       url: "https://gameboost.com/keys",
       icon: "https://cdn.gameboost.com/static/game-services/cs-skins.webp?v=2"
     }
-  ], K = `.crs-game-services {
+  ], V = `.crs-game-services {
   margin-top: 4rem !important;
 }
 
@@ -1215,14 +1224,14 @@
     </div>
     `
       );
-      t.insertAdjacentHTML("afterend", e), t.setAttribute(w.CONTAINER_MARKER, "true"), R(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-link").forEach((s) => {
+      t.insertAdjacentHTML("afterend", e), t.setAttribute(w.CONTAINER_MARKER, "true"), L(".crs-game-services", "exp_hp_service_view", "Browse All Games Services", "Visibility", 0), document.querySelectorAll(".game-service-link").forEach((s) => {
         var c;
         const a = (c = s.nextElementSibling) == null ? void 0 : c.querySelector(".game-service-name"), n = (a == null ? void 0 : a.textContent) || "Unknown";
         this.addTrackedEventListener(s, "click", () => f("exp_hp_service_card_click", n, "click", "Browse All Games Services"));
       });
     }
     renderServiceCards() {
-      return O.map((t) => (
+      return K.map((t) => (
         /* HTML */
         `
       <a class="game-service-link" href="${t.url}" data-service-name="${t.name.toLowerCase().replace(/\s+/g, "-")}">
@@ -1242,7 +1251,7 @@
       if (document.head.querySelector("style[data-game-services-styles]"))
         return;
       const t = document.createElement("style");
-      t.setAttribute("data-game-services-styles", "true"), t.textContent = K, document.head.appendChild(t);
+      t.setAttribute("data-game-services-styles", "true"), t.textContent = V, document.head.appendChild(t);
     }
     addTrackedEventListener(t, e, o) {
       t.addEventListener(e, o), this.eventHandlers.push({ element: t, event: e, handler: o });
@@ -1254,8 +1263,8 @@
     }
   };
   w.CONTAINER_MARKER = "data-game-services-rendered";
-  let C = w;
-  const V = `.crs-hero > a {
+  let I = w;
+  const $ = `.crs-hero > a {
   /* display: none; Ask about it */
   margin-bottom: 0;
 }
@@ -1437,7 +1446,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
   }
 }
 `;
-  class $ {
+  class F {
     constructor() {
       this.eventHandlers = [], this.searchFocusHandler = null, this.searchBlurHandler = null, this.searchInputHandler = null, this.init();
     }
@@ -1488,7 +1497,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       if (document.head.querySelector("style[data-hero-styles]"))
         return;
       const t = document.createElement("style");
-      t.setAttribute("data-hero-styles", "true"), t.textContent = V, document.head.appendChild(t);
+      t.setAttribute("data-hero-styles", "true"), t.textContent = $, document.head.appendChild(t);
     }
     addTrackedEventListener(t, e, o) {
       t.addEventListener(e, o), this.eventHandlers.push({ element: t, event: e, handler: o });
@@ -1502,7 +1511,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
     }
   }
   M({ name: "Іmproved homepage UX/UI and copy", dev: "OS" }), H("exp_hp");
-  class k {
+  class N {
     constructor() {
       this.init();
     }
@@ -1518,7 +1527,7 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       return t === "/" || t === "" || t === "/index.html";
     }
     initializeEnhancements() {
-      this.isHomePage() && (new $(), new E(), new I(), new C());
+      this.isHomePage() && (new F(), new S(), new E(), new I());
     }
     setupSPANavigation() {
       window.addEventListener("popstate", () => {
@@ -1532,6 +1541,5 @@ input[name='search']:not(:placeholder-shown) ~ .typing-effect {
       };
     }
   }
-  new k(), new k(), new k(), new k();
+  new N();
 })();
-//# sourceMappingURL=index.js.map
