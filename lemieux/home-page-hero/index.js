@@ -7,8 +7,8 @@
       event_desc: e,
       event_type: s,
       event_loc: i
-    }), j(`Event: ${t} | ${e} | ${s} | ${i}`, "success");
-  }, F = (t) => new Promise((e) => {
+    }), R(`Event: ${t} | ${e} | ${s} | ${i}`, "success");
+  }, j = (t) => new Promise((e) => {
     const s = document.querySelector(t);
     s && e(s);
     const i = new MutationObserver(() => {
@@ -35,7 +35,7 @@
             "view",
             s
           ), o.disconnect();
-        }, n) : (j("Element is not fully visible", "warn"), clearTimeout(l));
+        }, n) : (R("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [r] }
     ), typeof t == "string") {
@@ -43,7 +43,7 @@
       a && o.observe(a);
     } else
       o.observe(t);
-  }, j = (t, e = "info") => {
+  }, R = (t, e = "info") => {
     let s;
     switch (e) {
       case "info":
@@ -142,7 +142,7 @@
   ];
   function G(t, e) {
     const s = t instanceof Error ? t.message : String(t);
-    j(`${e}: ${s}`, "error");
+    R(`${e}: ${s}`, "error");
   }
   const Ue = `header {
   color: inherit !important;
@@ -451,7 +451,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
   data-crs-no-hide
   >${t}</icms-component
 >`
-  ), H = class H {
+  ), q = class q {
     constructor() {
       this.eventsAborter = null;
     }
@@ -465,9 +465,9 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async addNewHeroSection() {
       try {
-        const e = await F(H.TARGET_SELECTOR);
-        if (console.log("Hero target found:", e), !e) {
-          console.warn(`Target ${H.TARGET_SELECTOR} not found`);
+        const e = await j(q.TARGET_SELECTOR);
+        if (!e) {
+          console.warn(`Target ${q.TARGET_SELECTOR} not found`);
           return;
         }
         (() => {
@@ -478,7 +478,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
       }
     }
     replaceHeroContent(e) {
-      const s = e.querySelector(H.HERO_CLASS);
+      const s = e.querySelector(q.HERO_CLASS);
       s && s.remove(), this.eventsAborter && this.eventsAborter.abort(), e.insertAdjacentHTML(
         "beforebegin",
         Ke(this.renderNewHeroSection())
@@ -600,23 +600,23 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
         "exp_hp_hero_view_1",
         "Home page Hero Section",
         e.dataset.title || "",
-        H.VISIBILITY_THRESHOLD
+        q.VISIBILITY_THRESHOLD
       );
     }
     addStyles() {
-      if (document.getElementById(H.STYLES_ID)) return;
+      if (document.getElementById(q.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = H.STYLES_ID, e.textContent = Ue, document.head.appendChild(e);
+      e.id = q.STYLES_ID, e.textContent = Ue, document.head.appendChild(e);
     }
     destroy() {
       var s;
-      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), (s = document == null ? void 0 : document.querySelector(H.HERO_CLASS)) == null || s.remove();
-      const e = document.getElementById(H.STYLES_ID);
+      this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), (s = document == null ? void 0 : document.querySelector(q.HERO_CLASS)) == null || s.remove();
+      const e = document.getElementById(q.STYLES_ID);
       e && e.remove();
     }
   };
-  H.STYLES_ID = "crs-hero-styles", H.VISIBILITY_THRESHOLD = 0, H.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", H.HERO_CLASS = ".crs-hero-section";
-  let de = H;
+  q.STYLES_ID = "crs-hero-styles", q.VISIBILITY_THRESHOLD = 0, q.TARGET_SELECTOR = "icms-component:has(page-component-hero-image)", q.HERO_CLASS = ".crs-hero-section";
+  let de = q;
   const Je = `[data-crs-hide='true']:not([data-crs-no-hide]) {
   display: none !important;
 }
@@ -649,11 +649,11 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async hideSection() {
       try {
-        const e = await F(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
+        const e = await j(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
           ":scope > icms-component"
         );
         if (!s) {
-          j("No components found in page view boundary", "warn");
+          R("No components found in page view boundary", "warn");
           return;
         }
         const i = Array.from(s);
@@ -690,7 +690,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async changeSectionCopy() {
       try {
-        const e = await F(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
+        const e = await j(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
           ":scope > icms-component"
         );
         s == null || s.forEach((i) => {
@@ -729,7 +729,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
           this.hideSection();
         }, J.RESIZE_DEBOUNCE_MS);
       };
-      this.resizeObserver = new ResizeObserver(e), F(".page-view-boundary").then((s) => {
+      this.resizeObserver = new ResizeObserver(e), j(".page-view-boundary").then((s) => {
         s && this.resizeObserver && this.resizeObserver.observe(s);
       }).catch((s) => {
         G(s, "Setup resize observer");
@@ -1316,7 +1316,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     async modifySection() {
       try {
-        const e = await F(".crs-hero-section");
+        const e = await j(".crs-hero-section");
         e && (e.insertAdjacentHTML("afterend", Ze), this.initSlider());
       } catch (e) {
         G(e, "Error modifying Popular Categories section");
@@ -1328,7 +1328,7 @@ page-component-hero-image:has(vimeo-player) {
         ".crs-slider-section .swiper-initialized"
       );
       if (!e) {
-        j("Slider box not found for scroll interaction", "warn");
+        R("Slider box not found for scroll interaction", "warn");
         return;
       }
       e.style.cursor = "grab";
@@ -2109,13 +2109,13 @@ page-component-hero-image:has(vimeo-player) {
     }
     async render() {
       try {
-        const e = await F('[data-crs-title="Popular Categories"]'), s = document.querySelector(".crs-outfit-section");
+        const e = await j('[data-crs-title="Popular Categories"]'), s = document.querySelector(".crs-outfit-section");
         s && (this.eventsAborter && this.eventsAborter.abort(), s.remove());
         const i = et;
         if (e)
           e.insertAdjacentHTML("afterend", i), this.setupEvents();
         else {
-          j("Container .crs-winter-sale-section not found", "warn");
+          R("Container .crs-winter-sale-section not found", "warn");
           return;
         }
       } catch (e) {
@@ -3466,15 +3466,15 @@ page-component-hero-image:has(vimeo-player) {
           if (P && (_.style.transform = "none"), z && (_.style.webkitTransform = "none"), s.roundLengths)
             y = t.isHorizontal() ? ge(_, "width") : ge(_, "height");
           else {
-            const B = e(E, "width"), We = e(E, "padding-left"), K = e(E, "padding-right"), L = e(E, "margin-left"), A = e(E, "margin-right"), q = E.getPropertyValue("box-sizing");
-            if (q && q === "border-box")
+            const B = e(E, "width"), We = e(E, "padding-left"), K = e(E, "padding-right"), L = e(E, "margin-left"), A = e(E, "margin-right"), H = E.getPropertyValue("box-sizing");
+            if (H && H === "border-box")
               y = B + L + A;
             else {
               const {
                 clientWidth: X,
-                offsetWidth: ks
+                offsetWidth: Ls
               } = _;
-              y = B + We + K + L + A + (ks - X);
+              y = B + We + K + L + A + (Ls - X);
             }
           }
           P && (_.style.transform = P), z && (_.style.webkitTransform = z), s.roundLengths && (y = Math.floor(y));
@@ -3849,14 +3849,14 @@ page-component-hero-image:has(vimeo-player) {
       !r || r.destroyed || w.target === this && (r.wrapperEl.removeEventListener("transitionend", r.onTranslateToWrapperTransitionEnd), r.onTranslateToWrapperTransitionEnd = null, delete r.onTranslateToWrapperTransitionEnd, r.animating = !1, s && r.emit("transitionEnd"));
     }), r.wrapperEl.addEventListener("transitionend", r.onTranslateToWrapperTransitionEnd))), !0;
   }
-  var Ht = {
+  var qt = {
     getTranslate: Ot,
     setTranslate: Mt,
     minTranslate: At,
     maxTranslate: Bt,
     translateTo: Dt
   };
-  function qt(t, e) {
+  function Ht(t, e) {
     const s = this;
     s.params.cssMode || (s.wrapperEl.style.transitionDuration = `${t}ms`, s.wrapperEl.style.transitionDelay = t === 0 ? "0ms" : ""), s.emit("setTransition", t, e);
   }
@@ -3896,7 +3896,7 @@ page-component-hero-image:has(vimeo-player) {
     }));
   }
   var Nt = {
-    setTransition: qt,
+    setTransition: Ht,
     transitionStart: $t,
     transitionEnd: Gt
   };
@@ -4207,9 +4207,9 @@ page-component-hero-image:has(vimeo-player) {
       for (let L = 0; L < S - K; L += 1) {
         const A = L - Math.floor(L / I) * I;
         if (k) {
-          const q = I - A - 1;
+          const H = I - A - 1;
           for (let X = u.length - 1; X >= 0; X -= 1)
-            u[X].column === q && C.push(X);
+            u[X].column === H && C.push(X);
         } else
           C.push(I - A - 1);
       }
@@ -4217,8 +4217,8 @@ page-component-hero-image:has(vimeo-player) {
       B = Math.max(K - (I - S * 2), b), T && (B = Math.max(B, h - I + c + 1));
       for (let L = 0; L < B; L += 1) {
         const A = L - Math.floor(L / I) * I;
-        k ? u.forEach((q, X) => {
-          q.column === A && y.push(X);
+        k ? u.forEach((H, X) => {
+          H.column === A && y.push(X);
         }) : y.push(A);
       }
     }
@@ -4233,16 +4233,16 @@ page-component-hero-image:has(vimeo-player) {
     }), d.watchSlidesProgress && a.updateSlidesOffset(), e) {
       if (C.length > 0 && P) {
         if (typeof t > "u") {
-          const L = a.slidesGrid[_], q = a.slidesGrid[_ + z] - L;
-          l ? a.setTranslate(a.translate - q) : (a.slideTo(_ + Math.ceil(z), 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - q, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - q));
+          const L = a.slidesGrid[_], H = a.slidesGrid[_ + z] - L;
+          l ? a.setTranslate(a.translate - H) : (a.slideTo(_ + Math.ceil(z), 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
         } else if (i) {
           const L = k ? C.length / d.grid.rows : C.length;
           a.slideTo(a.activeIndex + L, 0, !1, !0), a.touchEventsData.currentTranslate = a.translate;
         }
       } else if (y.length > 0 && E)
         if (typeof t > "u") {
-          const L = a.slidesGrid[_], q = a.slidesGrid[_ - B] - L;
-          l ? a.setTranslate(a.translate - q) : (a.slideTo(_ - B, 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - q, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - q));
+          const L = a.slidesGrid[_], H = a.slidesGrid[_ - B] - L;
+          l ? a.setTranslate(a.translate - H) : (a.slideTo(_ - B, 0, !1, !0), i && (a.touchEventsData.startTranslate = a.touchEventsData.startTranslate - H, a.touchEventsData.currentTranslate = a.touchEventsData.currentTranslate - H));
         } else {
           const L = k ? y.length / d.grid.rows : y.length;
           a.slideTo(a.activeIndex - L, 0, !1, !0);
@@ -4317,7 +4317,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     return s(e);
   }
-  function He(t, e, s) {
+  function qe(t, e, s) {
     const i = D(), {
       params: n
     } = t, r = n.edgeSwipeDetection, o = n.edgeSwipeThreshold;
@@ -4334,7 +4334,7 @@ page-component-hero-image:has(vimeo-player) {
       n.pointerId = i.pointerId;
     } else i.type === "touchstart" && i.targetTouches.length === 1 && (n.touchId = i.targetTouches[0].identifier);
     if (i.type === "touchstart") {
-      He(e, i, i.targetTouches[0].pageX);
+      qe(e, i, i.targetTouches[0].pageX);
       return;
     }
     const {
@@ -4358,7 +4358,7 @@ page-component-hero-image:has(vimeo-player) {
       return;
     o.currentX = i.pageX, o.currentY = i.pageY;
     const d = o.currentX, g = o.currentY;
-    if (!He(e, i, d))
+    if (!qe(e, i, d))
       return;
     Object.assign(n, {
       isTouched: !0,
@@ -4559,7 +4559,7 @@ page-component-hero-image:has(vimeo-player) {
       e.navigation && (i.target === e.navigation.nextEl || i.target === e.navigation.prevEl) ? i.target === e.navigation.nextEl ? e.slideTo(v + b) : e.slideTo(v) : (e.swipeDirection === "next" && e.slideTo(c !== null ? c : v + b), e.swipeDirection === "prev" && e.slideTo(f !== null ? f : v));
     }
   }
-  function qe() {
+  function He() {
     const t = this, {
       params: e,
       el: s
@@ -4635,7 +4635,7 @@ page-component-hero-image:has(vimeo-player) {
       passive: !0
     }), s[a]("contextmenu", t.onTouchEnd, {
       passive: !0
-    }), (i.preventClicks || i.preventClicksPropagation) && n[a]("click", t.onClick, !0), i.cssMode && r[a]("scroll", t.onScroll), i.updateOnWindowResize ? t[u](o.ios || o.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", qe, !0) : t[u]("observerUpdate", qe, !0), n[a]("load", t.onLoad, {
+    }), (i.preventClicks || i.preventClicksPropagation) && n[a]("click", t.onClick, !0), i.cssMode && r[a]("scroll", t.onScroll), i.updateOnWindowResize ? t[u](o.ios || o.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", He, !0) : t[u]("observerUpdate", He, !0), n[a]("load", t.onLoad, {
       capture: !0
     }));
   };
@@ -4915,7 +4915,7 @@ page-component-hero-image:has(vimeo-player) {
   const Se = {
     eventsEmitter: yt,
     update: zt,
-    translate: Ht,
+    translate: qt,
     transition: Nt,
     slide: Ut,
     loop: Qt,
@@ -5622,13 +5622,13 @@ page-component-hero-image:has(vimeo-player) {
     }
     handleError(e, s) {
       const i = e instanceof Error ? e.message : String(e);
-      j(`Discipline ${s}: ${i}`, "error");
+      R(`Discipline ${s}: ${i}`, "error");
     }
     async render() {
       try {
-        const e = await F(O.CONTAINER_SELECTOR);
+        const e = await j(O.CONTAINER_SELECTOR);
         if (!e) {
-          j(`Container ${O.CONTAINER_SELECTOR} not found`, "warn");
+          R(`Container ${O.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupPagination(), this.setupVisibilityTracking();
@@ -5709,7 +5709,7 @@ page-component-hero-image:has(vimeo-player) {
       if (!e || !this.swiperInstance) return;
       const s = e.querySelectorAll(".carousel-dot");
       if (s.length === 0) {
-        j("Pagination buttons not found", "warn");
+        R("Pagination buttons not found", "warn");
         return;
       }
       this.updatePaginationState(s), s.forEach((i, n) => {
@@ -5768,7 +5768,7 @@ page-component-hero-image:has(vimeo-player) {
 	border: 1px solid #d9d9d9;
 }
 
-`, Re = "/tco-images/unsafe/1730x1703/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/AW25-Web-Banners 946px x 709px -M_DT.jpg", R = class R {
+`, Re = "/tco-images/unsafe/1730x1703/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/AW25-Web-Banners 946px x 709px -M_DT.jpg", F = class F {
     constructor() {
       this.swatchContainerObserver = null, this.swatchContainer = null, this.targetSection = null, this.heroImages = [], this.addedSwatches = /* @__PURE__ */ new Map(), this.selectedSwatchName = null, this.isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0, this.existingSwatchListeners = /* @__PURE__ */ new Map(), this.missingColours = [
         {
@@ -5838,14 +5838,14 @@ page-component-hero-image:has(vimeo-player) {
     }
     async addNewColours() {
       var n;
-      const e = await F(R.TARGET_SELECTOR);
+      const e = await j(F.TARGET_SELECTOR);
       this.targetSection = e, this.swatchContainer = e == null ? void 0 : e.querySelector(".color-swatch-box"), this.heroImages = Array.from(
         (e == null ? void 0 : e.querySelectorAll("img.fill.df-image")) || []
       );
       const s = (n = this.swatchContainer) == null ? void 0 : n.querySelectorAll(":scope > div");
       if (!this.swatchContainer || !s || s.length === 0) {
         console.warn(
-          `ColoursSection: Target section ${R.TARGET_SELECTOR} not found`
+          `ColoursSection: Target section ${F.TARGET_SELECTOR} not found`
         );
         return;
       }
@@ -6036,7 +6036,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     ensureHeroImages() {
       if (!this.targetSection || !document.contains(this.targetSection)) {
-        const s = document.querySelector(R.TARGET_SELECTOR);
+        const s = document.querySelector(F.TARGET_SELECTOR);
         this.targetSection = s;
       }
       const e = this.targetSection;
@@ -6088,20 +6088,20 @@ page-component-hero-image:has(vimeo-player) {
       }), this.addedSwatches.clear(), this.selectedSwatchName = null, this.targetSection = null, this.swatchContainer = null, this.heroImages = [];
     }
     addStyles() {
-      if (!document.getElementById(R.STYLES_ID)) {
+      if (!document.getElementById(F.STYLES_ID)) {
         const e = document.createElement("style");
-        e.id = R.STYLES_ID, e.textContent = Cs, document.head.appendChild(e);
+        e.id = F.STYLES_ID, e.textContent = Cs, document.head.appendChild(e);
       }
     }
   };
-  R.STYLES_ID = "crs-colours-styles", R.TARGET_SELECTOR = `[data-crs-marker="what's-your-favourite-colour?"]`;
-  let Ee = R;
+  F.STYLES_ID = "crs-colours-styles", F.TARGET_SELECTOR = `[data-crs-marker="what's-your-favourite-colour?"]`;
+  let Ee = F;
   Ye({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(t, e, s, i, n, r) {
     t.hj = t.hj || function() {
       (t.hj.q = t.hj.q || []).push(arguments);
     }, t._hjSettings = { hjid: 2667925, hjsv: 6 }, n = e.getElementsByTagName("head")[0], r = e.createElement("script"), r.async = !0, r.src = s + t._hjSettings.hjid + i + t._hjSettings.hjsv, n && n.appendChild(r);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv="), window.hj("event", "exp_hp_hero");
-  class Fe {
+  class ks {
     constructor() {
       this.resizeDebounceTimer = null, this.previousUrl = location.href, this.hero = new de(), this.hideSections = new ue(), this.popularCategories = new pe(), this.outfitBuilder = new st(), this.discipline = new _e(), this.colours = new Ee(), this.isDesktop = window.innerWidth > 700, this.init();
     }
@@ -6163,9 +6163,14 @@ page-component-hero-image:has(vimeo-player) {
       e.textContent = Xe, e.id = "crs-homepage-hero-styles", document.head.appendChild(e);
     }
   }
+  function Fe() {
+    window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, j("fashion-recommendations-slide img[src]").then(() => {
+      setTimeout(() => {
+        new ks();
+      }, 200);
+    }));
+  }
   window.onload = () => {
-    setTimeout(() => {
-      window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, new Fe());
-    }, 100);
-  }, (async () => (await new Promise((e) => setTimeout(e, 2e3)), !document.querySelector(".crs-hero") && !window._crsHPTestInitialized && (window._crsHPTestInitialized = !0, new Fe())))();
+    Fe();
+  }, (async () => (await new Promise((e) => setTimeout(e, 2e3)), document.querySelector(".crs-hero") || Fe()))();
 })();
