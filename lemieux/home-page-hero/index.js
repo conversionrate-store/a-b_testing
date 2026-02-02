@@ -6164,6 +6164,8 @@ page-component-hero-image:has(vimeo-player) {
     }
   }
   window.onload = () => {
-    window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, new Fe());
+    setTimeout(() => {
+      window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, new Fe());
+    }, 100);
   }, (async () => (await new Promise((e) => setTimeout(e, 2e3)), !document.querySelector(".crs-hero") && !window._crsHPTestInitialized && (window._crsHPTestInitialized = !0, new Fe())))();
 })();
