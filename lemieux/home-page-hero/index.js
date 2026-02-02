@@ -7,8 +7,8 @@
       event_desc: e,
       event_type: s,
       event_loc: i
-    }), R(`Event: ${t} | ${e} | ${s} | ${i}`, "success");
-  }, j = (t) => new Promise((e) => {
+    }), j(`Event: ${t} | ${e} | ${s} | ${i}`, "success");
+  }, F = (t) => new Promise((e) => {
     const s = document.querySelector(t);
     s && e(s);
     const i = new MutationObserver(() => {
@@ -35,7 +35,7 @@
             "view",
             s
           ), l.disconnect();
-        }, n) : (R("Element is not fully visible", "warn"), clearTimeout(o));
+        }, n) : (j("Element is not fully visible", "warn"), clearTimeout(o));
       },
       { threshold: [r] }
     ), typeof t == "string") {
@@ -43,7 +43,7 @@
       a && l.observe(a);
     } else
       l.observe(t);
-  }, R = (t, e = "info") => {
+  }, j = (t, e = "info") => {
     let s;
     switch (e) {
       case "info":
@@ -142,7 +142,7 @@
   ];
   function G(t, e) {
     const s = t instanceof Error ? t.message : String(t);
-    R(`${e}: ${s}`, "error");
+    j(`${e}: ${s}`, "error");
   }
   const Xe = `header {
   color: inherit !important;
@@ -465,9 +465,8 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async addNewHeroSection() {
       try {
-        await j('[data-crs-marker="winter-sale"]');
-        const e = await j(q.TARGET_SELECTOR);
-        if (!e) {
+        const e = await F(q.TARGET_SELECTOR);
+        if (console.log("Hero target found:", e), !e) {
           console.warn(`Target ${q.TARGET_SELECTOR} not found`);
           return;
         }
@@ -650,11 +649,11 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async hideSection() {
       try {
-        const e = await j(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
+        const e = await F(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
           ":scope > icms-component"
         );
         if (!s) {
-          R("No components found in page view boundary", "warn");
+          j("No components found in page view boundary", "warn");
           return;
         }
         const i = Array.from(s);
@@ -691,7 +690,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
     }
     async changeSectionCopy() {
       try {
-        const e = await j(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
+        const e = await F(".page-view-boundary"), s = e == null ? void 0 : e.querySelectorAll(
           ":scope > icms-component"
         );
         s == null || s.forEach((i) => {
@@ -730,7 +729,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero) {
           this.hideSection();
         }, J.RESIZE_DEBOUNCE_MS);
       };
-      this.resizeObserver = new ResizeObserver(e), j(".page-view-boundary").then((s) => {
+      this.resizeObserver = new ResizeObserver(e), F(".page-view-boundary").then((s) => {
         s && this.resizeObserver && this.resizeObserver.observe(s);
       }).catch((s) => {
         G(s, "Setup resize observer");
@@ -1317,7 +1316,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     async modifySection() {
       try {
-        const e = await j(".crs-hero-section");
+        const e = await F(".crs-hero-section");
         e && (e.insertAdjacentHTML("afterend", Je), this.initSlider());
       } catch (e) {
         G(e, "Error modifying Popular Categories section");
@@ -1329,7 +1328,7 @@ page-component-hero-image:has(vimeo-player) {
         ".crs-slider-section .swiper-initialized"
       );
       if (!e) {
-        R("Slider box not found for scroll interaction", "warn");
+        j("Slider box not found for scroll interaction", "warn");
         return;
       }
       e.style.cursor = "grab";
@@ -2110,13 +2109,13 @@ page-component-hero-image:has(vimeo-player) {
     }
     async render() {
       try {
-        const e = await j('[data-crs-marker="winter-sale"]'), s = document.querySelector(".crs-outfit-section");
+        const e = await F('[data-crs-title="Popular Categories"]'), s = document.querySelector(".crs-outfit-section");
         s && (this.eventsAborter && this.eventsAborter.abort(), s.remove());
         const i = Qe;
         if (e)
           e.insertAdjacentHTML("afterend", i), this.setupEvents();
         else {
-          R("Container .crs-winter-sale-section not found", "warn");
+          j("Container .crs-winter-sale-section not found", "warn");
           return;
         }
       } catch (e) {
@@ -5623,13 +5622,13 @@ page-component-hero-image:has(vimeo-player) {
     }
     handleError(e, s) {
       const i = e instanceof Error ? e.message : String(e);
-      R(`Discipline ${s}: ${i}`, "error");
+      j(`Discipline ${s}: ${i}`, "error");
     }
     async render() {
       try {
-        const e = await j(O.CONTAINER_SELECTOR);
+        const e = await F(O.CONTAINER_SELECTOR);
         if (!e) {
-          R(`Container ${O.CONTAINER_SELECTOR} not found`, "warn");
+          j(`Container ${O.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupPagination(), this.setupVisibilityTracking();
@@ -5710,7 +5709,7 @@ page-component-hero-image:has(vimeo-player) {
       if (!e || !this.swiperInstance) return;
       const s = e.querySelectorAll(".carousel-dot");
       if (s.length === 0) {
-        R("Pagination buttons not found", "warn");
+        j("Pagination buttons not found", "warn");
         return;
       }
       this.updatePaginationState(s), s.forEach((i, n) => {
@@ -5769,7 +5768,7 @@ page-component-hero-image:has(vimeo-player) {
 	border: 1px solid #d9d9d9;
 }
 
-`, Re = "/tco-images/unsafe/1730x1703/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/AW25-Web-Banners 946px x 709px -M_DT.jpg", F = class F {
+`, Re = "/tco-images/unsafe/1730x1703/filters:upscale():fill(white):quality(70)/https://www.lemieux.com/static/cms/media/AW25-Web-Banners 946px x 709px -M_DT.jpg", R = class R {
     constructor() {
       this.swatchContainerObserver = null, this.swatchContainer = null, this.targetSection = null, this.heroImages = [], this.addedSwatches = /* @__PURE__ */ new Map(), this.selectedSwatchName = null, this.isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0, this.existingSwatchListeners = /* @__PURE__ */ new Map(), this.missingColours = [
         {
@@ -5839,14 +5838,14 @@ page-component-hero-image:has(vimeo-player) {
     }
     async addNewColours() {
       var n;
-      const e = await j(F.TARGET_SELECTOR);
+      const e = await F(R.TARGET_SELECTOR);
       this.targetSection = e, this.swatchContainer = e == null ? void 0 : e.querySelector(".color-swatch-box"), this.heroImages = Array.from(
         (e == null ? void 0 : e.querySelectorAll("img.fill.df-image")) || []
       );
       const s = (n = this.swatchContainer) == null ? void 0 : n.querySelectorAll(":scope > div");
       if (!this.swatchContainer || !s || s.length === 0) {
         console.warn(
-          `ColoursSection: Target section ${F.TARGET_SELECTOR} not found`
+          `ColoursSection: Target section ${R.TARGET_SELECTOR} not found`
         );
         return;
       }
@@ -6037,7 +6036,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     ensureHeroImages() {
       if (!this.targetSection || !document.contains(this.targetSection)) {
-        const s = document.querySelector(F.TARGET_SELECTOR);
+        const s = document.querySelector(R.TARGET_SELECTOR);
         this.targetSection = s;
       }
       const e = this.targetSection;
@@ -6089,14 +6088,14 @@ page-component-hero-image:has(vimeo-player) {
       }), this.addedSwatches.clear(), this.selectedSwatchName = null, this.targetSection = null, this.swatchContainer = null, this.heroImages = [];
     }
     addStyles() {
-      if (!document.getElementById(F.STYLES_ID)) {
+      if (!document.getElementById(R.STYLES_ID)) {
         const e = document.createElement("style");
-        e.id = F.STYLES_ID, e.textContent = Es, document.head.appendChild(e);
+        e.id = R.STYLES_ID, e.textContent = Es, document.head.appendChild(e);
       }
     }
   };
-  F.STYLES_ID = "crs-colours-styles", F.TARGET_SELECTOR = `[data-crs-marker="what's-your-favourite-colour?"]`;
-  let Ee = F;
+  R.STYLES_ID = "crs-colours-styles", R.TARGET_SELECTOR = `[data-crs-marker="what's-your-favourite-colour?"]`;
+  let Ee = R;
   We({ name: "Homepage Hero Image Alternative", dev: "OS" }), (function(t, e, s, i, n, r) {
     t.hj = t.hj || function() {
       (t.hj.q = t.hj.q || []).push(arguments);
@@ -6168,4 +6167,3 @@ page-component-hero-image:has(vimeo-player) {
     new Cs();
   };
 })();
- 
