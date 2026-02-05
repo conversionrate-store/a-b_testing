@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const l = (o) => new Promise((n) => {
+  const m = (o) => new Promise((n) => {
     const e = document.querySelector(o);
     e && n(e);
     const t = new MutationObserver(() => {
@@ -24,7 +24,7 @@
     var t;
     const e = `; ${document.cookie}`.split(`; ${o}=`);
     return e.length === 2 ? (t = e.pop()) == null ? void 0 : t.split(";").shift() : null;
-  }, m = () => new URLSearchParams(window.location.search).get("formId"), p = (o) => new URLSearchParams(window.location.search).get(o), g = async (o, n, e) => {
+  }, l = () => new URLSearchParams(window.location.search).get("formId"), p = (o) => new URLSearchParams(window.location.search).get(o), g = async (o, n, e) => {
     try {
       const t = await fetch(o, {
         ...n,
@@ -46,7 +46,7 @@
         {
           method: "POST",
           body: JSON.stringify({
-            form_id: m(),
+            form_id: l(),
             client_token: h("client_token"),
             check: !0
           })
@@ -148,7 +148,7 @@ footer > .GFooter__Content {
         this.isAddingContainer = !0;
         try {
           this.removeAllAsideContainers();
-          const n = await l(".wrapper-react");
+          const n = await m(".wrapper-react");
           n && n.insertAdjacentHTML(
             "afterbegin",
             /* HTML */
@@ -306,9 +306,9 @@ footer > .GFooter__Content {
         this.isRendering = !0;
         try {
           const t = await Promise.race([
-            l(".GHeaderFormWrapper"),
-            l(".GImageTitle")
-          ]), i = document.querySelector(".GPaymentSecurityTag"), a = document.querySelector(this.asideContainerSelector), r = m(), s = this.titles[r] || "Complete your passport application";
+            m(".GHeaderFormWrapper"),
+            m(".GImageTitle")
+          ]), i = document.querySelector(".GPaymentSecurityTag"), a = document.querySelector(this.asideContainerSelector), r = l(), s = this.titles[r] || "Complete your passport application";
           let d = sessionStorage.getItem(
             "crs-aside-security-" + r
           );
@@ -455,7 +455,7 @@ footer > .GFooter__Content {
         try {
           const { data: e, error: t } = await this.getFillFormProgress();
           t && console.error(t);
-          const i = await l(
+          const i = await m(
             this.headerContainerSelector
           ), a = document.getElementById(this.headerContainerId);
           a && a.remove();
@@ -512,9 +512,9 @@ footer > .GFooter__Content {
       }
     }
     async addProgressTitleToSecondScreen() {
-      const n = await l(
+      const n = await m(
         ".GHeader:has(.GProgressBar)"
-      ), e = document.getElementById("crs-second-screen-title"), t = m(), i = this.secondTitles[t] || "Submit your passport renewal application";
+      ), e = document.getElementById("crs-second-screen-title"), t = l(), i = this.secondTitles[t] || "Submit your passport renewal application";
       if (e && e.remove(), n) {
         const a = (
           /* HTML */
@@ -570,11 +570,22 @@ footer > .GFooter__Content {
   }
 }
 
-.PaymentCombinedInformation .payment-method-information__item {
+.PaymentCombinedInformation
+  .charge-payment-form
+  .payment-method-information
+  .payment-method-information__item {
   position: relative;
   z-index: 2;
+}
+
+.PaymentCombinedInformation
+  .charge-payment-form
+  .payment-method-information
+  .payment-method-information__item
+  label:not(.ant-radio-wrapper-checked):not(:hover):not(:focus) {
   border: 1px solid #eaeaea !important;
 }
+
 .PaymentCombinedInformation
   .charge-payment-form
   .payment-method-information
@@ -635,6 +646,8 @@ footer > .GFooter__Content {
 }
 
 .PaymentCombinedInformation
+  .charge-payment-form
+  .payment-method-information
   .payment-method-information__item:has(+ .payment-method-information__item) {
   margin-top: calc(var(--crs-container-padding));
   z-index: 3;
@@ -808,6 +821,7 @@ footer > .GFooter__Content {
   line-height: 30.8px !important;
   letter-spacing: -0.1px !important;
   text-decoration: none !important;
+  font-family: InterSemiBold, sans-serif !important;
 }
 
 @media (max-width: 767px) {
@@ -938,7 +952,7 @@ footer > .GFooter__Content {
       if (!this.isProcessing) {
         this.isProcessing = !0;
         try {
-          const n = await l(this.paymentsSelector), e = await l(".crs-aside-container"), t = n.querySelectorAll(
+          const n = await m(this.paymentsSelector), e = await m(".crs-aside-container"), t = n.querySelectorAll(
             ".payment-method-information__item"
           ), i = n.querySelector(".traveling-soon > div");
           i && (i.textContent = "Need your passport soon?"), e && (e.dataset.page = "payment"), t.forEach((a) => {
@@ -1021,7 +1035,7 @@ footer > .GFooter__Content {
         this.cleanUpComponents(), sessionStorage.removeItem("crs-first-time-user-checked");
         return;
       }
-      const e = m();
+      const e = l();
       if (!e || !this.targetFormIds.includes(e) || p("page") !== "payment" && p("page") !== "form") {
         sessionStorage.removeItem("crs-first-time-user-checked"), this.cleanUpComponents();
         return;
