@@ -57,7 +57,7 @@
     } catch (n) {
       return { data: null, error: n };
     }
-  }, _ = async (o) => {
+  }, C = async (o) => {
     try {
       const { data: n, error: e } = await g(`https://auth.${f}usersData/data`, {
         method: "GET",
@@ -71,7 +71,7 @@
     } catch (n) {
       return { data: null, error: n };
     }
-  }, C = `aside.ant-layout-sider {
+  }, _ = `aside.ant-layout-sider {
   display: none;
 }
 
@@ -170,7 +170,7 @@ footer > .GFooter__Content {
       const n = document.getElementById(this.asideStyleId);
       n && n.remove();
       const e = document.createElement("style");
-      e.textContent = C, e.id = this.asideStyleId, document.head.appendChild(e);
+      e.textContent = _, e.id = this.asideStyleId, document.head.appendChild(e);
     }
   }
   const I = `.crs-aside-block {
@@ -442,7 +442,7 @@ footer > .GFooter__Content {
       }, this.progressStats = {
         0: "0% Completed",
         70: "70%"
-      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.mainFormElement = null;
+      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null;
     }
     init() {
       const n = p("page");
@@ -495,11 +495,23 @@ footer > .GFooter__Content {
       const n = document.querySelector(
         ".form-block__main_Form"
       );
-      n && (this.mainFormElement && this.formInputHandler && this.mainFormElement.removeEventListener("input", this.formInputHandler), this.mainFormElement = n, this.formInputHandler = (e) => {
-        e.target, this.debounceTimer && clearTimeout(this.debounceTimer), this.abortController && this.abortController.abort(), this.abortController = new AbortController(), this.debounceTimer = setTimeout(() => {
+      if (!n) return;
+      this.mainFormElement && this.formInputHandler && this.mainFormElement.removeEventListener("input", this.formInputHandler), this.formClickHandler && document.removeEventListener("click", this.formClickHandler), this.mainFormElement = n;
+      const e = () => {
+        this.debounceTimer && clearTimeout(this.debounceTimer), this.abortController && this.abortController.abort(), this.abortController = new AbortController(), this.debounceTimer = setTimeout(() => {
           this.updateProgress(this.abortController.signal);
         }, 1e3);
-      }, n.addEventListener("input", this.formInputHandler));
+      };
+      this.formInputHandler = (t) => {
+        e();
+      }, this.formClickHandler = (t) => {
+        const i = t.target;
+        (i.closest(".ant-select-item-option") || // Ant Design select options
+        i.matches(".ant-radio-input") || // Ant Design radio
+        i.matches('input[type="radio"]') || // Standard radio
+        i.matches('input[type="checkbox"]') || // Checkbox
+        i.closest(".ant-radio-wrapper")) && e();
+      }, n.addEventListener("input", this.formInputHandler), document.addEventListener("click", this.formClickHandler);
     }
     async updateProgress(n) {
       const { data: e } = await this.getFillFormProgress(n);
@@ -533,7 +545,7 @@ footer > .GFooter__Content {
       return t ? (t.name !== "AbortError" && console.error(t), { data: null, error: t }) : { data: e, error: null };
     }
     cleanUp() {
-      this.mainFormElement && this.formInputHandler && (this.mainFormElement.removeEventListener("input", this.formInputHandler), this.mainFormElement = null, this.formInputHandler = null), this.debounceTimer && (clearTimeout(this.debounceTimer), this.debounceTimer = null), this.abortController && (this.abortController.abort(), this.abortController = null);
+      this.mainFormElement && (this.formInputHandler && (this.mainFormElement.removeEventListener("input", this.formInputHandler), this.formInputHandler = null), this.mainFormElement = null), this.formClickHandler && (document.removeEventListener("click", this.formClickHandler), this.formClickHandler = null), this.debounceTimer && (clearTimeout(this.debounceTimer), this.debounceTimer = null), this.abortController && (this.abortController.abort(), this.abortController = null);
       const n = document.getElementById(this.headerContainerId);
       n == null || n.remove();
       const e = document.getElementById(
@@ -621,7 +633,7 @@ footer > .GFooter__Content {
     .ant-radio-wrapper
     .content {
     padding-left: 40px !important;
-    padding: 16px 40px 16px 16px;
+    /* padding: 16px 40px 16px 16px; */
   }
 }
 
@@ -655,6 +667,8 @@ footer > .GFooter__Content {
 
 @media (max-width: 767px) {
   .PaymentCombinedInformation
+    .charge-payment-form
+    .payment-method-information
     .payment-method-information__item:has(+ .payment-method-information__item) {
     margin-top: calc(var(--crs-container-padding) + 30px);
   }
@@ -955,7 +969,7 @@ footer > .GFooter__Content {
           const n = await m(this.paymentsSelector), e = await m(".crs-aside-container"), t = n.querySelectorAll(
             ".payment-method-information__item"
           ), i = n.querySelector(".traveling-soon > div");
-          i && (i.textContent = "Need your passport soon?"), e && (e.dataset.page = "payment"), t.forEach((a) => {
+          i && (i.textContent = "Need your passport sooner?"), e && (e.dataset.page = "payment"), t.forEach((a) => {
             var d, c, u, y;
             const r = a.querySelector(
               ".sale-block__processing> div:first-child p"
@@ -992,7 +1006,8 @@ footer > .GFooter__Content {
     }
     init() {
       this.checkIsUserLoggedIn().then((n) => {
-        n || (this.spaPageChangeHandler(), this.handleInitialPageLoad());
+        const e = sessionStorage.getItem("crs-first-time-user-checked") === "true";
+        (!n || e) && (this.spaPageChangeHandler(), this.handleInitialPageLoad());
       });
     }
     async checkIsUserLoggedIn() {
@@ -1000,7 +1015,7 @@ footer > .GFooter__Content {
       if (sessionStorage.getItem("crs-first-time-user-checked") === "true")
         return !1;
       this.abortController && this.abortController.abort(), this.abortController = new AbortController();
-      const { data: e, error: t } = await _(this.abortController.signal);
+      const { data: e, error: t } = await C(this.abortController.signal);
       if (this.abortController.signal.aborted)
         return !1;
       const i = !!((d = (s = (r = (a = e == null ? void 0 : e.data) == null ? void 0 : a.data) == null ? void 0 : r.personal) == null ? void 0 : s.communication) != null && d.email) && !t;
