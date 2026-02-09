@@ -1119,5 +1119,5 @@ footer > .GFooter__Content {
       ), this.domContentLoadedHandler = null), this.windowLoadHandler && (window.removeEventListener("load", this.windowLoadHandler), this.windowLoadHandler = null), this.originalPushState && (history.pushState = this.originalPushState, this.originalPushState = null), this.originalReplaceState && (history.replaceState = this.originalReplaceState, this.originalReplaceState = null), this.cleanUpComponents();
     }
   }
-  new H();
+  window.crsPassportAppFlowTestInstance || (window.crsPassportAppFlowTestInstance = !0, new H());
 })();
