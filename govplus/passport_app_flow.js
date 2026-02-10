@@ -1,32 +1,32 @@
 (function() {
   "use strict";
-  const m = (o) => new Promise((n) => {
-    const e = document.querySelector(o);
+  const m = (a) => new Promise((n) => {
+    const e = document.querySelector(a);
     e && n(e);
     const t = new MutationObserver(() => {
-      const i = document.querySelector(o);
+      const i = document.querySelector(a);
       i && (n(i), t.disconnect());
     });
     t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), x = ({ name: o, dev: n }) => {
+  }), x = ({ name: a, dev: n }) => {
     console.log(
-      `%c EXP: ${o} (DEV: ${n})`,
+      `%c EXP: ${a} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, w = (o) => {
+  }, w = (a) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", o, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
     }, 1e3);
-  }, h = (o) => {
+  }, h = (a) => {
     var t;
-    const e = `; ${document.cookie}`.split(`; ${o}=`);
+    const e = `; ${document.cookie}`.split(`; ${a}=`);
     return e.length === 2 ? (t = e.pop()) == null ? void 0 : t.split(";").shift() : null;
-  }, l = () => new URLSearchParams(window.location.search).get("formId"), p = (o) => new URLSearchParams(window.location.search).get(o), g = async (o, n, e) => {
+  }, l = () => new URLSearchParams(window.location.search).get("formId"), p = (a) => new URLSearchParams(window.location.search).get(a), g = async (a, n, e) => {
     try {
-      const t = await fetch(o, {
+      const t = await fetch(a, {
         ...n,
         signal: e
       }), i = await t.json();
@@ -39,7 +39,7 @@
     } catch (t) {
       return { data: null, error: t };
     }
-  }, f = location.hostname.includes(".com") ? "govplus.com/" : "govplus.app/", b = async (o) => {
+  }, f = location.hostname.includes(".com") ? "govplus.com/" : "govplus.app/", b = async (a) => {
     try {
       const { data: n, error: e } = await g(
         `https://api.${f}api_gov/form/getFormFillPercent`,
@@ -51,13 +51,13 @@
             check: !0
           })
         },
-        o
+        a
       );
       return e ? { data: null, error: e } : { data: n == null ? void 0 : n.success, error: null };
     } catch (n) {
       return { data: null, error: n };
     }
-  }, C = async (o) => {
+  }, C = async (a) => {
     try {
       const { data: n, error: e } = await g(`https://auth.${f}usersData/data`, {
         method: "GET",
@@ -66,12 +66,12 @@
           Authorization: `Bearer ${h("client_token")}`
         },
         credentials: "include"
-      }, o);
+      }, a);
       return e ? { data: null, error: e } : { data: n, error: null };
     } catch (n) {
       return { data: null, error: n };
     }
-  }, _ = `aside.ant-layout-sider {
+  }, v = `aside.ant-layout-sider {
   display: none;
 }
 
@@ -136,7 +136,7 @@ footer > .GFooter__Content {
     padding-inline: 10px;
   }
 }`;
-  class v {
+  class _ {
     constructor() {
       this.asideContainerSelector = ".crs-aside-container", this.asideStyleId = "crs-aside-container-style", this.isAddingContainer = !1;
     }
@@ -170,7 +170,7 @@ footer > .GFooter__Content {
       const n = document.getElementById(this.asideStyleId);
       n && n.remove();
       const e = document.createElement("style");
-      e.textContent = _, e.id = this.asideStyleId, document.head.appendChild(e);
+      e.textContent = v, e.id = this.asideStyleId, document.head.appendChild(e);
     }
   }
   const I = `.crs-aside-block {
@@ -308,11 +308,11 @@ footer > .GFooter__Content {
           const t = await Promise.race([
             m(".GHeaderFormWrapper"),
             m(".GImageTitle")
-          ]), i = document.querySelector(".GPaymentSecurityTag"), a = document.querySelector(this.asideContainerSelector), r = l(), s = this.titles[r] || "Complete your passport application";
+          ]), i = document.querySelector(".GPaymentSecurityTag"), o = document.querySelector(this.asideContainerSelector), r = l(), s = this.titles[r] || "Complete your passport application";
           let d = sessionStorage.getItem(
             "crs-aside-security-" + r
           );
-          d || (d = ((e = (n = i == null ? void 0 : i.textContent) == null ? void 0 : n.trim()) == null ? void 0 : e.replace("customers", "customers<br/> 12K reviews ")) || null, sessionStorage.setItem("crs-aside-security-" + r, d || "")), a && (a.innerHTML = "");
+          d || (d = ((e = (n = i == null ? void 0 : i.textContent) == null ? void 0 : n.trim()) == null ? void 0 : e.replace("customers", "customers<br/> 12K reviews ")) || null, sessionStorage.setItem("crs-aside-security-" + r, d || "")), o && (o.innerHTML = "");
           const c = (
             /* HTML */
             `<div class="crs-aside">
@@ -332,7 +332,7 @@ footer > .GFooter__Content {
       <div class="crs-aside-security">${d}</div>
     </div>`
           );
-          a == null || a.insertAdjacentHTML("afterbegin", c);
+          o == null || o.insertAdjacentHTML("afterbegin", c);
         } finally {
           this.isRendering = !1;
         }
@@ -359,33 +359,8 @@ footer > .GFooter__Content {
   }
 }
 
-.crs-progress {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.crs-progress-bar {
-  width: 100%;
-  height: 6px;
-  border-radius: 100px;
-  background: #ebebeb;
-}
-
-.crs-progress-fill {
-  height: 100%;
-  border-radius: 100px;
-  background: #13ba68;
-  transition: width 0.3s ease-in-out;
-}
-
-.crs-progress-stats {
-  flex-shrink: 0;
-}
-
 .crs-header-title,
 .crs-second-screen-title {
-  margin-top: 12px;
   color: #191919;
   font-size: 36px;
   font-weight: 600;
@@ -427,8 +402,65 @@ footer > .GFooter__Content {
     line-height: 22px;
   }
 }
+`, k = `.crs-progress {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.crs-progress-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 100px;
+  background: #ebebeb;
+}
+
+.crs-progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: #13ba68;
+  transition: width 0.3s ease-in-out;
+}
+
+.crs-progress-stats {
+  flex-shrink: 0;
+}
 `;
-  class k {
+  class E {
+    constructor() {
+      this.progressStyleId = "crs-progress-style";
+    }
+    addStyles() {
+      const n = document.getElementById(this.progressStyleId);
+      n == null || n.remove();
+      const e = document.createElement("style");
+      e.textContent = k, e.id = this.progressStyleId, document.head.appendChild(e);
+    }
+    cleanUp() {
+      const n = document.getElementById(this.progressStyleId);
+      n == null || n.remove();
+    }
+    getHtml(n) {
+      const e = Number.isFinite(n) ? n : 0;
+      return (
+        /* HTML */
+        `<div class="crs-progress">
+      <div class="crs-progress-bar">
+        <div
+          class="crs-progress-fill"
+          style="width: ${e}%"
+        ></div>
+      </div>
+      <div class="crs-progress-stats">
+        <div class="crs-progress-stats-item-value">
+          ${e}% completed
+        </div>
+      </div>
+    </div>`
+      );
+    }
+  }
+  class H {
     constructor() {
       this.headerStyleId = "crs-header-style", this.headerContainerSelector = ".GHeader:not(:has(.GProgressBar))", this.headerContainerId = "crs-header-container", this.isRendering = !1, this.titles = {
         0: "Fill out a personalized passport form",
@@ -442,11 +474,11 @@ footer > .GFooter__Content {
       }, this.progressStats = {
         0: "0% Completed",
         70: "70%"
-      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null;
+      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null, this.progressBar = new E();
     }
     init() {
       const n = p("page");
-      n && n === "payment" && this.cleanUp(), this.addStyles(), this.isRendering || (this.render(), this.addProgressTitleToSecondScreen());
+      n && n === "payment" && this.cleanUp(), this.addStyles(), this.progressBar.addStyles(), this.isRendering || (this.render(), this.addProgressTitleToSecondScreen());
     }
     async render() {
       var n;
@@ -457,27 +489,15 @@ footer > .GFooter__Content {
           t && console.error(t);
           const i = await m(
             this.headerContainerSelector
-          ), a = document.getElementById(this.headerContainerId);
-          a && a.remove();
-          const r = this.titles[e == null ? void 0 : e.oneProduct], s = (
+          ), o = document.getElementById(this.headerContainerId);
+          o && o.remove();
+          const r = this.titles[e == null ? void 0 : e.oneProduct], s = this.progressBar.getHtml((e == null ? void 0 : e.oneProduct) ?? 0), d = (
             /* HTML */
             `<div
         class="crs-header"
         id="${this.headerContainerId}"
       >
-        <div class="crs-progress">
-          <div class="crs-progress-bar">
-            <div
-              class="crs-progress-fill"
-              style="width: ${e == null ? void 0 : e.oneProduct}%"
-            ></div>
-          </div>
-          <div class="crs-progress-stats">
-            <div class="crs-progress-stats-item-value">
-              ${e == null ? void 0 : e.oneProduct}% completed
-            </div>
-          </div>
-        </div>
+      <!--${s}-->
         <div class="crs-header-title">${r || this.titles[0]}</div>
         <div class="crs-header-subtitle">
           GOV+ will fill out your application for you to help you avoid any
@@ -485,7 +505,7 @@ footer > .GFooter__Content {
         </div>
       </div>`
           );
-          (n = i == null ? void 0 : i.parentElement) == null || n.insertAdjacentHTML("afterend", s), this.updateProgressByFormChange();
+          (n = i == null ? void 0 : i.parentElement) == null || n.insertAdjacentHTML("afterend", d);
         } finally {
           this.isRendering = !1;
         }
@@ -506,21 +526,17 @@ footer > .GFooter__Content {
         e();
       }, this.formClickHandler = (t) => {
         const i = t.target;
-        (i.closest(".ant-select-item-option") || // Ant Design select options
-        i.matches(".ant-radio-input") || // Ant Design radio
-        i.matches('input[type="radio"]') || // Standard radio
-        i.matches('input[type="checkbox"]') || // Checkbox
-        i.closest(".ant-radio-wrapper")) && e();
+        (i.closest(".ant-select-item-option") || i.matches(".ant-radio-input") || i.matches('input[type="radio"]') || i.matches('input[type="checkbox"]') || i.closest(".ant-radio-wrapper")) && e();
       }, n.addEventListener("input", this.formInputHandler), document.addEventListener("click", this.formClickHandler);
     }
     async updateProgress(n) {
       const { data: e } = await this.getFillFormProgress(n);
       if (e) {
-        const t = e.oneProduct, i = document.querySelector(".crs-progress-fill"), a = document.querySelector(
+        const t = e.oneProduct, i = document.querySelector(".crs-progress-fill"), o = document.querySelector(
           ".crs-progress-stats-item-value"
         );
-        if (!i || !a) return;
-        i.style.width = `${t}%`, a.innerText = `${e == null ? void 0 : e.oneProduct}% completed`;
+        if (!i || !o) return;
+        i.style.width = `${t}%`, o.innerText = `${t}% completed`;
       }
     }
     async addProgressTitleToSecondScreen() {
@@ -528,7 +544,7 @@ footer > .GFooter__Content {
         ".GHeader:has(.GProgressBar)"
       ), e = document.getElementById("crs-second-screen-title"), t = l(), i = this.secondTitles[t] || "Submit your passport renewal application";
       if (e && e.remove(), n) {
-        const a = (
+        const o = (
           /* HTML */
           `<div
         id="crs-second-screen-title"
@@ -537,7 +553,7 @@ footer > .GFooter__Content {
         ${i}
       </div>`
         );
-        n.insertAdjacentHTML("beforeend", a);
+        n.insertAdjacentHTML("beforeend", o);
       }
     }
     async getFillFormProgress(n) {
@@ -553,7 +569,7 @@ footer > .GFooter__Content {
       );
       e == null || e.remove();
       const t = document.getElementById(this.headerStyleId);
-      t == null || t.remove();
+      t == null || t.remove(), this.progressBar.cleanUp();
     }
     addStyles() {
       const n = document.getElementById(this.headerStyleId);
@@ -564,6 +580,10 @@ footer > .GFooter__Content {
   }
   const L = `div:has(> .PaymentPageWrapper) {
   margin-top: 40px !important;
+}
+
+.GHeaderCombinedPayment  .GProgressBar {
+  display: none;
 }
 
 @media (max-width: 767px) {
@@ -976,7 +996,7 @@ footer > .GFooter__Content {
   display: none;
 }
 `;
-  class E {
+  class T {
     constructor() {
       this.paymentsSelector = ".PaymentCombinedInformation", this.paymentsStyleId = "crs-payments-style", this.isProcessing = !1;
     }
@@ -990,11 +1010,11 @@ footer > .GFooter__Content {
           const n = await m(this.paymentsSelector), e = await m(".crs-aside-container"), t = n.querySelectorAll(
             ".payment-method-information__item"
           ), i = n.querySelector(".traveling-soon > div");
-          i && (i.textContent = "Need your passport sooner?"), e && (e.dataset.page = "payment"), t.forEach((a) => {
+          i && (i.textContent = "Need your passport sooner?"), e && (e.dataset.page = "payment"), t.forEach((o) => {
             var d, c, u, y;
-            const r = a.querySelector(
+            const r = o.querySelector(
               ".sale-block__processing> div:first-child p"
-            ), s = a.querySelector(
+            ), s = o.querySelector(
               ".sale-block__processing> div:last-child"
             );
             r && (r.textContent = ((c = (d = r.textContent) == null ? void 0 : d.trim()) == null ? void 0 : c.replace(/-$/, "").trim()) || ""), s && ((u = s.textContent) != null && u.includes("Guaranteed delivery in 4 weeks") && (s.innerHTML = "<span>4 weeks</span> delivery - guaranteed"), (y = s.textContent) != null && y.includes("Guaranteed delivery in 2 week") && (s.innerHTML = "<span>2 weeks</span> delivery - guaranteed"));
@@ -1016,14 +1036,14 @@ footer > .GFooter__Content {
     }
   }
   x({ name: "Passport Application Flow", dev: "OS" }), w("exp_passport_flow");
-  class H {
+  class F {
     constructor() {
       this.pageStructure = null, this.aside = null, this.header = null, this.payments = null, this.isInitialized = !1, this.targetFormIds = [
         "passport-new",
         "passport-renewal",
         "passport-lost",
         "passport-damaged"
-      ], this.abortController = null, this.executeInitialLoadTimeout = null, this.onPageChangeHandler = null, this.domContentLoadedHandler = null, this.windowLoadHandler = null, this.originalPushState = null, this.originalReplaceState = null, this.handlePageChangeTimeout = null, this.lastProcessedUrl = null, this.pageStructure = new v(), this.aside = new P(), this.header = new k(), this.payments = new E(), this.init();
+      ], this.abortController = null, this.executeInitialLoadTimeout = null, this.onPageChangeHandler = null, this.domContentLoadedHandler = null, this.windowLoadHandler = null, this.originalPushState = null, this.originalReplaceState = null, this.handlePageChangeTimeout = null, this.lastProcessedUrl = null, this.pageStructure = new _(), this.aside = new P(), this.header = new H(), this.payments = new T(), this.init();
     }
     init() {
       this.checkIsUserLoggedIn().then((n) => {
@@ -1032,14 +1052,14 @@ footer > .GFooter__Content {
       });
     }
     async checkIsUserLoggedIn() {
-      var a, r, s, d;
+      var o, r, s, d;
       if (sessionStorage.getItem("crs-first-time-user-checked") === "true")
         return !1;
       this.abortController && this.abortController.abort(), this.abortController = new AbortController();
       const { data: e, error: t } = await C(this.abortController.signal);
       if (this.abortController.signal.aborted)
         return !1;
-      const i = !!((d = (s = (r = (a = e == null ? void 0 : e.data) == null ? void 0 : a.data) == null ? void 0 : r.personal) == null ? void 0 : s.communication) != null && d.email) && !t;
+      const i = !!((d = (s = (r = (o = e == null ? void 0 : e.data) == null ? void 0 : o.data) == null ? void 0 : r.personal) == null ? void 0 : s.communication) != null && d.email) && !t;
       return i || sessionStorage.setItem("crs-first-time-user-checked", "true"), i;
     }
     handleInitialPageLoad() {
@@ -1089,8 +1109,8 @@ footer > .GFooter__Content {
       this.originalPushState || (this.originalPushState = history.pushState.bind(history)), this.originalReplaceState || (this.originalReplaceState = history.replaceState.bind(history));
       const n = this.originalPushState, e = this.originalReplaceState;
       let t = !1, i = !1;
-      history.pushState = (...a) => {
-        if (n(...a), !t) {
+      history.pushState = (...o) => {
+        if (n(...o), !t) {
           t = !0;
           try {
             window.dispatchEvent(new Event("pushstate"));
@@ -1098,8 +1118,8 @@ footer > .GFooter__Content {
             t = !1;
           }
         }
-      }, history.replaceState = (...a) => {
-        if (e(...a), !i) {
+      }, history.replaceState = (...o) => {
+        if (e(...o), !i) {
           i = !0;
           try {
             window.dispatchEvent(new Event("replacestate"));
@@ -1119,5 +1139,5 @@ footer > .GFooter__Content {
       ), this.domContentLoadedHandler = null), this.windowLoadHandler && (window.removeEventListener("load", this.windowLoadHandler), this.windowLoadHandler = null), this.originalPushState && (history.pushState = this.originalPushState, this.originalPushState = null), this.originalReplaceState && (history.replaceState = this.originalReplaceState, this.originalReplaceState = null), this.cleanUpComponents();
     }
   }
-  window.crsPassportAppFlowTestInstance || (window.crsPassportAppFlowTestInstance = !0, new H());
+  window.crsPassportAppFlowTestInstance || (window.crsPassportAppFlowTestInstance = !0, new F());
 })();
