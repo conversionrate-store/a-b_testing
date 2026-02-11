@@ -20,11 +20,11 @@
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
     }, 1e3);
-  }, p = (a) => {
+  }, c = (a) => {
     var t;
     const e = `; ${document.cookie}`.split(`; ${a}=`);
     return e.length === 2 ? (t = e.pop()) == null ? void 0 : t.split(";").shift() : null;
-  }, l = () => new URLSearchParams(window.location.search).get("formId"), c = (a) => new URLSearchParams(window.location.search).get(a), h = async (a, n, e) => {
+  }, l = () => new URLSearchParams(window.location.search).get("formId"), p = (a) => new URLSearchParams(window.location.search).get(a), h = async (a, n, e) => {
     try {
       const t = await fetch(a, {
         ...n,
@@ -47,7 +47,7 @@
           method: "POST",
           body: JSON.stringify({
             form_id: l(),
-            client_token: p("client_token"),
+            client_token: c("client_token"),
             check: !0
           })
         },
@@ -57,13 +57,13 @@
     } catch (n) {
       return { data: null, error: n };
     }
-  }, v = async (a) => {
+  }, _ = async (a) => {
     try {
       const { data: n, error: e } = await h(`https://auth.${g}usersData/data`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${p("client_token")}`
+          Authorization: `Bearer ${c("client_token")}`
         },
         credentials: "include"
       }, a);
@@ -71,7 +71,7 @@
     } catch (n) {
       return { data: null, error: n };
     }
-  }, _ = `aside.ant-layout-sider {
+  }, v = `aside.ant-layout-sider {
   display: none;
 }
 
@@ -170,7 +170,7 @@ footer > .GFooter__Content {
       const n = document.getElementById(this.asideStyleId);
       n && n.remove();
       const e = document.createElement("style");
-      e.textContent = _, e.id = this.asideStyleId, document.head.appendChild(e);
+      e.textContent = v, e.id = this.asideStyleId, document.head.appendChild(e);
     }
   }
   const P = `.crs-aside-block {
@@ -473,7 +473,7 @@ footer > .GFooter__Content {
       }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null, this.progressBar = new H();
     }
     init() {
-      const n = c("page");
+      const n = p("page");
       n && n === "payment" && this.cleanUp(), this.addStyles(), this.progressBar.addStyles(), this.isRendering || (this.render(), this.addProgressTitleToSecondScreen());
     }
     async render() {
@@ -578,14 +578,13 @@ footer > .GFooter__Content {
   margin-top: 40px !important;
 }
 
-.GHeaderCombinedPayment  .GProgressBar {
+.GHeaderCombinedPayment .GProgressBar {
   display: none;
 }
 
 .PaymentPageWrapper form .PaymentCombinedInformation {
   margin-bottom: 7px !important;
 }
-
 
 @media (max-width: 767px) {
   .PaymentPageWrapper form .PaymentCombinedInformation {
@@ -644,6 +643,15 @@ footer > .GFooter__Content {
     padding: 24px 0 24px 16px;
     margin-right: 20px !important;
   }
+
+  .PaymentCombinedInformation
+    .charge-payment-form
+    .payment-method-information
+    .payment-method-information__item
+    .ant-radio-wrapper
+    .content__wrapper {
+    margin-bottom: 3px;
+  }
 }
 @media (max-width: 767px) {
   .PaymentCombinedInformation
@@ -672,7 +680,7 @@ footer > .GFooter__Content {
     .payment-method-information__item
     .ant-radio-wrapper
     .content {
-      margin-left: 0 !important;
+    margin-left: 0 !important;
     padding: 16px 40px 16px 16px;
   }
 }
@@ -881,7 +889,7 @@ footer > .GFooter__Content {
   color: #191919 !important;
   font-size: 20px !important;
   font-weight: 600 !important;
-  line-height: 30.8px !important;
+  line-height: 31px !important;
   letter-spacing: -0.1px !important;
   text-decoration: none !important;
   font-family: InterSemiBold, sans-serif !important;
@@ -1065,7 +1073,7 @@ footer > .GFooter__Content {
       if (sessionStorage.getItem("crs-first-time-user-checked") === "true")
         return !1;
       this.abortController && this.abortController.abort(), this.abortController = new AbortController();
-      const { data: e, error: t } = await v(this.abortController.signal);
+      const { data: e, error: t } = await _(this.abortController.signal);
       if (this.abortController.signal.aborted)
         return !1;
       const i = !!((r = (d = (s = (o = e == null ? void 0 : e.data) == null ? void 0 : o.data) == null ? void 0 : s.personal) == null ? void 0 : d.communication) != null && r.email) && !t;
@@ -1101,15 +1109,15 @@ footer > .GFooter__Content {
         return;
       }
       const e = l();
-      if (!e || !this.targetFormIds.includes(e) || c("page") !== "payment" && c("page") !== "form") {
+      if (!e || !this.targetFormIds.includes(e) || p("page") !== "payment" && p("page") !== "form") {
         sessionStorage.removeItem("crs-first-time-user-checked"), this.cleanUpComponents();
         return;
       }
-      this.handlePageChangeInternal();
+      sessionStorage.setItem("crs-formId", e), this.handlePageChangeInternal();
     }
     handlePageChangeInternal() {
       const n = window.location.href;
-      this.lastProcessedUrl !== n && (this.lastProcessedUrl = n, this.isFormPage() ? (this.cleanUpComponents(), this.initComponents()) : this.cleanUpComponents());
+      this.lastProcessedUrl !== n && (this.lastProcessedUrl = n, this.isFormPage() ? (this.cleanUpComponents(), this.initComponents()) : (sessionStorage.removeItem("crs-formId"), this.cleanUpComponents()));
     }
     spaPageChangeHandler() {
       this.onPageChangeHandler && (window.removeEventListener("popstate", this.onPageChangeHandler), window.removeEventListener("pushstate", this.onPageChangeHandler), window.removeEventListener("replacestate", this.onPageChangeHandler), window.removeEventListener("hashchange", this.onPageChangeHandler)), this.patchHistoryAPI(), this.onPageChangeHandler = () => this.handlePageChange(), window.addEventListener("popstate", this.onPageChangeHandler), window.addEventListener("pushstate", this.onPageChangeHandler), window.addEventListener("replacestate", this.onPageChangeHandler), window.addEventListener("hashchange", this.onPageChangeHandler);
