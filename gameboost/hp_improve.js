@@ -592,8 +592,19 @@
     const t = m.replace(/[\s€$£]/g, "").replace(",", ".").trim(), e = parseFloat(t);
     return !Number.isNaN(e) && e === 0;
   }
-  function ht(m, t = "eur") {
-    const e = m.isRegionDanger ? "text-danger-light-foreground" : "text-muted-foreground";
+  function ht(m, t = "eur", e = !1) {
+    const s = m.isRegionDanger ? "text-danger-light-foreground" : "text-muted-foreground", o = e ? "" : (
+      /* HTML */
+      `
+          <div class="flex flex-wrap items-baseline gap-x-2.5">
+            <div class="text-base font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-l from-foreground to-secondary-foreground light:from-muted-foreground light:to-foreground light:bg-gradient-to-br">
+              ${m.price[t]}
+            </div>
+            ${m.originalPrice && m.originalPrice[t] && !gt(m.originalPrice[t]) ? `<div class="text-base line-through text-muted-foreground">${m.originalPrice[t]}</div>` : ""}
+            ${m.discount ? `<div class="flex items-center px-2 font-sans text-sm rounded-full bg-primary text-primary-foreground">${m.discount}</div>` : ""}
+          </div>
+        `
+    );
     return (
       /* HTML */
       `
@@ -618,7 +629,7 @@
         <div class="flex flex-col gap-y-2 pt-2">
           <div class="flex flex-col gap-y-1 justify-between">
             <div class="flex gap-x-1 items-center text-xs text-muted-foreground">
-              <span class="${e}">${m.region}</span>
+              <span class="${s}">${m.region}</span>
               <span class="text-muted-foreground"> · </span>
               <span class="truncate">${m.platform}</span>
             </div>
@@ -626,20 +637,15 @@
               <p class="inline text-sm font-medium text-foreground group-hover:underline">${m.name}</p>
             </div>
           </div>
-          <div class="flex flex-wrap items-baseline gap-x-2.5">
-            <div class="text-base font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-l from-foreground to-secondary-foreground light:from-muted-foreground light:to-foreground light:bg-gradient-to-br">
-              ${m.price[t]}
-            </div>
-            ${m.originalPrice && m.originalPrice[t] && !gt(m.originalPrice[t]) ? `<div class="text-base line-through text-muted-foreground">${m.originalPrice[t]}</div>` : ""}
-            ${m.discount ? `<div class="flex items-center px-2 font-sans text-sm rounded-full bg-primary text-primary-foreground">${m.discount}</div>` : ""}
-          </div>
+          ${o}
         </div>
       </a>
     </div>
   `
     );
   }
-  function dt(m = "eur", t) {
+  function dt(m = "eur", t, e = !1) {
+    const s = t && t.length > 0 ? t : ut, o = !(t && t.length > 0);
     return (
       /* HTML */
       `
@@ -648,7 +654,7 @@
       <div class="relative mt-4 w-full game-keys-slider-container">
         <div class="game-keys-wrapper">
           <div class="game-keys-scroll-container">
-            ${(t && t.length > 0 ? t : ut).map((s) => ht(s, m)).join("")}
+            ${s.map((a) => ht(a, m, e || o)).join("")}
             <div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0 pl-1 py-1 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-[calc(100%/7)]">
               <a href="/keys" class="relative flex flex-col items-start w-auto gap-3 p-1 px-1.5 leading-5 game-card-group game-key-group group game-keys-cta-slide">
                 <div class="game-keys-cta-content">
