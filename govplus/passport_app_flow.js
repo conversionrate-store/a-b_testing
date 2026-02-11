@@ -307,8 +307,9 @@ footer > .GFooter__Content {
           const n = await Promise.race([
             m(".GHeaderFormWrapper"),
             m(".GImageTitle")
-          ]), e = document.querySelector(".GPaymentSecurityTag"), t = document.querySelector(this.asideContainerSelector), i = l(), o = this.titles[i] || "Complete your passport application";
-          t && (t.innerHTML = "");
+          ]), e = document.querySelector(".GPaymentSecurityTag"), t = document.querySelector(this.asideContainerSelector), i = l();
+          let o = this.titles[i] || "Complete your passport application";
+          location.href.includes("page=payment") && sessionStorage.getItem("crs-formId") === "passport-renewal" && (o = this.titles["passport-renewal"]), t && (t.innerHTML = "");
           const s = (
             /* HTML */
             `<div class="crs-aside">
@@ -538,8 +539,9 @@ footer > .GFooter__Content {
     async addProgressTitleToSecondScreen() {
       const n = await m(
         ".GHeader:has(.GProgressBar)"
-      ), e = document.getElementById("crs-second-screen-title"), t = l(), i = this.secondTitles[t] || "Submit your passport renewal application";
-      if (e && e.remove(), n) {
+      ), e = document.getElementById("crs-second-screen-title"), t = l();
+      let i = this.secondTitles[t] || "Submit your passport renewal application";
+      if (location.href.includes("page=payment") && sessionStorage.getItem("crs-formId") === "passport-renewal" && (i = this.secondTitles["passport-renewal"]), e && e.remove(), n) {
         const o = (
           /* HTML */
           `<div
@@ -1110,14 +1112,14 @@ footer > .GFooter__Content {
       }
       const e = l();
       if (!e || !this.targetFormIds.includes(e) || p("page") !== "payment" && p("page") !== "form") {
-        sessionStorage.removeItem("crs-first-time-user-checked"), this.cleanUpComponents();
+        sessionStorage.removeItem("crs-first-time-user-checked"), sessionStorage.removeItem("crs-formId"), this.cleanUpComponents();
         return;
       }
-      sessionStorage.setItem("crs-formId", e), this.handlePageChangeInternal();
+      location.href.includes("page=form") && sessionStorage.getItem("crs-formId") === null && sessionStorage.setItem("crs-formId", e), this.handlePageChangeInternal();
     }
     handlePageChangeInternal() {
       const n = window.location.href;
-      this.lastProcessedUrl !== n && (this.lastProcessedUrl = n, this.isFormPage() ? (this.cleanUpComponents(), this.initComponents()) : (sessionStorage.removeItem("crs-formId"), this.cleanUpComponents()));
+      this.lastProcessedUrl !== n && (this.lastProcessedUrl = n, this.isFormPage() ? (this.cleanUpComponents(), this.initComponents()) : this.cleanUpComponents());
     }
     spaPageChangeHandler() {
       this.onPageChangeHandler && (window.removeEventListener("popstate", this.onPageChangeHandler), window.removeEventListener("pushstate", this.onPageChangeHandler), window.removeEventListener("replacestate", this.onPageChangeHandler), window.removeEventListener("hashchange", this.onPageChangeHandler)), this.patchHistoryAPI(), this.onPageChangeHandler = () => this.handlePageChange(), window.addEventListener("popstate", this.onPageChangeHandler), window.addEventListener("pushstate", this.onPageChangeHandler), window.addEventListener("replacestate", this.onPageChangeHandler), window.addEventListener("hashchange", this.onPageChangeHandler);
