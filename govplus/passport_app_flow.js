@@ -1043,7 +1043,13 @@ footer > .GFooter__Content {
 
 .CreditCardHeading__security .GPaymentSecurityTag {
   justify-content: center;
-}`;
+}
+
+
+.PaymentPageWrapper #govplus-transparency-box {
+  display: none;
+}
+`;
   class F {
     constructor() {
       this.paymentsSelector = ".PaymentCombinedInformation", this.paymentsStyleId = "crs-payments-style", this.isProcessing = !1;
