@@ -399,7 +399,7 @@ footer > .GFooter__Content {
     line-height: 22px;
   }
 }
-`, E = `.crs-progress {
+`, H = `.crs-progress {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -423,7 +423,7 @@ footer > .GFooter__Content {
   flex-shrink: 0;
 }
 `;
-  class H {
+  class E {
     constructor() {
       this.progressStyleId = "crs-progress-style";
     }
@@ -431,7 +431,7 @@ footer > .GFooter__Content {
       const n = document.getElementById(this.progressStyleId);
       n == null || n.remove();
       const e = document.createElement("style");
-      e.textContent = E, e.id = this.progressStyleId, document.head.appendChild(e);
+      e.textContent = H, e.id = this.progressStyleId, document.head.appendChild(e);
     }
     cleanUp() {
       const n = document.getElementById(this.progressStyleId);
@@ -471,7 +471,7 @@ footer > .GFooter__Content {
       }, this.progressStats = {
         0: "0% Completed",
         70: "70%"
-      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null, this.progressBar = new H();
+      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null, this.progressBar = new E();
     }
     init() {
       const n = p("page");
@@ -1038,7 +1038,12 @@ footer > .GFooter__Content {
 .PaymentCombinedInformation .payment-footer p br {
   display: none;
 }
-`;
+
+
+
+.CreditCardHeading__security .GPaymentSecurityTag {
+  justify-content: center;
+}`;
   class F {
     constructor() {
       this.paymentsSelector = ".PaymentCombinedInformation", this.paymentsStyleId = "crs-payments-style", this.isProcessing = !1;
