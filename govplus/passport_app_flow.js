@@ -1089,7 +1089,7 @@ footer > .GFooter__Content {
       ], this.abortController = null, this.executeInitialLoadTimeout = null, this.onPageChangeHandler = null, this.domContentLoadedHandler = null, this.windowLoadHandler = null, this.originalPushState = null, this.originalReplaceState = null, this.handlePageChangeTimeout = null, this.lastProcessedUrl = null, this.pageStructure = new I(), this.aside = new S(), this.header = new L(), this.payments = new F(), this.init();
     }
     init() {
-      this.checkIsUserLoggedIn().then((n) => {
+      location.href.includes("page=form") && sessionStorage.removeItem("crs-first-time-user-checked"), this.checkIsUserLoggedIn().then((n) => {
         const e = sessionStorage.getItem("crs-first-time-user-checked") === "true";
         (!n || e) && (this.spaPageChangeHandler(), this.handleInitialPageLoad());
       });
