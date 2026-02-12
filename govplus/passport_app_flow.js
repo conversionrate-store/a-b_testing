@@ -20,11 +20,11 @@
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
     }, 1e3);
-  }, c = (a) => {
+  }, p = (a) => {
     var t;
     const e = `; ${document.cookie}`.split(`; ${a}=`);
     return e.length === 2 ? (t = e.pop()) == null ? void 0 : t.split(";").shift() : null;
-  }, l = () => new URLSearchParams(window.location.search).get("formId"), p = (a) => new URLSearchParams(window.location.search).get(a), h = async (a, n, e) => {
+  }, l = () => new URLSearchParams(window.location.search).get("formId"), c = (a) => new URLSearchParams(window.location.search).get(a), h = async (a, n, e) => {
     try {
       const t = await fetch(a, {
         ...n,
@@ -47,7 +47,7 @@
           method: "POST",
           body: JSON.stringify({
             form_id: l(),
-            client_token: c("client_token"),
+            client_token: p("client_token"),
             check: !0
           })
         },
@@ -63,7 +63,7 @@
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${c("client_token")}`
+          Authorization: `Bearer ${p("client_token")}`
         },
         credentials: "include"
       }, a);
@@ -474,7 +474,7 @@ footer > .GFooter__Content {
       }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null, this.progressBar = new E();
     }
     init() {
-      const n = p("page");
+      const n = c("page");
       n && n === "payment" && this.cleanUp(), this.addStyles(), this.progressBar.addStyles(), this.isRendering || (this.render(), this.addProgressTitleToSecondScreen());
     }
     async render() {
@@ -850,7 +850,7 @@ footer > .GFooter__Content {
   .payment-method-information__item
   .content__wrapper {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 2fr 0.9fr;
   grid-template-areas:
     'title price'
     'description offer';
@@ -1039,8 +1039,6 @@ footer > .GFooter__Content {
   display: none;
 }
 
-
-
 .CreditCardHeading__security .GPaymentSecurityTag {
   justify-content: center;
 }
@@ -1100,7 +1098,7 @@ footer > .GFooter__Content {
       ], this.abortController = null, this.executeInitialLoadTimeout = null, this.onPageChangeHandler = null, this.domContentLoadedHandler = null, this.windowLoadHandler = null, this.originalPushState = null, this.originalReplaceState = null, this.handlePageChangeTimeout = null, this.lastProcessedUrl = null, this.pageStructure = new I(), this.aside = new S(), this.header = new L(), this.payments = new F(), this.init();
     }
     init() {
-      location.href.includes("page=form") && sessionStorage.removeItem("crs-first-time-user-checked"), this.checkIsUserLoggedIn().then((n) => {
+      location.href.includes("page=form") && (sessionStorage.removeItem("crs-first-time-user-checked"), this.cleanUpComponents()), this.checkIsUserLoggedIn().then((n) => {
         const e = sessionStorage.getItem("crs-first-time-user-checked") === "true";
         (!n || e) && (this.spaPageChangeHandler(), this.handleInitialPageLoad());
       });
@@ -1145,8 +1143,8 @@ footer > .GFooter__Content {
         this.cleanUpComponents(), sessionStorage.removeItem("crs-first-time-user-checked");
         return;
       }
-      const e = l();
-      if (!e || !this.targetFormIds.includes(e) || p("page") !== "payment" && p("page") !== "form") {
+      const e = l(), t = c("page");
+      if (!e || !this.targetFormIds.includes(e) || t && t !== "payment" && t !== "form") {
         sessionStorage.removeItem("crs-first-time-user-checked"), sessionStorage.removeItem("crs-formId"), this.cleanUpComponents();
         return;
       }
