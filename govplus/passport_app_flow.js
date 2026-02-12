@@ -108,6 +108,7 @@ main .common-loader__container {
 @media (max-width: 991px) {
   .wrapper-react > main > div:not(.common-loader__container) {
     max-width: 100% !important;
+    padding: 24px 16px !important;
   }
 }
 
@@ -1139,7 +1140,7 @@ footer > .GFooter__Content {
       (n = this.pageStructure) == null || n.cleanUp(), (e = this.aside) == null || e.cleanUp(), (t = this.payments) == null || t.cleanUp(), (i = this.header) == null || i.cleanUp();
     }
     async handlePageChange() {
-      if (await this.checkIsUserLoggedIn() && sessionStorage.getItem("crs-first-time-user-checked") !== "true") {
+      if (await this.checkIsUserLoggedIn() || sessionStorage.getItem("crs-first-time-user-checked") !== "true" && !location.href.includes("page=payment")) {
         this.cleanUpComponents(), sessionStorage.removeItem("crs-first-time-user-checked");
         return;
       }
