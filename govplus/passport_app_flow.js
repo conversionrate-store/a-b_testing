@@ -1047,9 +1047,9 @@ footer > .GFooter__Content {
 }
 
 
-.PaymentPageWrapper #govplus-transparency-box {
+/* .PaymentPageWrapper #govplus-transparency-box {
   display: none;
-}
+} */
 `;
   class z {
     constructor() {
