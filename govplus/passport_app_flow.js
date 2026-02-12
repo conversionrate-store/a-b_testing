@@ -1073,7 +1073,9 @@ footer > .GFooter__Content {
               ".sale-block__processing> div:last-child"
             );
             s && (s.textContent = ((y = (u = s.textContent) == null ? void 0 : u.trim()) == null ? void 0 : y.replace(/-$/, "").trim()) || ""), l && ((x = l.textContent) != null && x.includes("Guaranteed delivery in 4 weeks") && (l.innerHTML = "<span>4 weeks</span> delivery - guaranteed"), (w = l.textContent) != null && w.includes("Guaranteed delivery in 2 week") && (l.innerHTML = "<span>2 weeks</span> delivery - guaranteed"));
-          }), o && (o.innerHTML = o.innerHTML.replace(" <br>", ". "));
+          }), o && setTimeout(() => {
+            o.innerHTML = o.innerHTML.replace(" <br>", ". ");
+          }, 100);
         } finally {
           this.isProcessing = !1;
         }
