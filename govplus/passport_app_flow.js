@@ -209,6 +209,7 @@ footer > .GFooter__Content {
   font-weight: 600;
   line-height: 34px; /* 121.429% */
   letter-spacing: -1px;
+  font-family: InterSemiBold, sans-serif;
 }
 
 @media (max-width: 575px) {
