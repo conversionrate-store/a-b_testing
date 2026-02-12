@@ -738,7 +738,7 @@ footer > .GFooter__Content {
   .payment-method-information__item:has(
     + .payment-method-information__item
   )::before {
-  content: '👑 Premium delivery options';
+  content: 'Premium delivery options';
   position: absolute;
   bottom: calc(100% + var(--crs-container-padding));
   right: calc(var(--crs-container-padding) * -1);
@@ -747,7 +747,8 @@ footer > .GFooter__Content {
   gap: 8px;
   width: max-content;
   background: #f0fdf4;
-  padding: 6px 24px;
+
+  padding: 6px 24px 6px 50px;
   border-radius: 24px 24px 0 0;
   padding-bottom: 0;
   font-size: 16px;
@@ -757,6 +758,22 @@ footer > .GFooter__Content {
   color: #000 !important;
   z-index: 10;
   font-family: InterSemiBold, sans-serif !important;
+}
+
+.PaymentCombinedInformation
+  .payment-method-information__item:has(
+    + .payment-method-information__item
+  )::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + var(--crs-container-padding));
+  right: 211px;
+  width: 17px;
+  height: 20px;
+  background-image: url(https://conversionrate-store.github.io/a-b_images/govplus/crown.webp);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 54;
 }
 
 @media (max-width: 767px) {
@@ -773,6 +790,13 @@ footer > .GFooter__Content {
 
     color: #009b4f !important;
     z-index: -1;
+  }
+
+  .PaymentCombinedInformation
+    .payment-method-information__item:has(
+      + .payment-method-information__item
+    )::after {
+    right: calc(50% + 102px);
   }
 }
 
