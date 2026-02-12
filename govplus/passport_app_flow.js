@@ -1047,9 +1047,9 @@ footer > .GFooter__Content {
 }
 
 
-/* .PaymentPageWrapper #govplus-transparency-box {
-  display: none;
-} */
+.PaymentPageWrapper #govplus-transparency-box {
+  margin-top: 0 !important;
+}
 `;
   class z {
     constructor() {
