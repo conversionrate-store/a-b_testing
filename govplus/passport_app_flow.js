@@ -1050,7 +1050,7 @@ footer > .GFooter__Content {
       if (!this.isProcessing) {
         this.isProcessing = !0;
         try {
-          const n = await m(this.paymentsSelector), e = await m(".crs-aside-container"), t = document.querySelector(".CreditCardHeader .GPaymentSecurityTag"), i = n.querySelectorAll(
+          const n = await m(this.paymentsSelector), e = await m(".crs-aside-container"), t = document.querySelector(".CreditCardHeader .GPaymentSecurityTag, .CreditCardHeading__security .GPaymentSecurityTag > div"), i = n.querySelectorAll(
             ".payment-method-information__item"
           ), o = n.querySelector(".traveling-soon > div");
           o && (o.textContent = "Need your passport sooner?"), e && (e.dataset.page = "payment"), t && t.textContent.trim().toLocaleLowerCase().includes("secure, encrypted payment • trusted by 1m+ customers") && (t.textContent = t.textContent.trim().replace(" • Trusted by 1M+ customers", "")), i.forEach((s) => {
@@ -1143,7 +1143,7 @@ footer > .GFooter__Content {
     }
     handlePageChangeInternal() {
       const n = window.location.href;
-      this.lastProcessedUrl !== n && (this.lastProcessedUrl = n, this.isFormPage() ? (this.cleanUpComponents(), this.initComponents()) : this.cleanUpComponents());
+      this.lastProcessedUrl = n, this.isFormPage() ? (this.cleanUpComponents(), this.initComponents()) : this.cleanUpComponents();
     }
     spaPageChangeHandler() {
       this.onPageChangeHandler && (window.removeEventListener("popstate", this.onPageChangeHandler), window.removeEventListener("pushstate", this.onPageChangeHandler), window.removeEventListener("replacestate", this.onPageChangeHandler), window.removeEventListener("hashchange", this.onPageChangeHandler)), this.patchHistoryAPI(), this.onPageChangeHandler = () => this.handlePageChange(), window.addEventListener("popstate", this.onPageChangeHandler), window.addEventListener("pushstate", this.onPageChangeHandler), window.addEventListener("replacestate", this.onPageChangeHandler), window.addEventListener("hashchange", this.onPageChangeHandler);
