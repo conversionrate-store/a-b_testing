@@ -174,7 +174,18 @@ footer > .GFooter__Content {
       e.textContent = I, e.id = this.asideStyleId, document.head.appendChild(e);
     }
   }
-  const S = `.crs-aside-block {
+  const S = `.crs-aside {
+  position: sticky;
+  top: 10px;
+}
+
+@media (max-width: 991px) {
+  .crs-aside {
+    position: static;
+  }
+}
+
+.crs-aside-block {
   display: flex;
   width: 322px;
   padding: 32px 22px 0;
