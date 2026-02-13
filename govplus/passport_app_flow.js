@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const m = (a) => new Promise((n) => {
+  const d = (a) => new Promise((n) => {
     const e = document.querySelector(a);
     e && n(e);
     const t = new MutationObserver(() => {
@@ -20,11 +20,11 @@
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
     }, 1e3);
-  }, c = (a) => {
+  }, p = (a) => {
     var t;
     const e = `; ${document.cookie}`.split(`; ${a}=`);
     return e.length === 2 ? (t = e.pop()) == null ? void 0 : t.split(";").shift() : null;
-  }, p = () => new URLSearchParams(window.location.search).get("formId"), h = (a) => new URLSearchParams(window.location.search).get(a), g = async (a, n, e) => {
+  }, c = () => new URLSearchParams(window.location.search).get("formId"), h = (a) => new URLSearchParams(window.location.search).get(a), g = async (a, n, e) => {
     try {
       const t = await fetch(a, {
         ...n,
@@ -39,15 +39,15 @@
     } catch (t) {
       return { data: null, error: t };
     }
-  }, f = location.hostname.includes(".com") ? "govplus.com/" : "govplus.app/", _ = async (a) => {
+  }, f = location.hostname.includes(".com") ? "govplus.com/" : "govplus.app/", v = async (a) => {
     try {
       const { data: n, error: e } = await g(
         `https://api.${f}api_gov/form/getFormFillPercent`,
         {
           method: "POST",
           body: JSON.stringify({
-            form_id: p(),
-            client_token: c("client_token"),
+            form_id: c(),
+            client_token: p("client_token"),
             check: !0
           })
         },
@@ -57,13 +57,13 @@
     } catch (n) {
       return { data: null, error: n };
     }
-  }, v = async (a) => {
+  }, _ = async (a) => {
     try {
       const { data: n, error: e } = await g(`https://auth.${f}usersData/data`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${c("client_token")}`
+          Authorization: `Bearer ${p("client_token")}`
         },
         credentials: "include"
       }, a);
@@ -149,7 +149,7 @@ footer > .GFooter__Content {
         this.isAddingContainer = !0;
         try {
           this.removeAllAsideContainers();
-          const n = await m(".wrapper-react");
+          const n = await d(".wrapper-react");
           n && n.insertAdjacentHTML(
             "afterbegin",
             /* HTML */
@@ -318,9 +318,9 @@ footer > .GFooter__Content {
         this.isRendering = !0;
         try {
           const n = await Promise.race([
-            m(".GHeaderFormWrapper"),
-            m(".GImageTitle")
-          ]), e = document.querySelector(".GPaymentSecurityTag"), t = document.querySelector(this.asideContainerSelector), i = p();
+            d(".GHeaderFormWrapper"),
+            d(".GImageTitle")
+          ]), e = document.querySelector(".GPaymentSecurityTag"), t = document.querySelector(this.asideContainerSelector), i = c();
           let o = this.titles[i] || "Complete your passport application";
           location.href.includes("page=payment") && sessionStorage.getItem("crs-formId") === "passport-renewal" && (o = this.titles["passport-renewal"]), t && (t.innerHTML = "");
           const r = (
@@ -413,7 +413,7 @@ footer > .GFooter__Content {
     line-height: 22px;
   }
 }
-`, E = `.crs-progress {
+`, L = `.crs-progress {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -437,7 +437,7 @@ footer > .GFooter__Content {
   flex-shrink: 0;
 }
 `;
-  class L {
+  class E {
     constructor() {
       this.progressStyleId = "crs-progress-style";
     }
@@ -445,7 +445,7 @@ footer > .GFooter__Content {
       const n = document.getElementById(this.progressStyleId);
       n == null || n.remove();
       const e = document.createElement("style");
-      e.textContent = E, e.id = this.progressStyleId, document.head.appendChild(e);
+      e.textContent = L, e.id = this.progressStyleId, document.head.appendChild(e);
     }
     cleanUp() {
       const n = document.getElementById(this.progressStyleId);
@@ -485,7 +485,7 @@ footer > .GFooter__Content {
       }, this.progressStats = {
         0: "0% Completed",
         70: "70%"
-      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null, this.progressBar = new L();
+      }, this.debounceTimer = null, this.abortController = null, this.formInputHandler = null, this.formClickHandler = null, this.mainFormElement = null, this.progressBar = new E();
     }
     init() {
       const n = h("page");
@@ -498,17 +498,17 @@ footer > .GFooter__Content {
         try {
           const { data: e, error: t } = await this.getFillFormProgress();
           t && console.error(t);
-          const i = await m(
+          const i = await d(
             this.headerContainerSelector
           ), o = document.getElementById(this.headerContainerId);
           o && o.remove();
-          const r = this.titles[e == null ? void 0 : e.oneProduct], d = this.progressBar.getHtml((e == null ? void 0 : e.oneProduct) ?? 0), s = (
+          const r = this.titles[e == null ? void 0 : e.oneProduct], m = this.progressBar.getHtml((e == null ? void 0 : e.oneProduct) ?? 0), s = (
             /* HTML */
             `<div
         class="crs-header"
         id="${this.headerContainerId}"
       >
-      <!--${d}-->
+      <!--${m}-->
         <div class="crs-header-title">${r || this.titles[0]}</div>
         <div class="crs-header-subtitle">
           GOV+ will fill out your application for you to help you avoid any
@@ -551,9 +551,9 @@ footer > .GFooter__Content {
       }
     }
     async addProgressTitleToSecondScreen() {
-      const n = await m(
+      const n = await d(
         ".GHeader:has(.GProgressBar)"
-      ), e = document.getElementById("crs-second-screen-title"), t = p();
+      ), e = document.getElementById("crs-second-screen-title"), t = c();
       let i = this.secondTitles[t] || "Submit your passport renewal application";
       if (location.href.includes("page=payment") && sessionStorage.getItem("crs-formId") === "passport-renewal" && (i = this.secondTitles["passport-renewal"]), e && e.remove(), n) {
         const o = (
@@ -569,7 +569,7 @@ footer > .GFooter__Content {
       }
     }
     async getFillFormProgress(n) {
-      const { data: e, error: t } = await _(n);
+      const { data: e, error: t } = await v(n);
       return t ? (t.name !== "AbortError" && console.error(t), { data: null, error: t }) : { data: e, error: null };
     }
     cleanUp() {
@@ -1050,8 +1050,10 @@ footer > .GFooter__Content {
 }
 
 .PaymentCombinedInformation .payment-footer p br {
-  display: none;
+  display: none !important;
 }
+
+
 
 .CreditCardHeading__security .GPaymentSecurityTag {
   justify-content: center;
@@ -1064,7 +1066,7 @@ footer > .GFooter__Content {
 `;
   class z {
     constructor() {
-      this.paymentsSelector = ".PaymentCombinedInformation", this.paymentsStyleId = "crs-payments-style", this.isProcessing = !1;
+      this.paymentsSelector = ".PaymentCombinedInformation", this.paymentsStyleId = "crs-payments-style", this.isProcessing = !1, this.disclaimerObserver = null;
     }
     init() {
       this.addStyles(), this.changes();
@@ -1073,26 +1075,35 @@ footer > .GFooter__Content {
       if (!this.isProcessing) {
         this.isProcessing = !0;
         try {
-          const n = await m(this.paymentsSelector), e = await m(".crs-aside-container"), t = document.querySelector(".CreditCardHeader .GPaymentSecurityTag, .CreditCardHeading__security .GPaymentSecurityTag > div"), i = n.querySelectorAll(
+          const n = await d(this.paymentsSelector), e = await d(".crs-aside-container"), t = document.querySelector(".CreditCardHeader .GPaymentSecurityTag, .CreditCardHeading__security .GPaymentSecurityTag > div"), i = n.querySelectorAll(
             ".payment-method-information__item"
-          ), o = n.querySelector(".PaymentCombinedInformation .payment-footer p"), r = n.querySelector(".traveling-soon > div");
-          r && (r.textContent = "Need your passport sooner?"), e && (e.dataset.page = "payment"), t && t.textContent.trim().toLocaleLowerCase().includes("secure, encrypted payment • trusted by 1m+ customers") && (t.textContent = t.textContent.trim().replace(" • Trusted by 1M+ customers", "")), i.forEach((d) => {
+          ), o = n.querySelector(".payment-footer p"), r = n.querySelector(".traveling-soon > div");
+          r && (r.textContent = "Need your passport sooner?"), e && (e.dataset.page = "payment"), t && t.textContent.trim().toLocaleLowerCase().includes("secure, encrypted payment • trusted by 1m+ customers") && (t.textContent = t.textContent.trim().replace(" • Trusted by 1M+ customers", "")), i.forEach((m) => {
             var u, y, x, w;
-            const s = d.querySelector(
+            const s = m.querySelector(
               ".sale-block__processing> div:first-child p"
-            ), l = d.querySelector(
+            ), l = m.querySelector(
               ".sale-block__processing> div:last-child"
             );
             s && (s.textContent = ((y = (u = s.textContent) == null ? void 0 : u.trim()) == null ? void 0 : y.replace(/-$/, "").trim()) || ""), l && ((x = l.textContent) != null && x.includes("Guaranteed delivery in 4 weeks") && (l.innerHTML = "<span>4 weeks</span> delivery - guaranteed"), (w = l.textContent) != null && w.includes("Guaranteed delivery in 2 week") && (l.innerHTML = "<span>2 weeks</span> delivery - guaranteed"));
-          }), o && setTimeout(() => {
-            o.innerHTML = o.innerHTML.replace(" <br>", ". ");
-          }, 100);
+          }), o && (this.replaceBreakWithPeriod(o), this.disclaimerObserver = new MutationObserver(() => {
+            this.replaceBreakWithPeriod(o);
+          }), this.disclaimerObserver.observe(o, {
+            childList: !0,
+            subtree: !0,
+            characterData: !0
+          }));
         } finally {
           this.isProcessing = !1;
         }
       }
     }
+    replaceBreakWithPeriod(n) {
+      const e = n.innerHTML, t = e.replace(/\s*<br\s*\/?>\s*/gi, ". ");
+      e !== t && (n.innerHTML = t);
+    }
     cleanUp() {
+      this.disclaimerObserver && (this.disclaimerObserver.disconnect(), this.disclaimerObserver = null);
       const n = document.getElementById(this.paymentsStyleId);
       n && n.remove();
     }
@@ -1104,7 +1115,7 @@ footer > .GFooter__Content {
     }
   }
   b({ name: "Passport Application Flow", dev: "OS" }), C("exp_passport_flow");
-  class U {
+  class B {
     constructor() {
       this.pageStructure = null, this.aside = null, this.header = null, this.payments = null, this.isInitialized = !1, this.targetFormIds = [
         "passport-new",
@@ -1120,14 +1131,14 @@ footer > .GFooter__Content {
       });
     }
     async checkIsUserLoggedIn() {
-      var o, r, d, s;
+      var o, r, m, s;
       if (sessionStorage.getItem("crs-first-time-user-checked") === "true")
         return !1;
       this.abortController && this.abortController.abort(), this.abortController = new AbortController();
-      const { data: e, error: t } = await v(this.abortController.signal);
+      const { data: e, error: t } = await _(this.abortController.signal);
       if (this.abortController.signal.aborted)
         return !1;
-      const i = !!((s = (d = (r = (o = e == null ? void 0 : e.data) == null ? void 0 : o.data) == null ? void 0 : r.personal) == null ? void 0 : d.communication) != null && s.email) && !t;
+      const i = !!((s = (m = (r = (o = e == null ? void 0 : e.data) == null ? void 0 : o.data) == null ? void 0 : r.personal) == null ? void 0 : m.communication) != null && s.email) && !t;
       return i || sessionStorage.setItem("crs-first-time-user-checked", "true"), i;
     }
     handleInitialPageLoad() {
@@ -1159,7 +1170,7 @@ footer > .GFooter__Content {
         this.cleanUpComponents(), sessionStorage.removeItem("crs-first-time-user-checked");
         return;
       }
-      const e = p(), t = h("page");
+      const e = c(), t = h("page");
       if (!e || !this.targetFormIds.includes(e) || t && t !== "payment" && t !== "form") {
         sessionStorage.removeItem("crs-first-time-user-checked"), sessionStorage.removeItem("crs-formId"), this.cleanUpComponents();
         return;
@@ -1207,5 +1218,5 @@ footer > .GFooter__Content {
       ), this.domContentLoadedHandler = null), this.windowLoadHandler && (window.removeEventListener("load", this.windowLoadHandler), this.windowLoadHandler = null), this.originalPushState && (history.pushState = this.originalPushState, this.originalPushState = null), this.originalReplaceState && (history.replaceState = this.originalReplaceState, this.originalReplaceState = null), this.cleanUpComponents();
     }
   }
-  window.crsPassportAppFlowTestInstance || (window.crsPassportAppFlowTestInstance = !0, new U());
+  window.crsPassportAppFlowTestInstance || (window.crsPassportAppFlowTestInstance = !0, new B());
 })();
