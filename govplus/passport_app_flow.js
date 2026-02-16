@@ -740,12 +740,18 @@ footer > .GFooter__Content {
 }
 
 .PaymentCombinedInformation
-  :is(
-    .payment-method-information__item:has(+ .payment-method-information__item),
-    .payment-method-information__item + .payment-method-information__item
-  )
+  .payment-method-information
+  .payment-method-information__item
   .ant-radio-wrapper {
   background-color: #fff !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.PaymentCombinedInformation
+  .payment-method-information
+  .payment-method-information__item
+  label.ant-radio-wrapper.ant-radio-wrapper-in-form-item.ant-radio-wrapper-checked {
+  background-color: #e2eeff !important;
 }
 
 .PaymentCombinedInformation
@@ -1053,12 +1059,9 @@ footer > .GFooter__Content {
   display: none !important;
 }
 
-
-
 .CreditCardHeading__security .GPaymentSecurityTag {
   justify-content: center;
 }
-
 
 .PaymentPageWrapper #govplus-transparency-box {
   margin-top: 0 !important;
