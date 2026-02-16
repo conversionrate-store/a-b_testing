@@ -236,6 +236,7 @@ footer > .GFooter__Content {
   font-size: 16px;
   font-weight: 600;
   line-height: 24px; /* 150% */
+  font-family: InterSemiBold, sans-serif;
 }
 
 @media (max-width: 575px) {
@@ -741,7 +742,7 @@ footer > .GFooter__Content {
   .payment-method-information__item
   .ant-radio-wrapper {
   background-color: #fff !important;
-  transition: background-color 0.3s ease !important;
+  transition: background-color 0.2s ease !important;
 }
 
 .PaymentCombinedInformation
@@ -960,6 +961,7 @@ footer > .GFooter__Content {
   color: #216de3 !important;
   font-weight: inherit !important;
   font-size: inherit !important;
+  font-family: InterSemiBold, sans-serif !important;
 }
 
 .PaymentCombinedInformation
