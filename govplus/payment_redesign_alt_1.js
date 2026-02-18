@@ -16,7 +16,7 @@
       }
     }, 1000);
   };
-  clarityInterval('exp_passport_flow');
+  clarityInterval('exp_pricing_plan');
 
   const n = (n) => {
       var e;
@@ -76,13 +76,13 @@
                     : t.replace(/-$/, '').trim()) || ''),
                 null == (a = d.textContent) ||
                   a.toLowerCase().includes('standard'),
-                (null == (o = d.textContent)
-                  ? void 0
-                  : o.toLowerCase().includes('Priority GOV+ Courier')) &&
-                  (d.textContent = 'Urgent Processing & Delivery')),
+                null == (o = d.textContent) ||
+                  o.toLowerCase().includes('Priority GOV+ Courier')),
                 l &&
-                  (null == (r = l.textContent) ||
-                    r.includes(' Regular government timeline'),
+                  ((null == (r = l.textContent)
+                    ? void 0
+                    : r.includes('Regular government timeline')) &&
+                    (l.innerHTML = 'Regular Government Timeline'),
                   (null == (m = l.textContent)
                     ? void 0
                     : m.includes('Guaranteed delivery in 4 weeks')) &&
