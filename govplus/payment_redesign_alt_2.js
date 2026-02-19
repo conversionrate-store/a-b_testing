@@ -60,10 +60,10 @@
             i = e.querySelector(
               '.PaymentCombinedInformation .payment-footer p',
             ),
-            o = e.querySelector('.traveling-soon > div');
-          (o && (o.textContent = 'Need your passport sooner?'),
+            a = e.querySelector('.traveling-soon > div');
+          (a && (a.textContent = 'Need your passport sooner?'),
             t.forEach((n) => {
-              var e, t, o, a, r, m, s;
+              var e, t, a, o, r, m, s;
               const d = n.querySelector(
                   '.sale-block__processing > div:first-child p',
                 ),
@@ -74,13 +74,13 @@
                   (null == (t = null == (e = d.textContent) ? void 0 : e.trim())
                     ? void 0
                     : t.replace(/-$/, '').trim()) || ''),
-                (null == (o = d.textContent)
-                  ? void 0
-                  : o.toLowerCase().includes('standard')) &&
-                  (d.textContent = 'Regular Government Timeline'),
                 (null == (a = d.textContent)
                   ? void 0
-                  : a.toLowerCase().includes('Priority GOV+ Courier')) &&
+                  : a.toLowerCase().includes('standard')) &&
+                  (d.textContent = 'Regular Government Timeline'),
+                (null == (o = d.textContent)
+                  ? void 0
+                  : o.toLowerCase().includes('Priority GOV+ Courier')) &&
                   (d.textContent = 'Urgent Processing & Delivery')),
                 l &&
                   ((null == (r = l.textContent)
@@ -181,29 +181,25 @@
         (location.href.includes('page=form') &&
           (sessionStorage.removeItem('crs-first-time-user-checked'),
           this.cleanUpComponents()),
-          this.checkIsUserLoggedIn().then((n) => {
-            const e =
-              'true' === sessionStorage.getItem('crs-first-time-user-checked');
-            (n && !e) ||
-              (this.spaPageChangeHandler(), this.handleInitialPageLoad());
-          }));
+          this.spaPageChangeHandler(),
+          this.handleInitialPageLoad());
       }
       async checkIsUserLoggedIn() {
-        var t, i, o, a;
+        var t, i, a, o;
         if ('true' === sessionStorage.getItem('crs-first-time-user-checked'))
           return !1;
         (this.abortController && this.abortController.abort(),
           (this.abortController = new AbortController()));
         const { data: r, error: m } = await (async (t) => {
           try {
-            const { data: i, error: o } = await (async (n, e, t) => {
+            const { data: i, error: a } = await (async (n, e, t) => {
               try {
                 const i = await fetch(n, { ...e, signal: t }),
-                  o = await i.json();
-                if (!i.ok) throw new Error(`Error: ${o.message}`);
-                return { data: o, error: null };
-              } catch (o) {
-                return { data: null, error: o };
+                  a = await i.json();
+                if (!i.ok) throw new Error(`Error: ${a.message}`);
+                return { data: a, error: null };
+              } catch (a) {
+                return { data: null, error: a };
               }
             })(
               `https://auth.${e}usersData/data`,
@@ -217,7 +213,7 @@
               },
               t,
             );
-            return o ? { data: null, error: o } : { data: i, error: null };
+            return a ? { data: null, error: a } : { data: i, error: null };
           } catch (m) {
             return { data: null, error: m };
           }
@@ -225,17 +221,17 @@
         if (this.abortController.signal.aborted) return !1;
         const s =
           !!(null ==
-          (a =
+          (o =
             null ==
-            (o =
+            (a =
               null ==
               (i = null == (t = null == r ? void 0 : r.data) ? void 0 : t.data)
                 ? void 0
                 : i.personal)
               ? void 0
-              : o.communication)
+              : a.communication)
             ? void 0
-            : a.email) && !m;
+            : o.email) && !m;
         return (
           s || sessionStorage.setItem('crs-first-time-user-checked', 'true'),
           s
@@ -277,15 +273,6 @@
         null == (n = this.payments) || n.cleanUp();
       }
       async handlePageChange() {
-        if (
-          (await this.checkIsUserLoggedIn()) ||
-          ('true' !== sessionStorage.getItem('crs-first-time-user-checked') &&
-            !location.href.includes('page=payment'))
-        )
-          return (
-            this.cleanUpComponents(),
-            void sessionStorage.removeItem('crs-first-time-user-checked')
-          );
         const n = new URLSearchParams(window.location.search).get('formId'),
           e = new URLSearchParams(window.location.search).get('page');
         if (
