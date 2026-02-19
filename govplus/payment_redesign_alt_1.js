@@ -169,15 +169,9 @@
           this.init());
       }
       init() {
-        (location.href.includes('page=form') &&
-          (sessionStorage.removeItem('crs-first-time-user-checked'),
-          this.cleanUpComponents()),
-          this.checkIsUserLoggedIn().then((n) => {
-            const e =
-              'true' === sessionStorage.getItem('crs-first-time-user-checked');
-            (n && !e) ||
-              (this.spaPageChangeHandler(), this.handleInitialPageLoad());
-          }));
+        (location.href.includes('page=form') && this.cleanUpComponents(),
+          this.spaPageChangeHandler(),
+          this.handleInitialPageLoad());
       }
       async checkIsUserLoggedIn() {
         var t, i, a, o;
@@ -268,15 +262,7 @@
         null == (n = this.payments) || n.cleanUp();
       }
       async handlePageChange() {
-        if (
-          (await this.checkIsUserLoggedIn()) ||
-          ('true' !== sessionStorage.getItem('crs-first-time-user-checked') &&
-            !location.href.includes('page=payment'))
-        )
-          return (
-            this.cleanUpComponents(),
-            void sessionStorage.removeItem('crs-first-time-user-checked')
-          );
+        await this.checkIsUserLoggedIn();
         const n = new URLSearchParams(window.location.search).get('formId'),
           e = new URLSearchParams(window.location.search).get('page');
         if (
