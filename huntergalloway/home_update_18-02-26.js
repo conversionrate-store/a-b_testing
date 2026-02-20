@@ -1,6 +1,7 @@
 (function() {
   "use strict";
-  const x = `.reviews {\r
+  const x = `.reviews,\r
+.calc {\r
   display: none;\r
 }\r
 \r
@@ -516,7 +517,7 @@
   background: #f4f4f4;\r
   border: 3px solid #f4f4f4;\r
 }\r
-`, f = (r) => new Promise((n) => {
+`, w = (r) => new Promise((n) => {
     const e = document.querySelector(r);
     e && n(e);
     const t = new MutationObserver(() => {
@@ -539,13 +540,13 @@
     }
     on(n, e, t) {
       return typeof e == "function" && (t = e, e = ""), this.elements.forEach((a) => {
-        a.addEventListener(n, function(s) {
+        a.addEventListener(n, function(o) {
           var l;
           if (e !== "") {
-            let i = (l = s.target) == null ? void 0 : l.closest(e);
-            i && (t == null || t.call(i, s));
+            let s = (l = o.target) == null ? void 0 : l.closest(e);
+            s && (t == null || t.call(s, o));
           } else
-            t == null || t.call(a, s);
+            t == null || t.call(a, o);
         });
       }), this;
     }
@@ -570,7 +571,7 @@
       return this;
     }
     style(n, e) {
-      const t = n.split("-").map((a, s) => s === 0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("");
+      const t = n.split("-").map((a, o) => o === 0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("");
       return this.elements.forEach(function(a) {
         a.style[t] = e;
       }), this;
@@ -595,22 +596,22 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const m = (r) => new h(r), q = async (r) => {
+  const u = (r) => new h(r), q = async (r) => {
     const n = (e) => new Promise((t, a) => {
-      const s = e.split(".").pop();
-      if (s === "js") {
+      const o = e.split(".").pop();
+      if (o === "js") {
         if (Array.from(document.scripts).map((d) => d.src.toLowerCase()).includes(e.toLowerCase()))
           return p(`Script ${e} allready downloaded!`, "success"), t("");
-        const i = document.createElement("script");
-        i.src = e, i.onload = t, i.onerror = a, document.head.appendChild(i);
-      } else if (s === "css") {
+        const s = document.createElement("script");
+        s.src = e, s.onload = t, s.onerror = a, document.head.appendChild(s);
+      } else if (o === "css") {
         if (Array.from(document.styleSheets).map((d) => {
           var c;
           return (c = d.href) == null ? void 0 : c.toLowerCase();
         }).includes(e.toLowerCase()))
           return p(`Style ${e} allready downloaded!`, "success"), t("");
-        const i = document.createElement("link");
-        i.rel = "stylesheet", i.href = e, i.onload = t, i.onerror = a, document.head.appendChild(i);
+        const s = document.createElement("link");
+        s.rel = "stylesheet", s.href = e, s.onload = t, s.onerror = a, document.head.appendChild(s);
       }
     });
     for (const e of r)
@@ -637,7 +638,7 @@
         break;
     }
     console.log(`%c>>> ${r}`, `${e} font-size: 16px; font-weight: 600`);
-  }, S = [
+  }, A = [
     {
       question: "Who are we and what do we specialise in?",
       answer: 'We are Hunter Galloway, an award‑winning mortgage brokerage based in Brisbane, Australia. We specialise in helping clients like you secure home loans, refinance existing loans, and find tailored finance solutions. By working with a panel of over 30 Australian banks and lenders, we make sure you get the loan that fits your goals. <a href="https://www.huntergalloway.com.au/home-loans-brisbane/" class="faq-block__link">Learn more about us</a>'
@@ -678,10 +679,10 @@
       question: "Where can I learn more about mortgages, saving for a deposit, or refinancing?",
       answer: 'We regularly publish guides and blog posts to help you make informed decisions about your home loan. Check out our <a href="https://www.huntergalloway.com.au//?s=blog" class="faq-block__link">Blog &amp; Guides</a> for practical tips and insights.'
     }
-  ], o = "", A = [
+  ], i = "", S = [
     {
       name: "Justin",
-      avatar: o,
+      avatar: i,
       date: "Feb 18, 2026",
       rating: 5,
       text: "Hunter Galloway is the most professional team I've ever had the privilege of working with. They have helped us with two home loan applications so far and their advice has always been clear, incredibly responsive and accurate.",
@@ -689,7 +690,7 @@
     },
     {
       name: "Jason Nesbitt",
-      avatar: o,
+      avatar: i,
       date: "Feb 17, 2026",
       rating: 5,
       text: "I have just finalised my mortgage with Hunter Galloway. Professional from start to finish and extremely helpful in the process of securing the home loan. I highly recommended them.",
@@ -697,7 +698,7 @@
     },
     {
       name: "Monique Roosen",
-      avatar: o,
+      avatar: i,
       date: "Feb 17, 2026",
       rating: 5,
       text: "Josh and the Team did an amazing job getting the preapprovals done quickly and efficiently within some very tight timeframes. A huge thank you for all your work with putting some urgency behind the mortgage pre-approval application.",
@@ -705,7 +706,7 @@
     },
     {
       name: "Riley Lehmann",
-      avatar: o,
+      avatar: i,
       date: "Feb 16, 2026",
       rating: 5,
       text: "My experience with the Hunter Galloway team has been nothing but great. Ty, Suen and Gabi made the intimidating process of buying mine and my partner's first home a breeze. No matter how many questions we had they were consistently prompt.",
@@ -713,7 +714,7 @@
     },
     {
       name: "Ayurshi Khatri",
-      avatar: o,
+      avatar: i,
       date: "Feb 16, 2026",
       rating: 5,
       text: "Had a wonderful experience with the team of Hunter Galloway. They were very knowledgeable and approachable. Special thanks to Jayden and Gemma for assisting us with the process.",
@@ -721,7 +722,7 @@
     },
     {
       name: "Daniel Allison",
-      avatar: o,
+      avatar: i,
       date: "Feb 14, 2026",
       rating: 5,
       text: "Fantastic communication. Commitment to getting great rates. Gives great advice when in tough borrowing situations.",
@@ -729,7 +730,7 @@
     },
     {
       name: "Serena Fulford",
-      avatar: o,
+      avatar: i,
       date: "Feb 11, 2026",
       rating: 5,
       text: "Responsive, informed and very engaging - Nathan explained my options really clearly. Achieved a good outcome.",
@@ -737,7 +738,7 @@
     },
     {
       name: "Jordan Pyne",
-      avatar: o,
+      avatar: i,
       date: "Feb 11, 2026",
       rating: 5,
       text: "Jayden, Gemma, Vin and the team are great! Highly recommend.",
@@ -745,7 +746,7 @@
     },
     {
       name: "Rebecca Mansell",
-      avatar: o,
+      avatar: i,
       date: "Feb 4, 2026",
       rating: 5,
       text: "We recently purchased our first home, and Josh and Angela were incredible to work with. As first home buyers, the process felt incredibly daunting at first and we had no idea what to expect. But they made everything feel manageable and were so reassuring every step of the way. We trusted them completely and we were not disappointed. I’d highly recommend Hunter Galloway to anyone looking for a broker, especially first home buyers who might be feeling unsure or overwhelmed. Honestly, I wish I'd given them a call earlier. Thanks so much, Josh and Angela!",
@@ -753,7 +754,7 @@
     },
     {
       name: "Karishma Maganlal",
-      avatar: o,
+      avatar: i,
       date: "Feb 4, 2026",
       rating: 5,
       text: "Thank you to Alex and Christian for making my first home purchase a seamless experience. They were always available by phone or email and happy to explain any part of the process. I couldn’t have asked for better support.",
@@ -762,7 +763,7 @@
   ], C = [
     {
       name: "Hayley T",
-      avatar: o,
+      avatar: i,
       date: "Nov 2025",
       rating: 5,
       text: "I first used Hunter Galloway a few years ago to refinance my mortgage after our build was complete. Gabi was super friendly and knowledgeable and I really felt she was someone I could trust with a decision such as this. I have been continually liaising with them to make sure I've got the best available rate and package. Thank you Gabi and the team for your professional and most of all, saving money on my home loan.",
@@ -770,7 +771,7 @@
     },
     {
       name: "Anas B.",
-      avatar: o,
+      avatar: i,
       date: "2023",
       rating: 5,
       text: "Heidi Pearson and Jayden Vecchio were amazing, supportive, responsive and extremely professional throughout the process. Heidi was on top of her work and there was never a single instance where I had to follow-up or was left uninformed. Her due diligence was always up to the mark. She was an absolute delight to work with.",
@@ -778,7 +779,7 @@
     },
     {
       name: "Stephanie Whitmore",
-      avatar: o,
+      avatar: i,
       date: "2023",
       rating: 5,
       text: "We had an exceptional experience with Hunter Galloway, specifically Nathan and Gemma, during the purchase of our first home. Their professionalism, care, and patience throughout the entire mortgage process were truly commendable. They guided us seamlessly, addressing every concern with expertise and a personal touch.",
@@ -786,7 +787,7 @@
     },
     {
       name: "Nima",
-      avatar: o,
+      avatar: i,
       date: "2022",
       rating: 5,
       text: "I had my second mortgage sorted by Hunter Galloway and it was another flawless experience. Alex and Christian did a fantastic job, kept me well informed throughout the process and were always there if I had questions. Thanks so much Hunter Galloway, especially Alex and Christian.",
@@ -794,7 +795,7 @@
     },
     {
       name: "Natty M",
-      avatar: o,
+      avatar: i,
       date: "2022",
       rating: 5,
       text: "From the initial phone call hubby made to Hunter Galloway we are grateful to Nathan, Joshua and Pau who helped us with our home loan refinance. The team worked with us along the application process and are very helpful in all our questions. We're now getting ready for settlement and are so pleased with how efficient the team have been.",
@@ -802,7 +803,7 @@
     },
     {
       name: "GMC",
-      avatar: o,
+      avatar: i,
       date: "2021",
       rating: 5,
       text: "So happy with the help and support all of the team at Hunter Galloway gave us in our journey to purchase our new home. Everyone was friendly and knowledgeable, and nothing was too much trouble. I would highly recommend.",
@@ -810,7 +811,7 @@
     },
     {
       name: "MGC",
-      avatar: o,
+      avatar: i,
       date: "2021",
       rating: 5,
       text: "The team at Hunter Galloway provided excellent service throughout the loan application process. They communicated very well with me. I was confident that I knew what the next step was at all times and that they were just a friendly phone call or email away for any questions. This is the second time I have engaged Hunter Galloway and both experiences have been excellent. I would highly recommend them.",
@@ -818,7 +819,7 @@
     },
     {
       name: "Bhawana Rai",
-      avatar: o,
+      avatar: i,
       date: "2021",
       rating: 5,
       text: "Hunter Galloway helped us with the mortgage consultation and they were absolutely great to work with. Blake Belford was our agent and he was extremely helpful and responsive. I would recommend them to anyone who's looking for a similar service, you'll not be disappointed.",
@@ -826,7 +827,7 @@
     },
     {
       name: "Sharon S.",
-      avatar: o,
+      avatar: i,
       date: "2021",
       rating: 5,
       text: "Hunter Galloway is true to their mission – home loans made easy! From the initial phone call, I was impressed with the professional response to my general queries. Jayden, Nathan and the team went above and beyond to make the entire process smooth and stress-free.",
@@ -834,7 +835,7 @@
     },
     {
       name: "Joel D.",
-      avatar: o,
+      avatar: i,
       date: "2021",
       rating: 5,
       text: "A little while back when I had a change of circumstances that made me pull out of a home loan application, I found a video online by Hunter Galloway about how casual and freelance workers can still get home loans. Six months later I found myself in that position and when looking for a broker to help me out, I remembered Hunter Galloway. I have not been disappointed.",
@@ -852,7 +853,7 @@
     `
   <div class="faq-block">
     <h2 class="faq-block__title">FAQ</h2>
-    <div class="faq-block__list-wrap">${S.map(
+    <div class="faq-block__list-wrap">${A.map(
       (r) => (
         /* HTML */
         ` <div class="faq-block__item">
@@ -869,7 +870,7 @@
     ).join("")}</div>
   </div>
 `
-  ), w = {
+  ), f = {
     star: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
 <g clip-path="url(#clip0_46_215)">
 <path d="M10.9997 0L13.9092 6.99537L21.4613 7.60081L15.7074 12.5296L17.4653 19.8992L10.9997 15.95L4.53407 19.8992L6.29198 12.5296L0.538086 7.60081L8.09017 6.99537L10.9997 0Z" fill="#FDB948"/>
@@ -891,7 +892,7 @@
 <circle cx="16" cy="13" r="5" fill="white"/>
 <ellipse cx="16" cy="26" rx="9" ry="6" fill="white"/>
 </svg>`
-  }, v = (r) => Array.from({ length: r }, () => `<span class="reviews-block__star">${w.star}</span>`).join(""), y = (r) => r ? `<img class="reviews-block__avatar" src="${r}" alt="avatar">` : `<span class="reviews-block__avatar">${w.userDefault}</span>`, E = (r) => (
+  }, v = (r) => Array.from({ length: r }, () => `<span class="reviews-block__star">${f.star}</span>`).join(""), y = (r) => r ? `<img class="reviews-block__avatar" src="${r}" alt="avatar">` : `<span class="reviews-block__avatar">${f.userDefault}</span>`, E = (r) => (
     /* HTML */
     `
   <div class="reviews-block__card__wrap">
@@ -945,8 +946,8 @@
         <div class="reviews-block__slider" id="slider-${r}">${t}</div>
       </div>
       <div class="reviews-block__nav">
-        <div class="reviews-block__arrow reviews-block__arrow--prev" id="prev-${r}">${w.arrowLeft}</div>
-        <div class="reviews-block__arrow reviews-block__arrow--next" id="next-${r}">${w.arrowRight}</div>
+        <div class="reviews-block__arrow reviews-block__arrow--prev" id="prev-${r}">${f.arrowLeft}</div>
+        <div class="reviews-block__arrow reviews-block__arrow--next" id="next-${r}">${f.arrowRight}</div>
       </div>
     </div>
   `
@@ -972,10 +973,10 @@
       this.init();
     }
     async init() {
-      await f("body"), m("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_styles">${x}</style>`), this.renderFaq(), this.renderReviews();
+      await w("body"), u("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_styles">${x}</style>`), await w('[data-purpose="upgrade"] .purpose-block__title'), u('[data-purpose="upgrade"] .purpose-block__title').text("Buy my next home"), this.renderFaq(), this.renderReviews();
     }
     async renderFaq() {
-      await f(".reviews"), m(".reviews").elements[0].insertAdjacentHTML("beforebegin", L);
+      await w(".reviews"), u(".reviews").elements[0].insertAdjacentHTML("beforebegin", L);
       const e = document.querySelector(".faq-block");
       e && this.initAccordion(e);
     }
@@ -984,63 +985,66 @@
       e.forEach((t) => {
         const a = t.querySelector(".faq-block__question");
         a == null || a.addEventListener("click", () => {
-          const s = t.classList.contains("is-open");
-          e.forEach((l) => l.classList.remove("is-open")), s || t.classList.add("is-open");
+          const o = t.classList.contains("is-open");
+          e.forEach((l) => l.classList.remove("is-open")), o || t.classList.add("is-open");
         });
       });
     }
     async renderReviews() {
-      await f(".reviews"), m(".reviews").elements[0].insertAdjacentHTML("afterend", B(A, C));
+      await w(".reviews"), u(".reviews").elements[0].insertAdjacentHTML("afterend", B(S, C));
       const e = document.querySelector(".reviews-block");
       if (!e) return;
-      this.initReadMore(e), window.innerWidth <= 768 ? this.initLoadMore(e) : this.initSliders(e);
+      window.innerWidth <= 768 ? (this.initLoadMore(e), this.initReadMore(e)) : this.initSliders(e, () => this.initReadMore(e));
     }
     initReadMore(n) {
       n.querySelectorAll(".reviews-block__text-wrap").forEach((e) => {
         const t = e.querySelector(".reviews-block__text"), a = e.querySelector(".reviews-block__read-more");
-        !t || !a || requestAnimationFrame(() => {
-          if (t.scrollHeight <= t.clientHeight + 2) {
-            a.style.display = "none";
+        if (!t || !a) return;
+        a.addEventListener("click", () => {
+          t.classList.remove("reviews-block__text--clamped"), a.style.display = "none";
+        });
+        const o = () => {
+          if (t.clientHeight === 0) {
+            requestAnimationFrame(o);
             return;
           }
-          a.addEventListener("click", () => {
-            t.classList.remove("reviews-block__text--clamped"), a.style.display = "none";
-          });
-        });
+          t.scrollHeight <= t.clientHeight + 2 && (a.style.display = "none");
+        };
+        requestAnimationFrame(o);
       });
     }
     initLoadMore(n) {
       n.querySelectorAll(".reviews-block__section").forEach((a) => {
-        const s = a.querySelector(".reviews-block__slider");
-        if (!s) return;
-        const l = Array.from(s.querySelectorAll(".reviews-block__card"));
-        let i = 3;
-        l.forEach((c, u) => {
-          c.classList.toggle("rb-hidden", u >= 3);
+        const o = a.querySelector(".reviews-block__slider");
+        if (!o) return;
+        const l = Array.from(o.querySelectorAll(".reviews-block__card"));
+        let s = 3;
+        l.forEach((c, m) => {
+          c.classList.toggle("rb-hidden", m >= 3);
         });
         const d = a.querySelector(".reviews-block__nav");
         if (d && (d.style.display = "none"), l.length > 3) {
           const c = document.createElement("button");
           c.className = "reviews-block__load-more", c.textContent = "Show more", a.appendChild(c), c.addEventListener("click", () => {
-            const u = i + 3;
-            l.forEach((G, T) => {
-              T < u && G.classList.remove("rb-hidden");
-            }), i = u, i >= l.length && c.remove();
+            const m = s + 3;
+            l.forEach((G, M) => {
+              M < m && G.classList.remove("rb-hidden");
+            }), s = m, s >= l.length && c.remove();
           });
         }
       });
     }
-    initSliders(n) {
-      new Promise((t) => {
-        const a = () => {
-          typeof tns == "function" ? t() : setTimeout(a, 50);
+    initSliders(n, e) {
+      new Promise((a) => {
+        const o = () => {
+          typeof tns == "function" ? a() : setTimeout(o, 50);
         };
-        a();
+        o();
       }).then(() => {
-        n.querySelectorAll(".reviews-block__section").forEach((a) => {
-          const s = a.getAttribute("data-slider") || "";
+        n.querySelectorAll(".reviews-block__section").forEach((o) => {
+          const l = o.getAttribute("data-slider") || "";
           tns({
-            container: `#slider-${s}`,
+            container: `#slider-${l}`,
             items: 1,
             slideBy: 1,
             gutter: 24,
@@ -1048,17 +1052,17 @@
             nav: !0,
             navPosition: "bottom",
             controls: !0,
-            prevButton: `#prev-${s}`,
-            nextButton: `#next-${s}`,
+            prevButton: `#prev-${l}`,
+            nextButton: `#next-${l}`,
             autoplay: !1,
             responsive: {
               0: { items: 1, slideBy: 1 },
               769: { items: 3, slideBy: 1 }
             }
           });
-          const l = a.querySelector(".reviews-block__nav"), i = a.querySelector(".tns-nav"), d = a.querySelector(`#next-${s}`);
-          l && i && d && l.insertBefore(i, d);
-        });
+          const s = o.querySelector(".reviews-block__nav"), d = o.querySelector(".tns-nav"), c = o.querySelector(`#next-${l}`);
+          s && d && c && s.insertBefore(d, c);
+        }), e && requestAnimationFrame(e);
       });
     }
   }
