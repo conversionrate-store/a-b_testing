@@ -6,7 +6,7 @@
       `background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;`,
     );
   };
-  startLog({ name: 'New PetZen - Social Proof Reels', dev: 'OS' });
+  startLog({ name: 'Video block Redesign', dev: 'OS' });
 
   const clarityInterval = (name) => {
     let int = setInterval(function () {
