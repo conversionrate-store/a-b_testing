@@ -511,6 +511,11 @@
   border-radius: 50px;\r
   max-width: 295px;\r
 }\r
+\r
+#home_quiz .home_quiz {\r
+  background: #f4f4f4;\r
+  border: 3px solid #f4f4f4;\r
+}\r
 `, f = (r) => new Promise((n) => {
     const e = document.querySelector(r);
     e && n(e);
