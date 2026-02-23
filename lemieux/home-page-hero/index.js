@@ -666,9 +666,9 @@ icms-component:has(.crs-hero) > div:not(.crs-hero):not(.crs-app-promo) {
     "What's Your Favourite Colour?",
     "What Suits Your Horse Best?",
     "@lemieuxproductsofficial",
-    "WINTER SALE",
-    "Double Coins & Rosettes on all purchases!",
-    "Extra 10% off Outlet - use code: LM-APP10"
+    "WINTER SALE"
+    // 'Double Coins & Rosettes on all purchases!',
+    // 'Extra 10% off Outlet - use code: LM-APP10',
   ], J = class J {
     constructor() {
       this.resizeObserver = null, this.resizeTimeout = null, this.mutationObservers = /* @__PURE__ */ new Set();
