@@ -331,7 +331,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero):not(.crs-app-promo) {
     padding: 0;
   }
 
-  .crs-app-promo + .crs-hero {
+  .crs-hero-section.is-app .crs-hero {
     margin-top: 0;
   }
   .crs-hero-left,
@@ -476,7 +476,7 @@ icms-component:has(.crs-hero) > div:not(.crs-hero):not(.crs-app-promo) {
     // private mutationObserver: MutationObserver | null = null;
     init() {
       try {
-        this.addStyles(), this.addNewHeroSection(), this.banner.init();
+        this.addStyles(), this.addNewHeroSection();
       } catch (e) {
         N(e, "Error initializing Hero section");
       }
@@ -503,6 +503,8 @@ icms-component:has(.crs-hero) > div:not(.crs-hero):not(.crs-app-promo) {
         "beforebegin",
         Ue(`${i}`)
       );
+      const n = e.previousElementSibling;
+      n != null && n.classList.contains("crs-hero-section") && this.isAppView() && n.classList.add("is-app");
     }
     renderNewHeroSection() {
       const e = ce.find((i) => i.id === "winter-essentials"), s = ce.filter((i) => i.id !== "winter-essentials");
@@ -517,6 +519,15 @@ icms-component:has(.crs-hero) > div:not(.crs-hero):not(.crs-app-promo) {
       </div>
     `
       );
+    }
+    isAppView() {
+      const e = window.dataLayer;
+      return Array.isArray(e) ? e.some((s) => {
+        if (!s || typeof s != "object")
+          return !1;
+        const i = s;
+        return i.event === "inAppView" && Number(i.isApp) === 1;
+      }) : !1;
     }
     renderItem(e) {
       const s = this.renderTitle(e.title), i = this.generateAltText(e.title);
@@ -3238,7 +3249,7 @@ page-component-hero-image:has(vimeo-player) {
     const i = D();
     return t[e === "width" ? "offsetWidth" : "offsetHeight"] + parseFloat(i.getComputedStyle(t, null).getPropertyValue(e === "width" ? "margin-right" : "margin-top")) + parseFloat(i.getComputedStyle(t, null).getPropertyValue(e === "width" ? "margin-left" : "margin-bottom"));
   }
-  function M(t) {
+  function O(t) {
     return (Array.isArray(t) ? t : [t]).filter((e) => !!e);
   }
   function he(t, e = "") {
@@ -3254,14 +3265,14 @@ page-component-hero-image:has(vimeo-player) {
       touch: !!("ontouchstart" in t || t.DocumentTouch && e instanceof t.DocumentTouch)
     };
   }
-  function Oe() {
+  function Ae() {
     return me || (me = ht()), me;
   }
   let ve;
   function mt({
     userAgent: t
   } = {}) {
-    const e = Oe(), s = D(), i = s.navigator.platform, n = t || s.navigator.userAgent, r = {
+    const e = Ae(), s = D(), i = s.navigator.platform, n = t || s.navigator.userAgent, r = {
       ios: !1,
       android: !1
     }, o = s.screen.width, l = s.screen.height, a = n.match(/(Android);?[\s\/]+([\d.]+)?/);
@@ -3271,12 +3282,12 @@ page-component-hero-image:has(vimeo-player) {
     const g = ["1024x1366", "1366x1024", "834x1194", "1194x834", "834x1112", "1112x834", "768x1024", "1024x768", "820x1180", "1180x820", "810x1080", "1080x810"];
     return !u && d && e.touch && g.indexOf(`${o}x${l}`) >= 0 && (u = n.match(/(Version)\/([\d.]+)/), u || (u = [0, 1, "13_0_0"]), d = !1), a && !w && (r.os = "android", r.android = !0), (u || p || m) && (r.os = "ios", r.ios = !0), r;
   }
-  function Me(t = {}) {
+  function Oe(t = {}) {
     return ve || (ve = mt(t)), ve;
   }
   let we;
   function vt() {
-    const t = D(), e = Me();
+    const t = D(), e = Oe();
     let s = !1;
     function i() {
       const l = t.navigator.userAgent.toLowerCase();
@@ -3297,7 +3308,7 @@ page-component-hero-image:has(vimeo-player) {
       isWebView: n
     };
   }
-  function Ae() {
+  function Me() {
     return we || (we = vt()), we;
   }
   function wt({
@@ -3488,15 +3499,15 @@ page-component-hero-image:has(vimeo-player) {
           if (P && (_.style.transform = "none"), z && (_.style.webkitTransform = "none"), s.roundLengths)
             y = t.isHorizontal() ? ge(_, "width") : ge(_, "height");
           else {
-            const B = e(E, "width"), Fe = e(E, "padding-left"), K = e(E, "padding-right"), L = e(E, "margin-left"), A = e(E, "margin-right"), H = E.getPropertyValue("box-sizing");
+            const B = e(E, "width"), Fe = e(E, "padding-left"), K = e(E, "padding-right"), L = e(E, "margin-left"), M = e(E, "margin-right"), H = E.getPropertyValue("box-sizing");
             if (H && H === "border-box")
-              y = B + L + A;
+              y = B + L + M;
             else {
               const {
                 clientWidth: X,
                 offsetWidth: Ps
               } = _;
-              y = B + Fe + K + L + A + (Ps - X);
+              y = B + Fe + K + L + M + (Ps - X);
             }
           }
           P && (_.style.transform = P), z && (_.style.webkitTransform = z), s.roundLengths && (y = Math.floor(y));
@@ -3806,7 +3817,7 @@ page-component-hero-image:has(vimeo-player) {
     updateActiveIndex: Pt,
     updateClickedSlide: It
   };
-  function Ot(t = this.isHorizontal() ? "x" : "y") {
+  function At(t = this.isHorizontal() ? "x" : "y") {
     const e = this, {
       params: s,
       rtlTranslate: i,
@@ -3820,7 +3831,7 @@ page-component-hero-image:has(vimeo-player) {
     let o = ct(r, t);
     return o += e.cssOverflowAdjustment(), i && (o = -o), o || 0;
   }
-  function Mt(t, e) {
+  function Ot(t, e) {
     const s = this, {
       rtlTranslate: i,
       params: n,
@@ -3834,7 +3845,7 @@ page-component-hero-image:has(vimeo-player) {
     const p = s.maxTranslate() - s.minTranslate();
     p === 0 ? m = 0 : m = (t - s.minTranslate()) / p, m !== o && s.updateProgress(t), s.emit("setTranslate", s.translate, e);
   }
-  function At() {
+  function Mt() {
     return -this.snapGrid[0];
   }
   function Bt() {
@@ -3872,9 +3883,9 @@ page-component-hero-image:has(vimeo-player) {
     }), r.wrapperEl.addEventListener("transitionend", r.onTranslateToWrapperTransitionEnd))), !0;
   }
   var qt = {
-    getTranslate: Ot,
-    setTranslate: Mt,
-    minTranslate: At,
+    getTranslate: At,
+    setTranslate: Ot,
+    minTranslate: Mt,
     maxTranslate: Bt,
     translateTo: Dt
   };
@@ -3979,7 +3990,7 @@ page-component-hero-image:has(vimeo-player) {
       }
       return !0;
     }
-    const k = Ae().isSafari;
+    const k = Me().isSafari;
     return h && !n && k && r.isElement && r.virtual.update(!1, !1, o), r.setTransition(e), r.setTranslate(c), r.updateActiveIndex(o), r.updateSlidesClasses(), r.emit("beforeTransitionStart", e, i), r.transitionStart(s, f), e === 0 ? r.transitionEnd(s, f) : r.animating || (r.animating = !0, r.onSlideToWrapperTransitionEnd || (r.onSlideToWrapperTransitionEnd = function(y) {
       !r || r.destroyed || y.target === this && (r.wrapperEl.removeEventListener("transitionend", r.onSlideToWrapperTransitionEnd), r.onSlideToWrapperTransitionEnd = null, delete r.onSlideToWrapperTransitionEnd, r.transitionEnd(s, f));
     }), r.wrapperEl.addEventListener("transitionend", r.onSlideToWrapperTransitionEnd)), !0;
@@ -4227,21 +4238,21 @@ page-component-hero-image:has(vimeo-player) {
     if (K < S) {
       z = Math.max(S - K, b);
       for (let L = 0; L < S - K; L += 1) {
-        const A = L - Math.floor(L / I) * I;
+        const M = L - Math.floor(L / I) * I;
         if (k) {
-          const H = I - A - 1;
+          const H = I - M - 1;
           for (let X = u.length - 1; X >= 0; X -= 1)
             u[X].column === H && C.push(X);
         } else
-          C.push(I - A - 1);
+          C.push(I - M - 1);
       }
     } else if (K + h > I - S) {
       B = Math.max(K - (I - S * 2), b), T && (B = Math.max(B, h - I + c + 1));
       for (let L = 0; L < B; L += 1) {
-        const A = L - Math.floor(L / I) * I;
+        const M = L - Math.floor(L / I) * I;
         k ? u.forEach((H, X) => {
-          H.column === A && y.push(X);
-        }) : y.push(A);
+          H.column === M && y.push(X);
+        }) : y.push(M);
       }
     }
     if (a.__preventObserver__ = !0, requestAnimationFrame(() => {
@@ -4250,8 +4261,8 @@ page-component-hero-image:has(vimeo-player) {
       u[L].swiperLoopMoveDOM = !0, w.prepend(u[L]), u[L].swiperLoopMoveDOM = !1;
     }), E && y.forEach((L) => {
       u[L].swiperLoopMoveDOM = !0, w.append(u[L]), u[L].swiperLoopMoveDOM = !1;
-    }), a.recalcSlides(), d.slidesPerView === "auto" ? a.updateSlides() : k && (C.length > 0 && P || y.length > 0 && E) && a.slides.forEach((L, A) => {
-      a.grid.updateSlide(A, L, a.slides);
+    }), a.recalcSlides(), d.slidesPerView === "auto" ? a.updateSlides() : k && (C.length > 0 && P || y.length > 0 && E) && a.slides.forEach((L, M) => {
+      a.grid.updateSlide(M, L, a.slides);
     }), d.watchSlidesProgress && a.updateSlidesOffset(), e) {
       if (C.length > 0 && P) {
         if (typeof t > "u") {
@@ -4278,10 +4289,10 @@ page-component-hero-image:has(vimeo-player) {
         activeSlideIndex: n,
         byController: !0
       };
-      Array.isArray(a.controller.control) ? a.controller.control.forEach((A) => {
-        !A.destroyed && A.params.loop && A.loopFix({
+      Array.isArray(a.controller.control) ? a.controller.control.forEach((M) => {
+        !M.destroyed && M.params.loop && M.loopFix({
           ...L,
-          slideTo: A.params.slidesPerView === d.slidesPerView ? e : !1
+          slideTo: M.params.slidesPerView === d.slidesPerView ? e : !1
         });
       }) : a.controller.control instanceof a.constructor && a.controller.control.params.loop && a.controller.control.loopFix({
         ...L,
@@ -4962,9 +4973,9 @@ page-component-hero-image:has(vimeo-player) {
         }), a;
       }
       const r = this;
-      r.__swiper__ = !0, r.support = Oe(), r.device = Me({
+      r.__swiper__ = !0, r.support = Ae(), r.device = Oe({
         userAgent: i.userAgent
-      }), r.browser = Ae(), r.eventsListeners = {}, r.eventsAnyListeners = [], r.modules = [...r.__modules__], i.modules && Array.isArray(i.modules) && r.modules.push(...i.modules);
+      }), r.browser = Me(), r.eventsListeners = {}, r.eventsAnyListeners = [], r.modules = [...r.__modules__], i.modules && Array.isArray(i.modules) && r.modules.push(...i.modules);
       const o = {};
       r.modules.forEach((a) => {
         a({
@@ -5290,7 +5301,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     function r(d, g) {
       const v = t.params.navigation;
-      d = M(d), d.forEach((x) => {
+      d = O(d), d.forEach((x) => {
         x && (x.classList[g ? "add" : "remove"](...v.disabledClass.split(" ")), x.tagName === "BUTTON" && (x.disabled = g), t.params.watchOverflow && t.enabled && x.classList[t.isLocked ? "add" : "remove"](v.lockClass));
       });
     }
@@ -5321,7 +5332,7 @@ page-component-hero-image:has(vimeo-player) {
       Object.assign(t.navigation, {
         nextEl: g,
         prevEl: v
-      }), g = M(g), v = M(v);
+      }), g = O(g), v = O(v);
       const x = (c, f) => {
         if (c) {
           if (d.addIcons && c.matches(".swiper-button-next,.swiper-button-prev") && !c.querySelector("svg")) {
@@ -5339,7 +5350,7 @@ page-component-hero-image:has(vimeo-player) {
         nextEl: d,
         prevEl: g
       } = t.navigation;
-      d = M(d), g = M(g);
+      d = O(d), g = O(g);
       const v = (x, c) => {
         x.removeEventListener("click", c === "next" ? a : l), x.classList.remove(...t.params.navigation.disabledClass.split(" "));
       };
@@ -5356,7 +5367,7 @@ page-component-hero-image:has(vimeo-player) {
         nextEl: d,
         prevEl: g
       } = t.navigation;
-      if (d = M(d), g = M(g), t.enabled) {
+      if (d = O(d), g = O(g), t.enabled) {
         o();
         return;
       }
@@ -5366,7 +5377,7 @@ page-component-hero-image:has(vimeo-player) {
         nextEl: v,
         prevEl: x
       } = t.navigation;
-      v = M(v), x = M(x);
+      v = O(v), x = O(x);
       const c = g.target;
       let f = x.includes(c) || v.includes(c);
       if (t.isElement && !f) {
@@ -5470,7 +5481,7 @@ page-component-hero-image:has(vimeo-player) {
       const c = t.rtl, f = t.params.pagination;
       if (l()) return;
       let h = t.pagination.el;
-      h = M(h);
+      h = O(h);
       let b, S;
       const k = t.virtual && t.params.virtual.enabled ? t.virtual.slides.length : t.slides.length, C = t.params.loop ? Math.ceil(k / t.params.slidesPerGroup) : t.snapGrid.length;
       if (t.params.loop ? (S = t.previousRealIndex || 0, b = t.params.slidesPerGroup > 1 ? Math.floor(t.realIndex / t.params.slidesPerGroup) : t.realIndex) : typeof t.snapIndex < "u" ? (b = t.snapIndex, S = t.previousSnapIndex) : (S = t.previousIndex || 0, b = t.activeIndex || 0), f.type === "bullets" && t.pagination.bullets && t.pagination.bullets.length > 0) {
@@ -5526,7 +5537,7 @@ page-component-hero-image:has(vimeo-player) {
       if (l()) return;
       const f = t.virtual && t.params.virtual.enabled ? t.virtual.slides.length : t.grid && t.params.grid.rows > 1 ? t.slides.length / Math.ceil(t.params.grid.rows) : t.slides.length;
       let h = t.pagination.el;
-      h = M(h);
+      h = O(h);
       let b = "";
       if (c.type === "bullets") {
         let S = t.params.loop ? Math.ceil(f / t.params.slidesPerGroup) : t.snapGrid.length;
@@ -5547,7 +5558,7 @@ page-component-hero-image:has(vimeo-player) {
       let f;
       typeof c.el == "string" && t.isElement && (f = t.el.querySelector(c.el)), !f && typeof c.el == "string" && (f = [...document.querySelectorAll(c.el)]), f || (f = c.el), !(!f || f.length === 0) && (t.params.uniqueNavElements && typeof c.el == "string" && Array.isArray(f) && f.length > 1 && (f = [...t.el.querySelectorAll(c.el)], f.length > 1 && (f = f.find((h) => ze(h, ".swiper")[0] === t.el))), Array.isArray(f) && f.length === 1 && (f = f[0]), Object.assign(t.pagination, {
         el: f
-      }), f = M(f), f.forEach((h) => {
+      }), f = O(f), f.forEach((h) => {
         c.type === "bullets" && c.clickable && h.classList.add(...(c.clickableClass || "").split(" ")), h.classList.add(c.modifierClass + c.type), h.classList.add(t.isHorizontal() ? c.horizontalClass : c.verticalClass), c.type === "bullets" && c.dynamicBullets && (h.classList.add(`${c.modifierClass}${c.type}-dynamic`), o = 0, c.dynamicMainBullets < 1 && (c.dynamicMainBullets = 1)), c.type === "progressbar" && c.progressbarOpposite && h.classList.add(c.progressbarOppositeClass), c.clickable && h.addEventListener("click", m), t.enabled || h.classList.add(c.lockClass);
       }));
     }
@@ -5555,7 +5566,7 @@ page-component-hero-image:has(vimeo-player) {
       const c = t.params.pagination;
       if (l()) return;
       let f = t.pagination.el;
-      f && (f = M(f), f.forEach((h) => {
+      f && (f = O(f), f.forEach((h) => {
         h.classList.remove(c.hiddenClass), h.classList.remove(c.modifierClass + c.type), h.classList.remove(t.isHorizontal() ? c.horizontalClass : c.verticalClass), c.clickable && (h.classList.remove(...(c.clickableClass || "").split(" ")), h.removeEventListener("click", m));
       })), t.pagination.bullets && t.pagination.bullets.forEach((h) => h.classList.remove(...c.bulletActiveClass.split(" ")));
     }
@@ -5565,7 +5576,7 @@ page-component-hero-image:has(vimeo-player) {
       let {
         el: f
       } = t.pagination;
-      f = M(f), f.forEach((h) => {
+      f = O(f), f.forEach((h) => {
         h.classList.remove(c.horizontalClass, c.verticalClass), h.classList.add(t.isHorizontal() ? c.horizontalClass : c.verticalClass);
       });
     }), s("init", () => {
@@ -5582,11 +5593,11 @@ page-component-hero-image:has(vimeo-player) {
       let {
         el: c
       } = t.pagination;
-      c && (c = M(c), c.forEach((f) => f.classList[t.enabled ? "remove" : "add"](t.params.pagination.lockClass)));
+      c && (c = O(c), c.forEach((f) => f.classList[t.enabled ? "remove" : "add"](t.params.pagination.lockClass)));
     }), s("lock unlock", () => {
       p();
     }), s("click", (c, f) => {
-      const h = f.target, b = M(t.pagination.el);
+      const h = f.target, b = O(t.pagination.el);
       if (t.params.pagination.el && t.params.pagination.hideOnClick && b && b.length > 0 && !h.classList.contains(t.params.pagination.bulletClass)) {
         if (t.navigation && (t.navigation.nextEl && h === t.navigation.nextEl || t.navigation.prevEl && h === t.navigation.prevEl)) return;
         const S = b[0].classList.contains(t.params.pagination.hiddenClass);
@@ -5598,13 +5609,13 @@ page-component-hero-image:has(vimeo-player) {
       let {
         el: c
       } = t.pagination;
-      c && (c = M(c), c.forEach((f) => f.classList.remove(t.params.pagination.paginationDisabledClass))), d(), w(), p();
+      c && (c = O(c), c.forEach((f) => f.classList.remove(t.params.pagination.paginationDisabledClass))), d(), w(), p();
     }, x = () => {
       t.el.classList.add(t.params.pagination.paginationDisabledClass);
       let {
         el: c
       } = t.pagination;
-      c && (c = M(c), c.forEach((f) => f.classList.add(t.params.pagination.paginationDisabledClass))), g();
+      c && (c = O(c), c.forEach((f) => f.classList.add(t.params.pagination.paginationDisabledClass))), g();
     };
     Object.assign(t.pagination, {
       enable: v,
@@ -5615,7 +5626,7 @@ page-component-hero-image:has(vimeo-player) {
       destroy: g
     });
   }
-  const O = class O {
+  const A = class A {
     constructor() {
       this.eventsAborter = null, this.swiperInstance = null, this.slideChangeHandler = null, this.linkConfigs = [
         {
@@ -5648,9 +5659,9 @@ page-component-hero-image:has(vimeo-player) {
     }
     async render() {
       try {
-        const e = await G(O.CONTAINER_SELECTOR);
+        const e = await G(A.CONTAINER_SELECTOR);
         if (!e) {
-          R(`Container ${O.CONTAINER_SELECTOR} not found`, "warn");
+          R(`Container ${A.CONTAINER_SELECTOR} not found`, "warn");
           return;
         }
         this.cleanupExistingSection(), this.insertSection(e), this.setupEventListeners(), this.setupPagination(), this.setupVisibilityTracking();
@@ -5659,12 +5670,12 @@ page-component-hero-image:has(vimeo-player) {
       }
     }
     cleanupExistingSection() {
-      const e = document.querySelector(O.SECTION_SELECTOR);
+      const e = document.querySelector(A.SECTION_SELECTOR);
       e && (this.eventsAborter && this.eventsAborter.abort(), e.remove());
     }
     insertSection(e) {
       e.insertAdjacentHTML(
-        O.INSERTION_POSITION,
+        A.INSERTION_POSITION,
         it
       ), this.initSwiper();
     }
@@ -5674,7 +5685,7 @@ page-component-hero-image:has(vimeo-player) {
       });
     }
     setupLinksForConfig(e) {
-      const s = `${O.SECTION_SELECTOR} ${e.selector}`;
+      const s = `${A.SECTION_SELECTOR} ${e.selector}`;
       document.querySelectorAll(s).forEach((n) => {
         this.attachClickListener(n, e);
       });
@@ -5700,7 +5711,7 @@ page-component-hero-image:has(vimeo-player) {
     }
     initSwiper() {
       const e = document.querySelector(
-        O.SECTION_SELECTOR
+        A.SECTION_SELECTOR
       );
       if (!e) return;
       const s = e.querySelector(".swiper");
@@ -5727,7 +5738,7 @@ page-component-hero-image:has(vimeo-player) {
       }));
     }
     setupPagination() {
-      const e = document.querySelector(O.SECTION_SELECTOR);
+      const e = document.querySelector(A.SECTION_SELECTOR);
       if (!e || !this.swiperInstance) return;
       const s = e.querySelectorAll(".carousel-dot");
       if (s.length === 0) {
@@ -5762,29 +5773,29 @@ page-component-hero-image:has(vimeo-player) {
     }
     setupVisibilityTracking() {
       const e = document.querySelector(
-        O.SECTION_SELECTOR
+        A.SECTION_SELECTOR
       );
       e && le(
         e,
         "exp_hp_discipline_view",
         "Home Page Discipline",
         "Visibility",
-        O.VISIBILITY_THRESHOLD
+        A.VISIBILITY_THRESHOLD
       );
     }
     addStyles() {
-      if (document.getElementById(O.STYLES_ID)) return;
+      if (document.getElementById(A.STYLES_ID)) return;
       const e = document.createElement("style");
-      e.id = O.STYLES_ID, e.textContent = nt, document.head.appendChild(e);
+      e.id = A.STYLES_ID, e.textContent = nt, document.head.appendChild(e);
     }
     destroy() {
       this.eventsAborter && (this.eventsAborter.abort(), this.eventsAborter = null), this.swiperInstance && (this.slideChangeHandler && (this.swiperInstance.off("slideChange", this.slideChangeHandler), this.slideChangeHandler = null), this.swiperInstance.destroy(), this.swiperInstance = null);
-      const e = document.querySelector(O.SECTION_SELECTOR);
+      const e = document.querySelector(A.SECTION_SELECTOR);
       e && e.remove();
     }
   };
-  O.STYLES_ID = "crs-discipline-styles", O.CONTAINER_SELECTOR = "icms-component:has(fashion-recommendations)", O.INSERTION_POSITION = "afterend", O.SECTION_SELECTOR = ".crs-discipline-section", O.VISIBILITY_THRESHOLD = 0;
-  let _e = O;
+  A.STYLES_ID = "crs-discipline-styles", A.CONTAINER_SELECTOR = "icms-component:has(fashion-recommendations)", A.INSERTION_POSITION = "afterend", A.SECTION_SELECTOR = ".crs-discipline-section", A.VISIBILITY_THRESHOLD = 0;
+  let _e = A;
   const Cs = `/* Keep light swatches legible */
 .crs-colours-section .swatch-inner--huge.is-light-bg {
 	border: 1px solid #d9d9d9;
@@ -6189,7 +6200,7 @@ page-component-hero-image:has(vimeo-player) {
     window._crsHPTestInitialized || (window._crsHPTestInitialized = !0, G("fashion-recommendations-slide img[src]").then(() => {
       G('page-component-instagram-feed button[title="Load more"] i.snptico-plus').then(() => {
         setTimeout(() => {
-          new ks();
+          console.log("Initializing test"), new ks();
         }, 500);
       });
     }));
