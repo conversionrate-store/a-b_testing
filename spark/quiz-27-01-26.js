@@ -658,7 +658,10 @@
       title: "Company Information",
       subtitle: "",
       type: "inputs",
-      fields: [{ label: "Company name", placeholder: "Please select", type: "text", required: !0 }]
+      fields: [
+        { label: "Company name", placeholder: "Please select", type: "text", required: !0 },
+        { label: "Company website URL", placeholder: "Please select", type: "url", required: !1 }
+      ]
     },
     {
       step: 6,
@@ -768,7 +771,7 @@
     }
     fillFormField(n, e, t) {
       let s = "";
-      if (n === 1 ? s = "form-field-ma_discipline" : n === 2 ? s = "form-field-student_count" : n === 4 ? t === "First name" ? s = "form-field-field_ecdec81" : t === "Last name" && (s = "form-field-field_f5d38ef") : n === 5 ? s = "form-field-company_name" : n === 6 && (t === "Email" ? s = "form-field-field_5b5cb8f" : t === "Phone number" && (s = "form-field-field_9b0a1af")), s) {
+      if (n === 1 ? s = "form-field-ma_discipline" : n === 2 ? s = "form-field-student_count" : n === 4 ? t === "First name" ? s = "form-field-field_ecdec81" : t === "Last name" && (s = "form-field-field_f5d38ef") : n === 5 ? t === "Company name" ? s = "form-field-company_name" : t === "Company website URL" && (s = "form-field-website") : n === 6 && (t === "Email" ? s = "form-field-field_5b5cb8f" : t === "Phone number" && (s = "form-field-field_9b0a1af")), s) {
         const i = document.getElementById(s);
         i && (i.value = e, i.dispatchEvent(new Event("change", { bubbles: !0 })), i.dispatchEvent(new Event("input", { bubbles: !0 })));
       }
