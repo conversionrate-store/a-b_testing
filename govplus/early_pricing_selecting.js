@@ -316,40 +316,57 @@
       }
     }
     async changes() {
-      var n, e;
+      var n;
       if (!this.isProcessing) {
         this.isProcessing = !0;
         try {
           console.log('Waiting for control element for payment methods...');
-          const t = await i('.PaymentCombinedInformation:not([data-crs-test])'),
-            o = document.querySelector('.PaymentPageWrapper h1');
+          const e = await i('.PaymentCombinedInformation:not([data-crs-test])'),
+            t = document.querySelector('.PaymentPageWrapper h1');
           if (this.selectedPaymentMethodId) {
-            const i = t.querySelector(
-                `input[type="radio"][value="${this.selectedPaymentMethodId}"]`,
-              ),
-              a =
-                null == (n = i.closest('.payment-method-information__item'))
-                  ? void 0
-                  : n.querySelector('.prices');
-            if (i) {
-              for (; i.disabled && !i.closest('.ant-radio-wrapper-disabled'); )
+            let i = null;
+            for (;;)
+              if (
+                ((i = e.querySelector(
+                  `input[type="radio"][value="${this.selectedPaymentMethodId}"]`,
+                )),
+                i)
+              ) {
+                if (!i.disabled && !i.closest('.ant-radio-wrapper-disabled'))
+                  break;
                 (console.log(
                   'Waiting for control radio input to be enabled...',
                 ),
+                  await new Promise((n) => setTimeout(n, 500)));
+              } else
+                (console.log('Waiting for control radio input to appear...'),
                   await new Promise((n) => setTimeout(n, 100)));
-              (null == (e = i.closest('label')) || e.click(),
-                o &&
-                  !o.querySelector('.crs-payment-title') &&
-                  a &&
-                  (o.innerHTML = `<div class="crs-payment-title"><div class="crs-payment-text">${o.textContent}</div><div class="crs-payment-price">${a.innerHTML}</div></div>`));
+            if ((console.log('checkedInput is ready:', i), i)) {
+              (console.log(
+                'Simulating click on control radio input for payment method ID:',
+                this.selectedPaymentMethodId,
+              ),
+                i.click(),
+                await new Promise((n) => setTimeout(n, 200)));
+              const o = e.querySelector('input[type="radio"]:checked');
+              if (o) {
+                const e =
+                  null == (n = o.closest('.payment-method-information__item'))
+                    ? void 0
+                    : n.querySelector('.prices');
+                t &&
+                  !t.querySelector('.crs-payment-title') &&
+                  e &&
+                  (t.innerHTML = `<div class="crs-payment-title"><div class="crs-payment-text">${t.textContent}</div><div class="crs-payment-price">${e.innerHTML}</div></div>`);
+              }
             }
           }
-          const a = await i('.crs-aside-container'),
-            r = t.querySelectorAll('.payment-method-information__item'),
-            s = t.querySelector('.traveling-soon > div');
-          (s && (s.textContent = 'Need your passport soon?'),
-            a && (a.dataset.page = 'payment'),
-            r.forEach((n) => {
+          const o = await i('.crs-aside-container'),
+            a = e.querySelectorAll('.payment-method-information__item'),
+            r = e.querySelector('.traveling-soon > div');
+          (r && (r.textContent = 'Need your passport soon?'),
+            o && (o.dataset.page = 'payment'),
+            a.forEach((n) => {
               var e, t, i, o;
               const a = n.querySelector(
                   '.sale-block__processing> div:first-child p',
