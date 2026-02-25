@@ -22,17 +22,17 @@
   clarityInterval('exp_pricing_select');
 
   const n = (n) => {
-      var t;
-      const e = `; ${document.cookie}`.split(`; ${n}=`);
-      return 2 === e.length
-        ? null == (t = e.pop())
+      var e;
+      const t = `; ${document.cookie}`.split(`; ${n}=`);
+      return 2 === t.length
+        ? null == (e = t.pop())
           ? void 0
-          : t.split(';').shift()
+          : e.split(';').shift()
         : null;
     },
-    t = async (n, t, e) => {
+    e = async (n, e, t) => {
       try {
-        const i = await fetch(n, { ...t, signal: e }),
+        const i = await fetch(n, { ...e, signal: t }),
           o = await i.json();
         if (!i.ok) throw new Error(`Error: ${o.message}`);
         return { data: o, error: null };
@@ -40,14 +40,14 @@
         return { data: null, error: i };
       }
     },
-    e = location.hostname.includes('.com') ? 'govplus.com/' : 'govplus.app/',
+    t = location.hostname.includes('.com') ? 'govplus.com/' : 'govplus.app/',
     i = (n) =>
-      new Promise((t) => {
-        const e = document.querySelector(n);
-        e && t(e);
+      new Promise((e) => {
+        const t = document.querySelector(n);
+        t && e(t);
         const i = new MutationObserver(() => {
-          const e = document.querySelector(n);
-          e && (t(e), i.disconnect());
+          const t = document.querySelector(n);
+          t && (e(t), i.disconnect());
         });
         i.observe(document.documentElement, { childList: !0, subtree: !0 });
       }),
@@ -85,14 +85,15 @@
         (this.selectedPaymentMethodId = null),
         (this.stickyObserver = null),
         (this.containerObserver = null),
+        (this.mainObserver = null),
         (this.isStickyStuck = !1),
         (this.isContainerVisible = !1),
         (this.getPaymentsMethods = async () => {
           try {
             const { data: n, error: i } = await (async () => {
               try {
-                const { data: n, error: i } = await t(
-                  `https://api2.${e}payment/charges?filter__product_id__eq=PAS&filter__service_type__eq=APPLICATION_FEE`,
+                const { data: n, error: i } = await e(
+                  `https://api2.${t}payment/charges?filter__product_id__eq=PAS&filter__service_type__eq=APPLICATION_FEE`,
                   { method: 'GET' },
                 );
                 return { data: n, error: i };
@@ -101,33 +102,42 @@
               }
             })();
             if (i) throw i;
-            return (
-              (null == n ? void 0 : n.content) &&
-                this.renderNewPaymentMethods(n.content),
-              n
-            );
+            if (null == n ? void 0 : n.content) {
+              this.renderNewPaymentMethods(n.content);
+              const e = document.querySelector('main');
+              e &&
+                (this.mainObserver && this.mainObserver.disconnect(),
+                (this.mainObserver = new MutationObserver(() => {
+                  document.querySelector(this.paymentsSelector) ||
+                    (console.log(
+                      'Payment component disappeared, re-rendering...',
+                    ),
+                    this.renderNewPaymentMethods(n.content));
+                })),
+                this.mainObserver.observe(e, { childList: !0, subtree: !0 }));
+            }
           } catch (n) {
             console.error(n);
           }
         }));
     }
     init() {
-      (((n, t = 'info') => {
-        let e;
-        switch (t) {
+      (((n, e = 'info') => {
+        let t;
+        switch (e) {
           case 'info':
-            e = 'color: #3498db;';
+            t = 'color: #3498db;';
             break;
           case 'warn':
-            e = 'color: #f39c12;';
+            t = 'color: #f39c12;';
             break;
           case 'error':
-            e = 'color: #e74c3c;';
+            t = 'color: #e74c3c;';
             break;
           case 'success':
-            e = 'color: #2ecc71;';
+            t = 'color: #2ecc71;';
         }
-        console.log(`%c>>> ${n}`, `${e} font-size: 16px; font-weight: 600`);
+        console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
       })('Initializing Payments component'),
         this.cleanUp(),
         this.restoreSelectedPaymentMethod(),
@@ -140,8 +150,8 @@
         if (!n)
           return void localStorage.removeItem(this.paymentMethodStorageKey);
         localStorage.setItem(this.paymentMethodStorageKey, n);
-      } catch (t) {
-        console.error('Unable to persist selected payment method:', t);
+      } catch (e) {
+        console.error('Unable to persist selected payment method:', e);
       }
     }
     restoreSelectedPaymentMethod() {
@@ -155,7 +165,7 @@
       }
     }
     async renderNewPaymentMethods(n) {
-      var t;
+      var e;
       if (this.isRendering)
         return void console.log(
           'Payment component rendering already in progress, skipping...',
@@ -165,34 +175,34 @@
           'Payment component already rendered, skipping...',
         );
       this.isRendering = !0;
-      const e = (n) => `$${(n / 100).toFixed(0)}`,
+      const t = (n) => `$${(n / 100).toFixed(0)}`,
         r = (n) => {
-          const t = n.split(' - ').map((n) => n.trim());
-          return t.length >= 2
-            ? { title: t[0], description: t[1] }
+          const e = n.split(' - ').map((n) => n.trim());
+          return e.length >= 2
+            ? { title: e[0], description: e[1] }
             : { title: n.trim(), description: '' };
         },
-        s = [...n].sort((n, t) => parseInt(n.id) - parseInt(t.id)),
+        s = [...n].sort((n, e) => parseInt(n.id) - parseInt(e.id)),
         m =
           this.selectedPaymentMethodId &&
           s.some((n) => n.id === this.selectedPaymentMethodId)
             ? this.selectedPaymentMethodId
-            : (null == (t = s[0]) ? void 0 : t.id) || null;
+            : (null == (e = s[0]) ? void 0 : e.id) || null;
       ((this.selectedPaymentMethodId = m),
         this.persistSelectedPaymentMethod(m));
       const d = s.find((n) => n.id === m) || s[0],
         { title: p } = d ? r(d.description) : { title: 'Standard' },
         l = a[p] || a.Standard,
         c = `\n      <div class="PaymentCombinedInformation" data-crs-test="new-payment-component">\n        <div class="crs-title">Choose your passport delivery timeline</div>\n        <div class="charge-payment-form">\n          <div class="ant-form-item">\n            <div class="ant-row ant-form-item-row">\n              <div class="ant-col ant-form-item-control">\n                <div class="ant-form-item-control-input">\n                  <div class="ant-form-item-control-input-content">\n                    <div aria-required="true" class="ant-radio-group ant-radio-group-outline payment-method-information" id="itemPriceChargeId" style="display: flex !important;">\n                      ${s
-          .map((n, t) => {
+          .map((n, e) => {
             var i;
-            const a = n.id === m || (!m && 0 === t),
+            const a = n.id === m || (!m && 0 === e),
               { title: s, description: d } = r(n.description),
               p = d.replace(
                 /Guaranteed delivery in (?<weeks_count>\d+) week[s]?/,
                 '$<weeks_count> weeks delivery',
               );
-            return `\n        <li class="payment-method-information__item">\n          <label class="ant-radio-wrapper ${a ? 'ant-radio-wrapper-checked' : ''} ant-radio-wrapper-in-form-item GSubscriptionMethodRadioButton">\n            <span class="ant-radio ${a ? 'ant-radio-checked' : ''}">\n              <input class="ant-radio-input" type="radio" value="${n.id}" ${a ? 'checked=""' : ''}>\n              <span class="ant-radio-inner"></span>\n            </span>\n            <span>\n              <div class="content">\n                <div class="content__wrapper">\n                  <div class="sale-block">\n                    <div class="sale-block__processing" style="padding-top: 0px;">\n                      <div class="ant-typography GText" style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 600; margin: 0px;">\n                        <p style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 600; margin: 0px;">${s}</p>\n                      </div>\n                      <div class="ant-typography" style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 400; margin: 0px; letter-spacing: -0.1px; text-decoration: underline; text-underline-position: from-font; text-underline-offset: 1px;"> ${p}</div>\n                    </div>\n                    <ul class="crs-payment-benefits">\n                    ${(null == (i = o[s]) ? void 0 : i.map((n) => `<li>${n}</li>`).join('')) || ''}\n                    </ul>\n                  </div>\n                  <div class="price-block">\n                    <div class="prices">\n                      <div class="ant-typography" style="font-size: 18px; font-family: InterRegular, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 400; margin: 0px; letter-spacing: -0.1px; white-space: nowrap;">${e(n.amount)}</div>\n                      <div class="ant-typography" style="font-size: 24px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 120%; font-weight: 600; margin: 0px; letter-spacing: -1px; white-space: nowrap;">${e(n.salePrice)}</div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </span>\n          </label>\n        </li>\n        ${0 === t ? '\n        <div class="traveling-soon">\n          <div class="ant-typography" style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(33, 109, 227); line-height: 140%; font-weight: 600; margin: 0px;">Need your passport sooner? </div>\n        </div>\n        ' : ''}\n      `;
+            return `\n        <li class="payment-method-information__item">\n          <label class="ant-radio-wrapper ${a ? 'ant-radio-wrapper-checked' : ''} ant-radio-wrapper-in-form-item GSubscriptionMethodRadioButton">\n            <span class="ant-radio ${a ? 'ant-radio-checked' : ''}">\n              <input class="ant-radio-input" type="radio" value="${n.id}" ${a ? 'checked=""' : ''}>\n              <span class="ant-radio-inner"></span>\n            </span>\n            <span>\n              <div class="content">\n                <div class="content__wrapper">\n                  <div class="sale-block">\n                    <div class="sale-block__processing" style="padding-top: 0px;">\n                      <div class="ant-typography GText" style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 600; margin: 0px;">\n                        <p style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 600; margin: 0px;">${s}</p>\n                      </div>\n                      <div class="ant-typography" style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 400; margin: 0px; letter-spacing: -0.1px; text-decoration: underline; text-underline-position: from-font; text-underline-offset: 1px;"> ${p}</div>\n                    </div>\n                    <ul class="crs-payment-benefits">\n                    ${(null == (i = o[s]) ? void 0 : i.map((n) => `<li>${n}</li>`).join('')) || ''}\n                    </ul>\n                  </div>\n                  <div class="price-block">\n                    <div class="prices">\n                      <div class="ant-typography" style="font-size: 18px; font-family: InterRegular, sans-serif; color: rgb(62, 62, 62); line-height: 140%; font-weight: 400; margin: 0px; letter-spacing: -0.1px; white-space: nowrap;">${t(n.amount)}</div>\n                      <div class="ant-typography" style="font-size: 24px; font-family: InterSemiBold, sans-serif; color: rgb(62, 62, 62); line-height: 120%; font-weight: 600; margin: 0px; letter-spacing: -1px; white-space: nowrap;">${t(n.salePrice)}</div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </span>\n          </label>\n        </li>\n        ${0 === e ? '\n        <div class="traveling-soon">\n          <div class="ant-typography" style="font-size: 18px; font-family: InterSemiBold, sans-serif; color: rgb(33, 109, 227); line-height: 140%; font-weight: 600; margin: 0px;">Need your passport sooner? </div>\n        </div>\n        ' : ''}\n      `;
           })
           .join(
             '',
@@ -212,14 +222,14 @@
           !document.querySelector('[data-crs-test="new-payment-component"]')
         ) {
           n.insertAdjacentHTML('afterbegin', c);
-          const t = document.querySelector(
+          const e = document.querySelector(
               '[data-crs-test="new-payment-component"] .crs-title',
             ),
-            e = document.querySelector(
+            t = document.querySelector(
               '[data-crs-test="new-payment-component"] .payment-method-information__item',
             ),
-            i = (null == t ? void 0 : t.getBoundingClientRect().height) || 0,
-            o = (null == e ? void 0 : e.getBoundingClientRect().height) || 0,
+            i = (null == e ? void 0 : e.getBoundingClientRect().height) || 0,
+            o = (null == t ? void 0 : t.getBoundingClientRect().height) || 0,
             r = i + o + 32;
           (console.log(
             'titleHeight:',
@@ -235,16 +245,16 @@
                 '[data-crs-test="new-payment-component"] #itemPriceChargeId input[type="radio"]',
               )
               .forEach((n) => {
-                const t = n,
-                  e = () => {
-                    ((this.selectedPaymentMethodId = t.value),
+                const e = n,
+                  t = () => {
+                    ((this.selectedPaymentMethodId = e.value),
                       this.persistSelectedPaymentMethod(
                         this.selectedPaymentMethodId,
                       ));
                     const n = document.querySelectorAll(
                         '#itemPriceChargeId .ant-radio-wrapper',
                       ),
-                      e = document.querySelectorAll(
+                      t = document.querySelectorAll(
                         '#itemPriceChargeId .ant-radio',
                       ),
                       i = document.querySelectorAll(
@@ -253,13 +263,13 @@
                     (n.forEach((n) => {
                       n.classList.remove('ant-radio-wrapper-checked');
                     }),
-                      e.forEach((n) => {
+                      t.forEach((n) => {
                         n.classList.remove('ant-radio-checked');
                       }),
                       i.forEach((n) => {
                         n.removeAttribute('checked');
                       }));
-                    const o = t,
+                    const o = e,
                       a = o.closest('.ant-radio-wrapper'),
                       r = o.closest('.ant-radio');
                     (a && a.classList.add('ant-radio-wrapper-checked'),
@@ -268,11 +278,11 @@
                   },
                   i = () => {
                     var n;
-                    const e = t.closest('.ant-radio-wrapper'),
+                    const t = e.closest('.ant-radio-wrapper'),
                       i =
-                        null == e
+                        null == t
                           ? void 0
-                          : e.querySelector(
+                          : t.querySelector(
                               '.sale-block__processing > div:first-child p',
                             ),
                       o =
@@ -285,11 +295,11 @@
                       );
                     s && (s.textContent = r);
                   };
-                (t.addEventListener('click', () => {
-                  (e(), i());
+                (e.addEventListener('click', () => {
+                  (t(), i());
                 }),
-                  t.addEventListener('change', () => {
-                    (e(), i());
+                  e.addEventListener('change', () => {
+                    (t(), i());
                   }));
               }));
           const s = document.querySelector(
@@ -306,15 +316,15 @@
       }
     }
     async changes() {
-      var n, t;
+      var n, e;
       if (!this.isProcessing) {
         this.isProcessing = !0;
         try {
           console.log('Waiting for control element for payment methods...');
-          const e = await i('.PaymentCombinedInformation:not([data-crs-test])'),
+          const t = await i('.PaymentCombinedInformation:not([data-crs-test])'),
             o = document.querySelector('.PaymentPageWrapper h1');
           if (this.selectedPaymentMethodId) {
-            const i = e.querySelector(
+            const i = t.querySelector(
                 `input[type="radio"][value="${this.selectedPaymentMethodId}"]`,
               ),
               a =
@@ -327,7 +337,7 @@
                   'Waiting for control radio input to be enabled...',
                 ),
                   await new Promise((n) => setTimeout(n, 100)));
-              (null == (t = i.closest('label')) || t.click(),
+              (null == (e = i.closest('label')) || e.click(),
                 o &&
                   !o.querySelector('.crs-payment-title') &&
                   a &&
@@ -335,21 +345,21 @@
             }
           }
           const a = await i('.crs-aside-container'),
-            r = e.querySelectorAll('.payment-method-information__item'),
-            s = e.querySelector('.traveling-soon > div');
+            r = t.querySelectorAll('.payment-method-information__item'),
+            s = t.querySelector('.traveling-soon > div');
           (s && (s.textContent = 'Need your passport soon?'),
             a && (a.dataset.page = 'payment'),
             r.forEach((n) => {
-              var t, e, i, o;
+              var e, t, i, o;
               const a = n.querySelector(
                   '.sale-block__processing> div:first-child p',
                 ),
                 r = n.querySelector('.sale-block__processing> div:last-child');
               (a &&
                 (a.textContent =
-                  (null == (e = null == (t = a.textContent) ? void 0 : t.trim())
+                  (null == (t = null == (e = a.textContent) ? void 0 : e.trim())
                     ? void 0
-                    : e.replace(/-$/, '').trim()) || ''),
+                    : t.replace(/-$/, '').trim()) || ''),
                 r &&
                   ((null == (i = r.textContent)
                     ? void 0
@@ -374,11 +384,11 @@
     }
     observeStickyButton() {
       var n;
-      const t = document.querySelector(
+      const e = document.querySelector(
           '.ant-form-item:has(button[type="submit"]) > .ant-row.ant-form-item-row',
         ),
-        e = document.querySelector(this.newPaymentMethodsContainerId);
-      if (!t || !e)
+        t = document.querySelector(this.newPaymentMethodsContainerId);
+      if (!e || !t)
         return void console.log(
           'Sticky button or container not found for observation',
         );
@@ -389,13 +399,13 @@
         (o.style.height = '1px'),
         (o.style.pointerEvents = 'none'),
         (o.style.visibility = 'hidden'),
-        null == (n = t.parentElement) || n.insertBefore(o, t.nextSibling),
+        null == (n = e.parentElement) || n.insertBefore(o, e.nextSibling),
         this.stickyObserver && this.stickyObserver.disconnect(),
         this.containerObserver && this.containerObserver.disconnect(),
         (this.stickyObserver = new IntersectionObserver(
           ([n]) => {
             ((this.isStickyStuck = !n.isIntersecting),
-              t.classList.toggle('is-stuck', this.isStickyStuck),
+              e.classList.toggle('is-stuck', this.isStickyStuck),
               this.updateIntercomPosition());
           },
           { threshold: 0 },
@@ -408,7 +418,7 @@
           { threshold: 0 },
         )),
         this.stickyObserver.observe(o),
-        this.containerObserver.observe(t));
+        this.containerObserver.observe(e));
     }
     cleanUp() {
       (this.stickyObserver &&
@@ -416,17 +426,19 @@
         this.containerObserver &&
           (this.containerObserver.disconnect(),
           (this.containerObserver = null)),
+        this.mainObserver &&
+          (this.mainObserver.disconnect(), (this.mainObserver = null)),
         (this.isStickyStuck = !1),
         (this.isContainerVisible = !1),
         document.body.classList.remove('crs-payment-button-stuck'));
       const n = document.querySelector('.sticky-sentinel');
       n && n.remove();
-      const t = document.querySelector(
+      const e = document.querySelector(
         '[data-crs-test="new-payment-component"]',
       );
-      t && t.remove();
-      const e = document.getElementById(this.paymentsStyleId);
-      (e && e.remove(), (this.isProcessing = !1), (this.isRendering = !1));
+      e && e.remove();
+      const t = document.getElementById(this.paymentsStyleId);
+      (t && t.remove(), (this.isProcessing = !1), (this.isRendering = !1));
     }
     addStyles() {
       if (!document.getElementById(this.paymentsStyleId)) {
@@ -475,8 +487,8 @@
           (this.abortController = new AbortController()));
         const { data: s, error: m } = await (async (i) => {
           try {
-            const { data: o, error: a } = await t(
-              `https://auth.${e}usersData/data`,
+            const { data: o, error: a } = await e(
+              `https://auth.${t}usersData/data`,
               {
                 method: 'GET',
                 headers: {
@@ -549,11 +561,11 @@
       async handlePageChange() {
         await this.checkIsUserLoggedIn();
         const n = new URLSearchParams(window.location.search).get('formId'),
-          t = new URLSearchParams(window.location.search).get('page');
+          e = new URLSearchParams(window.location.search).get('page');
         if (
           !n ||
           !this.targetFormIds.includes(n) ||
-          (t && 'payment' !== t && 'form' !== t)
+          (e && 'payment' !== e && 'form' !== e)
         )
           return (
             sessionStorage.removeItem('crs-first-time-user-checked'),
@@ -591,21 +603,21 @@
           this.originalReplaceState ||
             (this.originalReplaceState = history.replaceState.bind(history)));
         const n = this.originalPushState,
-          t = this.originalReplaceState;
-        let e = !1,
+          e = this.originalReplaceState;
+        let t = !1,
           i = !1;
-        ((history.pushState = (...t) => {
-          if ((n(...t), !e)) {
-            e = !0;
+        ((history.pushState = (...e) => {
+          if ((n(...e), !t)) {
+            t = !0;
             try {
               window.dispatchEvent(new Event('pushstate'));
             } finally {
-              e = !1;
+              t = !1;
             }
           }
         }),
           (history.replaceState = (...n) => {
-            if ((t(...n), !i)) {
+            if ((e(...n), !i)) {
               i = !0;
               try {
                 window.dispatchEvent(new Event('replacestate'));
