@@ -733,7 +733,7 @@
       this.currentStep = 1, this.quizData = {}, this.init();
     }
     async init() {
-      await c("body"), r("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${_}</style>`), window.location.href === "https://try.sparkmembership.com/spark-software/" && (await c(".lp-positioned-content"), r(".lp-positioned-content").elements[0].insertAdjacentHTML("afterbegin", h), await c(".spark_hero__btn--secondary"), r(".spark_hero__btn--secondary").on("click", () => {
+      await c("body"), r("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${_}</style>`), window.location.href.includes("https://try.sparkmembership.com/spark-software/") && (await c(".lp-positioned-content"), r(".lp-positioned-content").elements[0].insertAdjacentHTML("afterbegin", h), await c(".spark_hero__btn--secondary"), r(".spark_hero__btn--secondary").on("click", () => {
         r(".spark_hero").elements[0];
         const n = r("#lp-pom-block-18").elements[0];
         n && n.scrollIntoView({ behavior: "smooth", block: "start" });
