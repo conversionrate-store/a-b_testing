@@ -56,9 +56,9 @@
 }
 .spark_hero__title {
   color: #fff !important;
-  font-size: 28px !important;
+  font-size: 26px !important;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.3;
   margin: 0;
 }
 @media (min-width: 768px) {
@@ -154,8 +154,7 @@
     width: 100%;
   }
   .spark_hero__mobile-image img {
-    width: 70%;
-    height: auto;
+    height: 180px;
     display: block;
     margin: 0 auto;
   }
