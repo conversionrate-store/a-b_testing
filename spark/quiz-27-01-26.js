@@ -3,7 +3,8 @@
   const _ = `#lp-pom-image-16,
 #lp-pom-button-15,
 #lp-pom-text-14,
-#lp-pom-image-17 {
+#lp-pom-image-17,
+#lp-pom-text-186 {
   display: none;
 }
 
@@ -13,6 +14,11 @@
   color: #fff;
   position: relative;
   overflow: hidden;
+}
+@media (max-width: 768px) {
+  .spark_hero {
+    padding: 20px 20px 30px;
+  }
 }
 .spark_hero__container {
   max-width: 1200px;
@@ -34,9 +40,6 @@
   flex-direction: column;
   gap: 24px;
 }
-.spark_hero__logo {
-  margin-bottom: 20px;
-}
 .spark_hero__logo img {
   height: 40px;
   width: auto;
@@ -46,9 +49,14 @@
     height: 70px;
   }
 }
+@media (max-width: 768px) {
+  .spark_hero__logo {
+    position: relative;
+  }
+}
 .spark_hero__title {
   color: #fff !important;
-  font-size: 32px !important;
+  font-size: 28px !important;
   font-weight: 700;
   line-height: 1.5;
   margin: 0;
@@ -92,6 +100,9 @@
   transition: all 0.3s ease;
   white-space: nowrap;
   text-transform: unset !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .spark_hero__btn--primary {
   background: #e66558;
@@ -129,6 +140,26 @@
   height: auto;
   display: block;
 }
+@media (max-width: 768px) {
+  .spark_hero__image {
+    display: none;
+  }
+}
+.spark_hero__mobile-image {
+  display: none;
+}
+@media (max-width: 768px) {
+  .spark_hero__mobile-image {
+    display: block;
+    width: 100%;
+  }
+  .spark_hero__mobile-image img {
+    width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
 .spark_hero__badge {
   position: absolute;
   display: flex;
@@ -144,6 +175,21 @@
 .spark_hero__badge img {
   width: 36px;
   height: 36px;
+}
+.spark_hero__badge--mobile {
+  font-size: 16px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.spark_hero__badge--mobile img {
+  width: 28px;
+  height: 28px;
+}
+@media (min-width: 768px) {
+  .spark_hero__badge--mobile {
+    display: none;
+  }
 }
 
 .spark_quiz_popup {
@@ -465,15 +511,15 @@
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: a, dev: n }) => {
+  }), m = ({ name: a, dev: n }) => {
     console.log(
       `%c EXP: ${a} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class l {
+  class d {
     constructor(n) {
-      this.elements = n instanceof l ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+      this.elements = n instanceof d ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
     on(n, e, t) {
       return typeof e == "function" && (t = e, e = ""), this.elements.forEach((s) => {
@@ -504,7 +550,7 @@
     }
     each(n) {
       for (let e of this.elements)
-        n(new l(e), this.elements.indexOf(e));
+        n(new d(e), this.elements.indexOf(e));
       return this;
     }
     style(n, e) {
@@ -515,7 +561,7 @@
     }
     find(n) {
       const e = this.elements.map((t) => Array.from(t.querySelectorAll(n)));
-      return new l(e.flat());
+      return new d(e.flat());
     }
     attr(n, e) {
       return e ? (this.elements.forEach(function(t) {
@@ -533,11 +579,11 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const r = (a) => new l(a), m = (a) => {
+  const r = (a) => new d(a), f = (a) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
     }, 1e3);
-  }, d = "https://conversionrate-store.github.io/a-b_images/spark/", h = (
+  }, l = "https://conversionrate-store.github.io/a-b_images/spark/", h = (
     /* HTML */
     `
   <section class="spark_hero">
@@ -548,13 +594,21 @@
             src="https://d9hhrg4mnvzow.cloudfront.net/try.sparkmembership.com/spark-software/6215cf2b-logo-svg-recreated.svg"
             alt="Spark Membership"
           />
+
+          <div class="spark_hero__badge spark_hero__badge--mobile">
+            <img src="${l}schedule.svg" alt="Trial" />
+            <span class="spark_hero__badge-label">30 DAYS FREE</span>
+          </div>
         </div>
         <h1 class="spark_hero__title">
           Do you want to turn more prospects into active students for your Martial Arts Studio
         </h1>
 
         <p class="spark_hero__subtitle">while saving time on communications, billing, finance, etc?</p>
-
+        <picture class="spark_hero__mobile-image">
+          <source media="(min-width: 768px)" srcset="${l}home_d.webp" />
+          <img src="${l}home_m.webp" alt="Spark Platform" />
+        </picture>
         <div class="spark_hero__buttons">
           <a href="https://sparkmembership.com/pricing" class="spark_hero__btn spark_hero__btn--primary"
             >Yes, show me how!</a
@@ -565,12 +619,12 @@
 
       <div class="spark_hero__image">
         <picture>
-          <source media="(min-width: 768px)" srcset="${d}home_d.webp" />
-          <img src="${d}home_m.webp" alt="Spark Platform" />
+          <source media="(min-width: 768px)" srcset="${l}home_d.webp" />
+          <img src="${l}home_m.webp" alt="Spark Platform" />
         </picture>
 
         <div class="spark_hero__badge">
-          <img src="${d}schedule.svg" alt="Trial" />
+          <img src="${l}schedule.svg" alt="Trial" />
           <span class="spark_hero__badge-label">30 DAYS FREE</span>
         </div>
       </div>
@@ -585,7 +639,7 @@
     <div class="spark_quiz_modal">
       <div class="spark_quiz_header">
         <div class="spark_quiz_back">
-          <img src="${d}back.svg" alt="Back" />
+          <img src="${l}back.svg" alt="Back" />
           Back
         </div>
         <img
@@ -607,7 +661,7 @@
   </div>
 `
   );
-  f({ name: "Spark Quiz", dev: "YK" }), m("spark_quiz");
+  m({ name: "Spark Quiz", dev: "YK" }), f("spark_quiz");
   const k = [
     {
       step: 1,
@@ -674,7 +728,7 @@
       ]
     }
   ];
-  class x {
+  class g {
     constructor() {
       this.currentStep = 1, this.quizData = {}, this.init();
     }
@@ -784,6 +838,6 @@
       e && e.click();
     }
   }
-  new x();
+  new g();
 })();
 //# sourceMappingURL=index.js.map
