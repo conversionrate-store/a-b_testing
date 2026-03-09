@@ -19,7 +19,7 @@
 [data-id=e7df86a] .elementor-widget-container {
   padding-top: 0 !important;
   padding-bottom: 15px !important;
-}/*# sourceMappingURL=style.css.map */`, u = (r, t, e, n = "") => {
+}/*# sourceMappingURL=style.css.map */`, m = (r, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: r,
@@ -27,7 +27,7 @@
       event_type: e,
       event_loc: n
     }), h(`Event: ${r} | ${t} | ${e} | ${n}`, "success");
-  }, m = (r) => new Promise((t) => {
+  }, u = (r) => new Promise((t) => {
     const e = document.querySelector(r);
     e && t(e);
     const n = new MutationObserver(() => {
@@ -128,16 +128,16 @@
     }
     console.log(`%c>>> ${r}`, `${e} font-size: 16px; font-weight: 600`);
   };
-  p({ name: "Spark Quiz", dev: "YK" }), d("spark_quiz");
+  p({ name: "Form update", dev: "YK" }), d("form_update");
   class w {
     constructor() {
       this.init();
     }
     async init() {
-      await m(".elementor-form-fields-wrapper"), this.updateForm();
+      await u(".elementor-form-fields-wrapper"), this.updateForm();
     }
     updateForm() {
-      c("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${f}</style>`), c(".elementor-form-fields-wrapper>div:nth-child(4) input").elements[0].value = "Alternative Variation", u("pricing_form_updated", "spark_quiz", "view");
+      c("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${f}</style>`), c(".elementor-form-fields-wrapper>div:nth-child(4) input").elements[0].value = "Alternative Variation", m("pricing_form_updated", "form_update", "view");
     }
   }
   new w();
