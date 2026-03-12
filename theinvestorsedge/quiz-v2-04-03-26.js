@@ -128,7 +128,7 @@
 		</clipPath>
 		</defs>
 		</svg>`
-  }, Y = (
+  }, D = (
     /* HTML */
     `
   <div class="crs_quiz_container">
@@ -167,7 +167,7 @@
     </div>
   </div>
 `
-  ), D = (c, n, t) => {
+  ), Y = (c, n, t) => {
     let o = "";
     return t ? o = t.map(
       (_) => (
@@ -229,8 +229,8 @@
         <input type="email" name="crs_email" placeholder="Email" data-relation="email" />
       </label>
       <label class="crs_quiz_answer_select_label">
-        <span>Your State</span>
-        <select name="crs_state" placeholder="Select your state"></select>
+        <span>State you want to invest in</span>
+        <select name="crs_state" placeholder="Select state"></select>
         ${M.down}
       </label>
     `, /* HTML */
@@ -1063,12 +1063,11 @@
     {
       question: "How much cash do you currently have available for a deal?",
       answers: [
-        { label: "$0 to $999", value: "$0 to $999" },
         { label: "$1,000 to $2,499", value: "$1,000 to $2,499" },
-        { label: "$2,500 to $5,000", value: "$2,500 to $5,000" },
-        { label: "$5,001 to $10,000", value: "$5,001 to $10,000" },
-        { label: "$10,001 to $20,000", value: "$10,001 to $20,000" },
-        { label: "$20,001 or more", value: "$20,001 or more" }
+        { label: "$2,500 to $4,999", value: "$2,500 to $5,000" },
+        { label: "$5,000 to $9,999", value: "$5,001 to $10,000" },
+        { label: "$10,000 to $19,999", value: "$10,001 to $20,000" },
+        { label: "$20,000 or more", value: "$20,001 or more" }
       ],
       relation: "amount_of_money_to_invest_in_real_estate_"
     },
@@ -1081,7 +1080,7 @@
       this.answers = [], this.showingWarning = !1, this.warningPropertyType = "", this.showingCashWarning = !1, this.phoneVerified = !1, this.verifiedPhone = "", this.phoneTimerInterval = null, this.init(), this.step = 0, this.setup();
     }
     async init() {
-      await H("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${Z}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", Y), s("body").elements[0].insertAdjacentHTML("beforeend", U), await H(".row-number-87"), s(".row-number-87").elements[0].insertAdjacentHTML("afterend", G), h("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen");
+      await H("body"), s("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="crs_style">${Z}</style>`), s("body").elements[0].insertAdjacentHTML("afterbegin", D), s("body").elements[0].insertAdjacentHTML("beforeend", U), await H(".row-number-87"), s(".row-number-87").elements[0].insertAdjacentHTML("afterend", G), h("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen");
     }
     async setup() {
       await H(".crs_quiz_container");
@@ -1201,7 +1200,7 @@
         label: m.textContent || "",
         value: m.getAttribute("value") || ""
       })), o = s(".crs_quiz_step_container"), _ = s(".crs_quiz_progress_bar");
-      o.html(D(n + 1, x[n].question, x[n].answers));
+      o.html(Y(n + 1, x[n].question, x[n].answers));
       const g = (n + 1) / x.length * 100;
       if (_.elements[0].style.width = `${g}%`, this.answers[n] && s(`input[value="${this.answers[n]}"]`).elements[0].setAttribute("checked", "true"), n === x.length - 1) {
         const m = s('select[name="crs_state"]').elements[0];
