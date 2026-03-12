@@ -787,7 +787,7 @@
       childList: !0,
       subtree: !0
     });
-  }), Y = ({ name: p, dev: e }) => {
+  }), O = ({ name: p, dev: e }) => {
     console.log(
       `%c EXP: ${p} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -800,9 +800,9 @@
     on(e, n, o) {
       return typeof n == "function" && (o = n, n = ""), this.elements.forEach((a) => {
         a.addEventListener(e, function(m) {
-          var $;
+          var S;
           if (n !== "") {
-            let l = ($ = m.target) == null ? void 0 : $.closest(n);
+            let l = (S = m.target) == null ? void 0 : S.closest(n);
             l && (o == null || o.call(l, m));
           } else
             o == null || o.call(a, m);
@@ -855,7 +855,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const t = (p) => new j(p), O = (p) => {
+  const t = (p) => new j(p), Y = (p) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", p, "variant_1"));
     }, 1e3);
@@ -1027,8 +1027,8 @@
         <input type="email" name="crs_email" placeholder="Email" data-relation="email" />
       </label>
       <label class="crs_quiz_answer_select_label">
-        <span>Your State</span>
-        <select name="crs_state" placeholder="Select your state"></select>
+        <span>State you want to invest in</span>
+        <select name="crs_state" placeholder="Select state"></select>
         ${H.down}
       </label>
       <label class="crs_quiz_answer_select_label">
@@ -1098,7 +1098,7 @@
   </div>
 `
   );
-  Y({ name: "Home Page Update", dev: "YK" }), O("home_page_update");
+  O({ name: "Home Page Update", dev: "YK" }), Y("home_page_update");
   const X = [
     "Randy - <span>around $60,000</span>",
     "Dalisa - <span>$40,000 - $60,000 in profit</span>",
@@ -1151,12 +1151,11 @@
     {
       question: "How much cash do you currently have available for a deal?",
       answers: [
-        { label: "$0 to $999", value: "$0 to $999" },
         { label: "$1,000 to $2,499", value: "$1,000 to $2,499" },
-        { label: "$2,500 to $5,000", value: "$2,500 to $5,000" },
-        { label: "$5,001 to $10,000", value: "$5,001 to $10,000" },
-        { label: "$10,001 to $20,000", value: "$10,001 to $20,000" },
-        { label: "$20,001 or more", value: "$20,001 or more" }
+        { label: "$2,500 to $4,999", value: "$2,500 to $5,000" },
+        { label: "$5,000 to $9,999", value: "$5,001 to $10,000" },
+        { label: "$10,000 to $19,999", value: "$10,001 to $20,000" },
+        { label: "$20,000 or more", value: "$20,001 or more" }
       ],
       relation: "amount_of_money_to_invest_in_real_estate_"
     },
@@ -1217,8 +1216,8 @@
     }
     async setupQuiz() {
       await P(".crs_quiz_container");
-      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), a = t(".crs_start_quiz"), m = t(".crs_quiz_progress"), $ = t(".crs_cancel_quiz"), l = t(".crs_quiz_steps button");
-      $.on("click", () => {
+      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), a = t(".crs_start_quiz"), m = t(".crs_quiz_progress"), S = t(".crs_cancel_quiz"), l = t(".crs_quiz_steps button");
+      S.on("click", () => {
         v("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), this.closeQuiz();
       }), o.on("click", () => {
         if (this.showingWarning) {
@@ -1240,17 +1239,17 @@
         var E, r, L, z, w, x, T, M, _;
         if (this.step < g.length - 1) {
           t(".crs_error").removeClass("active");
-          const S = n.elements[0].querySelector('input[type="radio"]:checked');
-          if (S) {
+          const $ = n.elements[0].querySelector('input[type="radio"]:checked');
+          if ($) {
             if (g[this.step].relation) {
               const c = t(`[name="${g[this.step].relation}"]`).elements[0];
-              c && c.tagName === "SELECT" && (c.value = S.getAttribute("value") || "", c.classList.remove("is-placeholder"), c.dispatchEvent(new Event("change", { bubbles: !0 })));
+              c && c.tagName === "SELECT" && (c.value = $.getAttribute("value") || "", c.classList.remove("is-placeholder"), c.dispatchEvent(new Event("change", { bubbles: !0 })));
             }
           } else {
             t(".crs_error").addClass("active");
             return;
           }
-          if (this.answers[this.step] = S.getAttribute("value") || "", this.step === ne && ee !== this.answers[this.step]) {
+          if (this.answers[this.step] = $.getAttribute("value") || "", this.step === ne && ee !== this.answers[this.step]) {
             this.showingWarning = !0, this.warningPropertyType = this.answers[this.step], l.elements[0].style.display = "none", t(".crs_quiz_step_container").html(K(this.warningPropertyType)), t(".crs_warning_yes").on("click", () => {
               this.showingWarning = !1, this.warningPropertyType = "", l.elements[0].style.display = "";
               const c = t('[name="what_type_of_financing_are_you_seeking"]').elements[0];
@@ -1278,7 +1277,7 @@
           }
           this.setStep(this.step + 1), this.step += 1, v(
             `exp_quiz_hard_money_step_${this.step}`,
-            ((r = (E = S.closest("label")) == null ? void 0 : E.querySelector("div")) == null ? void 0 : r.textContent) || "",
+            ((r = (E = $.closest("label")) == null ? void 0 : E.querySelector("div")) == null ? void 0 : r.textContent) || "",
             "success",
             `quiz_step_${this.step}`
           ), this.step === g.length - 1 && l.text("Apply Now");
@@ -1321,7 +1320,7 @@
       });
     }
     async setStep(e) {
-      var $;
+      var S;
       if (e < 0) return;
       const n = t('select[name="your_state__united_states__"] option').elements.map((l) => ({
         label: l.textContent || "",
@@ -1329,7 +1328,7 @@
       })), o = t(".crs_quiz_step_container"), a = t(".crs_quiz_progress_bar");
       o.html(Z(e + 1, g[e].question, g[e].answers));
       const m = (e + 1) / g.length * 100;
-      if (a.elements[0].style.width = `${m}%`, this.answers[e] && (($ = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || $.setAttribute("checked", "true")), e === g.length - 1) {
+      if (a.elements[0].style.width = `${m}%`, this.answers[e] && ((S = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || S.setAttribute("checked", "true")), e === g.length - 1) {
         const l = t('select[name="crs_state"]').elements[0];
         n.forEach((s) => {
           const i = document.createElement("option");
@@ -1348,7 +1347,7 @@
           ).elements[0];
           s && (s.value = E.value, s.dispatchEvent(new Event("change", { bubbles: !0 })));
         });
-        const r = document.querySelector(".crs_phone_verify_block"), L = r == null ? void 0 : r.querySelector(".crs_phone_base"), z = r == null ? void 0 : r.querySelector('input[name="crs_phone"]'), w = r == null ? void 0 : r.querySelector(".crs_send_code_btn"), x = r == null ? void 0 : r.querySelector(".crs_phone_field_label"), T = r == null ? void 0 : r.querySelector(".crs_phone_otp"), M = r == null ? void 0 : r.querySelector(".crs_otp_phone_num"), _ = Array.from((r == null ? void 0 : r.querySelectorAll(".crs_otp_digit")) || []), y = r == null ? void 0 : r.querySelector(".crs_otp_timer_box"), S = r == null ? void 0 : r.querySelector(".crs_timer_text"), c = r == null ? void 0 : r.querySelector(".crs_phone_verified_box"), k = r == null ? void 0 : r.querySelector(".crs_resend_code_btn"), W = r == null ? void 0 : r.querySelector(".crs_resend_row"), d = r == null ? void 0 : r.querySelector(".crs_change_phone_btn"), q = (s) => {
+        const r = document.querySelector(".crs_phone_verify_block"), L = r == null ? void 0 : r.querySelector(".crs_phone_base"), z = r == null ? void 0 : r.querySelector('input[name="crs_phone"]'), w = r == null ? void 0 : r.querySelector(".crs_send_code_btn"), x = r == null ? void 0 : r.querySelector(".crs_phone_field_label"), T = r == null ? void 0 : r.querySelector(".crs_phone_otp"), M = r == null ? void 0 : r.querySelector(".crs_otp_phone_num"), _ = Array.from((r == null ? void 0 : r.querySelectorAll(".crs_otp_digit")) || []), y = r == null ? void 0 : r.querySelector(".crs_otp_timer_box"), $ = r == null ? void 0 : r.querySelector(".crs_timer_text"), c = r == null ? void 0 : r.querySelector(".crs_phone_verified_box"), k = r == null ? void 0 : r.querySelector(".crs_resend_code_btn"), W = r == null ? void 0 : r.querySelector(".crs_resend_row"), d = r == null ? void 0 : r.querySelector(".crs_change_phone_btn"), q = (s) => {
           const i = s.replace(/\D/g, "");
           return i.length === 10 ? `+1${i}` : i.length === 11 && i[0] === "1" ? `+${i}` : null;
         }, A = (s = 60) => {
@@ -1356,7 +1355,7 @@
           let i = s;
           const u = () => {
             const h = String(Math.floor(i / 60)).padStart(2, "0"), f = String(i % 60).padStart(2, "0");
-            S.textContent = `${h}:${f}`;
+            $.textContent = `${h}:${f}`;
           };
           u(), this.phoneTimerInterval = setInterval(() => {
             i--, u(), i <= 0 && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null);
