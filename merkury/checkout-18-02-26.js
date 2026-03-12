@@ -208,7 +208,7 @@
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: a, dev: t }) => {
+  }), b = ({ name: a, dev: t }) => {
     console.log(
       `%c EXP: ${a} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -276,7 +276,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const e = (a) => new c(a), b = (a) => {
+  const e = (a) => new c(a), f = (a) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", a, "variant_1"));
     }, 1e3);
@@ -340,7 +340,7 @@
   </div>
 `
   );
-  f({ name: "Update Checkout", dev: "YK" }), b("update_checkout");
+  b({ name: "Update Checkout", dev: "YK" }), f("update_checkout");
   const C = {
     "billing-first-name": "CRS",
     "billing-last-name": "User",
@@ -397,7 +397,7 @@
             )) == null ? void 0 : l.set;
             p == null || p.call(s, r), s.dispatchEvent(new Event("input", { bubbles: !0 }));
           }
-        }), e("#billing-country").elements[0].value = "US", await d("#billing-state"), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
+        }), e("#billing-country").elements[0].value = "US", e("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await d("#billing-state"), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
           var i;
           e('[data-testid="billing-address-postal-code-required"]').elements[0] ? e(".postal .postal_error").elements[0] || e(".postal input").elements[0].insertAdjacentHTML(
             "afterend",
