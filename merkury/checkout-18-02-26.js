@@ -197,7 +197,7 @@
   text-decoration: underline;
   cursor: pointer;
   text-transform: uppercase;
-}/*# sourceMappingURL=style.css.map */`, p = (a) => new Promise((t) => {
+}/*# sourceMappingURL=style.css.map */`, d = (a) => new Promise((t) => {
     const n = document.querySelector(a);
     n && t(n);
     const o = new MutationObserver(() => {
@@ -363,7 +363,7 @@
     }
     async init() {
       var o;
-      await p("body"), e("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${m}</style>`), await p('[data-testid="billing-main-content"]'), e('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", h), e(".benefits h3").elements[0].insertAdjacentElement(
+      await d("body"), e("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${m}</style>`), await d('[data-testid="billing-main-content"]'), e('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", h), e(".benefits h3").elements[0].insertAdjacentElement(
         "afterend",
         e('[data-testid="checkout-plan-summary-card"] h3+div').elements[0]
       ), e(".other_blocks").elements[0].insertAdjacentElement(
@@ -386,18 +386,18 @@
       ).text(), n = e(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:nth-of-type(2) span.font-semibold'
       ).text();
-      e(".benefits h3 span").elements[0].textContent = t, this.addPostal(), e('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), e('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = e('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", y(n)), e('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), e(".confirm_button").on("click", "button", () => {
+      e(".benefits h3 span").elements[0].textContent = t, this.addPostal(), e('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), e('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = e('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", y(n)), e('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), e(".confirm_button").on("click", "button", async () => {
         Object.entries(C).forEach(([i, r]) => {
           var l;
           const s = e(`#${i}`).elements[0];
           if (s && s.value !== r) {
-            const d = (l = Object.getOwnPropertyDescriptor(
+            const p = (l = Object.getOwnPropertyDescriptor(
               window.HTMLInputElement.prototype,
               "value"
             )) == null ? void 0 : l.set;
-            d == null || d.call(s, r), s.dispatchEvent(new Event("input", { bubbles: !0 }));
+            p == null || p.call(s, r), s.dispatchEvent(new Event("input", { bubbles: !0 }));
           }
-        }), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
+        }), e("#billing-country").elements[0].value = "US", await d("#billing-state"), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
           var i;
           e('[data-testid="billing-address-postal-code-required"]').elements[0] ? e(".postal .postal_error").elements[0] || e(".postal input").elements[0].insertAdjacentHTML(
             "afterend",
