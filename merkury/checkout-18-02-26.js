@@ -397,7 +397,7 @@
             )) == null ? void 0 : l.set;
             p == null || p.call(s, r), s.dispatchEvent(new Event("input", { bubbles: !0 }));
           }
-        }), e("#billing-country").elements[0].value = "US", e("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await d("#billing-state"), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
+        }), e('[data-testid="checkout-payment-method-change-button"]').elements[0] || (e("#billing-country").elements[0].value = "US", e("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await d("#billing-state"), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 }))), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
           var i;
           e('[data-testid="billing-address-postal-code-required"]').elements[0] ? e(".postal .postal_error").elements[0] || e(".postal input").elements[0].insertAdjacentHTML(
             "afterend",
