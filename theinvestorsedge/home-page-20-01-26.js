@@ -1110,9 +1110,10 @@
     {
       question: "Do you already have a property picked out?",
       answers: [
-        { label: "I already have a property under contract", value: "1" },
-        { label: "I'm actively looking for a deal", value: "0" },
-        { label: "I want to learn how to find the best deal", value: "0" }
+        { label: "I have one under contract.", value: "1" },
+        { label: "I have one I am looking at not under contract.", value: "0" },
+        { label: "I am looking for a deal. ", value: "0" },
+        { label: "I want to learn how to find the deal.", value: "0" }
       ],
       relation: "property_in_mind"
     },
