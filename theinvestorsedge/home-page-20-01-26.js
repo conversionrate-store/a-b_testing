@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const U = `.sticky-block {
+  const Y = `.sticky-block {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -768,44 +768,44 @@
   background: transparent;
   color: #09233e;
   border: 2px solid #ff9902 !important;
-}/*# sourceMappingURL=style.css.map */`, v = (p, e, n, o = "") => {
+}/*# sourceMappingURL=style.css.map */`, d = (c, e, n, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: p,
+      event_name: c,
       event_desc: e,
       event_type: n,
       event_loc: o
-    }), D(`Event: ${p} | ${e} | ${n} | ${o}`, "success");
-  }, P = (p) => new Promise((e) => {
-    const n = document.querySelector(p);
+    }), Q(`Event: ${c} | ${e} | ${n} | ${o}`, "success");
+  }, P = (c) => new Promise((e) => {
+    const n = document.querySelector(c);
     n && e(n);
     const o = new MutationObserver(() => {
-      const a = document.querySelector(p);
-      a && (e(a), o.disconnect());
+      const l = document.querySelector(c);
+      l && (e(l), o.disconnect());
     });
     o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), O = ({ name: p, dev: e }) => {
+  }), D = ({ name: c, dev: e }) => {
     console.log(
-      `%c EXP: ${p} (DEV: ${e})`,
+      `%c EXP: ${c} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class j {
+  class I {
     constructor(e) {
-      this.elements = e instanceof j ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof I ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, n, o) {
-      return typeof n == "function" && (o = n, n = ""), this.elements.forEach((a) => {
-        a.addEventListener(e, function(m) {
-          var S;
+      return typeof n == "function" && (o = n, n = ""), this.elements.forEach((l) => {
+        l.addEventListener(e, function(f) {
+          var g;
           if (n !== "") {
-            let l = (S = m.target) == null ? void 0 : S.closest(n);
-            l && (o == null || o.call(l, m));
+            let a = (g = f.target) == null ? void 0 : g.closest(n);
+            a && (o == null || o.call(a, f));
           } else
-            o == null || o.call(a, m);
+            o == null || o.call(l, f);
         });
       }), this;
     }
@@ -826,18 +826,18 @@
     }
     each(e) {
       for (let n of this.elements)
-        e(new j(n), this.elements.indexOf(n));
+        e(new I(n), this.elements.indexOf(n));
       return this;
     }
     style(e, n) {
-      const o = e.split("-").map((a, m) => m === 0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("");
-      return this.elements.forEach(function(a) {
-        a.style[o] = n;
+      const o = e.split("-").map((l, f) => f === 0 ? l : l.charAt(0).toUpperCase() + l.slice(1)).join("");
+      return this.elements.forEach(function(l) {
+        l.style[o] = n;
       }), this;
     }
     find(e) {
       const n = this.elements.map((o) => Array.from(o.querySelectorAll(e)));
-      return new j(n.flat());
+      return new I(n.flat());
     }
     attr(e, n) {
       return n ? (this.elements.forEach(function(o) {
@@ -855,11 +855,30 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const t = (p) => new j(p), Y = (p) => {
+  const t = (c) => new I(c), G = (c) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", p, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", c, "variant_1"));
     }, 1e3);
-  }, D = (p, e = "info") => {
+  }, j = (c, e, n, o, l = 1e3, f = 0.5) => {
+    let g, a;
+    if (g = new IntersectionObserver(
+      function(w) {
+        w[0].isIntersecting === !0 ? a = setTimeout(() => {
+          d(
+            e,
+            w[0].target.dataset.visible || o || "",
+            "view",
+            n
+          ), g.disconnect();
+        }, l) : (Q("Element is not fully visible", "warn"), clearTimeout(a));
+      },
+      { threshold: [f] }
+    ), typeof c == "string") {
+      const w = document.querySelector(c);
+      w && g.observe(w);
+    } else
+      g.observe(c);
+  }, Q = (c, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -875,8 +894,8 @@
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${p}`, `${n} font-size: 16px; font-weight: 600`);
-  }, I = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", H = {
+    console.log(`%c>>> ${c}`, `${n} font-size: 16px; font-weight: 600`);
+  }, H = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", M = {
     back: `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
 		<path d="M0 8.00005C0 8.30737 0.117512 8.56956 0.361583 8.80456L7.4124 15.7017C7.60228 15.9006 7.85533 16 8.14459 16C8.73227 16 9.19324 15.5481 9.19324 14.9515C9.19324 14.6622 9.07568 14.4 8.8769 14.2012L2.52204 8.00005L8.8769 1.79888C9.07568 1.59096 9.19324 1.32882 9.19324 1.03955C9.19324 0.451984 8.73227 0 8.14459 0C7.85533 0 7.60228 0.0994383 7.4124 0.298303L0.361583 7.19554C0.117512 7.43054 0.00903668 7.69274 0 8.00005Z" fill="white"/>
 		</svg>`,
@@ -896,7 +915,7 @@
 		</clipPath>
 		</defs>
 		</svg>`
-  }, Q = (
+  }, B = (
     /* HTML */
     `
   <div class="sticky-block">
@@ -906,18 +925,18 @@
     </div>
   </div>
 `
-  ), G = (
+  ), J = (
     /* HTML */
     `
   <div class="crs-hero-block">
     <p>With little to no money down and up to 100% Hard Money financing</p>
     <button class="crs_link_button crs_open_quiz">Check if you qualify</button>
     <span>Featured in:</span>
-    <img src="${I}clients_d.svg" alt="Clients" class="img_clients_d" />
-    <img src="${I}clients_m.svg" alt="Clients" class="img_clients_m" />
+    <img src="${H}clients_d.svg" alt="Clients" class="img_clients_d" />
+    <img src="${H}clients_m.svg" alt="Clients" class="img_clients_m" />
   </div>
 `
-  ), B = (
+  ), Z = (
     /* HTML */
     `
   <div class="crs-between-block">
@@ -926,15 +945,15 @@
     <button class="crs_link_button crs_open_quiz">Check if you qualify</button>
   </div>
 `
-  ), J = (
+  ), K = (
     /* HTML */
     `
   <div class="crs_quiz_container">
     <div class="crs_quiz_header">
       <div class="crs_quiz_max_width">
         <div class="crs_quiz_logo">
-          ${H.back}
-          <img src="${I}logo.svg" alt="Quiz Header" />
+          ${M.back}
+          <img src="${H}logo.svg" alt="Quiz Header" />
         </div>
         <div class="crs_quiz_progress">
           <div class="crs_quiz_progress_bar"></div>
@@ -952,8 +971,8 @@
           <button class="crs_start_quiz">YES — Check If I Qualify</button>
           <button class="crs_cancel_quiz">No, I don't need financing</button>
         </div>
-        <img src="${I}/quiz_rating.webp" alt="rating" class="crs_rating_m" />
-        <img src="${I}/quiz_rating_d.webp" alt="rating" class="crs_rating_d" />
+        <img src="${H}/quiz_rating.webp" alt="rating" class="crs_rating_m" />
+        <img src="${H}/quiz_rating_d.webp" alt="rating" class="crs_rating_d" />
       </div>
     </div>
     <div class="crs_quiz_steps">
@@ -965,15 +984,15 @@
     </div>
   </div>
 `
-  ), Z = (p, e, n) => {
+  ), X = (c, e, n) => {
     let o = "";
     return n ? o = n.map(
-      (a) => (
+      (l) => (
         /* HTML */
         `
           <label class="crs_quiz_answer_radio_label">
-            <input type="radio" value="${a.value}" name="step${p}" />
-            <div><span></span>${a.label}</div>
+            <input type="radio" value="${l.value}" name="step${c}" />
+            <div><span></span>${l.label}</div>
           </label>
         `
       )
@@ -1012,12 +1031,12 @@
               <span class="crs_timer_text">01:00</span>
             </div>
             <div class="crs_phone_verified_box" style="display:none">
-              ${H.check}
+              ${M.check}
               <span>Phone verified</span>
             </div>
           </div>
           <div class="crs_resend_row">
-            ${H.resend}
+            ${M.resend}
             <button class="crs_resend_code_btn" type="button">Resend verification code</button>
           </div>
         </div>
@@ -1029,7 +1048,7 @@
       <label class="crs_quiz_answer_select_label">
         <span>State you want to invest in</span>
         <select name="crs_state" placeholder="Select state"></select>
-        ${H.down}
+        ${M.down}
       </label>
       <label class="crs_quiz_answer_select_label">
         <span>How Did You Hear About Us?</span>
@@ -1048,22 +1067,22 @@
           <option value="YouTube">YouTube</option>
           <option value="JoinLendr.com">JoinLendr.com</option>
         </select>
-        ${H.down}
+        ${M.down}
       </label>
     `, /* HTML */
     `
-    <div class="crs_quiz_step" data-step="${p}">
+    <div class="crs_quiz_step" data-step="${c}">
       <h3>${e}</h3>
       <div class="crs_quiz_answers">${o}</div>
     </div>
   `;
-  }, K = (p) => (
+  }, ee = (c) => (
     /* HTML */
     `
   <div class="crs_quiz_step crs_quiz_step--warning">
     <h3>
-      We do not fund ${p}, as they typically offer lower ROI and carry higher risk than secondary-market
-      residential properties.
+      We do not fund ${c}, personal loans, or equipment, as they carry a higher risk than 1–4 residential
+      properties.
     </h3>
     <p class="crs_warning_desc">With our support, you can select a property with a predictably high ROI</p>
     <p class="crs_warning_desc">
@@ -1071,10 +1090,7 @@
       <strong>modular home on a permitted</strong>
     </p>
     <p class="crs_warning_question">
-      <strong
-        >Would you be open to selecting a residential property on secondary market that meets our funding
-        criteria?</strong
-      >
+      <strong>Would you be open to selecting a 1–4 unit residential property that meets our funding criteria?</strong>
     </p>
     <div class="crs_warning_buttons">
       <button class="crs_warning_yes">Yes</button>
@@ -1082,12 +1098,12 @@
     </div>
   </div>
 `
-  ), F = (p = !1) => (
+  ), U = (c = !1) => (
     /* HTML */
     `
   <div class="crs_quiz_step crs_quiz_step--warning">
     <h3>To move forward with financing, you'll need to invest at least $5,000 of your own funds</h3>
-    ${p ? `<p class="crs_warning_desc">We'd be happy to hear from you if your situation changes.</p>
+    ${c ? `<p class="crs_warning_desc">We'd be happy to hear from you if your situation changes.</p>
          <div class="crs_warning_buttons crs_warning_buttons--single">
            <button class="crs_cash_warning_home">Go to main page</button>
          </div>` : `<p class="crs_warning_desc">Please confirm that you're willing to make this investment to proceed.</p>
@@ -1098,15 +1114,15 @@
   </div>
 `
   );
-  O({ name: "Home Page Update", dev: "YK" }), Y("home_page_update");
-  const X = [
+  D({ name: "Home Page Update", dev: "YK" }), G("home_page_update");
+  const ne = [
     "Randy - <span>around $60,000</span>",
     "Dalisa - <span>$40,000 - $60,000 in profit</span>",
     "Ptolemy - <span>$80,000 to $100,000 in profit</span>",
     "Joe and Chelsea - <span>about $40,000 in profit</span>",
     "Charles - <span>around $70,000</span>",
     "Stacy - <span>expecting to make $30,000 to $65,000</span>"
-  ], ee = "Residential real estate (1–4 units only)", ne = 1, te = 4, se = ["$0 to $999", "$1,000 to $2,499", "$2,500 to $5,000"], g = [
+  ], te = "Residential real estate (1–4 units only)", se = 1, re = 4, ie = ["$0 to $999", "$1,000 to $2,499", "$2,500 to $5,000"], v = [
     {
       question: "Do you already have a property picked out?",
       answers: [
@@ -1164,7 +1180,7 @@
       question: "Fill out the application for a free<br/>pre-qualification consultation for 100% financing"
     }
   ];
-  class re {
+  class oe {
     constructor() {
       this.step = 0, this.answers = [], this.showingWarning = !1, this.warningPropertyType = "", this.showingCashWarning = !1, this.phoneVerified = !1, this.verifiedPhone = "", this.phoneTimerInterval = null, this.init();
     }
@@ -1177,15 +1193,15 @@
       if (!e) return;
       const n = document.querySelectorAll(".crs_link_button:not(.sticky-block .crs_link_button)");
       let o = !1;
-      n.forEach((a) => {
-        this.isElementVisible(a) && (o = !0);
+      n.forEach((l) => {
+        this.isElementVisible(l) && (o = !0);
       }), o ? e.classList.add("crs-hidden") : e.classList.remove("crs-hidden");
     }
     async init() {
-      await P("body"), t("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${U}</style>`), t("body").elements[0].insertAdjacentHTML("afterbegin", J), await P("h1.pwr-hero__title"), t(".body-wrapper").elements[0].insertAdjacentHTML("beforeend", Q), t("h1.pwr-hero__title").elements[0].insertAdjacentHTML("afterend", `${G}`), t(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentElement(
+      await P("body"), t("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${Y}</style>`), t("body").elements[0].insertAdjacentHTML("afterbegin", K), await P("h1.pwr-hero__title"), t(".body-wrapper").elements[0].insertAdjacentHTML("beforeend", B), t("h1.pwr-hero__title").elements[0].insertAdjacentHTML("afterend", `${J}`), t(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentElement(
         "afterbegin",
         t(".row-number-2 .row-number-5 .pwr-sec__title").elements[0]
-      ), await P(".row-number-65"), t(".row-number-55").elements[0].insertAdjacentElement("afterend", t(".row-number-8").elements[0]), t(".row-number-55").elements[0].insertAdjacentElement("afterend", t(".row-number-6").elements[0]), t(".row-number-52").elements[0].insertAdjacentHTML("afterend", B), t(".row-number-6 .pwr-rich-text p:nth-of-type(4)").elements[0].insertAdjacentHTML(
+      ), await P(".row-number-65"), t(".row-number-55").elements[0].insertAdjacentElement("afterend", t(".row-number-8").elements[0]), t(".row-number-55").elements[0].insertAdjacentElement("afterend", t(".row-number-6").elements[0]), t(".row-number-52").elements[0].insertAdjacentHTML("afterend", Z), t(".row-number-6 .pwr-rich-text p:nth-of-type(4)").elements[0].insertAdjacentHTML(
         "afterend",
         '<button class="crs_link_button crs_open_quiz">Check if you qualify</button>'
       ), await P(".row-number-65 .pwr-sec-cta--content .pwr-sec-cta__cta-wrapper"), t(".row-number-65 .pwr-sec-cta--content .pwr-sec-cta__cta-wrapper").elements[0].insertAdjacentHTML(
@@ -1194,11 +1210,11 @@
       ), t(
         ".row-number-49 .embed_container, .row-number-52 .embed_container, .row-number-55 .embed_container"
       ).elements.forEach((e, n) => {
-        e.insertAdjacentHTML("beforebegin", `<h3 class="crs-video-title">${X[n]}</h3>`);
+        e.insertAdjacentHTML("beforebegin", `<h3 class="crs-video-title">${ne[n]}</h3>`);
       }), t(".crs_open_quiz").on("click", (e) => {
         const n = e.target, o = this.getButtonPosition(n);
-        v("exp_new_hp_click_quiz_open", "Check if you qualify", "click", o), this.openQuiz();
-      }), window.addEventListener("scroll", () => this.handleStickyVisibility()), this.handleStickyVisibility(), this.setupQuiz();
+        d("exp_quiz_home_page_click_quiz_open", "Check if you qualify", "click", o), this.openQuiz();
+      }), window.addEventListener("scroll", () => this.handleStickyVisibility()), this.handleStickyVisibility(), this.setupQuiz(), j(".row-number-1", "exp_quiz_home_page_view_hero_block", "Hero block", "Hero block"), j(".row-number-39", "exp_quiz_home_page_view_indicators", "Indicators", "Indicators"), j(".row-number-49", "exp_quiz_home_page_view_reviews", "Reviews", "Reviews"), j(".row-number-6", "exp_quiz_home_page_view_about", "About The Investor's Edge", "About The Investor's Edge"), j(".row-number-65", "exp_quiz_home_page_view_faq", "FAQ", "FAQ");
     }
     getButtonPosition(e) {
       return e.closest(".sticky-block") ? "Sticky block" : e.closest(".crs-hero-block") ? "First screen" : e.closest(".crs-between-block") ? "Start your journey to a profitable flip" : e.closest(".row-number-6") ? "About The Investor`s Edge" : e.closest(".row-number-65") ? "Under the FAQs" : "Unknown";
@@ -1207,8 +1223,8 @@
       const e = t(".crs_quiz_container").elements[0];
       if (e) {
         e.style.display = "flex", document.body.style.overflow = "hidden";
-        const n = t(".crs_first_screen").elements[0], o = t(".crs_quiz_steps").elements[0], a = t(".crs_quiz_logo svg").elements[0], m = t(".crs_quiz_progress").elements[0];
-        n && o && a && m && (n.classList.remove("active"), o.classList.add("active"), a.classList.add("active"), m.classList.add("active"), this.setStep(0)), v("exp_quiz_hard_money_step_00", "View Quiz", "view", "First Screen");
+        const n = t(".crs_first_screen").elements[0], o = t(".crs_quiz_steps").elements[0], l = t(".crs_quiz_logo svg").elements[0], f = t(".crs_quiz_progress").elements[0];
+        n && o && l && f && (n.classList.remove("active"), o.classList.add("active"), l.classList.add("active"), f.classList.add("active"), this.setStep(0)), d("exp_quiz_home_page_step_00", "View Quiz", "view", "First Screen");
       }
     }
     closeQuiz() {
@@ -1217,243 +1233,262 @@
     }
     async setupQuiz() {
       await P(".crs_quiz_container");
-      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), a = t(".crs_start_quiz"), m = t(".crs_quiz_progress"), S = t(".crs_cancel_quiz"), l = t(".crs_quiz_steps button");
-      S.on("click", () => {
-        v("exp_quiz_hard_money_cancel", "Cancel Quiz", "click", "quiz_first_screen"), this.closeQuiz();
+      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), l = t(".crs_start_quiz"), f = t(".crs_quiz_progress"), g = t(".crs_cancel_quiz"), a = t(".crs_quiz_steps button");
+      g.on("click", () => {
+        d("exp_quiz_home_page_cancel", "Cancel Quiz", "click", "quiz_first_screen"), this.closeQuiz();
       }), o.on("click", () => {
         if (this.showingWarning) {
-          this.showingWarning = !1, this.warningPropertyType = "", l.elements[0].style.display = "", this.setStep(this.step);
+          this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "", this.setStep(this.step);
           return;
         }
         if (this.showingCashWarning) {
-          this.showingCashWarning = !1, l.elements[0].style.display = "", this.setStep(this.step);
+          this.showingCashWarning = !1, a.elements[0].style.display = "", this.setStep(this.step);
           return;
         }
         if (this.step === 0) {
           this.closeQuiz();
           return;
         }
-        this.step -= 1, this.setStep(this.step), l.text("Continue");
-      }), a.on("click", () => {
-        e.removeClass("active"), n.addClass("active"), o.addClass("active"), m.addClass("active"), this.setStep(this.step), v("exp_quiz_hard_money_start", "Start Quiz", "click", "quiz_first_screen");
+        this.step -= 1, this.setStep(this.step), a.text("Continue");
       }), l.on("click", () => {
-        var E, r, L, z, w, x, T, M, _;
-        if (this.step < g.length - 1) {
+        e.removeClass("active"), n.addClass("active"), o.addClass("active"), f.addClass("active"), this.setStep(this.step), d("exp_quiz_home_page_start", "Start Quiz", "click", "quiz_first_screen");
+      }), a.on("click", () => {
+        var w, i, L, C, x, z, T, R, u;
+        if (this.step < v.length - 1) {
           t(".crs_error").removeClass("active");
-          const $ = n.elements[0].querySelector('input[type="radio"]:checked');
-          if ($) {
-            if (g[this.step].relation) {
-              const c = t(`[name="${g[this.step].relation}"]`).elements[0];
-              c && c.tagName === "SELECT" && (c.value = $.getAttribute("value") || "", c.classList.remove("is-placeholder"), c.dispatchEvent(new Event("change", { bubbles: !0 })));
+          const E = n.elements[0].querySelector('input[type="radio"]:checked');
+          if (E) {
+            if (v[this.step].relation) {
+              const p = t(`[name="${v[this.step].relation}"]`).elements[0];
+              p && p.tagName === "SELECT" && (p.value = E.getAttribute("value") || "", p.classList.remove("is-placeholder"), p.dispatchEvent(new Event("change", { bubbles: !0 })));
             }
           } else {
             t(".crs_error").addClass("active");
             return;
           }
-          if (this.answers[this.step] = $.getAttribute("value") || "", this.step === ne && ee !== this.answers[this.step]) {
-            this.showingWarning = !0, this.warningPropertyType = this.answers[this.step], l.elements[0].style.display = "none", t(".crs_quiz_step_container").html(K(this.warningPropertyType)), t(".crs_warning_yes").on("click", () => {
-              this.showingWarning = !1, this.warningPropertyType = "", l.elements[0].style.display = "";
-              const c = t('[name="what_type_of_financing_are_you_seeking"]').elements[0];
-              c && c.tagName === "SELECT" && (c.value = "Residential real estate (1–4 units only)", c.classList.remove("is-placeholder"), c.dispatchEvent(new Event("change", { bubbles: !0 })));
-              const k = this.answers[this.step];
-              this.setStep(this.step + 1), this.step += 1, v(`exp_quiz_hard_money_step_${this.step}`, k, "success", `quiz_step_${this.step}`), this.step === g.length - 1 && l.text("Apply Now");
+          if (this.answers[this.step] = E.getAttribute("value") || "", this.step === se && te !== this.answers[this.step]) {
+            this.showingWarning = !0, this.warningPropertyType = this.answers[this.step], a.elements[0].style.display = "none", t(".crs_quiz_step_container").html(ee(this.warningPropertyType)), d(
+              "exp_quiz_home_page_warning_property",
+              `Property type warning shown: ${this.warningPropertyType}`,
+              "view",
+              "quiz_step_2"
+            ), t(".crs_warning_yes").on("click", () => {
+              this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "";
+              const p = t('[name="what_type_of_financing_are_you_seeking"]').elements[0];
+              p && p.tagName === "SELECT" && (p.value = "Residential real estate (1–4 units only)", p.classList.remove("is-placeholder"), p.dispatchEvent(new Event("change", { bubbles: !0 })));
+              const $ = this.answers[this.step];
+              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
             }), t(".crs_warning_no").on("click", () => {
-              this.showingWarning = !1, this.warningPropertyType = "", l.elements[0].style.display = "", this.setStep(this.step);
+              this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "", this.setStep(this.step);
             });
             return;
           }
-          if (this.step === te && se.includes(this.answers[this.step])) {
-            this.showingCashWarning = !0, l.elements[0].style.display = "none", t(".crs_quiz_step_container").html(F()), t(".crs_cash_warning_yes").on("click", () => {
-              this.showingCashWarning = !1, l.elements[0].style.display = "";
-              const c = t('[name="amount_of_money_to_invest_in_real_estate_"]').elements[0];
-              c && c.tagName === "SELECT" && (c.value = "$5,001 to $10,000", c.classList.remove("is-placeholder"), c.dispatchEvent(new Event("change", { bubbles: !0 })));
-              const k = this.answers[this.step];
-              this.setStep(this.step + 1), this.step += 1, v(`exp_quiz_hard_money_step_${this.step}`, k, "success", `quiz_step_${this.step}`), this.step === g.length - 1 && l.text("Apply Now");
+          if (this.step === re && ie.includes(this.answers[this.step])) {
+            this.showingCashWarning = !0, a.elements[0].style.display = "none", t(".crs_quiz_step_container").html(U()), d(
+              "exp_quiz_home_page_warning_cash",
+              `Cash warning shown: ${this.answers[this.step]}`,
+              "view",
+              "quiz_step_5"
+            ), t(".crs_cash_warning_yes").on("click", () => {
+              this.showingCashWarning = !1, a.elements[0].style.display = "";
+              const p = t('[name="amount_of_money_to_invest_in_real_estate_"]').elements[0];
+              p && p.tagName === "SELECT" && (p.value = "$5,001 to $10,000", p.classList.remove("is-placeholder"), p.dispatchEvent(new Event("change", { bubbles: !0 })));
+              const $ = this.answers[this.step];
+              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
             }), t(".crs_cash_warning_no").on("click", () => {
-              t(".crs_quiz_step_container").html(F(!0)), t(".crs_cash_warning_home").on("click", () => {
+              t(".crs_quiz_step_container").html(U(!0)), t(".crs_cash_warning_home").on("click", () => {
                 window.location.pathname = "/";
-              }), v("exp_quiz_hard_money_cash_low_no", "Cash too low - No", "click", "quiz_cash_warning");
+              }), d("exp_quiz_home_page_cash_low_no", "Cash too low - No", "click", "quiz_cash_warning");
             });
             return;
           }
-          this.setStep(this.step + 1), this.step += 1, v(
-            `exp_quiz_hard_money_step_${this.step}`,
-            ((r = (E = $.closest("label")) == null ? void 0 : E.querySelector("div")) == null ? void 0 : r.textContent) || "",
+          this.setStep(this.step + 1), this.step += 1, d(
+            `exp_quiz_home_page_step_${this.step}`,
+            ((i = (w = E.closest("label")) == null ? void 0 : w.querySelector("div")) == null ? void 0 : i.textContent) || "",
             "success",
             `quiz_step_${this.step}`
-          ), this.step === g.length - 1 && l.text("Apply Now");
+          ), this.step === v.length - 1 && a.text("Apply Now");
         } else {
-          let y = !1;
+          let q = !1;
           if (n.elements[0].querySelectorAll(
             ".crs_quiz_answer_input_label input"
-          ).forEach((d) => {
-            var q, A;
-            if (!d.closest(".crs_phone_verify_block") && d.value === "") {
-              if (y = !0, (q = d.closest("label")) != null && q.querySelector(".crs_input_error")) return;
-              (A = d.closest("label")) == null || A.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
+          ).forEach((h) => {
+            var k, A;
+            if (!h.closest(".crs_phone_verify_block") && h.value === "") {
+              if (q = !0, (k = h.closest("label")) != null && k.querySelector(".crs_input_error")) return;
+              (A = h.closest("label")) == null || A.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
             }
           }), !this.phoneVerified) {
-            y = !0;
-            const d = n.elements[0].querySelector(".crs_phone_verify_block");
-            d && !d.querySelector(".crs_phone_verify_error") && d.insertAdjacentHTML(
+            q = !0;
+            const h = n.elements[0].querySelector(".crs_phone_verify_block");
+            h && !h.querySelector(".crs_phone_verify_error") && h.insertAdjacentHTML(
               "beforeend",
               '<p class="crs_input_error crs_phone_verify_error">Please verify your phone number</p>'
             );
           }
           if (((L = n.elements[0].querySelector('select[name="crs_state"]')) == null ? void 0 : L.value) === "") {
-            if (y = !0, (z = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) != null && z.querySelector(".crs_input_error"))
+            if (q = !0, (C = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) != null && C.querySelector(".crs_input_error"))
               return;
-            (w = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) == null || w.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
+            (x = n.elements[0].querySelector('select[name="crs_state"]').closest("label")) == null || x.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
           }
-          if (((x = n.elements[0].querySelector('select[name="crs_hear_about_us"]')) == null ? void 0 : x.value) === "") {
-            if (y = !0, (T = n.elements[0].querySelector('select[name="crs_hear_about_us"]').closest("label")) != null && T.querySelector(".crs_input_error"))
+          if (((z = n.elements[0].querySelector('select[name="crs_hear_about_us"]')) == null ? void 0 : z.value) === "") {
+            if (q = !0, (T = n.elements[0].querySelector('select[name="crs_hear_about_us"]').closest("label")) != null && T.querySelector(".crs_input_error"))
               return;
-            (M = n.elements[0].querySelector('select[name="crs_hear_about_us"]').closest("label")) == null || M.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
+            (R = n.elements[0].querySelector('select[name="crs_hear_about_us"]').closest("label")) == null || R.insertAdjacentHTML("beforeend", '<p class="crs_input_error">This field is required.</p>');
           }
-          if (y) return;
+          if (q) return;
           const W = t(".hs-error-msg").elements;
-          W.length !== 0 && W.forEach((d) => {
-            var R, V, N, s, i;
-            const q = ((R = d.textContent) == null ? void 0 : R.toLowerCase()) || "", A = ((N = (V = d.closest(".hs-form-field")) == null ? void 0 : V.querySelector("input")) == null ? void 0 : N.getAttribute("name")) || "";
-            (i = (s = t(`input[data-relation="${A}"]`).elements[0]) == null ? void 0 : s.closest("label")) == null || i.insertAdjacentHTML("beforeend", `<p class="crs_input_error">${q}</p>`);
-          }), v("exp_quiz_hard_money_complete", "Complete Quiz", "success", "quiz_complete"), (_ = t(".hs_submit input").elements[0]) == null || _.click();
+          W.length !== 0 && W.forEach((h) => {
+            var F, N, V, O, s;
+            const k = ((F = h.textContent) == null ? void 0 : F.toLowerCase()) || "", A = ((V = (N = h.closest(".hs-form-field")) == null ? void 0 : N.querySelector("input")) == null ? void 0 : V.getAttribute("name")) || "";
+            (s = (O = t(`input[data-relation="${A}"]`).elements[0]) == null ? void 0 : O.closest("label")) == null || s.insertAdjacentHTML("beforeend", `<p class="crs_input_error">${k}</p>`);
+          }), d("exp_quiz_home_page_complete", "Complete Quiz", "success", "quiz_complete"), (u = t(".hs_submit input").elements[0]) == null || u.click();
         }
       });
     }
     async setStep(e) {
-      var S;
+      var g;
       if (e < 0) return;
-      const n = t('select[name="your_state__united_states__"] option').elements.map((l) => ({
-        label: l.textContent || "",
-        value: l.getAttribute("value") || ""
-      })), o = t(".crs_quiz_step_container"), a = t(".crs_quiz_progress_bar");
-      o.html(Z(e + 1, g[e].question, g[e].answers));
-      const m = (e + 1) / g.length * 100;
-      if (a.elements[0].style.width = `${m}%`, this.answers[e] && ((S = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || S.setAttribute("checked", "true")), e === g.length - 1) {
-        const l = t('select[name="crs_state"]').elements[0];
+      const n = t('select[name="your_state__united_states__"] option').elements.map((a) => ({
+        label: a.textContent || "",
+        value: a.getAttribute("value") || ""
+      })), o = t(".crs_quiz_step_container"), l = t(".crs_quiz_progress_bar");
+      o.html(X(e + 1, v[e].question, v[e].answers));
+      const f = (e + 1) / v.length * 100;
+      if (l.elements[0].style.width = `${f}%`, this.answers[e] && ((g = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || g.setAttribute("checked", "true")), e === v.length - 1) {
+        const a = t('select[name="crs_state"]').elements[0];
         n.forEach((s) => {
-          const i = document.createElement("option");
-          i.value = s.value, i.textContent = s.label, l.appendChild(i);
-        }), l.addEventListener("change", () => {
-          var i;
-          (i = t(".crs_quiz_answer_select_label .crs_input_error").elements[0]) == null || i.remove();
+          const r = document.createElement("option");
+          r.value = s.value, r.textContent = s.label, a.appendChild(r);
+        }), a.addEventListener("change", () => {
+          var r;
+          (r = t(".crs_quiz_answer_select_label .crs_input_error").elements[0]) == null || r.remove();
           const s = t('select[name="your_state__united_states__"]').elements[0];
-          s && (s.value = l.value, s.dispatchEvent(new Event("change", { bubbles: !0 })));
+          s && (s.value = a.value, s.dispatchEvent(new Event("change", { bubbles: !0 }))), d("exp_quiz_home_page_form_state", a.value, "change", "quiz_form");
         });
-        const E = t('select[name="crs_hear_about_us"]').elements[0];
-        E && E.addEventListener("change", () => {
-          t(".crs_quiz_answer_select_label .crs_input_error").elements.forEach((i) => i == null ? void 0 : i.remove());
+        const w = t('select[name="crs_hear_about_us"]').elements[0];
+        w && w.addEventListener("change", () => {
+          t(".crs_quiz_answer_select_label .crs_input_error").elements.forEach((r) => r == null ? void 0 : r.remove());
           const s = t(
             'select[name="how_did_you_hear_about_us____homepage_on_demand_webinar_registration"]'
           ).elements[0];
-          s && (s.value = E.value, s.dispatchEvent(new Event("change", { bubbles: !0 })));
+          s && (s.value = w.value, s.dispatchEvent(new Event("change", { bubbles: !0 })));
         });
-        const r = document.querySelector(".crs_phone_verify_block"), L = r == null ? void 0 : r.querySelector(".crs_phone_base"), z = r == null ? void 0 : r.querySelector('input[name="crs_phone"]'), w = r == null ? void 0 : r.querySelector(".crs_send_code_btn"), x = r == null ? void 0 : r.querySelector(".crs_phone_field_label"), T = r == null ? void 0 : r.querySelector(".crs_phone_otp"), M = r == null ? void 0 : r.querySelector(".crs_otp_phone_num"), _ = Array.from((r == null ? void 0 : r.querySelectorAll(".crs_otp_digit")) || []), y = r == null ? void 0 : r.querySelector(".crs_otp_timer_box"), $ = r == null ? void 0 : r.querySelector(".crs_timer_text"), c = r == null ? void 0 : r.querySelector(".crs_phone_verified_box"), k = r == null ? void 0 : r.querySelector(".crs_resend_code_btn"), W = r == null ? void 0 : r.querySelector(".crs_resend_row"), d = r == null ? void 0 : r.querySelector(".crs_change_phone_btn"), q = (s) => {
-          const i = s.replace(/\D/g, "");
-          return i.length === 10 ? `+1${i}` : i.length === 11 && i[0] === "1" ? `+${i}` : null;
+        const i = document.querySelector(".crs_phone_verify_block"), L = i == null ? void 0 : i.querySelector(".crs_phone_base"), C = i == null ? void 0 : i.querySelector('input[name="crs_phone"]'), x = i == null ? void 0 : i.querySelector(".crs_send_code_btn"), z = i == null ? void 0 : i.querySelector(".crs_phone_field_label"), T = i == null ? void 0 : i.querySelector(".crs_phone_otp"), R = i == null ? void 0 : i.querySelector(".crs_otp_phone_num"), u = Array.from((i == null ? void 0 : i.querySelectorAll(".crs_otp_digit")) || []), q = i == null ? void 0 : i.querySelector(".crs_otp_timer_box"), E = i == null ? void 0 : i.querySelector(".crs_timer_text"), p = i == null ? void 0 : i.querySelector(".crs_phone_verified_box"), $ = i == null ? void 0 : i.querySelector(".crs_resend_code_btn"), W = i == null ? void 0 : i.querySelector(".crs_resend_row"), h = i == null ? void 0 : i.querySelector(".crs_change_phone_btn"), k = (s) => {
+          const r = s.replace(/\D/g, "");
+          return r.length === 10 ? `+1${r}` : r.length === 11 && r[0] === "1" ? `+${r}` : null;
         }, A = (s = 60) => {
           this.phoneTimerInterval && clearInterval(this.phoneTimerInterval);
-          let i = s;
-          const u = () => {
-            const h = String(Math.floor(i / 60)).padStart(2, "0"), f = String(i % 60).padStart(2, "0");
-            $.textContent = `${h}:${f}`;
+          let r = s;
+          const _ = () => {
+            const m = String(Math.floor(r / 60)).padStart(2, "0"), b = String(r % 60).padStart(2, "0");
+            E.textContent = `${m}:${b}`;
           };
-          u(), this.phoneTimerInterval = setInterval(() => {
-            i--, u(), i <= 0 && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null);
+          _(), this.phoneTimerInterval = setInterval(() => {
+            r--, _(), r <= 0 && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null);
           }, 1e3);
-        }, R = () => _.map((s) => s.value).join(""), V = async (s) => {
-          var u, h;
-          const i = R();
-          if (!(i.length < 4))
+        }, F = () => u.map((s) => s.value).join(""), N = async (s) => {
+          var _, m;
+          const r = F();
+          if (!(r.length < 4))
             try {
-              const b = await (await fetch("https://app.theinvestorsedge.com/phone/verify/check", {
+              const y = await (await fetch("https://app.theinvestorsedge.com/phone/verify/check", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ phoneNumber: s, code: i })
+                body: JSON.stringify({ phoneNumber: s, code: r })
               })).json();
-              if (b.success && ((u = b.verificationCheck) == null ? void 0 : u.status) === "approved") {
-                this.phoneVerified = !0, this.verifiedPhone = s, this.phoneTimerInterval && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null), y.style.display = "none", c.style.display = "flex", _.forEach((ie) => ie.disabled = !0), W && (W.style.display = "none");
-                const C = t('input[name="mobilephone"]').elements[0];
-                C && (C.value = s, C.dispatchEvent(new Event("input")));
+              if (y.success && ((_ = y.verificationCheck) == null ? void 0 : _.status) === "approved") {
+                this.phoneVerified = !0, this.verifiedPhone = s, d("exp_quiz_home_page_form_phone_verified", "Phone verified", "success", "quiz_form"), this.phoneTimerInterval && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null), q.style.display = "none", p.style.display = "flex", u.forEach((ae) => ae.disabled = !0), W && (W.style.display = "none");
+                const S = t('input[name="mobilephone"]').elements[0];
+                S && (S.value = s, S.dispatchEvent(new Event("input")));
               } else
-                _.forEach((C) => C.classList.add("crs_digit_error")), (h = _[0]) == null || h.focus();
+                u.forEach((S) => S.classList.add("crs_digit_error")), (m = u[0]) == null || m.focus(), d("exp_quiz_home_page_form_phone_verify_failed", "Phone verification failed", "error", "quiz_form");
             } catch {
-              _.forEach((f) => f.classList.add("crs_digit_error"));
+              u.forEach((b) => b.classList.add("crs_digit_error"));
             }
-        }, N = async (s) => {
-          var i, u;
-          w.disabled = !0, w.textContent = "...", (i = r.querySelector(".crs_phone_verify_error")) == null || i.remove();
+        }, V = async (s) => {
+          var r, _;
+          x.disabled = !0, x.textContent = "...", (r = i.querySelector(".crs_phone_verify_error")) == null || r.remove();
           try {
-            const f = await (await fetch("https://app.theinvestorsedge.com/phone/verify/send", {
+            const b = await (await fetch("https://app.theinvestorsedge.com/phone/verify/send", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ phoneNumber: s })
             })).json();
-            if (f.success)
-              M.textContent = s, T.style.display = "block", L.style.display = "none", _.forEach((b) => {
-                b.value = "", b.classList.remove("crs_digit_error");
-              }), y.style.display = "flex", c.style.display = "none", A(60), (u = _[0]) == null || u.focus();
+            if (b.success)
+              R.textContent = s, T.style.display = "block", L.style.display = "none", u.forEach((y) => {
+                y.value = "", y.classList.remove("crs_digit_error");
+              }), q.style.display = "flex", p.style.display = "none", A(60), (_ = u[0]) == null || _.focus();
             else {
-              const b = f.message || "Failed to send code. Please try again.";
-              x.querySelector(".crs_phone_verify_error") || x.insertAdjacentHTML(
+              const y = b.message || "Failed to send code. Please try again.";
+              z.querySelector(".crs_phone_verify_error") || z.insertAdjacentHTML(
                 "beforeend",
-                `<p class="crs_input_error crs_phone_verify_error">${b}</p>`
+                `<p class="crs_input_error crs_phone_verify_error">${y}</p>`
               );
             }
           } catch {
-            x.querySelector(".crs_phone_verify_error") || x.insertAdjacentHTML(
+            z.querySelector(".crs_phone_verify_error") || z.insertAdjacentHTML(
               "beforeend",
               '<p class="crs_input_error crs_phone_verify_error">Network error. Please try again.</p>'
             );
           } finally {
-            w.disabled = !1, w.textContent = "Send code";
+            x.disabled = !1, x.textContent = "Send code";
           }
         };
-        this.phoneVerified && (L.style.display = "none", M.textContent = this.verifiedPhone, T.style.display = "block", y.style.display = "none", c.style.display = "flex"), w == null || w.addEventListener("click", async () => {
-          var i;
-          (i = r.querySelector(".crs_phone_verify_error")) == null || i.remove();
-          const s = q(z.value);
-          if (!s) {
-            x.querySelector(".crs_phone_verify_error") || x.insertAdjacentHTML(
+        this.phoneVerified && (L.style.display = "none", R.textContent = this.verifiedPhone, T.style.display = "block", q.style.display = "none", p.style.display = "flex"), x == null || x.addEventListener("click", async () => {
+          var r;
+          (r = i.querySelector(".crs_phone_verify_error")) == null || r.remove();
+          const s = k(C.value);
+          if (d("exp_quiz_home_page_form_phone_send", "Phone code sent", "click", "quiz_form"), !s) {
+            z.querySelector(".crs_phone_verify_error") || z.insertAdjacentHTML(
               "beforeend",
               '<p class="crs_input_error crs_phone_verify_error">Please enter a valid US phone number</p>'
             );
             return;
           }
-          await N(s);
-        }), _.forEach((s, i) => {
+          await V(s);
+        }), u.forEach((s, r) => {
           s.addEventListener("input", async () => {
             s.classList.remove("crs_digit_error");
-            const u = s.value.replace(/\D/g, "");
-            s.value = u ? u[0] : "", s.value && i < _.length - 1 && _[i + 1].focus(), R().length === 4 && await V(q(z.value));
-          }), s.addEventListener("keydown", (u) => {
-            u.key === "Backspace" && !s.value && i > 0 && _[i - 1].focus();
-          }), s.addEventListener("paste", async (u) => {
-            var f;
-            u.preventDefault();
-            const h = ((f = u.clipboardData) == null ? void 0 : f.getData("text").replace(/\D/g, "").slice(0, 4)) || "";
-            h.split("").forEach((b, C) => {
-              _[C] && (_[C].value = b);
-            }), _.forEach((b) => b.classList.remove("crs_digit_error")), h.length === 4 ? await V(q(z.value)) : _[h.length] && _[h.length].focus();
+            const _ = s.value.replace(/\D/g, "");
+            s.value = _ ? _[0] : "", s.value && r < u.length - 1 && u[r + 1].focus(), F().length === 4 && await N(k(C.value));
+          }), s.addEventListener("keydown", (_) => {
+            _.key === "Backspace" && !s.value && r > 0 && u[r - 1].focus();
+          }), s.addEventListener("paste", async (_) => {
+            var b;
+            _.preventDefault();
+            const m = ((b = _.clipboardData) == null ? void 0 : b.getData("text").replace(/\D/g, "").slice(0, 4)) || "";
+            m.split("").forEach((y, S) => {
+              u[S] && (u[S].value = y);
+            }), u.forEach((y) => y.classList.remove("crs_digit_error")), m.length === 4 ? await N(k(C.value)) : u[m.length] && u[m.length].focus();
           });
-        }), k == null || k.addEventListener("click", async () => {
-          const s = q(z.value);
-          s && (_.forEach((i) => {
-            i.value = "", i.classList.remove("crs_digit_error");
-          }), await N(s));
-        }), d == null || d.addEventListener("click", () => {
-          this.phoneVerified = !1, this.verifiedPhone = "", this.phoneTimerInterval && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null), T.style.display = "none", L.style.display = "block", z.value = "";
+        }), $ == null || $.addEventListener("click", async () => {
+          const s = k(C.value);
+          s && (u.forEach((r) => {
+            r.value = "", r.classList.remove("crs_digit_error");
+          }), await V(s));
+        }), h == null || h.addEventListener("click", () => {
+          this.phoneVerified = !1, this.verifiedPhone = "", this.phoneTimerInterval && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null), T.style.display = "none", L.style.display = "block", C.value = "";
           const s = t('input[name="mobilephone"]').elements[0];
           s && (s.value = "", s.dispatchEvent(new Event("input")));
+        });
+        const O = /* @__PURE__ */ new Set();
+        t(".crs_quiz_answer_input_label input").on("input", (s) => {
+          const r = s.target;
+          if (!O.has(r)) {
+            O.add(r);
+            const _ = r.getAttribute("data-relation") || r.getAttribute("name") || "field";
+            d(`exp_quiz_home_page_form_${_}`, `Form field: ${_}`, "input", "quiz_form");
+          }
         }), t(".crs_quiz_answer_input_label input").on("input", (s) => {
-          const i = s.target, u = i.getAttribute("data-relation") || "";
-          if (!u) return;
-          const h = t(`input[name="${u}"]`).elements[0];
-          h && (h.value = i.value, h.dispatchEvent(new Event("input"))), t(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((f) => f == null ? void 0 : f.remove());
+          const r = s.target, _ = r.getAttribute("data-relation") || "";
+          if (!_) return;
+          const m = t(`input[name="${_}"]`).elements[0];
+          m && (m.value = r.value, m.dispatchEvent(new Event("input"))), t(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((b) => b == null ? void 0 : b.remove());
         });
       }
     }
   }
-  new re();
+  new oe();
 })();
 //# sourceMappingURL=index.js.map
