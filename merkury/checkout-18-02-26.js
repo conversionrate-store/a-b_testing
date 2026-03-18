@@ -198,17 +198,17 @@
   cursor: pointer;
   text-transform: uppercase;
 }/*# sourceMappingURL=style.css.map */`, d = (a) => new Promise((t) => {
-    const n = document.querySelector(a);
-    n && t(n);
+    const i = document.querySelector(a);
+    i && t(i);
     const o = new MutationObserver(() => {
-      const i = document.querySelector(a);
-      i && (t(i), o.disconnect());
+      const n = document.querySelector(a);
+      n && (t(n), o.disconnect());
     });
     o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), b = ({ name: a, dev: t }) => {
+  }), f = ({ name: a, dev: t }) => {
     console.log(
       `%c EXP: ${a} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
@@ -218,65 +218,65 @@
     constructor(t) {
       this.elements = t instanceof c ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
     }
-    on(t, n, o) {
-      return typeof n == "function" && (o = n, n = ""), this.elements.forEach((i) => {
-        i.addEventListener(t, function(r) {
+    on(t, i, o) {
+      return typeof i == "function" && (o = i, i = ""), this.elements.forEach((n) => {
+        n.addEventListener(t, function(r) {
           var s;
-          if (n !== "") {
-            let l = (s = r.target) == null ? void 0 : s.closest(n);
+          if (i !== "") {
+            let l = (s = r.target) == null ? void 0 : s.closest(i);
             l && (o == null || o.call(l, r));
           } else
-            o == null || o.call(i, r);
+            o == null || o.call(n, r);
         });
       }), this;
     }
     addClass(t) {
-      return this.elements.forEach(function(n) {
-        n.classList.add(t);
+      return this.elements.forEach(function(i) {
+        i.classList.add(t);
       }), this;
     }
     removeClass(t) {
-      return this.elements.forEach(function(n) {
-        n.classList.remove(t);
+      return this.elements.forEach(function(i) {
+        i.classList.remove(t);
       }), this;
     }
     toggleClass(t) {
-      return this.elements.forEach(function(n) {
-        n.classList.toggle(t);
+      return this.elements.forEach(function(i) {
+        i.classList.toggle(t);
       }), this;
     }
     each(t) {
-      for (let n of this.elements)
-        t(new c(n), this.elements.indexOf(n));
+      for (let i of this.elements)
+        t(new c(i), this.elements.indexOf(i));
       return this;
     }
-    style(t, n) {
-      const o = t.split("-").map((i, r) => r === 0 ? i : i.charAt(0).toUpperCase() + i.slice(1)).join("");
-      return this.elements.forEach(function(i) {
-        i.style[o] = n;
+    style(t, i) {
+      const o = t.split("-").map((n, r) => r === 0 ? n : n.charAt(0).toUpperCase() + n.slice(1)).join("");
+      return this.elements.forEach(function(n) {
+        n.style[o] = i;
       }), this;
     }
     find(t) {
-      const n = this.elements.map((o) => Array.from(o.querySelectorAll(t)));
-      return new c(n.flat());
+      const i = this.elements.map((o) => Array.from(o.querySelectorAll(t)));
+      return new c(i.flat());
     }
-    attr(t, n) {
-      return n ? (this.elements.forEach(function(o) {
-        o.setAttribute(t, n);
+    attr(t, i) {
+      return i ? (this.elements.forEach(function(o) {
+        o.setAttribute(t, i);
       }), this) : this.elements[0].getAttribute(t);
     }
     text(t) {
-      return t ? (this.elements.forEach(function(n) {
-        n.textContent = t;
+      return t ? (this.elements.forEach(function(i) {
+        i.textContent = t;
       }), this) : this.elements[0].textContent || "";
     }
     html(t) {
-      return t ? (this.elements.forEach(function(n) {
-        n.innerHTML = t;
+      return t ? (this.elements.forEach(function(i) {
+        i.innerHTML = t;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const e = (a) => new c(a), f = (a) => {
+  const e = (a) => new c(a), b = (a) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", a, "variant_1"));
     }, 1e3);
@@ -340,7 +340,7 @@
   </div>
 `
   );
-  b({ name: "Update Checkout", dev: "YK" }), f("update_checkout");
+  f({ name: "Update Checkout", dev: "YK" }), b("update_checkout");
   const C = {
     "billing-first-name": "CRS",
     "billing-last-name": "User",
@@ -352,13 +352,13 @@
       this.watchForCardSection = !1, this.observer();
     }
     addPostal() {
-      var n;
-      (n = e('[data-testid="card-section"]').elements[0]) == null || n.insertAdjacentHTML("afterend", x);
+      var i;
+      (i = e('[data-testid="card-section"]').elements[0]) == null || i.insertAdjacentHTML("afterend", x);
       const t = e('[data-testid="billing-address-postal-code-input"]').elements[0];
       t != null && t.value && (e(".postal input").elements[0].value = t.value), e(".postal input").on("input", (o) => {
         var l;
-        const i = e('[data-testid="billing-address-postal-code-input"]').elements[0], r = o.target.value, s = (l = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : l.set;
-        s == null || s.call(i, r), i.dispatchEvent(new Event("input", { bubbles: !0 }));
+        const n = e('[data-testid="billing-address-postal-code-input"]').elements[0], r = o.target.value, s = (l = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : l.set;
+        s == null || s.call(n, r), n.dispatchEvent(new Event("input", { bubbles: !0 }));
       });
     }
     async init() {
@@ -383,13 +383,13 @@
       });
       const t = e(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:first-of-type span.font-semibold'
-      ).text(), n = e(
+      ).text(), i = e(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:nth-of-type(2) span.font-semibold'
       ).text();
-      e(".benefits h3 span").elements[0].textContent = t, this.addPostal(), e('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), e('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = e('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", y(n)), e('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), e(".confirm_button").on("click", "button", async () => {
-        Object.entries(C).forEach(([i, r]) => {
+      e(".benefits h3 span").elements[0].textContent = t, this.addPostal(), e('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), e('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = e('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", y(i)), e('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), e(".confirm_button").on("click", "button", async () => {
+        Object.entries(C).forEach(([n, r]) => {
           var l;
-          const s = e(`#${i}`).elements[0];
+          const s = e(`#${n}`).elements[0];
           if (s && s.value !== r) {
             const p = (l = Object.getOwnPropertyDescriptor(
               window.HTMLInputElement.prototype,
@@ -398,21 +398,21 @@
             p == null || p.call(s, r), s.dispatchEvent(new Event("input", { bubbles: !0 }));
           }
         }), e('[data-testid="checkout-payment-method-change-button"]').elements[0] || (e("#billing-country").elements[0].value = "US", e("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await d("#billing-state"), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 }))), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
-          var i;
+          var n;
           e('[data-testid="billing-address-postal-code-required"]').elements[0] ? e(".postal .postal_error").elements[0] || e(".postal input").elements[0].insertAdjacentHTML(
             "afterend",
             '<p class="postal_error">Postal code is required</p>'
-          ) : (i = e(".postal .postal_error").elements[0]) == null || i.remove();
+          ) : (n = e(".postal .postal_error").elements[0]) == null || n.remove();
         }, 300);
       });
     }
     async observer() {
-      const t = new MutationObserver(async (n) => {
+      const t = new MutationObserver(async (i) => {
         var o;
-        if (console.log(n), t.disconnect(), window.location.href.includes("/billing?mode=subscription") && !document.querySelector(".trial") && await this.init(), !window.location.href.includes("/billing?mode=subscription") && document.querySelector(".crs_checkout_style") && (console.log("remove style"), (o = e(".crs_checkout_style").elements[0]) == null || o.remove()), window.location.href.includes("/billing?mode=subscription") && this.watchForCardSection && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal") && this.addPostal(), window.location.href.includes("/billing?mode=update") && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal")) {
+        if (t.disconnect(), window.location.href.includes("/billing?mode=subscription") && !document.querySelector(".trial") && await this.init(), !window.location.href.includes("/billing?mode=subscription") && document.querySelector(".crs_checkout_style") && (console.log("remove style"), (o = e(".crs_checkout_style").elements[0]) == null || o.remove()), window.location.href.includes("/billing?mode=subscription") && this.watchForCardSection && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal") && this.addPostal(), window.location.href.includes("/billing?mode=update") && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal")) {
           this.addPostal();
-          const i = document.querySelector(".postal");
-          i == null || i.style.setProperty("margin-top", "0px"), i == null || i.style.setProperty("padding-top", "20px"), i == null || i.style.setProperty("box-shadow", "rgba(0, 0, 0, 0.3) 0px 1px 5px"), i == null || i.style.setProperty("border-radius", "12px"), setTimeout(() => {
+          const n = document.querySelector(".postal");
+          n == null || n.style.setProperty("margin-top", "0px"), n == null || n.style.setProperty("padding-top", "20px"), n == null || n.style.setProperty("box-shadow", "rgba(0, 0, 0, 0.3) 0px 1px 5px"), n == null || n.style.setProperty("border-radius", "12px"), setTimeout(() => {
             const s = document.querySelector(
               '[data-testid="billing-address-postal-code-input"]'
             ), l = document.querySelector(".postal input");
@@ -420,6 +420,19 @@
           }, 300);
           const r = document.querySelector('[data-testid="billing-section"]');
           r && (r.style.display = "none");
+        }
+        if (e("[data-testid=checkout-plan-summary-card]").elements[0].innerText.includes("After Trial")) {
+          console.log("trial");
+          const n = e(".trial").elements[0], r = e(".trial_time").elements[0];
+          n && (n.style.display = "block"), r && (r.style.display = "block");
+          const s = e(".confirm_button button").elements[0];
+          s && (s.textContent = "Start your 30-day free trial");
+        } else {
+          console.log("no trial");
+          const n = e(".trial").elements[0], r = e(".trial_time").elements[0];
+          n && (n.style.display = "none"), r && (r.style.display = "none");
+          const s = e(".confirm_button button").elements[0];
+          s && (s.textContent = "Subscribe");
         }
         t.observe(document.body, { childList: !0, subtree: !0 });
       });
