@@ -768,28 +768,28 @@
   background: transparent;
   color: #09233e;
   border: 2px solid #ff9902 !important;
-}/*# sourceMappingURL=style.css.map */`, d = (l, e, n, o = "") => {
+}/*# sourceMappingURL=style.css.map */`, d = (c, e, n, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: l,
+      event_name: c,
       event_desc: e,
       event_type: n,
       event_loc: o
-    }), Q(`Event: ${l} | ${e} | ${n} | ${o}`, "success");
-  }, P = (l) => new Promise((e) => {
-    const n = document.querySelector(l);
+    }), Q(`Event: ${c} | ${e} | ${n} | ${o}`, "success");
+  }, P = (c) => new Promise((e) => {
+    const n = document.querySelector(c);
     n && e(n);
     const o = new MutationObserver(() => {
-      const c = document.querySelector(l);
-      c && (e(c), o.disconnect());
+      const l = document.querySelector(c);
+      l && (e(l), o.disconnect());
     });
     o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), D = ({ name: l, dev: e }) => {
+  }), D = ({ name: c, dev: e }) => {
     console.log(
-      `%c EXP: ${l} (DEV: ${e})`,
+      `%c EXP: ${c} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -798,14 +798,14 @@
       this.elements = e instanceof I ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, n, o) {
-      return typeof n == "function" && (o = n, n = ""), this.elements.forEach((c) => {
-        c.addEventListener(e, function(f) {
+      return typeof n == "function" && (o = n, n = ""), this.elements.forEach((l) => {
+        l.addEventListener(e, function(f) {
           var g;
           if (n !== "") {
             let a = (g = f.target) == null ? void 0 : g.closest(n);
             a && (o == null || o.call(a, f));
           } else
-            o == null || o.call(c, f);
+            o == null || o.call(l, f);
         });
       }), this;
     }
@@ -830,9 +830,9 @@
       return this;
     }
     style(e, n) {
-      const o = e.split("-").map((c, f) => f === 0 ? c : c.charAt(0).toUpperCase() + c.slice(1)).join("");
-      return this.elements.forEach(function(c) {
-        c.style[o] = n;
+      const o = e.split("-").map((l, f) => f === 0 ? l : l.charAt(0).toUpperCase() + l.slice(1)).join("");
+      return this.elements.forEach(function(l) {
+        l.style[o] = n;
       }), this;
     }
     find(e) {
@@ -855,11 +855,11 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const t = (l) => new I(l), G = (l) => {
+  const t = (c) => new I(c), G = (c) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", l, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", c, "variant_1"));
     }, 1e3);
-  }, j = (l, e, n, o, c = 1e3, f = 0.5) => {
+  }, j = (c, e, n, o, l = 1e3, f = 0.5) => {
     let g, a;
     if (g = new IntersectionObserver(
       function(w) {
@@ -870,15 +870,15 @@
             "view",
             n
           ), g.disconnect();
-        }, c) : (Q("Element is not fully visible", "warn"), clearTimeout(a));
+        }, l) : (Q("Element is not fully visible", "warn"), clearTimeout(a));
       },
       { threshold: [f] }
-    ), typeof l == "string") {
-      const w = document.querySelector(l);
+    ), typeof c == "string") {
+      const w = document.querySelector(c);
       w && g.observe(w);
     } else
-      g.observe(l);
-  }, Q = (l, e = "info") => {
+      g.observe(c);
+  }, Q = (c, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -894,7 +894,7 @@
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${l}`, `${n} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${c}`, `${n} font-size: 16px; font-weight: 600`);
   }, H = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", M = {
     back: `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
 		<path d="M0 8.00005C0 8.30737 0.117512 8.56956 0.361583 8.80456L7.4124 15.7017C7.60228 15.9006 7.85533 16 8.14459 16C8.73227 16 9.19324 15.5481 9.19324 14.9515C9.19324 14.6622 9.07568 14.4 8.8769 14.2012L2.52204 8.00005L8.8769 1.79888C9.07568 1.59096 9.19324 1.32882 9.19324 1.03955C9.19324 0.451984 8.73227 0 8.14459 0C7.85533 0 7.60228 0.0994383 7.4124 0.298303L0.361583 7.19554C0.117512 7.43054 0.00903668 7.69274 0 8.00005Z" fill="white"/>
@@ -984,15 +984,15 @@
     </div>
   </div>
 `
-  ), X = (l, e, n) => {
+  ), X = (c, e, n) => {
     let o = "";
     return n ? o = n.map(
-      (c) => (
+      (l) => (
         /* HTML */
         `
           <label class="crs_quiz_answer_radio_label">
-            <input type="radio" value="${c.value}" name="step${l}" />
-            <div><span></span>${c.label}</div>
+            <input type="radio" value="${l.value}" name="step${c}" />
+            <div><span></span>${l.label}</div>
           </label>
         `
       )
@@ -1071,18 +1071,18 @@
       </label>
     `, /* HTML */
     `
-    <div class="crs_quiz_step" data-step="${l}">
+    <div class="crs_quiz_step" data-step="${c}">
       <h3>${e}</h3>
       <div class="crs_quiz_answers">${o}</div>
     </div>
   `;
-  }, ee = () => (
+  }, ee = (c) => (
     /* HTML */
     `
   <div class="crs_quiz_step crs_quiz_step--warning">
     <h3>
-      We do not fund commercial, personal loans, or equipment, as they carry a higher risk than 1–4 residential
-      properties.
+      We do not fund ${c}, as they typically offer lower ROI and carry higher risk than secondary-market
+      residential properties.
     </h3>
     <p class="crs_warning_desc">With our support, you can select a property with a predictably high ROI</p>
     <p class="crs_warning_desc">
@@ -1098,12 +1098,12 @@
     </div>
   </div>
 `
-  ), U = (l = !1) => (
+  ), U = (c = !1) => (
     /* HTML */
     `
   <div class="crs_quiz_step crs_quiz_step--warning">
     <h3>To move forward with financing, you'll need to invest at least $5,000 of your own funds</h3>
-    ${l ? `<p class="crs_warning_desc">We'd be happy to hear from you if your situation changes.</p>
+    ${c ? `<p class="crs_warning_desc">We'd be happy to hear from you if your situation changes.</p>
          <div class="crs_warning_buttons crs_warning_buttons--single">
            <button class="crs_cash_warning_home">Go to main page</button>
          </div>` : `<p class="crs_warning_desc">Please confirm that you're willing to make this investment to proceed.</p>
@@ -1193,8 +1193,8 @@
       if (!e) return;
       const n = document.querySelectorAll(".crs_link_button:not(.sticky-block .crs_link_button)");
       let o = !1;
-      n.forEach((c) => {
-        this.isElementVisible(c) && (o = !0);
+      n.forEach((l) => {
+        this.isElementVisible(l) && (o = !0);
       }), o ? e.classList.add("crs-hidden") : e.classList.remove("crs-hidden");
     }
     async init() {
@@ -1223,8 +1223,8 @@
       const e = t(".crs_quiz_container").elements[0];
       if (e) {
         e.style.display = "flex", document.body.style.overflow = "hidden";
-        const n = t(".crs_first_screen").elements[0], o = t(".crs_quiz_steps").elements[0], c = t(".crs_quiz_logo svg").elements[0], f = t(".crs_quiz_progress").elements[0];
-        n && o && c && f && (n.classList.remove("active"), o.classList.add("active"), c.classList.add("active"), f.classList.add("active"), this.setStep(0)), d("exp_quiz_home_page_step_00", "View Quiz", "view", "First Screen");
+        const n = t(".crs_first_screen").elements[0], o = t(".crs_quiz_steps").elements[0], l = t(".crs_quiz_logo svg").elements[0], f = t(".crs_quiz_progress").elements[0];
+        n && o && l && f && (n.classList.remove("active"), o.classList.add("active"), l.classList.add("active"), f.classList.add("active"), this.setStep(0)), d("exp_quiz_home_page_step_00", "View Quiz", "view", "First Screen");
       }
     }
     closeQuiz() {
@@ -1233,7 +1233,7 @@
     }
     async setupQuiz() {
       await P(".crs_quiz_container");
-      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), c = t(".crs_start_quiz"), f = t(".crs_quiz_progress"), g = t(".crs_cancel_quiz"), a = t(".crs_quiz_steps button");
+      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), l = t(".crs_start_quiz"), f = t(".crs_quiz_progress"), g = t(".crs_cancel_quiz"), a = t(".crs_quiz_steps button");
       g.on("click", () => {
         d("exp_quiz_home_page_cancel", "Cancel Quiz", "click", "quiz_first_screen"), this.closeQuiz();
       }), o.on("click", () => {
@@ -1250,7 +1250,7 @@
           return;
         }
         this.step -= 1, this.setStep(this.step), a.text("Continue");
-      }), c.on("click", () => {
+      }), l.on("click", () => {
         e.removeClass("active"), n.addClass("active"), o.addClass("active"), f.addClass("active"), this.setStep(this.step), d("exp_quiz_home_page_start", "Start Quiz", "click", "quiz_first_screen");
       }), a.on("click", () => {
         var w, i, L, C, x, z, T, R, u;
@@ -1276,8 +1276,8 @@
               this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "";
               const p = t('[name="what_type_of_financing_are_you_seeking"]').elements[0];
               p && p.tagName === "SELECT" && (p.value = "Residential real estate (1–4 units only)", p.classList.remove("is-placeholder"), p.dispatchEvent(new Event("change", { bubbles: !0 })));
-              const S = this.answers[this.step];
-              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, S, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
+              const $ = this.answers[this.step];
+              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
             }), t(".crs_warning_no").on("click", () => {
               this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "", this.setStep(this.step);
             });
@@ -1293,8 +1293,8 @@
               this.showingCashWarning = !1, a.elements[0].style.display = "";
               const p = t('[name="amount_of_money_to_invest_in_real_estate_"]').elements[0];
               p && p.tagName === "SELECT" && (p.value = "$5,001 to $10,000", p.classList.remove("is-placeholder"), p.dispatchEvent(new Event("change", { bubbles: !0 })));
-              const S = this.answers[this.step];
-              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, S, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
+              const $ = this.answers[this.step];
+              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
             }), t(".crs_cash_warning_no").on("click", () => {
               t(".crs_quiz_step_container").html(U(!0)), t(".crs_cash_warning_home").on("click", () => {
                 window.location.pathname = "/";
@@ -1352,10 +1352,10 @@
       const n = t('select[name="your_state__united_states__"] option').elements.map((a) => ({
         label: a.textContent || "",
         value: a.getAttribute("value") || ""
-      })), o = t(".crs_quiz_step_container"), c = t(".crs_quiz_progress_bar");
+      })), o = t(".crs_quiz_step_container"), l = t(".crs_quiz_progress_bar");
       o.html(X(e + 1, v[e].question, v[e].answers));
       const f = (e + 1) / v.length * 100;
-      if (c.elements[0].style.width = `${f}%`, this.answers[e] && ((g = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || g.setAttribute("checked", "true")), e === v.length - 1) {
+      if (l.elements[0].style.width = `${f}%`, this.answers[e] && ((g = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || g.setAttribute("checked", "true")), e === v.length - 1) {
         const a = t('select[name="crs_state"]').elements[0];
         n.forEach((s) => {
           const r = document.createElement("option");
@@ -1374,7 +1374,7 @@
           ).elements[0];
           s && (s.value = w.value, s.dispatchEvent(new Event("change", { bubbles: !0 })));
         });
-        const i = document.querySelector(".crs_phone_verify_block"), L = i == null ? void 0 : i.querySelector(".crs_phone_base"), C = i == null ? void 0 : i.querySelector('input[name="crs_phone"]'), x = i == null ? void 0 : i.querySelector(".crs_send_code_btn"), z = i == null ? void 0 : i.querySelector(".crs_phone_field_label"), T = i == null ? void 0 : i.querySelector(".crs_phone_otp"), R = i == null ? void 0 : i.querySelector(".crs_otp_phone_num"), u = Array.from((i == null ? void 0 : i.querySelectorAll(".crs_otp_digit")) || []), q = i == null ? void 0 : i.querySelector(".crs_otp_timer_box"), E = i == null ? void 0 : i.querySelector(".crs_timer_text"), p = i == null ? void 0 : i.querySelector(".crs_phone_verified_box"), S = i == null ? void 0 : i.querySelector(".crs_resend_code_btn"), W = i == null ? void 0 : i.querySelector(".crs_resend_row"), h = i == null ? void 0 : i.querySelector(".crs_change_phone_btn"), k = (s) => {
+        const i = document.querySelector(".crs_phone_verify_block"), L = i == null ? void 0 : i.querySelector(".crs_phone_base"), C = i == null ? void 0 : i.querySelector('input[name="crs_phone"]'), x = i == null ? void 0 : i.querySelector(".crs_send_code_btn"), z = i == null ? void 0 : i.querySelector(".crs_phone_field_label"), T = i == null ? void 0 : i.querySelector(".crs_phone_otp"), R = i == null ? void 0 : i.querySelector(".crs_otp_phone_num"), u = Array.from((i == null ? void 0 : i.querySelectorAll(".crs_otp_digit")) || []), q = i == null ? void 0 : i.querySelector(".crs_otp_timer_box"), E = i == null ? void 0 : i.querySelector(".crs_timer_text"), p = i == null ? void 0 : i.querySelector(".crs_phone_verified_box"), $ = i == null ? void 0 : i.querySelector(".crs_resend_code_btn"), W = i == null ? void 0 : i.querySelector(".crs_resend_row"), h = i == null ? void 0 : i.querySelector(".crs_change_phone_btn"), k = (s) => {
           const r = s.replace(/\D/g, "");
           return r.length === 10 ? `+1${r}` : r.length === 11 && r[0] === "1" ? `+${r}` : null;
         }, A = (s = 60) => {
@@ -1399,10 +1399,10 @@
               })).json();
               if (y.success && ((_ = y.verificationCheck) == null ? void 0 : _.status) === "approved") {
                 this.phoneVerified = !0, this.verifiedPhone = s, d("exp_quiz_home_page_form_phone_verified", "Phone verified", "success", "quiz_form"), this.phoneTimerInterval && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null), q.style.display = "none", p.style.display = "flex", u.forEach((ae) => ae.disabled = !0), W && (W.style.display = "none");
-                const $ = t('input[name="mobilephone"]').elements[0];
-                $ && ($.value = s, $.dispatchEvent(new Event("input")));
+                const S = t('input[name="mobilephone"]').elements[0];
+                S && (S.value = s, S.dispatchEvent(new Event("input")));
               } else
-                u.forEach(($) => $.classList.add("crs_digit_error")), (m = u[0]) == null || m.focus(), d("exp_quiz_home_page_form_phone_verify_failed", "Phone verification failed", "error", "quiz_form");
+                u.forEach((S) => S.classList.add("crs_digit_error")), (m = u[0]) == null || m.focus(), d("exp_quiz_home_page_form_phone_verify_failed", "Phone verification failed", "error", "quiz_form");
             } catch {
               u.forEach((b) => b.classList.add("crs_digit_error"));
             }
@@ -1458,11 +1458,11 @@
             var b;
             _.preventDefault();
             const m = ((b = _.clipboardData) == null ? void 0 : b.getData("text").replace(/\D/g, "").slice(0, 4)) || "";
-            m.split("").forEach((y, $) => {
-              u[$] && (u[$].value = y);
+            m.split("").forEach((y, S) => {
+              u[S] && (u[S].value = y);
             }), u.forEach((y) => y.classList.remove("crs_digit_error")), m.length === 4 ? await N(k(C.value)) : u[m.length] && u[m.length].focus();
           });
-        }), S == null || S.addEventListener("click", async () => {
+        }), $ == null || $.addEventListener("click", async () => {
           const s = k(C.value);
           s && (u.forEach((r) => {
             r.value = "", r.classList.remove("crs_digit_error");
