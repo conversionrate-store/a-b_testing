@@ -768,28 +768,28 @@
   background: transparent;
   color: #09233e;
   border: 2px solid #ff9902 !important;
-}/*# sourceMappingURL=style.css.map */`, d = (c, e, n, o = "") => {
+}/*# sourceMappingURL=style.css.map */`, d = (a, e, n, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: c,
+      event_name: a,
       event_desc: e,
       event_type: n,
       event_loc: o
-    }), Q(`Event: ${c} | ${e} | ${n} | ${o}`, "success");
-  }, P = (c) => new Promise((e) => {
-    const n = document.querySelector(c);
+    }), Q(`Event: ${a} | ${e} | ${n} | ${o}`, "success");
+  }, P = (a) => new Promise((e) => {
+    const n = document.querySelector(a);
     n && e(n);
     const o = new MutationObserver(() => {
-      const l = document.querySelector(c);
+      const l = document.querySelector(a);
       l && (e(l), o.disconnect());
     });
     o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), D = ({ name: c, dev: e }) => {
+  }), D = ({ name: a, dev: e }) => {
     console.log(
-      `%c EXP: ${c} (DEV: ${e})`,
+      `%c EXP: ${a} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -802,8 +802,8 @@
         l.addEventListener(e, function(f) {
           var g;
           if (n !== "") {
-            let a = (g = f.target) == null ? void 0 : g.closest(n);
-            a && (o == null || o.call(a, f));
+            let c = (g = f.target) == null ? void 0 : g.closest(n);
+            c && (o == null || o.call(c, f));
           } else
             o == null || o.call(l, f);
         });
@@ -855,30 +855,30 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const t = (c) => new I(c), G = (c) => {
+  const t = (a) => new I(a), G = (a) => {
     let e = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", c, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", a, "variant_1"));
     }, 1e3);
-  }, j = (c, e, n, o, l = 1e3, f = 0.5) => {
-    let g, a;
+  }, j = (a, e, n, o, l = 1e3, f = 0.5) => {
+    let g, c;
     if (g = new IntersectionObserver(
       function(w) {
-        w[0].isIntersecting === !0 ? a = setTimeout(() => {
+        w[0].isIntersecting === !0 ? c = setTimeout(() => {
           d(
             e,
             w[0].target.dataset.visible || o || "",
             "view",
             n
           ), g.disconnect();
-        }, l) : (Q("Element is not fully visible", "warn"), clearTimeout(a));
+        }, l) : (Q("Element is not fully visible", "warn"), clearTimeout(c));
       },
       { threshold: [f] }
-    ), typeof c == "string") {
-      const w = document.querySelector(c);
+    ), typeof a == "string") {
+      const w = document.querySelector(a);
       w && g.observe(w);
     } else
-      g.observe(c);
-  }, Q = (c, e = "info") => {
+      g.observe(a);
+  }, Q = (a, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -894,7 +894,7 @@
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${c}`, `${n} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${a}`, `${n} font-size: 16px; font-weight: 600`);
   }, H = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", M = {
     back: `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
 		<path d="M0 8.00005C0 8.30737 0.117512 8.56956 0.361583 8.80456L7.4124 15.7017C7.60228 15.9006 7.85533 16 8.14459 16C8.73227 16 9.19324 15.5481 9.19324 14.9515C9.19324 14.6622 9.07568 14.4 8.8769 14.2012L2.52204 8.00005L8.8769 1.79888C9.07568 1.59096 9.19324 1.32882 9.19324 1.03955C9.19324 0.451984 8.73227 0 8.14459 0C7.85533 0 7.60228 0.0994383 7.4124 0.298303L0.361583 7.19554C0.117512 7.43054 0.00903668 7.69274 0 8.00005Z" fill="white"/>
@@ -984,14 +984,14 @@
     </div>
   </div>
 `
-  ), X = (c, e, n) => {
+  ), X = (a, e, n) => {
     let o = "";
     return n ? o = n.map(
       (l) => (
         /* HTML */
         `
           <label class="crs_quiz_answer_radio_label">
-            <input type="radio" value="${l.value}" name="step${c}" />
+            <input type="radio" value="${l.value}" name="step${a}" />
             <div><span></span>${l.label}</div>
           </label>
         `
@@ -1071,18 +1071,19 @@
       </label>
     `, /* HTML */
     `
-    <div class="crs_quiz_step" data-step="${c}">
+    <div class="crs_quiz_step" data-step="${a}">
       <h3>${e}</h3>
       <div class="crs_quiz_answers">${o}</div>
     </div>
   `;
-  }, ee = (c) => (
+  }, ee = (a) => (
     /* HTML */
     `
   <div class="crs_quiz_step crs_quiz_step--warning">
     <h3>
-      We do not fund ${c}, as they typically offer lower ROI and carry higher risk than secondary-market
-      residential properties.
+      ${a === "Other" ? "We do not fund commercial, personal loans, or equipment, as they carry a higher risk than 1–4 residential properties." : `
+      We do not fund ${a}, as they typically offer lower ROI and carry higher risk than secondary-market
+      residential properties.`}
     </h3>
     <p class="crs_warning_desc">With our support, you can select a property with a predictably high ROI</p>
     <p class="crs_warning_desc">
@@ -1098,12 +1099,12 @@
     </div>
   </div>
 `
-  ), U = (c = !1) => (
+  ), U = (a = !1) => (
     /* HTML */
     `
   <div class="crs_quiz_step crs_quiz_step--warning">
     <h3>To move forward with financing, you'll need to invest at least $5,000 of your own funds</h3>
-    ${c ? `<p class="crs_warning_desc">We'd be happy to hear from you if your situation changes.</p>
+    ${a ? `<p class="crs_warning_desc">We'd be happy to hear from you if your situation changes.</p>
          <div class="crs_warning_buttons crs_warning_buttons--single">
            <button class="crs_cash_warning_home">Go to main page</button>
          </div>` : `<p class="crs_warning_desc">Please confirm that you're willing to make this investment to proceed.</p>
@@ -1233,26 +1234,26 @@
     }
     async setupQuiz() {
       await P(".crs_quiz_container");
-      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), l = t(".crs_start_quiz"), f = t(".crs_quiz_progress"), g = t(".crs_cancel_quiz"), a = t(".crs_quiz_steps button");
+      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), l = t(".crs_start_quiz"), f = t(".crs_quiz_progress"), g = t(".crs_cancel_quiz"), c = t(".crs_quiz_steps button");
       g.on("click", () => {
         d("exp_quiz_home_page_cancel", "Cancel Quiz", "click", "quiz_first_screen"), this.closeQuiz();
       }), o.on("click", () => {
         if (this.showingWarning) {
-          this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "", this.setStep(this.step);
+          this.showingWarning = !1, this.warningPropertyType = "", c.elements[0].style.display = "", this.setStep(this.step);
           return;
         }
         if (this.showingCashWarning) {
-          this.showingCashWarning = !1, a.elements[0].style.display = "", this.setStep(this.step);
+          this.showingCashWarning = !1, c.elements[0].style.display = "", this.setStep(this.step);
           return;
         }
         if (this.step === 0) {
           this.closeQuiz();
           return;
         }
-        this.step -= 1, this.setStep(this.step), a.text("Continue");
+        this.step -= 1, this.setStep(this.step), c.text("Continue");
       }), l.on("click", () => {
         e.removeClass("active"), n.addClass("active"), o.addClass("active"), f.addClass("active"), this.setStep(this.step), d("exp_quiz_home_page_start", "Start Quiz", "click", "quiz_first_screen");
-      }), a.on("click", () => {
+      }), c.on("click", () => {
         var w, i, L, C, x, z, T, R, u;
         if (this.step < v.length - 1) {
           t(".crs_error").removeClass("active");
@@ -1267,34 +1268,34 @@
             return;
           }
           if (this.answers[this.step] = E.getAttribute("value") || "", this.step === se && te !== this.answers[this.step]) {
-            this.showingWarning = !0, this.warningPropertyType = this.answers[this.step], a.elements[0].style.display = "none", t(".crs_quiz_step_container").html(ee(this.warningPropertyType)), d(
+            this.showingWarning = !0, this.warningPropertyType = this.answers[this.step], c.elements[0].style.display = "none", t(".crs_quiz_step_container").html(ee(this.warningPropertyType)), d(
               "exp_quiz_home_page_warning_property",
               `Property type warning shown: ${this.warningPropertyType}`,
               "view",
               "quiz_step_2"
             ), t(".crs_warning_yes").on("click", () => {
-              this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "";
+              this.showingWarning = !1, this.warningPropertyType = "", c.elements[0].style.display = "";
               const p = t('[name="what_type_of_financing_are_you_seeking"]').elements[0];
               p && p.tagName === "SELECT" && (p.value = "Residential real estate (1–4 units only)", p.classList.remove("is-placeholder"), p.dispatchEvent(new Event("change", { bubbles: !0 })));
               const $ = this.answers[this.step];
-              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
+              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && c.text("Apply Now");
             }), t(".crs_warning_no").on("click", () => {
-              this.showingWarning = !1, this.warningPropertyType = "", a.elements[0].style.display = "", this.setStep(this.step);
+              this.showingWarning = !1, this.warningPropertyType = "", c.elements[0].style.display = "", this.setStep(this.step);
             });
             return;
           }
           if (this.step === re && ie.includes(this.answers[this.step])) {
-            this.showingCashWarning = !0, a.elements[0].style.display = "none", t(".crs_quiz_step_container").html(U()), d(
+            this.showingCashWarning = !0, c.elements[0].style.display = "none", t(".crs_quiz_step_container").html(U()), d(
               "exp_quiz_home_page_warning_cash",
               `Cash warning shown: ${this.answers[this.step]}`,
               "view",
               "quiz_step_5"
             ), t(".crs_cash_warning_yes").on("click", () => {
-              this.showingCashWarning = !1, a.elements[0].style.display = "";
+              this.showingCashWarning = !1, c.elements[0].style.display = "";
               const p = t('[name="amount_of_money_to_invest_in_real_estate_"]').elements[0];
               p && p.tagName === "SELECT" && (p.value = "$5,001 to $10,000", p.classList.remove("is-placeholder"), p.dispatchEvent(new Event("change", { bubbles: !0 })));
               const $ = this.answers[this.step];
-              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && a.text("Apply Now");
+              this.setStep(this.step + 1), this.step += 1, d(`exp_quiz_home_page_step_${this.step}`, $, "success", `quiz_step_${this.step}`), this.step === v.length - 1 && c.text("Apply Now");
             }), t(".crs_cash_warning_no").on("click", () => {
               t(".crs_quiz_step_container").html(U(!0)), t(".crs_cash_warning_home").on("click", () => {
                 window.location.pathname = "/";
@@ -1307,7 +1308,7 @@
             ((i = (w = E.closest("label")) == null ? void 0 : w.querySelector("div")) == null ? void 0 : i.textContent) || "",
             "success",
             `quiz_step_${this.step}`
-          ), this.step === v.length - 1 && a.text("Apply Now");
+          ), this.step === v.length - 1 && c.text("Apply Now");
         } else {
           let q = !1;
           if (n.elements[0].querySelectorAll(
@@ -1349,22 +1350,22 @@
     async setStep(e) {
       var g;
       if (e < 0) return;
-      const n = t('select[name="your_state__united_states__"] option').elements.map((a) => ({
-        label: a.textContent || "",
-        value: a.getAttribute("value") || ""
+      const n = t('select[name="your_state__united_states__"] option').elements.map((c) => ({
+        label: c.textContent || "",
+        value: c.getAttribute("value") || ""
       })), o = t(".crs_quiz_step_container"), l = t(".crs_quiz_progress_bar");
       o.html(X(e + 1, v[e].question, v[e].answers));
       const f = (e + 1) / v.length * 100;
       if (l.elements[0].style.width = `${f}%`, this.answers[e] && ((g = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || g.setAttribute("checked", "true")), e === v.length - 1) {
-        const a = t('select[name="crs_state"]').elements[0];
+        const c = t('select[name="crs_state"]').elements[0];
         n.forEach((s) => {
           const r = document.createElement("option");
-          r.value = s.value, r.textContent = s.label, a.appendChild(r);
-        }), a.addEventListener("change", () => {
+          r.value = s.value, r.textContent = s.label, c.appendChild(r);
+        }), c.addEventListener("change", () => {
           var r;
           (r = t(".crs_quiz_answer_select_label .crs_input_error").elements[0]) == null || r.remove();
           const s = t('select[name="your_state__united_states__"]').elements[0];
-          s && (s.value = a.value, s.dispatchEvent(new Event("change", { bubbles: !0 }))), d("exp_quiz_home_page_form_state", a.value, "change", "quiz_form");
+          s && (s.value = c.value, s.dispatchEvent(new Event("change", { bubbles: !0 }))), d("exp_quiz_home_page_form_state", c.value, "change", "quiz_form");
         });
         const w = t('select[name="crs_hear_about_us"]').elements[0];
         w && w.addEventListener("change", () => {
