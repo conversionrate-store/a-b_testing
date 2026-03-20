@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const _ = `#lp-pom-image-16,
+  const m = `#lp-pom-image-16,
 #lp-pom-button-15,
 #lp-pom-text-14,
 #lp-pom-image-17,
@@ -499,33 +499,41 @@
   to {
     transform: rotate(360deg);
   }
-}/*# sourceMappingURL=style.css.map */`, c = (a) => new Promise((n) => {
-    const e = document.querySelector(a);
+}/*# sourceMappingURL=style.css.map */`, d = (o, n, e, t = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: o,
+      event_desc: n,
+      event_type: e,
+      event_loc: t
+    }), k(`Event: ${o} | ${n} | ${e} | ${t}`, "success");
+  }, u = (o) => new Promise((n) => {
+    const e = document.querySelector(o);
     e && n(e);
     const t = new MutationObserver(() => {
-      const s = document.querySelector(a);
+      const s = document.querySelector(o);
       s && (n(s), t.disconnect());
     });
     t.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: a, dev: n }) => {
+  }), h = ({ name: o, dev: n }) => {
     console.log(
-      `%c EXP: ${a} (DEV: ${n})`,
+      `%c EXP: ${o} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class d {
+  class c {
     constructor(n) {
-      this.elements = n instanceof d ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+      this.elements = n instanceof c ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
     on(n, e, t) {
       return typeof e == "function" && (t = e, e = ""), this.elements.forEach((s) => {
         s.addEventListener(n, function(i) {
-          var o;
+          var a;
           if (e !== "") {
-            let p = (o = i.target) == null ? void 0 : o.closest(e);
+            let p = (a = i.target) == null ? void 0 : a.closest(e);
             p && (t == null || t.call(p, i));
           } else
             t == null || t.call(s, i);
@@ -549,7 +557,7 @@
     }
     each(n) {
       for (let e of this.elements)
-        n(new d(e), this.elements.indexOf(e));
+        n(new c(e), this.elements.indexOf(e));
       return this;
     }
     style(n, e) {
@@ -560,7 +568,7 @@
     }
     find(n) {
       const e = this.elements.map((t) => Array.from(t.querySelectorAll(n)));
-      return new d(e.flat());
+      return new c(e.flat());
     }
     attr(n, e) {
       return e ? (this.elements.forEach(function(t) {
@@ -578,11 +586,28 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const r = (a) => new d(a), f = (a) => {
+  const r = (o) => new c(o), b = (o) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", o, "variant_1"));
     }, 1e3);
-  }, l = "https://conversionrate-store.github.io/a-b_images/spark/", h = (
+  }, k = (o, n = "info") => {
+    let e;
+    switch (n) {
+      case "info":
+        e = "color: #3498db;";
+        break;
+      case "warn":
+        e = "color: #f39c12;";
+        break;
+      case "error":
+        e = "color: #e74c3c;";
+        break;
+      case "success":
+        e = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${o}`, `${e} font-size: 16px; font-weight: 600`);
+  }, l = "https://conversionrate-store.github.io/a-b_images/spark/", g = (
     /* HTML */
     `
   <section class="spark_hero">
@@ -630,7 +655,7 @@
     </div>
   </section>
 `
-  ), b = (
+  ), x = (
     /* HTML */
     `
   <div class="spark_quiz_popup">
@@ -660,8 +685,8 @@
   </div>
 `
   );
-  m({ name: "Spark Quiz", dev: "YK" }), f("spark_quiz");
-  const k = [
+  h({ name: "Spark Quiz", dev: "YK" }), b("spark_quiz");
+  const _ = [
     {
       step: 1,
       title: "Primary Discipline",
@@ -727,21 +752,21 @@
       ]
     }
   ];
-  class g {
+  class z {
     constructor() {
       this.currentStep = 1, this.quizData = {}, this.init();
     }
     async init() {
-      await c("body"), r("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${_}</style>`), window.location.href.includes("https://try.sparkmembership.com/spark-software/") && (await c(".lp-positioned-content"), r(".lp-positioned-content").elements[0].insertAdjacentHTML("afterbegin", h), await c(".spark_hero__btn--secondary"), r(".spark_hero__btn--secondary").on("click", () => {
+      await u("body"), r("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${m}</style>`), window.location.href.includes("https://try.sparkmembership.com/spark-software/") && (await u(".lp-positioned-content"), r(".lp-positioned-content").elements[0].insertAdjacentHTML("afterbegin", g), await u(".spark_hero__btn--secondary"), r(".spark_hero__btn--secondary").on("click", () => {
         r(".spark_hero").elements[0];
         const n = r("#lp-pom-block-18").elements[0];
         n && n.scrollIntoView({ behavior: "smooth", block: "start" });
-      }), await c("#lp-pom-button-264"), r("#lp-pom-button-264, #lp-pom-button-273").on("click", (n) => {
+      }), await u("#lp-pom-button-264"), r("#lp-pom-button-264, #lp-pom-button-273").on("click", (n) => {
         n.preventDefault(), window.location.href = "https://sparkmembership.com/pricing";
       })), window.location.href.includes("/pricing") && (this.initQuiz(), this.openQuiz());
     }
     initQuiz() {
-      document.body.insertAdjacentHTML("beforeend", b), r(".spark_quiz_back").on("click", () => this.prevStep()), this.renderStep();
+      document.body.insertAdjacentHTML("beforeend", x), r(".spark_quiz_back").on("click", () => this.prevStep()), this.renderStep();
     }
     openQuiz() {
       r(".spark_quiz_popup").elements[0].classList.add("active"), document.body.style.overflow = "hidden";
@@ -750,7 +775,7 @@
       r(".spark_quiz_popup").elements[0].classList.remove("active"), document.body.style.overflow = "";
     }
     renderStep() {
-      const n = k[this.currentStep - 1], e = r(".spark_quiz_content").elements[0];
+      const n = _[this.currentStep - 1], e = r(".spark_quiz_content").elements[0];
       r(".spark_quiz_step").text(`${this.currentStep}/6`), r(".spark_quiz_progress_bar").elements[0].style.width = `${this.currentStep / 6 * 100}%`, this.currentStep === 1 ? r(".spark_quiz_back").elements[0].style.visibility = "hidden" : r(".spark_quiz_back").elements[0].style.visibility = "visible";
       let t = `
       <h2 class="spark_quiz_title">${n.title}</h2>
@@ -786,7 +811,7 @@
         </div>
       `);
       const s = this.currentStep === 6 ? "Request Demo" : "Next step";
-      t += `<button class="spark_quiz_next" disabled>${s}</button>`, e.innerHTML = t, this.addStepListeners(n);
+      t += `<button class="spark_quiz_next" disabled>${s}</button>`, e.innerHTML = t, this.addStepListeners(n), d("quiz_step_view", `Step ${n.step}: ${n.title}`, "view", "spark_quiz");
     }
     addStepListeners(n) {
       if (n.type === "select")
@@ -800,14 +825,14 @@
         });
       else if (n.type === "inputs") {
         const e = r(".spark_quiz_input").elements, t = () => {
-          const s = Array.from(e).filter((o) => o.required);
+          const s = Array.from(e).filter((a) => a.required);
           let i = !0;
-          i = s.every((o) => o.value.trim()), n.step === 6 && i && e.forEach((o) => {
-            const p = o.dataset.field, u = o.value.trim();
-            p === "Email" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u) || (i = !1) : p === "Phone number" && u.replace(/\D/g, "").length < 10 && (i = !1);
-          }), r(".spark_quiz_next").elements[0].disabled = !i, e.forEach((o) => {
-            const p = o.dataset.field;
-            this.quizData[p] = o.value, this.fillFormField(n.step, o.value, p);
+          i = s.every((a) => a.value.trim()), n.step === 6 && i && e.forEach((a) => {
+            const p = a.dataset.field, f = a.value.trim();
+            p === "Email" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f) || (i = !1) : p === "Phone number" && f.replace(/\D/g, "").length < 10 && (i = !1);
+          }), r(".spark_quiz_next").elements[0].disabled = !i, e.forEach((a) => {
+            const p = a.dataset.field;
+            this.quizData[p] = a.value, this.fillFormField(n.step, a.value, p);
           });
         };
         e.forEach((s) => {
@@ -817,6 +842,13 @@
       r(".spark_quiz_next").on("click", () => this.nextStep());
     }
     nextStep() {
+      const n = _[this.currentStep - 1];
+      if (n.type === "inputs")
+        d("quiz_step_answer", `Step ${n.step}: ${n.title}`, "click", "spark_quiz");
+      else {
+        const e = this.quizData[`step${n.step}`] || "";
+        d("quiz_step_answer", `Step ${n.step}: ${n.title} | ${e}`, "click", "spark_quiz");
+      }
       this.currentStep < 6 ? (this.currentStep++, this.renderStep()) : this.submitQuiz();
     }
     prevStep() {
@@ -830,13 +862,13 @@
       }
     }
     submitQuiz() {
-      console.log("Quiz submitted:", this.quizData);
+      console.log("Quiz submitted:", this.quizData), d("quiz_completed", "Spark Quiz successfully completed", "success", "spark_quiz");
       const n = r(".spark_quiz_next").elements[0];
       n && (n.disabled = !0, n.innerHTML = '<span class="spark_quiz_spinner"></span> Loading...');
       const e = document.querySelector('.elementor-form button[type="submit"]');
       e && e.click();
     }
   }
-  new g();
+  new z();
 })();
 //# sourceMappingURL=index.js.map
