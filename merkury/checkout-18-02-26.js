@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const m = `[data-testid=billing-page-header],
+  const y = `[data-testid=billing-page-header],
 [data-testid=checkout-plan-summary-card] > div > div:last-of-type,
 [data-testid=checkout-confirm-button-card],
 [data-testid=billing-section],
@@ -197,108 +197,108 @@
   text-decoration: underline;
   cursor: pointer;
   text-transform: uppercase;
-}/*# sourceMappingURL=style.css.map */`, d = (a) => new Promise((t) => {
-    const i = document.querySelector(a);
-    i && t(i);
+}/*# sourceMappingURL=style.css.map */`, b = (l) => new Promise((e) => {
+    const n = document.querySelector(l);
+    n && e(n);
     const o = new MutationObserver(() => {
-      const n = document.querySelector(a);
-      n && (t(n), o.disconnect());
+      const r = document.querySelector(l);
+      r && (e(r), o.disconnect());
     });
     o.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: a, dev: t }) => {
+  }), w = ({ name: l, dev: e }) => {
     console.log(
-      `%c EXP: ${a} (DEV: ${t})`,
+      `%c EXP: ${l} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class c {
-    constructor(t) {
-      this.elements = t instanceof c ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
+  class p {
+    constructor(e) {
+      this.elements = e instanceof p ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(t, i, o) {
-      return typeof i == "function" && (o = i, i = ""), this.elements.forEach((n) => {
-        n.addEventListener(t, function(r) {
-          var s;
-          if (i !== "") {
-            let l = (s = r.target) == null ? void 0 : s.closest(i);
-            l && (o == null || o.call(l, r));
+    on(e, n, o) {
+      return typeof n == "function" && (o = n, n = ""), this.elements.forEach((r) => {
+        r.addEventListener(e, function(i) {
+          var a;
+          if (n !== "") {
+            let s = (a = i.target) == null ? void 0 : a.closest(n);
+            s && (o == null || o.call(s, i));
           } else
-            o == null || o.call(n, r);
+            o == null || o.call(r, i);
         });
       }), this;
     }
-    addClass(t) {
-      return this.elements.forEach(function(i) {
-        i.classList.add(t);
+    addClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.add(e);
       }), this;
     }
-    removeClass(t) {
-      return this.elements.forEach(function(i) {
-        i.classList.remove(t);
+    removeClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.remove(e);
       }), this;
     }
-    toggleClass(t) {
-      return this.elements.forEach(function(i) {
-        i.classList.toggle(t);
+    toggleClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.toggle(e);
       }), this;
     }
-    each(t) {
-      for (let i of this.elements)
-        t(new c(i), this.elements.indexOf(i));
+    each(e) {
+      for (let n of this.elements)
+        e(new p(n), this.elements.indexOf(n));
       return this;
     }
-    style(t, i) {
-      const o = t.split("-").map((n, r) => r === 0 ? n : n.charAt(0).toUpperCase() + n.slice(1)).join("");
-      return this.elements.forEach(function(n) {
-        n.style[o] = i;
+    style(e, n) {
+      const o = e.split("-").map((r, i) => i === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
+      return this.elements.forEach(function(r) {
+        r.style[o] = n;
       }), this;
     }
-    find(t) {
-      const i = this.elements.map((o) => Array.from(o.querySelectorAll(t)));
-      return new c(i.flat());
+    find(e) {
+      const n = this.elements.map((o) => Array.from(o.querySelectorAll(e)));
+      return new p(n.flat());
     }
-    attr(t, i) {
-      return i ? (this.elements.forEach(function(o) {
-        o.setAttribute(t, i);
-      }), this) : this.elements[0].getAttribute(t);
+    attr(e, n) {
+      return n ? (this.elements.forEach(function(o) {
+        o.setAttribute(e, n);
+      }), this) : this.elements[0].getAttribute(e);
     }
-    text(t) {
-      return t ? (this.elements.forEach(function(i) {
-        i.textContent = t;
+    text(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
-    html(t) {
-      return t ? (this.elements.forEach(function(i) {
-        i.innerHTML = t;
+    html(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const e = (a) => new c(a), b = (a) => {
-    let t = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", a, "variant_1"));
+  const t = (l) => new p(l), C = (l) => {
+    let e = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", l, "variant_1"));
     }, 1e3);
-  }, u = {
+  }, x = {
     lock: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 		<path fill-rule="evenodd" clip-rule="evenodd" d="M10.0001 2.2084C8.23761 2.2084 6.77298 3.42238 6.48964 5.01582C6.42305 5.39026 6.04865 5.64268 5.65338 5.57961C5.25811 5.51653 4.99165 5.16187 5.05822 4.78742C5.45732 2.54302 7.51725 0.833328 10.0001 0.833328C12.7681 0.833328 15.0118 2.9589 15.0118 5.58093V7.97064C16.4572 8.42366 17.5 9.71393 17.5 11.235V15.729C17.5 17.6276 15.8752 19.1667 13.8711 19.1667H6.12893C4.12473 19.1667 2.5 17.6276 2.5 15.729V11.235C2.5 9.33643 4.12473 7.79734 6.12893 7.79734H13.5602V5.58093C13.5602 3.71834 11.9663 2.2084 10.0001 2.2084ZM6.12893 9.17243C4.92641 9.17243 3.95157 10.0958 3.95157 11.235V15.729C3.95157 16.8682 4.92641 17.7916 6.12893 17.7916H13.8711C15.0735 17.7916 16.0484 16.8682 16.0484 15.729V11.235C16.0484 10.0958 15.0735 9.17243 13.8711 9.17243H6.12893ZM8.06226 12.3805C8.06226 12.0008 8.38721 11.6929 8.78804 11.6929H11.213C11.6139 11.6929 11.9388 12.0008 11.9388 12.3805C11.9388 12.7602 11.6139 13.068 11.213 13.068H10.7263V14.5836C10.7263 14.9633 10.4013 15.2712 10.0005 15.2712C9.59967 15.2712 9.27471 14.9633 9.27471 14.5836V13.068H8.78804C8.38721 13.068 8.06226 12.7602 8.06226 12.3805Z" fill="#37766E"/>
 		</svg>`,
     calendar: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 		<path d="M16.6667 2.70833H14.7917V2.5C14.7917 2.33424 14.7258 2.17527 14.6086 2.05806C14.4914 1.94085 14.3324 1.875 14.1667 1.875C14.0009 1.875 13.8419 1.94085 13.7247 2.05806C13.6075 2.17527 13.5417 2.33424 13.5417 2.5V2.70833H6.45833V2.5C6.45833 2.33424 6.39249 2.17527 6.27528 2.05806C6.15806 1.94085 5.99909 1.875 5.83333 1.875C5.66757 1.875 5.5086 1.94085 5.39139 2.05806C5.27418 2.17527 5.20833 2.33424 5.20833 2.5V2.70833H3.33333C2.94723 2.71052 2.57757 2.86487 2.30455 3.13789C2.03154 3.4109 1.87719 3.78057 1.875 4.16667V16.6667C1.87719 17.0528 2.03154 17.4224 2.30455 17.6954C2.57757 17.9685 2.94723 18.1228 3.33333 18.125H16.6667C17.0528 18.1228 17.4224 17.9685 17.6954 17.6954C17.9685 17.4224 18.1228 17.0528 18.125 16.6667V4.16667C18.1228 3.78057 17.9685 3.4109 17.6954 3.13789C17.4224 2.86487 17.0528 2.71052 16.6667 2.70833ZM3.33333 3.95833H5.20833V4.16667C5.20833 4.33243 5.27418 4.4914 5.39139 4.60861C5.5086 4.72582 5.66757 4.79167 5.83333 4.79167C5.99909 4.79167 6.15806 4.72582 6.27528 4.60861C6.39249 4.4914 6.45833 4.33243 6.45833 4.16667V3.95833H13.5417V4.16667C13.5417 4.33243 13.6075 4.4914 13.7247 4.60861C13.8419 4.72582 14.0009 4.79167 14.1667 4.79167C14.3324 4.79167 14.4914 4.72582 14.6086 4.60861C14.7258 4.4914 14.7917 4.33243 14.7917 4.16667V3.95833H16.6667C16.7219 3.95833 16.7749 3.98028 16.814 4.01935C16.8531 4.05842 16.875 4.11141 16.875 4.16667V6.875H3.125V4.16667C3.125 4.11141 3.14695 4.05842 3.18602 4.01935C3.22509 3.98028 3.27808 3.95833 3.33333 3.95833ZM16.6667 16.875H3.33333C3.27808 16.875 3.22509 16.8531 3.18602 16.814C3.14695 16.7749 3.125 16.7219 3.125 16.6667V8.125H16.875V16.6667C16.875 16.7219 16.8531 16.7749 16.814 16.814C16.7749 16.8531 16.7219 16.875 16.6667 16.875ZM12.5 10.8333L10.8333 12.5L12.5 14.1667C12.6025 14.2813 12.6592 14.4296 12.6592 14.5833C12.6592 14.7371 12.6025 14.8854 12.5 15C12.3854 15.1025 12.2371 15.1592 12.0833 15.1592C11.9296 15.1592 11.7813 15.1025 11.6667 15L10 13.3333L8.33333 15C8.21875 15.1025 8.0704 15.1592 7.91667 15.1592C7.76293 15.1592 7.61459 15.1025 7.5 15C7.39751 14.8854 7.34085 14.7371 7.34085 14.5833C7.34085 14.4296 7.39751 14.2813 7.5 14.1667L9.16667 12.5L7.5 10.8333C7.4443 10.7167 7.42613 10.5857 7.44798 10.4583C7.46984 10.3309 7.53065 10.2134 7.62204 10.122C7.71343 10.0306 7.83091 9.96984 7.95829 9.94798C8.08568 9.92613 8.21671 9.9443 8.33333 10L10 11.6667L11.6667 10C11.7833 9.9443 11.9143 9.92613 12.0417 9.94798C12.1691 9.96984 12.2866 10.0306 12.378 10.122C12.4694 10.2134 12.5302 10.3309 12.552 10.4583C12.5739 10.5857 12.5557 10.7167 12.5 10.8333Z" fill="#37766E"/>
 		</svg>`
-  }, h = (
+  }, v = (
     /* HTML */
     `
   <div class="trial">
     <h3>Start your 30-day free trial</h3>
     <ul>
       <li>
-        <span>${u.lock}</span>
+        <span>${x.lock}</span>
         Get instant access to all features
       </li>
       <li>
-        <span>${u.calendar}</span>
+        <span>${x.calendar}</span>
         Cancel anytime before the end of trial
       </li>
     </ul>
@@ -308,7 +308,7 @@
   </div>
   <div class="other_blocks"></div>
 `
-  ), g = (
+  ), k = (
     /* HTML */
     `
   <div class="confirm_button">
@@ -316,129 +316,172 @@
     <p>Your payment information is secure and encrypted</p>
   </div>
 `
-  ), x = (
+  ), _ = (
     /* HTML */
     `
   <div class="postal" style="padding: 0 24px 24px; margin-top: -24px;">
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;">
+      <div>
+        <p style="font-size: 14px; line-height: 20px; font-weight: 700; margin-bottom: 8px;">First Name *</p>
+        <input
+          type="text"
+          placeholder="First Name"
+          class="postal-first-name"
+          style="border-radius: 12px; border: 1px solid #e5e7eb; font-size: 16px; padding: 14px 16px; width: 100%; outline: none; box-sizing: border-box;"
+        />
+      </div>
+      <div>
+        <p style="font-size: 14px; line-height: 20px; font-weight: 700; margin-bottom: 8px;">Last Name *</p>
+        <input
+          type="text"
+          placeholder="Last Name"
+          class="postal-last-name"
+          style="border-radius: 12px; border: 1px solid #e5e7eb; font-size: 16px; padding: 14px 16px; width: 100%; outline: none; box-sizing: border-box;"
+        />
+      </div>
+    </div>
     <p style="font-size: 14px; line-height: 20px; font-weight: 700; margin-bottom: 8px;">Postal Code *</p>
     <input
       type="text"
       placeholder="Postal Code"
+      class="postal-zip"
       style="border-radius: 12px; border: 1px solid #e5e7eb; font-size: 16px; padding: 14px 16px; width: 100%; outline: none; box-sizing: border-box;"
     />
   </div>
 `
-  ), y = (a) => (
+  ), L = (l) => (
     /* HTML */
     `
   <div class="trial_time">
     <p>
       Your trial will end on ${new Date((/* @__PURE__ */ new Date()).setDate((/* @__PURE__ */ new Date()).getDate() + 30)).toLocaleDateString("en-US")}.
-      After that, your card will be charged ${a} each year unless you cancel prior to the renewal date.
+      After that, your card will be charged ${l} each year unless you cancel prior to the renewal date.
     </p>
     <p>Trial starts on ${(/* @__PURE__ */ new Date()).toLocaleDateString("en-US")}</p>
   </div>
 `
   );
-  f({ name: "Update Checkout", dev: "YK" }), b("update_checkout");
-  const C = {
-    "billing-first-name": "CRS",
-    "billing-last-name": "User",
+  w({ name: "Update Checkout", dev: "YK" }), C("update_checkout");
+  const E = {
     "billing-address1": "123 Main St",
     "billing-city": "Chicago"
   };
-  class w {
+  class H {
     constructor() {
       this.watchForCardSection = !1, this.observer();
     }
     addPostal() {
-      var i;
-      (i = e('[data-testid="card-section"]').elements[0]) == null || i.insertAdjacentHTML("afterend", x);
-      const t = e('[data-testid="billing-address-postal-code-input"]').elements[0];
-      t != null && t.value && (e(".postal input").elements[0].value = t.value), e(".postal input").on("input", (o) => {
-        var l;
-        const n = e('[data-testid="billing-address-postal-code-input"]').elements[0], r = o.target.value, s = (l = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : l.set;
-        s == null || s.call(n, r), n.dispatchEvent(new Event("input", { bubbles: !0 }));
-      });
+      var o;
+      (o = t('[data-testid="card-section"]').elements[0]) == null || o.insertAdjacentHTML("afterend", _);
+      const e = (r, i) => {
+        const a = t(`#${i}`).elements[0];
+        a != null && a.value && (t(r).elements[0].value = a.value), t(r).on("input", (s) => {
+          var u;
+          const c = t(`#${i}`).elements[0], m = s.target.value, d = (u = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : u.set;
+          d == null || d.call(c, m), c.dispatchEvent(new Event("input", { bubbles: !0 }));
+        });
+      }, n = t('[data-testid="billing-address-postal-code-input"]').elements[0];
+      n != null && n.value && (t(".postal-zip").elements[0].value = n.value), t(".postal-zip").on("input", (r) => {
+        var c;
+        const i = t('[data-testid="billing-address-postal-code-input"]').elements[0], a = r.target.value, s = (c = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : c.set;
+        s == null || s.call(i, a), i.dispatchEvent(new Event("input", { bubbles: !0 }));
+      }), e(".postal-first-name", "billing-first-name"), e(".postal-last-name", "billing-last-name");
     }
     async init() {
       var o;
-      await d("body"), e("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${m}</style>`), await d('[data-testid="billing-main-content"]'), e('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", h), e(".benefits h3").elements[0].insertAdjacentElement(
+      await b("body"), t("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${y}</style>`), await b('[data-testid="billing-main-content"]'), t('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", v), t(".benefits h3").elements[0].insertAdjacentElement(
         "afterend",
-        e('[data-testid="checkout-plan-summary-card"] h3+div').elements[0]
-      ), e(".other_blocks").elements[0].insertAdjacentElement(
+        t('[data-testid="checkout-plan-summary-card"] h3+div').elements[0]
+      ), t(".other_blocks").elements[0].insertAdjacentElement(
         "afterbegin",
-        e('[data-testid="billing-checkout-container"]').elements[0]
-      ), e(".other_blocks").elements[0].insertAdjacentElement(
+        t('[data-testid="billing-checkout-container"]').elements[0]
+      ), t(".other_blocks").elements[0].insertAdjacentElement(
         "afterbegin",
-        e('[data-testid="billing-plan-summary-section"]+div').elements[0]
-      ), e(".other_blocks").elements[0].insertAdjacentElement(
+        t('[data-testid="billing-plan-summary-section"]+div').elements[0]
+      ), t(".other_blocks").elements[0].insertAdjacentElement(
         "afterbegin",
-        e('[data-testid="billing-plan-summary-section"]').elements[0]
-      ), e(".other_blocks").elements[0].insertAdjacentHTML("afterend", g), e('[data-testid="checkout-plan-summary-card"] .change_plan').elements[0] || e('[data-testid="checkout-plan-summary-card"]>div').elements[0].insertAdjacentHTML(
+        t('[data-testid="billing-plan-summary-section"]').elements[0]
+      ), t(".other_blocks").elements[0].insertAdjacentHTML("afterend", k), t('[data-testid="checkout-plan-summary-card"] .change_plan').elements[0] || t('[data-testid="checkout-plan-summary-card"]>div').elements[0].insertAdjacentHTML(
         "beforeend",
         '<p class="change_plan">Change plan</p>'
-      ), e(".change_plan").on("click", () => {
+      ), t(".change_plan").on("click", () => {
         window.history.back();
       });
-      const t = e(
+      const e = t(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:first-of-type span.font-semibold'
-      ).text(), i = e(
+      ).text(), n = t(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:nth-of-type(2) span.font-semibold'
       ).text();
-      e(".benefits h3 span").elements[0].textContent = t, this.addPostal(), e('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), e('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = e('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", y(i)), e('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), e(".confirm_button").on("click", "button", async () => {
-        Object.entries(C).forEach(([n, r]) => {
-          var l;
-          const s = e(`#${n}`).elements[0];
-          if (s && s.value !== r) {
-            const p = (l = Object.getOwnPropertyDescriptor(
+      t(".benefits h3 span").elements[0].textContent = e, this.addPostal(), t('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), t('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = t('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", L(n)), t('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), t(".confirm_button").on("click", "button", async () => {
+        var a, s, c, m;
+        Object.entries(E).forEach(([d, u]) => {
+          var g;
+          const f = t(`#${d}`).elements[0];
+          if (f && f.value !== u) {
+            const h = (g = Object.getOwnPropertyDescriptor(
               window.HTMLInputElement.prototype,
               "value"
-            )) == null ? void 0 : l.set;
-            p == null || p.call(s, r), s.dispatchEvent(new Event("input", { bubbles: !0 }));
+            )) == null ? void 0 : g.set;
+            h == null || h.call(f, u), f.dispatchEvent(new Event("input", { bubbles: !0 }));
           }
-        }), e('[data-testid="checkout-payment-method-change-button"]').elements[0] || (e("#billing-country").elements[0].value = "US", e("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await d("#billing-state"), e("#billing-state").elements[0].value = "IL", e("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 }))), e('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
-          var n;
-          e('[data-testid="billing-address-postal-code-required"]').elements[0] ? e(".postal .postal_error").elements[0] || e(".postal input").elements[0].insertAdjacentHTML(
+        }), t('[data-testid="checkout-payment-method-change-button"]').elements[0] || (t("#billing-country").elements[0].value = "US", t("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await b("#billing-state"), t("#billing-state").elements[0].value = "IL", t("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })));
+        const r = (a = t(".postal-first-name").elements[0]) == null ? void 0 : a.value.trim(), i = (s = t(".postal-last-name").elements[0]) == null ? void 0 : s.value.trim();
+        if ((c = t(".postal .first_name_error").elements[0]) == null || c.remove(), (m = t(".postal .last_name_error").elements[0]) == null || m.remove(), !r) {
+          t(".postal-first-name").elements[0].insertAdjacentHTML(
+            "afterend",
+            '<p class="first_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">First name is required</p>'
+          );
+          return;
+        }
+        if (!i) {
+          t(".postal-last-name").elements[0].insertAdjacentHTML(
+            "afterend",
+            '<p class="last_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">Last name is required</p>'
+          );
+          return;
+        }
+        t('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
+          var d;
+          t('[data-testid="billing-address-postal-code-required"]').elements[0] ? t(".postal .postal_error").elements[0] || t(".postal-zip").elements[0].insertAdjacentHTML(
             "afterend",
             '<p class="postal_error">Postal code is required</p>'
-          ) : (n = e(".postal .postal_error").elements[0]) == null || n.remove();
+          ) : (d = t(".postal .postal_error").elements[0]) == null || d.remove();
         }, 300);
       });
     }
     async observer() {
-      const t = new MutationObserver(async (i) => {
-        var o;
-        if (t.disconnect(), window.location.href.includes("/billing?mode=subscription") && !document.querySelector(".trial") && await this.init(), !window.location.href.includes("/billing?mode=subscription") && document.querySelector(".crs_checkout_style") && (console.log("remove style"), (o = e(".crs_checkout_style").elements[0]) == null || o.remove()), window.location.href.includes("/billing?mode=subscription") && this.watchForCardSection && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal") && this.addPostal(), window.location.href.includes("/billing?mode=update") && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal")) {
+      const e = new MutationObserver(async (n) => {
+        var o, r;
+        if (e.disconnect(), window.location.href.includes("/billing?mode=subscription") && !document.querySelector(".trial") && await this.init(), !window.location.href.includes("/billing?mode=subscription") && document.querySelector(".crs_checkout_style") && (console.log("remove style"), (o = t(".crs_checkout_style").elements[0]) == null || o.remove()), window.location.href.includes("/billing?mode=subscription") && this.watchForCardSection && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal") && this.addPostal(), window.location.href.includes("/billing?mode=update") && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal")) {
           this.addPostal();
-          const n = document.querySelector(".postal");
-          n == null || n.style.setProperty("margin-top", "0px"), n == null || n.style.setProperty("padding-top", "20px"), n == null || n.style.setProperty("box-shadow", "rgba(0, 0, 0, 0.3) 0px 1px 5px"), n == null || n.style.setProperty("border-radius", "12px"), setTimeout(() => {
+          const i = document.querySelector(".postal");
+          i == null || i.style.setProperty("margin-top", "0px"), i == null || i.style.setProperty("padding-top", "20px"), i == null || i.style.setProperty("box-shadow", "rgba(0, 0, 0, 0.3) 0px 1px 5px"), i == null || i.style.setProperty("border-radius", "12px"), setTimeout(() => {
             const s = document.querySelector(
               '[data-testid="billing-address-postal-code-input"]'
-            ), l = document.querySelector(".postal input");
-            s != null && s.value && l && (l.value = s.value);
+            ), c = document.querySelector(".postal-zip");
+            s != null && s.value && c && (c.value = s.value);
           }, 300);
-          const r = document.querySelector('[data-testid="billing-section"]');
-          r && (r.style.display = "none");
+          const a = document.querySelector('[data-testid="billing-section"]');
+          a && (a.style.display = "none");
         }
-        if (e("[data-testid=checkout-plan-summary-card]").elements[0].innerText.includes("After Trial")) {
+        if ((r = t("[data-testid=checkout-plan-summary-card]").elements[0]) != null && r.innerText.includes("After Trial")) {
           console.log("trial");
-          const n = e(".trial").elements[0], r = e(".trial_time").elements[0];
-          n && (n.style.display = "block"), r && (r.style.display = "block");
-          const s = e(".confirm_button button").elements[0];
+          const i = t(".trial").elements[0], a = t(".trial_time").elements[0];
+          i && (i.style.display = "block"), a && (a.style.display = "block");
+          const s = t(".confirm_button button").elements[0];
           s && (s.textContent = "Start your 30-day free trial");
         } else {
           console.log("no trial");
-          const n = e(".trial").elements[0], r = e(".trial_time").elements[0];
-          n && (n.style.display = "none"), r && (r.style.display = "none");
-          const s = e(".confirm_button button").elements[0];
+          const i = t(".trial").elements[0], a = t(".trial_time").elements[0];
+          i && (i.style.display = "none"), a && (a.style.display = "none");
+          const s = t(".confirm_button button").elements[0];
           s && (s.textContent = "Subscribe");
         }
-        t.observe(document.body, { childList: !0, subtree: !0 });
+        e.observe(document.body, { childList: !0, subtree: !0 });
       });
-      t.observe(document.body, { childList: !0, subtree: !0 });
+      e.observe(document.body, { childList: !0, subtree: !0 });
     }
   }
-  new w();
+  new H();
 })();
 //# sourceMappingURL=index.js.map
