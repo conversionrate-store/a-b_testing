@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const y = `[data-testid=billing-page-header],
+  const w = `[data-testid=billing-page-header],
 [data-testid=checkout-plan-summary-card] > div > div:last-of-type,
 [data-testid=checkout-confirm-button-card],
 [data-testid=billing-section],
@@ -101,6 +101,13 @@
   cursor: pointer;
   margin-bottom: 12px;
   width: 100%;
+  transition: background 0.2s, opacity 0.2s;
+}
+.confirm_button button.processing {
+  background: #5a9e97;
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 .confirm_button p {
   font-size: 12px;
@@ -197,9 +204,9 @@
   text-decoration: underline;
   cursor: pointer;
   text-transform: uppercase;
-}/*# sourceMappingURL=style.css.map */`, b = (l) => new Promise((e) => {
-    const n = document.querySelector(l);
-    n && e(n);
+}/*# sourceMappingURL=style.css.map */`, h = (l) => new Promise((e) => {
+    const i = document.querySelector(l);
+    i && e(i);
     const o = new MutationObserver(() => {
       const r = document.querySelector(l);
       r && (e(r), o.disconnect());
@@ -208,75 +215,75 @@
       childList: !0,
       subtree: !0
     });
-  }), w = ({ name: l, dev: e }) => {
+  }), C = ({ name: l, dev: e }) => {
     console.log(
       `%c EXP: ${l} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class p {
+  class u {
     constructor(e) {
-      this.elements = e instanceof p ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof u ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(e, n, o) {
-      return typeof n == "function" && (o = n, n = ""), this.elements.forEach((r) => {
-        r.addEventListener(e, function(i) {
+    on(e, i, o) {
+      return typeof i == "function" && (o = i, i = ""), this.elements.forEach((r) => {
+        r.addEventListener(e, function(n) {
           var a;
-          if (n !== "") {
-            let s = (a = i.target) == null ? void 0 : a.closest(n);
-            s && (o == null || o.call(s, i));
+          if (i !== "") {
+            let s = (a = n.target) == null ? void 0 : a.closest(i);
+            s && (o == null || o.call(s, n));
           } else
-            o == null || o.call(r, i);
+            o == null || o.call(r, n);
         });
       }), this;
     }
     addClass(e) {
-      return this.elements.forEach(function(n) {
-        n.classList.add(e);
+      return this.elements.forEach(function(i) {
+        i.classList.add(e);
       }), this;
     }
     removeClass(e) {
-      return this.elements.forEach(function(n) {
-        n.classList.remove(e);
+      return this.elements.forEach(function(i) {
+        i.classList.remove(e);
       }), this;
     }
     toggleClass(e) {
-      return this.elements.forEach(function(n) {
-        n.classList.toggle(e);
+      return this.elements.forEach(function(i) {
+        i.classList.toggle(e);
       }), this;
     }
     each(e) {
-      for (let n of this.elements)
-        e(new p(n), this.elements.indexOf(n));
+      for (let i of this.elements)
+        e(new u(i), this.elements.indexOf(i));
       return this;
     }
-    style(e, n) {
-      const o = e.split("-").map((r, i) => i === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
+    style(e, i) {
+      const o = e.split("-").map((r, n) => n === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
       return this.elements.forEach(function(r) {
-        r.style[o] = n;
+        r.style[o] = i;
       }), this;
     }
     find(e) {
-      const n = this.elements.map((o) => Array.from(o.querySelectorAll(e)));
-      return new p(n.flat());
+      const i = this.elements.map((o) => Array.from(o.querySelectorAll(e)));
+      return new u(i.flat());
     }
-    attr(e, n) {
-      return n ? (this.elements.forEach(function(o) {
-        o.setAttribute(e, n);
+    attr(e, i) {
+      return i ? (this.elements.forEach(function(o) {
+        o.setAttribute(e, i);
       }), this) : this.elements[0].getAttribute(e);
     }
     text(e) {
-      return e ? (this.elements.forEach(function(n) {
-        n.textContent = e;
+      return e ? (this.elements.forEach(function(i) {
+        i.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
     html(e) {
-      return e ? (this.elements.forEach(function(n) {
-        n.innerHTML = e;
+      return e ? (this.elements.forEach(function(i) {
+        i.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const t = (l) => new p(l), C = (l) => {
+  const t = (l) => new u(l), v = (l) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", l, "variant_1"));
     }, 1e3);
@@ -287,7 +294,7 @@
     calendar: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 		<path d="M16.6667 2.70833H14.7917V2.5C14.7917 2.33424 14.7258 2.17527 14.6086 2.05806C14.4914 1.94085 14.3324 1.875 14.1667 1.875C14.0009 1.875 13.8419 1.94085 13.7247 2.05806C13.6075 2.17527 13.5417 2.33424 13.5417 2.5V2.70833H6.45833V2.5C6.45833 2.33424 6.39249 2.17527 6.27528 2.05806C6.15806 1.94085 5.99909 1.875 5.83333 1.875C5.66757 1.875 5.5086 1.94085 5.39139 2.05806C5.27418 2.17527 5.20833 2.33424 5.20833 2.5V2.70833H3.33333C2.94723 2.71052 2.57757 2.86487 2.30455 3.13789C2.03154 3.4109 1.87719 3.78057 1.875 4.16667V16.6667C1.87719 17.0528 2.03154 17.4224 2.30455 17.6954C2.57757 17.9685 2.94723 18.1228 3.33333 18.125H16.6667C17.0528 18.1228 17.4224 17.9685 17.6954 17.6954C17.9685 17.4224 18.1228 17.0528 18.125 16.6667V4.16667C18.1228 3.78057 17.9685 3.4109 17.6954 3.13789C17.4224 2.86487 17.0528 2.71052 16.6667 2.70833ZM3.33333 3.95833H5.20833V4.16667C5.20833 4.33243 5.27418 4.4914 5.39139 4.60861C5.5086 4.72582 5.66757 4.79167 5.83333 4.79167C5.99909 4.79167 6.15806 4.72582 6.27528 4.60861C6.39249 4.4914 6.45833 4.33243 6.45833 4.16667V3.95833H13.5417V4.16667C13.5417 4.33243 13.6075 4.4914 13.7247 4.60861C13.8419 4.72582 14.0009 4.79167 14.1667 4.79167C14.3324 4.79167 14.4914 4.72582 14.6086 4.60861C14.7258 4.4914 14.7917 4.33243 14.7917 4.16667V3.95833H16.6667C16.7219 3.95833 16.7749 3.98028 16.814 4.01935C16.8531 4.05842 16.875 4.11141 16.875 4.16667V6.875H3.125V4.16667C3.125 4.11141 3.14695 4.05842 3.18602 4.01935C3.22509 3.98028 3.27808 3.95833 3.33333 3.95833ZM16.6667 16.875H3.33333C3.27808 16.875 3.22509 16.8531 3.18602 16.814C3.14695 16.7749 3.125 16.7219 3.125 16.6667V8.125H16.875V16.6667C16.875 16.7219 16.8531 16.7749 16.814 16.814C16.7749 16.8531 16.7219 16.875 16.6667 16.875ZM12.5 10.8333L10.8333 12.5L12.5 14.1667C12.6025 14.2813 12.6592 14.4296 12.6592 14.5833C12.6592 14.7371 12.6025 14.8854 12.5 15C12.3854 15.1025 12.2371 15.1592 12.0833 15.1592C11.9296 15.1592 11.7813 15.1025 11.6667 15L10 13.3333L8.33333 15C8.21875 15.1025 8.0704 15.1592 7.91667 15.1592C7.76293 15.1592 7.61459 15.1025 7.5 15C7.39751 14.8854 7.34085 14.7371 7.34085 14.5833C7.34085 14.4296 7.39751 14.2813 7.5 14.1667L9.16667 12.5L7.5 10.8333C7.4443 10.7167 7.42613 10.5857 7.44798 10.4583C7.46984 10.3309 7.53065 10.2134 7.62204 10.122C7.71343 10.0306 7.83091 9.96984 7.95829 9.94798C8.08568 9.92613 8.21671 9.9443 8.33333 10L10 11.6667L11.6667 10C11.7833 9.9443 11.9143 9.92613 12.0417 9.94798C12.1691 9.96984 12.2866 10.0306 12.378 10.122C12.4694 10.2134 12.5302 10.3309 12.552 10.4583C12.5739 10.5857 12.5557 10.7167 12.5 10.8333Z" fill="#37766E"/>
 		</svg>`
-  }, v = (
+  }, k = (
     /* HTML */
     `
   <div class="trial">
@@ -308,7 +315,7 @@
   </div>
   <div class="other_blocks"></div>
 `
-  ), k = (
+  ), _ = (
     /* HTML */
     `
   <div class="confirm_button">
@@ -316,7 +323,7 @@
     <p>Your payment information is secure and encrypted</p>
   </div>
 `
-  ), _ = (
+  ), L = (
     /* HTML */
     `
   <div class="postal" style="padding: 0 24px 24px; margin-top: -24px;">
@@ -349,7 +356,7 @@
     />
   </div>
 `
-  ), L = (l) => (
+  ), E = (l) => (
     /* HTML */
     `
   <div class="trial_time">
@@ -361,35 +368,35 @@
   </div>
 `
   );
-  w({ name: "Update Checkout", dev: "YK" }), C("update_checkout");
-  const E = {
+  C({ name: "Update Checkout", dev: "YK" }), v("update_checkout");
+  const H = {
     "billing-address1": "123 Main St",
     "billing-city": "Chicago"
   };
-  class H {
+  class z {
     constructor() {
       this.watchForCardSection = !1, this.observer();
     }
     addPostal() {
       var o;
-      (o = t('[data-testid="card-section"]').elements[0]) == null || o.insertAdjacentHTML("afterend", _);
-      const e = (r, i) => {
-        const a = t(`#${i}`).elements[0];
+      (o = t('[data-testid="card-section"]').elements[0]) == null || o.insertAdjacentHTML("afterend", L);
+      const e = (r, n) => {
+        const a = t(`#${n}`).elements[0];
         a != null && a.value && (t(r).elements[0].value = a.value), t(r).on("input", (s) => {
-          var u;
-          const c = t(`#${i}`).elements[0], m = s.target.value, d = (u = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : u.set;
-          d == null || d.call(c, m), c.dispatchEvent(new Event("input", { bubbles: !0 }));
+          var d;
+          const c = t(`#${n}`).elements[0], m = s.target.value, p = (d = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : d.set;
+          p == null || p.call(c, m), c.dispatchEvent(new Event("input", { bubbles: !0 }));
         });
-      }, n = t('[data-testid="billing-address-postal-code-input"]').elements[0];
-      n != null && n.value && (t(".postal-zip").elements[0].value = n.value), t(".postal-zip").on("input", (r) => {
+      }, i = t('[data-testid="billing-address-postal-code-input"]').elements[0];
+      i != null && i.value && (t(".postal-zip").elements[0].value = i.value), t(".postal-zip").on("input", (r) => {
         var c;
-        const i = t('[data-testid="billing-address-postal-code-input"]').elements[0], a = r.target.value, s = (c = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : c.set;
-        s == null || s.call(i, a), i.dispatchEvent(new Event("input", { bubbles: !0 }));
+        const n = t('[data-testid="billing-address-postal-code-input"]').elements[0], a = r.target.value, s = (c = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : c.set;
+        s == null || s.call(n, a), n.dispatchEvent(new Event("input", { bubbles: !0 }));
       }), e(".postal-first-name", "billing-first-name"), e(".postal-last-name", "billing-last-name");
     }
     async init() {
       var o;
-      await b("body"), t("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${y}</style>`), await b('[data-testid="billing-main-content"]'), t('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", v), t(".benefits h3").elements[0].insertAdjacentElement(
+      await h("body"), t("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${w}</style>`), await h('[data-testid="billing-main-content"]'), t('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", k), t(".benefits h3").elements[0].insertAdjacentElement(
         "afterend",
         t('[data-testid="checkout-plan-summary-card"] h3+div').elements[0]
       ), t(".other_blocks").elements[0].insertAdjacentElement(
@@ -401,7 +408,7 @@
       ), t(".other_blocks").elements[0].insertAdjacentElement(
         "afterbegin",
         t('[data-testid="billing-plan-summary-section"]').elements[0]
-      ), t(".other_blocks").elements[0].insertAdjacentHTML("afterend", k), t('[data-testid="checkout-plan-summary-card"] .change_plan').elements[0] || t('[data-testid="checkout-plan-summary-card"]>div').elements[0].insertAdjacentHTML(
+      ), t(".other_blocks").elements[0].insertAdjacentHTML("afterend", _), t('[data-testid="checkout-plan-summary-card"] .change_plan').elements[0] || t('[data-testid="checkout-plan-summary-card"]>div').elements[0].insertAdjacentHTML(
         "beforeend",
         '<p class="change_plan">Change plan</p>'
       ), t(".change_plan").on("click", () => {
@@ -409,53 +416,56 @@
       });
       const e = t(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:first-of-type span.font-semibold'
-      ).text(), n = t(
+      ).text(), i = t(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:nth-of-type(2) span.font-semibold'
       ).text();
-      t(".benefits h3 span").elements[0].textContent = e, this.addPostal(), t('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), t('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = t('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", L(n)), t('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), t(".confirm_button").on("click", "button", async () => {
-        var a, s, c, m;
-        Object.entries(E).forEach(([d, u]) => {
-          var g;
-          const f = t(`#${d}`).elements[0];
-          if (f && f.value !== u) {
-            const h = (g = Object.getOwnPropertyDescriptor(
+      t(".benefits h3 span").elements[0].textContent = e, this.addPostal(), t('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), t('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = t('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", E(i)), t('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), t(".confirm_button").on("click", "button", async () => {
+        var s, c, m, p;
+        if (Object.entries(H).forEach(([d, f]) => {
+          var y;
+          const b = t(`#${d}`).elements[0];
+          if (b && b.value !== f) {
+            const g = (y = Object.getOwnPropertyDescriptor(
               window.HTMLInputElement.prototype,
               "value"
-            )) == null ? void 0 : g.set;
-            h == null || h.call(f, u), f.dispatchEvent(new Event("input", { bubbles: !0 }));
+            )) == null ? void 0 : y.set;
+            g == null || g.call(b, f), b.dispatchEvent(new Event("input", { bubbles: !0 }));
           }
-        }), t('[data-testid="checkout-payment-method-change-button"]').elements[0] || (t("#billing-country").elements[0].value = "US", t("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await b("#billing-state"), t("#billing-state").elements[0].value = "IL", t("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })));
-        const r = (a = t(".postal-first-name").elements[0]) == null ? void 0 : a.value.trim(), i = (s = t(".postal-last-name").elements[0]) == null ? void 0 : s.value.trim();
-        if ((c = t(".postal .first_name_error").elements[0]) == null || c.remove(), (m = t(".postal .last_name_error").elements[0]) == null || m.remove(), !r) {
-          t(".postal-first-name").elements[0].insertAdjacentHTML(
-            "afterend",
-            '<p class="first_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">First name is required</p>'
-          );
-          return;
+        }), !t('[data-testid="checkout-payment-method-change-button"]').elements[0]) {
+          t("#billing-country").elements[0].value = "US", t("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await h("#billing-state"), t("#billing-state").elements[0].value = "IL", t("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 }));
+          const d = (s = t(".postal-first-name").elements[0]) == null ? void 0 : s.value.trim(), f = (c = t(".postal-last-name").elements[0]) == null ? void 0 : c.value.trim();
+          if ((m = t(".postal .first_name_error").elements[0]) == null || m.remove(), (p = t(".postal .last_name_error").elements[0]) == null || p.remove(), !d) {
+            t(".postal-first-name").elements[0].insertAdjacentHTML(
+              "afterend",
+              '<p class="first_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">First name is required</p>'
+            );
+            return;
+          }
+          if (!f) {
+            t(".postal-last-name").elements[0].insertAdjacentHTML(
+              "afterend",
+              '<p class="last_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">Last name is required</p>'
+            );
+            return;
+          }
         }
-        if (!i) {
-          t(".postal-last-name").elements[0].insertAdjacentHTML(
-            "afterend",
-            '<p class="last_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">Last name is required</p>'
-          );
-          return;
-        }
-        t('[data-testid="checkout-confirm-button-submit"]').elements[0].click(), setTimeout(() => {
+        const r = t('[data-testid="checkout-confirm-button-submit"]').elements[0], n = t(".confirm_button button").elements[0], a = (n == null ? void 0 : n.textContent) ?? "";
+        n && (n.textContent = "Processing...", n.classList.add("processing")), r.click(), setTimeout(() => {
           var d;
-          t('[data-testid="billing-address-postal-code-required"]').elements[0] ? t(".postal .postal_error").elements[0] || t(".postal-zip").elements[0].insertAdjacentHTML(
+          t('[data-testid="billing-address-postal-code-required"]').elements[0] ? (t(".postal .postal_error").elements[0] || t(".postal-zip").elements[0].insertAdjacentHTML(
             "afterend",
             '<p class="postal_error">Postal code is required</p>'
-          ) : (d = t(".postal .postal_error").elements[0]) == null || d.remove();
+          ), n && (n.textContent = a, n.classList.remove("processing"))) : (d = t(".postal .postal_error").elements[0]) == null || d.remove();
         }, 300);
       });
     }
     async observer() {
-      const e = new MutationObserver(async (n) => {
+      const e = new MutationObserver(async (i) => {
         var o, r;
         if (e.disconnect(), window.location.href.includes("/billing?mode=subscription") && !document.querySelector(".trial") && await this.init(), !window.location.href.includes("/billing?mode=subscription") && document.querySelector(".crs_checkout_style") && (console.log("remove style"), (o = t(".crs_checkout_style").elements[0]) == null || o.remove()), window.location.href.includes("/billing?mode=subscription") && this.watchForCardSection && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal") && this.addPostal(), window.location.href.includes("/billing?mode=update") && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal")) {
           this.addPostal();
-          const i = document.querySelector(".postal");
-          i == null || i.style.setProperty("margin-top", "0px"), i == null || i.style.setProperty("padding-top", "20px"), i == null || i.style.setProperty("box-shadow", "rgba(0, 0, 0, 0.3) 0px 1px 5px"), i == null || i.style.setProperty("border-radius", "12px"), setTimeout(() => {
+          const n = document.querySelector(".postal");
+          n == null || n.style.setProperty("margin-top", "0px"), n == null || n.style.setProperty("padding-top", "20px"), n == null || n.style.setProperty("box-shadow", "rgba(0, 0, 0, 0.3) 0px 1px 5px"), n == null || n.style.setProperty("border-radius", "12px"), setTimeout(() => {
             const s = document.querySelector(
               '[data-testid="billing-address-postal-code-input"]'
             ), c = document.querySelector(".postal-zip");
@@ -466,22 +476,22 @@
         }
         if ((r = t("[data-testid=checkout-plan-summary-card]").elements[0]) != null && r.innerText.includes("After Trial")) {
           console.log("trial");
-          const i = t(".trial").elements[0], a = t(".trial_time").elements[0];
-          i && (i.style.display = "block"), a && (a.style.display = "block");
+          const n = t(".trial").elements[0], a = t(".trial_time").elements[0];
+          n && (n.style.display = "block"), a && (a.style.display = "block");
           const s = t(".confirm_button button").elements[0];
-          s && (s.textContent = "Start your 30-day free trial");
+          s && !s.classList.contains("processing") && (s.textContent = "Start your 30-day free trial");
         } else {
           console.log("no trial");
-          const i = t(".trial").elements[0], a = t(".trial_time").elements[0];
-          i && (i.style.display = "none"), a && (a.style.display = "none");
+          const n = t(".trial").elements[0], a = t(".trial_time").elements[0];
+          n && (n.style.display = "none"), a && (a.style.display = "none");
           const s = t(".confirm_button button").elements[0];
-          s && (s.textContent = "Subscribe");
+          s && !s.classList.contains("processing") && (s.textContent = "Subscribe");
         }
         e.observe(document.body, { childList: !0, subtree: !0 });
       });
       e.observe(document.body, { childList: !0, subtree: !0 });
     }
   }
-  new H();
+  new z();
 })();
 //# sourceMappingURL=index.js.map
