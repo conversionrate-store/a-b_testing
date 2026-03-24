@@ -2,10 +2,16 @@
   "use strict";
   const w = `[data-testid=billing-page-header],
 [data-testid=checkout-plan-summary-card] > div > div:last-of-type,
-[data-testid=checkout-confirm-button-card],
+[data-testid=checkout-confirm-button-card] > div:last-of-type,
+[data-testid=checkout-confirm-button-card] > div:first-child > p,
+[data-testid=checkout-confirm-button-card] > div:first-child > button,
 [data-testid=billing-section],
 [data-testid=checkout-express-checkout-card] p {
   display: none;
+}
+
+[data-testid=checkout-confirm-button-card] {
+  padding: 0;
 }
 
 .rounded-2xl.shadow-sm.border {
@@ -204,14 +210,26 @@
   text-decoration: underline;
   cursor: pointer;
   text-transform: uppercase;
-}/*# sourceMappingURL=style.css.map */`, h = (l) => new Promise((e) => {
-    const i = document.querySelector(l);
-    i && e(i);
-    const o = new MutationObserver(() => {
+}
+
+.confirm_button__legal {
+  margin-bottom: 10px;
+}
+
+.confirm_button__legal-link {
+  white-space: nowrap;
+  font-weight: 600;
+  color: #37766f;
+  text-decoration: none;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */`, m = (l) => new Promise((e) => {
+    const o = document.querySelector(l);
+    o && e(o);
+    const s = new MutationObserver(() => {
       const r = document.querySelector(l);
-      r && (e(r), o.disconnect());
+      r && (e(r), s.disconnect());
     });
-    o.observe(document.documentElement, {
+    s.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
@@ -225,61 +243,61 @@
     constructor(e) {
       this.elements = e instanceof u ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(e, i, o) {
-      return typeof i == "function" && (o = i, i = ""), this.elements.forEach((r) => {
+    on(e, o, s) {
+      return typeof o == "function" && (s = o, o = ""), this.elements.forEach((r) => {
         r.addEventListener(e, function(n) {
           var a;
-          if (i !== "") {
-            let s = (a = n.target) == null ? void 0 : a.closest(i);
-            s && (o == null || o.call(s, n));
+          if (o !== "") {
+            let i = (a = n.target) == null ? void 0 : a.closest(o);
+            i && (s == null || s.call(i, n));
           } else
-            o == null || o.call(r, n);
+            s == null || s.call(r, n);
         });
       }), this;
     }
     addClass(e) {
-      return this.elements.forEach(function(i) {
-        i.classList.add(e);
+      return this.elements.forEach(function(o) {
+        o.classList.add(e);
       }), this;
     }
     removeClass(e) {
-      return this.elements.forEach(function(i) {
-        i.classList.remove(e);
+      return this.elements.forEach(function(o) {
+        o.classList.remove(e);
       }), this;
     }
     toggleClass(e) {
-      return this.elements.forEach(function(i) {
-        i.classList.toggle(e);
+      return this.elements.forEach(function(o) {
+        o.classList.toggle(e);
       }), this;
     }
     each(e) {
-      for (let i of this.elements)
-        e(new u(i), this.elements.indexOf(i));
+      for (let o of this.elements)
+        e(new u(o), this.elements.indexOf(o));
       return this;
     }
-    style(e, i) {
-      const o = e.split("-").map((r, n) => n === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
+    style(e, o) {
+      const s = e.split("-").map((r, n) => n === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
       return this.elements.forEach(function(r) {
-        r.style[o] = i;
+        r.style[s] = o;
       }), this;
     }
     find(e) {
-      const i = this.elements.map((o) => Array.from(o.querySelectorAll(e)));
-      return new u(i.flat());
+      const o = this.elements.map((s) => Array.from(s.querySelectorAll(e)));
+      return new u(o.flat());
     }
-    attr(e, i) {
-      return i ? (this.elements.forEach(function(o) {
-        o.setAttribute(e, i);
+    attr(e, o) {
+      return o ? (this.elements.forEach(function(s) {
+        s.setAttribute(e, o);
       }), this) : this.elements[0].getAttribute(e);
     }
     text(e) {
-      return e ? (this.elements.forEach(function(i) {
-        i.textContent = e;
+      return e ? (this.elements.forEach(function(o) {
+        o.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
     html(e) {
-      return e ? (this.elements.forEach(function(i) {
-        i.innerHTML = e;
+      return e ? (this.elements.forEach(function(o) {
+        o.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
@@ -319,6 +337,13 @@
     /* HTML */
     `
   <div class="confirm_button">
+    <p class="confirm_button__legal">
+      By subscribing, you authorize Merkury Smart to charge your selected payment method according to the term until you
+      cancel. By placing your order, you agree to our
+      <span class="confirm_button__legal-link" data-target="confirm-button-terms-link">Terms of Use</span>
+      and
+      <span class="confirm_button__legal-link" data-target="confirm-button-privacy-link">Privacy Policy</span>.
+    </p>
     <button>Start your 30-day free trial</button>
     <p>Your payment information is secure and encrypted</p>
   </div>
@@ -369,34 +394,34 @@
 `
   );
   C({ name: "Update Checkout", dev: "YK" }), v("update_checkout");
-  const H = {
+  const z = {
     "billing-address1": "123 Main St",
     "billing-city": "Chicago"
   };
-  class z {
+  class H {
     constructor() {
       this.watchForCardSection = !1, this.observer();
     }
     addPostal() {
-      var o;
-      (o = t('[data-testid="card-section"]').elements[0]) == null || o.insertAdjacentHTML("afterend", L);
+      var s;
+      (s = t('[data-testid="card-section"]').elements[0]) == null || s.insertAdjacentHTML("afterend", L);
       const e = (r, n) => {
         const a = t(`#${n}`).elements[0];
-        a != null && a.value && (t(r).elements[0].value = a.value), t(r).on("input", (s) => {
+        a != null && a.value && (t(r).elements[0].value = a.value), t(r).on("input", (i) => {
           var d;
-          const c = t(`#${n}`).elements[0], m = s.target.value, p = (d = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : d.set;
-          p == null || p.call(c, m), c.dispatchEvent(new Event("input", { bubbles: !0 }));
+          const c = t(`#${n}`).elements[0], f = i.target.value, p = (d = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : d.set;
+          p == null || p.call(c, f), c.dispatchEvent(new Event("input", { bubbles: !0 }));
         });
-      }, i = t('[data-testid="billing-address-postal-code-input"]').elements[0];
-      i != null && i.value && (t(".postal-zip").elements[0].value = i.value), t(".postal-zip").on("input", (r) => {
+      }, o = t('[data-testid="billing-address-postal-code-input"]').elements[0];
+      o != null && o.value && (t(".postal-zip").elements[0].value = o.value), t(".postal-zip").on("input", (r) => {
         var c;
-        const n = t('[data-testid="billing-address-postal-code-input"]').elements[0], a = r.target.value, s = (c = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : c.set;
-        s == null || s.call(n, a), n.dispatchEvent(new Event("input", { bubbles: !0 }));
+        const n = t('[data-testid="billing-address-postal-code-input"]').elements[0], a = r.target.value, i = (c = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")) == null ? void 0 : c.set;
+        i == null || i.call(n, a), n.dispatchEvent(new Event("input", { bubbles: !0 }));
       }), e(".postal-first-name", "billing-first-name"), e(".postal-last-name", "billing-last-name");
     }
     async init() {
-      var o;
-      await h("body"), t("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${w}</style>`), await h('[data-testid="billing-main-content"]'), t('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", k), t(".benefits h3").elements[0].insertAdjacentElement(
+      var s;
+      await m("body"), t("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_checkout_style">${w}</style>`), await m('[data-testid="billing-main-content"]'), t('[data-testid="billing-main-content"]').elements[0].insertAdjacentHTML("afterbegin", k), t(".benefits h3").elements[0].insertAdjacentElement(
         "afterend",
         t('[data-testid="checkout-plan-summary-card"] h3+div').elements[0]
       ), t(".other_blocks").elements[0].insertAdjacentElement(
@@ -408,7 +433,14 @@
       ), t(".other_blocks").elements[0].insertAdjacentElement(
         "afterbegin",
         t('[data-testid="billing-plan-summary-section"]').elements[0]
-      ), t(".other_blocks").elements[0].insertAdjacentHTML("afterend", _), t('[data-testid="checkout-plan-summary-card"] .change_plan').elements[0] || t('[data-testid="checkout-plan-summary-card"]>div').elements[0].insertAdjacentHTML(
+      ), t(".other_blocks").elements[0].insertAdjacentHTML("afterend", _), m('[data-testid="confirm-button-terms-link"], [data-testid="confirm-button-privacy-link"]').then(() => {
+        console.log("finded"), t(".confirm_button__legal-link").on("click", (r) => {
+          var i;
+          console.log("click link");
+          const a = r.target.dataset.target;
+          console.log(a), a && ((i = t(`[data-testid="${a}"]`).elements[0]) == null || i.click());
+        });
+      }), t('[data-testid="checkout-plan-summary-card"] .change_plan').elements[0] || t('[data-testid="checkout-plan-summary-card"]>div').elements[0].insertAdjacentHTML(
         "beforeend",
         '<p class="change_plan">Change plan</p>'
       ), t(".change_plan").on("click", () => {
@@ -416,32 +448,32 @@
       });
       const e = t(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:first-of-type span.font-semibold'
-      ).text(), i = t(
+      ).text(), o = t(
         '[data-testid="checkout-plan-summary-card"] .flex.justify-between.items-center:nth-of-type(2) span.font-semibold'
       ).text();
-      t(".benefits h3 span").elements[0].textContent = e, this.addPostal(), t('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), t('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (o = t('[data-testid="billing-checkout-container"]').elements[0]) == null || o.insertAdjacentHTML("beforebegin", E(i)), t('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), t(".confirm_button").on("click", "button", async () => {
-        var s, c, m, p;
-        if (Object.entries(H).forEach(([d, f]) => {
+      t(".benefits h3 span").elements[0].textContent = e, this.addPostal(), t('[data-testid="checkout-express-checkout-card"] span').text("Or start Free Trial with a credit card"), t('[data-testid="checkout-express-checkout-card"] h3').text("Start your 30-day free trial"), (s = t('[data-testid="billing-checkout-container"]').elements[0]) == null || s.insertAdjacentHTML("beforebegin", E(o)), t('[data-testid="checkout-payment-method-change-button"]').elements[0] && (this.watchForCardSection = !0), t(".confirm_button").on("click", "button", async () => {
+        var i, c, f, p;
+        if (Object.entries(z).forEach(([d, b]) => {
           var y;
-          const b = t(`#${d}`).elements[0];
-          if (b && b.value !== f) {
+          const h = t(`#${d}`).elements[0];
+          if (h && h.value !== b) {
             const g = (y = Object.getOwnPropertyDescriptor(
               window.HTMLInputElement.prototype,
               "value"
             )) == null ? void 0 : y.set;
-            g == null || g.call(b, f), b.dispatchEvent(new Event("input", { bubbles: !0 }));
+            g == null || g.call(h, b), h.dispatchEvent(new Event("input", { bubbles: !0 }));
           }
         }), !t('[data-testid="checkout-payment-method-change-button"]').elements[0]) {
-          t("#billing-country").elements[0].value = "US", t("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await h("#billing-state"), t("#billing-state").elements[0].value = "IL", t("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 }));
-          const d = (s = t(".postal-first-name").elements[0]) == null ? void 0 : s.value.trim(), f = (c = t(".postal-last-name").elements[0]) == null ? void 0 : c.value.trim();
-          if ((m = t(".postal .first_name_error").elements[0]) == null || m.remove(), (p = t(".postal .last_name_error").elements[0]) == null || p.remove(), !d) {
+          t("#billing-country").elements[0].value = "US", t("#billing-country").elements[0].dispatchEvent(new Event("change", { bubbles: !0 })), await m("#billing-state"), t("#billing-state").elements[0].value = "IL", t("#billing-state").elements[0].dispatchEvent(new Event("change", { bubbles: !0 }));
+          const d = (i = t(".postal-first-name").elements[0]) == null ? void 0 : i.value.trim(), b = (c = t(".postal-last-name").elements[0]) == null ? void 0 : c.value.trim();
+          if ((f = t(".postal .first_name_error").elements[0]) == null || f.remove(), (p = t(".postal .last_name_error").elements[0]) == null || p.remove(), !d) {
             t(".postal-first-name").elements[0].insertAdjacentHTML(
               "afterend",
               '<p class="first_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">First name is required</p>'
             );
             return;
           }
-          if (!f) {
+          if (!b) {
             t(".postal-last-name").elements[0].insertAdjacentHTML(
               "afterend",
               '<p class="last_name_error" style="color:#dc2626;font-size:12px;margin-top:4px;">Last name is required</p>'
@@ -460,16 +492,16 @@
       });
     }
     async observer() {
-      const e = new MutationObserver(async (i) => {
-        var o, r;
-        if (e.disconnect(), window.location.href.includes("/billing?mode=subscription") && !document.querySelector(".trial") && await this.init(), !window.location.href.includes("/billing?mode=subscription") && document.querySelector(".crs_checkout_style") && (console.log("remove style"), (o = t(".crs_checkout_style").elements[0]) == null || o.remove()), window.location.href.includes("/billing?mode=subscription") && this.watchForCardSection && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal") && this.addPostal(), window.location.href.includes("/billing?mode=update") && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal")) {
+      const e = new MutationObserver(async (o) => {
+        var s, r;
+        if (e.disconnect(), window.location.href.includes("/billing?mode=subscription") && !document.querySelector(".trial") && await this.init(), !window.location.href.includes("/billing?mode=subscription") && document.querySelector(".crs_checkout_style") && (console.log("remove style"), (s = t(".crs_checkout_style").elements[0]) == null || s.remove()), window.location.href.includes("/billing?mode=subscription") && this.watchForCardSection && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal") && this.addPostal(), window.location.href.includes("/billing?mode=update") && document.querySelector('[data-testid="card-section"]') && !document.querySelector(".postal")) {
           this.addPostal();
           const n = document.querySelector(".postal");
           n == null || n.style.setProperty("margin-top", "0px"), n == null || n.style.setProperty("padding-top", "20px"), n == null || n.style.setProperty("box-shadow", "rgba(0, 0, 0, 0.3) 0px 1px 5px"), n == null || n.style.setProperty("border-radius", "12px"), setTimeout(() => {
-            const s = document.querySelector(
+            const i = document.querySelector(
               '[data-testid="billing-address-postal-code-input"]'
             ), c = document.querySelector(".postal-zip");
-            s != null && s.value && c && (c.value = s.value);
+            i != null && i.value && c && (c.value = i.value);
           }, 300);
           const a = document.querySelector('[data-testid="billing-section"]');
           a && (a.style.display = "none");
@@ -478,20 +510,20 @@
           console.log("trial");
           const n = t(".trial").elements[0], a = t(".trial_time").elements[0];
           n && (n.style.display = "block"), a && (a.style.display = "block");
-          const s = t(".confirm_button button").elements[0];
-          s && !s.classList.contains("processing") && (s.textContent = "Start your 30-day free trial");
+          const i = t(".confirm_button button").elements[0];
+          i && !i.classList.contains("processing") && (i.textContent = "Start your 30-day free trial");
         } else {
           console.log("no trial");
           const n = t(".trial").elements[0], a = t(".trial_time").elements[0];
           n && (n.style.display = "none"), a && (a.style.display = "none");
-          const s = t(".confirm_button button").elements[0];
-          s && !s.classList.contains("processing") && (s.textContent = "Subscribe");
+          const i = t(".confirm_button button").elements[0];
+          i && !i.classList.contains("processing") && (i.textContent = "Subscribe");
         }
         e.observe(document.body, { childList: !0, subtree: !0 });
       });
       e.observe(document.body, { childList: !0, subtree: !0 });
     }
   }
-  new z();
+  new H();
 })();
 //# sourceMappingURL=index.js.map
