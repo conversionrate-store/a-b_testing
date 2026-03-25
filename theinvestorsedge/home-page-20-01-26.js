@@ -804,9 +804,9 @@
     on(e, n, o) {
       return typeof n == "function" && (o = n, n = ""), this.elements.forEach((c) => {
         c.addEventListener(e, function(h) {
-          var b;
+          var g;
           if (n !== "") {
-            let l = (b = h.target) == null ? void 0 : b.closest(n);
+            let l = (g = h.target) == null ? void 0 : g.closest(n);
             l && (o == null || o.call(l, h));
           } else
             o == null || o.call(c, h);
@@ -864,8 +864,8 @@
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", a, "variant_1"));
     }, 1e3);
   }, j = (a, e, n, o, c = 1e3, h = 0.5) => {
-    let b, l;
-    if (b = new IntersectionObserver(
+    let g, l;
+    if (g = new IntersectionObserver(
       function(w) {
         w[0].isIntersecting === !0 ? l = setTimeout(() => {
           d(
@@ -873,15 +873,15 @@
             w[0].target.dataset.visible || o || "",
             "view",
             n
-          ), b.disconnect();
+          ), g.disconnect();
         }, c) : (Q("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [h] }
     ), typeof a == "string") {
       const w = document.querySelector(a);
-      w && b.observe(w);
+      w && g.observe(w);
     } else
-      b.observe(a);
+      g.observe(a);
   }, Q = (a, e = "info") => {
     let n;
     switch (e) {
@@ -1131,12 +1131,12 @@
   ], te = "Residential real estate (1–4 units only)", se = 1, re = 4, ie = ["$0 to $999", "$1,000 to $2,499", "$2,500 to $5,000"], y = [
     {
       question: "Do you have a property in mind?",
-      description: "Clients who start without a property and follow our selection process are 131% more likely to get funded",
+      description: "Most of our successfully funded clients started without a property - and found better deals because of it.",
       answers: [
-        { label: "I have one under contract.", value: "1" },
-        { label: "I have one I am looking at not under contract.", value: "0" },
-        { label: "I am looking for a deal. ", value: "0" },
-        { label: "I want to learn how to find the deal.", value: "0" }
+        { label: "I'm looking for the right deal (Most funded)", value: "0" },
+        { label: "I want to learn how to find deals", value: "0" },
+        { label: "I'm eyeing a property (not under contract)", value: "0" },
+        { label: "I have one under contract", value: "1" }
       ],
       relation: "property_in_mind"
     },
@@ -1245,8 +1245,8 @@
     }
     async setupQuiz() {
       await P(".crs_quiz_container");
-      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), c = t(".crs_start_quiz"), h = t(".crs_quiz_progress"), b = t(".crs_cancel_quiz"), l = t(".crs_quiz_steps button");
-      b.on("click", () => {
+      const e = t(".crs_first_screen"), n = t(".crs_quiz_steps"), o = t(".crs_quiz_logo svg"), c = t(".crs_start_quiz"), h = t(".crs_quiz_progress"), g = t(".crs_cancel_quiz"), l = t(".crs_quiz_steps button");
+      g.on("click", () => {
         d("exp_quiz_home_page_cancel", "Cancel Quiz", "click", "quiz_first_screen"), this.closeQuiz();
       }), o.on("click", () => {
         if (this.showingWarning) {
@@ -1359,7 +1359,7 @@
       });
     }
     async setStep(e) {
-      var b;
+      var g;
       if (e < 0) return;
       const n = t('select[name="your_state__united_states__"] option').elements.map((l) => ({
         label: l.textContent || "",
@@ -1374,7 +1374,7 @@
         )
       );
       const h = (e + 1) / y.length * 100;
-      if (c.elements[0].style.width = `${h}%`, this.answers[e] && ((b = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || b.setAttribute("checked", "true")), e === y.length - 1) {
+      if (c.elements[0].style.width = `${h}%`, this.answers[e] && ((g = t(`input[value="${this.answers[e]}"]`).elements[0]) == null || g.setAttribute("checked", "true")), e === y.length - 1) {
         const l = t('select[name="crs_state"]').elements[0];
         n.forEach((s) => {
           const r = document.createElement("option");
@@ -1400,8 +1400,8 @@
           this.phoneTimerInterval && clearInterval(this.phoneTimerInterval);
           let r = s;
           const _ = () => {
-            const m = String(Math.floor(r / 60)).padStart(2, "0"), g = String(r % 60).padStart(2, "0");
-            E.textContent = `${m}:${g}`;
+            const m = String(Math.floor(r / 60)).padStart(2, "0"), b = String(r % 60).padStart(2, "0");
+            E.textContent = `${m}:${b}`;
           };
           _(), this.phoneTimerInterval = setInterval(() => {
             r--, _(), r <= 0 && (clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null);
@@ -1423,23 +1423,23 @@
               } else
                 u.forEach((S) => S.classList.add("crs_digit_error")), (m = u[0]) == null || m.focus(), d("exp_quiz_home_page_form_phone_verify_failed", "Phone verification failed", "error", "quiz_form");
             } catch {
-              u.forEach((g) => g.classList.add("crs_digit_error"));
+              u.forEach((b) => b.classList.add("crs_digit_error"));
             }
         }, V = async (s) => {
           var r, _;
           x.disabled = !0, x.textContent = "...", (r = i.querySelector(".crs_phone_verify_error")) == null || r.remove();
           try {
-            const g = await (await fetch("https://app.theinvestorsedge.com/phone/verify/send", {
+            const b = await (await fetch("https://app.theinvestorsedge.com/phone/verify/send", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ phoneNumber: s })
             })).json();
-            if (g.success)
+            if (b.success)
               R.textContent = s, T.style.display = "block", L.style.display = "none", u.forEach((v) => {
                 v.value = "", v.classList.remove("crs_digit_error");
               }), q.style.display = "flex", p.style.display = "none", A(60), (_ = u[0]) == null || _.focus();
             else {
-              const v = g.message || "Failed to send code. Please try again.";
+              const v = b.message || "Failed to send code. Please try again.";
               z.querySelector(".crs_phone_verify_error") || z.insertAdjacentHTML(
                 "beforeend",
                 `<p class="crs_input_error crs_phone_verify_error">${v}</p>`
@@ -1474,9 +1474,9 @@
           }), s.addEventListener("keydown", (_) => {
             _.key === "Backspace" && !s.value && r > 0 && u[r - 1].focus();
           }), s.addEventListener("paste", async (_) => {
-            var g;
+            var b;
             _.preventDefault();
-            const m = ((g = _.clipboardData) == null ? void 0 : g.getData("text").replace(/\D/g, "").slice(0, 4)) || "";
+            const m = ((b = _.clipboardData) == null ? void 0 : b.getData("text").replace(/\D/g, "").slice(0, 4)) || "";
             m.split("").forEach((v, S) => {
               u[S] && (u[S].value = v);
             }), u.forEach((v) => v.classList.remove("crs_digit_error")), m.length === 4 ? await N(k($.value)) : u[m.length] && u[m.length].focus();
@@ -1503,7 +1503,7 @@
           const r = s.target, _ = r.getAttribute("data-relation") || "";
           if (!_) return;
           const m = t(`input[name="${_}"]`).elements[0];
-          m && (m.value = r.value, m.dispatchEvent(new Event("input"))), t(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((g) => g == null ? void 0 : g.remove());
+          m && (m.value = r.value, m.dispatchEvent(new Event("input"))), t(".crs_quiz_answer_input_label .crs_input_error").elements.forEach((b) => b == null ? void 0 : b.remove());
         });
       }
     }
