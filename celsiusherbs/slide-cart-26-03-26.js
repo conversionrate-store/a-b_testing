@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const M = `.crs-atc-btn-wrapper {
+  const $ = `.crs-atc-btn-wrapper {
   position: relative;
   display: block;
   width: 100%;
@@ -564,8 +564,8 @@
     const n = document.querySelector(i);
     n && t(n);
     const e = new MutationObserver(() => {
-      const s = document.querySelector(i);
-      s && (t(s), e.disconnect());
+      const r = document.querySelector(i);
+      r && (t(r), e.disconnect());
     });
     e.observe(document.documentElement, {
       childList: !0,
@@ -576,7 +576,7 @@
       `%c EXP: ${i} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, b = {
+  }, x = {
     close: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
 		<path fill-rule="evenodd" clip-rule="evenodd" d="M6.3809 6.38163C6.54496 6.21777 6.76735 6.12573 6.99923 6.12573C7.23111 6.12573 7.4535 6.21777 7.61756 6.38163L21.6176 20.3816C21.7035 20.4617 21.7725 20.5583 21.8203 20.6657C21.8681 20.773 21.8938 20.8889 21.8959 21.0064C21.898 21.1238 21.8764 21.2405 21.8324 21.3495C21.7884 21.4584 21.7229 21.5574 21.6398 21.6405C21.5567 21.7236 21.4577 21.7891 21.3488 21.8331C21.2398 21.8771 21.1231 21.8987 21.0056 21.8967C20.8881 21.8946 20.7723 21.8689 20.6649 21.821C20.5576 21.7732 20.461 21.7043 20.3809 21.6183L6.3809 7.6183C6.21704 7.45423 6.125 7.23184 6.125 6.99996C6.125 6.76809 6.21704 6.54569 6.3809 6.38163Z" fill="black"/>
 		<path fill-rule="evenodd" clip-rule="evenodd" d="M21.618 6.38163C21.7819 6.54569 21.8739 6.76809 21.8739 6.99996C21.8739 7.23184 21.7819 7.45423 21.618 7.6183L7.61799 21.6183C7.45212 21.7729 7.23273 21.857 7.00605 21.853C6.77936 21.849 6.56308 21.7572 6.40277 21.5969C6.24245 21.4365 6.15062 21.2203 6.14662 20.9936C6.14262 20.7669 6.22676 20.5475 6.38132 20.3816L20.3813 6.38163C20.5454 6.21777 20.7678 6.12573 20.9997 6.12573C21.2315 6.12573 21.4539 6.21777 21.618 6.38163Z" fill="black"/>
@@ -644,7 +644,7 @@
   </button>
 `
   ), _ = (i, t = !1) => {
-    const n = `$${(i.price / 100).toFixed(2)}`, e = t ? Math.ceil(i.price * 0.8) : i.discounted_price !== i.price ? i.discounted_price : null, s = e !== null ? `<div class="crs-item-prices">
+    const n = `$${(i.price / 100).toFixed(2)}`, e = t ? Math.ceil(i.price * 0.8) : i.discounted_price !== i.price ? i.discounted_price : null, r = e !== null ? `<div class="crs-item-prices">
         <span class="crs-item-price-original">${n}</span>
         <span class="crs-item-price-sale">$${(e / 100).toFixed(2)}</span>
       </div>` : `<span class="crs-item-price">${n}</span>`;
@@ -658,17 +658,17 @@
           <a href="${i.url}" class="crs-item-title" target="_blank" rel="noopener">
             ${i.title}${i.variant_title && i.variant_title !== "Default Title" ? ` — ${i.variant_title}` : ""}
           </a>
-          <button class="crs-item-remove" data-action="remove" aria-label="Remove item">${b.trash}</button>
+          <button class="crs-item-remove" data-action="remove" aria-label="Remove item">${x.trash}</button>
         </div>
         <div class="crs-item-bottom">
-          ${s}
+          ${r}
           <div class="crs-qty-stepper">
             <button class="crs-qty-btn" data-action="decrease" aria-label="Decrease quantity">
-              ${b.decrease}
+              ${x.decrease}
             </button>
             <span class="crs-qty-value">${i.quantity}</span>
             <button class="crs-qty-btn" data-action="increase" aria-label="Increase quantity">
-              ${b.increase}
+              ${x.increase}
             </button>
           </div>
         </div>
@@ -705,7 +705,7 @@
       <!-- Header -->
       <div class="crs-cart-header">
         <h2 class="crs-cart-title">Your cart (0 items)</h2>
-        <button class="crs-cart-close" aria-label="Close cart">${b.close}</button>
+        <button class="crs-cart-close" aria-label="Close cart">${x.close}</button>
       </div>
 
       <!-- Discount Progress Bar -->
@@ -717,7 +717,7 @@
           <div class="crs-progress-fill" style="width: 0%"></div>
         </div>
         <div class="crs-free-shipping-row">
-          ${b.shipping}
+          ${x.shipping}
           <span>Free shipping</span>
         </div>
       </div>
@@ -755,7 +755,7 @@
     </div>
   </div>
 `
-  ), y = 2, E = "BUNDLE20", O = {
+  ), w = 2, E = "BUNDLE20", O = {
     // ── Human ──────────────────────────────────────────────────────────────────
     // Cluster 1: Nail Fungus Care
     "nail-fungus-treatment-antifungal-serum": {
@@ -944,10 +944,10 @@
       this.overlay = null, this.cart = null, this.init();
     }
     async init() {
-      await q("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-slide-cart-style">${M}</style>`), document.body.insertAdjacentHTML("beforeend", T), this.overlay = document.getElementById("crs-slide-cart"), await this.injectCartButton(), this.bindClose(), this.bindCartItemActions(), this.blockKachingBodyLock(), this.injectAddToCartOverlays(), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count);
+      await q("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-slide-cart-style">${$}</style>`), document.body.insertAdjacentHTML("beforeend", T), this.overlay = document.getElementById("crs-slide-cart"), await this.injectCartButton(), this.bindClose(), this.bindCartItemActions(), this.blockKachingBodyLock(), this.injectAddToCartOverlays(), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count);
     }
     blockKachingBodyLock() {
-      const t = "kaching-body__cart-open", n = (s) => s.classList.contains(t) && s.classList.remove(t), e = new MutationObserver(() => {
+      const t = "kaching-body__cart-open", n = (r) => r.classList.contains(t) && r.classList.remove(t), e = new MutationObserver(() => {
         n(document.body), n(document.documentElement);
       });
       e.observe(document.body, { attributes: !0, attributeFilter: ["class"] }), e.observe(document.documentElement, { attributes: !0, attributeFilter: ["class"] });
@@ -968,62 +968,62 @@
       this.cart = await e.json(), this.updateBadge(this.cart.item_count), this.renderCart();
     }
     renderCart() {
-      var f, v, x, w, g, C, k;
+      var f, m, b, y, g, C, k;
       if (!this.cart) return;
-      const t = (f = this.overlay) == null ? void 0 : f.querySelector(".crs-cart-items-wrapper"), n = (v = this.overlay) == null ? void 0 : v.querySelector(".crs-cart-title"), e = (x = this.overlay) == null ? void 0 : x.querySelector(".crs-subtotal-amount");
+      const t = (f = this.overlay) == null ? void 0 : f.querySelector(".crs-cart-items-wrapper"), n = (m = this.overlay) == null ? void 0 : m.querySelector(".crs-cart-title"), e = (b = this.overlay) == null ? void 0 : b.querySelector(".crs-subtotal-amount");
       n && (n.textContent = `Your cart (${this.cart.item_count} ${this.cart.item_count === 1 ? "item" : "items"})`);
-      const s = this.cart.item_count >= y, r = this.cart.original_total_price, o = r > 0 ? Math.round((r - this.cart.total_price) / r * 100) : 0, a = s && o < 20, c = a ? this.cart.items.reduce((m, S) => m + Math.ceil(S.price * 0.8) * S.quantity, 0) : this.cart.total_price !== r ? this.cart.total_price : r, l = c !== r, d = (w = this.overlay) == null ? void 0 : w.querySelector(".crs-subtotal-original");
-      e && (e.textContent = `$${(c / 100).toFixed(2)}`), d && (d.textContent = `$${(r / 100).toFixed(2)}`, d.classList.toggle("crs-hidden", !l));
+      const r = this.cart.item_count >= w, s = this.cart.original_total_price, o = s > 0 ? Math.round((s - this.cart.total_price) / s * 100) : 0, a = r && o < 20, c = a ? this.cart.items.reduce((v, S) => v + Math.ceil(S.price * 0.8) * S.quantity, 0) : this.cart.total_price !== s ? this.cart.total_price : s, l = c !== s, d = (y = this.overlay) == null ? void 0 : y.querySelector(".crs-subtotal-original");
+      e && (e.textContent = `$${(c / 100).toFixed(2)}`), d && (d.textContent = `$${(s / 100).toFixed(2)}`, d.classList.toggle("crs-hidden", !l));
       const p = (g = this.overlay) == null ? void 0 : g.querySelector(".crs-discount-info"), u = (C = this.overlay) == null ? void 0 : C.querySelector(".crs-discount-savings");
       if (p && p.classList.toggle("crs-hidden", !l), l && u) {
-        const m = Math.round((1 - c / r) * 100);
-        u.textContent = `-${m}%`;
+        const v = Math.round((1 - c / s) * 100);
+        u.textContent = `-${v}%`;
       }
-      t && (t.innerHTML = this.cart.items.map((m) => _(m, a)).join(""));
+      t && (t.innerHTML = this.cart.items.map((v) => _(v, a)).join(""));
       const h = (k = this.overlay) == null ? void 0 : k.querySelector(".crs-checkout-btn");
-      h && (h.href = s ? `/checkout?discount=${E}` : "/checkout"), this.updateDiscountBar(this.cart.item_count), this.updateBundleSection(this.cart.item_count);
+      h && (h.href = r ? `/checkout?discount=${E}` : "/checkout"), this.updateDiscountBar(this.cart.item_count), this.updateBundleSection(this.cart.item_count);
     }
     updateDiscountBar(t) {
-      var r, o;
-      const n = (r = this.overlay) == null ? void 0 : r.querySelector(".crs-progress-fill"), e = (o = this.overlay) == null ? void 0 : o.querySelector(".crs-discount-text"), s = Math.min(100, Math.round(t / y * 100));
-      if (n && (n.style.width = `${s}%`), e)
-        if (t >= y)
-          e.innerHTML = `${b.congrats} Great! Your <span class="crs-orange-text">20%</span> discount is now applied`;
+      var s, o;
+      const n = (s = this.overlay) == null ? void 0 : s.querySelector(".crs-progress-fill"), e = (o = this.overlay) == null ? void 0 : o.querySelector(".crs-discount-text"), r = Math.min(100, Math.round(t / w * 100));
+      if (n && (n.style.width = `${r}%`), e)
+        if (t >= w)
+          e.innerHTML = `${x.congrats} Great! Your <span class="crs-orange-text">20%</span> discount is now applied`;
         else {
-          const a = y - t;
+          const a = w - t;
           e.innerHTML = `Add <strong>${a} more ${a === 1 ? "product" : "products"}</strong> to get <span class="crs-orange-text">20% off</span>`;
         }
     }
     async updateBundleSection(t) {
-      var p, u, h, f, v, x, w;
-      const n = (p = this.overlay) == null ? void 0 : p.querySelector(".crs-bundle-section"), e = (u = this.overlay) == null ? void 0 : u.querySelector(".crs-bundle-products-list"), s = (h = this.overlay) == null ? void 0 : h.querySelector(".crs-bundle-heading");
+      var p, u, h, f, m, b, y;
+      const n = (p = this.overlay) == null ? void 0 : p.querySelector(".crs-bundle-section"), e = (u = this.overlay) == null ? void 0 : u.querySelector(".crs-bundle-products-list"), r = (h = this.overlay) == null ? void 0 : h.querySelector(".crs-bundle-heading");
       if (!n || !e) return;
-      if (t === 0 || t >= y) {
+      if (t === 0 || t >= w) {
         n.classList.add("crs-hidden");
         return;
       }
-      const r = this.cart.items[0], o = (r == null ? void 0 : r.handle) ?? ((w = (x = (v = (f = r == null ? void 0 : r.url) == null ? void 0 : f.split("/products/")) == null ? void 0 : v[1]) == null ? void 0 : x.split("?")) == null ? void 0 : w[0]) ?? "", a = O[o];
+      const s = this.cart.items[0], o = (s == null ? void 0 : s.handle) ?? ((y = (b = (m = (f = s == null ? void 0 : s.url) == null ? void 0 : f.split("/products/")) == null ? void 0 : m[1]) == null ? void 0 : b.split("?")) == null ? void 0 : y[0]) ?? "", a = O[o];
       if (!a) {
         n.classList.add("crs-hidden");
         return;
       }
-      s && (s.textContent = a.cartHeader);
+      r && (r.textContent = a.cartHeader);
       const c = this.cart.items.map((g) => g.variant_id), d = (await Promise.all(
         a.shows.map(async (g) => {
-          var C, k, m;
+          var C, k, v;
           try {
             const S = await fetch(`/products/${g}.js`);
             if (!S.ok) return null;
             const H = await S.json(), L = (C = H.variants) == null ? void 0 : C[0];
             if (!L || c.includes(L.id)) return null;
-            const $ = L.price;
+            const M = L.price;
             return {
               variantId: L.id,
               title: H.title,
-              image: H.featured_image ?? ((m = (k = H.images) == null ? void 0 : k[0]) == null ? void 0 : m.src) ?? "",
+              image: H.featured_image ?? ((v = (k = H.images) == null ? void 0 : k[0]) == null ? void 0 : v.src) ?? "",
               handle: g,
-              originalPrice: $,
-              discountedPrice: Math.ceil($ * 0.8)
+              originalPrice: M,
+              discountedPrice: Math.ceil(M * 0.8)
             };
           } catch {
             return null;
@@ -1041,16 +1041,16 @@
       (t = this.overlay) == null || t.addEventListener("click", (n) => {
         const e = n.target.closest("[data-action]");
         if (!e) return;
-        const s = e.dataset.action;
-        if (s === "add-bundle") {
+        const r = e.dataset.action;
+        if (r === "add-bundle") {
           const l = e.dataset.variantId;
           l && this.addToCart(Number(l));
           return;
         }
-        const r = e.closest("[data-key]");
-        if (!r) return;
-        const o = r.dataset.key, a = r.querySelector(".crs-qty-value"), c = parseInt((a == null ? void 0 : a.textContent) || "1", 10);
-        s === "remove" ? this.updateCart(o, 0) : s === "decrease" ? this.updateCart(o, Math.max(0, c - 1)) : s === "increase" && this.updateCart(o, c + 1);
+        const s = e.closest("[data-key]");
+        if (!s) return;
+        const o = s.dataset.key, a = s.querySelector(".crs-qty-value"), c = parseInt((a == null ? void 0 : a.textContent) || "1", 10);
+        r === "remove" ? this.updateCart(o, 0) : r === "decrease" ? this.updateCart(o, Math.max(0, c - 1)) : r === "increase" && this.updateCart(o, c + 1);
       });
     }
     async addToCart(t, n = 1) {
@@ -1074,23 +1074,23 @@
           e(!0);
           return;
         }
-        const s = setTimeout(() => {
-          r.disconnect(), e(!1);
-        }, 5e3), r = new MutationObserver(() => {
-          document.querySelector(n) && (clearTimeout(s), r.disconnect(), e(!0));
+        const r = setTimeout(() => {
+          s.disconnect(), e(!1);
+        }, 5e3), s = new MutationObserver(() => {
+          document.querySelector(n) && (clearTimeout(r), s.disconnect(), e(!0));
         });
-        r.observe(document.documentElement, { childList: !0, subtree: !0 });
+        s.observe(document.documentElement, { childList: !0, subtree: !0 });
       });
       t("a.btn.add-to-cart").then((n) => {
         n && document.querySelectorAll("a.btn.add-to-cart").forEach((e) => {
-          const s = () => Number(e.id);
-          this.attachOverlay(e, s, !1);
+          const r = () => Number(e.id);
+          this.attachOverlay(e, r, !1);
         });
       }), t("button.zpa-add-to-cart-btn").then((n) => {
         n && document.querySelectorAll("button.zpa-add-to-cart-btn").forEach((e) => {
-          const s = e.querySelector(".zpa-btn-custom__caption");
-          s && (s.textContent = "ADD TO CART");
-          const r = () => {
+          const r = e.querySelector(".zpa-btn-custom__caption");
+          r && (r.textContent = "ADD TO CART");
+          const s = () => {
             var p, u, h;
             const a = e.closest("form"), c = a == null ? void 0 : a.querySelector('select[name="id"], input[name="id"]');
             if (c && Number(c.value)) return Number(c.value);
@@ -1107,35 +1107,38 @@
             const a = e.closest("section") ?? e.closest("[data-product-wrapper-id]"), c = (a == null ? void 0 : a.querySelector(".zpa-quantity-field")) ?? document.querySelector(".zpa-quantity-field");
             return Math.max(1, parseInt((c == null ? void 0 : c.value) || "1", 10) || 1);
           };
-          this.attachOverlay(e, r, !0, o);
+          this.attachOverlay(e, s, !0, o);
         });
       }), t('button[data-pf-type="ProductATC"]').then((n) => {
-        console.log(n), n && document.querySelectorAll('button[data-pf-type="ProductATC"]').forEach(async (e) => {
-          var c, l, d, p, u, h;
-          const s = ((c = e.closest("[data-product-id]")) == null ? void 0 : c.querySelector('a[href*="/products/"]')) ?? ((d = (l = e.closest("form")) == null ? void 0 : l.parentElement) == null ? void 0 : d.querySelector('a[href*="/products/"]'));
-          if (!s) return;
-          const r = (p = s.pathname.split("/products/")[1]) == null ? void 0 : p.split("?")[0];
-          if (!r) return;
-          const o = await fetch(`/products/${r}.js`).then((f) => f.json()), a = (h = (u = o == null ? void 0 : o.variants) == null ? void 0 : u[0]) == null ? void 0 : h.id;
-          a && this.attachOverlay(e, () => a, !0);
-        });
+        if (!n) return;
+        const e = async (o) => {
+          var p, u, h, f, m, b;
+          if (o.closest(".crs-atc-btn-wrapper")) return;
+          const a = ((p = o.closest("[data-product-id]")) == null ? void 0 : p.querySelector('a[href*="/products/"]')) ?? ((h = (u = o.closest("form")) == null ? void 0 : u.parentElement) == null ? void 0 : h.querySelector('a[href*="/products/"]'));
+          if (!a) return;
+          const c = (f = a.pathname.split("/products/")[1]) == null ? void 0 : f.split("?")[0];
+          if (!c) return;
+          const l = await fetch(`/products/${c}.js`).then((y) => y.json()), d = (b = (m = l == null ? void 0 : l.variants) == null ? void 0 : m[0]) == null ? void 0 : b.id;
+          d && this.attachOverlay(o, () => d, !0);
+        }, r = () => document.querySelectorAll('button[data-pf-type="ProductATC"]').forEach((o) => void e(o));
+        r(), new MutationObserver(r).observe(document.documentElement, { childList: !0, subtree: !0 });
       });
     }
-    attachOverlay(t, n, e = !1, s) {
-      let r;
+    attachOverlay(t, n, e = !1, r) {
+      let s;
       if (e) {
         const a = document.createElement("div");
-        a.className = "crs-atc-btn-wrapper", t.parentElement.insertBefore(a, t), a.appendChild(t), r = a;
+        a.className = "crs-atc-btn-wrapper", t.parentElement.insertBefore(a, t), a.appendChild(t), s = a;
       } else
-        r = t.parentElement, getComputedStyle(r).position === "static" && (r.style.position = "relative");
+        s = t.parentElement, getComputedStyle(s).position === "static" && (s.style.position = "relative");
       const o = document.createElement("div");
-      o.className = "crs-atc-overlay", r.appendChild(o), o.addEventListener("click", async (a) => {
+      o.className = "crs-atc-overlay", s.appendChild(o), o.addEventListener("click", async (a) => {
         a.stopPropagation(), a.preventDefault();
         const c = n();
         if (!(!c || o.classList.contains("crs-atc-loading"))) {
           o.classList.add("crs-atc-loading"), t.classList.add("crs-atc-btn-loading");
           try {
-            const l = s ? s() : 1;
+            const l = r ? r() : 1;
             await this.addToCart(c, l), this.open();
           } finally {
             o.classList.remove("crs-atc-loading"), t.classList.remove("crs-atc-btn-loading");
@@ -1152,8 +1155,8 @@
       t.insertAdjacentHTML("afterend", n ? z() : j()), t.nextElementSibling.addEventListener("click", () => this.open());
     }
     bindClose() {
-      var t, n, e, s;
-      (n = (t = this.overlay) == null ? void 0 : t.querySelector(".crs-cart-close")) == null || n.addEventListener("click", () => this.close()), (s = (e = this.overlay) == null ? void 0 : e.querySelector(".crs-cart-backdrop")) == null || s.addEventListener("click", () => this.close());
+      var t, n, e, r;
+      (n = (t = this.overlay) == null ? void 0 : t.querySelector(".crs-cart-close")) == null || n.addEventListener("click", () => this.close()), (r = (e = this.overlay) == null ? void 0 : e.querySelector(".crs-cart-backdrop")) == null || r.addEventListener("click", () => this.close());
     }
   }
   new Z();
