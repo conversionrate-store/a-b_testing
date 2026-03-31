@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const z = `.crs-atc-btn-wrapper {
+  const $ = `.crs-atc-btn-wrapper {
   position: relative;
   display: block;
   width: 100%;
@@ -158,6 +158,7 @@
   line-height: 24px;
   color: #374151;
   margin: 0;
+  text-align: center;
 }
 .crs-discount-bar .crs-discount-text strong {
   font-weight: 700;
@@ -186,6 +187,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: center;
 }
 .crs-discount-bar .crs-free-shipping-row svg {
   flex-shrink: 0;
@@ -560,31 +562,31 @@
 
 #kaching-cart {
   display: none !important;
-}/*# sourceMappingURL=style.css.map */`, v = (s, e, t, n = "") => {
+}/*# sourceMappingURL=style.css.map */`, v = (r, e, t, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: s,
+      event_name: r,
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), j(`Event: ${s} | ${e} | ${t} | ${n}`, "success");
-  }, $ = (s) => new Promise((e) => {
-    const t = document.querySelector(s);
+    }), z(`Event: ${r} | ${e} | ${t} | ${n}`, "success");
+  }, _ = (r) => new Promise((e) => {
+    const t = document.querySelector(r);
     t && e(t);
     const n = new MutationObserver(() => {
-      const a = document.querySelector(s);
+      const a = document.querySelector(r);
       a && (e(a), n.disconnect());
     });
     n.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), M = ({ name: s, dev: e }) => {
+  }), q = ({ name: r, dev: e }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${e})`,
+      `%c EXP: ${r} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, j = (s, e = "info") => {
+  }, z = (r, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -600,7 +602,7 @@
         t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${r}`, `${t} font-size: 16px; font-weight: 600`);
   }, w = {
     close: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
 		<path fill-rule="evenodd" clip-rule="evenodd" d="M6.3809 6.38163C6.54496 6.21777 6.76735 6.12573 6.99923 6.12573C7.23111 6.12573 7.4535 6.21777 7.61756 6.38163L21.6176 20.3816C21.7035 20.4617 21.7725 20.5583 21.8203 20.6657C21.8681 20.773 21.8938 20.8889 21.8959 21.0064C21.898 21.1238 21.8764 21.2405 21.8324 21.3495C21.7884 21.4584 21.7229 21.5574 21.6398 21.6405C21.5567 21.7236 21.4577 21.7891 21.3488 21.8331C21.2398 21.8771 21.1231 21.8987 21.0056 21.8967C20.8881 21.8946 20.7723 21.8689 20.6649 21.821C20.5576 21.7732 20.461 21.7043 20.3809 21.6183L6.3809 7.6183C6.21704 7.45423 6.125 7.23184 6.125 6.99996C6.125 6.76809 6.21704 6.54569 6.3809 6.38163Z" fill="black"/>
@@ -650,7 +652,7 @@
 		</clipPath>
 		</defs>
 		</svg>`
-  }, B = () => (
+  }, M = () => (
     /* HTML */
     `
   <button class="crs-cart-btn" aria-label="Open cart">
@@ -658,7 +660,7 @@
     <span class="crs-cart-btn-badge crs-hidden">0</span>
   </button>
 `
-  ), T = () => (
+  ), j = () => (
     /* HTML */
     `
   <button class="crs-cart-btn" aria-label="Open cart">
@@ -668,20 +670,20 @@
     <span class="crs-cart-btn-badge crs-hidden">0</span>
   </button>
 `
-  ), D = (s, e = !1) => {
-    const t = `$${(s.price / 100).toFixed(2)}`, n = e ? Math.ceil(s.price * 0.8) : s.discounted_price !== s.price ? s.discounted_price : null, a = n !== null ? `<div class="crs-item-prices">
+  ), B = (r, e = !1) => {
+    const t = `$${(r.price / 100).toFixed(2)}`, n = e ? Math.ceil(r.price * 0.8) : r.discounted_price !== r.price ? r.discounted_price : null, a = n !== null ? `<div class="crs-item-prices">
         <span class="crs-item-price-original">${t}</span>
         <span class="crs-item-price-sale">$${(n / 100).toFixed(2)}</span>
       </div>` : `<span class="crs-item-price">${t}</span>`;
     return (
       /* HTML */
       `
-    <div class="crs-cart-item" data-key="${s.key}">
-      <img class="crs-item-img" src="${s.image || ""}" alt="${s.title}" loading="lazy" />
+    <div class="crs-cart-item" data-key="${r.key}">
+      <img class="crs-item-img" src="${r.image || ""}" alt="${r.title}" loading="lazy" />
       <div class="crs-item-info">
         <div class="crs-item-top">
-          <a href="${s.url}" class="crs-item-title" target="_blank" rel="noopener">
-            ${s.title}${s.variant_title && s.variant_title !== "Default Title" ? ` — ${s.variant_title}` : ""}
+          <a href="${r.url}" class="crs-item-title" target="_blank" rel="noopener">
+            ${r.title}${r.variant_title && r.variant_title !== "Default Title" ? ` — ${r.variant_title}` : ""}
           </a>
           <button class="crs-item-remove" data-action="remove" aria-label="Remove item">${w.trash}</button>
         </div>
@@ -691,7 +693,7 @@
             <button class="crs-qty-btn" data-action="decrease" aria-label="Decrease quantity">
               ${w.decrease}
             </button>
-            <span class="crs-qty-value">${s.quantity}</span>
+            <span class="crs-qty-value">${r.quantity}</span>
             <button class="crs-qty-btn" data-action="increase" aria-label="Increase quantity">
               ${w.increase}
             </button>
@@ -701,26 +703,26 @@
     </div>
   `
     );
-  }, E = (s) => (
+  }, T = (r) => (
     /* HTML */
     `
-  <div class="crs-bundle-product" data-variant-id="${s.variantId}">
+  <div class="crs-bundle-product" data-variant-id="${r.variantId}">
     <div class="crs-bundle-top">
-      <img class="crs-bundle-img" src="${s.image}" alt="${s.title}" loading="lazy" />
-      <a href="/products/${s.handle}" class="crs-bundle-product-title" target="_blank" rel="noopener"
-        >${s.title}</a
+      <img class="crs-bundle-img" src="${r.image}" alt="${r.title}" loading="lazy" />
+      <a href="/products/${r.handle}" class="crs-bundle-product-title" target="_blank" rel="noopener"
+        >${r.title}</a
       >
     </div>
     <div class="crs-bundle-bottom">
       <div class="crs-bundle-prices">
-        <span class="crs-bundle-original-price">$${(s.originalPrice / 100).toFixed(2)}</span>
-        <span class="crs-bundle-sale-price">$${(s.discountedPrice / 100).toFixed(2)}</span>
+        <span class="crs-bundle-original-price">$${(r.originalPrice / 100).toFixed(2)}</span>
+        <span class="crs-bundle-sale-price">$${(r.discountedPrice / 100).toFixed(2)}</span>
       </div>
-      <button class="crs-add-to-bundle-btn" data-action="add-bundle" data-variant-id="${s.variantId}">ADD</button>
+      <button class="crs-add-to-bundle-btn" data-action="add-bundle" data-variant-id="${r.variantId}">ADD</button>
     </div>
   </div>
 `
-  ), O = (
+  ), E = (
     /* HTML */
     `
   <div class="crs-cart-overlay" id="crs-slide-cart" role="dialog" aria-modal="true" aria-label="Shopping cart">
@@ -780,128 +782,128 @@
     </div>
   </div>
 `
-  ), C = 2, R = "BUNDLE20", A = {
+  ), C = 2, O = "BUNDLE20", R = {
     // ── Human ──────────────────────────────────────────────────────────────────
     // Cluster 1: Nail Fungus Care
     "nail-fungus-treatment-antifungal-serum": {
-      cartHeader: "Restore your nails & Save 20%",
+      cartHeader: 'Restore your nails & <span style="color:#FD5602">Save 20%</span>',
       shows: ["toenail-fungus-damaged-restorative-solution", "athletes-foot-cream"]
     },
     "toenail-fungus-damaged-restorative-solution": {
-      cartHeader: "Restore your nails & Save 20%",
+      cartHeader: 'Restore your nails & <span style="color:#FD5602">Save 20%</span>',
       shows: ["nail-fungus-treatment-antifungal-serum", "athletes-foot-cream"]
     },
     "athletes-foot-cream": {
-      cartHeader: "Restore your nails & Save 20%",
+      cartHeader: 'Restore your nails & <span style="color:#FD5602">Save 20%</span>',
       shows: ["nail-fungus-treatment-antifungal-serum", "toenail-fungus-damaged-restorative-solution"]
     },
     // Cluster 2: Body Fungus Relief
     "ringworm-treatment": {
-      cartHeader: "Stop skin fungus fast & Save 20%",
+      cartHeader: 'Stop skin fungus fast & <span style="color:#FD5602">Save 20%</span>',
       shows: ["fungal-acne-treatment", "turmeric-soap", "yeast-infection-cream", "shoe-deodorizer"]
     },
     "fungal-acne-treatment": {
-      cartHeader: "Stop skin fungus fast & Save 20%",
+      cartHeader: 'Stop skin fungus fast & <span style="color:#FD5602">Save 20%</span>',
       shows: ["ringworm-treatment", "turmeric-soap", "yeast-infection-cream", "shoe-deodorizer"]
     },
     "yeast-infection-cream": {
-      cartHeader: "Stop skin fungus fast & Save 20%",
+      cartHeader: 'Stop skin fungus fast & <span style="color:#FD5602">Save 20%</span>',
       shows: ["ringworm-treatment", "fungal-acne-treatment", "turmeric-soap", "shoe-deodorizer"]
     },
     "shoe-deodorizer": {
-      cartHeader: "Stay fresh & Save 20%",
+      cartHeader: 'Stay fresh & <span style="color:#FD5602">Save 20%</span>',
       shows: ["ringworm-treatment", "fungal-acne-treatment", "turmeric-soap", "yeast-infection-cream"]
     },
     // Cluster 3: Scalp Therapy
     "scalp-treatment": {
-      cartHeader: "Heal your scalp & Save 20%",
+      cartHeader: 'Heal your scalp & <span style="color:#FD5602">Save 20%</span>',
       shows: ["itchy-scalp-psoriasis-treatment", "anti-dandruff-shampoo"]
     },
     "itchy-scalp-psoriasis-treatment": {
-      cartHeader: "Heal your scalp & Save 20%",
+      cartHeader: 'Heal your scalp & <span style="color:#FD5602">Save 20%</span>',
       shows: ["scalp-treatment", "anti-dandruff-shampoo"]
     },
     "anti-dandruff-shampoo": {
-      cartHeader: "Heal your scalp & Save 20%",
+      cartHeader: 'Heal your scalp & <span style="color:#FD5602">Save 20%</span>',
       shows: ["scalp-treatment", "itchy-scalp-psoriasis-treatment"]
     },
     // Cluster 4: Hair Repair & Growth
     "alopecia-treatment-symptoms": {
-      cartHeader: "Grow thicker hair & Save 20%",
+      cartHeader: 'Grow thicker hair & <span style="color:#FD5602">Save 20%</span>',
       shows: ["organic-soapnut-amla-shampoo", "neem-oil-for-hair"]
     },
     "organic-soapnut-amla-shampoo": {
-      cartHeader: "Grow thicker hair & Save 20%",
+      cartHeader: 'Grow thicker hair & <span style="color:#FD5602">Save 20%</span>',
       shows: ["alopecia-treatment-symptoms", "neem-oil-for-hair"]
     },
     "neem-oil-for-hair": {
-      cartHeader: "Grow thicker hair & Save 20%",
+      cartHeader: 'Grow thicker hair & <span style="color:#FD5602">Save 20%</span>',
       shows: ["alopecia-treatment-symptoms", "organic-soapnut-amla-shampoo"]
     },
     // Cluster 5: Female Balance
     "vglow-yeast-infection-treatment": {
-      cartHeader: "Restore your balance & Save 20%",
+      cartHeader: 'Restore your balance & <span style="color:#FD5602">Save 20%</span>',
       shows: ["herbs-for-vaginal-dryness", "vaginal-dryness-natural-remedies"]
     },
     "herbs-for-vaginal-dryness": {
-      cartHeader: "Restore your balance & Save 20%",
+      cartHeader: 'Restore your balance & <span style="color:#FD5602">Save 20%</span>',
       shows: ["vglow-yeast-infection-treatment", "vaginal-dryness-natural-remedies"]
     },
     "vaginal-dryness-natural-remedies": {
-      cartHeader: "Restore your balance & Save 20%",
+      cartHeader: 'Restore your balance & <span style="color:#FD5602">Save 20%</span>',
       shows: ["vglow-yeast-infection-treatment", "herbs-for-vaginal-dryness"]
     },
     // Cluster 6: Men's Freshness
     "ball-deodorant": {
-      cartHeader: "Stay fresh & Save 20%",
+      cartHeader: 'Stay fresh & <span style="color:#FD5602">Save 20%</span>',
       shows: ["jock-itch", "balanitis-treatment-cream"]
     },
     "jock-itch": {
-      cartHeader: "Stay fresh & Save 20%",
+      cartHeader: 'Stay fresh & <span style="color:#FD5602">Save 20%</span>',
       shows: ["ball-deodorant", "balanitis-treatment-cream"]
     },
     "balanitis-treatment-cream": {
-      cartHeader: "Stay fresh & Save 20%",
+      cartHeader: 'Stay fresh & <span style="color:#FD5602">Save 20%</span>',
       shows: ["ball-deodorant", "jock-itch"]
     },
     // Cluster 7: Anti-Aging Kit
     // Note: 'turmeric-soap' is also in cluster 2, but triggers Anti-Aging bundle here
     "organic-bakuchiol-booster-serum": {
-      cartHeader: "Renew your skin & Save 20%",
+      cartHeader: 'Renew your skin & <span style="color:#FD5602">Save 20%</span>',
       shows: ["anti-aging-cream", "turmeric-soap"]
     },
     "anti-aging-cream": {
-      cartHeader: "Renew your skin & Save 20%",
+      cartHeader: 'Renew your skin & <span style="color:#FD5602">Save 20%</span>',
       shows: ["organic-bakuchiol-booster-serum", "turmeric-soap"]
     },
     "turmeric-soap": {
-      cartHeader: "Renew your skin & Save 20%",
+      cartHeader: 'Renew your skin & <span style="color:#FD5602">Save 20%</span>',
       shows: ["organic-bakuchiol-booster-serum", "anti-aging-cream"]
     },
     // Cluster 8: SOS Relief
     "cold-sore-medicine": {
-      cartHeader: "Relieve pain fast & Save 20%",
+      cartHeader: 'Relieve pain fast & <span style="color:#FD5602">Save 20%</span>',
       shows: ["flea-bites-treatment", "hemorrhoid-cream", "angular-cheilitis-medication", "tea-tree-oil-for-lice"]
     },
     "flea-bites-treatment": {
-      cartHeader: "Relieve pain fast & Save 20%",
+      cartHeader: 'Relieve pain fast & <span style="color:#FD5602">Save 20%</span>',
       shows: ["cold-sore-medicine", "hemorrhoid-cream", "angular-cheilitis-medication", "tea-tree-oil-for-lice"]
     },
     "hemorrhoid-cream": {
-      cartHeader: "Relieve pain fast & Save 20%",
+      cartHeader: 'Relieve pain fast & <span style="color:#FD5602">Save 20%</span>',
       shows: ["cold-sore-medicine", "flea-bites-treatment", "angular-cheilitis-medication", "tea-tree-oil-for-lice"]
     },
     "angular-cheilitis-medication": {
-      cartHeader: "Renew your skin & Save 20%",
+      cartHeader: 'Renew your skin & <span style="color:#FD5602">Save 20%</span>',
       shows: ["cold-sore-medicine", "flea-bites-treatment", "hemorrhoid-cream", "tea-tree-oil-for-lice"]
     },
     "tea-tree-oil-for-lice": {
-      cartHeader: "Heal your scalp & Save 20%",
+      cartHeader: 'Heal your scalp & <span style="color:#FD5602">Save 20%</span>',
       shows: ["cold-sore-medicine", "flea-bites-treatment", "hemorrhoid-cream", "angular-cheilitis-medication"]
     },
     // Cluster 9: Intensive Itch Relief
     "scabies-itch-relief-demodex-mites-serum": {
-      cartHeader: "Relieve itching fast & Save 20%",
+      cartHeader: 'Relieve itching fast & <span style="color:#FD5602">Save 20%</span>',
       shows: [
         "dry-itchy-scalp-shampoo",
         "folliculitis-cream",
@@ -912,7 +914,7 @@
       ]
     },
     "dry-itchy-scalp-shampoo": {
-      cartHeader: "Relieve itching fast & Save 20%",
+      cartHeader: 'Relieve itching fast & <span style="color:#FD5602">Save 20%</span>',
       shows: [
         "scabies-itch-relief-demodex-mites-serum",
         "folliculitis-cream",
@@ -923,7 +925,7 @@
       ]
     },
     "folliculitis-cream": {
-      cartHeader: "Relieve itching fast & Save 20%",
+      cartHeader: 'Relieve itching fast & <span style="color:#FD5602">Save 20%</span>',
       shows: [
         "scabies-itch-relief-demodex-mites-serum",
         "dry-itchy-scalp-shampoo",
@@ -934,7 +936,7 @@
       ]
     },
     "psoriasis-seborrheic-dermatitis-cream": {
-      cartHeader: "Relieve itching fast & Save 20%",
+      cartHeader: 'Relieve itching fast & <span style="color:#FD5602">Save 20%</span>',
       shows: [
         "scabies-itch-relief-demodex-mites-serum",
         "dry-itchy-scalp-shampoo",
@@ -945,7 +947,7 @@
       ]
     },
     "genital-herpes": {
-      cartHeader: "Relieve itching fast & Save 20%",
+      cartHeader: 'Relieve itching fast & <span style="color:#FD5602">Save 20%</span>',
       shows: [
         "scabies-itch-relief-demodex-mites-serum",
         "dry-itchy-scalp-shampoo",
@@ -956,7 +958,7 @@
       ]
     },
     "eczema-treatment-cream": {
-      cartHeader: "Heal your scalp & Save 20%",
+      cartHeader: 'Heal your scalp & <span style="color:#FD5602">Save 20%</span>',
       shows: [
         "scabies-itch-relief-demodex-mites-serum",
         "dry-itchy-scalp-shampoo",
@@ -967,7 +969,7 @@
       ]
     },
     "jock-itch-cream": {
-      cartHeader: "Stop skin fungus fast & Save 20%",
+      cartHeader: 'Stop skin fungus fast & <span style="color:#FD5602">Save 20%</span>',
       shows: [
         "scabies-itch-relief-demodex-mites-serum",
         "dry-itchy-scalp-shampoo",
@@ -981,85 +983,85 @@
     // Cluster 1: Ear Health & Care
     // Dog products → show same-cluster items where Target Pet contains "Dog"
     "dog-cat-bacterial-fungal-ear-infection": {
-      cartHeader: "Get your pet's ears healthy & Save 20%",
+      cartHeader: `Get your pet's ears healthy & <span style="color:#FD5602">Save 20%</span>`,
       shows: ["ear-mite-treatment-dogs-cats", "natural-dog-ear-cleanser-infection"]
     },
     // Dog/Cat product → fixed cross-sell pair (shampoo + cat itch spray)
     "ear-mite-treatment-dogs-cats": {
-      cartHeader: "Get your pet's ears healthy & Save 20%",
+      cartHeader: `Get your pet's ears healthy & <span style="color:#FD5602">Save 20%</span>`,
       shows: ["petglow-shampoo-for-dogs-and-cats", "cat-dandruff-miliary-dermatitis"]
     },
     "natural-dog-ear-cleanser-infection": {
-      cartHeader: "Get your pet's ears healthy & Save 20%",
+      cartHeader: `Get your pet's ears healthy & <span style="color:#FD5602">Save 20%</span>`,
       shows: ["dog-cat-bacterial-fungal-ear-infection", "ear-mite-treatment-dogs-cats"]
     },
     // Cluster 2: Flea & Tick Protection
     // All Dog/Cat products → show same-cluster Dog/Cat items
     "natural-flea-treatment-for-cats": {
-      cartHeader: "Get your pet full protection & Save 20%",
+      cartHeader: 'Get your pet full protection & <span style="color:#FD5602">Save 20%</span>',
       shows: ["flea-shampoo-for-dogs-and-cats", "hot-spot-spray-for-dogs"]
     },
     "flea-shampoo-for-dogs-and-cats": {
-      cartHeader: "Get your pet full protection & Save 20%",
+      cartHeader: 'Get your pet full protection & <span style="color:#FD5602">Save 20%</span>',
       shows: ["natural-flea-treatment-for-cats", "hot-spot-spray-for-dogs"]
     },
     "hot-spot-spray-for-dogs": {
-      cartHeader: "Get your pet full protection & Save 20%",
+      cartHeader: 'Get your pet full protection & <span style="color:#FD5602">Save 20%</span>',
       shows: ["natural-flea-treatment-for-cats", "flea-shampoo-for-dogs-and-cats"]
     },
     // Cluster 3: Skin, Coat & Itch Relief
     // Dog/Cat products → show same-cluster Dog/Cat items (Cat-only product excluded)
     "petglow-shampoo-for-dogs-and-cats": {
-      cartHeader: "Get your pet a soothe & shiny coat & Save 20%",
+      cartHeader: 'Get your pet a soothe & shiny coat & <span style="color:#FD5602">Save 20%</span>',
       shows: ["dog-itch-relief"]
     },
     "dog-itch-relief": {
-      cartHeader: "Get your pet a soothe & shiny coat & Save 20%",
+      cartHeader: 'Get your pet a soothe & shiny coat & <span style="color:#FD5602">Save 20%</span>',
       shows: ["petglow-shampoo-for-dogs-and-cats"]
     },
     // Dog product → show same-cluster items where Target Pet contains "Dog"
     "natural-dog-shampoo": {
-      cartHeader: "Get your pet a soothe & shiny coat & Save 20%",
+      cartHeader: 'Get your pet a soothe & shiny coat & <span style="color:#FD5602">Save 20%</span>',
       shows: ["petglow-shampoo-for-dogs-and-cats", "dog-itch-relief"]
     },
     // Cat product → show same-cluster items where Target Pet contains "Dog" (cross-sell Dog/Cat products)
     "cat-dandruff-miliary-dermatitis": {
-      cartHeader: "Get your pet a soothe & shiny coat & Save 20%",
+      cartHeader: 'Get your pet a soothe & shiny coat & <span style="color:#FD5602">Save 20%</span>',
       shows: ["petglow-shampoo-for-dogs-and-cats", "dog-itch-relief", "natural-dog-shampoo"]
     },
     // Cluster 4: Fresh Home & Hygiene
     // Dog products → show same-cluster Dog items only
     "pet-odor-eliminator": {
-      cartHeader: "Get your home smells fresh & Save 20%",
+      cartHeader: 'Get your home smells fresh & <span style="color:#FD5602">Save 20%</span>',
       shows: ["anal-gland-medicine"]
     },
     // Cat product → fixed cross-sell pair
     "cat-pee-odor-and-stain-remover": {
-      cartHeader: "Get your home smells fresh & Save 20%",
+      cartHeader: 'Get your home smells fresh & <span style="color:#FD5602">Save 20%</span>',
       shows: ["petglow-shampoo-for-dogs-and-cats", "cat-dandruff-miliary-dermatitis"]
     },
     "anal-gland-medicine": {
-      cartHeader: "Get your home smells fresh & Save 20%",
+      cartHeader: 'Get your home smells fresh & <span style="color:#FD5602">Save 20%</span>',
       shows: ["pet-odor-eliminator"]
     },
     // Cluster 5: Senior Pet Care — fixed cross-sell pair
     "joint-supplement-for-dogs": {
-      cartHeader: "Get your senior pet full support & Save 20%",
+      cartHeader: 'Get your senior pet full support & <span style="color:#FD5602">Save 20%</span>',
       shows: ["petglow-shampoo-for-dogs-and-cats", "cat-dandruff-miliary-dermatitis"]
     },
     // Bonus: Upsell — fixed cross-sell pair
     "himalayan-dog-chew": {
-      cartHeader: "Reward your brave pet & Save 20%",
+      cartHeader: 'Reward your brave pet & <span style="color:#FD5602">Save 20%</span>',
       shows: ["petglow-shampoo-for-dogs-and-cats", "cat-dandruff-miliary-dermatitis"]
     }
   };
-  M({ name: "SlideIn Cart", dev: "YK" });
-  class Z {
+  q({ name: "SlideIn Cart", dev: "YK" });
+  class A {
     constructor() {
       this.overlay = null, this.cart = null, this.init();
     }
     async init() {
-      await $("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-slide-cart-style">${z}</style>`), document.body.insertAdjacentHTML("beforeend", O), this.overlay = document.getElementById("crs-slide-cart"), await this.injectCartButton(), this.bindClose(), this.bindCartItemActions(), this.blockKachingBodyLock(), this.injectAddToCartOverlays(), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count);
+      await _("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-slide-cart-style">${$}</style>`), document.body.insertAdjacentHTML("beforeend", E), this.overlay = document.getElementById("crs-slide-cart"), await this.injectCartButton(), this.bindClose(), this.bindCartItemActions(), this.blockKachingBodyLock(), this.injectAddToCartOverlays(), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count);
     }
     blockKachingBodyLock() {
       const e = "kaching-body__cart-open", t = (a) => a.classList.contains(e) && a.classList.remove(e), n = new MutationObserver(() => {
@@ -1087,20 +1089,20 @@
       if (!this.cart) return;
       const e = (f = this.overlay) == null ? void 0 : f.querySelector(".crs-cart-items-wrapper"), t = (m = this.overlay) == null ? void 0 : m.querySelector(".crs-cart-title"), n = (g = this.overlay) == null ? void 0 : g.querySelector(".crs-subtotal-amount");
       t && (t.textContent = `Your cart (${this.cart.item_count} ${this.cart.item_count === 1 ? "item" : "items"})`);
-      const a = this.cart.item_count >= C, r = this.cart.original_total_price, o = r > 0 ? Math.round((r - this.cart.total_price) / r * 100) : 0, i = a && o < 20, c = i ? this.cart.items.reduce((y, H) => y + Math.ceil(H.price * 0.8) * H.quantity, 0) : this.cart.total_price !== r ? this.cart.total_price : r, l = c !== r, d = (x = this.overlay) == null ? void 0 : x.querySelector(".crs-subtotal-original");
-      n && (n.textContent = `$${(c / 100).toFixed(2)}`), d && (d.textContent = `$${(r / 100).toFixed(2)}`, d.classList.toggle("crs-hidden", !l));
+      const a = this.cart.item_count >= C, s = this.cart.original_total_price, o = s > 0 ? Math.round((s - this.cart.total_price) / s * 100) : 0, i = a && o < 20, c = i ? this.cart.items.reduce((y, H) => y + Math.ceil(H.price * 0.8) * H.quantity, 0) : this.cart.total_price !== s ? this.cart.total_price : s, l = c !== s, d = (x = this.overlay) == null ? void 0 : x.querySelector(".crs-subtotal-original");
+      n && (n.textContent = `$${(c / 100).toFixed(2)}`), d && (d.textContent = `$${(s / 100).toFixed(2)}`, d.classList.toggle("crs-hidden", !l));
       const p = (b = this.overlay) == null ? void 0 : b.querySelector(".crs-discount-info"), u = (k = this.overlay) == null ? void 0 : k.querySelector(".crs-discount-savings");
       if (p && p.classList.toggle("crs-hidden", !l), l && u) {
-        const y = Math.round((1 - c / r) * 100);
+        const y = Math.round((1 - c / s) * 100);
         u.textContent = `-${y}%`;
       }
-      e && (e.innerHTML = this.cart.items.map((y) => D(y, i)).join(""));
+      e && (e.innerHTML = this.cart.items.map((y) => B(y, i)).join(""));
       const h = (S = this.overlay) == null ? void 0 : S.querySelector(".crs-checkout-btn");
-      h && (h.href = a ? `/checkout?discount=${R}` : "/checkout"), this.updateDiscountBar(this.cart.item_count), this.updateBundleSection(this.cart.item_count);
+      h && (h.href = a ? `/checkout?discount=${O}` : "/checkout"), this.updateDiscountBar(this.cart.item_count), this.updateBundleSection(this.cart.item_count);
     }
     updateDiscountBar(e) {
-      var r, o;
-      const t = (r = this.overlay) == null ? void 0 : r.querySelector(".crs-progress-fill"), n = (o = this.overlay) == null ? void 0 : o.querySelector(".crs-discount-text"), a = Math.min(100, Math.round(e / C * 100));
+      var s, o;
+      const t = (s = this.overlay) == null ? void 0 : s.querySelector(".crs-progress-fill"), n = (o = this.overlay) == null ? void 0 : o.querySelector(".crs-discount-text"), a = Math.min(100, Math.round(e / C * 100));
       if (t && (t.style.width = `${a}%`), n)
         if (e >= C)
           n.innerHTML = `${w.congrats} Great! Your <span class="crs-orange-text">20%</span> discount is now applied`;
@@ -1117,28 +1119,28 @@
         t.classList.add("crs-hidden");
         return;
       }
-      const r = this.cart.items[0], o = (r == null ? void 0 : r.handle) ?? ((x = (g = (m = (f = r == null ? void 0 : r.url) == null ? void 0 : f.split("/products/")) == null ? void 0 : m[1]) == null ? void 0 : g.split("?")) == null ? void 0 : x[0]) ?? "", i = A[o];
+      const s = this.cart.items[0], o = (s == null ? void 0 : s.handle) ?? ((x = (g = (m = (f = s == null ? void 0 : s.url) == null ? void 0 : f.split("/products/")) == null ? void 0 : m[1]) == null ? void 0 : g.split("?")) == null ? void 0 : x[0]) ?? "", i = R[o];
       if (!i) {
         t.classList.add("crs-hidden");
         return;
       }
-      a && (a.textContent = i.cartHeader);
+      a && (a.innerHTML = i.cartHeader);
       const c = this.cart.items.map((b) => b.variant_id), d = (await Promise.all(
         i.shows.map(async (b) => {
           var k, S, y;
           try {
             const H = await fetch(`/products/${b}.js`);
             if (!H.ok) return null;
-            const L = await H.json(), _ = (k = L.variants) == null ? void 0 : k[0];
-            if (!_ || c.includes(_.id)) return null;
-            const q = _.price;
+            const D = await H.json(), L = (k = D.variants) == null ? void 0 : k[0];
+            if (!L || c.includes(L.id)) return null;
+            const F = L.price;
             return {
-              variantId: _.id,
-              title: L.title,
-              image: L.featured_image ?? ((y = (S = L.images) == null ? void 0 : S[0]) == null ? void 0 : y.src) ?? "",
+              variantId: L.id,
+              title: D.title,
+              image: D.featured_image ?? ((y = (S = D.images) == null ? void 0 : S[0]) == null ? void 0 : y.src) ?? "",
               handle: b,
-              originalPrice: q,
-              discountedPrice: Math.ceil(q * 0.8)
+              originalPrice: F,
+              discountedPrice: Math.ceil(F * 0.8)
             };
           } catch {
             return null;
@@ -1149,7 +1151,7 @@
         t.classList.add("crs-hidden");
         return;
       }
-      n.innerHTML = d.map(E).join(""), t.classList.remove("crs-hidden");
+      n.innerHTML = d.map(T).join(""), t.classList.remove("crs-hidden");
     }
     bindCartItemActions() {
       var e;
@@ -1166,9 +1168,9 @@
           }
           return;
         }
-        const r = n.closest("[data-key]");
-        if (!r) return;
-        const o = r.dataset.key, i = r.querySelector(".crs-qty-value"), c = parseInt((i == null ? void 0 : i.textContent) || "1", 10), l = ((f = (h = r.querySelector(".crs-item-title")) == null ? void 0 : h.textContent) == null ? void 0 : f.trim()) || o;
+        const s = n.closest("[data-key]");
+        if (!s) return;
+        const o = s.dataset.key, i = s.querySelector(".crs-qty-value"), c = parseInt((i == null ? void 0 : i.textContent) || "1", 10), l = ((f = (h = s.querySelector(".crs-item-title")) == null ? void 0 : h.textContent) == null ? void 0 : f.trim()) || o;
         a === "remove" ? (v("slide_cart_item_remove", `Remove: ${l}`, "click", "Cart"), this.updateCart(o, 0)) : a === "decrease" ? (v("slide_cart_item_decrease", `Qty decrease: ${l}`, "click", "Cart"), this.updateCart(o, Math.max(0, c - 1))) : a === "increase" && (v("slide_cart_item_increase", `Qty increase: ${l}`, "click", "Cart"), this.updateCart(o, c + 1));
       });
     }
@@ -1194,11 +1196,11 @@
           return;
         }
         const a = setTimeout(() => {
-          r.disconnect(), n(!1);
-        }, 5e3), r = new MutationObserver(() => {
-          document.querySelector(t) && (clearTimeout(a), r.disconnect(), n(!0));
+          s.disconnect(), n(!1);
+        }, 5e3), s = new MutationObserver(() => {
+          document.querySelector(t) && (clearTimeout(a), s.disconnect(), n(!0));
         });
-        r.observe(document.documentElement, { childList: !0, subtree: !0 });
+        s.observe(document.documentElement, { childList: !0, subtree: !0 });
       });
       e("a.btn.add-to-cart").then((t) => {
         t && document.querySelectorAll("a.btn.add-to-cart").forEach((n) => {
@@ -1209,7 +1211,7 @@
         t && document.querySelectorAll("button.zpa-add-to-cart-btn").forEach((n) => {
           const a = n.querySelector(".zpa-btn-custom__caption");
           a && (a.textContent = "ADD TO CART");
-          const r = () => {
+          const s = () => {
             var p, u, h;
             const i = n.closest("form"), c = i == null ? void 0 : i.querySelector('select[name="id"], input[name="id"]');
             if (c && Number(c.value)) return Number(c.value);
@@ -1226,7 +1228,7 @@
             const i = n.closest("section") ?? n.closest("[data-product-wrapper-id]"), c = (i == null ? void 0 : i.querySelector(".zpa-quantity-field")) ?? document.querySelector(".zpa-quantity-field");
             return Math.max(1, parseInt((c == null ? void 0 : c.value) || "1", 10) || 1);
           };
-          this.attachOverlay(n, r, !0, o);
+          this.attachOverlay(n, s, !0, o);
         });
       }), e('button[data-pf-type="ProductATC"]').then((t) => {
         if (!t) return;
@@ -1244,14 +1246,14 @@
       });
     }
     attachOverlay(e, t, n = !1, a) {
-      let r;
+      let s;
       if (n) {
         const i = document.createElement("div");
-        i.className = "crs-atc-btn-wrapper", e.parentElement.insertBefore(i, e), i.appendChild(e), r = i;
+        i.className = "crs-atc-btn-wrapper", e.parentElement.insertBefore(i, e), i.appendChild(e), s = i;
       } else
-        r = e.parentElement, getComputedStyle(r).position === "static" && (r.style.position = "relative");
+        s = e.parentElement, getComputedStyle(s).position === "static" && (s.style.position = "relative");
       const o = document.createElement("div");
-      o.className = "crs-atc-overlay", r.appendChild(o), o.addEventListener("click", async (i) => {
+      o.className = "crs-atc-overlay", s.appendChild(o), o.addEventListener("click", async (i) => {
         var l, d;
         i.stopPropagation(), i.preventDefault();
         const c = t();
@@ -1269,20 +1271,20 @@
       });
     }
     async injectCartButton() {
-      const e = await $(
+      const e = await _(
         'a.hdicon[href="/cart"], a[data-icon-destination-type="cart_dest"]'
       );
       e.style.display = "none";
       const t = e.hasAttribute("data-icon-destination-type");
-      e.insertAdjacentHTML("afterend", t ? T() : B()), e.nextElementSibling.addEventListener("click", () => this.open());
+      e.insertAdjacentHTML("afterend", t ? j() : M()), e.nextElementSibling.addEventListener("click", () => this.open());
     }
     bindClose() {
-      var e, t, n, a, r, o;
-      (t = (e = this.overlay) == null ? void 0 : e.querySelector(".crs-cart-close")) == null || t.addEventListener("click", () => this.close()), (a = (n = this.overlay) == null ? void 0 : n.querySelector(".crs-cart-backdrop")) == null || a.addEventListener("click", () => this.close()), (o = (r = this.overlay) == null ? void 0 : r.querySelector(".crs-checkout-btn")) == null || o.addEventListener("click", () => {
+      var e, t, n, a, s, o;
+      (t = (e = this.overlay) == null ? void 0 : e.querySelector(".crs-cart-close")) == null || t.addEventListener("click", () => this.close()), (a = (n = this.overlay) == null ? void 0 : n.querySelector(".crs-cart-backdrop")) == null || a.addEventListener("click", () => this.close()), (o = (s = this.overlay) == null ? void 0 : s.querySelector(".crs-checkout-btn")) == null || o.addEventListener("click", () => {
         v("slide_cart_checkout", "Checkout clicked", "click", "Slide Cart");
       });
     }
   }
-  new Z();
+  new A();
 })();
 //# sourceMappingURL=index.js.map
