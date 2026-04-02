@@ -30,6 +30,7 @@
 .crs-buy-now-btn {
   display: block;
   width: 100%;
+  grid-column: 1/-1;
   margin-top: 8px;
   padding: 10px 20px;
   border: 2px solid;
