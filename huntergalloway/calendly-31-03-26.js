@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const y = `.step.step_5.crs_calendly_mode > *:not(.crs_calendly_wrapper) {
+  const p = `.step.step_5.crs_calendly_mode > *:not(.crs_calendly_wrapper) {
   display: none !important;
 }
 .step.step_5 .crs_calendly_wrapper {
@@ -18,8 +18,8 @@
       event_desc: e,
       event_type: t,
       event_loc: n
-    }), a(`Event: ${r} | ${e} | ${t} | ${n}`, "success");
-  }, f = (r) => new Promise((e) => {
+    }), l(`Event: ${r} | ${e} | ${t} | ${n}`, "success");
+  }, m = (r) => new Promise((e) => {
     const t = document.querySelector(r);
     t && e(t);
     const n = new MutationObserver(() => {
@@ -30,25 +30,25 @@
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: r, dev: e }) => {
+  }), y = ({ name: r, dev: e }) => {
     console.log(
       `%c EXP: ${r} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class l {
+  class a {
     constructor(e) {
-      this.elements = e instanceof l ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof a ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, t, n) {
       return typeof t == "function" && (n = t, t = ""), this.elements.forEach((s) => {
-        s.addEventListener(e, function(o) {
+        s.addEventListener(e, function(i) {
           var c;
           if (t !== "") {
-            let i = (c = o.target) == null ? void 0 : c.closest(t);
-            i && (n == null || n.call(i, o));
+            let o = (c = i.target) == null ? void 0 : c.closest(t);
+            o && (n == null || n.call(o, i));
           } else
-            n == null || n.call(s, o);
+            n == null || n.call(s, i);
         });
       }), this;
     }
@@ -69,18 +69,18 @@
     }
     each(e) {
       for (let t of this.elements)
-        e(new l(t), this.elements.indexOf(t));
+        e(new a(t), this.elements.indexOf(t));
       return this;
     }
     style(e, t) {
-      const n = e.split("-").map((s, o) => o === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
+      const n = e.split("-").map((s, i) => i === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
       return this.elements.forEach(function(s) {
         s.style[n] = t;
       }), this;
     }
     find(e) {
       const t = this.elements.map((n) => Array.from(n.querySelectorAll(e)));
-      return new l(t.flat());
+      return new a(t.flat());
     }
     attr(e, t) {
       return t ? (this.elements.forEach(function(n) {
@@ -98,32 +98,32 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const h = (r) => new l(r), w = async (r) => {
+  const h = (r) => new a(r), w = async (r) => {
     const e = (t) => new Promise((n, s) => {
-      const o = t.split(".").pop();
-      if (o === "js") {
+      const i = t.split(".").pop();
+      if (i === "js") {
         if (Array.from(document.scripts).map((d) => d.src.toLowerCase()).includes(t.toLowerCase()))
-          return a(`Script ${t} allready downloaded!`, "success"), n("");
-        const i = document.createElement("script");
-        i.src = t, i.onload = n, i.onerror = s, document.head.appendChild(i);
-      } else if (o === "css") {
+          return l(`Script ${t} allready downloaded!`, "success"), n("");
+        const o = document.createElement("script");
+        o.src = t, o.onload = n, o.onerror = s, document.head.appendChild(o);
+      } else if (i === "css") {
         if (Array.from(document.styleSheets).map((d) => {
-          var p;
-          return (p = d.href) == null ? void 0 : p.toLowerCase();
+          var f;
+          return (f = d.href) == null ? void 0 : f.toLowerCase();
         }).includes(t.toLowerCase()))
-          return a(`Style ${t} allready downloaded!`, "success"), n("");
-        const i = document.createElement("link");
-        i.rel = "stylesheet", i.href = t, i.onload = n, i.onerror = s, document.head.appendChild(i);
+          return l(`Style ${t} allready downloaded!`, "success"), n("");
+        const o = document.createElement("link");
+        o.rel = "stylesheet", o.href = t, o.onload = n, o.onerror = s, document.head.appendChild(o);
       }
     });
     for (const t of r)
-      a(t), await e(t), a(`Loaded librari ${t}`);
-    a("All libraries loaded!", "success");
+      l(t), await e(t), l(`Loaded librari ${t}`);
+    l("All libraries loaded!", "success");
   }, _ = (r) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", r, "variant_1"));
     }, 1e3);
-  }, a = (r, e = "info") => {
+  }, l = (r, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -148,15 +148,15 @@
   </div>
 `
   );
-  m({ name: "Calendly", dev: "YK" }), _("calendly");
+  y({ name: "Calendly", dev: "YK" }), _("calendly");
   const g = "https://calendly.com/d/csns-vtq-npr/broker-chat";
   class v {
     constructor() {
       this.init();
     }
     async init() {
-      await f("body"), h("head").elements[0].insertAdjacentHTML("beforeend", `<style>${y}</style>`);
-      const e = await f(".step.step_5");
+      await m("body"), h("head").elements[0].insertAdjacentHTML("beforeend", `<style>${p}</style>`);
+      const e = await m(".step.step_5");
       this.observeStep5(e), e.classList.contains("active") && this.injectCalendly(e);
     }
     observeStep5(e) {
@@ -165,13 +165,13 @@
       }).observe(e, { attributes: !0, attributeFilter: ["class"] });
     }
     getUserData() {
-      var s, o, c;
+      var s, i, c;
       const e = document.querySelector(
         'input#name, input[name="name"], input#first_name, input[name="first_name"]'
       ), t = document.querySelector('input#email, input[type="email"], input[name="email"]'), n = document.querySelector('input#phone, input[name="phone"], input[type="tel"]');
       return {
         name: ((s = e == null ? void 0 : e.value) == null ? void 0 : s.trim()) || "",
-        email: ((o = t == null ? void 0 : t.value) == null ? void 0 : o.trim()) || "",
+        email: ((i = t == null ? void 0 : t.value) == null ? void 0 : i.trim()) || "",
         phone: ((c = n == null ? void 0 : n.value) == null ? void 0 : c.trim()) || ""
       };
     }
@@ -182,18 +182,23 @@
     async injectCalendly(e) {
       e.classList.add("crs_calendly_mode"), e.insertAdjacentHTML("beforeend", b);
       const t = e.querySelector(".crs_calendly_widget");
-      t && (await w(["https://assets.calendly.com/assets/external/widget.js"]), window.Calendly && window.Calendly.initInlineWidget({
+      if (!t) return;
+      await w(["https://assets.calendly.com/assets/external/widget.js"]), window.Calendly && window.Calendly.initInlineWidget({
         url: g,
         parentElement: t,
         prefill: this.buildPrefill()
-      }), window.addEventListener("message", (n) => {
-        var s;
-        ((s = n.data) == null ? void 0 : s.event) === "calendly.event_scheduled" && this.onBookingConfirmed(e);
-      }), u("exp_calendly_widget_shown", "Calendly widget shown", "view", "Calendly"));
+      }), window.addEventListener("message", (s) => {
+        var i;
+        ((i = s.data) == null ? void 0 : i.event) === "calendly.event_scheduled" && this.onBookingConfirmed(e);
+      });
+      const n = this.buildPrefill().email || "unknown email";
+      u("exp_calendly_widget_shown", `Calendly widget shown ${n}`, "view", "Calendly");
     }
     onBookingConfirmed(e) {
       const t = e.querySelector(".crs_calendly_wrapper");
-      t && (t.style.display = "none"), e.classList.remove("crs_calendly_mode"), u("exp_calendly_event_scheduled", "Calendly booking confirmed", "success", "Calendly");
+      t && (t.style.display = "none"), e.classList.remove("crs_calendly_mode");
+      const n = this.buildPrefill().email || "unknown email";
+      u("exp_calendly_event_scheduled", `Calendly booking confirmed ${n}`, "success", "Calendly");
     }
   }
   new v();
