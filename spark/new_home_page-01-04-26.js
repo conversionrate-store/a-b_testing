@@ -308,10 +308,10 @@
 }
 .crs_revenue_block .crs_revenue_disclaimer {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 350;
   line-height: 22px;
-  color: #969696;
+  color: #6d6d6d;
 }
 
 .crs_calc_block {
@@ -319,6 +319,7 @@
   flex-direction: column;
   gap: 32px;
   padding: 32px 20px;
+  background: #f9f9f9;
 }
 .crs_calc_block .crs_calc_intro {
   display: flex;
@@ -636,6 +637,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   flex-shrink: 0;
+  border-radius: 50%;
 }
 .crs_reviews_block .crs_review_card__avatar--placeholder {
   display: flex;
@@ -700,7 +702,7 @@
       event_desc: n,
       event_type: e,
       event_loc: r
-    }), p(`Event: ${s} | ${n} | ${e} | ${r}`, "success");
+    }), h(`Event: ${s} | ${n} | ${e} | ${r}`, "success");
   }, v = (s) => new Promise((n) => {
     const e = document.querySelector(s);
     e && n(e);
@@ -785,7 +787,7 @@
       const a = e.split(".").pop();
       if (a === "js") {
         if (Array.from(document.scripts).map((_) => _.src.toLowerCase()).includes(e.toLowerCase()))
-          return p(`Script ${e} allready downloaded!`, "success"), r("");
+          return h(`Script ${e} allready downloaded!`, "success"), r("");
         const t = document.createElement("script");
         t.src = e, t.onload = r, t.onerror = c, document.head.appendChild(t);
       } else if (a === "css") {
@@ -793,14 +795,14 @@
           var u;
           return (u = _.href) == null ? void 0 : u.toLowerCase();
         }).includes(e.toLowerCase()))
-          return p(`Style ${e} allready downloaded!`, "success"), r("");
+          return h(`Style ${e} allready downloaded!`, "success"), r("");
         const t = document.createElement("link");
         t.rel = "stylesheet", t.href = e, t.onload = r, t.onerror = c, document.head.appendChild(t);
       }
     });
     for (const e of s)
-      p(e), await n(e), p(`Loaded librari ${e}`);
-    p("All libraries loaded!", "success");
+      h(e), await n(e), h(`Loaded librari ${e}`);
+    h("All libraries loaded!", "success");
   }, C = (s) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", s, "variant_1"));
@@ -816,7 +818,7 @@
             "view",
             e
           ), i.disconnect();
-        }, c) : (p("Element is not fully visible", "warn"), clearTimeout(t));
+        }, c) : (h("Element is not fully visible", "warn"), clearTimeout(t));
       },
       { threshold: [a] }
     ), typeof s == "string") {
@@ -824,7 +826,7 @@
       _ && i.observe(_);
     } else
       i.observe(s);
-  }, p = (s, n = "info") => {
+  }, h = (s, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -841,7 +843,7 @@
         break;
     }
     console.log(`%c>>> ${s}`, `${e} font-size: 16px; font-weight: 600`);
-  }, h = "https://conversionrate-store.github.io/a-b_images/spark/", l = {
+  }, p = "https://conversionrate-store.github.io/a-b_images/spark/", l = {
     check: `<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
 		<path d="M7.87503 17.8675L2.44128 12.4338L4.91753 9.95752L7.87503 12.9238L16.52 4.27002L18.9963 6.74627L7.87503 17.8675Z" fill="#80C67D"/>
 		</svg>`,
@@ -928,7 +930,7 @@
           </li>
         </ul>
         <div class="crs_growth_card__img">
-          <img src="${h}imp_1.webp" alt="Finance dashboard" />
+          <img src="${p}imp_1.webp" alt="Finance dashboard" />
         </div>
       </div>
       <div class="crs_growth_card">
@@ -947,7 +949,7 @@
           </li>
         </ul>
         <div class="crs_growth_card__img">
-          <img src="${h}imp_2.webp" alt="Marketing automation" />
+          <img src="${p}imp_2.webp" alt="Marketing automation" />
         </div>
       </div>
       <div class="crs_growth_card">
@@ -966,7 +968,7 @@
           </li>
         </ul>
         <div class="crs_growth_card__img">
-          <img src="${h}imp_3.webp" alt="Sales pipeline" />
+          <img src="${p}imp_3.webp" alt="Sales pipeline" />
         </div>
       </div>
       <div class="crs_growth_card">
@@ -985,14 +987,14 @@
           </li>
         </ul>
         <div class="crs_growth_card__img">
-          <img src="${h}imp_4.webp" alt="Operations dashboard" />
+          <img src="${p}imp_4.webp" alt="Operations dashboard" />
         </div>
       </div>
     </div>
     <a href="/demo" class="crs_growth_cta">SCHEDULE A LIVE DEMO</a>
   </section>
 `
-  ), E = (
+  ), $ = (
     /* HTML */
     `
   <section class="crs_revenue_block">
@@ -1016,7 +1018,7 @@
     </p>
   </section>
 `
-  ), $ = (
+  ), E = (
     /* HTML */
     `
   <section class="crs_calc_block">
@@ -1080,19 +1082,19 @@
     {
       name: "Raymond Ahles",
       role: "Spark User",
-      photo: `${h}raymond.webp`,
+      photo: `${p}raymond.webp`,
       text: "We’ve been around for over 26 years and until Spark Minds came along we always had issues. In our case, it was because we tend to do things a bit differently and need a lot of customization. Spark was the answer and it just keeps improving. They don’t rest and support is unlike anything we’ve seen before. I give Spark, Master Ron Sell, GM Park, and the whole team my highest recommendation."
     },
     {
       name: "Dan Heart",
       role: "Spark User",
-      photo: "",
+      photo: `${p}dan.webp`,
       text: "We have been members of Spark for a while. Their continuous improvement is inspiring. Customer service is amazing. Dedication to clients is exceptional. There are a lot of awesome companies out there and I’m sure are great. It’s always a hard decision who to choose. Spark has been nothing but great for us. Highly recommended!"
     },
     {
       name: "Amanda Buser Denu",
       role: "Spark User",
-      photo: "",
+      photo: `${p}amanda.webp`,
       text: "I am sooo appreciative of this amazing Spark software and the phenomenal team that works around the clock for us. Honestly, I can’t express enough how awesome you guys are!!! You answer my questions promptly, you set up videos to walk me through questions, you stay positive, and are constantly working on ways to improve & help school owners like myself… even in these challenging times. I just want to say THANK YOU!!!! You guys rock!!!"
     }
   ], A = (
@@ -1104,7 +1106,7 @@
       <p class="crs_reviews_desc">Learn Why These Schools Choose SPARK</p>
     </div>
     <div class="crs_reviews_logos">
-      <img src="${h}logos.webp" alt="" />
+      <img src="${p}logos.webp" alt="" />
     </div>
     <div class="swiper crs_reviews_swiper">
       <div class="swiper-wrapper">
@@ -1138,7 +1140,7 @@
       this.init();
     }
     async init() {
-      await v("body"), o("head").elements[0].insertAdjacentHTML("beforeend", `<style>${x}</style>`), await v('[data-elementor-type="wp-post"]'), o('[data-elementor-type="wp-post"]').elements[0].insertAdjacentHTML("afterbegin", L), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("afterbegin", S), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", z), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", E), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", $), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", A), this.initCalculator(), this.initReviews(), this.initTracking();
+      await v("body"), o("head").elements[0].insertAdjacentHTML("beforeend", `<style>${x}</style>`), await v('[data-elementor-type="wp-post"]'), o('[data-elementor-type="wp-post"]').elements[0].insertAdjacentHTML("afterbegin", L), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("afterbegin", S), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", z), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", $), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", E), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", A), this.initCalculator(), this.initReviews(), this.initTracking();
     }
     initCalculator() {
       const n = document.querySelector(".crs_calc_slider"), e = document.querySelector(".crs_calc_slider_value"), r = document.querySelector(".crs_calc_rate"), c = document.querySelector(".crs_calc_btn"), a = document.getElementById("crs_calc_form"), i = document.getElementById("crs_calc_results"), t = document.querySelector(".crs_calc_time"), _ = document.querySelector(".crs_calc_money"), u = () => {
