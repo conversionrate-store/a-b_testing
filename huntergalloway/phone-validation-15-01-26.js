@@ -387,7 +387,7 @@
     async init() {
       await _(".quiz_card .step_4 input#phone"), i("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_phone_style">${h}</style>`), i(".quiz_card .step_4 input#phone").elements[0].insertAdjacentHTML("afterend", m), i("#main_button").on("click", () => {
         const e = i(".crs_phone_input").elements[0].value;
-        i(".step_4").elements[0].classList.contains("active") && i(".step_4 #phone+.field-error").elements[0] && this.validatePhone(e) && !this.isVerified && i(".step_4 #phone+.field-error").text("Please verify you phone number");
+        i(".step_4").elements[0].classList.contains("active") && i(".step_4 #phone+.field-error").elements[0] && this.validatePhone(e) && !this.isVerified && i(".step_4 #phone+.field-error").text("Please verify your phone number");
       }), this.setupPhoneInput(), this.setupCodeInputs(), this.setupResendButton(), this.setupSendCodeButton();
     }
     // Format phone input with mask
