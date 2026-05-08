@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const f = `.crs_up_wrap {
+  const h = `.crs_up_wrap {
   font-family: inherit;
   box-sizing: border-box;
 }
@@ -343,20 +343,28 @@
 }
 .sfc-howTrialWorks__pTrialItem {
   text-transform: none;
-}/*# sourceMappingURL=style.css.map */`, o = (a) => new Promise((n) => {
-    const t = document.querySelector(a);
+}/*# sourceMappingURL=style.css.map */`, c = (s, n, t, e = "") => {
+    window.dataLayer = window.dataLayer || [], window.dataLayer.push({
+      event: "event-to-ga4",
+      event_name: s,
+      event_desc: n,
+      event_type: t,
+      event_loc: e
+    }), x(`Event: ${s} | ${n} | ${t} | ${e}`, "success");
+  }, r = (s) => new Promise((n) => {
+    const t = document.querySelector(s);
     t && n(t);
     const e = new MutationObserver(() => {
-      const s = document.querySelector(a);
-      s && (n(s), e.disconnect());
+      const a = document.querySelector(s);
+      a && (n(a), e.disconnect());
     });
     e.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), h = ({ name: a, dev: n }) => {
+  }), m = ({ name: s, dev: n }) => {
     console.log(
-      `%c EXP: ${a} (DEV: ${n})`,
+      `%c EXP: ${s} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -365,14 +373,14 @@
       this.elements = n instanceof l ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
     on(n, t, e) {
-      return typeof t == "function" && (e = t, t = ""), this.elements.forEach((s) => {
-        s.addEventListener(n, function(r) {
-          var _;
+      return typeof t == "function" && (e = t, t = ""), this.elements.forEach((a) => {
+        a.addEventListener(n, function(o) {
+          var u;
           if (t !== "") {
-            let u = (_ = r.target) == null ? void 0 : _.closest(t);
-            u && (e == null || e.call(u, r));
+            let f = (u = o.target) == null ? void 0 : u.closest(t);
+            f && (e == null || e.call(f, o));
           } else
-            e == null || e.call(s, r);
+            e == null || e.call(a, o);
         });
       }), this;
     }
@@ -397,9 +405,9 @@
       return this;
     }
     style(n, t) {
-      const e = n.split("-").map((s, r) => r === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
-      return this.elements.forEach(function(s) {
-        s.style[e] = t;
+      const e = n.split("-").map((a, o) => o === 0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("");
+      return this.elements.forEach(function(a) {
+        a.style[e] = t;
       }), this;
     }
     find(n) {
@@ -422,15 +430,32 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const i = (a) => new l(a), m = (a) => {
+  const i = (s) => new l(s), g = (s) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", a, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", s, "variant_1"));
     }, 1e3);
-  }, c = (/* @__PURE__ */ new Date()).getTime(), g = new Date(c + 4 * 24 * 60 * 60 * 1e3).toLocaleDateString("en-US", {
+  }, x = (s, n = "info") => {
+    let t;
+    switch (n) {
+      case "info":
+        t = "color: #3498db;";
+        break;
+      case "warn":
+        t = "color: #f39c12;";
+        break;
+      case "error":
+        t = "color: #e74c3c;";
+        break;
+      case "success":
+        t = "color: #2ecc71;";
+        break;
+    }
+    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
+  }, p = (/* @__PURE__ */ new Date()).getTime(), w = new Date(p + 4 * 24 * 60 * 60 * 1e3).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric"
-  }), x = new Date(c + 7 * 24 * 60 * 60 * 1e3).toLocaleDateString("en-US", {
+  }), b = new Date(p + 7 * 24 * 60 * 60 * 1e3).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric"
@@ -502,7 +527,7 @@
 <path d="M17.2933 11.3438C14.4208 11.3438 12.084 13.6805 12.084 16.5531C12.084 19.4257 14.4208 21.7628 17.2933 21.7628C20.1659 21.7628 22.5031 19.4257 22.5031 16.5531C22.5031 13.6805 20.1659 11.3438 17.2933 11.3438ZM13.584 16.5531C13.584 14.5078 15.248 12.8438 17.2933 12.8438C19.339 12.8438 21.0031 14.5078 21.0031 16.5531C21.0031 18.5988 19.339 20.2628 17.2933 20.2628C15.248 20.2628 13.584 18.5988 13.584 16.5531Z" fill="#027DB8"/>
 <path d="M18.9969 14.8447C18.704 14.5518 18.2294 14.5518 17.9364 14.8447L17.291 15.4902L16.6455 14.8447C16.3525 14.5518 15.8779 14.5518 15.585 14.8447C15.292 15.1377 15.292 15.6123 15.585 15.9053L16.2304 16.5507L15.585 17.1962C15.292 17.4891 15.292 17.9637 15.585 18.2567C15.7314 18.4032 15.9233 18.4764 16.1152 18.4764C16.3071 18.4764 16.499 18.4032 16.6455 18.2567L17.291 17.6113L17.9364 18.2567C18.0829 18.4032 18.2748 18.4764 18.4667 18.4764C18.6586 18.4764 18.8505 18.4032 18.9969 18.2567C19.2899 17.9637 19.2899 17.4891 18.9969 17.1962L18.3515 16.5507L18.9969 15.9053C19.2899 15.6123 19.2899 15.1377 18.9969 14.8447Z" fill="#027DB8"/>
 </svg>`
-  }, p = (
+  }, d = (
     /*html*/
     `
         <div class="crs_up_header">
@@ -541,14 +566,14 @@
           </li>
         </ul>
 `
-  ), d = (
+  ), _ = (
     /*html*/
     `
   <div class="crs_up_wrap">
     <div class="crs_up_inner">
 
       <div class="crs_up_left">
-        ${p}
+        ${d}
 
         <div class="crs_up_cta">
           <button class="crs_up_btn">Start My 7-Day Free Trial</button>
@@ -581,7 +606,7 @@
                 <div class="crs_up_tl_icon">${C.bell}</div>
               </div>
               <div class="crs_up_tl_content">
-                <h4>${g}</h4>
+                <h4>${w}</h4>
                 <p>Get reminder 3 days before your trial ends. Cancel to switch to the free plan</p>
               </div>
             </div>
@@ -591,7 +616,7 @@
                 <div class="crs_up_tl_icon">${C.crown}</div>
               </div>
               <div class="crs_up_tl_content">
-                <h4>${x}</h4>
+                <h4>${b}</h4>
                 <p>Your subscription starts unless you cancel it.</p>
               </div>
             </div>
@@ -611,49 +636,55 @@
   </div>
 `
   );
-  h({ name: "Update popup", dev: "YK" }), m("update_popup");
-  class w {
+  m({ name: "Update popup", dev: "YK" }), g("update_popup");
+  class v {
     constructor() {
       this.init();
     }
     async init() {
-      await o("body"), i("body").elements[0].insertAdjacentHTML("beforeend", `<style>${f}</style>`), window.location.pathname === "/" && (i(".sfc-section--plan").elements[0].style.display = "none", i(".sfc-section--plan").elements[0].insertAdjacentHTML("afterend", d), i(".crs_up_btn").elements[0].addEventListener("click", () => this.openPopup(!0))), window.location.pathname === "/become-a-subscriber" && (i(".sfc-becomeASubscriber__section--hero").elements[0].style.display = "none", i(".sfc-becomeASubscriber__section--hero").elements[0].insertAdjacentHTML(
+      await r("body"), i("body").elements[0].insertAdjacentHTML("beforeend", `<style>${h}</style>`), window.location.pathname === "/" && (i(".sfc-section--plan").elements[0].style.display = "none", i(".sfc-section--plan").elements[0].insertAdjacentHTML("afterend", _), i(".crs_up_btn").elements[0].addEventListener("click", () => this.openPopup(!0))), window.location.pathname === "/become-a-subscriber" && (i(".sfc-becomeASubscriber__section--hero").elements[0].style.display = "none", i(".sfc-becomeASubscriber__section--hero").elements[0].insertAdjacentHTML(
         "afterend",
         /*html*/
         `
 					<section class="crs_up_hero">
 						<h1>Your ultimate Yoga journey starts here</h1>
-						${d}
+						${_}
 					</section>
 				`
       ), i(".crs_up_btn").elements[0].addEventListener("click", () => this.openPopup(!0))), this.updatePopup(), this.updateHeaderBtns();
     }
     async openPopup(n) {
-      i("#global-trial-funnel-trigger--back").elements[0].click(), n && i(
-        '[data-sfc-id="dialog"]:first-of-type .sfc-modalTrialFunnel__main--step1 button'
-      ).elements[0].click();
+      if (i("#global-trial-funnel-trigger--back").elements[0].click(), n) {
+        i(
+          '[data-sfc-id="dialog"]:first-of-type .sfc-modalTrialFunnel__main--step1 button'
+        ).elements[0].click();
+        const t = window.location.pathname === "/" ? "home" : "become-a-subscriber";
+        c("update_popup_opened_from_btn", "click first popup block", "click", t);
+      }
     }
     async updatePopup() {
-      await o('[data-sfc-id="dialog"]:first-of-type .sfc-modalTrialFunnel__main--step1'), i(
+      await r('[data-sfc-id="dialog"]:first-of-type .sfc-modalTrialFunnel__main--step1'), i(
         '[data-sfc-id="dialog"]:first-of-type .sfc-modalTrialFunnel__main--step1>header'
       ).elements[0].style.display = "none", i(
         '[data-sfc-id="dialog"]:first-of-type .sfc-modalTrialFunnel__main--step1>ul'
       ).elements[0].style.display = "none", i(
         '[data-sfc-id="dialog"]:first-of-type .sfc-modalTrialFunnel__main--step1'
-      ).elements[0].insertAdjacentHTML("afterbegin", p);
+      ).elements[0].insertAdjacentHTML("afterbegin", d);
     }
     async updateHeaderBtns() {
-      await o("header .c-dropdownMenu--account .sfc-button--cta");
+      await r("header .c-dropdownMenu--account .sfc-button--cta");
       const n = i("header .c-dropdownMenu--account .sfc-button--cta").elements;
       i("header .c-dropdownMenu--account .sfc-button--cta .sfc-button__text").elements.forEach((e) => {
         e.textContent = "Start free trial";
       }), n.forEach((e) => {
-        e.addEventListener("click", (s) => {
-          s.preventDefault(), this.openPopup(!1);
+        e.addEventListener("click", (a) => {
+          a.preventDefault(), this.openPopup(!1);
+          const o = window.location.pathname;
+          c("update_popup_opened_from_btn", "click header btn", "click", o);
         });
       });
     }
   }
-  new w();
+  new v();
 })();
 //# sourceMappingURL=index.js.map
