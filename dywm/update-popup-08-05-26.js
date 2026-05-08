@@ -343,6 +343,10 @@
 }
 .sfc-howTrialWorks__pTrialItem {
   text-transform: none;
+}
+
+.sfc-modalTrialFunnel__progressBtn--back {
+  padding-left: 0 !important;
 }/*# sourceMappingURL=style.css.map */`, c = (s, n, t, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
