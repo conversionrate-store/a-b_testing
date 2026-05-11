@@ -347,6 +347,15 @@
 
 .sfc-modalTrialFunnel__progressBtn--back {
   padding-left: 0 !important;
+}
+
+.sfc-modalTrialFunnel__h2 {
+  font-size: 28px !important;
+  margin: 0 0 12px !important;
+}
+
+.sfc-modalTrialFunnel .sfc-pricingBenefits__content {
+  font-size: 16px !important;
 }/*# sourceMappingURL=style.css.map */`, c = (s, n, t, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
