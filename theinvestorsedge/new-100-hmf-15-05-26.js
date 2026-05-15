@@ -7,6 +7,15 @@
   display: none;
 }
 
+.pwr-header--padding {
+  padding: 13px 0;
+}
+
+.pwr-header-logo__img {
+  height: 50px;
+  width: auto;
+}
+
 .crs-hero {
   position: relative;
   overflow: hidden;
@@ -16,11 +25,12 @@
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  padding: 40px 20px 0;
+  padding: 34px 20px 0;
   display: flex;
   flex-direction: column;
   gap: 0;
   background: linear-gradient(rgba(9, 35, 62, 0.7), rgba(9, 35, 62, 0.7)), url("https://conversionrate-store.github.io/a-b_images/theinvestorsedge/bg.webp") no-repeat center;
+  background-size: cover;
 }
 @media (max-width: 768px) {
   .crs-hero__container {
@@ -37,14 +47,17 @@
 }
 .crs-hero__label {
   font-size: 28px;
-  font-weight: 500;
+  line-height: 1;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 0.02em;
   text-align: center;
+  margin: 0 0 12px;
 }
 @media (max-width: 768px) {
   .crs-hero__label {
     font-size: 16px;
+    line-height: 1.75;
     color: #425b76;
     text-align: left;
     margin: 0;
@@ -73,12 +86,14 @@
   border-radius: 8px;
   background: #cfe2f3;
   padding: 12px 10px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
+  max-width: 600px;
+  width: 100%;
 }
 @media (min-width: 768px) {
   .crs-hero__badges {
     justify-content: center;
-    padding: 12px 55px;
+    padding: 12px 15px;
     gap: 12px;
   }
 }
@@ -87,7 +102,7 @@
   align-items: center;
   gap: 6px;
   color: #09233e;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
 }
 .crs-hero__badge-img {
@@ -96,26 +111,22 @@
   -o-object-fit: contain;
      object-fit: contain;
 }
-@media (min-width: 768px) {
-  .crs-hero__badge {
-    font-size: 16px;
-  }
-}
 .crs-hero__badge-sep {
   color: #09233e;
   font-size: 18px;
 }
 .crs-hero__desc {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
   color: #09233e;
-  margin: 0 0 28px;
+  margin: 0 auto 28px;
+  width: 100%;
+  max-width: 680px;
 }
 @media (min-width: 768px) {
   .crs-hero__desc {
     font-size: 24px;
     text-align: center;
-    padding: 0 60px;
     color: #fff;
   }
 }
@@ -160,7 +171,7 @@
   align-items: center;
   gap: 8px;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
+  font-size: 16px;
 }
 .crs-hero__microcopy-item svg {
   flex-shrink: 0;
@@ -403,7 +414,7 @@
   padding: 20px 18px;
 }
 .crs-hero-below__mistake-text {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
   color: #09233e;
   margin: 0;
@@ -415,7 +426,7 @@
   }
 }
 .crs-hero-below__arv-text {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
@@ -434,13 +445,13 @@
   background: #fff;
 }
 .crs-first-deal__container {
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 48px 20px 0;
 }
 @media (min-width: 768px) {
   .crs-first-deal__container {
-    padding: 64px 0 80px;
+    padding: 64px 0 0;
   }
 }
 .crs-first-deal__title {
@@ -453,7 +464,7 @@
 @media (min-width: 768px) {
   .crs-first-deal__title {
     font-size: 38px;
-    text-align: center;
+    text-align: left;
   }
 }
 .crs-first-deal__house-wrap {
@@ -493,7 +504,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
 }
 .crs-first-deal__step {
   display: flex;
@@ -534,26 +545,21 @@
   flex: 1;
 }
 .crs-first-deal__step-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #09233e;
   margin: 0;
 }
 @media (min-width: 768px) {
   .crs-first-deal__step-title {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 .crs-first-deal__step-desc {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.65;
   color: #3d4a5c;
   margin: 0;
-}
-@media (min-width: 768px) {
-  .crs-first-deal__step-desc {
-    font-size: 16px;
-  }
 }
 .crs-first-deal__step-link {
   display: inline-flex;
@@ -572,7 +578,7 @@
   flex-shrink: 0;
 }
 .crs-first-deal__testimonial {
-  background: rgba(89, 180, 229, 0.1);
+  background: #cfe2f3;
   border-radius: 10px;
   padding: 16px;
   display: flex;
@@ -581,15 +587,14 @@
   margin-top: 4px;
 }
 .crs-first-deal__testimonial-text {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: #09233e;
   margin: 0;
-  font-style: italic;
 }
 .crs-first-deal__testimonial-author {
-  font-size: 13px;
-  color: #6b7a8d;
+  font-size: 16px;
+  color: #09233e;
   margin: 0;
   font-weight: 500;
 }
@@ -598,9 +603,9 @@
   background: #fff;
 }
 .crs-do-qualify__container {
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 48px 20px 56px;
+  padding: 48px 0 56px;
 }
 @media (max-width: 768px) {
   .crs-do-qualify__container {
@@ -620,15 +625,14 @@
   }
 }
 .crs-do-qualify__intro {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
-  color: #3d4a5c;
+  color: #09233e;
   margin: 0 0 20px;
 }
 .crs-do-qualify__disq-box {
-  background: #f5f7fa;
+  background: #f4f6fa;
   border-radius: 10px;
-  border: 1px solid #e0e5ed;
   padding: 20px;
   margin-bottom: 24px;
 }
@@ -665,7 +669,7 @@
   font-size: 16px;
   line-height: 1.6;
   color: #09233e;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0 0 28px;
 }
 .crs-do-qualify__benefits {
@@ -673,9 +677,8 @@
   flex-direction: column;
   gap: 16px;
   margin-bottom: 32px;
-  background: #fff;
+  background: #f4f6fa;
   border-radius: 10px;
-  border: 1px solid #e0e5ed;
   padding: 20px;
 }
 @media (min-width: 768px) {
@@ -729,7 +732,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #6b7a8d;
+  color: #0d2034;
   font-size: 14px;
 }
 .crs-do-qualify__microcopy-item svg {
@@ -764,7 +767,7 @@
   background: #09233e;
 }
 .crs-qualify__container {
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 48px 20px 56px;
 }
@@ -791,7 +794,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: #1a3558;
+  background: rgba(207, 226, 243, 0.4);
   border-radius: 8px;
   padding: 14px 20px;
   margin-bottom: 28px;
@@ -807,15 +810,10 @@
   height: 22px;
 }
 .crs-qualify__desc {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.85);
   margin: 0 0 32px;
-}
-@media (min-width: 768px) {
-  .crs-qualify__desc {
-    font-size: 16px;
-  }
 }
 .crs-qualify__stats {
   display: flex;
@@ -840,18 +838,13 @@
   margin-top: 2px;
 }
 .crs-qualify__stat-text {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
   margin: 0;
 }
 .crs-qualify__stat-text strong {
   font-weight: 700;
-}
-@media (min-width: 768px) {
-  .crs-qualify__stat-text {
-    font-size: 16px;
-  }
 }
 
 .crs-reviews {
@@ -864,7 +857,7 @@
   }
 }
 .crs-reviews__container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
@@ -882,15 +875,10 @@
   }
 }
 .crs-reviews__subtitle {
-  font-size: 15px;
+  font-size: 16px;
   color: #3d4a5c;
   margin: 0 auto 20px;
   max-width: 640px;
-}
-@media (min-width: 768px) {
-  .crs-reviews__subtitle {
-    font-size: 16px;
-  }
 }
 .crs-reviews__checklist {
   border-radius: 10px;
@@ -1010,7 +998,7 @@
 .crs-reviews__divider {
   border: none;
   border-top: 1px solid #ff9902;
-  margin: 32px 0;
+  margin: 42px 0;
 }
 @media (max-width: 768px) {
   .crs-reviews__divider {
@@ -1080,7 +1068,7 @@
 }
 @media (min-width: 768px) {
   .crs-reviews__item-name {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 @media (max-width: 768px) {
@@ -1089,14 +1077,14 @@
   }
 }
 .crs-reviews__item-desc {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
   color: #3d4a5c;
   margin: 0;
 }
 @media (min-width: 768px) {
   .crs-reviews__item-desc {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 .crs-reviews__item-author {
@@ -1161,7 +1149,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #6b7a8d;
+  color: #09233e;
   font-size: 14px;
 }
 .crs-reviews__microcopy-item svg {
@@ -1172,7 +1160,7 @@
   background: #fff;
 }
 .crs-how-fund__container {
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 48px 20px 56px;
 }
@@ -1194,15 +1182,10 @@
   }
 }
 .crs-how-fund__text {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
   color: #3d4a5c;
   margin: 0 0 20px;
-}
-@media (min-width: 768px) {
-  .crs-how-fund__text {
-    font-size: 16px;
-  }
 }
 .crs-how-fund__cost-box {
   background: #f4f6fa;
@@ -1227,7 +1210,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   color: #3d4a5c;
 }
@@ -1262,7 +1245,7 @@
   }
 }
 .crs-how-fund__callout-text {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
   color: #3d4a5c;
   margin: 0;
@@ -1283,7 +1266,6 @@
 }
 .crs-how-fund__cta {
   width: 100%;
-  max-width: 480px;
   padding: 15px 24px;
   background: #ff9902;
   color: #09233e;
@@ -1320,7 +1302,7 @@
   background: #09233e;
 }
 .crs-what-100__container {
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 48px 20px 56px;
 }
@@ -1342,18 +1324,13 @@
   }
 }
 .crs-what-100__text {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
   margin: 0 0 18px;
 }
-@media (min-width: 768px) {
-  .crs-what-100__text {
-    font-size: 16px;
-  }
-}
 .crs-what-100__lead {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
   color: #fff;
   margin: 0 0 24px;
@@ -1363,7 +1340,7 @@
 }
 @media (min-width: 768px) {
   .crs-what-100__lead {
-    font-size: 17px;
+    font-size: 24px;
   }
 }
 .crs-what-100__cost-list {
@@ -1371,6 +1348,9 @@
   flex-direction: column;
   gap: 20px;
   margin-bottom: 28px;
+}
+.crs-what-100__cost-list + .crs-what-100__text {
+  font-size: 14px;
 }
 .crs-what-100__cost-item {
   display: flex;
@@ -1391,22 +1371,17 @@
   height: 28px;
 }
 .crs-what-100__cost-label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #fff;
-}
-@media (min-width: 768px) {
-  .crs-what-100__cost-label {
-    font-size: 18px;
-  }
-}/*# sourceMappingURL=style.css.map */`, m = (t, n, e, s = "") => {
+}/*# sourceMappingURL=style.css.map */`, g = (t, n, e, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
       event_desc: n,
       event_type: e,
       event_loc: s
-    }), g(`Event: ${t} | ${n} | ${e} | ${s}`, "success");
+    }), m(`Event: ${t} | ${n} | ${e} | ${s}`, "success");
   }, f = (t) => new Promise((n) => {
     const e = document.querySelector(t);
     e && n(e);
@@ -1495,13 +1470,13 @@
     if (a = new IntersectionObserver(
       function(h) {
         h[0].isIntersecting === !0 ? p = setTimeout(() => {
-          m(
+          g(
             n,
             h[0].target.dataset.visible || s || "",
             "view",
             e
           ), a.disconnect();
-        }, r) : (g("Element is not fully visible", "warn"), clearTimeout(p));
+        }, r) : (m("Element is not fully visible", "warn"), clearTimeout(p));
       },
       { threshold: [o] }
     ), typeof t == "string") {
@@ -1509,7 +1484,7 @@
       h && a.observe(h);
     } else
       a.observe(t);
-  }, g = (t, n = "info") => {
+  }, m = (t, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -1633,12 +1608,12 @@
           <div class="crs-hero__badge">
             <span>Guided deal finding</span>
           </div>
-          <div class="crs-hero__badge-sep">·</div>
           <div class="crs-hero__badge">
+          	<span class="crs-hero__badge-sep">·</span>
             <span>Low upfront cash</span>
           </div>
-          <div class="crs-hero__badge-sep">·</div>
           <div class="crs-hero__badge">
+          	<span class="crs-hero__badge-sep">·</span>
             <span>No credit minimum</span>
           </div>
         </div>
@@ -1880,7 +1855,7 @@
         </div>
       </div>
       <div class="crs-reviews__list">
-        <div class="crs-reviews__item">
+        <div class="crs-reviews__item crs-reviews__item--reverse">
           <div class="crs-reviews__item-video">
             <script src="https://fast.wistia.com/player.js" async><\/script><script src="https://fast.wistia.com/embed/6kt8w9xnkt.js" async type="module"><\/script><style>wistia-player[media-id='6kt8w9xnkt']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/6kt8w9xnkt/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style> <wistia-player media-id="6kt8w9xnkt" aspect="1.7777777777777777"></wistia-player>
           </div>
@@ -1892,7 +1867,7 @@
           </div>
         </div>
         <div class="crs-reviews__divider"></div>
-        <div class="crs-reviews__item crs-reviews__item--reverse">
+        <div class="crs-reviews__item ">
           <div class="crs-reviews__item-video">
             <script src="https://fast.wistia.com/player.js" async><\/script><script src="https://fast.wistia.com/embed/61bclpy8ng.js" async type="module"><\/script><style>wistia-player[media-id='61bclpy8ng']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/61bclpy8ng/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style> <wistia-player media-id="61bclpy8ng" aspect="1.7777777777777777"></wistia-player>
           </div>
@@ -1904,7 +1879,7 @@
           </div>
         </div>
         <div class="crs-reviews__divider"></div>
-        <div class="crs-reviews__item">
+        <div class="crs-reviews__item crs-reviews__item--reverse">
           <div class="crs-reviews__item-video">
             <script src="https://fast.wistia.com/player.js" async><\/script><script src="https://fast.wistia.com/embed/eqvi2hrbm0.js" async type="module"><\/script><style>wistia-player[media-id='eqvi2hrbm0']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/eqvi2hrbm0/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style> <wistia-player media-id="eqvi2hrbm0" aspect="1.7777777777777777"></wistia-player>
           </div>
@@ -2028,7 +2003,7 @@
               s = a;
               break;
             }
-          m("cta_click", s, "click", "New 100 HMF");
+          g("cta_click", s, "click", "New 100 HMF");
           const r = document.querySelector(".pwr-sec-form__content");
           r && r.scrollIntoView({ behavior: "smooth", block: "start" });
         });
