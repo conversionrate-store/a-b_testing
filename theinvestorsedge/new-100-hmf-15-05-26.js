@@ -56,10 +56,10 @@
   line-height: 1.3;
   color: #09233e;
   margin: 0 0 20px;
-  text-transform: uppercase;
 }
 @media (min-width: 768px) {
   .crs-hero__title {
+    text-transform: uppercase;
     font-size: 52px;
     text-align: center;
     color: #fff;
@@ -2029,7 +2029,7 @@
               break;
             }
           m("cta_click", s, "click", "New 100 HMF");
-          const r = document.querySelector("form");
+          const r = document.querySelector(".pwr-sec-form__content");
           r && r.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
