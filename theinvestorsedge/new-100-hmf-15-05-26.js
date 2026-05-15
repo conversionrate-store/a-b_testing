@@ -566,6 +566,7 @@
 }
 .crs-first-deal__step-link:hover {
   text-decoration: underline;
+  color: #3d85c6;
 }
 .crs-first-deal__step-link svg {
   flex-shrink: 0;
@@ -1729,7 +1730,7 @@
           <div class="crs-first-deal__step-content">
             <h3 class="crs-first-deal__step-title">We evaluate it for you</h3>
             <p class="crs-first-deal__step-desc">Desktop evaluation, virtual walkthrough, on-site check. If it qualifies, we issue a Letter of Intent. Most deals close in ~15 business days.</p>
-            <a href="#" class="crs-first-deal__step-link">${i.link} Learn more about our funding process</a>
+            <a href="https://www.theinvestorsedge.com/our-funding-process" class="crs-first-deal__step-link">${i.link} Learn more about our funding process</a>
           </div>
         </li>
         <li class="crs-first-deal__step">
