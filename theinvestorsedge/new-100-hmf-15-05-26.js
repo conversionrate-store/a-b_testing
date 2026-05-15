@@ -845,7 +845,6 @@
   margin: 0;
 }
 .crs-qualify__stat-text strong {
-  color: #09233e;
   font-weight: 700;
 }
 @media (min-width: 768px) {
