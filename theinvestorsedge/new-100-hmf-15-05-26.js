@@ -46,6 +46,8 @@
   .crs-hero__label {
     font-size: 16px;
     color: #425b76;
+    text-align: left;
+    margin: 0;
   }
 }
 .crs-hero__title {
@@ -135,12 +137,13 @@
   padding: 15px 24px;
   background: #ff9902;
   color: #09233e;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s;
+  text-transform: uppercase;
 }
 .crs-hero__cta:hover {
   background: #e68900;
@@ -193,6 +196,13 @@
   align-items: center;
   justify-content: center;
   gap: 42px;
+}
+@media (max-width: 768px) {
+  .crs-hero__reviews-row {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    gap: 20px;
+  }
 }
 .crs-hero__google-rating {
   display: flex;
@@ -353,6 +363,7 @@
 @media (max-width: 768px) {
   .crs-hero-below__video-title {
     margin-bottom: 0;
+    padding-top: 32px;
   }
 }
 .crs-hero-below__video-wrap {
@@ -425,7 +436,7 @@
 .crs-first-deal__container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 48px 20px 56px;
+  padding: 48px 20px 0;
 }
 @media (min-width: 768px) {
   .crs-first-deal__container {
@@ -694,8 +705,8 @@
   max-width: 480px;
   padding: 15px 24px;
   background: #ff9902;
-  color: #fff;
-  font-size: 17px;
+  color: #09233e;
+  font-size: 15px;
   font-weight: 700;
   border: none;
   border-radius: 6px;
@@ -834,7 +845,7 @@
   margin: 0;
 }
 .crs-qualify__stat-text strong {
-  color: #fff;
+  color: #09233e;
   font-weight: 700;
 }
 @media (min-width: 768px) {
@@ -895,6 +906,7 @@
   .crs-reviews__checklist {
     padding: 24px 28px;
     gap: 14px;
+    margin-bottom: 24px;
   }
 }
 .crs-reviews__check-item {
@@ -912,7 +924,7 @@
   font-weight: 700;
 }
 .crs-reviews__check-item--no {
-  color: #b0b8c4;
+  color: #425b76;
 }
 .crs-reviews__check-item--no span {
   text-decoration: line-through;
@@ -926,19 +938,30 @@
   width: -moz-fit-content;
   width: fit-content;
   background: #fff;
-  margin: 0 auto 40px;
+  margin: 0 auto 4px;
 }
 @media (min-width: 768px) {
   .crs-reviews__google-badge {
     margin: 0 auto 48px;
   }
 }
+@media (max-width: 768px) {
+  .crs-reviews__google-badge {
+    background: none;
+  }
+}
 .crs-reviews__google-logo {
-  width: 32px;
-  height: 32px;
+  width: 60px;
+  height: 60px;
   -o-object-fit: contain;
      object-fit: contain;
   flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .crs-reviews__google-logo {
+    width: 32px;
+    height: 32px;
+  }
 }
 .crs-reviews__google-text {
   display: flex;
@@ -946,14 +969,38 @@
   gap: 2px;
 }
 .crs-reviews__google-score {
-  font-size: 18px;
+  font-size: 32px;
   font-weight: 700;
   color: #09233e;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.crs-reviews__google-score svg {
+  height: 32px;
+  width: auto;
+}
+@media (max-width: 768px) {
+  .crs-reviews__google-score {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .crs-reviews__google-score svg {
+    height: 20px;
+  }
 }
 .crs-reviews__google-count {
-  font-size: 13px;
-  color: #6b7a8d;
+  font-size: 24px;
+  color: #0d2034;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .crs-reviews__google-count {
+    font-size: 18px;
+    font-weight: 400;
+  }
 }
 .crs-reviews__list {
   display: flex;
@@ -965,6 +1012,11 @@
   border-top: 1px solid #ff9902;
   margin: 32px 0;
 }
+@media (max-width: 768px) {
+  .crs-reviews__divider {
+    display: none;
+  }
+}
 .crs-reviews__item {
   display: flex;
   flex-direction: column;
@@ -975,6 +1027,11 @@
     flex-direction: row;
     align-items: center;
     gap: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .crs-reviews__item {
+    margin-bottom: 20px;
   }
 }
 @media (min-width: 768px) {
@@ -1081,8 +1138,8 @@
   max-width: 480px;
   padding: 15px 24px;
   background: #ff9902;
-  color: #fff;
-  font-size: 17px;
+  color: #09233e;
+  font-size: 15px;
   font-weight: 700;
   border: none;
   border-radius: 6px;
@@ -1148,9 +1205,8 @@
   }
 }
 .crs-how-fund__cost-box {
-  background: #f5f7fa;
+  background: #f4f6fa;
   border-radius: 10px;
-  border: 1px solid #e0e5ed;
   padding: 20px 18px;
   margin-bottom: 20px;
 }
@@ -1195,9 +1251,8 @@
   margin-top: 6px;
 }
 .crs-how-fund__callout {
-  background: #f5f7fa;
+  background: #f4f6fa;
   border-radius: 10px;
-  border: 1px solid #e0e5ed;
   padding: 20px 18px;
   margin-bottom: 32px;
 }
@@ -1231,8 +1286,8 @@
   max-width: 480px;
   padding: 15px 24px;
   background: #ff9902;
-  color: #fff;
-  font-size: 17px;
+  color: #09233e;
+  font-size: 15px;
   font-weight: 700;
   border: none;
   border-radius: 6px;
@@ -1858,14 +1913,6 @@
             <h3 class="crs-reviews__item-name">Charles's review:</h3>
             <p class="crs-reviews__item-desc">Charles chose to work with us because we help beginners get their first flip done successfully. He was able to get $167,000 in funding to buy and fix-up this house. He is expecting to make around $70,000 on this flip. He wants to do more flips with us so he can free up more of his time to spend with his family. Watch his experience now.</p>
             <p class="crs-reviews__item-author"><b>Charles F.</b></p>
-          </div>
-        </div>
-        <div class="crs-reviews__divider"></div>
-        <div class="crs-reviews__item crs-reviews__item--testimonial-only">
-          <div class="crs-reviews__item-text">
-            <span class="crs-reviews__item-quote-icon">${i.quote}</span>
-            <p class="crs-reviews__item-desc">I was looking to make about $150,000 off of this property, but our proceeds after closing and all of that ended up being $167,000. Yeah, that was a great deal and I can't wait to do it again.</p>
-            <p class="crs-reviews__item-author"><b>Reshunda H.</b></p>
           </div>
         </div>
       </div>
