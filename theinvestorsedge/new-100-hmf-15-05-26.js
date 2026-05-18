@@ -375,6 +375,7 @@
   .crs-hero-below__video-title {
     margin-bottom: 0;
     padding-top: 32px;
+    text-transform: capitalize;
   }
 }
 .crs-hero-below__video-wrap {
@@ -420,11 +421,6 @@
   margin: 0;
   font-weight: 500;
 }
-@media (min-width: 768px) {
-  .crs-hero-below__mistake-text {
-    font-size: 16px;
-  }
-}
 .crs-hero-below__arv-text {
   font-size: 18px;
   line-height: 1.7;
@@ -434,11 +430,6 @@
 .crs-hero-below__arv-text strong {
   color: #fff;
   font-weight: 700;
-}
-@media (min-width: 768px) {
-  .crs-hero-below__arv-text {
-    font-size: 16px;
-  }
 }
 
 .crs-first-deal {
@@ -823,7 +814,7 @@
 @media (min-width: 768px) {
   .crs-qualify__stats {
     flex-direction: row;
-    gap: 40px;
+    justify-content: space-between;
   }
 }
 .crs-qualify__stat {
@@ -1661,7 +1652,7 @@
       </div>
       
       <div class="crs-hero-below__video-section">
-        <h2 class="crs-hero-below__video-title">Watch: How Beginners Are Getting Into Their First Deal Without Experience</h2>
+        <h2 class="crs-hero-below__video-title">Watch: how beginners are getting into their first deal without experience</h2>
         <div class="crs-hero-below__video-wrap">
           
         </div>
@@ -1731,7 +1722,7 @@
           <div class="crs-first-deal__step-num">6</div>
           <div class="crs-first-deal__step-content">
             <h3 class="crs-first-deal__step-title">Sell, repay, and keep the profit</h3>
-            <p class="crs-first-deal__step-desc">Our members' median profit is $47,884 per flip — with top performers exceeding $100k. Results vary.</p>
+            <p class="crs-first-deal__step-desc">Our members' median profit is $47,884 per flip — with top performers exceeding $100k.<br />Results vary.</p>
             <div class="crs-first-deal__testimonial">
               ${i.quote}
               <p class="crs-first-deal__testimonial-text">We do always take one trip after a flip... flipping homes has allowed me to provide those types of opportunities for myself and my family</p>
