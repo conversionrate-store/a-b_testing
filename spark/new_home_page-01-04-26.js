@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const x = `[data-id=a0ec5d7],
+  const m = `[data-id=a0ec5d7],
 [data-id=e5f5726],
 [data-id="6888788"],
 [data-id="0656969"],
@@ -22,6 +22,14 @@
   padding: 122px 20px 24px;
   background: linear-gradient(180deg, rgba(33, 45, 58, 0.6) 0%, #212d3a 20.56%), url("https://conversionrate-store.github.io/a-b_images/spark/hero_bg.webp") no-repeat top center;
   background-size: contain;
+}
+.crs_hero_block .crs_hero_content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.crs_hero_block .crs_hero_img {
+  display: none;
 }
 .crs_hero_block .crs_hero_badge {
   display: inline-flex;
@@ -156,6 +164,11 @@
   gap: 16px;
   overflow: hidden;
 }
+.crs_growth_block .crs_growth_card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .crs_growth_block .crs_growth_card__head {
   display: flex;
   flex-direction: column;
@@ -246,11 +259,13 @@
 }
 
 .crs_revenue_block {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
   padding: 32px 20px;
   background: #fff;
+}
+.crs_revenue_block .crs_revenue_content_wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
 }
 .crs_revenue_block .crs_revenue_card {
   background: #fff;
@@ -258,6 +273,7 @@
   box-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
   padding: 16px;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
 }
@@ -584,6 +600,9 @@
 .crs_reviews_block .crs_reviews_logos img {
   width: 100%;
 }
+.crs_reviews_block .crs_reviews_logos__desk {
+  display: none;
+}
 .crs_reviews_block .crs_reviews_swiper {
   background: #e8a446;
   border-radius: 12px;
@@ -622,22 +641,26 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 24px;
 }
-.crs_reviews_block .crs_review_card__head {
+.crs_reviews_block .crs_review_card__body {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.crs_reviews_block .crs_review_card__aside {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
 }
 .crs_reviews_block .crs_review_card__avatar {
   width: 90px;
   height: 90px;
-  border-radius: 12px;
+  border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
   flex-shrink: 0;
-  border-radius: 50%;
 }
 .crs_reviews_block .crs_review_card__avatar--placeholder {
   display: flex;
@@ -651,7 +674,7 @@
 .crs_reviews_block .crs_review_card__info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 .crs_reviews_block .crs_review_card__name {
   display: block;
@@ -667,11 +690,8 @@
   line-height: 24px;
   color: #fff;
 }
-.crs_reviews_block .crs_review_card__quote {
-  margin-bottom: 8px;
-}
 .crs_reviews_block .crs_review_card__quote svg {
-  transform: rotate(180deg);
+  display: block;
 }
 .crs_reviews_block .crs_review_card__text {
   margin: 0;
@@ -695,155 +715,467 @@
   color: #fff;
   text-decoration: none;
   box-sizing: border-box;
-}/*# sourceMappingURL=style.css.map */`, d = (s, n, e, r = "") => {
+}
+
+@media (min-width: 769px) {
+  .crs_hero_block {
+    background: linear-gradient(257deg, rgba(33, 45, 58, 0.6) 0%, rgba(33, 45, 58, 0.9) 32.46%, #212d3a 66.9%), url("https://conversionrate-store.github.io/a-b_images/spark/hero_bg.webp") no-repeat top center;
+    background-size: cover;
+    padding: 0;
+  }
+  .crs_hero_block .crs_hero_inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 47px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 125px 0 60px;
+  }
+  .crs_hero_block .crs_hero_badge {
+    font-size: 18px;
+  }
+  .crs_hero_block .crs_hero_title {
+    font-size: 41px;
+    line-height: 52px;
+  }
+  .crs_hero_block .crs_hero_content {
+    flex: 0 0 600px;
+  }
+  .crs_hero_block .crs_hero_desc {
+    font-size: 20px;
+  }
+  .crs_hero_block .crs_hero_btn {
+    font-size: 16px;
+  }
+  .crs_hero_block .crs_hero_img {
+    display: block;
+  }
+  .crs_hero_block .crs_hero_img img {
+    width: 100%;
+    display: block;
+  }
+  .crs_hero_block .crs_hero_ctas {
+    flex-direction: row;
+  }
+  .crs_hero_block .crs_hero_btn {
+    width: auto;
+    flex: 1;
+  }
+  .crs_hero_block .crs_hero_stat__value {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .crs_hero_block .crs_hero_stat__label {
+    font-size: 12px;
+    line-height: 22px;
+    max-width: none;
+  }
+  .crs_growth_block {
+    padding: 80px 115px;
+  }
+  .crs_growth_block .crs_growth_intro {
+    text-align: center;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .crs_growth_block .crs_growth_title {
+    font-size: 45px;
+    line-height: 50px;
+  }
+  .crs_growth_block .crs_growth_desc {
+    font-size: 20px;
+  }
+  .crs_growth_block .crs_growth_cards {
+    gap: 80px;
+    max-width: 1180px;
+    margin: 60px auto;
+  }
+  .crs_growth_block .crs_growth_card {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    position: relative;
+  }
+  .crs_growth_block .crs_growth_card__body {
+    flex: 0 0 540px;
+    position: relative;
+    z-index: 1;
+  }
+  .crs_growth_block .crs_growth_card__head {
+    gap: 16px;
+  }
+  .crs_growth_block .crs_growth_card__title {
+    font-size: 36px;
+    line-height: 46px;
+  }
+  .crs_growth_block .crs_growth_card__img {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  .crs_growth_block .crs_growth_card--rev {
+    flex-direction: row-reverse;
+  }
+  .crs_growth_block .crs_growth_card:nth-child(1)::before, .crs_growth_block .crs_growth_card:nth-child(3)::before {
+    content: "";
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    display: block;
+    z-index: 0;
+  }
+  .crs_growth_block .crs_growth_card .crs_growth_list__item span {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .crs_growth_block .crs_growth_cta {
+    width: 480px;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+  .crs_revenue_block {
+    padding: 0;
+    position: relative;
+    width: 100%;
+    margin: 60px auto 112px;
+    max-width: 1180px;
+  }
+  .crs_revenue_block::before, .crs_revenue_block::after {
+    display: block;
+    content: "";
+    width: 242px;
+    height: 242px;
+    border-radius: 24px;
+    position: absolute;
+    z-index: 0;
+    background-color: #ea5e58;
+    top: -42px;
+    left: -42px;
+  }
+  .crs_revenue_block::after {
+    top: auto;
+    left: auto;
+    bottom: -42px;
+    right: -42px;
+    background-color: #e8a446;
+  }
+  .crs_revenue_block .crs_revenue_content_wrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    padding: 42px;
+    box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+  }
+  .crs_revenue_block .crs_revenue_text {
+    flex: 0 0 640px;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .crs_revenue_block .crs_revenue_title {
+    font-size: 36px;
+    line-height: 46px;
+  }
+  .crs_revenue_block .crs_revenue_desc {
+    font-size: 18px;
+  }
+  .crs_revenue_block .crs_revenue_card {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 32px;
+  }
+  .crs_revenue_block .crs_revenue_card__icon {
+    width: 104px;
+    height: 104px;
+  }
+  .crs_revenue_block .crs_revenue_card__label {
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .crs_revenue_block .crs_revenue_card__value {
+    font-size: 48px;
+    line-height: 56px;
+  }
+  .crs_calc_block {
+    background: url("https://conversionrate-store.github.io/a-b_images/spark/bg_2.webp") center top no-repeat;
+    background-size: contain;
+    padding: 0;
+    gap: 0;
+  }
+  .crs_calc_block .crs_calc_intro {
+    text-align: center;
+    align-items: center;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+    gap: 32px;
+  }
+  .crs_calc_block .crs_calc_intro__title {
+    color: #fff;
+    font-size: 42px;
+    line-height: 52px;
+  }
+  .crs_calc_block .crs_calc_intro__desc {
+    color: #fff;
+    font-size: 18px;
+  }
+  .crs_calc_block .crs_calc_guarantee {
+    background-color: #cbd6e2;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .crs_calc_block .crs_calc_guarantee p {
+    color: #3f444b;
+    text-align: left;
+  }
+  .crs_calc_block .crs_calc_form {
+    background: #f0f1f2;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .crs_calc_block .crs_calc_card {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 42px 60px;
+  }
+  .crs_reviews_block {
+    max-width: 1220px;
+    margin: 0 auto;
+    gap: 16px;
+    padding: 60px 20px;
+  }
+  .crs_reviews_block .crs_reviews_logos {
+    justify-content: flex-start;
+  }
+  .crs_reviews_block .crs_reviews_logos__mob {
+    display: none;
+  }
+  .crs_reviews_block .crs_reviews_logos__desk {
+    display: block;
+  }
+  .crs_reviews_block .crs_reviews_title {
+    font-size: 44px;
+    line-height: 54px;
+    width: 80%;
+  }
+  .crs_reviews_block .crs_reviews_desc {
+    font-size: 18px;
+    margin-top: 16px;
+  }
+  .crs_reviews_block .crs_reviews_swiper {
+    padding: 32px 42px;
+  }
+  .crs_reviews_block .crs_reviews_swiper .swiper-pagination {
+    padding: 0 0 10px 42px;
+  }
+  .crs_reviews_block .crs_review_card {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .crs_reviews_block .crs_review_card__body {
+    flex: 1;
+    max-width: 680px;
+  }
+  .crs_reviews_block .crs_review_card__text {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .crs_reviews_block .crs_review_card__quote svg {
+    width: 80px;
+    height: 80px;
+  }
+  .crs_reviews_block .crs_review_card__aside {
+    flex: 0 0 300px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .crs_reviews_block .crs_review_card__avatar {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    flex-shrink: 0;
+  }
+  .crs_reviews_block .crs_review_card__name {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .crs_reviews_block .crs_reviews_cta {
+    max-width: 480px;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+}/*# sourceMappingURL=style.css.map */`, p = (c, e, n, r = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: s,
-      event_desc: n,
-      event_type: e,
+      event_name: c,
+      event_desc: e,
+      event_type: n,
       event_loc: r
-    }), h(`Event: ${s} | ${n} | ${e} | ${r}`, "success");
-  }, v = (s) => new Promise((n) => {
-    const e = document.querySelector(s);
-    e && n(e);
+    }), h(`Event: ${c} | ${e} | ${n} | ${r}`, "success");
+  }, x = (c) => new Promise((e) => {
+    const n = document.querySelector(c);
+    n && e(n);
     const r = new MutationObserver(() => {
-      const c = document.querySelector(s);
-      c && (n(c), r.disconnect());
+      const s = document.querySelector(c);
+      s && (e(s), r.disconnect());
     });
     r.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), k = ({ name: s, dev: n }) => {
+  }), k = ({ name: c, dev: e }) => {
     console.log(
-      `%c EXP: ${s} (DEV: ${n})`,
+      `%c EXP: ${c} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
   class g {
-    constructor(n) {
-      this.elements = n instanceof g ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+    constructor(e) {
+      this.elements = e instanceof g ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(n, e, r) {
-      return typeof e == "function" && (r = e, e = ""), this.elements.forEach((c) => {
-        c.addEventListener(n, function(a) {
-          var i;
-          if (e !== "") {
-            let t = (i = a.target) == null ? void 0 : i.closest(e);
-            t && (r == null || r.call(t, a));
+    on(e, n, r) {
+      return typeof n == "function" && (r = n, n = ""), this.elements.forEach((s) => {
+        s.addEventListener(e, function(i) {
+          var o;
+          if (n !== "") {
+            let t = (o = i.target) == null ? void 0 : o.closest(n);
+            t && (r == null || r.call(t, i));
           } else
-            r == null || r.call(c, a);
+            r == null || r.call(s, i);
         });
       }), this;
     }
-    addClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.add(n);
+    addClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.add(e);
       }), this;
     }
-    removeClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.remove(n);
+    removeClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.remove(e);
       }), this;
     }
-    toggleClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.toggle(n);
+    toggleClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.toggle(e);
       }), this;
     }
-    each(n) {
-      for (let e of this.elements)
-        n(new g(e), this.elements.indexOf(e));
+    each(e) {
+      for (let n of this.elements)
+        e(new g(n), this.elements.indexOf(n));
       return this;
     }
-    style(n, e) {
-      const r = n.split("-").map((c, a) => a === 0 ? c : c.charAt(0).toUpperCase() + c.slice(1)).join("");
-      return this.elements.forEach(function(c) {
-        c.style[r] = e;
+    style(e, n) {
+      const r = e.split("-").map((s, i) => i === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
+      return this.elements.forEach(function(s) {
+        s.style[r] = n;
       }), this;
     }
-    find(n) {
-      const e = this.elements.map((r) => Array.from(r.querySelectorAll(n)));
-      return new g(e.flat());
+    find(e) {
+      const n = this.elements.map((r) => Array.from(r.querySelectorAll(e)));
+      return new g(n.flat());
     }
-    attr(n, e) {
-      return e ? (this.elements.forEach(function(r) {
-        r.setAttribute(n, e);
-      }), this) : this.elements[0].getAttribute(n);
+    attr(e, n) {
+      return n ? (this.elements.forEach(function(r) {
+        r.setAttribute(e, n);
+      }), this) : this.elements[0].getAttribute(e);
     }
-    text(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.textContent = n;
+    text(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
-    html(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.innerHTML = n;
+    html(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const o = (s) => new g(s), y = async (s) => {
-    const n = (e) => new Promise((r, c) => {
-      const a = e.split(".").pop();
-      if (a === "js") {
-        if (Array.from(document.scripts).map((_) => _.src.toLowerCase()).includes(e.toLowerCase()))
-          return h(`Script ${e} allready downloaded!`, "success"), r("");
+  const a = (c) => new g(c), y = async (c) => {
+    const e = (n) => new Promise((r, s) => {
+      const i = n.split(".").pop();
+      if (i === "js") {
+        if (Array.from(document.scripts).map((_) => _.src.toLowerCase()).includes(n.toLowerCase()))
+          return h(`Script ${n} allready downloaded!`, "success"), r("");
         const t = document.createElement("script");
-        t.src = e, t.onload = r, t.onerror = c, document.head.appendChild(t);
-      } else if (a === "css") {
+        t.src = n, t.onload = r, t.onerror = s, document.head.appendChild(t);
+      } else if (i === "css") {
         if (Array.from(document.styleSheets).map((_) => {
-          var u;
-          return (u = _.href) == null ? void 0 : u.toLowerCase();
-        }).includes(e.toLowerCase()))
-          return h(`Style ${e} allready downloaded!`, "success"), r("");
+          var b;
+          return (b = _.href) == null ? void 0 : b.toLowerCase();
+        }).includes(n.toLowerCase()))
+          return h(`Style ${n} allready downloaded!`, "success"), r("");
         const t = document.createElement("link");
-        t.rel = "stylesheet", t.href = e, t.onload = r, t.onerror = c, document.head.appendChild(t);
+        t.rel = "stylesheet", t.href = n, t.onload = r, t.onerror = s, document.head.appendChild(t);
       }
     });
-    for (const e of s)
-      h(e), await n(e), h(`Loaded librari ${e}`);
+    for (const n of c)
+      h(n), await e(n), h(`Loaded librari ${n}`);
     h("All libraries loaded!", "success");
-  }, C = (s) => {
-    let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", s, "variant_1"));
+  }, C = (c) => {
+    let e = setInterval(function() {
+      typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", c, "variant_1"));
     }, 1e3);
-  }, w = (s, n, e, r, c = 1e3, a = 0.5) => {
-    let i, t;
-    if (i = new IntersectionObserver(
+  }, w = (c, e, n, r, s = 1e3, i = 0.5) => {
+    let o, t;
+    if (o = new IntersectionObserver(
       function(_) {
         _[0].isIntersecting === !0 ? t = setTimeout(() => {
-          d(
-            n,
+          p(
+            e,
             _[0].target.dataset.visible || r || "",
             "view",
-            e
-          ), i.disconnect();
-        }, c) : (h("Element is not fully visible", "warn"), clearTimeout(t));
+            n
+          ), o.disconnect();
+        }, s) : (h("Element is not fully visible", "warn"), clearTimeout(t));
       },
-      { threshold: [a] }
-    ), typeof s == "string") {
-      const _ = document.querySelector(s);
-      _ && i.observe(_);
+      { threshold: [i] }
+    ), typeof c == "string") {
+      const _ = document.querySelector(c);
+      _ && o.observe(_);
     } else
-      i.observe(s);
-  }, h = (s, n = "info") => {
-    let e;
-    switch (n) {
+      o.observe(c);
+  }, h = (c, e = "info") => {
+    let n;
+    switch (e) {
       case "info":
-        e = "color: #3498db;";
+        n = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        n = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        n = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${e} font-size: 16px; font-weight: 600`);
-  }, p = "https://conversionrate-store.github.io/a-b_images/spark/", l = {
+    console.log(`%c>>> ${c}`, `${n} font-size: 16px; font-weight: 600`);
+  }, d = "https://conversionrate-store.github.io/a-b_images/spark/", l = {
     check: `<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
 		<path d="M7.87503 17.8675L2.44128 12.4338L4.91753 9.95752L7.87503 12.9238L16.52 4.27002L18.9963 6.74627L7.87503 17.8675Z" fill="#80C67D"/>
 		</svg>`,
@@ -865,44 +1197,51 @@
 		<path d="M33.3375 16.7475C34.2038 14.5688 35.5687 12.4162 37.3931 10.3425C37.9706 9.68622 38.0494 8.74126 37.5769 8.00626C37.2093 7.42876 36.6056 7.11377 35.9494 7.11377C35.7656 7.11377 35.5819 7.12683 35.3981 7.19252C31.5394 8.32126 22.5225 12.3244 22.2731 25.1606C22.1813 30.1087 25.8037 34.3612 30.5156 34.8468C33.1275 35.1093 35.7262 34.2563 37.6556 32.5238C39.585 30.7781 40.6875 28.2843 40.6875 25.6856C40.6875 21.3544 37.6162 17.5612 33.3375 16.7475Z" fill="white" fill-opacity="0.19"/>
 		<path d="M9.56812 34.8468C12.1669 35.1093 14.7656 34.2563 16.695 32.5238C18.6244 30.7781 19.7269 28.2843 19.7269 25.6856C19.7269 21.3544 16.6556 17.5612 12.3769 16.7475C13.2432 14.5688 14.6081 12.4162 16.4325 10.3425C17.01 9.68624 17.0888 8.74128 16.6162 8.00627C16.2488 7.42878 15.645 7.11379 14.9887 7.11379C14.8051 7.11379 14.6213 7.12685 14.4375 7.19254C10.5788 8.32127 1.56189 12.3244 1.31252 25.1607L1.31252 25.3443C1.31252 30.2137 4.89562 34.3612 9.56812 34.8468Z" fill="white" fill-opacity="0.19"/>
 		</svg>`
-  }, L = (
+  }, z = (
     /* HTML */
     ' <div class="crs_content_wrapper"></div> '
-  ), S = (
+  ), L = (
     /* HTML */
     `
   <section class="crs_hero_block">
-    <div class="crs_hero_badge">All-in-one software for martial arts schools</div>
-    <div class="crs_hero_heading">
-      <h1 class="crs_hero_title">All-in-One Software to Run, Grow, and Scale Your Martial Arts School</h1>
-      <p class="crs_hero_desc">
-        From first inquiry to recurring tuition — automate your operations, track your numbers, and turn more trials
-        into long-term members.
-      </p>
-    </div>
-    <div class="crs_hero_ctas">
-      <a href="/demo" class="crs_hero_btn crs_hero_btn--primary">WATCH A QUICK DEMO</a>
-      <a href="/pricing" class="crs_hero_btn crs_hero_btn--secondary">START NOW FOR $1</a>
-    </div>
-    <div class="crs_hero_stats">
-      <div class="crs_hero_stat">
-        <span class="crs_hero_stat__value">$40,062,744.59</span>
-        <span class="crs_hero_stat__label">Processed Monthly For Clients</span>
+    <div class="crs_hero_inner">
+      <div class="crs_hero_content">
+        <div class="crs_hero_badge">All-in-one software for martial arts schools</div>
+        <div class="crs_hero_heading">
+          <h1 class="crs_hero_title">All-in-One Software to Run, Grow, and Scale Your Martial Arts School</h1>
+          <p class="crs_hero_desc">
+            From first inquiry to recurring tuition — automate your operations, track your numbers, and turn more trials
+            into long-term members.
+          </p>
+        </div>
+        <div class="crs_hero_ctas">
+          <a href="/demo" class="crs_hero_btn crs_hero_btn--primary">WATCH A QUICK DEMO</a>
+          <a href="/pricing" class="crs_hero_btn crs_hero_btn--secondary">START NOW FOR $1</a>
+        </div>
+        <div class="crs_hero_stats">
+          <div class="crs_hero_stat">
+            <span class="crs_hero_stat__value">$40,062,744.59</span>
+            <span class="crs_hero_stat__label">Processed Monthly For Clients</span>
+          </div>
+          <div class="crs_hero_divider"></div>
+          <div class="crs_hero_stat">
+            <span class="crs_hero_stat__value">3,684,500+</span>
+            <span class="crs_hero_stat__label">Monthly Emails Delivered</span>
+          </div>
+          <div class="crs_hero_divider"></div>
+          <div class="crs_hero_stat">
+            <span class="crs_hero_stat__value">869,972+</span>
+            <span class="crs_hero_stat__label">Monthly Classes Attended</span>
+          </div>
+        </div>
       </div>
-      <div class="crs_hero_divider"></div>
-      <div class="crs_hero_stat">
-        <span class="crs_hero_stat__value">3,684,500+</span>
-        <span class="crs_hero_stat__label">Monthly Emails Delivered</span>
-      </div>
-      <div class="crs_hero_divider"></div>
-      <div class="crs_hero_stat">
-        <span class="crs_hero_stat__value">869,972+</span>
-        <span class="crs_hero_stat__label">Monthly Classes Attended</span>
+      <div class="crs_hero_img">
+        <img src="${d}hero_img.webp" alt="Spark dashboard" />
       </div>
     </div>
   </section>
 `
-  ), z = (
+  ), S = (
     /* HTML */
     `
   <section class="crs_growth_block">
@@ -915,110 +1254,120 @@
     </div>
     <div class="crs_growth_cards">
       <div class="crs_growth_card">
-        <div class="crs_growth_card__head">
-          <span class="crs_growth_badge crs_growth_badge--finance">Finance</span>
-          <h3 class="crs_growth_card__title">Get Paid Faster &amp; Predictably</h3>
+        <div class="crs_growth_card__body">
+          <div class="crs_growth_card__head">
+            <span class="crs_growth_badge crs_growth_badge--finance">Finance</span>
+            <h3 class="crs_growth_card__title">Get Paid Faster &amp; Predictably</h3>
+          </div>
+          <ul class="crs_growth_list">
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Reduce late payments by 15–25% with automated recurring billing.</span>
+            </li>
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Gain clear revenue forecasts and real-time cash flow visibility.</span>
+            </li>
+          </ul>
         </div>
-        <ul class="crs_growth_list">
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Reduce late payments by 15–25% with automated recurring billing.</span>
-          </li>
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Gain clear revenue forecasts and real-time cash flow visibility.</span>
-          </li>
-        </ul>
         <div class="crs_growth_card__img">
-          <img src="${p}imp_1.webp" alt="Finance dashboard" />
+          <img src="${d}imp_1.webp" alt="Finance dashboard" />
+        </div>
+      </div>
+      <div class="crs_growth_card crs_growth_card--rev">
+        <div class="crs_growth_card__body">
+          <div class="crs_growth_card__head">
+            <span class="crs_growth_badge crs_growth_badge--marketing">Marketing</span>
+            <h3 class="crs_growth_card__title">Generate &amp; Nurture More Leads</h3>
+          </div>
+          <ul class="crs_growth_list">
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Reduce missed inquiries by up to 30% with automated email, SMS, and app follow-ups.</span>
+            </li>
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Increase event and trial registrations with high-converting checkout pages.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="crs_growth_card__img">
+          <img src="${d}imp_2.webp" alt="Marketing automation" />
         </div>
       </div>
       <div class="crs_growth_card">
-        <div class="crs_growth_card__head">
-          <span class="crs_growth_badge crs_growth_badge--marketing">Marketing</span>
-          <h3 class="crs_growth_card__title">Generate &amp; Nurture More Leads</h3>
+        <div class="crs_growth_card__body">
+          <div class="crs_growth_card__head">
+            <span class="crs_growth_badge crs_growth_badge--sales">Sales</span>
+            <h3 class="crs_growth_card__title">Convert More Trials to Members</h3>
+          </div>
+          <ul class="crs_growth_list">
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Improve trial-to-member conversions by <strong>10–20%</strong> with automated follow-ups.</span>
+            </li>
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Remove checkout friction and enable instant enrollment in just a few clicks.</span>
+            </li>
+          </ul>
         </div>
-        <ul class="crs_growth_list">
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Reduce missed inquiries by up to 30% with automated email, SMS, and app follow-ups.</span>
-          </li>
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Increase event and trial registrations with high-converting checkout pages.</span>
-          </li>
-        </ul>
         <div class="crs_growth_card__img">
-          <img src="${p}imp_2.webp" alt="Marketing automation" />
+          <img src="${d}imp_3.webp" alt="Sales pipeline" />
         </div>
       </div>
-      <div class="crs_growth_card">
-        <div class="crs_growth_card__head">
-          <span class="crs_growth_badge crs_growth_badge--sales">Sales</span>
-          <h3 class="crs_growth_card__title">Convert More Trials to Members</h3>
+      <div class="crs_growth_card crs_growth_card--rev">
+        <div class="crs_growth_card__body">
+          <div class="crs_growth_card__head">
+            <span class="crs_growth_badge crs_growth_badge--operations">Operations</span>
+            <h3 class="crs_growth_card__title">Save 400+ Hours Annually</h3>
+          </div>
+          <ul class="crs_growth_list">
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Reclaim 10–12 hours per week by automating attendance, renewals, and reminders.</span>
+            </li>
+            <li class="crs_growth_list__item">
+              ${l.check}
+              <span>Get full visibility into retention risks and daily performance metrics.</span>
+            </li>
+          </ul>
         </div>
-        <ul class="crs_growth_list">
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Improve trial-to-member conversions by <strong>10–20%</strong> with automated follow-ups.</span>
-          </li>
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Remove checkout friction and enable instant enrollment in just a few clicks.</span>
-          </li>
-        </ul>
         <div class="crs_growth_card__img">
-          <img src="${p}imp_3.webp" alt="Sales pipeline" />
-        </div>
-      </div>
-      <div class="crs_growth_card">
-        <div class="crs_growth_card__head">
-          <span class="crs_growth_badge crs_growth_badge--operations">Operations</span>
-          <h3 class="crs_growth_card__title">Save 400+ Hours Annually</h3>
-        </div>
-        <ul class="crs_growth_list">
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Reclaim 10–12 hours per week by automating attendance, renewals, and reminders.</span>
-          </li>
-          <li class="crs_growth_list__item">
-            ${l.check}
-            <span>Get full visibility into retention risks and daily performance metrics.</span>
-          </li>
-        </ul>
-        <div class="crs_growth_card__img">
-          <img src="${p}imp_4.webp" alt="Operations dashboard" />
+          <img src="${d}imp_4.webp" alt="Operations dashboard" />
         </div>
       </div>
     </div>
-    <a href="/demo" class="crs_growth_cta">SCHEDULE A LIVE DEMO</a>
+    <a href="/demo" class="crs_growth_cta">WATCH A QUICK DEMO</a>
   </section>
 `
   ), $ = (
     /* HTML */
     `
   <section class="crs_revenue_block">
-    <div class="crs_revenue_card">
-      <div class="crs_revenue_card__info">
-        <span class="crs_revenue_card__label">Revenue growth</span>
-        <span class="crs_revenue_card__value">+25%</span>
+    <div class="crs_revenue_content_wrapper">
+      <div class="crs_revenue_text">
+        <h2 class="crs_revenue_title">Schools Increase Revenue by an Average of 25% in 6 Months*</h2>
+        <p class="crs_revenue_desc">
+          Schools using automation, recurring billing, and streamlined enrollment typically see double-digit growth
+          within the first 6 months.
+        </p>
+        <p class="crs_revenue_disclaimer">
+          *Results are not guaranteed and vary based on market, pricing, and implementation. Data is based on average
+          growth statistics from clients using the Spark app.
+        </p>
       </div>
-      <div class="crs_revenue_card__icon">${l.growth}</div>
+      <div class="crs_revenue_card">
+        <div class="crs_revenue_card__icon">${l.growth}</div>
+        <div class="crs_revenue_card__info">
+          <span class="crs_revenue_card__label">Revenue growth</span>
+          <span class="crs_revenue_card__value">+25%</span>
+        </div>
+      </div>
     </div>
-    <div class="crs_revenue_text">
-      <h2 class="crs_revenue_title">Schools Increase Revenue by an Average of 25% in 6 Months*</h2>
-      <p class="crs_revenue_desc">
-        Schools using automation, recurring billing, and streamlined enrollment typically see double-digit growth within
-        the first 6 months.
-      </p>
-    </div>
-    <p class="crs_revenue_disclaimer">
-      *Results are not guaranteed and vary based on market, pricing, and implementation. Data is based on average growth
-      statistics from clients using the Spark app.
-    </p>
   </section>
 `
-  ), E = (
+  ), A = (
     /* HTML */
     `
   <section class="crs_calc_block">
@@ -1035,69 +1384,71 @@
         <p>Your members, attendance, and records move safely — with zero data loss, guaranteed.</p>
       </div>
     </div>
-    <div class="crs_calc_card" id="crs_calc_form">
-      <div class="crs_calc_card__text">
-        <h3 class="crs_calc_card__title">How Much Can You Save with Spark?</h3>
-        <p class="crs_calc_card__desc">
-          Enter your admin hours below to see how much time and money Spark could save your school.
-        </p>
-      </div>
-      <div class="crs_calc_fields">
-        <div class="crs_calc_field">
-          <label class="crs_calc_label">Admin hours per week</label>
-          <input class="crs_calc_slider" type="range" min="10" max="200" value="30" />
-          <span class="crs_calc_slider_value">30</span>
+    <div class="crs_calc_form">
+      <div class="crs_calc_card" id="crs_calc_form">
+        <div class="crs_calc_card__text">
+          <h3 class="crs_calc_card__title">How Much Can You Save with Spark?</h3>
+          <p class="crs_calc_card__desc">
+            Enter your admin hours below to see how much time and money Spark could save your school.
+          </p>
         </div>
-        <div class="crs_calc_field">
-          <label class="crs_calc_label">Hourly rate</label>
-          <div class="crs_calc_input_wrap">
-            <span class="crs_calc_input_prefix">$</span>
-            <input class="crs_calc_rate" type="number" value="20" min="1" />
+        <div class="crs_calc_fields">
+          <div class="crs_calc_field">
+            <label class="crs_calc_label">Admin hours per week</label>
+            <input class="crs_calc_slider" type="range" min="10" max="200" value="30" />
+            <span class="crs_calc_slider_value">30</span>
+          </div>
+          <div class="crs_calc_field">
+            <label class="crs_calc_label">Hourly rate</label>
+            <div class="crs_calc_input_wrap">
+              <span class="crs_calc_input_prefix">$</span>
+              <input class="crs_calc_rate" type="number" value="20" min="1" />
+            </div>
           </div>
         </div>
+        <button class="crs_calc_btn">CALCULATE SAVINGS</button>
       </div>
-      <button class="crs_calc_btn">CALCULATE SAVINGS</button>
-    </div>
-    <div class="crs_calc_card crs_calc_results" id="crs_calc_results">
-      <h3 class="crs_calc_card__title">Your Estimated Savings</h3>
-      <div class="crs_calc_results__rows">
-        <div class="crs_calc_results__row">
-          <span class="crs_calc_results__label">Time saved annually:</span>
-          <span class="crs_calc_time crs_calc_results__val"></span>
+      <div class="crs_calc_card crs_calc_results" id="crs_calc_results">
+        <h3 class="crs_calc_card__title">Your Estimated Savings</h3>
+        <div class="crs_calc_results__rows">
+          <div class="crs_calc_results__row">
+            <span class="crs_calc_results__label">Time saved annually:</span>
+            <span class="crs_calc_time crs_calc_results__val"></span>
+          </div>
+          <div class="crs_calc_results__row">
+            <span class="crs_calc_results__label">Annual savings:</span>
+            <span class="crs_calc_money crs_calc_results__val"></span>
+          </div>
         </div>
-        <div class="crs_calc_results__row">
-          <span class="crs_calc_results__label">Annual savings:</span>
-          <span class="crs_calc_money crs_calc_results__val"></span>
-        </div>
+        <p class="crs_calc_card__desc">Reinvest these savings into growth or enjoy your free time.</p>
+        <p class="crs_calc_card__disclaimer">
+          *Based on an average 50% admin time reduction reported by Spark users. Individual results may vary.
+        </p>
+        <a href="/demo" class="crs_calc_demo_btn">SCHEDULE MY DEMO</a>
       </div>
-      <p class="crs_calc_card__desc">Reinvest these savings into growth or enjoy your free time.</p>
-      <p class="crs_calc_card__disclaimer">
-        *Based on an average 50% admin time reduction reported by Spark users. Individual results may vary.
-      </p>
-      <a href="/demo" class="crs_calc_demo_btn">SCHEDULE MY DEMO</a>
     </div>
   </section>
 `
-  ), M = [
+  ), E = [
     {
       name: "Raymond Ahles",
       role: "Spark User",
-      photo: `${p}raymond.webp`,
+      photo: `${d}raymond.webp`,
       text: "We’ve been around for over 26 years and until Spark Minds came along we always had issues. In our case, it was because we tend to do things a bit differently and need a lot of customization. Spark was the answer and it just keeps improving. They don’t rest and support is unlike anything we’ve seen before. I give Spark, Master Ron Sell, GM Park, and the whole team my highest recommendation."
     },
     {
       name: "Dan Heart",
       role: "Spark User",
-      photo: `${p}dan.webp`,
+      photo: `${d}dan.webp`,
       text: "We have been members of Spark for a while. Their continuous improvement is inspiring. Customer service is amazing. Dedication to clients is exceptional. There are a lot of awesome companies out there and I’m sure are great. It’s always a hard decision who to choose. Spark has been nothing but great for us. Highly recommended!"
     },
     {
       name: "Amanda Buser Denu",
       role: "Spark User",
-      photo: `${p}amanda.webp`,
+      photo: `${d}amanda.webp`,
       text: "I am sooo appreciative of this amazing Spark software and the phenomenal team that works around the clock for us. Honestly, I can’t express enough how awesome you guys are!!! You answer my questions promptly, you set up videos to walk me through questions, you stay positive, and are constantly working on ways to improve & help school owners like myself… even in these challenging times. I just want to say THANK YOU!!!! You guys rock!!!"
     }
-  ], A = (
+  ], M = (
     /* HTML */
     `
   <section class="crs_reviews_block">
@@ -1106,24 +1457,27 @@
       <p class="crs_reviews_desc">Learn Why These Schools Choose SPARK</p>
     </div>
     <div class="crs_reviews_logos">
-      <img src="${p}logos.webp" alt="" />
+      <img class="crs_reviews_logos__mob" src="${d}logos.webp" alt="" />
+      <img class="crs_reviews_logos__desk" src="${d}logos_d.webp" alt="" />
     </div>
     <div class="swiper crs_reviews_swiper">
       <div class="swiper-wrapper">
-        ${M.map(
-      (s) => `
+        ${E.map(
+      (c) => `
           <div class="swiper-slide">
             <div class="crs_review_card">
-              <div class="crs_review_card__head">
-                ${s.photo ? `<img class="crs_review_card__avatar" src="${s.photo}" alt="${s.name}"
-                        onerror="this.outerHTML='<div class='crs_review_card__avatar crs_review_card__avatar--placeholder'>${s.name.charAt(0)}</div>'" />` : `<div class="crs_review_card__avatar crs_review_card__avatar--placeholder">${s.name.charAt(0)}</div>`}
+              <div class="crs_review_card__body">
+                <div class="crs_review_card__quote">${l.quote}</div>
+                <p class="crs_review_card__text">${c.text}</p>
+              </div>
+              <div class="crs_review_card__aside">
+                ${c.photo ? `<img class="crs_review_card__avatar" src="${c.photo}" alt="${c.name}"
+                        onerror="this.outerHTML='<div class='crs_review_card__avatar crs_review_card__avatar--placeholder'>${c.name.charAt(0)}</div>'" />` : `<div class="crs_review_card__avatar crs_review_card__avatar--placeholder">${c.name.charAt(0)}</div>`}
                 <div class="crs_review_card__info">
-                  <strong class="crs_review_card__name">${s.name}</strong>
-                  <span class="crs_review_card__role">${s.role}</span>
+                  <strong class="crs_review_card__name">${c.name}</strong>
+                  <span class="crs_review_card__role">${c.role}</span>
                 </div>
               </div>
-              <div class="crs_review_card__quote">${l.quote}</div>
-              <p class="crs_review_card__text">${s.text}</p>
             </div>
           </div>`
     ).join("")}
@@ -1140,18 +1494,18 @@
       this.init();
     }
     async init() {
-      await v("body"), o("head").elements[0].insertAdjacentHTML("beforeend", `<style>${x}</style>`), await v('[data-elementor-type="wp-post"]'), o('[data-elementor-type="wp-post"]').elements[0].insertAdjacentHTML("afterbegin", L), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("afterbegin", S), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", z), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", $), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", E), o(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", A), this.initCalculator(), this.initReviews(), this.initTracking();
+      await x("body"), a("head").elements[0].insertAdjacentHTML("beforeend", `<style>${m}</style>`), await x('[data-elementor-type="wp-post"]'), a('[data-elementor-type="wp-post"]').elements[0].insertAdjacentHTML("afterbegin", z), a(".crs_content_wrapper").elements[0].insertAdjacentHTML("afterbegin", L), a(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", S), a(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", $), a(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", A), a(".crs_content_wrapper").elements[0].insertAdjacentHTML("beforeend", M), this.initCalculator(), this.initReviews(), this.initTracking();
     }
     initCalculator() {
-      const n = document.querySelector(".crs_calc_slider"), e = document.querySelector(".crs_calc_slider_value"), r = document.querySelector(".crs_calc_rate"), c = document.querySelector(".crs_calc_btn"), a = document.getElementById("crs_calc_form"), i = document.getElementById("crs_calc_results"), t = document.querySelector(".crs_calc_time"), _ = document.querySelector(".crs_calc_money"), u = () => {
-        const f = parseInt(n.value);
-        e.textContent = f.toString();
-        const b = (f - 10) / 190 * 100;
-        n.style.background = `linear-gradient(to right, #ea5e58 ${b}%, rgba(255,255,255,0.3) ${b}%)`;
+      const e = document.querySelector(".crs_calc_slider"), n = document.querySelector(".crs_calc_slider_value"), r = document.querySelector(".crs_calc_rate"), s = document.querySelector(".crs_calc_btn"), i = document.getElementById("crs_calc_form"), o = document.getElementById("crs_calc_results"), t = document.querySelector(".crs_calc_time"), _ = document.querySelector(".crs_calc_money"), b = () => {
+        const f = parseInt(e.value);
+        n.textContent = f.toString();
+        const u = (f - 10) / 190 * 100;
+        e.style.background = `linear-gradient(to right, #ea5e58 ${u}%, rgba(255,255,255,0.3) ${u}%)`;
       };
-      n.addEventListener("input", u), u(), c.addEventListener("click", () => {
-        const f = parseInt(n.value), b = parseFloat(r.value) || 0, T = f * 52, m = Math.round(T * 0.5), I = Math.round(m * b);
-        t.textContent = `${m.toLocaleString()} hours*`, _.textContent = `$${I.toLocaleString()}`, a.style.display = "none", i.style.display = "flex";
+      e.addEventListener("input", b), b(), s.addEventListener("click", () => {
+        const f = parseInt(e.value), u = parseFloat(r.value) || 0, T = f * 52, v = Math.round(T * 0.5), I = Math.round(v * u);
+        t.textContent = `${v.toLocaleString()} hours*`, _.textContent = `$${I.toLocaleString()}`, i.style.display = "none", o.style.display = "flex";
       });
     }
     async initReviews() {
@@ -1165,33 +1519,38 @@
         pagination: {
           el: ".crs_reviews_pagination",
           clickable: !0,
-          renderBullet: (n, e) => `<span class="${e}"></span>`
+          renderBullet: (e, n) => `<span class="${n}"></span>`
+        },
+        breakpoints: {
+          769: {
+            spaceBetween: 42
+          }
         }
       });
     }
     initTracking() {
-      o(".crs_hero_btn--primary").on("click", () => {
-        d("spark_new_hp_hero_demo", "WATCH A QUICK DEMO", "click", "hero");
-      }), o(".crs_hero_btn--secondary").on("click", () => {
-        d("spark_new_hp_hero_start", "START NOW FOR $1", "click", "hero");
-      }), o(".crs_growth_cta").on("click", () => {
-        d("spark_new_hp_growth_demo", "SCHEDULE A LIVE DEMO", "click", "growth_engine");
-      }), o(".crs_calc_btn").on("click", () => {
-        var a, i;
-        const r = ((a = document.querySelector(".crs_calc_slider")) == null ? void 0 : a.value) || "", c = ((i = document.querySelector(".crs_calc_rate")) == null ? void 0 : i.value) || "";
-        d("spark_new_hp_calc_calculate", `hours: ${r}, rate: ${c}`, "click", "calculator");
-      }), o(".crs_calc_demo_btn").on("click", () => {
-        d("spark_new_hp_calc_demo", "SCHEDULE MY DEMO", "click", "calculator");
-      }), o(".crs_reviews_cta").on("click", () => {
-        d("spark_new_hp_reviews_cta", "VIEW ALL TESTIMONIALS", "click", "reviews");
+      a(".crs_hero_btn--primary").on("click", () => {
+        p("spark_new_hp_hero_demo", "WATCH A QUICK DEMO", "click", "hero");
+      }), a(".crs_hero_btn--secondary").on("click", () => {
+        p("spark_new_hp_hero_start", "START NOW FOR $1", "click", "hero");
+      }), a(".crs_growth_cta").on("click", () => {
+        p("spark_new_hp_growth_demo", "SCHEDULE A LIVE DEMO", "click", "growth_engine");
+      }), a(".crs_calc_btn").on("click", () => {
+        var i, o;
+        const r = ((i = document.querySelector(".crs_calc_slider")) == null ? void 0 : i.value) || "", s = ((o = document.querySelector(".crs_calc_rate")) == null ? void 0 : o.value) || "";
+        p("spark_new_hp_calc_calculate", `hours: ${r}, rate: ${s}`, "click", "calculator");
+      }), a(".crs_calc_demo_btn").on("click", () => {
+        p("spark_new_hp_calc_demo", "SCHEDULE MY DEMO", "click", "calculator");
+      }), a(".crs_reviews_cta").on("click", () => {
+        p("spark_new_hp_reviews_cta", "VIEW ALL TESTIMONIALS", "click", "reviews");
       });
-      const n = document.querySelector(".crs_calc_slider");
-      n && n.addEventListener("change", () => {
-        d("spark_new_hp_calc_slider", `hours: ${n.value}`, "input", "calculator");
-      });
-      const e = document.querySelector(".crs_calc_rate");
+      const e = document.querySelector(".crs_calc_slider");
       e && e.addEventListener("change", () => {
-        d("spark_new_hp_calc_rate", `rate: ${e.value}`, "input", "calculator");
+        p("spark_new_hp_calc_slider", `hours: ${e.value}`, "input", "calculator");
+      });
+      const n = document.querySelector(".crs_calc_rate");
+      n && n.addEventListener("change", () => {
+        p("spark_new_hp_calc_rate", `rate: ${n.value}`, "input", "calculator");
       }), w(".crs_hero_block", "spark_new_hp_view_hero", "hero", "Hero section viewed"), w(
         ".crs_growth_block",
         "spark_new_hp_view_growth",
