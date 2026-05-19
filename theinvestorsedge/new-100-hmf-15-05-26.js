@@ -1399,8 +1399,8 @@
         r.addEventListener(n, function(o) {
           var a;
           if (e !== "") {
-            let p = (a = o.target) == null ? void 0 : a.closest(e);
-            p && (s == null || s.call(p, o));
+            let h = (a = o.target) == null ? void 0 : a.closest(e);
+            h && (s == null || s.call(h, o));
           } else
             s == null || s.call(r, o);
         });
@@ -1452,27 +1452,27 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const _ = (t) => new l(t), u = (t) => {
+  const d = (t) => new l(t), u = (t) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
     }, 1e3);
   }, v = (t, n, e, s, r = 1e3, o = 0.5) => {
-    let a, p;
+    let a, h;
     if (a = new IntersectionObserver(
-      function(h) {
-        h[0].isIntersecting === !0 ? p = setTimeout(() => {
+      function(_) {
+        _[0].isIntersecting === !0 ? h = setTimeout(() => {
           g(
             n,
-            h[0].target.dataset.visible || s || "",
+            _[0].target.dataset.visible || s || "",
             "view",
             e
           ), a.disconnect();
-        }, r) : (m("Element is not fully visible", "warn"), clearTimeout(p));
+        }, r) : (m("Element is not fully visible", "warn"), clearTimeout(h));
       },
       { threshold: [o] }
     ), typeof t == "string") {
-      const h = document.querySelector(t);
-      h && a.observe(h);
+      const _ = document.querySelector(t);
+      _ && a.observe(_);
     } else
       a.observe(t);
   }, m = (t, n = "info") => {
@@ -1581,12 +1581,12 @@
 		<path d="M25.4888 16.632L22.6162 19.5046L21.5113 18.3998C21.1452 18.0336 20.5516 18.0336 20.1855 18.3998C19.8194 18.7659 19.8194 19.3595 20.1855 19.7256L21.9532 21.4933C22.1363 21.6764 22.3762 21.768 22.6161 21.768C22.856 21.768 23.096 21.6765 23.279 21.4933L26.8145 17.9578C27.1806 17.5917 27.1806 16.9981 26.8145 16.632C26.4485 16.2659 25.8549 16.2659 25.4888 16.632Z" fill="white"/>
 		<path d="M29.75 12.5C28.5653 12.5 27.5003 11.8418 26.9705 10.7823L26.8386 10.5183C26.6798 10.2006 26.3551 10 26 10H23.1875V6.5625C23.1875 5.01169 21.9258 3.75 20.375 3.75H18.8125V3.4375C18.8125 2.91975 18.3927 2.5 17.875 2.5C16.834 2.5 15.9306 1.79469 15.6781 0.784625L15.6594 0.71C15.5551 0.292687 15.1801 0 14.75 0H9.75C9.31987 0 8.94494 0.292688 8.84056 0.709938L8.82181 0.78475C8.56938 1.79469 7.666 2.5 6.625 2.5C6.10725 2.5 5.6875 2.91975 5.6875 3.4375V3.75H4.125C2.57419 3.75 1.3125 5.01169 1.3125 6.5625V29.1875C1.3125 30.7383 2.57419 32 4.125 32H20.375C21.9258 32 23.1875 30.7383 23.1875 29.1875V28.0721C23.2019 28.0764 23.2162 28.0811 23.2306 28.0854C23.3185 28.1118 23.4093 28.125 23.5 28.125C23.5907 28.125 23.6815 28.1118 23.7694 28.0854C25.7841 27.4811 27.5127 26.2696 28.7682 24.5821C30.0238 22.8945 30.6875 20.8907 30.6875 18.7873V13.4375C30.6875 12.9198 30.2677 12.5 29.75 12.5ZM7.5625 4.26831C8.838 3.97331 9.9055 3.0875 10.4266 1.875H14.0734C14.5946 3.08744 15.6621 3.97337 16.9375 4.26831V5.625H7.5625V4.26831ZM21.3125 29.1875C21.3125 29.7044 20.8919 30.125 20.375 30.125H4.125C3.60806 30.125 3.1875 29.7044 3.1875 29.1875V6.5625C3.1875 6.04556 3.60806 5.625 4.125 5.625H5.6875V6.5625C5.6875 7.08025 6.10725 7.5 6.625 7.5H17.875C18.3927 7.5 18.8125 7.08025 18.8125 6.5625V5.625H20.375C20.8919 5.625 21.3125 6.04556 21.3125 6.5625V10H21C20.6449 10 20.3202 10.2006 20.1614 10.5183L20.0295 10.7821C19.4997 11.8418 18.4347 12.5 17.25 12.5C16.7323 12.5 16.3125 12.9198 16.3125 13.4375V18.7873C16.3125 20.8907 16.9762 22.8945 18.2318 24.5821C19.0674 25.7052 20.1129 26.6172 21.3125 27.2799V29.1875ZM28.8125 18.7873C28.8125 22.1783 26.6893 25.1239 23.5 26.2036C20.3107 25.1239 18.1875 22.1783 18.1875 18.7873V14.2876C19.6063 14.0198 20.8398 13.1501 21.5703 11.8749H25.4297C26.1602 13.1501 27.3937 14.0198 28.8125 14.2876V18.7873Z" fill="white"/>
 		</svg>`
-  }, d = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", c = {
-    google: `${d}google-logo.webp`,
-    a_rating: `${d}a-rating.webp`,
-    house: `${d}house.webp`,
-    clients_d: `${d}clients_d.svg`,
-    clients_m: `${d}clients_m.svg`
+  }, p = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", c = {
+    google: `${p}google-logo.webp`,
+    a_rating: `${p}a-rating.webp`,
+    house: `${p}house.webp`,
+    clients_d: `${p}clients_d.svg`,
+    clients_m: `${p}clients_m.svg`
   }, C = (
     /*html*/
     `
@@ -1977,7 +1977,9 @@
       this.init();
     }
     async init() {
-      await f("body"), _("head").elements[0].insertAdjacentHTML("beforeend", `<style>${w}</style>`), await f(".row-number-1"), _(".row-number-1").elements[0].insertAdjacentHTML("beforebegin", H), await f("#hs_cos_wrapper_widget_1675359451364"), _(".crs-hero-below__video-wrap").elements[0].appendChild(_("#hs_cos_wrapper_widget_1675359451364").elements[0]), this.bindCtaClicks(), this.trackVisibility();
+      await f("body"), d("head").elements[0].insertAdjacentHTML("beforeend", `<style>${w}</style>`), await f(".row-number-1"), d(".row-number-1").elements[0].insertAdjacentHTML("beforebegin", H), await f("#hs_cos_wrapper_widget_1675359451364"), d(".crs-hero-below__video-wrap").elements[0].appendChild(d("#hs_cos_wrapper_widget_1675359451364").elements[0]), d('[href="#application"]').elements.forEach(
+        (n) => n.innerText = "See if this is a fit for you"
+      ), this.bindCtaClicks(), this.trackVisibility();
     }
     bindCtaClicks() {
       const n = {
