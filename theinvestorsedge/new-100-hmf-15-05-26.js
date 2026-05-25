@@ -1977,9 +1977,12 @@
       this.init();
     }
     async init() {
-      await f("body"), d("head").elements[0].insertAdjacentHTML("beforeend", `<style>${w}</style>`), await f(".row-number-1"), d(".row-number-1").elements[0].insertAdjacentHTML("beforebegin", H), await f("#hs_cos_wrapper_widget_1675359451364"), d(".crs-hero-below__video-wrap").elements[0].appendChild(d("#hs_cos_wrapper_widget_1675359451364").elements[0]), d('[href="#application"]').elements.forEach(
-        (n) => n.innerText = "See if this is a fit for you"
-      ), this.bindCtaClicks(), this.trackVisibility();
+      await f("body"), d("head").elements[0].insertAdjacentHTML("beforeend", `<style>${w}</style>`), await f(".row-number-1"), d(".row-number-1").elements[0].insertAdjacentHTML("beforebegin", H), await f("#hs_cos_wrapper_widget_1675359451364"), d(".crs-hero-below__video-wrap").elements[0].appendChild(d("#hs_cos_wrapper_widget_1675359451364").elements[0]), d('[href="#application"]').elements.forEach((n) => {
+        n.innerText = "See if this is a fit for you", n.addEventListener("click", (e) => {
+          const s = document.querySelector(".pwr-sec-form__content");
+          e.preventDefault(), s && s.scrollIntoView({ behavior: "instant", block: "start" });
+        });
+      }), this.bindCtaClicks(), this.trackVisibility();
     }
     bindCtaClicks() {
       const n = {
@@ -1998,7 +2001,7 @@
             }
           g("cta_click", s, "click", "New 100 HMF");
           const r = document.querySelector(".pwr-sec-form__content");
-          r && r.scrollIntoView({ behavior: "smooth", block: "start" });
+          r && r.scrollIntoView({ behavior: "instant", block: "start" });
         });
       });
     }
