@@ -1,882 +1,506 @@
 (function() {
   "use strict";
-  const E = `@charset "UTF-8";
-.laptop-wrap {
+  const U = `@charset "UTF-8";
+/* Adblock360 — Animated Hero
+ * Drop-in responsive block. All styles are scoped under .adblock-hero.
+ *
+ * Usage:
+ *   <link rel="stylesheet" href="adblock-hero/hero.css">
+ *   <div class="adblock-hero"></div>
+ *   <script src="adblock-hero/hero.js" defer><\/script>
+ *
+ * The block fills the width of its parent and keeps a fixed 8:5 aspect ratio.
+ */
+.adblock-hero {
+  /* Outer responsive wrapper */
   position: relative;
   width: 100%;
-  z-index: 10;
+  max-width: 800px;
+  aspect-ratio: 8/5;
+  margin: 0 auto;
+  font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a1a;
 }
 
-.laptop-lid {
-  background: linear-gradient(180deg, #23263a 0%, #1a1d2e 100%);
-  border-radius: 14px 14px 6px 6px;
-  padding: 12px 12px 8px 12px;
-  box-shadow: 0 28px 90px rgba(20, 40, 100, 0.24), 0 6px 20px rgba(20, 40, 100, 0.12);
+.adblock-hero *,
+.adblock-hero *::before,
+.adblock-hero *::after {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
-.screen-inner {
-  background: #f0f3fb;
-  border-radius: 8px;
-  height: 340px;
-  overflow: hidden;
-  position: relative;
-}
-
-.screen-chrome {
-  height: 26px;
-  background: #e2e6f2;
-  border-bottom: 1px solid #d0d5e8;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 0 10px;
-  flex-shrink: 0;
-}
-
-.dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-
-.d1 {
-  background: #f08080;
-}
-
-.d2 {
-  background: #f0c060;
-}
-
-.d3 {
-  background: #80c080;
-}
-
-.tab-bar {
-  display: flex;
-  gap: 2px;
-  margin-left: 8px;
-}
-
-.tab {
-  height: 15px;
-  background: #d8dcee;
-  border-radius: 3px 3px 0 0;
-  padding: 0 9px;
-  display: flex;
-  align-items: center;
-}
-
-.tab.active {
-  background: #f0f3fb;
-}
-
-.tab-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #a0a8c0;
-  margin-right: 4px;
-}
-
-.tab-line {
-  width: 28px;
-  height: 4px;
-  border-radius: 2px;
-  background: #b8c0d8;
-}
-
-.url-wrap {
-  flex: 1;
-  height: 14px;
-  background: #d8dcee;
-  border-radius: 6px;
-  margin: 0 8px;
-}
-
-.screen-body {
-  height: 314px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* FLOAT WINDOWS */
-.float-win {
+/* Internal 800×500 stage — scaled to fit the wrapper by JS */
+.adblock-hero .ah-stage {
   position: absolute;
-  inset: 10px;
-  background: rgba(255, 255, 255, 0.97);
-  border: 0.5px solid rgba(100, 140, 220, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(30, 60, 120, 0.1);
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  transform: scale(0.97);
+  top: 0;
+  left: 0;
+  width: 800px;
+  height: 500px;
+  transform-origin: top left;
+  background: transparent;
+  will-change: transform;
 }
 
-.float-win.visible {
-  opacity: 1;
+/* Laptop base PNG */
+.adblock-hero .ah-laptop {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  width: 750px;
+  height: auto;
+  z-index: 1;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Screen viewport — hardcoded to match the laptop PNG */
+.adblock-hero .ah-screen {
+  position: absolute;
+  left: 161px;
+  top: 70px;
+  width: 477px;
+  height: 339px;
+  z-index: 2;
+  background: transparent;
+  overflow: visible;
+}
+
+/* Icon grid */
+.adblock-hero .ah-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  transition: opacity 380ms cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.adblock-hero .ah-grid.is-dim {
+  opacity: 0.35;
+}
+
+.adblock-hero .ah-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.adblock-hero .ah-icon {
+  width: 88px;
+  height: 88px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 220ms ease;
+}
+
+.adblock-hero .ah-cell:hover .ah-icon {
+  transform: scale(1.07);
+}
+
+.adblock-hero .ah-icon img {
+  width: 88px;
+  height: 88px;
+  display: block;
+  filter: none;
+  box-shadow: none;
+  -webkit-user-drag: none;
+}
+
+/* Completed-state checkmark */
+.adblock-hero .ah-check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2e7d32;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: transform 250ms cubic-bezier(0.34, 1.4, 0.64, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  z-index: 3;
+}
+
+.adblock-hero .ah-cell.is-done .ah-check {
   transform: scale(1);
 }
 
-.float-win.hiding {
-  opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 0.22s ease, transform 0.22s ease;
-}
-
-.fw-bar {
-  height: 24px;
-  background: #edf0f8;
-  border-bottom: 0.5px solid rgba(100, 140, 220, 0.12);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0 8px;
-}
-
-.fw-d {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.fwd1 {
-  background: #f08080;
-}
-
-.fwd2 {
-  background: #f0c060;
-}
-
-.fwd3 {
-  background: #80c080;
-}
-
-.fw-url {
-  flex: 1;
-  height: 9px;
-  background: #d8dcea;
-  border-radius: 4px;
-  margin: 0 8px;
-}
-
-.fw-body {
-  padding: 14px 16px;
-  height: calc(100% - 24px);
-  display: flex;
-  flex-direction: column;
-}
-
-/* BOTTOM TOAST BANNER */
-.block-banner {
+/* Popup card */
+.adblock-hero .ah-popup {
   position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: rgba(20, 28, 52, 0.92);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  padding: 7px 14px 7px 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
+  width: 440px;
+  height: 300px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.06);
+  z-index: 10;
   pointer-events: none;
-  z-index: 50;
-  box-shadow: 0 4px 20px rgba(10, 20, 60, 0.22), 0 0 0 0.5px rgba(74, 143, 224, 0.2);
-  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  white-space: nowrap;
-}
-
-.block-banner.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-.block-banner.hide {
   opacity: 0;
-  transform: translateX(-50%) translateY(6px);
-}
-
-.block-banner-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #4a8fe0, #2563c4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.block-banner-icon i {
-  font-size: 12px;
-  color: white;
-}
-
-.block-banner-ripple {
-  display: none;
-}
-
-.block-banner-ripple2 {
-  display: none;
-}
-
-.block-banner-texts {
+  transform-origin: top left;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 1px;
 }
 
-.block-banner-title {
-  font-size: 10px;
-  font-weight: 700;
-  color: white;
-  letter-spacing: 0.2px;
+.adblock-hero .ah-pop-header {
+  height: 64px;
+  flex: 0 0 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.block-banner-sub {
-  font-size: 8px;
-  color: rgba(255, 255, 255, 0.45);
-  font-weight: 400;
+.adblock-hero .ah-mini-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.scene-tag {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 9px;
-  color: #4a8fe0;
-  font-weight: 700;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-  background: rgba(74, 143, 224, 0.1);
-  border-radius: 4px 4px 0 0;
-  padding: 3px 10px;
-  white-space: nowrap;
+.adblock-hero .ah-mini-icon img {
+  width: 44px;
+  height: 44px;
+  display: block;
+  -webkit-user-drag: none;
+}
+
+.adblock-hero .ah-app-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.2px;
+}
+
+.adblock-hero .ah-pop-body {
+  flex: 1;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.adblock-hero .ah-pop-footer {
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.adblock-hero .ah-pill {
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 6px 14px;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 280ms ease;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
-.scene-tag.visible {
+.adblock-hero .ah-pill.is-show {
   opacity: 1;
 }
 
-.laptop-base {
-  height: 16px;
-  background: linear-gradient(180deg, #2a2e42, #1e2236);
-  border-radius: 0 0 8px 8px;
-  margin: 0 -4px;
-}
-
-.laptop-foot {
-  height: 7px;
-  background: #c2c8d8;
-  border-radius: 0 0 6px 6px;
-  margin: 0 10px;
-  box-shadow: 0 2px 10px rgba(20, 40, 100, 0.13);
-}
-
-/* ── SPOTIFY ── */
-.sp-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #1db954;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.sp-brand {
-  font-size: 11px;
-  font-weight: 700;
-  color: #1db954;
-  letter-spacing: -0.3px;
-}
-
-.sp-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.sp-art {
-  width: 68px;
-  height: 68px;
-  background: linear-gradient(135deg, #6a8fd8, #a0b8f0);
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-
-.sp-info {
-  margin-left: 10px;
-  flex: 1;
-}
-
-.sp-t {
-  height: 10px;
-  width: 100px;
-  background: #2a2e42;
-  border-radius: 5px;
-  margin-bottom: 7px;
-}
-
-.sp-a {
-  height: 7px;
-  width: 65px;
-  background: #b0b8cc;
-  border-radius: 4px;
-}
-
-.sp-row {
-  display: flex;
-  align-items: center;
-}
-
-.sp-prog-wrap {
-  margin-top: 12px;
-  position: relative;
-}
-
-/* Single flat track, ad is an overlay marker */
-.sp-track-bg {
-  height: 5px;
-  background: #dde2f0;
-  border-radius: 3px;
-  position: relative;
-  overflow: visible;
-}
-
-/* Progress fill — full width element clipped by width */
-.sp-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: #1db954;
-  border-radius: 3px;
-  width: 0%;
-}
-
-/* AD segment marker sitting on top of the track */
-.sp-ad-marker {
-  position: absolute;
-  top: -4px;
-  height: 13px;
-  border-radius: 3px;
-  background: rgba(224, 80, 80, 0.82);
-  border: 1px solid rgba(200, 50, 50, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  /* left & width set by JS */
-  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.sp-ad-marker-txt {
-  font-size: 6.5px;
-  font-weight: 800;
-  color: white;
-  letter-spacing: 0.4px;
-  white-space: nowrap;
-}
-
-.sp-ad-label {
-  position: absolute;
-  top: -22px;
-  font-size: 9px;
-  color: #e05050;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  opacity: 0;
-  transition: opacity 0.25s;
-  /* left set by JS */
-}
-
-.sp-ad-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #e05050;
-  animation: pulse-r 0.9s ease-in-out infinite;
-}
-
-@keyframes pulse-r {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.65);
-  }
-}
-.sp-time {
-  display: flex;
-  justify-content: space-between;
-  font-size: 8px;
-  color: #8890a8;
-  margin-top: 4px;
-}
-
-.sp-ctrls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-.sp-prev,
-.sp-next {
-  width: 10px;
-  height: 10px;
-  background: #b0b8cc;
-  border-radius: 50%;
-}
-
-.sp-play {
-  width: 28px;
-  height: 28px;
-  background: #1db954;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sp-play-tri {
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 9px solid white;
-  margin-left: 2px;
-}
-
-/* ── YOUTUBE ── */
-.yt-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.yt-logo-icon {
-  width: 28px;
-  height: 20px;
-  background: #ff0000;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.yt-brand {
-  font-size: 13px;
-  font-weight: 700;
-  color: #1a1a1a;
-  letter-spacing: -0.5px;
-}
-
-.yt-vid {
-  background: #111827;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  height: 140px;
-}
-
-.yt-bg {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #1a2a4a, #2a3d6a);
-}
-
-/* video play icon hint */
-.yt-play-hint {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.yt-play-circle {
+.adblock-hero .ah-skip {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid #ddd;
+  background: #ffffff;
+  color: #666;
+  font-size: 18px;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+  font-family: inherit;
 }
 
-.yt-play-circle i {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.8);
+.adblock-hero .ah-skip:hover {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  border-color: #bbb;
 }
 
-/* bottom controls bar */
-.yt-controls {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 5px 8px 5px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-}
-
-.yt-prog-bar {
-  height: 3px;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 2px;
-  position: relative;
-  overflow: visible;
-  margin-bottom: 4px;
-}
-
-.yt-prog-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: #ff0000;
-  border-radius: 2px;
-  width: 0%;
-}
-
-/* Red AD marker on video progress */
-.yt-ad-zone {
-  position: absolute;
-  top: -2px;
-  height: 7px;
-  border-radius: 2px;
-  background: rgba(255, 200, 0, 0.85);
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.yt-time-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.yt-time-txt {
-  font-size: 7px;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.yt-vol {
-  width: 14px;
-  height: 7px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-  margin-left: auto;
-}
-
-.yt-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.yt-av {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #a0c0f0, #6090e0);
-  flex-shrink: 0;
-}
-
-.yt-tl {
-  flex: 1;
-}
-
-.yt-t1 {
-  height: 7px;
-  background: #2a2e42;
-  border-radius: 3px;
-  width: 85%;
-  margin-bottom: 4px;
-}
-
-.yt-t2 {
-  height: 6px;
-  background: #b0b8cc;
-  border-radius: 3px;
-  width: 55%;
-}
-
-/* ── WEBSITE ── */
-.ws-hdr-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.ws-hdr-logo {
-  width: 60px;
-  height: 10px;
-  background: #2a2e42;
-  border-radius: 5px;
-}
-
-.ws-hdr-nav {
-  display: flex;
-  gap: 5px;
-}
-
-.ws-hdr-ni {
-  width: 30px;
-  height: 8px;
-  background: #c8d0e8;
-  border-radius: 4px;
-}
-
-.ws-layout {
-  display: flex;
-  gap: 10px;
-  flex: 1;
-}
-
-.ws-main {
-  flex: 2.2;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.ws-sidebar {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.ws-l {
-  height: 6px;
-  border-radius: 3px;
-}
-
-.ws-l1 {
-  background: #2a2e42;
-  width: 88%;
-}
-
-.ws-l2 {
-  background: #dde2f0;
-}
-
-.ws-l3 {
-  background: #e0e4f0;
-  width: 78%;
-}
-
-.ws-l4 {
-  background: #e8eaf8;
-  width: 60%;
-}
-
-.ws-img {
-  height: 65px;
-  background: linear-gradient(135deg, #dde6f8, #ccd4f0);
-  border-radius: 6px;
-}
-
-.ws-more-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 4px;
-}
-
-.ad-banner {
-  border-radius: 7px;
-  position: relative;
-  overflow: hidden;
-  background: rgba(224, 80, 80, 0.07);
-  border: 0.5px dashed rgba(200, 60, 60, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.ad-banner-label {
-  font-size: 8px;
-  color: rgba(180, 50, 50, 0.5);
-  font-weight: 700;
-  letter-spacing: 0.4px;
-}
-
-.ad-banner-line {
-  height: 5px;
-  border-radius: 3px;
-  background: rgba(200, 60, 60, 0.12);
-}
-
-.ad-b1 {
-  height: 52px;
-}
-
-.ad-b2 {
-  height: 42px;
-}
-
-.ad-blocked-cover {
+/* Spotify body — bar waveform */
+.adblock-hero .ah-wave {
   position: absolute;
   inset: 0;
-  border-radius: 7px;
-  background: rgba(235, 240, 255, 0.97);
-  border: 0.5px solid rgba(74, 143, 224, 0.3);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  padding: 16px 18px 22px;
+}
+
+.adblock-hero .ah-bar {
+  width: 11px;
+  border-radius: 3px 3px 0 0;
+  background: #ccc;
+  transition: height 350ms ease-in;
+}
+
+.adblock-hero .ah-bar.is-ad {
+  background: #e53935;
+}
+
+.adblock-hero .ah-ad-label {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e53935;
+  letter-spacing: 1px;
+  transition: opacity 280ms ease;
+}
+
+@keyframes ah-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+.adblock-hero .ah-bar.is-shake {
+  animation: ah-shake 100ms ease-in-out 4;
+}
+
+/* YouTube body — video player */
+.adblock-hero .ah-player {
+  width: 100%;
+  height: 145px;
+  background: #111;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+.adblock-hero .ah-vid-content {
+  position: absolute;
+  inset: 0;
+  transition: transform 350ms ease-in;
+}
+
+.adblock-hero .ah-vid-content.is-wipe {
+  transform: translateX(-120%);
+}
+
+.adblock-hero .ah-play-btn {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 280ms ease;
 }
 
-.ad-blocked-cover i {
-  font-size: 14px;
-  color: #4a8fe0;
+.adblock-hero .ah-play-btn.is-show {
+  opacity: 1;
 }
 
-.ad-blocked-cover span {
-  font-size: 8px;
-  color: #4a8fe0;
+.adblock-hero .ah-progress-track {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: #333;
+}
+
+.adblock-hero .ah-progress-bar {
+  height: 100%;
+  background: #e53935;
+  width: 0;
+  transition: width 1.8s linear;
+}
+
+.adblock-hero .ah-progress-bar.is-fill {
+  width: 35%;
+}
+
+/* Chrome body — skeleton browser */
+.adblock-hero .ah-browser {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.adblock-hero .ah-b-bar {
+  height: 34px;
+  flex: 0 0 34px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.adblock-hero .ah-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.adblock-hero .ah-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: block;
+}
+
+.adblock-hero .ah-dots .r {
+  background: #ff5f57;
+}
+
+.adblock-hero .ah-dots .y {
+  background: #febc2e;
+}
+
+.adblock-hero .ah-dots .g {
+  background: #28c840;
+}
+
+.adblock-hero .ah-url {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #666;
+  padding: 3px 10px;
+  line-height: 16px;
+}
+
+.adblock-hero .ah-b-content {
+  flex: 1;
+  padding: 12px 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.adblock-hero .ah-skel-line {
+  height: 10px;
+  background: #e8e8e8;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.adblock-hero .ah-adbanner {
+  height: 34px;
+  background: #fff5f5;
+  border: 1.5px solid #e53935;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  gap: 10px;
+  overflow: hidden;
+  transition: height 350ms ease-in, padding 350ms ease-in, opacity 350ms ease-in, margin 350ms ease-in;
+}
+
+.adblock-hero .ah-adbanner.is-collapse {
+  height: 0 !important;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  border-width: 0;
+}
+
+.adblock-hero .ah-ad-tag {
+  font-size: 13px;
   font-weight: 700;
+  color: #e53935;
   letter-spacing: 0.5px;
 }
 
-/* ── COOKIE ── */
-.ck-page {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.adblock-hero .ah-ad-copy {
+  font-size: 13px;
+  color: #aaa;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.ck-ph {
-  height: 7px;
-  border-radius: 4px;
+@keyframes ah-adpulse {
+  0%, 100% {
+    border-color: #e53935;
+  }
+  50% {
+    border-color: #ff8a80;
+  }
+}
+.adblock-hero .ah-adbanner.is-pulse {
+  animation: ah-adpulse 250ms ease-in-out 2;
 }
 
-.ck-ph1 {
-  background: #2a2e42;
-  width: 55%;
-}
-
-.ck-ph2 {
-  background: #dde2f0;
-}
-
-.ck-ph3 {
-  background: #e0e4f0;
-  width: 80%;
-}
-
-.ck-ph4 {
-  background: #e8eaf8;
-  width: 62%;
-}
-
-.ck-ph5 {
-  background: #dde2f0;
-  width: 92%;
-}
-
-.ck-ph6 {
-  background: #e4e8f4;
-  width: 68%;
-}
-
-.ck-popup-wrap {
+.adblock-hero .ah-shield-badge {
   position: absolute;
-  inset: 36px 16px 16px;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
 }
 
-.ck-popup {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border: 0.5px solid rgba(100, 140, 220, 0.25);
-  border-radius: 10px;
-  padding: 12px 14px;
-  box-shadow: 0 6px 24px rgba(30, 60, 120, 0.14);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: bottom center;
-}
-
-.ck-icon-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 5px;
-}
-
-.ck-cookie-icon {
-  font-size: 16px;
-  color: #ba7517;
-}
-
-.ck-title {
-  font-size: 10.5px;
+.adblock-hero .ah-shield-badge .ah-chip {
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 14px;
   font-weight: 700;
-  color: #2a2e42;
+  border-radius: 20px;
+  padding: 6px 16px;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 320ms ease, transform 320ms cubic-bezier(0.34, 1.4, 0.64, 1);
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.18);
 }
 
-.ck-body {
-  font-size: 8px;
-  color: #6070a0;
-  line-height: 1.5;
-  margin-bottom: 9px;
-}
-
-.ck-btns {
-  display: flex;
-  gap: 6px;
-}
-
-.ck-ok {
-  flex: 1;
-  height: 20px;
-  background: #4a8fe0;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  font-weight: 700;
-  color: white;
-}
-
-.ck-no {
-  flex: 1;
-  height: 20px;
-  background: #dde2f0;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  font-weight: 600;
-  color: #6070a0;
+.adblock-hero .ah-shield-badge.is-show .ah-chip {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ip2 * {
@@ -923,6 +547,7 @@ main {
   flex: 1;
   min-height: 421px;
   border-radius: 16px;
+  display: flex;
 }
 @media (max-width: 768px) {
   .ip2-hero__right {
@@ -1385,131 +1010,131 @@ main {
     height: 52px;
     font-size: 16px;
   }
-}/*# sourceMappingURL=style.css.map */`, g = (a, n, i, s = "") => {
+}/*# sourceMappingURL=style.css.map */`, L = (l, n, e, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: a,
+      event_name: l,
       event_desc: n,
-      event_type: i,
+      event_type: e,
       event_loc: s
-    }), M(`Event: ${a} | ${n} | ${i} | ${s}`, "success");
-  }, z = (a) => new Promise((n) => {
-    const i = document.querySelector(a);
-    i && n(i);
+    }), F(`Event: ${l} | ${n} | ${e} | ${s}`, "success");
+  }, Y = (l) => new Promise((n) => {
+    const e = document.querySelector(l);
+    e && n(e);
     const s = new MutationObserver(() => {
-      const o = document.querySelector(a);
-      o && (n(o), s.disconnect());
+      const p = document.querySelector(l);
+      p && (n(p), s.disconnect());
     });
     s.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), S = ({ name: a, dev: n }) => {
-    const i = a.toLowerCase().replace(/\s/g, "_");
-    g(`${i}_started`, `Experiment ${a} started`, "other", i), console.log(
-      `%c EXP: ${a} (DEV: ${n})`,
+  }), G = ({ name: l, dev: n }) => {
+    const e = l.toLowerCase().replace(/\s/g, "_");
+    L(`${e}_started`, `Experiment ${l} started`, "other", e), console.log(
+      `%c EXP: ${l} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class u {
+  class H {
     constructor(n) {
-      this.elements = n instanceof u ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+      this.elements = n instanceof H ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
-    on(n, i, s) {
-      return typeof i == "function" && (s = i, i = ""), this.elements.forEach((o) => {
-        o.addEventListener(n, function(h) {
-          var r;
-          if (i !== "") {
-            let f = (r = h.target) == null ? void 0 : r.closest(i);
-            f && (s == null || s.call(f, h));
+    on(n, e, s) {
+      return typeof e == "function" && (s = e, e = ""), this.elements.forEach((p) => {
+        p.addEventListener(n, function(u) {
+          var m;
+          if (e !== "") {
+            let w = (m = u.target) == null ? void 0 : m.closest(e);
+            w && (s == null || s.call(w, u));
           } else
-            s == null || s.call(o, h);
+            s == null || s.call(p, u);
         });
       }), this;
     }
     addClass(n) {
-      return this.elements.forEach(function(i) {
-        i.classList.add(n);
+      return this.elements.forEach(function(e) {
+        e.classList.add(n);
       }), this;
     }
     removeClass(n) {
-      return this.elements.forEach(function(i) {
-        i.classList.remove(n);
+      return this.elements.forEach(function(e) {
+        e.classList.remove(n);
       }), this;
     }
     toggleClass(n) {
-      return this.elements.forEach(function(i) {
-        i.classList.toggle(n);
+      return this.elements.forEach(function(e) {
+        e.classList.toggle(n);
       }), this;
     }
     each(n) {
-      for (let i of this.elements)
-        n(new u(i), this.elements.indexOf(i));
+      for (let e of this.elements)
+        n(new H(e), this.elements.indexOf(e));
       return this;
     }
-    style(n, i) {
-      const s = n.split("-").map((o, h) => h === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
-      return this.elements.forEach(function(o) {
-        o.style[s] = i;
+    style(n, e) {
+      const s = n.split("-").map((p, u) => u === 0 ? p : p.charAt(0).toUpperCase() + p.slice(1)).join("");
+      return this.elements.forEach(function(p) {
+        p.style[s] = e;
       }), this;
     }
     find(n) {
-      const i = this.elements.map((s) => Array.from(s.querySelectorAll(n)));
-      return new u(i.flat());
+      const e = this.elements.map((s) => Array.from(s.querySelectorAll(n)));
+      return new H(e.flat());
     }
-    attr(n, i) {
-      return i ? (this.elements.forEach(function(s) {
-        s.setAttribute(n, i);
+    attr(n, e) {
+      return e ? (this.elements.forEach(function(s) {
+        s.setAttribute(n, e);
       }), this) : this.elements[0].getAttribute(n);
     }
     text(n) {
-      return n ? (this.elements.forEach(function(i) {
-        i.textContent = n;
+      return n ? (this.elements.forEach(function(e) {
+        e.textContent = n;
       }), this) : this.elements[0].textContent || "";
     }
     html(n) {
-      return n ? (this.elements.forEach(function(i) {
-        i.innerHTML = n;
+      return n ? (this.elements.forEach(function(e) {
+        e.innerHTML = n;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const k = (a) => new u(a), C = (a, n, i, s, o = 1e3, h = 0.5) => {
-    let r, f;
-    if (r = new IntersectionObserver(
-      function(b) {
-        b[0].isIntersecting === !0 ? f = setTimeout(() => {
-          g(
+  const B = (l) => new H(l), z = (l, n, e, s, p = 1e3, u = 0.5) => {
+    let m, w;
+    if (m = new IntersectionObserver(
+      function(k) {
+        k[0].isIntersecting === !0 ? w = setTimeout(() => {
+          L(
             n,
-            b[0].target.dataset.visible || s || "",
+            k[0].target.dataset.visible || s || "",
             "view",
-            i
-          ), r.disconnect();
-        }, o) : (M("Element is not fully visible", "warn"), clearTimeout(f));
+            e
+          ), m.disconnect();
+        }, p) : (F("Element is not fully visible", "warn"), clearTimeout(w));
       },
-      { threshold: [h] }
-    ), typeof a == "string") {
-      const b = document.querySelector(a);
-      b && r.observe(b);
+      { threshold: [u] }
+    ), typeof l == "string") {
+      const k = document.querySelector(l);
+      k && m.observe(k);
     } else
-      r.observe(a);
-  }, M = (a, n = "info") => {
-    let i;
+      m.observe(l);
+  }, F = (l, n = "info") => {
+    let e;
     switch (n) {
       case "info":
-        i = "color: #3498db;";
+        e = "color: #3498db;";
         break;
       case "warn":
-        i = "color: #f39c12;";
+        e = "color: #f39c12;";
         break;
       case "error":
-        i = "color: #e74c3c;";
+        e = "color: #e74c3c;";
         break;
       case "success":
-        i = "color: #2ecc71;";
+        e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${a}`, `${i} font-size: 16px; font-weight: 600`);
-  }, $ = [
+    console.log(`%c>>> ${l}`, `${e} font-size: 16px; font-weight: 600`);
+  }, K = [
     {
       icon: "ev_code",
       title: "EV Code Signed",
@@ -1530,14 +1155,14 @@ main {
       title: "Trusted by 17M users",
       desc: "Same team behind AdBlock<br>for YouTube™"
     }
-  ], Y = [
+  ], W = [
     { feature: "YouTube ads", ext: !0, app: !0 },
     { feature: "YouTube sponsor segment skip", ext: !1, app: !0 },
     { feature: "Spotify & desktop apps", ext: !1, app: !0 },
     { feature: "All browsers", ext: !1, app: !0 },
     { feature: "All websites", ext: !1, app: !0 },
     { feature: "Cookie consent auto-denial", ext: !1, app: !0 }
-  ], H = "https://conversionrate-store.github.io/a-b_images/adblock/", p = {
+  ], Z = "https://conversionrate-store.github.io/a-b_images/adblock/", h = {
     adBlockLogo: `<svg xmlns="http://www.w3.org/2000/svg" width="140" height="24" viewBox="0 0 140 24" fill="none">
 		<g clip-path="url(#clip0_503_377)">
 		<path d="M137.616 17.351C136.646 18.7315 135.275 19.4208 133.505 19.4208C131.734 19.4208 130.357 18.7315 129.373 17.351C128.404 15.9571 127.919 14.0986 127.919 11.7754C127.919 9.45216 128.404 7.60128 129.373 6.2208C130.357 4.82688 131.734 4.12992 133.505 4.12992C135.275 4.12992 136.646 4.82688 137.616 6.2208C138.6 7.60128 139.091 9.45216 139.091 11.7754C139.091 14.0986 138.6 15.9571 137.616 17.351ZM130.47 16.3584C131.2 17.4432 132.212 17.9846 133.505 17.9846C134.798 17.9846 135.802 17.4432 136.52 16.3584C137.25 15.2736 137.616 13.7472 137.616 11.7754C137.616 9.80448 137.25 8.27712 136.52 7.19232C135.802 6.10752 134.798 5.56608 133.505 5.56608C132.212 5.56608 131.2 6.10848 130.47 7.19232C129.753 8.27712 129.394 9.80352 129.394 11.7754C129.394 13.7472 129.753 15.2746 130.47 16.3584ZM121.273 9.66336C122.721 9.66336 123.908 10.1213 124.835 11.0362C125.763 11.9386 126.226 13.1059 126.226 14.5421C126.226 15.9782 125.763 17.1542 124.835 18.0691C123.908 18.9715 122.721 19.4208 121.273 19.4208C119.825 19.4208 118.638 18.9706 117.71 18.0691C116.783 17.1542 116.319 15.9782 116.319 14.5421C116.319 13.4304 116.622 12.4445 117.226 11.5853L122.053 4.38336H123.718L120.093 9.79008C120.48 9.70472 120.876 9.66223 121.273 9.66336ZM118.743 17.0342C119.39 17.6678 120.233 17.9846 121.273 17.9846C122.313 17.9846 123.149 17.6678 123.781 17.0342C124.428 16.4006 124.751 15.5702 124.751 14.5421C124.751 13.5149 124.428 12.6835 123.781 12.0499C123.149 11.4163 122.313 11.0995 121.273 11.0995C120.233 11.0995 119.39 11.4163 118.743 12.0499C118.111 12.6835 117.795 13.5149 117.795 14.5421C117.795 15.5702 118.111 16.4006 118.743 17.0342ZM110.769 10.5293C111.949 10.6848 112.919 11.1418 113.678 11.9021C114.451 12.649 114.837 13.6416 114.837 14.88C114.837 16.2883 114.352 17.401 113.383 18.217C112.427 19.0195 111.261 19.4208 109.883 19.4208C108.787 19.4208 107.811 19.1674 106.954 18.6605C106.111 18.172 105.469 17.4014 105.14 16.4851L106.363 15.767C106.602 16.4995 107.03 17.0554 107.65 17.4355C108.268 17.8022 109.012 17.9846 109.883 17.9846C110.895 17.9846 111.725 17.7178 112.371 17.1821C113.031 16.633 113.362 15.8669 113.362 14.88C113.362 13.895 113.031 13.1347 112.371 12.599C111.725 12.0499 110.895 11.7754 109.883 11.7754V11.7542L109.862 11.7754H109.462L108.829 10.8038L112.498 5.77728H105.562V4.38336H114.205V5.77728L110.769 10.5293ZM104.395 19.1674H101.233L97.3967 14.3731V19.1674H94.6771V4.38336H97.3967V13.2538L101.022 8.60736H104.268L100.031 13.824L104.395 19.1674ZM88.4745 19.463C86.8867 19.463 85.559 18.9283 84.4905 17.8579C83.4364 16.7885 82.9094 15.4646 82.9094 13.8874C82.9094 12.3101 83.4374 10.9872 84.4905 9.9168C85.559 8.84736 86.8867 8.31168 88.4745 8.31168C89.5007 8.31168 90.4348 8.5584 91.2777 9.05088C92.0941 9.51551 92.7601 10.2045 93.1967 11.0362L90.8562 12.409C90.6462 11.9732 90.3079 11.612 89.8867 11.3741C89.4532 11.1174 88.9571 10.9858 88.4534 10.9939C87.6383 10.9939 86.9644 11.2685 86.4297 11.8176C85.8959 12.3523 85.629 13.0426 85.629 13.8874C85.629 14.7187 85.8959 15.408 86.4297 15.9571C86.9644 16.4928 87.6393 16.7597 88.4534 16.7597C89.0015 16.7597 89.4863 16.6406 89.9078 16.4006C90.329 16.1627 90.6673 15.8015 90.8774 15.3658L93.239 16.7174C92.7751 17.5483 92.0985 18.2408 91.2786 18.7238C90.4348 19.2163 89.4998 19.463 88.4745 19.463ZM79.9209 17.8579C78.839 18.9283 77.518 19.463 75.958 19.463C74.398 19.463 73.078 18.9283 71.9951 17.8579C70.9267 16.7731 70.3929 15.4502 70.3929 13.8874C70.3929 12.3245 70.9267 11.0074 71.9951 9.93792C73.0771 8.85312 74.398 8.31168 75.958 8.31168C77.518 8.31168 78.839 8.85408 79.9209 9.93792C81.0028 11.0083 81.5443 12.3245 81.5443 13.8874C81.5443 15.4502 81.0028 16.7741 79.9209 17.8579ZM73.9132 15.9782C74.4614 16.5274 75.143 16.8019 75.958 16.8019C76.774 16.8019 77.4556 16.5274 78.0028 15.9782C78.551 15.4291 78.8246 14.7322 78.8246 13.8874C78.8246 13.0426 78.551 12.3456 78.0028 11.7965C77.4556 11.2474 76.774 10.9728 75.958 10.9728C75.143 10.9728 74.4614 11.2474 73.9132 11.7965C73.3794 12.3456 73.1126 13.0426 73.1126 13.8874C73.1126 14.7322 73.3794 15.4291 73.9132 15.9782ZM65.734 19.1674V3.74976H68.4527V19.1674H65.734ZM62.0131 11.5008C63.3062 12.2477 63.9522 13.3738 63.9522 14.88C63.9522 16.1338 63.5097 17.161 62.6246 17.9635C61.7395 18.7661 60.6499 19.1674 59.3567 19.1674H53.0975V4.38336H58.9151C60.1804 4.38336 61.2412 4.77792 62.0985 5.56608C62.9692 6.3408 63.405 7.33344 63.405 8.544C63.405 9.76896 62.9414 10.7549 62.0131 11.5008ZM58.9142 7.10784H56.0054V10.3603H58.9142C59.3634 10.3603 59.7359 10.2067 60.0316 9.89568C60.3407 9.58656 60.4953 9.19872 60.4953 8.73408C60.4953 8.26944 60.3475 7.88256 60.0527 7.57248C59.757 7.26336 59.3778 7.10784 58.9142 7.10784ZM59.3567 16.4429C59.8492 16.4429 60.2562 16.2816 60.5798 15.9571C60.9033 15.6192 61.0646 15.1968 61.0646 14.6899C61.0646 14.1974 60.9023 13.7894 60.5798 13.465C60.2562 13.127 59.8492 12.9581 59.3567 12.9581H56.0063V16.4429H59.3567ZM47.7638 4.38336H50.4835V19.1674H47.7638V17.9213C46.9631 18.9494 45.8246 19.463 44.349 19.463C42.9292 19.463 41.7138 18.9283 40.701 17.8579C39.7046 16.7741 39.2054 15.4502 39.2054 13.8874C39.2054 12.3245 39.7046 11.0083 40.702 9.93792C41.7138 8.85408 42.9292 8.31168 44.349 8.31168C45.8246 8.31168 46.9622 8.82624 47.7638 9.85344V4.38336ZM42.7468 16.0416C43.3084 16.5907 44.0111 16.8653 44.855 16.8653C45.6978 16.8653 46.3938 16.5907 46.942 16.0416C47.4892 15.479 47.7638 14.761 47.7638 13.8874C47.7638 13.0147 47.4902 12.3034 46.942 11.7542C46.3938 11.1917 45.6978 10.9094 44.855 10.9094C44.0111 10.9094 43.3094 11.1917 42.7468 11.7542C42.1986 12.3034 41.9251 13.0147 41.9251 13.8874C41.9251 14.761 42.1986 15.479 42.7468 16.0416ZM35.5948 19.1674L34.7087 16.5062H28.8287L27.9436 19.1674H24.8025L29.9673 4.38336H33.5721L38.7571 19.1674H35.5948ZM29.7551 13.7818H33.8025L31.7788 7.74144L29.7551 13.7818Z" fill="#0B1936"/>
@@ -1570,27 +1195,32 @@ main {
     cancel: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M13.8661 0.366117C14.3543 -0.122039 15.1455 -0.122039 15.6337 0.366117C16.1218 0.854279 16.1218 1.64557 15.6337 2.13369L9.76748 7.99991L15.6337 13.8661C16.1218 14.3543 16.1218 15.1456 15.6337 15.6337C15.1456 16.1218 14.3543 16.1218 13.8661 15.6337L7.9999 9.76748L2.13369 15.6337C1.64557 16.1218 0.854278 16.1218 0.366116 15.6337C-0.122039 15.1455 -0.122038 14.3543 0.366116 13.8661L6.23233 7.99991L0.366116 2.13369C-0.122039 1.64554 -0.122038 0.854272 0.366116 0.366117C0.854271 -0.122039 1.64554 -0.122039 2.13369 0.366117L7.9999 6.23233L13.8661 0.366117Z" fill="#D61717"/>
 </svg>`
-  }, D = "/_astro/horizontal-aby-logo.Be8n11XS_Z59DT.svg", j = $.map(
-    ({ icon: a, title: n, desc: i }) => (
+  }, J = "/_astro/horizontal-aby-logo.Be8n11XS_Z59DT.svg", Q = K.map(
+    ({ icon: l, title: n, desc: e }) => (
       /* html */
       `
   <div class="ip2-safe__feature">
-    <img class="ip2-safe__feature-icon" src="${H}${a}.webp" alt="${n}" />
+    <img class="ip2-safe__feature-icon" src="${Z}${l}.webp" alt="${n}" />
     <h3 class="ip2-safe__feature-title">${n}</h3>
-    <p class="ip2-safe__feature-desc">${i}</p>
+    <p class="ip2-safe__feature-desc">${e}</p>
   </div>`
     )
-  ).join(""), q = Y.map(
-    ({ feature: a, ext: n, app: i }, s) => (
+  ).join(""), nn = W.map(
+    ({ feature: l, ext: n, app: e }, s) => (
       /* html */
       `
   <div class="ip2-comp__row${s % 2 === 0 ? " ip2-comp__row--odd" : ""}">
-    <span class="ip2-comp__feature">${a}</span>
-    <span class="ip2-comp__cell">${n ? p.check : p.cancel}</span>
-    <span class="ip2-comp__cell">${i ? p.check : p.cancel}</span>
+    <span class="ip2-comp__feature">${l}</span>
+    <span class="ip2-comp__cell">${n ? h.check : h.cancel}</span>
+    <span class="ip2-comp__cell">${e ? h.check : h.cancel}</span>
   </div>`
     )
-  ).join(""), I = (
+  ).join(""), en = (
+    /* html */
+    `
+<div class="adblock-hero" data-asset-base="${Z}"></div>
+`
+  ), tn = (
     /* html */
     `
 <div class="ip2">
@@ -1599,7 +1229,7 @@ main {
     <div class="ip2-hero__inner">
       <div class="ip2-hero__left">
         <div class="ip2-hero__header">
-          <a class="ip2-hero__logo" href="/">${p.adBlockLogo}</a>
+          <a class="ip2-hero__logo" href="/">${h.adBlockLogo}</a>
           <span class="ip2-hero__badge">From the team behind Adblock for Youtube™</span>
         </div>
         <div class="ip2-hero__content">
@@ -1608,183 +1238,17 @@ main {
         </div>
         <div class="ip2-hero__cta">
           <a class="ip2-hero__btn" href="#">
-            ${p.windows}
+            ${h.windows}
             Download AdBlock360
           </a>
           <div class="ip2-hero__meta">
-            <span class="ip2-hero__meta-item">${p.shieldGray} Trusted by 17M users</span>
-            <span class="ip2-hero__meta-item">${p.noCard} No credit card</span>
+            <span class="ip2-hero__meta-item">${h.shieldGray} Trusted by 17M users</span>
+            <span class="ip2-hero__meta-item">${h.noCard} No credit card</span>
           </div>
         </div>
       </div>
       <div class="ip2-hero__right">
-        
-<div class="laptop-wrap">
-    <div class="laptop-lid">
-      <div class="screen-inner">
-        <div class="screen-chrome">
-          <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
-          <div class="tab-bar">
-            <div class="tab active"><div class="tab-dot"></div><div class="tab-line"></div></div>
-            <div class="tab"><div class="tab-dot"></div><div class="tab-line" style="width:20px;"></div></div>
-          </div>
-          <div class="url-wrap"></div>
-        </div>
-        <div class="screen-body">
-
-          <!-- SPOTIFY -->
-          <div class="float-win" id="winSp">
-            <div class="fw-bar"><div class="fw-d fwd1"></div><div class="fw-d fwd2"></div><div class="fw-d fwd3"></div><div class="fw-url"></div></div>
-            <div class="fw-body">
-              <div class="sp-header">
-                <div class="sp-logo"><svg viewBox="0 0 168 168" width="14" height="14" fill="white"><path d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.2 1.7-19.8-12.1-44.7-14.8-74.1-8.1-2.8.6-5.6-1.1-6.3-3.9-.6-2.8 1.1-5.6 3.9-6.3 32.1-7.3 59.6-4.2 81.9 9.4 2.5 1.5 3.3 4.7 1.8 7.2zm10.3-22.9c-1.9 3.1-6 4.1-9.1 2.2-22.7-13.9-57.2-18-84-9.9-3.5 1-7.1-1-8.1-4.5-1-3.5 1-7.1 4.5-8.1 30.7-9.3 68.8-4.8 95 11.2 3 1.9 4 6 2.1 9.1h-.4zm.9-23.8c-27.2-16.2-72.1-17.7-98.1-9.8-4.1 1.2-8.5-1.1-9.7-5.2-1.2-4.1 1.1-8.5 5.2-9.7 29.8-9 79.3-7.3 110.6 11.3 3.7 2.2 4.9 7 2.7 10.7-2.2 3.7-7.1 4.9-10.7 2.7z"/></svg></div>
-                <span class="sp-brand">Spotify</span>
-              </div>
-              <div class="sp-row">
-                <div class="sp-art"></div>
-                <div class="sp-info"><div class="sp-t"></div><div class="sp-a"></div></div>
-              </div>
-              <div class="sp-prog-wrap">
-                <div class="sp-ad-label" id="spAdLbl"><div class="sp-ad-dot"></div>AD BREAK</div>
-                <div class="sp-track-bg">
-                  <div class="sp-fill" id="spFill"></div>
-                  <div class="sp-ad-marker" id="spAdMarker"><div class="sp-ad-marker-txt">AD</div></div>
-                </div>
-                <div class="sp-time"><span id="spTimeL">0:00</span><span>3:42</span></div>
-              </div>
-              <div class="sp-ctrls">
-                <div class="sp-prev"></div>
-                <div class="sp-play"><div class="sp-play-tri"></div></div>
-                <div class="sp-next"></div>
-              </div>
-            </div>
-            <!-- Centered block banner -->
-            <div class="block-banner" id="spBanner">
-              <div class="block-banner-icon">
-                <div class="block-banner-ripple"></div>
-                <div class="block-banner-ripple2"></div>
-                <i class="ti ti-shield-check"></i>
-              </div>
-              <div class="block-banner-texts"><div class="block-banner-title">Ad Blocked</div><div class="block-banner-sub">Spotify ad removed from track</div></div>
-            </div>
-          </div>
-
-          <!-- YOUTUBE -->
-          <div class="float-win" id="winYt">
-            <div class="fw-bar"><div class="fw-d fwd1"></div><div class="fw-d fwd2"></div><div class="fw-d fwd3"></div><div class="fw-url"></div></div>
-            <div class="fw-body">
-              <div class="yt-header">
-                <div class="yt-logo-icon"><svg viewBox="0 0 24 24" width="12" height="12" fill="white"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.5v-7l6.3 3.5-6.3 3.5z"/></svg></div>
-                <span class="yt-brand">YouTube</span>
-              </div>
-              <div class="yt-vid">
-                <div class="yt-bg"></div>
-                <div class="yt-play-hint"><div class="yt-play-circle"><i class="ti ti-player-play-filled"></i></div></div>
-                <div class="yt-controls">
-                  <div class="yt-prog-bar">
-                    <div class="yt-prog-fill" id="ytFill"></div>
-                    <div class="yt-ad-zone" id="ytAdZone" style="left:28%;width:14%;"></div>
-                  </div>
-                  <div class="yt-time-row">
-                    <span class="yt-time-txt" id="ytTimeL">0:00</span>
-                    <span class="yt-time-txt">/ 12:34</span>
-                    <div class="yt-vol"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="yt-meta"><div class="yt-av"></div><div class="yt-tl"><div class="yt-t1"></div><div class="yt-t2"></div></div></div>
-            </div>
-            <!-- Centered block banner -->
-            <div class="block-banner" id="ytBanner">
-              <div class="block-banner-icon">
-                <div class="block-banner-ripple"></div>
-                <div class="block-banner-ripple2"></div>
-                <i class="ti ti-shield-check"></i>
-              </div>
-              <div class="block-banner-texts"><div class="block-banner-title">Ad Blocked</div><div class="block-banner-sub">YouTube ad skipped automatically</div></div>
-            </div>
-          </div>
-
-          <!-- WEBSITE -->
-          <div class="float-win" id="winWs">
-            <div class="fw-bar"><div class="fw-d fwd1"></div><div class="fw-d fwd2"></div><div class="fw-d fwd3"></div><div class="fw-url"></div></div>
-            <div class="fw-body">
-              <div class="ws-hdr-bar">
-                <div class="ws-hdr-logo"></div>
-                <div class="ws-hdr-nav"><div class="ws-hdr-ni"></div><div class="ws-hdr-ni"></div><div class="ws-hdr-ni"></div></div>
-              </div>
-              <div class="ws-layout">
-                <div class="ws-main">
-                  <div class="ws-l ws-l1"></div><div class="ws-l ws-l2"></div><div class="ws-l ws-l3"></div>
-                  <div class="ws-img"></div>
-                  <div class="ws-more-lines"><div class="ws-l ws-l4"></div><div class="ws-l ws-l2"></div><div class="ws-l ws-l3"></div></div>
-                </div>
-                <div class="ws-sidebar">
-                  <div class="ad-banner ad-b1" id="adB1">
-                    <div class="ad-banner-line" style="width:55%;"></div>
-                    <div class="ad-banner-label">ADVERTISEMENT</div>
-                    <div class="ad-banner-line" style="width:40%;"></div>
-                    <div class="ad-blocked-cover" id="adB1Cover"><i class="ti ti-ban"></i><span>AD BLOCKED</span></div>
-                  </div>
-                  <div class="ad-banner ad-b2" id="adB2">
-                    <div class="ad-banner-label">AD</div>
-                    <div class="ad-blocked-cover" id="adB2Cover"><i class="ti ti-ban"></i><span>AD BLOCKED</span></div>
-                  </div>
-                  <div class="ws-l ws-l2" style="margin-top:2px;"></div>
-                  <div class="ws-l ws-l3"></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-banner" id="wsBanner">
-              <div class="block-banner-icon">
-                <div class="block-banner-ripple"></div>
-                <div class="block-banner-ripple2"></div>
-                <i class="ti ti-shield-check"></i>
-              </div>
-              <div class="block-banner-texts"><div class="block-banner-title">2 Ads Blocked</div><div class="block-banner-sub">Banner ads removed from page</div></div>
-            </div>
-          </div>
-
-          <!-- COOKIE -->
-          <div class="float-win" id="winCk">
-            <div class="fw-bar"><div class="fw-d fwd1"></div><div class="fw-d fwd2"></div><div class="fw-d fwd3"></div><div class="fw-url"></div></div>
-            <div class="fw-body" style="position:relative;">
-              <div class="ck-page">
-                <div class="ck-ph ck-ph1"></div><div class="ck-ph ck-ph2"></div>
-                <div class="ck-ph ck-ph3"></div><div class="ck-ph ck-ph4"></div>
-                <div class="ck-ph ck-ph5"></div><div class="ck-ph ck-ph6"></div>
-              </div>
-              <div class="ck-popup-wrap">
-                <div class="ck-popup" id="ckPopup">
-                  <div class="ck-icon-row">
-                    <i class="ti ti-cookie ck-cookie-icon"></i>
-                    <span class="ck-title">Cookie Notice</span>
-                  </div>
-                  <div class="ck-body">We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept All" you consent to our use of cookies.</div>
-                  <div class="ck-btns">
-                    <div class="ck-ok">Accept All</div>
-                    <div class="ck-no">Decline</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="block-banner" id="ckBanner">
-              <div class="block-banner-icon">
-                <div class="block-banner-ripple"></div>
-                <div class="block-banner-ripple2"></div>
-                <i class="ti ti-cookie-off"></i>
-              </div>
-              <div class="block-banner-texts"><div class="block-banner-title">Cookie Blocked</div><div class="block-banner-sub">Consent popup auto-dismissed</div></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div class="laptop-base"></div>
-    <div class="laptop-foot"></div>
-  </div>
-
+        ${en}
       </div>
     </div>
   </section>
@@ -1795,10 +1259,10 @@ main {
         <h2 class="ip2-safe__title">Is AdBlock360 Safe?</h2>
         <p class="ip2-safe__subtitle">AdBlock360 is the real app. Fully vetted, zero adware — unlike the fake "AdBlock 360" showing up in your search results.</p>
       </div>
-      <div class="ip2-safe__features">${j}</div>
+      <div class="ip2-safe__features">${Q}</div>
       <div class="ip2-safe__bottom">
         <div class="ip2-safe__faq">
-          <div class="ip2-safe__faq-icon">${p.sysAccess}</div>
+          <div class="ip2-safe__faq-icon">${h.sysAccess}</div>
           <div class="ip2-safe__faq-body">
             <h3 class="ip2-safe__faq-title">Why does it need system access?</h3>
             <p class="ip2-safe__faq-desc">AdBlock360 blocks ads at the network level — covering Spotify, games and every browser at once, not just Chrome. The Windows security prompt is normal. Every legitimate system-level app triggers it, including AdGuard.</p>
@@ -1812,7 +1276,7 @@ main {
 						<a class="ip2-safe__review-link" href="#">Cybernews independent security review →</a>
 					</div>
 					<div class="ip2-safe__review-logo">
-						<img src="${H}cyber_news.webp" alt="Cybernews logo" height="103" width="103">
+						<img src="${Z}cyber_news.webp" alt="Cybernews logo" height="103" width="103">
 					</div>
         </div>
       </div>
@@ -1825,7 +1289,7 @@ main {
         <h2 class="ip2-comp__title">One install. Every ad, everywhere. Done.</h2>
         <p class="ip2-comp__desc">AdBlock for YouTube protects one tab. AdBlock360 protects your entire computer.</p>
         <div class="ip2-comp__tag">
-          ${p.check}
+          ${h.check}
           <span>AdBlock360 doesn't replace your extension. It finishes the job.</span>
         </div>
       </div>
@@ -1834,11 +1298,11 @@ main {
           <div class="ip2-comp__table-head">
             <div></div>
             <div class="ip2-comp__col-logo ip2-comp__col-logo--yt">
-              <img src="${D}" alt="Adblock for YouTube" height="23">
+              <img src="${J}" alt="Adblock for YouTube" height="23">
             </div>
-            <div class="ip2-comp__col-logo">${p.adBlockLogo}</div>
+            <div class="ip2-comp__col-logo">${h.adBlockLogo}</div>
           </div>
-          ${q}
+          ${nn}
         </div>
       </div>
     </div>
@@ -1846,159 +1310,242 @@ main {
 
 </div>
 `
-  ), O = (
+  ), an = (
     /* html */
     `
 <div class="ip2-sticky">
   <div class="ip2-sticky__inner">
     <span class="ip2-sticky__meta">
-      ${p.noCard}
+      ${h.noCard}
       No credit card
     </span>
     <a class="ip2-sticky__btn" href="#">
-      ${p.windows}
+      ${h.windows}
       Download AdBlock360
     </a>
   </div>
 </div>
 `
   );
-  S({ name: "Install Page 1", dev: "YK" });
-  class P {
+  G({ name: "Install Page 1", dev: "YK" });
+  class on {
     constructor() {
       this.init();
     }
     async init() {
-      await z("body"), document.head.insertAdjacentHTML("beforeend", `<style class="ip2-style">${E}</style>`), await z("main"), k("main").elements[0].insertAdjacentHTML("beforebegin", I), document.body.insertAdjacentHTML("beforeend", O), this.initStickyBar(), this.initCtaClicks(), this.initHeroAnimation(), this.initSectionsVisibility(), g("ip2_view", "Install Page 2 viewed", "view", "install_page_2");
+      await Y("body"), document.head.insertAdjacentHTML("beforeend", `<style class="ip2-style">${U}</style>`), await Y("main"), B("main").elements[0].insertAdjacentHTML("beforebegin", tn), document.body.insertAdjacentHTML("beforeend", an), this.initStickyBar(), this.initCtaClicks(), this.initHeroAnimation(), this.initSectionsVisibility(), L("ip2_view", "Install Page 2 viewed", "view", "install_page_2");
     }
     initStickyBar() {
-      const n = document.querySelector(".ip2-hero__btn"), i = document.querySelector(".ip2-sticky");
-      if (!n || !i) return;
+      const n = document.querySelector(".ip2-hero__btn"), e = document.querySelector(".ip2-sticky");
+      if (!n || !e) return;
       new IntersectionObserver(
-        ([o]) => {
-          i.classList.toggle("is-visible", !o.isIntersecting);
+        ([p]) => {
+          e.classList.toggle("is-visible", !p.isIntersecting);
         },
         { threshold: 0 }
       ).observe(n);
     }
     initCtaClicks() {
       const n = document.querySelector('#main-cta, [data-event="download"]');
-      k(".ip2-hero__btn").on("click", () => {
-        n == null || n.click(), g("ip2_hero_cta_click", "Download AdBlock360 — hero", "click", "install_page_2");
-      }), k(".ip2-sticky__btn").on("click", () => {
-        n == null || n.click(), g("ip2_sticky_cta_click", "Download AdBlock360 — sticky", "click", "install_page_2");
+      B(".ip2-hero__btn").on("click", () => {
+        n == null || n.click(), L("ip2_hero_cta_click", "Download AdBlock360 — hero", "click", "install_page_2");
+      }), B(".ip2-sticky__btn").on("click", () => {
+        n == null || n.click(), L("ip2_sticky_cta_click", "Download AdBlock360 — sticky", "click", "install_page_2");
       });
     }
     initHeroAnimation() {
-      const n = (e) => new Promise((t) => setTimeout(t, e)), i = (e) => document.getElementById(e);
-      function s(e) {
-        const t = i(e);
-        t.classList.remove("hiding"), t.classList.add("visible");
-      }
-      function o(e) {
-        return new Promise((t) => {
-          const c = i(e);
-          c.classList.remove("visible"), c.classList.add("hiding"), setTimeout(() => {
-            c.classList.remove("hiding"), t();
-          }, 260);
-        });
-      }
-      function h(e) {
-        i(e).classList.add("show"), i(e).classList.remove("hide");
-      }
-      function r(e) {
-        i(e).classList.remove("show"), i(e).classList.add("hide"), setTimeout(() => i(e).classList.remove("hide"), 400);
-      }
-      const f = 35, b = 53;
-      let x = null;
-      async function F() {
-        const e = i("spFill"), t = i("spAdMarker"), c = i("spAdLbl"), d = i("spTimeL");
-        e.style.transition = "none", e.style.width = "0%", t.style.transition = "none", t.style.left = f + "%", t.style.width = b - f + "%", t.style.opacity = "1", t.style.transform = "scaleY(1)", c.style.opacity = "0", c.style.left = f + "%", x && (clearInterval(x), x = null), r("spBanner"), s("winSp"), await n(400);
-        let l = 0, m = !1;
-        e.style.transition = "width 0.04s linear", await new Promise((A) => {
-          x = setInterval(() => {
-            l += 0.55;
-            const _ = l >= f && l < b && m ? b : l;
-            e.style.width = Math.min(_, 100) + "%";
-            const Z = Math.floor(l / 100 * 222);
-            d.textContent = `${Math.floor(Z / 60)}:${String(Z % 60).padStart(2, "0")}`, l >= f - 8 && l < f && !m && (c.style.opacity = "1"), l >= f && !m && (m = !0, c.style.opacity = "0", h("spBanner"), t.style.transition = "width 0.5s cubic-bezier(.4,0,.2,1), opacity 0.4s ease, transform 0.4s cubic-bezier(.4,0,.2,1)", t.style.width = "0%", t.style.opacity = "0", t.style.transform = "scaleY(0)", setTimeout(() => {
-              e.style.transition = "none", l = b, e.style.width = l + "%", e.style.transition = "width 0.04s linear";
-            }, 300), setTimeout(() => r("spBanner"), 1400)), l >= 90 && (clearInterval(x), x = null, A());
-          }, 22);
-        }), await n(300);
-      }
-      const w = 28, y = 42;
-      let v = null;
-      async function N() {
-        const e = i("ytFill"), t = i("ytAdZone"), c = i("ytTimeL");
-        e.style.transition = "none", e.style.width = "0%", t.style.transition = "none", t.style.left = w + "%", t.style.width = y - w + "%", t.style.opacity = "1", t.style.transform = "scaleY(1)", v && (clearInterval(v), v = null), r("ytBanner"), s("winYt"), await n(400);
-        let d = 0, l = !1;
-        e.style.transition = "width 0.04s linear", await new Promise((m) => {
-          v = setInterval(() => {
-            d += 0.5;
-            const A = d >= w && d < y && l ? y : d;
-            e.style.width = Math.min(A, 100) + "%";
-            const _ = Math.floor(d / 100 * 754);
-            c.textContent = `${Math.floor(_ / 60)}:${String(_ % 60).padStart(2, "0")}`, d >= w && !l && (l = !0, h("ytBanner"), t.style.transition = "width 0.5s cubic-bezier(.4,0,.2,1), opacity 0.4s ease, transform 0.4s ease", t.style.width = "0%", t.style.opacity = "0", t.style.transform = "scaleY(0)", setTimeout(() => {
-              e.style.transition = "none", d = y, e.style.width = d + "%", e.style.transition = "width 0.04s linear";
-            }, 300), setTimeout(() => r("ytBanner"), 1400)), d >= 90 && (clearInterval(v), v = null, m());
-          }, 22);
-        }), await n(300);
-      }
-      async function W() {
-        const e = i("adB1"), t = i("adB2"), c = i("adB1Cover"), d = i("adB2Cover");
-        e.style.transition = "none", t.style.transition = "none", e.style.opacity = "1", e.style.transform = "scale(1)", t.style.opacity = "1", t.style.transform = "scale(1)", c.style.opacity = "0", d.style.opacity = "0", r("wsBanner"), s("winWs"), await n(500), c.style.opacity = "1", await n(200), d.style.opacity = "1", await n(100), h("wsBanner"), await n(1e3), r("wsBanner"), await n(300), e.style.transition = "opacity 0.35s ease, transform 0.35s ease", t.style.transition = "opacity 0.35s ease, transform 0.35s ease", e.style.opacity = "0", e.style.transform = "scale(0.85)", await n(120), t.style.opacity = "0", t.style.transform = "scale(0.85)", await n(500);
-      }
-      async function R() {
-        const e = i("ckPopup");
-        e.style.transition = "none", e.style.opacity = "1", e.style.transform = "translateY(0) scale(1)", r("ckBanner"), s("winCk"), await n(700), e.style.transition = "all 0.35s cubic-bezier(.4,0,.2,1)", e.style.opacity = "0", e.style.transform = "translateY(14px) scale(0.88)", await n(200), h("ckBanner"), await n(1600), r("ckBanner"), await n(300);
-      }
-      const V = [
-        ["winSp", F],
-        ["winYt", N],
-        ["winWs", W],
-        ["winCk", R]
-      ];
-      let L = 0;
-      async function T() {
-        const [e, t] = V[L];
-        await t(), await o(e), await n(300), L = (L + 1) % V.length, T();
-      }
-      setTimeout(T, 350);
-      const B = document.getElementById("main-cta");
-      [
-        {
-          selector: ".sp-play",
-          eventName: "ip2_anim_spotify_click",
-          desc: "Animation click: Spotify play control"
-        },
-        {
-          selector: ".yt-play-hint",
-          eventName: "ip2_anim_youtube_click",
-          desc: "Animation click: YouTube play control"
-        },
-        {
-          selector: ".ck-ok",
-          eventName: "ip2_anim_cookie_accept_click",
-          desc: "Animation click: Cookie Accept All"
-        },
-        {
-          selector: ".ck-no",
-          eventName: "ip2_anim_cookie_decline_click",
-          desc: "Animation click: Cookie Decline"
+      (function() {
+        var n = 800, e = 500, s = 440, p = 300, u = (n - s) / 2, m = 70 - Math.round(0.17 * p);
+        function w() {
+          var o = document.currentScript;
+          if (!o) {
+            var r = document.getElementsByTagName("script");
+            o = r[r.length - 1];
+          }
+          if (!o || !o.src) return "";
+          var v = o.src;
+          return v.substring(0, v.lastIndexOf("/") + 1);
         }
-      ].forEach(({ selector: e, eventName: t, desc: c }) => {
-        document.querySelectorAll(e).forEach((d) => {
-          d.addEventListener("click", (l) => {
-            l.preventDefault(), B == null || B.click(), g(t, c, "click", "install_page_2");
+        var k = w();
+        function sn(o) {
+          var r = o || "";
+          return '<div class="ah-stage"><img class="ah-laptop" src="' + r + 'laptop.webp" alt=""><div class="ah-screen"><div class="ah-grid">' + E("music", r + "spotify.webp") + E("video", r + "youtube.webp") + E("browser", r + "chrome.webp") + '</div></div><div class="ah-popup"><div class="ah-pop-header"><div class="ah-mini-icon"></div><div class="ah-app-name"></div></div><div class="ah-pop-body"></div><div class="ah-pop-footer"><div class="ah-pill">AD BLOCKED ✓</div><div style="flex:1"></div><button class="ah-skip" type="button" aria-label="Skip">›</button></div></div></div>';
+        }
+        function E(o, r) {
+          return '<div class="ah-cell" data-app="' + o + '"><div class="ah-icon"><img src="' + r + '" alt="" draggable="false"></div><div class="ah-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2L5 8.7L9.6 3.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>';
+        }
+        function rn(o) {
+          if (o === "music") {
+            for (var r = [22, 38, 55, 30, 48, 60, 28, 42, 70, 34, 50, 24, 46, 58, 32, 44, 52, 28, 38, 22], v = "", _ = 0; _ < r.length; _++) {
+              var C = _ < 5;
+              v += '<div class="ah-bar' + (C ? " is-ad" : "") + '" data-i="' + _ + '" style="height:' + r[_] + 'px"></div>';
+            }
+            return '<div class="ah-wave" data-role="wave">' + v + '</div><div class="ah-ad-label" data-role="adLabel">AD</div>';
+          }
+          return o === "video" ? '<div class="ah-player"><div class="ah-vid-content" data-role="vidContent"><div class="ah-progress-track"><div class="ah-progress-bar" data-role="vidBar"></div></div></div><div class="ah-play-btn" data-role="playBtn"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.08)"/><path d="M16 13L28 20L16 27V13Z" fill="#fff"/></svg></div></div>' : '<div class="ah-browser"><div class="ah-b-bar"><div class="ah-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div><div class="ah-url">dailynews.example</div></div><div class="ah-b-content"><div class="ah-skel-line" style="width:85%"></div><div class="ah-skel-line" style="width:60%"></div><div class="ah-adbanner" data-role="ad1"><span class="ah-ad-tag">AD</span><span class="ah-ad-copy">Sponsored content</span></div><div class="ah-skel-line" style="width:75%"></div><div class="ah-skel-line" style="width:55%"></div><div class="ah-adbanner" data-role="ad2"><span class="ah-ad-tag">AD</span><span class="ah-ad-copy">Limited offer</span></div><div class="ah-skel-line" style="width:70%"></div><div class="ah-shield-badge" data-role="shieldBadge"><div class="ah-chip">2 ADS REMOVED ✓</div></div></div></div>';
+        }
+        function ln(o) {
+          if (o.__adblockMounted) return;
+          o.__adblockMounted = !0;
+          var r = o.getAttribute("data-asset-base");
+          r == null && (r = k), r && r.charAt(r.length - 1) !== "/" && (r += "/"), o.innerHTML = sn(r);
+          var v = o.querySelector(".ah-stage"), _ = o.querySelector(".ah-grid"), C = o.querySelectorAll(".ah-cell"), f = o.querySelector(".ah-popup"), cn = o.querySelector(".ah-mini-icon"), pn = o.querySelector(".ah-app-name"), x = o.querySelector(".ah-pop-body"), M = o.querySelector(".ah-pill"), dn = o.querySelector(".ah-skip"), T = o.querySelector(".ah-laptop"), $ = [
+            { key: "music", name: "Spotify", img: r + "spotify.webp" },
+            { key: "video", name: "YouTube", img: r + "youtube.webp" },
+            { key: "browser", name: "Chrome", img: r + "chrome.webp" }
+          ];
+          function P() {
+            var i = o.clientWidth || n, t = o.clientHeight || e, a = Math.min(i / n, t / e);
+            (!isFinite(a) || a <= 0) && (a = 1);
+            var c = (i - n * a) / 2, g = (t - e * a) / 2;
+            v.style.transform = "translate(" + c + "px, " + g + "px) scale(" + a + ")";
+          }
+          if (typeof ResizeObserver < "u") {
+            var hn = new ResizeObserver(P);
+            hn.observe(o);
+          }
+          window.addEventListener("resize", P), P();
+          var V = [];
+          function d(i, t) {
+            var a = setTimeout(i, t);
+            return V.push(a), a;
+          }
+          function fn() {
+            for (var i = 0; i < V.length; i++) clearTimeout(V[i]);
+            V = [];
+          }
+          var j = 0, A = !1;
+          function gn(i) {
+            cn.innerHTML = '<img src="' + i.img + '" alt="" draggable="false">';
+          }
+          function un() {
+            var i = x.querySelector('[data-role="wave"]'), t = x.querySelector('[data-role="adLabel"]');
+            if (!(!i || !t)) {
+              var a = i.querySelector('.ah-bar[data-i="0"]'), c = i.querySelector('.ah-bar[data-i="4"]');
+              if (!(!a || !c)) {
+                var g = i.getBoundingClientRect(), b = a.getBoundingClientRect(), y = c.getBoundingClientRect(), S = (b.left + y.right) / 2 - g.left, q = D(), yn = S / q;
+                t.style.left = "0", t.style.right = "auto", t.style.width = g.width / q + "px", t.style.textAlign = "left", t.style.paddingLeft = yn - 12 + "px", t.style.top = "6px";
+              }
+            }
+          }
+          function D() {
+            var i = v.style.transform || "", t = i.match(/scale\(([0-9.]+)\)/);
+            return t ? parseFloat(t[1]) : 1;
+          }
+          function mn(i, t) {
+            var a = $[i], c = C[i];
+            M.classList.remove("is-show"), M.textContent = a.key === "browser" ? "ADS BLOCKED ✓" : "AD BLOCKED ✓", gn(a), pn.textContent = a.name, x.innerHTML = rn(a.key);
+            var g = v.getBoundingClientRect(), b = c.querySelector(".ah-icon").getBoundingClientRect(), y = D() || 1, S = (b.left - g.left) / y + b.width / y / 2, q = (b.top - g.top) / y + b.height / y / 2;
+            f.style.left = u + "px", f.style.top = m + "px", f.style.transformOrigin = "top left", f.style.transition = "none", f.style.transform = "translate(" + (S - u - s * 0.04) + "px, " + (q - m - p * 0.04) + "px) scale(0.08)", f.style.opacity = "0", _.classList.add("is-dim"), requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                f.style.transition = "transform 380ms cubic-bezier(0.34, 1.2, 0.64, 1), opacity 220ms ease-out", f.style.transform = "translate(0, 0) scale(1)", f.style.opacity = "1", d(function() {
+                  a.key === "music" && un(), t && t();
+                }, 400);
+              });
+            });
+          }
+          function X(i, t) {
+            var a = C[i], c = v.getBoundingClientRect(), g = a.querySelector(".ah-icon").getBoundingClientRect(), b = D() || 1, y = (g.left - c.left) / b + g.width / b / 2, S = (g.top - c.top) / b + g.height / b / 2;
+            f.style.transition = "transform 280ms ease-in, opacity 220ms ease-in", f.style.transform = "translate(" + (y - u - s * 0.04) + "px, " + (S - m - p * 0.04) + "px) scale(0.08)", f.style.opacity = "0", _.classList.remove("is-dim"), d(function() {
+              a.classList.add("is-done"), t && t();
+            }, 290);
+          }
+          function xn(i) {
+            var t = x.querySelectorAll(".ah-bar.is-ad"), a = x.querySelector('[data-role="adLabel"]');
+            t.forEach(function(c) {
+              c.classList.add("is-shake");
+            }), d(function() {
+              t.forEach(function(c) {
+                c.classList.remove("is-shake"), c.style.height = "0px";
+              }), a && (a.style.opacity = "0");
+            }, 400), d(function() {
+              M.classList.add("is-show");
+            }, 900), d(function() {
+              i && i();
+            }, 2e3);
+          }
+          function bn(i) {
+            var t = x.querySelector('[data-role="vidBar"]'), a = x.querySelector('[data-role="vidContent"]'), c = x.querySelector('[data-role="playBtn"]');
+            requestAnimationFrame(function() {
+              t && t.classList.add("is-fill");
+            }), d(function() {
+              a && a.classList.add("is-wipe");
+            }, 1800), d(function() {
+              c && c.classList.add("is-show");
+            }, 2e3), d(function() {
+              M.classList.add("is-show");
+            }, 2200), d(function() {
+              i && i();
+            }, 2500);
+          }
+          function vn(i) {
+            var t = x.querySelector('[data-role="ad1"]'), a = x.querySelector('[data-role="ad2"]'), c = x.querySelector('[data-role="shieldBadge"]');
+            t && t.classList.add("is-pulse"), a && a.classList.add("is-pulse"), d(function() {
+              t && t.classList.add("is-collapse");
+            }, 500), d(function() {
+              a && a.classList.add("is-collapse");
+            }, 850), d(function() {
+              c && c.classList.add("is-show");
+            }, 1300), d(function() {
+              M.classList.add("is-show");
+            }, 1600), d(function() {
+              i && i();
+            }, 2400);
+          }
+          function _n(i, t) {
+            var a = $[i].key;
+            if (a === "music") return xn(t);
+            if (a === "video") return bn(t);
+            if (a === "browser") return vn(t);
+          }
+          function O(i) {
+            A || (A = !0, j = i, mn(i, function() {
+              _n(i, function() {
+                X(i, function() {
+                  d(function() {
+                    A = !1, N();
+                  }, 500);
+                });
+              });
+            }));
+          }
+          function N() {
+            var i = j + 1;
+            if (i >= $.length) {
+              d(function() {
+                for (var t = 0; t < C.length; t++) C[t].classList.remove("is-done");
+                d(function() {
+                  O(0);
+                }, 350);
+              }, 200);
+              return;
+            }
+            O(i);
+          }
+          dn.addEventListener("click", function() {
+            A && (fn(), X(j, function() {
+              d(function() {
+                A = !1, N();
+              }, 250);
+            }));
           });
-        });
-      });
+          function R() {
+            d(function() {
+              O(0);
+            }, 600);
+          }
+          T.complete ? R() : (T.addEventListener("load", R), T.addEventListener("error", R));
+        }
+        function I() {
+          for (var o = document.querySelectorAll(".adblock-hero"), r = 0; r < o.length; r++) ln(o[r]);
+        }
+        document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", I) : I();
+      })();
     }
     initSectionsVisibility() {
-      C(".ip2-hero", "ip2_hero_visible", "install_page_2", "Hero section visible"), C(".ip2-safe", "ip2_safe_visible", "install_page_2", "Safe section visible"), C(".ip2-comp", "ip2_comp_visible", "install_page_2", "Comparison section visible");
+      z(".ip2-hero", "ip2_hero_visible", "install_page_2", "Hero section visible"), z(".ip2-safe", "ip2_safe_visible", "install_page_2", "Safe section visible"), z(".ip2-comp", "ip2_comp_visible", "install_page_2", "Comparison section visible");
     }
   }
-  new P();
+  new on();
 })();
 //# sourceMappingURL=index.js.map
