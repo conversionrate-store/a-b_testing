@@ -726,7 +726,6 @@ main {
   margin: 0;
 }
 .ip2-safe__feature-icon {
-  width: 90px;
   height: 90px;
 }
 .ip2-safe__bottom {
