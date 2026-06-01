@@ -1267,13 +1267,13 @@ main {
             <h3 class="ip2-safe__faq-title">Why does it need system access?</h3>
             <p class="ip2-safe__faq-desc">AdBlock360 blocks ads at the network level — covering Spotify, games and every browser at once, not just Chrome. The Windows security prompt is normal. Every legitimate system-level app triggers it, including AdGuard.</p>
             <p class="ip2-safe__faq-more">Have more questions?</p>
-            <a class="ip2-safe__faq-link" href="#">Read our privacy policy — written in plain language, not legalese →</a>
+            <a class="ip2-safe__faq-link" href="https://adblock360.com/privacy-policy" target="_blank">Privacy policy →</a>
           </div>
         </div>
         <div class="ip2-safe__review">
 					<div class="ip2-safe__review-content">
 						<blockquote class="ip2-safe__quote">"No suspicious connections or hidden data transfers detected"</blockquote>
-						<a class="ip2-safe__review-link" href="#">Cybernews independent security review →</a>
+						<a class="ip2-safe__review-link" href="https://cybernews.com/adblock360-review/" target="_blank">Cybernews independent security review →</a>
 					</div>
 					<div class="ip2-safe__review-logo">
 						<img src="${Z}cyber_news.webp" alt="Cybernews logo" height="103" width="103">
@@ -1389,7 +1389,7 @@ main {
           o.__adblockMounted = !0;
           var r = o.getAttribute("data-asset-base");
           r == null && (r = k), r && r.charAt(r.length - 1) !== "/" && (r += "/"), o.innerHTML = sn(r);
-          var v = o.querySelector(".ah-stage"), _ = o.querySelector(".ah-grid"), C = o.querySelectorAll(".ah-cell"), f = o.querySelector(".ah-popup"), cn = o.querySelector(".ah-mini-icon"), pn = o.querySelector(".ah-app-name"), x = o.querySelector(".ah-pop-body"), M = o.querySelector(".ah-pill"), dn = o.querySelector(".ah-skip"), T = o.querySelector(".ah-laptop"), $ = [
+          var v = o.querySelector(".ah-stage"), _ = o.querySelector(".ah-grid"), C = o.querySelectorAll(".ah-cell"), f = o.querySelector(".ah-popup"), cn = o.querySelector(".ah-mini-icon"), pn = o.querySelector(".ah-app-name"), b = o.querySelector(".ah-pop-body"), M = o.querySelector(".ah-pill"), dn = o.querySelector(".ah-skip"), T = o.querySelector(".ah-laptop"), $ = [
             { key: "music", name: "Spotify", img: r + "spotify.webp" },
             { key: "video", name: "YouTube", img: r + "youtube.webp" },
             { key: "browser", name: "Chrome", img: r + "chrome.webp" }
@@ -1419,11 +1419,11 @@ main {
             cn.innerHTML = '<img src="' + i.img + '" alt="" draggable="false">';
           }
           function un() {
-            var i = x.querySelector('[data-role="wave"]'), t = x.querySelector('[data-role="adLabel"]');
+            var i = b.querySelector('[data-role="wave"]'), t = b.querySelector('[data-role="adLabel"]');
             if (!(!i || !t)) {
               var a = i.querySelector('.ah-bar[data-i="0"]'), c = i.querySelector('.ah-bar[data-i="4"]');
               if (!(!a || !c)) {
-                var g = i.getBoundingClientRect(), b = a.getBoundingClientRect(), y = c.getBoundingClientRect(), S = (b.left + y.right) / 2 - g.left, q = D(), yn = S / q;
+                var g = i.getBoundingClientRect(), x = a.getBoundingClientRect(), y = c.getBoundingClientRect(), S = (x.left + y.right) / 2 - g.left, q = D(), yn = S / q;
                 t.style.left = "0", t.style.right = "auto", t.style.width = g.width / q + "px", t.style.textAlign = "left", t.style.paddingLeft = yn - 12 + "px", t.style.top = "6px";
               }
             }
@@ -1434,8 +1434,8 @@ main {
           }
           function mn(i, t) {
             var a = $[i], c = C[i];
-            M.classList.remove("is-show"), M.textContent = a.key === "browser" ? "ADS BLOCKED ✓" : "AD BLOCKED ✓", gn(a), pn.textContent = a.name, x.innerHTML = rn(a.key);
-            var g = v.getBoundingClientRect(), b = c.querySelector(".ah-icon").getBoundingClientRect(), y = D() || 1, S = (b.left - g.left) / y + b.width / y / 2, q = (b.top - g.top) / y + b.height / y / 2;
+            M.classList.remove("is-show"), M.textContent = a.key === "browser" ? "ADS BLOCKED ✓" : "AD BLOCKED ✓", gn(a), pn.textContent = a.name, b.innerHTML = rn(a.key);
+            var g = v.getBoundingClientRect(), x = c.querySelector(".ah-icon").getBoundingClientRect(), y = D() || 1, S = (x.left - g.left) / y + x.width / y / 2, q = (x.top - g.top) / y + x.height / y / 2;
             f.style.left = u + "px", f.style.top = m + "px", f.style.transformOrigin = "top left", f.style.transition = "none", f.style.transform = "translate(" + (S - u - s * 0.04) + "px, " + (q - m - p * 0.04) + "px) scale(0.08)", f.style.opacity = "0", _.classList.add("is-dim"), requestAnimationFrame(function() {
               requestAnimationFrame(function() {
                 f.style.transition = "transform 380ms cubic-bezier(0.34, 1.2, 0.64, 1), opacity 220ms ease-out", f.style.transform = "translate(0, 0) scale(1)", f.style.opacity = "1", d(function() {
@@ -1445,13 +1445,13 @@ main {
             });
           }
           function X(i, t) {
-            var a = C[i], c = v.getBoundingClientRect(), g = a.querySelector(".ah-icon").getBoundingClientRect(), b = D() || 1, y = (g.left - c.left) / b + g.width / b / 2, S = (g.top - c.top) / b + g.height / b / 2;
+            var a = C[i], c = v.getBoundingClientRect(), g = a.querySelector(".ah-icon").getBoundingClientRect(), x = D() || 1, y = (g.left - c.left) / x + g.width / x / 2, S = (g.top - c.top) / x + g.height / x / 2;
             f.style.transition = "transform 280ms ease-in, opacity 220ms ease-in", f.style.transform = "translate(" + (y - u - s * 0.04) + "px, " + (S - m - p * 0.04) + "px) scale(0.08)", f.style.opacity = "0", _.classList.remove("is-dim"), d(function() {
               a.classList.add("is-done"), t && t();
             }, 290);
           }
-          function xn(i) {
-            var t = x.querySelectorAll(".ah-bar.is-ad"), a = x.querySelector('[data-role="adLabel"]');
+          function bn(i) {
+            var t = b.querySelectorAll(".ah-bar.is-ad"), a = b.querySelector('[data-role="adLabel"]');
             t.forEach(function(c) {
               c.classList.add("is-shake");
             }), d(function() {
@@ -1464,8 +1464,8 @@ main {
               i && i();
             }, 2e3);
           }
-          function bn(i) {
-            var t = x.querySelector('[data-role="vidBar"]'), a = x.querySelector('[data-role="vidContent"]'), c = x.querySelector('[data-role="playBtn"]');
+          function xn(i) {
+            var t = b.querySelector('[data-role="vidBar"]'), a = b.querySelector('[data-role="vidContent"]'), c = b.querySelector('[data-role="playBtn"]');
             requestAnimationFrame(function() {
               t && t.classList.add("is-fill");
             }), d(function() {
@@ -1479,7 +1479,7 @@ main {
             }, 2500);
           }
           function vn(i) {
-            var t = x.querySelector('[data-role="ad1"]'), a = x.querySelector('[data-role="ad2"]'), c = x.querySelector('[data-role="shieldBadge"]');
+            var t = b.querySelector('[data-role="ad1"]'), a = b.querySelector('[data-role="ad2"]'), c = b.querySelector('[data-role="shieldBadge"]');
             t && t.classList.add("is-pulse"), a && a.classList.add("is-pulse"), d(function() {
               t && t.classList.add("is-collapse");
             }, 500), d(function() {
@@ -1494,8 +1494,8 @@ main {
           }
           function _n(i, t) {
             var a = $[i].key;
-            if (a === "music") return xn(t);
-            if (a === "video") return bn(t);
+            if (a === "music") return bn(t);
+            if (a === "video") return xn(t);
             if (a === "browser") return vn(t);
           }
           function O(i) {
