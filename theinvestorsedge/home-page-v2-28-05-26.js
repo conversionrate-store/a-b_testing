@@ -1,6 +1,19 @@
 (function() {
   "use strict";
-  const g = `.row-number-46,
+  const m = `.dnd_area-row-2-max-width-section-centering > .row-fluid p > a {
+  color: #ff9902 !important;
+  font-weight: 700 !important;
+}
+
+.dnd_area-row-2-max-width-section-centering button {
+  max-width: unset !important;
+}
+
+#frequently-asked-questions-faqs {
+  margin-bottom: 0 !important;
+}
+
+.row-number-46,
 .row-number-49,
 .row-number-52,
 .crs-between-block,
@@ -8,6 +21,16 @@
 .row-number-60,
 .row-number-62 {
   display: none !important;
+}
+
+.row-number-65 .page-center {
+  margin: 0 !important;
+  max-width: unset !important;
+}
+
+.row-number-67 span {
+  text-align: left !important;
+  line-height: 1.9 !important;
 }
 
 .row-number-6 h2 {
@@ -133,7 +156,6 @@
 }
 
 .hp2-cmp {
-  background: #f2f4f8;
   color: #102a43;
   padding: 80px 0;
   font-family: "Nunito Sans", sans-serif;
@@ -206,6 +228,7 @@
 
 .hp2-cmp__table {
   overflow: hidden;
+  border-radius: 8px 8px 0 0;
 }
 
 .hp2-cmp__head,
@@ -215,18 +238,17 @@
 }
 
 .hp2-cmp__head .hp2-cmp__cell {
-  min-height: 142px;
   padding: 12px 32px;
   display: flex;
   align-items: center;
 }
 .hp2-cmp__head .hp2-cmp__cell--left {
   justify-content: center;
-  background: #e6ebf4;
+  background: #f4f6fa;
 }
 .hp2-cmp__head .hp2-cmp__cell--right {
   justify-content: center;
-  background: #f8f9fc;
+  background: #ffffff;
 }
 .hp2-cmp__head h4 {
   margin: 0;
@@ -242,7 +264,6 @@
 }
 @media (max-width: 768px) {
   .hp2-cmp__head .hp2-cmp__cell {
-    min-height: 103px;
     padding: 12px 12px 10px;
   }
   .hp2-cmp__head h4 {
@@ -251,17 +272,14 @@
   }
 }
 
-.hp2-cmp__row:nth-of-type(odd) .hp2-cmp__cell--left {
-  background: #dce3ed;
-}
-.hp2-cmp__row:nth-of-type(odd) .hp2-cmp__cell--right {
-  background: #f6f7fb;
-}
 .hp2-cmp__row:nth-of-type(even) .hp2-cmp__cell--left {
-  background: #e6ebf4;
+  background: #ebf0f8;
 }
 .hp2-cmp__row:nth-of-type(even) .hp2-cmp__cell--right {
-  background: #fdfdfe;
+  background: #f3f7fc;
+}
+.hp2-cmp__row:nth-of-type(odd) .hp2-cmp__cell--left {
+  background: #f4f6fa;
 }
 
 .hp2-cmp__cell {
@@ -787,10 +805,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hp2-cta__title-br {
+    display: none;
+  }
+}
+
 .hp2-cta__btn {
   display: inline-block;
   padding: 15px 40px;
-  min-width: 335px;
+  max-width: 335px !important;
   background: #ff9902;
   color: #ffffff;
   font-family: "Nunito Sans", sans-serif;
@@ -812,7 +836,7 @@
     min-width: 0;
     width: 100%;
   }
-}/*# sourceMappingURL=style.css.map */`, m = (t, n, e, i = "") => {
+}/*# sourceMappingURL=style.css.map */`, f = (t, n, e, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
@@ -824,33 +848,33 @@
     const e = document.querySelector(t);
     e && n(e);
     const i = new MutationObserver(() => {
-      const p = document.querySelector(t);
-      p && (n(p), i.disconnect());
+      const o = document.querySelector(t);
+      o && (n(o), i.disconnect());
     });
     i.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), f = ({ name: t, dev: n }) => {
+  }), g = ({ name: t, dev: n }) => {
     const e = t.toLowerCase().replace(/\s/g, "_");
-    m(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
+    f(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
       `%c EXP: ${t} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class a {
+  class s {
     constructor(n) {
-      this.elements = n instanceof a ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+      this.elements = n instanceof s ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
     on(n, e, i) {
-      return typeof e == "function" && (i = e, e = ""), this.elements.forEach((p) => {
-        p.addEventListener(n, function(r) {
+      return typeof e == "function" && (i = e, e = ""), this.elements.forEach((o) => {
+        o.addEventListener(n, function(r) {
           var l;
           if (e !== "") {
             let d = (l = r.target) == null ? void 0 : l.closest(e);
             d && (i == null || i.call(d, r));
           } else
-            i == null || i.call(p, r);
+            i == null || i.call(o, r);
         });
       }), this;
     }
@@ -871,18 +895,18 @@
     }
     each(n) {
       for (let e of this.elements)
-        n(new a(e), this.elements.indexOf(e));
+        n(new s(e), this.elements.indexOf(e));
       return this;
     }
     style(n, e) {
-      const i = n.split("-").map((p, r) => r === 0 ? p : p.charAt(0).toUpperCase() + p.slice(1)).join("");
-      return this.elements.forEach(function(p) {
-        p.style[i] = e;
+      const i = n.split("-").map((o, r) => r === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+      return this.elements.forEach(function(o) {
+        o.style[i] = e;
       }), this;
     }
     find(n) {
       const e = this.elements.map((i) => Array.from(i.querySelectorAll(n)));
-      return new a(e.flat());
+      return new s(e.flat());
     }
     attr(n, e) {
       return e ? (this.elements.forEach(function(i) {
@@ -900,7 +924,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const s = (t) => new a(t), _ = (t) => {
+  const a = (t) => new s(t), _ = (t) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
     }, 1e3);
@@ -927,7 +951,7 @@
       right: "100% financing including rehab"
     },
     {
-      left: "You fund rehab costs yourself",
+      left: "Monthly interest payments",
       right: "Payments wrapped into the initial loan"
     },
     {
@@ -971,7 +995,7 @@
       title: "Exit Plan Check",
       text: "We confirm how the property will be sold or refinanced at the end."
     }
-  ], v = [
+  ], u = [
     {
       title: "The house",
       text: "we buy it for you"
@@ -984,7 +1008,7 @@
       title: "The closing costs",
       text: "we cover the paperwork fees"
     }
-  ], u = [
+  ], v = [
     {
       id: "eqvi2hrbm0",
       name: "Charles",
@@ -1017,7 +1041,7 @@
       profit: "about $40,000",
       quote: "We realized that early on that Investor’s Edge is more than just a financing option. Using them as a mentorship, it really does feel like a partnership. They’ve been super flexible with us."
     }
-  ], h = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", o = {
+  ], h = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", p = {
     check: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
 		<path d="M4.59514 11.4989L0 6.90381L2.09408 4.80973L4.59514 7.31818L11.9059 0L14 2.09408L4.59514 11.4989Z" fill="#FF9902"/>
 		</svg>`,
@@ -1072,20 +1096,20 @@
     `<div class="hp2-hero-label">
 	Hard money financing — built for first-time investors
 </div>`
-  ), L = (
+  ), y = (
     /*html*/
     `<div class="hp2-rating">
 	<div class="hp2-rating__google">
 		<p class="hp2-rating__google-stars">
 			<img src="${h}google-logo.webp" alt="google-rating" />
-			${o.stars}
+			${p.stars}
 			4.8/5
 		</p>
 		<p class="hp2-rating__google-reviews">Based on 1060+reviews</p>
 	</div>
 	<img src="${h}a-rating.webp" alt="a-rating" />
 </div>`
-  ), y = (
+  ), L = (
     /*html*/
     `<section class="hp2-cmp">
 	<div class="hp2-cmp__in">
@@ -1112,11 +1136,11 @@
 			${C.map(
       (t) => `<div class="hp2-cmp__row">
 						<div class="hp2-cmp__cell hp2-cmp__cell--left">
-							<span class="hp2-cmp__icon">${o.minus}</span>
+							<span class="hp2-cmp__icon">${p.minus}</span>
 							<p>${t.left}</p>
 						</div>
 						<div class="hp2-cmp__cell hp2-cmp__cell--right">
-							<span class="hp2-cmp__icon">${o.check}</span>
+							<span class="hp2-cmp__icon">${p.check}</span>
 							<p>${t.right}</p>
 						</div>
 					</div>`
@@ -1130,15 +1154,15 @@
 	<div class="hp2-cover__in">
 		<h2 class="hp2-cover__title">What does "100% financing" actually cover?</h2>
 		<div class="hp2-cover__card">
-			${v.map(
+			${u.map(
       (t) => `<div class="hp2-cover__line">
-						<span class="hp2-cover__line-icon">${o.check}</span>
+						<span class="hp2-cover__line-icon">${p.check}</span>
 						<p><strong>${t.title}</strong> - ${t.text}</p>
 					</div>`
     ).join("")}
 		</div>
 		<div class="hp2-cover__note">
-			<span class="hp2-cover__note-icon">${o.handShake}</span>
+			<span class="hp2-cover__note-icon">${p.handShake}</span>
 			<div class="hp2-cover__note-text">
 				<p class="hp2-cover__note-title">You bring $0 to the deal.</p>
 				<p class="hp2-cover__note-sub">We get paid back when you sell.</p>
@@ -1157,7 +1181,7 @@
 			<div class="hp2-checks__list">
 				${w.map(
       (t) => `<div class="hp2-checks__item">
-							<span class="hp2-checks__item-icon">${o[t.icon]}</span>
+							<span class="hp2-checks__item-icon">${p[t.icon]}</span>
 							<div class="hp2-checks__item-body">
 								<p class="hp2-checks__item-title">${t.title}</p>
 								<p class="hp2-checks__item-text">${t.text}</p>
@@ -1179,7 +1203,7 @@
 	<div class="hp2-reviews__in">
 		<h2 class="hp2-reviews__title">People like you are already closing their first deals</h2>
 		<div class="hp2-reviews__grid">
-			${u.map(
+			${v.map(
       (t) => `<div class="hp2-reviews__card">
 						<div class="hp2-reviews__card-top">
 							<p class="hp2-reviews__name">${t.name}</p>
@@ -1189,7 +1213,7 @@
 						</div>
 						<hr class="hp2-reviews__divider" />
 						<div class="hp2-reviews__quote">
-							${o.quote}
+							${p.quote}
 							<p>${t.quote}</p>
 						</div>
 						<div class="hp2-reviews__video wistia_responsive_padding">
@@ -1206,8 +1230,8 @@
     /*html*/
     `<section class="hp2-cta">
 	<div class="hp2-cta__in">
-		<h2 class="hp2-cta__title">Start your journey to a profitable flip — even without real estate experience.</h2>
-		<button class="hp2-cta__btn crs_link_button crs_open_quiz">Check if you qualify &rsaquo;</button>
+		<h2 class="hp2-cta__title">Start your journey to&nbsp;<br class="hp2-cta__title-br">a profitable flip — even without real estate experience.</h2>
+		<button class="hp2-cta__btn crs_link_button crs_open_quiz">Check if you qualify &gt;</button>
 	</div>
 </section>`
   ), z = (
@@ -1221,16 +1245,33 @@
 				</div>
 </section>`
   );
-  f({ name: "Home Page Update V2", dev: "YK" }), _("home_page_update_v2");
+  g({ name: "Home Page Update V2", dev: "YK" }), _("home_page_update_v2");
   class Z {
     constructor() {
       this.init();
     }
     async init() {
-      await c("body"), document.head.insertAdjacentHTML("beforeend", `<style>${g}</style>`), s(".pwr-hero__title").elements[0].insertAdjacentHTML("beforebegin", b), s(".row-number-39").elements[0].insertAdjacentHTML("afterbegin", L), s(".row-number-39").elements[0].insertAdjacentHTML(
+      await c("body"), document.head.insertAdjacentHTML("beforeend", `<style>${m}</style>`), a(".pwr-hero__title").elements[0].insertAdjacentHTML("beforebegin", b), a(".row-number-39").elements[0].insertAdjacentHTML("afterbegin", y), a(".row-number-39").elements[0].insertAdjacentHTML(
         "afterend",
-        `${y}${k}${H}${M}${$}`
-      ), await c(".crs-hero-block"), s(".crs-hero-block > p:first-of-type").elements[0].innerText = "With as little as no money down and up to 100% Hard Money financing", s(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentHTML("beforeend", z);
+        `${L}${k}${H}${M}${$}`
+      ), await c(".crs-hero-block"), a(".crs-hero-block > p:first-of-type").elements[0].innerText = "With as little as no money down and up to 100% Hard Money financing", a(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentHTML("beforeend", z), await c("#frequently-asked-questions-faqs"), a("#frequently-asked-questions-faqs").elements[0].innerText = "FREQUENTLY ASKED QUESTIONS", a(".crs_open_quiz").elements.forEach((n) => {
+        n.innerHTML = "Check if you qualify &gt;";
+      }), await c(".sticky-block"), window.addEventListener("scroll", () => this.handleStickyVisibility()), this.handleStickyVisibility();
+    }
+    isElementVisible(n) {
+      const e = n.getBoundingClientRect(), i = window.innerHeight || document.documentElement.clientHeight;
+      return console.log(e, i), e.top >= 0 && e.bottom <= i;
+    }
+    handleStickyVisibility() {
+      const n = document.querySelector(".sticky-block");
+      if (!n) return;
+      const e = document.querySelectorAll(
+        ".crs_link_button:not(.sticky-block .crs_link_button, .crs-between-block .crs_link_button)"
+      );
+      let i = !1;
+      console.log("Checking visibility of link buttons:", e), e.forEach((o) => {
+        this.isElementVisible(o) && (i = !0, console.log("Visible button found:", o));
+      }), i ? n.classList.add("crs-hidden") : n.classList.remove("crs-hidden");
     }
   }
   new Z();
