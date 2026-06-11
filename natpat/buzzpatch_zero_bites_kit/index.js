@@ -207,7 +207,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: max-content;
-  max-width: (100% + 23px);
+  max-width: calc(100% - 23px);
   background: #ff3c81;
   color: #fff;
   font-family: 'Barlow', sans-serif;
