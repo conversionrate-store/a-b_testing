@@ -115,7 +115,9 @@
 			this.init();
 		}
 		async init() {
-			await n("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${e}</style>`), a("h1 span").elements[0].innerText = "Upgrade Available: Block Ads Online With", a("#main-cta").elements[0].innerHTML = l, a("exit-layer #main-cta").elements[0].insertAdjacentHTML("afterbegin", s), a("exit-layer h3").elements[0].innerText = "Adblock for Youtube Desktop: Choose what you want to block", a("exit-layer [class*=_popup__logo]").elements[0].insertAdjacentHTML("afterbegin", c);
+			await n("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${e}</style>`), a("h1 span").elements[0].innerText = "Upgrade Available: Block Ads Online With", a("#main-cta").elements[0].innerHTML = l, a("exit-layer #main-cta").elements[0].insertAdjacentHTML("afterbegin", s), a("exit-layer h3").elements[0].innerText = "Adblock for Youtube Desktop: Choose what you want to block", a("exit-layer [class*=_popup__logo]").elements[0].insertAdjacentHTML("afterbegin", c), a("[data-i18n=\"main.description\"]").elements.forEach((e) => {
+				e.innerText = e.innerText.replace("AdBlock360", "Adblock for Youtube Desktop");
+			});
 		}
 	}();
 })();
