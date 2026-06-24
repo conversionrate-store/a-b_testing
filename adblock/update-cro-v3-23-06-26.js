@@ -225,7 +225,7 @@
     </div>
     <div class="ab360-s3__cards">
       <div class="ab360-s3__card">
-        <img src="https://conversionrate-store.github.io/a-b_images/adblock/spotify.webp" alt="" class="ab360-s3__card-img" />
+        <img src="https://conversionrate-store.github.io/a-b_images/adblock/spotify_1.webp" alt="" class="ab360-s3__card-img" />
         <div class="ab360-s3__card-body">
           <h3 class="ab360-s3__card-title">No more Spotify interruptions</h3>
           <p class="ab360-s3__card-desc">Blocks audio ads in the desktop app — before they<br />reach your speakers.</p>
@@ -239,7 +239,7 @@
         </div>
       </div>
       <div class="ab360-s3__card">
-        <img src="https://conversionrate-store.github.io/a-b_images/adblock/youtube.webp" alt="" class="ab360-s3__card-img" />
+        <img src="https://conversionrate-store.github.io/a-b_images/adblock/youtube_1.webp" alt="" class="ab360-s3__card-img" />
         <div class="ab360-s3__card-body">
           <h3 class="ab360-s3__card-title">YouTube without sponsored segments</h3>
           <p class="ab360-s3__card-desc">
