@@ -24,11 +24,11 @@
       `%c EXP: ${s} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, P = (s) => {
+  }, z = (s) => {
     let t = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(t), window.clarity("set", s, "variant_1"));
     }, 1e3);
-  }, z = (s, t, e, n, o = 1e3, i = 0.5) => {
+  }, P = (s, t, e, n, o = 1e3, i = 0.5) => {
     let r, a;
     if (r = new IntersectionObserver(
       function(l) {
@@ -450,11 +450,16 @@ body.crs-cp-modal-open {
     display: block;
   }
 
-  /* While zoomed the modal owns the gesture (drag = pan), so stop the browser
-     from treating the touch as a scroll. */
+  /* The modal owns horizontal gestures at all times — swipe navigates when not
+     zoomed, drag pans when zoomed — so stop the browser from treating the touch
+     as a scroll: that would cancel our pointer sequence and kill the swipe. */
+  .crs-cp-lb__modal,
+  .crs-cp-lb__img {
+    touch-action: none;
+  }
+
   .crs-cp-lb.is-zoomed .crs-cp-lb__modal,
   .crs-cp-lb.is-zoomed .crs-cp-lb__img {
-    touch-action: none;
     cursor: grab;
   }
 
@@ -568,7 +573,7 @@ body.crs-cp-modal-open {
       // 35px yields a 299px card / 38px side peek on a 375px frame (Figma mobile).
       { breakpoint: 576, settings: { centerPadding: "35px" } }
     ]
-  }, p = "Customer photos section", m = 2;
+  }, d = "Customer photos section", m = 2;
   class I {
     constructor() {
       this.photos = [], this.modalIndex = 0, this.lastFocused = null, this.loadToken = 0, this.zoomed = !1, this.dragging = !1, this.moved = !1, this.sx = 0, this.sy = 0, this.startPanX = 0, this.startPanY = 0, this.panX = 0, this.panY = 0, this.init();
@@ -591,10 +596,10 @@ body.crs-cp-modal-open {
           10
         );
         this.photos[r] && h(this.photos[r].src);
-      }), z(
+      }), P(
         o,
         "exp_photo_section_view",
-        p,
+        d,
         "Customer photos section viewed"
       );
     }
@@ -656,7 +661,7 @@ body.crs-cp-modal-open {
       });
       let o = null;
       n.on("afterChange", (i, r, a) => {
-        o && (c(o.name, `${o.desc} - ${a + 1}`, o.type, p), o = null);
+        o && (c(o.name, `${o.desc} - ${a + 1}`, o.type, d), o = null);
       }), e(t).find(".crs-cp__nav--prev").on("click", () => {
         o = { name: "exp_photo_nav_arrow", desc: "Arrow Left", type: "click" }, n.slick("slickPrev");
       }), e(t).find(".crs-cp__nav--next").on("click", () => {
@@ -718,16 +723,16 @@ body.crs-cp-modal-open {
       <div class="crs-cp-lb__spinner" aria-hidden="true"></div>`, document.body.appendChild(e), this.lb = e, this.img = e.querySelector("#crsCpLightboxImg"), this.stage = e.querySelector(".crs-cp-lb__modal");
       const n = t(e);
       n.find(".crs-cp-lb__close").on("click", () => {
-        c("exp_photo_close", "Close", "click", p), this.closeLightbox();
+        c("exp_photo_close", "Close", "click", d), this.closeLightbox();
       }), e.querySelector(".crs-cp-lb__close").addEventListener(
         "pointerdown",
         (i) => i.stopPropagation()
       ), n.find(".crs-cp-lb__nav--prev").on("click", () => {
-        this.showAt(this.modalIndex - 1), c("exp_photo_arrow", `Arrow Left - ${this.modalIndex + 1}`, "click", p);
+        this.showAt(this.modalIndex - 1), c("exp_photo_arrow", `Arrow Left - ${this.modalIndex + 1}`, "click", d);
       }), n.find(".crs-cp-lb__nav--next").on("click", () => {
-        this.showAt(this.modalIndex + 1), c("exp_photo_arrow", `Arrow Right - ${this.modalIndex + 1}`, "click", p);
+        this.showAt(this.modalIndex + 1), c("exp_photo_arrow", `Arrow Right - ${this.modalIndex + 1}`, "click", d);
       }), n.on("click", (i) => {
-        i.target === e && (c("exp_photo_overlay", "Overlay close", "click", p), this.closeLightbox());
+        i.target === e && (c("exp_photo_overlay", "Overlay close", "click", d), this.closeLightbox());
       });
       const o = e.querySelector(".crs-cp-lb__zoom");
       o.addEventListener("pointerdown", (i) => i.stopPropagation()), o.addEventListener("click", (i) => {
@@ -751,7 +756,7 @@ body.crs-cp-modal-open {
       return window.matchMedia("(max-width: 480px)").matches;
     }
     setZoom(t) {
-      t && !this.isMobile() || (this.zoomed = t, this.panX = 0, this.panY = 0, this.lb.classList.toggle("is-zoomed", t), t ? (requestAnimationFrame(() => this.applyPan()), c("exp_photo_zoom", `Zoom ${this.modalIndex + 1}`, "click", p)) : this.img.style.transform = "");
+      t && !this.isMobile() || (this.zoomed = t, this.panX = 0, this.panY = 0, this.lb.classList.toggle("is-zoomed", t), t ? (requestAnimationFrame(() => this.applyPan()), c("exp_photo_zoom", `Zoom ${this.modalIndex + 1}`, "click", d)) : this.img.style.transform = "");
     }
     applyPan() {
       const t = this.stage.clientWidth, e = this.stage.clientHeight, n = this.img.naturalWidth, o = this.img.naturalHeight;
@@ -783,7 +788,12 @@ body.crs-cp-modal-open {
         this.moved || this.setZoom(!1);
         return;
       }
-      Math.abs(e) > 45 ? this.showAt(this.modalIndex + (e < 0 ? 1 : -1)) : !this.moved && this.isMobile() && this.setZoom(!0);
+      Math.abs(e) > 45 ? (this.showAt(this.modalIndex + (e < 0 ? 1 : -1)), c(
+        "exp_photo_full_swipe",
+        `Swipe ${e < 0 ? "left" : "right"} - ${this.modalIndex + 1}`,
+        "other",
+        d
+      )) : !this.moved && this.isMobile() && this.setZoom(!0);
     }
     // ---- Open / navigate / close ----
     showAt(t) {
@@ -811,7 +821,7 @@ body.crs-cp-modal-open {
         "exp_photo_open",
         `Opened customer photo ${t + 1}`,
         "click",
-        p
+        d
       ));
     }
     closeLightbox() {
@@ -1125,11 +1135,16 @@ body.crs-pg-modal-open {
     object-fit: contain;
   }
 
-  /* While zoomed the whole stage owns the gesture (drag = pan), so stop the
-     browser from treating the touch as a scroll. */
+  /* The stage owns horizontal gestures at all times — swipe navigates when not
+     zoomed, drag pans when zoomed — so stop the browser from treating the touch
+     as a scroll: that would cancel our pointer sequence and kill the swipe. */
+  .crs-pg-lb__stage,
+  .crs-pg-lb__img {
+    touch-action: none;
+  }
+
   .crs-pg-lb.is-zoomed .crs-pg-lb__stage,
   .crs-pg-lb.is-zoomed .crs-pg-lb__img {
-    touch-action: none;
     cursor: grab;
   }
 
@@ -1162,7 +1177,7 @@ body.crs-pg-modal-open {
     height: 30px;
   }
 }
-`, d = "Product gallery", w = ".image-popup a[href]", C = ".worktop-thumbnail-slider img", V = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-previous.svg", q = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-next.svg", b = 2;
+`, p = "Product gallery", w = ".image-popup a[href]", C = ".worktop-thumbnail-slider img", V = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-previous.svg", q = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-next.svg", b = 2;
   class F {
     constructor() {
       this.customerPhotos = [], this.slides = [], this.boundary = 0, this.index = 0, this.loadToken = 0, this.kitchenViewed = !1, this.lastFocused = null, this.zoomed = !1, this.dragging = !1, this.moved = !1, this.sx = 0, this.sy = 0, this.startPanX = 0, this.startPanY = 0, this.panX = 0, this.panY = 0, this.init();
@@ -1260,22 +1275,22 @@ body.crs-pg-modal-open {
         <img src="${q}" alt="" width="23" height="46" aria-hidden="true" />
       </button>
       <div class="crs-pg-lb__spinner" aria-hidden="true"></div>`, document.body.appendChild(t), this.lb = t, this.img = t.querySelector("#crsPgImg"), this.stage = t.querySelector(".crs-pg-lb__stage"), this.thumb = t.querySelector(".crs-pg-lb__thumb"), t.querySelector(".crs-pg-lb__close").addEventListener("click", () => {
-        c("exp_gallery_close", "Close", "click", d), this.close();
+        c("exp_gallery_close", "Close", "click", p), this.close();
       }), t.querySelector(".crs-pg-lb__nav--prev").addEventListener("click", () => {
-        this.showAt(this.index - 1), c("exp_gallery_nav", `Arrow Left - ${this.index + 1}`, "click", d);
+        this.showAt(this.index - 1), c("exp_gallery_nav", `Arrow Left - ${this.index + 1}`, "click", p);
       }), t.querySelector(".crs-pg-lb__nav--next").addEventListener("click", () => {
-        this.showAt(this.index + 1), c("exp_gallery_nav", `Arrow Right - ${this.index + 1}`, "click", d);
+        this.showAt(this.index + 1), c("exp_gallery_nav", `Arrow Right - ${this.index + 1}`, "click", p);
       }), t.querySelectorAll(".crs-pg-lb__seg").forEach((n) => {
         n.addEventListener("click", () => {
           const o = n.getAttribute("data-group"), i = o === "product" ? "Product photos" : "Real kitchens";
-          this.showAt(o === "kitchen" ? this.boundary : 0), c("exp_gallery_switch", `${i}`, "click", d);
+          this.showAt(o === "kitchen" ? this.boundary : 0), c("exp_gallery_switch", `${i}`, "click", p);
         });
       });
       const e = t.querySelector(".crs-pg-lb__zoom");
       e.addEventListener("pointerdown", (n) => n.stopPropagation()), e.addEventListener("click", (n) => {
         n.stopPropagation(), this.setZoom(!0);
       }), t.addEventListener("click", (n) => {
-        n.target === t && (c("exp_gallery_overlay", "Overlay close", "click", d), this.close());
+        n.target === t && (c("exp_gallery_overlay", "Overlay close", "click", p), this.close());
       }), this.stage.addEventListener("pointerdown", (n) => this.onPointerDown(n)), this.stage.addEventListener("pointermove", (n) => this.onPointerMove(n)), this.stage.addEventListener("pointerup", (n) => this.onPointerUp(n)), this.stage.addEventListener("pointercancel", () => this.dragging = !1), document.addEventListener("keydown", (n) => {
         t.getAttribute("aria-hidden") !== "true" && (n.key === "Escape" ? this.close() : n.key === "ArrowLeft" ? this.showAt(this.index - 1) : n.key === "ArrowRight" ? this.showAt(this.index + 1) : n.key === "Tab" && this.trapFocus(n));
       });
@@ -1285,7 +1300,7 @@ body.crs-pg-modal-open {
     }
     // ---- Zoom / pan (mobile) ----
     setZoom(t) {
-      t && !this.isMobile() || (this.zoomed = t, this.panX = 0, this.panY = 0, this.lb.classList.toggle("is-zoomed", t), t ? (requestAnimationFrame(() => this.applyPan()), c("exp_gallery_zoom", `Zoom ${this.index + 1}`, "click", d)) : this.img.style.transform = "");
+      t && !this.isMobile() || (this.zoomed = t, this.panX = 0, this.panY = 0, this.lb.classList.toggle("is-zoomed", t), t ? (requestAnimationFrame(() => this.applyPan()), c("exp_gallery_zoom", `Zoom ${this.index + 1}`, "click", p)) : this.img.style.transform = "");
     }
     applyPan() {
       const t = this.stage.clientWidth, e = this.stage.clientHeight, n = this.img.naturalWidth, o = this.img.naturalHeight;
@@ -1318,10 +1333,10 @@ body.crs-pg-modal-open {
         return;
       }
       Math.abs(e) > 45 ? (this.showAt(this.index + (e < 0 ? 1 : -1)), c(
-        "exp_gallery_swipe",
+        "exp_gallery_full_swipe",
         `Swipe ${e < 0 ? "left" : "right"} - ${this.index + 1}`,
         "other",
-        d
+        p
       )) : !this.moved && this.isMobile() && this.setZoom(!0);
     }
     // ---- Open / navigate / close ----
@@ -1329,7 +1344,7 @@ body.crs-pg-modal-open {
       const n = this.slides.length, o = (t % n + n) % n;
       this.index = o, this.zoomed && this.setZoom(!1);
       const i = this.slides[o];
-      i.group === "kitchen" && !this.kitchenViewed && (this.kitchenViewed = !0, c("exp_gallery_kitchen_view", "First real kitchen photo", "view", d)), this.setImage(i.src, i.alt), h(this.slides[(o + 1) % n].src), h(this.slides[(o - 1 + n) % n].src), this.lb.querySelectorAll(".crs-pg-lb__seg").forEach((r) => {
+      i.group === "kitchen" && !this.kitchenViewed && (this.kitchenViewed = !0, c("exp_gallery_kitchen_view", "First real kitchen photo", "view", p)), this.setImage(i.src, i.alt), h(this.slides[(o + 1) % n].src), h(this.slides[(o - 1 + n) % n].src), this.lb.querySelectorAll(".crs-pg-lb__seg").forEach((r) => {
         r.classList.toggle(
           "is-active",
           r.getAttribute("data-group") === i.group
@@ -1358,7 +1373,7 @@ body.crs-pg-modal-open {
     }
     open(t) {
       var e;
-      this.lastFocused = document.activeElement, this.showAt(t, !0), this.lb.classList.add("is-open"), this.lb.setAttribute("aria-hidden", "false"), document.body.classList.add("crs-pg-modal-open"), (e = this.lb.querySelector(".crs-pg-lb__close")) == null || e.focus(), c("exp_gallery_open", `Opened photo ${t + 1}`, "click", d);
+      this.lastFocused = document.activeElement, this.showAt(t, !0), this.lb.classList.add("is-open"), this.lb.setAttribute("aria-hidden", "false"), document.body.classList.add("crs-pg-modal-open"), (e = this.lb.querySelector(".crs-pg-lb__close")) == null || e.focus(), c("exp_gallery_open", `Opened photo ${t + 1}`, "click", p);
     }
     close() {
       var t;
@@ -1617,7 +1632,7 @@ body.crs-pg-modal-open {
     }
   }
   const N = "";
-  L({ name: "PDP Introducing Customer Photos", dev: "OS" }), P("exp_pdp_photo");
+  L({ name: "PDP Introducing Customer Photos", dev: "OS" }), z("exp_pdp_photo");
   class B {
     constructor() {
       this.init();
