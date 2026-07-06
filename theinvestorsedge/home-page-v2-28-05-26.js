@@ -1,18 +1,21 @@
 (function() {
   "use strict";
-  const m = `.dnd_area-row-2-max-width-section-centering > .row-fluid p > a {
+  const x = `.dnd_area-row-9-max-width-section-centering > .row-fluid p > a {
   color: #ff9902 !important;
   font-weight: 700 !important;
-}
-
-.dnd_area-row-2-max-width-section-centering button {
-  max-width: unset !important;
 }
 
 #frequently-asked-questions-faqs {
   margin-bottom: 0 !important;
 }
 
+.row-number-14,
+.row-number-17,
+.row-number-20,
+.row-number-23,
+.row-number-25,
+.row-number-27,
+.row-number-39,
 .row-number-46,
 .row-number-49,
 .row-number-52,
@@ -21,6 +24,11 @@
 .row-number-60,
 .row-number-62 {
   display: none !important;
+}
+
+.dnd_area-row-2-margin {
+  margin-top: 0 !important;
+  padding-top: 50px !important;
 }
 
 .row-number-65 .page-center {
@@ -33,33 +41,38 @@
   line-height: 1.9 !important;
 }
 
-.row-number-6 h2 {
+.row-number-30 h2 {
   font-size: 36px !important;
   line-height: 1.3 !important;
   margin-bottom: 12px;
 }
 @media (max-width: 768px) {
-  .row-number-6 h2 {
+  .row-number-30 h2 {
     font-size: 24px !important;
     line-height: 1.24 !important;
   }
 }
 
-.row-number-6 p {
+.row-number-30 p,
+.row-number-35 p {
   font-size: 18px !important;
   line-height: 1.55 !important;
 }
 
-.row-number-6 > div {
-  max-width: 640px !important;
-}
-
-.dnd_area-row-24-force-full-width-section > .row-fluid,
-.dnd_area-row-25-max-width-section-centering > .row-fluid,
-.dnd_area-row-2-max-width-section-centering > .row-fluid,
-.dnd_area-row-3-max-width-section-centering > .row-fluid {
+.dnd_area-row-9-max-width-section-centering > .row-fluid,
+.dnd_area-row-10-max-width-section-centering > .row-fluid,
+.dnd_area-row-11-max-width-section-centering > .row-fluid,
+.dnd_area-row-12-max-width-section-centering > .row-fluid,
+.dnd_area-row-15-max-width-section-centering > .row-fluid {
   max-width: 640px !important;
   margin: 0 auto !important;
+}
+.dnd_area-row-9-max-width-section-centering > .row-fluid .page-center,
+.dnd_area-row-10-max-width-section-centering > .row-fluid .page-center,
+.dnd_area-row-11-max-width-section-centering > .row-fluid .page-center,
+.dnd_area-row-12-max-width-section-centering > .row-fluid .page-center,
+.dnd_area-row-15-max-width-section-centering > .row-fluid .page-center {
+  max-width: unset !important;
 }
 
 .row-number-64,
@@ -816,7 +829,7 @@
   padding: 15px 40px;
   max-width: 335px !important;
   background: #ff9902;
-  color: #ffffff;
+  color: #09233e;
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -829,22 +842,23 @@
   text-decoration: none;
 }
 .hp2-cta__btn:hover {
-  background: #e68a00;
+  background: #ff9902;
+  color: #09233e;
 }
 @media (max-width: 768px) {
   .hp2-cta__btn {
     min-width: 0;
     width: 100%;
   }
-}/*# sourceMappingURL=style.css.map */`, f = (t, n, e, i = "") => {
+}/*# sourceMappingURL=style.css.map */`, g = (t, n, e, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
       event_desc: n,
       event_type: e,
       event_loc: i
-    }), x(`Event: ${t} | ${n} | ${e} | ${i}`, "success");
-  }, c = (t) => new Promise((n) => {
+    }), f(`Event: ${t} | ${n} | ${e} | ${i}`, "success");
+  }, m = (t) => new Promise((n) => {
     const e = document.querySelector(t);
     e && n(e);
     const i = new MutationObserver(() => {
@@ -855,26 +869,26 @@
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: t, dev: n }) => {
+  }), w = ({ name: t, dev: n }) => {
     const e = t.toLowerCase().replace(/\s/g, "_");
-    f(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
+    g(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
       `%c EXP: ${t} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class s {
+  class l {
     constructor(n) {
-      this.elements = n instanceof s ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+      this.elements = n instanceof l ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
     }
     on(n, e, i) {
       return typeof e == "function" && (i = e, e = ""), this.elements.forEach((o) => {
-        o.addEventListener(n, function(r) {
-          var l;
+        o.addEventListener(n, function(s) {
+          var c;
           if (e !== "") {
-            let d = (l = r.target) == null ? void 0 : l.closest(e);
-            d && (i == null || i.call(d, r));
+            let h = (c = s.target) == null ? void 0 : c.closest(e);
+            h && (i == null || i.call(h, s));
           } else
-            i == null || i.call(o, r);
+            i == null || i.call(o, s);
         });
       }), this;
     }
@@ -895,18 +909,18 @@
     }
     each(n) {
       for (let e of this.elements)
-        n(new s(e), this.elements.indexOf(e));
+        n(new l(e), this.elements.indexOf(e));
       return this;
     }
     style(n, e) {
-      const i = n.split("-").map((o, r) => r === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+      const i = n.split("-").map((o, s) => s === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
       return this.elements.forEach(function(o) {
         o.style[i] = e;
       }), this;
     }
     find(n) {
       const e = this.elements.map((i) => Array.from(i.querySelectorAll(n)));
-      return new s(e.flat());
+      return new l(e.flat());
     }
     attr(n, e) {
       return e ? (this.elements.forEach(function(i) {
@@ -924,11 +938,30 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const a = (t) => new s(t), _ = (t) => {
+  const p = (t) => new l(t), C = (t) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
     }, 1e3);
-  }, x = (t, n = "info") => {
+  }, a = (t, n, e, i, o = 1e3, s = 0.5) => {
+    let c, h;
+    if (c = new IntersectionObserver(
+      function(d) {
+        d[0].isIntersecting === !0 ? h = setTimeout(() => {
+          g(
+            n,
+            d[0].target.dataset.visible || i || "",
+            "view",
+            e
+          ), c.disconnect();
+        }, o) : (f("Element is not fully visible", "warn"), clearTimeout(h));
+      },
+      { threshold: [s] }
+    ), typeof t == "string") {
+      const d = document.querySelector(t);
+      d && c.observe(d);
+    } else
+      c.observe(t);
+  }, f = (t, n = "info") => {
     let e;
     switch (n) {
       case "info":
@@ -945,7 +978,7 @@
         break;
     }
     console.log(`%c>>> ${t}`, `${e} font-size: 16px; font-weight: 600`);
-  }, C = [
+  }, u = [
     {
       left: "You fund rehab costs yourself",
       right: "100% financing including rehab"
@@ -974,7 +1007,7 @@
       left: "You bring capital and find the property on your own",
       right: "You focus on finding a solid deal - funding is built around it"
     }
-  ], w = [
+  ], v = [
     {
       icon: "property_value",
       title: "Property Value Check",
@@ -995,7 +1028,7 @@
       title: "Exit Plan Check",
       text: "We confirm how the property will be sold or refinanced at the end."
     }
-  ], u = [
+  ], b = [
     {
       title: "The house",
       text: "we buy it for you"
@@ -1008,7 +1041,7 @@
       title: "The closing costs",
       text: "we cover the paperwork fees"
     }
-  ], v = [
+  ], L = [
     {
       id: "eqvi2hrbm0",
       name: "Charles",
@@ -1041,7 +1074,7 @@
       profit: "about $40,000",
       quote: "We realized that early on that Investor’s Edge is more than just a financing option. Using them as a mentorship, it really does feel like a partnership. They’ve been super flexible with us."
     }
-  ], h = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", p = {
+  ], _ = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", r = {
     check: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
 		<path d="M4.59514 11.4989L0 6.90381L2.09408 4.80973L4.59514 7.31818L11.9059 0L14 2.09408L4.59514 11.4989Z" fill="#FF9902"/>
 		</svg>`,
@@ -1091,25 +1124,25 @@
 		<path d="M70 0L72.2451 6.90983H79.5106L73.6327 11.1803L75.8779 18.0902L70 13.8197L64.1221 18.0902L66.3673 11.1803L60.4894 6.90983H67.7549L70 0Z" fill="#FFD015"/>
 		<path d="M90 0L92.2451 6.90983H99.5106L93.6327 11.1803L95.8779 18.0902L90 13.8197L84.1221 18.0902L86.3673 11.1803L80.4894 6.90983H87.7549L90 0Z" fill="#FFD015"/>
 		</svg>`
-  }, b = (
+  }, y = (
     /*html*/
     `<div class="hp2-hero-label">
 	Hard money financing — built for first-time investors
 </div>`
-  ), y = (
+  ), k = (
     /*html*/
     `<div class="hp2-rating">
 	<div class="hp2-rating__google">
 		<p class="hp2-rating__google-stars">
-			<img src="${h}google-logo.webp" alt="google-rating" />
-			${p.stars}
+			<img src="${_}google-logo.webp" alt="google-rating" />
+			${r.stars}
 			4.8/5
 		</p>
 		<p class="hp2-rating__google-reviews">Based on 1060+reviews</p>
 	</div>
-	<img src="${h}a-rating.webp" alt="a-rating" />
+	<img src="${_}a-rating.webp" alt="a-rating" />
 </div>`
-  ), L = (
+  ), H = (
     /*html*/
     `<section class="hp2-cmp">
 	<div class="hp2-cmp__in">
@@ -1130,17 +1163,17 @@
 					<h4>Traditional Hard Money</h4>
 				</div>
 				<div class="hp2-cmp__cell hp2-cmp__cell--right">
-					<img src="${h}logo-dark.webp" alt="The Investor's Edge" />
+					<img src="${_}logo-dark.webp" alt="The Investor's Edge" />
 				</div>
 			</div>
-			${C.map(
+			${u.map(
       (t) => `<div class="hp2-cmp__row">
 						<div class="hp2-cmp__cell hp2-cmp__cell--left">
-							<span class="hp2-cmp__icon">${p.minus}</span>
+							<span class="hp2-cmp__icon">${r.minus}</span>
 							<p>${t.left}</p>
 						</div>
 						<div class="hp2-cmp__cell hp2-cmp__cell--right">
-							<span class="hp2-cmp__icon">${p.check}</span>
+							<span class="hp2-cmp__icon">${r.check}</span>
 							<p>${t.right}</p>
 						</div>
 					</div>`
@@ -1148,21 +1181,21 @@
 		</div>
 	</div>
 </section>`
-  ), k = (
+  ), M = (
     /*html*/
     `<section class="hp2-cover">
 	<div class="hp2-cover__in">
 		<h2 class="hp2-cover__title">What does "100% financing" actually cover?</h2>
 		<div class="hp2-cover__card">
-			${u.map(
+			${b.map(
       (t) => `<div class="hp2-cover__line">
-						<span class="hp2-cover__line-icon">${p.check}</span>
+						<span class="hp2-cover__line-icon">${r.check}</span>
 						<p><strong>${t.title}</strong> - ${t.text}</p>
 					</div>`
     ).join("")}
 		</div>
 		<div class="hp2-cover__note">
-			<span class="hp2-cover__note-icon">${p.handShake}</span>
+			<span class="hp2-cover__note-icon">${r.handShake}</span>
 			<div class="hp2-cover__note-text">
 				<p class="hp2-cover__note-title">You bring $0 to the deal.</p>
 				<p class="hp2-cover__note-sub">We get paid back when you sell.</p>
@@ -1170,7 +1203,7 @@
 		</div>
 	</div>
 </section>`
-  ), H = (
+  ), $ = (
     /*html*/
     `<section class="hp2-checks">
 	<div class="hp2-checks__in">
@@ -1179,9 +1212,9 @@
 		<div class="hp2-checks__card">
 			<p class="hp2-checks__card-title">Every deal goes through these checks before approval:</p>
 			<div class="hp2-checks__list">
-				${w.map(
+				${v.map(
       (t) => `<div class="hp2-checks__item">
-							<span class="hp2-checks__item-icon">${p[t.icon]}</span>
+							<span class="hp2-checks__item-icon">${r[t.icon]}</span>
 							<div class="hp2-checks__item-body">
 								<p class="hp2-checks__item-title">${t.title}</p>
 								<p class="hp2-checks__item-text">${t.text}</p>
@@ -1196,14 +1229,14 @@
 		</div>
 	</div>
 </section>`
-  ), M = (
+  ), z = (
     /*html*/
     `<section class="hp2-reviews">
 	<script src="https://fast.wistia.com/assets/external/E-v1.js" async><\/script>
 	<div class="hp2-reviews__in">
 		<h2 class="hp2-reviews__title">People like you are already closing their first deals</h2>
 		<div class="hp2-reviews__grid">
-			${v.map(
+			${L.map(
       (t) => `<div class="hp2-reviews__card">
 						<div class="hp2-reviews__card-top">
 							<p class="hp2-reviews__name">${t.name}</p>
@@ -1213,7 +1246,7 @@
 						</div>
 						<hr class="hp2-reviews__divider" />
 						<div class="hp2-reviews__quote">
-							${p.quote}
+							${r.quote}
 							<p>${t.quote}</p>
 						</div>
 						<div class="hp2-reviews__video wistia_responsive_padding">
@@ -1226,37 +1259,37 @@
 		</div>
 	</div>
 </section>`
-  ), $ = (
+  ), Z = (
     /*html*/
     `<section class="hp2-cta">
 	<div class="hp2-cta__in">
 		<h2 class="hp2-cta__title">Start your journey to&nbsp;<br class="hp2-cta__title-br">a profitable flip — even without real estate experience.</h2>
-		<button class="hp2-cta__btn crs_link_button crs_open_quiz">Check if you qualify &gt;</button>
+		<a href="https://www.theinvestorsedge.com/apply-now?hsCtaAttrib=213911100972&hsLang=en" class="interactive-button hp2-cta__btn crs_link_button crs_open_quiz">Check if you qualify &gt;</a>
 	</div>
 </section>`
-  ), z = (
+  ), E = (
     /*html*/
     `<section class="hp2-brand">
 				<h3 class="hp2-brand__title">
 				SOME OF THE COMPANIES THAT RECOMMEND US:
 				</h3>
 				<div class="hp2-brand__logos">
-					${Array(5).fill(0).map((t, n) => `<img src="${h}brand-${n + 1}.webp" alt="brand-logo" />`).join("")}
+					${Array(5).fill(0).map((t, n) => `<img src="${_}brand-${n + 1}.webp" alt="brand-logo" />`).join("")}
 				</div>
 </section>`
   );
-  g({ name: "Home Page Update V2", dev: "YK" }), _("home_page_update_v2");
-  class Z {
+  w({ name: "Home Page Update V2", dev: "YK" }), C("home_page_update_v2");
+  class V {
     constructor() {
       this.init();
     }
     async init() {
-      await c("body"), document.head.insertAdjacentHTML("beforeend", `<style>${m}</style>`), a(".pwr-hero__title").elements[0].insertAdjacentHTML("beforebegin", b), a(".row-number-39").elements[0].insertAdjacentHTML("afterbegin", y), a(".row-number-39").elements[0].insertAdjacentHTML(
+      await m("body"), document.head.insertAdjacentHTML("beforeend", `<style>${x}</style>`), p(".pwr-hero__title").elements[0].insertAdjacentHTML("beforebegin", y), p(".row-number-5").elements[0].insertAdjacentHTML("afterbegin", k), p(".row-number-5").elements[0].insertAdjacentHTML(
         "afterend",
-        `${L}${k}${H}${M}${$}`
-      ), await c(".crs-hero-block"), a(".crs-hero-block > p:first-of-type").elements[0].innerText = "With as little as no money down and up to 100% Hard Money financing", a(".row-number-6 .pwr-rich-text").elements[0].insertAdjacentHTML("beforeend", z), await c("#frequently-asked-questions-faqs"), a("#frequently-asked-questions-faqs").elements[0].innerText = "FREQUENTLY ASKED QUESTIONS", a(".crs_open_quiz").elements.forEach((n) => {
+        `${H}${M}${$}${z}${Z}`
+      ), await m("h1+div p"), p("h1+div p").elements[0].innerText = "With as little as no money down and up to 100% Hard Money financing", await m(".row-number-35>.row-fluid>.dnd-column"), p(".row-number-35>.row-fluid>.dnd-column").elements[0].insertAdjacentHTML("beforeend", E), await m("#frequently-asked-questions-faqs"), p("#frequently-asked-questions-faqs").elements[0].innerText = "FREQUENTLY ASKED QUESTIONS", p(".crs_open_quiz").elements.forEach((n) => {
         n.innerHTML = "Check if you qualify &gt;";
-      }), await c(".sticky-block"), window.addEventListener("scroll", () => this.handleStickyVisibility()), this.handleStickyVisibility();
+      }), a(".hp2-hero-label", "exp_home_page_v2_view_hero_label", "Hero label", "Hero label"), a(".hp2-rating", "exp_home_page_v2_view_rating", "Rating", "Rating"), a(".hp2-cmp", "exp_home_page_v2_view_comparison", "Comparison block", "Comparison block"), a(".hp2-cover", "exp_home_page_v2_view_cover", "Financing cover block", "Financing cover block"), a(".hp2-checks", "exp_home_page_v2_view_checks", "Checks block", "Checks block"), a(".hp2-reviews", "exp_home_page_v2_view_reviews", "Reviews block", "Reviews block"), a(".hp2-cta", "exp_home_page_v2_view_cta", "CTA block", "CTA block"), a(".hp2-brand", "exp_home_page_v2_view_brand", "Brand block", "Brand block");
     }
     isElementVisible(n) {
       const e = n.getBoundingClientRect(), i = window.innerHeight || document.documentElement.clientHeight;
@@ -1274,6 +1307,6 @@
       }), i ? n.classList.add("crs-hidden") : n.classList.remove("crs-hidden");
     }
   }
-  new Z();
+  new V();
 })();
 //# sourceMappingURL=index.js.map
