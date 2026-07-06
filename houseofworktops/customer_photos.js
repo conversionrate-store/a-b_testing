@@ -1267,8 +1267,8 @@ body.crs-pg-modal-open {
         this.showAt(this.index + 1), c("exp_gallery_nav", `Arrow Right - ${this.index + 1}`, "click", p);
       }), t.querySelectorAll(".crs-pg-lb__seg").forEach((n) => {
         n.addEventListener("click", () => {
-          const o = n.getAttribute("data-group");
-          this.showAt(o === "kitchen" ? this.boundary : 0), c("exp_gallery_switch", `Switch ${o}`, "click", p);
+          const o = n.getAttribute("data-group"), i = o === "product" ? "Product photos" : "Real kitchens";
+          this.showAt(o === "kitchen" ? this.boundary : 0), c("exp_gallery_switch", `${i}`, "click", p);
         });
       });
       const e = t.querySelector(".crs-pg-lb__zoom");
