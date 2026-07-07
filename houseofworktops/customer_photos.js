@@ -8,7 +8,7 @@
       event_type: e,
       event_loc: n
     }), m(`Event: ${r} | ${t} | ${e} | ${n}`, "success");
-  }, _ = (r) => new Promise((t) => {
+  }, w = (r) => new Promise((t) => {
     const e = document.querySelector(r);
     e && t(e);
     const n = new MutationObserver(() => {
@@ -320,7 +320,9 @@ body.crs-cp-modal-open {
   z-index: 1;
   flex-shrink: 0;
   margin: 0 8px;
-  max-width: min(95vw, 850px);
+  /* Never wider than the square modal (90vh), so photos can't slide under the
+     controls pinned at the square-photo position (see the desktop block below). */
+  max-width: min(90vh, 95vw, 850px);
   max-height: 90vh;
   background: #000;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
@@ -401,6 +403,38 @@ body.crs-cp-modal-open {
   stroke-width: 2.5;
   fill: none;
   stroke-linecap: round;
+}
+
+/* Desktop: pin the arrows and close where they sit for a square photo (the
+   modal at its full 90vh size), so they don't jump when the aspect ratio
+   changes between photos. min(45vh, 47.5vw, 425px) is half the square modal;
+   the 72px / 44px offsets reproduce the square-photo gaps from the rules
+   above (nav margin 64 + modal margin 8, close right -44).
+   On narrow desktops the square position would fall off-screen, so the outer
+   min()/max() clamp each control to 8px from the viewport edge — there they
+   overlap the photo, hence the z-index (modal is z-index 1, close already 20). */
+@media (min-width: 481px) {
+  .crs-cp-lb__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 5;
+  }
+
+  .crs-cp-lb__nav--prev {
+    right: min(calc(50% + min(45vh, 47.5vw, 425px) + 72px), calc(100% - 55px));
+  }
+
+  .crs-cp-lb__nav--next {
+    left: min(calc(50% + min(45vh, 47.5vw, 425px) + 72px), calc(100% - 55px));
+  }
+
+  .crs-cp-lb__close {
+    position: fixed;
+    top: calc(50vh - min(45vh, 47.5vw, 425px));
+    right: max(calc(50vw - min(45vh, 47.5vw, 425px) - 44px), 8px);
+  }
 }
 
 /* ---- Mobile: match the product-gallery viewer — a full-width square photo,
@@ -555,12 +589,12 @@ body.crs-cp-modal-open {
     ">": "&gt;",
     '"': "&quot;"
   };
-  function I(r) {
+  function q(r) {
     return r.replace(/[&<>"]/g, (t) => T[t]);
   }
   function x() {
     const r = document.querySelector("h1"), t = (r && r.textContent ? r.textContent : "").trim();
-    return I(t || "Worktop");
+    return q(t || "Worktop");
   }
   function z() {
     const r = decodeURIComponent(
@@ -573,7 +607,7 @@ body.crs-cp-modal-open {
       alt: `${e} in a real kitchen`
     }));
   }
-  const q = {
+  const I = {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: !0,
@@ -598,7 +632,7 @@ body.crs-cp-modal-open {
       const t = z();
       if (!t) return;
       this.photos = t;
-      const e = await _(".reels-section"), n = await this.waitForSlick();
+      const e = await w(".reels-section"), n = await this.waitForSlick();
       if (!n) {
         m("Customer Photos: jQuery/slick not available", "warn");
         return;
@@ -671,7 +705,7 @@ body.crs-cp-modal-open {
     initSlider(t) {
       const e = this.$, n = e(t).find(".crs-cp__slider");
       n.slick({
-        ...q,
+        ...I,
         appendDots: e(t).find(".crs-cp__dots")
       });
       let s = null;
@@ -1084,7 +1118,9 @@ body.crs-pg-modal-open {
   flex-shrink: 0;
   display: flex;
   margin: 0 8px;
-  max-width: min(92vw, 900px);
+  /* Never wider than the square frame (88vh), so photos can't slide under the
+     controls pinned at the square-photo position (see the desktop block below). */
+  max-width: min(88vh, 92vw, 900px);
   max-height: 88vh;
 }
 
@@ -1144,6 +1180,43 @@ body.crs-pg-modal-open {
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   line-height: 1;
+}
+
+/* Desktop: pin the arrows, close and switcher where they sit for a square photo
+   (the frame at its full 88vh size), so they don't jump when the aspect ratio
+   changes between photos. min(44vh, 46vw, 450px) is half the square frame; the
+   32px / 52px / 16px offsets reproduce the square-photo gaps from the rules
+   above (nav margin 24 + frame margin 8, close right -52, switch top 16).
+   On narrow desktops the square position would fall off-screen, so the outer
+   min()/max() clamp each control to 8px from the viewport edge — there they
+   overlap the photo, hence the z-indexes (stage is z-index 1). */
+@media (min-width: 481px) {
+  .crs-pg-lb__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 5;
+  }
+
+  .crs-pg-lb__nav--prev {
+    right: min(calc(50% + min(44vh, 46vw, 450px) + 32px), calc(100% - 55px));
+  }
+
+  .crs-pg-lb__nav--next {
+    left: min(calc(50% + min(44vh, 46vw, 450px) + 32px), calc(100% - 55px));
+  }
+
+  .crs-pg-lb__close {
+    position: fixed;
+    top: calc(50vh - min(44vh, 46vw, 450px));
+    right: max(calc(50vw - min(44vh, 46vw, 450px) - 52px), 8px);
+  }
+
+  .crs-pg-lb__switch {
+    position: fixed;
+    top: calc(50vh - min(44vh, 46vw, 450px) + 16px);
+  }
 }
 
 /* ---- Mobile (Figma 2710:4538 normal / 2710:4561 fullscreen) ----
@@ -1255,7 +1328,7 @@ body.crs-pg-modal-open {
     height: 30px;
   }
 }
-`, d = "Product gallery", w = ".image-popup a[href]", L = ".worktop-thumbnail-slider img", X = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-previous.svg", D = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-next.svg", b = 2, y = 20;
+`, d = "Product gallery", _ = ".image-popup a[href]", L = ".worktop-thumbnail-slider img", X = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-previous.svg", D = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-next.svg", b = 2, y = 20;
   class F {
     constructor() {
       this.customerPhotos = [], this.slides = [], this.boundary = 0, this.index = 0, this.loadToken = 0, this.kitchenViewed = !1, this.ghostDir = 0, this.lastFocused = null, this.zoomed = !1, this.dragging = !1, this.moved = !1, this.swiping = !1, this.sx = 0, this.sy = 0, this.startPanX = 0, this.startPanY = 0, this.panX = 0, this.panY = 0, this.init();
@@ -1263,7 +1336,7 @@ body.crs-pg-modal-open {
     async init() {
       if (document.getElementById("crsPgLightbox")) return;
       const t = z();
-      !t || !t.length || (this.customerPhotos = t, await _(w), g(V), this.buildViewer(), document.addEventListener("click", (e) => this.onGalleryClick(e), !0), C(() => {
+      !t || !t.length || (this.customerPhotos = t, await w(_), g(V), this.buildViewer(), document.addEventListener("click", (e) => this.onGalleryClick(e), !0), C(() => {
         this.customerPhotos.forEach((e) => h(e.src)), this.getProductPhotos().forEach((e) => h(e.src));
       }), document.addEventListener("pointerover", (e) => this.onIntent(e), !0));
     }
@@ -1272,13 +1345,13 @@ body.crs-pg-modal-open {
     onIntent(t) {
       const e = t.target;
       if (!e || !e.closest) return;
-      const n = e.closest(w), s = n || e.closest(L);
+      const n = e.closest(_), s = n || e.closest(L);
       s && h((n ? n.getAttribute("href") : s.getAttribute("src")) || "");
     }
     // --- Product photos: read the ordered, de-duplicated full-res URLs live ---
     getProductPhotos() {
       const t = Array.from(
-        document.querySelectorAll(w)
+        document.querySelectorAll(_)
       ), e = /* @__PURE__ */ new Set(), n = [], s = x();
       return t.forEach((i) => {
         const o = i.getAttribute("href");
@@ -1302,7 +1375,7 @@ body.crs-pg-modal-open {
     onGalleryClick(t) {
       const e = t.target;
       if (!e || !e.closest) return;
-      const n = e.closest(w), s = n || e.closest(L);
+      const n = e.closest(_), s = n || e.closest(L);
       if (!s) return;
       t.preventDefault(), t.stopImmediatePropagation();
       const i = this.getProductPhotos();
@@ -1508,7 +1581,7 @@ body.crs-pg-modal-open {
     }
     open(t) {
       var e;
-      this.lastFocused = document.activeElement, this.showAt(t, !0), this.lb.classList.add("is-open"), this.lb.setAttribute("aria-hidden", "false"), document.body.classList.add("crs-pg-modal-open"), (e = this.lb.querySelector(".crs-pg-lb__close")) == null || e.focus(), c("exp_gallery_open", `Opened photo ${t + 1}`, "click", d);
+      this.lastFocused = document.activeElement, this.showAt(t, !0), this.lb.classList.add("is-open"), this.lb.setAttribute("aria-hidden", "false"), document.body.classList.add("crs-pg-modal-open"), (e = this.lb.querySelector(".crs-pg-lb__close")) == null || e.focus();
     }
     close() {
       var t;
@@ -1611,7 +1684,7 @@ body.crs-pg-modal-open {
     }
     async init() {
       if (document.querySelector(".crs-rb-lead")) return;
-      const t = await _(".reels-mobile-fullwidth");
+      const t = await w(".reels-mobile-fullwidth");
       for (g(j); t.firstChild && t.firstChild.nodeType === Node.TEXT_NODE; )
         t.removeChild(t.firstChild);
       this.relocate(t);
@@ -1696,18 +1769,18 @@ body.crs-pg-modal-open {
 <path id="Vector_3" d="M13.224 12.4185L12.7353 10.9085L9.21896 13.4544L13.224 12.4185Z" fill="var(--fill-0, #005128)"/>
 </g>
 </svg>
-`, W = "https://widget.trustpilot.com/trustbox-data/5419b6ffb0d04a076446a9af?businessUnitId=5de985d57cad6c0001a1286e&locale=en-GB", B = "https://cdn.trustpilot.net/brand-assets/4.1.0/stars", f = {
+`, W = "https://widget.trustpilot.com/trustbox-data/5419b6ffb0d04a076446a9af?businessUnitId=5de985d57cad6c0001a1286e&locale=en-GB", Y = "https://cdn.trustpilot.net/brand-assets/4.1.0/stars", f = {
     trustScore: 4.8,
     stars: 5,
     profileUrl: "https://uk.trustpilot.com/review/houseofworktops.co.uk"
   };
-  class Y {
+  class B {
     constructor() {
       this.init();
     }
     async init() {
       if (document.querySelector(".crs-tp")) return;
-      const e = (await _("#reels-slider-section .reels-heading")).parentElement;
+      const e = (await w("#reels-slider-section .reels-heading")).parentElement;
       if (!e) return;
       g(Z), this.hideOriginal();
       const n = this.buildRow(f);
@@ -1759,7 +1832,7 @@ body.crs-pg-modal-open {
       </span>
       <img
         class="crs-tp__stars"
-        src="${B}/stars-${this.starsFile(e.stars)}.svg"
+        src="${Y}/stars-${this.starsFile(e.stars)}.svg"
         alt=""
         width="100"
       />
@@ -1773,8 +1846,9 @@ body.crs-pg-modal-open {
       this.init();
     }
     init() {
-      g(G), new H(), new F(), new O(), new Y();
+      g(G), new H(), new F(), new O(), new B();
     }
   }
   new N();
 })();
+//# sourceMappingURL=index.js.map
