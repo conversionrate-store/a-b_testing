@@ -36,9 +36,13 @@
   max-width: unset !important;
 }
 
-.row-number-67 span {
+.row-number-44 span {
   text-align: left !important;
   line-height: 1.9 !important;
+}
+
+.row-number-37 {
+  padding-top: 40px !important;
 }
 
 .row-number-30 h2 {
@@ -89,8 +93,8 @@
   height: 600px !important;
 }
 
-.crs-hero-block > p:first-of-type {
-  max-width: 675px;
+h1 + div p {
+  max-width: 675px !important;
 }
 
 .hp2-brand__title {
