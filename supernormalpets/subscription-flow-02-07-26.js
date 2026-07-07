@@ -1482,7 +1482,10 @@
     "one-yearly": 54377674867034,
     "ulim-monthly": 54377674899802,
     "ulim-yearly": 54377674932570
-  }, D = 692202897754;
+  }, D = {
+    monthly: 692205060442,
+    annually: 692205093210
+  };
   function h(n) {
     const t = n.charAt(0).toUpperCase() + n.slice(1).toLowerCase();
     return document.querySelector(`.pawtag-variant-btn[data-option-value="${t}"]`);
@@ -1500,9 +1503,7 @@
     n != null && n.classList.contains("pawtag-variant-btn--active") && ((i = h("Green")) == null || i.click()), F(), document.querySelectorAll(".sn-cta__colour-btn").forEach((d) => {
       d.addEventListener("click", () => {
         var w;
-        document.querySelectorAll(".sn-cta__colour-btn").forEach(
-          (K) => K.classList.remove("sn-cta__colour-btn--active")
-        ), d.classList.add("sn-cta__colour-btn--active"), (w = h(d.dataset.colour ?? "")) == null || w.click(), o("new_flow_colour_select", c, { colour: d.dataset.colour });
+        document.querySelectorAll(".sn-cta__colour-btn").forEach((K) => K.classList.remove("sn-cta__colour-btn--active")), d.classList.add("sn-cta__colour-btn--active"), (w = h(d.dataset.colour ?? "")) == null || w.click(), o("new_flow_colour_select", c, { colour: d.dataset.colour });
       });
     });
     const t = document.getElementById("snQtyVal");
@@ -1545,9 +1546,11 @@
   }
   function L() {
     const n = U();
-    o("new_flow_popup_view", c, { popup: "how_trial_works" }), requestAnimationFrame(() => requestAnimationFrame(() => {
-      n.classList.add("active");
-    }));
+    o("new_flow_popup_view", c, { popup: "how_trial_works" }), requestAnimationFrame(
+      () => requestAnimationFrame(() => {
+        n.classList.add("active");
+      })
+    );
   }
   function x() {
     var n;
@@ -1564,7 +1567,11 @@
     return n === "annually" ? `£${(u.annually[t] * 12).toFixed(2)}/yr` : `£${u.monthly[t].toFixed(2)}/mo`;
   }
   function C(n, t, e) {
-    const s = n.querySelector('.sn-plan-popup__plan[data-plan="single"] .sn-plan-popup__plan-price-val'), i = n.querySelector('.sn-plan-popup__plan[data-plan="unlimited"] .sn-plan-popup__plan-price-val');
+    const s = n.querySelector(
+      '.sn-plan-popup__plan[data-plan="single"] .sn-plan-popup__plan-price-val'
+    ), i = n.querySelector(
+      '.sn-plan-popup__plan[data-plan="unlimited"] .sn-plan-popup__plan-price-val'
+    );
     s && (s.textContent = H(t, "single")), i && (i.textContent = H(t, "unlimited"));
     const l = n.querySelector(".sn-plan-popup__billing-badge");
     if (l) {
@@ -1585,13 +1592,15 @@
         body: JSON.stringify({
           items: [
             { id: l, quantity: i },
-            { id: r, quantity: 1, selling_plan: D }
+            { id: r, quantity: 1, selling_plan: D[n] }
           ]
         })
       })).ok ? (await fetch("/cart/update.js", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ attributes: { ga_client_id: k() } })
+        body: JSON.stringify({
+          attributes: { ga_client_id: k(), user_id: localStorage.getItem("tt_user_id") }
+        })
       }), window.location.href = "/checkout") : e.removeAttribute("disabled");
     } catch {
       e.removeAttribute("disabled");
@@ -1623,9 +1632,11 @@
   }
   function m() {
     const n = W();
-    o("new_flow_popup_view", c, { popup: "plan_select" }), requestAnimationFrame(() => requestAnimationFrame(() => {
-      n.classList.add("active");
-    }));
+    o("new_flow_popup_view", c, { popup: "plan_select" }), requestAnimationFrame(
+      () => requestAnimationFrame(() => {
+        n.classList.add("active");
+      })
+    );
   }
   function y() {
     var n;
