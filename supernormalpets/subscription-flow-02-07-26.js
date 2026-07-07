@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const H = `.sn-popup {
+  const E = `.sn-popup {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -931,131 +931,160 @@
 #shopify-section-template--28332778750298__pawtag_tag_arrival_KDrRBw,
 #shopify-section-template--28332778750298__blocks_V6KxmT {
   display: none !important;
-}/*# sourceMappingURL=style.css.map */`, E = (e, n, t, s = "") => {
+}/*# sourceMappingURL=style.css.map */`, M = (n, t, e, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: e,
-      event_desc: n,
-      event_type: t,
+      event_name: n,
+      event_desc: t,
+      event_type: e,
       event_loc: s
-    }), v(`Event: ${e} | ${n} | ${t} | ${s}`, "success");
-  }, M = "https://next-client-api.vercel.app/api/events", b = (e, n) => {
-    let t = e.getItem(n);
-    return t || (t = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`, e.setItem(n, t)), t;
-  }, o = (e, n, t = {}) => {
-    const s = {
-      event_name: e,
+    }), v(`Event: ${n} | ${t} | ${e} | ${s}`, "success");
+  }, I = "https://next-client-api.vercel.app/api/events", b = (n, t) => {
+    let e = n.getItem(t);
+    return e || (e = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`, n.setItem(t, e)), e;
+  }, k = () => {
+    const n = document.cookie.match(/_ga=(?:GA\d\.\d\.)?(\d+\.\d+)/);
+    return n ? n[1] : "";
+  }, A = () => {
+    const n = new URLSearchParams(window.location.search).get("utm_source");
+    if (n)
+      return localStorage.setItem("tt_traffic_source", n), n;
+    const t = localStorage.getItem("tt_traffic_source");
+    if (t) return t;
+    if (!document.referrer) return "direct";
+    try {
+      const e = new URL(document.referrer).hostname;
+      return e === window.location.hostname ? "direct" : (localStorage.setItem("tt_traffic_source", e), e);
+    } catch {
+      return "direct";
+    }
+  }, P = () => {
+    const n = navigator.userAgent;
+    let t = "Unknown";
+    /windows/i.test(n) ? t = "Windows" : /iphone|ipad|ipod/i.test(n) ? t = "iOS" : /mac os/i.test(n) ? t = "macOS" : /android/i.test(n) ? t = "Android" : /linux/i.test(n) && (t = "Linux");
+    let e = "Unknown";
+    /edg\//i.test(n) ? e = "Edge" : /opr\/|opera/i.test(n) ? e = "Opera" : /crios\//i.test(n) || /chrome\//i.test(n) ? e = "Chrome" : /fxios\/|firefox\//i.test(n) ? e = "Firefox" : /safari\//i.test(n) && (e = "Safari");
+    let s = "desktop";
+    return /ipad|tablet/i.test(n) ? s = "tablet" : /mobi|iphone|android/i.test(n) && (s = "mobile"), { device_type: s, os: t, browser: e };
+  }, o = (n, t, e = {}) => {
+    const { device_type: s, os: i, browser: l } = P(), a = {
+      event_name: n,
       event_time: (/* @__PURE__ */ new Date()).toISOString(),
-      source: n,
+      source: t,
       session_id: b(sessionStorage, "tt_session_id"),
       user_id: b(localStorage, "tt_user_id"),
-      properties: t
+      client_id: k(),
+      traffic_source: A(),
+      device_type: s,
+      os: i,
+      browser: l,
+      properties: e
     };
-    fetch(M, {
+    fetch(I, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(s),
+      body: JSON.stringify(a),
       keepalive: !0
     }).catch(() => {
-    }), v(`BQ Event: ${e} | ${n} | ${JSON.stringify(t)}`, "success");
-  }, V = (e) => new Promise((n) => {
-    const t = document.querySelector(e);
-    t && n(t);
+    }), v(`BQ Event: ${n} | ${t} | ${JSON.stringify(e)}`, "success");
+  }, V = (n) => new Promise((t) => {
+    const e = document.querySelector(n);
+    e && t(e);
     const s = new MutationObserver(() => {
-      const p = document.querySelector(e);
-      p && (n(p), s.disconnect());
+      const i = document.querySelector(n);
+      i && (t(i), s.disconnect());
     });
     s.observe(document.documentElement, {
       childList: !0,
       subtree: !0
     });
-  }), P = ({ name: e, dev: n }) => {
-    const t = e.toLowerCase().replace(/\s/g, "_");
-    E(`${t}_started`, `Experiment ${e} started`, "other", t), console.log(
-      `%c EXP: ${e} (DEV: ${n})`,
+  }), S = ({ name: n, dev: t }) => {
+    const e = n.toLowerCase().replace(/\s/g, "_");
+    M(`${e}_started`, `Experiment ${n} started`, "other", e), console.log(
+      `%c EXP: ${n} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
   class _ {
-    constructor(n) {
-      this.elements = n instanceof _ ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+    constructor(t) {
+      this.elements = t instanceof _ ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
     }
-    on(n, t, s) {
-      return typeof t == "function" && (s = t, t = ""), this.elements.forEach((p) => {
-        p.addEventListener(n, function(l) {
+    on(t, e, s) {
+      return typeof e == "function" && (s = e, e = ""), this.elements.forEach((i) => {
+        i.addEventListener(t, function(l) {
           var a;
-          if (t !== "") {
-            let r = (a = l.target) == null ? void 0 : a.closest(t);
+          if (e !== "") {
+            let r = (a = l.target) == null ? void 0 : a.closest(e);
             r && (s == null || s.call(r, l));
           } else
-            s == null || s.call(p, l);
+            s == null || s.call(i, l);
         });
       }), this;
     }
-    addClass(n) {
-      return this.elements.forEach(function(t) {
-        t.classList.add(n);
+    addClass(t) {
+      return this.elements.forEach(function(e) {
+        e.classList.add(t);
       }), this;
     }
-    removeClass(n) {
-      return this.elements.forEach(function(t) {
-        t.classList.remove(n);
+    removeClass(t) {
+      return this.elements.forEach(function(e) {
+        e.classList.remove(t);
       }), this;
     }
-    toggleClass(n) {
-      return this.elements.forEach(function(t) {
-        t.classList.toggle(n);
+    toggleClass(t) {
+      return this.elements.forEach(function(e) {
+        e.classList.toggle(t);
       }), this;
     }
-    each(n) {
-      for (let t of this.elements)
-        n(new _(t), this.elements.indexOf(t));
+    each(t) {
+      for (let e of this.elements)
+        t(new _(e), this.elements.indexOf(e));
       return this;
     }
-    style(n, t) {
-      const s = n.split("-").map((p, l) => l === 0 ? p : p.charAt(0).toUpperCase() + p.slice(1)).join("");
-      return this.elements.forEach(function(p) {
-        p.style[s] = t;
+    style(t, e) {
+      const s = t.split("-").map((i, l) => l === 0 ? i : i.charAt(0).toUpperCase() + i.slice(1)).join("");
+      return this.elements.forEach(function(i) {
+        i.style[s] = e;
       }), this;
     }
-    find(n) {
-      const t = this.elements.map((s) => Array.from(s.querySelectorAll(n)));
-      return new _(t.flat());
+    find(t) {
+      const e = this.elements.map((s) => Array.from(s.querySelectorAll(t)));
+      return new _(e.flat());
     }
-    attr(n, t) {
-      return t ? (this.elements.forEach(function(s) {
-        s.setAttribute(n, t);
-      }), this) : this.elements[0].getAttribute(n);
+    attr(t, e) {
+      return e ? (this.elements.forEach(function(s) {
+        s.setAttribute(t, e);
+      }), this) : this.elements[0].getAttribute(t);
     }
-    text(n) {
-      return n ? (this.elements.forEach(function(t) {
-        t.textContent = n;
+    text(t) {
+      return t ? (this.elements.forEach(function(e) {
+        e.textContent = t;
       }), this) : this.elements[0].textContent || "";
     }
-    html(n) {
-      return n ? (this.elements.forEach(function(t) {
-        t.innerHTML = n;
+    html(t) {
+      return t ? (this.elements.forEach(function(e) {
+        e.innerHTML = t;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const g = (e) => new _(e), v = (e, n = "info") => {
-    let t;
-    switch (n) {
+  const g = (n) => new _(n), v = (n, t = "info") => {
+    let e;
+    switch (t) {
       case "info":
-        t = "color: #3498db;";
+        e = "color: #3498db;";
         break;
       case "warn":
-        t = "color: #f39c12;";
+        e = "color: #f39c12;";
         break;
       case "error":
-        t = "color: #e74c3c;";
+        e = "color: #e74c3c;";
         break;
       case "success":
-        t = "color: #2ecc71;";
+        e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${e}`, `${t} font-size: 16px; font-weight: 600`);
-  }, i = {
+    console.log(`%c>>> ${n}`, `${e} font-size: 16px; font-weight: 600`);
+  }, p = {
     close_white: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
 		<g clip-path="url(#clip0_97_915)">
 		<path d="M16 0C7.17371 0 0 7.17371 0 16C0 24.8263 7.17371 32 16 32C24.8263 32 32 24.8263 32 16C32 7.17371 24.8263 0 16 0ZM16 30.385C8.07512 30.385 1.61502 23.9249 1.61502 16C1.61502 8.07512 8.07512 1.61502 16 1.61502C23.9249 1.61502 30.385 8.07512 30.385 16C30.385 23.9249 23.9249 30.385 16 30.385Z" fill="white"/>
@@ -1168,7 +1197,7 @@
 		<path d="M16.8259 8.60245C16.3364 8.11308 15.6856 7.8437 14.9936 7.8437H14.8061V5.26808C14.8061 2.63714 12.6658 0.496826 10.035 0.496826H9.85859C7.22781 0.496826 5.08734 2.63714 5.08734 5.26808V7.84354H4.89984C4.20781 7.84354 3.55703 8.11308 3.0675 8.60245C2.57812 9.09198 2.30859 9.74276 2.30859 10.435V16.9118C2.30859 17.604 2.57812 18.2548 3.0675 18.744C3.55687 19.2335 4.20766 19.5031 4.89984 19.5031H14.9936C15.6858 19.5031 16.3366 19.2335 16.8261 18.744C17.3155 18.2546 17.585 17.6039 17.585 16.9118V10.435C17.585 9.74292 17.3155 9.09214 16.8259 8.60245ZM6.33734 5.26808C6.33734 3.32651 7.91687 1.74683 9.85859 1.74683H10.035C11.9766 1.74683 13.5561 3.32651 13.5561 5.26808V7.84354H6.33734V5.26808ZM16.335 16.9118C16.335 17.2648 16.1917 17.6104 15.9422 17.8601C15.6887 18.1135 15.3519 18.2531 14.9936 18.2531H4.89984C4.54156 18.2531 4.20484 18.1135 3.95125 17.86C3.69797 17.6068 3.55844 17.2701 3.55844 16.9118V10.435C3.55844 10.0767 3.69797 9.73964 3.95125 9.48636C4.20469 9.23308 4.54141 9.09354 4.89969 9.09354H14.9934C15.3517 9.09354 15.6886 9.23308 15.9419 9.4862C16.1953 9.73979 16.3348 10.0767 16.3348 10.435L16.335 16.9118Z" fill="#CFFF90"/>
 		<path d="M9.94629 11.9475C9.60113 11.9475 9.32129 12.2274 9.32129 12.5725V14.7744C9.32129 15.1195 9.60113 15.3994 9.94629 15.3994C10.2914 15.3994 10.5713 15.1195 10.5713 14.7744V12.5725C10.5713 12.2274 10.2914 11.9475 9.94629 11.9475Z" fill="#CFFF90"/>
 		</svg>`
-  }, A = (
+  }, B = (
     /*html*/
     `
 <div class="sn-popup" id="snHowTrialPopup">
@@ -1180,13 +1209,13 @@
         <p class="sn-popup__subtitle">Clear timeline, no surprise charges.</p>
       </div>
       <button class="sn-popup__close" id="snHowTrialClose" aria-label="Close">
-        ${i.close_white}
+        ${p.close_white}
       </button>
     </div>
     <div class="sn-popup__timeline">
       <div class="sn-popup__step">
         <div class="sn-popup__step-left">
-          <div class="sn-popup__circle">${i.circle_active}</div>
+          <div class="sn-popup__circle">${p.circle_active}</div>
           <div class="sn-popup__line"></div>
         </div>
         <div class="sn-popup__step-content">
@@ -1196,7 +1225,7 @@
       </div>
       <div class="sn-popup__step">
         <div class="sn-popup__step-left">
-          <div class="sn-popup__circle">${i.circle_inactive}</div>
+          <div class="sn-popup__circle">${p.circle_inactive}</div>
           <div class="sn-popup__line"></div>
         </div>
         <div class="sn-popup__step-content">
@@ -1206,7 +1235,7 @@
       </div>
       <div class="sn-popup__step">
         <div class="sn-popup__step-left">
-          <div class="sn-popup__circle">${i.circle_inactive}</div>
+          <div class="sn-popup__circle">${p.circle_inactive}</div>
           <div class="sn-popup__line"></div>
         </div>
         <div class="sn-popup__step-content">
@@ -1216,7 +1245,7 @@
       </div>
       <div class="sn-popup__step">
         <div class="sn-popup__step-left">
-          <div class="sn-popup__circle">${i.circle_inactive}</div>
+          <div class="sn-popup__circle">${p.circle_inactive}</div>
         </div>
         <div class="sn-popup__step-content">
           <div class="sn-popup__step-title">Day 7</div>
@@ -1234,7 +1263,7 @@
   </div>
 </div>
 `
-  ), I = (
+  ), q = (
     /*html*/
     `
 <div class="sn-plan-popup" id="snPlanPopup">
@@ -1244,7 +1273,7 @@
       <div class="sn-plan-popup__header">
         <h3 class="sn-plan-popup__title">Free 7-day trial</h3>
         <button class="sn-plan-popup__close" id="snPlanClose" aria-label="Close">
-          ${i.close_dark}
+          ${p.close_dark}
         </button>
       </div>
       <div class="sn-plan-popup__billing">
@@ -1257,13 +1286,13 @@
       <div class="sn-plan-popup__included">
         <div class="sn-plan-popup__included-title">What's included</div>
         <div class="sn-plan-popup__included-grid">
-          <div class="sn-plan-popup__included-item">${i.green_check}<span>Free Pet Tag</span></div>
-          <div class="sn-plan-popup__included-item">${i.green_check}<span>Pet profile contacts</span></div>
-          <div class="sn-plan-popup__included-item">${i.green_check}<span>GPS scan alerts</span></div>
-          <div class="sn-plan-popup__included-item">${i.green_check}<span>Community alerts</span></div>
-          <div class="sn-plan-popup__included-item">${i.green_check}<span>Vet &amp; kennel alerts</span></div>
-          <div class="sn-plan-popup__included-item">${i.green_check}<span>Vet &amp; training support</span></div>
-          <div class="sn-plan-popup__included-item">${i.green_check}<span>Health analysis</span></div>
+          <div class="sn-plan-popup__included-item">${p.green_check}<span>Free Pet Tag</span></div>
+          <div class="sn-plan-popup__included-item">${p.green_check}<span>Pet profile contacts</span></div>
+          <div class="sn-plan-popup__included-item">${p.green_check}<span>GPS scan alerts</span></div>
+          <div class="sn-plan-popup__included-item">${p.green_check}<span>Community alerts</span></div>
+          <div class="sn-plan-popup__included-item">${p.green_check}<span>Vet &amp; kennel alerts</span></div>
+          <div class="sn-plan-popup__included-item">${p.green_check}<span>Vet &amp; training support</span></div>
+          <div class="sn-plan-popup__included-item">${p.green_check}<span>Health analysis</span></div>
         </div>
       </div>
       <div class="sn-plan-popup__plans">
@@ -1287,7 +1316,7 @@
       <div class="sn-plan-popup__timeline">
         <div class="sn-plan-popup__step">
           <div class="sn-plan-popup__step-left">
-            <div class="sn-plan-popup__circle">${i.circle_active_light}</div>
+            <div class="sn-plan-popup__circle">${p.circle_active_light}</div>
             <div class="sn-plan-popup__line"></div>
           </div>
           <div class="sn-plan-popup__step-content">
@@ -1297,7 +1326,7 @@
         </div>
         <div class="sn-plan-popup__step">
           <div class="sn-plan-popup__step-left">
-            <div class="sn-plan-popup__circle">${i.circle_inactive_light}</div>
+            <div class="sn-plan-popup__circle">${p.circle_inactive_light}</div>
             <div class="sn-plan-popup__line"></div>
           </div>
           <div class="sn-plan-popup__step-content">
@@ -1307,7 +1336,7 @@
         </div>
         <div class="sn-plan-popup__step">
           <div class="sn-plan-popup__step-left">
-            <div class="sn-plan-popup__circle">${i.circle_inactive_light}</div>
+            <div class="sn-plan-popup__circle">${p.circle_inactive_light}</div>
             <div class="sn-plan-popup__line"></div>
           </div>
           <div class="sn-plan-popup__step-content">
@@ -1317,7 +1346,7 @@
         </div>
         <div class="sn-plan-popup__step">
           <div class="sn-plan-popup__step-left">
-            <div class="sn-plan-popup__circle">${i.circle_inactive_light}</div>
+            <div class="sn-plan-popup__circle">${p.circle_inactive_light}</div>
           </div>
           <div class="sn-plan-popup__step-content">
             <div class="sn-plan-popup__step-title">Day 7</div>
@@ -1338,7 +1367,7 @@
         </div>
       </div>
       <button class="sn-plan-popup__cta" id="snPlanCta">
-        ${i.secure}
+        ${p.secure}
         Secure checkout
       </button>
       <p class="sn-plan-popup__fine-print">Today you pay shipping only. Cancel any time before day 7</p>
@@ -1346,7 +1375,7 @@
   </div>
 </div>
 `
-  ), B = (
+  ), Z = (
     /*html*/
     `
 <div class="sn-cta">
@@ -1371,22 +1400,22 @@
   </div>
   <div class="sn-cta__links">
     <div class="sn-cta__link-item">
-      ${i.cancel}<span>Cancel any time</span>
+      ${p.cancel}<span>Cancel any time</span>
     </div>
     <span class="sn-cta__dot"></span>
     <button class="sn-cta__how-works" id="snHowWorksLink">
-      ${i.how_works}<span>How our trial works</span>
+      ${p.how_works}<span>How our trial works</span>
     </button>
     <span class="sn-cta__dot"></span>
     <div class="sn-cta__link-item">
       <span>Worldwide</span>
-      ${i.shipping}
+      ${p.shipping}
       <span>Fast shipping</span>
     </div>
   </div>
 </div>
 `
-  ), q = (
+  ), $ = (
     /*html*/
     `
 <div class="sn-sticky-cta" id="snStickyCta">
@@ -1395,11 +1424,11 @@
     <div class="sn-sticky-cta__right">
       <div class="sn-cta__links">
         <div class="sn-cta__link-item">
-          ${i.cancel}<span>Cancel any time</span>
+          ${p.cancel}<span>Cancel any time</span>
         </div>
         <span class="sn-cta__dot"></span>
         <button class="sn-cta__how-works" id="snStickyHowWorksLink">
-          ${i.how_works}<span>How our trial works</span>
+          ${p.how_works}<span>How our trial works</span>
         </button>
       </div>
       <button class="sn-cta__main-btn" id="snStickyMainCta">Get my tag with free 7-day trial →</button>
@@ -1407,33 +1436,33 @@
   </div>
 </div>
 `
-  ), Z = (
+  ), T = (
     /*html*/
     `
 <div class="sn-features">
   <div class="sn-features__item">
-    <div class="sn-features__icon">${i.instant}</div>
+    <div class="sn-features__icon">${p.instant}</div>
     <div class="sn-features__text">
       <div class="sn-features__title">Instant location alerts</div>
       <div class="sn-features__desc">Get an SMS the second your tag is scanned.</div>
     </div>
   </div>
   <div class="sn-features__item">
-    <div class="sn-features__icon">${i.no_batteriees}</div>
+    <div class="sn-features__icon">${p.no_batteriees}</div>
     <div class="sn-features__text">
       <div class="sn-features__title">No batteries, ever</div>
       <div class="sn-features__desc">Simple QR works with any smartphone.</div>
     </div>
   </div>
   <div class="sn-features__item">
-    <div class="sn-features__icon">${i.durable}</div>
+    <div class="sn-features__icon">${p.durable}</div>
     <div class="sn-features__text">
       <div class="sn-features__title">Durable &amp; waterproof</div>
       <div class="sn-features__desc">Built for rain, mud and every adventure.</div>
     </div>
   </div>
   <div class="sn-features__item">
-    <div class="sn-features__icon">${i.safe}</div>
+    <div class="sn-features__icon">${p.safe}</div>
     <div class="sn-features__text">
       <div class="sn-features__title">Safe &amp; secure</div>
       <div class="sn-features__desc">Pet's data encrypted, shared only when needed.</div>
@@ -1444,169 +1473,173 @@
   ), c = "supernormalpets_new_flow", u = {
     monthly: { single: 4.99, unlimited: 6.99 },
     annually: { single: 3.12, unlimited: 5.25 }
-  }, $ = {
+  }, z = {
     green: 53969370022234,
     lilac: 53969370055002,
     orange: 53996999901530
-  }, S = {
+  }, j = {
     "one-monthly": 54377674834266,
     "one-yearly": 54377674867034,
     "ulim-monthly": 54377674899802,
     "ulim-yearly": 54377674932570
-  }, z = 692202897754;
-  function h(e) {
-    const n = e.charAt(0).toUpperCase() + e.slice(1).toLowerCase();
-    return document.querySelector(`.pawtag-variant-btn[data-option-value="${n}"]`);
+  }, D = 692202897754;
+  function h(n) {
+    const t = n.charAt(0).toUpperCase() + n.slice(1).toLowerCase();
+    return document.querySelector(`.pawtag-variant-btn[data-option-value="${t}"]`);
   }
-  function T() {
-    const e = document.querySelectorAll(".sn-cta__colour-btn");
-    e.forEach((n) => {
-      const t = n.dataset.colour ?? "", s = h(t);
-      s != null && s.classList.contains("pawtag-variant-btn--active") && (e.forEach((p) => p.classList.remove("sn-cta__colour-btn--active")), n.classList.add("sn-cta__colour-btn--active"));
+  function F() {
+    const n = document.querySelectorAll(".sn-cta__colour-btn");
+    n.forEach((t) => {
+      const e = t.dataset.colour ?? "", s = h(e);
+      s != null && s.classList.contains("pawtag-variant-btn--active") && (n.forEach((i) => i.classList.remove("sn-cta__colour-btn--active")), t.classList.add("sn-cta__colour-btn--active"));
     });
   }
-  function j() {
-    var p, l, a, r, f;
-    const e = document.querySelector('.pawtag-variant-btn[data-option-value="Engraved"]');
-    e != null && e.classList.contains("pawtag-variant-btn--active") && ((p = h("Green")) == null || p.click()), T(), document.querySelectorAll(".sn-cta__colour-btn").forEach((d) => {
+  function O() {
+    var i, l, a, r, f;
+    const n = document.querySelector('.pawtag-variant-btn[data-option-value="Engraved"]');
+    n != null && n.classList.contains("pawtag-variant-btn--active") && ((i = h("Green")) == null || i.click()), F(), document.querySelectorAll(".sn-cta__colour-btn").forEach((d) => {
       d.addEventListener("click", () => {
         var w;
         document.querySelectorAll(".sn-cta__colour-btn").forEach(
-          (Q) => Q.classList.remove("sn-cta__colour-btn--active")
+          (K) => K.classList.remove("sn-cta__colour-btn--active")
         ), d.classList.add("sn-cta__colour-btn--active"), (w = h(d.dataset.colour ?? "")) == null || w.click(), o("new_flow_colour_select", c, { colour: d.dataset.colour });
       });
     });
-    const n = document.getElementById("snQtyVal");
-    let t = 1;
+    const t = document.getElementById("snQtyVal");
+    let e = 1;
     const s = (d) => {
-      t = Math.max(1, d), n && (n.textContent = String(t));
+      e = Math.max(1, d), t && (t.textContent = String(e));
     };
     (l = document.getElementById("snQtyMinus")) == null || l.addEventListener("click", () => {
-      s(t - 1), o("new_flow_qty_change", c, { qty: t, action: "decrease" });
+      s(e - 1), o("new_flow_qty_change", c, { qty: e, action: "decrease" });
     }), (a = document.getElementById("snQtyPlus")) == null || a.addEventListener("click", () => {
-      s(t + 1), o("new_flow_qty_change", c, { qty: t, action: "increase" });
+      s(e + 1), o("new_flow_qty_change", c, { qty: e, action: "increase" });
     }), (r = document.getElementById("snMainCta")) == null || r.addEventListener("click", () => {
       o("new_flow_cta_click", c, { location: "main" }), m();
     }), (f = document.getElementById("snHowWorksLink")) == null || f.addEventListener("click", () => {
-      o("new_flow_how_it_works_click", c, { location: "main" }), k();
+      o("new_flow_how_it_works_click", c, { location: "main" }), L();
     });
   }
-  function D() {
-    var s, p;
-    const e = document.getElementById("snStickyCta"), n = document.getElementById("snMainCta");
-    if (!e || !n) return;
+  function G() {
+    var s, i;
+    const n = document.getElementById("snStickyCta"), t = document.getElementById("snMainCta");
+    if (!n || !t) return;
     new IntersectionObserver(
       (l) => l.forEach((a) => {
-        e.classList.toggle("sn-sticky-cta--visible", !a.isIntersecting);
+        n.classList.toggle("sn-sticky-cta--visible", !a.isIntersecting);
       })
-    ).observe(n), (s = document.getElementById("snStickyMainCta")) == null || s.addEventListener("click", () => {
+    ).observe(t), (s = document.getElementById("snStickyMainCta")) == null || s.addEventListener("click", () => {
       o("new_flow_cta_click", c, { location: "sticky" }), m();
-    }), (p = document.getElementById("snStickyHowWorksLink")) == null || p.addEventListener("click", () => {
-      o("new_flow_how_it_works_click", c, { location: "sticky" }), k();
+    }), (i = document.getElementById("snStickyHowWorksLink")) == null || i.addEventListener("click", () => {
+      o("new_flow_how_it_works_click", c, { location: "sticky" }), L();
     });
   }
-  function F() {
-    let e = document.getElementById("snHowTrialPopup");
-    if (e) return e;
-    document.body.insertAdjacentHTML("beforeend", A), e = document.getElementById("snHowTrialPopup");
-    const n = document.getElementById("snHowTrialOverlay"), t = document.getElementById("snHowTrialClose"), s = e.querySelector(".sn-popup__cta");
-    return n.addEventListener("click", () => x()), t.addEventListener("click", () => x()), s.addEventListener("click", () => {
+  function U() {
+    let n = document.getElementById("snHowTrialPopup");
+    if (n) return n;
+    document.body.insertAdjacentHTML("beforeend", B), n = document.getElementById("snHowTrialPopup");
+    const t = document.getElementById("snHowTrialOverlay"), e = document.getElementById("snHowTrialClose"), s = n.querySelector(".sn-popup__cta");
+    return t.addEventListener("click", () => x()), e.addEventListener("click", () => x()), s.addEventListener("click", () => {
       o("new_flow_cta_click", c, { location: "how_trial_popup" }), x(), m();
-    }), e;
+    }), n;
   }
-  function k() {
-    const e = F();
+  function L() {
+    const n = U();
     o("new_flow_popup_view", c, { popup: "how_trial_works" }), requestAnimationFrame(() => requestAnimationFrame(() => {
-      e.classList.add("active");
+      n.classList.add("active");
     }));
   }
   function x() {
-    var e;
-    (e = document.getElementById("snHowTrialPopup")) == null || e.classList.remove("active");
+    var n;
+    (n = document.getElementById("snHowTrialPopup")) == null || n.classList.remove("active");
   }
-  function L(e, n) {
-    return `£${u[e][n].toFixed(2)}`;
+  function H(n, t) {
+    return `£${u[n][t].toFixed(2)}`;
   }
-  function O(e, n) {
-    const t = u.monthly[n], s = u.annually[n];
-    return Math.round((1 - s / t) * 100);
+  function R(n, t) {
+    const e = u.monthly[t], s = u.annually[t];
+    return Math.round((1 - s / e) * 100);
   }
-  function G(e, n) {
-    return e === "annually" ? `£${(u.annually[n] * 12).toFixed(2)}/yr` : `£${u.monthly[n].toFixed(2)}/mo`;
+  function N(n, t) {
+    return n === "annually" ? `£${(u.annually[t] * 12).toFixed(2)}/yr` : `£${u.monthly[t].toFixed(2)}/mo`;
   }
-  function C(e, n, t) {
-    const s = e.querySelector('.sn-plan-popup__plan[data-plan="single"] .sn-plan-popup__plan-price-val'), p = e.querySelector('.sn-plan-popup__plan[data-plan="unlimited"] .sn-plan-popup__plan-price-val');
-    s && (s.textContent = L(n, "single")), p && (p.textContent = L(n, "unlimited"));
-    const l = e.querySelector(".sn-plan-popup__billing-badge");
+  function C(n, t, e) {
+    const s = n.querySelector('.sn-plan-popup__plan[data-plan="single"] .sn-plan-popup__plan-price-val'), i = n.querySelector('.sn-plan-popup__plan[data-plan="unlimited"] .sn-plan-popup__plan-price-val');
+    s && (s.textContent = H(t, "single")), i && (i.textContent = H(t, "unlimited"));
+    const l = n.querySelector(".sn-plan-popup__billing-badge");
     if (l) {
-      const r = O("annually", t);
+      const r = R("annually", e);
       l.textContent = `${r}% OFF`;
     }
-    const a = e.querySelector("#snPlanAfterPrice");
-    a && (a.textContent = G(n, t));
+    const a = n.querySelector("#snPlanAfterPrice");
+    a && (a.textContent = N(t, e));
   }
-  async function R(e, n, t) {
+  async function Q(n, t, e) {
     var f, d;
-    const s = ((f = document.querySelector(".sn-cta__colour-btn--active")) == null ? void 0 : f.dataset.colour) ?? "green", p = parseInt(((d = document.getElementById("snQtyVal")) == null ? void 0 : d.textContent) ?? "1", 10), l = $[s], r = S[`${n === "single" ? "one" : "ulim"}-${e === "annually" ? "yearly" : "monthly"}`];
-    t.setAttribute("disabled", "true");
+    const s = ((f = document.querySelector(".sn-cta__colour-btn--active")) == null ? void 0 : f.dataset.colour) ?? "green", i = parseInt(((d = document.getElementById("snQtyVal")) == null ? void 0 : d.textContent) ?? "1", 10), l = z[s], r = j[`${t === "single" ? "one" : "ulim"}-${n === "annually" ? "yearly" : "monthly"}`];
+    e.setAttribute("disabled", "true");
     try {
       await fetch("/cart/clear.js", { method: "POST" }), (await fetch("/cart/add.js", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items: [
-            { id: l, quantity: p },
-            { id: r, quantity: 1, selling_plan: z }
+            { id: l, quantity: i },
+            { id: r, quantity: 1, selling_plan: D }
           ]
         })
-      })).ok ? window.location.href = "/checkout" : t.removeAttribute("disabled");
+      })).ok ? (await fetch("/cart/update.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ attributes: { ga_client_id: k() } })
+      }), window.location.href = "/checkout") : e.removeAttribute("disabled");
     } catch {
-      t.removeAttribute("disabled");
+      e.removeAttribute("disabled");
     }
   }
-  function U() {
-    let e = document.getElementById("snPlanPopup");
-    if (e) return e;
-    document.body.insertAdjacentHTML("beforeend", I), e = document.getElementById("snPlanPopup"), document.getElementById("snPlanOverlay").addEventListener("click", () => y()), document.getElementById("snPlanClose").addEventListener("click", () => y());
-    let n = "annually", t = "single";
-    const s = e.querySelectorAll(".sn-plan-popup__billing-tab");
+  function W() {
+    let n = document.getElementById("snPlanPopup");
+    if (n) return n;
+    document.body.insertAdjacentHTML("beforeend", q), n = document.getElementById("snPlanPopup"), document.getElementById("snPlanOverlay").addEventListener("click", () => y()), document.getElementById("snPlanClose").addEventListener("click", () => y());
+    let t = "annually", e = "single";
+    const s = n.querySelectorAll(".sn-plan-popup__billing-tab");
     s.forEach((a) => {
       a.addEventListener("click", () => {
-        s.forEach((r) => r.classList.remove("sn-plan-popup__billing-tab--active")), a.classList.add("sn-plan-popup__billing-tab--active"), n = a.dataset.billing ?? "annually", o("new_flow_billing_select", c, { billing: n }), C(e, n, t);
+        s.forEach((r) => r.classList.remove("sn-plan-popup__billing-tab--active")), a.classList.add("sn-plan-popup__billing-tab--active"), t = a.dataset.billing ?? "annually", o("new_flow_billing_select", c, { billing: t }), C(n, t, e);
       });
     });
-    const p = e.querySelectorAll(".sn-plan-popup__plan");
-    p.forEach((a) => {
+    const i = n.querySelectorAll(".sn-plan-popup__plan");
+    i.forEach((a) => {
       a.addEventListener("click", () => {
-        p.forEach((r) => r.classList.remove("sn-plan-popup__plan--selected")), a.classList.add("sn-plan-popup__plan--selected"), t = a.dataset.plan ?? "single", o("new_flow_plan_select", c, { plan: t }), C(e, n, t);
+        i.forEach((r) => r.classList.remove("sn-plan-popup__plan--selected")), a.classList.add("sn-plan-popup__plan--selected"), e = a.dataset.plan ?? "single", o("new_flow_plan_select", c, { plan: e }), C(n, t, e);
       });
     });
     const l = document.getElementById("snPlanCta");
     return l.addEventListener("click", () => {
-      o("new_flow_checkout_click", c, { plan: t, billing: n }), R(n, t, l);
+      o("new_flow_checkout_click", c, { plan: e, billing: t }), Q(t, e, l);
     }), document.addEventListener("keydown", (a) => {
-      a.key === "Escape" && e.classList.contains("active") && y();
-    }), C(e, n, t), e;
+      a.key === "Escape" && n.classList.contains("active") && y();
+    }), C(n, t, e), n;
   }
   function m() {
-    const e = U();
+    const n = W();
     o("new_flow_popup_view", c, { popup: "plan_select" }), requestAnimationFrame(() => requestAnimationFrame(() => {
-      e.classList.add("active");
+      n.classList.add("active");
     }));
   }
   function y() {
-    var e;
-    (e = document.getElementById("snPlanPopup")) == null || e.classList.remove("active");
+    var n;
+    (n = document.getElementById("snPlanPopup")) == null || n.classList.remove("active");
   }
-  P({ name: "Supernormal Trial", dev: "YK" });
-  class N {
+  S({ name: "Supernormal Trial", dev: "YK" });
+  class Y {
     constructor() {
       this.init();
     }
     async init() {
-      v("Supernormal Trial Init"), await V(".description"), g("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_sn">${H}</style>`), g(".description").elements[0].insertAdjacentHTML("afterend", B), g(".description").elements[0].insertAdjacentHTML("afterend", Z), g("body").elements[0].insertAdjacentHTML("beforeend", q), j(), D();
+      v("Supernormal Trial Init"), await V(".description"), g("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_sn">${E}</style>`), g(".description").elements[0].insertAdjacentHTML("afterend", Z), g(".description").elements[0].insertAdjacentHTML("afterend", T), g("body").elements[0].insertAdjacentHTML("beforeend", $), O(), G();
     }
   }
-  new N();
+  new Y();
 })();
 //# sourceMappingURL=index.js.map
