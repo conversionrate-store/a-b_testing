@@ -141,7 +141,7 @@
       await _("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${u}</style>`), r(".header__wrapper").elements[0].insertAdjacentHTML(
         "afterbegin",
         `<div class="yt_block">
-				<img src="https://adblock-for-y.com/_astro/horizontal-aby-logo.Be8n11XS_Z16OF2d.svg" alt="AdblockYoutube Logo" />
+				<img src="${i}/logo-youtube.svg" alt="AdblockYoutube Logo" />
 				<span>presents</span>
 			</div>`
       ), l("Install Page Rename: "), r(".card__img_1 img").elements[0].src = `${i}/open.webp`, r(".card__img_1 img").elements[0].srcset = `${i}/open.webp`, r(".card__img_1 source").elements[0].srcset = `${i}/open.webp`, r(".card__img_2 img").elements[0].src = `${i}/approve.webp`, r(".card__img_2 img").elements[0].srcset = `${i}/approve.webp`, r(".card__img_2 source").elements[0].srcset = `${i}/approve.webp`, r(".card__img_3 img").elements[0].src = `${i}/install.webp`, r(".card__img_3 img").elements[0].srcset = `${i}/install.webp`, r(".card__img_3 source").elements[0].srcset = `${i}/install.webp`, r(".card__text strong").elements[0].innerHTML = "Adblockforyoutube_AdBlock360_Setup.exe", r(".card__text strong").elements[0].style.letterSpacing = "-0.8px";
