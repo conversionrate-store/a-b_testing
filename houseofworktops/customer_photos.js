@@ -7,8 +7,8 @@
       event_desc: t,
       event_type: e,
       event_loc: n
-    }), m(`Event: ${r} | ${t} | ${e} | ${n}`, "success");
-  }, w = (r) => new Promise((t) => {
+    }), u(`Event: ${r} | ${t} | ${e} | ${n}`, "success");
+  }, m = (r) => new Promise((t) => {
     const e = document.querySelector(r);
     e && t(e);
     const n = new MutationObserver(() => {
@@ -39,7 +39,7 @@
             "view",
             e
           ), o.disconnect();
-        }, s) : (m("Element is not fully visible", "warn"), clearTimeout(a));
+        }, s) : (u("Element is not fully visible", "warn"), clearTimeout(a));
       },
       { threshold: [i] }
     ), typeof r == "string") {
@@ -47,7 +47,7 @@
       l && o.observe(l);
     } else
       o.observe(r);
-  }, m = (r, t = "info") => {
+  }, u = (r, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -75,8 +75,14 @@
     linear-gradient(rgba(9, 59, 50, 0.5), rgba(9, 59, 50, 0.5)),
     url("https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/dev/image/theme/pattern-dark.svg") 0% 0% / 300% repeat,
     #093b32 !important;
+    border-radius: 0;
 }
 
+@media (max-width: 768px) {
+  .reels-section {
+    border-radius: 0 !important;
+  }
+}
 .crs-cp {
   /* margin-bottom: 2.25rem; */
   border-bottom: 1px solid rgba(255, 255, 255, 0.20);
@@ -544,70 +550,75 @@ body.crs-cp-modal-open {
   margin-top: 0.75rem;
   padding-top: 1.5rem !important;
 }`;
-  function g(r) {
+  function d(r) {
     const t = document.createElement("style");
     t.textContent = r, document.head.appendChild(t);
   }
-  const k = /* @__PURE__ */ new Set();
+  const C = /* @__PURE__ */ new Set();
   function h(r) {
-    if (!r || k.has(r)) return;
-    k.add(r);
+    if (!r || C.has(r)) return;
+    C.add(r);
     const t = new Image();
     t.decoding = "async", t.src = r;
   }
-  function C(r) {
+  function L(r) {
     const t = window.requestIdleCallback;
     t ? t(r, { timeout: 2e3 }) : setTimeout(r, 1200);
   }
-  const $ = "https://conversionrate-store.github.io/a-b_images/houseofworktops/customer_photos", M = {
-    "oak-worktop": { folder: "oak", count: 10 },
-    "beech-worktop": { folder: "beech", count: 10 },
-    "walnut-worktop": { folder: "walnut", count: 10 },
-    "iroko-worktop": { folder: "iroko", count: 6 },
+  const M = "https://conversionrate-store.github.io/a-b_images/houseofworktops/customers_photos", $ = 10, T = {
+    "oak-worktop": { folder: "oak", count: 39 },
+    "prime-oak-worktop": { folder: "oak", count: 39 },
+    "beech-worktop": { folder: "beech", count: 13 },
+    "prime-beech-worktop": { folder: "beech", count: 13 },
+    "walnut-worktop": { folder: "walnut", count: 35 },
+    "full-stave-deluxe-oak-worktop": { folder: "fs_oak", count: 48 },
+    "full-stave-deluxe-rustic-oak-worktop": { folder: "fs_oak", count: 48 },
+    "deluxe-oak-worktop": { folder: "dx_oak", count: 8 },
     "black-ash-worktop": { folder: "black_ash", count: 4 },
-    "black-walnut-laminate-worktop": { folder: "black_walnut_laminate", count: 9 },
-    "athena-marble-compact": { folder: "athena_marble_compact", count: 10 },
-    "beige-gold-compact": { folder: "beige_gold", count: 10 },
-    "black-gold-compact": { folder: "black_gold", count: 10 },
-    "bella-bianche-compact": { folder: "bella_bianche_compact_laminate", count: 10 },
+    "black-walnut-laminate-worktop": { folder: "black_walnut_laminate", count: 10 },
+    "athena-marble-compact": { folder: "athena_marble_compact", count: 17 },
+    "beige-gold-compact": { folder: "beige_gold", count: 19 },
+    "black-gold-compact": { folder: "black_gold", count: 23 },
+    "bella-bianche-compact": { folder: "bella_bianche_compact_laminate", count: 45 },
+    "bella-bianche-laminate": { folder: "bella_bianca_chipboard", count: 4 },
     "calacatta-marble-compact": { folder: "calacatta_marble_compact_laminate", count: 9 },
-    "carrara-solid-surface": { folder: "carrara_marble_solid_surface", count: 10 },
-    "carrera-marble-compact-(white-core)": { folder: "carrera_marble_compact_laminate_white_core", count: 9 },
-    "carrera-marble-compact-(dark-core)": { folder: "carrera_marble_dark_core", count: 10 },
-    "cloudy-cement-compact-laminate": { folder: "cloudy_cement_compact_laminate", count: 4 },
+    "carrara-solid-surface": { folder: "carrara_marble_solid_surface", count: 5 },
+    "carrera-marble-compact-(white-core)": { folder: "carrera_marble_compact_laminate_white_core", count: 7 },
+    "carrera-marble-compact-(dark-core)": { folder: "carrera_marble_dark_core", count: 9 },
     "copper-stone-compact": { folder: "copper_stone", count: 5 },
-    "cranbury-marble-compact": { folder: "cranburry_marble", count: 10 },
-    "distressed-oak-compact-laminate": { folder: "distressed_oak_compact_laminate", count: 10 },
-    "lucida-white-compact": { folder: "lucida_white_compact", count: 10 },
-    "magma-rodolit-compact": { folder: "magma_compact", count: 10 },
+    "cranbury-marble-compact": { folder: "cranburry_marble", count: 8 },
+    "distressed-oak-compact-laminate": { folder: "distressed_oak_compact_laminate", count: 19 },
+    "gold-vein-compact": { folder: "gold_vein_compact", count: 17 },
+    "lucida-white-compact": { folder: "lucida_white_compact", count: 17 },
+    "magma-rodolit-compact": { folder: "magma_compact", count: 32 },
     "pure-black-compact": { folder: "pure_matt_black_compact_laminate", count: 5 },
-    "terrazzo-worktop-compact-laminate": { folder: "terrazzo_compact", count: 5 },
-    "terra-concrete-compact-laminate": { folder: "terra_concrete_oak", count: 10 }
-  }, T = {
+    "terrazzo-worktop-compact-laminate": { folder: "terrazzo_compact", count: 6 },
+    "terra-concrete-compact-laminate": { folder: "terra_concrete_oak", count: 17 }
+  }, q = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;"
   };
-  function q(r) {
-    return r.replace(/[&<>"]/g, (t) => T[t]);
+  function I(r) {
+    return r.replace(/[&<>"]/g, (t) => q[t]);
   }
   function x() {
     const r = document.querySelector("h1"), t = (r && r.textContent ? r.textContent : "").trim();
-    return q(t || "Worktop");
+    return I(t || "Worktop");
   }
-  function z() {
+  function v() {
     const r = decodeURIComponent(
       location.pathname.split("/").filter(Boolean).pop() || ""
-    ).toLowerCase(), t = M[r];
+    ).toLowerCase(), t = T[r];
     if (!t) return null;
-    const e = x();
-    return Array.from({ length: t.count }, (n, s) => ({
-      src: `${$}/${t.folder}/${s + 1}.webp`,
+    const e = x(), n = Math.min(t.count, $);
+    return Array.from({ length: n }, (s, i) => ({
+      src: `${M}/${t.folder}/${i + 1}.webp`,
       alt: `${e} in a real kitchen`
     }));
   }
-  const I = {
+  const H = {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: !0,
@@ -622,24 +633,24 @@ body.crs-cp-modal-open {
       // 35px yields a 299px card / 38px side peek on a 375px frame (Figma mobile).
       { breakpoint: 576, settings: { centerPadding: "35px" } }
     ]
-  }, p = "Customer photos section", u = 2, v = 20;
-  class H {
+  }, p = "Customer photos section", b = 2, y = 20;
+  class V {
     constructor() {
       this.photos = [], this.modalIndex = 0, this.lastFocused = null, this.ghostDir = 0, this.loadToken = 0, this.zoomed = !1, this.dragging = !1, this.moved = !1, this.swiping = !1, this.sx = 0, this.sy = 0, this.startPanX = 0, this.startPanY = 0, this.panX = 0, this.panY = 0, this.init();
     }
     async init() {
       if (document.querySelector(".crs-cp")) return;
-      const t = z();
+      const t = v();
       if (!t) return;
       this.photos = t;
-      const e = await w(".reels-section"), n = await this.waitForSlick();
+      const e = await m(".reels-section"), n = await this.waitForSlick();
       if (!n) {
-        m("Customer Photos: jQuery/slick not available", "warn");
+        u("Customer Photos: jQuery/slick not available", "warn");
         return;
       }
-      this.$ = n, g(A);
+      this.$ = n, d(A);
       const s = this.buildSection();
-      e.insertAdjacentElement("afterbegin", s), this.buildLightbox(), this.initSlider(s), this.wireCards(s), C(() => this.photos.forEach((i) => h(i.src))), this.$(s).on("pointerover", ".crs-cp__card", (i) => {
+      e.insertAdjacentElement("afterbegin", s), this.buildLightbox(), this.initSlider(s), this.wireCards(s), L(() => this.photos.forEach((i) => h(i.src))), this.$(s).on("pointerover", ".crs-cp__card", (i) => {
         const o = parseInt(
           i.currentTarget.getAttribute("data-index") || "-1",
           10
@@ -705,7 +716,7 @@ body.crs-cp-modal-open {
     initSlider(t) {
       const e = this.$, n = e(t).find(".crs-cp__slider");
       n.slick({
-        ...I,
+        ...H,
         appendDots: e(t).find(".crs-cp__dots")
       });
       let s = null;
@@ -811,10 +822,10 @@ body.crs-cp-modal-open {
       let i, o;
       if (n && s) {
         const a = Math.min(t / n, e / s);
-        i = Math.max(0, (n * a * u - t) / 2), o = Math.max(0, (s * a * u - e) / 2);
+        i = Math.max(0, (n * a * b - t) / 2), o = Math.max(0, (s * a * b - e) / 2);
       } else
-        i = (u - 1) * t / 2, o = (u - 1) * e / 2;
-      this.panX = Math.min(i, Math.max(-i, this.panX)), this.panY = Math.min(o, Math.max(-o, this.panY)), this.img.style.transform = `translate(${this.panX}px, ${this.panY}px) scale(${u})`;
+        i = (b - 1) * t / 2, o = (b - 1) * e / 2;
+      this.panX = Math.min(i, Math.max(-i, this.panX)), this.panY = Math.min(o, Math.max(-o, this.panY)), this.img.style.transform = `translate(${this.panX}px, ${this.panY}px) scale(${b})`;
     }
     onPointerDown(t) {
       if (!this.swiping) {
@@ -831,7 +842,7 @@ body.crs-cp-modal-open {
       if ((Math.abs(e) > 6 || Math.abs(n) > 6) && (this.moved = !0), this.zoomed)
         this.panX = this.startPanX + e, this.panY = this.startPanY + n, this.applyPan(), t.preventDefault();
       else if (this.moved && this.isMobile()) {
-        const s = this.swipeW() + v, i = Math.max(-s, Math.min(s, e)), o = e < 0 ? 1 : -1;
+        const s = this.swipeW() + y, i = Math.max(-s, Math.min(s, e)), o = e < 0 ? 1 : -1;
         this.setGhost(o), this.img.style.transform = `translateX(${i}px)`, this.ghost.style.transform = `translateX(${i + o * s}px)`, t.preventDefault();
       }
     }
@@ -877,7 +888,7 @@ body.crs-cp-modal-open {
     // `report` fires at the swap so its event carries the destination number.
     animateSwipe(t, e) {
       this.swiping = !0;
-      const n = this.img, s = this.ghost, i = this.swipeW() + v;
+      const n = this.img, s = this.ghost, i = this.swipeW() + y;
       this.ghostDir !== t && (this.setGhost(t), s.style.transition = "none", s.style.transform = `translateX(${t * i}px)`, s.offsetWidth), n.style.transition = s.style.transition = "transform 0.26s ease-out", n.style.transform = `translateX(${-t * i}px)`, s.style.transform = "translateX(0px)", setTimeout(() => {
         this.showAt(this.modalIndex + t), e(), n.style.transition = "none";
         const o = () => {
@@ -891,7 +902,7 @@ body.crs-cp-modal-open {
     // Swipe released under the threshold — ease the strip back to centre.
     springBack() {
       const t = this.img, e = this.ghost;
-      t.style.transition = "transform 0.18s ease", t.style.transform = "", this.ghostDir && (e.style.transition = "transform 0.18s ease", e.style.transform = `translateX(${this.ghostDir * (this.swipeW() + v)}px)`), setTimeout(() => {
+      t.style.transition = "transform 0.18s ease", t.style.transform = "", this.ghostDir && (e.style.transition = "transform 0.18s ease", e.style.transform = `translateX(${this.ghostDir * (this.swipeW() + y)}px)`), setTimeout(() => {
         t.style.transition = "", this.hideGhost();
       }, 200);
     }
@@ -930,7 +941,70 @@ body.crs-cp-modal-open {
       t && (this.zoomed && this.setZoom(!1), this.swiping = !1, this.img.style.transition = "", this.img.style.transform = "", this.ghost.style.transform = "", this.hideGhost(), this.loadToken++, t.classList.remove("is-open", "is-loading"), t.setAttribute("aria-hidden", "true"), document.body.classList.remove("crs-cp-modal-open"), (e = this.lastFocused) == null || e.focus(), this.lastFocused = null);
     }
   }
-  const V = `/* Product gallery viewer — our reels-style lightbox that replaces the host's
+  const X = `.crs-gb-host {
+  position: relative;
+}
+
+.crs-gb {
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 4px;
+  background: #1f8964;
+  color: #fff;
+  font-size: 12px;
+  line-height: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.crs-gb svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* The mobile slider host is shared with the desktop grid, so hide the badge above the
+   host's own \`d-md-none\` breakpoint instead of relying on the container. */
+.crs-gb--mobile {
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+  .crs-gb--mobile {
+    display: none;
+  }
+}
+`, D = `<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g stroke="#fff" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8.75 4.66667H8.757"/><path d="M6.70833 12.25H3.5C3.03587 12.25 2.59075 12.0656 2.26256 11.7374C1.93437 11.4092 1.75 10.9641 1.75 10.5V3.5C1.75 3.03587 1.93437 2.59075 2.26256 2.26256C2.59075 1.93437 3.03587 1.75 3.5 1.75H10.5C10.9641 1.75 11.4092 1.93437 11.7374 2.26256C12.0656 2.59075 12.25 3.03587 12.25 3.5V7.58333"/><path d="M1.75 9.33333L4.66667 6.41667C5.208 5.89575 5.87533 5.89575 6.41667 6.41667L8.75 8.75"/><path d="M8.16667 8.16667L8.75 7.58333C9.29133 7.06242 9.95867 7.06242 10.5 7.58333L10.7917 7.875"/><path d="M8.75 11.0833L9.91667 12.25L12.25 9.91667"/></g></svg>
+`, F = ".image-popup .mb-4", j = ".worktop-thumbnail-slider", O = "Real kitchen Photos in Gallery";
+  class Z {
+    constructor() {
+      this.init();
+    }
+    async init() {
+      var n;
+      if (document.querySelector(".crs-gb") || !v()) return;
+      const t = await m(F);
+      d(X), t.classList.add("crs-gb-host"), t.appendChild(this.badge());
+      const e = (n = document.querySelector(j)) == null ? void 0 : n.parentElement;
+      if (e) {
+        const s = this.badge();
+        s.classList.add("crs-gb--mobile"), e.classList.add("crs-gb-host"), e.appendChild(s);
+      }
+    }
+    badge() {
+      const t = document.createElement("div");
+      return t.className = "crs-gb", t.innerHTML = `${D}<span>${O}</span>`, t;
+    }
+  }
+  const R = `/* Product gallery viewer — our reels-style lightbox that replaces the host's
    Magnific popup: dark overlay, centered image, a Product/Real-kitchens switcher
    pill on top, a white round close, and tall white chevron arrows. On mobile the
    image is contained with a "Click photo to zoom" pill that expands + pans it. */
@@ -1328,15 +1402,15 @@ body.crs-pg-modal-open {
     height: 30px;
   }
 }
-`, d = "Product gallery", _ = ".image-popup a[href]", L = ".worktop-thumbnail-slider img", X = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-previous.svg", D = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-next.svg", b = 2, y = 20;
-  class F {
+`, g = "Product gallery", _ = ".image-popup a[href]", z = ".worktop-thumbnail-slider img", B = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-previous.svg", W = "https://houseofworktops.co.uk/catalog/view/theme/houseofworktops/image/svg-icons/video-next.svg", f = 2, k = 20;
+  class Y {
     constructor() {
       this.customerPhotos = [], this.slides = [], this.boundary = 0, this.index = 0, this.loadToken = 0, this.kitchenViewed = !1, this.ghostDir = 0, this.lastFocused = null, this.zoomed = !1, this.dragging = !1, this.moved = !1, this.swiping = !1, this.sx = 0, this.sy = 0, this.startPanX = 0, this.startPanY = 0, this.panX = 0, this.panY = 0, this.init();
     }
     async init() {
       if (document.getElementById("crsPgLightbox")) return;
-      const t = z();
-      !t || !t.length || (this.customerPhotos = t, await w(_), g(V), this.buildViewer(), document.addEventListener("click", (e) => this.onGalleryClick(e), !0), C(() => {
+      const t = v();
+      !t || !t.length || (this.customerPhotos = t, await m(_), d(R), this.buildViewer(), document.addEventListener("click", (e) => this.onGalleryClick(e), !0), L(() => {
         this.customerPhotos.forEach((e) => h(e.src)), this.getProductPhotos().forEach((e) => h(e.src));
       }), document.addEventListener("pointerover", (e) => this.onIntent(e), !0));
     }
@@ -1345,7 +1419,7 @@ body.crs-pg-modal-open {
     onIntent(t) {
       const e = t.target;
       if (!e || !e.closest) return;
-      const n = e.closest(_), s = n || e.closest(L);
+      const n = e.closest(_), s = n || e.closest(z);
       s && h((n ? n.getAttribute("href") : s.getAttribute("src")) || "");
     }
     // --- Product photos: read the ordered, de-duplicated full-res URLs live ---
@@ -1359,8 +1433,8 @@ body.crs-pg-modal-open {
         const a = this.stem(o);
         if (e.has(a)) return;
         e.add(a);
-        const l = i.querySelector("img"), U = l && l.getAttribute("alt") || `${s} product photo`;
-        n.push({ src: o, alt: U });
+        const l = i.querySelector("img"), st = l && l.getAttribute("alt") || `${s} product photo`;
+        n.push({ src: o, alt: st });
       }), n;
     }
     // Filename stem without the `-WxH` size suffix / extension, for matching a
@@ -1375,7 +1449,7 @@ body.crs-pg-modal-open {
     onGalleryClick(t) {
       const e = t.target;
       if (!e || !e.closest) return;
-      const n = e.closest(_), s = n || e.closest(L);
+      const n = e.closest(_), s = n || e.closest(z);
       if (!s) return;
       t.preventDefault(), t.stopImmediatePropagation();
       const i = this.getProductPhotos();
@@ -1399,7 +1473,7 @@ body.crs-pg-modal-open {
       t.className = "crs-pg-lb", t.id = "crsPgLightbox", t.setAttribute("role", "dialog"), t.setAttribute("aria-modal", "true"), t.setAttribute("aria-hidden", "true"), t.setAttribute("aria-label", "Product photo viewer"), t.innerHTML = /* HTML */
       `
       <button class="crs-pg-lb__nav crs-pg-lb__nav--prev" type="button" aria-label="Previous photo">
-        <img src="${X}" alt="" width="23" height="46" aria-hidden="true" />
+        <img src="${B}" alt="" width="23" height="46" aria-hidden="true" />
       </button>
       <div class="crs-pg-lb__frame">
         <div class="crs-pg-lb__switch" role="tablist" aria-label="Photo type">
@@ -1424,10 +1498,10 @@ body.crs-pg-modal-open {
         </div>
       </div>
       <button class="crs-pg-lb__nav crs-pg-lb__nav--next" type="button" aria-label="Next photo">
-        <img src="${D}" alt="" width="23" height="46" aria-hidden="true" />
+        <img src="${W}" alt="" width="23" height="46" aria-hidden="true" />
       </button>
       <div class="crs-pg-lb__spinner" aria-hidden="true"></div>`, document.body.appendChild(t), this.lb = t, this.img = t.querySelector("#crsPgImg"), this.ghost = t.querySelector(".crs-pg-lb__img--ghost"), this.stage = t.querySelector(".crs-pg-lb__stage"), this.thumb = t.querySelector(".crs-pg-lb__thumb"), t.querySelector(".crs-pg-lb__close").addEventListener("click", () => {
-        c("exp_gallery_close", "Close", "click", d), this.close();
+        c("exp_gallery_close", "Close", "click", g), this.close();
       }), t.querySelector(".crs-pg-lb__nav--prev").addEventListener(
         "click",
         () => this.navigate(-1, "Arrow Left")
@@ -1437,14 +1511,14 @@ body.crs-pg-modal-open {
       ), t.querySelectorAll(".crs-pg-lb__seg").forEach((n) => {
         n.addEventListener("click", () => {
           const s = n.getAttribute("data-group"), i = s === "product" ? "Product photos" : "Real kitchens";
-          this.showAt(s === "kitchen" ? this.boundary : 0), c("exp_gallery_switch", `${i}`, "click", d);
+          this.showAt(s === "kitchen" ? this.boundary : 0), c("exp_gallery_switch", `${i}`, "click", g);
         });
       });
       const e = t.querySelector(".crs-pg-lb__zoom");
       e.addEventListener("pointerdown", (n) => n.stopPropagation()), e.addEventListener("click", (n) => {
         n.stopPropagation(), this.setZoom(!0);
       }), t.addEventListener("click", (n) => {
-        n.target === t && (c("exp_gallery_overlay", "Overlay close", "click", d), this.close());
+        n.target === t && (c("exp_gallery_overlay", "Overlay close", "click", g), this.close());
       }), this.stage.addEventListener("pointerdown", (n) => this.onPointerDown(n)), this.stage.addEventListener("pointermove", (n) => this.onPointerMove(n)), this.stage.addEventListener("pointerup", (n) => this.onPointerUp(n)), this.stage.addEventListener("pointercancel", () => {
         this.dragging = !1, this.zoomed || this.springBack();
       }), document.addEventListener("keydown", (n) => {
@@ -1456,17 +1530,17 @@ body.crs-pg-modal-open {
     }
     // ---- Zoom / pan (mobile) ----
     setZoom(t) {
-      t && !this.isMobile() || (this.zoomed = t, this.panX = 0, this.panY = 0, this.lb.classList.toggle("is-zoomed", t), t ? (requestAnimationFrame(() => this.applyPan()), c("exp_gallery_zoom", `Zoom ${this.index + 1}`, "click", d)) : this.img.style.transform = "");
+      t && !this.isMobile() || (this.zoomed = t, this.panX = 0, this.panY = 0, this.lb.classList.toggle("is-zoomed", t), t ? (requestAnimationFrame(() => this.applyPan()), c("exp_gallery_zoom", `Zoom ${this.index + 1}`, "click", g)) : this.img.style.transform = "");
     }
     applyPan() {
       const t = this.stage.clientWidth, e = this.stage.clientHeight, n = this.img.naturalWidth, s = this.img.naturalHeight;
       let i, o;
       if (n && s) {
         const a = Math.min(t / n, e / s);
-        i = Math.max(0, (n * a * b - t) / 2), o = Math.max(0, (s * a * b - e) / 2);
+        i = Math.max(0, (n * a * f - t) / 2), o = Math.max(0, (s * a * f - e) / 2);
       } else
-        i = (b - 1) * t / 2, o = (b - 1) * e / 2;
-      this.panX = Math.min(i, Math.max(-i, this.panX)), this.panY = Math.min(o, Math.max(-o, this.panY)), this.img.style.transform = `translate(${this.panX}px, ${this.panY}px) scale(${b})`;
+        i = (f - 1) * t / 2, o = (f - 1) * e / 2;
+      this.panX = Math.min(i, Math.max(-i, this.panX)), this.panY = Math.min(o, Math.max(-o, this.panY)), this.img.style.transform = `translate(${this.panX}px, ${this.panY}px) scale(${f})`;
     }
     onPointerDown(t) {
       if (!this.swiping) {
@@ -1483,7 +1557,7 @@ body.crs-pg-modal-open {
       if ((Math.abs(e) > 6 || Math.abs(n) > 6) && (this.moved = !0), this.zoomed)
         this.panX = this.startPanX + e, this.panY = this.startPanY + n, this.applyPan(), t.preventDefault();
       else if (this.moved && this.isMobile()) {
-        const s = this.swipeW() + y, i = Math.max(-s, Math.min(s, e)), o = e < 0 ? 1 : -1;
+        const s = this.swipeW() + k, i = Math.max(-s, Math.min(s, e)), o = e < 0 ? 1 : -1;
         this.setGhost(o), this.img.style.transform = `translateX(${i}px)`, this.ghost.style.transform = `translateX(${i + o * s}px)`, t.preventDefault();
       }
     }
@@ -1500,7 +1574,7 @@ body.crs-pg-modal-open {
           "exp_gallery_full_swipe",
           `Swipe ${n > 0 ? "left" : "right"} - ${this.index + 1}`,
           "other",
-          d
+          g
         );
         this.isMobile() ? this.animateSwipe(n, s) : (this.showAt(this.index + n), s());
       } else this.moved ? this.springBack() : this.isMobile() && this.setZoom(!0);
@@ -1521,7 +1595,7 @@ body.crs-pg-modal-open {
     // desktop (there the strip isn't a native affordance and isn't clipped for).
     navigate(t, e) {
       if (this.swiping) return;
-      const n = () => c("exp_gallery_nav", `${e} - ${this.index + 1}`, "click", d);
+      const n = () => c("exp_gallery_nav", `${e} - ${this.index + 1}`, "click", g);
       this.isMobile() && !this.zoomed ? this.animateSwipe(t, n) : (this.showAt(this.index + t), n());
     }
     // Slide one photo as one continuous strip: the current photo slides out
@@ -1529,7 +1603,7 @@ body.crs-pg-modal-open {
     // `report` fires at the swap so its event carries the destination number.
     animateSwipe(t, e) {
       this.swiping = !0;
-      const n = this.img, s = this.ghost, i = this.swipeW() + y;
+      const n = this.img, s = this.ghost, i = this.swipeW() + k;
       this.ghostDir !== t && (this.setGhost(t), s.style.transition = "none", s.style.transform = `translateX(${t * i}px)`, s.offsetWidth), n.style.transition = s.style.transition = "transform 0.26s ease-out", n.style.transform = `translateX(${-t * i}px)`, s.style.transform = "translateX(0px)", setTimeout(() => {
         this.showAt(this.index + t), e(), n.style.transition = "none";
         const o = () => {
@@ -1543,7 +1617,7 @@ body.crs-pg-modal-open {
     // Swipe released under the threshold — ease the strip back to centre.
     springBack() {
       const t = this.img, e = this.ghost;
-      t.style.transition = "transform 0.18s ease", t.style.transform = "", this.ghostDir && (e.style.transition = "transform 0.18s ease", e.style.transform = `translateX(${this.ghostDir * (this.swipeW() + y)}px)`), setTimeout(() => {
+      t.style.transition = "transform 0.18s ease", t.style.transform = "", this.ghostDir && (e.style.transition = "transform 0.18s ease", e.style.transform = `translateX(${this.ghostDir * (this.swipeW() + k)}px)`), setTimeout(() => {
         t.style.transition = "", this.hideGhost();
       }, 200);
     }
@@ -1552,7 +1626,7 @@ body.crs-pg-modal-open {
       const n = this.slides.length, s = (t % n + n) % n;
       this.index = s, this.zoomed && this.setZoom(!1);
       const i = this.slides[s];
-      i.group === "kitchen" && !this.kitchenViewed && (this.kitchenViewed = !0, c("exp_gallery_kitchen_view", "First real kitchen photo", "view", d)), this.setImage(i.src, i.alt), h(this.slides[(s + 1) % n].src), h(this.slides[(s - 1 + n) % n].src), this.lb.querySelectorAll(".crs-pg-lb__seg").forEach((o) => {
+      i.group === "kitchen" && !this.kitchenViewed && (this.kitchenViewed = !0, c("exp_gallery_kitchen_view", "First real kitchen photo", "view", g)), this.setImage(i.src, i.alt), h(this.slides[(s + 1) % n].src), h(this.slides[(s - 1 + n) % n].src), this.lb.querySelectorAll(".crs-pg-lb__seg").forEach((o) => {
         o.classList.toggle(
           "is-active",
           o.getAttribute("data-group") === i.group
@@ -1597,7 +1671,7 @@ body.crs-pg-modal-open {
       t.shiftKey && i === n ? (t.preventDefault(), s.focus()) : !t.shiftKey && i === s && (t.preventDefault(), n.focus());
     }
   }
-  const j = `/* Outer spacing for the relocated blocks, matching Figma.
+  const G = `/* Outer spacing for the relocated blocks, matching Figma.
 
    Desktop (node 2390:5912): 28px gap + inset 1px separator between the green reels
    section and the Free-services block, 25px from the separator to the heading, and a
@@ -1678,14 +1752,14 @@ body.crs-pg-modal-open {
   }
 }
 `;
-  class O {
+  class N {
     constructor() {
       this.freeEl = null, this.badgesEl = null, this.init();
     }
     async init() {
       if (document.querySelector(".crs-rb-lead")) return;
-      const t = await w(".reels-mobile-fullwidth");
-      for (g(j); t.firstChild && t.firstChild.nodeType === Node.TEXT_NODE; )
+      const t = await m(".reels-mobile-fullwidth");
+      for (d(G); t.firstChild && t.firstChild.nodeType === Node.TEXT_NODE; )
         t.removeChild(t.firstChild);
       this.relocate(t);
     }
@@ -1715,11 +1789,11 @@ body.crs-pg-modal-open {
           setTimeout(() => this.relocate(t, e + 1), 250);
           return;
         }
-        !this.freeEl && !this.badgesEl && m("RelocateBlocks: free-services and badges blocks not found", "warn");
+        !this.freeEl && !this.badgesEl && u("RelocateBlocks: free-services and badges blocks not found", "warn");
       }
     }
   }
-  const Z = `/* Trustpilot rating row (Figma node 2433:1324): centered "Excellent 4.8 ★★★★★ Trustpilot"
+  const U = `/* Trustpilot rating row (Figma node 2433:1324): centered "Excellent 4.8 ★★★★★ Trustpilot"
    on the dark-green reels section, sitting above the "Trusted by 150,000+" heading. */
 .crs-tp {
   display: flex;
@@ -1762,50 +1836,50 @@ body.crs-pg-modal-open {
   width: 100%;
   height: 100%;
 }
-`, R = `<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 77 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+`, K = `<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 77 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Logo &#226;&#134;&#146; Img">
 <path id="Vector" d="M20.2159 6.78487H28.0019V8.23389H24.9404V16.3796H23.257V8.23389H20.2091V6.78487H20.2159ZM27.6693 9.43238H29.1084V10.7731H29.1356C29.1831 10.5835 29.2713 10.4007 29.4003 10.2246C29.5293 10.0486 29.6854 9.87928 29.8687 9.73709C30.052 9.58812 30.2556 9.47301 30.4796 9.37822C30.7036 9.29019 30.9344 9.24279 31.1652 9.24279C31.3417 9.24279 31.4707 9.24956 31.5386 9.25633C31.6065 9.26311 31.6744 9.27665 31.749 9.28342V10.7595C31.6404 10.7392 31.5318 10.7257 31.4164 10.7121C31.301 10.6986 31.1924 10.6918 31.0838 10.6918C30.8258 10.6918 30.5815 10.746 30.3507 10.8476C30.1199 10.9491 29.923 11.1049 29.7533 11.3012C29.5836 11.5044 29.4478 11.7481 29.346 12.046C29.2442 12.344 29.1967 12.6825 29.1967 13.0685V16.3728H27.6625V9.43238L27.6693 9.43238ZM38.802 16.3796H37.295V15.4113H37.2678C37.0778 15.7634 36.7995 16.041 36.4261 16.2509C36.0527 16.4608 35.6726 16.5692 35.2857 16.5692C34.3693 16.5692 33.704 16.3457 33.2967 15.892C32.8894 15.4384 32.6858 14.7545 32.6858 13.8404V9.43238H34.2199V13.6914C34.2199 14.3008 34.3353 14.7342 34.5729 14.9847C34.8037 15.2352 35.1363 15.3639 35.5572 15.3639C35.883 15.3639 36.1478 15.3165 36.365 15.2149C36.5822 15.1134 36.7587 14.9847 36.8877 14.8154C37.0235 14.6529 37.1185 14.4498 37.1796 14.2196C37.2407 13.9894 37.2678 13.7388 37.2678 13.468V9.43916H38.802V16.3796ZM41.4154 14.1519C41.463 14.5988 41.6327 14.9102 41.9246 15.0931C42.2232 15.2691 42.5762 15.3639 42.9903 15.3639C43.1329 15.3639 43.2958 15.3504 43.4791 15.33C43.6623 15.3097 43.8388 15.2623 43.995 15.2014C44.1579 15.1405 44.2868 15.0457 44.3955 14.9238C44.4973 14.8019 44.5448 14.6462 44.538 14.4498C44.5312 14.2534 44.4566 14.0909 44.3208 13.969C44.185 13.8404 44.0153 13.7456 43.8049 13.6643C43.5945 13.5899 43.3569 13.5222 43.0853 13.468C42.8138 13.4138 42.5423 13.3529 42.264 13.2919C41.9789 13.231 41.7005 13.1497 41.4358 13.0617C41.1711 12.9737 40.9335 12.8518 40.723 12.6961C40.5126 12.5471 40.3429 12.3507 40.2207 12.1138C40.0917 11.8768 40.0306 11.5856 40.0306 11.2335C40.0306 10.8543 40.1257 10.5428 40.309 10.2855C40.4922 10.0282 40.7298 9.82511 41.0081 9.66937C41.2932 9.51364 41.6055 9.4053 41.9517 9.33759C42.2979 9.27665 42.6305 9.24279 42.9428 9.24279C43.3026 9.24279 43.6488 9.28342 43.9746 9.3579C44.3004 9.43238 44.5991 9.55426 44.8638 9.73031C45.1286 9.89959 45.3458 10.123 45.5223 10.3939C45.6988 10.6647 45.8074 10.9965 45.8549 11.3825H44.2529C44.1782 11.0168 44.0153 10.7663 43.7506 10.6444C43.4858 10.5158 43.1804 10.4548 42.841 10.4548C42.7323 10.4548 42.6034 10.4616 42.454 10.4819C42.3047 10.5022 42.1689 10.5361 42.0332 10.5835C41.9042 10.6309 41.7956 10.7054 41.7005 10.8002C41.6123 10.895 41.5648 11.0168 41.5648 11.1726C41.5648 11.3622 41.6327 11.5111 41.7616 11.6262C41.8906 11.7413 42.0603 11.8361 42.2707 11.9174C42.4812 11.9919 42.7188 12.0596 42.9903 12.1138C43.2618 12.1679 43.5401 12.2289 43.8252 12.2898C44.1036 12.3507 44.3751 12.432 44.6466 12.52C44.9181 12.608 45.1557 12.7299 45.3662 12.8857C45.5766 13.0414 45.7463 13.231 45.8753 13.4612C46.0043 13.6914 46.0721 13.9826 46.0721 14.3211C46.0721 14.7342 45.9771 15.0795 45.787 15.3707C45.597 15.6551 45.3526 15.892 45.0539 16.0681C44.7552 16.2441 44.4158 16.3796 44.0493 16.4608C43.6827 16.5421 43.3161 16.5827 42.9564 16.5827C42.5151 16.5827 42.1078 16.5353 41.7345 16.4337C41.3611 16.3322 41.0353 16.1832 40.7638 15.9868C40.4922 15.7837 40.275 15.5332 40.1189 15.2352C39.9628 14.9373 39.8813 14.5784 39.8677 14.1654H41.4154V14.1519ZM46.4794 9.43238H47.6402V7.34687H49.1744V9.43238H50.5592V10.5767H49.1744V14.2873C49.1744 14.4498 49.1811 14.5852 49.1947 14.7071C49.2083 14.8222 49.2422 14.9238 49.2898 15.005C49.3373 15.0863 49.4119 15.1472 49.5138 15.1879C49.6156 15.2285 49.7446 15.2488 49.9211 15.2488C50.0297 15.2488 50.1383 15.2488 50.2469 15.242C50.3555 15.2352 50.4641 15.2217 50.5727 15.1946V16.3796C50.403 16.3999 50.2333 16.4134 50.0772 16.4337C49.9143 16.4541 49.7514 16.4608 49.5817 16.4608C49.1744 16.4608 48.8485 16.4202 48.6041 16.3457C48.3598 16.2712 48.1629 16.1561 48.0272 16.0072C47.8846 15.8582 47.7964 15.6754 47.742 15.4519C47.6945 15.2285 47.6606 14.9712 47.6538 14.6868V10.5902H46.493V9.43238H46.4794ZM51.6453 9.43238H53.0979V10.3736H53.1251C53.3423 9.9673 53.641 9.68292 54.0279 9.50687C54.4149 9.33082 54.8289 9.24279 55.2837 9.24279C55.8336 9.24279 56.3088 9.33759 56.7161 9.53395C57.1233 9.72354 57.4628 9.98762 57.7343 10.3262C58.0058 10.6647 58.2027 11.0575 58.3384 11.5044C58.4742 11.9512 58.5421 12.432 58.5421 12.9398C58.5421 13.407 58.481 13.8607 58.3588 14.2941C58.2366 14.7342 58.0533 15.1201 57.809 15.4587C57.5646 15.7973 57.2523 16.0613 56.8722 16.2645C56.492 16.4676 56.0508 16.5692 55.5349 16.5692C55.3109 16.5692 55.0869 16.5488 54.8629 16.5082C54.6389 16.4676 54.4216 16.3999 54.218 16.3119C54.0144 16.2238 53.8175 16.1087 53.6478 15.9665C53.4713 15.8243 53.3287 15.6618 53.2066 15.479H53.1794V18.9458H51.6453V9.43238ZM57.008 12.9127C57.008 12.6013 56.9672 12.2966 56.8858 11.9986C56.8043 11.7007 56.6821 11.4434 56.5192 11.2132C56.3563 10.983 56.1526 10.8002 55.915 10.6647C55.6707 10.5293 55.3924 10.4548 55.0801 10.4548C54.4352 10.4548 53.9465 10.6783 53.6206 11.1252C53.2948 11.5721 53.1319 12.1679 53.1319 12.9127C53.1319 13.2648 53.1726 13.5899 53.2609 13.8878C53.3491 14.1857 53.4713 14.443 53.6478 14.6597C53.8175 14.8764 54.0211 15.0457 54.2587 15.1675C54.4963 15.2962 54.7746 15.3571 55.0869 15.3571C55.4399 15.3571 55.7318 15.2826 55.9761 15.1405C56.2205 14.9983 56.4174 14.8087 56.5735 14.5852C56.7296 14.355 56.845 14.0977 56.9129 13.8065C56.974 13.5154 57.008 13.2175 57.008 12.9127ZM59.7164 6.78487H61.2506V8.23389H59.7164V6.78487ZM59.7164 9.43238H61.2506V16.3796H59.7164V9.43238ZM62.6218 6.78487H64.1559V16.3796H62.6218V6.78487ZM68.8602 16.5692C68.3035 16.5692 67.808 16.4744 67.3736 16.2915C66.9391 16.1087 66.5725 15.8514 66.2671 15.5332C65.9684 15.2082 65.7376 14.8222 65.5815 14.3753C65.4253 13.9284 65.3439 13.4341 65.3439 12.8992C65.3439 12.3711 65.4253 11.8835 65.5815 11.4366C65.7376 10.9897 65.9684 10.6038 66.2671 10.2788C66.5657 9.95376 66.9391 9.70323 67.3736 9.52041C67.808 9.33759 68.3035 9.24279 68.8602 9.24279C69.4168 9.24279 69.9123 9.33759 70.3468 9.52041C70.7812 9.70323 71.1478 9.96053 71.4533 10.2788C71.7519 10.6038 71.9827 10.9897 72.1389 11.4366C72.295 11.8835 72.3765 12.3711 72.3765 12.8992C72.3765 13.4341 72.295 13.9284 72.1389 14.3753C71.9827 14.8222 71.7519 15.2082 71.4533 15.5332C71.1546 15.8582 70.7812 16.1087 70.3468 16.2915C69.9123 16.4744 69.4168 16.5692 68.8602 16.5692ZM68.8602 15.3571C69.1996 15.3571 69.4983 15.2826 69.7494 15.1405C70.0006 14.9983 70.2042 14.8087 70.3671 14.5784C70.5301 14.3482 70.6455 14.0842 70.7269 13.793C70.8016 13.5018 70.8423 13.2039 70.8423 12.8992C70.8423 12.6013 70.8016 12.3101 70.7269 12.0122C70.6523 11.7143 70.5301 11.457 70.3671 11.2267C70.2042 10.9965 70.0006 10.8137 69.7494 10.6715C69.4983 10.5293 69.1996 10.4548 68.8602 10.4548C68.5208 10.4548 68.2221 10.5293 67.9709 10.6715C67.7198 10.8137 67.5161 11.0033 67.3532 11.2267C67.1903 11.457 67.0749 11.7143 66.9934 12.0122C66.9187 12.3101 66.878 12.6013 66.878 12.8992C66.878 13.2039 66.9187 13.5018 66.9934 13.793C67.0681 14.0842 67.1903 14.3482 67.3532 14.5784C67.5161 14.8087 67.7198 14.9983 67.9709 15.1405C68.2221 15.2894 68.5208 15.3571 68.8602 15.3571ZM72.8245 9.43238H73.9853V7.34687H75.5194V9.43238H76.9042V10.5767H75.5194V14.2873C75.5194 14.4498 75.5262 14.5852 75.5398 14.7071C75.5533 14.8222 75.5873 14.9238 75.6348 15.005C75.6823 15.0863 75.757 15.1472 75.8588 15.1879C75.9606 15.2285 76.0896 15.2488 76.2661 15.2488C76.3747 15.2488 76.4833 15.2488 76.5919 15.242C76.7005 15.2352 76.8092 15.2217 76.9178 15.1946V16.3796C76.7481 16.3999 76.5784 16.4134 76.4222 16.4337C76.2593 16.4541 76.0964 16.4608 75.9267 16.4608C75.5194 16.4608 75.1936 16.4202 74.9492 16.3457C74.7048 16.2712 74.508 16.1561 74.3722 16.0072C74.2296 15.8582 74.1414 15.6754 74.0871 15.4519C74.0396 15.2285 74.0056 14.9712 73.9988 14.6868V10.5902H72.8381V9.43238L72.8245 9.43238Z" fill="var(--fill-0, white)"/>
 <path id="Vector_2" d="M18.4238 6.78487H11.3912L9.21896 0.108528L7.03994 6.78487L0.00735936 6.7781L5.70267 10.9085L3.52365 17.5781L9.21896 13.4544L14.9075 17.5781L12.7353 10.9085L18.4238 6.78487Z" fill="var(--fill-0, #00B67A)"/>
 <path id="Vector_3" d="M13.224 12.4185L12.7353 10.9085L9.21896 13.4544L13.224 12.4185Z" fill="var(--fill-0, #005128)"/>
 </g>
 </svg>
-`, W = "https://widget.trustpilot.com/trustbox-data/5419b6ffb0d04a076446a9af?businessUnitId=5de985d57cad6c0001a1286e&locale=en-GB", Y = "https://cdn.trustpilot.net/brand-assets/4.1.0/stars", f = {
+`, J = "https://widget.trustpilot.com/trustbox-data/5419b6ffb0d04a076446a9af?businessUnitId=5de985d57cad6c0001a1286e&locale=en-GB", Q = "https://cdn.trustpilot.net/brand-assets/4.1.0/stars", w = {
     trustScore: 4.8,
     stars: 5,
     profileUrl: "https://uk.trustpilot.com/review/houseofworktops.co.uk"
   };
-  class B {
+  class tt {
     constructor() {
       this.init();
     }
     async init() {
       if (document.querySelector(".crs-tp")) return;
-      const e = (await w("#reels-slider-section .reels-heading")).parentElement;
+      const e = (await m("#reels-slider-section .reels-heading")).parentElement;
       if (!e) return;
-      g(Z), this.hideOriginal();
-      const n = this.buildRow(f);
+      d(U), this.hideOriginal();
+      const n = this.buildRow(w);
       e.insertAdjacentElement("afterbegin", n), this.fetchData().then((s) => this.fillRow(n, s));
     }
     // The stock Trustpilot widgets sit in the configurator (#product); the design drops
     // them in favour of this row, so hide them — along with the <hr> separator that sits
     // immediately before them (it would otherwise dangle once the widgets are gone).
     hideOriginal() {
-      g(
+      d(
         "#product .trustpilot-widget{display:none !important;}#product hr.mt-4:has(+ .trustpilot-widget){display:none !important;}"
       );
     }
     async fetchData() {
       try {
-        const t = await fetch(W);
+        const t = await fetch(J);
         if (!t.ok) throw new Error(`HTTP ${t.status}`);
         const e = await t.json(), n = e.businessUnit || e.businessEntity || {};
         return {
-          trustScore: typeof n.trustScore == "number" ? n.trustScore : f.trustScore,
-          stars: typeof n.stars == "number" ? n.stars : f.stars,
-          profileUrl: e.links && e.links.profileUrl || f.profileUrl
+          trustScore: typeof n.trustScore == "number" ? n.trustScore : w.trustScore,
+          stars: typeof n.stars == "number" ? n.stars : w.stars,
+          profileUrl: e.links && e.links.profileUrl || w.profileUrl
         };
       } catch {
-        return m("TrustpilotRating: live data fetch failed, using fallback", "warn"), { ...f };
+        return u("TrustpilotRating: live data fetch failed, using fallback", "warn"), { ...w };
       }
     }
     // TrustScore -> Trustpilot rating word.
@@ -1832,23 +1906,22 @@ body.crs-pg-modal-open {
       </span>
       <img
         class="crs-tp__stars"
-        src="${Y}/stars-${this.starsFile(e.stars)}.svg"
+        src="${Q}/stars-${this.starsFile(e.stars)}.svg"
         alt=""
         width="100"
       />
-      <span class="crs-tp__logo" aria-hidden="true">${R}</span>`;
+      <span class="crs-tp__logo" aria-hidden="true">${K}</span>`;
     }
   }
-  const G = "";
+  const et = "";
   P({ name: "PDP Introducing Customer Photos", dev: "OS" }), S("exp_pdp_photo");
-  class N {
+  class nt {
     constructor() {
       this.init();
     }
     init() {
-      g(G), new H(), new F(), new O(), new B();
+      d(et), new V(), new Z(), new Y(), new N(), new tt();
     }
   }
-  new N();
+  new nt();
 })();
-//# sourceMappingURL=index.js.map
