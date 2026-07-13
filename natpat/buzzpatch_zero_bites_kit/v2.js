@@ -550,6 +550,7 @@
 }
 
 .ssb--plans__list .zbk-tooltip__img {
+  margin-top: 0 !important;
   width: 56px;
   height: 66px;
   flex-shrink: 0;
