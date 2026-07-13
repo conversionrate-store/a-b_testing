@@ -1023,9 +1023,12 @@
     }
   }
   function u(e) {
-    var i, o;
-    const n = e / 100, t = ((o = (i = window.Shopify) == null ? void 0 : i.currency) == null ? void 0 : o.active) || "USD";
-    return new Intl.NumberFormat(void 0, { style: "currency", currency: t }).format(n);
+    const n = window.Shopify.currency.active;
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: n,
+      currencyDisplay: "narrowSymbol"
+    }).format(e / 100);
   }
   function T(e, n) {
     e.dataset.id = String(n.id), e.dataset.price = n.price, e.dataset.subscriptionPrice = n.price, e.dataset.oldPrice = n.comparePrice || n.price, e.innerHTML = /* HTML */
