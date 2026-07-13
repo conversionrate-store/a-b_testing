@@ -651,11 +651,11 @@
 /* the description column is exactly as wide as the text needs (design: 202px);
    no gap to the price column, or the first line loses the few px it needs */
 .ssb--bundle .zbk-card__desc {
+  margin-left: -5px;
   font-family: 'DINEngschrift LT', 'Barlow', sans-serif;
   font-size: 13px;
   line-height: 22px;
   color: #000;
-  white-space: nowrap;
 }
 
 .ssb--bundle .zbk-see-inside {
