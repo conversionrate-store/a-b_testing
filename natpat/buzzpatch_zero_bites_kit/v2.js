@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const _ = (e) => new Promise((n) => {
+  const z = (e) => new Promise((n) => {
     const t = document.querySelector(e);
     t && n(t);
     const i = new MutationObserver(() => {
@@ -696,6 +696,18 @@
   font-size: 12px;
   line-height: 14px;
   color: #5d5d5d;
+}
+
+/* selected: the native block fills the card pink, so the text flips to white */
+.ssb--bundle.active .zbk-card__name,
+.ssb--bundle.active .zbk-card__stickers,
+.ssb--bundle.active .zbk-card__desc,
+.ssb--bundle.active .zbk-card__price-value {
+  color: #fff;
+}
+
+.ssb--bundle.active .zbk-card__price-caption {
+  color: #dadada;
 }`, s = "https://conversionrate-store.github.io/a-b_images/natpat/zero_bites_kit/", a = {
     id: 45467608383532,
     name: "Zero Bites Summer Kit",
@@ -837,15 +849,15 @@
     const h = typeof e == "string" ? document.querySelector(e) : e;
     if (!h) return;
     let m;
-    const z = new IntersectionObserver(
+    const _ = new IntersectionObserver(
       (M) => {
         M[0].isIntersecting ? m = setTimeout(() => {
-          l(n, t, "view", i), z.disconnect();
+          l(n, t, "view", i), _.disconnect();
         }, o) : clearTimeout(m);
       },
       { threshold: [r], rootMargin: k }
     );
-    z.observe(h);
+    _.observe(h);
   }, p = "Zero Bites Kit Popup";
   class S {
     constructor(n) {
@@ -1112,7 +1124,7 @@
       this.init();
     }
     async init() {
-      this.isTestTarget() && (await _("#subscribeSaveBlock"), this.addStyles(), await $());
+      this.isTestTarget() && (await z("#subscribeSaveBlock"), this.addStyles(), await $());
     }
     isTestTarget() {
       if (location.pathname.includes("buzzpatch") && !(window.innerWidth > 768))
