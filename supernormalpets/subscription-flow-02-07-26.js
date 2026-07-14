@@ -938,7 +938,7 @@
       event_desc: t,
       event_type: e,
       event_loc: s
-    }), h(`Event: ${n} | ${t} | ${e} | ${s}`, "success");
+    }), v(`Event: ${n} | ${t} | ${e} | ${s}`, "success");
   }, I = "https://next-client-api.vercel.app/api/events", b = (n, t) => {
     let e = n.getItem(t);
     return e || (e = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`, n.setItem(t, e)), e;
@@ -986,7 +986,7 @@
       body: JSON.stringify(a),
       keepalive: !0
     }).catch(() => {
-    }), h(`BQ Event: ${n} | ${t} | ${JSON.stringify(e)}`, "success");
+    }), v(`BQ Event: ${n} | ${t} | ${JSON.stringify(e)}`, "success");
   }, V = (n) => new Promise((t) => {
     const e = document.querySelector(n);
     e && t(e);
@@ -1067,7 +1067,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const g = (n) => new _(n), h = (n, t = "info") => {
+  const g = (n) => new _(n), v = (n, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -1486,24 +1486,25 @@
     monthly: 692205060442,
     annually: 692205093210
   };
-  function v(n) {
+  function h(n) {
     const t = n.charAt(0).toUpperCase() + n.slice(1).toLowerCase();
     return document.querySelector(`.pawtag-variant-btn[data-option-value="${t}"]`);
   }
   function F() {
     const n = document.querySelectorAll(".sn-cta__colour-btn");
     n.forEach((t) => {
-      const e = t.dataset.colour ?? "", s = v(e);
+      const e = t.dataset.colour ?? "", s = h(e);
       s != null && s.classList.contains("pawtag-variant-btn--active") && (n.forEach((i) => i.classList.remove("sn-cta__colour-btn--active")), t.classList.add("sn-cta__colour-btn--active"));
     });
   }
   function O() {
     var i, l, a, r, f;
+    o("new_flow_landing_view", c, {});
     const n = document.querySelector('.pawtag-variant-btn[data-option-value="Engraved"]');
-    n != null && n.classList.contains("pawtag-variant-btn--active") && ((i = v("Green")) == null || i.click()), F(), document.querySelectorAll(".sn-cta__colour-btn").forEach((d) => {
+    n != null && n.classList.contains("pawtag-variant-btn--active") && ((i = h("Green")) == null || i.click()), F(), document.querySelectorAll(".sn-cta__colour-btn").forEach((d) => {
       d.addEventListener("click", () => {
         var w;
-        document.querySelectorAll(".sn-cta__colour-btn").forEach((K) => K.classList.remove("sn-cta__colour-btn--active")), d.classList.add("sn-cta__colour-btn--active"), (w = v(d.dataset.colour ?? "")) == null || w.click(), o("new_flow_colour_select", c, { colour: d.dataset.colour });
+        document.querySelectorAll(".sn-cta__colour-btn").forEach((K) => K.classList.remove("sn-cta__colour-btn--active")), d.classList.add("sn-cta__colour-btn--active"), (w = h(d.dataset.colour ?? "")) == null || w.click(), o("new_flow_colour_select", c, { colour: d.dataset.colour });
       });
     });
     const t = document.getElementById("snQtyVal");
@@ -1648,7 +1649,7 @@
       this.init();
     }
     async init() {
-      h("Supernormal Trial Init"), await V(".description"), g("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_sn">${E}</style>`), g(".description").elements[0].insertAdjacentHTML("afterend", Z), g(".description").elements[0].insertAdjacentHTML("afterend", T), g("body").elements[0].insertAdjacentHTML("beforeend", $), O(), G();
+      v("Supernormal Trial Init"), await V(".description"), g("body").elements[0].insertAdjacentHTML("beforeend", `<style class="crs_sn">${E}</style>`), g(".description").elements[0].insertAdjacentHTML("afterend", Z), g(".description").elements[0].insertAdjacentHTML("afterend", T), g("body").elements[0].insertAdjacentHTML("beforeend", $), O(), G();
     }
   }
   new Y();
