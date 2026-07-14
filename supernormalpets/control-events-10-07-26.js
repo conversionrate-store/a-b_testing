@@ -84,12 +84,12 @@
     const o = t.querySelector("input");
     return o ? o.value : ((n = t.textContent) == null ? void 0 : n.trim()) ?? "";
   }
-  class h {
+  class w {
     constructor() {
       this.init();
     }
     async init() {
-      u("Control Events Init"), await _(".pawtag-variant-picker"), this.initColourTracking(), this.initQuantityTracking(), this.initCtaTracking();
+      u("Control Events Init"), c("control_landing_view", s, {}), await _(".pawtag-variant-picker"), this.initColourTracking(), this.initQuantityTracking(), this.initCtaTracking();
     }
     initColourTracking() {
       document.querySelectorAll(".pawtag-variant-btn").forEach((e) => {
@@ -125,6 +125,6 @@
       });
     }
   }
-  new h();
+  new w();
 })();
 //# sourceMappingURL=index.js.map
