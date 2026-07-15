@@ -239,7 +239,9 @@
   border-radius: 12px;
   overflow: hidden;
   background: #cfe2f3;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .crs-ba-slider__image {
   position: absolute;
@@ -250,7 +252,8 @@
 .crs-ba-slider__image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .crs-ba-slider__image--after {
   clip-path: inset(0 0 0 50%);
@@ -663,7 +666,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .crs2-stage__video-play {
   position: absolute;
@@ -1059,7 +1063,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .crs2-people__card-frame {
   position: absolute;
@@ -2120,6 +2125,9 @@
   font-family: inherit;
   padding: 6px 0;
 }
+.crs2-get-started__field input::-moz-placeholder, .crs2-get-started__field select::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
 .crs2-get-started__field input::placeholder,
 .crs2-get-started__field select::placeholder {
   color: rgba(255, 255, 255, 0.4);
@@ -2129,7 +2137,9 @@
   outline: none;
 }
 .crs2-get-started__field select {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right center;
 }
 .crs2-get-started__field select option {
@@ -2171,6 +2181,9 @@
 .crs2-get-started__verify-row {
   display: flex;
   gap: 10px;
+}
+.crs2-get-started__verify-row input {
+  color: #ffffff !important;
 }
 .crs2-get-started__verify-digit {
   width: 44px;
@@ -2290,8 +2303,7 @@
   font-size: 13px;
   color: rgba(255, 255, 255, 0.6);
   margin: -8px 0 0;
-}
-`, g = (t, n, e, r = "") => {
+}/*# sourceMappingURL=style.css.map */`, _ = (t, n, e, r = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
@@ -2310,9 +2322,9 @@
       childList: !0,
       subtree: !0
     });
-  }), A = ({ name: t, dev: n }) => {
+  }), B = ({ name: t, dev: n }) => {
     const e = t.toLowerCase().replace(/\s/g, "_");
-    g(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
+    _(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
       `%c EXP: ${t} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
@@ -2323,13 +2335,13 @@
     }
     on(n, e, r) {
       return typeof e == "function" && (r = e, e = ""), this.elements.forEach((s) => {
-        s.addEventListener(n, function(a) {
-          var o;
+        s.addEventListener(n, function(o) {
+          var a;
           if (e !== "") {
-            let d = (o = a.target) == null ? void 0 : o.closest(e);
-            d && (r == null || r.call(d, a));
+            let d = (a = o.target) == null ? void 0 : a.closest(e);
+            d && (r == null || r.call(d, o));
           } else
-            r == null || r.call(s, a);
+            r == null || r.call(s, o);
         });
       }), this;
     }
@@ -2354,7 +2366,7 @@
       return this;
     }
     style(n, e) {
-      const r = n.split("-").map((s, a) => a === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
+      const r = n.split("-").map((s, o) => o === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
       return this.elements.forEach(function(s) {
         s.style[r] = e;
       }), this;
@@ -2379,29 +2391,29 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const k = (t) => new w(t), B = (t) => {
+  const L = (t) => new w(t), A = (t) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
     }, 1e3);
-  }, P = (t, n, e, r, s = 1e3, a = 0.5) => {
-    let o, d;
-    if (o = new IntersectionObserver(
+  }, P = (t, n, e, r, s = 1e3, o = 0.5) => {
+    let a, d;
+    if (a = new IntersectionObserver(
       function(c) {
         c[0].isIntersecting === !0 ? d = setTimeout(() => {
-          g(
+          _(
             n,
             c[0].target.dataset.visible || r || "",
             "view",
             e
-          ), o.disconnect();
+          ), a.disconnect();
         }, s) : (S("Element is not fully visible", "warn"), clearTimeout(d));
       },
-      { threshold: [a] }
+      { threshold: [o] }
     ), typeof t == "string") {
       const c = document.querySelector(t);
-      c && o.observe(c);
+      c && a.observe(c);
     } else
-      o.observe(t);
+      a.observe(t);
   }, S = (t, n = "info") => {
     let e;
     switch (n) {
@@ -2419,13 +2431,13 @@
         break;
     }
     console.log(`%c>>> ${t}`, `${e} font-size: 16px; font-weight: 600`);
-  }, N = (
+  }, j = (
     /* HTML */
     `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
   <path d="M5.5 3.5L2 7L5.5 10.5" stroke="#0D2034" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
   <path d="M8.5 3.5L12 7L8.5 10.5" stroke="#0D2034" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>`
-  ), E = (t, n) => t ? `<img src="${t}" alt="${n}" loading="lazy" />` : "", j = (t = "", n = "", e = "Before and after") => (
+  ), E = (t, n) => t ? `<img src="${t}" alt="${n}" loading="lazy" />` : "", N = (t = "", n = "", e = "Before and after") => (
     /* HTML */
     `
   <div class="crs-ba-slider" data-crs-ba-slider>
@@ -2439,7 +2451,7 @@
         <span class="crs-ba-slider__label crs-ba-slider__label--after">After</span>
       </div>
       <div class="crs-ba-slider__divider" data-crs-ba-divider>
-        <div class="crs-ba-slider__handle">${N}</div>
+        <div class="crs-ba-slider__handle">${j}</div>
       </div>
     </div>
   </div>
@@ -2609,7 +2621,7 @@
     "West Virginia",
     "Wisconsin",
     "Wyoming"
-  ], $ = (t, n = "") => (
+  ], k = (t, n = "") => (
     /*html*/
     `
   <div class="crs2-cta-wrap" ${n ? `id="${n}"` : ""}>
@@ -2625,7 +2637,7 @@
   ), T = (t) => {
     var n;
     return ((n = t.match(/(?:v=|youtu\.be\/)([\w-]{11})/)) == null ? void 0 : n[1]) || "";
-  }, R = (
+  }, Z = (
     /*html*/
     `
   <header class="crs2-header">
@@ -2654,7 +2666,7 @@
     </div>
   </header>
 `
-  ), Z = (
+  ), R = (
     /*html*/
     `
   <section class="crs2-hero">
@@ -2670,7 +2682,7 @@
         <div class="crs2-hero__microcopy">${i.no_commitment} No commitment</div>
       </div>
       <div class="crs2-hero__media">
-        ${j(`${h}house-before.webp`, `${h}house-after.webp`, "a distressed home before and after a fix-and-flip rehab")}
+        ${N(`${h}house-before.webp`, `${h}house-after.webp`, "a distressed home before and after a fix-and-flip rehab")}
       </div>
     </div>
     <div class="crs2-hero__trust">
@@ -2917,7 +2929,7 @@
     ).join("")}
       </div>
       <button class="crs2-people__load-more" data-crs2-load-more="crs2-people__card--extra">${i.refresh} Load more</button>
-      ${$("Book a Call with an Expert")}
+      ${k("Book a Call with an Expert")}
     </div>
   </section>
 `
@@ -3030,7 +3042,7 @@
       )
     ).join("")}
       </div>
-      ${$("Book a Call with an Expert")}
+      ${k("Book a Call with an Expert")}
     </div>
   </section>
 `
@@ -3211,7 +3223,7 @@
         <b>Loan term</b>
         <p>Initial term is 5–9 months — enough time to renovate and sell in most markets. Need more time? You can extend for up to 3 additional months.</p>
       </div>
-      ${$("Book a Call with an Expert")}
+      ${k("Book a Call with an Expert")}
     </div>
   </section>
 `
@@ -3290,8 +3302,8 @@
     /*html*/
     `
   <section class="crs2_new_content_block">
-    ${R}
     ${Z}
+    ${R}
 		<div class="crs2_container">
     ${O}
     ${G}
@@ -3306,11 +3318,11 @@
   </section>
 `
   );
-  A({ name: "New 100 HMF V2", dev: "YK" }), B("new_100_hmf_v2");
-  const d1 = "23711988", l1 = "REPLACE_WITH_REAL_FORM_GUID", q = (t) => {
+  B({ name: "New 100 HMF V2", dev: "YK" }), A("new_100_hmf_v2");
+  const d1 = "23711988", l1 = "a57c4233-8531-4903-b847-b112ea2bdda4", q = (t) => {
     const n = t.replace(/\D/g, "");
     return n.length === 11 && n.startsWith("1") ? n.slice(1) : n;
-  }, z = (t) => {
+  }, $ = (t) => {
     const n = q(t);
     return n.length !== 10 ? !1 : /^[2-9]\d{2}$/.test(n.slice(0, 3)) && /^[2-9]\d{2}$/.test(n.slice(3, 6));
   }, I = (t) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.trim()), x = (t, n) => {
@@ -3328,7 +3340,7 @@
       this.verifyTimerInterval = null, this.verifyTimeLeft = 59, this.phoneVerified = !1, this.phoneChecking = !1, this.normalizedPhone = "", this.init();
     }
     async init() {
-      await F("#main-content"), k("head").elements[0].insertAdjacentHTML("beforeend", `<style>${H}</style>`), k("#main-content").elements[0].innerHTML = c1, V(), this.bindMobileMenu(), this.bindAccordion(), this.bindLoadMore(), this.bindCtaClicks(), this.bindForm(), this.bindStageVideo(), this.bindPeopleVideos(), this.bindReadMore(), this.bindPhoneVerification(), this.trackVisibility();
+      await F("#main-content"), L("head").elements[0].insertAdjacentHTML("beforeend", `<style>${H}</style>`), L("#main-content").elements[0].innerHTML = c1, V(), this.bindMobileMenu(), this.bindAccordion(), this.bindLoadMore(), this.bindCtaClicks(), this.bindForm(), this.bindStageVideo(), this.bindPeopleVideos(), this.bindReadMore(), this.bindPhoneVerification(), this.trackVisibility();
     }
     bindReadMore() {
       document.querySelectorAll("[data-crs2-read-more]").forEach((n) => {
@@ -3345,14 +3357,14 @@
         r == null || r.addEventListener("click", () => {
           if (!e) return;
           const s = document.createElement("iframe");
-          s.className = "crs2-people__card-frame", s.src = `https://www.youtube.com/embed/${e}?autoplay=1`, s.title = "YouTube video player", s.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", s.allowFullscreen = !0, n.appendChild(s), n.classList.add("crs2-people__card-media--playing"), g("video_play", "people", "click", "New 100 HMF V2");
+          s.className = "crs2-people__card-frame", s.src = `https://www.youtube.com/embed/${e}?autoplay=1`, s.title = "YouTube video player", s.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", s.allowFullscreen = !0, n.appendChild(s), n.classList.add("crs2-people__card-media--playing"), _("video_play", "people", "click", "New 100 HMF V2");
         });
       });
     }
     bindStageVideo() {
       const n = document.querySelector("[data-crs2-video]"), e = n == null ? void 0 : n.querySelector("video"), r = n == null ? void 0 : n.querySelector(".crs2-stage__video-play");
       r == null || r.addEventListener("click", () => {
-        e && (e.controls = !0, e.play(), n == null || n.classList.add("crs2-stage__video-thumb--playing"), g("video_play", "stage", "click", "New 100 HMF V2"));
+        e && (e.controls = !0, e.play(), n == null || n.classList.add("crs2-stage__video-thumb--playing"), _("video_play", "stage", "click", "New 100 HMF V2"));
       });
     }
     bindMobileMenu() {
@@ -3364,16 +3376,16 @@
       });
     }
     bindAccordion() {
-      k("[data-crs2-accordion-trigger]").on("click", (n) => {
-        const e = n.currentTarget, r = e.closest("[data-crs2-accordion-item]"), s = e.closest("[data-crs2-accordion]"), a = r == null ? void 0 : r.classList.contains("crs2-funding-process__item--open");
-        s == null || s.querySelectorAll("[data-crs2-accordion-item]").forEach((o) => o.classList.remove("crs2-funding-process__item--open")), a || r == null || r.classList.add("crs2-funding-process__item--open");
+      L("[data-crs2-accordion-trigger]").on("click", (n) => {
+        const e = n.currentTarget, r = e.closest("[data-crs2-accordion-item]"), s = e.closest("[data-crs2-accordion]"), o = r == null ? void 0 : r.classList.contains("crs2-funding-process__item--open");
+        s == null || s.querySelectorAll("[data-crs2-accordion-item]").forEach((a) => a.classList.remove("crs2-funding-process__item--open")), o || r == null || r.classList.add("crs2-funding-process__item--open");
       });
     }
     bindLoadMore() {
       document.querySelectorAll("[data-crs2-load-more]").forEach((n) => {
         n.addEventListener("click", () => {
           const e = n.closest("section");
-          e == null || e.classList.add(`${e.classList[0]}--show-all`), g("load_more_click", (e == null ? void 0 : e.classList[0]) || "unknown", "click", "New 100 HMF V2");
+          e == null || e.classList.add(`${e.classList[0]}--show-all`), _("load_more_click", (e == null ? void 0 : e.classList[0]) || "unknown", "click", "New 100 HMF V2");
         });
       });
     }
@@ -3389,76 +3401,76 @@
         e.addEventListener("click", () => {
           var s;
           let r = "unknown";
-          for (const [a, o] of Object.entries(n))
-            if (e.closest(`.${a}`)) {
-              r = o;
+          for (const [o, a] of Object.entries(n))
+            if (e.closest(`.${o}`)) {
+              r = a;
               break;
             }
-          g("cta_click", r, "click", "New 100 HMF V2"), (s = document.querySelector(".crs2-get-started__form")) == null || s.scrollIntoView({ behavior: "smooth", block: "start" });
+          _("cta_click", r, "click", "New 100 HMF V2"), (s = document.querySelector(".crs2-get-started__form")) == null || s.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
     }
     bindPhoneVerification() {
-      const n = document.querySelector("[data-crs2-lead-form]"), e = n == null ? void 0 : n.querySelector("[data-crs2-phone-input]"), r = n == null ? void 0 : n.querySelector("[data-crs2-send-code]"), s = n == null ? void 0 : n.querySelector("[data-crs2-verify]"), a = s == null ? void 0 : s.querySelector("[data-crs2-verify-timer]"), o = s == null ? void 0 : s.querySelector("[data-crs2-verify-msg]"), d = s == null ? void 0 : s.querySelector("[data-crs2-verify-resend]"), c = s ? Array.from(s.querySelectorAll("[data-crs2-verify-digit]")) : [];
-      if (!n || !e || !r || !s || !a || !o || !d) return;
+      const n = document.querySelector("[data-crs2-lead-form]"), e = n == null ? void 0 : n.querySelector("[data-crs2-phone-input]"), r = n == null ? void 0 : n.querySelector("[data-crs2-send-code]"), s = n == null ? void 0 : n.querySelector("[data-crs2-verify]"), o = s == null ? void 0 : s.querySelector("[data-crs2-verify-timer]"), a = s == null ? void 0 : s.querySelector("[data-crs2-verify-msg]"), d = s == null ? void 0 : s.querySelector("[data-crs2-verify-resend]"), c = s ? Array.from(s.querySelectorAll("[data-crs2-verify-digit]")) : [];
+      if (!n || !e || !r || !s || !o || !a || !d) return;
       e.addEventListener("blur", () => {
-        e.value.trim() && !z(e.value) && x(e, "Please enter a valid phone number");
+        e.value.trim() && !$(e.value) && x(e, "Please enter a valid phone number");
       }), e.addEventListener("input", () => y(e));
-      const _ = () => {
+      const v = () => {
         this.verifyTimeLeft = 59, d.disabled = !0, this.verifyTimerInterval && clearInterval(this.verifyTimerInterval), this.verifyTimerInterval = setInterval(() => {
           this.verifyTimeLeft--;
           const l = Math.floor(this.verifyTimeLeft / 60), p = this.verifyTimeLeft % 60;
-          a.textContent = `${String(l).padStart(2, "0")}:${String(p).padStart(2, "0")}`, this.verifyTimeLeft <= 0 && (clearInterval(this.verifyTimerInterval), d.disabled = !1, a.textContent = "00:00");
+          o.textContent = `${String(l).padStart(2, "0")}:${String(p).padStart(2, "0")}`, this.verifyTimeLeft <= 0 && (clearInterval(this.verifyTimerInterval), d.disabled = !1, o.textContent = "00:00");
         }, 1e3);
-      }, v = async () => {
+      }, g = async () => {
         var l;
-        o.textContent = "", o.className = "crs2-get-started__verify-msg", this.normalizedPhone = q(e.value), s.classList.add("crs2-get-started__verify--active"), _(), c.forEach((p) => {
+        a.textContent = "", a.className = "crs2-get-started__verify-msg", this.normalizedPhone = q(e.value), s.classList.add("crs2-get-started__verify--active"), v(), c.forEach((p) => {
           p.value = "", p.disabled = !1;
         }), (l = c[0]) == null || l.focus(), await fetch("https://app.theinvestorsedge.com/phone/verify/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phoneNumber: "+1" + this.normalizedPhone })
-        }), g("exp_sms_send_code", "Send code", "click", "New 100 HMF V2");
+        }), _("exp_sms_send_code", "Send code", "click", "New 100 HMF V2");
       };
       r.addEventListener("click", () => {
-        if (!z(e.value)) {
-          x(e, "Please enter a valid phone number"), g("exp_sms_invalid_phone", "Invalid phone", "click", "New 100 HMF V2");
+        if (!$(e.value)) {
+          x(e, "Please enter a valid phone number"), _("exp_sms_invalid_phone", "Invalid phone", "click", "New 100 HMF V2");
           return;
         }
-        y(e), v();
+        y(e), g();
       }), d.addEventListener("click", () => {
-        d.disabled || v();
+        d.disabled || g();
       });
-      const L = async () => {
-        var f;
-        const l = c.map((C) => C.value).join("");
+      const z = async () => {
+        var C;
+        const l = c.map((f) => f.value).join("");
         if (l.length !== 4 || this.phoneChecking) return;
         this.phoneChecking = !0;
         const p = await fetch("https://app.theinvestorsedge.com/phone/verify/check", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phoneNumber: "+1" + this.normalizedPhone, code: l })
-        }).then((C) => C.json());
-        p.success && ((f = p.verificationCheck) == null ? void 0 : f.status) === "approved" ? (this.phoneVerified = !0, c.forEach((C) => C.disabled = !0), this.verifyTimerInterval && clearInterval(this.verifyTimerInterval), d.style.display = "none", a.style.display = "none", o.innerHTML = `${i.verify_check} Phone verified`, o.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--success", g("exp_sms_verified", "Phone verified", "success", "New 100 HMF V2")) : (this.phoneChecking = !1, o.textContent = "Incorrect verification code", o.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--error");
+        }).then((f) => f.json());
+        p.success && ((C = p.verificationCheck) == null ? void 0 : C.status) === "approved" ? (this.phoneVerified = !0, c.forEach((f) => f.disabled = !0), this.verifyTimerInterval && clearInterval(this.verifyTimerInterval), d.style.display = "none", o.style.display = "none", a.innerHTML = `${i.verify_check} Phone verified`, a.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--success", _("exp_sms_verified", "Phone verified", "success", "New 100 HMF V2")) : (this.phoneChecking = !1, a.textContent = "Incorrect verification code", a.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--error");
       };
       c.forEach((l, p) => {
         l.addEventListener("input", () => {
-          l.value = l.value.replace(/[^0-9]/g, ""), l.value.length === 1 && p < c.length - 1 && c[p + 1].focus(), L();
-        }), l.addEventListener("keydown", (f) => {
-          f.key === "Backspace" && l.value === "" && p > 0 && c[p - 1].focus();
+          l.value = l.value.replace(/[^0-9]/g, ""), l.value.length === 1 && p < c.length - 1 && c[p + 1].focus(), z();
+        }), l.addEventListener("keydown", (C) => {
+          C.key === "Backspace" && l.value === "" && p > 0 && c[p - 1].focus();
         });
       });
     }
     bindForm() {
-      const n = document.querySelector("[data-crs2-lead-form]"), e = n == null ? void 0 : n.querySelector(".crs2-get-started__submit"), r = n == null ? void 0 : n.querySelector('input[name="email"]'), s = n == null ? void 0 : n.querySelector("[data-crs2-phone-input]"), a = document.createElement("p");
-      a.className = "crs2-get-started__submit-error", r == null || r.addEventListener("blur", () => {
+      const n = document.querySelector("[data-crs2-lead-form]"), e = n == null ? void 0 : n.querySelector(".crs2-get-started__submit"), r = n == null ? void 0 : n.querySelector('input[name="email"]'), s = n == null ? void 0 : n.querySelector("[data-crs2-phone-input]"), o = document.createElement("p");
+      o.className = "crs2-get-started__submit-error", r == null || r.addEventListener("blur", () => {
         r.value.trim() && !I(r.value) && x(r, "Please enter a valid email address");
-      }), r == null || r.addEventListener("input", () => y(r)), n == null || n.querySelectorAll("[required]").forEach((o) => {
-        const d = () => y(o);
-        o.addEventListener("input", d), o.addEventListener("change", d);
-      }), n == null || n.addEventListener("submit", async (o) => {
-        var L, l, p;
-        o.preventDefault(), a.remove();
+      }), r == null || r.addEventListener("input", () => y(r)), n == null || n.querySelectorAll("[required]").forEach((a) => {
+        const d = () => y(a);
+        a.addEventListener("input", d), a.addEventListener("change", d);
+      }), n == null || n.addEventListener("submit", async (a) => {
+        var l, p, C;
+        a.preventDefault(), o.remove();
         const d = Array.from(n.querySelectorAll("[required]"));
         let c = null;
         if (d.forEach((f) => {
@@ -3471,38 +3483,46 @@
           x(r, "Please enter a valid email address"), r.focus();
           return;
         }
-        if (s && !z(s.value)) {
+        if (s && !$(s.value)) {
           x(s, "Please enter a valid phone number"), s.focus();
           return;
         }
         if (!this.phoneVerified) {
-          a.textContent = "Please verify your phone number before submitting", (L = n.querySelector("[data-crs2-verify]")) == null || L.insertAdjacentElement("afterend", a);
+          o.textContent = "Please verify your phone number before submitting", (l = n.querySelector("[data-crs2-verify]")) == null || l.insertAdjacentElement("afterend", o);
           return;
         }
-        const _ = new FormData(n), v = {
-          firstname: String(_.get("first_name") || ""),
-          lastname: String(_.get("last_name") || ""),
-          email: String(_.get("email") || ""),
+        const v = n.querySelector('input[name="consent"]');
+        if (v && !v.checked) {
+          o.textContent = "Please agree to be contacted before submitting", (p = n.querySelector(".crs2-get-started__consent")) == null || p.insertAdjacentElement("afterend", o);
+          return;
+        }
+        const g = new FormData(n), z = {
+          firstname: String(g.get("first_name") || ""),
+          lastname: String(g.get("last_name") || ""),
+          email: String(g.get("email") || ""),
           mobilephone: "+1" + this.normalizedPhone,
-          your_state__united_states__: String(_.get("state") || ""),
-          property_in_mind_new_design: String(_.get("has_property") || ""),
-          how_much_experience_do_you_have: String(_.get("experience") || ""),
-          amount_of_money_to_invest: String(_.get("invest_amount") || ""),
-          tcpa_consent: _.get("consent") ? "true" : "false"
+          your_state__united_states__: String(g.get("state") || ""),
+          property_in_mind: String(g.get("has_property") || ""),
+          how_much_experience_do_you_have_: String(g.get("experience") || ""),
+          amount_of_money_to_invest_in_real_estate_: String(g.get("invest_amount") || ""),
+          tcpa_consent: g.get("consent") ? "true" : "false"
         };
         e == null || e.setAttribute("disabled", "true");
         try {
-          if (!(await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${d1}/${l1}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              fields: Object.entries(v).map(([C, h1]) => ({ name: C, value: h1 })),
-              context: { pageUri: window.location.href, pageName: document.title }
-            })
-          })).ok) throw new Error("HubSpot submit failed");
-          g("form_submit", "get_prequalified", "submit", "New 100 HMF V2"), n.reset(), (l = n.querySelector("[data-crs2-verify]")) == null || l.classList.remove("crs2-get-started__verify--active");
+          if (!(await fetch(
+            `https://api.hsforms.com/submissions/v3/integration/submit/${d1}/${l1}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                fields: Object.entries(z).map(([h1, g1]) => ({ name: h1, value: g1 })),
+                context: { pageUri: window.location.href, pageName: document.title }
+              })
+            }
+          )).ok) throw new Error("HubSpot submit failed");
+          _("form_submit", "get_prequalified", "submit", "New 100 HMF V2"), window.location.href = "https://www.theinvestorsedge.com/confirmed-hard-money-financing";
         } catch {
-          a.textContent = "Something went wrong. Please try again.", (p = n.querySelector("[data-crs2-verify]")) == null || p.insertAdjacentElement("afterend", a);
+          o.textContent = "Something went wrong. Please try again.", (C = n.querySelector("[data-crs2-verify]")) == null || C.insertAdjacentElement("afterend", o);
         } finally {
           e == null || e.removeAttribute("disabled");
         }
