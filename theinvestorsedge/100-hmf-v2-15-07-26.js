@@ -1522,6 +1522,9 @@
     background: #cfe2f3;
   }
 }
+.crs2-why-tie .crs2-cta-wrap__microcopy svg path {
+  fill: #0d2034;
+}
 
 .crs2-funding-process {
   background: #fff;
@@ -2032,6 +2035,9 @@
   line-height: 1.5;
   color: #09233e;
   margin: 0;
+}
+.crs2-first-deal .crs2-cta-wrap__microcopy svg path {
+  fill: #0d2034;
 }
 
 .crs2-get-started {
