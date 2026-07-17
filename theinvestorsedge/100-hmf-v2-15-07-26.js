@@ -2658,11 +2658,11 @@
         <a href="#crs2-why-tie" class="crs2-header__nav-link">Why TIE</a>
         <a href="#crs2-get-started" class="crs2-header__nav-link">Get started</a>
       </nav>
-      <a href="tel:+18002840076" class="crs2-header__phone">
+      <a href="tel:+18016927678" class="crs2-header__phone">
         <span class="crs2-header__phone-icon">${i.phone}</span>
         <span class="crs2-header__phone-text">
           <span>Talk to an expert</span>
-          <b>(800) 284-0076</b>
+          <b>(801) 692-7678</b>
         </span>
       </a>
       <button class="crs2-header__mobile-toggle" data-crs2-mobile-toggle aria-label="Toggle menu">
