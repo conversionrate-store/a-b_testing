@@ -2643,7 +2643,7 @@
   ), T = (t) => {
     var n;
     return ((n = t.match(/(?:v=|youtu\.be\/)([\w-]{11})/)) == null ? void 0 : n[1]) || "";
-  }, Z = (
+  }, R = (
     /*html*/
     `
   <header class="crs2-header">
@@ -2672,7 +2672,7 @@
     </div>
   </header>
 `
-  ), R = (
+  ), Z = (
     /*html*/
     `
   <section class="crs2-hero">
@@ -3292,7 +3292,7 @@
           ${b("State you want to invest in", "state", W)}
           ${b("Do You Already Have a Property in Mind?", "has_property", ["Yes", "No"])}
           ${b("How Much Experience Do You Have?", "experience", ["None — this would be my first deal", "1–2 deals", "3–5 deals", "6+ deals"])}
-          ${b("Amount of Money to Invest?", "invest_amount", ["$0 – $2,500", "$2,500 – $10,000", "$10,000 – $25,000", "$25,000+"])}
+          ${b("Amount of Money to Invest in Real Estate?", "invest_amount", ["$1,000 to $2,499", "$2,500 to $4,999", "$5,000 to $9,999", "$10,000 to $19,999", "$20,000 or more"])}
         </div>
         <label class="crs2-get-started__consent">
           <input type="checkbox" name="consent" />
@@ -3308,8 +3308,8 @@
     /*html*/
     `
   <section class="crs2_new_content_block">
-    ${Z}
     ${R}
+    ${Z}
 		<div class="crs2_container">
     ${O}
     ${G}
