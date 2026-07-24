@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const H = `.header {
+  const q = `.header {
   display: none;
 }
 
@@ -2309,7 +2309,7 @@
   font-size: 13px;
   color: rgba(255, 255, 255, 0.6);
   margin: -8px 0 0;
-}/*# sourceMappingURL=style.css.map */`, _ = (t, n, e, r = "") => {
+}/*# sourceMappingURL=style.css.map */`, f = (t, n, e, r = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
@@ -2317,7 +2317,7 @@
       event_type: e,
       event_loc: r
     }), S(`Event: ${t} | ${n} | ${e} | ${r}`, "success");
-  }, F = (t) => new Promise((n) => {
+  }, H = (t) => new Promise((n) => {
     const e = document.querySelector(t);
     e && n(e);
     const r = new MutationObserver(() => {
@@ -2328,9 +2328,9 @@
       childList: !0,
       subtree: !0
     });
-  }), B = ({ name: t, dev: n }) => {
+  }), A = ({ name: t, dev: n }) => {
     const e = t.toLowerCase().replace(/\s/g, "_");
-    _(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
+    f(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
       `%c EXP: ${t} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
@@ -2397,16 +2397,16 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const L = (t) => new w(t), A = (t) => {
+  const L = (t) => new w(t), P = (t) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
     }, 1e3);
-  }, P = (t, n, e, r, s = 1e3, o = 0.5) => {
+  }, B = (t, n, e, r, s = 1e3, o = 0.5) => {
     let a, d;
     if (a = new IntersectionObserver(
       function(c) {
         c[0].isIntersecting === !0 ? d = setTimeout(() => {
-          _(
+          f(
             n,
             c[0].target.dataset.visible || r || "",
             "view",
@@ -2682,7 +2682,7 @@
         <h1 class="crs2-hero__title">Fix-and-Flip Financing <span>With No Experience and Close to $0 Cash</span></h1>
         <p class="crs2-hero__desc"><b>We help first-time flippers</b> find, fund, and flip real estate — with no prior experience or large down payment — covering up to <b>100% of purchase price, repair costs, and closing costs</b> on qualifying deals.</p>
         <div class="crs2-hero__cta-row">
-          <button class="crs2-hero__cta crs2-hero__cta--primary crs2_open_form">Book a Call with an Expert</button>
+          <button class="crs2-hero__cta crs2-hero__cta--primary crs2_open_form">See If This Is A Fit For You</button>
           <a href="#crs2-how-works" class="crs2-hero__cta crs2-hero__cta--secondary">See How It Works</a>
         </div>
         <div class="crs2-hero__microcopy">${i.no_commitment} No commitment</div>
@@ -2723,7 +2723,7 @@
     </div>
   </section>
 `
-  ), O = (
+  ), Y = (
     /*html*/
     `
   <section class="crs2-stage">
@@ -2754,7 +2754,7 @@
     </div>
   </section>
 `
-  ), Y = [
+  ), O = [
     {
       tag: "Stage 1",
       title: "Buy",
@@ -2797,7 +2797,7 @@
       <div class="crs2-how-works__example">
         <h3 class="crs2-how-works__example-title">Here's how it works — on a real example:</h3>
         <div class="crs2-how-works__stages">
-          ${Y.map(
+          ${O.map(
       (t) => (
         /*html*/
         `
@@ -2935,7 +2935,7 @@
     ).join("")}
       </div>
       <button class="crs2-people__load-more" data-crs2-load-more="crs2-people__card--extra">${i.refresh} Load more</button>
-      ${k("Book a Call with an Expert")}
+      ${k("See If This Is A Fit For You")}
     </div>
   </section>
 `
@@ -3048,7 +3048,7 @@
       )
     ).join("")}
       </div>
-      ${k("Book a Call with an Expert")}
+      ${k("See If This Is A Fit For You")}
     </div>
   </section>
 `
@@ -3168,7 +3168,7 @@
           <p>Book a free 15-minute call — we'll tell you within the first conversation whether your deal fits, and exactly what to look for if it doesn't.</p>
         </div>
         <div class="crs2-dont-need__callout-cta">
-          <button class="crs2-cta crs2_open_form">Book a Call with an Expert</button>
+          <button class="crs2-cta crs2_open_form">See If This Is A Fit For You</button>
           <span>${i.no_commitment} No commitment</span>
         </div>
       </div>
@@ -3229,7 +3229,7 @@
         <b>Loan term</b>
         <p>Initial term is 5–9 months — enough time to renovate and sell in most markets. Need more time? You can extend for up to 3 additional months.</p>
       </div>
-      ${k("Book a Call with an Expert")}
+      ${k("See If This Is A Fit For You")}
     </div>
   </section>
 `
@@ -3298,7 +3298,7 @@
           <input type="checkbox" name="consent" />
           <span>By checking this box, I agree The Investor's Edge and its agents may contact me at the number above. Consent isn't required to purchase. See our Privacy Policy and Terms.</span>
         </label>
-        <button type="submit" class="crs2-cta crs2-get-started__submit">Book a Call with an Expert</button>
+        <button type="submit" class="crs2-cta crs2-get-started__submit">See If This Is A Fit For You</button>
         <p class="crs2-get-started__note">You'll receive email confirmation immediately after submitting</p>
       </form>
     </div>
@@ -3311,7 +3311,7 @@
     ${R}
     ${Z}
 		<div class="crs2_container">
-    ${O}
+    ${Y}
     ${G}
     ${J}
     ${K}
@@ -3324,14 +3324,14 @@
   </section>
 `
   );
-  B({ name: "New 100 HMF V2", dev: "YK" }), A("new_100_hmf_v2");
-  const d1 = "23711988", l1 = "a57c4233-8531-4903-b847-b112ea2bdda4", q = (t) => {
+  A({ name: "New 100 HMF V2", dev: "YK" }), P("new_100_hmf_v2");
+  const d1 = "23711988", l1 = "a57c4233-8531-4903-b847-b112ea2bdda4", I = (t) => {
     const n = t.replace(/\D/g, "");
     return n.length === 11 && n.startsWith("1") ? n.slice(1) : n;
   }, $ = (t) => {
-    const n = q(t);
+    const n = I(t);
     return n.length !== 10 ? !1 : /^[2-9]\d{2}$/.test(n.slice(0, 3)) && /^[2-9]\d{2}$/.test(n.slice(3, 6));
-  }, I = (t) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.trim()), x = (t, n) => {
+  }, F = (t) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.trim()), x = (t, n) => {
     var s;
     const e = t.closest(".crs2-get-started__field");
     (s = e == null ? void 0 : e.querySelector(".crs2-get-started__field-error")) == null || s.remove();
@@ -3346,7 +3346,7 @@
       this.verifyTimerInterval = null, this.verifyTimeLeft = 59, this.phoneVerified = !1, this.phoneChecking = !1, this.normalizedPhone = "", this.init();
     }
     async init() {
-      await F("#main-content"), L("head").elements[0].insertAdjacentHTML("beforeend", `<style>${H}</style>`), L("#main-content").elements[0].innerHTML = c1, V(), this.bindMobileMenu(), this.bindAccordion(), this.bindLoadMore(), this.bindCtaClicks(), this.bindForm(), this.bindStageVideo(), this.bindPeopleVideos(), this.bindReadMore(), this.bindPhoneVerification(), this.trackVisibility();
+      await H("#main-content"), L("head").elements[0].insertAdjacentHTML("beforeend", `<style>${q}</style>`), L("#main-content").elements[0].innerHTML = c1, V(), this.bindMobileMenu(), this.bindAccordion(), this.bindLoadMore(), this.bindCtaClicks(), this.bindForm(), this.bindStageVideo(), this.bindPeopleVideos(), this.bindReadMore(), this.bindPhoneVerification(), this.trackVisibility();
     }
     bindReadMore() {
       document.querySelectorAll("[data-crs2-read-more]").forEach((n) => {
@@ -3363,14 +3363,14 @@
         r == null || r.addEventListener("click", () => {
           if (!e) return;
           const s = document.createElement("iframe");
-          s.className = "crs2-people__card-frame", s.src = `https://www.youtube.com/embed/${e}?autoplay=1`, s.title = "YouTube video player", s.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", s.allowFullscreen = !0, n.appendChild(s), n.classList.add("crs2-people__card-media--playing"), _("video_play", "people", "click", "New 100 HMF V2");
+          s.className = "crs2-people__card-frame", s.src = `https://www.youtube.com/embed/${e}?autoplay=1`, s.title = "YouTube video player", s.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", s.allowFullscreen = !0, n.appendChild(s), n.classList.add("crs2-people__card-media--playing"), f("video_play", "people", "click", "New 100 HMF V2");
         });
       });
     }
     bindStageVideo() {
       const n = document.querySelector("[data-crs2-video]"), e = n == null ? void 0 : n.querySelector("video"), r = n == null ? void 0 : n.querySelector(".crs2-stage__video-play");
       r == null || r.addEventListener("click", () => {
-        e && (e.controls = !0, e.play(), n == null || n.classList.add("crs2-stage__video-thumb--playing"), _("video_play", "stage", "click", "New 100 HMF V2"));
+        e && (e.controls = !0, e.play(), n == null || n.classList.add("crs2-stage__video-thumb--playing"), f("video_play", "stage", "click", "New 100 HMF V2"));
       });
     }
     bindMobileMenu() {
@@ -3391,7 +3391,7 @@
       document.querySelectorAll("[data-crs2-load-more]").forEach((n) => {
         n.addEventListener("click", () => {
           const e = n.closest("section");
-          e == null || e.classList.add(`${e.classList[0]}--show-all`), _("load_more_click", (e == null ? void 0 : e.classList[0]) || "unknown", "click", "New 100 HMF V2");
+          e == null || e.classList.add(`${e.classList[0]}--show-all`), f("load_more_click", (e == null ? void 0 : e.classList[0]) || "unknown", "click", "New 100 HMF V2");
         });
       });
     }
@@ -3412,7 +3412,7 @@
               r = a;
               break;
             }
-          _("cta_click", r, "click", "New 100 HMF V2"), (s = document.querySelector(".crs2-get-started__form")) == null || s.scrollIntoView({ behavior: "smooth", block: "start" });
+          f("cta_click", r, "click", "New 100 HMF V2"), (s = document.querySelector(".crs2-get-started__form")) == null || s.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
     }
@@ -3430,17 +3430,17 @@
         }, 1e3);
       }, g = async () => {
         var l;
-        a.textContent = "", a.className = "crs2-get-started__verify-msg", this.normalizedPhone = q(e.value), s.classList.add("crs2-get-started__verify--active"), v(), c.forEach((p) => {
+        a.textContent = "", a.className = "crs2-get-started__verify-msg", this.normalizedPhone = I(e.value), s.classList.add("crs2-get-started__verify--active"), v(), c.forEach((p) => {
           p.value = "", p.disabled = !1;
         }), (l = c[0]) == null || l.focus(), await fetch("https://app.theinvestorsedge.com/phone/verify/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phoneNumber: "+1" + this.normalizedPhone })
-        }), _("exp_sms_send_code", "Send code", "click", "New 100 HMF V2");
+        }), f("exp_sms_send_code", "Send code", "click", "New 100 HMF V2");
       };
       r.addEventListener("click", () => {
         if (!$(e.value)) {
-          x(e, "Please enter a valid phone number"), _("exp_sms_invalid_phone", "Invalid phone", "click", "New 100 HMF V2");
+          x(e, "Please enter a valid phone number"), f("exp_sms_invalid_phone", "Invalid phone", "click", "New 100 HMF V2");
           return;
         }
         y(e), g();
@@ -3449,15 +3449,15 @@
       });
       const z = async () => {
         var C;
-        const l = c.map((f) => f.value).join("");
+        const l = c.map((_) => _.value).join("");
         if (l.length !== 4 || this.phoneChecking) return;
         this.phoneChecking = !0;
         const p = await fetch("https://app.theinvestorsedge.com/phone/verify/check", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phoneNumber: "+1" + this.normalizedPhone, code: l })
-        }).then((f) => f.json());
-        p.success && ((C = p.verificationCheck) == null ? void 0 : C.status) === "approved" ? (this.phoneVerified = !0, c.forEach((f) => f.disabled = !0), this.verifyTimerInterval && clearInterval(this.verifyTimerInterval), d.style.display = "none", o.style.display = "none", a.innerHTML = `${i.verify_check} Phone verified`, a.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--success", _("exp_sms_verified", "Phone verified", "success", "New 100 HMF V2")) : (this.phoneChecking = !1, a.textContent = "Incorrect verification code", a.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--error");
+        }).then((_) => _.json());
+        p.success && ((C = p.verificationCheck) == null ? void 0 : C.status) === "approved" ? (this.phoneVerified = !0, c.forEach((_) => _.disabled = !0), this.verifyTimerInterval && clearInterval(this.verifyTimerInterval), d.style.display = "none", o.style.display = "none", a.innerHTML = `${i.verify_check} Phone verified`, a.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--success", f("exp_sms_verified", "Phone verified", "success", "New 100 HMF V2")) : (this.phoneChecking = !1, a.textContent = "Incorrect verification code", a.className = "crs2-get-started__verify-msg crs2-get-started__verify-msg--error");
       };
       c.forEach((l, p) => {
         l.addEventListener("input", () => {
@@ -3470,7 +3470,7 @@
     bindForm() {
       const n = document.querySelector("[data-crs2-lead-form]"), e = n == null ? void 0 : n.querySelector(".crs2-get-started__submit"), r = n == null ? void 0 : n.querySelector('input[name="email"]'), s = n == null ? void 0 : n.querySelector("[data-crs2-phone-input]"), o = document.createElement("p");
       o.className = "crs2-get-started__submit-error", r == null || r.addEventListener("blur", () => {
-        r.value.trim() && !I(r.value) && x(r, "Please enter a valid email address");
+        r.value.trim() && !F(r.value) && x(r, "Please enter a valid email address");
       }), r == null || r.addEventListener("input", () => y(r)), n == null || n.querySelectorAll("[required]").forEach((a) => {
         const d = () => y(a);
         a.addEventListener("input", d), a.addEventListener("change", d);
@@ -3479,13 +3479,13 @@
         a.preventDefault(), o.remove();
         const d = Array.from(n.querySelectorAll("[required]"));
         let c = null;
-        if (d.forEach((f) => {
-          f.value.trim() || (x(f, "This field is required"), c || (c = f));
+        if (d.forEach((_) => {
+          _.value.trim() || (x(_, "This field is required"), c || (c = _));
         }), c) {
           c.focus();
           return;
         }
-        if (r && !I(r.value)) {
+        if (r && !F(r.value)) {
           x(r, "Please enter a valid email address"), r.focus();
           return;
         }
@@ -3526,7 +3526,7 @@
               })
             }
           )).ok) throw new Error("HubSpot submit failed");
-          _("form_submit", "get_prequalified", "submit", "New 100 HMF V2"), window.location.href = "https://www.theinvestorsedge.com/confirmed-hard-money-financing";
+          f("form_submit", "get_prequalified", "submit", "New 100 HMF V2"), window.location.href = "https://www.theinvestorsedge.com/confirmed-hard-money-financing";
         } catch {
           o.textContent = "Something went wrong. Please try again.", (C = n.querySelector("[data-crs2-verify]")) == null || C.insertAdjacentElement("afterend", o);
         } finally {
@@ -3547,7 +3547,7 @@
         { selector: ".crs2-first-deal", desc: "first_deal" },
         { selector: ".crs2-get-started", desc: "get_started" }
       ].forEach(({ selector: e, desc: r }) => {
-        P(e, "block_view", "New 100 HMF V2", r);
+        B(e, "block_view", "New 100 HMF V2", r);
       });
     }
   }
