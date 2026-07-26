@@ -33,7 +33,7 @@
       event_type: t,
       event_loc: s
     }), l(`Event: ${n} | ${e} | ${t} | ${s}`, "success");
-  }, g = (n) => new Promise((e) => {
+  }, _ = (n) => new Promise((e) => {
     const t = document.querySelector(n);
     t && e(t);
     const s = new MutationObserver(() => {
@@ -44,7 +44,7 @@
       childList: !0,
       subtree: !0
     });
-  }), _ = ({ name: n, dev: e }) => {
+  }), g = ({ name: n, dev: e }) => {
     const t = n.toLowerCase().replace(/\s/g, "_");
     f(`${t}_started`, `Experiment ${n} started`, "other", t), console.log(
       `%c EXP: ${n} (DEV: ${e})`,
@@ -131,14 +131,14 @@
     }
     console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
   };
-  _({ name: "Install Page Rename", dev: "YK" });
+  g({ name: "Install Page Rename", dev: "YK" });
   const i = "https://conversionrate-store.github.io/a-b_images/adblock";
   class d {
     constructor() {
       this.init();
     }
     async init() {
-      await g("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${u}</style>`), l("Install Page Rename: "), r(".header__logo img").elements[0].setAttribute("src", `${i}/new-logo.svg`), r(".card__img_1 img").elements[0].src = `${i}/open.webp`, r(".card__img_1 img").elements[0].srcset = `${i}/open.webp`, r(".card__img_1 source").elements[0].srcset = `${i}/open.webp`, r(".card__img_2 img").elements[0].src = `${i}/approve.webp`, r(".card__img_2 img").elements[0].srcset = `${i}/approve.webp`, r(".card__img_2 source").elements[0].srcset = `${i}/approve.webp`, r(".card__img_3 img").elements[0].src = `${i}/install.webp`, r(".card__img_3 img").elements[0].srcset = `${i}/install.webp`, r(".card__img_3 source").elements[0].srcset = `${i}/install.webp`, r(".card__text strong").elements[0].innerHTML = "AdblockForYoutube_AdBlock360.exe", r(".card__text strong").elements[0].style.letterSpacing = "-0.8px";
+      await _("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${u}</style>`), l("Install Page Rename: "), r(".header__logo img").elements[0].setAttribute("src", `${i}/new_logo.svg`), r(".card__img_1 img").elements[0].src = `${i}/open.webp`, r(".card__img_1 img").elements[0].srcset = `${i}/open.webp`, r(".card__img_1 source").elements[0].srcset = `${i}/open.webp`, r(".card__img_2 img").elements[0].src = `${i}/approve.webp`, r(".card__img_2 img").elements[0].srcset = `${i}/approve.webp`, r(".card__img_2 source").elements[0].srcset = `${i}/approve.webp`, r(".card__img_3 img").elements[0].src = `${i}/install.webp`, r(".card__img_3 img").elements[0].srcset = `${i}/install.webp`, r(".card__img_3 source").elements[0].srcset = `${i}/install.webp`, r(".card__text strong").elements[0].innerHTML = "AdblockForYoutube_AdBlock360.exe", r(".card__text strong").elements[0].style.letterSpacing = "-0.8px";
     }
   }
   new d();
