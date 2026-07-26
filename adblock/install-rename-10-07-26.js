@@ -33,18 +33,18 @@
       event_type: t,
       event_loc: s
     }), l(`Event: ${n} | ${e} | ${t} | ${s}`, "success");
-  }, _ = (n) => new Promise((e) => {
+  }, g = (n) => new Promise((e) => {
     const t = document.querySelector(n);
     t && e(t);
     const s = new MutationObserver(() => {
       const o = document.querySelector(n);
       o && (e(o), s.disconnect());
     });
-    s.observe(document.documentElement, {
+    s.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: n, dev: e }) => {
+  }), _ = ({ name: n, dev: e }) => {
     const t = n.toLowerCase().replace(/\s/g, "_");
     f(`${t}_started`, `Experiment ${n} started`, "other", t), console.log(
       `%c EXP: ${n} (DEV: ${e})`,
@@ -131,20 +131,14 @@
     }
     console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
   };
-  g({ name: "Install Page Rename", dev: "YK" });
+  _({ name: "Install Page Rename", dev: "YK" });
   const i = "https://conversionrate-store.github.io/a-b_images/adblock";
   class d {
     constructor() {
       this.init();
     }
     async init() {
-      await _("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${u}</style>`), r(".header__wrapper").elements[0].insertAdjacentHTML(
-        "afterbegin",
-        `<div class="yt_block">
-				<img src="${i}/logo-youtube.svg" alt="AdblockYoutube Logo" />
-				<span>presents</span>
-			</div>`
-      ), l("Install Page Rename: "), r(".card__img_1 img").elements[0].src = `${i}/open.webp`, r(".card__img_1 img").elements[0].srcset = `${i}/open.webp`, r(".card__img_1 source").elements[0].srcset = `${i}/open.webp`, r(".card__img_2 img").elements[0].src = `${i}/approve.webp`, r(".card__img_2 img").elements[0].srcset = `${i}/approve.webp`, r(".card__img_2 source").elements[0].srcset = `${i}/approve.webp`, r(".card__img_3 img").elements[0].src = `${i}/install.webp`, r(".card__img_3 img").elements[0].srcset = `${i}/install.webp`, r(".card__img_3 source").elements[0].srcset = `${i}/install.webp`, r(".card__text strong").elements[0].innerHTML = "AdblockForYoutube_AdBlock360.exe", r(".card__text strong").elements[0].style.letterSpacing = "-0.8px";
+      await g("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${u}</style>`), l("Install Page Rename: "), r(".header__logo img").elements[0].setAttribute("src", `${i}/new-logo.svg`), r(".card__img_1 img").elements[0].src = `${i}/open.webp`, r(".card__img_1 img").elements[0].srcset = `${i}/open.webp`, r(".card__img_1 source").elements[0].srcset = `${i}/open.webp`, r(".card__img_2 img").elements[0].src = `${i}/approve.webp`, r(".card__img_2 img").elements[0].srcset = `${i}/approve.webp`, r(".card__img_2 source").elements[0].srcset = `${i}/approve.webp`, r(".card__img_3 img").elements[0].src = `${i}/install.webp`, r(".card__img_3 img").elements[0].srcset = `${i}/install.webp`, r(".card__img_3 source").elements[0].srcset = `${i}/install.webp`, r(".card__text strong").elements[0].innerHTML = "AdblockForYoutube_AdBlock360.exe", r(".card__text strong").elements[0].style.letterSpacing = "-0.8px";
     }
   }
   new d();
