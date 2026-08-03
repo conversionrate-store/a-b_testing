@@ -2324,7 +2324,7 @@
       const s = document.querySelector(t);
       s && (n(s), r.disconnect());
     });
-    r.observe(document.documentElement, {
+    r.observe(document, {
       childList: !0,
       subtree: !0
     });
@@ -2397,11 +2397,11 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const L = (t) => new w(t), P = (t) => {
+  const b = (t) => new w(t), P = (t) => {
     let n = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
     }, 1e3);
-  }, B = (t, n, e, r, s = 1e3, o = 0.5) => {
+  }, j = (t, n, e, r, s = 1e3, o = 0.5) => {
     let a, d;
     if (a = new IntersectionObserver(
       function(c) {
@@ -2437,27 +2437,27 @@
         break;
     }
     console.log(`%c>>> ${t}`, `${e} font-size: 16px; font-weight: 600`);
-  }, j = (
+  }, B = (
     /* HTML */
     `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
   <path d="M5.5 3.5L2 7L5.5 10.5" stroke="#0D2034" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
   <path d="M8.5 3.5L12 7L8.5 10.5" stroke="#0D2034" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>`
-  ), E = (t, n) => t ? `<img src="${t}" alt="${n}" loading="lazy" />` : "", N = (t = "", n = "", e = "Before and after") => (
+  ), M = (t, n) => t ? `<img src="${t}" alt="${n}" loading="lazy" />` : "", N = (t = "", n = "", e = "Before and after") => (
     /* HTML */
     `
   <div class="crs-ba-slider" data-crs-ba-slider>
     <div class="crs-ba-slider__frame">
       <div class="crs-ba-slider__image crs-ba-slider__image--before">
-        ${E(t, `Before — ${e}`)}
+        ${M(t, `Before — ${e}`)}
         <span class="crs-ba-slider__label crs-ba-slider__label--before">Before</span>
       </div>
       <div class="crs-ba-slider__image crs-ba-slider__image--after" data-crs-ba-after>
-        ${E(n, `After — ${e}`)}
+        ${M(n, `After — ${e}`)}
         <span class="crs-ba-slider__label crs-ba-slider__label--after">After</span>
       </div>
       <div class="crs-ba-slider__divider" data-crs-ba-divider>
-        <div class="crs-ba-slider__handle">${j}</div>
+        <div class="crs-ba-slider__handle">${B}</div>
       </div>
     </div>
   </div>
@@ -2573,7 +2573,7 @@
     a_rating: `${h}a-rating.webp`,
     clients_d: `${h}clients_d.svg`,
     clients_m: `${h}clients_m.svg`
-  }, M = {
+  }, E = {
     src: "https://23711988.fs1.hubspotusercontent-na1.net/hubfs/23711988/A%20-%20Website%20Videos/Ryan%20G.%20Wright/Ryan%20G.%20Wrights%20Story.mp4",
     poster: "https://23711988.fs1.hubspotusercontent-na1.net/hub/23711988/hubfs/custom-video-thumbnails/RyanGWright-Story-Cover.jpg?length=1920"
   }, W = [
@@ -2744,8 +2744,8 @@
         </div>
         <div class="crs2-stage__video">
           <div class="crs2-stage__video-thumb" data-crs2-video>
-            <video class="crs2-stage__video-el" poster="${M.poster}" playsinline preload="none">
-              <source src="${M.src}" type="video/mp4" />
+            <video class="crs2-stage__video-el" poster="${E.poster}" playsinline preload="none">
+              <source src="${E.src}" type="video/mp4" />
             </video>
             <button class="crs2-stage__video-play" aria-label="Play video">${i.play}</button>
           </div>
@@ -3233,7 +3233,7 @@
     </div>
   </section>
 `
-  ), b = (t, n, e) => (
+  ), y = (t, n, e) => (
     /*html*/
     `
   <label class="crs2-get-started__field">
@@ -3244,67 +3244,9 @@
     </select>
   </label>
 `
-  ), a1 = (
-    /*html*/
-    `
-  <section class="crs2-get-started" id="crs2-get-started">
-    <div class="crs2-get-started__container">
-      ${m("Get started")}
-      <h2 class="crs2-get-started__title">Get Prequalified For 100% Financing</h2>
-      <p class="crs2-get-started__desc">Free pre-qualification consultation. We'll discuss your goals, review your deal, and tell you exactly what you qualify for.</p>
-      <form class="crs2-get-started__form" data-crs2-lead-form novalidate>
-        <div class="crs2-get-started__fields">
-          <div class="crs2-get-started__row">
-            <label class="crs2-get-started__field">
-              <span>First Name <em>*</em></span>
-              <input type="text" name="first_name" placeholder="Type your Name" required />
-            </label>
-            <label class="crs2-get-started__field">
-              <span>Last Name <em>*</em></span>
-              <input type="text" name="last_name" placeholder="Type your Last Name" required />
-            </label>
-          </div>
-          <label class="crs2-get-started__field">
-            <span>Email <em>*</em></span>
-            <input type="email" name="email" placeholder="Type your Email" required />
-          </label>
-          <label class="crs2-get-started__field crs2-get-started__field--phone">
-            <span>Mobile Number <em>*</em></span>
-            <span class="crs2-get-started__phone-row">
-              <input type="tel" name="phone" placeholder="+ ___-___-__-__" required data-crs2-phone-input />
-              <button type="button" class="crs2-get-started__send-code" data-crs2-send-code>Send code</button>
-            </span>
-          </label>
-          <div class="crs2-get-started__verify" data-crs2-verify>
-            <div class="crs2-get-started__verify-head">
-              <span>Verify Phone Number <em>*</em></span>
-              <span class="crs2-get-started__verify-timer" data-crs2-verify-timer>00:59</span>
-            </div>
-            <div class="crs2-get-started__verify-row">
-              <input type="text" inputmode="numeric" maxlength="1" class="crs2-get-started__verify-digit" data-crs2-verify-digit />
-              <input type="text" inputmode="numeric" maxlength="1" class="crs2-get-started__verify-digit" data-crs2-verify-digit />
-              <input type="text" inputmode="numeric" maxlength="1" class="crs2-get-started__verify-digit" data-crs2-verify-digit />
-              <input type="text" inputmode="numeric" maxlength="1" class="crs2-get-started__verify-digit" data-crs2-verify-digit />
-            </div>
-            <p class="crs2-get-started__verify-msg" data-crs2-verify-msg></p>
-            <button type="button" class="crs2-get-started__verify-resend" data-crs2-verify-resend disabled>${i.verify_resend} Resend verification code</button>
-          </div>
-          ${b("State you want to invest in", "state", W)}
-          ${b("Do You Already Have a Property in Mind?", "has_property", ["Yes", "No"])}
-          ${b("How Much Experience Do You Have?", "experience", ["None — this would be my first deal", "1–2 deals", "3–5 deals", "6+ deals"])}
-          ${b("Amount of Money to Invest in Real Estate?", "invest_amount", ["$1,000 to $2,499", "$2,500 to $4,999", "$5,000 to $9,999", "$10,000 to $19,999", "$20,000 or more"])}
-        </div>
-        <label class="crs2-get-started__consent">
-          <input type="checkbox" name="consent" />
-          <span>By checking this box, I agree The Investor's Edge and its agents may contact me at the number above. Consent isn't required to purchase. See our Privacy Policy and Terms.</span>
-        </label>
-        <button type="submit" class="crs2-cta crs2-get-started__submit">See If This Is A Fit For You</button>
-        <p class="crs2-get-started__note">You'll receive email confirmation immediately after submitting</p>
-      </form>
-    </div>
-  </section>
-`
-  ), c1 = (
+  );
+  `${m("Get started")}${i.verify_resend}${y("State you want to invest in", "state", W)}${y("Do You Already Have a Property in Mind?", "has_property", ["Yes", "No"])}${y("How Much Experience Do You Have?", "experience", ["None — this would be my first deal", "1–2 deals", "3–5 deals", "6+ deals"])}${y("Amount of Money to Invest in Real Estate?", "invest_amount", ["$1,000 to $2,499", "$2,500 to $4,999", "$5,000 to $9,999", "$10,000 to $19,999", "$20,000 or more"])}`;
+  const a1 = (
     /*html*/
     `
   <section class="crs2_new_content_block">
@@ -3319,13 +3261,12 @@
     ${t1}
     ${i1}
     ${o1}
-    ${a1}
 		</div>
   </section>
 `
   );
   A({ name: "New 100 HMF V2", dev: "YK" }), P("new_100_hmf_v2");
-  const d1 = "23711988", l1 = "a57c4233-8531-4903-b847-b112ea2bdda4", I = (t) => {
+  const c1 = "23711988", d1 = "a57c4233-8531-4903-b847-b112ea2bdda4", I = (t) => {
     const n = t.replace(/\D/g, "");
     return n.length === 11 && n.startsWith("1") ? n.slice(1) : n;
   }, $ = (t) => {
@@ -3337,16 +3278,18 @@
     (s = e == null ? void 0 : e.querySelector(".crs2-get-started__field-error")) == null || s.remove();
     const r = document.createElement("span");
     r.className = "crs2-get-started__field-error", r.textContent = n, e == null || e.appendChild(r);
-  }, y = (t) => {
+  }, v = (t) => {
     var n, e;
     (e = (n = t.closest(".crs2-get-started__field")) == null ? void 0 : n.querySelector(".crs2-get-started__field-error")) == null || e.remove();
   };
-  class p1 {
+  class l1 {
     constructor() {
       this.verifyTimerInterval = null, this.verifyTimeLeft = 59, this.phoneVerified = !1, this.phoneChecking = !1, this.normalizedPhone = "", this.init();
     }
     async init() {
-      await H("#main-content"), L("head").elements[0].insertAdjacentHTML("beforeend", `<style>${q}</style>`), L("#main-content").elements[0].innerHTML = c1, V(), this.bindMobileMenu(), this.bindAccordion(), this.bindLoadMore(), this.bindCtaClicks(), this.bindForm(), this.bindStageVideo(), this.bindPeopleVideos(), this.bindReadMore(), this.bindPhoneVerification(), this.trackVisibility();
+      await H("#main-content"), b("head").elements[0].insertAdjacentHTML("beforeend", `<style>${q}</style>`);
+      const n = b(".row-number-73").elements[0].cloneNode(!0);
+      b("#main-content").elements[0].innerHTML = a1, b("#main-content").elements[0].appendChild(n), V(), this.bindMobileMenu(), this.bindAccordion(), this.bindLoadMore(), this.bindCtaClicks(), this.bindForm(), this.bindStageVideo(), this.bindPeopleVideos(), this.bindReadMore(), this.bindPhoneVerification(), this.trackVisibility();
     }
     bindReadMore() {
       document.querySelectorAll("[data-crs2-read-more]").forEach((n) => {
@@ -3382,7 +3325,7 @@
       });
     }
     bindAccordion() {
-      L("[data-crs2-accordion-trigger]").on("click", (n) => {
+      b("[data-crs2-accordion-trigger]").on("click", (n) => {
         const e = n.currentTarget, r = e.closest("[data-crs2-accordion-item]"), s = e.closest("[data-crs2-accordion]"), o = r == null ? void 0 : r.classList.contains("crs2-funding-process__item--open");
         s == null || s.querySelectorAll("[data-crs2-accordion-item]").forEach((a) => a.classList.remove("crs2-funding-process__item--open")), o || r == null || r.classList.add("crs2-funding-process__item--open");
       });
@@ -3412,7 +3355,7 @@
               r = a;
               break;
             }
-          f("cta_click", r, "click", "New 100 HMF V2"), (s = document.querySelector(".crs2-get-started__form")) == null || s.scrollIntoView({ behavior: "smooth", block: "start" });
+          f("cta_click", r, "click", "New 100 HMF V2"), (s = document.querySelector(".row-number-73")) == null || s.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
     }
@@ -3421,8 +3364,8 @@
       if (!n || !e || !r || !s || !o || !a || !d) return;
       e.addEventListener("blur", () => {
         e.value.trim() && !$(e.value) && x(e, "Please enter a valid phone number");
-      }), e.addEventListener("input", () => y(e));
-      const v = () => {
+      }), e.addEventListener("input", () => v(e));
+      const L = () => {
         this.verifyTimeLeft = 59, d.disabled = !0, this.verifyTimerInterval && clearInterval(this.verifyTimerInterval), this.verifyTimerInterval = setInterval(() => {
           this.verifyTimeLeft--;
           const l = Math.floor(this.verifyTimeLeft / 60), p = this.verifyTimeLeft % 60;
@@ -3430,7 +3373,7 @@
         }, 1e3);
       }, g = async () => {
         var l;
-        a.textContent = "", a.className = "crs2-get-started__verify-msg", this.normalizedPhone = I(e.value), s.classList.add("crs2-get-started__verify--active"), v(), c.forEach((p) => {
+        a.textContent = "", a.className = "crs2-get-started__verify-msg", this.normalizedPhone = I(e.value), s.classList.add("crs2-get-started__verify--active"), L(), c.forEach((p) => {
           p.value = "", p.disabled = !1;
         }), (l = c[0]) == null || l.focus(), await fetch("https://app.theinvestorsedge.com/phone/verify/send", {
           method: "POST",
@@ -3443,7 +3386,7 @@
           x(e, "Please enter a valid phone number"), f("exp_sms_invalid_phone", "Invalid phone", "click", "New 100 HMF V2");
           return;
         }
-        y(e), g();
+        v(e), g();
       }), d.addEventListener("click", () => {
         d.disabled || g();
       });
@@ -3471,8 +3414,8 @@
       const n = document.querySelector("[data-crs2-lead-form]"), e = n == null ? void 0 : n.querySelector(".crs2-get-started__submit"), r = n == null ? void 0 : n.querySelector('input[name="email"]'), s = n == null ? void 0 : n.querySelector("[data-crs2-phone-input]"), o = document.createElement("p");
       o.className = "crs2-get-started__submit-error", r == null || r.addEventListener("blur", () => {
         r.value.trim() && !F(r.value) && x(r, "Please enter a valid email address");
-      }), r == null || r.addEventListener("input", () => y(r)), n == null || n.querySelectorAll("[required]").forEach((a) => {
-        const d = () => y(a);
+      }), r == null || r.addEventListener("input", () => v(r)), n == null || n.querySelectorAll("[required]").forEach((a) => {
+        const d = () => v(a);
         a.addEventListener("input", d), a.addEventListener("change", d);
       }), n == null || n.addEventListener("submit", async (a) => {
         var l, p, C;
@@ -3497,8 +3440,8 @@
           o.textContent = "Please verify your phone number before submitting", (l = n.querySelector("[data-crs2-verify]")) == null || l.insertAdjacentElement("afterend", o);
           return;
         }
-        const v = n.querySelector('input[name="consent"]');
-        if (v && !v.checked) {
+        const L = n.querySelector('input[name="consent"]');
+        if (L && !L.checked) {
           o.textContent = "Please agree to be contacted before submitting", (p = n.querySelector(".crs2-get-started__consent")) == null || p.insertAdjacentElement("afterend", o);
           return;
         }
@@ -3516,12 +3459,12 @@
         e == null || e.setAttribute("disabled", "true");
         try {
           if (!(await fetch(
-            `https://api.hsforms.com/submissions/v3/integration/submit/${d1}/${l1}`,
+            `https://api.hsforms.com/submissions/v3/integration/submit/${c1}/${d1}`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                fields: Object.entries(z).map(([h1, g1]) => ({ name: h1, value: g1 })),
+                fields: Object.entries(z).map(([p1, h1]) => ({ name: p1, value: h1 })),
                 context: { pageUri: window.location.href, pageName: document.title }
               })
             }
@@ -3547,10 +3490,10 @@
         { selector: ".crs2-first-deal", desc: "first_deal" },
         { selector: ".crs2-get-started", desc: "get_started" }
       ].forEach(({ selector: e, desc: r }) => {
-        B(e, "block_view", "New 100 HMF V2", r);
+        j(e, "block_view", "New 100 HMF V2", r);
       });
     }
   }
-  new p1();
+  new l1();
 })();
 //# sourceMappingURL=index.js.map
