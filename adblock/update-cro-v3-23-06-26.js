@@ -1,6 +1,15 @@
 (function() {
   "use strict";
-  const x = `main,
+  const x = `exit-layer [class*=_popup__logo] img {
+  display: none;
+}
+
+exit-layer [class*=_popup__logo] svg {
+  width: 40px;
+  height: 40px;
+}
+
+main,
 footer {
   display: none !important;
 }
@@ -695,42 +704,42 @@ footer {
   font-weight: 700;
   color: #1b86fa;
   text-decoration: underline;
-}/*# sourceMappingURL=style.css.map */`, m = (t, e, n, s = "") => {
+}/*# sourceMappingURL=style.css.map */`, m = (i, e, n, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: t,
+      event_name: i,
       event_desc: e,
       event_type: n,
       event_loc: s
-    }), p(`Event: ${t} | ${e} | ${n} | ${s}`, "success");
-  }, h = (t) => new Promise((e) => {
-    const n = document.querySelector(t);
+    }), b(`Event: ${i} | ${e} | ${n} | ${s}`, "success");
+  }, h = (i) => new Promise((e) => {
+    const n = document.querySelector(i);
     n && e(n);
     const s = new MutationObserver(() => {
-      const a = document.querySelector(t);
+      const a = document.querySelector(i);
       a && (e(a), s.disconnect());
     });
     s.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), u = ({ name: t, dev: e }) => {
-    const n = t.toLowerCase().replace(/\s/g, "_");
-    m(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
-      `%c EXP: ${t} (DEV: ${e})`,
+  }), u = ({ name: i, dev: e }) => {
+    const n = i.toLowerCase().replace(/\s/g, "_");
+    m(`${n}_started`, `Experiment ${i} started`, "other", n), console.log(
+      `%c EXP: ${i} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class _ {
+  class f {
     constructor(e) {
-      this.elements = e instanceof _ ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof f ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, n, s) {
       return typeof n == "function" && (s = n, n = ""), this.elements.forEach((a) => {
         a.addEventListener(e, function(l) {
-          var b;
+          var _;
           if (n !== "") {
-            let o = (b = l.target) == null ? void 0 : b.closest(n);
+            let o = (_ = l.target) == null ? void 0 : _.closest(n);
             o && (s == null || s.call(o, l));
           } else
             s == null || s.call(a, l);
@@ -754,7 +763,7 @@ footer {
     }
     each(e) {
       for (let n of this.elements)
-        e(new _(n), this.elements.indexOf(n));
+        e(new f(n), this.elements.indexOf(n));
       return this;
     }
     style(e, n) {
@@ -765,7 +774,7 @@ footer {
     }
     find(e) {
       const n = this.elements.map((s) => Array.from(s.querySelectorAll(e)));
-      return new _(n.flat());
+      return new f(n.flat());
     }
     attr(e, n) {
       return n ? (this.elements.forEach(function(s) {
@@ -783,12 +792,12 @@ footer {
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const f = (t) => new _(t), w = async (t) => {
+  const p = (i) => new f(i), w = async (i) => {
     const e = (n) => new Promise((s, a) => {
       const l = n.split(".").pop();
       if (l === "js") {
         if (Array.from(document.scripts).map((d) => d.src.toLowerCase()).includes(n.toLowerCase()))
-          return p(`Script ${n} allready downloaded!`, "success"), s("");
+          return b(`Script ${n} allready downloaded!`, "success"), s("");
         const o = document.createElement("script");
         o.src = n, o.onload = s, o.onerror = a, document.head.appendChild(o);
       } else if (l === "css") {
@@ -796,15 +805,15 @@ footer {
           var c;
           return (c = d.href) == null ? void 0 : c.toLowerCase();
         }).includes(n.toLowerCase()))
-          return p(`Style ${n} allready downloaded!`, "success"), s("");
+          return b(`Style ${n} allready downloaded!`, "success"), s("");
         const o = document.createElement("link");
         o.rel = "stylesheet", o.href = n, o.onload = s, o.onerror = a, document.head.appendChild(o);
       }
     });
-    for (const n of t)
-      p(n), await e(n), p(`Loaded librari ${n}`);
-    p("All libraries loaded!", "success");
-  }, p = (t, e = "info") => {
+    for (const n of i)
+      b(n), await e(n), b(`Loaded librari ${n}`);
+    b("All libraries loaded!", "success");
+  }, b = (i, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -820,8 +829,11 @@ footer {
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
-  }, r = "https://conversionrate-store.github.io/a-b_images/adblock/", i = {
+    console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
+  }, r = "https://conversionrate-store.github.io/a-b_images/adblock/", v = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+<path d="M6.34629 0.133628C2.82149 0.383228 2.32229 0.558428 1.29669 2.08323C0.371894 3.43443 0.196694 4.95843 0.0462943 12.7336C-0.153706 24.0832 0.246294 27.0336 2.19669 28.6832C2.97189 29.3336 2.87189 29.3088 9.09669 29.7832C12.2967 30.0336 17.1463 30.0336 20.3463 29.7832C26.8967 29.2832 26.4463 29.3584 27.4967 28.4336C28.8471 27.2336 29.1471 25.9832 29.4967 20.408C29.9215 13.384 29.4215 4.48323 28.4967 2.65843C27.6967 1.08323 26.8967 0.533628 25.1463 0.308028C22.5223 0.00802763 9.77189 -0.115972 6.34629 0.133628ZM23.0463 3.50803C24.2223 3.70803 25.3463 4.78323 25.7463 6.05843C26.1223 7.30883 26.3223 18.1584 26.0215 20.9832C25.7719 23.5088 25.2471 24.8832 24.2967 25.4832C23.2967 26.1584 16.0967 26.5088 10.4719 26.1832C5.42149 25.9088 4.99669 25.7584 4.14629 24.0584C3.42149 22.608 3.04629 15.6832 3.42149 10.4832C3.84629 4.28323 4.27189 3.68323 8.37189 3.35843C11.0215 3.13363 21.4719 3.25843 23.0463 3.50883V3.50803Z" fill="#d61717"/>
+<path d="M7.72266 14.6084V22.4828L11.4227 18.7828C13.4475 16.758 15.1979 15.1084 15.2979 15.1084C15.3979 15.1084 15.4723 16.758 15.4723 18.7828V22.4828L19.3979 18.5332L23.3475 14.6076L19.3979 10.6828L15.4723 6.73322V10.4332C15.4723 12.458 15.3979 14.1084 15.2979 14.1084C15.1979 14.1084 13.4475 12.458 11.4227 10.4324L7.72266 6.73242V14.6084Z" fill="#d61717"/>
+</svg>`, t = {
     greenCheck: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
 <path d="M14.3165 0.298415C14.7016 -0.0994735 15.326 -0.0994702 15.7111 0.298415C16.0963 0.696306 16.0963 1.34126 15.7111 1.73915L6.06724 11.7016C5.68207 12.0995 5.05774 12.0995 4.67257 11.7016L0.288876 7.17308C-0.096292 6.77519 -0.096292 6.13024 0.288876 5.73235C0.674044 5.33446 1.29838 5.33446 1.68354 5.73235L5.36991 9.54048L14.3165 0.298415Z" fill="#0BA43F"/>
 </svg>`,
@@ -892,7 +904,7 @@ footer {
     system: `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
 <path d="M43.9494 48.0484H6.04941C3.79941 48.0484 1.89941 46.1984 1.89941 43.8984V6.04844C1.89941 3.79844 3.74941 1.89844 6.04941 1.89844H43.9494C46.1994 1.89844 48.0994 3.74844 48.0994 6.04844V43.9484C48.0494 46.1984 46.1994 48.0484 43.9494 48.0484ZM3.94941 10.3984V43.9484C3.94941 45.0984 4.89941 46.0984 6.09941 46.0984H43.9994C45.1494 46.0984 46.1494 45.1484 46.1494 43.9484V10.3984H3.94941ZM3.94941 8.39844H46.0994V6.09844C46.0994 4.94844 45.1494 3.94844 43.9494 3.94844H6.04941C4.89941 3.94844 3.89941 4.89844 3.89941 6.09844V8.39844H3.94941ZM34.3994 43.1984H15.6494C14.0494 43.1984 12.6994 41.8984 12.6994 40.2484V28.1984C12.6994 26.5984 13.9994 25.2484 15.6494 25.2484H16.7994V20.6484C16.7994 16.0984 20.4994 12.4484 24.9994 12.4484C29.4994 12.4484 33.1994 16.1484 33.1994 20.6484V25.2484H34.3494C35.9494 25.2484 37.2994 26.5484 37.2994 28.1984V40.2484C37.2994 41.8484 35.9994 43.1984 34.3994 43.1984ZM15.6494 27.2484C15.1494 27.2484 14.6994 27.6484 14.6994 28.1984V40.2484C14.6994 40.7484 15.0994 41.1984 15.6494 41.1984H34.3994C34.8994 41.1984 35.3494 40.7984 35.3494 40.2484V28.1984C35.3494 27.6984 34.9494 27.2484 34.3994 27.2484H15.6494ZM30.1994 25.2484H31.1994V20.6484C31.1994 17.1984 28.3994 14.4484 24.9994 14.4484C21.5994 14.4484 18.7994 17.2484 18.7994 20.6484V25.2484H19.7994V20.6484C19.7994 17.7484 22.1494 15.4484 24.9994 15.4484C27.8494 15.4484 30.1994 17.7984 30.1994 20.6484V25.2484ZM21.7994 25.2484H28.2494V20.6484C28.2494 18.8984 26.7994 17.4484 25.0494 17.4484C23.2994 17.4484 21.8494 18.8984 21.8494 20.6484V25.2484H21.7994ZM24.9994 39.1984C24.4494 39.1984 23.9994 38.7484 23.9994 38.1984V36.1484C22.7494 35.7484 21.7994 34.5484 21.7994 33.0984C21.7994 31.3484 23.2494 29.8984 24.9994 29.8984C26.7494 29.8984 28.1994 31.3484 28.1994 33.0984C28.1994 34.4984 27.2994 35.6984 25.9994 36.1484V38.1984C25.9994 38.7484 25.5494 39.1984 24.9994 39.1984ZM24.9994 31.9484C24.3494 31.9484 23.7994 32.4984 23.7994 33.1484C23.7994 33.7984 24.3494 34.3484 24.9994 34.3484C25.6494 34.3484 26.1994 33.7984 26.1994 33.1484C26.1994 32.4984 25.6494 31.9484 24.9994 31.9484ZM42.3994 7.14844H29.2994C28.7494 7.14844 28.2994 6.69844 28.2994 6.14844C28.2994 5.59844 28.7494 5.14844 29.2994 5.14844H42.3494C42.8994 5.14844 43.3494 5.59844 43.3494 6.14844C43.3494 6.69844 42.9494 7.14844 42.3994 7.14844ZM17.7494 7.14844H13.8494C13.2994 7.14844 12.8494 6.69844 12.8494 6.14844C12.8494 5.59844 13.2994 5.14844 13.8494 5.14844H17.7494C18.2994 5.14844 18.7494 5.59844 18.7494 6.14844C18.7494 6.69844 18.2994 7.14844 17.7494 7.14844ZM10.9994 7.14844H6.14941C5.59941 7.14844 5.14941 6.69844 5.14941 6.14844C5.14941 5.59844 5.59941 5.14844 6.14941 5.14844H10.9994C11.5494 5.14844 11.9994 5.59844 11.9994 6.14844C11.9994 6.69844 11.5494 7.14844 10.9994 7.14844Z" fill="#2E353F"/>
 </svg>`
-  }, v = "https://adblock-for-y.com/_astro/horizontal-aby-logo.Be8n11XS_Z16OF2d.svg", g = r + "new_logo.svg", y = r + "ev_code.webp", L = r + "app_cert.webp", k = r + "no_data.webp", M = r + "cybernews.webp", H = r + "spotify_1.webp", V = r + "browsers.webp", Z = r + "youtube_1.webp", $ = r + "cookies.webp", A = r + "browser_tab.webp", E = (
+  }, y = "https://adblock-for-y.com/_astro/horizontal-aby-logo.Be8n11XS_Z16OF2d.svg", g = r + "new_logo.svg", L = r + "ev_code.webp", k = r + "app_cert.webp", M = r + "no_data.webp", H = r + "cybernews.webp", V = r + "spotify_1.webp", Z = r + "browsers.webp", $ = r + "youtube_1.webp", A = r + "cookies.webp", E = r + "browser_tab.webp", z = (
     /* HTML */
     `
   <section class="ab360-s1">
@@ -911,11 +923,11 @@ footer {
         </div>
         <div class="ab360-s1__actions">
           <a href="#" class="ab360-s1__btn">
-            ${i.windows}
+            ${t.windows}
             <span>Download AdBlock360</span>
           </a>
           <div class="ab360-s1__trust">
-            ${i.trusted}
+            ${t.trusted}
             <span>Trusted by 17M users</span>
           </div>
         </div>
@@ -926,7 +938,7 @@ footer {
         <div class="ab360-s1__table-head">
           <span></span>
           <span class="ab360-s1__table-col">
-            <img src="${v}" alt="Adblock for Youtube™" />
+            <img src="${y}" alt="Adblock for Youtube™" />
           </span>
           <span class="ab360-s1__table-col">
             <img src="${g}" alt="AdBlock360" />
@@ -934,33 +946,33 @@ footer {
         </div>
         <div class="ab360-s1__row ab360-s1__row--alt">
           <span class="ab360-s1__row-label">YouTube ads</span>
-          <span class="ab360-s1__row-icon">${i.greenCheck}</span>
-          <span class="ab360-s1__row-icon">${i.greenCheck}</span>
+          <span class="ab360-s1__row-icon">${t.greenCheck}</span>
+          <span class="ab360-s1__row-icon">${t.greenCheck}</span>
         </div>
         <div class="ab360-s1__row">
           <span class="ab360-s1__row-label">YouTube sponsor segment skip</span>
-          <span class="ab360-s1__row-icon">${i.redCross}</span>
-          <span class="ab360-s1__row-icon">${i.greenCheck}</span>
+          <span class="ab360-s1__row-icon">${t.redCross}</span>
+          <span class="ab360-s1__row-icon">${t.greenCheck}</span>
         </div>
         <div class="ab360-s1__row ab360-s1__row--alt">
           <span class="ab360-s1__row-label">Spotify &amp; desktop apps</span>
-          <span class="ab360-s1__row-icon">${i.redCross}</span>
-          <span class="ab360-s1__row-icon">${i.greenCheck}</span>
+          <span class="ab360-s1__row-icon">${t.redCross}</span>
+          <span class="ab360-s1__row-icon">${t.greenCheck}</span>
         </div>
         <div class="ab360-s1__row">
           <span class="ab360-s1__row-label">All browsers</span>
-          <span class="ab360-s1__row-icon">${i.redCross}</span>
-          <span class="ab360-s1__row-icon">${i.greenCheck}</span>
+          <span class="ab360-s1__row-icon">${t.redCross}</span>
+          <span class="ab360-s1__row-icon">${t.greenCheck}</span>
         </div>
         <div class="ab360-s1__row ab360-s1__row--alt">
           <span class="ab360-s1__row-label">All websites</span>
-          <span class="ab360-s1__row-icon">${i.redCross}</span>
-          <span class="ab360-s1__row-icon">${i.greenCheck}</span>
+          <span class="ab360-s1__row-icon">${t.redCross}</span>
+          <span class="ab360-s1__row-icon">${t.greenCheck}</span>
         </div>
         <div class="ab360-s1__row ab360-s1__row--last">
           <span class="ab360-s1__row-label">Cookie consent auto-denial</span>
-          <span class="ab360-s1__row-icon">${i.redCross}</span>
-          <span class="ab360-s1__row-icon">${i.greenCheck}</span>
+          <span class="ab360-s1__row-icon">${t.redCross}</span>
+          <span class="ab360-s1__row-icon">${t.greenCheck}</span>
         </div>
       </div>
     </div>
@@ -982,34 +994,34 @@ footer {
     <!-- End TrustBox widget -->
   </section>
 `
-  ), z = (
+  ), S = (
     /* HTML */
     `
   <section class="ab360-s2">
     <div class="ab360-s2__inner">
       <div class="ab360-s2__badge">
-        <img src="${y}" alt="EV Code Signed" class="ab360-s2__badge-icon" />
+        <img src="${L}" alt="EV Code Signed" class="ab360-s2__badge-icon" />
         <div class="ab360-s2__badge-info">
           <h3 class="ab360-s2__badge-title">EV Code Signed</h3>
           <p class="ab360-s2__badge-desc">Your OS verifies our identity<br />before install</p>
         </div>
       </div>
       <div class="ab360-s2__badge">
-        <img src="${L}" alt="AppEsteem Certified" class="ab360-s2__badge-icon ab360-s2__badge-icon--wide" />
+        <img src="${k}" alt="AppEsteem Certified" class="ab360-s2__badge-icon ab360-s2__badge-icon--wide" />
         <div class="ab360-s2__badge-info">
           <h3 class="ab360-s2__badge-title">AppEsteem Certified</h3>
           <p class="ab360-s2__badge-desc">Independently audited.<br />No bundleware</p>
         </div>
       </div>
       <div class="ab360-s2__badge">
-        <img src="${k}" alt="No data collection" class="ab360-s2__badge-icon" />
+        <img src="${M}" alt="No data collection" class="ab360-s2__badge-icon" />
         <div class="ab360-s2__badge-info">
           <h3 class="ab360-s2__badge-title">No data collection</h3>
           <p class="ab360-s2__badge-desc">Zero personal data collected — only anonymized crash reports</p>
         </div>
       </div>
       <div class="ab360-s2__badge">
-        <img src="${M}" alt="Cybernews verified" class="ab360-s2__badge-icon" />
+        <img src="${H}" alt="Cybernews verified" class="ab360-s2__badge-icon" />
         <div class="ab360-s2__badge-info">
           <h3 class="ab360-s2__badge-title">Cybernews verified</h3>
           <p class="ab360-s2__badge-desc">
@@ -1022,7 +1034,7 @@ footer {
     </div>
   </section>
 `
-  ), S = (
+  ), j = (
     /* HTML */
     `
   <section class="ab360-s3">
@@ -1034,21 +1046,21 @@ footer {
     </div>
     <div class="ab360-s3__cards">
       <div class="ab360-s3__card">
-        <img src="${H}" alt="" class="ab360-s3__card-img" />
+        <img src="${V}" alt="" class="ab360-s3__card-img" />
         <div class="ab360-s3__card-body">
           <h3 class="ab360-s3__card-title">No more Spotify interruptions</h3>
           <p class="ab360-s3__card-desc">Blocks audio ads in the desktop app — before they<br />reach your speakers.</p>
         </div>
       </div>
       <div class="ab360-s3__card">
-        <img src="${V}" alt="" class="ab360-s3__card-img" />
+        <img src="${Z}" alt="" class="ab360-s3__card-img" />
         <div class="ab360-s3__card-body">
           <h3 class="ab360-s3__card-title">Every browser. Zero ads</h3>
           <p class="ab360-s3__card-desc">Chrome, Edge, Firefox — blocked simultaneously.<br />No extra extensions.</p>
         </div>
       </div>
       <div class="ab360-s3__card">
-        <img src="${Z}" alt="" class="ab360-s3__card-img" />
+        <img src="${$}" alt="" class="ab360-s3__card-img" />
         <div class="ab360-s3__card-body">
           <h3 class="ab360-s3__card-title">YouTube without sponsored segments</h3>
           <p class="ab360-s3__card-desc">
@@ -1057,7 +1069,7 @@ footer {
         </div>
       </div>
       <div class="ab360-s3__card">
-        <img src="${$}" alt="" class="ab360-s3__card-img" />
+        <img src="${A}" alt="" class="ab360-s3__card-img" />
         <div class="ab360-s3__card-body">
           <h3 class="ab360-s3__card-title">Cookie popups — gone</h3>
           <p class="ab360-s3__card-desc">Every consent banner auto-dismissed.<br />No more "reject all".</p>
@@ -1066,28 +1078,28 @@ footer {
     </div>
     <div class="ab360-s3__features">
       <div class="ab360-s3__feature">
-        <div class="ab360-s3__feature-icon">${i.popups}</div>
+        <div class="ab360-s3__feature-icon">${t.popups}</div>
         <div class="ab360-s3__feature-body">
           <h4 class="ab360-s3__feature-title">Popups &amp; autoplay blocked</h4>
           <p class="ab360-s3__feature-desc">No more tabs hijacking your screen mid-browse.</p>
         </div>
       </div>
       <div class="ab360-s3__feature">
-        <div class="ab360-s3__feature-icon">${i.noAd}</div>
+        <div class="ab360-s3__feature-icon">${t.noAd}</div>
         <div class="ab360-s3__feature-body">
           <h4 class="ab360-s3__feature-title">No ad retargeting</h4>
           <p class="ab360-s3__feature-desc">Trackers can't follow you<br />across sites.</p>
         </div>
       </div>
       <div class="ab360-s3__feature">
-        <div class="ab360-s3__feature-icon">${i.pageLoads}</div>
+        <div class="ab360-s3__feature-icon">${t.pageLoads}</div>
         <div class="ab360-s3__feature-body">
           <h4 class="ab360-s3__feature-title">Faster page loads</h4>
           <p class="ab360-s3__feature-desc">Pages without ad scripts load noticeably quicker.</p>
         </div>
       </div>
       <div class="ab360-s3__feature">
-        <div class="ab360-s3__feature-icon">${i.phishing}</div>
+        <div class="ab360-s3__feature-icon">${t.phishing}</div>
         <div class="ab360-s3__feature-body">
           <h4 class="ab360-s3__feature-title">Phishing protection</h4>
           <p class="ab360-s3__feature-desc">Malicious sites blocked before<br />they open.</p>
@@ -1096,7 +1108,7 @@ footer {
     </div>
   </section>
 `
-  ), j = (
+  ), B = (
     /* HTML */
     `
   <section class="ab360-s4">
@@ -1123,18 +1135,18 @@ footer {
         </div>
       </div>
       <div class="ab360-s4__right">
-        <img src="${A}" alt="Cybernews security review of AdBlock360" class="ab360-s4__mockup" />
+        <img src="${E}" alt="Cybernews security review of AdBlock360" class="ab360-s4__mockup" />
       </div>
     </div>
   </section>
 `
-  ), B = (
+  ), T = (
     /* HTML */
     `
   <section class="ab360-s5">
     <div class="ab360-s5__content">
       <div class="ab360-s5__main">
-        <div class="ab360-s5__icon">${i.system}</div>
+        <div class="ab360-s5__icon">${t.system}</div>
         <div class="ab360-s5__body">
           <h3 class="ab360-s5__title">Why does it need system access?</h3>
           <p class="ab360-s5__desc">
@@ -1156,12 +1168,12 @@ footer {
     </div>
   </section>
 `
-  ), T = (
+  ), q = (
     /* HTML */
     `
-  <div class="ab360-yes">${E} ${z} ${S} ${j} ${B}</div>
+  <div class="ab360-yes">${z} ${S} ${j} ${B} ${T}</div>
 `
-  ), q = (
+  ), F = (
     /* HTML */
     `
   <section class="ab360-main">
@@ -1202,13 +1214,15 @@ footer {
 `
   );
   w(["//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]), u({ name: "Adblock Update V3", dev: "YK" });
-  class F {
+  class Y {
     constructor() {
       this.init();
     }
     async init() {
-      await h("body"), f("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${x}</style>`), f(".update").elements[0].insertAdjacentHTML("afterend", q), await h(".ab360-main__btn--yes");
-      const e = document.querySelector(".ab360-main__btn--yes"), n = document.querySelector(".ab360-main__btn--no"), s = (a) => new Promise((l) => {
+      await h("body"), p("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${x}</style>`), p(".update").elements[0].insertAdjacentHTML("afterend", F), await h(".ab360-main__btn--yes");
+      const e = document.querySelector(".ab360-main__btn--yes"), n = document.querySelector(".ab360-main__btn--no");
+      p('exit-layer [class*="_popup__logo"]').elements[0].insertAdjacentHTML("afterbegin", v), p("exit-layer h3").elements[0].innerHTML = "AdBlock for YouTube Desktop: Choose what you want to block";
+      const s = (a) => new Promise((l) => {
         a.style.opacity = "0", a.addEventListener(
           "transitionend",
           () => {
@@ -1221,11 +1235,11 @@ footer {
         if (a.preventDefault(), !document.querySelector(".ab360-yes")) {
           const l = document.querySelector(".ab360-main");
           s(l).then(() => {
-            l.insertAdjacentHTML("afterend", T);
-            const b = document.querySelector(".ab360-yes");
+            l.insertAdjacentHTML("afterend", q);
+            const _ = document.querySelector(".ab360-yes");
             requestAnimationFrame(
               () => requestAnimationFrame(() => {
-                b.style.opacity = "1";
+                _.style.opacity = "1";
               })
             );
             const o = () => {
@@ -1235,17 +1249,17 @@ footer {
             o();
             const d = document.querySelector(".ab360-s1__btn");
             d == null || d.addEventListener("click", (c) => {
-              c.preventDefault(), f("#main-cta").elements[0].click();
+              c.preventDefault(), p("#main-cta").elements[0].click();
             });
           });
         }
       }), n == null || n.addEventListener("click", (a) => {
         a.preventDefault();
-        const l = f(".ab360-main").elements[0];
+        const l = p(".ab360-main").elements[0];
         s(l);
       });
     }
   }
-  new F();
+  new Y();
 })();
 //# sourceMappingURL=index.js.map
