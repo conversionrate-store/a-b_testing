@@ -263,14 +263,14 @@
 
   async function initExp() {
       await waitFor(() => document.head && document.body && _$('#app>div'), false, { ms: 20 })
+      // if (!isAccount && !isItem) return
+      if (location.pathname.includes('/checkout/') === false || document.querySelectorAll('.lav-protected--desktop').length>0) return
+      
+      _$('#app>div').appendChild(stylesEl)
+      
+      console.debug('** InitExp **')
       const isAccount = exposedData?.order_type === 'Account'
       const isItem = exposedData?.order_type === 'Item'
-      // if (!isAccount && !isItem) return
-    if (location.pathname.includes('/checkout/') === false || document.querySelectorAll('.lav-protected--desktop').length>0) return
-
-    _$('#app>div').appendChild(stylesEl)
-
-    console.debug('** InitExp **')
     handleHeader();
     if (isAccount) {
       handleWarranty();
