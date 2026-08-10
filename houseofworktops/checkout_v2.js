@@ -826,6 +826,14 @@ body:has(.checkout-info.payment-info:not(.d-none)) h1.h4 {
   .exp-paypal-sticky-shown #CookiebotWidget:not(.CookiebotWidget-inactive) {
     bottom: 60px;
   }
+
+  /* The bar is \`fixed\`, so it takes no space in the flow and covers the end of
+     the footer once the page is scrolled all the way down. Reserve its height at
+     the bottom of the footer — on the footer rather than \`<body>\` so the padding
+     carries the footer's own background instead of opening a strip of white. */
+  .exp-paypal-sticky-shown footer {
+    padding-bottom: calc(52px + env(safe-area-inset-bottom)) !important;
+  }
 }
 `,me=`.express-checkout-cart`,Z=`#paypal-express-btn`,Q=`d-none`,he=`exp-paypal-sticky`,ge=`exp-paypal-sticky--visible`,$=`exp-paypal-sticky-shown`,_e=class{constructor(){this.scrolledPast=!1,this.init()}async init(){this.addStyles(),this.wrapper=await t(me),this.addDivider(),this.trackClick(),this.addSticky(),this.syncStep(),this.observeSteps()}trackClick(){this.wrapper.addEventListener(`click`,t=>{t.target.closest(`#paypal-express-btn`)&&e(`exp_paypal_1`,`PayPal Express Payment`,`click`,`Checkout. Delivery`)},!0)}addStyles(){let e=document.createElement(`style`);e.textContent=pe,document.head.appendChild(e)}addDivider(){if(this.wrapper.querySelector(`.exp-paypal-express__or`))return;let e=document.createElement(`div`);e.className=`exp-or-divider exp-paypal-express__or`,e.innerHTML=`<span class="exp-or-line"></span><span class="exp-or-text">OR</span><span class="exp-or-line"></span>`,this.wrapper.appendChild(e)}addSticky(){let e=this.wrapper.querySelector(Z);if(!e||this.sticky)return;let t=document.createElement(`button`);t.type=`button`,t.className=he,t.setAttribute(`aria-label`,`Checkout with PayPal`);let n=e.querySelector(`img`);n&&t.appendChild(n.cloneNode(!0)),t.addEventListener(`click`,()=>this.wrapper.querySelector(Z)?.click()),document.body.appendChild(t),this.sticky=t,new IntersectionObserver(([e])=>{this.scrolledPast=!e.isIntersecting&&e.boundingClientRect.top<0,this.syncSticky()},{threshold:0}).observe(e)}syncSticky(){if(!this.sticky)return;let e=this.scrolledPast&&!this.wrapper.classList.contains(Q);this.sticky.classList.toggle(ge,e),document.body.classList.toggle($,e)}syncStep(){if(!document.querySelectorAll(`.checkout-info`).length)return;let e=document.querySelector(`.checkout-info.delivery-info`),t=!!e&&!e.classList.contains(Q);this.wrapper.classList.toggle(Q,!t),this.syncSticky()}observeSteps(){let e=new MutationObserver(()=>this.syncStep());document.querySelectorAll(`.checkout-info`).forEach(t=>e.observe(t,{attributes:!0,attributeFilter:[`class`]}))}},ve=`/* Footer relocation of "Need Help?", "Secured Payments by", the Trusted Shops
    badge and the privacy note — designs 2122:1604 (desktop) / 2122:2495 (mobile).
