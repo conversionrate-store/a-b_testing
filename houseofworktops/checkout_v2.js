@@ -773,26 +773,37 @@ body:has(.checkout-info.payment-info:not(.d-none)) h1.h4 {
 /* Sticky repeat of the express button (design 3261:980): once the in-page button
    has scrolled off the top of the viewport it comes back as a full-bleed bar
    pinned to the bottom, so express checkout stays one tap away while the user
-   works down the form. */
+   works down the form.
+
+   The fixed element is a plain wrapper, not the yellow button itself: it holds
+   the yellow off the bottom edge of the viewport with a white gutter. Safari on
+   iOS puts its URL bar at the bottom and tints it from what is rendered right
+   under it; a full-bleed yellow bar turned the whole browser chrome yellow. The
+   gutter is a flat 10px, not \`env(safe-area-inset-bottom)\` — that inset is 0 in
+   normal Safari, since the layout viewport already stops above the toolbar, and
+   only becomes non-zero (home indicator) where there is no toolbar to tint. */
 .exp-paypal-sticky {
   position: fixed;
   inset: auto 0 0;
   z-index: 1030; /* Bootstrap's \`.fixed-bottom\` layer */
+  padding: 0 0 calc(4px + env(safe-area-inset-bottom));
+  background-color: #fff;
+  /* Parked below the fold rather than \`display: none\` so it can slide in. */
+  transform: translateY(100%);
+  visibility: hidden;
+  transition: transform 0.2s ease, visibility 0.2s;
+}
+
+.exp-paypal-sticky__btn {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   min-height: 52px;
   padding: 0 16px;
-  /* Extends the yellow under the iOS home indicator so the tap target is clear of it. */
-  padding-bottom: env(safe-area-inset-bottom);
   border: 0;
   border-radius: 4px;
   background-color: #ffc439;
-  /* Parked below the fold rather than \`display: none\` so it can slide in. */
-  transform: translateY(100%);
-  visibility: hidden;
-  transition: transform 0.2s ease, visibility 0.2s;
 }
 
 .exp-paypal-sticky--visible {
@@ -802,7 +813,7 @@ body:has(.checkout-info.payment-info:not(.d-none)) h1.h4 {
 
 /* Design has the logo at 82.8×22; the site's asset is 70×20, so height it and let
    the width follow rather than stretching the bitmap. */
-.exp-paypal-sticky img {
+.exp-paypal-sticky__btn img {
   width: auto;
   height: 22px;
 }
@@ -824,7 +835,7 @@ body:has(.checkout-info.payment-info:not(.d-none)) h1.h4 {
    one the control's own rule targets. */
 @media (max-width: 767.98px) {
   .exp-paypal-sticky-shown #CookiebotWidget:not(.CookiebotWidget-inactive) {
-    bottom: 60px;
+    bottom: calc(70px + env(safe-area-inset-bottom));
   }
 
   /* The bar is \`fixed\`, so it takes no space in the flow and covers the end of
@@ -832,10 +843,10 @@ body:has(.checkout-info.payment-info:not(.d-none)) h1.h4 {
      the bottom of the footer — on the footer rather than \`<body>\` so the padding
      carries the footer's own background instead of opening a strip of white. */
   .exp-paypal-sticky-shown footer {
-    padding-bottom: calc(52px + env(safe-area-inset-bottom)) !important;
+    padding-bottom: calc(62px + env(safe-area-inset-bottom)) !important;
   }
 }
-`,me=`.express-checkout-cart`,Z=`#paypal-express-btn`,Q=`d-none`,he=`exp-paypal-sticky`,ge=`exp-paypal-sticky--visible`,$=`exp-paypal-sticky-shown`,_e=class{constructor(){this.scrolledPast=!1,this.init()}async init(){this.addStyles(),this.wrapper=await t(me),this.addDivider(),this.trackClick(),this.addSticky(),this.syncStep(),this.observeSteps()}trackClick(){this.wrapper.addEventListener(`click`,t=>{t.target.closest(`#paypal-express-btn`)&&e(`exp_paypal_1`,`PayPal Express Payment`,`click`,`Checkout. Delivery`)},!0)}addStyles(){let e=document.createElement(`style`);e.textContent=pe,document.head.appendChild(e)}addDivider(){if(this.wrapper.querySelector(`.exp-paypal-express__or`))return;let e=document.createElement(`div`);e.className=`exp-or-divider exp-paypal-express__or`,e.innerHTML=`<span class="exp-or-line"></span><span class="exp-or-text">OR</span><span class="exp-or-line"></span>`,this.wrapper.appendChild(e)}addSticky(){let e=this.wrapper.querySelector(Z);if(!e||this.sticky)return;let t=document.createElement(`button`);t.type=`button`,t.className=he,t.setAttribute(`aria-label`,`Checkout with PayPal`);let n=e.querySelector(`img`);n&&t.appendChild(n.cloneNode(!0)),t.addEventListener(`click`,()=>this.wrapper.querySelector(Z)?.click()),document.body.appendChild(t),this.sticky=t,new IntersectionObserver(([e])=>{this.scrolledPast=!e.isIntersecting&&e.boundingClientRect.top<0,this.syncSticky()},{threshold:0}).observe(e)}syncSticky(){if(!this.sticky)return;let e=this.scrolledPast&&!this.wrapper.classList.contains(Q);this.sticky.classList.toggle(ge,e),document.body.classList.toggle($,e)}syncStep(){if(!document.querySelectorAll(`.checkout-info`).length)return;let e=document.querySelector(`.checkout-info.delivery-info`),t=!!e&&!e.classList.contains(Q);this.wrapper.classList.toggle(Q,!t),this.syncSticky()}observeSteps(){let e=new MutationObserver(()=>this.syncStep());document.querySelectorAll(`.checkout-info`).forEach(t=>e.observe(t,{attributes:!0,attributeFilter:[`class`]}))}},ve=`/* Footer relocation of "Need Help?", "Secured Payments by", the Trusted Shops
+`,me=`.express-checkout-cart`,Z=`#paypal-express-btn`,Q=`d-none`,he=`exp-paypal-sticky`,ge=`exp-paypal-sticky__btn`,$=`exp-paypal-sticky--visible`,_e=`exp-paypal-sticky-shown`,ve=class{constructor(){this.scrolledPast=!1,this.themeMetaCreated=!1,this.themeColorPrev=``,this.init()}async init(){this.addStyles(),this.wrapper=await t(me),this.addDivider(),this.trackClick(),this.addSticky(),this.syncStep(),this.observeSteps()}trackClick(){this.wrapper.addEventListener(`click`,t=>{t.target.closest(`#paypal-express-btn`)&&e(`exp_paypal_1`,`PayPal Express Payment`,`click`,`Checkout. Delivery`)},!0)}addStyles(){let e=document.createElement(`style`);e.textContent=pe,document.head.appendChild(e)}addDivider(){if(this.wrapper.querySelector(`.exp-paypal-express__or`))return;let e=document.createElement(`div`);e.className=`exp-or-divider exp-paypal-express__or`,e.innerHTML=`<span class="exp-or-line"></span><span class="exp-or-text">OR</span><span class="exp-or-line"></span>`,this.wrapper.appendChild(e)}addSticky(){let e=this.wrapper.querySelector(Z);if(!e||this.sticky)return;let t=document.createElement(`div`);t.className=he;let n=document.createElement(`button`);n.type=`button`,n.className=ge,n.setAttribute(`aria-label`,`Checkout with PayPal`);let r=e.querySelector(`img`);r&&n.appendChild(r.cloneNode(!0)),n.addEventListener(`click`,()=>this.wrapper.querySelector(Z)?.click()),t.appendChild(n),document.body.appendChild(t),this.sticky=t,new IntersectionObserver(([e])=>{this.scrolledPast=!e.isIntersecting&&e.boundingClientRect.top<0,this.syncSticky()},{threshold:0}).observe(e)}syncSticky(){if(!this.sticky)return;let e=this.scrolledPast&&!this.wrapper.classList.contains(Q);this.sticky.classList.toggle($,e),document.body.classList.toggle(_e,e),this.syncThemeColor(e)}syncThemeColor(e){if(e!==!!this.themeMeta){if(e){let e=document.querySelector(`meta[name="theme-color"]`);this.themeMetaCreated=!e,e||(e=document.createElement(`meta`),e.name=`theme-color`,document.head.appendChild(e)),this.themeColorPrev=e.content,e.content=`#ffffff`,this.themeMeta=e;return}this.themeMetaCreated?this.themeMeta.remove():this.themeMeta.content=this.themeColorPrev,this.themeMeta=void 0}}syncStep(){if(!document.querySelectorAll(`.checkout-info`).length)return;let e=document.querySelector(`.checkout-info.delivery-info`),t=!!e&&!e.classList.contains(Q);this.wrapper.classList.toggle(Q,!t),this.syncSticky()}observeSteps(){let e=new MutationObserver(()=>this.syncStep());document.querySelectorAll(`.checkout-info`).forEach(t=>e.observe(t,{attributes:!0,attributeFilter:[`class`]}))}},ye=`/* Footer relocation of "Need Help?", "Secured Payments by", the Trusted Shops
    badge and the privacy note — designs 2122:1604 (desktop) / 2122:2495 (mobile).
    The blocks come from a light sidebar, so every inherited text colour has to be
    flipped for the dark green (\`bg-primary\`) footer. Bootstrap 4 colour utilities
@@ -1042,4 +1053,4 @@ body:has(.checkout-info.payment-info:not(.d-none)) h1.h4 {
 .d-block.d-sm-none > .text-muted {
   display: none !important;
 }
-`,ye=class{constructor(){this.init()}async init(){this.addStyles(),await t(`footer .footer-bottom`),await t(`.order-summary .cart-logo-desktop`),this.relocate()}addStyles(){let e=document.createElement(`style`);e.textContent=ve,document.head.appendChild(e)}relocate(){let e=document.querySelector(`footer .footer-bottom`),t=document.querySelector(`.order-summary .cart-logo-desktop`);if(!e||!t||document.getElementById(`exp-footer`))return;let n=t.querySelector(`.payment-icons-cart`),r=t.querySelector(`.need-help`),i=t.querySelector(`.row.text-muted`);if(!n||!r)return;let a=document.createElement(`div`);a.id=`exp-footer`,a.innerHTML=`<div class="exp-footer__help"></div><div class="exp-footer__pay"></div><div class="exp-footer__privacy"></div>`,a.querySelector(`.exp-footer__help`).appendChild(r),a.querySelector(`.exp-footer__pay`).appendChild(n);let o=this.badge();o&&a.querySelector(`.exp-footer__pay`).appendChild(o),i&&a.querySelector(`.exp-footer__privacy`).appendChild(i),e.parentNode?.insertBefore(a,e)}badge(){let e=Array.from(document.querySelectorAll(`.trusted-shops`));return e.find(e=>e.children.length)||e.find(e=>e.closest(`.order-summary`))||null}};n({name:`Checkout v2`,dev:`OS`}),r(`exp_checkout`),new class{constructor(){this.init()}init(){this.detectCheckoutPage()&&(this.addStyles(),new f,new h,new te,new v,new x,new w,new E,new A,new z,new H,new W,new K,new ae,new fe,new _e,new ye)}detectCheckoutPage(){return!!window.location.search.includes(`?route=checkout`)}addStyles(){let e=document.createElement(`style`);e.textContent=o,document.head.appendChild(e)}}})();
+`,be=class{constructor(){this.init()}async init(){this.addStyles(),await t(`footer .footer-bottom`),await t(`.order-summary .cart-logo-desktop`),this.relocate()}addStyles(){let e=document.createElement(`style`);e.textContent=ye,document.head.appendChild(e)}relocate(){let e=document.querySelector(`footer .footer-bottom`),t=document.querySelector(`.order-summary .cart-logo-desktop`);if(!e||!t||document.getElementById(`exp-footer`))return;let n=t.querySelector(`.payment-icons-cart`),r=t.querySelector(`.need-help`),i=t.querySelector(`.row.text-muted`);if(!n||!r)return;let a=document.createElement(`div`);a.id=`exp-footer`,a.innerHTML=`<div class="exp-footer__help"></div><div class="exp-footer__pay"></div><div class="exp-footer__privacy"></div>`,a.querySelector(`.exp-footer__help`).appendChild(r),a.querySelector(`.exp-footer__pay`).appendChild(n);let o=this.badge();o&&a.querySelector(`.exp-footer__pay`).appendChild(o),i&&a.querySelector(`.exp-footer__privacy`).appendChild(i),e.parentNode?.insertBefore(a,e)}badge(){let e=Array.from(document.querySelectorAll(`.trusted-shops`));return e.find(e=>e.children.length)||e.find(e=>e.closest(`.order-summary`))||null}};n({name:`Checkout v2`,dev:`OS`}),r(`exp_checkout`),new class{constructor(){this.init()}init(){this.detectCheckoutPage()&&(this.addStyles(),new f,new h,new te,new v,new x,new w,new E,new A,new z,new H,new W,new K,new ae,new fe,new ve,new be)}detectCheckoutPage(){return!!window.location.search.includes(`?route=checkout`)}addStyles(){let e=document.createElement(`style`);e.textContent=o,document.head.appendChild(e)}}})();
