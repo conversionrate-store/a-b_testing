@@ -11,7 +11,7 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(20, 56, 127, 0.06);
   padding: 14px 18px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   color: #525252;
 }
 
@@ -566,7 +566,7 @@ body.kdlv-lock {
     }
     async init() {
       await u("head"), document.head.insertAdjacentHTML("beforeend", `<style>${g}</style>`);
-      const e = await u(".number-of-days-wrapper");
+      const e = await u(".product-tab__content-item");
       await u("#deliverOptionsModalContent table"), this.render(e);
     }
     render(e) {
@@ -579,7 +579,12 @@ body.kdlv-lock {
         deliveryTimeNote: i.deliveryTimeNote(r),
         freeDeliveryNote: i.freeDeliveryNote()
       };
-      e.insertAdjacentHTML("beforebegin", w(s)), document.body.insertAdjacentHTML("beforeend", L(s)), this.addEventListeners(), x("#kdlvBlock", "exp_kinekus_delivery_block_01", "PDP delivery block", "PDP delivery block visibility");
+      e.insertAdjacentHTML("beforeend", w(s)), document.body.insertAdjacentHTML("beforeend", L(s)), this.addEventListeners(), x(
+        "#kdlvBlock",
+        "exp_kinekus_delivery_block_01",
+        "PDP delivery block",
+        "PDP delivery block visibility"
+      );
     }
     // Číta priamo riadky natívnej tabuľky #deliverOptionsModalContent (bez posledného riadku "Zavrieť")
     getNativeDeliveryOptions() {
