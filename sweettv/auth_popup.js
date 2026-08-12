@@ -93,7 +93,7 @@
   border-radius: 8px !important;
   z-index: 1 !important;
 }
-`,l=`.auth-social-buttons`,u={google:`.auth-google-identity-button-wrapper`,facebook:`.auth-facebook-login-button`,apple:`.auth-apple-sign-in-button`};function d(){o(l,t=>{r(l,`auth_social_view`,`auth_popup`,`Соцкнопки авторизації потрапили у в’юпорт`),t.addEventListener(`click`,t=>{let n=t.target,r=Object.keys(u).find(e=>n.closest(u[e]));r&&e(`auth_social_click`,`Клік по кнопці ${r}`,`click`,`auth_popup`)})})}var f={movie:`movie`,series:`series`,tv:`channel`,"free-tv":`channel`},p=e=>`https://sweet.tv/cdn-cgi/image/f=auto,q=80,fit=cover,w=534,h=300/${e}`,m=`https://sweet-tv-static.sweet.tv/web/nuxt/pages/tv/player-frame/bg.png`;function h(){let[,e,t,n]=location.pathname.split(`/`),r=f[t];if(!r)return null;if(t===`tv`&&!n)return{kind:r,title:``,posterUrl:p(m),durationMin:null,rating:null};if(!n)return null;let i=window.useNuxtApp();if(r===`channel`){let e=i.$pinia.state.value.tvList.tvCurrentChannel;return e?{kind:r,title:e.title,posterUrl:p(e.banner_url),durationMin:null,rating:null}:null}let a=i.payload.data[`movie-info:${e}:${t}:${n}`]?.movie;if(!a)return null;let o=a.scores?.find(e=>e.provider===`IMDB`);return{kind:r,title:a.year?`${a.title} (${a.year})`:a.title,posterUrl:p(a.horizontal_poster_url||a.banner_url||a.poster_url),durationMin:a.duration||null,rating:o?.value??null}}function g(e,t){if(!(t==null||typeof t==`boolean`)){if(Array.isArray(t)){for(let n of t)g(e,n);return}e.appendChild(t instanceof Node?t:document.createTextNode(String(t)))}}function _(e,t,n){if(typeof e==`function`)return e(t??{});let{children:r,...i}=t??{},a=document.createElement(e);for(let[e,t]of Object.entries(i))e.startsWith(`on`)&&typeof t==`function`?a.addEventListener(e.slice(2).toLowerCase(),t):t===!0?a.setAttribute(e,``):t!==!1&&t!=null&&a.setAttribute(e,String(t));return g(a,r),a}var v=_,y={movie:`фільм`,series:`серіал`,channel:`канал`},b=e=>{let t=Math.floor(e/60),n=e%60;return t?`${t}h ${n}m`:`${n}m`},x=e=>v(`div`,{class:`crs-side-panel__meta`,children:[e.durationMin?_(`span`,{children:b(e.durationMin)}):``,e.durationMin&&e.rating?_(`span`,{children:`·`}):``,e.rating?_(`span`,{class:`crs-side-panel__rating`,children:String(e.rating)}):``]}),S=e=>{let t=v(`aside`,{class:`crs-side-panel`,children:[_(`div`,{class:`crs-side-panel__backdrop`,style:`background-image:url(${e.posterUrl})`}),v(`div`,{class:`crs-side-panel__body`,children:[v(`p`,{class:`crs-side-panel__caption`,children:[`Твій `,y[e.kind],` чекає`]}),_(`div`,{class:`crs-side-panel__poster`,children:_(`img`,{class:`crs-side-panel__poster-img`,src:e.posterUrl,alt:``})}),e.title?_(`p`,{class:`crs-side-panel__title`,children:e.title}):``]}),_(`p`,{class:`crs-side-panel__note`,children:`Українською в HD · одразу після активації`})]});return(e.durationMin||e.rating)&&t.querySelector(`.crs-side-panel__poster`).append(x(e)),t},C=`.ui-modal__dialog:has(.crs-side-panel) {
+`,l=`.auth-social-buttons`,u={google:`.auth-google-identity-button-wrapper`,facebook:`.auth-facebook-login-button`,apple:`.auth-apple-sign-in-button`};function d(){o(l,t=>{r(l,`auth_social_view`,`auth_popup`,`Social auth buttons entered the viewport`),t.addEventListener(`click`,t=>{let n=t.target,r=Object.keys(u).find(e=>n.closest(u[e]));r&&e(`auth_social_click`,`Click on ${r} button`,`click`,`auth_popup`)})})}var f={movie:`movie`,series:`series`,tv:`channel`,"free-tv":`channel`},p=e=>`https://sweet.tv/cdn-cgi/image/f=auto,q=80,fit=cover,w=534,h=300/${e}`,m=`https://sweet-tv-static.sweet.tv/web/nuxt/pages/tv/player-frame/bg.png`;function h(e=10){let t=(`useNuxtApp`in window?window.useNuxtApp():null)?.$pinia?g():null;if(t){new Image().src=t.posterUrl;return}e&&setTimeout(()=>h(e-1),300)}function g(){let[,e,t,n]=location.pathname.split(`/`),r=f[t];if(!r)return null;if(t===`tv`&&!n)return{kind:r,title:``,posterUrl:p(m),durationMin:null,rating:null};if(!n)return null;let i=window.useNuxtApp();if(r===`channel`){let e=i.$pinia.state.value.tvList.tvCurrentChannel;return e?{kind:r,title:e.title,posterUrl:p(e.banner_url),durationMin:null,rating:null}:null}let a=i.payload.data[`movie-info:${e}:${t}:${n}`]?.movie;if(!a)return null;let o=a.scores?.find(e=>e.provider===`IMDB`);return{kind:r,title:a.year?`${a.title} (${a.year})`:a.title,posterUrl:p(a.horizontal_poster_url||a.banner_url||a.poster_url),durationMin:a.duration||null,rating:o?.value??null}}function _(e,t){if(!(t==null||typeof t==`boolean`)){if(Array.isArray(t)){for(let n of t)_(e,n);return}e.appendChild(t instanceof Node?t:document.createTextNode(String(t)))}}function v(e,t,n){if(typeof e==`function`)return e(t??{});let{children:r,...i}=t??{},a=document.createElement(e);for(let[e,t]of Object.entries(i))e.startsWith(`on`)&&typeof t==`function`?a.addEventListener(e.slice(2).toLowerCase(),t):t===!0?a.setAttribute(e,``):t!==!1&&t!=null&&a.setAttribute(e,String(t));return _(a,r),a}var y=v,b={movie:`фільм`,series:`серіал`,channel:`канал`},x=e=>{let t=Math.floor(e/60),n=e%60;return t?`${t}h ${n}m`:`${n}m`},S=e=>y(`div`,{class:`crs-side-panel__meta`,children:[e.durationMin?v(`span`,{children:x(e.durationMin)}):``,e.durationMin&&e.rating?v(`span`,{children:`·`}):``,e.rating?v(`span`,{class:`crs-side-panel__rating`,children:String(e.rating)}):``]}),C=e=>{let t=y(`aside`,{class:`crs-side-panel`,children:[v(`div`,{class:`crs-side-panel__backdrop`,style:`background-image:url(${e.posterUrl})`}),y(`div`,{class:`crs-side-panel__body`,children:[y(`p`,{class:`crs-side-panel__caption`,children:[`Твій `,b[e.kind],` чекає`]}),v(`div`,{class:`crs-side-panel__poster`,children:v(`img`,{class:`crs-side-panel__poster-img`,src:e.posterUrl,fetchpriority:`high`,alt:``})}),e.title?v(`p`,{class:`crs-side-panel__title`,children:e.title}):``]}),v(`p`,{class:`crs-side-panel__note`,children:`Українською в HD · одразу після активації`})]});return(e.durationMin||e.rating)&&t.querySelector(`.crs-side-panel__poster`).append(S(e)),t},w=`.ui-modal__dialog:has(.crs-side-panel) {
   max-width: 700px !important;
 }
 
@@ -324,14 +324,7 @@
   .crs-side-panel__poster {
     height: 150px;
   }
-}`,w=`.auth-modal-shell`;function T(){o(w,t=>{let n=h();n&&(t.append(S(n)),`${n.kind}`,n.title&&`${n.title}`,e(`auth_panel_view`,`Панель з контентом: ${n.kind}`,`view`,`auth_popup`))})}var E=`/* ── Інпут телефону → Figma 34:2461 ───────────────────────────────────────
-   У макеті це дві окремі коробки: «🇺🇦 +380» і поле вводу, із зазором 8px.
-   Розмітка сайту лягає на це один-в-один: .ui-input__prefix вже містить і
-   прапор, і «+380», тож достатньо зняти зовнішню рамку з .ui-input__field
-   і перенести рамки на дві внутрішні коробки.
-   ──────────────────────────────────────────────────────────────────────── */
-
-.auth-v1-start-screen__phone-input .ui-input__field {
+}`,T=`.auth-modal-shell`;function E(){o(T,t=>{let n=g();n&&(t.append(C(n)),`${n.kind}`,n.title&&`${n.title}`,e(`auth_panel_view`,`Panel with content: ${n.kind}`,`view`,`auth_popup`))})}var D=`.auth-v1-start-screen__phone-input .ui-input__field {
   display: flex !important;
   align-items: stretch !important;
   gap: 8px !important;
@@ -341,8 +334,8 @@
   border-radius: 0 !important;
 }
 
-/* коробка з прапором і кодом країни */
 .auth-v1-start-screen__phone-input .ui-input__prefix {
+  position: relative !important;
   flex: 0 0 auto !important;
   height: 44px !important;
   display: flex !important;
@@ -355,18 +348,25 @@
   box-sizing: border-box !important;
 }
 
+.auth-v1-start-screen__phone-input .auth-phone-country-select {
+  position: static !important;
+}
+
+.auth-v1-start-screen__phone-input .auth-phone-country-select__arrow {
+  display: none !important;
+}
+
+.auth-v1-start-screen__phone-input .auth-phone-country-select__trigger::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
 .auth-v1-start-screen__phone-prefix {
   color: #fff !important;
   font-size: 14px !important;
 }
 
-/* УВАГА: у макеті шеврона біля прапора немає, але ми його свідомо лишаємо —
-   це єдиний натяк, що країну можна змінити. Питання уточнюється в дизайнера;
-   якщо погодять — досить розкоментувати правило нижче.
-.auth-phone-country-select__arrow { display: none !important; }
-*/
-
-/* поле вводу номера */
 .auth-v1-start-screen__phone-input .ui-input__input {
   flex: 1 1 auto !important;
   min-width: 0 !important;
@@ -383,7 +383,7 @@
 .auth-v1-start-screen__phone-input .ui-input__input::placeholder {
   color: #757575 !important;
 }
-`,D=`.auth-v1-start-screen__phone-input .ui-input__input`;function O(){o(D,e=>{e.placeholder=`93 000 00 00`})}var k={movie:`фільму`,series:`серіалу`,channel:`каналу`},A=e=>v(`div`,{class:`crs-stepper`,children:[v(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[_(`span`,{class:`crs-stepper__badge`,children:`1`}),v(`span`,{class:`crs-stepper__label`,children:[`Активація`,_(`br`,{}),`доступу`]})]}),_(`span`,{class:`crs-stepper__divider`}),v(`div`,{class:`crs-stepper__step`,children:[_(`span`,{class:`crs-stepper__icon`}),v(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,_(`br`,{}),k[e.kind]]})]})]}),j=`.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-secure,
+`,O=`.auth-v1-start-screen__phone-input .ui-input__input`;function k(){o(O,e=>{e.placeholder=`93 000 00 00`})}var A={movie:`фільму`,series:`серіалу`,channel:`каналу`},j=e=>y(`div`,{class:`crs-stepper`,children:[y(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[v(`span`,{class:`crs-stepper__badge`,children:`1`}),y(`span`,{class:`crs-stepper__label`,children:[`Активація`,v(`br`,{}),`доступу`]})]}),v(`span`,{class:`crs-stepper__divider`}),y(`div`,{class:`crs-stepper__step`,children:[v(`span`,{class:`crs-stepper__icon`}),y(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,v(`br`,{}),A[e.kind]]})]})]}),M=`.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-secure,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-info-step,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-form-text {
   display: none !important;
@@ -503,7 +503,7 @@
 }
 
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-form-button::after {
-  content: 'Отримати код і дивитися'; /* дублює SUBMIT_LABEL з index.ts */
+  content: 'Отримати код і дивитися';
   font-size: 15px;
   line-height: normal;
 }
@@ -557,7 +557,7 @@
   height: 1px;
   background: #2a4152;
 }
-`,M=`.auth-v1-start-screen`,N={".auth-v1-start-screen__body-info-title":`Активуй безкоштовний доступ`,".auth-v1-start-screen__body-info-text":`Надішлемо SMS-код — це твій вхід без пароля`,".auth-v1-start-screen__body-options-title":`або увійди за 1 клік`},P=`Отримати код і дивитися`;function F(){o(M,e=>{let t=h();if(!t)return;Object.entries(N).forEach(([t,n])=>{e.querySelector(t).textContent=n}),e.querySelector(`.auth-v1-start-screen__body-form-button`).setAttribute(`aria-label`,P),e.querySelector(`.auth-v1-start-screen__body-info`).prepend(A(t));let n=document.createElement(`p`);n.className=`crs-trial-badge`,n.textContent=`7 днів безкоштовно · Без банківської картки`,e.querySelector(`.auth-v1-start-screen__body-form`).append(n),`${t.kind}`})}var I=`
+`,N=`.auth-v1-start-screen`,P={".auth-v1-start-screen__body-info-title":`Активуй безкоштовний доступ`,".auth-v1-start-screen__body-info-text":`Надішлемо SMS-код — це твій вхід без пароля`,".auth-v1-start-screen__body-options-title":`або увійди за 1 клік`},F=`Отримати код і дивитися`;function I(){o(N,e=>{let t=g();if(!t)return;Object.entries(P).forEach(([t,n])=>{e.querySelector(t).textContent=n}),e.querySelector(`.auth-v1-start-screen__body-form-button`).setAttribute(`aria-label`,F),e.querySelector(`.auth-v1-start-screen__body-info`).prepend(j(t));let n=document.createElement(`p`);n.className=`crs-trial-badge`,n.textContent=`7 днів безкоштовно · Без банківської картки`,e.querySelector(`.auth-v1-start-screen__body-form`).append(n),`${t.kind}`})}var L=`
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-text:first-child,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__form-text,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__notice,
@@ -668,5 +668,5 @@
     width: 56px !important;
     height: 56px !important;
   }
-}`;t({name:`sweettv testing`,dev:`OS`}),n(`exp_test`);var L=`crs-auth-popup`;new class{constructor(){this.init()}init(){window.IS_AUTH!==!0&&(this.ensureStyles([``,C,j,E,I,c]),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,T(),F(),O(),d()))}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(L))return;let t=document.createElement(`style`);t.id=L,t.textContent=e.join(`
+}`;t({name:`sweettv testing`,dev:`OS`}),n(`exp_test`);var R=`crs-auth-popup`;new class{constructor(){this.init()}init(){window.IS_AUTH!==!0&&(this.ensureStyles([``,w,M,D,L,c]),h(),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,E(),I(),k(),d()))}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(R))return;let t=document.createElement(`style`);t.id=R,t.textContent=e.join(`
 `),document.head.appendChild(t)})}}})();
