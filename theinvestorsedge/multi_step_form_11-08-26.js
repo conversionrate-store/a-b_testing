@@ -1124,7 +1124,7 @@
       (n = this.root.querySelector(`[data-field-error="${e}"]`)) == null || n.remove();
     }
     updateCtaState() {
-      const e = this.root.querySelector("[data-step-nav]");
+      const e = this.root.querySelector(".tie-msf__cta");
       if (!e) return;
       const n = this.state.step === 1 ? v(this.state) : this.state.step === 2 ? y(this.state) : x(this.state);
       e.disabled = !n;
