@@ -98,7 +98,7 @@
 }
 
 .auth-modal-shell:has(.crs-side-panel) {
-  min-height: 424px !important;
+  min-height: 400px !important;
   display: flex !important;
   flex-direction: row !important;
   align-items: stretch !important;
