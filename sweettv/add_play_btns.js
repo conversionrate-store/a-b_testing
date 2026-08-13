@@ -49,7 +49,7 @@
     width: 100% !important;
   }
 }
-`,h=[[`.movie-content__title`,`.movie-content__actions-watch`],[`.stub__info-title`,`.stub__action-button`]];function g(){l(()=>{h.forEach(([t,n])=>{let i=document.querySelector(t);if(!i||i.querySelector(`.crs-play`))return;let a=p({onPlay:()=>{e(`play_btn_title_click`,`Click on the play button next to the title`,`click`,`title`),document.querySelector(n).click()}});i.prepend(a),r(a,`play_btn_title_view`,`title`,`Play button next to the title seen`)})})}var _=`.episode-card__image::after {
+`,h=[[`.movie-content__title`,`.movie-content__actions-watch`],[`.stub__info-title`,`.tv-mobile__stub-action-button, .stub__action-button`]];function g(){l(()=>{h.forEach(([t,n])=>{let i=document.querySelector(t);if(!i||i.querySelector(`.crs-play`))return;let a=p({onPlay:()=>{e(`play_btn_title_click`,`Click on the play button next to the title`,`click`,`title`),[...document.querySelectorAll(n)].find(e=>e.getClientRects().length>0)?.click()}});i.prepend(a),r(a,`play_btn_title_view`,`title`,`Play button next to the title seen`)})})}var _=`.episode-card__image::after {
   content: '';
   position: absolute;
   inset: 0;
