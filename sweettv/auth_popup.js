@@ -324,7 +324,7 @@
   .crs-side-panel__poster {
     height: 150px;
   }
-}`,D=`.auth-modal-shell`;function O(){o(D,t=>{_(n=>{t.append(T(n)),`${n.kind}`,n.title&&`${n.title}`,e(`auth_panel_view`,`Panel with content: ${n.kind}`,`view`,`auth_popup`)})})}var k=`.auth-v1-start-screen__phone-input .ui-input__field {
+}`,D=`.auth-modal-shell`,O=`.auth-v1-start-screen`;function k(){o(O,t=>{_(n=>{t.closest(D).append(T(n)),`${n.kind}`,n.title&&`${n.title}`,e(`auth_panel_view`,`Panel with content: ${n.kind}`,`view`,`auth_popup`)})})}var A=`.auth-v1-start-screen__phone-input .ui-input__field {
   display: flex !important;
   align-items: stretch !important;
   gap: 8px !important;
@@ -383,7 +383,7 @@
 .auth-v1-start-screen__phone-input .ui-input__input::placeholder {
   color: #757575 !important;
 }
-`,A=`.auth-v1-start-screen__phone-input .ui-input__input`;function j(){o(A,e=>{e.placeholder=`93 000 00 00`})}var M={movie:`фільму`,series:`серіалу`,channel:`каналу`},N=e=>x(`div`,{class:`crs-stepper`,children:[x(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[b(`span`,{class:`crs-stepper__badge`,children:`1`}),x(`span`,{class:`crs-stepper__label`,children:[`Активація`,b(`br`,{}),`доступу`]})]}),b(`span`,{class:`crs-stepper__divider`}),x(`div`,{class:`crs-stepper__step`,children:[b(`span`,{class:`crs-stepper__icon`}),x(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,b(`br`,{}),M[e.kind]]})]})]}),P=`.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-secure,
+`,j=`.auth-v1-start-screen__phone-input .ui-input__input`;function M(){o(j,e=>{e.placeholder=`93 000 00 00`})}var N={movie:`фільму`,series:`серіалу`,channel:`каналу`},P=e=>x(`div`,{class:`crs-stepper`,children:[x(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[b(`span`,{class:`crs-stepper__badge`,children:`1`}),x(`span`,{class:`crs-stepper__label`,children:[`Активація`,b(`br`,{}),`доступу`]})]}),b(`span`,{class:`crs-stepper__divider`}),x(`div`,{class:`crs-stepper__step`,children:[b(`span`,{class:`crs-stepper__icon`}),x(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,b(`br`,{}),N[e.kind]]})]})]}),F=`.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-secure,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-info-step,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-form-text {
   display: none !important;
@@ -557,7 +557,7 @@
   height: 1px;
   background: #2a4152;
 }
-`,F=`.auth-v1-start-screen`,I={".auth-v1-start-screen__body-info-title":`Активуй безкоштовний доступ`,".auth-v1-start-screen__body-info-text":`Надішлемо SMS-код — це твій вхід без пароля`,".auth-v1-start-screen__body-options-title":`або увійди за 1 клік`},L=`Отримати код і дивитися`;function R(){o(F,e=>{_(t=>{Object.entries(I).forEach(([t,n])=>{e.querySelector(t).textContent=n}),e.querySelector(`.auth-v1-start-screen__body-form-button`).setAttribute(`aria-label`,L),e.querySelector(`.auth-v1-start-screen__body-info`).prepend(N(t));let n=document.createElement(`p`);n.className=`crs-trial-badge`,n.textContent=`7 днів безкоштовно · Без банківської картки`,e.querySelector(`.auth-v1-start-screen__body-form`).append(n),`${t.kind}`})})}var z=`
+`,I=`.auth-v1-start-screen`,L={".auth-v1-start-screen__body-info-title":`Активуй безкоштовний доступ`,".auth-v1-start-screen__body-info-text":`Надішлемо SMS-код — це твій вхід без пароля`,".auth-v1-start-screen__body-options-title":`або увійди за 1 клік`},R=`Отримати код і дивитися`;function z(){o(I,e=>{_(t=>{Object.entries(L).forEach(([t,n])=>{e.querySelector(t).textContent=n}),e.querySelector(`.auth-v1-start-screen__body-form-button`).setAttribute(`aria-label`,R),e.querySelector(`.auth-v1-start-screen__body-info`).prepend(P(t));let n=document.createElement(`p`);n.className=`crs-trial-badge`,n.textContent=`7 днів безкоштовно · Без банківської картки`,e.querySelector(`.auth-v1-start-screen__body-form`).append(n),`${t.kind}`})})}var B=`
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-text:first-child,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__form-text,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__notice,
@@ -668,5 +668,5 @@
     width: 56px !important;
     height: 56px !important;
   }
-}`;t({name:`sweettv testing`,dev:`OS`}),n(`exp_test`);var B=`crs-auth-popup`;new class{constructor(){this.init()}init(){window.IS_AUTH!==!0&&(this.ensureStyles([``,E,P,k,z,c]),h(),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,O(),R(),j(),d()))}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(B))return;let t=document.createElement(`style`);t.id=B,t.textContent=e.join(`
+}`;t({name:`sweettv testing`,dev:`OS`}),n(`exp_test`);var V=`crs-auth-popup`;new class{constructor(){this.init()}init(){window.IS_AUTH!==!0&&(this.ensureStyles([``,E,F,A,B,c]),h(),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,k(),z(),M(),d()))}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(V))return;let t=document.createElement(`style`);t.id=V,t.textContent=e.join(`
 `),document.head.appendChild(t)})}}})();
