@@ -1,7 +1,4 @@
-(function(){var e=(e,t,n,r=``)=>{window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:`event-to-ga4`,event_name:e,event_desc:t,event_type:n,event_loc:r}),`${e}${t}${n}${r}`},t=({name:e,dev:t})=>{},n=e=>{let t=setInterval(function(){typeof window.clarity==`function`&&(clearInterval(t),window.clarity(`set`,e,`variant_1`))},1e3)},r=(t,n,r,i,a=1e3,o=.5)=>{let s,c;if(s=new IntersectionObserver(function(t){t[0].isIntersecting===!0?c=setTimeout(()=>{e(n,t[0].target.dataset.visible||i||``,`view`,r),s.disconnect()},a):clearTimeout(c)},{threshold:[o]}),typeof t==`string`){let e=document.querySelector(t);e&&s.observe(e)}else s.observe(t)},i=`:root {
-  --crs-edit-glyph: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%20fill='none'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0.25631%2013.7442C0.0725414%2013.5601%20-0.0193429%2013.3043%200.00340936%2013.0449L0.335068%209.39111C0.371822%208.99062%200.548589%208.61297%200.833868%208.32737L8.70616%200.444856C9.32047%20-0.172877%2010.4345%20-0.142208%2011.0829%200.505318L13.4798%202.90529C14.1492%203.57647%2014.1763%204.64371%2013.5393%205.28334L5.66611%2013.1667C5.3817%2013.4515%205.00454%2013.6285%204.60375%2013.6653L0.95463%2013.9974C0.928378%2013.9991%200.902125%2014%200.874997%2014C0.644849%2014%200.421702%2013.9089%200.25631%2013.7442ZM10.5179%205.83275L8.15949%203.47132L9.86417%201.76356L12.2217%204.1241L10.5179%205.83275ZM4.4459%2011.9191L1.84076%2012.1565L2.07179%209.56637L6.98714%204.64466L9.34638%207.00779L4.4459%2011.9191Z'%20fill='%23fff'/%3E%3C/svg%3E");
-}
-`,a=[],o=null;function s(e,t){a.push({selector:e,onAppear:t,seen:new WeakSet}),o||(o=new MutationObserver(c),o.observe(document.documentElement,{childList:!0,subtree:!0})),c()}function c(){a.forEach(({selector:e,onAppear:t,seen:n})=>{let r=document.querySelector(e);!r||n.has(r)||(n.add(r),t(r))})}var l=`
+(function(){var e=(e,t,n,r=``)=>{window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:`event-to-ga4`,event_name:e,event_desc:t,event_type:n,event_loc:r}),`${e}${t}${n}${r}`},t=({name:e,dev:t})=>{},n=e=>{let t=setInterval(function(){typeof window.clarity==`function`&&(clearInterval(t),window.clarity(`set`,e,`variant_1`))},1e3)},r=(t,n,r,i,a=1e3,o=.5)=>{let s,c;if(s=new IntersectionObserver(function(t){t[0].isIntersecting===!0?c=setTimeout(()=>{e(n,t[0].target.dataset.visible||i||``,`view`,r),s.disconnect()},a):clearTimeout(c)},{threshold:[o]}),typeof t==`string`){let e=document.querySelector(t);e&&s.observe(e)}else s.observe(t)},i=[],a=null;function o(e,t){i.push({selector:e,onAppear:t,seen:new WeakSet}),a||(a=new MutationObserver(s),a.observe(document.documentElement,{childList:!0,subtree:!0})),s()}function s(){i.forEach(({selector:e,onAppear:t,seen:n})=>{let r=document.querySelector(e);!r||n.has(r)||(n.add(r),t(r))})}var c=`
 .auth-social-buttons {
   gap: 12px !important;
 }
@@ -96,7 +93,7 @@
   border-radius: 8px !important;
   z-index: 1 !important;
 }
-`,u=`.auth-social-buttons`,d={google:`.auth-google-identity-button-wrapper`,facebook:`.auth-facebook-login-button`,apple:`.auth-apple-sign-in-button`};function f(){s(u,t=>{r(u,`auth_social_view`,`auth_popup`,`Social auth buttons entered the viewport`),t.addEventListener(`click`,t=>{let n=t.target,r=Object.keys(d).find(e=>n.closest(d[e]));r&&e(`auth_social_click`,`Click on ${r} button`,`click`,`auth_popup`)})})}var p={movie:`movie`,series:`series`,tv:`channel`,"free-tv":`channel`},m=e=>`https://sweet.tv/cdn-cgi/image/f=auto,q=80,fit=cover,w=534,h=300/${e}`,h=`https://sweet-tv-static.sweet.tv/web/nuxt/pages/tv/player-frame/bg.png`;function g(e=10){let t=(`useNuxtApp`in window?window.useNuxtApp():null)?.$pinia?y():null;if(t){new Image().src=t.posterUrl;return}e&&setTimeout(()=>g(e-1),300)}var _=new Map;function v(e,t=20){let n=y();if(n){e(n);return}t&&setTimeout(()=>v(e,t-1),100)}function y(){let[,,e,t]=location.pathname.split(`/`),n=p[e];if(!n)return null;if(e===`tv`&&!t)return{kind:n,title:``,posterUrl:m(h),durationMin:null,rating:null};if(!t)return null;let r=window.useNuxtApp();if(n===`channel`){let e=r.$pinia.state.value.tvList.tvCurrentChannel;return e?{kind:n,title:e.title,posterUrl:m(e.banner_url),durationMin:null,rating:null}:null}let i=location.pathname.split(`/`).filter(Boolean).join(`:`),a=r.payload.data[`movie-info:${i}`]?.movie;if(!a)return _.get(`${e}:${t}`)??null;let o=a.scores?.find(e=>e.provider===`IMDB`),s={kind:n,title:a.year?`${a.title} (${a.year})`:a.title,posterUrl:m(a.horizontal_poster_url||a.banner_url||a.poster_url),durationMin:a.duration||null,rating:o?.value??null};return _.set(`${e}:${t}`,s),s}function b(e,t){if(!(t==null||typeof t==`boolean`)){if(Array.isArray(t)){for(let n of t)b(e,n);return}e.appendChild(t instanceof Node?t:document.createTextNode(String(t)))}}function x(e,t,n){if(typeof e==`function`)return e(t??{});let{children:r,...i}=t??{},a=document.createElement(e);for(let[e,t]of Object.entries(i))e.startsWith(`on`)&&typeof t==`function`?a.addEventListener(e.slice(2).toLowerCase(),t):t===!0?a.setAttribute(e,``):t!==!1&&t!=null&&a.setAttribute(e,String(t));return b(a,r),a}var S=x,C={movie:`фільм`,series:`серіал`,channel:`канал`},w=e=>{let t=Math.floor(e/60),n=e%60;return t?`${t}h ${n}m`:`${n}m`},T=e=>S(`div`,{class:`crs-side-panel__meta`,children:[e.durationMin?x(`span`,{children:w(e.durationMin)}):``,e.durationMin&&e.rating?x(`span`,{children:`·`}):``,e.rating?x(`span`,{class:`crs-side-panel__rating`,children:String(e.rating)}):``]}),E=e=>{let t=S(`aside`,{class:`crs-side-panel`,children:[x(`div`,{class:`crs-side-panel__backdrop`,style:`background-image:url(${e.posterUrl})`}),S(`div`,{class:`crs-side-panel__body`,children:[S(`p`,{class:`crs-side-panel__caption`,children:[`Твій `,C[e.kind],` чекає`]}),x(`div`,{class:`crs-side-panel__poster`,children:x(`img`,{class:`crs-side-panel__poster-img`,src:e.posterUrl,fetchpriority:`high`,alt:``})}),e.title?x(`p`,{class:`crs-side-panel__title`,children:e.title}):``]}),x(`p`,{class:`crs-side-panel__note`,children:`Українською в HD · одразу після активації`})]});return(e.durationMin||e.rating)&&t.querySelector(`.crs-side-panel__poster`).append(T(e)),t},D=`.ui-modal__dialog:has(.crs-side-panel) {
+`,l=`.auth-social-buttons`,u={google:`.auth-google-identity-button-wrapper`,facebook:`.auth-facebook-login-button`,apple:`.auth-apple-sign-in-button`};function d(){o(l,t=>{r(l,`auth_social_view`,`auth_popup`,`Social auth buttons entered the viewport`),t.addEventListener(`click`,t=>{let n=t.target,r=Object.keys(u).find(e=>n.closest(u[e]));r&&e(`auth_social_click`,`Click on ${r} button`,`click`,`auth_popup`)})})}var f={movie:`movie`,series:`series`,cartoon:`cartoon`,tv:`channel`,"free-tv":`channel`},p=e=>`https://sweet.tv/cdn-cgi/image/f=auto,q=80,fit=cover,w=534,h=300/${e}`,m=`https://sweet-tv-static.sweet.tv/web/nuxt/pages/tv/player-frame/bg.png`;function h(e=10){let t=(`useNuxtApp`in window?window.useNuxtApp():null)?.$pinia?v():null;if(t){new Image().src=t.posterUrl;return}e&&setTimeout(()=>h(e-1),300)}var g=new Map;function _(e,t=20){let n=v();if(n){e(n);return}t&&setTimeout(()=>_(e,t-1),100)}function v(){let[,,e,t]=location.pathname.split(`/`),n=f[e];if(!n)return null;if(e===`tv`&&!t)return{kind:n,title:``,posterUrl:p(m),durationMin:null,rating:null};if(!t)return null;let r=window.useNuxtApp();if(n===`channel`){let e=r.$pinia.state.value.tvList.tvCurrentChannel;return e?{kind:n,title:e.title,posterUrl:p(e.banner_url),durationMin:null,rating:null}:null}let i=location.pathname.split(`/`).filter(Boolean).join(`:`),a=r.payload.data[`movie-info:${i}`]?.movie;if(!a)return g.get(`${e}:${t}`)??null;if(!a.released)return null;let o=a.scores?.find(e=>e.provider===`IMDB`),s={kind:n,title:a.year?`${a.title} (${a.year})`:a.title,posterUrl:p(a.horizontal_poster_url||a.banner_url||a.poster_url),durationMin:a.duration||null,rating:o?.value??null};return g.set(`${e}:${t}`,s),s}function y(e,t){if(!(t==null||typeof t==`boolean`)){if(Array.isArray(t)){for(let n of t)y(e,n);return}e.appendChild(t instanceof Node?t:document.createTextNode(String(t)))}}function b(e,t,n){if(typeof e==`function`)return e(t??{});let{children:r,...i}=t??{},a=document.createElement(e);for(let[e,t]of Object.entries(i))e.startsWith(`on`)&&typeof t==`function`?a.addEventListener(e.slice(2).toLowerCase(),t):t===!0?a.setAttribute(e,``):t!==!1&&t!=null&&a.setAttribute(e,String(t));return y(a,r),a}var x=b,S={movie:`фільм`,series:`серіал`,cartoon:`мультик`,channel:`канал`},C=e=>{let t=Math.floor(e/60),n=e%60;return t?`${t}h ${n}m`:`${n}m`},w=e=>x(`div`,{class:`crs-side-panel__meta`,children:[e.durationMin?b(`span`,{children:C(e.durationMin)}):``,e.durationMin&&e.rating?b(`span`,{children:`·`}):``,e.rating?b(`span`,{class:`crs-side-panel__rating`,children:String(e.rating)}):``]}),T=e=>{let t=x(`aside`,{class:`crs-side-panel`,children:[b(`div`,{class:`crs-side-panel__backdrop`,style:`background-image:url(${e.posterUrl})`}),x(`div`,{class:`crs-side-panel__body`,children:[x(`p`,{class:`crs-side-panel__caption`,children:[`Твій `,S[e.kind],` чекає`]}),b(`div`,{class:`crs-side-panel__poster`,children:b(`img`,{class:`crs-side-panel__poster-img`,src:e.posterUrl,fetchpriority:`high`,alt:``})}),e.title?b(`p`,{class:`crs-side-panel__title`,children:e.title}):``]}),b(`p`,{class:`crs-side-panel__note`,children:`Українською в HD · одразу після активації`})]});return(e.durationMin||e.rating)&&t.querySelector(`.crs-side-panel__poster`).append(w(e)),t},E=`.ui-modal__dialog:has(.crs-side-panel) {
   max-width: 700px !important;
 }
 
@@ -115,10 +112,21 @@
 .auth-modal-shell:has(.crs-side-panel) .auth-modal-shell__content {
   flex: 0 0 312px !important;
   width: 312px !important;
-  padding: 24px 0 !important;
+  padding: 72px 0 24px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+/* Each step mounts the rail inside its own screen, and the screens differ in height, so in
+   the flow of a centred column the rail would sit at a different height on each of them.
+   Out of the flow it is measured from the shell instead — the same 24px on both. The top
+   padding above is the band the centred content keeps clear of. */
+.auth-modal-shell:has(.crs-side-panel) .crs-stepper {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  margin-bottom: 0;
 }
 
 .crs-side-panel {
@@ -316,6 +324,14 @@
     border-radius: 0 0 24px 24px !important;
   }
 
+  /* Back into the flow: here the column is sized by its content instead of centring it,
+     so the rail is already first on both steps — pinning it would only lift it out over
+     the title and past the column's side padding. */
+  .auth-modal-shell:has(.crs-side-panel) .crs-stepper {
+    position: static;
+    margin-bottom: 18px;
+  }
+
   .auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body,
   .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen {
     width: 100% !important;
@@ -327,7 +343,7 @@
   .crs-side-panel__poster {
     height: 150px;
   }
-}`,O=`.auth-modal-shell`,k=`.auth-v1-start-screen`;function A(){s(k,t=>{v(n=>{t.closest(O).append(E(n)),`${n.kind}`,n.title&&`${n.title}`,e(`auth_panel_view`,`Panel with content: ${n.kind}`,`view`,`auth_popup`)})})}var j=`.auth-v1-start-screen__phone-input .ui-input__field {
+}`,D=`.auth-modal-shell`,O=`.auth-v1-start-screen`;function k(){o(O,t=>{_(n=>{t.closest(D).append(T(n)),`${n.kind}`,n.title&&`${n.title}`,e(`auth_panel_view`,`Panel with content: ${n.kind}`,`view`,`auth_popup`)})})}var A=`.auth-v1-start-screen__phone-input .ui-input__field {
   display: flex !important;
   align-items: stretch !important;
   gap: 8px !important;
@@ -386,29 +402,7 @@
 .auth-v1-start-screen__phone-input .ui-input__input::placeholder {
   color: #757575 !important;
 }
-`,M=`.auth-v1-start-screen__phone-input .ui-input__input`;function N(){s(M,e=>{e.placeholder=`93 000 00 00`})}var P={movie:`фільму`,series:`серіалу`,channel:`каналу`},F=e=>S(`div`,{class:`crs-stepper`,children:[S(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[x(`span`,{class:`crs-stepper__badge`,children:`1`}),S(`span`,{class:`crs-stepper__label`,children:[`Активація`,x(`br`,{}),`доступу`]})]}),x(`span`,{class:`crs-stepper__divider`}),S(`div`,{class:`crs-stepper__step`,children:[x(`span`,{class:`crs-stepper__icon`}),S(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,x(`br`,{}),P[e.kind]]})]})]}),I=`.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-secure,
-.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-info-step,
-.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-form-text {
-  display: none !important;
-}
-
-.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 16px !important;
-  width: 312px !important;
-}
-
-.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-info {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 6px !important;
-  width: 100% !important;
-}
-
-.crs-stepper {
+`,j=`.auth-v1-start-screen__phone-input .ui-input__input`;function M(){o(j,e=>{e.placeholder=`93 000 00 00`})}var N=`.crs-stepper {
   display: flex;
   align-items: center;
   gap: 24px;
@@ -466,6 +460,27 @@
   min-width: 1px;
   height: 2px;
   background: #2a4152;
+}
+`,P={movie:`фільму`,series:`серіалу`,cartoon:`мультика`,channel:`каналу`},F=e=>x(`div`,{class:`crs-stepper`,children:[x(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[b(`span`,{class:`crs-stepper__badge`,children:`1`}),x(`span`,{class:`crs-stepper__label`,children:[`Активація`,b(`br`,{}),`доступу`]})]}),b(`span`,{class:`crs-stepper__divider`}),x(`div`,{class:`crs-stepper__step`,children:[b(`span`,{class:`crs-stepper__icon`}),x(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,b(`br`,{}),P[e.kind]]})]})]}),I=N,L=`.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-secure,
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-info-step,
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-form-text {
+  display: none !important;
+}
+
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 16px !important;
+  width: 312px !important;
+}
+
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-info {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: 100% !important;
 }
 
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__body-info-title {
@@ -560,11 +575,16 @@
   height: 1px;
   background: #2a4152;
 }
-`,L=`.auth-v1-start-screen`,R={".auth-v1-start-screen__body-info-title":`Активуй безкоштовний доступ`,".auth-v1-start-screen__body-info-text":`Надішлемо SMS-код — це твій вхід без пароля`,".auth-v1-start-screen__body-options-title":`або увійди за 1 клік`},z=`Отримати код і дивитися`;function B(){s(L,e=>{v(t=>{Object.entries(R).forEach(([t,n])=>{e.querySelector(t).textContent=n}),e.querySelector(`.auth-v1-start-screen__body-form-button`).setAttribute(`aria-label`,z),e.querySelector(`.auth-v1-start-screen__body-info`).prepend(F(t));let n=document.createElement(`p`);n.className=`crs-trial-badge`,n.textContent=`7 днів безкоштовно · Без банківської картки`,e.querySelector(`.auth-v1-start-screen__body-form`).append(n),`${t.kind}`})})}var V=`
+`,R=`.auth-v1-start-screen`,z={".auth-v1-start-screen__body-info-title":`Активуй безкоштовний доступ`,".auth-v1-start-screen__body-info-text":`Надішлемо SMS-код — це твій вхід без пароля`,".auth-v1-start-screen__body-options-title":`або увійди за 1 клік`},B=`Отримати код і дивитися`;function V(){o(R,e=>{_(t=>{Object.entries(z).forEach(([t,n])=>{e.querySelector(t).textContent=n}),e.querySelector(`.auth-v1-start-screen__body-form-button`).setAttribute(`aria-label`,B),e.querySelector(`.auth-v1-start-screen__body-info`).prepend(F(t));let n=document.createElement(`p`);n.className=`crs-trial-badge`,n.textContent=`7 днів безкоштовно · Без банківської картки`,e.querySelector(`.auth-v1-start-screen__body-form`).append(n),`${t.kind}`})})}var H=`
+/* The native «Крок 2 з 2» line — our stepper replaces it. Two selectors for the same
+   node: :first-child holds until the stepper is prepended, the sibling rule after. */
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-text:first-child,
+.auth-modal-shell:has(.crs-side-panel) .crs-stepper + .auth-v1-sms-screen__info-text,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__form-text,
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__notice,
-.auth-modal-shell:has(.crs-side-panel) .auth-modal-shell__back {
+.auth-modal-shell:has(.crs-side-panel) .auth-modal-shell__back,
+/* Moved up into the subtitle, so the bottom copy would only be a duplicate. */
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__actions-change {
   display: none !important;
 }
 
@@ -574,12 +594,21 @@
   align-items: center !important;
 }
 
+/* Wrapping row, not a column: it lets «Надіслали на», the number and the change link
+   flow into one subtitle line without reparenting anything Vue owns. */
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info {
   display: flex !important;
-  flex-direction: column !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
   align-items: center !important;
-  gap: 6px !important;
+  justify-content: center !important;
+  gap: 6px 4px !important;
   width: 100% !important;
+}
+
+/* The line of its own above the subtitle row. */
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-title {
+  flex: 0 0 100% !important;
 }
 
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-title {
@@ -601,26 +630,42 @@
   align-items: center !important;
   justify-content: center !important;
   gap: 6px !important;
-  margin-top: 6px !important;
+  margin-top: 0 !important;
 }
 
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-number-text {
-  font-size: 18px !important;
-  font-weight: 600 !important;
-  line-height: 30px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
+}
+
+/* Separator before the change link. The 6px flex gap is the space on its right, so it
+   is offset by the same on its left — and it belongs to the number, not to the link. */
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-number-text::after {
+  content: '·';
+  margin-left: 6px;
+  opacity: 0.6;
 }
 
 /* The host renders this as an Iconify span: the glyph is a mask over the element's
-   background colour, and its box is sized by font-size. So the design's tighter,
-   full-bleed pencil is a mask swap — the span keeps its own change-number click. */
+   background colour, and its box is sized by font-size. Dropping the mask — which would
+   otherwise clip the pseudo-element too — frees ::after to carry a text label instead,
+   and the span keeps the site's own change-number click. */
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-number-icon {
-  width: 14px !important;
-  height: 14px !important;
-  font-size: 14px !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 12px !important;
+  line-height: normal !important;
   opacity: 1 !important;
-  background-color: #3fd8e0 !important;
-  -webkit-mask: var(--crs-edit-glyph) no-repeat center / contain !important;
-  mask: var(--crs-edit-glyph) no-repeat center / contain !important;
+  background-color: transparent !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  color: #3fd8e0 !important;
+  cursor: pointer !important;
+}
+
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__info-number-icon::after {
+  content: 'Змінити номер';
 }
 
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__form {
@@ -656,8 +701,26 @@
   background: #3fd8e0 !important;
   color: #0f1c26 !important;
   border-radius: 22px !important;
-  font-size: 15px !important;
+
+  font-size: 0 !important;
   font-weight: 500 !important;
+
+  gap: 0 !important;
+}
+
+/* nowrap because the button is sized by its label but its height is fixed: a wrap on a
+   narrow column would push the second line out of the box. */
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__submit::after {
+  content: 'Почати перегляд';
+  font-size: 15px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* The loader replaces the slot, so the label must not sit next to the spinner. */
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-v1-sms-screen__submit:has(.ui-button__loader)::after {
+  content: none;
 }
 
 .auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__actions {
@@ -667,8 +730,7 @@
   gap: 12px !important;
   margin-top: 4px !important;
 }
-.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__actions-resend,
-.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__actions-change {
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-sms-screen__actions-resend {
   font-size: 12px !important;
   color: #20bec6 !important;
 }
@@ -678,5 +740,5 @@
     width: 56px !important;
     height: 56px !important;
   }
-}`;t({name:`sweettv testing`,dev:`OS`}),n(`exp_test`);var H=`crs-auth-popup`;new class{constructor(){this.init()}init(){window.IS_AUTH!==!0&&(this.ensureStyles([i,D,I,j,V,l]),g(),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,A(),B(),N(),f()))}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(H))return;let t=document.createElement(`style`);t.id=H,t.textContent=e.join(`
+}`,U=`.auth-v1-sms-screen`,W=`Почати перегляд`,G=`Змінити номер`,K=`.auth-v1-sms-screen__info-text`,q=`Надіслали на`;function J(){o(U,e=>{_(t=>{e.querySelectorAll(K)[1].textContent=q,e.querySelector(`.auth-v1-sms-screen__submit`).setAttribute(`aria-label`,W),Y(e),e.querySelector(`.auth-v1-sms-screen__info`).prepend(F(t)),`${t.kind}`})})}function Y(e){let t=e.querySelector(`.auth-v1-sms-screen__info-number-icon`);t.removeAttribute(`aria-hidden`),t.setAttribute(`role`,`button`),t.setAttribute(`tabindex`,`0`),t.setAttribute(`aria-label`,G),t.addEventListener(`keydown`,e=>{e.key!==`Enter`&&e.key!==` `||(e.preventDefault(),t.click())})}t({name:`sweettv testing`,dev:`OS`}),n(`exp_test`);var X=`crs-auth-popup`;new class{constructor(){this.init()}init(){window.IS_AUTH!==!0&&(this.ensureStyles([``,I,E,L,A,H,c]),h(),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,k(),V(),J(),M(),d()))}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(X))return;let t=document.createElement(`style`);t.id=X,t.textContent=e.join(`
 `),document.head.appendChild(t)})}}})();
