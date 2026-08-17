@@ -1,7 +1,7 @@
 (function() {
   "use strict";
-  const u = `.card__img_1 .card__size-wrapper,
-.card__img_1 .pulse {
+  const u = `[class*=card__img_1] [class*=card__size-wrapper],
+[class*=card__img_1] [class*=pulse] {
   display: none !important;
 }
 
@@ -21,19 +21,15 @@
 .header__wrapper {
   justify-content: flex-start !important;
   gap: 24px !important;
-}
-
-.card__img_1[data-astro-cid-buvbpkir] {
-  height: 160px !important;
-}/*# sourceMappingURL=style.css.map */`, f = (n, e, t, s = "") => {
+}/*# sourceMappingURL=style.css.map */`, g = (n, e, t, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: n,
       event_desc: e,
       event_type: t,
       event_loc: s
-    }), l(`Event: ${n} | ${e} | ${t} | ${s}`, "success");
-  }, _ = (n) => new Promise((e) => {
+    }), m(`Event: ${n} | ${e} | ${t} | ${s}`, "success");
+  }, l = (n) => new Promise((e) => {
     const t = document.querySelector(n);
     t && e(t);
     const s = new MutationObserver(() => {
@@ -44,24 +40,24 @@
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: n, dev: e }) => {
+  }), _ = ({ name: n, dev: e }) => {
     const t = n.toLowerCase().replace(/\s/g, "_");
-    f(`${t}_started`, `Experiment ${n} started`, "other", t), console.log(
+    g(`${t}_started`, `Experiment ${n} started`, "other", t), console.log(
       `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class c {
+  class i {
     constructor(e) {
-      this.elements = e instanceof c ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof i ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, t, s) {
       return typeof t == "function" && (s = t, t = ""), this.elements.forEach((o) => {
         o.addEventListener(e, function(a) {
-          var m;
+          var p;
           if (t !== "") {
-            let p = (m = a.target) == null ? void 0 : m.closest(t);
-            p && (s == null || s.call(p, a));
+            let f = (p = a.target) == null ? void 0 : p.closest(t);
+            f && (s == null || s.call(f, a));
           } else
             s == null || s.call(o, a);
         });
@@ -84,7 +80,7 @@
     }
     each(e) {
       for (let t of this.elements)
-        e(new c(t), this.elements.indexOf(t));
+        e(new i(t), this.elements.indexOf(t));
       return this;
     }
     style(e, t) {
@@ -95,7 +91,7 @@
     }
     find(e) {
       const t = this.elements.map((s) => Array.from(s.querySelectorAll(e)));
-      return new c(t.flat());
+      return new i(t.flat());
     }
     attr(e, t) {
       return t ? (this.elements.forEach(function(s) {
@@ -113,7 +109,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const r = (n) => new c(n), l = (n, e = "info") => {
+  const r = (n) => new i(n), m = (n, e = "info") => {
     let t;
     switch (e) {
       case "info":
@@ -131,14 +127,14 @@
     }
     console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
   };
-  g({ name: "Install Page Rename", dev: "YK" });
-  const i = "https://conversionrate-store.github.io/a-b_images/adblock";
+  _({ name: "Install Page Rename", dev: "YK" });
+  const c = "https://conversionrate-store.github.io/a-b_images/adblock";
   class d {
     constructor() {
       this.init();
     }
     async init() {
-      await _("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${u}</style>`), l("Install Page Rename: "), r(".header__logo img").elements[0].setAttribute("src", `${i}/new_logo.svg`), r(".card__img_1 img").elements[0].src = `${i}/open.webp`, r(".card__img_1 img").elements[0].srcset = `${i}/open.webp`, r(".card__img_1 source").elements[0].srcset = `${i}/open.webp`, r(".card__img_2 img").elements[0].src = `${i}/approve.webp`, r(".card__img_2 img").elements[0].srcset = `${i}/approve.webp`, r(".card__img_2 source").elements[0].srcset = `${i}/approve.webp`, r(".card__img_3 img").elements[0].src = `${i}/install.webp`, r(".card__img_3 img").elements[0].srcset = `${i}/install.webp`, r(".card__img_3 source").elements[0].srcset = `${i}/install.webp`, r(".card__text strong").elements[0].innerHTML = "AdblockForYoutube_AdBlock360.exe", r(".card__text strong").elements[0].style.letterSpacing = "-0.8px";
+      await l("body"), r("body").elements[0].insertAdjacentHTML("beforeend", `<style>${u}</style>`), m("Install Page Rename: "), await l(".header__logo img"), r(".header__logo img").elements[0].setAttribute("src", `${c}/new_logo.svg`), r('[class*="card__img_1"] img').elements[0].src = `${c}/open.webp`, r('[class*="card__img_1"] img').elements[0].srcset = `${c}/open.webp`, r('[class*="card__img_1"] source').elements[0].srcset = `${c}/open.webp`, r('[class*="card__img_2"] img').elements[0].src = `${c}/approve.webp`, r('[class*="card__img_2"] img').elements[0].srcset = `${c}/approve.webp`, r('[class*="card__img_2"] source').elements[0].srcset = `${c}/approve.webp`, r('[class*="card__img_3"] img').elements[0].src = `${c}/install.webp`, r('[class*="card__img_3"] img').elements[0].srcset = `${c}/install.webp`, r('[class*="card__img_3"] source').elements[0].srcset = `${c}/install.webp`, r('[class*="card__text"] strong').elements[0].innerHTML = "AdblockForYoutube_AdBlock360.exe", r('[class*="card__text"] strong').elements[0].style.letterSpacing = "-0.8px";
     }
   }
   new d();
