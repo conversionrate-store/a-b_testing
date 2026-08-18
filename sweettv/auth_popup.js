@@ -1,11 +1,11 @@
 (function(){var e=({name:e,dev:t})=>{},t=e=>{let t=setInterval(function(){typeof window.clarity==`function`&&(clearInterval(t),window.clarity(`set`,e,`variant_1`))},1e3)},n=[],r=null;function i(e,t){n.push({selector:e,onAppear:t,seen:new WeakSet}),r||(r=new MutationObserver(a),r.observe(document.documentElement,{childList:!0,subtree:!0})),a()}function a(){n.forEach(({selector:e,onAppear:t,seen:n})=>{let r=document.querySelector(e);!r||n.has(r)||(n.add(r),t(r))})}var o=`
-.auth-social-buttons {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons {
   gap: 12px !important;
 }
 
-.auth-social-buttons > .auth-google-identity-button-wrapper,
-.auth-social-buttons > .auth-facebook-login-button,
-.auth-social-buttons > .auth-apple-sign-in-button {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons > .auth-google-identity-button-wrapper,
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons > .auth-facebook-login-button,
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons > .auth-apple-sign-in-button {
   position: relative !important;
   width: 62px !important;
   height: 40px !important;
@@ -22,8 +22,10 @@
 }
 
 
-.auth-social-buttons > .auth-google-identity-button-wrapper::after,
-.auth-social-buttons > .auth-apple-sign-in-button::after {
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-social-buttons
+  > .auth-google-identity-button-wrapper::after,
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons > .auth-apple-sign-in-button::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -32,17 +34,19 @@
   background-position: center;
 }
 
-.auth-social-buttons > .auth-google-identity-button-wrapper::after {
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-social-buttons
+  > .auth-google-identity-button-wrapper::after {
   background-size: 16px 16px;
   background-image: url("data:image/svg+xml,%3Csvg%20width%3D'16'%20height%3D'16'%20viewBox%3D'0%200%2016%2016'%20fill%3D'none'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M8%203.16667C9.18%203.16667%2010.2367%203.57333%2011.07%204.36667L13.3533%202.08333C11.9667%200.793334%2010.1567%200%208%200C4.87333%200%202.17%201.79333%200.853333%204.40667L3.51333%206.47C4.14333%204.57333%205.91333%203.16667%208%203.16667Z'%20fill%3D'white'%2F%3E%3Cpath%20d%3D'M15.66%208.18333C15.66%207.66%2015.61%207.15333%2015.5333%206.66667H8V9.67333H12.3133C12.12%2010.66%2011.56%2011.5%2010.72%2012.0667L13.2967%2014.0667C14.8%2012.6733%2015.66%2010.6133%2015.66%208.18333Z'%20fill%3D'white'%2F%3E%3Cpath%20d%3D'M3.51%209.53C3.35%209.04667%203.25667%208.53333%203.25667%208C3.25667%207.46667%203.34667%206.95333%203.51%206.47L0.85%204.40667C0.306667%205.48667%200%206.70667%200%208C0%209.29333%200.306667%2010.5133%200.853333%2011.5933L3.51%209.53Z'%20fill%3D'white'%2F%3E%3Cpath%20d%3D'M8%2016C10.16%2016%2011.9767%2015.29%2013.2967%2014.0633L10.72%2012.0633C10.0033%2012.5467%209.08%2012.83%208%2012.83C5.91333%2012.83%204.14333%2011.4233%203.51%209.52667L0.85%2011.59C2.17%2014.2067%204.87333%2016%208%2016Z'%20fill%3D'white'%2F%3E%3C%2Fsvg%3E");
 }
 
-.auth-social-buttons > .auth-apple-sign-in-button::after {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons > .auth-apple-sign-in-button::after {
   background-size: 14px 17px;
   background-image: url("data:image/svg+xml,%3Csvg%20width%3D'14'%20height%3D'17'%20viewBox%3D'0%200%2014.3182%2017.7045'%20fill%3D'none'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M7.37163%204.08566C8.16584%204.08566%209.1614%203.54541%209.75426%202.82507C10.2912%202.17227%2010.6827%201.26059%2010.6827%200.348913C10.6827%200.225105%2010.6715%200.101297%2010.6491%200C9.76545%200.0337658%208.70277%200.596529%208.06516%201.35063C7.56179%201.92465%207.10316%202.82507%207.10316%203.74801C7.10316%203.88307%207.12553%204.01813%207.13672%204.06315C7.19265%204.07441%207.28214%204.08566%207.37163%204.08566ZM4.57511%2017.7045C5.66016%2017.7045%206.14116%2016.973%207.49467%2016.973C8.87056%2016.973%209.17259%2017.682%2010.3807%2017.682C11.5664%2017.682%2012.3606%2016.579%2013.1101%2015.4985C13.949%2014.2604%2014.2958%2013.0449%2014.3182%2012.9886C14.2399%2012.9661%2011.9691%2012.0319%2011.9691%209.40941C11.9691%207.13584%2013.7589%206.11161%2013.8596%206.03283C12.6738%204.32202%2010.8729%204.277%2010.3807%204.277C9.04954%204.277%207.96449%205.08738%207.28214%205.08738C6.54386%205.08738%205.57067%204.32203%204.4185%204.32203C2.22603%204.32203%200%206.14538%200%209.58949C0%2011.728%200.82777%2013.9903%201.8457%2015.4535C2.71822%2016.6916%203.47887%2017.7045%204.57511%2017.7045Z'%20fill%3D'white'%2F%3E%3C%2Fsvg%3E");
 }
 
-.auth-social-buttons .auth-google-identity-button {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons .auth-google-identity-button {
   width: 100% !important;
   height: 100% !important;
   background: transparent !important;
@@ -51,18 +55,31 @@
   box-shadow: none !important;
 }
 
-.auth-social-buttons .auth-google-identity-button > div,
-.auth-social-buttons .auth-google-identity-button > div > div,
-.auth-social-buttons .auth-google-identity-button > div > iframe {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons .auth-google-identity-button > div,
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-social-buttons
+  .auth-google-identity-button
+  > div
+  > div,
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-social-buttons
+  .auth-google-identity-button
+  > div
+  > iframe {
   width: 100% !important;
   height: 100% !important;
 }
 
-.auth-social-buttons .auth-google-identity-button > div > div > div {
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-social-buttons
+  .auth-google-identity-button
+  > div
+  > div
+  > div {
   opacity: 0 !important;
 }
 
-.auth-social-buttons .auth-facebook-login-button .iconify {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons .auth-facebook-login-button .iconify {
   font-size: 16px !important;
   width: 16px !important;
   height: 16px !important;
@@ -72,20 +89,21 @@
   background-image: url("data:image/svg+xml,%3Csvg%20width%3D'16'%20height%3D'16'%20viewBox%3D'0%200%2016%2016'%20fill%3D'none'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M16%208.04888C16%203.6036%2012.4182%200%208%200C3.58176%200%200%203.6036%200%208.04888C0%2012.0663%202.92552%2015.3962%206.75%2016V10.3755H4.71872V8.04888H6.75V6.2756C6.75%204.2584%207.94432%203.14408%209.77168%203.14408C10.647%203.14408%2011.5625%203.30128%2011.5625%203.30128V5.28208H10.5537C9.55992%205.28208%209.25%205.90256%209.25%206.53904V8.04888H11.4687L11.1141%2010.3755H9.25V16C13.0745%2015.3962%2016%2012.0663%2016%208.04888Z'%20fill%3D'white'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.auth-social-buttons
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-social-buttons
   > .auth-apple-sign-in-button.auth-apple-sign-in-button.auth-apple-sign-in-button--icon {
   width: 62px !important;
   height: 40px !important;
   min-width: 0 !important;
 }
 
-.auth-social-buttons .auth-apple-sign-in-button__visual {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons .auth-apple-sign-in-button__visual {
   opacity: 0 !important;
   width: 100% !important;
   height: 100% !important;
 }
 
-.auth-social-buttons .auth-apple-sign-in-button__trigger {
+.auth-modal-shell:has(.crs-side-panel) .auth-social-buttons .auth-apple-sign-in-button__trigger {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
@@ -343,7 +361,7 @@
   .crs-side-panel__poster {
     height: 150px;
   }
-}`,S=`.auth-modal-shell`,C=`.auth-v1-start-screen`;function w(){i(C,e=>{f(t=>{e.closest(S).append(b(t))})})}var T=`.auth-v1-start-screen__phone-input .ui-input__field {
+}`,S=`.auth-modal-shell`,C=`.auth-v1-start-screen`;function w(){i(C,e=>{f(t=>{e.closest(S).append(b(t))})})}var T=`.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__phone-input .ui-input__field {
   display: flex !important;
   align-items: stretch !important;
   gap: 8px !important;
@@ -353,7 +371,7 @@
   border-radius: 0 !important;
 }
 
-.auth-v1-start-screen__phone-input .ui-input__prefix {
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__phone-input .ui-input__prefix {
   position: relative !important;
   flex: 0 0 auto !important;
   height: 44px !important;
@@ -367,26 +385,32 @@
   box-sizing: border-box !important;
 }
 
-.auth-v1-start-screen__phone-input .auth-phone-country-select {
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-v1-start-screen__phone-input
+  .auth-phone-country-select {
   position: static !important;
 }
 
-.auth-v1-start-screen__phone-input .auth-phone-country-select__arrow {
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-v1-start-screen__phone-input
+  .auth-phone-country-select__arrow {
   display: none !important;
 }
 
-.auth-v1-start-screen__phone-input .auth-phone-country-select__trigger::after {
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-v1-start-screen__phone-input
+  .auth-phone-country-select__trigger::after {
   content: '';
   position: absolute;
   inset: 0;
 }
 
-.auth-v1-start-screen__phone-prefix {
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__phone-prefix {
   color: #fff !important;
   font-size: 14px !important;
 }
 
-.auth-v1-start-screen__phone-input .ui-input__input {
+.auth-modal-shell:has(.crs-side-panel) .auth-v1-start-screen__phone-input .ui-input__input {
   flex: 1 1 auto !important;
   min-width: 0 !important;
   height: 44px !important;
@@ -399,10 +423,12 @@
   box-sizing: border-box !important;
 }
 
-.auth-v1-start-screen__phone-input .ui-input__input::placeholder {
+.auth-modal-shell:has(.crs-side-panel)
+  .auth-v1-start-screen__phone-input
+  .ui-input__input::placeholder {
   color: #757575 !important;
 }
-`,E=`.auth-v1-start-screen__phone-input .ui-input__input`;function D(){i(E,e=>{e.placeholder=`93 000 00 00`})}var O=`.crs-stepper {
+`,E=`.auth-v1-start-screen__phone-input .ui-input__input`;function D(){i(E,e=>{f(()=>{e.placeholder=`93 000 00 00`})})}var O=`.crs-stepper {
   display: flex;
   align-items: center;
   gap: 24px;
@@ -740,5 +766,5 @@
     width: 56px !important;
     height: 56px !important;
   }
-}`,R=`.auth-v1-sms-screen`,z=`Почати перегляд`,B=`Змінити номер`,V=`.auth-v1-sms-screen__info-text`,H=`Надіслали на`;function U(){i(R,e=>{f(t=>{e.querySelectorAll(V)[1].textContent=H,e.querySelector(`.auth-v1-sms-screen__submit`).setAttribute(`aria-label`,z),W(e),e.querySelector(`.auth-v1-sms-screen__info`).prepend(A(t)),`${t.kind}`})})}function W(e){let t=e.querySelector(`.auth-v1-sms-screen__info-number-icon`);t.removeAttribute(`aria-hidden`),t.setAttribute(`role`,`button`),t.setAttribute(`tabindex`,`0`),t.setAttribute(`aria-label`,B),t.addEventListener(`keydown`,e=>{e.key!==`Enter`&&e.key!==` `||(e.preventDefault(),t.click())})}e({name:`sweettv testing`,dev:`OS`}),t(`exp_test`);var G=`crs-auth-popup`;function K(e){return!e||e===`undefined`||e===`null`?``:e}new class{constructor(){this.init()}init(){this.isUserLoggedOut()&&(this.ensureStyles([``,j,x,M,T,L,o]),u(),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,w(),I(),U(),D()))}isUserLoggedOut(){let e=document.cookie.match(/(?:^|; )refresh_token=([^;]+)/),t=K(e?e[1]:``);if(t===``)try{t=K(localStorage.getItem(`refresh_token`))}catch{t=``}return t===``}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(G))return;let t=document.createElement(`style`);t.id=G,t.textContent=e.join(`
+}`,R=`.auth-v1-sms-screen`,z=`Почати перегляд`,B=`Змінити номер`,V=`.auth-v1-sms-screen__info-text`,H=`Надіслали на`;function U(){i(R,e=>{f(t=>{e.querySelectorAll(V)[1].textContent=H,e.querySelector(`.auth-v1-sms-screen__submit`).setAttribute(`aria-label`,z),W(e),e.querySelector(`.auth-v1-sms-screen__info`).prepend(A(t)),`${t.kind}`})})}function W(e){let t=e.querySelector(`.auth-v1-sms-screen__info-number-icon`);t.removeAttribute(`aria-hidden`),t.setAttribute(`role`,`button`),t.setAttribute(`tabindex`,`0`),t.setAttribute(`aria-label`,B),t.addEventListener(`keydown`,e=>{e.key!==`Enter`&&e.key!==` `||(e.preventDefault(),t.click())})}e({name:`sweettv testing`,dev:`OS`}),t(`exp_auth_popup`);var G=`crs-auth-popup`;function K(e){return!e||e===`undefined`||e===`null`?``:e}new class{constructor(){this.init()}init(){this.ensureStyles([``,j,x,M,T,L,o]),u(),!window.__crsAuthPopupInit&&(window.__crsAuthPopupInit=!0,w(),I(),U(),D())}isUserLoggedOut(){let e=document.cookie.match(/(?:^|; )refresh_token=([^;]+)/),t=K(e?e[1]:``);if(t===``)try{t=K(localStorage.getItem(`refresh_token`))}catch{t=``}return t===``}ensureStyles(e){queueMicrotask(()=>{if(document.getElementById(G))return;let t=document.createElement(`style`);t.id=G,t.textContent=e.join(`
 `),document.head.appendChild(t)})}}})();
