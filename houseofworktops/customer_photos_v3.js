@@ -1,4 +1,9 @@
 (function(){var e=(e,t,n,r=``)=>{window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:`event-to-ga4`,event_name:e,event_desc:t,event_type:n,event_loc:r}),`${e}${t}${n}${r}`},t=e=>new Promise(t=>{let n=document.querySelector(e);if(n){t(n);return}let r=new MutationObserver(()=>{let n=document.querySelector(e);n&&(t(n),r.disconnect())});r.observe(document.documentElement,{childList:!0,subtree:!0})}),n=({name:e,dev:t})=>{},r=e=>{let t=setInterval(function(){typeof window.clarity==`function`&&(clearInterval(t),window.clarity(`set`,e,`variant_1`))},1e3)},i=(t,n,r,i,a=1e3,o=.5)=>{let s,c;if(s=new IntersectionObserver(function(t){t[0].isIntersecting===!0?c=setTimeout(()=>{e(n,t[0].target.dataset.visible||i||``,`view`,r),s.disconnect()},a):clearTimeout(c)},{threshold:[o]}),typeof t==`string`){let e=document.querySelector(t);e&&s.observe(e)}else s.observe(t)},a=`/* Customer Photos — mirrors the reels-section look (green #093b32, gold heading, square peek slider). */
+
+/* Match Figma: the dark-green section paints a fully opaque #093b32 with the pattern
+   at 10% opacity. CSS can't opacity a single background image, so we layer a 90%-opaque
+   #093b32 over the pattern over a solid #093b32 — mathematically identical to rendering
+   the pattern at 10% over an opaque base, with no extra DOM / z-index churn. */
 .reels-section {
   background:
     linear-gradient(rgba(9, 59, 50, 0.5), rgba(9, 59, 50, 0.5)),
@@ -13,7 +18,7 @@
   }
 }
 .crs-cp {
-  /* margin-bottom: 2.25rem; */
+  display: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.20);
 }
 
