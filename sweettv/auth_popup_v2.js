@@ -1,18 +1,29 @@
 (function(){var e=({name:e,dev:t})=>{},t=e=>{let t=setInterval(function(){typeof window.clarity==`function`&&(clearInterval(t),window.clarity(`set`,e,`variant_1`))},1e3)},n=[],r=null;function i(e,t){n.push({selector:e,onAppear:t,seen:new WeakSet}),r||(r=new MutationObserver(a),r.observe(document.documentElement,{childList:!0,subtree:!0})),a()}function a(){n.forEach(({selector:e,onAppear:t,seen:n})=>{let r=document.querySelector(e);!r||n.has(r)||(n.add(r),t(r))})}var o=`.auth-modal-shell:has(.crs-chips) .auth-social-buttons {
   gap: 12px !important;
+  justify-content: center !important;
 }
 
-.auth-modal-shell:has(.crs-chips) .auth-social-buttons > .auth-google-identity-button-wrapper,
-.auth-modal-shell:has(.crs-chips) .auth-social-buttons > .auth-facebook-login-button,
 .auth-modal-shell:has(.crs-chips)
   .auth-social-buttons
-  > .auth-apple-sign-in-button.auth-apple-sign-in-button--icon {
+  > .auth-google-identity-button-wrapper:not([hidden]):not([style*='display:none']):not(
+    [style*='display: none']
+  ),
+.auth-modal-shell:has(.crs-chips)
+  .auth-social-buttons
+  > .auth-facebook-login-button:not([hidden]):not([style*='display:none']):not(
+    [style*='display: none']
+  ),
+.auth-modal-shell:has(.crs-chips)
+  .auth-social-buttons
+  > .auth-apple-sign-in-button.auth-apple-sign-in-button--icon:not([hidden]):not(
+    [style*='display:none']
+  ):not([style*='display: none']) {
   position: relative !important;
   width: 62px !important;
   height: 40px !important;
   min-width: 0 !important;
   padding: 0 !important;
-  display: flex !important;
+  display: flex;
   align-items: center !important;
   justify-content: center !important;
   background: #fff !important;
@@ -37,7 +48,7 @@
 }
 
 .auth-modal-shell:has(.crs-chips) .auth-social-buttons .auth-apple-sign-in-button__visual {
-  display: flex !important;
+  display: flex;
   align-items: flex-start !important;
   justify-content: center !important;
 }
@@ -56,7 +67,7 @@
   min-height: 0 !important;
   background: #152735 !important;
   border: 0 !important;
-  border-radius: 16px !important;
+  border-radius: 24px !important;
   overflow: visible !important;
 }
 
@@ -104,10 +115,6 @@
 @media (max-width: 767px) {
   .ui-modal__dialog:has(.crs-v2) {
     height: auto !important;
-  }
-
-  .auth-modal-shell:has(.crs-v2) {
-    border-radius: 24px !important;
   }
 
   .auth-modal-shell:has(.crs-v2) .auth-modal-shell__content {
@@ -197,11 +204,10 @@
 }
 
 .crs-stepper__step {
-  flex: 0 0 86px;
-  width: 86px;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 7px;
 }
 
 .crs-stepper__badge {
@@ -253,7 +259,7 @@
     margin-bottom: 0;
   }
 }
-`;function g(e,t){if(!(t==null||typeof t==`boolean`)){if(Array.isArray(t)){for(let n of t)g(e,n);return}e.appendChild(t instanceof Node?t:document.createTextNode(String(t)))}}function _(e,t,n){if(typeof e==`function`)return e(t??{});let{children:r,...i}=t??{},a=document.createElement(e);for(let[e,t]of Object.entries(i))e.startsWith(`on`)&&typeof t==`function`?a.addEventListener(e.slice(2).toLowerCase(),t):t===!0?a.setAttribute(e,``):t!==!1&&t!=null&&a.setAttribute(e,String(t));return g(a,r),a}var v=_,y={movie:`фільму`,series:`серіалу`,cartoon:`мультика`,channel:`каналу`},b=e=>v(`div`,{class:`crs-stepper`,children:[v(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[_(`span`,{class:`crs-stepper__badge`,children:`1`}),v(`span`,{class:`crs-stepper__label`,children:[`Активація`,_(`br`,{}),`доступу`]})]}),_(`span`,{class:`crs-stepper__divider`}),v(`div`,{class:`crs-stepper__step`,children:[_(`span`,{class:`crs-stepper__icon`}),v(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,_(`br`,{}),y[e.kind]]})]})]}),x=h,S=()=>v(`div`,{class:`crs-chips crs-v2`,children:[_(`span`,{class:`crs-chips__item`,children:`Безкоштовно`}),_(`span`,{class:`crs-chips__item`,children:`Займе пару секунд`})]}),C=`.auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-info-step,
+`;function g(e,t){if(!(t==null||typeof t==`boolean`)){if(Array.isArray(t)){for(let n of t)g(e,n);return}e.appendChild(t instanceof Node?t:document.createTextNode(String(t)))}}function _(e,t,n){if(typeof e==`function`)return e(t??{});let{children:r,...i}=t??{},a=document.createElement(e);for(let[e,t]of Object.entries(i))e.startsWith(`on`)&&typeof t==`function`?a.addEventListener(e.slice(2).toLowerCase(),t):t===!0?a.setAttribute(e,``):t!==!1&&t!=null&&a.setAttribute(e,String(t));return g(a,r),a}var v=_,y={movie:`фільму`,series:`серіалу`,cartoon:`мультика`,channel:`каналу`},b=e=>v(`div`,{class:`crs-stepper`,children:[v(`div`,{class:`crs-stepper__step crs-stepper__step--done`,children:[_(`span`,{class:`crs-stepper__badge`,children:`1`}),v(`span`,{class:`crs-stepper__label`,children:[`Введи номер`,_(`br`,{}),`телефону`]})]}),_(`span`,{class:`crs-stepper__divider`}),v(`div`,{class:`crs-stepper__step`,children:[_(`span`,{class:`crs-stepper__icon`}),v(`span`,{class:`crs-stepper__label`,children:[`Перегляд`,_(`br`,{}),y[e.kind]]})]})]}),x=h,S=()=>v(`div`,{class:`crs-chips crs-v2`,children:[_(`span`,{class:`crs-chips__item`,children:`Безкоштовно`}),_(`span`,{class:`crs-chips__item`,children:`Займе пару секунд`})]}),C=`.auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-info-step,
 .auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-info-text,
 .auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-secure {
   display: none !important;
@@ -270,7 +276,7 @@
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 6px !important;
+  gap: 12px !important;
   width: 100% !important;
 }
 
@@ -300,7 +306,7 @@
 .auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-form {
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 12px !important;
   width: 100% !important;
 }
 
@@ -362,6 +368,15 @@
   margin-top: 8px !important;
 }
 
+.auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-options:not(:has(.auth-social-buttons)),
+.auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-options:has(.auth-social-buttons[hidden]),
+.auth-modal-shell:has(.crs-chips)
+  .auth-v1-start-screen__body-options:has(.auth-social-buttons[style*='display:none']),
+.auth-modal-shell:has(.crs-chips)
+  .auth-v1-start-screen__body-options:has(.auth-social-buttons[style*='display: none']) {
+  display: none !important;
+}
+
 .auth-modal-shell:has(.crs-chips) .auth-v1-start-screen__body-options-title {
   display: flex !important;
   align-items: center !important;
@@ -392,7 +407,7 @@
     margin-top: 0 !important;
   }
 }
-`,w=`.auth-v1-start-screen`,T=`.auth-v1-start-screen__body-options-title`,E=`або увійди за 1 клік`,D=`Отримати код і почати перегляд`;function O(){i(w,e=>{u(t=>{e.querySelector(T).textContent=E,e.querySelector(`.auth-v1-start-screen__body-form-button`).setAttribute(`aria-label`,D),e.querySelector(`.auth-v1-start-screen__body-info`).append(S()),e.querySelector(`.auth-v1-start-screen__body`).prepend(b(t)),`${t.kind}`})})}var k=`.crs-sms {
+`,w=`.auth-v1-start-screen`,T=`.auth-v1-start-screen__body-options-title`,E=`або увійди за 1 клік`,D=`Отримати код і почати перегляд`;function O(){i(w,e=>{u(t=>{let n=e.querySelector(T);n&&(n.textContent=E),e.querySelector(`.auth-v1-start-screen__body-form-button`)?.setAttribute(`aria-label`,D),e.querySelector(`.auth-v1-start-screen__body-info`)?.append(S()),e.querySelector(`.auth-v1-start-screen__body`)?.prepend(b(t)),`${t.kind}`})})}var k=`.crs-sms {
   display: none;
 }
 
