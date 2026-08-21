@@ -5,9 +5,18 @@
 
 .auth-modal-shell:has(.crs-chips)
   .auth-social-buttons
-  > .auth-google-identity-button-wrapper:not([hidden]):not([style*='display:none']):not(
-    [style*='display: none']
-  ),
+  > .auth-google-identity-button-wrapper:not(
+    :has(> .auth-google-identity-button > *, > .auth-google-identity-button-wrapper__placeholder-icon)
+  ) {
+  display: none !important;
+}
+
+.auth-modal-shell:has(.crs-chips)
+  .auth-social-buttons
+  > .auth-google-identity-button-wrapper:has(
+    > .auth-google-identity-button > *,
+    > .auth-google-identity-button-wrapper__placeholder-icon
+  ):not([hidden]):not([style*='display:none']):not([style*='display: none']),
 .auth-modal-shell:has(.crs-chips)
   .auth-social-buttons
   > .auth-facebook-login-button:not([hidden]):not([style*='display:none']):not(
@@ -18,12 +27,10 @@
   > .auth-apple-sign-in-button.auth-apple-sign-in-button--icon:not([hidden]):not(
     [style*='display:none']
   ):not([style*='display: none']) {
-  /* position: relative !important; */
   width: 62px !important;
   height: 40px !important;
   min-width: 0 !important;
   padding: 0 !important;
-  /* display: flex; */
   align-items: center !important;
   justify-content: center !important;
   background: #fff !important;
@@ -38,7 +45,7 @@
   border: 0 !important;
 }
 
-.auth-modal-shell:has(.crs-chips) .auth-social-buttons .auth-google-identity-button,
+.auth-modal-shell:has(.crs-chips) .auth-social-buttons .auth-google-identity-button:has(> *),
 .auth-modal-shell:has(.crs-chips) .auth-social-buttons .auth-google-identity-button > div,
 .auth-modal-shell:has(.crs-chips) .auth-social-buttons .auth-google-identity-button > div > div,
 .auth-modal-shell:has(.crs-chips) .auth-social-buttons .auth-google-identity-button [role='button'] {
@@ -374,6 +381,39 @@
   .auth-v1-start-screen__body-options:has(.auth-social-buttons[style*='display:none']),
 .auth-modal-shell:has(.crs-chips)
   .auth-v1-start-screen__body-options:has(.auth-social-buttons[style*='display: none']) {
+  display: none !important;
+}
+
+.auth-modal-shell:has(.crs-chips)
+  .auth-v1-start-screen__body-options:not(
+    :has(
+        .auth-social-buttons
+          > .auth-google-identity-button-wrapper:not([hidden]):not([style*='display:none']):not(
+            [style*='display: none']
+          )
+          > .auth-google-identity-button
+          > *
+      ),
+    :has(
+        .auth-social-buttons
+          > .auth-google-identity-button-wrapper:not([hidden]):not([style*='display:none']):not(
+            [style*='display: none']
+          )
+          > .auth-google-identity-button-wrapper__placeholder-icon
+      ),
+    :has(
+        .auth-social-buttons
+          > .auth-facebook-login-button:not([hidden]):not([style*='display:none']):not(
+            [style*='display: none']
+          )
+      ),
+    :has(
+        .auth-social-buttons
+          > .auth-apple-sign-in-button:not([hidden]):not([style*='display:none']):not(
+            [style*='display: none']
+          )
+      )
+  ) {
   display: none !important;
 }
 
