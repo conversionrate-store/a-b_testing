@@ -18,12 +18,12 @@
   > .auth-apple-sign-in-button.auth-apple-sign-in-button--icon:not([hidden]):not(
     [style*='display:none']
   ):not([style*='display: none']) {
-  position: relative !important;
+  /* position: relative !important; */
   width: 62px !important;
   height: 40px !important;
   min-width: 0 !important;
   padding: 0 !important;
-  display: flex;
+  /* display: flex; */
   align-items: center !important;
   justify-content: center !important;
   background: #fff !important;
