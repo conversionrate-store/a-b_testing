@@ -446,6 +446,11 @@
   min-height: 18px;
 }
 
+/* CRO: the section heading already says it — no per-card "Bestseller". */
+.exp-slider--best-sellers .exp-slider__badge {
+  display: none;
+}
+
 .exp-slider__badge {
   color: #ff9c00;
   font-family: HayabusaIndustry, Palatino, ui-serif;
