@@ -1,10 +1,11 @@
 (function(){var e=e=>new Promise(t=>{let n=document.querySelector(e);if(n){t(n);return}let r=new MutationObserver(()=>{let n=document.querySelector(e);n&&(t(n),r.disconnect())});r.observe(document.documentElement,{childList:!0,subtree:!0})}),t=({name:e,dev:t})=>{},n=`
-[data-crs-basic] > .SubscriptionOfferOptionCard__body > .GText {
+/* Basic not selected: host description as in control; selected: our loss list instead */
+[data-crs-basic].is-selected > .SubscriptionOfferOptionCard__body > .GText,
+[data-crs-basic]:not(.is-selected) .crs-losses {
   display: none;
 }
-[data-crs-basic]:not(.is-selected) .crs-loss + .crs-loss {
-  display: none;
-}
+
+
 .crs-loss__title {
   font-family: Inter, sans-serif;
   font-size: 14px;
@@ -12,6 +13,7 @@
   line-height: 1.4;
   color: #191919;
 }
+
 .crs-loss__desc {
   font-family: Inter, sans-serif;
   font-size: 14px;
@@ -20,6 +22,40 @@
   color: #535c62;
   margin-top: 2px;
 }
+
+.crs-more {
+  display: block;
+}
+
+@media (min-width: 600px) {
+  div.SubscriptionOfferOptionCard.premium-family-plan-option:not(.is-selected) div.SubscriptionOfferOptionCard__head {
+    align-items: flex-start;
+  }
+
+  div.SubscriptionOfferOptionCard.premium-family-plan-option:not(.is-selected) div.SubscriptionOfferOptionCard__head-lead {
+    align-items: flex-start;
+  }
+
+  /* radio (22px) and price row (28px) centred on the 20px title line */
+  div.SubscriptionOfferOptionCard.premium-family-plan-option:not(.is-selected) div.SubscriptionOfferOptionCard__radio {
+    margin-top: -1px;
+  }
+
+  div.SubscriptionOfferOptionCard.premium-family-plan-option:not(.is-selected) div.SubscriptionOfferOptionCard__head-price {
+    margin-top: -4px;
+  }
+
+  div.SubscriptionOfferOptionCard.premium-family-plan-option:not(.is-selected) div.SubscriptionOfferOptionCard__head-main {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 8px;
+  }
+
+  div.SubscriptionOfferOptionCard.premium-family-plan-option:not(.is-selected) div.SubscriptionOfferOptionCard__head-main > .ant-typography {
+    flex-basis: 100%;
+  }
+}
+
 .crs-moneyback__text {
   font-family: Inter, sans-serif;
   font-size: 14px;
@@ -40,7 +76,7 @@
       ${s(`Expedited processing`,`Your application drops to the back of the standard queue and waits its turn.`)}
       ${s(`$1M identity theft protection`,r)}
       ${s(`Renewal &amp; Deadlines Watch`,`Never missing a renewal or deadline on key government documents — that's back on you.`)}
-    </div>`),n},u=async t=>{let n=await e(`.SubscriptionFooter__primary-buttonWrapper`),r=()=>{let e=n.querySelector(`button .ant-typography`)?.firstChild;e?.nodeValue?.startsWith(`Continue without my`)&&(e.nodeValue=`Lose my $${t} credit. Continue with Basic`)};r(),new MutationObserver(r).observe(n,{subtree:!0,childList:!0,characterData:!0})},d=async()=>{let t=await e(`.SubscriptioninterstitialPageFooter__footer`);t.querySelector(`.crs-moneyback`)||t.insertAdjacentHTML(`afterbegin`,`<div class="SubscriptioninterstitialPageFooter__footer-item crs-moneyback">
+    </div>`),n},u=async t=>{let n=await e(`.SubscriptionFooter__primary-buttonWrapper`),r=()=>{let e=n.querySelector(`button .ant-typography`)?.firstChild;e?.nodeValue?.startsWith(`Continue without my`)&&(e.nodeValue=`Lose my $${t} credit. Continue with Basic`)};r(),new MutationObserver(r).observe(n,{subtree:!0,childList:!0,characterData:!0})},d=async()=>{let t=await e(`.SubscriptionOfferOptionsList .SubscriptionOfferOptionCard.is-collapsible`),n=()=>{let e=t.querySelector(`.SubscriptionOfferOptionCard__benefit p`);if(!e)return;let n=e.innerHTML,r=n.replace(/,\s*(and \d+ more)\s*$/,`,<span class="crs-more">$1</span>`);r!==n&&(e.innerHTML=r)};n(),new MutationObserver(n).observe(t,{childList:!0,subtree:!0})},f=async()=>{let t=await e(`.SubscriptioninterstitialPageFooter__footer`);t.querySelector(`.crs-moneyback`)||t.insertAdjacentHTML(`afterbegin`,`<div class="SubscriptioninterstitialPageFooter__footer-item crs-moneyback">
       ${i}
       <div class="crs-moneyback__text">7-day money back</div>
-    </div>`)};(async()=>{c();let e=await l();e&&(u(e),d())})()})();
+    </div>`)};(async()=>{c(),d();let e=await l();e&&(u(e),f())})()})();
