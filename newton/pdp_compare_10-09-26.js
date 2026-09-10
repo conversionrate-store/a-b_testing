@@ -275,8 +275,7 @@ body.pdpc-lock {
 .pdpc-table__img {
   width: 96px;
   height: 96px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   margin-top: 20px;
 }
 
@@ -299,6 +298,7 @@ body.pdpc-lock {
   padding: 10px 24px;
   min-width: 120px;
   border-radius: 20px;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
@@ -306,6 +306,7 @@ body.pdpc-lock {
   white-space: nowrap;
 }
 .pdpc-table__cta--filled {
+  border: 0;
   background: #ff6a1a;
   color: #fff;
 }
@@ -404,7 +405,6 @@ body.pdpc-lock {
   .pdpc-table__row {
     flex-direction: column;
     border-bottom: 0;
-    width: -moz-max-content;
     width: max-content;
     min-width: 100%;
   }
@@ -446,45 +446,48 @@ body.pdpc-lock {
   .pdpc-table__shared {
     margin: 16px 20px 0;
   }
-}/*# sourceMappingURL=style.css.map */`, d = (p, e, n, t = "") => {
+}
+
+/*# sourceMappingURL=style.css.map */
+`, r = (o, e, n, t = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: p,
+      event_name: o,
       event_desc: e,
       event_type: n,
       event_loc: t
-    }), m(`Event: ${p} | ${e} | ${n} | ${t}`, "success");
-  }, h = (p) => new Promise((e) => {
-    const n = document.querySelector(p);
+    }), m(`Event: ${o} | ${e} | ${n} | ${t}`, "success");
+  }, h = (o) => new Promise((e) => {
+    const n = document.querySelector(o);
     n && e(n);
     const t = new MutationObserver(() => {
-      const o = document.querySelector(p);
-      o && (e(o), t.disconnect());
+      const p = document.querySelector(o);
+      p && (e(p), t.disconnect());
     });
     t.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), k = ({ name: p, dev: e }) => {
-    const n = p.toLowerCase().replace(/\s/g, "_");
-    d(`${n}_started`, `Experiment ${p} started`, "other", n), console.log(
-      `%c EXP: ${p} (DEV: ${e})`,
+  }), k = ({ name: o, dev: e }) => {
+    const n = o.toLowerCase().replace(/\s/g, "_");
+    r(`${n}_started`, `Experiment ${o} started`, "other", n), console.log(
+      `%c EXP: ${o} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class l {
+  class s {
     constructor(e) {
-      this.elements = e instanceof l ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
+      this.elements = e instanceof s ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
     on(e, n, t) {
-      return typeof n == "function" && (t = n, n = ""), this.elements.forEach((o) => {
-        o.addEventListener(e, function(c) {
+      return typeof n == "function" && (t = n, n = ""), this.elements.forEach((p) => {
+        p.addEventListener(e, function(c) {
           var a;
           if (n !== "") {
-            let r = (a = c.target) == null ? void 0 : a.closest(n);
-            r && (t == null || t.call(r, c));
+            let l = (a = c.target) == null ? void 0 : a.closest(n);
+            l && (t == null || t.call(l, c));
           } else
-            t == null || t.call(o, c);
+            t == null || t.call(p, c);
         });
       }), this;
     }
@@ -505,18 +508,18 @@ body.pdpc-lock {
     }
     each(e) {
       for (let n of this.elements)
-        e(new l(n), this.elements.indexOf(n));
+        e(new s(n), this.elements.indexOf(n));
       return this;
     }
     style(e, n) {
-      const t = e.split("-").map((o, c) => c === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
-      return this.elements.forEach(function(o) {
-        o.style[t] = n;
+      const t = e.split("-").map((p, c) => c === 0 ? p : p.charAt(0).toUpperCase() + p.slice(1)).join("");
+      return this.elements.forEach(function(p) {
+        p.style[t] = n;
       }), this;
     }
     find(e) {
       const n = this.elements.map((t) => Array.from(t.querySelectorAll(e)));
-      return new l(n.flat());
+      return new s(n.flat());
     }
     attr(e, n) {
       return n ? (this.elements.forEach(function(t) {
@@ -534,26 +537,34 @@ body.pdpc-lock {
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const b = (p) => new l(p), _ = (p, e, n, t, o = 1e3, c = 0.5) => {
-    let a, r;
+  const u = (o) => new s(o), _ = (o, e, n, t, p = 1e3, c = 0.5) => {
+    let a, l;
     if (a = new IntersectionObserver(
-      function(s) {
-        s[0].isIntersecting === !0 ? r = setTimeout(() => {
-          d(
+      function(d) {
+        d[0].isIntersecting === !0 ? l = setTimeout(() => {
+          r(
             e,
-            s[0].target.dataset.visible || t || "",
+            d[0].target.dataset.visible || t || "",
             "view",
             n
           ), a.disconnect();
-        }, o) : (m("Element is not fully visible", "warn"), clearTimeout(r));
+        }, p) : (m("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [c] }
-    ), typeof p == "string") {
-      const s = document.querySelector(p);
-      s && a.observe(s);
+    ), typeof o == "string") {
+      const d = document.querySelector(o);
+      d && a.observe(d);
     } else
-      a.observe(p);
-  }, m = (p, e = "info") => {
+      a.observe(o);
+  }, C = (o, e) => {
+    const n = document.querySelector(o);
+    if (!n) return;
+    const p = n.getBoundingClientRect().top - e;
+    window.scrollBy({
+      top: p,
+      behavior: "smooth"
+    });
+  }, m = (o, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -569,7 +580,7 @@ body.pdpc-lock {
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${p}`, `${n} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${o}`, `${n} font-size: 16px; font-weight: 600`);
   }, g = ["omni", "omni-gen", "se", "pro"], f = {
     omni: {
       name: "Omni",
@@ -667,7 +678,7 @@ body.pdpc-lock {
       values: { omni: "ניילון", "omni-gen": "ניילון", se: "ניילון", pro: "בסיס אלומיניום מחוזק" },
       unconfirmed: { "omni-gen": !0 }
     }
-  ], C = "משענת גב Bionic FlexFit · מערכת תמיכה דינמית · מושב Multi-Density · משענת ראש 34×19 ס״מ · גובה מושב 43–53 ס״מ · מתאים לגובה 153–186 ס״מ ומשקל עד 136 ק״ג · תקנים UL962, FCC SDoC, BIFMA X5.1, CA Prop 65, RoHS, UN38.3 · אחריות 5 שנים על השלדה, 2 שנים על המערכת החשמלית", i = {
+  ], L = "משענת גב Bionic FlexFit · מערכת תמיכה דינמית · מושב Multi-Density · משענת ראש 34×19 ס״מ · גובה מושב 43–53 ס״מ · מתאים לגובה 153–186 ס״מ ומשקל עד 136 ק״ג · תקנים UL962, FCC SDoC, BIFMA X5.1, CA Prop 65, RoHS, UN38.3 · אחריות 5 שנים על השלדה, 2 שנים על המערכת החשמלית", i = {
     compareAll: "השוואה בין כל הדגמים",
     popupTitle: "השוואת דגמי Omni",
     popupSubtitle: "רק השורות הבאות משתנות בין הדגמים.",
@@ -689,7 +700,7 @@ body.pdpc-lock {
     omniGenNote: "פרטי הבד והבסיס עבור Omni Gen אינם מופיעים כרגע במקור מידע רשמי באתר — יש לאשר מול צוות המוצר לפני עלייה לאוויר.",
     unconfirmed: "הערך טרם אושר מול צוות המוצר",
     close: "סגירה"
-  }, u = {
+  }, b = {
     compare: (
       /* HTML */
       `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -723,8 +734,8 @@ body.pdpc-lock {
     <path d="M2 2L14 14M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
   </svg>`
     )
-  }, L = (p) => {
-    const e = f[p];
+  }, $ = (o) => {
+    const e = f[o];
     return (
       /* HTML */
       `
@@ -737,16 +748,16 @@ body.pdpc-lock {
     </span>
   `
     );
-  }, $ = () => (
+  }, P = () => (
     /* HTML */
     `
   <button type="button" class="pdpc-compare-link" data-pdpc-open>
-    ${u.compare}
+    ${b.compare}
     <span>${i.compareAll}</span>
   </button>
 `
-  ), w = (p, e = !0) => {
-    const n = [p, ...g.filter((t) => t !== p)];
+  ), w = (o, e = !0) => {
+    const n = [o, ...g.filter((t) => t !== o)];
     return (
       /* HTML */
       `
@@ -754,16 +765,16 @@ body.pdpc-lock {
       <div class="pdpc-table__scroll">
         <div class="pdpc-table__row pdpc-table__row--head">
           <div class="pdpc-table__rowlabel pdpc-table__rowlabel--head">${i.featuresLabel}</div>
-          <div class="pdpc-table__cells">${n.map((t) => E(t, t === p)).join("")}</div>
+          <div class="pdpc-table__cells">${n.map((t) => E(t, t === o)).join("")}</div>
         </div>
-        ${x.map((t, o) => P(t, n, o === x.length - 1)).join("")}
+        ${x.map((t, p) => A(t, n, p === x.length - 1)).join("")}
       </div>
       ${e ? (
         /* HTML */
         `
             <div class="pdpc-table__shared">
               <div class="pdpc-table__shared-title">${i.identicalTitle}</div>
-              <p>${C}</p>
+              <p>${L}</p>
             </div>
             <p class="pdpc-table__note">${i.omniGenNote}</p>
           `
@@ -771,8 +782,8 @@ body.pdpc-lock {
     </div>
   `
     );
-  }, E = (p, e) => {
-    const n = f[p];
+  }, E = (o, e) => {
+    const n = f[o];
     return (
       /* HTML */
       `
@@ -781,43 +792,48 @@ body.pdpc-lock {
       <img class="pdpc-table__img" src="${n.image}" alt="${n.name}" loading="lazy" width="150" height="150" />
       <div class="pdpc-table__name">${n.tableName}</div>
       <div class="pdpc-table__from">${i.startingFrom}${n.startingPrice}</div>
-      ${e ? `<span class="pdpc-table__cta pdpc-table__cta--filled">${i.chooseOptions}</span>` : (
+      ${e ? (
         /* HTML */
-        `<a href="#" class="pdpc-table__cta pdpc-table__cta--outline" data-pdpc-nav="${p}">
+        `<button type="button" class="pdpc-table__cta pdpc-table__cta--filled" data-pdpc-scroll-bundle>
+            ${i.chooseOptions}
+          </button>`
+      ) : (
+        /* HTML */
+        `<a href="#" class="pdpc-table__cta pdpc-table__cta--outline" data-pdpc-nav="${o}">
             ${i.viewProduct}
           </a>`
       )}
     </div>
   `
     );
-  }, P = (p, e, n) => (
+  }, A = (o, e, n) => (
     /* HTML */
     `
   <div class="pdpc-table__row ${n ? "pdpc-table__row--last" : ""}">
-    <div class="pdpc-table__rowlabel">${p.label}</div>
-    <div class="pdpc-table__cells">${e.map((t, o) => A(p, t, o === 0)).join("")}</div>
+    <div class="pdpc-table__rowlabel">${o.label}</div>
+    <div class="pdpc-table__cells">${e.map((t, p) => T(o, t, p === 0)).join("")}</div>
   </div>
 `
-  ), A = (p, e, n) => {
+  ), T = (o, e, n) => {
     var c;
     const t = n ? "pdpc-table__cell--current" : "";
-    if (p.type === "check") {
-      const a = p.values[e];
+    if (o.type === "check") {
+      const a = o.values[e];
       return (
         /* HTML */
         `<div class="pdpc-table__cell ${t}">
-      <span class="pdpc-check ${a ? "pdpc-check--yes" : "pdpc-check--no"}">${a ? u.check : u.cross}</span>
+      <span class="pdpc-check ${a ? "pdpc-check--yes" : "pdpc-check--no"}">${a ? b.check : b.cross}</span>
     </div>`
       );
     }
-    const o = (c = p.unconfirmed) == null ? void 0 : c[e];
+    const p = (c = o.unconfirmed) == null ? void 0 : c[e];
     return (
       /* HTML */
       `<div class="pdpc-table__cell pdpc-table__cell--text ${t}">
-    ${p.values[e]}${o ? `<span class="pdpc-flag" title="${i.unconfirmed}">*</span>` : ""}
+    ${o.values[e]}${p ? `<span class="pdpc-flag" title="${i.unconfirmed}">*</span>` : ""}
   </div>`
     );
-  }, S = (p) => (
+  }, S = (o) => (
     /* HTML */
     `
   <section class="pdpc-page-section" dir="rtl">
@@ -826,29 +842,29 @@ body.pdpc-lock {
         <h2>${i.pageTitle}</h2>
         <p>${i.pageSubtitle}</p>
       </div>
-      ${w(p, !1)}
+      ${w(o, !1)}
     </div>
   </section>
 `
-  ), T = (p) => (
+  ), B = (o) => (
     /* HTML */
     `
   <div class="pdpc-popup" id="pdpcPopup" data-pdpc-popup dir="rtl" hidden>
     <div class="pdpc-popup__backdrop" data-pdpc-close></div>
     <div class="pdpc-popup__panel" role="dialog" aria-modal="true" aria-label="${i.popupTitle}">
-      <button type="button" class="pdpc-popup__x" data-pdpc-close aria-label="${i.close}">${u.close}</button>
+      <button type="button" class="pdpc-popup__x" data-pdpc-close aria-label="${i.close}">${b.close}</button>
       <div class="pdpc-popup__head">
         <h2>${i.popupTitle}</h2>
         <p>${i.popupSubtitle}</p>
       </div>
-      <div class="pdpc-popup__body" data-pdpc-body>${w(p)}</div>
+      <div class="pdpc-popup__body" data-pdpc-body>${w(o)}</div>
     </div>
   </div>
 `
   );
   k({ name: "Newton PDP Compare", dev: "AI" });
-  const v = ".chair-model-product-switcher", z = ".product-details-metafield-section", M = ".section-comparison-table";
-  class O {
+  const v = ".chair-model-product-switcher", O = ".product-details-metafield-section", z = ".section-comparison-table", M = ".variant-option--bundle-plan";
+  class j {
     constructor() {
       this.hrefsByKey = {}, this.injectStyle(), this.init(), window.addEventListener("libernovo:product-page-swapped", () => this.init()), document.addEventListener("keydown", (e) => {
         if (e.key !== "Escape") return;
@@ -860,10 +876,10 @@ body.pdpc-lock {
       document.getElementById("pdpcStyle") || document.head.insertAdjacentHTML("beforeend", `<style id="pdpcStyle">${y}</style>`);
     }
     async init() {
-      var o;
+      var p;
       const e = await h(v);
       this.switcher = e, this.readHrefs();
-      const n = (o = e.querySelector(".cmps__item .cmps__button.is-active")) == null ? void 0 : o.closest(
+      const n = (p = e.querySelector(".cmps__item .cmps__button.is-active")) == null ? void 0 : p.closest(
         ".cmps__item"
       ), t = n == null ? void 0 : n.getAttribute("data-model-key");
       if (!t || !g.includes(t)) {
@@ -882,39 +898,43 @@ body.pdpc-lock {
     // per current color/bundle context, and the site computes them for us).
     readHrefs() {
       this.switcher.querySelectorAll(".cmps__item[data-model-key]").forEach((e) => {
-        const n = e.getAttribute("data-model-key"), t = e.querySelector("[data-product-switch-url]"), o = t == null ? void 0 : t.getAttribute("data-product-switch-url");
-        n && o && (this.hrefsByKey[n] = o);
+        const n = e.getAttribute("data-model-key"), t = e.querySelector("[data-product-switch-url]"), p = t == null ? void 0 : t.getAttribute("data-product-switch-url");
+        n && p && (this.hrefsByKey[n] = p);
       });
     }
     enhanceLabels() {
       this.switcher.querySelectorAll(".cmps__item[data-model-key]").forEach((e) => {
         const n = e.getAttribute("data-model-key"), t = e.querySelector(".cmps__button");
         if (!n || !t || t.querySelector(".pdpc-card")) return;
-        const o = t.querySelector(".cmps__button-label");
-        t.insertAdjacentHTML("beforeend", L(n)), t.classList.add("pdpc-button");
+        const p = t.querySelector(".cmps__button-label");
+        t.insertAdjacentHTML("beforeend", $(n)), t.classList.add("pdpc-button");
         const c = t.querySelector(".pdpc-card__top");
-        o && c && c.prepend(o);
+        p && c && c.prepend(p);
       });
     }
     mountCompareLink() {
       var n;
       const e = this.switcher.querySelector(".cmps__items");
-      !e || (n = e.parentElement) != null && n.querySelector("[data-pdpc-open]") || (e.insertAdjacentHTML("afterend", $()), b(this.switcher).on("click", "[data-pdpc-open]", () => this.openPopup()));
+      !e || (n = e.parentElement) != null && n.querySelector("[data-pdpc-open]") || (e.insertAdjacentHTML("afterend", P()), u(this.switcher).on("click", "[data-pdpc-open]", () => this.openPopup()));
     }
     mountPopup() {
       var e;
-      (e = document.getElementById("pdpcPopup")) == null || e.remove(), document.body.insertAdjacentHTML("beforeend", T(this.currentKey)), this.bindPopup();
+      (e = document.getElementById("pdpcPopup")) == null || e.remove(), document.body.insertAdjacentHTML("beforeend", B(this.currentKey)), this.bindPopup();
     }
     bindPopup() {
       const e = document.getElementById("pdpcPopup");
-      e && b(e).on("click", (n) => {
+      e && u(e).on("click", (n) => {
         const t = n.target;
         if (t.closest("[data-pdpc-close]")) {
           this.closePopup();
           return;
         }
-        const o = t.closest("[data-pdpc-nav]");
-        o && (n.preventDefault(), this.goToModel(o.getAttribute("data-pdpc-nav"), "popup"));
+        const p = t.closest("[data-pdpc-nav]");
+        if (p) {
+          n.preventDefault(), this.goToModel(p.getAttribute("data-pdpc-nav"), "popup");
+          return;
+        }
+        t.closest("[data-pdpc-scroll-bundle]") && (this.closePopup(), this.scrollToBundle("popup"));
       });
     }
     // Replaces the native 3-column .section-comparison-table (present only on
@@ -927,18 +947,18 @@ body.pdpc-lock {
     // querySelector — it sits further down the page than the switcher, so at
     // the moment init() runs it isn't reliably in the DOM yet.
     async mountPageTable() {
-      var o;
-      const e = await h(z);
-      (o = document.getElementById("pdpcPageTable")) == null || o.remove();
-      const n = document.querySelector(M);
+      var p;
+      const e = await h(O);
+      (p = document.getElementById("pdpcPageTable")) == null || p.remove();
+      const n = document.querySelector(z);
       n && (n.style.display = "none");
       const t = document.createElement("div");
-      t.id = "pdpcPageTable", t.innerHTML = S(this.currentKey), e.insertAdjacentElement("beforebegin", t), b(t).on("click", "[data-pdpc-nav]", (c) => {
-        var r;
+      t.id = "pdpcPageTable", t.innerHTML = S(this.currentKey), e.insertAdjacentElement("beforebegin", t), u(t).on("click", "[data-pdpc-nav]", (c) => {
+        var l;
         c.preventDefault();
-        const a = (r = c.target.closest("[data-pdpc-nav]")) == null ? void 0 : r.getAttribute("data-pdpc-nav");
+        const a = (l = c.target.closest("[data-pdpc-nav]")) == null ? void 0 : l.getAttribute("data-pdpc-nav");
         this.goToModel(a, "page_table");
-      }), _(
+      }), u(t).on("click", "[data-pdpc-scroll-bundle]", () => this.scrollToBundle("page_table")), _(
         "#pdpcPageTable",
         "exp_newton_pdp_compare_page_table",
         "PDP standalone compare table",
@@ -947,7 +967,15 @@ body.pdpc-lock {
     }
     openPopup() {
       const e = document.getElementById("pdpcPopup");
-      e && (e.hidden = !1, document.body.classList.add("pdpc-lock"), d("newton_pdp_compare_popup_open", "Compare popup opened", "view", "PDP model selector"));
+      e && (e.hidden = !1, document.body.classList.add("pdpc-lock"), r("newton_pdp_compare_popup_open", "Compare popup opened", "view", "PDP model selector"));
+    }
+    // "Choose options" (current model's own CTA — nothing to navigate to) —
+    // scrolls down to the native bundle picker on this same page instead.
+    // Bigger-than-default offset (scrollToElement's own default is 100) so the
+    // sticky subnav bar (.product-sticky-subnav-section) doesn't end up
+    // covering the top of the bundle fieldset once scrolling settles.
+    scrollToBundle(e) {
+      r("newton_pdp_compare_choose_options", "Choose options clicked", "click", `PDP compare ${e}`), C(M, 160);
     }
     closePopup() {
       const e = document.getElementById("pdpcPopup");
@@ -959,13 +987,13 @@ body.pdpc-lock {
     goToModel(e, n) {
       if (!e) return;
       const t = this.hrefsByKey[e];
-      if (d("newton_pdp_compare_select", `Selected: ${e}`, "click", `PDP compare ${n}`), !t) return;
-      const o = this.switcher.querySelector(
+      if (r("newton_pdp_compare_select", `Selected: ${e}`, "click", `PDP compare ${n}`), !t) return;
+      const p = this.switcher.querySelector(
         `.cmps__item[data-model-key="${e}"] [data-product-switch-url]`
       );
-      this.closePopup(), o ? o.click() : window.location.href = t;
+      this.closePopup(), window.scrollTo({ top: 0, behavior: "smooth" }), p ? p.click() : window.location.href = t;
     }
   }
-  new O();
+  new j();
 })();
 //# sourceMappingURL=index.js.map
