@@ -1,27 +1,27 @@
 (function() {
   "use strict";
-  const o = (s, e, t, i = "") => {
+  const i = (s, e, t, o = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: s,
       event_desc: e,
       event_type: t,
-      event_loc: i
-    }), a(`Event: ${s} | ${e} | ${t} | ${i}`, "success");
+      event_loc: o
+    }), a(`Event: ${s} | ${e} | ${t} | ${o}`, "success");
   }, c = (s) => new Promise((e) => {
     const t = document.querySelector(s);
     t && e(t);
-    const i = new MutationObserver(() => {
+    const o = new MutationObserver(() => {
       const n = document.querySelector(s);
-      n && (e(n), i.disconnect());
+      n && (e(n), o.disconnect());
     });
-    i.observe(document, {
+    o.observe(document, {
       childList: !0,
       subtree: !0
     });
   }), r = ({ name: s, dev: e }) => {
     const t = s.toLowerCase().replace(/\s/g, "_");
-    o(`${t}_started`, `Experiment ${s} started`, "other", t), console.log(
+    i(`${t}_started`, `Experiment ${s} started`, "other", t), console.log(
       `%c EXP: ${s} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
@@ -61,25 +61,35 @@
       }).observe(e, { attributes: !0, attributeFilter: ["class"] }), this.isVisible(e) && this.onShow();
     }
     onShow() {
-      this.shown || (this.shown = !0, o("ab360_last_ad_popup_view", "AdBlock360 last ad popup shown", "view", "exit_intent"));
+      this.shown || (this.shown = !0, i("ab360_last_ad_popup_view_control", "AdBlock360 last ad popup shown (control)", "view", "exit_intent"));
     }
     onClose() {
-      this.shown = !1, o("ab360_last_ad_popup_close", "AdBlock360 last ad popup closed", "click", this.lastCloseTrigger), this.lastCloseTrigger = "auto";
+      this.shown = !1, i(
+        "ab360_last_ad_popup_close_control",
+        "AdBlock360 last ad popup closed (control)",
+        "click",
+        this.lastCloseTrigger
+      ), this.lastCloseTrigger = "auto";
     }
     bindClose(e) {
       var t;
       (t = e.querySelector(".popup__close")) == null || t.addEventListener("click", () => {
         this.lastCloseTrigger = "close_btn";
-      }), e.addEventListener("click", (i) => {
-        i.target === e && (this.lastCloseTrigger = "backdrop");
-      }), document.addEventListener("keydown", (i) => {
-        i.key === "Escape" && this.isVisible(e) && (this.lastCloseTrigger = "escape_key");
+      }), e.addEventListener("click", (o) => {
+        o.target === e && (this.lastCloseTrigger = "backdrop");
+      }), document.addEventListener("keydown", (o) => {
+        o.key === "Escape" && this.isVisible(e) && (this.lastCloseTrigger = "escape_key");
       });
     }
     bindCta(e) {
       var t;
       (t = e.querySelector("#main-cta")) == null || t.addEventListener("click", () => {
-        this.lastCloseTrigger = "cta_click", o("ab360_last_ad_popup_cta_click", "Activate Ad Blocking – Free", "click", "last_ad_popup");
+        this.lastCloseTrigger = "cta_click", i(
+          "ab360_last_ad_popup_cta_click_control",
+          "Activate Ad Blocking – Free (control)",
+          "click",
+          "last_ad_popup"
+        );
       });
     }
   }
