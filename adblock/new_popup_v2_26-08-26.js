@@ -198,29 +198,29 @@
   font-size: 13px;
   color: var(--ink-2);
   text-align: center;
-}/*# sourceMappingURL=style.css.map */`, h = (o, t, e, n = "") => {
+}/*# sourceMappingURL=style.css.map */`, h = (a, t, e, n = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: o,
+      event_name: a,
       event_desc: t,
       event_type: e,
       event_loc: n
-    }), r(`Event: ${o} | ${t} | ${e} | ${n}`, "success");
-  }, m = (o) => new Promise((t) => {
-    const e = document.querySelector(o);
+    }), r(`Event: ${a} | ${t} | ${e} | ${n}`, "success");
+  }, m = (a) => new Promise((t) => {
+    const e = document.querySelector(a);
     e && t(e);
     const n = new MutationObserver(() => {
-      const a = document.querySelector(o);
-      a && (t(a), n.disconnect());
+      const o = document.querySelector(a);
+      o && (t(o), n.disconnect());
     });
     n.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), g = ({ name: o, dev: t }) => {
-    const e = o.toLowerCase().replace(/\s/g, "_");
-    h(`${e}_started`, `Experiment ${o} started`, "other", e), console.log(
-      `%c EXP: ${o} (DEV: ${t})`,
+  }), g = ({ name: a, dev: t }) => {
+    const e = a.toLowerCase().replace(/\s/g, "_");
+    h(`${e}_started`, `Experiment ${a} started`, "other", e), console.log(
+      `%c EXP: ${a} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
@@ -229,14 +229,14 @@
       this.elements = t instanceof d ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
     }
     on(t, e, n) {
-      return typeof e == "function" && (n = e, e = ""), this.elements.forEach((a) => {
-        a.addEventListener(t, function(s) {
+      return typeof e == "function" && (n = e, e = ""), this.elements.forEach((o) => {
+        o.addEventListener(t, function(s) {
           var l;
           if (e !== "") {
             let i = (l = s.target) == null ? void 0 : l.closest(e);
             i && (n == null || n.call(i, s));
           } else
-            n == null || n.call(a, s);
+            n == null || n.call(o, s);
         });
       }), this;
     }
@@ -261,9 +261,9 @@
       return this;
     }
     style(t, e) {
-      const n = t.split("-").map((a, s) => s === 0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("");
-      return this.elements.forEach(function(a) {
-        a.style[n] = e;
+      const n = t.split("-").map((o, s) => s === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+      return this.elements.forEach(function(o) {
+        o.style[n] = e;
       }), this;
     }
     find(t) {
@@ -286,14 +286,14 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const p = (o) => new d(o), w = async (o) => {
-    const t = (e) => new Promise((n, a) => {
+  const p = (a) => new d(a), w = async (a) => {
+    const t = (e) => new Promise((n, o) => {
       const s = e.split(".").pop();
       if (s === "js") {
         if (Array.from(document.scripts).map((c) => c.src.toLowerCase()).includes(e.toLowerCase()))
           return r(`Script ${e} allready downloaded!`, "success"), n("");
         const i = document.createElement("script");
-        i.src = e, i.onload = n, i.onerror = a, document.head.appendChild(i);
+        i.src = e, i.onload = n, i.onerror = o, document.head.appendChild(i);
       } else if (s === "css") {
         if (Array.from(document.styleSheets).map((c) => {
           var b;
@@ -301,22 +301,22 @@
         }).includes(e.toLowerCase()))
           return r(`Style ${e} allready downloaded!`, "success"), n("");
         const i = document.createElement("link");
-        i.rel = "stylesheet", i.href = e, i.onload = n, i.onerror = a, document.head.appendChild(i);
+        i.rel = "stylesheet", i.href = e, i.onload = n, i.onerror = o, document.head.appendChild(i);
       }
     });
-    for (const e of o)
+    for (const e of a)
       r(e), await t(e), r(`Loaded librari ${e}`);
     r("All libraries loaded!", "success");
-  }, x = (o, t) => {
-    const e = o === window ? window : document.querySelector(o);
-    let n, a, s, l, i;
+  }, v = (a, t) => {
+    const e = a === window ? window : document.querySelector(a);
+    let n, o, s, l, i;
     function c() {
       n = null, l = 0;
     }
     c(), e.addEventListener("scroll", function() {
-      a = o === window ? this.scrollY : this.scrollTop, i = a > n ? "down" : "up", n != null && (l = a - n), n = a, clearTimeout(s), s = setTimeout(c, 50), t(Math.abs(l), i);
+      o = a === window ? this.scrollY : this.scrollTop, i = o > n ? "down" : "up", n != null && (l = o - n), n = o, clearTimeout(s), s = setTimeout(c, 50), t(Math.abs(l), i);
     });
-  }, r = (o, t = "info") => {
+  }, r = (a, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -332,8 +332,8 @@
         e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${o}`, `${e} font-size: 16px; font-weight: 600`);
-  }, v = "https://conversionrate-store.github.io/a-b_images/adblock/popup_img.webp", u = {
+    console.log(`%c>>> ${a}`, `${e} font-size: 16px; font-weight: 600`);
+  }, x = "https://conversionrate-store.github.io/a-b_images/adblock/popup_img.webp", u = {
     close: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#101828" stroke-width="2.4" stroke-linecap="round">
 <path d="M5 5l14 14M19 5 5 19"/>
 </svg>`,
@@ -366,7 +366,7 @@
       <button type="button" class="ab360-la__close" aria-label="Close">${u.close}</button>
 
       <div class="ab360-la__media">
-        <img class="ab360-la__img" src="${v}" alt="Ads everywhere, ads gone with AdBlock360" />
+        <img class="ab360-la__img" src="${x}" alt="Ads everywhere, ads gone with AdBlock360" />
       </div>
 
       <div class="ab360-la__content">
@@ -375,9 +375,7 @@
           <div class="ab360-la__badge">${u.app} AppEsteem</div>
         </div>
 
-        <h2 class="ab360-la__headline">
-          <span class="ab360-la__headline-accent">The last ad</span> you'll ever see
-        </h2>
+        <h2 class="ab360-la__headline"><span class="ab360-la__headline-accent">The last ad</span> you'll ever see</h2>
 
         <p class="ab360-la__subtitle">Install once. Every ad on your device disappears — and stays gone.</p>
 
@@ -398,9 +396,13 @@
   <!-- End TrustBox widget -->
 </div>
 
-        <button type="button" id="ab360-la-cta" class="ab360-la__cta">
+        <a
+          id="ab360-la-cta"
+          class="ab360-la__cta"
+          href="https://adblock360.com/install-v2-aby?voluum_id=wr7438qr3m30777ljo2o273c&vtm=1789141470636"
+        >
           ${u.cta} Activate Ad Blocking – Free
-        </button>
+        </a>
 
         <div class="ab360-la__meta">756 KB &nbsp;•&nbsp; 1-min setup</div>
       </div>
@@ -431,7 +433,7 @@
     bindTriggers() {
       this.device === "desktop" ? document.addEventListener("mouseout", (t) => {
         !t.relatedTarget && t.clientY <= 0 && this.showPopup("mouseleave");
-      }) : x(window, (t, e) => {
+      }) : v(window, (t, e) => {
         e === "up" && t > 120 && this.showPopup("scroll_up");
       });
     }
@@ -445,9 +447,7 @@
     }
     bindCta() {
       p("#ab360-la-cta").on("click", () => {
-        h("ab360_last_ad_popup_cta_click", "Activate Ad Blocking – Free", "click", "last_ad_popup");
-        const t = document.querySelector("#main-cta");
-        t && t.click(), this.closePopup("cta_click");
+        h("ab360_last_ad_popup_cta_click", "Activate Ad Blocking – Free", "click", "last_ad_popup"), this.closePopup("cta_click");
       });
     }
     renderTrustpilot() {
