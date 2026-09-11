@@ -76,6 +76,7 @@
   font-size: 14px;
   font-weight: 600;
   color: #ec6a1f;
+  direction: rtl;
 }
 .pdpc-compare-link svg {
   flex: 0 0 18px;
@@ -587,7 +588,11 @@ body.pdpc-lock {
       price: "₪4,690",
       badge: "התאמה חשמלית",
       badgeVariant: "electric",
-      description: "עיסוי גב ממונע OmniStretch · סוללת 2200mAh · 4 עמדות הטיה",
+      // RLM (U+200F) after each Latin token (OmniStretch, 2200mAh) — without it
+      // the browser's bidi algorithm merges the Latin run with the following
+      // digit, so "4" jumps across the separator to the wrong side. Paste
+      // fixes verbatim from spec rather than re-typing (the mark is invisible).
+      description: "עיסוי גב ממונע OmniStretch‏ · סוללת 2200mAh‏ · 4 עמדות הטיה",
       tableName: "OMNI",
       startingPrice: "₪4,690",
       // Each model's own first PDP gallery image (og:image on its default
@@ -599,7 +604,7 @@ body.pdpc-lock {
       price: "₪4,780",
       badge: "התאמה חשמלית",
       badgeVariant: "electric",
-      description: "עיסוי גב ממונע OmniStretch · סוללת 2200mAh · 5 עמדות הטיה",
+      description: "עיסוי גב ממונע OmniStretch‏ · סוללת 2200mAh‏ · 5 עמדות הטיה",
       tableName: "Omni Gen",
       startingPrice: "₪4,780",
       image: "https://newtons.co.il/cdn/shop/files/basic-bundle-libernovo-omni-gen-glacier-45cm-chair1.webp?width=600"
@@ -623,7 +628,7 @@ body.pdpc-lock {
       price: "₪5,449",
       badge: "אוורור אקטיבי חשמלי",
       badgeVariant: "electric",
-      description: "אוורור Active Airflow · סוללת 3000mAh · בסיס אלומיניום · 5 עמדות הטיה",
+      description: "אוורור אקטיבי Active Airflow‏ · סוללת 3000mAh‏ · בסיס אלומיניום · 5 עמדות הטיה",
       tableName: "OMNI Pro",
       startingPrice: "₪5,860",
       image: "https://newtons.co.il/cdn/shop/files/basic-bundle-libernovo-omni-pro-glacier-45cm-chair1.webp?width=600"
@@ -645,7 +650,7 @@ body.pdpc-lock {
       type: "text",
       key: "tilt",
       label: "עמדות הטיה",
-      values: { omni: "4 עמדות הטיה", "omni-gen": "5 עמדות הטיה", se: "4 עמדות הטיה", pro: "5 עמדות הטיה" }
+      values: { omni: "4 עמדות הטיה", "omni-gen": "5 עמדות הטיה", se: "5 עמדות הטיה", pro: "5 עמדות הטיה" }
     },
     {
       type: "check",
@@ -679,7 +684,7 @@ body.pdpc-lock {
       unconfirmed: { "omni-gen": !0 }
     }
   ], L = "משענת גב Bionic FlexFit · מערכת תמיכה דינמית · מושב Multi-Density · משענת ראש 34×19 ס״מ · גובה מושב 43–53 ס״מ · מתאים לגובה 153–186 ס״מ ומשקל עד 136 ק״ג · תקנים UL962, FCC SDoC, BIFMA X5.1, CA Prop 65, RoHS, UN38.3 · אחריות 5 שנים על השלדה, 2 שנים על המערכת החשמלית", i = {
-    compareAll: "השוואה בין כל הדגמים",
+    compareAll: "השוואה בין כל דגמי LiberNovo Omni",
     popupTitle: "השוואת דגמי Omni",
     popupSubtitle: "רק השורות הבאות משתנות בין הדגמים.",
     // Reused verbatim from the native on-page section this replaces
@@ -752,8 +757,8 @@ body.pdpc-lock {
     /* HTML */
     `
   <button type="button" class="pdpc-compare-link" data-pdpc-open>
-    ${b.compare}
     <span>${i.compareAll}</span>
+    ${b.compare}
   </button>
 `
   ), w = (o, e = !0) => {
