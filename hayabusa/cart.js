@@ -1,72 +1,41 @@
-(function(){var e=(e,t,n,r=``)=>{window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:`event-to-ga4`,event_name:e,event_desc:t,event_type:n,event_loc:r}),`${e}${t}${n}${r}`},t=({name:e,dev:t})=>{},n=e=>{let t=setInterval(function(){typeof window.clarity==`function`&&(clearInterval(t),window.clarity(`set`,e,`variant_1`))},1e3)},r=`/* Hayabusa cart drawer — variant B.
-   Injected into the host page, so every rule is scoped to the cart drawer and
-   everything we add is namespaced \`crs-\`. The host's own elements are re-positioned
-   here rather than in JS: reparenting a React node unmounts the drawer. */
-
-:root {
+(function(){var e=(e,t,n,r=``)=>{window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:`event-to-ga4`,event_name:e,event_desc:t,event_type:n,event_loc:r}),`${e}${t}${n}${r}`},t=({name:e,dev:t})=>{},n=e=>{let t=setInterval(function(){typeof window.clarity==`function`&&(clearInterval(t),window.clarity(`set`,e,`variant_1`))},1e3)},r=`:root {
   --crs-gold: #e3b565;
   --crs-panel: #f5f5f5;
   --crs-muted: #737373;
   --crs-font: 'Roboto Condensed', ui-sans-serif, system-ui, sans-serif;
 }
-
-/* ---------------------------------------------------------------- line items */
-
-/* The standalone /cart page reuses \`li.cart-line\` with a different internal
-   structure, so every rule below is scoped to the drawer's scroll container —
-   \`cart-lines-heading\` and \`cart-summary-heading\` exist only inside the drawer.
-
-   Figma re-columns the line into image | title+options+quantity | price+Remove.
-   The host nests those across three wrappers, so \`display: contents\` flattens the
-   wrappers into one grid instead of us reparenting anything (which unmounts React).
-   Row heights come out at Figma's 90px / 112px because the image stretches to the
-   text column rather than staying square. */
 [aria-labelledby='cart-lines-heading'] li.cart-line {
   position: relative;
   display: grid;
-  /* Figma fixes the middle column at 159px on both breakpoints and lets the slack
-     fall between it and the price rail (desktop 1537:23142, mobile 1507:1825), so the
-     rail column takes the remainder and right-aligns its contents. minmax keeps the
-     title able to shrink on phones narrower than 111+159+rail. */
   grid-template-columns: 111px minmax(0, 159px) minmax(40px, 1fr);
   column-gap: 12px;
   row-gap: 10px;
   align-items: start;
-  /* Drop the host's 12px block padding so "Remove" can sit at Figma's 28px from the
-     line top, and so consecutive lines sit 20px apart rather than 40px. */
   padding-block: 0;
 }
-
 [aria-labelledby='cart-lines-heading'] li.cart-line + li.cart-line {
   margin-top: 20px;
 }
-
 [aria-labelledby='cart-lines-heading'] li.cart-line > div:first-child,
 [aria-labelledby='cart-lines-heading'] li.cart-line .notranslate {
   display: contents;
 }
-
 [aria-labelledby='cart-lines-heading'] li.cart-line > div:first-child > div:first-child {
   grid-area: 1 / 1 / 4 / 2;
   align-self: stretch;
   width: 111px;
   height: auto;
 }
-
 [aria-labelledby='cart-lines-heading'] li.cart-line .notranslate > a {
   grid-area: 1 / 2 / 2 / 3;
 }
-
-/* The variant title repeats the options line right below it. */
 [aria-labelledby='cart-lines-heading'] li.cart-line .notranslate > p.text-sm {
   display: none;
 }
-
 [aria-labelledby='cart-lines-heading'] li.cart-line .notranslate > p.text-xs {
   grid-area: 2 / 2 / 3 / 3;
   margin-top: 0;
 }
-
 [aria-labelledby='cart-lines-heading'] li.cart-line .notranslate > div:last-child {
   grid-area: 1 / 3 / 2 / 4;
   margin-top: 0;
@@ -74,22 +43,13 @@
   font-size: 14px;
   line-height: 20px;
 }
-
-/* Quantity row keeps its own flex layout; the host's gap-3 + ml-2 already give
-   Figma's 20px between the stepper and Edit. Addressed by position, not :last-child —
-   a line carrying a gift with purchase gets a third child after it. */
 [aria-labelledby='cart-lines-heading'] li.cart-line > div:nth-child(2) {
   grid-area: 3 / 2 / 4 / 3;
 }
-
-/* The "Gift with Purchase" block the host appends under a line when a free gift is
-   attached. Figma doesn't cover it, so it keeps the control's placement: full width
-   below the whole line rather than squeezed into the middle column. */
 [aria-labelledby='cart-lines-heading'] li.cart-line > div:nth-child(3) {
   grid-column: 1 / -1;
   grid-row: 4;
 }
-
 [aria-labelledby='cart-lines-heading'] li.cart-line button[aria-label='Edit'],
 [aria-labelledby='cart-lines-heading'] li.cart-line button[aria-label='Remove'] {
   background: none;
@@ -100,71 +60,40 @@
   color: #000;
   text-decoration: underline;
 }
-
-/* "Remove" is a fixed 38px string, so keeping it out of flow under the price is
-   safe and avoids splitting the quantity row's flex context. */
 [aria-labelledby='cart-lines-heading'] li.cart-line button[aria-label='Remove'] {
   position: absolute;
   top: 28px;
   right: 0;
   text-align: right;
 }
-
-/* ------------------------------------------------------------ content column */
-
-/* The gutter used to come from <main>'s 16px inline margin. That put main 16px inside
-   the panel, and main's \`overflow: auto\` — which is what makes the drawer's internal
-   scrolling work at all; \`visible\` and \`clip\` both collapse it — clips anything drawn
-   outside its box. The bottom bar's shadow has to reach the panel edges, so the inset
-   moves off main and onto the two regions instead: the column is identical, but main
-   now spans the full panel and the subtotal row can bleed back out to it.
-
-   Figma's mobile frame works to a 16px gutter (343 of 375) and the desktop frame to
-   32px (384 of 448), which is why the two breakpoints differ. */
 [data-crs-cart-overlay] main {
   margin-inline: 0;
 }
-
 [aria-labelledby='cart-lines-heading'],
 [aria-labelledby='cart-summary-heading'] {
   padding-inline: 16px;
 }
-
 @media (min-width: 640px) {
   [aria-labelledby='cart-lines-heading'],
   [aria-labelledby='cart-summary-heading'] {
     padding-inline: 32px;
   }
 }
-
-/* <main>'s 16px bottom margin is the gutter Figma asks for; the summary's own 16px
-   padding was stacking on top of it for 32px. */
 [aria-labelledby='cart-summary-heading'] {
   padding-bottom: 0;
 }
-
-/* The scroll region's bottom padding sits between the pinned free-shipping bar and
-   the summary, stacking with the summary's own padding. Drop it so the summary's
-   20px is the single gap Figma shows above the discount link. */
 [aria-labelledby='cart-lines-heading'] {
   padding-bottom: 0;
 }
-
 [aria-labelledby='cart-summary-heading'] {
   padding-top: 20px;
 }
-
-/* ------------------------------------------------------- order summary block */
-
-/* Our nodes are appended, then ordered into their Figma positions. */
 [aria-labelledby='cart-summary-heading'] {
-  border-top-color: transparent; /* the rule moves down, above the subtotal */
+  border-top-color: transparent;
 }
-
 [aria-labelledby='cart-summary-heading'] .crs-discount-toggle {
   order: -2;
 }
-/* the host's promo form */
 [aria-labelledby='cart-summary-heading'] > .space-y-3 {
   order: -1;
   display: none;
@@ -172,27 +101,13 @@
 [aria-labelledby='cart-summary-heading'].crs-promo-open > .space-y-3 {
   display: block;
 }
-/* Figma draws no rule above the subtotal — the \`Vector 2\` divider is a zero-height
-   frame that never renders. What separates the bottom bar is its upward drop shadow
-   (\`drop-shadow(0 -3px 1.5px rgba(0,0,0,.1))\` on 1537:23166 / 1550:27930): a soft 6px
-   band fading to about #e1e1e1 right where the rule would be. The bar is full-width
-   in the frame, so the shadow bleeds past the summary's inline padding — which also
-   pushes the shadow's side spill out to <main>'s edges, where its overflow clips it.
-
-   It is written as box-shadow rather than filter so it does not make the sticky block
-   a containing block. Note the blur converts: CSS drop-shadow() takes the value as a
-   standard deviation, box-shadow as a radius, so 1.5px there is 3px here — measured
-   identical, and both land within ~2/255 of Figma's own raster. */
 [aria-labelledby='cart-summary-heading'] > dl {
   order: 0;
-  /* the block's 12px gap plus 8px makes Figma's 20px above the shadow */
   margin-top: 8px;
-  /* bleed out through the summary's padding so the shadow reaches the panel edges */
   margin-inline: -16px;
   padding: 20px 16px 0;
   box-shadow: 0 -3px 3px rgb(0 0 0 / 10%);
 }
-
 @media (min-width: 640px) {
   [aria-labelledby='cart-summary-heading'] > dl {
     margin-inline: -32px;
@@ -208,9 +123,6 @@
 [aria-labelledby='cart-summary-heading'] .crs-note {
   order: 3;
 }
-
-/* Subtotal line — Figma drops the uppercase label for a sentence-case one with the
-   item count, and bumps the amount. */
 [aria-labelledby='cart-summary-heading'] > dl > dt {
   font-family: var(--crs-font);
   font-weight: 400;
@@ -219,48 +131,25 @@
   text-transform: none;
   letter-spacing: normal;
 }
-
 [aria-labelledby='cart-summary-heading'] > dl > dd {
   font-size: 20px;
   line-height: 20px;
 }
-
-/* --------------------------------------------------------- free shipping bar */
-
-/* Figma puts the bar directly after the last cart line when the list is short and
-   pins it to the bottom of the list, items scrolling behind, once the list overflows
-   — i.e. the gap down to the discount link is simply whatever space is left over
-   (106px / 36px / 20px across the three frames). \`position: sticky; bottom: 0\` on the
-   last child of the scroll region does exactly that.
-
-   The region becomes a flex column purely so \`order\` can keep the bar last: React
-   appends the gift-with-purchase picker to this same container, and relying on DOM
-   order would put the bar above it whenever that promo is live. */
 [aria-labelledby='cart-lines-heading'] {
   display: flex;
   flex-direction: column;
 }
-
-/* The host leaves a 16px bottom margin on the list, and flex items don't collapse
-   margins, so it would stack with the bar's own 20px. Figma spaces the last line and
-   the bar 20px apart, same as two lines. */
 [aria-labelledby='cart-lines-heading'] > ul {
   margin-bottom: 0;
 }
-
-/* That margin was also all that separated the list from the gift-with-purchase picker,
-   so give the picker its gap back. Its wrapper is rendered empty when no promo is
-   live, hence :has — otherwise the gap would stack above the free-shipping bar. */
 [aria-labelledby='cart-lines-heading'] > div:has(.gwp-gift-picker) {
   margin-top: 20px;
 }
-
 .crs-freeship {
   order: 1;
   position: sticky;
   bottom: 0;
   z-index: 1;
-  /* Figma leaves 20px between the last line and the bar, same as between lines. */
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -274,11 +163,9 @@
     linear-gradient(180deg, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 0%) 100%),
     var(--crs-panel);
 }
-
 .crs-freeship[hidden] {
   display: none;
 }
-
 .crs-freeship__label {
   flex: 1;
   font-family: var(--crs-font);
@@ -287,19 +174,16 @@
   line-height: 14.4px;
   color: #000;
 }
-
 .crs-freeship__truck {
   width: 30px;
   height: 30px;
   padding: 3px;
   color: #000;
 }
-
 .crs-freeship__check {
   width: 20px;
   height: 20px;
 }
-
 .crs-freeship__watermark {
   position: absolute;
   top: 50%;
@@ -309,15 +193,11 @@
   transform: translate(-30%, -40%) rotate(81.48deg);
   pointer-events: none;
 }
-
 .crs-freeship__watermark svg {
   display: block;
   width: 100%;
   height: 100%;
 }
-
-/* ------------------------------------------------------------ discount toggle */
-
 .crs-discount-toggle {
   align-self: flex-start;
   padding: 0;
@@ -331,12 +211,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
-
-/* The host input and Apply button, restyled to the expanded Figma state. */
 [aria-labelledby='cart-summary-heading'] > .space-y-3 .flex.gap-2 {
   gap: 14px;
 }
-
 [aria-labelledby='cart-summary-heading'] #discountCode {
   height: 49px;
   padding: 0 10px;
@@ -344,24 +221,15 @@
   border-radius: 8px;
   font-weight: 400;
 }
-
 [aria-labelledby='cart-summary-heading'] #discountCode::placeholder {
   color: #707070;
 }
-
-/* Everything in the summary now spans the full content column, flush against <main>,
-   which is overflow:auto — so a focus ring drawn outside an element gets clipped at
-   the edge. The promo field showed it first (its 2px ring was cut down the left), and
-   the Apply button and CTA have the same exposure on the right. Draw the rings inside
-   instead: nothing moves, nothing is cut, and the indicator stays just as visible. */
 [aria-labelledby='cart-summary-heading'] #discountCode:focus {
   box-shadow: inset 0 0 0 2px #facc15;
 }
-
 [aria-labelledby='cart-summary-heading'] :is(input, button, a):focus-visible {
   outline-offset: -2px;
 }
-
 [aria-labelledby='cart-summary-heading'] > .space-y-3 button[type='submit'] {
   width: 64px;
   height: 49px;
@@ -373,9 +241,6 @@
   font-size: 14px;
   color: #000;
 }
-
-/* ------------------------------------------------------------------- sezzle */
-
 .crs-sezzle {
   display: flex;
   align-items: flex-start;
@@ -387,14 +252,12 @@
     linear-gradient(180deg, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 0%) 100%),
     var(--crs-panel);
 }
-
 .crs-sezzle__ico {
   width: 30px;
   height: 30px;
   padding: 3px;
   color: #000;
 }
-
 .crs-sezzle__body {
   display: flex;
   flex-direction: column;
@@ -402,7 +265,6 @@
   padding-top: 5px;
   min-width: 0;
 }
-
 .crs-sezzle__headline,
 .crs-sezzle__sub {
   margin: 0;
@@ -411,31 +273,24 @@
   line-height: 20px;
   color: #000;
 }
-
 .crs-sezzle__headline {
   font-weight: 700;
 }
-
 .crs-sezzle__amount {
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
-
 .crs-sezzle__sub {
   display: flex;
   align-items: center;
   gap: 5px;
   font-weight: 400;
 }
-
 .crs-sezzle__logo {
   width: 56px;
   height: 14px;
   object-fit: contain;
 }
-
-/* -------------------------------------------------------------- checkout CTA */
-
 [aria-labelledby='cart-summary-heading'] a.cta-button {
   display: flex;
   align-items: center;
@@ -445,16 +300,12 @@
   font-size: 18px;
   line-height: 20px;
 }
-
 [aria-labelledby='cart-summary-heading'] a.cta-button::after {
   content: '';
   width: 17px;
   height: 15px;
   background: var(--crs-arrow) center / contain no-repeat;
 }
-
-/* --------------------------------------------------------------- 45-day note */
-
 .crs-note {
   display: flex;
   align-items: center;
@@ -466,52 +317,30 @@
   color: #000;
   text-wrap: pretty;
 }
-
-/* Left-aligned on mobile (1537:22216 sits at x=1 of 343); centred on desktop
-   (1537:23131 sits at x=21.5 of 384). */
 @media (min-width: 640px) {
   .crs-note {
     justify-content: center;
   }
 }
-
 .crs-note__ico {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   color: #000;
 }
-
-/* ---------------------------------------------------------------- icon boxes */
-
 .crs-ico {
   display: block;
   flex-shrink: 0;
   box-sizing: border-box;
 }
-
 .crs-ico svg {
   display: block;
   width: 100%;
   height: 100%;
 }
-
-/* ------------------------------------------- "You May Also Like" side rail */
-
-/* At lg the host floats a recommendations panel to the left of the drawer
-   (\`right: var(--aside-width)\`). None of the desktop frames include it. It is the
-   overlay's only div child — its siblings are the backdrop button and the aside —
-   and it is position:fixed, so hiding it shifts nothing. */
 [data-crs-cart-overlay] > div {
   display: none;
 }
-
-/* ------------------------------------------------- accessibility launcher */
-
-/* accessiBe's legacy launcher is a plain <body> child, so ordinary CSS reaches it.
-   The current <access-widget-ui> launcher lives in a shadow root whose own
-   \`!important\` reset outranks anything declared out here — that one is handled from
-   inside the shadow tree in index.ts. Both are hidden only while the cart is open. */
 .crs-cart-open .acsb-trigger {
   display: none !important;
 }
