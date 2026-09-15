@@ -26,6 +26,9 @@
   width: 111px;
   height: auto;
 }
+[aria-labelledby='cart-lines-heading'] li.cart-line > div:first-child > div:first-child > img {
+  object-fit: contain;
+}
 [aria-labelledby='cart-lines-heading'] li.cart-line .notranslate > a {
   grid-area: 1 / 2 / 2 / 3;
 }
