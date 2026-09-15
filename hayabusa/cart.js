@@ -22,12 +22,8 @@
 }
 [aria-labelledby='cart-lines-heading'] li.cart-line > div:first-child > div:first-child {
   grid-area: 1 / 1 / 4 / 2;
-  align-self: stretch;
   width: 111px;
-  height: auto;
-}
-[aria-labelledby='cart-lines-heading'] li.cart-line > div:first-child > div:first-child > img {
-  object-fit: contain;
+  height: 111px;
 }
 [aria-labelledby='cart-lines-heading'] li.cart-line .notranslate > a {
   grid-area: 1 / 2 / 2 / 3;
