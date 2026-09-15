@@ -374,7 +374,7 @@
   </div>
 </div>
 `
-  ), b = "https://adblock360.com/install-aby-v2";
+  ), b = "https://adblock360.com/install-v2-aby";
   m(["//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]), g({ name: "Yes/No", dev: "YK" });
   class x {
     constructor() {
