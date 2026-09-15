@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const x = `header {
+  const _ = `header {
   border-bottom: 1px solid #dbdbe0 !important;
 }
 
@@ -98,7 +98,7 @@ main {
   gap: 42px;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 60px 60px 0;
+  padding: 60px 40px 0;
 }
 @media (max-width: 1024px) {
   .iaby-hero {
@@ -179,8 +179,8 @@ main {
 }
 
 .iaby-steps {
-  flex: 0 0 460px;
-  max-width: 460px;
+  flex: 0 0 520px;
+  max-width: 520px;
   width: 100%;
   background: #f3f5f5;
   border-radius: 8px;
@@ -273,7 +273,7 @@ main {
 .iaby-trustpilot {
   max-width: 1280px;
   margin: 90px auto 0;
-  padding: 0 60px;
+  padding: 0 40px;
   text-align: center;
 }
 @media (max-width: 768px) {
@@ -298,7 +298,7 @@ main {
 .iaby-verified {
   background: #f3f5f5;
   margin-top: 90px;
-  padding: 60px;
+  padding: 60px 40px;
 }
 @media (max-width: 768px) {
   .iaby-verified {
@@ -307,7 +307,7 @@ main {
   }
 }
 .iaby-verified__title {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto 42px;
   font-size: 46px;
   font-weight: 700;
@@ -320,7 +320,7 @@ main {
   }
 }
 .iaby-verified__grid {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -388,7 +388,7 @@ main {
   background: #eef4ff;
 }
 .iaby-verified__warning {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 24px auto 0;
   display: flex;
   align-items: center;
@@ -411,7 +411,7 @@ main {
 }
 
 .iaby-cert {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 24px auto 0;
   background: #fff;
   border-radius: 8px;
@@ -604,7 +604,7 @@ main {
   gap: 12px;
   max-width: 1280px;
   margin: 90px auto 0;
-  padding: 16px 60px 32px;
+  padding: 16px 40px 32px;
   border-top: 1px solid rgba(0, 3, 36, 0.14);
   font-size: 14px;
   color: #2e353f;
@@ -725,8 +725,8 @@ main {
         s.src = e, s.onload = i, s.onerror = a, document.head.appendChild(s);
       } else if (r === "css") {
         if (Array.from(document.styleSheets).map((d) => {
-          var _;
-          return (_ = d.href) == null ? void 0 : _.toLowerCase();
+          var x;
+          return (x = d.href) == null ? void 0 : x.toLowerCase();
         }).includes(e.toLowerCase()))
           return p(`Style ${e} allready downloaded!`, "success"), i("");
         const s = document.createElement("link");
@@ -1111,7 +1111,7 @@ main {
       this.init();
     }
     async init() {
-      await y("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-install-aby-v2-style">${x}</style>`), await y("main"), c("main").elements[0].insertAdjacentHTML("beforebegin", B), f("iaby_view", "Install AdBlock for YouTube v2 viewed", "view", "install_aby_v2"), this.initCtaClicks(), this.initFaq(), this.initTooltip(), this.initCopyHash(), this.initSectionsVisibility(), this.renderTrustpilot();
+      await y("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-install-aby-v2-style">${_}</style>`), await y("main"), c("main").elements[0].insertAdjacentHTML("beforebegin", B), f("iaby_view", "Install AdBlock for YouTube v2 viewed", "view", "install_aby_v2"), this.initCtaClicks(), this.initFaq(), this.initTooltip(), this.initCopyHash(), this.initSectionsVisibility(), this.renderTrustpilot();
     }
     initCtaClicks() {
       c(".iaby-steps__restart").on("click", () => {
