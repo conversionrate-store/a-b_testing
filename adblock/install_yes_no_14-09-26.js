@@ -4,6 +4,14 @@
   border-bottom: 1px solid #dbdbe0 !important;
 }
 
+installation-instructions {
+  display: none;
+}
+
+.header__wrapper[data-astro-cid-ikm5ehdx] {
+  padding: 10px 0 !important;
+}
+
 .iaby * {
   box-sizing: border-box;
   font-family: inherit;
@@ -617,6 +625,8 @@ main {
 .iaby-footer a:hover {
   text-decoration: underline;
 }
+
+/*# sourceMappingURL=style.css.map */
 `, f = (t, n, e, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
@@ -636,7 +646,7 @@ main {
       childList: !0,
       subtree: !0
     });
-  }), _ = ({ name: t, dev: n }) => {
+  }), C = ({ name: t, dev: n }) => {
     const e = t.toLowerCase().replace(/\s/g, "_");
     f(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
       `%c EXP: ${t} (DEV: ${n})`,
@@ -715,8 +725,8 @@ main {
         s.src = e, s.onload = i, s.onerror = a, document.head.appendChild(s);
       } else if (r === "css") {
         if (Array.from(document.styleSheets).map((d) => {
-          var C;
-          return (C = d.href) == null ? void 0 : C.toLowerCase();
+          var _;
+          return (_ = d.href) == null ? void 0 : _.toLowerCase();
         }).includes(e.toLowerCase()))
           return p(`Style ${e} allready downloaded!`, "success"), i("");
         const s = document.createElement("link");
@@ -960,7 +970,7 @@ main {
     chevron: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 		<path d="M12 6v12M6 12h12" stroke="#262A2E" stroke-width="2" stroke-linecap="round"/>
 		</svg>`
-  }, M = '<img src="https://conversionrate-store.github.io/a-b_images/adblock/cybernews_logo.webp" alt="Cyber Logo"/>', D = (
+  }, M = '<img src="https://conversionrate-store.github.io/a-b_images/adblock/cybernews_logo.webp" alt="Cyber Logo"/>', Z = (
     /* html */
     `
   <!-- TrustBox widget - Carousel -->
@@ -971,12 +981,12 @@ main {
   </div>
   <!-- End TrustBox widget -->
 `
-  ), Z = { audio: l.music, youtube: l.youtube, browser: l.browser, cookie: l.cookie }, H = { virus: l.virus, windows: l.windowsBadge, users: l.users, cyber: M }, q = u.map(({ title: t, svg: n }) => `<div class="iaby-hero__badge">${n}<span>${t}</span></div>`).join(""), V = m.map(
+  ), D = { audio: l.music, youtube: l.youtube, browser: l.browser, cookie: l.cookie }, H = { virus: l.virus, windows: l.windowsBadge, users: l.users, cyber: M }, q = u.map(({ title: t, svg: n }) => `<div class="iaby-hero__badge">${n}<span>${t}</span></div>`).join(""), V = m.map(
     ({ icon: t, title: n }) => (
       /* html */
       `
   <div class="iaby-hero__benefit">
-    ${Z[t]}
+    ${D[t]}
     <span>${n}</span>
   </div>`
     )
@@ -1044,7 +1054,7 @@ main {
 
   <section class="iaby-trustpilot">
     <h2 class="iaby-trustpilot__title">From Trustpilot</h2>
-    ${D}
+    ${Z}
   </section>
 
   <section class="iaby-verified">
@@ -1095,7 +1105,7 @@ main {
 </div>
 `
   );
-  w(["//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]), _({ name: "Install AdBlock for YouTube v2", dev: "YK" });
+  w(["//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]), C({ name: "Install AdBlock for YouTube v2", dev: "YK" });
   class E {
     constructor() {
       this.init();
@@ -1114,7 +1124,7 @@ main {
     // `.restartDownload__link.click()` actually restarts the download). It lives inside <main>,
     // which we hide via CSS, but the element itself stays in the DOM and clickable.
     triggerRealDownload(n = 0) {
-      const e = document.querySelector(".restartDownload__link");
+      const e = document.querySelector(".buttons__18_600");
       if (e) {
         e.click();
         return;
@@ -1157,7 +1167,12 @@ main {
       });
     }
     initSectionsVisibility() {
-      b(".iaby-hero", "iaby_hero_visible", "install_aby_v2", "Hero section visible"), b(".iaby-trustpilot", "iaby_trustpilot_visible", "install_aby_v2", "Trustpilot section visible"), b(".iaby-verified", "iaby_verified_visible", "install_aby_v2", "Independently verified section visible"), b(".iaby-faq", "iaby_faq_visible", "install_aby_v2", "FAQ section visible");
+      b(".iaby-hero", "iaby_hero_visible", "install_aby_v2", "Hero section visible"), b(".iaby-trustpilot", "iaby_trustpilot_visible", "install_aby_v2", "Trustpilot section visible"), b(
+        ".iaby-verified",
+        "iaby_verified_visible",
+        "install_aby_v2",
+        "Independently verified section visible"
+      ), b(".iaby-faq", "iaby_faq_visible", "install_aby_v2", "FAQ section visible");
     }
     renderTrustpilot() {
       const n = () => {
