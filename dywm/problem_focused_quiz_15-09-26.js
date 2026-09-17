@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const L = `.sfc-frontPageAnon__section--survey {
+  const E = `.sfc-frontPageAnon__section--survey {
   display: none !important;
 }
 
@@ -478,7 +478,7 @@ input:checked ~ .pfq_step__option-box svg {
       event_type: n,
       event_loc: t
     }), h(`Event: ${i} | ${e} | ${n} | ${t}`, "success");
-  }, m = (i) => new Promise((e) => {
+  }, b = (i) => new Promise((e) => {
     const n = document.querySelector(i);
     n && e(n);
     const t = new MutationObserver(() => {
@@ -489,7 +489,7 @@ input:checked ~ .pfq_step__option-box svg {
       childList: !0,
       subtree: !0
     });
-  }), $ = ({ name: i, dev: e }) => {
+  }), M = ({ name: i, dev: e }) => {
     const n = i.toLowerCase().replace(/\s/g, "_");
     d(`${n}_started`, `Experiment ${i} started`, "other", n), console.log(
       `%c EXP: ${i} (DEV: ${e})`,
@@ -503,10 +503,10 @@ input:checked ~ .pfq_step__option-box svg {
     on(e, n, t) {
       return typeof n == "function" && (t = n, n = ""), this.elements.forEach((o) => {
         o.addEventListener(e, function(s) {
-          var l;
+          var r;
           if (n !== "") {
-            let r = (l = s.target) == null ? void 0 : l.closest(n);
-            r && (t == null || t.call(r, s));
+            let l = (r = s.target) == null ? void 0 : r.closest(n);
+            l && (t == null || t.call(l, s));
           } else
             t == null || t.call(o, s);
         });
@@ -558,28 +558,28 @@ input:checked ~ .pfq_step__option-box svg {
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const a = (i) => new f(i), M = (i) => {
+  const a = (i) => new f(i), z = (i) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", i, "variant_1"));
     }, 1e3);
-  }, z = (i, e, n, t, o = 1e3, s = 0.5) => {
-    let l, r;
-    l = new IntersectionObserver(
+  }, I = (i, e, n, t, o = 1e3, s = 0.5) => {
+    let r, l;
+    r = new IntersectionObserver(
       function(p) {
-        p[0].isIntersecting === !0 ? r = setTimeout(() => {
+        p[0].isIntersecting === !0 ? l = setTimeout(() => {
           d(
             e,
             p[0].target.dataset.visible || t,
             "view",
             n
-          ), l.disconnect();
-        }, o) : (h("Element is not fully visible", "warn"), clearTimeout(r));
+          ), r.disconnect();
+        }, o) : (h("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [s] }
     );
     {
       const p = document.querySelector(i);
-      p && l.observe(p);
+      p && r.observe(p);
     }
   }, h = (i, e = "info") => {
     let n;
@@ -598,7 +598,7 @@ input:checked ~ .pfq_step__option-box svg {
         break;
     }
     console.log(`%c>>> ${i}`, `${n} font-size: 16px; font-weight: 600`);
-  }, v = "https://conversionrate-store.github.io/a-b_images/dywm/", E = (
+  }, w = "https://conversionrate-store.github.io/a-b_images/dywm/", H = (
     /* HTML */
     `<svg
   width="18"
@@ -623,7 +623,7 @@ input:checked ~ .pfq_step__option-box svg {
     fill="#FFB800"
   />
 </svg>`
-  ), I = (
+  ), P = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -644,7 +644,7 @@ input:checked ~ .pfq_step__option-box svg {
     </clipPath>
   </defs>
 </svg>`
-  ), H = (
+  ), A = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -666,7 +666,7 @@ input:checked ~ .pfq_step__option-box svg {
     fill="#007DB8"
   />
 </svg>`
-  ), P = (
+  ), F = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -687,7 +687,7 @@ input:checked ~ .pfq_step__option-box svg {
     </clipPath>
   </defs>
 </svg>`
-  ), j = (
+  ), V = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -722,12 +722,12 @@ input:checked ~ .pfq_step__option-box svg {
     { goal: "relieve_pain", emoji: "🧘", label: "Relieve pain or tension" },
     { goal: "get_stronger", emoji: "💪", label: "Get stronger &amp; more flexible" },
     { goal: "sleep_better", emoji: "🌙", label: "Sleep better" }
-  ], V = ({ goal: i, emoji: e, label: n }) => (
+  ], j = ({ goal: i, emoji: e, label: n }) => (
     /* HTML */
     `
   <div class="pfq_entry__option" data-goal="${i}" role="button" tabindex="0">
     <span class="pfq_entry__option-label">${e}&nbsp;&nbsp;${n}</span>
-    <span class="pfq_entry__option-chevron">${E}</span>
+    <span class="pfq_entry__option-chevron">${H}</span>
   </div>
 `
   ), T = (
@@ -742,20 +742,20 @@ input:checked ~ .pfq_step__option-box svg {
         </div>
         <div class="pfq_entry__question">
           <h2>What do you need most right now?</h2>
-          <div class="pfq_entry__options">${y.map(V).join("")}</div>
+          <div class="pfq_entry__options">${y.map(j).join("")}</div>
         </div>
         <div class="pfq_entry__stats">
           <div class="pfq_entry__stat">
-            ${I}<span><b>1,200+</b> exclusive classes</span>
+            ${P}<span><b>1,200+</b> exclusive classes</span>
           </div>
           <div class="pfq_entry__stat">
-            ${H}<span><b>250+</b> free videos</span>
+            ${A}<span><b>250+</b> free videos</span>
           </div>
           <div class="pfq_entry__stat">
-            ${P}<span><b>26</b> styles</span>
+            ${F}<span><b>26</b> styles</span>
           </div>
           <div class="pfq_entry__stat">
-            ${j}<span><b>30+</b> top certified instructors</span>
+            ${V}<span><b>30+</b> top certified instructors</span>
           </div>
         </div>
         <div class="pfq_entry__rating">
@@ -765,12 +765,12 @@ input:checked ~ .pfq_step__option-box svg {
       </div>
       <div class="pfq_entry__image">
         <!-- TODO: swap for the real desktop hero photo once supplied by the user -->
-        <img src="${v}main_img_quiz.jpg" alt="Yoga practice" />
+        <img src="${w}main_img_quiz.jpg" alt="Yoga practice" />
       </div>
     </div>
   </section>
 `
-  ), A = (
+  ), O = (
     /* HTML */
     `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -792,10 +792,10 @@ input:checked ~ .pfq_step__option-box svg {
 >
   <path d="M1 5L4.3 8.3L11 1.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 </svg>`
-  ), O = (
+  ), B = (
     /* HTML */
-    `<img src="${v}logo.svg" alt="DoYogaWithMe Logo" />`
-  ), w = {
+    `<img src="${w}logo.svg" alt="DoYogaWithMe Logo" />`
+  ), C = {
     relieve_pain_location: {
       id: "relieve_pain_location",
       question: "Where do you feel it most?",
@@ -868,7 +868,7 @@ input:checked ~ .pfq_step__option-box svg {
     get_stronger: ["get_stronger_focus", "level", "duration"],
     reduce_stress: ["level", "duration"],
     sleep_better: ["level", "duration"]
-  }, b = "style_preferences", B = (i) => i.includes("intermediate") || i.includes("advanced"), D = (i, e, n) => (
+  }, v = "style_preferences", D = (i) => i.includes("intermediate") || i.includes("advanced"), R = (i, e, n) => (
     /* HTML */
     `
   <label class="pfq_step__option">
@@ -880,16 +880,16 @@ input:checked ~ .pfq_step__option-box svg {
     </span>
   </label>
 `
-  ), F = (i, e) => (
+  ), U = (i, e) => (
     /* HTML */
     `
   <div class="pfq_step${e === 0 ? " active" : ""}" data-step-id="${i.id}" data-step-index="${e}">
     <h2>${i.question}</h2>
-    <div class="pfq_step__options">${i.options.map((n) => D(n, i.type, i.id)).join("")}</div>
+    <div class="pfq_step__options">${i.options.map((n) => R(n, i.type, i.id)).join("")}</div>
   </div>
 `
-  ), R = (i) => {
-    const e = g[i] || g.reduce_stress, t = [...e, b].map((o) => w[o]).filter(Boolean);
+  ), Y = (i) => {
+    const e = g[i] || g.reduce_stress, t = [...e, v].map((o) => C[o]).filter(Boolean);
     return (
       /* HTML */
       `
@@ -897,12 +897,12 @@ input:checked ~ .pfq_step__option-box svg {
       <div class="pfq_popup__inner">
         <div class="pfq_popup__scroll">
           <div class="pfq_popup__head">
-            <button type="button" class="pfq_popup__back" aria-label="Back">${A}</button>
-            <div class="pfq_popup__logo">${O}</div>
+            <button type="button" class="pfq_popup__back" aria-label="Back">${O}</button>
+            <div class="pfq_popup__logo">${B}</div>
           </div>
           <div class="pfq_popup__progress"><span class="pfq_popup__progress-bar"></span></div>
           <div class="pfq_popup__step-label">Step <b>1</b> of ${e.length}</div>
-          <div class="pfq_popup__steps">${t.map(F).join("")}</div>
+          <div class="pfq_popup__steps">${t.map(U).join("")}</div>
         </div>
         <div class="pfq_popup__footer">
           <button type="button" class="pfq_popup__continue" disabled>Continue</button>
@@ -911,7 +911,7 @@ input:checked ~ .pfq_step__option-box svg {
     </div>
   `
     );
-  }, Y = {
+  }, N = {
     // relieve_pain_location
     lower_back: [73],
     neck_shoulders: [71],
@@ -925,12 +925,12 @@ input:checked ~ .pfq_step__option-box svg {
     // Core Strength + Strength
     flexibility: [64],
     balance: [66]
-  }, C = {
+  }, q = {
     reduce_stress: [61],
     // Stress/Anxiety
     sleep_better: [70]
     // Sleep/Relaxation
-  }, q = {
+  }, x = {
     new: [24],
     // Beginner I
     some_practice: [25],
@@ -938,14 +938,14 @@ input:checked ~ .pfq_step__option-box svg {
     intermediate: [26, 27, 28],
     // Intermediate I + II + III
     advanced: [29]
-  }, x = {
+  }, k = {
     under_10: [1],
     "10_20": [2],
     "20_30": [3],
     "30_45": [4],
     "60_plus": [6, 7]
     // 60–75 min + 75 min+ (deliberately excludes the site's separate "45-60 mins", which our quiz has no option for)
-  }, U = {
+  }, Q = {
     ashtanga: 30,
     chair_yoga: 213,
     gentle_yoga: 31,
@@ -961,33 +961,33 @@ input:checked ~ .pfq_step__option-box svg {
     restorative: 44,
     slow_flow: 125,
     tai_chi_qigong: 257
-  }, N = (i, e) => {
-    var l, r;
+  }, S = (i, e) => {
+    var r, l;
     const n = [], t = (p, c) => c.forEach((_) => n.push(`${p}[${_}]=${_}`));
-    if (C[i])
-      t("focus", C[i]);
+    if (q[i])
+      t("focus", q[i]);
     else {
-      const c = (e.relieve_pain_location || e.get_stronger_focus || []).flatMap((_) => Y[_] || []);
+      const c = (e.relieve_pain_location || e.get_stronger_focus || []).flatMap((_) => N[_] || []);
       c.length && t("focus", c);
     }
-    const o = (l = e.level) == null ? void 0 : l[0];
-    o && q[o] && t("term_node_tid_depth", q[o]);
-    const s = (r = e.duration) == null ? void 0 : r[0];
-    return s && x[s] && t("field_media_duration_value", x[s]), (e.style_preferences || []).forEach((p) => {
-      const c = U[p];
+    const o = (r = e.level) == null ? void 0 : r[0];
+    o && x[o] && t("term_node_tid_depth", x[o]);
+    const s = (l = e.duration) == null ? void 0 : l[0];
+    return s && k[s] && t("field_media_duration_value", k[s]), (e.style_preferences || []).forEach((p) => {
+      const c = Q[p];
       c && n.push(`style[${c}]=${c}`);
     }), "/yoga-classes" + (n.length ? "?" + n.join("&") : "");
-  }, k = (i, e) => (
+  }, L = (i, e) => (
     /* HTML */
     `<span class="pfq_chips__item">${i}&nbsp;${e}</span>`
-  ), Q = (i, e) => {
+  ), G = (i, e) => {
     const n = [], t = y.find((s) => s.goal === i);
-    t && n.push(k(t.emoji, t.label));
-    const o = (s, l) => {
-      const r = w[s];
+    t && n.push(L(t.emoji, t.label));
+    const o = (s, r) => {
+      const l = C[s];
       (e[s] || []).forEach((p) => {
-        const c = r == null ? void 0 : r.options.find((_) => _.value === p);
-        c && n.push(k(l, c.label));
+        const c = l == null ? void 0 : l.options.find((_) => _.value === p);
+        c && n.push(L(r, c.label));
       });
     };
     return o("relieve_pain_location", "📍"), o("get_stronger_focus", "🎯"), o("level", "🧘"), o("duration", "🕐"), o("style_preferences", "✨"), n.length ? (
@@ -1000,19 +1000,58 @@ input:checked ~ .pfq_step__option-box svg {
   `
     ) : "";
   };
-  $({ name: "Problem Focused Quiz", dev: "YK" }), M("problem_focused_quiz");
-  const S = ".sfc-frontPageAnon__section--survey", G = "beforebegin";
-  class J {
+  M({ name: "Problem Focused Quiz", dev: "YK" }), z("problem_focused_quiz");
+  const $ = ".sfc-frontPageAnon__section--survey", J = "beforebegin", W = ["focus", "term_node_tid_depth", "field_media_duration_value", "style"];
+  class K {
     constructor() {
       this.currentStepIndex = 0, this.answers = {}, this.sequence = [], this.goal = "", this.init();
     }
     async init() {
-      await m("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="pfq_style">${L}</style>`), window.location.href === "https://www.doyogawithme.com/" && await this.initHomepage(), window.location.pathname === "/yoga-classes" && await this.initYogaClassesPage();
+      await b("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="pfq_style">${E}</style>`), window.location.href === "https://www.doyogawithme.com/" && await this.initHomepage(), window.location.pathname === "/yoga-classes" && await this.initYogaClassesPage();
     }
     async initHomepage() {
-      d("problem_focused_quiz", "Start experiment", "loaded"), await m(S), a(S).elements[0].insertAdjacentHTML(G, T), h("Problem Focused Quiz entry block mounted"), this.setEntryEvents();
+      d("problem_focused_quiz", "Start experiment", "loaded"), await b($), a($).elements[0].insertAdjacentHTML(J, T), h("Problem Focused Quiz entry block mounted"), this.setEntryEvents();
     }
     async initYogaClassesPage() {
+      this.applyStoredQuizFilters() || (await b(".view-filters"), this.watchForManualFilterChange(), this.showAppliedFiltersChipsOnce());
+    }
+    // Re-applies goal/answers saved in localStorage (see finishQuiz) onto the
+    // current /yoga-classes URL, merging them in without touching any other
+    // param the visitor already had set (sort, teacher, pagination…). Returns
+    // true — and starts a redirect — only when the URL actually needs to
+    // change, so callers can bail out instead of wiring up a page that's about
+    // to navigate away.
+    applyStoredQuizFilters() {
+      const e = localStorage.getItem("pfq_goal"), n = localStorage.getItem("pfq_answers");
+      if (!e || !n) return !1;
+      let t;
+      try {
+        t = JSON.parse(n);
+      } catch {
+        return !1;
+      }
+      const o = S(e, t), s = new URLSearchParams(o.split("?")[1] || ""), r = new URLSearchParams(window.location.search);
+      W.forEach((_) => {
+        Array.from(r.keys()).forEach((m) => {
+          m.startsWith(`${_}[`) && r.delete(m);
+        });
+      }), s.forEach((_, m) => r.set(m, _));
+      const l = r.toString(), p = "/yoga-classes" + (l ? `?${l}` : ""), c = window.location.pathname + window.location.search;
+      return p === c ? !1 : (d("problem_focused_quiz_filters_reapplied", p, "other", e), window.location.replace(p), !0);
+    }
+    // The moment the visitor changes a filter by hand, they've taken over —
+    // stop re-applying the quiz's answers on their future visits.
+    watchForManualFilterChange() {
+      a(".view-filters").on("change", "input, select", () => {
+        localStorage.removeItem("pfq_goal"), localStorage.removeItem("pfq_answers"), d("problem_focused_quiz_filters_cleared", "Visitor changed a filter manually", "change", "yoga-classes");
+      });
+    }
+    // "Applied Filters" chips are a one-time thing: they only appear on the
+    // redirect landing right after finishing the quiz. A one-shot
+    // sessionStorage flag (set in finishQuiz, consumed here) gates that —
+    // later visits still get the filters re-applied above, just without the
+    // chips repeating every time.
+    showAppliedFiltersChipsOnce() {
       const e = sessionStorage.getItem("pfq_show_chips") === "1";
       if (sessionStorage.removeItem("pfq_show_chips"), !e) return;
       const n = localStorage.getItem("pfq_goal"), t = localStorage.getItem("pfq_answers");
@@ -1023,8 +1062,8 @@ input:checked ~ .pfq_step__option-box svg {
       } catch {
         return;
       }
-      const s = Q(n, o);
-      s && (await m(".view-filters"), a(".view-filters").elements[0].insertAdjacentHTML("beforebegin", s), d("problem_focused_quiz_filters_shown", "Applied filter chips shown", "view", n));
+      const s = G(n, o);
+      s && (a(".view-filters").elements[0].insertAdjacentHTML("beforebegin", s), d("problem_focused_quiz_filters_shown", "Applied filter chips shown", "view", n));
     }
     setEntryEvents() {
       const e = (n) => {
@@ -1034,10 +1073,10 @@ input:checked ~ .pfq_step__option-box svg {
       a(".pfq_entry [data-goal]").on("click", (n) => e(n.currentTarget)), a(".pfq_entry [data-goal]").on("keydown", (n) => {
         const t = n;
         (t.key === "Enter" || t.key === " ") && (t.preventDefault(), e(n.currentTarget));
-      }), z(".pfq_entry", "problem_focused_quiz_view", "Homepage", "Entry block");
+      }), I(".pfq_entry", "problem_focused_quiz_view", "Homepage", "Entry block");
     }
     openPopup(e) {
-      this.goal = e, this.sequence = g[e] || g.reduce_stress, this.currentStepIndex = 0, this.answers = {}, localStorage.setItem("pfq_goal", e), document.body.insertAdjacentHTML("beforeend", R(e)), document.body.style.overflow = "hidden", this.setPopupEvents(), d("problem_focused_quiz_popup_open", `Opened popup for goal: ${e}`, "other", e), this.updateStepUI();
+      this.goal = e, this.sequence = g[e] || g.reduce_stress, this.currentStepIndex = 0, this.answers = {}, localStorage.setItem("pfq_goal", e), document.body.insertAdjacentHTML("beforeend", Y(e)), document.body.style.overflow = "hidden", this.setPopupEvents(), d("problem_focused_quiz_popup_open", `Opened popup for goal: ${e}`, "other", e), this.updateStepUI();
     }
     closePopup() {
       var e;
@@ -1047,7 +1086,12 @@ input:checked ~ .pfq_step__option-box svg {
       a(".pfq_popup__back").on("click", () => {
         var e;
         if (this.currentStepIndex === 0) {
-          d("problem_focused_quiz_popup_close", "Closed via back on first step", "click", ((e = this.currentStep()) == null ? void 0 : e.id) || ""), this.closePopup();
+          d(
+            "problem_focused_quiz_popup_close",
+            "Closed via back on first step",
+            "click",
+            ((e = this.currentStep()) == null ? void 0 : e.id) || ""
+          ), this.closePopup();
           return;
         }
         this.currentStepIndex -= 1, this.updateStepUI();
@@ -1056,8 +1100,10 @@ input:checked ~ .pfq_step__option-box svg {
       }), a(".pfq_popup__continue").on("click", () => {
         const e = this.currentStep();
         if (!e) return;
-        const n = a(`.pfq_step[data-step-id="${e.id}"] .pfq_step__option input:checked`).elements.map((t) => t.value);
-        this.answers[e.id] = n, d("problem_focused_quiz_step_continue", `Step "${e.id}": ${n.join(", ")}`, "click", e.id), e.id === "level" && B(n) && !this.sequence.includes(b) && this.sequence.push(b), this.currentStepIndex + 1 < this.sequence.length ? (this.currentStepIndex += 1, this.updateStepUI()) : this.finishQuiz();
+        const n = a(
+          `.pfq_step[data-step-id="${e.id}"] .pfq_step__option input:checked`
+        ).elements.map((t) => t.value);
+        this.answers[e.id] = n, d("problem_focused_quiz_step_continue", `Step "${e.id}": ${n.join(", ")}`, "click", e.id), e.id === "level" && D(n) && !this.sequence.includes(v) && this.sequence.push(v), this.currentStepIndex + 1 < this.sequence.length ? (this.currentStepIndex += 1, this.updateStepUI()) : this.finishQuiz();
       });
     }
     currentStep() {
@@ -1073,10 +1119,10 @@ input:checked ~ .pfq_step__option-box svg {
     }
     finishQuiz() {
       localStorage.setItem("pfq_answers", JSON.stringify(this.answers)), sessionStorage.setItem("pfq_show_chips", "1"), d("problem_focused_quiz_completed", JSON.stringify(this.answers), "submit", "Quiz popup");
-      const e = N(this.goal, this.answers);
+      const e = S(this.goal, this.answers);
       d("problem_focused_quiz_redirect", e, "other", this.goal), h(`Quiz completed, answers: ${JSON.stringify(this.answers)} → ${e}`, "success"), window.location.href = e;
     }
   }
-  new J();
+  new K();
 })();
 //# sourceMappingURL=index.js.map
