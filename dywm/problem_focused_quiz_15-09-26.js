@@ -1007,7 +1007,7 @@ input:checked ~ .pfq_step__option-box svg {
       this.currentStepIndex = 0, this.answers = {}, this.sequence = [], this.goal = "", this.init();
     }
     async init() {
-      await b("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="pfq_style">${E}</style>`), window.location.href === "https://www.doyogawithme.com/" && await this.initHomepage(), window.location.pathname === "/yoga-classes" && await this.initYogaClassesPage();
+      await b("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="pfq_style">${E}</style>`), window.location.pathname === "/" && await this.initHomepage(), window.location.pathname === "/yoga-classes" && await this.initYogaClassesPage();
     }
     async initHomepage() {
       d("problem_focused_quiz", "Start experiment", "loaded"), await b($), a($).elements[0].insertAdjacentHTML(J, T), h("Problem Focused Quiz entry block mounted"), this.setEntryEvents();
