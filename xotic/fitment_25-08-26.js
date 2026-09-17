@@ -230,7 +230,7 @@
     <div class="xtc-fit xtc-fit--result xtc-fit--${e}">
       <div class="xtc-fit__result-head">
         <span class="xtc-fit__result-icon">${i ? _.check : _.warning}</span>
-        <span class="xtc-fit__result-title">${i ? "This product fits your" : "This Product DOES NOT Fit Your"}</span>
+        <span class="xtc-fit__result-title">${i ? "Guaranteed to Fit Your" : "This Product DOES NOT Fit Your"}</span>
       </div>
       <div class="xtc-fit__result-vehicle">${h(t)}</div>
       ${a}
@@ -240,7 +240,7 @@
       </div>
     </div>
   `;
-	};
+	}, C = "xotic_fitment_new_design", w = "cm_variant-model";
 	new class {
 		root;
 		mount;
@@ -248,15 +248,18 @@
 		constructor() {
 			this.init();
 		}
+		shouldShowNewDesign() {
+			return localStorage.getItem(C) ? !0 : localStorage.getItem(w) ? !1 : (localStorage.setItem(C, "1"), t("xotic_fitment_new_design_assigned", "first visit, no saved vehicle yet", "other", "xotic_fitment"), !0);
+		}
 		async init() {
-			await n("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${e}</style>`), this.root = await n("#cm-verify-fitment"), this.mount = document.createElement("div"), this.root.insertAdjacentElement("afterend", this.mount), r({
+			this.shouldShowNewDesign() && (await n("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style>${e}</style>`), this.root = await n("#cm-verify-fitment"), this.mount = document.createElement("div"), this.root.insertAdjacentElement("afterend", this.mount), r({
 				name: "Xotic Fitment Widget",
 				dev: "YK"
 			}), this.renderFromLiveDom(), this.observer = new MutationObserver(() => this.renderFromLiveDom()), this.observer.observe(this.root, {
 				childList: !0,
 				subtree: !0,
 				attributes: !0
-			});
+			}));
 		}
 		renderFromLiveDom() {
 			let e = d(this.root), n = c(e);
