@@ -489,7 +489,7 @@ input:checked ~ .pfq_step__option-box svg {
       childList: !0,
       subtree: !0
     });
-  }), M = ({ name: i, dev: e }) => {
+  }), z = ({ name: i, dev: e }) => {
     const n = i.toLowerCase().replace(/\s/g, "_");
     d(`${n}_started`, `Experiment ${i} started`, "other", n), console.log(
       `%c EXP: ${i} (DEV: ${e})`,
@@ -558,7 +558,7 @@ input:checked ~ .pfq_step__option-box svg {
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const a = (i) => new f(i), z = (i) => {
+  const a = (i) => new f(i), M = (i) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", i, "variant_1"));
     }, 1e3);
@@ -1000,14 +1000,18 @@ input:checked ~ .pfq_step__option-box svg {
   `
     ) : "";
   };
-  M({ name: "Problem Focused Quiz", dev: "YK" }), z("problem_focused_quiz");
+  z({ name: "Problem Focused Quiz", dev: "YK" }), M("problem_focused_quiz");
   const $ = ".sfc-frontPageAnon__section--survey", J = "beforebegin", W = ["focus", "term_node_tid_depth", "field_media_duration_value", "style"];
   class K {
     constructor() {
       this.currentStepIndex = 0, this.answers = {}, this.sequence = [], this.goal = "", this.init();
     }
     async init() {
-      await b("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="pfq_style">${E}</style>`), window.location.pathname === "/" && await this.initHomepage(), window.location.pathname === "/yoga-classes" && await this.initYogaClassesPage();
+      const e = document.createElement("style");
+      e.textContent = `
+      .sfc-frontPageAnon__section--survey,
+      [data-sfc-id='quiz_entry'] { display: none !important; }
+    `, document.head.appendChild(e), await b("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="pfq_style">${E}</style>`), window.location.pathname === "/" && await this.initHomepage(), window.location.pathname === "/yoga-classes" && await this.initYogaClassesPage();
     }
     async initHomepage() {
       d("problem_focused_quiz", "Start experiment", "loaded"), await b($), a($).elements[0].insertAdjacentHTML(J, T), h("Problem Focused Quiz entry block mounted"), this.setEntryEvents();
