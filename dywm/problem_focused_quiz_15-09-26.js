@@ -722,7 +722,7 @@ input:checked ~ .pfq_step__option-box svg {
     { goal: "relieve_pain", emoji: "🧘", label: "Relieve pain or tension" },
     { goal: "get_stronger", emoji: "💪", label: "Get stronger &amp; more flexible" },
     { goal: "sleep_better", emoji: "🌙", label: "Sleep better" }
-  ], j = ({ goal: i, emoji: e, label: n }) => (
+  ], T = ({ goal: i, emoji: e, label: n }) => (
     /* HTML */
     `
   <div class="pfq_entry__option" data-goal="${i}" role="button" tabindex="0">
@@ -730,7 +730,7 @@ input:checked ~ .pfq_step__option-box svg {
     <span class="pfq_entry__option-chevron">${H}</span>
   </div>
 `
-  ), T = (
+  ), j = (
     /* HTML */
     `
   <section class="pfq_entry">
@@ -742,7 +742,7 @@ input:checked ~ .pfq_step__option-box svg {
         </div>
         <div class="pfq_entry__question">
           <h2>What do you need most right now?</h2>
-          <div class="pfq_entry__options">${y.map(j).join("")}</div>
+          <div class="pfq_entry__options">${y.map(T).join("")}</div>
         </div>
         <div class="pfq_entry__stats">
           <div class="pfq_entry__stat">
@@ -979,7 +979,7 @@ input:checked ~ .pfq_step__option-box svg {
     }), "/yoga-classes" + (n.length ? "?" + n.join("&") : "");
   }, L = (i, e) => (
     /* HTML */
-    `<span class="pfq_chips__item">${i}&nbsp;${e}</span>`
+    `<span class="pfq_chips__item">${i ? `${i}&nbsp;` : ""}${e}</span>`
   ), G = (i, e) => {
     const n = [], t = y.find((s) => s.goal === i);
     t && n.push(L(t.emoji, t.label));
@@ -990,7 +990,7 @@ input:checked ~ .pfq_step__option-box svg {
         c && n.push(L(r, c.label));
       });
     };
-    return o("relieve_pain_location", "📍"), o("get_stronger_focus", "🎯"), o("level", "🧘"), o("duration", "🕐"), o("style_preferences", "✨"), n.length ? (
+    return o("relieve_pain_location", "📍"), o("get_stronger_focus", ""), o("level", ""), o("duration", ""), o("style_preferences", "✨"), n.length ? (
       /* HTML */
       `
     <div class="pfq_applied_filters">
@@ -1014,7 +1014,7 @@ input:checked ~ .pfq_step__option-box svg {
     `, document.head.appendChild(e), await b("body"), a("body").elements[0].insertAdjacentHTML("afterbegin", `<style class="pfq_style">${E}</style>`), window.location.pathname === "/" && await this.initHomepage(), window.location.pathname === "/yoga-classes" && await this.initYogaClassesPage();
     }
     async initHomepage() {
-      d("problem_focused_quiz", "Start experiment", "loaded"), await b($), a($).elements[0].insertAdjacentHTML(J, T), h("Problem Focused Quiz entry block mounted"), this.setEntryEvents();
+      d("problem_focused_quiz", "Start experiment", "loaded"), await b($), a($).elements[0].insertAdjacentHTML(J, j), h("Problem Focused Quiz entry block mounted"), this.setEntryEvents();
     }
     async initYogaClassesPage() {
       this.applyStoredQuizFilters() || (await b(".view-filters"), this.watchForManualFilterChange(), this.showAppliedFiltersChipsOnce());
