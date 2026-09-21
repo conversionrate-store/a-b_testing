@@ -765,7 +765,7 @@ input:checked ~ .pfq_step__option-box svg {
       </div>
       <div class="pfq_entry__image">
         <!-- TODO: swap for the real desktop hero photo once supplied by the user -->
-        <img src="${w}main_img_quiz.jpg" alt="Yoga practice" />
+        <img src="${w}dywm-hero.webp" alt="Yoga practice" />
       </div>
     </div>
   </section>
