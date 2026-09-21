@@ -8,7 +8,7 @@
       event_type: e,
       event_loc: i
     }), h(`Event: ${n} | ${t} | ${e} | ${i}`, "success");
-  }, g = (n) => new Promise((t) => {
+  }, b = (n) => new Promise((t) => {
     const e = document.querySelector(n);
     e && t(e);
     const i = new MutationObserver(() => {
@@ -88,7 +88,7 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const d = (n) => new f(n), b = (n, t, e, i, o = 1e3, r = 0.5) => {
+  const d = (n) => new f(n), y = (n, t, e, i, o = 1e3, r = 0.5) => {
     let l, s;
     if (l = new IntersectionObserver(
       function(a) {
@@ -210,9 +210,10 @@
     </defs>
   </svg>`
     )
-  }, x = {
+  }, v = {
     changeLabel: "Change",
     confirmLabel: "Confirm",
+    unavailableText: "This item is not available for delivery to your address.",
     trustItems: ["Lifetime warranty", "30-day returns", "Perfect fit guarantee"]
   }, T = () => (
     /* HTML */
@@ -221,7 +222,7 @@
     <div class="xdlv-rows" id="xdlvRows"></div>
     <div class="xdlv-divider"></div>
     <div class="xdlv-trust">
-      ${x.trustItems.map(
+      ${v.trustItems.map(
       (n) => (
         /* HTML */
         `
@@ -259,7 +260,7 @@
           placeholder="ZIP"
         />
       </label>
-      <button type="button" class="xdlv-modal-submit" data-xdlv-modal-submit>${x.confirmLabel}</button>
+      <button type="button" class="xdlv-modal-submit" data-xdlv-modal-submit>${v.confirmLabel}</button>
     </div>
   </div>
 `
@@ -279,7 +280,18 @@
     </div>
   </div>
 `
-  ), _ = (n) => n.map(
+  ), _ = () => (
+    /* HTML */
+    `
+  <div class="xdlv-row">
+    <span class="xdlv-row-icon">${u.fitWarn}</span>
+    <span class="xdlv-row-text">
+      <span class="xdlv-row-content">${v.unavailableText}</span>
+      <button type="button" class="xdlv-change" data-xdlv-change>${v.changeLabel}</button>
+    </span>
+  </div>
+`
+  ), z = (n) => n.map(
     (t, e) => (
       /* HTML */
       `
@@ -289,20 +301,20 @@
             <span class="xdlv-row-content">${t.html}</span>
             ${e === 0 ? (
         /* HTML */
-        `<button type="button" class="xdlv-change" data-xdlv-change>${x.changeLabel}</button>`
+        `<button type="button" class="xdlv-change" data-xdlv-change>${v.changeLabel}</button>`
       ) : ""}
           </span>
         </div>
       `
     )
-  ).join(""), y = "xdlv_zip_guess", z = "https://ipwho.is/", P = async (n = 4e3) => {
+  ).join(""), w = "xdlv_zip_guess", $ = "https://ipwho.is/", P = async (n = 4e3) => {
     try {
-      const t = sessionStorage.getItem(y);
+      const t = sessionStorage.getItem(w);
       if (t) return JSON.parse(t);
     } catch {
     }
     try {
-      const t = new AbortController(), e = setTimeout(() => t.abort(), n), i = await fetch(z, { signal: t.signal });
+      const t = new AbortController(), e = setTimeout(() => t.abort(), n), i = await fetch($, { signal: t.signal });
       if (clearTimeout(e), !i.ok) return null;
       const o = await i.json();
       if (!(o != null && o.success)) return null;
@@ -310,33 +322,33 @@
       if (r !== "US" || !/^\d{5}$/.test(l)) return null;
       const s = { zip: l, countryCode: r };
       try {
-        sessionStorage.setItem(y, JSON.stringify(s));
+        sessionStorage.setItem(w, JSON.stringify(s));
       } catch {
       }
       return s;
     } catch {
       return h("Xotic delivery block: IP geolocation unavailable, skipping auto ZIP", "warn"), null;
     }
-  }, v = /* @__PURE__ */ new Map(), A = async (n, t = 4e3) => {
+  }, x = /* @__PURE__ */ new Map(), A = async (n, t = 4e3) => {
     var e;
-    if (v.has(n)) return v.get(n) ?? null;
+    if (x.has(n)) return x.get(n) ?? null;
     try {
       const i = new AbortController(), o = setTimeout(() => i.abort(), t), r = await fetch(`https://api.zippopotam.us/us/${n}`, { signal: i.signal });
       if (clearTimeout(o), !r.ok)
-        return v.set(n, null), null;
+        return x.set(n, null), null;
       const l = await r.json(), s = (e = l == null ? void 0 : l.places) == null ? void 0 : e[0], a = s == null ? void 0 : s["place name"], c = s == null ? void 0 : s["state abbreviation"], m = a && c ? `${a}, ${c}` : null;
-      return v.set(n, m), m;
+      return x.set(n, m), m;
     } catch {
       return null;
     }
-  }, w = 24 * 60 * 60 * 1e3, D = (n) => {
+  }, C = 24 * 60 * 60 * 1e3, D = (n) => {
     const t = new Date(n);
     return Number.isNaN(t.getTime()) ? null : new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" }).format(t);
-  }, $ = (n = /* @__PURE__ */ new Date()) => {
-    const t = new Date(n.getTime() + w);
-    for (; t.getDay() === 0 || t.getDay() === 6; ) t.setTime(t.getTime() + w);
+  }, R = (n = /* @__PURE__ */ new Date()) => {
+    const t = new Date(n.getTime() + C);
+    for (; t.getDay() === 0 || t.getDay() === 6; ) t.setTime(t.getTime() + C);
     return new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" }).format(t);
-  }, R = async (n, t, e = 4e3) => {
+  }, I = async (n, t, e = 4e3) => {
     var i;
     try {
       const o = new AbortController(), r = setTimeout(() => o.abort(), e), l = await fetch(`https://shopify.deliverr.com/v3/variants/service-level/zip/${t}`, {
@@ -345,20 +357,21 @@
         body: JSON.stringify({ shopifyVariantIds: [n] }),
         signal: o.signal
       });
-      if (clearTimeout(r), !l.ok) return { isoDate: null, minutesToCutoff: null };
+      if (clearTimeout(r), !l.ok) return { isoDate: null, minutesToCutoff: null, resolved: !1 };
       const s = await l.json(), a = (i = s == null ? void 0 : s.deliveryDates) == null ? void 0 : i[n], c = s == null ? void 0 : s.minutesToCutoff;
       return {
         isoDate: typeof a == "string" ? a : null,
-        minutesToCutoff: typeof c == "number" ? c : null
+        minutesToCutoff: typeof c == "number" ? c : null,
+        resolved: !0
       };
     } catch {
-      return { isoDate: null, minutesToCutoff: null };
+      return { isoDate: null, minutesToCutoff: null, resolved: !1 };
     }
-  }, I = (n) => {
+  }, Z = (n) => {
     if (!Number.isFinite(n) || n <= 0) return null;
     const t = Math.round(n);
     return { hours: Math.floor(t / 60), minutes: t % 60 };
-  }, Z = async (n = 4e3) => {
+  }, V = async (n = 4e3) => {
     try {
       const t = new AbortController(), e = setTimeout(() => t.abort(), n), i = await fetch("/cart.json", { signal: t.signal });
       if (clearTimeout(e), !i.ok) return null;
@@ -367,7 +380,7 @@
     } catch {
       return null;
     }
-  }, V = async (n, t, e = 4e3) => {
+  }, q = async (n, t, e = 4e3) => {
     var i;
     try {
       const o = new AbortController(), r = setTimeout(() => o.abort(), e), l = await fetch(`/products/${n}.js`, { signal: o.signal });
@@ -377,31 +390,31 @@
     } catch {
       return null;
     }
-  }, q = "$49.99", B = 1e4, C = "#cm-verify-fitment", O = () => {
+  }, B = "$49.99", O = 1e4, k = "#cm-verify-fitment", N = () => {
     var i, o;
-    const n = document.querySelector(`${C} .cm_verify-fitment_block`);
+    const n = document.querySelector(`${k} .cm_verify-fitment_block`);
     if (!n) return { state: null, vehicle: "" };
     const t = n.classList.contains("cm_verify-fitment_block--yes") ? "yes" : n.classList.contains("cm_verify-fitment_block--no") ? "no" : null, e = ((o = (i = n.querySelector(".cm_verify-fitment_vehicle")) == null ? void 0 : i.textContent) == null ? void 0 : o.trim()) || "";
     return { state: t, vehicle: e };
-  }, N = (n) => {
-    const t = document.querySelector(C);
+  }, j = (n) => {
+    const t = document.querySelector(k);
     if (!t) return;
-    const e = () => n(O());
+    const e = () => n(N());
     e(), new MutationObserver(e).observe(t, { childList: !0, subtree: !0 });
-  }, j = "button.product-form--atc-button[data-product-atc]", U = "h1.product-title", F = ".price__current", G = ["chat-button", "mount-floating-engagement-widget"];
-  class W {
+  }, U = "button.product-form--atc-button[data-product-atc]", F = "h1.product-title", G = ".price__current", W = ["chat-button", "mount-floating-engagement-widget"];
+  class X {
     constructor() {
       this.init();
     }
     async init() {
       var i;
-      this.atcButton = await g(j);
-      const t = document.querySelector(U), e = document.querySelector(F);
+      this.atcButton = await b(U);
+      const t = document.querySelector(F), e = document.querySelector(G);
       if (!t || !e) {
         h("Xotic Sticky ATC: product title/price not found, skipping", "warn");
         return;
       }
-      document.getElementById("xstkBar") || (document.body.insertAdjacentHTML("beforeend", M(((i = t.textContent) == null ? void 0 : i.trim()) || "")), this.barEl = document.getElementById("xstkBar"), this.fitEl = this.barEl.querySelector("#xstkFit"), this.renderPrice(e), this.observePrice(e), this.bindClick(), this.observeAtcVisibility(), N((o) => this.renderFitment(o.state)), b(
+      document.getElementById("xstkBar") || (document.body.insertAdjacentHTML("beforeend", M(((i = t.textContent) == null ? void 0 : i.trim()) || "")), this.barEl = document.getElementById("xstkBar"), this.fitEl = this.barEl.querySelector("#xstkFit"), this.renderPrice(e), this.observePrice(e), this.bindClick(), this.observeAtcVisibility(), j((o) => this.renderFitment(o.state)), y(
         "#xstkBar",
         "exp_xotic_sticky_atc_01",
         "PDP sticky add to cart",
@@ -476,20 +489,20 @@
     // separate app and may not have loaded (or be ad-blocked).
     adjustChatWidget(t) {
       const e = t ? this.barEl.offsetHeight : 0;
-      for (const i of G) {
+      for (const i of W) {
         const o = document.getElementById(i);
         o && (o.style.transition = "transform 0.25s ease", o.style.transform = e ? `translateY(-${e}px)` : "");
       }
     }
   }
   S({ name: "Xotic Delivery Block", dev: "AI" });
-  class X {
+  class Y {
     // last confirmed US ZIP — prefills our own "Change" modal on reopen
     constructor() {
       this.resolvedLocation = null, this.pendingAutoZip = null, this.usRows = null, this.lastZip = null, this.init();
     }
     async init() {
-      if (await g("head"), document.head.insertAdjacentHTML("beforeend", `<style>${E}</style>`), this.nativeRoot = await this.findHydratedNativeRoot(), this.nativeRoot.classList.add("xdlv-native-root"), d("#xdlvBlock").elements.length === 0 && this.nativeRoot.insertAdjacentHTML("afterend", T()), b("#xdlvBlock", "exp_xotic_delivery_block_01", "PDP delivery block", "PDP delivery block visibility"), this.labelEl = this.nativeRoot.querySelector(".deliverr-label"), this.changeToggle = this.nativeRoot.querySelector(".deliverr-zip-deliver-to"), this.locationTextEl = this.nativeRoot.querySelector(".deliverr-zip-deliver-to-text"), !this.labelEl || !this.changeToggle) {
+      if (await b("head"), document.head.insertAdjacentHTML("beforeend", `<style>${E}</style>`), this.nativeRoot = await this.findHydratedNativeRoot(), this.nativeRoot.classList.add("xdlv-native-root"), d("#xdlvBlock").elements.length === 0 && this.nativeRoot.insertAdjacentHTML("afterend", T()), y("#xdlvBlock", "exp_xotic_delivery_block_01", "PDP delivery block", "PDP delivery block visibility"), this.labelEl = this.nativeRoot.querySelector(".deliverr-label"), this.changeToggle = this.nativeRoot.querySelector(".deliverr-zip-deliver-to"), this.locationTextEl = this.nativeRoot.querySelector(".deliverr-zip-deliver-to-text"), !this.labelEl || !this.changeToggle) {
         h("Xotic Delivery Block: unexpected Deliverr markup, skipping redesign", "warn");
         return;
       }
@@ -579,12 +592,21 @@
       const t = ((i = (e = this.locationTextEl) == null ? void 0 : e.textContent) == null ? void 0 : i.trim()) || "";
       return t && t.toLowerCase() !== "outside us" ? t : "";
     }
+    // An empty `rows` here isn't the "Deliverr hasn't hydrated yet" gap — that
+    // case never reaches render() at all, since it's only ever called after
+    // findHydratedNativeRoot has already resolved to a settled, real-content
+    // root (or, for a confirmed US ZIP, after buildUsRows's own fetches have
+    // come back). So zero rows past that point means whatever's currently
+    // resolved (native fallback location, or a confirmed ZIP) genuinely has no
+    // deliverable option — Deliverr's own badge would just show nothing at all
+    // for it rather than a message of its own, which is exactly the "block
+    // disappears" gap this covers: we show unavailableRow() instead of
+    // silently leaving the shell as whatever it last displayed (or never
+    // showing it to begin with).
     render() {
       var i;
-      const t = this.getSlaRows();
-      if (!t.length) return;
-      const e = document.getElementById("xdlvRows");
-      e && (e.innerHTML = _(t)), (i = document.getElementById("xdlvBlock")) == null || i.classList.remove("xdlv-hidden");
+      const t = this.getSlaRows(), e = document.getElementById("xdlvRows");
+      e && (e.innerHTML = t.length ? z(t) : _()), (i = document.getElementById("xdlvBlock")) == null || i.classList.remove("xdlv-hidden");
     }
     bindBlock() {
       const t = document.getElementById("xdlvBlock");
@@ -724,9 +746,9 @@
     // almost everywhere. `cutoffMinutes` defaults to null for the zip-less
     // fallback call in getSlaRows above, which has no fetch to draw one from.
     fastShippingRow(t = null) {
-      const e = t !== null ? I(t) : null, i = e ? ` if ordered within <span class="xdlv-row-cutoff">${e.hours} hrs ${e.minutes} mins</span>` : "";
+      const e = t !== null ? Z(t) : null, i = e ? ` if ordered within <span class="xdlv-row-cutoff">${e.hours} hrs ${e.minutes} mins</span>` : "";
       return {
-        html: `1-Day Shipping – <b>${q}, by ${$()}</b>${i}`,
+        html: `1-Day Shipping – <b>${B}, by ${R()}</b>${i}`,
         fast: !0
       };
     }
@@ -775,20 +797,31 @@
     // Row 2's cutoff copy ("if ordered within X hrs Y mins") comes from that
     // same per-variant endpoint response, fetched unconditionally here (not
     // just when the FREE row qualifies) since row 2 always needs it.
+    //
+    // Both rows are gated on `formatted` (i.e. the endpoint actually returning
+    // a delivery date for this ZIP), not just row 1 — a ZIP this endpoint can't
+    // produce any date for at all means Deliverr's own real-time lookup found
+    // no deliverable service level to that address, and row 2's flat paid rate
+    // is itself a real Deliverr-fulfilled shipping option, not a
+    // Shopify-native one, so there's no reason to assume it's available where
+    // Deliverr says nothing is. `resolved` (see ServiceLevelInfo) is what tells
+    // that apart from a plain fetch failure/timeout — an unresolved call means
+    // we simply don't know, so row 2 still falls back to showing rather than
+    // wrongly implying the address is undeliverable.
     async buildUsRows(t, e) {
       const i = [], { variantId: o, handle: r } = this.getVariantContext(), [l, s, a] = await Promise.all([
-        Z(),
-        o && r ? V(r, o) : Promise.resolve(null),
-        o ? R(o, t) : Promise.resolve({ isoDate: null, minutesToCutoff: null })
-      ]), m = (l ?? 0) + (s ?? 0) >= B, k = a.isoDate ? D(a.isoDate) : null;
-      if (k) {
+        V(),
+        o && r ? q(r, o) : Promise.resolve(null),
+        o ? I(o, t) : Promise.resolve({ isoDate: null, minutesToCutoff: null, resolved: !1 })
+      ]), m = (l ?? 0) + (s ?? 0) >= O, g = a.isoDate ? D(a.isoDate) : null;
+      if (g) {
         const L = m ? "" : this.getFreeShippingQualifierHtml();
         (m || L) && i.push({
-          html: `<b>FREE</b> delivery, <span class="xdlv-row-loc">${e}</span>, by ${k}${L}`,
+          html: `<b>FREE</b> delivery, <span class="xdlv-row-loc">${e}</span>, by ${g}${L}`,
           fast: !1
         });
       }
-      return i.push(this.fastShippingRow(a.minutesToCutoff)), i;
+      return (g || !a.resolved) && i.push(this.fastShippingRow(a.minutesToCutoff)), i;
     }
     // If Deliverr's own IP lookup couldn't place the visitor in the US, take one
     // best-effort shot at a ZIP via our own geolocation and drive the real,
@@ -820,6 +853,6 @@
       (r = (o = Object.getOwnPropertyDescriptor(i, "value")) == null ? void 0 : o.set) == null || r.call(t, e), t.dispatchEvent(new Event("input", { bubbles: !0 })), t.dispatchEvent(new Event("change", { bubbles: !0 }));
     }
   }
-  new X(), new W();
+  new Y(), new X();
 })();
 //# sourceMappingURL=index.js.map
