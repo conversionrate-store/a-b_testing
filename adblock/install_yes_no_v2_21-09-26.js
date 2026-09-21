@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const _ = `header {
+  const y = `header {
   border-bottom: 1px solid #dbdbe0 !important;
 }
 
@@ -785,152 +785,152 @@ main {
 }
 
 /*# sourceMappingURL=style.css.map */
-`, h = (t, n, e, i = "") => {
+`, c = (t, e, n, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
-      event_desc: n,
-      event_type: e,
+      event_desc: e,
+      event_type: n,
       event_loc: i
-    }), c(`Event: ${t} | ${n} | ${e} | ${i}`, "success");
-  }, g = (t) => new Promise((n) => {
-    const e = document.querySelector(t);
-    e && n(e);
+    }), h(`Event: ${t} | ${e} | ${n} | ${i}`, "success");
+  }, g = (t) => new Promise((e) => {
+    const n = document.querySelector(t);
+    n && e(n);
     const i = new MutationObserver(() => {
       const a = document.querySelector(t);
-      a && (n(a), i.disconnect());
+      a && (e(a), i.disconnect());
     });
     i.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), x = ({ name: t, dev: n }) => {
-    const e = t.toLowerCase().replace(/\s/g, "_");
-    h(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
-      `%c EXP: ${t} (DEV: ${n})`,
+  }), x = ({ name: t, dev: e }) => {
+    const n = t.toLowerCase().replace(/\s/g, "_");
+    c(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
+      `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
   class C {
-    constructor(n) {
-      this.elements = n instanceof C ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+    constructor(e) {
+      this.elements = e instanceof C ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(n, e, i) {
-      return typeof e == "function" && (i = e, e = ""), this.elements.forEach((a) => {
-        a.addEventListener(n, function(s) {
+    on(e, n, i) {
+      return typeof n == "function" && (i = n, n = ""), this.elements.forEach((a) => {
+        a.addEventListener(e, function(s) {
           var o;
-          if (e !== "") {
-            let r = (o = s.target) == null ? void 0 : o.closest(e);
+          if (n !== "") {
+            let r = (o = s.target) == null ? void 0 : o.closest(n);
             r && (i == null || i.call(r, s));
           } else
             i == null || i.call(a, s);
         });
       }), this;
     }
-    addClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.add(n);
+    addClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.add(e);
       }), this;
     }
-    removeClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.remove(n);
+    removeClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.remove(e);
       }), this;
     }
-    toggleClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.toggle(n);
+    toggleClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.toggle(e);
       }), this;
     }
-    each(n) {
-      for (let e of this.elements)
-        n(new C(e), this.elements.indexOf(e));
+    each(e) {
+      for (let n of this.elements)
+        e(new C(n), this.elements.indexOf(n));
       return this;
     }
-    style(n, e) {
-      const i = n.split("-").map((a, s) => s === 0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("");
+    style(e, n) {
+      const i = e.split("-").map((a, s) => s === 0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("");
       return this.elements.forEach(function(a) {
-        a.style[i] = e;
+        a.style[i] = n;
       }), this;
     }
-    find(n) {
-      const e = this.elements.map((i) => Array.from(i.querySelectorAll(n)));
-      return new C(e.flat());
+    find(e) {
+      const n = this.elements.map((i) => Array.from(i.querySelectorAll(e)));
+      return new C(n.flat());
     }
-    attr(n, e) {
-      return e ? (this.elements.forEach(function(i) {
-        i.setAttribute(n, e);
-      }), this) : this.elements[0].getAttribute(n);
+    attr(e, n) {
+      return n ? (this.elements.forEach(function(i) {
+        i.setAttribute(e, n);
+      }), this) : this.elements[0].getAttribute(e);
     }
-    text(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.textContent = n;
+    text(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
-    html(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.innerHTML = n;
+    html(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const p = (t) => new C(t), w = async (t) => {
-    const n = (e) => new Promise((i, a) => {
-      const s = e.split(".").pop();
+  const d = (t) => new C(t), w = async (t) => {
+    const e = (n) => new Promise((i, a) => {
+      const s = n.split(".").pop();
       if (s === "js") {
-        if (Array.from(document.scripts).map((d) => d.src.toLowerCase()).includes(e.toLowerCase()))
-          return c(`Script ${e} allready downloaded!`, "success"), i("");
+        if (Array.from(document.scripts).map((p) => p.src.toLowerCase()).includes(n.toLowerCase()))
+          return h(`Script ${n} allready downloaded!`, "success"), i("");
         const r = document.createElement("script");
-        r.src = e, r.onload = i, r.onerror = a, document.head.appendChild(r);
+        r.src = n, r.onload = i, r.onerror = a, document.head.appendChild(r);
       } else if (s === "css") {
-        if (Array.from(document.styleSheets).map((d) => {
-          var y;
-          return (y = d.href) == null ? void 0 : y.toLowerCase();
-        }).includes(e.toLowerCase()))
-          return c(`Style ${e} allready downloaded!`, "success"), i("");
+        if (Array.from(document.styleSheets).map((p) => {
+          var _;
+          return (_ = p.href) == null ? void 0 : _.toLowerCase();
+        }).includes(n.toLowerCase()))
+          return h(`Style ${n} allready downloaded!`, "success"), i("");
         const r = document.createElement("link");
-        r.rel = "stylesheet", r.href = e, r.onload = i, r.onerror = a, document.head.appendChild(r);
+        r.rel = "stylesheet", r.href = n, r.onload = i, r.onerror = a, document.head.appendChild(r);
       }
     });
-    for (const e of t)
-      c(e), await n(e), c(`Loaded librari ${e}`);
-    c("All libraries loaded!", "success");
-  }, b = (t, n, e, i, a = 1e3, s = 0.5) => {
+    for (const n of t)
+      h(n), await e(n), h(`Loaded librari ${n}`);
+    h("All libraries loaded!", "success");
+  }, f = (t, e, n, i, a = 1e3, s = 0.5) => {
     let o, r;
     if (o = new IntersectionObserver(
-      function(d) {
-        d[0].isIntersecting === !0 ? r = setTimeout(() => {
-          h(
-            n,
-            d[0].target.dataset.visible || i || "",
+      function(p) {
+        p[0].isIntersecting === !0 ? r = setTimeout(() => {
+          c(
+            e,
+            p[0].target.dataset.visible || i || "",
             "view",
-            e
+            n
           ), o.disconnect();
-        }, a) : (c("Element is not fully visible", "warn"), clearTimeout(r));
+        }, a) : (h("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [s] }
     ), typeof t == "string") {
-      const d = document.querySelector(t);
-      d && o.observe(d);
+      const p = document.querySelector(t);
+      p && o.observe(p);
     } else
       o.observe(t);
-  }, c = (t, n = "info") => {
-    let e;
-    switch (n) {
+  }, h = (t, e = "info") => {
+    let n;
+    switch (e) {
       case "info":
-        e = "color: #3498db;";
+        n = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        n = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        n = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${t}`, `${e} font-size: 16px; font-weight: 600`);
-  }, f = {
+    console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
+  }, b = {
     ev: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
 <path d="M11 21.175L10.6333 21.0833C1.00834 17.1417 1.83334 4.675 1.83334 4.49166L1.92501 3.66666H2.75001C6.96667 3.66666 10.45 1.1 10.45 1.1L11 0.73333L11.55 1.1C11.55 1.1 15.0333 3.66666 19.25 3.66666H20.075L20.1667 4.49166C20.1667 4.58333 20.9917 17.1417 11.3667 20.9917L11 21.175ZM3.66668 5.5C3.66668 8.06666 4.21667 16.225 11 19.25C17.7833 16.3167 18.3333 8.15833 18.3333 5.5C14.9417 5.225 12.1 3.66666 11 2.93333C9.90001 3.66666 7.05834 5.225 3.66668 5.5Z" fill="#005DD8"/>
 <path d="M10.9998 17.4163C4.94983 14.8497 5.49983 6.50801 5.49983 6.50801C8.52483 6.50801 10.9998 4.58301 10.9998 4.58301C10.9998 4.58301 13.4748 6.50801 16.4998 6.50801C16.4998 6.50801 17.0498 14.8497 10.9998 17.4163Z" fill="#005DD8"/>
@@ -974,7 +974,7 @@ main {
   }, u = [
     {
       title: "EV code signed",
-      svg: f.ev,
+      svg: b.ev,
       popup: {
         // TODO: upload to a-b_images/adblock/ — filenames match what's downloaded to the scratchpad
         image: "https://conversionrate-store.github.io/a-b_images/adblock/digicert.webp",
@@ -984,7 +984,7 @@ main {
     },
     {
       title: "AppEsteem certified",
-      svg: f.award,
+      svg: b.award,
       popup: {
         // TODO: upload to a-b_images/adblock/ — filenames match what's downloaded to the scratchpad
         image: "https://conversionrate-store.github.io/a-b_images/adblock/app_est.webp",
@@ -994,7 +994,7 @@ main {
     },
     {
       title: "Cybernews verified",
-      svg: f.verifyed,
+      svg: b.verifyed,
       popup: {
         variant: "cybernews",
         title: "Reviewed and verified by Cybernews",
@@ -1004,9 +1004,9 @@ main {
     },
     {
       title: "Free, no trial",
-      svg: f.free,
+      svg: b.free,
       popup: {
-        icon: f.freeLg,
+        icon: b.freeLg,
         title: "Free version, optional Premium",
         desc: "The basic version is free. Premium is a separate paid subscription. Nothing is charged and nothing upgrades unless you choose it."
       }
@@ -1020,7 +1020,7 @@ main {
     { title: "Open the file from Downloads, top-right", desc: "Adblockforyoutube_AdBlock360_Setup.exe", img: "open.svg" },
     { title: 'Click "Yes" on the Windows prompt', desc: "Verified publisher: AdBlock Ltd", img: "approve.svg" },
     { title: "Installation completes automatically", desc: "Ads are gone right away", img: "install.svg" }
-  ], L = [
+  ], k = [
     {
       icon: "virus",
       titleAccent: "72 antivirus",
@@ -1049,7 +1049,7 @@ main {
       link: "Read the review",
       url: "https://cybernews.com/adblock360-review/"
     }
-  ], k = [
+  ], L = [
     {
       q: 'Why does Windows ask to "make changes to my device"?',
       a: "Standard text for any program that installs outside the browser. Check the prompt shows <strong>Verified publisher: AdBlock Ltd</strong> and click Yes."
@@ -1236,10 +1236,10 @@ main {
   </div>
   <!-- End TrustBox widget -->
 `
-  ), H = { audio: l.music, youtube: l.youtube, browser: l.browser, cookie: l.cookie }, V = { virus: l.virus, windows: l.windowsBadge, users: l.users, cyber: M }, D = u.map(({ title: t, svg: n, popup: e }) => {
-    const i = e.variant === "cybernews", a = i ? "" : (
+  ), H = { audio: l.music, youtube: l.youtube, browser: l.browser, cookie: l.cookie }, V = { virus: l.virus, windows: l.windowsBadge, users: l.users, cyber: M }, D = u.map(({ title: t, svg: e, popup: n }) => {
+    const i = n.variant === "cybernews", a = i ? "" : (
       /* html */
-      `<div class="iaby-hero__badge-popup-media">${e.image ? `<img src="${e.image}" alt="${e.title}" loading="lazy" />` : e.icon || ""}</div>`
+      `<div class="iaby-hero__badge-popup-media">${n.image ? `<img src="${n.image}" alt="${n.title}" loading="lazy" />` : n.icon || ""}</div>`
     ), s = i ? (
       /* html */
       `
@@ -1254,46 +1254,46 @@ main {
           <p class="iaby-hero__badge-popup-mock-muted">All traffic was processed locally rather than sent to external servers — which would be highly suspicious, and evidence of third-party data-gathering.</p>
         </div>
       </div>`
-    ) : "", o = e.link ? `<a href="${e.link.url}" target="_blank" rel="noopener" class="iaby-hero__badge-popup-link">${e.link.text}</a>` : "";
+    ) : "", o = n.link ? `<a href="${n.link.url}" target="_blank" rel="noopener" class="iaby-hero__badge-popup-link">${n.link.text}</a>` : "";
     return (
       /* html */
       `
   <div class="iaby-hero__badge" tabindex="0">
-    ${n}<span>${t}</span>
+    ${e}<span>${t}</span>
     <div class="iaby-hero__badge-popup${i ? " iaby-hero__badge-popup--cybernews" : ""}">
       ${a}${s}
-      <h3>${e.title}</h3>
-      <p>${e.desc}</p>
+      <h3>${n.title}</h3>
+      <p>${n.desc}</p>
       ${o}
     </div>
   </div>`
     );
-  }).join(""), A = m.map(
-    ({ icon: t, title: n }) => (
+  }).join(""), $ = m.map(
+    ({ icon: t, title: e }) => (
       /* html */
       `
   <div class="iaby-hero__benefit">
     ${H[t]}
-    <span>${n}</span>
+    <span>${e}</span>
   </div>`
     )
-  ).join(""), $ = v.map(
-    ({ title: t, desc: n, img: e }, i) => (
+  ).join(""), A = v.map(
+    ({ title: t, desc: e, img: n }, i) => (
       /* html */
       `
   <div class="iaby-steps__row">
     <div class="iaby-steps__dot"><span>${i + 1}</span></div>
     <div class="iaby-steps__body">
-			<img src="https://conversionrate-store.github.io/a-b_images/adblock/${e}" alt="Step Icon"/>
+			<img src="https://conversionrate-store.github.io/a-b_images/adblock/${n}" alt="Step Icon"/>
 			<div class="iaby-steps__content">
 				<h3>${t}</h3>
-				<p>${n}</p>
+				<p>${e}</p>
 			</div>
     </div>
   </div>`
     )
-  ).join(""), E = L.map(
-    ({ icon: t, title: n, titleAccent: e, desc: i, link: a, url: s }) => (
+  ).join(""), E = k.map(
+    ({ icon: t, title: e, titleAccent: n, desc: i, link: a, url: s }) => (
       /* html */
       `
   <div class="iaby-verified__card">
@@ -1301,14 +1301,14 @@ main {
       ${V[t]}
     </div>
     <div class="iaby-verified__card-body">
-      <h3><span class="accent">${e}</span> ${n}</h3>
+      <h3><span class="accent">${n}</span> ${e}</h3>
       <p>${i}</p>
     </div>
     ${a ? `<a href="${s}" class="iaby-verified__card-link" target="_blank" rel="noopener">${a}</a>` : ""}
   </div>`
     )
-  ).join(""), q = k.map(
-    ({ q: t, a: n }) => (
+  ).join(""), q = L.map(
+    ({ q: t, a: e }) => (
       /* html */
       `
   <div class="iaby-faq__item">
@@ -1316,7 +1316,7 @@ main {
       <span>${t}</span>
       ${l.chevron}
     </button>
-    <div class="iaby-faq__a"><p>${n}</p></div>
+    <div class="iaby-faq__a"><p>${e}</p></div>
   </div>`
     )
   ).join(""), z = (
@@ -1329,12 +1329,12 @@ main {
       <div class="iaby-hero__badges">${D}</div>
       <h1 class="iaby-hero__title">You're 3 clicks away from<br> an <span>ad-free PC</span></h1>
       <p class="iaby-hero__desc">Every browser, Spotify, every website — not just YouTube.</p>
-      <div class="iaby-hero__benefits">${A}</div>
+      <div class="iaby-hero__benefits">${$}</div>
     </div>
 
     <div class="iaby-steps">
       <h2 class="iaby-steps__title">How to install</h2>
-      <div class="iaby-steps__list">${$}</div>
+      <div class="iaby-steps__list">${A}</div>
       <button type="button" class="iaby-steps__restart">${l.download} Didn't start? Restart download</button>
     </div>
   </section>
@@ -1398,17 +1398,17 @@ main {
       this.init();
     }
     async init() {
-      await g("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-install-aby-v2-style">${_}</style>`), await g("main"), p("main").elements[0].insertAdjacentHTML("beforebegin", z), h("iaby_view", "Install AdBlock for YouTube v2 viewed", "view", "install_aby_v2"), this.initCtaClicks(), this.initFaq(), this.initTooltip(), this.initCopyHash(), this.initSectionsVisibility(), this.renderTrustpilot(), this.replaceHeaderLogo();
+      await g("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-install-aby-v2-style">${y}</style>`), await g("main"), d("main").elements[0].insertAdjacentHTML("beforebegin", z), c("iaby_view", "Install AdBlock for YouTube v2 viewed", "view", "install_aby_v2"), this.initCtaClicks(), this.initFaq(), this.initTooltip(), this.initCopyHash(), this.initLinkClicks(), this.initSectionsVisibility(), this.renderTrustpilot(), this.replaceHeaderLogo();
     }
     // The host page's own header (outside <main>, so it stays visible) ships its own logo —
     // swap it for the new one.
     async replaceHeaderLogo() {
-      const n = await g(".header__logo img");
-      n.src = "https://conversionrate-store.github.io/a-b_images/adblock/new_logo.svg";
+      const e = await g(".header__logo img");
+      e.src = "https://conversionrate-store.github.io/a-b_images/adblock/new_logo.svg";
     }
     initCtaClicks() {
-      p(".iaby-steps__restart").on("click", () => {
-        h("iaby_restart_download_click", "Restart download", "click", "install_aby_v2"), this.triggerRealDownload();
+      d(".iaby-steps__restart").on("click", () => {
+        c("iaby_restart_download_click", "Restart download", "click", "install_aby_v2"), this.triggerRealDownload();
       });
     }
     // The host page's own restart-download handler is bound to the inner
@@ -1416,10 +1416,10 @@ main {
     // href navigation (confirmed: clicking the <a> or navigating to its href does nothing; only
     // `.restartDownload__link.click()` actually restarts the download). It lives inside <main>,
     // which we hide via CSS, but the element itself stays in the DOM and clickable.
-    triggerRealDownload(n = 0) {
-      const e = document.querySelector(".buttons__18_600");
-      if (e) {
-        e.click();
+    triggerRealDownload(e = 0) {
+      const n = document.querySelector(".buttons__18_600");
+      if (n) {
+        n.click();
         return;
       }
       const i = document.querySelector('#main-cta, [data-event="download"]'), a = i == null ? void 0 : i.closest("a[href]");
@@ -1427,52 +1427,74 @@ main {
         a.click();
         return;
       }
-      if (n < 10) {
-        setTimeout(() => this.triggerRealDownload(n + 1), 200);
+      if (e < 10) {
+        setTimeout(() => this.triggerRealDownload(e + 1), 200);
         return;
       }
       i == null || i.click();
     }
     initCopyHash() {
-      p(".iaby-cert__copy-btn").on("click", async function() {
+      d(".iaby-cert__copy-btn").on("click", async function() {
         var i, a, s;
-        const n = this, e = ((s = (a = (i = n.closest(".iaby-cert__hash-value")) == null ? void 0 : i.querySelector(".iaby-cert__hash-text")) == null ? void 0 : a.textContent) == null ? void 0 : s.trim()) || "";
+        const e = this, n = ((s = (a = (i = e.closest(".iaby-cert__hash-value")) == null ? void 0 : i.querySelector(".iaby-cert__hash-text")) == null ? void 0 : a.textContent) == null ? void 0 : s.trim()) || "";
         try {
-          await navigator.clipboard.writeText(e);
+          await navigator.clipboard.writeText(n);
         } catch {
           const o = document.createElement("textarea");
-          o.value = e, o.style.position = "fixed", o.style.opacity = "0", document.body.appendChild(o), o.select(), document.execCommand("copy"), o.remove();
+          o.value = n, o.style.position = "fixed", o.style.opacity = "0", document.body.appendChild(o), o.select(), document.execCommand("copy"), o.remove();
         }
-        n.classList.add("is-copied"), setTimeout(() => n.classList.remove("is-copied"), 1500), h("iaby_copy_hash_click", "SHA-256 hash copied", "click", "install_aby_v2");
+        e.classList.add("is-copied"), setTimeout(() => e.classList.remove("is-copied"), 1500), c("iaby_copy_hash_click", "SHA-256 hash copied", "click", "install_aby_v2");
+      });
+    }
+    // Outbound links inside the trust badge hover popups (e.g. the Cybernews review link) and
+    // inside the "Independently verified" cards (VirusTotal scan, Cybernews review) — delegated
+    // from the block root since popups/cards are rebuilt from data and .on() only binds once.
+    initLinkClicks() {
+      d(".iaby").on("click", ".iaby-hero__badge-popup-link", function() {
+        var e;
+        c(
+          "iaby_badge_popup_link_click",
+          `Trust badge popup link clicked: ${(e = this.textContent) == null ? void 0 : e.trim()}`,
+          "click",
+          "install_aby_v2"
+        );
+      }), d(".iaby").on("click", ".iaby-verified__card-link", function() {
+        var e;
+        c(
+          "iaby_verified_card_link_click",
+          `Independently verified card link clicked: ${(e = this.textContent) == null ? void 0 : e.trim()}`,
+          "click",
+          "install_aby_v2"
+        );
       });
     }
     initFaq() {
-      p(".iaby-faq__q").on("click", function() {
-        const n = this.closest(".iaby-faq__item"), e = n == null ? void 0 : n.classList.contains("is-open");
-        p(".iaby-faq__item").removeClass("is-open"), e || n == null || n.classList.add("is-open"), h("iaby_faq_toggle", "FAQ item toggled", "click", "install_aby_v2");
+      d(".iaby-faq__q").on("click", function() {
+        const e = this.closest(".iaby-faq__item"), n = e == null ? void 0 : e.classList.contains("is-open");
+        d(".iaby-faq__item").removeClass("is-open"), n || e == null || e.classList.add("is-open"), c("iaby_faq_toggle", "FAQ item toggled", "click", "install_aby_v2");
       });
     }
     initTooltip() {
-      p(".iaby-header__info").on("click", (n) => {
-        n.stopPropagation(), p(".iaby-header__info").elements[0].classList.toggle("is-open");
+      d(".iaby-header__info").on("click", (e) => {
+        e.stopPropagation(), d(".iaby-header__info").elements[0].classList.toggle("is-open");
       }), document.addEventListener("click", () => {
-        p(".iaby-header__info").removeClass("is-open");
+        d(".iaby-header__info").removeClass("is-open");
       });
     }
     initSectionsVisibility() {
-      b(".iaby-hero", "iaby_hero_visible", "install_aby_v2", "Hero section visible"), b(".iaby-trustpilot", "iaby_trustpilot_visible", "install_aby_v2", "Trustpilot section visible"), b(
+      f(".iaby-hero", "iaby_hero_visible", "install_aby_v2", "Hero section visible"), f(".iaby-trustpilot", "iaby_trustpilot_visible", "install_aby_v2", "Trustpilot section visible"), f(
         ".iaby-verified",
         "iaby_verified_visible",
         "install_aby_v2",
         "Independently verified section visible"
-      ), b(".iaby-faq", "iaby_faq_visible", "install_aby_v2", "FAQ section visible");
+      ), f(".iaby-faq", "iaby_faq_visible", "install_aby_v2", "FAQ section visible");
     }
     renderTrustpilot() {
-      const n = () => {
-        const e = window.Trustpilot, i = document.querySelector(".trustpilot-widget-2");
-        e && i ? e.loadFromElement(i, !0) : setTimeout(n, 100);
+      const e = () => {
+        const n = window.Trustpilot, i = document.querySelector(".trustpilot-widget-2");
+        n && i ? n.loadFromElement(i, !0) : setTimeout(e, 100);
       };
-      n();
+      e();
     }
   }
   new B();
