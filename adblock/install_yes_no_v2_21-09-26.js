@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const y = `header {
+  const _ = `header {
   border-bottom: 1px solid #dbdbe0 !important;
 }
 
@@ -139,12 +139,12 @@ main {
 .iaby-hero__badge svg {
   flex-shrink: 0;
 }
-.iaby-hero__badge:hover, .iaby-hero__badge:focus-within {
+.iaby-hero__badge:hover {
   background: #fff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
   z-index: 5;
 }
-.iaby-hero__badge:hover .iaby-hero__badge-popup, .iaby-hero__badge:focus-within .iaby-hero__badge-popup {
+.iaby-hero__badge:hover .iaby-hero__badge-popup {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -177,7 +177,7 @@ main {
     left: 50%;
     transform: translate(-50%, 4px);
   }
-  .iaby-hero__badge:hover .iaby-hero__badge-popup, .iaby-hero__badge:focus-within .iaby-hero__badge-popup {
+  .iaby-hero__badge:hover .iaby-hero__badge-popup {
     transform: translate(-50%, 0);
   }
 }
@@ -883,8 +883,8 @@ main {
         r.src = n, r.onload = i, r.onerror = a, document.head.appendChild(r);
       } else if (s === "css") {
         if (Array.from(document.styleSheets).map((p) => {
-          var _;
-          return (_ = p.href) == null ? void 0 : _.toLowerCase();
+          var y;
+          return (y = p.href) == null ? void 0 : y.toLowerCase();
         }).includes(n.toLowerCase()))
           return h(`Style ${n} allready downloaded!`, "success"), i("");
         const r = document.createElement("link");
@@ -894,7 +894,7 @@ main {
     for (const n of t)
       h(n), await e(n), h(`Loaded librari ${n}`);
     h("All libraries loaded!", "success");
-  }, f = (t, e, n, i, a = 1e3, s = 0.5) => {
+  }, b = (t, e, n, i, a = 1e3, s = 0.5) => {
     let o, r;
     if (o = new IntersectionObserver(
       function(p) {
@@ -930,7 +930,7 @@ main {
         break;
     }
     console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
-  }, b = {
+  }, f = {
     ev: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
 <path d="M11 21.175L10.6333 21.0833C1.00834 17.1417 1.83334 4.675 1.83334 4.49166L1.92501 3.66666H2.75001C6.96667 3.66666 10.45 1.1 10.45 1.1L11 0.73333L11.55 1.1C11.55 1.1 15.0333 3.66666 19.25 3.66666H20.075L20.1667 4.49166C20.1667 4.58333 20.9917 17.1417 11.3667 20.9917L11 21.175ZM3.66668 5.5C3.66668 8.06666 4.21667 16.225 11 19.25C17.7833 16.3167 18.3333 8.15833 18.3333 5.5C14.9417 5.225 12.1 3.66666 11 2.93333C9.90001 3.66666 7.05834 5.225 3.66668 5.5Z" fill="#005DD8"/>
 <path d="M10.9998 17.4163C4.94983 14.8497 5.49983 6.50801 5.49983 6.50801C8.52483 6.50801 10.9998 4.58301 10.9998 4.58301C10.9998 4.58301 13.4748 6.50801 16.4998 6.50801C16.4998 6.50801 17.0498 14.8497 10.9998 17.4163Z" fill="#005DD8"/>
@@ -974,7 +974,7 @@ main {
   }, u = [
     {
       title: "EV code signed",
-      svg: b.ev,
+      svg: f.ev,
       popup: {
         // TODO: upload to a-b_images/adblock/ — filenames match what's downloaded to the scratchpad
         image: "https://conversionrate-store.github.io/a-b_images/adblock/digicert.webp",
@@ -984,7 +984,7 @@ main {
     },
     {
       title: "AppEsteem certified",
-      svg: b.award,
+      svg: f.award,
       popup: {
         // TODO: upload to a-b_images/adblock/ — filenames match what's downloaded to the scratchpad
         image: "https://conversionrate-store.github.io/a-b_images/adblock/app_est.webp",
@@ -994,7 +994,7 @@ main {
     },
     {
       title: "Cybernews verified",
-      svg: b.verifyed,
+      svg: f.verifyed,
       popup: {
         variant: "cybernews",
         title: "Reviewed and verified by Cybernews",
@@ -1004,9 +1004,9 @@ main {
     },
     {
       title: "Free, no trial",
-      svg: b.free,
+      svg: f.free,
       popup: {
-        icon: b.freeLg,
+        icon: f.freeLg,
         title: "Free version, optional Premium",
         desc: "The basic version is free. Premium is a separate paid subscription. Nothing is charged and nothing upgrades unless you choose it."
       }
@@ -1258,7 +1258,7 @@ main {
     return (
       /* html */
       `
-  <div class="iaby-hero__badge" tabindex="0">
+  <div class="iaby-hero__badge">
     ${e}<span>${t}</span>
     <div class="iaby-hero__badge-popup${i ? " iaby-hero__badge-popup--cybernews" : ""}">
       ${a}${s}
@@ -1398,7 +1398,7 @@ main {
       this.init();
     }
     async init() {
-      await g("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-install-aby-v2-style">${y}</style>`), await g("main"), d("main").elements[0].insertAdjacentHTML("beforebegin", z), c("iaby_view", "Install AdBlock for YouTube v2 viewed", "view", "install_aby_v2"), this.initCtaClicks(), this.initFaq(), this.initTooltip(), this.initCopyHash(), this.initLinkClicks(), this.initSectionsVisibility(), this.renderTrustpilot(), this.replaceHeaderLogo();
+      await g("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-install-aby-v2-style">${_}</style>`), await g("main"), d("main").elements[0].insertAdjacentHTML("beforebegin", z), c("iaby_view", "Install AdBlock for YouTube v2 viewed", "view", "install_aby_v2"), this.initCtaClicks(), this.initFaq(), this.initTooltip(), this.initCopyHash(), this.initLinkClicks(), this.initSectionsVisibility(), this.renderTrustpilot(), this.replaceHeaderLogo();
     }
     // The host page's own header (outside <main>, so it stays visible) ships its own logo —
     // swap it for the new one.
@@ -1482,12 +1482,12 @@ main {
       });
     }
     initSectionsVisibility() {
-      f(".iaby-hero", "iaby_hero_visible", "install_aby_v2", "Hero section visible"), f(".iaby-trustpilot", "iaby_trustpilot_visible", "install_aby_v2", "Trustpilot section visible"), f(
+      b(".iaby-hero", "iaby_hero_visible", "install_aby_v2", "Hero section visible"), b(".iaby-trustpilot", "iaby_trustpilot_visible", "install_aby_v2", "Trustpilot section visible"), b(
         ".iaby-verified",
         "iaby_verified_visible",
         "install_aby_v2",
         "Independently verified section visible"
-      ), f(".iaby-faq", "iaby_faq_visible", "install_aby_v2", "FAQ section visible");
+      ), b(".iaby-faq", "iaby_faq_visible", "install_aby_v2", "FAQ section visible");
     }
     renderTrustpilot() {
       const e = () => {
