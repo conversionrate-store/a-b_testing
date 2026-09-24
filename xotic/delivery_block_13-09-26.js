@@ -214,7 +214,7 @@
     changeLabel: "Change",
     confirmLabel: "Confirm",
     unavailableText: "This item is not available for delivery to your address.",
-    trustItems: ["Lifetime warranty", "30-day returns", "Perfect fit guarantee"]
+    trustItems: ["Limited lifetime warranty", "30-day returns", "Perfect fit guarantee"]
   }, M = () => (
     /* HTML */
     `
