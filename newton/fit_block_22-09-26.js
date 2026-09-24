@@ -229,9 +229,9 @@
     }, 0);
   }, s = {
     title: "הבטחת התאמה מושלמת",
-    bodyPrefix: "מידה או דגם לא מתאימים — ",
+    bodyPrefix: "מידה או דגם לא מתאימים - ",
     exchangeFree: "מחליפים בחינם",
-    bodyMid: ". הכיסא לא מתאים בכלל — ",
+    bodyMid: ". הכיסא לא מתאים בכלל - ",
     pickupRefund: "אוספים אותו ומזכים במלואו",
     bodySuffix: ", בלי שאלות מיותרות. ",
     daysWord: "יום",
@@ -240,7 +240,7 @@
     // Not in the Figma mock itself (only the collapsed state is designed) —
     // written from the hypothesis's own scope note ("chair-scoped, accessory
     // exception"): flag for product/CX sign-off before this ships.
-    detailsText: "ההבטחה חלה על הכיסא עצמו — כולל החלפת דגם, מידת מושב או צבע. אביזרים נלווים שנרכשו בנפרד (הדום, שטיחון, כרית קירור, גלגלים וכדומה) אינם כלולים בהבטחה זו ומנוהלים לפי מדיניות ההחזרות הרגילה של החנות."
+    detailsText: "ההבטחה חלה על הכיסא עצמו - כולל החלפת דגם, מידת מושב או צבע. אביזרים נלווים שנרכשו בנפרד (הדום, שטיחון, כרית קירור, גלגלים וכדומה) אינם כלולים בהבטחה זו ומנוהלים לפי מדיניות ההחזרות הרגילה של החנות."
   }, C = () => {
     var e, t, n;
     const o = (n = (t = (e = window.ShopifyAnalytics) == null ? void 0 : e.meta) == null ? void 0 : t.product) == null ? void 0 : n.vendor;
