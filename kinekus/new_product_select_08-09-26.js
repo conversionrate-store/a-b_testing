@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const x = `.product-tab__header {
+  const y = `.product-tab__header {
   display: none !important;
 }
 
@@ -515,133 +515,131 @@
 body.knps-lock {
   overflow: hidden;
 }
-
-/*# sourceMappingURL=style.css.map */
-`, p = (t, n, e, i = "") => {
+`, d = (t, e, n, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
-      event_desc: n,
-      event_type: e,
+      event_desc: e,
+      event_type: n,
       event_loc: i
-    }), h(`Event: ${t} | ${n} | ${e} | ${i}`, "success");
-  }, b = (t) => new Promise((n) => {
-    const e = document.querySelector(t);
-    e && n(e);
+    }), g(`Event: ${t} | ${e} | ${n} | ${i}`, "success");
+  }, b = (t) => new Promise((e) => {
+    const n = document.querySelector(t);
+    n && e(n);
     const i = new MutationObserver(() => {
       const o = document.querySelector(t);
-      o && (n(o), i.disconnect());
+      o && (e(o), i.disconnect());
     });
     i.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), y = ({ name: t, dev: n }) => {
-    const e = t.toLowerCase().replace(/\s/g, "_");
-    p(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
-      `%c EXP: ${t} (DEV: ${n})`,
+  }), w = ({ name: t, dev: e }) => {
+    const n = t.toLowerCase().replace(/\s/g, "_");
+    d(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
+      `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class d {
-    constructor(n) {
-      this.elements = n instanceof d ? n.elements : typeof n == "string" ? Array.from(document.querySelectorAll(n)) : n instanceof Element ? [n] : Array.isArray(n) ? n : Array.from(n);
+  class u {
+    constructor(e) {
+      this.elements = e instanceof u ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(n, e, i) {
-      return typeof e == "function" && (i = e, e = ""), this.elements.forEach((o) => {
-        o.addEventListener(n, function(s) {
+    on(e, n, i) {
+      return typeof n == "function" && (i = n, n = ""), this.elements.forEach((o) => {
+        o.addEventListener(e, function(s) {
           var r;
-          if (e !== "") {
-            let l = (r = s.target) == null ? void 0 : r.closest(e);
+          if (n !== "") {
+            let l = (r = s.target) == null ? void 0 : r.closest(n);
             l && (i == null || i.call(l, s));
           } else
             i == null || i.call(o, s);
         });
       }), this;
     }
-    addClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.add(n);
+    addClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.add(e);
       }), this;
     }
-    removeClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.remove(n);
+    removeClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.remove(e);
       }), this;
     }
-    toggleClass(n) {
-      return this.elements.forEach(function(e) {
-        e.classList.toggle(n);
+    toggleClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.toggle(e);
       }), this;
     }
-    each(n) {
-      for (let e of this.elements)
-        n(new d(e), this.elements.indexOf(e));
+    each(e) {
+      for (let n of this.elements)
+        e(new u(n), this.elements.indexOf(n));
       return this;
     }
-    style(n, e) {
-      const i = n.split("-").map((o, s) => s === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+    style(e, n) {
+      const i = e.split("-").map((o, s) => s === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
       return this.elements.forEach(function(o) {
-        o.style[i] = e;
+        o.style[i] = n;
       }), this;
     }
-    find(n) {
-      const e = this.elements.map((i) => Array.from(i.querySelectorAll(n)));
-      return new d(e.flat());
+    find(e) {
+      const n = this.elements.map((i) => Array.from(i.querySelectorAll(e)));
+      return new u(n.flat());
     }
-    attr(n, e) {
-      return e ? (this.elements.forEach(function(i) {
-        i.setAttribute(n, e);
-      }), this) : this.elements[0].getAttribute(n);
+    attr(e, n) {
+      return n ? (this.elements.forEach(function(i) {
+        i.setAttribute(e, n);
+      }), this) : this.elements[0].getAttribute(e);
     }
-    text(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.textContent = n;
+    text(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
-    html(n) {
-      return n ? (this.elements.forEach(function(e) {
-        e.innerHTML = n;
+    html(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const f = (t) => new d(t), w = (t, n, e, i, o = 1e3, s = 0.5) => {
+  const f = (t) => new u(t), C = (t, e, n, i, o = 1e3, s = 0.5) => {
     let r, l;
     r = new IntersectionObserver(
-      function(u) {
-        u[0].isIntersecting === !0 ? l = setTimeout(() => {
-          p(
-            n,
-            u[0].target.dataset.visible || i,
+      function(c) {
+        c[0].isIntersecting === !0 ? l = setTimeout(() => {
+          d(
+            e,
+            c[0].target.dataset.visible || i,
             "view",
-            e
+            n
           ), r.disconnect();
-        }, o) : (h("Element is not fully visible", "warn"), clearTimeout(l));
+        }, o) : (g("Element is not fully visible", "warn"), clearTimeout(l));
       },
       { threshold: [s] }
     );
     {
-      const u = document.querySelector(t);
-      u && r.observe(u);
+      const c = document.querySelector(t);
+      c && r.observe(c);
     }
-  }, h = (t, n = "info") => {
-    let e;
-    switch (n) {
+  }, g = (t, e = "info") => {
+    let n;
+    switch (e) {
       case "info":
-        e = "color: #3498db;";
+        n = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        n = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        n = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${t}`, `${e} font-size: 16px; font-weight: 600`);
-  }, c = {
+    console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
+  }, p = {
     cart: (
       /* HTML */
       `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -727,7 +725,7 @@ body.knps-lock {
     pcs: "ks",
     outOfStock: "Vypredané",
     similarModelsPrefix: "Zobraziť podobné modely v tejto kategórii:"
-  }, C = (t) => (
+  }, S = (t) => (
     /* HTML */
     `
   <div class="knps-oos-heading">${a.outOfStock}</div>
@@ -744,7 +742,7 @@ body.knps-lock {
       `
     ) : ""}
 `
-  ), m = (t) => (
+  ), k = (t) => (
     /* HTML */
     `
   <div class="knps-block" id="knpsBlock">
@@ -758,14 +756,14 @@ body.knps-lock {
       <span class="knps-radio"></span>
       <div class="knps-card-body">
         <div class="knps-card-top">
-          <div class="knps-title">${c.cart}<span>${a.onlineTitle}</span></div>
+          <div class="knps-title">${p.cart}<span>${a.onlineTitle}</span></div>
           ${t.onlineAvailable && t.deliveryBadge ? `<div class="knps-badge">${t.deliveryBadge}</div>` : ""}
         </div>
       </div>
       ${t.onlineAvailable ? (
       /* HTML */
       `
-            <div class="knps-side knps-side--ok" title="${t.onlineCaption}">${c.check}<span>${a.onlineInStock}</span></div>
+            <div class="knps-side knps-side--ok" title="${t.onlineCaption}">${p.check}<span>${a.onlineInStock}</span></div>
           `
     ) : `<div class="knps-side knps-side--muted">${a.onlineUnavailable}</div>`}
     </div>
@@ -780,7 +778,7 @@ body.knps-lock {
       <span class="knps-radio"></span>
       <div class="knps-card-body">
         <div class="knps-card-top">
-          <div class="knps-title">${c.calendar}<span>${a.reserveTitle}</span></div>
+          <div class="knps-title">${p.calendar}<span>${a.reserveTitle}</span></div>
           ${t.reserveUnavailable ? `<div class="knps-badge knps-badge--muted">${a.reserveUnavailableBadge}</div>` : (
       /* HTML */
       `
@@ -792,54 +790,54 @@ body.knps-lock {
         ${t.reserveUnavailable ? `<div class="knps-caption">${a.reserveUnavailableCaption}</div>` : (
       /* HTML */
       `
-              ${t.store ? S(t.store) : ""} ${t.caption ? `<div class="knps-caption">${t.caption}</div>` : ""}
+              ${t.store ? $(t.store) : ""} ${t.caption ? `<div class="knps-caption">${t.caption}</div>` : ""}
             `
     )}
       </div>
     </div>
   </div>
 `
-  ), S = (t) => (
+  ), $ = (t) => (
     /* HTML */
     `
   <button type="button" class="knps-store-box" data-knps-change>
     <span class="knps-store-line">
-      ${c.pin}
+      ${p.pin}
       <span class="knps-store-distance" data-knps-distance>${t.distanceText}</span>
       <span class="knps-store-name">${t.name}</span>
     </span>
     <span class="knps-store-change">${a.changeStore}</span>
   </button>
 `
-  ), $ = (t, n) => (
+  ), O = (t, e) => (
     /* HTML */
     `
   <div class="knps-popup" id="knpsPopup" data-knps-popup hidden>
     <div class="knps-popup-backdrop" data-knps-close></div>
     <div class="knps-popup-panel" role="dialog" aria-modal="true" aria-label="${a.popupTitle}">
-      <button type="button" class="knps-popup-x" data-knps-close aria-label="Zavrieť">${c.close}</button>
+      <button type="button" class="knps-popup-x" data-knps-close aria-label="Zavrieť">${p.close}</button>
       <div class="knps-popup-head">
         <h3>${a.popupTitle}</h3>
         <p>${a.popupFeePrefix} — ${t}</p>
       </div>
-      <div class="knps-popup-list">${n.map(k).join("")}</div>
+      <div class="knps-popup-list">${e.map(m).join("")}</div>
     </div>
   </div>
 `
-  ), k = (t) => {
-    const n = t.qty > 0;
+  ), m = (t) => {
+    const e = t.qty > 0;
     return (
       /* HTML */
       `
     <div class="knps-popup-row" data-knps-store-id="${t.id}">
       <div class="knps-popup-row-info">
         <div class="knps-popup-row-line">
-          ${c.pin}
+          ${p.pin}
           <span class="knps-store-distance" data-knps-distance>${t.distanceText}</span>
           <span class="knps-popup-row-name">${t.name}</span>
         </div>
-        <div class="knps-popup-row-stock ${n ? "" : "knps-popup-row-stock--no"}">
-          ${n ? `${a.inStock} · ${t.qty} ${a.pcs}` : a.onlineUnavailable}
+        <div class="knps-popup-row-stock ${e ? "" : "knps-popup-row-stock--no"}">
+          ${e ? `${a.inStock} · ${t.qty} ${a.pcs}` : a.onlineUnavailable}
         </div>
       </div>
       <button type="button" class="knps-popup-row-btn" data-knps-select="${t.id}">${a.reserveBtn}</button>
@@ -875,18 +873,18 @@ body.knps-lock {
     // Nové Zámky, Dvorská cesta 5
     OOPoprad: [49.04961, 20.29178]
     // Poprad, Dlhé Hony 5268/9
-  }, v = "knps_user_geo", O = "https://get.geojs.io/v1/ip/geo.json", A = async (t = 4e3) => {
+  }, v = "knps_user_geo", T = "https://get.geojs.io/v1/ip/geo.json", A = async (t = 4e3) => {
     try {
-      const n = sessionStorage.getItem(v);
-      if (n) {
-        const e = JSON.parse(n);
-        if (typeof (e == null ? void 0 : e.lat) == "number" && typeof (e == null ? void 0 : e.lon) == "number") return e;
+      const e = sessionStorage.getItem(v);
+      if (e) {
+        const n = JSON.parse(e);
+        if (typeof (n == null ? void 0 : n.lat) == "number" && typeof (n == null ? void 0 : n.lon) == "number") return n;
       }
     } catch {
     }
     try {
-      const n = new AbortController(), e = setTimeout(() => n.abort(), t), i = await fetch(O, { signal: n.signal });
-      if (clearTimeout(e), !i.ok) return null;
+      const e = new AbortController(), n = setTimeout(() => e.abort(), t), i = await fetch(T, { signal: e.signal });
+      if (clearTimeout(n), !i.ok) return null;
       const o = await i.json(), s = parseFloat(o.latitude), r = parseFloat(o.longitude);
       if (Number.isNaN(s) || Number.isNaN(r)) return null;
       const l = { lat: s, lon: r };
@@ -898,30 +896,37 @@ body.knps-lock {
     } catch {
       return null;
     }
-  }, L = 6371, g = (t) => t * Math.PI / 180, T = (t, n, e, i) => {
-    const o = g(e - t), s = g(i - n), r = Math.sin(o / 2) ** 2 + Math.cos(g(t)) * Math.cos(g(e)) * Math.sin(s / 2) ** 2, l = 2 * Math.atan2(Math.sqrt(r), Math.sqrt(1 - r));
+  }, L = 6371, h = (t) => t * Math.PI / 180, P = (t, e, n, i) => {
+    const o = h(n - t), s = h(i - e), r = Math.sin(o / 2) ** 2 + Math.cos(h(t)) * Math.cos(h(n)) * Math.sin(s / 2) ** 2, l = 2 * Math.atan2(Math.sqrt(r), Math.sqrt(1 - r));
     return L * l;
-  }, P = (t) => t < 10 ? `${t.toFixed(1)} km` : `${Math.round(t)} km`;
-  y({ name: "Kinekus New Product Select", dev: "AI" });
-  class E {
+  }, E = (t) => t < 10 ? `${t.toFixed(1)} km` : `${Math.round(t)} km`;
+  w({ name: "Kinekus New Product Select", dev: "AI" });
+  class M {
     constructor() {
-      this.userLocation = null, this.init();
+      this.userLocation = null, this.userPickedStore = !1, this.preferredStoreId = null, this.init();
     }
     async init() {
-      await b("head"), document.head.insertAdjacentHTML("beforeend", `<style>${x}</style>`);
-      const n = await b(".product-tab:not(.float-btn-style)"), e = n.querySelector(".product-tab__header"), i = n.querySelector("#eshop-tab"), o = n.querySelector("#reserve-tab"), s = n.querySelectorAll(".product-tab__content-item"), r = n.querySelector(".store-delivery-id");
-      if (!e || !i || !o || s.length < 2 || !r || (this.root = n, this.eshopTab = i, this.reserveTab = o, this.eshopContent = s[0], this.storeDeliveryId = r, f("#knpsBlock").elements.length)) return;
+      await b("head"), document.head.insertAdjacentHTML("beforeend", `<style>${y}</style>`);
+      const e = await b(".product-tab:not(.float-btn-style)"), n = e.querySelector(".product-tab__header"), i = e.querySelector("#eshop-tab"), o = e.querySelector("#reserve-tab"), s = e.querySelectorAll(".product-tab__content-item"), r = e.querySelector(".store-delivery-id");
+      if (!n || !i || !o || s.length < 2 || !r || (this.root = e, this.eshopTab = i, this.reserveTab = o, this.eshopContent = s[0], this.storeDeliveryId = r, f("#knpsBlock").elements.length)) return;
       if (!this.isOnlineAvailable() && this.getEligibleStores().length === 0) {
-        this.renderOutOfStock(e), this.layoutWatchAvailability();
+        this.renderOutOfStock(n), this.layoutWatchAvailability();
         return;
       }
       const l = this.eshopContent.querySelector(".product-card-price-wrapper");
-      l && e.insertAdjacentElement("beforebegin", l), !this.isOnlineAvailable() && this.getEligibleStores().length > 0 && i.classList.contains("product-tab__list-item--active") && o.click(), this.loadUserLocation(), await this.waitForValue(r, 4e3), e.insertAdjacentHTML("afterend", m(this.collectState())), this.bindBlock(), document.body.insertAdjacentHTML("beforeend", $(this.getFeeText(), this.getEligibleStores())), this.bindPopup(), w(
+      l && n.insertAdjacentElement("beforebegin", l), !this.isOnlineAvailable() && this.getEligibleStores().length > 0 && i.classList.contains("product-tab__list-item--active") && o.click(), await this.waitForValue(r, 4e3);
+      const c = this.getSelectedStore();
+      if (!c || c.qty <= 0) {
+        const x = this.getEligibleStores()[0];
+        x && this.clickStoreOption(x.id);
+      } else
+        this.preferredStoreId = c.id;
+      this.watchForNativeReset(), n.insertAdjacentHTML("afterend", k(this.collectState())), this.bindBlock(), document.body.insertAdjacentHTML("beforeend", O(this.getFeeText(), this.getEligibleStores())), this.bindPopup(), C(
         "#knpsBlock",
         "exp_kinekus_new_product_select_01",
         "PDP purchase option select block",
         "PDP purchase option select block visibility"
-      );
+      ), this.loadUserLocation();
     }
     // The deepest breadcrumb entry is always the product's immediate category
     // (the breadcrumb never includes the product itself), so the last link is
@@ -929,23 +934,23 @@ body.knps-lock {
     // recommendations data needed.
     getCategoryLink() {
       var s, r, l;
-      const n = Array.from(document.querySelectorAll('.breadcrumb a[itemprop="item"]')), e = n[n.length - 1];
-      if (!e) return null;
-      const i = ((r = (s = e.querySelector('[itemprop="name"]')) == null ? void 0 : s.textContent) == null ? void 0 : r.trim()) || ((l = e.textContent) == null ? void 0 : l.trim()) || "", o = e.getAttribute("href") || "";
+      const e = Array.from(document.querySelectorAll('.breadcrumb a[itemprop="item"]')), n = e[e.length - 1];
+      if (!n) return null;
+      const i = ((r = (s = n.querySelector('[itemprop="name"]')) == null ? void 0 : s.textContent) == null ? void 0 : r.trim()) || ((l = n.textContent) == null ? void 0 : l.trim()) || "", o = n.getAttribute("href") || "";
       return i && o ? { name: i, url: o } : null;
     }
     getProductImageUrl() {
-      var n;
-      return ((n = document.querySelector('meta[property="og:image"]')) == null ? void 0 : n.content) || null;
+      var e;
+      return ((e = document.querySelector('meta[property="og:image"]')) == null ? void 0 : e.content) || null;
     }
-    renderOutOfStock(n) {
-      const e = this.getCategoryLink();
-      n.insertAdjacentHTML(
+    renderOutOfStock(e) {
+      const n = this.getCategoryLink();
+      e.insertAdjacentHTML(
         "beforebegin",
-        C({
+        S({
           imageUrl: this.getProductImageUrl(),
-          categoryName: (e == null ? void 0 : e.name) || "",
-          categoryUrl: (e == null ? void 0 : e.url) || ""
+          categoryName: (n == null ? void 0 : n.name) || "",
+          categoryUrl: (n == null ? void 0 : n.url) || ""
         })
       );
     }
@@ -955,27 +960,27 @@ body.knps-lock {
     // bound once at page init by reservation.js and survives the move) instead
     // of touching the form itself.
     layoutWatchAvailability() {
-      const n = document.querySelector("#savePWA .input-inline"), e = document.querySelector(".watch-availability-cancel");
-      n && e && n.appendChild(e), document.body.classList.add("knps-oos-active");
+      const e = document.querySelector("#savePWA .input-inline"), n = document.querySelector(".watch-availability-cancel");
+      e && n && e.appendChild(n), document.body.classList.add("knps-oos-active");
     }
     async loadUserLocation() {
-      const n = await A();
-      if (!n) {
-        h("Kinekus New Product Select: user geolocation unavailable, hiding distance", "warn");
+      const e = await A();
+      if (!e) {
+        g("Kinekus New Product Select: user geolocation unavailable, hiding distance", "warn");
         return;
       }
-      this.userLocation = n, this.render();
+      this.userLocation = e, this.preferNearestStore(), this.render();
     }
-    getDistanceKm(n) {
+    getDistanceKm(e) {
       if (!this.userLocation) return null;
-      const e = _[n];
-      return e ? T(this.userLocation.lat, this.userLocation.lon, e[0], e[1]) : null;
+      const n = _[e];
+      return n ? P(this.userLocation.lat, this.userLocation.lon, n[0], n[1]) : null;
     }
-    waitForValue(n, e) {
+    waitForValue(e, n) {
       return new Promise((i) => {
-        if (n.value) return i();
+        if (e.value) return i();
         const o = Date.now(), s = () => {
-          if (n.value || Date.now() - o > e) return i();
+          if (e.value || Date.now() - o > n) return i();
           setTimeout(s, 50);
         };
         s();
@@ -990,45 +995,82 @@ body.knps-lock {
     //    store the instant its local stock hits 0.
     // 2) it must actually have stock right now — a store with nothing available
     //    isn't offered at all (not even as a disabled/"unavailable" row).
-    isEligibleStore(n) {
-      const e = (n.getAttribute("data-store-id") || "").trim().length > 0, i = parseInt(n.getAttribute("data-store") || "0", 10) || 0;
-      return e && i > 0;
+    isEligibleStore(e) {
+      const n = (e.getAttribute("data-store-id") || "").trim().length > 0, i = parseInt(e.getAttribute("data-store") || "0", 10) || 0;
+      return n && i > 0;
     }
-    storeFromOption(n) {
+    storeFromOption(e) {
       var o, s, r;
-      const e = n.getAttribute("data-id") || "", i = this.getDistanceKm(e);
+      const n = e.getAttribute("data-id") || "", i = this.getDistanceKm(n);
       return {
-        id: e,
-        name: ((o = n.getAttribute("data-name")) == null ? void 0 : o.trim()) || ((r = (s = n.querySelector(".name-wrapper")) == null ? void 0 : s.textContent) == null ? void 0 : r.trim()) || "",
-        qty: parseInt(n.getAttribute("data-store") || "0", 10) || 0,
-        priceRaw: n.getAttribute("data-delivery-price"),
+        id: n,
+        name: ((o = e.getAttribute("data-name")) == null ? void 0 : o.trim()) || ((r = (s = e.querySelector(".name-wrapper")) == null ? void 0 : s.textContent) == null ? void 0 : r.trim()) || "",
+        qty: parseInt(e.getAttribute("data-store") || "0", 10) || 0,
+        priceRaw: e.getAttribute("data-delivery-price"),
         distanceKm: i,
-        distanceText: i != null ? P(i) : ""
+        distanceText: i != null ? E(i) : ""
       };
     }
     getEligibleStores() {
-      const n = Array.from(this.root.querySelectorAll(".store-option")).filter((e) => this.isEligibleStore(e)).map((e) => this.storeFromOption(e)).filter((e) => e.id);
-      return this.userLocation && n.sort((e, i) => (e.distanceKm ?? 1 / 0) - (i.distanceKm ?? 1 / 0)), n;
+      const e = Array.from(this.root.querySelectorAll(".store-option")).filter((n) => this.isEligibleStore(n)).map((n) => this.storeFromOption(n)).filter((n) => n.id);
+      return this.userLocation && e.sort((n, i) => (n.distanceKm ?? 1 / 0) - (i.distanceKm ?? 1 / 0)), e;
     }
     getSelectedStore() {
-      const n = this.storeDeliveryId.value;
-      if (!n) return null;
-      const e = this.root.querySelector(`.store-option[data-id="${CSS.escape(n)}"]`);
-      return e ? this.storeFromOption(e) : null;
+      const e = this.storeDeliveryId.value;
+      if (!e) return null;
+      const n = this.root.querySelector(`.store-option[data-id="${CSS.escape(e)}"]`);
+      return n ? this.storeFromOption(n) : null;
     }
-    formatPrice(n) {
-      const e = Number(n);
-      return !n || Number.isNaN(e) ? "" : `${e.toFixed(2).replace(".", ",")} €`;
+    // Genuine click on the real .store-option (same native A() path as the
+    // popup's selectStore), not a display-only override — keeps price/footer/
+    // everything native drives in sync.
+    clickStoreOption(e) {
+      const n = this.root.querySelector(`.store-option[data-id="${CSS.escape(e)}"]`);
+      return n ? (this.preferredStoreId = e, n.click(), !0) : !1;
+    }
+    // Native silently resets .store-delivery-id back to its own cookie/default
+    // store (Reservation.reinitStoreSelection(), called e.g. when the native
+    // quick-reservation modal opens) on clicks we don't control at all — re-win
+    // by re-clicking whatever we last set, right after any click anywhere.
+    // Cheap no-op when nothing actually changed.
+    watchForNativeReset() {
+      document.addEventListener("click", () => {
+        setTimeout(() => {
+          if (!this.preferredStoreId || this.storeDeliveryId.value === this.preferredStoreId) return;
+          const e = this.preferredStoreId;
+          this.clickStoreOption(e), this.render();
+        }, 0);
+      });
+    }
+    // Once we know where the visitor is, getEligibleStores()[0] is the nearest
+    // eligible store — switch to it unless the visitor has since picked one
+    // themselves. Neither native's default (cookie-remembered / first
+    // non-disabled) nor our own immediate 0-stock fallback in init() has any
+    // notion of distance, so this is what actually makes "nearest" true.
+    preferNearestStore() {
+      if (this.userPickedStore) return;
+      const e = this.getEligibleStores()[0];
+      if (!e) return;
+      const n = this.getSelectedStore();
+      if ((n == null ? void 0 : n.id) === e.id) {
+        this.preferredStoreId = e.id;
+        return;
+      }
+      this.clickStoreOption(e.id);
+    }
+    formatPrice(e) {
+      const n = Number(e);
+      return !e || Number.isNaN(n) ? "" : `${n.toFixed(2).replace(".", ",")} €`;
     }
     getFeeText() {
-      const n = this.getSelectedStore() || this.getEligibleStores()[0];
-      return this.formatPrice(n == null ? void 0 : n.priceRaw);
+      const e = this.getSelectedStore() || this.getEligibleStores()[0];
+      return this.formatPrice(e == null ? void 0 : e.priceRaw);
     }
     formatDeliveryBadge() {
       var i, o;
-      const n = this.eshopContent.querySelector(".delivery-days"), e = n == null ? void 0 : n.dataset.deliveryDate;
-      if (e) {
-        const s = new Date(e);
+      const e = this.eshopContent.querySelector(".delivery-days"), n = e == null ? void 0 : e.dataset.deliveryDate;
+      if (n) {
+        const s = new Date(n);
         if (!Number.isNaN(s.getTime()))
           return `Doručenie do ${new Intl.DateTimeFormat("sk-SK", { day: "numeric", month: "numeric" }).format(s)}`;
       }
@@ -1041,53 +1083,53 @@ body.knps-lock {
     // in place of the missing buy button; falls back to the tab's short
     // decoration text ("Žiadne kusy na sklade") when that isn't present.
     getOnlineCaption() {
-      var e, i, o, s;
-      const n = (i = (e = this.eshopContent.querySelector(".watch-availability-text")) == null ? void 0 : e.textContent) == null ? void 0 : i.trim();
-      return n || ((s = (o = this.eshopTab.querySelector(".list-item__text--decoration")) == null ? void 0 : o.textContent) == null ? void 0 : s.trim()) || "";
+      var n, i, o, s;
+      const e = (i = (n = this.eshopContent.querySelector(".watch-availability-text")) == null ? void 0 : n.textContent) == null ? void 0 : i.trim();
+      return e || ((s = (o = this.eshopTab.querySelector(".list-item__text--decoration")) == null ? void 0 : o.textContent) == null ? void 0 : s.trim()) || "";
     }
     // The reserve-tab title doubles as the native "within N minutes" promise text.
     getReserveBadge() {
-      const n = this.reserveTab.querySelector(".list-item__title");
-      return n ? Array.from(n.childNodes).filter((e) => e.nodeType === Node.TEXT_NODE).map((e) => (e.textContent || "").trim()).filter(Boolean).join(" ") : "";
+      const e = this.reserveTab.querySelector(".list-item__title");
+      return e ? Array.from(e.childNodes).filter((n) => n.nodeType === Node.TEXT_NODE).map((n) => (n.textContent || "").trim()).filter(Boolean).join(" ") : "";
     }
     // Mirrors the native "V predajni 0 ks..." / central-warehouse fallback caption
     // that would otherwise be hidden along with the native tab header.
     getCaption() {
-      var n, e;
-      return ((e = (n = this.reserveTab.querySelector(".product-on-stock")) == null ? void 0 : n.textContent) == null ? void 0 : e.trim()) || "";
+      var e, n;
+      return ((n = (e = this.reserveTab.querySelector(".product-on-stock")) == null ? void 0 : e.textContent) == null ? void 0 : n.trim()) || "";
     }
     collectState() {
-      const n = this.getEligibleStores().length === 0, e = this.isOnlineAvailable(), i = this.eshopTab.classList.contains("product-tab__list-item--active") ? "online" : "reserve";
+      const e = this.getEligibleStores().length === 0, n = this.isOnlineAvailable(), i = this.eshopTab.classList.contains("product-tab__list-item--active") ? "online" : "reserve";
       let o;
-      return n ? o = "online" : e ? o = i : o = "reserve", {
+      return e ? o = "online" : n ? o = i : o = "reserve", {
         active: o,
         deliveryBadge: this.formatDeliveryBadge(),
-        onlineAvailable: e,
+        onlineAvailable: n,
         onlineCaption: this.getOnlineCaption(),
         reserveBadge: this.getReserveBadge(),
-        reserveUnavailable: n,
+        reserveUnavailable: e,
         feeText: this.getFeeText(),
         store: this.getSelectedStore(),
         caption: this.getCaption()
       };
     }
     render() {
-      const n = document.getElementById("knpsBlock");
-      n && (n.outerHTML = m(this.collectState()), this.bindBlock());
+      const e = document.getElementById("knpsBlock");
+      e && (e.outerHTML = k(this.collectState()), this.bindBlock());
     }
     // ─── Interactions ─────────────────────────────────────────────────────────
     bindBlock() {
-      const n = document.getElementById("knpsBlock");
-      n && (f(n).on("click", (e) => {
-        const i = e.target;
+      const e = document.getElementById("knpsBlock");
+      e && (f(e).on("click", (n) => {
+        const i = n.target;
         if (i.closest("[data-knps-change]")) {
           this.openPopup();
           return;
         }
         const o = i.closest("[data-knps-card]");
         o && this.onCardClick(o);
-      }), f(n).on("keydown", (e) => {
-        const i = e;
+      }), f(e).on("keydown", (n) => {
+        const i = n;
         if (i.key !== "Enter" && i.key !== " ") return;
         const o = i.target;
         if (o.closest("[data-knps-change]")) return;
@@ -1095,15 +1137,15 @@ body.knps-lock {
         s && (i.preventDefault(), this.onCardClick(s));
       }));
     }
-    onCardClick(n) {
-      if (n.getAttribute("aria-disabled") === "true") return;
-      const e = n.getAttribute("data-knps-card");
-      e === "online" && !this.eshopTab.classList.contains("product-tab__list-item--active") ? (this.eshopTab.click(), this.render()) : e === "reserve" && !this.reserveTab.classList.contains("product-tab__list-item--active") && (this.reserveTab.click(), this.render()), p("kinekus_new_product_select_option", `Selected: ${e}`, "click", "PDP purchase option select");
+    onCardClick(e) {
+      if (e.getAttribute("aria-disabled") === "true") return;
+      const n = e.getAttribute("data-knps-card");
+      n === "online" && !this.eshopTab.classList.contains("product-tab__list-item--active") ? (this.eshopTab.click(), this.render()) : n === "reserve" && !this.reserveTab.classList.contains("product-tab__list-item--active") && (this.reserveTab.click(), this.render()), d("kinekus_new_product_select_option", `Selected: ${n}`, "click", "PDP purchase option select");
     }
     bindPopup() {
-      const n = document.getElementById("knpsPopup");
-      n && (f(n).on("click", (e) => {
-        const i = e.target;
+      const e = document.getElementById("knpsPopup");
+      e && (f(e).on("click", (n) => {
+        const i = n.target;
         if (i.closest("[data-knps-close]")) {
           this.closePopup();
           return;
@@ -1113,27 +1155,26 @@ body.knps-lock {
           const s = o.getAttribute("data-knps-select");
           s && this.selectStore(s);
         }
-      }), document.addEventListener("keydown", (e) => {
-        e.key === "Escape" && !n.hidden && this.closePopup();
+      }), document.addEventListener("keydown", (n) => {
+        n.key === "Escape" && !e.hidden && this.closePopup();
       }));
     }
     openPopup() {
-      const n = document.getElementById("knpsPopup");
-      if (!n) return;
-      const e = n.querySelector(".knps-popup-head p");
-      e && (e.textContent = `${a.popupFeePrefix} — ${this.getFeeText()}`);
-      const i = n.querySelector(".knps-popup-list");
-      i && (i.innerHTML = this.getEligibleStores().map(k).join("")), n.hidden = !1, document.body.classList.add("knps-lock"), p("kinekus_new_product_select_popup", "Store picker opened", "view", "PDP purchase option select");
+      const e = document.getElementById("knpsPopup");
+      if (!e) return;
+      const n = e.querySelector(".knps-popup-head p");
+      n && (n.textContent = `${a.popupFeePrefix} — ${this.getFeeText()}`);
+      const i = e.querySelector(".knps-popup-list");
+      i && (i.innerHTML = this.getEligibleStores().map(m).join("")), e.hidden = !1, document.body.classList.add("knps-lock"), d("kinekus_new_product_select_popup", "Store picker opened", "view", "PDP purchase option select");
     }
     closePopup() {
-      const n = document.getElementById("knpsPopup");
-      n && (n.hidden = !0, document.body.classList.remove("knps-lock"));
+      const e = document.getElementById("knpsPopup");
+      e && (e.hidden = !0, document.body.classList.remove("knps-lock"));
     }
-    selectStore(n) {
-      const e = this.root.querySelector(`.store-option[data-id="${CSS.escape(n)}"]`);
-      e && (e.click(), this.reserveTab.classList.contains("product-tab__list-item--active") || this.reserveTab.click(), this.closePopup(), this.render(), p("kinekus_new_product_select_store", `Store selected: ${n}`, "click", "PDP purchase option select"));
+    selectStore(e) {
+      this.clickStoreOption(e) && (this.userPickedStore = !0, this.reserveTab.classList.contains("product-tab__list-item--active") || this.reserveTab.click(), this.closePopup(), this.render(), d("kinekus_new_product_select_store", `Store selected: ${e}`, "click", "PDP purchase option select"));
     }
   }
-  new E();
+  new M();
 })();
 //# sourceMappingURL=index.js.map
