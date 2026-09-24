@@ -603,7 +603,7 @@
         var a;
         const o = Array.from(e.classList).find((c) => c !== "deliverr-label-sla") || "", r = parseInt(((a = o.match(/(\d+)\s*day/)) == null ? void 0 : a[1]) || "", 10), l = /1day|2day|next.?day|same.?day/i.test(o) || !Number.isNaN(r) && r <= 3;
         let s = i === 0 ? e.innerHTML + t : e.innerHTML;
-        return this.countryCode === "CA" && (s = s.replace(/\d+\s*[–-]\s*\d+\s*weeks?/i, "3–7 business days")), { html: s, fast: l };
+        return this.countryCode === "CA" && (s = s.replace(/\d+\s*[–-]\s*\d+\s*weeks?/i, "3–7 business days"), s = s.replace(/\binternational\b\s*/gi, "")), { html: s, fast: l };
       });
     }
     getLocationText() {
