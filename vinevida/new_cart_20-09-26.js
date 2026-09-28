@@ -541,7 +541,7 @@ body.vvsc-body-locked {
       event_desc: n,
       event_type: t,
       event_loc: e
-    }), m(`Event: ${s} | ${n} | ${t} | ${e}`, "success");
+    }), y(`Event: ${s} | ${n} | ${t} | ${e}`, "success");
   }, E = (s) => new Promise((n) => {
     const t = document.querySelector(s);
     t && n(t);
@@ -559,7 +559,7 @@ body.vvsc-body-locked {
       `%c EXP: ${s} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, m = (s, n = "info") => {
+  }, y = (s, n = "info") => {
     let t;
     switch (n) {
       case "info":
@@ -576,10 +576,10 @@ body.vvsc-body-locked {
         break;
     }
     console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
-  }, y = "FREESHIP100", k = [
+  }, k = "FREESHIP100", _ = [
     "no-185-fall-is-in-the-air-fragrance-oil",
     "no-185-fall-is-in-the-air-diffuser-fragrance-oil"
-  ], _ = 'Taxes and <a href="https://www.vinevida.com/policies/shipping-policy" target="_blank" rel="noopener">shipping</a> calculated at checkout', g = {
+  ], C = 'Taxes and <a href="https://www.vinevida.com/policies/shipping-policy" target="_blank" rel="noopener">shipping</a> calculated at checkout', f = {
     close: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
     <path d="M15 5L5 15M5 5l10 10" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
   </svg>`,
@@ -599,7 +599,7 @@ body.vvsc-body-locked {
     const n = `$${(s.line_price / 100).toFixed(2)}`, t = [
       s.variant_title && s.variant_title !== "Default Title" ? s.variant_title : "",
       s.product_type
-    ].filter(Boolean).join(" &middot; "), e = s.selling_plan_allocation ? `Delivery every ${s.selling_plan_allocation.selling_plan.name}` : "";
+    ].filter(Boolean).join(" &middot; "), e = s.selling_plan_allocation ? `Recurring Subscription Every ${s.selling_plan_allocation.selling_plan.name}` : "";
     return (
       /* HTML */
       `
@@ -618,17 +618,17 @@ body.vvsc-body-locked {
         <div class="vvsc-item-bottom">
           <div class="vvsc-qty-stepper">
             <button class="vvsc-qty-btn" data-action="decrease" aria-label="Decrease quantity">
-              ${g.decrease}
+              ${f.decrease}
             </button>
             <span class="vvsc-qty-value">${s.quantity}</span>
             <button class="vvsc-qty-btn" data-action="increase" aria-label="Increase quantity">
-              ${g.increase}
+              ${f.increase}
             </button>
           </div>
           <span class="vvsc-item-price">${n}</span>
         </div>
       </div>
-      <button class="vvsc-item-remove" data-action="remove" aria-label="Remove item">${g.close}</button>
+      <button class="vvsc-item-remove" data-action="remove" aria-label="Remove item">${f.close}</button>
     </div>
   `
     );
@@ -668,7 +668,7 @@ body.vvsc-body-locked {
             <h2 class="vvsc-title">My cart</h2>
             <span class="vvsc-item-count">0 items</span>
           </div>
-          <button class="vvsc-close" aria-label="Close cart">${g.close}</button>
+          <button class="vvsc-close" aria-label="Close cart">${f.close}</button>
         </div>
 
         <div class="vvsc-progress-block">
@@ -690,7 +690,7 @@ body.vvsc-body-locked {
         <div class="vvsc-note-block">
           <button type="button" class="vvsc-note-toggle" aria-expanded="false">
             <span>Add a note to this order</span>
-            ${g.plus}
+            ${f.plus}
           </button>
           <div class="vvsc-note-body">
             <textarea class="vvsc-note-input" placeholder="How can we help you?" rows="3"></textarea>
@@ -707,7 +707,7 @@ body.vvsc-body-locked {
           <span class="vvsc-subtotal-amount">$0.00</span>
         </div>
         <div class="vvsc-shipping-row vvsc-shipping-row--center">
-          <span class="vvsc-shipping-label">${_}</span>
+          <span class="vvsc-shipping-label">${C}</span>
           <span class="vvsc-shipping-amount"></span>
         </div>
         <div class="vvsc-total-row vvsc-hidden">
@@ -718,15 +718,15 @@ body.vvsc-body-locked {
         <a class="vvsc-checkout-btn" href="/checkout">Checkout</a>
         <div class="vvsc-footer-links">
           <a class="vvsc-view-cart" href="/cart">View full cart</a>
-          <span class="vvsc-secure">${g.lock} 100% Secure Payments</span>
+          <span class="vvsc-secure">${f.lock} 100% Secure Payments</span>
         </div>
       </div>
     </div>
   </div>
 `
-  ), C = "vvsc_zip_guess", I = "https://ipwho.is/", j = async (s = 4e3) => {
+  ), S = "vvsc_zip_guess", I = "https://ipwho.is/", j = async (s = 4e3) => {
     try {
-      const n = sessionStorage.getItem(C);
+      const n = sessionStorage.getItem(S);
       if (n) return JSON.parse(n);
     } catch {
     }
@@ -739,22 +739,22 @@ body.vvsc-body-locked {
       if (o !== "US" || !/^\d{5}$/.test(c)) return null;
       const a = { zip: c, countryCode: o };
       try {
-        sessionStorage.setItem(C, JSON.stringify(a));
+        sessionStorage.setItem(S, JSON.stringify(a));
       } catch {
       }
       return a;
     } catch {
-      return m("Vinevida slide cart: IP geolocation unavailable, skipping shipping estimate", "warn"), null;
+      return y("Vinevida slide cart: IP geolocation unavailable, skipping shipping estimate", "warn"), null;
     }
-  }, x = /* @__PURE__ */ new Map(), P = async (s, n = 4e3) => {
+  }, b = /* @__PURE__ */ new Map(), P = async (s, n = 4e3) => {
     var t;
-    if (x.has(s)) return x.get(s) ?? null;
+    if (b.has(s)) return b.get(s) ?? null;
     try {
       const e = new AbortController(), i = setTimeout(() => e.abort(), n), o = await fetch(`https://api.zippopotam.us/us/${s}`, { signal: e.signal });
       if (clearTimeout(i), !o.ok)
-        return x.set(s, null), null;
+        return b.set(s, null), null;
       const c = await o.json(), a = (t = c == null ? void 0 : c.places) == null ? void 0 : t[0], r = a == null ? void 0 : a["place name"], l = a == null ? void 0 : a["state abbreviation"], v = r && l ? { city: r, state: l } : null;
-      return x.set(s, v), v;
+      return b.set(s, v), v;
     } catch {
       return null;
     }
@@ -768,14 +768,14 @@ body.vvsc-body-locked {
       if (clearTimeout(o), !a.ok) return null;
       const r = await a.json(), l = r == null ? void 0 : r.shipping_rates;
       if (!Array.isArray(l) || l.length === 0) return null;
-      const v = l.reduce((p, h) => Number(h.price) < Number(p.price) ? h : p), d = Math.round(Number(v.price) * 100);
-      return Number.isFinite(d) ? { name: String(v.name || ""), priceCents: d } : null;
+      const v = l.filter((h) => Number(h.price) > 0), d = (v.length > 0 ? v : l).reduce((h, x) => Number(x.price) < Number(h.price) ? x : h), g = Math.round(Number(d.price) * 100);
+      return Number.isFinite(g) ? { name: String(d.name || ""), priceCents: g } : null;
     } catch {
       return null;
     }
   };
   L({ name: "Slide-in Cart", dev: "AI" });
-  class A {
+  class N {
     constructor() {
       this.overlay = null, this.cart = null, this.shippingRateCents = null, this.shippingRequestId = 0, this.init();
     }
@@ -783,35 +783,34 @@ body.vvsc-body-locked {
       var t;
       await E("body"), document.head.insertAdjacentHTML("beforeend", `<style class="vvsc-style">${$}</style>`), document.body.insertAdjacentHTML("beforeend", z), this.overlay = document.getElementById("vvsc-slide-cart"), this.bindClose(), this.bindItemActions(), this.bindGlobalTriggers(), this.bindNote(), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count);
       const n = (t = this.overlay) == null ? void 0 : t.querySelector(".vvsc-note-input");
-      n && (n.value = this.cart.note ?? ""), this.applyDiscountCode(), this.renderShippingEstimate(), this.renderUpsell();
+      n && (n.value = this.cart.note ?? ""), this.renderShippingEstimate(), this.renderUpsell();
     }
-    // Only queues FREE_SHIPPING_DISCOUNT_CODE (via Shopify's own /discount/<code>
-    // route — the same mechanism as a merchant's "?discount=" link) once the
-    // cart has actually reached the threshold. Confirmed live at real checkout:
-    // queuing it unconditionally (the previous behavior) made Shopify reject it
-    // for every under-threshold cart with a visible "FREESHIP100 discount code
-    // isn't valid for the items in your cart" banner — confusing for a visitor
-    // who never typed any code. There's no supported way to *un-queue* a code
-    // once applied (it's tied to the cart server-side, not just a cookie we can
-    // clear), so this only ever fires once the cart genuinely qualifies, and a
-    // session flag stops it from re-firing on every subsequent render.
-    async applyDiscountCode() {
-      if (!this.cart || this.cart.total_price < 1e4) return;
-      const n = "vvsc_discount_applied";
-      try {
-        if (sessionStorage.getItem(n) === y) return;
-      } catch {
-      }
-      try {
-        await fetch(`/discount/${y}`);
-      } catch {
-        m(`Vinevida slide cart: failed to queue discount code ${y}`, "warn");
+    // FREE_SHIPPING_DISCOUNT_CODE has a real minimum-spend requirement in
+    // Shopify (confirmed live: typing it in manually at checkout with a smaller
+    // cart gets rejected). Queuing it reactively via /discount/<code> any time
+    // the cart merely *currently* qualifies — the previous approach — turned
+    // out to be unsafe: once queued, Shopify keeps it attached to that cart's
+    // checkout even after the cart later drops back under the threshold and we
+    // "remove" it again. Confirmed live: POST /cart/update.js with
+    // {discount: ""} only edits what cart.js itself reports — a checkout
+    // created afterwards from that same cart still had the code baked in, with
+    // the same confusing "isn't valid for the items in your cart" banner.
+    // There is no supported way to fully un-queue it once that's happened.
+    // So instead of applying it during editing and hoping the cart doesn't
+    // change before checkout, this only ever fires at the one moment that
+    // actually matters — right as the visitor commits to checking out, past
+    // which the cart can't change anymore — using whatever total is final at
+    // that point. (Our own progress bar / "Estimated total" math never
+    // depended on Shopify's own discount_codes state anyway, so nothing about
+    // the cart's own UI needs this applied any earlier.)
+    goToCheckout(n) {
+      if (!(!!this.cart && this.cart.total_price >= 1e4)) {
+        window.location.href = n;
         return;
       }
-      try {
-        sessionStorage.setItem(n, y);
-      } catch {
-      }
+      fetch(`/discount/${k}`).catch(() => y(`Vinevida slide cart: failed to queue discount code ${k}`, "warn")).finally(() => {
+        window.location.href = n;
+      });
     }
     // ─── Cart API ─────────────────────────────────────────────────────────────
     async fetchCart() {
@@ -825,10 +824,10 @@ body.vvsc-body-locked {
       });
       if (!e.ok) {
         const i = await e.json().catch(() => null);
-        m(`Vinevida slide cart: /cart/change.js rejected (${(i == null ? void 0 : i.message) ?? e.status}), reloading cart`, "warn"), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
+        y(`Vinevida slide cart: /cart/change.js rejected (${(i == null ? void 0 : i.message) ?? e.status}), reloading cart`, "warn"), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
         return;
       }
-      this.cart = await e.json(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell(), this.applyDiscountCode();
+      this.cart = await e.json(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
     }
     // Just fires the request — the `fetch` patch installed in bindGlobalTriggers()
     // is what refreshes the panel and opens it once this (like any other
@@ -894,9 +893,9 @@ body.vvsc-body-locked {
         }
     }
     async renderShippingEstimate() {
-      var d, p, h;
-      const n = (d = this.overlay) == null ? void 0 : d.querySelector(".vvsc-shipping-row"), t = (p = this.overlay) == null ? void 0 : p.querySelector(".vvsc-shipping-amount"), e = (h = this.overlay) == null ? void 0 : h.querySelector(".vvsc-shipping-label"), i = ++this.shippingRequestId, o = () => i !== this.shippingRequestId, c = (b) => {
-        o() || (m(`Vinevida slide cart: ${b}, falling back to "Taxes and shipping calculated at checkout"`, "warn"), n == null || n.classList.add("vvsc-shipping-row--center"), e && (e.innerHTML = _), t && (t.textContent = ""), this.shippingRateCents = null, this.renderTotals());
+      var p, d, g;
+      const n = (p = this.overlay) == null ? void 0 : p.querySelector(".vvsc-shipping-row"), t = (d = this.overlay) == null ? void 0 : d.querySelector(".vvsc-shipping-amount"), e = (g = this.overlay) == null ? void 0 : g.querySelector(".vvsc-shipping-label"), i = ++this.shippingRequestId, o = () => i !== this.shippingRequestId, c = (h) => {
+        o() || (y(`Vinevida slide cart: ${h}, falling back to "Taxes and shipping calculated at checkout"`, "warn"), n == null || n.classList.add("vvsc-shipping-row--center"), e && (e.innerHTML = C), t && (t.textContent = ""), this.shippingRateCents = null, this.renderTotals());
       };
       n == null || n.classList.add("vvsc-shipping-row--center"), e && (e.textContent = "Calculating shipping…"), t && (t.textContent = ""), this.shippingRateCents = null, this.renderTotals();
       const a = await j();
@@ -917,31 +916,31 @@ body.vvsc-body-locked {
     // the time this first ran) stayed excluded forever, even after the visitor
     // removed it and it became eligible again.
     async renderUpsell() {
-      var r, l, v, d;
+      var r, l, v, p;
       const n = (r = this.overlay) == null ? void 0 : r.querySelector(".vvsc-upsell-section"), t = (l = this.overlay) == null ? void 0 : l.querySelector(".vvsc-upsell-heading"), e = (v = this.overlay) == null ? void 0 : v.querySelector(".vvsc-upsell-list");
-      if (!n || !e || k.length === 0) return;
+      if (!n || !e || _.length === 0) return;
       const i = new Intl.DateTimeFormat("en-US", { month: "long" }).format(/* @__PURE__ */ new Date());
       t && (t.textContent = `${i}'s Oil of the Month`);
-      const o = ((d = this.cart) == null ? void 0 : d.items.map((p) => p.variant_id)) ?? [], a = (await Promise.all(
-        k.map(async (p) => {
-          var h, b;
+      const o = ((p = this.cart) == null ? void 0 : p.items.map((d) => d.variant_id)) ?? [], a = (await Promise.all(
+        _.map(async (d) => {
+          var g, h;
           try {
-            const S = await fetch(`/products/${p}.js`);
-            if (!S.ok) return null;
-            const w = await S.json(), f = (h = w.variants) == null ? void 0 : h[0];
-            return !f || !f.available || o.includes(f.id) ? null : {
-              handle: p,
-              variantId: f.id,
+            const x = await fetch(`/products/${d}.js`);
+            if (!x.ok) return null;
+            const w = await x.json(), m = (g = w.variants) == null ? void 0 : g[0];
+            return !m || !m.available || o.includes(m.id) ? null : {
+              handle: d,
+              variantId: m.id,
               title: w.title,
-              image: w.featured_image ?? ((b = w.images) == null ? void 0 : b[0]) ?? "",
-              priceCents: f.price,
-              compareAtPriceCents: f.compare_at_price ?? null
+              image: w.featured_image ?? ((h = w.images) == null ? void 0 : h[0]) ?? "",
+              priceCents: m.price,
+              compareAtPriceCents: m.compare_at_price ?? null
             };
           } catch {
             return null;
           }
         })
-      )).filter((p) => p !== null).slice(0, 2);
+      )).filter((d) => d !== null).slice(0, 2);
       if (a.length === 0) {
         e.innerHTML = "", n.classList.add("vvsc-hidden");
         return;
@@ -956,8 +955,8 @@ body.vvsc-body-locked {
         const e = t.target.closest("[data-action]");
         if (!e) return;
         if (e.dataset.action === "add-upsell") {
-          const d = e.dataset.variantId;
-          d && (u("slide_cart_upsell_add", `Upsell add: ${d}`, "click", "Cart Upsell"), this.addToCart({ id: Number(d), quantity: 1 }));
+          const p = e.dataset.variantId;
+          p && (u("slide_cart_upsell_add", `Upsell add: ${p}`, "click", "Cart Upsell"), this.addToCart({ id: Number(p), quantity: 1 }));
           return;
         }
         const i = e.closest("[data-key]");
@@ -996,11 +995,18 @@ body.vvsc-body-locked {
           t.target.closest("a.header__cart-toggle") && (t.preventDefault(), t.stopImmediatePropagation(), this.open());
         },
         !0
+      ), document.addEventListener(
+        "click",
+        (t) => {
+          const e = t.target.closest('a[href^="/checkout"]');
+          e && (t.preventDefault(), t.stopImmediatePropagation(), u("slide_cart_checkout", "Checkout clicked", "click", "Slide Cart"), this.goToCheckout(e.href));
+        },
+        !0
       );
       const n = window.fetch.bind(window);
       window.fetch = async (t, e) => {
         const i = await n(t, e), o = typeof t == "string" ? t : t instanceof Request ? t.url : String(t);
-        return i.ok && /\/cart\/add(\.js)?(\?|$)/.test(o) && (this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.open(), this.renderShippingEstimate(), this.renderUpsell(), this.applyDiscountCode()), i;
+        return i.ok && /\/cart\/add(\.js)?(\?|$)/.test(o) && (this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.open(), this.renderShippingEstimate(), this.renderUpsell()), i;
       };
     }
     // Two site widgets float above everything and end up covering parts of our
@@ -1028,12 +1034,10 @@ body.vvsc-body-locked {
       (n = this.overlay) == null || n.classList.remove("vvsc-is-open"), document.body.classList.remove("vvsc-body-locked"), this.getFloatingWidgets().forEach((t) => t.style.display = "");
     }
     bindClose() {
-      var n, t, e, i, o, c;
-      (t = (n = this.overlay) == null ? void 0 : n.querySelector(".vvsc-close")) == null || t.addEventListener("click", () => this.close()), (i = (e = this.overlay) == null ? void 0 : e.querySelector(".vvsc-backdrop")) == null || i.addEventListener("click", () => this.close()), (c = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-checkout-btn")) == null || c.addEventListener("click", () => {
-        u("slide_cart_checkout", "Checkout clicked", "click", "Slide Cart");
-      });
+      var n, t, e, i;
+      (t = (n = this.overlay) == null ? void 0 : n.querySelector(".vvsc-close")) == null || t.addEventListener("click", () => this.close()), (i = (e = this.overlay) == null ? void 0 : e.querySelector(".vvsc-backdrop")) == null || i.addEventListener("click", () => this.close());
     }
   }
-  new A();
+  new N();
 })();
 //# sourceMappingURL=index.js.map
