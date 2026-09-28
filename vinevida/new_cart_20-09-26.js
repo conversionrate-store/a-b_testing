@@ -534,48 +534,48 @@ body.vvsc-body-locked {
 }
 
 /*# sourceMappingURL=style.css.map */
-`, u = (s, n, e, t = "") => {
+`, u = (s, n, t, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: s,
       event_desc: n,
-      event_type: e,
-      event_loc: t
-    }), m(`Event: ${s} | ${n} | ${e} | ${t}`, "success");
-  }, L = (s) => new Promise((n) => {
-    const e = document.querySelector(s);
-    e && n(e);
-    const t = new MutationObserver(() => {
+      event_type: t,
+      event_loc: e
+    }), m(`Event: ${s} | ${n} | ${t} | ${e}`, "success");
+  }, E = (s) => new Promise((n) => {
+    const t = document.querySelector(s);
+    t && n(t);
+    const e = new MutationObserver(() => {
       const i = document.querySelector(s);
-      i && (n(i), t.disconnect());
+      i && (n(i), e.disconnect());
     });
-    t.observe(document, {
+    e.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), E = ({ name: s, dev: n }) => {
-    const e = s.toLowerCase().replace(/\s/g, "_");
-    u(`${e}_started`, `Experiment ${s} started`, "other", e), console.log(
+  }), L = ({ name: s, dev: n }) => {
+    const t = s.toLowerCase().replace(/\s/g, "_");
+    u(`${t}_started`, `Experiment ${s} started`, "other", t), console.log(
       `%c EXP: ${s} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   }, m = (s, n = "info") => {
-    let e;
+    let t;
     switch (n) {
       case "info":
-        e = "color: #3498db;";
+        t = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        t = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        t = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${s}`, `${e} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${s}`, `${t} font-size: 16px; font-weight: 600`);
   }, y = "FREESHIP100", k = [
     "no-185-fall-is-in-the-air-fragrance-oil",
     "no-185-fall-is-in-the-air-diffuser-fragrance-oil"
@@ -596,10 +596,10 @@ body.vvsc-body-locked {
     <path d="M6 0v12M0 6h12" stroke="black" stroke-width="1.2" stroke-linecap="round"/>
   </svg>`
   }, T = (s) => {
-    const n = `$${(s.line_price / 100).toFixed(2)}`, e = [
+    const n = `$${(s.line_price / 100).toFixed(2)}`, t = [
       s.variant_title && s.variant_title !== "Default Title" ? s.variant_title : "",
       s.product_type
-    ].filter(Boolean).join(" &middot; "), t = s.selling_plan_allocation ? `Delivery every ${s.selling_plan_allocation.selling_plan.name}` : "";
+    ].filter(Boolean).join(" &middot; "), e = s.selling_plan_allocation ? `Delivery every ${s.selling_plan_allocation.selling_plan.name}` : "";
     return (
       /* HTML */
       `
@@ -612,8 +612,8 @@ body.vvsc-body-locked {
           <a href="${s.url}" class="vvsc-item-title" target="_blank" rel="noopener"
             >${s.product_title || s.title}</a
           >
-          ${e ? `<div class="vvsc-item-meta">${e}</div>` : ""}
-          ${t ? `<div class="vvsc-item-subscription">${t}</div>` : ""}
+          ${t ? `<div class="vvsc-item-meta">${t}</div>` : ""}
+          ${e ? `<div class="vvsc-item-subscription">${e}</div>` : ""}
         </div>
         <div class="vvsc-item-bottom">
           <div class="vvsc-qty-stepper">
@@ -633,7 +633,7 @@ body.vvsc-body-locked {
   `
     );
   }, q = (s) => {
-    const n = s.compareAtPriceCents !== null && s.compareAtPriceCents > s.priceCents, e = n ? Math.round((1 - s.priceCents / s.compareAtPriceCents) * 100) : 0;
+    const n = s.compareAtPriceCents !== null && s.compareAtPriceCents > s.priceCents, t = n ? Math.round((1 - s.priceCents / s.compareAtPriceCents) * 100) : 0;
     return (
       /* HTML */
       `
@@ -649,7 +649,7 @@ body.vvsc-body-locked {
           <span class="vvsc-upsell-price">$${(s.priceCents / 100).toFixed(2)}</span>
           ${n ? `<span class="vvsc-upsell-compare">$${(s.compareAtPriceCents / 100).toFixed(2)}</span>` : ""}
         </div>
-        ${n ? `<span class="vvsc-upsell-badge">${e}% off</span>` : ""}
+        ${n ? `<span class="vvsc-upsell-badge">${t}% off</span>` : ""}
       </div>
       <button class="vvsc-upsell-add" data-action="add-upsell" data-variant-id="${s.variantId}">Add</button>
     </div>
@@ -731,9 +731,9 @@ body.vvsc-body-locked {
     } catch {
     }
     try {
-      const n = new AbortController(), e = setTimeout(() => n.abort(), s), t = await fetch(I, { signal: n.signal });
-      if (clearTimeout(e), !t.ok) return null;
-      const i = await t.json();
+      const n = new AbortController(), t = setTimeout(() => n.abort(), s), e = await fetch(I, { signal: n.signal });
+      if (clearTimeout(t), !e.ok) return null;
+      const i = await e.json();
       if (!(i != null && i.success)) return null;
       const o = String(i.country_code || ""), c = String(i.postal || "").trim();
       if (o !== "US" || !/^\d{5}$/.test(c)) return null;
@@ -747,23 +747,23 @@ body.vvsc-body-locked {
       return m("Vinevida slide cart: IP geolocation unavailable, skipping shipping estimate", "warn"), null;
     }
   }, x = /* @__PURE__ */ new Map(), P = async (s, n = 4e3) => {
-    var e;
+    var t;
     if (x.has(s)) return x.get(s) ?? null;
     try {
-      const t = new AbortController(), i = setTimeout(() => t.abort(), n), o = await fetch(`https://api.zippopotam.us/us/${s}`, { signal: t.signal });
+      const e = new AbortController(), i = setTimeout(() => e.abort(), n), o = await fetch(`https://api.zippopotam.us/us/${s}`, { signal: e.signal });
       if (clearTimeout(i), !o.ok)
         return x.set(s, null), null;
-      const c = await o.json(), a = (e = c == null ? void 0 : c.places) == null ? void 0 : e[0], r = a == null ? void 0 : a["place name"], l = a == null ? void 0 : a["state abbreviation"], v = r && l ? { city: r, state: l } : null;
+      const c = await o.json(), a = (t = c == null ? void 0 : c.places) == null ? void 0 : t[0], r = a == null ? void 0 : a["place name"], l = a == null ? void 0 : a["state abbreviation"], v = r && l ? { city: r, state: l } : null;
       return x.set(s, v), v;
     } catch {
       return null;
     }
-  }, A = async (s, n, e, t = 4e3) => {
+  }, H = async (s, n, t, e = 4e3) => {
     try {
-      const i = new AbortController(), o = setTimeout(() => i.abort(), t), c = new URLSearchParams({
+      const i = new AbortController(), o = setTimeout(() => i.abort(), e), c = new URLSearchParams({
         "shipping_address[zip]": s,
         "shipping_address[country]": n,
-        "shipping_address[province]": e
+        "shipping_address[province]": t
       }), a = await fetch(`/cart/shipping_rates.json?${c}`, { signal: i.signal });
       if (clearTimeout(o), !a.ok) return null;
       const r = await a.json(), l = r == null ? void 0 : r.shipping_rates;
@@ -774,24 +774,29 @@ body.vvsc-body-locked {
       return null;
     }
   };
-  E({ name: "Slide-in Cart", dev: "AI" });
-  class H {
+  L({ name: "Slide-in Cart", dev: "AI" });
+  class A {
     constructor() {
       this.overlay = null, this.cart = null, this.shippingRateCents = null, this.shippingRequestId = 0, this.init();
     }
     async init() {
-      var e;
-      await L("body"), document.head.insertAdjacentHTML("beforeend", `<style class="vvsc-style">${$}</style>`), document.body.insertAdjacentHTML("beforeend", z), this.overlay = document.getElementById("vvsc-slide-cart"), this.bindClose(), this.bindItemActions(), this.bindGlobalTriggers(), this.bindNote(), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count);
-      const n = (e = this.overlay) == null ? void 0 : e.querySelector(".vvsc-note-input");
+      var t;
+      await E("body"), document.head.insertAdjacentHTML("beforeend", `<style class="vvsc-style">${$}</style>`), document.body.insertAdjacentHTML("beforeend", z), this.overlay = document.getElementById("vvsc-slide-cart"), this.bindClose(), this.bindItemActions(), this.bindGlobalTriggers(), this.bindNote(), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count);
+      const n = (t = this.overlay) == null ? void 0 : t.querySelector(".vvsc-note-input");
       n && (n.value = this.cart.note ?? ""), this.applyDiscountCode(), this.renderShippingEstimate(), this.renderUpsell();
     }
-    // Every visitor who gets this script (i.e. is bucketed into the experiment)
-    // has FREE_SHIPPING_DISCOUNT_CODE queued onto their session via Shopify's
-    // own /discount/<code> route — the same mechanism as a merchant's "?discount="
-    // link, confirmed live: it sets a discount_code cookie and shows up in
-    // cart.js's discount_codes, then applies for real at checkout once the cart
-    // qualifies. Sticks a session flag so we don't hit it on every page load.
+    // Only queues FREE_SHIPPING_DISCOUNT_CODE (via Shopify's own /discount/<code>
+    // route — the same mechanism as a merchant's "?discount=" link) once the
+    // cart has actually reached the threshold. Confirmed live at real checkout:
+    // queuing it unconditionally (the previous behavior) made Shopify reject it
+    // for every under-threshold cart with a visible "FREESHIP100 discount code
+    // isn't valid for the items in your cart" banner — confusing for a visitor
+    // who never typed any code. There's no supported way to *un-queue* a code
+    // once applied (it's tied to the cart server-side, not just a cookie we can
+    // clear), so this only ever fires once the cart genuinely qualifies, and a
+    // session flag stops it from re-firing on every subsequent render.
     async applyDiscountCode() {
+      if (!this.cart || this.cart.total_price < 1e4) return;
       const n = "vvsc_discount_applied";
       try {
         if (sessionStorage.getItem(n) === y) return;
@@ -812,18 +817,18 @@ body.vvsc-body-locked {
     async fetchCart() {
       return (await fetch("/cart.js")).json();
     }
-    async updateCart(n, e) {
-      const t = await fetch("/cart/change.js", {
+    async updateCart(n, t) {
+      const e = await fetch("/cart/change.js", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: n, quantity: e })
+        body: JSON.stringify({ id: n, quantity: t })
       });
-      if (!t.ok) {
-        const i = await t.json().catch(() => null);
-        m(`Vinevida slide cart: /cart/change.js rejected (${(i == null ? void 0 : i.message) ?? t.status}), reloading cart`, "warn"), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
+      if (!e.ok) {
+        const i = await e.json().catch(() => null);
+        m(`Vinevida slide cart: /cart/change.js rejected (${(i == null ? void 0 : i.message) ?? e.status}), reloading cart`, "warn"), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
         return;
       }
-      this.cart = await t.json(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
+      this.cart = await e.json(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell(), this.applyDiscountCode();
     }
     // Just fires the request — the `fetch` patch installed in bindGlobalTriggers()
     // is what refreshes the panel and opens it once this (like any other
@@ -840,16 +845,16 @@ body.vvsc-body-locked {
     // what makes the note actually reach the order at checkout, not just sit in
     // our own textarea.
     async updateNote(n) {
-      const e = await fetch("/cart/update.js", {
+      const t = await fetch("/cart/update.js", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ note: n })
       });
-      e.ok && (this.cart = await e.json());
+      t.ok && (this.cart = await t.json());
     }
     updateBadge(n) {
-      document.querySelectorAll(".header__cart-count-alt").forEach((e) => {
-        e.textContent = String(n);
+      document.querySelectorAll(".header__cart-count-alt").forEach((t) => {
+        t.textContent = String(n);
       });
     }
     // ─── Rendering ────────────────────────────────────────────────────────────
@@ -860,49 +865,49 @@ body.vvsc-body-locked {
       (i = this.overlay) == null || i.querySelectorAll(".vvsc-item-count, .vvsc-subtotal-count").forEach((a) => {
         a.textContent = n;
       });
-      const e = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-subtotal-amount");
-      e && (e.textContent = `$${(this.cart.total_price / 100).toFixed(2)}`);
-      const t = (c = this.overlay) == null ? void 0 : c.querySelector(".vvsc-items-wrapper");
-      t && (t.innerHTML = this.cart.items.map((a) => T(a)).join("")), this.renderProgressBar(this.cart.total_price), this.renderTotals();
+      const t = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-subtotal-amount");
+      t && (t.textContent = `$${(this.cart.total_price / 100).toFixed(2)}`);
+      const e = (c = this.overlay) == null ? void 0 : c.querySelector(".vvsc-items-wrapper");
+      e && (e.innerHTML = this.cart.items.map((a) => T(a)).join("")), this.renderProgressBar(this.cart.total_price), this.renderTotals();
     }
     // "Estimated total" + tax note (Figma node 184:180/174:172) only appear once
     // a real US shipping rate is known — otherwise the footer just shows the
     // "calculated at checkout" fallback already handled by renderShippingEstimate.
     renderTotals() {
       var o, c, a, r;
-      const n = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-total-row"), e = (c = this.overlay) == null ? void 0 : c.querySelector(".vvsc-total-amount"), t = (a = this.overlay) == null ? void 0 : a.querySelector(".vvsc-tax-note"), i = (r = this.overlay) == null ? void 0 : r.querySelector(".vvsc-subtotal-row");
+      const n = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-total-row"), t = (c = this.overlay) == null ? void 0 : c.querySelector(".vvsc-total-amount"), e = (a = this.overlay) == null ? void 0 : a.querySelector(".vvsc-tax-note"), i = (r = this.overlay) == null ? void 0 : r.querySelector(".vvsc-subtotal-row");
       if (this.shippingRateCents === null || !this.cart) {
-        n == null || n.classList.add("vvsc-hidden"), t == null || t.classList.add("vvsc-hidden"), i == null || i.classList.remove("vvsc-subtotal-row--compact");
+        n == null || n.classList.add("vvsc-hidden"), e == null || e.classList.add("vvsc-hidden"), i == null || i.classList.remove("vvsc-subtotal-row--compact");
         return;
       }
-      e && (e.textContent = `$${((this.cart.total_price + this.shippingRateCents) / 100).toFixed(2)}`), n == null || n.classList.remove("vvsc-hidden"), t == null || t.classList.remove("vvsc-hidden"), i == null || i.classList.add("vvsc-subtotal-row--compact");
+      t && (t.textContent = `$${((this.cart.total_price + this.shippingRateCents) / 100).toFixed(2)}`), n == null || n.classList.remove("vvsc-hidden"), e == null || e.classList.remove("vvsc-hidden"), i == null || i.classList.add("vvsc-subtotal-row--compact");
     }
     renderProgressBar(n) {
       var i, o;
-      const e = (i = this.overlay) == null ? void 0 : i.querySelector(".vvsc-progress-text"), t = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-progress-fill");
-      if (!(!e || !t))
+      const t = (i = this.overlay) == null ? void 0 : i.querySelector(".vvsc-progress-text"), e = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-progress-fill");
+      if (!(!t || !e))
         if (n >= 1e4)
-          t.style.width = "100%", e.innerHTML = 'Great! You&rsquo;ve unlocked <span class="vvsc-unlocked">free shipping</span>';
+          e.style.width = "100%", t.innerHTML = 'Great! You&rsquo;ve unlocked <span class="vvsc-unlocked">free shipping</span>';
         else {
           const c = 1e4 - n, a = Math.min(100, Math.round(n / 1e4 * 100));
-          t.style.width = `${a}%`, e.innerHTML = `<strong>$${(c / 100).toFixed(2)}</strong> away from free shipping`;
+          e.style.width = `${a}%`, t.innerHTML = `<strong>$${(c / 100).toFixed(2)}</strong> away from free shipping`;
         }
     }
     async renderShippingEstimate() {
       var d, p, h;
-      const n = (d = this.overlay) == null ? void 0 : d.querySelector(".vvsc-shipping-row"), e = (p = this.overlay) == null ? void 0 : p.querySelector(".vvsc-shipping-amount"), t = (h = this.overlay) == null ? void 0 : h.querySelector(".vvsc-shipping-label"), i = ++this.shippingRequestId, o = () => i !== this.shippingRequestId, c = (b) => {
-        o() || (m(`Vinevida slide cart: ${b}, falling back to "Taxes and shipping calculated at checkout"`, "warn"), n == null || n.classList.add("vvsc-shipping-row--center"), t && (t.innerHTML = _), e && (e.textContent = ""), this.shippingRateCents = null, this.renderTotals());
+      const n = (d = this.overlay) == null ? void 0 : d.querySelector(".vvsc-shipping-row"), t = (p = this.overlay) == null ? void 0 : p.querySelector(".vvsc-shipping-amount"), e = (h = this.overlay) == null ? void 0 : h.querySelector(".vvsc-shipping-label"), i = ++this.shippingRequestId, o = () => i !== this.shippingRequestId, c = (b) => {
+        o() || (m(`Vinevida slide cart: ${b}, falling back to "Taxes and shipping calculated at checkout"`, "warn"), n == null || n.classList.add("vvsc-shipping-row--center"), e && (e.innerHTML = _), t && (t.textContent = ""), this.shippingRateCents = null, this.renderTotals());
       };
-      n == null || n.classList.add("vvsc-shipping-row--center"), t && (t.textContent = "Calculating shipping…"), e && (e.textContent = ""), this.shippingRateCents = null, this.renderTotals();
+      n == null || n.classList.add("vvsc-shipping-row--center"), e && (e.textContent = "Calculating shipping…"), t && (t.textContent = ""), this.shippingRateCents = null, this.renderTotals();
       const a = await j();
       if (!a) return c("no US zip guess");
       const r = await P(a.zip);
       if (!r) return c(`could not resolve city/state for zip ${a.zip}`);
-      const l = await A(a.zip, a.countryCode, r.state);
+      const l = await H(a.zip, a.countryCode, r.state);
       if (!l) return c(`no shipping rate for ${r.city}, ${r.state} ${a.zip}`);
       if (o()) return;
       const v = `${r.city}, <strong>${r.state} ${a.zip}</strong>`;
-      n == null || n.classList.remove("vvsc-shipping-row--center"), t && (t.innerHTML = `Shipping to ${v}`), e && (e.textContent = `$${(l.priceCents / 100).toFixed(2)}`), this.shippingRateCents = l.priceCents, this.renderTotals();
+      n == null || n.classList.remove("vvsc-shipping-row--center"), e && (e.innerHTML = `Shipping to ${v}`), t && (t.textContent = `$${(l.priceCents / 100).toFixed(2)}`), this.shippingRateCents = l.priceCents, this.renderTotals();
     }
     // Re-run on every cart mutation (see updateCart and the /cart/add fetch
     // patch) — not just once on load. Needed for two reasons: a variant can be
@@ -913,10 +918,10 @@ body.vvsc-body-locked {
     // removed it and it became eligible again.
     async renderUpsell() {
       var r, l, v, d;
-      const n = (r = this.overlay) == null ? void 0 : r.querySelector(".vvsc-upsell-section"), e = (l = this.overlay) == null ? void 0 : l.querySelector(".vvsc-upsell-heading"), t = (v = this.overlay) == null ? void 0 : v.querySelector(".vvsc-upsell-list");
-      if (!n || !t || k.length === 0) return;
+      const n = (r = this.overlay) == null ? void 0 : r.querySelector(".vvsc-upsell-section"), t = (l = this.overlay) == null ? void 0 : l.querySelector(".vvsc-upsell-heading"), e = (v = this.overlay) == null ? void 0 : v.querySelector(".vvsc-upsell-list");
+      if (!n || !e || k.length === 0) return;
       const i = new Intl.DateTimeFormat("en-US", { month: "long" }).format(/* @__PURE__ */ new Date());
-      e && (e.textContent = `${i}'s Oil of the Month`);
+      t && (t.textContent = `${i}'s Oil of the Month`);
       const o = ((d = this.cart) == null ? void 0 : d.items.map((p) => p.variant_id)) ?? [], a = (await Promise.all(
         k.map(async (p) => {
           var h, b;
@@ -938,40 +943,40 @@ body.vvsc-body-locked {
         })
       )).filter((p) => p !== null).slice(0, 2);
       if (a.length === 0) {
-        t.innerHTML = "", n.classList.add("vvsc-hidden");
+        e.innerHTML = "", n.classList.add("vvsc-hidden");
         return;
       }
-      t.innerHTML = a.map(q).join(""), n.classList.remove("vvsc-hidden");
+      e.innerHTML = a.map(q).join(""), n.classList.remove("vvsc-hidden");
     }
     // ─── Interactions ─────────────────────────────────────────────────────────
     bindItemActions() {
       var n;
-      (n = this.overlay) == null || n.addEventListener("click", (e) => {
+      (n = this.overlay) == null || n.addEventListener("click", (t) => {
         var l, v;
-        const t = e.target.closest("[data-action]");
-        if (!t) return;
-        if (t.dataset.action === "add-upsell") {
-          const d = t.dataset.variantId;
+        const e = t.target.closest("[data-action]");
+        if (!e) return;
+        if (e.dataset.action === "add-upsell") {
+          const d = e.dataset.variantId;
           d && (u("slide_cart_upsell_add", `Upsell add: ${d}`, "click", "Cart Upsell"), this.addToCart({ id: Number(d), quantity: 1 }));
           return;
         }
-        const i = t.closest("[data-key]");
+        const i = e.closest("[data-key]");
         if (!i) return;
         const o = i.dataset.key, c = i.querySelector(".vvsc-qty-value"), a = parseInt((c == null ? void 0 : c.textContent) || "1", 10), r = ((v = (l = i.querySelector(".vvsc-item-title")) == null ? void 0 : l.textContent) == null ? void 0 : v.trim()) || o;
-        t.dataset.action === "remove" ? (u("slide_cart_item_remove", `Remove: ${r}`, "click", "Cart"), this.updateCart(o, 0)) : t.dataset.action === "decrease" ? (u("slide_cart_item_decrease", `Qty decrease: ${r}`, "click", "Cart"), this.updateCart(o, Math.max(0, a - 1))) : t.dataset.action === "increase" && (u("slide_cart_item_increase", `Qty increase: ${r}`, "click", "Cart"), this.updateCart(o, a + 1));
+        e.dataset.action === "remove" ? (u("slide_cart_item_remove", `Remove: ${r}`, "click", "Cart"), this.updateCart(o, 0)) : e.dataset.action === "decrease" ? (u("slide_cart_item_decrease", `Qty decrease: ${r}`, "click", "Cart"), this.updateCart(o, Math.max(0, a - 1))) : e.dataset.action === "increase" && (u("slide_cart_item_increase", `Qty increase: ${r}`, "click", "Cart"), this.updateCart(o, a + 1));
       });
     }
     bindNote() {
       var o, c, a;
-      const n = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-note-toggle"), e = (c = this.overlay) == null ? void 0 : c.querySelector(".vvsc-note-body"), t = (a = this.overlay) == null ? void 0 : a.querySelector(".vvsc-note-input");
-      if (!n || !e || !t) return;
+      const n = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-note-toggle"), t = (c = this.overlay) == null ? void 0 : c.querySelector(".vvsc-note-body"), e = (a = this.overlay) == null ? void 0 : a.querySelector(".vvsc-note-input");
+      if (!n || !t || !e) return;
       n.addEventListener("click", () => {
-        const r = e.classList.toggle("vvsc-is-open");
-        n.setAttribute("aria-expanded", String(r)), r && (u("slide_cart_note_open", "Note field opened", "click", "Cart"), t.focus());
+        const r = t.classList.toggle("vvsc-is-open");
+        n.setAttribute("aria-expanded", String(r)), r && (u("slide_cart_note_open", "Note field opened", "click", "Cart"), e.focus());
       });
       let i = "";
-      t.addEventListener("blur", () => {
-        const r = t.value.trim();
+      e.addEventListener("blur", () => {
+        const r = e.value.trim();
         r !== i && (i = r, u("slide_cart_note_add", "Order note updated", "input", "Cart"), this.updateNote(r));
       });
     }
@@ -987,15 +992,15 @@ body.vvsc-body-locked {
     bindGlobalTriggers() {
       document.addEventListener(
         "click",
-        (e) => {
-          e.target.closest("a.header__cart-toggle") && (e.preventDefault(), e.stopImmediatePropagation(), this.open());
+        (t) => {
+          t.target.closest("a.header__cart-toggle") && (t.preventDefault(), t.stopImmediatePropagation(), this.open());
         },
         !0
       );
       const n = window.fetch.bind(window);
-      window.fetch = async (e, t) => {
-        const i = await n(e, t), o = typeof e == "string" ? e : e instanceof Request ? e.url : String(e);
-        return i.ok && /\/cart\/add(\.js)?(\?|$)/.test(o) && (this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.open(), this.renderShippingEstimate(), this.renderUpsell()), i;
+      window.fetch = async (t, e) => {
+        const i = await n(t, e), o = typeof t == "string" ? t : t instanceof Request ? t.url : String(t);
+        return i.ok && /\/cart\/add(\.js)?(\?|$)/.test(o) && (this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.open(), this.renderShippingEstimate(), this.renderUpsell(), this.applyDiscountCode()), i;
       };
     }
     // Two site widgets float above everything and end up covering parts of our
@@ -1010,25 +1015,25 @@ body.vvsc-body-locked {
     // stable target for the cookie widget — it holds whatever the widget is
     // currently showing (icon or full banner).
     getFloatingWidgets() {
-      var t, i, o, c;
-      const n = (i = (t = document.querySelector("csm-web-accessibility")) == null ? void 0 : t.shadowRoot) == null ? void 0 : i.getElementById("csm-ada-compliance-wrapper"), e = (c = (o = document.querySelector("csm-cookie-consent")) == null ? void 0 : o.shadowRoot) == null ? void 0 : c.getElementById("csm-wrapper");
-      return [n, e].filter((a) => !!a);
+      var e, i, o, c;
+      const n = (i = (e = document.querySelector("csm-web-accessibility")) == null ? void 0 : e.shadowRoot) == null ? void 0 : i.getElementById("csm-ada-compliance-wrapper"), t = (c = (o = document.querySelector("csm-cookie-consent")) == null ? void 0 : o.shadowRoot) == null ? void 0 : c.getElementById("csm-wrapper");
+      return [n, t].filter((a) => !!a);
     }
     open() {
       var n;
-      u("slide_cart_open", "Cart opened", "view", "Slide Cart"), this.renderCart(), this.getFloatingWidgets().forEach((e) => e.style.display = "none"), (n = this.overlay) == null || n.classList.add("vvsc-is-open"), document.body.classList.add("vvsc-body-locked");
+      u("slide_cart_open", "Cart opened", "view", "Slide Cart"), this.renderCart(), this.getFloatingWidgets().forEach((t) => t.style.display = "none"), (n = this.overlay) == null || n.classList.add("vvsc-is-open"), document.body.classList.add("vvsc-body-locked");
     }
     close() {
       var n;
-      (n = this.overlay) == null || n.classList.remove("vvsc-is-open"), document.body.classList.remove("vvsc-body-locked"), this.getFloatingWidgets().forEach((e) => e.style.display = "");
+      (n = this.overlay) == null || n.classList.remove("vvsc-is-open"), document.body.classList.remove("vvsc-body-locked"), this.getFloatingWidgets().forEach((t) => t.style.display = "");
     }
     bindClose() {
-      var n, e, t, i, o, c;
-      (e = (n = this.overlay) == null ? void 0 : n.querySelector(".vvsc-close")) == null || e.addEventListener("click", () => this.close()), (i = (t = this.overlay) == null ? void 0 : t.querySelector(".vvsc-backdrop")) == null || i.addEventListener("click", () => this.close()), (c = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-checkout-btn")) == null || c.addEventListener("click", () => {
+      var n, t, e, i, o, c;
+      (t = (n = this.overlay) == null ? void 0 : n.querySelector(".vvsc-close")) == null || t.addEventListener("click", () => this.close()), (i = (e = this.overlay) == null ? void 0 : e.querySelector(".vvsc-backdrop")) == null || i.addEventListener("click", () => this.close()), (c = (o = this.overlay) == null ? void 0 : o.querySelector(".vvsc-checkout-btn")) == null || c.addEventListener("click", () => {
         u("slide_cart_checkout", "Checkout clicked", "click", "Slide Cart");
       });
     }
   }
-  new H();
+  new A();
 })();
 //# sourceMappingURL=index.js.map
