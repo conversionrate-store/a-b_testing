@@ -189,6 +189,12 @@
   font-weight: 700;
 }
 
+.vvsc-item-subscription {
+  font-size: 12px;
+  color: #5f6368;
+  margin-top: 2px;
+}
+
 .vvsc-item-bottom {
   display: flex;
   align-items: center;
@@ -573,7 +579,7 @@ body.vvsc-body-locked {
   }, y = "FREESHIP100", k = [
     "no-185-fall-is-in-the-air-fragrance-oil",
     "no-185-fall-is-in-the-air-diffuser-fragrance-oil"
-  ], S = 'Taxes and <a href="https://www.vinevida.com/policies/shipping-policy" target="_blank" rel="noopener">shipping</a> calculated at checkout', g = {
+  ], _ = 'Taxes and <a href="https://www.vinevida.com/policies/shipping-policy" target="_blank" rel="noopener">shipping</a> calculated at checkout', g = {
     close: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
     <path d="M15 5L5 15M5 5l10 10" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
   </svg>`,
@@ -593,7 +599,7 @@ body.vvsc-body-locked {
     const n = `$${(s.line_price / 100).toFixed(2)}`, e = [
       s.variant_title && s.variant_title !== "Default Title" ? s.variant_title : "",
       s.product_type
-    ].filter(Boolean).join(" &middot; ");
+    ].filter(Boolean).join(" &middot; "), t = s.selling_plan_allocation ? `Delivery every ${s.selling_plan_allocation.selling_plan.name}` : "";
     return (
       /* HTML */
       `
@@ -607,6 +613,7 @@ body.vvsc-body-locked {
             >${s.product_title || s.title}</a
           >
           ${e ? `<div class="vvsc-item-meta">${e}</div>` : ""}
+          ${t ? `<div class="vvsc-item-subscription">${t}</div>` : ""}
         </div>
         <div class="vvsc-item-bottom">
           <div class="vvsc-qty-stepper">
@@ -700,7 +707,7 @@ body.vvsc-body-locked {
           <span class="vvsc-subtotal-amount">$0.00</span>
         </div>
         <div class="vvsc-shipping-row vvsc-shipping-row--center">
-          <span class="vvsc-shipping-label">${S}</span>
+          <span class="vvsc-shipping-label">${_}</span>
           <span class="vvsc-shipping-amount"></span>
         </div>
         <div class="vvsc-total-row vvsc-hidden">
@@ -717,9 +724,9 @@ body.vvsc-body-locked {
     </div>
   </div>
 `
-  ), _ = "vvsc_zip_guess", I = "https://ipwho.is/", j = async (s = 4e3) => {
+  ), C = "vvsc_zip_guess", I = "https://ipwho.is/", j = async (s = 4e3) => {
     try {
-      const n = sessionStorage.getItem(_);
+      const n = sessionStorage.getItem(C);
       if (n) return JSON.parse(n);
     } catch {
     }
@@ -732,7 +739,7 @@ body.vvsc-body-locked {
       if (o !== "US" || !/^\d{5}$/.test(c)) return null;
       const a = { zip: c, countryCode: o };
       try {
-        sessionStorage.setItem(_, JSON.stringify(a));
+        sessionStorage.setItem(C, JSON.stringify(a));
       } catch {
       }
       return a;
@@ -811,7 +818,12 @@ body.vvsc-body-locked {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: n, quantity: e })
       });
-      this.cart = await t.json(), this.updateBadge(this.cart.item_count), this.renderCart(), this.renderShippingEstimate();
+      if (!t.ok) {
+        const i = await t.json().catch(() => null);
+        m(`Vinevida slide cart: /cart/change.js rejected (${(i == null ? void 0 : i.message) ?? t.status}), reloading cart`, "warn"), this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
+        return;
+      }
+      this.cart = await t.json(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.renderShippingEstimate(), this.renderUpsell();
     }
     // Just fires the request — the `fetch` patch installed in bindGlobalTriggers()
     // is what refreshes the panel and opens it once this (like any other
@@ -879,7 +891,7 @@ body.vvsc-body-locked {
     async renderShippingEstimate() {
       var d, p, h;
       const n = (d = this.overlay) == null ? void 0 : d.querySelector(".vvsc-shipping-row"), e = (p = this.overlay) == null ? void 0 : p.querySelector(".vvsc-shipping-amount"), t = (h = this.overlay) == null ? void 0 : h.querySelector(".vvsc-shipping-label"), i = ++this.shippingRequestId, o = () => i !== this.shippingRequestId, c = (b) => {
-        o() || (m(`Vinevida slide cart: ${b}, falling back to "Taxes and shipping calculated at checkout"`, "warn"), n == null || n.classList.add("vvsc-shipping-row--center"), t && (t.innerHTML = S), e && (e.textContent = ""), this.shippingRateCents = null, this.renderTotals());
+        o() || (m(`Vinevida slide cart: ${b}, falling back to "Taxes and shipping calculated at checkout"`, "warn"), n == null || n.classList.add("vvsc-shipping-row--center"), t && (t.innerHTML = _), e && (e.textContent = ""), this.shippingRateCents = null, this.renderTotals());
       };
       n == null || n.classList.add("vvsc-shipping-row--center"), t && (t.textContent = "Calculating shipping…"), e && (e.textContent = ""), this.shippingRateCents = null, this.renderTotals();
       const a = await j();
@@ -892,6 +904,13 @@ body.vvsc-body-locked {
       const v = `${r.city}, <strong>${r.state} ${a.zip}</strong>`;
       n == null || n.classList.remove("vvsc-shipping-row--center"), t && (t.innerHTML = `Shipping to ${v}`), e && (e.textContent = `$${(l.priceCents / 100).toFixed(2)}`), this.shippingRateCents = l.priceCents, this.renderTotals();
     }
+    // Re-run on every cart mutation (see updateCart and the /cart/add fetch
+    // patch) — not just once on load. Needed for two reasons: a variant can be
+    // sold out (must never offer something that would just 422 on "Add", like
+    // the qty stepper used to), and the "already in cart" filter below has to
+    // stay in sync — otherwise a handle excluded once (already in the cart at
+    // the time this first ran) stayed excluded forever, even after the visitor
+    // removed it and it became eligible again.
     async renderUpsell() {
       var r, l, v, d;
       const n = (r = this.overlay) == null ? void 0 : r.querySelector(".vvsc-upsell-section"), e = (l = this.overlay) == null ? void 0 : l.querySelector(".vvsc-upsell-heading"), t = (v = this.overlay) == null ? void 0 : v.querySelector(".vvsc-upsell-list");
@@ -902,10 +921,10 @@ body.vvsc-body-locked {
         k.map(async (p) => {
           var h, b;
           try {
-            const C = await fetch(`/products/${p}.js`);
-            if (!C.ok) return null;
-            const w = await C.json(), f = (h = w.variants) == null ? void 0 : h[0];
-            return !f || o.includes(f.id) ? null : {
+            const S = await fetch(`/products/${p}.js`);
+            if (!S.ok) return null;
+            const w = await S.json(), f = (h = w.variants) == null ? void 0 : h[0];
+            return !f || !f.available || o.includes(f.id) ? null : {
               handle: p,
               variantId: f.id,
               title: w.title,
@@ -918,7 +937,11 @@ body.vvsc-body-locked {
           }
         })
       )).filter((p) => p !== null).slice(0, 2);
-      a.length !== 0 && (t.innerHTML = a.map(q).join(""), n.classList.remove("vvsc-hidden"));
+      if (a.length === 0) {
+        t.innerHTML = "", n.classList.add("vvsc-hidden");
+        return;
+      }
+      t.innerHTML = a.map(q).join(""), n.classList.remove("vvsc-hidden");
     }
     // ─── Interactions ─────────────────────────────────────────────────────────
     bindItemActions() {
@@ -972,7 +995,7 @@ body.vvsc-body-locked {
       const n = window.fetch.bind(window);
       window.fetch = async (e, t) => {
         const i = await n(e, t), o = typeof e == "string" ? e : e instanceof Request ? e.url : String(e);
-        return i.ok && /\/cart\/add(\.js)?(\?|$)/.test(o) && (this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.renderCart(), this.open(), this.renderShippingEstimate()), i;
+        return i.ok && /\/cart\/add(\.js)?(\?|$)/.test(o) && (this.cart = await this.fetchCart(), this.updateBadge(this.cart.item_count), this.shippingRateCents = null, this.renderCart(), this.open(), this.renderShippingEstimate(), this.renderUpsell()), i;
       };
     }
     // Two site widgets float above everything and end up covering parts of our
