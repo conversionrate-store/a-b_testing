@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const v = `.crs3-how-works,
+  const y = `.crs3-how-works,
 .crs3-reviews {
   font-family: "Inter", sans-serif;
   color: #09233e;
@@ -682,17 +682,28 @@
   align-items: center;
   justify-content: center;
   height: 220px;
-  background: #425b76 center/cover no-repeat;
+  overflow: hidden;
+  background: #425b76;
 }
-.crs3-people__media--playing {
-  display: block;
-  background: #000;
+.crs3-people__thumb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 133.4% !important;
+  transform: translateY(-50%);
+  max-width: none !important;
+  object-fit: cover;
 }
-.crs3-people__media wistia-player {
+.crs3-people__frame {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  border: none;
 }
 .crs3-people__play {
+  position: relative;
   padding: 0;
   border: none;
   background: none;
@@ -705,8 +716,15 @@
 .crs3-people__body {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
   gap: 16px;
   padding: 0 24px;
+}
+.crs3-people__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 .crs3-people__name {
   display: block;
@@ -718,33 +736,30 @@
 .crs3-people__role {
   font-size: 14px;
   line-height: 24px;
-  font-style: italic;
+  font-weight: 600;
   letter-spacing: -0.21px;
-  color: #3d85c6;
+  color: #54bbff;
 }
-@media (min-width: 769px) {
-  .crs3-people__role {
-    min-height: 48px;
-  }
-}
-.crs3-people__stats {
-  display: flex;
-  gap: 16px;
-}
-.crs3-people__stats span {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: rgba(207, 226, 243, 0.2);
-  font-family: Tahoma, "Inter", sans-serif;
+.crs3-people__desc {
   font-size: 14px;
   line-height: 24px;
+  letter-spacing: -0.21px;
 }
-.crs3-people__stats b {
-  font-size: 16px;
-  color: #ff9902;
+.crs3-people__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.crs3-people__loc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.21px;
+}
+.crs3-people__loc svg {
+  flex-shrink: 0;
 }
 .crs3-people__result {
   display: flex;
@@ -764,12 +779,6 @@
   font-size: 18px;
   line-height: 24px;
   color: #ff9902;
-}
-.crs3-people__note {
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.21px;
-  color: #808080;
 }
 .crs3-people__cta-wrap {
   display: flex;
@@ -820,93 +829,72 @@
 .crs3-people__microcopy svg {
   flex-shrink: 0;
 }
-`, d = (t, n, e, a = "") => {
+`, r = (e, n, t, a = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: t,
+      event_name: e,
       event_desc: n,
-      event_type: e,
+      event_type: t,
       event_loc: a
-    }), l(`Event: ${t} | ${n} | ${e} | ${a}`, "success");
-  }, _ = (t) => new Promise((n) => {
-    const e = document.querySelector(t);
-    e && n(e);
+    }), w(`Event: ${e} | ${n} | ${t} | ${a}`, "success");
+  }, v = (e) => new Promise((n) => {
+    const t = document.querySelector(e);
+    t && n(t);
     const a = new MutationObserver(() => {
-      const o = document.querySelector(t);
+      const o = document.querySelector(e);
       o && (n(o), a.disconnect());
     });
     a.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), b = ({ name: t, dev: n }) => {
-    const e = t.toLowerCase().replace(/\s/g, "_");
-    d(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
-      `%c EXP: ${t} (DEV: ${n})`,
+  }), _ = ({ name: e, dev: n }) => {
+    const t = e.toLowerCase().replace(/\s/g, "_");
+    r(`${t}_started`, `Experiment ${e} started`, "other", t), console.log(
+      `%c EXP: ${e} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, k = async (t) => {
-    const n = (e) => new Promise((a, o) => {
-      const r = e.split(".").pop();
-      if (r === "js") {
-        if (Array.from(document.scripts).map((i) => i.src.toLowerCase()).includes(e.toLowerCase()))
-          return l(`Script ${e} allready downloaded!`, "success"), a("");
-        const s = document.createElement("script");
-        s.src = e, s.onload = a, s.onerror = o, document.head.appendChild(s);
-      } else if (r === "css") {
-        if (Array.from(document.styleSheets).map((i) => {
-          var y;
-          return (y = i.href) == null ? void 0 : y.toLowerCase();
-        }).includes(e.toLowerCase()))
-          return l(`Style ${e} allready downloaded!`, "success"), a("");
-        const s = document.createElement("link");
-        s.rel = "stylesheet", s.href = e, s.onload = a, s.onerror = o, document.head.appendChild(s);
-      }
-    });
-    for (const e of t)
-      l(e), await n(e), l(`Loaded librari ${e}`);
-    l("All libraries loaded!", "success");
-  }, I = (t) => {
+  }, b = (e) => {
     let n = setInterval(function() {
-      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", t, "variant_1"));
+      typeof window.clarity == "function" && (clearInterval(n), window.clarity("set", e, "variant_1"));
     }, 1e3);
-  }, C = (t, n, e, a, o = 1e3, r = 0.5) => {
-    let c, s;
+  }, k = (e, n, t, a, o = 1e3, s = 0.5) => {
+    let c, x;
     if (c = new IntersectionObserver(
-      function(i) {
-        i[0].isIntersecting === !0 ? s = setTimeout(() => {
-          d(
+      function(d) {
+        d[0].isIntersecting === !0 ? x = setTimeout(() => {
+          r(
             n,
-            i[0].target.dataset.visible || a || "",
+            d[0].target.dataset.visible || a || "",
             "view",
-            e
+            t
           ), c.disconnect();
-        }, o) : (l("Element is not fully visible", "warn"), clearTimeout(s));
+        }, o) : (w("Element is not fully visible", "warn"), clearTimeout(x));
       },
-      { threshold: [r] }
-    ), typeof t == "string") {
-      const i = document.querySelector(t);
-      i && c.observe(i);
+      { threshold: [s] }
+    ), typeof e == "string") {
+      const d = document.querySelector(e);
+      d && c.observe(d);
     } else
-      c.observe(t);
-  }, l = (t, n = "info") => {
-    let e;
+      c.observe(e);
+  }, w = (e, n = "info") => {
+    let t;
     switch (n) {
       case "info":
-        e = "color: #3498db;";
+        t = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        t = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        t = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${t}`, `${e} font-size: 16px; font-weight: 600`);
-  }, S = [
+    console.log(`%c>>> ${e}`, `${t} font-size: 16px; font-weight: 600`);
+  }, I = [
     {
       tag: "Stage 1",
       title: "Buy",
@@ -933,47 +921,35 @@
       amount: "$250,000",
       desc: "Once renovated, the property is worth $250,000. That's where your profit comes from."
     }
-  ], R = ["Purchase price", "Rehab costs", "Closing costs &amp; points", "Interest for the full loan term"], $ = [
+  ], C = ["Purchase price", "Rehab costs", "Closing costs &amp; points", "Interest for the full loan term"], R = [
     {
-      name: "Marcus T., 38",
-      role: ["Warehouse manager · No prior deals", "3 lenders said no"],
-      stats: [
-        ["$80k", "Purchase"],
-        ["$42k", "Rehab"],
-        ["$210k", "ARV"]
-      ],
+      name: "Emanuel",
+      role: "Master electrician",
+      desc: "Wanted more family time; banks wouldn't lend. Plans to do many deals.",
+      loc: "Baltimore, MD",
       cash: "$0",
-      profit: "$50,300",
-      note: "Funded in 9 days · Closed in 74 days",
-      video: ""
+      profit: "$30,000",
+      video: "D-t-55HzTiQ"
     },
     {
-      name: "Jerome W., 42",
-      role: ["Self-employed · Bank turned him down twice"],
-      stats: [
-        ["$80k", "Purchase"],
-        ["$42k", "Rehab"],
-        ["$210k", "ARV"]
-      ],
-      cash: "$0",
-      profit: "$41,450",
-      note: "TIE evaluated the deal — not his tax returns",
-      video: ""
+      name: "Keith",
+      role: "Credit card billing department",
+      desc: "Father of two from a family of 15. Full remodel; credit was a non-issue.",
+      loc: "Pittsburgh, PA",
+      cash: "$1,300",
+      profit: "$40,000",
+      video: "omYxuJqIwdU"
     },
     {
-      name: "Renée &amp; David K.",
-      role: ["Full gut renovation · Three lenders passed"],
-      stats: [
-        ["$80k", "Purchase"],
-        ["$42k", "Rehab"],
-        ["$210k", "ARV"]
-      ],
-      cash: "$0",
-      profit: "$82,700",
-      note: "Funded in 12 days",
-      video: ""
+      name: "Brian",
+      role: "Insurance salesperson",
+      desc: 'Husband and father of 5. Less-than-good credit; cosmetic rehab. "They believed in me."',
+      loc: "Muncie, IN",
+      cash: "$2,300",
+      profit: "$35,000",
+      video: "nOx8l_ST1zY"
     }
-  ], h = {
+  ], i = {
     star: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
 		<path d="M11.0007 0L13.9102 6.99537L21.4623 7.60081L15.7084 12.5296L17.4663 19.8992L11.0007 15.95L4.53504 19.8992L6.29295 12.5296L0.539062 7.60081L8.09114 6.99537L11.0007 0Z" fill="#FDB948"/>
 		</svg>`,
@@ -984,6 +960,9 @@
     refresh: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
 		<path d="M20.166 10.0832C19.9229 10.0832 19.6897 10.1798 19.5178 10.3517C19.3459 10.5236 19.2494 10.7568 19.2494 10.9999C19.2494 12.6316 18.7655 14.2266 17.859 15.5833C16.9525 16.9401 15.664 17.9975 14.1565 18.6219C12.649 19.2463 10.9902 19.4097 9.38986 19.0914C7.78952 18.773 6.31951 17.9873 5.16572 16.8335C4.01194 15.6797 3.2262 14.2097 2.90787 12.6094C2.58955 11.009 2.75292 9.35024 3.37735 7.84275C4.00177 6.33526 5.05919 5.04679 6.4159 4.14027C7.7726 3.23375 9.36766 2.74989 10.9994 2.74989C12.4199 2.74734 13.8166 3.11577 15.051 3.81873L14.0179 4.85181C13.8898 4.98001 13.8025 5.14332 13.7672 5.32111C13.7318 5.4989 13.75 5.68318 13.8193 5.85066C13.8887 6.01813 14.0061 6.16128 14.1569 6.26201C14.3076 6.36274 14.4847 6.41652 14.666 6.41656H18.3327C18.5758 6.41656 18.809 6.31998 18.9809 6.14807C19.1528 5.97617 19.2494 5.74301 19.2494 5.49989V1.83323C19.2493 1.65196 19.1955 1.47477 19.0948 1.32406C18.9941 1.17335 18.8509 1.05589 18.6835 0.986522C18.516 0.917157 18.3317 0.899005 18.1539 0.934358C17.9761 0.969712 17.8128 1.05698 17.6846 1.18514L16.3912 2.47489C14.7797 1.45097 12.9086 0.910185 10.9994 0.91656C9.00506 0.91656 7.05555 1.50794 5.39735 2.61591C3.73916 3.72388 2.44675 5.29868 1.68357 7.14117C0.920385 8.98366 0.720701 11.0111 1.10977 12.9671C1.49884 14.923 2.45918 16.7197 3.86936 18.1299C5.27954 19.5401 7.07622 20.5004 9.03219 20.8895C10.9882 21.2785 13.0156 21.0789 14.8581 20.3157C16.7006 19.5525 18.2754 18.2601 19.3833 16.6019C20.4913 14.9437 21.0827 12.9942 21.0827 10.9999C21.0827 10.7568 20.9861 10.5236 20.8142 10.3517C20.6423 10.1798 20.4091 10.0832 20.166 10.0832Z" fill="#FF9902"/>
 		</svg>`,
+    pin: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+		<path d="M10 0C5.865 0 2.5 3.38833 2.5 7.55417C2.5 13.4733 9.295 19.585 9.58417 19.8417C9.70333 19.9475 9.85167 20 10 20C10.1483 20 10.2967 19.9475 10.4158 19.8425C10.705 19.585 17.5 13.4733 17.5 7.55417C17.5 3.38833 14.135 0 10 0ZM10 11.6667C7.7025 11.6667 5.83333 9.7975 5.83333 7.5C5.83333 5.2025 7.7025 3.33333 10 3.33333C12.2975 3.33333 14.1667 5.2025 14.1667 7.5C14.1667 9.7975 12.2975 11.6667 10 11.6667Z" fill="#FF9902"/>
+		</svg>`,
     no_commitment: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
 		<path fill-rule="evenodd" clip-rule="evenodd" d="M15.2978 3.93974C14.4994 3.67842 13.412 3.66687 10.9997 3.66687C9.7058 3.66687 8.78129 3.66736 8.05272 3.71707C7.33238 3.76622 6.87077 3.86039 6.49571 4.01575C5.37266 4.48093 4.48041 5.37319 4.01522 6.49623C3.85987 6.8713 3.7657 7.3329 3.71655 8.05324C3.66684 8.78181 3.66634 9.70633 3.66634 11.0002C3.66634 12.2941 3.66684 13.2186 3.71655 13.9472C3.7657 14.6675 3.85987 15.1291 4.01522 15.5042C4.48041 16.6273 5.37266 17.5194 6.49571 17.9847C6.87077 18.14 7.33238 18.2342 8.05272 18.2833C8.78129 18.3331 9.7058 18.3335 10.9997 18.3335C12.2935 18.3335 13.2181 18.3331 13.9467 18.2833C14.667 18.2342 15.1286 18.14 15.5036 17.9847C16.6267 17.5194 17.5189 16.6273 17.9841 15.5042C18.1395 15.1291 18.2336 14.6675 18.2828 13.9472C18.3326 13.2186 18.333 12.2941 18.333 11.0002C18.333 10.2982 18.333 9.70202 18.3246 9.18163C18.3164 8.67543 18.7202 8.25847 19.2264 8.25032C19.7326 8.24216 20.1496 8.64591 20.1577 9.1521C20.1663 9.68882 20.1663 10.2992 20.1663 10.9943V11.0339C20.1663 12.2867 20.1663 13.2736 20.1119 14.072C20.0563 14.8857 19.9412 15.5701 19.6779 16.2058C19.0266 17.778 17.7775 19.0272 16.2052 19.6785C15.5695 19.9417 14.8851 20.0569 14.0714 20.1124C13.2731 20.1669 12.2862 20.1669 11.0335 20.1669H10.9658C9.71313 20.1669 8.72621 20.1669 7.92792 20.1124C7.11424 20.0569 6.42981 19.9417 5.79413 19.6785C4.22186 19.0272 2.9727 17.778 2.32144 16.2058C2.05814 15.5701 1.94298 14.8857 1.88747 14.072C1.833 13.2736 1.83301 12.2867 1.83301 11.0339V10.9665C1.83301 9.71366 1.833 8.72673 1.88747 7.92844C1.94298 7.11476 2.05814 6.43032 2.32144 5.79464C2.9727 4.22239 4.22186 2.97323 5.79413 2.32197C6.42981 2.05866 7.11424 1.94351 7.92792 1.88799C8.72621 1.83352 9.71313 1.83352 10.9659 1.83353H10.9997C11.066 1.83353 11.1318 1.83352 11.1968 1.83352C13.3506 1.83319 14.7548 1.83297 15.8682 2.19737C16.3492 2.35484 16.6117 2.87255 16.4542 3.3537C16.2967 3.83484 15.779 4.09722 15.2978 3.93974ZM20.0414 4.57989C20.2965 5.01719 20.1488 5.57847 19.7115 5.83356L19.5084 5.95209C16.213 7.87435 13.5654 10.7352 11.9037 14.1692C11.7744 14.4362 11.524 14.6242 11.2315 14.6737C10.939 14.7232 10.6406 14.6282 10.4307 14.4185L6.75169 10.7434C6.39353 10.3856 6.39321 9.80523 6.75101 9.447C7.10879 9.08885 7.6892 9.08854 8.04737 9.44636L10.8437 12.2397C12.6729 8.97998 15.3426 6.25963 18.5845 4.36849L18.7878 4.24998C19.225 3.99489 19.7863 4.14259 20.0414 4.57989Z" fill="white"/>
 		</svg>`,
@@ -993,44 +972,44 @@
 		</g>
 		<defs><clipPath id="clip0_crs3_no_credit"><rect width="20" height="20"/></clipPath></defs>
 		</svg>`
-  }, m = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", w = {
-    google: `${m}google-logo.webp`,
-    user: `${m}user.webp`
-  }, g = (t) => (
+  }, h = "https://conversionrate-store.github.io/a-b_images/theinvestorsedge/", p = {
+    google: `${h}google-logo.webp`,
+    user: `${h}user.webp`
+  }, m = (e) => (
     /*html*/
-    `<p class="crs3-eyebrow">${t}</p>`
-  ), u = () => `<span class="crs3-stars">${h.star.repeat(5)}</span>`, f = (t) => t.replace(/[&<>"]/g, (n) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[n]), T = (
+    `<p class="crs3-eyebrow">${e}</p>`
+  ), g = () => `<span class="crs3-stars">${i.star.repeat(5)}</span>`, u = (e) => e.replace(/[&<>"]/g, (n) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[n]), T = (
     /*html*/
     `
   <section class="crs3-how-works" id="crs3-how-works">
     <div class="crs3-how-works__intro">
-      ${g("How it works")}
+      ${m("How it works")}
       <h2 class="crs3-how-works__title"><span>100% Hard Money Financing</span> Sounds Too Good? Here's Why It Works.</h2>
       <p class="crs3-how-works__desc">Unlike traditional lenders who lend against your income and credit, <b>hard money lenders lend against what the property will be worth after renovation.</b> That difference is what makes 100% financing structurally possible.</p>
     </div>
     <h3 class="crs3-how-works__example-title">Here's how it works — on a real example:</h3>
     <div class="crs3-how-works__example">
       <div class="crs3-how-works__stages">
-        ${S.map(
-      (t) => (
+        ${I.map(
+      (e) => (
         /*html*/
         `
           <div class="crs3-how-works__stage">
             <div class="crs3-how-works__stage-head">
-              <img src="${m}${t.icon}.svg" alt="${t.title}" class="crs3-how-works__stage-icon" />
-              <span class="crs3-how-works__stage-tag">${t.tag}</span>
+              <img src="${h}${e.icon}.svg" alt="${e.title}" class="crs3-how-works__stage-icon" />
+              <span class="crs3-how-works__stage-tag">${e.tag}</span>
             </div>
-            <h4 class="crs3-how-works__stage-title">${t.title}</h4>
-            ${t.amount ? `<p class="crs3-how-works__stage-amount">${t.amount}</p>` : (
+            <h4 class="crs3-how-works__stage-title">${e.title}</h4>
+            ${e.amount ? `<p class="crs3-how-works__stage-amount">${e.amount}</p>` : (
           /*html*/
           `
                 <ul class="crs3-how-works__stage-lines">
-                  ${t.lines.map(([n, e]) => `<li><span>${n}</span><b>${e}</b></li>`).join("")}
-                  <li class="crs3-how-works__stage-total"><span>Total:</span><span>${t.total}</span></li>
+                  ${e.lines.map(([n, t]) => `<li><span>${n}</span><b>${t}</b></li>`).join("")}
+                  <li class="crs3-how-works__stage-total"><span>Total:</span><span>${e.total}</span></li>
                 </ul>
               `
         )}
-            <p class="crs3-how-works__stage-desc">${t.desc}</p>
+            <p class="crs3-how-works__stage-desc">${e.desc}</p>
           </div>
         `
       )
@@ -1047,85 +1026,86 @@
         <div class="crs3-how-works__calc-box">
           <h4>What's included in the loan</h4>
           <ul>
-            ${R.map((t) => `<li>${t}</li>`).join("")}
+            ${C.map((e) => `<li>${e}</li>`).join("")}
           </ul>
         </div>
       </div>
     </div>
   </section>
 `
-  ), E = (t, n) => (
+  ), S = (e, n) => (
     /*html*/
     `
   <div class="crs3-reviews__card">
     <div class="crs3-reviews__card-head">
-      <img src="${w.user}" alt="" class="crs3-reviews__card-avatar" loading="lazy" />
+      <img src="${p.user}" alt="" class="crs3-reviews__card-avatar" loading="lazy" />
       <span class="crs3-reviews__card-who">
-        <b>${f(t.name)}</b>
+        <b>${u(e.name)}</b>
         <span>${n}</span>
       </span>
-      <img src="${w.google}" alt="Google" class="crs3-reviews__card-g" loading="lazy" />
+      <img src="${p.google}" alt="Google" class="crs3-reviews__card-g" loading="lazy" />
     </div>
-    ${u()}
-    <p class="crs3-reviews__card-text">"${f(t.text)}"</p>
+    ${g()}
+    <p class="crs3-reviews__card-text">"${u(e.text)}"</p>
     <button class="crs3-reviews__read-more" hidden>Read more</button>
   </div>
 `
-  ), L = (
+  ), $ = (
     /*html*/
     `
   <section class="crs3-reviews" id="crs3-reviews">
     <div class="crs3-reviews__container">
       <div class="crs3-reviews__head">
         <div>
-          ${g("What borrowers say")}
+          ${m("What borrowers say")}
           <h2 class="crs3-reviews__title">Over <span>1,000 Five-Star</span> Reviews</h2>
         </div>
         <div class="crs3-reviews__badge">
           <span class="crs3-reviews__badge-top">
-            <img src="${w.google}" alt="Google" />
-            ${u()}
+            <img src="${p.google}" alt="Google" />
+            ${g()}
             <b>4.8</b>
           </span>
           <span class="crs3-reviews__badge-count">1,000+ Google reviews</span>
         </div>
       </div>
       <div class="crs3-reviews__grid"></div>
-      <button class="crs3-reviews__more">${h.refresh} Show more</button>
+      <button class="crs3-reviews__more">${i.refresh} Show more</button>
     </div>
-    ${M()}
+    ${E()}
   </section>
 `
   );
-  function M() {
+  function E() {
     return (
       /*html*/
       `
     <div class="crs3-people" id="crs3-people">
-      ${g("Real people. Real deals.")}
+      ${m("Real people. Real deals.")}
       <h2 class="crs3-people__title">People at Your Stage. Real Numbers.</h2>
       <div class="crs3-people__grid">
-        ${$.map(
-        (t) => (
+        ${R.map(
+        (e) => (
           /*html*/
           `
           <div class="crs3-people__card">
-            <div class="crs3-people__media" data-video="${t.video}">
-              <button class="crs3-people__play" aria-label="Play video">${h.play}</button>
+            <div class="crs3-people__media" data-video="${e.video}">
+              <img src="https://img.youtube.com/vi/${e.video}/hqdefault.jpg" alt="${e.name}'s story" class="crs3-people__thumb" loading="lazy" />
+              <button class="crs3-people__play" aria-label="Play ${e.name}'s story">${i.play}</button>
             </div>
             <div class="crs3-people__body">
-              <div>
-                <b class="crs3-people__name">${t.name}</b>
-                <p class="crs3-people__role">${t.role.join("<br>")}</p>
+              <div class="crs3-people__info">
+                <b class="crs3-people__name">${e.name}</b>
+                <span class="crs3-people__role">${e.role}</span>
+                <p class="crs3-people__desc">${e.desc}</p>
               </div>
-              <div class="crs3-people__stats">
-                ${t.stats.map(([n, e]) => `<span><b>${n}</b>${e}</span>`).join("")}
+              <div class="crs3-people__bottom">
+                <span class="crs3-people__loc">${i.pin} ${e.loc}</span>
+                <div class="crs3-people__result">
+                  <span>Cash to close: ${e.cash}</span>
+                  <b>Profit: ${e.profit}</b>
+                </div>
               </div>
-              <div class="crs3-people__result">
-                <span>Cash to close: ${t.cash}</span>
-                <b>Profit: ${t.profit}</b>
-              </div>
-              <p class="crs3-people__note">${t.note}</p>
             </div>
           </div>
         `
@@ -1135,15 +1115,15 @@
       <div class="crs3-people__cta-wrap">
         <button class="crs3-people__cta crs_open_quiz">See If This Is A Fit For You</button>
         <div class="crs3-people__microcopy">
-          <span>${h.no_commitment} No commitment</span>
-          <span>${h.no_credit} No credit pull yet</span>
+          <span>${i.no_commitment} No commitment</span>
+          <span>${i.no_credit} No credit pull yet</span>
         </div>
       </div>
     </div>
   `
     );
   }
-  const x = [
+  const f = [
     {
       name: "Wise A.",
       date: "2026-07-31",
@@ -1595,57 +1575,57 @@
       text: "Thankyou To Investors Edge. Where They Make YOUR DREAM Of Real Estate Investing Come TRUE. I’ve Been In THIS Business FULL TIME Now For Over 20yrs Now. Licensed In California and Georgia as a Realtor. I’m Now In a Position To BUY MORE Flips and Resale Them Myself 👏🏾👏🏾👏🏾👏🏾👏🏾👏🏾👏🏾👏🏾💙💙💙💙🙏🏿🙏🏿🙏🏿🙏🏿 …"
     }
   ];
-  b({ name: "100 HMF V3 - Legitimacy Proof", dev: "YK" }), I("exp_100_hmf_v3");
-  const p = "100 HMF V3", z = () => window.matchMedia("(max-width: 768px)").matches, H = (t) => {
-    const n = Math.max(0, Math.floor((Date.now() - new Date(t).getTime()) / 864e5)), e = [
+  _({ name: "100 HMF V3 - Legitimacy Proof", dev: "YK" }), b("exp_100_hmf_v3");
+  const l = "100 HMF V3", M = () => window.matchMedia("(max-width: 768px)").matches, z = (e) => {
+    const n = Math.max(0, Math.floor((Date.now() - new Date(e).getTime()) / 864e5)), t = [
       [365, "year"],
       [30, "month"],
       [7, "week"],
       [1, "day"]
     ];
-    for (const [a, o] of e) {
-      const r = Math.floor(n / a);
-      if (r >= 1) return r === 1 ? `a ${o} ago` : `${r} ${o}s ago`;
+    for (const [a, o] of t) {
+      const s = Math.floor(n / a);
+      if (s >= 1) return s === 1 ? `a ${o} ago` : `${s} ${o}s ago`;
     }
     return "today";
   };
-  class j {
+  class L {
     constructor() {
       this.shownReviews = 0, this.init();
     }
     async init() {
-      var n, e;
-      await _(".crs_new_content_block .crs-reviews"), !document.querySelector(".crs3-how-works") && (document.head.insertAdjacentHTML("beforeend", `<style class="crs3-style">${v}</style>`), (n = document.querySelector(".crs-hero-below")) == null || n.insertAdjacentHTML("afterend", T), (e = document.querySelector(".crs-reviews")) == null || e.insertAdjacentHTML("afterend", L), document.querySelector(".crs-reviews").style.display = "none", this.renderReviews(), this.bindShowMore(), this.bindVideos(), this.bindCta(), this.trackVisibility());
+      var n, t;
+      await v(".crs_new_content_block .crs-reviews"), !document.querySelector(".crs3-how-works") && (document.head.insertAdjacentHTML("beforeend", `<style class="crs3-style">${y}</style>`), (n = document.querySelector(".crs-hero-below")) == null || n.insertAdjacentHTML("afterend", T), (t = document.querySelector(".crs-reviews")) == null || t.insertAdjacentHTML("afterend", $), document.querySelector(".crs-reviews").style.display = "none", this.renderReviews(), this.bindShowMore(), this.bindVideos(), this.bindCta(), this.trackVisibility());
     }
     renderReviews() {
-      const n = document.querySelector(".crs3-reviews__grid"), e = document.querySelector(".crs3-reviews__more");
-      if (!n || !e) return;
-      const a = z() ? 15 : 30, o = x.slice(this.shownReviews, this.shownReviews + a);
-      n.insertAdjacentHTML("beforeend", o.map((r) => E(r, H(r.date))).join("")), this.shownReviews += o.length, e.hidden = this.shownReviews >= x.length, this.bindReadMore();
+      const n = document.querySelector(".crs3-reviews__grid"), t = document.querySelector(".crs3-reviews__more");
+      if (!n || !t) return;
+      const a = M() ? 15 : 30, o = f.slice(this.shownReviews, this.shownReviews + a);
+      n.insertAdjacentHTML("beforeend", o.map((s) => S(s, z(s.date))).join("")), this.shownReviews += o.length, t.hidden = this.shownReviews >= f.length, this.bindReadMore();
     }
     bindShowMore() {
       var n;
       (n = document.querySelector(".crs3-reviews__more")) == null || n.addEventListener("click", () => {
-        this.renderReviews(), d("exp_100hmf_v3_reviews_more", `Show more: ${this.shownReviews}`, "click", p);
+        this.renderReviews(), r("exp_100hmf_v3_reviews_more", `Show more: ${this.shownReviews}`, "click", l);
       });
     }
     // Only newly rendered cards get a handler: the button is shown only when the text is actually clamped
     bindReadMore() {
       document.querySelectorAll(".crs3-reviews__read-more:not([data-bound])").forEach((n) => {
         n.dataset.bound = "true";
-        const e = n.previousElementSibling;
-        e.scrollHeight <= e.clientHeight + 1 || (n.hidden = !1, n.addEventListener("click", () => {
-          const a = e.classList.toggle("crs3-reviews__card-text--expanded");
-          n.textContent = a ? "Show less" : "Read more", a && d("exp_100hmf_v3_review_read_more", "Read more", "click", p);
+        const t = n.previousElementSibling;
+        t.scrollHeight <= t.clientHeight + 1 || (n.hidden = !1, n.addEventListener("click", () => {
+          const a = t.classList.toggle("crs3-reviews__card-text--expanded");
+          n.textContent = a ? "Show less" : "Read more", a && r("exp_100hmf_v3_review_read_more", "Read more", "click", l);
         }));
       });
     }
     bindVideos() {
-      document.querySelectorAll(".crs3-people__media").forEach((n, e) => {
+      document.querySelectorAll(".crs3-people__media").forEach((n, t) => {
         var o;
         const a = n.dataset.video;
-        a && (n.style.backgroundImage = `url(https://fast.wistia.com/embed/medias/${a}/swatch)`), (o = n.querySelector(".crs3-people__play")) == null || o.addEventListener("click", async () => {
-          d("exp_100hmf_v3_video_play", `Case study ${e + 1}`, "click", p), a && (await k(["https://fast.wistia.com/player.js", `https://fast.wistia.com/embed/${a}.js`]), n.innerHTML = `<wistia-player media-id="${a}" autoplay></wistia-player>`, n.classList.add("crs3-people__media--playing"));
+        (o = n.querySelector(".crs3-people__play")) == null || o.addEventListener("click", () => {
+          r("exp_100hmf_v3_video_play", `Case study ${t + 1}`, "click", l), a && (n.innerHTML = `<iframe class="crs3-people__frame" src="https://www.youtube.com/embed/${a}?autoplay=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
         });
       });
     }
@@ -1653,8 +1633,8 @@
     bindCta() {
       var n;
       (n = document.querySelector(".crs3-people__cta")) == null || n.addEventListener("click", () => {
-        var e;
-        d("exp_100hmf_v3_cta", "See If This Is A Fit For You", "click", p), (e = document.querySelector(".pwr-sec-form__content")) == null || e.scrollIntoView({ behavior: "instant", block: "start" });
+        var t;
+        r("exp_100hmf_v3_cta", "See If This Is A Fit For You", "click", l), (t = document.querySelector(".pwr-sec-form__content")) == null || t.scrollIntoView({ behavior: "instant", block: "start" });
       });
     }
     trackVisibility() {
@@ -1663,11 +1643,11 @@
         { selector: ".crs3-how-works__calc", desc: "How it works - calculation" },
         { selector: ".crs3-reviews__head", desc: "Google reviews" },
         { selector: ".crs3-people", desc: "People at your stage" }
-      ].forEach(({ selector: e, desc: a }) => {
-        C(e, "exp_100hmf_v3_view", p, a);
+      ].forEach(({ selector: t, desc: a }) => {
+        k(t, "exp_100hmf_v3_view", l, a);
       });
     }
   }
-  new j();
+  new L();
 })();
 //# sourceMappingURL=index.js.map
