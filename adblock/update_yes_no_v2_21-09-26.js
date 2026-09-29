@@ -193,45 +193,45 @@
 }
 
 /*# sourceMappingURL=style.css.map */
-`, l = (o, t, n, e = "") => {
+`, d = (s, t, n, e = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: o,
+      event_name: s,
       event_desc: t,
       event_type: n,
       event_loc: e
-    }), a(`Event: ${o} | ${t} | ${n} | ${e}`, "success");
-  }, y = (o) => new Promise((t) => {
-    const n = document.querySelector(o);
+    }), a(`Event: ${s} | ${t} | ${n} | ${e}`, "success");
+  }, h = (s) => new Promise((t) => {
+    const n = document.querySelector(s);
     n && t(n);
     const e = new MutationObserver(() => {
-      const s = document.querySelector(o);
-      s && (t(s), e.disconnect());
+      const o = document.querySelector(s);
+      o && (t(o), e.disconnect());
     });
     e.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), m = ({ name: o, dev: t }) => {
-    const n = o.toLowerCase().replace(/\s/g, "_");
-    l(`${n}_started`, `Experiment ${o} started`, "other", n), console.log(
-      `%c EXP: ${o} (DEV: ${t})`,
+  }), m = ({ name: s, dev: t }) => {
+    const n = s.toLowerCase().replace(/\s/g, "_");
+    d(`${n}_started`, `Experiment ${s} started`, "other", n), console.log(
+      `%c EXP: ${s} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class c {
+  class l {
     constructor(t) {
-      this.elements = t instanceof c ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
+      this.elements = t instanceof l ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
     }
     on(t, n, e) {
-      return typeof n == "function" && (e = n, n = ""), this.elements.forEach((s) => {
-        s.addEventListener(t, function(r) {
-          var p;
+      return typeof n == "function" && (e = n, n = ""), this.elements.forEach((o) => {
+        o.addEventListener(t, function(r) {
+          var c;
           if (n !== "") {
-            let i = (p = r.target) == null ? void 0 : p.closest(n);
+            let i = (c = r.target) == null ? void 0 : c.closest(n);
             i && (e == null || e.call(i, r));
           } else
-            e == null || e.call(s, r);
+            e == null || e.call(o, r);
         });
       }), this;
     }
@@ -252,18 +252,18 @@
     }
     each(t) {
       for (let n of this.elements)
-        t(new c(n), this.elements.indexOf(n));
+        t(new l(n), this.elements.indexOf(n));
       return this;
     }
     style(t, n) {
-      const e = t.split("-").map((s, r) => r === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
-      return this.elements.forEach(function(s) {
-        s.style[e] = n;
+      const e = t.split("-").map((o, r) => r === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+      return this.elements.forEach(function(o) {
+        o.style[e] = n;
       }), this;
     }
     find(t) {
       const n = this.elements.map((e) => Array.from(e.querySelectorAll(t)));
-      return new c(n.flat());
+      return new l(n.flat());
     }
     attr(t, n) {
       return n ? (this.elements.forEach(function(e) {
@@ -281,28 +281,28 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const d = (o) => new c(o), b = async (o) => {
-    const t = (n) => new Promise((e, s) => {
+  const p = (s) => new l(s), g = async (s) => {
+    const t = (n) => new Promise((e, o) => {
       const r = n.split(".").pop();
       if (r === "js") {
         if (Array.from(document.scripts).map((f) => f.src.toLowerCase()).includes(n.toLowerCase()))
           return a(`Script ${n} allready downloaded!`, "success"), e("");
         const i = document.createElement("script");
-        i.src = n, i.onload = e, i.onerror = s, document.head.appendChild(i);
+        i.src = n, i.onload = e, i.onerror = o, document.head.appendChild(i);
       } else if (r === "css") {
         if (Array.from(document.styleSheets).map((f) => {
-          var h;
-          return (h = f.href) == null ? void 0 : h.toLowerCase();
+          var y;
+          return (y = f.href) == null ? void 0 : y.toLowerCase();
         }).includes(n.toLowerCase()))
           return a(`Style ${n} allready downloaded!`, "success"), e("");
         const i = document.createElement("link");
-        i.rel = "stylesheet", i.href = n, i.onload = e, i.onerror = s, document.head.appendChild(i);
+        i.rel = "stylesheet", i.href = n, i.onload = e, i.onerror = o, document.head.appendChild(i);
       }
     });
-    for (const n of o)
+    for (const n of s)
       a(n), await t(n), a(`Loaded librari ${n}`);
     a("All libraries loaded!", "success");
-  }, a = (o, t = "info") => {
+  }, a = (s, t = "info") => {
     let n;
     switch (t) {
       case "info":
@@ -318,8 +318,8 @@
         n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${o}`, `${n} font-size: 16px; font-weight: 600`);
-  }, x = (
+    console.log(`%c>>> ${s}`, `${n} font-size: 16px; font-weight: 600`);
+  }, b = (
     /* html */
     `
 <div class="yn">
@@ -364,18 +364,32 @@
   </div>
 </div>
 `
-  ), _ = "https://adblock360.com/install-v2-aby";
-  b(["//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]), m({ name: "Yes/No", dev: "YK" });
-  class g {
+  ), x = "https://adblock360.com/install-v2-aby";
+  g(["//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]), m({ name: "Yes/No", dev: "YK" });
+  class _ {
     constructor() {
       window.location.pathname === "/update-cro-v2" && this.init();
     }
     async init() {
-      await y("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-yes-no-style">${u}</style>`), await y("main"), d("main").elements[0].insertAdjacentHTML("beforebegin", x), l("yes_no_view", "Yes/No page is viewed", "view", "yes_no_block"), this.renderTrustpilot(), d(".yn__btn-yes").on("click", () => {
-        l("yes_no_click_yes", "Yes, take me to install page", "click", "yes_no_block"), window.location.href = _;
-      }), d(".yn__btn-no").on("click", () => {
-        d(".yn").elements[0].remove(), l("yes_no_click_no", "No, thanks", "click", "yes_no_block");
+      await h("body"), document.head.insertAdjacentHTML("beforeend", `<style class="crs-yes-no-style">${u}</style>`), await h("main"), p("main").elements[0].insertAdjacentHTML("beforebegin", b), d("yes_no_view", "Yes/No page is viewed", "view", "yes_no_block"), this.renderTrustpilot(), p(".yn__btn-yes").on("click", () => {
+        d("yes_no_click_yes", "Yes, take me to install page", "click", "yes_no_block"), this.navigateToInstall();
+      }), p(".yn__btn-no").on("click", () => {
+        p(".yn").elements[0].remove(), d("yes_no_click_no", "No, thanks", "click", "yes_no_block");
       });
+    }
+    // #main-cta on the live page is a <button> nested inside <a href="…?query params…">
+    // (same resolution as ../new_popup_v2/index.ts) — its query params (tracking/affiliate) may
+    // not be populated yet, so poll briefly for the closest ancestor <a href> and carry them
+    // over onto our own install page URL before navigating, instead of clicking their button
+    // (which would just start a download, not take us to the install page).
+    navigateToInstall(t = 0) {
+      const n = document.querySelector('#main-cta, [data-event="download"]'), e = n == null ? void 0 : n.closest("a[href]");
+      if (!(e != null && e.href) && t < 10) {
+        setTimeout(() => this.navigateToInstall(t + 1), 200);
+        return;
+      }
+      const o = new URL(x);
+      e != null && e.href && new URL(e.href, window.location.href).searchParams.forEach((c, i) => o.searchParams.set(i, c)), window.location.href = o.toString();
     }
     renderTrustpilot() {
       const t = () => {
@@ -385,6 +399,6 @@
       t();
     }
   }
-  new g();
+  new _();
 })();
 //# sourceMappingURL=index.js.map
