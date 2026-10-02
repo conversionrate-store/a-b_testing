@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const D = `#delivery-section {
+  const T = `#delivery-section {
   display: none !important;
 }
 
@@ -661,14 +661,14 @@ body.kcd-modal-open {
     padding: 0 16px;
   }
 }
-`, u = (t, e, n, i = "") => {
+`, h = (t, e, n, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
       event_desc: e,
       event_type: n,
       event_loc: i
-    }), v(`Event: ${t} | ${e} | ${n} | ${i}`, "success");
+    }), k(`Event: ${t} | ${e} | ${n} | ${i}`, "success");
   }, m = (t) => new Promise((e) => {
     const n = document.querySelector(t);
     n && e(n);
@@ -680,24 +680,24 @@ body.kcd-modal-open {
       childList: !0,
       subtree: !0
     });
-  }), P = ({ name: t, dev: e }) => {
+  }), O = ({ name: t, dev: e }) => {
     const n = t.toLowerCase().replace(/\s/g, "_");
-    u(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
+    h(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
       `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, T = (t, e, n, i, d = 1e3, l = 0.5) => {
+  }, P = (t, e, n, i, d = 1e3, l = 0.5) => {
     let a, o;
     a = new IntersectionObserver(
       function(r) {
         r[0].isIntersecting === !0 ? o = setTimeout(() => {
-          u(
+          h(
             e,
             r[0].target.dataset.visible || i,
             "view",
             n
           ), a.disconnect();
-        }, d) : (v("Element is not fully visible", "warn"), clearTimeout(o));
+        }, d) : (k("Element is not fully visible", "warn"), clearTimeout(o));
       },
       { threshold: [l] }
     );
@@ -705,7 +705,7 @@ body.kcd-modal-open {
       const r = document.querySelector(t);
       r && a.observe(r);
     }
-  }, v = (t, e = "info") => {
+  }, k = (t, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -722,7 +722,7 @@ body.kcd-modal-open {
         break;
     }
     console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
-  }, p = {
+  }, u = {
     truck: (
       /* HTML */
       '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M8.163 22.25H6.96C6.409 22.25 5.96 21.801 5.96 21.25V17.25C5.96 16.698 5.512 16.25 4.96 16.25C4.408 16.25 3.96 16.698 3.96 17.25V21.25C3.96 22.904 5.306 24.25 6.96 24.25H8.163C8.597 25.69 9.92 26.75 11.5 26.75C13.08 26.75 14.403 25.69 14.837 24.25H19H21.163C21.597 25.69 22.92 26.75 24.5 26.75C26.08 26.75 27.403 25.69 27.837 24.25H30C30.552 24.25 31 23.802 31 23.25V18.25C31 17.507 30.689 16.481 30.277 15.863L27.386 11.527C26.892 10.787 25.888 10.25 24.999 10.25H22.195V8.25C22.195 6.596 20.849 5.25 19.195 5.25H16C15.448 5.25 15 5.698 15 6.25C15 6.802 15.448 7.25 16 7.25H19.196C19.747 7.25 20.196 7.699 20.196 8.25V22.25H19H14.837C14.403 20.81 13.08 19.75 11.5 19.75C9.92 19.75 8.597 20.81 8.163 22.25ZM24.5 24.75C23.673 24.75 23 24.077 23 23.25C23 22.423 23.673 21.75 24.5 21.75C25.327 21.75 26 22.423 26 23.25C26 24.077 25.327 24.75 24.5 24.75ZM22.196 12.25H25C25.217 12.25 25.602 12.456 25.723 12.637L27.465 15.25H22.196V12.25ZM22.196 17.25H28.757C28.893 17.567 29 17.987 29 18.25V22.25H27.837C27.403 20.81 26.08 19.75 24.5 19.75C23.614 19.75 22.813 20.091 22.196 20.636V17.25ZM13 23.25C13 24.077 12.327 24.75 11.5 24.75C10.673 24.75 10 24.077 10 23.25C10 22.423 10.673 21.75 11.5 21.75C12.327 21.75 13 22.423 13 23.25Z" fill="#34684C"/><path d="M14 6.25C14 5.698 13.552 5.25 13 5.25H2C1.448 5.25 1 5.698 1 6.25C1 6.802 1.448 7.25 2 7.25H13C13.552 7.25 14 6.802 14 6.25Z" fill="#34684C"/><path d="M11 11.25C11.552 11.25 12 10.802 12 10.25C12 9.698 11.552 9.25 11 9.25H4C3.448 9.25 3 9.698 3 10.25C3 10.802 3.448 11.25 4 11.25H11Z" fill="#34684C"/><path d="M9 15.25C9.552 15.25 10 14.802 10 14.25C10 13.698 9.552 13.25 9 13.25H6C5.448 13.25 5 13.698 5 14.25C5 14.802 5.448 15.25 6 15.25H9Z" fill="#34684C"/></g></svg>'
@@ -755,7 +755,7 @@ body.kcd-modal-open {
       /* HTML */
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#kcd-clip0-0-6)"><path d="M8 -2.38419e-07C4.692 -2.38419e-07 2 2.71067 2 6.04333C2 10.7787 7.436 15.668 7.66733 15.8733C7.76267 15.958 7.88133 16 8 16C8.11867 16 8.23733 15.958 8.33267 15.874C8.564 15.668 14 10.7787 14 6.04333C14 2.71067 11.308 -2.38419e-07 8 -2.38419e-07ZM8 9.33333C6.162 9.33333 4.66667 7.838 4.66667 6C4.66667 4.162 6.162 2.66667 8 2.66667C9.838 2.66667 11.3333 4.162 11.3333 6C11.3333 7.838 9.838 9.33333 8 9.33333Z" fill="#057222"/></g><defs><clipPath id="kcd-clip0-0-6"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>'
     )
-  }, O = "data:image/png;base64,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", c = {
+  }, E = "data:image/png;base64,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", c = {
     heading: "Ako chcete tovar prevziať?",
     hint: "Vyberte spôsob, potom upresníte miesto alebo kuriéra.",
     tabPacketa: "Packeta – výdajné miesta a Z‑BOXY",
@@ -776,11 +776,11 @@ body.kcd-modal-open {
     modalFee: (t) => `Poplatok za vyzdvihnutie — ${t}`,
     modalSelect: "Vybrať",
     close: "Zavrieť"
-  }, C = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"], E = {
+  }, b = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"], I = {
     DPDKURIER: "zavolá pred doručením",
     PACKETA_KURIER: "zavolá pred doručením",
     SDSKURIER: "vyloženie pred dom"
-  }, b = {
+  }, C = {
     OOZ: { name: "KiNEKUS Eshop Žilina", address: "Rosinská cesta 13, Žilina" },
     OOVajnory: { name: "KiNEKUS Bratislava Vajnory", address: "Pri starom letisku 3, 831 07 Bratislava" },
     OOBratislava: { name: "KiNEKUS Bratislava Fedinova – Petržalka", address: "Fedinova 14, Bratislava" },
@@ -797,23 +797,23 @@ body.kcd-modal-open {
     OONoveZamky: { name: "KiNEKUS Nové Zámky", address: "Dvorská cesta 5, 940 01 Nové Zámky" },
     OOPoprad: { name: "KiNEKUS Poprad, OC Kriváň", address: "Dlhé Hony 5268/9, 058 01 Poprad" }
   }, x = {
-    packeta: { label: c.tabPacketa, icon: p.packeta },
-    home: { label: c.tabHome, icon: p.truck },
-    store: { label: c.tabStore, icon: p.store }
+    packeta: { label: c.tabPacketa, icon: u.packeta },
+    home: { label: c.tabHome, icon: u.truck },
+    store: { label: c.tabStore, icon: u.store }
   }, y = (
     /* HTML */
     '<span class="kcd-dot"></span>'
-  ), I = (t, e) => (
+  ), H = (t, e) => (
     /* HTML */
     `
   <div class="kcd-head">
     <div class="kcd-title">${c.heading}</div>
     <div class="kcd-hint">${c.hint}</div>
   </div>
-  <div class="kcd-tabs kcd-tabs--${t.length}">${t.map(H).join("")}</div>
+  <div class="kcd-tabs kcd-tabs--${t.length}">${t.map(A).join("")}</div>
   ${e}
 `
-  ), H = (t) => (
+  ), A = (t) => (
     /* HTML */
     `
   <button type="button" class="kcd-tab ${t.active ? "kcd-tab--active" : ""}" data-kcd-tab="${t.id}">
@@ -821,7 +821,7 @@ body.kcd-modal-open {
     <span class="kcd-tab-label">${x[t.id].label}</span>
   </button>
 `
-  ), A = (t) => (
+  ), B = (t) => (
     /* HTML */
     `
   <div class="kcd-card">
@@ -836,10 +836,10 @@ body.kcd-modal-open {
             </div>
             ${t.point.address ? (
         /* HTML */
-        `<div class="kcd-row"><span class="kcd-row-icon">${p.pin}</span>${t.point.address}</div>`
+        `<div class="kcd-row"><span class="kcd-row-icon">${u.pin}</span>${t.point.address}</div>`
       ) : ""}
             <div class="kcd-row">
-              <span class="kcd-row-icon">${p.delivery}</span>
+              <span class="kcd-row-icon">${u.delivery}</span>
               ${c.deliveryPrefix}: ${t.dateText}
               <span class="kcd-badge">${t.priceText}</span>
             </div>
@@ -857,7 +857,7 @@ body.kcd-modal-open {
               <button type="button" class="kcd-btn" data-kcd-action="packeta">${c.packetaEmptyBtn}</button>
             </div>
             <div class="kcd-row">
-              <span class="kcd-row-icon">${p.delivery}</span>
+              <span class="kcd-row-icon">${u.delivery}</span>
               ${c.deliveryPrefix}: ${t.dateText}
               <span class="kcd-badge">${t.priceText}</span>
             </div>
@@ -866,15 +866,15 @@ body.kcd-modal-open {
     )}
   </div>
 `
-  ), B = (t) => (
+  ), z = (t) => (
     /* HTML */
     `
   <div class="kcd-card">
     <div class="kcd-card-title">${c.homeHeading}</div>
-    <div class="kcd-carriers">${t.map(z).join("")}</div>
+    <div class="kcd-carriers">${t.map(Y).join("")}</div>
   </div>
 `
-  ), z = (t) => (
+  ), Y = (t) => (
     /* HTML */
     `
   <button type="button" class="kcd-carrier ${t.active ? "kcd-carrier--active" : ""}" data-kcd-carrier="${t.id}">
@@ -890,7 +890,7 @@ body.kcd-modal-open {
     <span class="kcd-carrier-price ${t.priceText === c.free ? "kcd-carrier-price--free" : ""}">${t.priceText}</span>
   </button>
 `
-  ), Y = (t, e) => (
+  ), K = (t, e) => (
     /* HTML */
     `
   <div class="kcd-card">
@@ -907,12 +907,12 @@ body.kcd-modal-open {
               <button type="button" class="kcd-link" data-kcd-action="stores">${c.change}</button>
             </div>
             <div class="kcd-row">
-              <span class="kcd-row-icon">${p.pin}</span>
+              <span class="kcd-row-icon">${u.pin}</span>
               ${t.address}
               ${t.distanceText ? `${y}<b>${t.distanceText}</b>` : ""}
             </div>
             <div class="kcd-row">
-              <span class="kcd-row-icon">${p.shop}</span>
+              <span class="kcd-row-icon">${u.shop}</span>
               ${t.status}
               <span class="kcd-badge">${t.priceText}</span>
             </div>
@@ -922,7 +922,7 @@ body.kcd-modal-open {
     ${e ? `<div class="kcd-caption">${e}</div>` : ""}
   </div>
 `
-  ), K = (t, e) => (
+  ), U = (t, e) => (
     /* HTML */
     `
   <div class="kcd-modal" id="kcdModal" role="dialog" aria-modal="true">
@@ -932,11 +932,11 @@ body.kcd-modal-open {
         <div class="kcd-modal-title">${c.modalTitle}</div>
         ${e ? `<div class="kcd-modal-fee">${c.modalFee(e)}</div>` : ""}
       </div>
-      <div class="kcd-modal-list">${t.map(U).join("")}</div>
+      <div class="kcd-modal-list">${t.map(N).join("")}</div>
     </div>
   </div>
 `
-  ), U = (t) => (
+  ), N = (t) => (
     /* HTML */
     `
   <div class="kcd-store">
@@ -944,7 +944,7 @@ body.kcd-modal-open {
       <div class="kcd-store-top">
         ${t.distanceText ? (
       /* HTML */
-      `<span class="kcd-store-dist">${p.pinSmall}${t.distanceText}</span>`
+      `<span class="kcd-store-dist">${u.pinSmall}${t.distanceText}</span>`
     ) : ""}
         <span class="kcd-store-name">${t.name}</span>
       </div>
@@ -953,7 +953,7 @@ body.kcd-modal-open {
     <button type="button" class="kcd-store-btn" data-kcd-store="${t.id}">${c.modalSelect}</button>
   </div>
 `
-  ), N = {
+  ), $ = {
     OOVajnory: [48.199377, 17.195798],
     // Bratislava Vajnory, Pri starom letisku 3
     OOBratislava: [48.11776, 17.10317],
@@ -982,13 +982,13 @@ body.kcd-modal-open {
     // Nové Zámky, Dvorská cesta 5
     OOPoprad: [49.04961, 20.29178]
     // Poprad, Dlhé Hony 5268/9
-  }, $ = 6371, g = (t) => t * Math.PI / 180, j = (t, e, n, i) => {
-    const d = g(n - t), l = g(i - e), a = Math.sin(d / 2) ** 2 + Math.cos(g(t)) * Math.cos(g(n)) * Math.sin(l / 2) ** 2, o = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return $ * o;
-  }, F = {
-    ...N,
+  }, j = 6371, v = (t) => t * Math.PI / 180, F = (t, e, n, i) => {
+    const d = v(n - t), l = v(i - e), a = Math.sin(d / 2) ** 2 + Math.cos(v(t)) * Math.cos(v(n)) * Math.sin(l / 2) ** 2, o = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return j * o;
+  }, G = {
+    ...$,
     OOZ: [49.2046, 18.7598]
-  }, M = "kcd_user_geo", G = "https://get.geojs.io/v1/ip/geo.json", R = async (t = 4e3) => {
+  }, M = "kcd_user_geo", R = "https://get.geojs.io/v1/ip/geo.json", _ = async (t = 4e3) => {
     try {
       const e = sessionStorage.getItem(M);
       if (e) {
@@ -998,7 +998,7 @@ body.kcd-modal-open {
     } catch {
     }
     try {
-      const e = new AbortController(), n = setTimeout(() => e.abort(), t), i = await fetch(G, { signal: e.signal });
+      const e = new AbortController(), n = setTimeout(() => e.abort(), t), i = await fetch(R, { signal: e.signal });
       if (clearTimeout(n), !i.ok) return null;
       const d = await i.json(), l = parseFloat(d.latitude), a = parseFloat(d.longitude);
       if (Number.isNaN(l) || Number.isNaN(a)) return null;
@@ -1011,28 +1011,28 @@ body.kcd-modal-open {
     } catch {
       return null;
     }
-  }, _ = (t, e) => {
-    const n = F[e];
-    return !t || !n ? null : j(t.lat, t.lon, n[0], n[1]);
-  }, W = (t) => t < 10 ? `${t.toFixed(1).replace(".", ",")} km` : `${Math.round(t)} km`;
-  P({ name: "Kinekus Checkout Delivery", dev: "AI" });
-  const h = "Checkout delivery options", Z = "kcd_packeta_point", q = "Vyberte výdajné miesto", k = (t) => {
+  }, W = (t, e) => {
+    const n = G[e];
+    return !t || !n ? null : F(t.lat, t.lon, n[0], n[1]);
+  }, q = (t) => t < 10 ? `${t.toFixed(1).replace(".", ",")} km` : `${Math.round(t)} km`;
+  O({ name: "Kinekus Checkout Delivery", dev: "AI" });
+  const L = "Checkout delivery options", Z = "kcd_packeta_point", J = "Vyberte výdajné miesto", g = (t) => {
     const e = typeof t == "number" ? t : parseFloat(t || "0");
     return !e || e <= 0 ? c.free : `${e.toFixed(2).replace(".", ",")} €`;
-  }, w = (t) => String(t).padStart(2, "0"), V = (t) => {
+  }, w = (t) => (parseFloat(String(t ?? 0)) || 0).toFixed(2).replace(".", ","), V = (t) => String(t).padStart(2, "0"), S = (t) => {
     const e = (t || "").match(/(\d{1,2})\.(\d{1,2})\.(\d{4})?/);
     if (!e) return null;
     const n = /* @__PURE__ */ new Date(), i = new Date(e[3] ? +e[3] : n.getFullYear(), +e[2] - 1, +e[1]);
     return !e[3] && i.getTime() < n.getTime() - 30 * 864e5 && i.setFullYear(i.getFullYear() + 1), i;
-  }, S = (t) => `${w(t.getDate())}.${w(t.getMonth() + 1)}`;
-  class J {
+  }, D = (t) => `${V(t.getDate())}.${V(t.getMonth() + 1)}`;
+  class X {
     constructor() {
       this.userLocation = null, this.carrierId = null, this.userPickedStore = !1, this.autoStoreId = null, this.autoPicked = !1, this.renderTimer = null, this.init();
     }
     async init() {
-      await m("head"), document.head.insertAdjacentHTML("beforeend", `<style>${D}</style>`);
+      await m("head"), document.head.insertAdjacentHTML("beforeend", `<style>${T}</style>`);
       const e = await m("#delivery-section");
-      document.getElementById("kcdDelivery") || (e.insertAdjacentHTML("beforebegin", '<section class="kcd-block" id="kcdDelivery"></section>'), this.root = document.getElementById("kcdDelivery"), this.render(), this.bindEvents(), this.watchNative(), this.hookPacketaWidget(), this.keepSectionsOpen(), this.loadUserLocation(), T("#kcdDelivery", "exp_kinekus_checkout_delivery_01", h, "Checkout delivery options visibility"));
+      document.getElementById("kcdDelivery") || (e.insertAdjacentHTML("beforebegin", '<section class="kcd-block" id="kcdDelivery"></section>'), this.root = document.getElementById("kcdDelivery"), this.render(), this.bindEvents(), this.watchNative(), this.hookPacketaWidget(), this.keepSectionsOpen(), this.loadUserLocation(), P("#kcdDelivery", "exp_kinekus_checkout_delivery_01", L, "Checkout delivery options visibility"));
     }
     // Payment and contact sections are shown from the start (CSS overrides the
     // native `.hidden` step reveal). Native still toggles `.hidden` — and scrolls
@@ -1043,8 +1043,8 @@ body.kcd-modal-open {
       const e = window.jQuery;
       if ((d = e == null ? void 0 : e.fn) != null && d.animate && !e.fn.animate.__kcd) {
         const l = e.fn.animate, a = function(o, ...r) {
-          return o && typeof o.scrollTop == "number" && this.is("html, body") && ["#payment-section", "#contact-section"].some((L) => {
-            const f = e(L);
+          return o && typeof o.scrollTop == "number" && this.is("html, body") && ["#payment-section", "#contact-section"].some((p) => {
+            const f = e(p);
             return f.length && Math.abs(f.offset().top - 50 - o.scrollTop) < 2;
           }) ? this : l.call(this, o, ...r);
         };
@@ -1093,7 +1093,7 @@ body.kcd-modal-open {
     }
     getPacketaPoint() {
       const e = this.getPacketaSub();
-      if (!e || e === q) return null;
+      if (!e || e === J) return null;
       let n = null;
       try {
         n = JSON.parse(sessionStorage.getItem(Z) || "null");
@@ -1111,20 +1111,20 @@ body.kcd-modal-open {
         return;
       }
       if (n.pick.__kcd) return;
-      const i = n.pick.bind(n), d = (a, o, r) => (u("kinekus_checkout_delivery_packeta", "Packeta widget opened", "view", h), i(
+      const i = n.pick.bind(n), d = (a, o, r) => (h("kinekus_checkout_delivery_packeta", "Packeta widget opened", "view", L), i(
         a,
         (s) => {
           if (s) {
-            const L = [s.zip, s.city].filter(Boolean).join(" "), f = {
+            const p = [s.zip, s.city].filter(Boolean).join(" "), f = {
               name: s.name,
               title: s.place || s.name,
-              address: [s.street, L].filter(Boolean).join(", ")
+              address: [s.street, p].filter(Boolean).join(", ")
             };
             try {
               sessionStorage.setItem(Z, JSON.stringify(f));
             } catch {
             }
-            u("kinekus_checkout_delivery_packeta", `Point selected: ${s.id}`, "click", h);
+            h("kinekus_checkout_delivery_packeta", `Point selected: ${s.id}`, "click", L);
           }
           o(s), this.scheduleRender();
         },
@@ -1133,11 +1133,11 @@ body.kcd-modal-open {
       d.__kcd = !0, n.pick = d;
     }
     getPacketaView() {
-      const e = this.packetaInput, n = V(e == null ? void 0 : e.dataset.delivery);
+      const e = this.packetaInput, n = S(e == null ? void 0 : e.dataset.delivery);
       return {
         point: this.getPacketaPoint(),
-        dateText: n ? `${C[n.getDay()]} <span class="kcd-dot"></span> <b>${S(n)}</b>` : "",
-        priceText: k(e == null ? void 0 : e.dataset.price)
+        dateText: n ? `${b[n.getDay()]} <span class="kcd-dot"></span> <b>${D(n)}</b>` : "",
+        priceText: g(e == null ? void 0 : e.dataset.price)
       };
     }
     // ─── Home delivery carriers ────────────────────────────────────────────────
@@ -1160,19 +1160,19 @@ body.kcd-modal-open {
     }
     getCarrierViews() {
       var l, a, o;
-      const e = ((o = (a = (l = this.homeInput) == null ? void 0 : l.closest("label")) == null ? void 0 : a.querySelector(".option-sub")) == null ? void 0 : o.textContent) || "", n = V(e), i = n ? `${C[n.getDay()].replace(/^./, (r) => r.toUpperCase())} ${S(n)}` : "", d = this.getActiveCarrierId();
+      const e = ((o = (a = (l = this.homeInput) == null ? void 0 : l.closest("label")) == null ? void 0 : a.querySelector(".option-sub")) == null ? void 0 : o.textContent) || "", n = S(e), i = n ? `${b[n.getDay()].replace(/^./, (r) => r.toUpperCase())} ${D(n)}` : "", d = this.getActiveCarrierId();
       return this.getCarriers().map((r) => ({
         id: r.id,
         name: r.name,
         logo: this.getCarrierLogo(r.id),
         dateText: i,
-        note: E[r.id] || "",
-        priceText: k(r.price),
+        note: I[r.id] || "",
+        priceText: g(r.price),
         active: r.id === d
       }));
     }
     getCarrierLogo(e) {
-      return e === "DPDKURIER" ? p.dpd : e === "PACKETA_KURIER" ? p.packeta : e === "SDSKURIER" ? `<img src="${O}" alt="SDS" width="36" height="36" />` : p.truck;
+      return e === "DPDKURIER" ? u.dpd : e === "PACKETA_KURIER" ? u.packeta : e === "SDSKURIER" ? `<img src="${E}" alt="SDS" width="36" height="36" />` : u.truck;
     }
     // #actual-carrier-id lives in the delivery card, outside form#clubUser — tie
     // it to the form so the chosen carrier is actually posted with the order.
@@ -1197,10 +1197,12 @@ body.kcd-modal-open {
           { credentials: "include" }
         )).json();
         if (o.status !== "OK") return;
-        const r = ((l = this.getCarriers().find((s) => s.id === n)) == null ? void 0 : l.name) || "";
-        document.querySelectorAll(".idDeliveryPrice").forEach((s) => s.textContent = k(o.delivery).replace(" €", "")), o.totalPriceRowValue && document.querySelectorAll(".idTotalPrice").forEach((s) => s.textContent = o.totalPriceRowValue), r && document.querySelectorAll(".idDeliveryName, .idDeliveryInfo").forEach((s) => s.textContent = r);
+        const r = ((l = this.getCarriers().find((p) => p.id === n)) == null ? void 0 : l.name) || "";
+        document.querySelectorAll(".idDeliveryPrice").forEach((p) => p.textContent = w(o.delivery));
+        const s = o.totalPriceRowValue || (typeof o.total == "number" ? w(o.total) : "");
+        s && document.querySelectorAll(".idTotalPrice").forEach((p) => p.textContent = s), r && document.querySelectorAll(".idDeliveryName, .idDeliveryInfo").forEach((p) => p.textContent = r);
       } catch {
-        v("Kinekus Checkout Delivery: carrier price sync failed", "warn");
+        k("Kinekus Checkout Delivery: carrier price sync failed", "warn");
       }
     }
     // ─── Stores ────────────────────────────────────────────────────────────────
@@ -1213,16 +1215,16 @@ body.kcd-modal-open {
     getStoreViews() {
       var n;
       const e = this.getStoreInputs().map((i) => {
-        var o, r, s, L;
-        const d = i.value, l = _(this.userLocation, d), a = (((r = (o = i.closest("label")) == null ? void 0 : o.querySelector(".option-sub")) == null ? void 0 : r.textContent) || "").trim().replace(/\s*-\s*/g, "–").replace(/^./, (f) => f.toUpperCase());
+        var o, r, s, p;
+        const d = i.value, l = W(this.userLocation, d), a = (((r = (o = i.closest("label")) == null ? void 0 : o.querySelector(".option-sub")) == null ? void 0 : r.textContent) || "").trim().replace(/\s*-\s*/g, "–").replace(/^./, (f) => f.toUpperCase());
         return {
           id: d,
-          name: ((s = b[d]) == null ? void 0 : s.name) || (i.dataset.name || "").trim(),
-          address: ((L = b[d]) == null ? void 0 : L.address) || "",
-          distanceText: l != null ? W(l) : "",
+          name: ((s = C[d]) == null ? void 0 : s.name) || (i.dataset.name || "").trim(),
+          address: ((p = C[d]) == null ? void 0 : p.address) || "",
+          distanceText: l != null ? q(l) : "",
           nearest: !1,
           status: a,
-          priceText: k(i.dataset.price),
+          priceText: g(i.dataset.price),
           km: l
         };
       });
@@ -1246,7 +1248,7 @@ body.kcd-modal-open {
     selectTab(e) {
       var n, i, d, l;
       if (this.getActiveTab() !== e) {
-        if (u("kinekus_checkout_delivery_tab", `Tab: ${e}`, "click", h), e === "packeta" && ((i = (n = this.packetaInput) == null ? void 0 : n.closest("label")) == null || i.click()), e === "home" && ((l = (d = this.homeInput) == null ? void 0 : d.closest("label")) == null || l.click()), e === "store") {
+        if (h("kinekus_checkout_delivery_tab", `Tab: ${e}`, "click", L), e === "packeta" && ((i = (n = this.packetaInput) == null ? void 0 : n.closest("label")) == null || i.click()), e === "home" && ((l = (d = this.homeInput) == null ? void 0 : d.closest("label")) == null || l.click()), e === "store") {
           const a = this.preferredStoreId();
           if (!a) return;
           this.autoPicked = !0, this.autoStoreId = this.userLocation ? a : null, this.selectStore(a);
@@ -1263,7 +1265,7 @@ body.kcd-modal-open {
       var n;
       this.closeStoreModal();
       const e = (n = this.getStoreInputs()[0]) == null ? void 0 : n.dataset.price;
-      document.body.insertAdjacentHTML("beforeend", K(this.getStoreViews(), e ? k(e) : "")), document.body.classList.add("kcd-modal-open"), u("kinekus_checkout_delivery_stores", "Store picker opened", "view", h);
+      document.body.insertAdjacentHTML("beforeend", U(this.getStoreViews(), e ? g(e) : "")), document.body.classList.add("kcd-modal-open"), h("kinekus_checkout_delivery_stores", "Store picker opened", "view", L);
     }
     closeStoreModal() {
       var e;
@@ -1275,11 +1277,11 @@ body.kcd-modal-open {
       const e = this.getTabs();
       let n = "";
       const i = this.getActiveTab();
-      if (i === "packeta" && (n = A(this.getPacketaView())), i === "home" && (n = B(this.getCarrierViews())), i === "store") {
+      if (i === "packeta" && (n = B(this.getPacketaView())), i === "home" && (n = z(this.getCarrierViews())), i === "store") {
         const l = this.getSelectedStoreId(), a = this.getStoreViews().find((r) => r.id === l) || null, o = !!a && !this.userPickedStore && this.autoStoreId === l && !!((d = this.userLocation) != null && d.city);
-        n = Y(a, o ? c.locationCaption(this.userLocation.city) : "");
+        n = K(a, o ? c.locationCaption(this.userLocation.city) : "");
       }
-      this.root.innerHTML = I(e, n);
+      this.root.innerHTML = H(e, n);
     }
     scheduleRender() {
       this.renderTimer && clearTimeout(this.renderTimer), this.renderTimer = setTimeout(() => this.render(), 50);
@@ -1292,7 +1294,7 @@ body.kcd-modal-open {
         const d = n.closest("[data-kcd-carrier]");
         if (d) {
           const o = d.dataset.kcdCarrier;
-          return o === this.getActiveCarrierId() ? void 0 : (u("kinekus_checkout_delivery_carrier", `Carrier: ${o}`, "click", h), this.applyCarrier(o), this.render());
+          return o === this.getActiveCarrierId() ? void 0 : (h("kinekus_checkout_delivery_carrier", `Carrier: ${o}`, "click", L), this.applyCarrier(o), this.render());
         }
         const l = (a = n.closest("[data-kcd-action]")) == null ? void 0 : a.dataset.kcdAction;
         if (l === "packeta") return this.openPacketaWidget();
@@ -1303,7 +1305,7 @@ body.kcd-modal-open {
         const i = n.closest("[data-kcd-store]");
         if (i) {
           const d = i.dataset.kcdStore;
-          return this.userPickedStore = !0, this.autoPicked = !1, this.autoStoreId = null, u("kinekus_checkout_delivery_stores", `Store selected: ${d}`, "click", h), this.closeStoreModal(), d !== this.getSelectedStoreId() && this.selectStore(d), this.scheduleRender();
+          return this.userPickedStore = !0, this.autoPicked = !1, this.autoStoreId = null, h("kinekus_checkout_delivery_stores", `Store selected: ${d}`, "click", L), this.closeStoreModal(), d !== this.getSelectedStoreId() && this.selectStore(d), this.scheduleRender();
         }
         (n.closest('[data-kcd-action="close"]') || !n.closest(".kcd-modal-box")) && this.closeStoreModal();
       }), document.addEventListener("keydown", (e) => {
@@ -1331,9 +1333,9 @@ body.kcd-modal-open {
       });
     }
     async loadUserLocation() {
-      const e = await R();
+      const e = await _();
       if (!e) {
-        v("Kinekus Checkout Delivery: user geolocation unavailable, hiding distance", "warn");
+        k("Kinekus Checkout Delivery: user geolocation unavailable, hiding distance", "warn");
         return;
       }
       this.userLocation = e, this.preferNearestStore(), this.render();
@@ -1346,6 +1348,6 @@ body.kcd-modal-open {
       e && (this.autoStoreId = e, e !== this.getSelectedStoreId() && this.selectStore(e));
     }
   }
-  new J();
+  new X();
 })();
 //# sourceMappingURL=index.js.map
