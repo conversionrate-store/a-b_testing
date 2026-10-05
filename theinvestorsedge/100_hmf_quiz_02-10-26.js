@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const F = `html.crs-hmfq-on .body-wrapper {
+  const H = `html.crs-hmfq-on .body-wrapper {
   display: none !important;
 }
 
@@ -300,17 +300,17 @@
       childList: !0,
       subtree: !0
     });
-  }), W = ({ name: t, dev: e }) => {
+  }), O = ({ name: t, dev: e }) => {
     const n = t.toLowerCase().replace(/\s/g, "_");
     _(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
       `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, D = (t) => {
+  }, R = (t) => {
     let e = setInterval(function() {
       typeof window.clarity == "function" && (clearInterval(e), window.clarity("set", t, "variant_1"));
     }, 1e3);
-  }, j = (t, e, n, s, a = 1e3, c = 0.5) => {
+  }, D = (t, e, n, s, a = 1e3, c = 0.5) => {
     let i, h;
     i = new IntersectionObserver(
       function(o) {
@@ -359,7 +359,7 @@
     star: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 22 20" fill="none">
 		<path d="M11.0007 0L13.9102 6.99537L21.4623 7.60081L15.7084 12.5296L17.4663 19.8992L11.0007 15.95L4.53504 19.8992L6.29295 12.5296L0.539062 7.60081L8.09114 6.99537L11.0007 0Z" fill="#FDB948"/>
 		</svg>`
-  }, R = [
+  }, V = [
     "Alabama",
     "Alaska",
     "Arizona",
@@ -411,23 +411,29 @@
     "West Virginia",
     "Wisconsin",
     "Wyoming"
-  ], V = (
+  ], j = (
     /* HTML */
     `
   <div class="crs-hmfq__rating">
     <div class="crs-hmfq__rating-google">
-      <span class="crs-hmfq__rating-top">
+      <a
+        href="https://www.google.com/maps/place/The+Investor's+Edge/@40.1352276,-116.8235437,4z/data=!4m12!1m2!2m1!1sinvestors+edge+google+reviews!3m8!1s0x87528a7e4c0d9a2f:0x2780611107aaf7cc!8m2!3d40.5903343!4d-111.9405222!9m1!1b1!15sCh1pbnZlc3RvcnMgZWRnZSBnb29nbGUgcmV2aWV3cyIFOAGIAQFaECIOaW52ZXN0b3JzIGVkZ2WSARNwcm9wZXJ0eV9pbnZlc3RtZW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5UVVJuZFY5RWN6TjNSUkFC4AEA-gEFCKcBEEY!16s%2Fg%2F1tdc13cl?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank"
+        class="crs-hmfq__rating-top"
+      >
         <img src="${w}google-logo.webp" alt="Google" />
         <span class="crs-hmfq__stars">${y.star.repeat(5)}</span>
         <b>4.8</b>
-      </span>
+      </a>
       <span class="crs-hmfq__rating-count"><b>1,000+</b> Google reviews</span>
     </div>
-    <img src="${w}a-rating.webp" alt="BBB A Rating" class="crs-hmfq__rating-bbb" />
-    <div class="crs-hmfq__rating-years"><b>15+</b><span>Years<br />in<br />business</span></div>
+    <img src="${w}a-rating-1.webp" alt="BBB A Rating" class="crs-hmfq__rating-bbb" />
+    <div class="crs-hmfq__rating-years">
+      <b>15+</b><span>Years<br />in<br />business</span>
+    </div>
   </div>
 `
-  ), Y = (
+  ), U = (
     /* HTML */
     `
   <div class="crs-hmfq">
@@ -447,11 +453,11 @@
         <button class="crs-hmfq__yes" type="button">YES — Check If I Qualify</button>
         <button class="crs-hmfq__no" type="button">No, I don’t need financing</button>
       </div>
-      ${V}
+      ${j}
     </div>
   </div>
 `
-  ), U = (t, e, n, s) => {
+  ), Y = (t, e, n, s) => {
     const a = n ? n.map(
       (c, i) => (
         /* HTML */
@@ -462,7 +468,7 @@
             </label>
           `
       )
-    ).join("") : Q;
+    ).join("") : Z;
     return (
       /* HTML */
       `
@@ -473,7 +479,7 @@
     </div>
   `
     );
-  }, Q = (
+  }, Z = (
     /* HTML */
     `
   <label class="crs_quiz_answer_input_label">
@@ -519,7 +525,7 @@
     <span>State you want to invest in *</span>
     <select name="crs_state">
       <option value="" disabled selected>Select state</option>
-      ${R.map((t) => `<option value="${t}">${t}</option>`).join("")}
+      ${V.map((t) => `<option value="${t}">${t}</option>`).join("")}
     </select>
     ${y.down}
   </label>
@@ -541,7 +547,7 @@
     </div>
   </label>
 `
-  ), G = (t) => (
+  ), Q = (t) => (
     /* HTML */
     `
   <div class="crs_quiz_step crs_quiz_step--warning">
@@ -588,8 +594,8 @@
   </div>
 `
   );
-  W({ name: "100 HMF Quiz", dev: "YK" }), D("exp_100_hmf_quiz");
-  const C = "/100-hard-money-financing", L = "/apply-now", K = "23711988", Z = "a705412b-6ee7-4a13-b3ea-5f895603c9c7", J = 1, X = "Residential property (1-4 units)", ee = 4, $ = "$1,000 to $4,999", ne = 1, f = [
+  O({ name: "100 HMF Quiz", dev: "YK" }), R("exp_100_hmf_quiz");
+  const C = "/100-hard-money-financing", E = "/apply-now", G = "23711988", J = "a705412b-6ee7-4a13-b3ea-5f895603c9c7", K = 1, X = "Residential property (1-4 units)", ee = 4, L = "$1,000 to $4,999", ne = 1, f = [
     {
       question: "Do you have a property in mind?",
       description: "Clients who start without a property and follow our selection process are 131% more likely to get funded",
@@ -620,11 +626,11 @@
     {
       question: "Have you done a fix & flip deal before?",
       answers: [
-        "No, this will be my first",
-        "I’ve flipped 1–2 properties",
-        "I’ve flipped 3–6 properties",
-        "I’ve flipped 7+ properties"
-      ].map((t) => ({ label: t, value: t })),
+        { label: "No, this will be my first (Most funded)", value: "No, this will be my first" },
+        ...["I’ve flipped 1–2 properties", "I’ve flipped 3–6 properties", "I’ve flipped 7+ properties"].map(
+          (t) => ({ label: t, value: t })
+        )
+      ],
       relation: "have_you_done_a_fix__flip_deal_before"
     },
     {
@@ -637,7 +643,7 @@
     {
       question: "How much cash do you currently have available for a deal?",
       answers: [
-        { label: "$1,000 to $5,999", value: $ },
+        { label: "$1,000 to $5,999", value: L },
         { label: "$6,000 to $9,999", value: "$5,000 to $9,999" },
         { label: "$10,000 to $19,999", value: "$10,000 to $19,999" },
         { label: "$20,000 or more", value: "$20,000 or more" }
@@ -647,14 +653,14 @@
     {
       question: "Fill out the application for a free <br/>pre-qualification consultation for 100% financing"
     }
-  ], b = f.length - 1, E = (t) => {
+  ], b = f.length - 1, $ = (t) => {
     if (document.documentElement) return t(document.documentElement);
     const e = new MutationObserver(() => {
       document.documentElement && (e.disconnect(), t(document.documentElement));
     });
     e.observe(document, { childList: !0 });
-  }, P = () => E((t) => {
-    t.querySelector(".crs-hmfq-style") || t.insertAdjacentHTML("afterbegin", `<style class="crs-hmfq-style">${F}</style>`);
+  }, P = () => $((t) => {
+    t.querySelector(".crs-hmfq-style") || t.insertAdjacentHTML("afterbegin", `<style class="crs-hmfq-style">${H}</style>`);
   }), q = (t) => {
     const e = t.replace(/\D/g, "");
     return e.length === 10 ? `+1${e}` : e.length === 11 && e[0] === "1" ? `+${e}` : null;
@@ -664,15 +670,15 @@
   };
   class te {
     constructor() {
-      E((e) => e.classList.add("crs-hmfq-on")), P(), this.init();
+      $((e) => e.classList.add("crs-hmfq-on")), P(), this.init();
     }
     async init() {
       var e, n;
-      await k("body"), !document.querySelector(".crs-hmfq") && (document.body.insertAdjacentHTML("afterbegin", Y), (e = document.querySelector(".crs-hmfq__yes")) == null || e.addEventListener("click", () => {
-        _("exp_hmf_quiz_start_yes", "YES — Check If I Qualify", "click", "HMF start block"), window.location.href = L + window.location.search;
+      await k("body"), !document.querySelector(".crs-hmfq") && (document.body.insertAdjacentHTML("afterbegin", U), (e = document.querySelector(".crs-hmfq__yes")) == null || e.addEventListener("click", () => {
+        _("exp_hmf_quiz_start_yes", "YES — Check If I Qualify", "click", "HMF start block"), window.location.href = E + window.location.search;
       }), (n = document.querySelector(".crs-hmfq__no")) == null || n.addEventListener("click", () => {
         _("exp_hmf_quiz_start_no", "No, I don’t need financing", "click", "HMF start block"), window.location.href = "/";
-      }), j(".crs-hmfq__buttons", "exp_hmf_quiz_start_view", "HMF start block", "Quiz start block"));
+      }), D(".crs-hmfq__buttons", "exp_hmf_quiz_start_view", "HMF start block", "Quiz start block"));
     }
   }
   class se {
@@ -715,11 +721,11 @@
         return;
       }
       const n = Number(e.value), s = f[this.step].answers[n];
-      if (this.answers[this.step] = n, this.step === J && s.value !== X) {
+      if (this.answers[this.step] = n, this.step === K && s.value !== X) {
         this.showPropertyWarning(s.value);
         return;
       }
-      if (this.step === ee && s.value === $) {
+      if (this.step === ee && s.value === L) {
         this.showCashWarning();
         return;
       }
@@ -729,7 +735,7 @@
       this.showingWarning = !0, this.continueBtn.style.display = "none", this.stepContainer.innerHTML = e;
     }
     showPropertyWarning(e) {
-      this.showWarning(G(e)), _("exp_hmf_quiz_warning_property", `Property type warning: ${e}`, "view", "quiz_step_2"), this.stepContainer.querySelector(".crs_warning_yes").addEventListener("click", () => {
+      this.showWarning(Q(e)), _("exp_hmf_quiz_warning_property", `Property type warning: ${e}`, "view", "quiz_step_2"), this.stepContainer.querySelector(".crs_warning_yes").addEventListener("click", () => {
         _("exp_hmf_quiz_warning_property_yes", "Property warning - Yes", "click", "quiz_step_2"), this.answers[this.step] = 0, this.resetView(), this.setStep(this.step + 1);
       }), this.stepContainer.querySelector(".crs_warning_no").addEventListener("click", () => {
         _("exp_hmf_quiz_warning_property_no", "Property warning - No", "click", "quiz_step_2"), this.resetView(), this.setStep(this.step);
@@ -748,7 +754,7 @@
       if (e < 0) return;
       this.step = e;
       const { question: n, answers: s, description: a } = f[e];
-      this.errorEl.classList.remove("active"), this.stepContainer.innerHTML = U(e + 1, n, s, a), this.backBtn.classList.toggle("active", e > 0 || this.cameFromHmf), this.continueBtn.textContent = e === b ? "Apply now" : "Continue", this.container.querySelector(".crs_quiz_progress_bar").style.width = `${(e + 1) / f.length * 100}%`, window.scrollTo(0, 0);
+      this.errorEl.classList.remove("active"), this.stepContainer.innerHTML = Y(e + 1, n, s, a), this.backBtn.classList.toggle("active", e > 0 || this.cameFromHmf), this.continueBtn.textContent = e === b ? "Apply now" : "Continue", this.container.querySelector(".crs_quiz_progress_bar").style.width = `${(e + 1) / f.length * 100}%`, window.scrollTo(0, 0);
       const c = this.answers[e];
       if (c !== void 0) {
         const i = this.stepContainer.querySelector(`input[value="${c}"]`);
@@ -772,7 +778,7 @@
       }), this.setupPhone();
     }
     setupPhone() {
-      const e = this.stepContainer.querySelector(".crs_phone_verify_block"), n = e.querySelector(".crs_phone_base"), s = e.querySelector('input[name="crs_phone"]'), a = e.querySelector(".crs_phone_field_label"), c = e.querySelector(".crs_send_code_btn"), i = e.querySelector(".crs_phone_otp"), h = e.querySelector(".crs_otp_phone_num"), o = Array.from(e.querySelectorAll(".crs_otp_digit")), I = e.querySelector(".crs_otp_timer_box"), re = e.querySelector(".crs_timer_text"), B = e.querySelector(".crs_phone_verified_box"), M = e.querySelector(".crs_resend_row"), v = () => {
+      const e = this.stepContainer.querySelector(".crs_phone_verify_block"), n = e.querySelector(".crs_phone_base"), s = e.querySelector('input[name="crs_phone"]'), a = e.querySelector(".crs_phone_field_label"), c = e.querySelector(".crs_send_code_btn"), i = e.querySelector(".crs_phone_otp"), h = e.querySelector(".crs_otp_phone_num"), o = Array.from(e.querySelectorAll(".crs_otp_digit")), T = e.querySelector(".crs_otp_timer_box"), re = e.querySelector(".crs_timer_text"), B = e.querySelector(".crs_phone_verified_box"), M = e.querySelector(".crs_resend_row"), v = () => {
         this.phoneTimerInterval && clearInterval(this.phoneTimerInterval), this.phoneTimerInterval = null;
       }, ie = (r = 60) => {
         v();
@@ -783,11 +789,11 @@
         p(), this.phoneTimerInterval = setInterval(() => {
           l--, p(), l <= 0 && v();
         }, 1e3);
-      }, H = (r) => {
-        n.style.display = "none", i.style.display = "flex", h.textContent = r, I.style.display = "none", B.style.display = "flex", M.style.display = "none", o.forEach((l) => l.disabled = !0);
+      }, A = (r) => {
+        n.style.display = "none", i.style.display = "flex", h.textContent = r, T.style.display = "none", B.style.display = "flex", M.style.display = "none", o.forEach((l) => l.disabled = !0);
       }, N = () => {
         o.forEach((r) => r.classList.add("crs_digit_error")), o[0].focus();
-      }, A = async () => {
+      }, F = async () => {
         var p, d;
         const r = q(s.value), l = o.map((m) => m.value).join("");
         if (!(!r || l.length < 4))
@@ -797,11 +803,11 @@
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ phoneNumber: r, code: l })
             })).json();
-            g.success && ((p = g.verificationCheck) == null ? void 0 : p.status) === "approved" ? (this.phoneVerified = !0, this.verifiedPhone = r, v(), H(r), (d = e.querySelector(".crs_phone_verify_error")) == null || d.remove(), _("exp_hmf_quiz_form_phone_verified", "Phone verified", "success", "quiz_form")) : (N(), _("exp_hmf_quiz_form_phone_verify_failed", "Phone verification failed", "error", "quiz_form"));
+            g.success && ((p = g.verificationCheck) == null ? void 0 : p.status) === "approved" ? (this.phoneVerified = !0, this.verifiedPhone = r, v(), A(r), (d = e.querySelector(".crs_phone_verify_error")) == null || d.remove(), _("exp_hmf_quiz_form_phone_verified", "Phone verified", "success", "quiz_form")) : (N(), _("exp_hmf_quiz_form_phone_verify_failed", "Phone verification failed", "error", "quiz_form"));
           } catch {
             N();
           }
-      }, O = async (r) => {
+      }, W = async (r) => {
         var l;
         c.disabled = !0, c.textContent = "...", (l = e.querySelector(".crs_phone_verify_error")) == null || l.remove();
         try {
@@ -810,7 +816,7 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ phoneNumber: r })
           })).json();
-          d.success ? (h.textContent = r, i.style.display = "flex", n.style.display = "none", I.style.display = "flex", B.style.display = "none", o.forEach((m) => {
+          d.success ? (h.textContent = r, i.style.display = "flex", n.style.display = "none", T.style.display = "flex", B.style.display = "none", o.forEach((m) => {
             m.value = "", m.classList.remove("crs_digit_error");
           }), ie(), o[0].focus()) : u(a, d.message || "Failed to send code. Please try again.", "crs_phone_verify_error");
         } catch {
@@ -819,7 +825,7 @@
           c.disabled = !1, c.textContent = "Send code";
         }
       };
-      this.phoneVerified && (s.value = this.verifiedPhone, H(this.verifiedPhone)), c.addEventListener("click", () => {
+      this.phoneVerified && (s.value = this.verifiedPhone, A(this.verifiedPhone)), c.addEventListener("click", () => {
         var l;
         (l = e.querySelector(".crs_phone_verify_error")) == null || l.remove(), _("exp_hmf_quiz_form_phone_send", "Send code", "click", "quiz_form");
         const r = q(s.value);
@@ -827,21 +833,21 @@
           u(a, "Please enter a valid US phone number", "crs_phone_verify_error");
           return;
         }
-        O(r);
+        W(r);
       }), o.forEach((r, l) => {
         r.addEventListener("input", () => {
-          r.classList.remove("crs_digit_error"), r.value = r.value.replace(/\D/g, "").slice(0, 1), r.value && l < o.length - 1 && o[l + 1].focus(), A();
+          r.classList.remove("crs_digit_error"), r.value = r.value.replace(/\D/g, "").slice(0, 1), r.value && l < o.length - 1 && o[l + 1].focus(), F();
         }), r.addEventListener("keydown", (p) => {
           p.key === "Backspace" && !r.value && l > 0 && o[l - 1].focus();
         }), r.addEventListener("paste", (p) => {
           var m, g;
           p.preventDefault();
           const d = (((m = p.clipboardData) == null ? void 0 : m.getData("text")) || "").replace(/\D/g, "").slice(0, 4);
-          d.split("").forEach((x, oe) => o[oe].value = x), o.forEach((x) => x.classList.remove("crs_digit_error")), d.length === 4 ? A() : (g = o[d.length]) == null || g.focus();
+          d.split("").forEach((x, oe) => o[oe].value = x), o.forEach((x) => x.classList.remove("crs_digit_error")), d.length === 4 ? F() : (g = o[d.length]) == null || g.focus();
         });
       }), e.querySelector(".crs_resend_code_btn").addEventListener("click", () => {
         const r = q(s.value);
-        r && O(r);
+        r && W(r);
       }), e.querySelector(".crs_change_phone_btn").addEventListener("click", () => {
         this.phoneVerified = !1, this.verifiedPhone = "", v(), i.style.display = "none", n.style.display = "block", M.style.display = "", o.forEach((r) => {
           r.disabled = !1, r.value = "";
@@ -887,7 +893,7 @@
       a && (s.msclkid = a), this.continueBtn.disabled = !0, this.continueBtn.textContent = "Submitting...";
       try {
         const i = await fetch(
-          `https://api.hsforms.com/submissions/v3/integration/submit/${K}/${Z}`,
+          `https://api.hsforms.com/submissions/v3/integration/submit/${G}/${J}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -923,7 +929,7 @@
       return ((e = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)) == null ? void 0 : e[1]) || "";
     }
   }
-  const T = window.location.pathname.replace(/\/+$/, "");
-  T === C ? new te() : T === L && new se();
+  const I = window.location.pathname.replace(/\/+$/, "");
+  I === C ? new te() : I === E && new se();
 })();
 //# sourceMappingURL=index.js.map
