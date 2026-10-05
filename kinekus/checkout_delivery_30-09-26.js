@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const T = `#delivery-section {
+  const Y = `#delivery-section {
   display: none !important;
 }
 
@@ -595,6 +595,44 @@ body.kcd-modal-open {
 }
 
 @media (max-width: 640px) {
+  #order-steps {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 8px;
+  }
+  #order-steps > .step-separator {
+    display: none !important;
+  }
+  #order-steps > div {
+    min-width: 0;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #order-steps .step-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 8px 0;
+    text-align: left !important;
+  }
+  #order-steps .step-number {
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+  #order-steps .step-wrap > span:not(.step-number),
+  #order-steps .step-wrap a,
+  #order-steps .step-wrap a span {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left !important;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
   #unified-checkout > #payment-section,
   #unified-checkout > #contact-section {
     margin-top: 16px;
@@ -661,51 +699,51 @@ body.kcd-modal-open {
     padding: 0 16px;
   }
 }
-`, h = (t, e, n, i = "") => {
+`, f = (t, e, n, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
       event_desc: e,
       event_type: n,
       event_loc: i
-    }), k(`Event: ${t} | ${e} | ${n} | ${i}`, "success");
-  }, m = (t) => new Promise((e) => {
+    }), m(`Event: ${t} | ${e} | ${n} | ${i}`, "success");
+  }, M = (t) => new Promise((e) => {
     const n = document.querySelector(t);
     n && e(n);
     const i = new MutationObserver(() => {
-      const d = document.querySelector(t);
-      d && (e(d), i.disconnect());
+      const l = document.querySelector(t);
+      l && (e(l), i.disconnect());
     });
     i.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), O = ({ name: t, dev: e }) => {
+  }), N = ({ name: t, dev: e }) => {
     const n = t.toLowerCase().replace(/\s/g, "_");
-    h(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
+    f(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
       `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, P = (t, e, n, i, d = 1e3, l = 0.5) => {
-    let a, o;
-    a = new IntersectionObserver(
-      function(r) {
-        r[0].isIntersecting === !0 ? o = setTimeout(() => {
-          h(
+  }, j = (t, e, n, i, l = 1e3, o = 0.5) => {
+    let r, d;
+    r = new IntersectionObserver(
+      function(a) {
+        a[0].isIntersecting === !0 ? d = setTimeout(() => {
+          f(
             e,
-            r[0].target.dataset.visible || i,
+            a[0].target.dataset.visible || i,
             "view",
             n
-          ), a.disconnect();
-        }, d) : (k("Element is not fully visible", "warn"), clearTimeout(o));
+          ), r.disconnect();
+        }, l) : (m("Element is not fully visible", "warn"), clearTimeout(d));
       },
-      { threshold: [l] }
+      { threshold: [o] }
     );
     {
-      const r = document.querySelector(t);
-      r && a.observe(r);
+      const a = document.querySelector(t);
+      a && r.observe(a);
     }
-  }, k = (t, e = "info") => {
+  }, m = (t, e = "info") => {
     let n;
     switch (e) {
       case "info":
@@ -722,7 +760,7 @@ body.kcd-modal-open {
         break;
     }
     console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
-  }, u = {
+  }, h = {
     truck: (
       /* HTML */
       '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M8.163 22.25H6.96C6.409 22.25 5.96 21.801 5.96 21.25V17.25C5.96 16.698 5.512 16.25 4.96 16.25C4.408 16.25 3.96 16.698 3.96 17.25V21.25C3.96 22.904 5.306 24.25 6.96 24.25H8.163C8.597 25.69 9.92 26.75 11.5 26.75C13.08 26.75 14.403 25.69 14.837 24.25H19H21.163C21.597 25.69 22.92 26.75 24.5 26.75C26.08 26.75 27.403 25.69 27.837 24.25H30C30.552 24.25 31 23.802 31 23.25V18.25C31 17.507 30.689 16.481 30.277 15.863L27.386 11.527C26.892 10.787 25.888 10.25 24.999 10.25H22.195V8.25C22.195 6.596 20.849 5.25 19.195 5.25H16C15.448 5.25 15 5.698 15 6.25C15 6.802 15.448 7.25 16 7.25H19.196C19.747 7.25 20.196 7.699 20.196 8.25V22.25H19H14.837C14.403 20.81 13.08 19.75 11.5 19.75C9.92 19.75 8.597 20.81 8.163 22.25ZM24.5 24.75C23.673 24.75 23 24.077 23 23.25C23 22.423 23.673 21.75 24.5 21.75C25.327 21.75 26 22.423 26 23.25C26 24.077 25.327 24.75 24.5 24.75ZM22.196 12.25H25C25.217 12.25 25.602 12.456 25.723 12.637L27.465 15.25H22.196V12.25ZM22.196 17.25H28.757C28.893 17.567 29 17.987 29 18.25V22.25H27.837C27.403 20.81 26.08 19.75 24.5 19.75C23.614 19.75 22.813 20.091 22.196 20.636V17.25ZM13 23.25C13 24.077 12.327 24.75 11.5 24.75C10.673 24.75 10 24.077 10 23.25C10 22.423 10.673 21.75 11.5 21.75C12.327 21.75 13 22.423 13 23.25Z" fill="#34684C"/><path d="M14 6.25C14 5.698 13.552 5.25 13 5.25H2C1.448 5.25 1 5.698 1 6.25C1 6.802 1.448 7.25 2 7.25H13C13.552 7.25 14 6.802 14 6.25Z" fill="#34684C"/><path d="M11 11.25C11.552 11.25 12 10.802 12 10.25C12 9.698 11.552 9.25 11 9.25H4C3.448 9.25 3 9.698 3 10.25C3 10.802 3.448 11.25 4 11.25H11Z" fill="#34684C"/><path d="M9 15.25C9.552 15.25 10 14.802 10 14.25C10 13.698 9.552 13.25 9 13.25H6C5.448 13.25 5 13.698 5 14.25C5 14.802 5.448 15.25 6 15.25H9Z" fill="#34684C"/></g></svg>'
@@ -755,7 +793,7 @@ body.kcd-modal-open {
       /* HTML */
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#kcd-clip0-0-6)"><path d="M8 -2.38419e-07C4.692 -2.38419e-07 2 2.71067 2 6.04333C2 10.7787 7.436 15.668 7.66733 15.8733C7.76267 15.958 7.88133 16 8 16C8.11867 16 8.23733 15.958 8.33267 15.874C8.564 15.668 14 10.7787 14 6.04333C14 2.71067 11.308 -2.38419e-07 8 -2.38419e-07ZM8 9.33333C6.162 9.33333 4.66667 7.838 4.66667 6C4.66667 4.162 6.162 2.66667 8 2.66667C9.838 2.66667 11.3333 4.162 11.3333 6C11.3333 7.838 9.838 9.33333 8 9.33333Z" fill="#057222"/></g><defs><clipPath id="kcd-clip0-0-6"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>'
     )
-  }, E = "data:image/png;base64,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", c = {
+  }, F = "data:image/png;base64,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", c = {
     heading: "Ako chcete tovar prevziať?",
     hint: "Vyberte spôsob, potom upresníte miesto alebo kuriéra.",
     tabPacketa: "Packeta – výdajné miesta a Z‑BOXY",
@@ -776,11 +814,11 @@ body.kcd-modal-open {
     modalFee: (t) => `Poplatok za vyzdvihnutie — ${t}`,
     modalSelect: "Vybrať",
     close: "Zavrieť"
-  }, b = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"], I = {
+  }, Z = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"], _ = {
     DPDKURIER: "zavolá pred doručením",
     PACKETA_KURIER: "zavolá pred doručením",
     SDSKURIER: "vyloženie pred dom"
-  }, C = {
+  }, w = {
     OOZ: { name: "KiNEKUS Eshop Žilina", address: "Rosinská cesta 13, Žilina" },
     OOVajnory: { name: "KiNEKUS Bratislava Vajnory", address: "Pri starom letisku 3, 831 07 Bratislava" },
     OOBratislava: { name: "KiNEKUS Bratislava Fedinova – Petržalka", address: "Fedinova 14, Bratislava" },
@@ -796,32 +834,32 @@ body.kcd-modal-open {
     OOKosice: { name: "KiNEKUS Košice", address: "Pri Prachárni 4, 040 11 Košice" },
     OONoveZamky: { name: "KiNEKUS Nové Zámky", address: "Dvorská cesta 5, 940 01 Nové Zámky" },
     OOPoprad: { name: "KiNEKUS Poprad, OC Kriváň", address: "Dlhé Hony 5268/9, 058 01 Poprad" }
-  }, x = {
-    packeta: { label: c.tabPacketa, icon: u.packeta },
-    home: { label: c.tabHome, icon: u.truck },
-    store: { label: c.tabStore, icon: u.store }
-  }, y = (
+  }, V = {
+    packeta: { label: c.tabPacketa, icon: h.packeta },
+    home: { label: c.tabHome, icon: h.truck },
+    store: { label: c.tabStore, icon: h.store }
+  }, x = (
     /* HTML */
     '<span class="kcd-dot"></span>'
-  ), H = (t, e) => (
+  ), R = (t, e) => (
     /* HTML */
     `
   <div class="kcd-head">
     <div class="kcd-title">${c.heading}</div>
     <div class="kcd-hint">${c.hint}</div>
   </div>
-  <div class="kcd-tabs kcd-tabs--${t.length}">${t.map(A).join("")}</div>
+  <div class="kcd-tabs kcd-tabs--${t.length}">${t.map(G).join("")}</div>
   ${e}
 `
-  ), A = (t) => (
+  ), G = (t) => (
     /* HTML */
     `
   <button type="button" class="kcd-tab ${t.active ? "kcd-tab--active" : ""}" data-kcd-tab="${t.id}">
-    <span class="kcd-tab-icon">${x[t.id].icon}</span>
-    <span class="kcd-tab-label">${x[t.id].label}</span>
+    <span class="kcd-tab-icon">${V[t.id].icon}</span>
+    <span class="kcd-tab-label">${V[t.id].label}</span>
   </button>
 `
-  ), B = (t) => (
+  ), W = (t) => (
     /* HTML */
     `
   <div class="kcd-card">
@@ -836,10 +874,17 @@ body.kcd-modal-open {
             </div>
             ${t.point.address ? (
         /* HTML */
-        `<div class="kcd-row"><span class="kcd-row-icon">${u.pin}</span>${t.point.address}</div>`
+        `
+                  <div class="kcd-row">
+                    <span class="kcd-row-icon">${h.pin}</span>
+                    ${t.point.address}
+                    ${t.point.distanceText ? `${x}<b>${t.point.distanceText}</b>` : ""}
+                    ${t.point.nearest ? `<span class="kcd-badge">${c.nearest}</span>` : ""}
+                  </div>
+                `
       ) : ""}
             <div class="kcd-row">
-              <span class="kcd-row-icon">${u.delivery}</span>
+              <span class="kcd-row-icon">${h.delivery}</span>
               ${c.deliveryPrefix}: ${t.dateText}
               <span class="kcd-badge">${t.priceText}</span>
             </div>
@@ -857,24 +902,25 @@ body.kcd-modal-open {
               <button type="button" class="kcd-btn" data-kcd-action="packeta">${c.packetaEmptyBtn}</button>
             </div>
             <div class="kcd-row">
-              <span class="kcd-row-icon">${u.delivery}</span>
+              <span class="kcd-row-icon">${h.delivery}</span>
               ${c.deliveryPrefix}: ${t.dateText}
               <span class="kcd-badge">${t.priceText}</span>
             </div>
           </div>
         `
     )}
+    ${t.caption ? `<div class="kcd-caption">${t.caption}</div>` : ""}
   </div>
 `
-  ), z = (t) => (
+  ), q = (t) => (
     /* HTML */
     `
   <div class="kcd-card">
     <div class="kcd-card-title">${c.homeHeading}</div>
-    <div class="kcd-carriers">${t.map(Y).join("")}</div>
+    <div class="kcd-carriers">${t.map(J).join("")}</div>
   </div>
 `
-  ), Y = (t) => (
+  ), J = (t) => (
     /* HTML */
     `
   <button type="button" class="kcd-carrier ${t.active ? "kcd-carrier--active" : ""}" data-kcd-carrier="${t.id}">
@@ -884,13 +930,13 @@ body.kcd-modal-open {
       <span class="kcd-carrier-name">${t.name}</span>
       <span class="kcd-carrier-meta">
         <span class="kcd-carrier-date">${t.dateText}</span>
-        ${t.note ? `${y}<span>${t.note}</span>` : ""}
+        ${t.note ? `${x}<span>${t.note}</span>` : ""}
       </span>
     </span>
     <span class="kcd-carrier-price ${t.priceText === c.free ? "kcd-carrier-price--free" : ""}">${t.priceText}</span>
   </button>
 `
-  ), K = (t, e) => (
+  ), X = (t, e) => (
     /* HTML */
     `
   <div class="kcd-card">
@@ -907,12 +953,12 @@ body.kcd-modal-open {
               <button type="button" class="kcd-link" data-kcd-action="stores">${c.change}</button>
             </div>
             <div class="kcd-row">
-              <span class="kcd-row-icon">${u.pin}</span>
+              <span class="kcd-row-icon">${h.pin}</span>
               ${t.address}
-              ${t.distanceText ? `${y}<b>${t.distanceText}</b>` : ""}
+              ${t.distanceText ? `${x}<b>${t.distanceText}</b>` : ""}
             </div>
             <div class="kcd-row">
-              <span class="kcd-row-icon">${u.shop}</span>
+              <span class="kcd-row-icon">${h.shop}</span>
               ${t.status}
               <span class="kcd-badge">${t.priceText}</span>
             </div>
@@ -922,7 +968,7 @@ body.kcd-modal-open {
     ${e ? `<div class="kcd-caption">${e}</div>` : ""}
   </div>
 `
-  ), U = (t, e) => (
+  ), Q = (t, e) => (
     /* HTML */
     `
   <div class="kcd-modal" id="kcdModal" role="dialog" aria-modal="true">
@@ -932,11 +978,11 @@ body.kcd-modal-open {
         <div class="kcd-modal-title">${c.modalTitle}</div>
         ${e ? `<div class="kcd-modal-fee">${c.modalFee(e)}</div>` : ""}
       </div>
-      <div class="kcd-modal-list">${t.map(N).join("")}</div>
+      <div class="kcd-modal-list">${t.map(ee).join("")}</div>
     </div>
   </div>
 `
-  ), N = (t) => (
+  ), ee = (t) => (
     /* HTML */
     `
   <div class="kcd-store">
@@ -944,7 +990,7 @@ body.kcd-modal-open {
       <div class="kcd-store-top">
         ${t.distanceText ? (
       /* HTML */
-      `<span class="kcd-store-dist">${u.pinSmall}${t.distanceText}</span>`
+      `<span class="kcd-store-dist">${h.pinSmall}${t.distanceText}</span>`
     ) : ""}
         <span class="kcd-store-name">${t.name}</span>
       </div>
@@ -953,7 +999,7 @@ body.kcd-modal-open {
     <button type="button" class="kcd-store-btn" data-kcd-store="${t.id}">${c.modalSelect}</button>
   </div>
 `
-  ), $ = {
+  ), ne = {
     OOVajnory: [48.199377, 17.195798],
     // Bratislava Vajnory, Pri starom letisku 3
     OOBratislava: [48.11776, 17.10317],
@@ -982,15 +1028,15 @@ body.kcd-modal-open {
     // Nové Zámky, Dvorská cesta 5
     OOPoprad: [49.04961, 20.29178]
     // Poprad, Dlhé Hony 5268/9
-  }, j = 6371, v = (t) => t * Math.PI / 180, F = (t, e, n, i) => {
-    const d = v(n - t), l = v(i - e), a = Math.sin(d / 2) ** 2 + Math.cos(v(t)) * Math.cos(v(n)) * Math.sin(l / 2) ** 2, o = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return j * o;
-  }, G = {
-    ...$,
+  }, te = 6371, g = (t) => t * Math.PI / 180, S = (t, e, n, i) => {
+    const l = g(n - t), o = g(i - e), r = Math.sin(l / 2) ** 2 + Math.cos(g(t)) * Math.cos(g(n)) * Math.sin(o / 2) ** 2, d = 2 * Math.atan2(Math.sqrt(r), Math.sqrt(1 - r));
+    return te * d;
+  }, ie = {
+    ...ne,
     OOZ: [49.2046, 18.7598]
-  }, M = "kcd_user_geo", R = "https://get.geojs.io/v1/ip/geo.json", _ = async (t = 4e3) => {
+  }, P = "kcd_user_geo", le = "https://get.geojs.io/v1/ip/geo.json", oe = async (t = 4e3) => {
     try {
-      const e = sessionStorage.getItem(M);
+      const e = sessionStorage.getItem(P);
       if (e) {
         const n = JSON.parse(e);
         if (typeof (n == null ? void 0 : n.lat) == "number" && typeof (n == null ? void 0 : n.lon) == "number") return n;
@@ -998,65 +1044,117 @@ body.kcd-modal-open {
     } catch {
     }
     try {
-      const e = new AbortController(), n = setTimeout(() => e.abort(), t), i = await fetch(R, { signal: e.signal });
+      const e = new AbortController(), n = setTimeout(() => e.abort(), t), i = await fetch(le, { signal: e.signal });
       if (clearTimeout(n), !i.ok) return null;
-      const d = await i.json(), l = parseFloat(d.latitude), a = parseFloat(d.longitude);
-      if (Number.isNaN(l) || Number.isNaN(a)) return null;
-      const o = { lat: l, lon: a, city: d.city || "" };
+      const l = await i.json(), o = parseFloat(l.latitude), r = parseFloat(l.longitude);
+      if (Number.isNaN(o) || Number.isNaN(r)) return null;
+      const d = { lat: o, lon: r, city: l.city || "" };
       try {
-        sessionStorage.setItem(M, JSON.stringify(o));
+        sessionStorage.setItem(P, JSON.stringify(d));
       } catch {
       }
-      return o;
+      return d;
     } catch {
       return null;
     }
-  }, W = (t, e) => {
-    const n = G[e];
-    return !t || !n ? null : F(t.lat, t.lon, n[0], n[1]);
-  }, q = (t) => t < 10 ? `${t.toFixed(1).replace(".", ",")} km` : `${Math.round(t)} km`;
-  O({ name: "Kinekus Checkout Delivery", dev: "AI" });
-  const L = "Checkout delivery options", Z = "kcd_packeta_point", J = "Vyberte výdajné miesto", g = (t) => {
+  }, de = (t, e) => {
+    const n = ie[e];
+    return !t || !n ? null : S(t.lat, t.lon, n[0], n[1]);
+  }, D = (t) => t < 10 ? `${t.toFixed(1).replace(".", ",")} km` : `${Math.round(t)} km`, C = "https://widget.packeta.com/v6/pps/api/widget/v2", T = "kcd_packeta_nearest", ae = "0123456789bcdefghjkmnpqrstuvwxyz", re = (t, e, n = 6) => {
+    const i = [-90, 90], l = [-180, 180];
+    let o = "", r = 0, d = 0, a = !0;
+    for (; o.length < n; ) {
+      const s = a ? l : i, p = a ? e : t, u = (s[0] + s[1]) / 2;
+      p >= u ? (r = r << 1 | 1, s[0] = u) : (r = r << 1, s[1] = u), a = !a, ++d === 5 && (o += ae[r], r = 0, d = 0);
+    }
+    return o;
+  }, y = async (t, e) => {
+    const n = new AbortController(), i = setTimeout(() => n.abort(), e);
+    try {
+      const l = await fetch(t, { signal: n.signal });
+      if (!l.ok) throw new Error(`HTTP ${l.status}`);
+      return await l.json();
+    } finally {
+      clearTimeout(i);
+    }
+  }, ce = async (t, e, n = "sk", i = 4e3) => {
+    var o, r, d, a;
+    const l = re(e.lat, e.lon);
+    try {
+      const s = JSON.parse(sessionStorage.getItem(T) || "null");
+      if ((s == null ? void 0 : s.hash) === l && s.point) return s.point;
+    } catch {
+    }
+    try {
+      const s = `App_ApiKey=${encodeURIComponent(t)}&App_Countries=${n}`, { vendors: p = [] } = await y(`${C}/vendors?${s}`, i), u = `${s}&App_VendorCodes=${encodeURIComponent(p.map((v) => v.code).join(","))}`, z = (await y(`${C}/geohash/${l}?Limit=20&${u}`, i)).find(
+        (v) => {
+          var $, K, U;
+          return v.canBeSelected !== !1 && !(($ = v.flags) != null && $.isFull) && !((K = v.flags) != null && K.isOnHoliday) && !((U = v.flags) != null && U.isOnHoliday_PickUp);
+        }
+      );
+      if (!z) return null;
+      const L = await y(`${C}/${z.externalId}?${u}`, i), B = {
+        id: String(L.externalId).replace(/^\D+_/, ""),
+        // Native/widget `name` is the address line, `place` the point's own name
+        name: ((o = L.address) == null ? void 0 : o.name) || L.name,
+        place: L.name || "",
+        street: ((r = L.address) == null ? void 0 : r.street) || "",
+        city: ((d = L.address) == null ? void 0 : d.city) || "",
+        zip: ((a = L.address) == null ? void 0 : a.zip) || "",
+        // distanceFromOrigin is from the geohash cell centre — measure from the visitor
+        distanceKm: L.coordinates ? S(e.lat, e.lon, L.coordinates.latitude, L.coordinates.longitude) : null
+      };
+      try {
+        sessionStorage.setItem(T, JSON.stringify({ hash: l, point: B }));
+      } catch {
+      }
+      return B;
+    } catch {
+      return null;
+    }
+  };
+  N({ name: "Kinekus Checkout Delivery", dev: "AI" });
+  const k = "Checkout delivery options", O = "kcd_packeta_point", se = "Vyberte výdajné miesto", pe = 1e4, b = (t) => {
     const e = typeof t == "number" ? t : parseFloat(t || "0");
     return !e || e <= 0 ? c.free : `${e.toFixed(2).replace(".", ",")} €`;
-  }, w = (t) => (parseFloat(String(t ?? 0)) || 0).toFixed(2).replace(".", ","), V = (t) => String(t).padStart(2, "0"), S = (t) => {
+  }, A = (t) => (parseFloat(String(t ?? 0)) || 0).toFixed(2).replace(".", ","), E = (t) => String(t).padStart(2, "0"), I = (t) => {
     const e = (t || "").match(/(\d{1,2})\.(\d{1,2})\.(\d{4})?/);
     if (!e) return null;
     const n = /* @__PURE__ */ new Date(), i = new Date(e[3] ? +e[3] : n.getFullYear(), +e[2] - 1, +e[1]);
     return !e[3] && i.getTime() < n.getTime() - 30 * 864e5 && i.setFullYear(i.getFullYear() + 1), i;
-  }, D = (t) => `${V(t.getDate())}.${V(t.getMonth() + 1)}`;
-  class X {
+  }, H = (t) => `${E(t.getDate())}.${E(t.getMonth() + 1)}`;
+  class ue {
     constructor() {
-      this.userLocation = null, this.carrierId = null, this.userPickedStore = !1, this.autoStoreId = null, this.autoPicked = !1, this.renderTimer = null, this.init();
+      this.userLocation = null, this.carrierId = null, this.userPickedStore = !1, this.autoStoreId = null, this.autoPicked = !1, this.renderTimer = null, this.locationPromise = Promise.resolve(null), this.packetaHooked = Promise.resolve(!1), this.packetaAutoPickAt = 0, this.init();
     }
     async init() {
-      await m("head"), document.head.insertAdjacentHTML("beforeend", `<style>${T}</style>`);
-      const e = await m("#delivery-section");
-      document.getElementById("kcdDelivery") || (e.insertAdjacentHTML("beforebegin", '<section class="kcd-block" id="kcdDelivery"></section>'), this.root = document.getElementById("kcdDelivery"), this.render(), this.bindEvents(), this.watchNative(), this.hookPacketaWidget(), this.keepSectionsOpen(), this.loadUserLocation(), P("#kcdDelivery", "exp_kinekus_checkout_delivery_01", L, "Checkout delivery options visibility"));
+      await M("head"), document.head.insertAdjacentHTML("beforeend", `<style>${Y}</style>`);
+      const e = await M("#delivery-section");
+      document.getElementById("kcdDelivery") || (e.insertAdjacentHTML("beforebegin", '<section class="kcd-block" id="kcdDelivery"></section>'), this.root = document.getElementById("kcdDelivery"), this.locationPromise = oe(), this.packetaHooked = this.hookPacketaWidget(), this.render(), this.bindEvents(), this.watchNative(), this.keepSectionsOpen(), this.loadUserLocation(), this.autoSelectDelivery(), j("#kcdDelivery", "exp_kinekus_checkout_delivery_01", k, "Checkout delivery options visibility"));
     }
     // Payment and contact sections are shown from the start (CSS overrides the
     // native `.hidden` step reveal). Native still toggles `.hidden` — and scrolls
     // to a section each time it "reveals" it — so drop exactly those scrolls, and
     // keep unselected payment options from collapsing after a pick.
     keepSectionsOpen() {
-      var d;
+      var l;
       const e = window.jQuery;
-      if ((d = e == null ? void 0 : e.fn) != null && d.animate && !e.fn.animate.__kcd) {
-        const l = e.fn.animate, a = function(o, ...r) {
-          return o && typeof o.scrollTop == "number" && this.is("html, body") && ["#payment-section", "#contact-section"].some((p) => {
-            const f = e(p);
-            return f.length && Math.abs(f.offset().top - 50 - o.scrollTop) < 2;
-          }) ? this : l.call(this, o, ...r);
+      if ((l = e == null ? void 0 : e.fn) != null && l.animate && !e.fn.animate.__kcd) {
+        const o = e.fn.animate, r = function(d, ...a) {
+          return d && typeof d.scrollTop == "number" && this.is("html, body") && ["#payment-section", "#contact-section"].some((p) => {
+            const u = e(p);
+            return u.length && Math.abs(u.offset().top - 50 - d.scrollTop) < 2;
+          }) ? this : o.call(this, d, ...a);
         };
-        a.__kcd = !0, e.fn.animate = a;
+        r.__kcd = !0, e.fn.animate = r;
       }
       const n = document.getElementById("paymentTypes");
       if (!n) return;
-      const i = () => n.querySelectorAll(".payment-option.anim-collapse").forEach((l) => l.classList.remove("anim-collapse"));
-      i(), n.querySelectorAll(".payment-price").forEach((l) => {
-        var o;
-        const a = parseFloat((((o = l.querySelector(".amount")) == null ? void 0 : o.textContent) || "0").replace(",", "."));
-        l.classList.toggle("kcd-price-extra", a > 0);
+      const i = () => n.querySelectorAll(".payment-option.anim-collapse").forEach((o) => o.classList.remove("anim-collapse"));
+      i(), n.querySelectorAll(".payment-price").forEach((o) => {
+        var d;
+        const r = parseFloat((((d = o.querySelector(".amount")) == null ? void 0 : d.textContent) || "0").replace(",", "."));
+        o.classList.toggle("kcd-price-extra", r > 0);
       }), new MutationObserver(i).observe(n, { subtree: !0, attributes: !0, attributeFilter: ["class"] });
     }
     // ─── Native state readers ──────────────────────────────────────────────────
@@ -1087,57 +1185,84 @@ body.kcd-modal-open {
     // Native writes the picked point's name into the card's sub-line and resets it
     // to "Vyberte výdajné miesto" when delivery is cleared.
     getPacketaSub() {
-      var n, i, d;
+      var n, i, l;
       const e = (i = (n = this.packetaInput) == null ? void 0 : n.closest("label")) == null ? void 0 : i.querySelector(".option-sub");
-      return ((d = e == null ? void 0 : e.textContent) == null ? void 0 : d.trim()) || "";
+      return ((l = e == null ? void 0 : e.textContent) == null ? void 0 : l.trim()) || "";
     }
     getPacketaPoint() {
       const e = this.getPacketaSub();
-      if (!e || e === J) return null;
+      if (!e || e === se) return null;
       let n = null;
       try {
-        n = JSON.parse(sessionStorage.getItem(Z) || "null");
+        n = JSON.parse(sessionStorage.getItem(O) || "null");
       } catch {
       }
-      return n && n.name === e ? { title: n.title, address: n.address } : { title: e, address: "" };
+      return n && n.name === e ? {
+        title: n.title,
+        address: n.address,
+        distanceText: n.auto && n.km != null ? D(n.km) : "",
+        nearest: !!n.auto
+      } : { title: e, address: "", distanceText: "", nearest: !1 };
     }
     // Native only keeps point.id/name — wrap the widget callback to also keep the
     // street/city for our card. Library loads async, so poll for it briefly.
-    hookPacketaWidget(e = 0) {
-      var l;
-      const n = (l = window.Packeta) == null ? void 0 : l.Widget;
-      if (!(n != null && n.pick)) {
-        e < 50 && setTimeout(() => this.hookPacketaWidget(e + 1), 200);
-        return;
-      }
-      if (n.pick.__kcd) return;
-      const i = n.pick.bind(n), d = (a, o, r) => (h("kinekus_checkout_delivery_packeta", "Packeta widget opened", "view", L), i(
-        a,
-        (s) => {
-          if (s) {
-            const p = [s.zip, s.city].filter(Boolean).join(" "), f = {
-              name: s.name,
-              title: s.place || s.name,
-              address: [s.street, p].filter(Boolean).join(", ")
+    hookPacketaWidget() {
+      return new Promise((e) => {
+        const n = (i) => {
+          var o;
+          const l = (o = window.Packeta) == null ? void 0 : o.Widget;
+          if (!(l != null && l.pick)) {
+            i < 50 ? setTimeout(() => n(i + 1), 200) : e(!1);
+            return;
+          }
+          l.pick.__kcd || this.patchPacketaPick(l), e(!0);
+        };
+        n(0);
+      });
+    }
+    patchPacketaPick(e) {
+      const n = e.pick.bind(e), i = (l, o, r) => {
+        const d = (a, s = !1) => {
+          if (a) {
+            const p = [a.zip, a.city].filter(Boolean).join(" "), u = {
+              name: a.name,
+              title: a.place || a.name,
+              address: [a.street, p].filter(Boolean).join(", "),
+              km: a.distanceKm ?? null,
+              auto: s
             };
             try {
-              sessionStorage.setItem(Z, JSON.stringify(f));
+              sessionStorage.setItem(O, JSON.stringify(u));
             } catch {
             }
-            h("kinekus_checkout_delivery_packeta", `Point selected: ${s.id}`, "click", L);
+            s || f("kinekus_checkout_delivery_packeta", `Point selected: ${a.id}`, "click", k);
           }
-          o(s), this.scheduleRender();
-        },
-        r
-      ));
-      d.__kcd = !0, n.pick = d;
+          o(a), this.scheduleRender();
+        };
+        if (this.packetaAutoPickAt && Date.now() - this.packetaAutoPickAt < pe) {
+          this.packetaAutoPickAt = 0, this.preselectNearestPacketa(l, (a) => d(a, !0));
+          return;
+        }
+        return this.packetaAutoPickAt = 0, f("kinekus_checkout_delivery_packeta", "Packeta widget opened", "view", k), n(l, (a) => d(a), r);
+      };
+      i.__kcd = !0, e.pick = i;
+    }
+    // Feeds the nearest point into native's own widget callback — native then
+    // stores the branch on the server exactly as after a manual pick.
+    async preselectNearestPacketa(e, n) {
+      var o;
+      const i = await this.locationPromise, l = i ? await ce(e, i) : null;
+      if (!l || !((o = this.packetaInput) != null && o.checked) || this.getPacketaPoint()) return this.scheduleRender();
+      f("kinekus_checkout_delivery_packeta", `Point preselected: ${l.id}`, "other", k), n(l);
     }
     getPacketaView() {
-      const e = this.packetaInput, n = S(e == null ? void 0 : e.dataset.delivery);
+      var o;
+      const e = this.packetaInput, n = I(e == null ? void 0 : e.dataset.delivery), i = this.getPacketaPoint(), l = (o = this.userLocation) == null ? void 0 : o.city;
       return {
-        point: this.getPacketaPoint(),
-        dateText: n ? `${b[n.getDay()]} <span class="kcd-dot"></span> <b>${D(n)}</b>` : "",
-        priceText: g(e == null ? void 0 : e.dataset.price)
+        point: i,
+        caption: i != null && i.nearest && l ? c.locationCaption(l) : "",
+        dateText: n ? `${Z[n.getDay()]} <span class="kcd-dot"></span> <b>${H(n)}</b>` : "",
+        priceText: b(e == null ? void 0 : e.dataset.price)
       };
     }
     // ─── Home delivery carriers ────────────────────────────────────────────────
@@ -1159,20 +1284,20 @@ body.kcd-modal-open {
       return this.carrierId && e.includes(this.carrierId) ? this.carrierId : this.getDefaultCarrierId();
     }
     getCarrierViews() {
-      var l, a, o;
-      const e = ((o = (a = (l = this.homeInput) == null ? void 0 : l.closest("label")) == null ? void 0 : a.querySelector(".option-sub")) == null ? void 0 : o.textContent) || "", n = S(e), i = n ? `${b[n.getDay()].replace(/^./, (r) => r.toUpperCase())} ${D(n)}` : "", d = this.getActiveCarrierId();
-      return this.getCarriers().map((r) => ({
-        id: r.id,
-        name: r.name,
-        logo: this.getCarrierLogo(r.id),
+      var o, r, d;
+      const e = ((d = (r = (o = this.homeInput) == null ? void 0 : o.closest("label")) == null ? void 0 : r.querySelector(".option-sub")) == null ? void 0 : d.textContent) || "", n = I(e), i = n ? `${Z[n.getDay()].replace(/^./, (a) => a.toUpperCase())} ${H(n)}` : "", l = this.getActiveCarrierId();
+      return this.getCarriers().map((a) => ({
+        id: a.id,
+        name: a.name,
+        logo: this.getCarrierLogo(a.id),
         dateText: i,
-        note: I[r.id] || "",
-        priceText: g(r.price),
-        active: r.id === d
+        note: _[a.id] || "",
+        priceText: b(a.price),
+        active: a.id === l
       }));
     }
     getCarrierLogo(e) {
-      return e === "DPDKURIER" ? u.dpd : e === "PACKETA_KURIER" ? u.packeta : e === "SDSKURIER" ? `<img src="${E}" alt="SDS" width="36" height="36" />` : u.truck;
+      return e === "DPDKURIER" ? h.dpd : e === "PACKETA_KURIER" ? h.packeta : e === "SDSKURIER" ? `<img src="${F}" alt="SDS" width="36" height="36" />` : h.truck;
     }
     // #actual-carrier-id lives in the delivery card, outside form#clubUser — tie
     // it to the form so the chosen carrier is actually posted with the order.
@@ -1187,22 +1312,22 @@ body.kcd-modal-open {
     // default one, which native doesn't recalc on its own (summary would keep
     // the previous carrier's price/name).
     async syncCarrierPrice(e = !1) {
-      var d, l;
+      var l, o;
       const n = this.getActiveCarrierId();
       if (this.getActiveTab() !== "home" || !n || !e && n === this.getDefaultCarrierId()) return;
-      const i = ((d = document.querySelector('input[name="payment"]:checked')) == null ? void 0 : d.value) || "";
+      const i = ((l = document.querySelector('input[name="payment"]:checked')) == null ? void 0 : l.value) || "";
       try {
-        const o = await (await fetch(
+        const d = await (await fetch(
           `/eshop/order/calculate-delivery-payment/?delivery=${encodeURIComponent(n)}&payment=${encodeURIComponent(i)}`,
           { credentials: "include" }
         )).json();
-        if (o.status !== "OK") return;
-        const r = ((l = this.getCarriers().find((p) => p.id === n)) == null ? void 0 : l.name) || "";
-        document.querySelectorAll(".idDeliveryPrice").forEach((p) => p.textContent = w(o.delivery));
-        const s = o.totalPriceRowValue || (typeof o.total == "number" ? w(o.total) : "");
-        s && document.querySelectorAll(".idTotalPrice").forEach((p) => p.textContent = s), r && document.querySelectorAll(".idDeliveryName, .idDeliveryInfo").forEach((p) => p.textContent = r);
+        if (d.status !== "OK") return;
+        const a = ((o = this.getCarriers().find((p) => p.id === n)) == null ? void 0 : o.name) || "";
+        document.querySelectorAll(".idDeliveryPrice").forEach((p) => p.textContent = A(d.delivery));
+        const s = d.totalPriceRowValue || (typeof d.total == "number" ? A(d.total) : "");
+        s && document.querySelectorAll(".idTotalPrice").forEach((p) => p.textContent = s), a && document.querySelectorAll(".idDeliveryName, .idDeliveryInfo").forEach((p) => p.textContent = a);
       } catch {
-        k("Kinekus Checkout Delivery: carrier price sync failed", "warn");
+        m("Kinekus Checkout Delivery: carrier price sync failed", "warn");
       }
     }
     // ─── Stores ────────────────────────────────────────────────────────────────
@@ -1215,20 +1340,20 @@ body.kcd-modal-open {
     getStoreViews() {
       var n;
       const e = this.getStoreInputs().map((i) => {
-        var o, r, s, p;
-        const d = i.value, l = W(this.userLocation, d), a = (((r = (o = i.closest("label")) == null ? void 0 : o.querySelector(".option-sub")) == null ? void 0 : r.textContent) || "").trim().replace(/\s*-\s*/g, "–").replace(/^./, (f) => f.toUpperCase());
+        var d, a, s, p;
+        const l = i.value, o = de(this.userLocation, l), r = (((a = (d = i.closest("label")) == null ? void 0 : d.querySelector(".option-sub")) == null ? void 0 : a.textContent) || "").trim().replace(/\s*-\s*/g, "–").replace(/^./, (u) => u.toUpperCase());
         return {
-          id: d,
-          name: ((s = C[d]) == null ? void 0 : s.name) || (i.dataset.name || "").trim(),
-          address: ((p = C[d]) == null ? void 0 : p.address) || "",
-          distanceText: l != null ? q(l) : "",
+          id: l,
+          name: ((s = w[l]) == null ? void 0 : s.name) || (i.dataset.name || "").trim(),
+          address: ((p = w[l]) == null ? void 0 : p.address) || "",
+          distanceText: o != null ? D(o) : "",
           nearest: !1,
-          status: a,
-          priceText: g(i.dataset.price),
-          km: l
+          status: r,
+          priceText: b(i.dataset.price),
+          km: o
         };
       });
-      return this.userLocation && (e.sort((i, d) => (i.km ?? 1 / 0) - (d.km ?? 1 / 0)), ((n = e[0]) == null ? void 0 : n.km) != null && (e[0].nearest = !0)), e.map(({ km: i, ...d }) => d);
+      return this.userLocation && (e.sort((i, l) => (i.km ?? 1 / 0) - (l.km ?? 1 / 0)), ((n = e[0]) == null ? void 0 : n.km) != null && (e[0].nearest = !0)), e.map(({ km: i, ...l }) => l);
     }
     getSelectedStoreId() {
       return this.getActiveTab() === "store" ? this.ooInput.value : null;
@@ -1245,13 +1370,13 @@ body.kcd-modal-open {
       return ((n = this.getStoreViews()[0]) == null ? void 0 : n.id) || null;
     }
     // ─── Actions ───────────────────────────────────────────────────────────────
-    selectTab(e) {
-      var n, i, d, l;
+    selectTab(e, n = !1) {
+      var i, l, o, r;
       if (this.getActiveTab() !== e) {
-        if (h("kinekus_checkout_delivery_tab", `Tab: ${e}`, "click", L), e === "packeta" && ((i = (n = this.packetaInput) == null ? void 0 : n.closest("label")) == null || i.click()), e === "home" && ((l = (d = this.homeInput) == null ? void 0 : d.closest("label")) == null || l.click()), e === "store") {
-          const a = this.preferredStoreId();
-          if (!a) return;
-          this.autoPicked = !0, this.autoStoreId = this.userLocation ? a : null, this.selectStore(a);
+        if (n ? f("kinekus_checkout_delivery_tab", `Auto-selected: ${e}`, "other", k) : f("kinekus_checkout_delivery_tab", `Tab: ${e}`, "click", k), e === "packeta" && ((l = (i = this.packetaInput) == null ? void 0 : i.closest("label")) == null || l.click()), e === "home" && ((r = (o = this.homeInput) == null ? void 0 : o.closest("label")) == null || r.click()), e === "store") {
+          const d = this.preferredStoreId();
+          if (!d) return;
+          this.autoPicked = !0, this.autoStoreId = this.userLocation ? d : null, this.selectStore(d);
         }
         this.scheduleRender();
       }
@@ -1259,13 +1384,21 @@ body.kcd-modal-open {
     // Re-clicking the native Packeta card re-runs store-delivery and reopens the widget
     openPacketaWidget() {
       var e, n;
-      (n = (e = this.packetaInput) == null ? void 0 : e.closest("label")) == null || n.click();
+      this.packetaAutoPickAt = 0, (n = (e = this.packetaInput) == null ? void 0 : e.closest("label")) == null || n.click();
+    }
+    // Nothing selected on arrival (sidebar shows "Doručenie: ?") — pick the first
+    // offered option, in tab order. Packeta is selected without opening its widget.
+    async autoSelectDelivery() {
+      if (this.getActiveTab()) return;
+      const e = this.getTabs().map((i) => i.id);
+      let n = e[0];
+      n && (n === "packeta" && (await this.packetaHooked || (n = e[1]), !n) || this.getActiveTab() || (n === "packeta" && (this.packetaAutoPickAt = Date.now()), this.selectTab(n, !0)));
     }
     openStoreModal() {
       var n;
       this.closeStoreModal();
       const e = (n = this.getStoreInputs()[0]) == null ? void 0 : n.dataset.price;
-      document.body.insertAdjacentHTML("beforeend", U(this.getStoreViews(), e ? g(e) : "")), document.body.classList.add("kcd-modal-open"), h("kinekus_checkout_delivery_stores", "Store picker opened", "view", L);
+      document.body.insertAdjacentHTML("beforeend", Q(this.getStoreViews(), e ? b(e) : "")), document.body.classList.add("kcd-modal-open"), f("kinekus_checkout_delivery_stores", "Store picker opened", "view", k);
     }
     closeStoreModal() {
       var e;
@@ -1273,39 +1406,39 @@ body.kcd-modal-open {
     }
     // ─── Rendering ─────────────────────────────────────────────────────────────
     render() {
-      var d;
+      var l;
       const e = this.getTabs();
       let n = "";
       const i = this.getActiveTab();
-      if (i === "packeta" && (n = B(this.getPacketaView())), i === "home" && (n = z(this.getCarrierViews())), i === "store") {
-        const l = this.getSelectedStoreId(), a = this.getStoreViews().find((r) => r.id === l) || null, o = !!a && !this.userPickedStore && this.autoStoreId === l && !!((d = this.userLocation) != null && d.city);
-        n = K(a, o ? c.locationCaption(this.userLocation.city) : "");
+      if (i === "packeta" && (n = W(this.getPacketaView())), i === "home" && (n = q(this.getCarrierViews())), i === "store") {
+        const o = this.getSelectedStoreId(), r = this.getStoreViews().find((a) => a.id === o) || null, d = !!r && !this.userPickedStore && this.autoStoreId === o && !!((l = this.userLocation) != null && l.city);
+        n = X(r, d ? c.locationCaption(this.userLocation.city) : "");
       }
-      this.root.innerHTML = H(e, n);
+      this.root.innerHTML = R(e, n);
     }
     scheduleRender() {
       this.renderTimer && clearTimeout(this.renderTimer), this.renderTimer = setTimeout(() => this.render(), 50);
     }
     bindEvents() {
       this.root.addEventListener("click", (e) => {
-        var a;
+        var r;
         const n = e.target, i = n.closest("[data-kcd-tab]");
         if (i) return this.selectTab(i.dataset.kcdTab);
-        const d = n.closest("[data-kcd-carrier]");
-        if (d) {
-          const o = d.dataset.kcdCarrier;
-          return o === this.getActiveCarrierId() ? void 0 : (h("kinekus_checkout_delivery_carrier", `Carrier: ${o}`, "click", L), this.applyCarrier(o), this.render());
+        const l = n.closest("[data-kcd-carrier]");
+        if (l) {
+          const d = l.dataset.kcdCarrier;
+          return d === this.getActiveCarrierId() ? void 0 : (f("kinekus_checkout_delivery_carrier", `Carrier: ${d}`, "click", k), this.applyCarrier(d), this.render());
         }
-        const l = (a = n.closest("[data-kcd-action]")) == null ? void 0 : a.dataset.kcdAction;
-        if (l === "packeta") return this.openPacketaWidget();
-        if (l === "stores") return this.openStoreModal();
+        const o = (r = n.closest("[data-kcd-action]")) == null ? void 0 : r.dataset.kcdAction;
+        if (o === "packeta") return this.openPacketaWidget();
+        if (o === "stores") return this.openStoreModal();
       }), document.addEventListener("click", (e) => {
         const n = e.target;
         if (!n.closest("#kcdModal")) return;
         const i = n.closest("[data-kcd-store]");
         if (i) {
-          const d = i.dataset.kcdStore;
-          return this.userPickedStore = !0, this.autoPicked = !1, this.autoStoreId = null, h("kinekus_checkout_delivery_stores", `Store selected: ${d}`, "click", L), this.closeStoreModal(), d !== this.getSelectedStoreId() && this.selectStore(d), this.scheduleRender();
+          const l = i.dataset.kcdStore;
+          return this.userPickedStore = !0, this.autoPicked = !1, this.autoStoreId = null, f("kinekus_checkout_delivery_stores", `Store selected: ${l}`, "click", k), this.closeStoreModal(), l !== this.getSelectedStoreId() && this.selectStore(l), this.scheduleRender();
         }
         (n.closest('[data-kcd-action="close"]') || !n.closest(".kcd-modal-box")) && this.closeStoreModal();
       }), document.addEventListener("keydown", (e) => {
@@ -1327,15 +1460,15 @@ body.kcd-modal-open {
         attributeFilter: ["class", "style", "disabled"]
       });
       const n = window.jQuery;
-      n == null || n(document).ajaxComplete((i, d, l) => {
-        var a, o;
-        (a = l.url) != null && a.includes("calculate-delivery-payment") && this.syncCarrierPrice(), (o = l.url) != null && o.includes("store-delivery") && this.scheduleRender();
+      n == null || n(document).ajaxComplete((i, l, o) => {
+        var r, d;
+        (r = o.url) != null && r.includes("calculate-delivery-payment") && this.syncCarrierPrice(), (d = o.url) != null && d.includes("store-delivery") && this.scheduleRender();
       });
     }
     async loadUserLocation() {
-      const e = await _();
+      const e = await this.locationPromise;
       if (!e) {
-        k("Kinekus Checkout Delivery: user geolocation unavailable, hiding distance", "warn");
+        m("Kinekus Checkout Delivery: user geolocation unavailable, hiding distance", "warn");
         return;
       }
       this.userLocation = e, this.preferNearestStore(), this.render();
@@ -1348,6 +1481,6 @@ body.kcd-modal-open {
       e && (this.autoStoreId = e, e !== this.getSelectedStoreId() && this.selectStore(e));
     }
   }
-  new X();
+  new ue();
 })();
 //# sourceMappingURL=index.js.map
