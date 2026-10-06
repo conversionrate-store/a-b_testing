@@ -1,7 +1,15 @@
 (function() {
   "use strict";
-  const Y = `#delivery-section {
-  display: none !important;
+  const N = `#delivery-section {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
 }
 
 #unified-checkout > #payment-section.hidden,
@@ -699,32 +707,32 @@ body.kcd-modal-open {
     padding: 0 16px;
   }
 }
-`, f = (t, e, n, i = "") => {
+`, f = (n, e, t, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: t,
+      event_name: n,
       event_desc: e,
-      event_type: n,
+      event_type: t,
       event_loc: i
-    }), m(`Event: ${t} | ${e} | ${n} | ${i}`, "success");
-  }, M = (t) => new Promise((e) => {
-    const n = document.querySelector(t);
-    n && e(n);
+    }), m(`Event: ${n} | ${e} | ${t} | ${i}`, "success");
+  }, M = (n) => new Promise((e) => {
+    const t = document.querySelector(n);
+    t && e(t);
     const i = new MutationObserver(() => {
-      const l = document.querySelector(t);
-      l && (e(l), i.disconnect());
+      const o = document.querySelector(n);
+      o && (e(o), i.disconnect());
     });
     i.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), N = ({ name: t, dev: e }) => {
-    const n = t.toLowerCase().replace(/\s/g, "_");
-    f(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
-      `%c EXP: ${t} (DEV: ${e})`,
+  }), j = ({ name: n, dev: e }) => {
+    const t = n.toLowerCase().replace(/\s/g, "_");
+    f(`${t}_started`, `Experiment ${n} started`, "other", t), console.log(
+      `%c EXP: ${n} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
-  }, j = (t, e, n, i, l = 1e3, o = 0.5) => {
+  }, F = (n, e, t, i, o = 1e3, l = 0.5) => {
     let r, d;
     r = new IntersectionObserver(
       function(a) {
@@ -733,33 +741,33 @@ body.kcd-modal-open {
             e,
             a[0].target.dataset.visible || i,
             "view",
-            n
+            t
           ), r.disconnect();
-        }, l) : (m("Element is not fully visible", "warn"), clearTimeout(d));
+        }, o) : (m("Element is not fully visible", "warn"), clearTimeout(d));
       },
-      { threshold: [o] }
+      { threshold: [l] }
     );
     {
-      const a = document.querySelector(t);
+      const a = document.querySelector(n);
       a && r.observe(a);
     }
-  }, m = (t, e = "info") => {
-    let n;
+  }, m = (n, e = "info") => {
+    let t;
     switch (e) {
       case "info":
-        n = "color: #3498db;";
+        t = "color: #3498db;";
         break;
       case "warn":
-        n = "color: #f39c12;";
+        t = "color: #f39c12;";
         break;
       case "error":
-        n = "color: #e74c3c;";
+        t = "color: #e74c3c;";
         break;
       case "success":
-        n = "color: #2ecc71;";
+        t = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
+    console.log(`%c>>> ${n}`, `${t} font-size: 16px; font-weight: 600`);
   }, h = {
     truck: (
       /* HTML */
@@ -793,7 +801,7 @@ body.kcd-modal-open {
       /* HTML */
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#kcd-clip0-0-6)"><path d="M8 -2.38419e-07C4.692 -2.38419e-07 2 2.71067 2 6.04333C2 10.7787 7.436 15.668 7.66733 15.8733C7.76267 15.958 7.88133 16 8 16C8.11867 16 8.23733 15.958 8.33267 15.874C8.564 15.668 14 10.7787 14 6.04333C14 2.71067 11.308 -2.38419e-07 8 -2.38419e-07ZM8 9.33333C6.162 9.33333 4.66667 7.838 4.66667 6C4.66667 4.162 6.162 2.66667 8 2.66667C9.838 2.66667 11.3333 4.162 11.3333 6C11.3333 7.838 9.838 9.33333 8 9.33333Z" fill="#057222"/></g><defs><clipPath id="kcd-clip0-0-6"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>'
     )
-  }, F = "data:image/png;base64,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", c = {
+  }, _ = "data:image/png;base64,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", c = {
     heading: "Ako chcete tovar prevziať?",
     hint: "Vyberte spôsob, potom upresníte miesto alebo kuriéra.",
     tabPacketa: "Packeta – výdajné miesta a Z‑BOXY",
@@ -809,16 +817,16 @@ body.kcd-modal-open {
     nearest: "najbližšie k vám",
     free: "zadarmo",
     deliveryPrefix: "Doručenie",
-    locationCaption: (t) => `Vybrali sme podľa vašej polohy (${t}). Ak ste inde, kliknite na Zmeniť.`,
+    locationCaption: (n) => `Vybrali sme podľa vašej polohy (${n}). Ak ste inde, kliknite na Zmeniť.`,
     modalTitle: "Vyberte predajňu",
-    modalFee: (t) => `Poplatok za vyzdvihnutie — ${t}`,
+    modalFee: (n) => `Poplatok za vyzdvihnutie — ${n}`,
     modalSelect: "Vybrať",
     close: "Zavrieť"
-  }, Z = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"], _ = {
+  }, w = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"], G = {
     DPDKURIER: "zavolá pred doručením",
     PACKETA_KURIER: "zavolá pred doručením",
     SDSKURIER: "vyloženie pred dom"
-  }, w = {
+  }, Z = {
     OOZ: { name: "KiNEKUS Eshop Žilina", address: "Rosinská cesta 13, Žilina" },
     OOVajnory: { name: "KiNEKUS Bratislava Vajnory", address: "Pri starom letisku 3, 831 07 Bratislava" },
     OOBratislava: { name: "KiNEKUS Bratislava Fedinova – Petržalka", address: "Fedinova 14, Bratislava" },
@@ -834,59 +842,58 @@ body.kcd-modal-open {
     OOKosice: { name: "KiNEKUS Košice", address: "Pri Prachárni 4, 040 11 Košice" },
     OONoveZamky: { name: "KiNEKUS Nové Zámky", address: "Dvorská cesta 5, 940 01 Nové Zámky" },
     OOPoprad: { name: "KiNEKUS Poprad, OC Kriváň", address: "Dlhé Hony 5268/9, 058 01 Poprad" }
-  }, V = {
+  }, S = {
     packeta: { label: c.tabPacketa, icon: h.packeta },
     home: { label: c.tabHome, icon: h.truck },
     store: { label: c.tabStore, icon: h.store }
-  }, x = (
+  }, b = (
     /* HTML */
     '<span class="kcd-dot"></span>'
-  ), R = (t, e) => (
+  ), q = (n, e) => (
     /* HTML */
     `
   <div class="kcd-head">
     <div class="kcd-title">${c.heading}</div>
     <div class="kcd-hint">${c.hint}</div>
   </div>
-  <div class="kcd-tabs kcd-tabs--${t.length}">${t.map(G).join("")}</div>
+  <div class="kcd-tabs kcd-tabs--${n.length}">${n.map(W).join("")}</div>
   ${e}
 `
-  ), G = (t) => (
+  ), W = (n) => (
     /* HTML */
     `
-  <button type="button" class="kcd-tab ${t.active ? "kcd-tab--active" : ""}" data-kcd-tab="${t.id}">
-    <span class="kcd-tab-icon">${V[t.id].icon}</span>
-    <span class="kcd-tab-label">${V[t.id].label}</span>
+  <button type="button" class="kcd-tab ${n.active ? "kcd-tab--active" : ""}" data-kcd-tab="${n.id}">
+    <span class="kcd-tab-icon">${S[n.id].icon}</span>
+    <span class="kcd-tab-label">${S[n.id].label}</span>
   </button>
 `
-  ), W = (t) => (
+  ), J = (n) => (
     /* HTML */
     `
   <div class="kcd-card">
     <div class="kcd-card-title">${c.packetaHeading}</div>
-    ${t.point ? (
+    ${n.point ? (
       /* HTML */
       `
           <div class="kcd-picked">
             <div class="kcd-picked-top">
-              <div class="kcd-picked-name">${t.point.title}</div>
+              <div class="kcd-picked-name">${n.point.title}</div>
               <button type="button" class="kcd-link" data-kcd-action="packeta">${c.change}</button>
             </div>
-            ${t.point.address ? (
+            ${n.point.address ? (
         /* HTML */
         `
                   <div class="kcd-row">
                     <span class="kcd-row-icon">${h.pin}</span>
-                    ${t.point.address}
-                    ${t.point.distanceText ? `${x}<b>${t.point.distanceText}</b>` : ""}
-                    ${t.point.nearest ? `<span class="kcd-badge">${c.nearest}</span>` : ""}
+                    ${n.point.address} ${n.point.distanceText ? `${b}<b>${n.point.distanceText}</b>` : ""}
+                    ${n.point.nearest ? `<span class="kcd-badge">${c.nearest}</span>` : ""}
                   </div>
                 `
       ) : ""}
             <div class="kcd-row">
               <span class="kcd-row-icon">${h.delivery}</span>
-              ${c.deliveryPrefix}: ${t.dateText}
-              <span class="kcd-badge">${t.priceText}</span>
+              ${c.deliveryPrefix}: ${n.dateText}
+              <span class="kcd-badge">${n.priceText}</span>
             </div>
           </div>
         `
@@ -903,64 +910,63 @@ body.kcd-modal-open {
             </div>
             <div class="kcd-row">
               <span class="kcd-row-icon">${h.delivery}</span>
-              ${c.deliveryPrefix}: ${t.dateText}
-              <span class="kcd-badge">${t.priceText}</span>
+              ${c.deliveryPrefix}: ${n.dateText}
+              <span class="kcd-badge">${n.priceText}</span>
             </div>
           </div>
         `
     )}
-    ${t.caption ? `<div class="kcd-caption">${t.caption}</div>` : ""}
+    ${n.caption ? `<div class="kcd-caption">${n.caption}</div>` : ""}
   </div>
 `
-  ), q = (t) => (
+  ), X = (n) => (
     /* HTML */
     `
   <div class="kcd-card">
     <div class="kcd-card-title">${c.homeHeading}</div>
-    <div class="kcd-carriers">${t.map(J).join("")}</div>
+    <div class="kcd-carriers">${n.map(Q).join("")}</div>
   </div>
 `
-  ), J = (t) => (
+  ), Q = (n) => (
     /* HTML */
     `
-  <button type="button" class="kcd-carrier ${t.active ? "kcd-carrier--active" : ""}" data-kcd-carrier="${t.id}">
+  <button type="button" class="kcd-carrier ${n.active ? "kcd-carrier--active" : ""}" data-kcd-carrier="${n.id}">
     <span class="kcd-radio"></span>
-    <span class="kcd-carrier-logo">${t.logo}</span>
+    <span class="kcd-carrier-logo">${n.logo}</span>
     <span class="kcd-carrier-body">
-      <span class="kcd-carrier-name">${t.name}</span>
+      <span class="kcd-carrier-name">${n.name}</span>
       <span class="kcd-carrier-meta">
-        <span class="kcd-carrier-date">${t.dateText}</span>
-        ${t.note ? `${x}<span>${t.note}</span>` : ""}
+        <span class="kcd-carrier-date">${n.dateText}</span>
+        ${n.note ? `${b}<span>${n.note}</span>` : ""}
       </span>
     </span>
-    <span class="kcd-carrier-price ${t.priceText === c.free ? "kcd-carrier-price--free" : ""}">${t.priceText}</span>
+    <span class="kcd-carrier-price ${n.priceText === c.free ? "kcd-carrier-price--free" : ""}">${n.priceText}</span>
   </button>
 `
-  ), X = (t, e) => (
+  ), ee = (n, e) => (
     /* HTML */
     `
   <div class="kcd-card">
     <div class="kcd-card-title">${c.storeHeading}</div>
-    ${t ? (
+    ${n ? (
       /* HTML */
       `
           <div class="kcd-picked">
             <div class="kcd-picked-top">
               <div class="kcd-picked-name-wrap">
-                <div class="kcd-picked-name">${t.name}</div>
-                ${t.nearest ? `<span class="kcd-badge">${c.nearest}</span>` : ""}
+                <div class="kcd-picked-name">${n.name}</div>
+                ${n.nearest ? `<span class="kcd-badge">${c.nearest}</span>` : ""}
               </div>
               <button type="button" class="kcd-link" data-kcd-action="stores">${c.change}</button>
             </div>
             <div class="kcd-row">
               <span class="kcd-row-icon">${h.pin}</span>
-              ${t.address}
-              ${t.distanceText ? `${x}<b>${t.distanceText}</b>` : ""}
+              ${n.address} ${n.distanceText ? `${b}<b>${n.distanceText}</b>` : ""}
             </div>
             <div class="kcd-row">
               <span class="kcd-row-icon">${h.shop}</span>
-              ${t.status}
-              <span class="kcd-badge">${t.priceText}</span>
+              ${n.status}
+              <span class="kcd-badge">${n.priceText}</span>
             </div>
           </div>
         `
@@ -968,7 +974,7 @@ body.kcd-modal-open {
     ${e ? `<div class="kcd-caption">${e}</div>` : ""}
   </div>
 `
-  ), Q = (t, e) => (
+  ), te = (n, e) => (
     /* HTML */
     `
   <div class="kcd-modal" id="kcdModal" role="dialog" aria-modal="true">
@@ -978,28 +984,28 @@ body.kcd-modal-open {
         <div class="kcd-modal-title">${c.modalTitle}</div>
         ${e ? `<div class="kcd-modal-fee">${c.modalFee(e)}</div>` : ""}
       </div>
-      <div class="kcd-modal-list">${t.map(ee).join("")}</div>
+      <div class="kcd-modal-list">${n.map(ne).join("")}</div>
     </div>
   </div>
 `
-  ), ee = (t) => (
+  ), ne = (n) => (
     /* HTML */
     `
   <div class="kcd-store">
     <div class="kcd-store-info">
       <div class="kcd-store-top">
-        ${t.distanceText ? (
+        ${n.distanceText ? (
       /* HTML */
-      `<span class="kcd-store-dist">${h.pinSmall}${t.distanceText}</span>`
+      `<span class="kcd-store-dist">${h.pinSmall}${n.distanceText}</span>`
     ) : ""}
-        <span class="kcd-store-name">${t.name}</span>
+        <span class="kcd-store-name">${n.name}</span>
       </div>
-      <span class="kcd-badge kcd-badge--small">${t.status}</span>
+      <span class="kcd-badge kcd-badge--small">${n.status}</span>
     </div>
-    <button type="button" class="kcd-store-btn" data-kcd-store="${t.id}">${c.modalSelect}</button>
+    <button type="button" class="kcd-store-btn" data-kcd-store="${n.id}">${c.modalSelect}</button>
   </div>
 `
-  ), ne = {
+  ), ie = {
     OOVajnory: [48.199377, 17.195798],
     // Bratislava Vajnory, Pri starom letisku 3
     OOBratislava: [48.11776, 17.10317],
@@ -1028,27 +1034,27 @@ body.kcd-modal-open {
     // Nové Zámky, Dvorská cesta 5
     OOPoprad: [49.04961, 20.29178]
     // Poprad, Dlhé Hony 5268/9
-  }, te = 6371, g = (t) => t * Math.PI / 180, S = (t, e, n, i) => {
-    const l = g(n - t), o = g(i - e), r = Math.sin(l / 2) ** 2 + Math.cos(g(t)) * Math.cos(g(n)) * Math.sin(o / 2) ** 2, d = 2 * Math.atan2(Math.sqrt(r), Math.sqrt(1 - r));
-    return te * d;
-  }, ie = {
-    ...ne,
+  }, oe = 6371, g = (n) => n * Math.PI / 180, V = (n, e, t, i) => {
+    const o = g(t - n), l = g(i - e), r = Math.sin(o / 2) ** 2 + Math.cos(g(n)) * Math.cos(g(t)) * Math.sin(l / 2) ** 2, d = 2 * Math.atan2(Math.sqrt(r), Math.sqrt(1 - r));
+    return oe * d;
+  }, ae = {
+    ...ie,
     OOZ: [49.2046, 18.7598]
-  }, P = "kcd_user_geo", le = "https://get.geojs.io/v1/ip/geo.json", oe = async (t = 4e3) => {
+  }, P = "kcd_user_geo", le = "https://get.geojs.io/v1/ip/geo.json", de = async (n = 4e3) => {
     try {
       const e = sessionStorage.getItem(P);
       if (e) {
-        const n = JSON.parse(e);
-        if (typeof (n == null ? void 0 : n.lat) == "number" && typeof (n == null ? void 0 : n.lon) == "number") return n;
+        const t = JSON.parse(e);
+        if (typeof (t == null ? void 0 : t.lat) == "number" && typeof (t == null ? void 0 : t.lon) == "number") return t;
       }
     } catch {
     }
     try {
-      const e = new AbortController(), n = setTimeout(() => e.abort(), t), i = await fetch(le, { signal: e.signal });
-      if (clearTimeout(n), !i.ok) return null;
-      const l = await i.json(), o = parseFloat(l.latitude), r = parseFloat(l.longitude);
-      if (Number.isNaN(o) || Number.isNaN(r)) return null;
-      const d = { lat: o, lon: r, city: l.city || "" };
+      const e = new AbortController(), t = setTimeout(() => e.abort(), n), i = await fetch(le, { signal: e.signal });
+      if (clearTimeout(t), !i.ok) return null;
+      const o = await i.json(), l = parseFloat(o.latitude), r = parseFloat(o.longitude);
+      if (Number.isNaN(l) || Number.isNaN(r)) return null;
+      const d = { lat: l, lon: r, city: o.city || "" };
       try {
         sessionStorage.setItem(P, JSON.stringify(d));
       } catch {
@@ -1057,112 +1063,162 @@ body.kcd-modal-open {
     } catch {
       return null;
     }
-  }, de = (t, e) => {
-    const n = ie[e];
-    return !t || !n ? null : S(t.lat, t.lon, n[0], n[1]);
-  }, D = (t) => t < 10 ? `${t.toFixed(1).replace(".", ",")} km` : `${Math.round(t)} km`, C = "https://widget.packeta.com/v6/pps/api/widget/v2", T = "kcd_packeta_nearest", ae = "0123456789bcdefghjkmnpqrstuvwxyz", re = (t, e, n = 6) => {
-    const i = [-90, 90], l = [-180, 180];
-    let o = "", r = 0, d = 0, a = !0;
-    for (; o.length < n; ) {
-      const s = a ? l : i, p = a ? e : t, u = (s[0] + s[1]) / 2;
-      p >= u ? (r = r << 1 | 1, s[0] = u) : (r = r << 1, s[1] = u), a = !a, ++d === 5 && (o += ae[r], r = 0, d = 0);
+  }, re = (n, e) => {
+    const t = ae[e];
+    return !n || !t ? null : V(n.lat, n.lon, t[0], t[1]);
+  }, D = (n) => n < 10 ? `${n.toFixed(1).replace(".", ",")} km` : `${Math.round(n)} km`, C = "https://widget.packeta.com/v6/pps/api/widget/v2", T = "kcd_packeta_nearest", ce = "0123456789bcdefghjkmnpqrstuvwxyz", se = (n, e, t = 6) => {
+    const i = [-90, 90], o = [-180, 180];
+    let l = "", r = 0, d = 0, a = !0;
+    for (; l.length < t; ) {
+      const s = a ? o : i, p = a ? e : n, u = (s[0] + s[1]) / 2;
+      p >= u ? (r = r << 1 | 1, s[0] = u) : (r = r << 1, s[1] = u), a = !a, ++d === 5 && (l += ce[r], r = 0, d = 0);
     }
-    return o;
-  }, y = async (t, e) => {
-    const n = new AbortController(), i = setTimeout(() => n.abort(), e);
+    return l;
+  }, x = async (n, e) => {
+    const t = new AbortController(), i = setTimeout(() => t.abort(), e);
     try {
-      const l = await fetch(t, { signal: n.signal });
-      if (!l.ok) throw new Error(`HTTP ${l.status}`);
-      return await l.json();
+      const o = await fetch(n, { signal: t.signal });
+      if (!o.ok) throw new Error(`HTTP ${o.status}`);
+      return await o.json();
     } finally {
       clearTimeout(i);
     }
-  }, ce = async (t, e, n = "sk", i = 4e3) => {
-    var o, r, d, a;
-    const l = re(e.lat, e.lon);
+  }, pe = async (n, e, t = "sk", i = 4e3) => {
+    var l, r, d, a;
+    const o = se(e.lat, e.lon);
     try {
       const s = JSON.parse(sessionStorage.getItem(T) || "null");
-      if ((s == null ? void 0 : s.hash) === l && s.point) return s.point;
+      if ((s == null ? void 0 : s.hash) === o && s.point) return s.point;
     } catch {
     }
     try {
-      const s = `App_ApiKey=${encodeURIComponent(t)}&App_Countries=${n}`, { vendors: p = [] } = await y(`${C}/vendors?${s}`, i), u = `${s}&App_VendorCodes=${encodeURIComponent(p.map((v) => v.code).join(","))}`, z = (await y(`${C}/geohash/${l}?Limit=20&${u}`, i)).find(
+      const s = `App_ApiKey=${encodeURIComponent(n)}&App_Countries=${t}`, { vendors: p = [] } = await x(`${C}/vendors?${s}`, i), u = `${s}&App_VendorCodes=${encodeURIComponent(p.map((v) => v.code).join(","))}`, $ = (await x(`${C}/geohash/${o}?Limit=20&${u}`, i)).find(
         (v) => {
-          var $, K, U;
-          return v.canBeSelected !== !1 && !(($ = v.flags) != null && $.isFull) && !((K = v.flags) != null && K.isOnHoliday) && !((U = v.flags) != null && U.isOnHoliday_PickUp);
+          var U, Y, R;
+          return v.canBeSelected !== !1 && !((U = v.flags) != null && U.isFull) && !((Y = v.flags) != null && Y.isOnHoliday) && !((R = v.flags) != null && R.isOnHoliday_PickUp);
         }
       );
-      if (!z) return null;
-      const L = await y(`${C}/${z.externalId}?${u}`, i), B = {
+      if (!$) return null;
+      const L = await x(`${C}/${$.externalId}?${u}`, i), K = {
         id: String(L.externalId).replace(/^\D+_/, ""),
         // Native/widget `name` is the address line, `place` the point's own name
-        name: ((o = L.address) == null ? void 0 : o.name) || L.name,
+        name: ((l = L.address) == null ? void 0 : l.name) || L.name,
         place: L.name || "",
         street: ((r = L.address) == null ? void 0 : r.street) || "",
         city: ((d = L.address) == null ? void 0 : d.city) || "",
         zip: ((a = L.address) == null ? void 0 : a.zip) || "",
         // distanceFromOrigin is from the geohash cell centre — measure from the visitor
-        distanceKm: L.coordinates ? S(e.lat, e.lon, L.coordinates.latitude, L.coordinates.longitude) : null
+        distanceKm: L.coordinates ? V(e.lat, e.lon, L.coordinates.latitude, L.coordinates.longitude) : null
       };
       try {
-        sessionStorage.setItem(T, JSON.stringify({ hash: l, point: B }));
+        sessionStorage.setItem(T, JSON.stringify({ hash: o, point: K }));
       } catch {
       }
-      return B;
+      return K;
     } catch {
       return null;
     }
   };
-  N({ name: "Kinekus Checkout Delivery", dev: "AI" });
-  const k = "Checkout delivery options", O = "kcd_packeta_point", se = "Vyberte výdajné miesto", pe = 1e4, b = (t) => {
-    const e = typeof t == "number" ? t : parseFloat(t || "0");
+  j({ name: "Kinekus Checkout Delivery", dev: "AI" });
+  const k = "Checkout delivery options", O = "kcd_packeta_point", I = "kcd_carrier", E = "Vyberte výdajné miesto", ue = 1e4, y = (n) => {
+    const e = typeof n == "number" ? n : parseFloat(n || "0");
     return !e || e <= 0 ? c.free : `${e.toFixed(2).replace(".", ",")} €`;
-  }, A = (t) => (parseFloat(String(t ?? 0)) || 0).toFixed(2).replace(".", ","), E = (t) => String(t).padStart(2, "0"), I = (t) => {
-    const e = (t || "").match(/(\d{1,2})\.(\d{1,2})\.(\d{4})?/);
+  }, A = (n) => (parseFloat(String(n ?? 0)) || 0).toFixed(2).replace(".", ","), H = (n) => String(n).padStart(2, "0"), B = (n) => {
+    const e = (n || "").match(/(\d{1,2})\.(\d{1,2})\.(\d{4})?/);
     if (!e) return null;
-    const n = /* @__PURE__ */ new Date(), i = new Date(e[3] ? +e[3] : n.getFullYear(), +e[2] - 1, +e[1]);
-    return !e[3] && i.getTime() < n.getTime() - 30 * 864e5 && i.setFullYear(i.getFullYear() + 1), i;
-  }, H = (t) => `${E(t.getDate())}.${E(t.getMonth() + 1)}`;
-  class ue {
+    const t = /* @__PURE__ */ new Date(), i = new Date(e[3] ? +e[3] : t.getFullYear(), +e[2] - 1, +e[1]);
+    return !e[3] && i.getTime() < t.getTime() - 30 * 864e5 && i.setFullYear(i.getFullYear() + 1), i;
+  }, z = (n) => `${H(n.getDate())}.${H(n.getMonth() + 1)}`;
+  class he {
     constructor() {
-      this.userLocation = null, this.carrierId = null, this.userPickedStore = !1, this.autoStoreId = null, this.autoPicked = !1, this.renderTimer = null, this.locationPromise = Promise.resolve(null), this.packetaHooked = Promise.resolve(!1), this.packetaAutoPickAt = 0, this.init();
+      this.userLocation = null, this.carrierId = null, this.userPickedStore = !1, this.autoStoreId = null, this.autoPicked = !1, this.renderTimer = null, this.locationPromise = Promise.resolve(null), this.packetaHooked = Promise.resolve(!1), this.packetaAutoPickAt = 0, this.savedRowSnapshot = null, this.init();
     }
     async init() {
-      await M("head"), document.head.insertAdjacentHTML("beforeend", `<style>${Y}</style>`);
+      await M("head"), document.head.insertAdjacentHTML("beforeend", `<style>${N}</style>`);
       const e = await M("#delivery-section");
-      document.getElementById("kcdDelivery") || (e.insertAdjacentHTML("beforebegin", '<section class="kcd-block" id="kcdDelivery"></section>'), this.root = document.getElementById("kcdDelivery"), this.locationPromise = oe(), this.packetaHooked = this.hookPacketaWidget(), this.render(), this.bindEvents(), this.watchNative(), this.keepSectionsOpen(), this.loadUserLocation(), this.autoSelectDelivery(), j("#kcdDelivery", "exp_kinekus_checkout_delivery_01", k, "Checkout delivery options visibility"));
+      document.getElementById("kcdDelivery") || (e.insertAdjacentHTML("beforebegin", '<section class="kcd-block" id="kcdDelivery"></section>'), this.root = document.getElementById("kcdDelivery"), this.locationPromise = de(), await this.nativeReady(), document.getElementById("unified-checkout") && (this.savedRowSnapshot = this.snapshotSavedRow(), this.packetaHooked = this.hookPacketaWidget(), this.restorePacketaBranch(), this.restoreCarrier(), this.render(), this.bindEvents(), this.watchNative(), this.keepSectionsOpen(), this.loadUserLocation(), this.autoSelectDelivery(), F("#kcdDelivery", "exp_kinekus_checkout_delivery_01", k, "Checkout delivery options visibility")));
+    }
+    // Resolves after native's jQuery-ready handlers have run: our ready callback
+    // is queued behind theirs (they registered while the page scripts executed).
+    nativeReady() {
+      return new Promise((e) => {
+        const t = () => {
+          const i = window.jQuery;
+          i ? i(() => setTimeout(e, 0)) : e();
+        };
+        document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", t, { once: !0 }) : t();
+      });
+    }
+    // ─── "Týmto nákupom ušetríte" ──────────────────────────────────────────────
+    // Server renders the cart's sale savings; every native delivery/payment
+    // recalculation then hides the row unless a *coupon* discount applies
+    // (savedRow !== 1). Our auto-select triggers that recalculation on arrival,
+    // so keep the server-rendered savings instead.
+    snapshotSavedRow() {
+      const e = document.getElementById("savedRow"), t = e == null ? void 0 : e.querySelector(".saved-price-value");
+      return e && !e.classList.contains("hidden") && e.style.display !== "none" && t ? t.innerHTML : null;
+    }
+    restoreSavedRow() {
+      const e = document.getElementById("savedRow"), t = e == null ? void 0 : e.querySelector(".saved-price-value");
+      !e || !t || this.savedRowSnapshot == null || (t.innerHTML = this.savedRowSnapshot, e.classList.remove("hidden"), e.style.display = "table-row");
+    }
+    // ─── State restored after refresh / coming back from the cart ─────────────
+    // Server re-renders the Packeta card with the stored point's name but leaves
+    // #branchId empty — native then shows the generic "Packeta - výdajné miesta…"
+    // in order details. Put back the id we saved when the point was picked.
+    restorePacketaBranch() {
+      var i;
+      const e = document.querySelector("#branchId");
+      if (!((i = this.packetaInput) != null && i.checked) || !e || e.value) return;
+      const t = this.getSavedPacketaPoint();
+      t != null && t.id && t.name === this.getPacketaSub() && (e.value = t.id);
+    }
+    syncPacketaDetails() {
+      var t;
+      if (!((t = this.packetaInput) != null && t.checked)) return;
+      const e = this.getPacketaSub();
+      e && e !== E && document.querySelectorAll(".idDeliveryInfo2").forEach((i) => i.textContent = e);
+    }
+    restoreCarrier() {
+      var t;
+      let e = null;
+      try {
+        e = sessionStorage.getItem(I);
+      } catch {
+      }
+      !e || !((t = this.homeInput) != null && t.checked) || !this.getCarriers().some((i) => i.id === e) || this.applyCarrier(e);
     }
     // Payment and contact sections are shown from the start (CSS overrides the
     // native `.hidden` step reveal). Native still toggles `.hidden` — and scrolls
     // to a section each time it "reveals" it — so drop exactly those scrolls, and
     // keep unselected payment options from collapsing after a pick.
     keepSectionsOpen() {
-      var l;
+      var o;
       const e = window.jQuery;
-      if ((l = e == null ? void 0 : e.fn) != null && l.animate && !e.fn.animate.__kcd) {
-        const o = e.fn.animate, r = function(d, ...a) {
+      if ((o = e == null ? void 0 : e.fn) != null && o.animate && !e.fn.animate.__kcd) {
+        const l = e.fn.animate, r = function(d, ...a) {
           return d && typeof d.scrollTop == "number" && this.is("html, body") && ["#payment-section", "#contact-section"].some((p) => {
             const u = e(p);
             return u.length && Math.abs(u.offset().top - 50 - d.scrollTop) < 2;
-          }) ? this : o.call(this, d, ...a);
+          }) ? this : l.call(this, d, ...a);
         };
         r.__kcd = !0, e.fn.animate = r;
       }
-      const n = document.getElementById("paymentTypes");
-      if (!n) return;
-      const i = () => n.querySelectorAll(".payment-option.anim-collapse").forEach((o) => o.classList.remove("anim-collapse"));
-      i(), n.querySelectorAll(".payment-price").forEach((o) => {
+      const t = document.getElementById("paymentTypes");
+      if (!t) return;
+      const i = () => t.querySelectorAll(".payment-option.anim-collapse").forEach((l) => l.classList.remove("anim-collapse"));
+      i(), t.querySelectorAll(".payment-price").forEach((l) => {
         var d;
-        const r = parseFloat((((d = o.querySelector(".amount")) == null ? void 0 : d.textContent) || "0").replace(",", "."));
-        o.classList.toggle("kcd-price-extra", r > 0);
-      }), new MutationObserver(i).observe(n, { subtree: !0, attributes: !0, attributeFilter: ["class"] });
+        const r = parseFloat((((d = l.querySelector(".amount")) == null ? void 0 : d.textContent) || "0").replace(",", "."));
+        l.classList.toggle("kcd-price-extra", r > 0);
+      }), new MutationObserver(i).observe(t, { subtree: !0, attributes: !0, attributeFilter: ["class"] });
     }
     // ─── Native state readers ──────────────────────────────────────────────────
     // Native hides unavailable options (e.g. Packeta for heavy/oversized goods)
     // with display:none + disabled — treat both as "not offered".
     isOffered(e) {
-      const n = e == null ? void 0 : e.closest("label");
-      return !!e && !!n && !e.disabled && n.style.display !== "none";
+      const t = e == null ? void 0 : e.closest("label");
+      return !!e && !!t && !e.disabled && t.style.display !== "none";
     }
     get packetaInput() {
       return document.querySelector("#delivery_PACKETA");
@@ -1174,57 +1230,61 @@ body.kcd-modal-open {
       return document.querySelector("#oo-selected");
     }
     getActiveTab() {
-      var e, n, i;
-      return (e = this.packetaInput) != null && e.checked ? "packeta" : (n = this.homeInput) != null && n.checked ? "home" : (i = this.ooInput) != null && i.checked && this.ooInput.value && this.ooInput.value !== "on" ? "store" : null;
+      var e, t, i;
+      return (e = this.packetaInput) != null && e.checked ? "packeta" : (t = this.homeInput) != null && t.checked ? "home" : (i = this.ooInput) != null && i.checked && this.ooInput.value && this.ooInput.value !== "on" ? "store" : null;
     }
     getTabs() {
-      const e = this.getActiveTab(), n = [];
-      return this.isOffered(this.packetaInput) && n.push({ id: "packeta", active: e === "packeta" }), this.isOffered(this.homeInput) && n.push({ id: "home", active: e === "home" }), this.getStoreInputs().length && n.push({ id: "store", active: e === "store" }), n;
+      const e = this.getActiveTab(), t = [];
+      return this.isOffered(this.packetaInput) && t.push({ id: "packeta", active: e === "packeta" }), this.isOffered(this.homeInput) && t.push({ id: "home", active: e === "home" }), this.getStoreInputs().length && t.push({ id: "store", active: e === "store" }), t;
     }
     // ─── Packeta ───────────────────────────────────────────────────────────────
     // Native writes the picked point's name into the card's sub-line and resets it
     // to "Vyberte výdajné miesto" when delivery is cleared.
     getPacketaSub() {
-      var n, i, l;
-      const e = (i = (n = this.packetaInput) == null ? void 0 : n.closest("label")) == null ? void 0 : i.querySelector(".option-sub");
-      return ((l = e == null ? void 0 : e.textContent) == null ? void 0 : l.trim()) || "";
+      var t, i, o;
+      const e = (i = (t = this.packetaInput) == null ? void 0 : t.closest("label")) == null ? void 0 : i.querySelector(".option-sub");
+      return ((o = e == null ? void 0 : e.textContent) == null ? void 0 : o.trim()) || "";
+    }
+    getSavedPacketaPoint() {
+      try {
+        return JSON.parse(sessionStorage.getItem(O) || "null");
+      } catch {
+        return null;
+      }
     }
     getPacketaPoint() {
       const e = this.getPacketaSub();
-      if (!e || e === se) return null;
-      let n = null;
-      try {
-        n = JSON.parse(sessionStorage.getItem(O) || "null");
-      } catch {
-      }
-      return n && n.name === e ? {
-        title: n.title,
-        address: n.address,
-        distanceText: n.auto && n.km != null ? D(n.km) : "",
-        nearest: !!n.auto
+      if (!e || e === E) return null;
+      const t = this.getSavedPacketaPoint();
+      return t && t.name === e ? {
+        title: t.title,
+        address: t.address,
+        distanceText: t.auto && t.km != null ? D(t.km) : "",
+        nearest: !!t.auto
       } : { title: e, address: "", distanceText: "", nearest: !1 };
     }
     // Native only keeps point.id/name — wrap the widget callback to also keep the
     // street/city for our card. Library loads async, so poll for it briefly.
     hookPacketaWidget() {
       return new Promise((e) => {
-        const n = (i) => {
-          var o;
-          const l = (o = window.Packeta) == null ? void 0 : o.Widget;
-          if (!(l != null && l.pick)) {
-            i < 50 ? setTimeout(() => n(i + 1), 200) : e(!1);
+        const t = (i) => {
+          var l;
+          const o = (l = window.Packeta) == null ? void 0 : l.Widget;
+          if (!(o != null && o.pick)) {
+            i < 50 ? setTimeout(() => t(i + 1), 200) : e(!1);
             return;
           }
-          l.pick.__kcd || this.patchPacketaPick(l), e(!0);
+          o.pick.__kcd || this.patchPacketaPick(o), e(!0);
         };
-        n(0);
+        t(0);
       });
     }
     patchPacketaPick(e) {
-      const n = e.pick.bind(e), i = (l, o, r) => {
+      const t = e.pick.bind(e), i = (o, l, r) => {
         const d = (a, s = !1) => {
           if (a) {
             const p = [a.zip, a.city].filter(Boolean).join(" "), u = {
+              id: a.id != null ? String(a.id) : void 0,
               name: a.name,
               title: a.place || a.name,
               address: [a.street, p].filter(Boolean).join(", "),
@@ -1237,32 +1297,38 @@ body.kcd-modal-open {
             }
             s || f("kinekus_checkout_delivery_packeta", `Point selected: ${a.id}`, "click", k);
           }
-          o(a), this.scheduleRender();
+          l(a), this.scheduleRender();
         };
-        if (this.packetaAutoPickAt && Date.now() - this.packetaAutoPickAt < pe) {
-          this.packetaAutoPickAt = 0, this.preselectNearestPacketa(l, (a) => d(a, !0));
+        if (this.packetaAutoPickAt && Date.now() - this.packetaAutoPickAt < ue) {
+          this.packetaAutoPickAt = 0;
+          const a = this.getSavedPacketaPoint();
+          if (this.getPacketaPoint() && (a != null && a.id) && a.name === this.getPacketaSub()) {
+            l({ id: a.id, name: a.name }), this.scheduleRender();
+            return;
+          }
+          this.preselectNearestPacketa(o, (s) => d(s, !0));
           return;
         }
-        return this.packetaAutoPickAt = 0, f("kinekus_checkout_delivery_packeta", "Packeta widget opened", "view", k), n(l, (a) => d(a), r);
+        return this.packetaAutoPickAt = 0, f("kinekus_checkout_delivery_packeta", "Packeta widget opened", "view", k), t(o, (a) => d(a), r);
       };
       i.__kcd = !0, e.pick = i;
     }
     // Feeds the nearest point into native's own widget callback — native then
     // stores the branch on the server exactly as after a manual pick.
-    async preselectNearestPacketa(e, n) {
-      var o;
-      const i = await this.locationPromise, l = i ? await ce(e, i) : null;
-      if (!l || !((o = this.packetaInput) != null && o.checked) || this.getPacketaPoint()) return this.scheduleRender();
-      f("kinekus_checkout_delivery_packeta", `Point preselected: ${l.id}`, "other", k), n(l);
+    async preselectNearestPacketa(e, t) {
+      var l;
+      const i = await this.locationPromise, o = i ? await pe(e, i) : null;
+      if (!o || !((l = this.packetaInput) != null && l.checked) || this.getPacketaPoint()) return this.scheduleRender();
+      f("kinekus_checkout_delivery_packeta", `Point preselected: ${o.id}`, "other", k), t(o);
     }
     getPacketaView() {
-      var o;
-      const e = this.packetaInput, n = I(e == null ? void 0 : e.dataset.delivery), i = this.getPacketaPoint(), l = (o = this.userLocation) == null ? void 0 : o.city;
+      var l;
+      const e = this.packetaInput, t = B(e == null ? void 0 : e.dataset.delivery), i = this.getPacketaPoint(), o = (l = this.userLocation) == null ? void 0 : l.city;
       return {
         point: i,
-        caption: i != null && i.nearest && l ? c.locationCaption(l) : "",
-        dateText: n ? `${Z[n.getDay()]} <span class="kcd-dot"></span> <b>${H(n)}</b>` : "",
-        priceText: b(e == null ? void 0 : e.dataset.price)
+        caption: i != null && i.nearest && o ? c.locationCaption(o) : "",
+        dateText: t ? `${w[t.getDay()]} <span class="kcd-dot"></span> <b>${z(t)}</b>` : "",
+        priceText: y(e == null ? void 0 : e.dataset.price)
       };
     }
     // ─── Home delivery carriers ────────────────────────────────────────────────
@@ -1277,34 +1343,38 @@ body.kcd-modal-open {
     // Native/server always charges the cheapest carrier of the group
     getDefaultCarrierId() {
       const e = this.getCarriers();
-      return e.length ? e.reduce((n, i) => i.price < n.price ? i : n, e[0]).id : null;
+      return e.length ? e.reduce((t, i) => i.price < t.price ? i : t, e[0]).id : null;
     }
     getActiveCarrierId() {
-      const e = this.getCarriers().map((n) => n.id);
+      const e = this.getCarriers().map((t) => t.id);
       return this.carrierId && e.includes(this.carrierId) ? this.carrierId : this.getDefaultCarrierId();
     }
     getCarrierViews() {
-      var o, r, d;
-      const e = ((d = (r = (o = this.homeInput) == null ? void 0 : o.closest("label")) == null ? void 0 : r.querySelector(".option-sub")) == null ? void 0 : d.textContent) || "", n = I(e), i = n ? `${Z[n.getDay()].replace(/^./, (a) => a.toUpperCase())} ${H(n)}` : "", l = this.getActiveCarrierId();
+      var l, r, d;
+      const e = ((d = (r = (l = this.homeInput) == null ? void 0 : l.closest("label")) == null ? void 0 : r.querySelector(".option-sub")) == null ? void 0 : d.textContent) || "", t = B(e), i = t ? `${w[t.getDay()].replace(/^./, (a) => a.toUpperCase())} ${z(t)}` : "", o = this.getActiveCarrierId();
       return this.getCarriers().map((a) => ({
         id: a.id,
         name: a.name,
         logo: this.getCarrierLogo(a.id),
         dateText: i,
-        note: _[a.id] || "",
-        priceText: b(a.price),
-        active: a.id === l
+        note: G[a.id] || "",
+        priceText: y(a.price),
+        active: a.id === o
       }));
     }
     getCarrierLogo(e) {
-      return e === "DPDKURIER" ? h.dpd : e === "PACKETA_KURIER" ? h.packeta : e === "SDSKURIER" ? `<img src="${F}" alt="SDS" width="36" height="36" />` : h.truck;
+      return e === "DPDKURIER" ? h.dpd : e === "PACKETA_KURIER" ? h.packeta : e === "SDSKURIER" ? `<img src="${_}" alt="SDS" width="36" height="36" />` : h.truck;
     }
     // #actual-carrier-id lives in the delivery card, outside form#clubUser — tie
     // it to the form so the chosen carrier is actually posted with the order.
     applyCarrier(e) {
       this.carrierId = e;
-      const n = document.querySelector("#actual-carrier-id");
-      n && (n.value = e, n.setAttribute("form", "clubUser")), this.syncCarrierPrice(!0);
+      try {
+        sessionStorage.setItem(I, e);
+      } catch {
+      }
+      const t = document.querySelector("#actual-carrier-id");
+      t && (t.value = e, t.setAttribute("form", "clubUser")), this.syncCarrierPrice(!0);
     }
     // Native recalculates the summary for HOME_DELIVERY_GROUP (= cheapest carrier).
     // When another carrier is picked, recalculate for that carrier id instead.
@@ -1312,17 +1382,17 @@ body.kcd-modal-open {
     // default one, which native doesn't recalc on its own (summary would keep
     // the previous carrier's price/name).
     async syncCarrierPrice(e = !1) {
-      var l, o;
-      const n = this.getActiveCarrierId();
-      if (this.getActiveTab() !== "home" || !n || !e && n === this.getDefaultCarrierId()) return;
-      const i = ((l = document.querySelector('input[name="payment"]:checked')) == null ? void 0 : l.value) || "";
+      var o, l;
+      const t = this.getActiveCarrierId();
+      if (this.getActiveTab() !== "home" || !t || !e && t === this.getDefaultCarrierId()) return;
+      const i = ((o = document.querySelector('input[name="payment"]:checked')) == null ? void 0 : o.value) || "";
       try {
         const d = await (await fetch(
-          `/eshop/order/calculate-delivery-payment/?delivery=${encodeURIComponent(n)}&payment=${encodeURIComponent(i)}`,
+          `/eshop/order/calculate-delivery-payment/?delivery=${encodeURIComponent(t)}&payment=${encodeURIComponent(i)}`,
           { credentials: "include" }
         )).json();
         if (d.status !== "OK") return;
-        const a = ((o = this.getCarriers().find((p) => p.id === n)) == null ? void 0 : o.name) || "";
+        const a = ((l = this.getCarriers().find((p) => p.id === t)) == null ? void 0 : l.name) || "";
         document.querySelectorAll(".idDeliveryPrice").forEach((p) => p.textContent = A(d.delivery));
         const s = d.totalPriceRowValue || (typeof d.total == "number" ? A(d.total) : "");
         s && document.querySelectorAll(".idTotalPrice").forEach((p) => p.textContent = s), a && document.querySelectorAll(".idDeliveryName, .idDeliveryInfo").forEach((p) => p.textContent = a);
@@ -1338,22 +1408,22 @@ body.kcd-modal-open {
       );
     }
     getStoreViews() {
-      var n;
+      var t;
       const e = this.getStoreInputs().map((i) => {
         var d, a, s, p;
-        const l = i.value, o = de(this.userLocation, l), r = (((a = (d = i.closest("label")) == null ? void 0 : d.querySelector(".option-sub")) == null ? void 0 : a.textContent) || "").trim().replace(/\s*-\s*/g, "–").replace(/^./, (u) => u.toUpperCase());
+        const o = i.value, l = re(this.userLocation, o), r = (((a = (d = i.closest("label")) == null ? void 0 : d.querySelector(".option-sub")) == null ? void 0 : a.textContent) || "").trim().replace(/\s*-\s*/g, "–").replace(/^./, (u) => u.toUpperCase());
         return {
-          id: l,
-          name: ((s = w[l]) == null ? void 0 : s.name) || (i.dataset.name || "").trim(),
-          address: ((p = w[l]) == null ? void 0 : p.address) || "",
-          distanceText: o != null ? D(o) : "",
+          id: o,
+          name: ((s = Z[o]) == null ? void 0 : s.name) || (i.dataset.name || "").trim(),
+          address: ((p = Z[o]) == null ? void 0 : p.address) || "",
+          distanceText: l != null ? D(l) : "",
           nearest: !1,
           status: r,
-          priceText: b(i.dataset.price),
-          km: o
+          priceText: y(i.dataset.price),
+          km: l
         };
       });
-      return this.userLocation && (e.sort((i, l) => (i.km ?? 1 / 0) - (l.km ?? 1 / 0)), ((n = e[0]) == null ? void 0 : n.km) != null && (e[0].nearest = !0)), e.map(({ km: i, ...l }) => l);
+      return this.userLocation && (e.sort((i, o) => (i.km ?? 1 / 0) - (o.km ?? 1 / 0)), ((t = e[0]) == null ? void 0 : t.km) != null && (e[0].nearest = !0)), e.map(({ km: i, ...o }) => o);
     }
     getSelectedStoreId() {
       return this.getActiveTab() === "store" ? this.ooInput.value : null;
@@ -1362,18 +1432,18 @@ body.kcd-modal-open {
     // stores delivery on the server, recalculates the summary).
     selectStore(e) {
       var i;
-      const n = (i = document.querySelector(`#delivery_${CSS.escape(e)}`)) == null ? void 0 : i.closest("label");
-      n == null || n.click();
+      const t = (i = document.querySelector(`#delivery_${CSS.escape(e)}`)) == null ? void 0 : i.closest("label");
+      t == null || t.click();
     }
     preferredStoreId() {
-      var n;
-      return ((n = this.getStoreViews()[0]) == null ? void 0 : n.id) || null;
+      var t;
+      return ((t = this.getStoreViews()[0]) == null ? void 0 : t.id) || null;
     }
     // ─── Actions ───────────────────────────────────────────────────────────────
-    selectTab(e, n = !1) {
-      var i, l, o, r;
+    selectTab(e, t = !1) {
+      var i, o, l, r;
       if (this.getActiveTab() !== e) {
-        if (n ? f("kinekus_checkout_delivery_tab", `Auto-selected: ${e}`, "other", k) : f("kinekus_checkout_delivery_tab", `Tab: ${e}`, "click", k), e === "packeta" && ((l = (i = this.packetaInput) == null ? void 0 : i.closest("label")) == null || l.click()), e === "home" && ((r = (o = this.homeInput) == null ? void 0 : o.closest("label")) == null || r.click()), e === "store") {
+        if (t ? f("kinekus_checkout_delivery_tab", `Auto-selected: ${e}`, "other", k) : f("kinekus_checkout_delivery_tab", `Tab: ${e}`, "click", k), e === "packeta" && (this.packetaAutoPickAt = Date.now(), (o = (i = this.packetaInput) == null ? void 0 : i.closest("label")) == null || o.click()), e === "home" && ((r = (l = this.homeInput) == null ? void 0 : l.closest("label")) == null || r.click()), e === "store") {
           const d = this.preferredStoreId();
           if (!d) return;
           this.autoPicked = !0, this.autoStoreId = this.userLocation ? d : null, this.selectStore(d);
@@ -1383,22 +1453,22 @@ body.kcd-modal-open {
     }
     // Re-clicking the native Packeta card re-runs store-delivery and reopens the widget
     openPacketaWidget() {
-      var e, n;
-      this.packetaAutoPickAt = 0, (n = (e = this.packetaInput) == null ? void 0 : e.closest("label")) == null || n.click();
+      var e, t;
+      this.packetaAutoPickAt = 0, (t = (e = this.packetaInput) == null ? void 0 : e.closest("label")) == null || t.click();
     }
     // Nothing selected on arrival (sidebar shows "Doručenie: ?") — pick the first
     // offered option, in tab order. Packeta is selected without opening its widget.
     async autoSelectDelivery() {
       if (this.getActiveTab()) return;
       const e = this.getTabs().map((i) => i.id);
-      let n = e[0];
-      n && (n === "packeta" && (await this.packetaHooked || (n = e[1]), !n) || this.getActiveTab() || (n === "packeta" && (this.packetaAutoPickAt = Date.now()), this.selectTab(n, !0)));
+      let t = e[0];
+      t && (t === "packeta" && (await this.packetaHooked || (t = e[1]), !t) || this.getActiveTab() || this.selectTab(t, !0));
     }
     openStoreModal() {
-      var n;
+      var t;
       this.closeStoreModal();
-      const e = (n = this.getStoreInputs()[0]) == null ? void 0 : n.dataset.price;
-      document.body.insertAdjacentHTML("beforeend", Q(this.getStoreViews(), e ? b(e) : "")), document.body.classList.add("kcd-modal-open"), f("kinekus_checkout_delivery_stores", "Store picker opened", "view", k);
+      const e = (t = this.getStoreInputs()[0]) == null ? void 0 : t.dataset.price;
+      document.body.insertAdjacentHTML("beforeend", te(this.getStoreViews(), e ? y(e) : "")), document.body.classList.add("kcd-modal-open"), f("kinekus_checkout_delivery_stores", "Store picker opened", "view", k);
     }
     closeStoreModal() {
       var e;
@@ -1406,15 +1476,15 @@ body.kcd-modal-open {
     }
     // ─── Rendering ─────────────────────────────────────────────────────────────
     render() {
-      var l;
+      var o;
       const e = this.getTabs();
-      let n = "";
+      let t = "";
       const i = this.getActiveTab();
-      if (i === "packeta" && (n = W(this.getPacketaView())), i === "home" && (n = q(this.getCarrierViews())), i === "store") {
-        const o = this.getSelectedStoreId(), r = this.getStoreViews().find((a) => a.id === o) || null, d = !!r && !this.userPickedStore && this.autoStoreId === o && !!((l = this.userLocation) != null && l.city);
-        n = X(r, d ? c.locationCaption(this.userLocation.city) : "");
+      if (i === "packeta" && (t = J(this.getPacketaView())), i === "home" && (t = X(this.getCarrierViews())), i === "store") {
+        const l = this.getSelectedStoreId(), r = this.getStoreViews().find((a) => a.id === l) || null, d = !!r && !this.userPickedStore && this.autoStoreId === l && !!((o = this.userLocation) != null && o.city);
+        t = ee(r, d ? c.locationCaption(this.userLocation.city) : "");
       }
-      this.root.innerHTML = R(e, n);
+      this.root.innerHTML = q(e, t);
     }
     scheduleRender() {
       this.renderTimer && clearTimeout(this.renderTimer), this.renderTimer = setTimeout(() => this.render(), 50);
@@ -1422,25 +1492,25 @@ body.kcd-modal-open {
     bindEvents() {
       this.root.addEventListener("click", (e) => {
         var r;
-        const n = e.target, i = n.closest("[data-kcd-tab]");
+        const t = e.target, i = t.closest("[data-kcd-tab]");
         if (i) return this.selectTab(i.dataset.kcdTab);
-        const l = n.closest("[data-kcd-carrier]");
-        if (l) {
-          const d = l.dataset.kcdCarrier;
+        const o = t.closest("[data-kcd-carrier]");
+        if (o) {
+          const d = o.dataset.kcdCarrier;
           return d === this.getActiveCarrierId() ? void 0 : (f("kinekus_checkout_delivery_carrier", `Carrier: ${d}`, "click", k), this.applyCarrier(d), this.render());
         }
-        const o = (r = n.closest("[data-kcd-action]")) == null ? void 0 : r.dataset.kcdAction;
-        if (o === "packeta") return this.openPacketaWidget();
-        if (o === "stores") return this.openStoreModal();
+        const l = (r = t.closest("[data-kcd-action]")) == null ? void 0 : r.dataset.kcdAction;
+        if (l === "packeta") return this.openPacketaWidget();
+        if (l === "stores") return this.openStoreModal();
       }), document.addEventListener("click", (e) => {
-        const n = e.target;
-        if (!n.closest("#kcdModal")) return;
-        const i = n.closest("[data-kcd-store]");
+        const t = e.target;
+        if (!t.closest("#kcdModal")) return;
+        const i = t.closest("[data-kcd-store]");
         if (i) {
-          const l = i.dataset.kcdStore;
-          return this.userPickedStore = !0, this.autoPicked = !1, this.autoStoreId = null, f("kinekus_checkout_delivery_stores", `Store selected: ${l}`, "click", k), this.closeStoreModal(), l !== this.getSelectedStoreId() && this.selectStore(l), this.scheduleRender();
+          const o = i.dataset.kcdStore;
+          return this.userPickedStore = !0, this.autoPicked = !1, this.autoStoreId = null, f("kinekus_checkout_delivery_stores", `Store selected: ${o}`, "click", k), this.closeStoreModal(), o !== this.getSelectedStoreId() && this.selectStore(o), this.scheduleRender();
         }
-        (n.closest('[data-kcd-action="close"]') || !n.closest(".kcd-modal-box")) && this.closeStoreModal();
+        (t.closest('[data-kcd-action="close"]') || !t.closest(".kcd-modal-box")) && this.closeStoreModal();
       }), document.addEventListener("keydown", (e) => {
         e.key === "Escape" && this.closeStoreModal();
       });
@@ -1459,10 +1529,10 @@ body.kcd-modal-open {
         attributes: !0,
         attributeFilter: ["class", "style", "disabled"]
       });
-      const n = window.jQuery;
-      n == null || n(document).ajaxComplete((i, l, o) => {
-        var r, d;
-        (r = o.url) != null && r.includes("calculate-delivery-payment") && this.syncCarrierPrice(), (d = o.url) != null && d.includes("store-delivery") && this.scheduleRender();
+      const t = window.jQuery;
+      t == null || t(document).ajaxComplete((i, o, l) => {
+        const r = l.url || "", d = o == null ? void 0 : o.responseJSON;
+        /calculate-delivery-payment|clear-payment/.test(r) && (d == null ? void 0 : d.savedRow) !== 1 && this.restoreSavedRow(), r.includes("calculate-delivery-payment") && this.syncCarrierPrice(), r.includes("store-delivery") && (this.syncPacketaDetails(), this.scheduleRender());
       });
     }
     async loadUserLocation() {
@@ -1481,6 +1551,6 @@ body.kcd-modal-open {
       e && (this.autoStoreId = e, e !== this.getSelectedStoreId() && this.selectStore(e));
     }
   }
-  new ue();
+  new he();
 })();
 //# sourceMappingURL=index.js.map
