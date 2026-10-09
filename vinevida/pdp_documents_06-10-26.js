@@ -94,6 +94,11 @@
     width: 100%;
   }
 }
+@media (min-width: 769px) {
+  .vvdocs--expanded:not(.vvdocs--fragrance) .vvdocs__item:nth-child(3n+1) {
+    grid-column: 1;
+  }
+}
 .vvdocs__item {
   display: flex;
   flex-direction: column;
