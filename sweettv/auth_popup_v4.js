@@ -88,7 +88,7 @@
   }
 
   .auth-modal-shell:has(.crs-banner, .crs-provider) .auth-modal-shell__content {
-    justify-content: center !important;
+    justify-content: flex-start !important;
     gap: 37px !important;
     min-height: 100vh !important;
     min-height: 100dvh !important;
@@ -104,6 +104,7 @@
   .auth-modal-shell:has(.crs-banner, .crs-provider) .auth-v1-start-screen,
   .auth-modal-shell:has(.crs-banner, .crs-provider) .auth-v1-sms-screen,
   .auth-modal-shell:has(.crs-banner, .crs-provider) .auth-v1-provider-screen {
+    margin: auto 0 !important;
     padding: 0 !important;
     background: none !important;
     border: 0 !important;
