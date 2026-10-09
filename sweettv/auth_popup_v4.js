@@ -411,6 +411,12 @@
   box-shadow: 0 9px 29px rgba(0, 0, 0, 0.1) !important;
 }
 
+.auth-modal-shell:has(.crs-banner) .auth-apple-sign-in-button__visual {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .auth-modal-shell:has(.crs-banner) .auth-apple-sign-in-button__trigger {
   top: 0 !important;
   left: 0 !important;
