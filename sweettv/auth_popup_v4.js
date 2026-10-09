@@ -445,6 +445,8 @@
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 18px !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
 }
 
 .auth-modal-shell:has(.crs-banner) .auth-google-identity-button {
