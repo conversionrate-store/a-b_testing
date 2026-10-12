@@ -222,14 +222,10 @@
     <div class="xdlv-rows" id="xdlvRows"></div>
     <div class="xdlv-divider"></div>
     <div class="xdlv-trust">
-      ${m.trustItems.map(
-      (n) => (
-        /* HTML */
-        `
-            <span class="xdlv-trust-item">${u.check}<span>${n}</span></span>
-          `
-      )
-    ).join("")}
+      ${m.trustItems.map((n) => (
+      /* HTML */
+      ` <span class="xdlv-trust-item">${u.check}<span>${n}</span></span> `
+    )).join("")}
     </div>
     ${z()}
   </div>
@@ -400,14 +396,14 @@
     } catch {
       return null;
     }
-  }, j = "$49.99", U = 1e4, E = "#cm-verify-fitment", F = () => {
+  }, j = "$49.99", U = 1e4, S = "#cm-verify-fitment", F = () => {
     var i, o;
-    const n = document.querySelector(`${E} .cm_verify-fitment_block`);
+    const n = document.querySelector(`${S} .cm_verify-fitment_block`);
     if (!n) return { state: null, vehicle: "" };
     const t = n.classList.contains("cm_verify-fitment_block--yes") ? "yes" : n.classList.contains("cm_verify-fitment_block--no") ? "no" : null, e = ((o = (i = n.querySelector(".cm_verify-fitment_vehicle")) == null ? void 0 : i.textContent) == null ? void 0 : o.trim()) || "";
     return { state: t, vehicle: e };
   }, G = (n) => {
-    const t = document.querySelector(E);
+    const t = document.querySelector(S);
     if (!t) return;
     const e = () => n(F());
     e(), new MutationObserver(e).observe(t, { childList: !0, subtree: !0 });
@@ -599,7 +595,11 @@
       if (this.usRows) return this.usRows;
       if (!this.labelEl) return [];
       const t = this.getFreeShippingQualifierHtml();
-      return Array.from(this.labelEl.children).filter((e) => e.classList.contains("deliverr-label-sla")).map((e, i) => {
+      return Array.from(this.labelEl.children).filter((e) => e.classList.contains("deliverr-label-sla")).filter((e) => {
+        var o;
+        const i = e.querySelector("time");
+        return !i || !!((o = i.textContent) != null && o.trim());
+      }).map((e, i) => {
         var a;
         const o = Array.from(e.classList).find((c) => c !== "deliverr-label-sla") || "", r = parseInt(((a = o.match(/(\d+)\s*day/)) == null ? void 0 : a[1]) || "", 10), l = /1day|2day|next.?day|same.?day/i.test(o) || !Number.isNaN(r) && r <= 3;
         let s = i === 0 ? e.innerHTML + t : e.innerHTML;
@@ -839,9 +839,9 @@
         o ? q(o, t) : Promise.resolve({ isoDate: null, minutesToCutoff: null, resolved: !1 })
       ]), x = (l ?? 0) + (s ?? 0) >= U, b = a.isoDate ? Z(a.isoDate) : null;
       if (b) {
-        const S = x ? "" : this.getFreeShippingQualifierHtml();
-        (x || S) && i.push({
-          html: `<b>FREE</b> delivery, <span class="xdlv-row-loc">${e}</span>, by ${b}${S}`,
+        const E = x ? "" : this.getFreeShippingQualifierHtml();
+        (x || E) && i.push({
+          html: `<b>FREE</b> delivery, <span class="xdlv-row-loc">${e}</span>, by ${b}${E}`,
           fast: !1
         });
       }
