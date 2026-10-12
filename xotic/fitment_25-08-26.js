@@ -230,7 +230,7 @@
     <div class="xtc-fit xtc-fit--result xtc-fit--${e}">
       <div class="xtc-fit__result-head">
         <span class="xtc-fit__result-icon">${i ? _.check : _.warning}</span>
-        <span class="xtc-fit__result-title">${i ? "Guaranteed to Fit Your" : "This Product DOES NOT Fit Your"}</span>
+        <span class="xtc-fit__result-title">${i ? "This product fits your" : "This Product DOES NOT Fit Your"}</span>
       </div>
       <div class="xtc-fit__result-vehicle">${h(t)}</div>
       ${a}
