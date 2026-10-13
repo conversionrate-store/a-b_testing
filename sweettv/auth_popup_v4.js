@@ -429,6 +429,14 @@
   border-color: transparent !important;
 }
 
+.auth-modal-shell:has(.crs-banner) .auth-google-identity-button--icon iframe[allow='identity-credentials-get'] {
+  width: 64px !important;
+  height: 44px !important;
+  max-width: none !important;
+  max-height: none !important;
+  clip-path: circle(19px at 32px 22px);
+}
+
 .auth-modal-shell:has(.crs-banner) .auth-v1-start-screen__provider {
   height: auto !important;
   min-height: 0 !important;
