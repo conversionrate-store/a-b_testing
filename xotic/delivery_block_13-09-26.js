@@ -1,44 +1,44 @@
 (function() {
   "use strict";
-  const z = `.xdlv-native-root,.xdlv-hidden{display:none}.xdlv-block{position:relative;margin:16px 0;padding:18px 26px;border:2px solid #d0e3fb;border-radius:12px;background:#f2f2f7;font-family:inherit;font-size:16px;line-height:20px;color:#1d1d1d}.xdlv-rows{display:flex;flex-direction:column;gap:12px}.xdlv-row{display:flex;align-items:flex-start;gap:12px}.xdlv-row-icon{flex:none;width:24px;height:24px;color:#0040ff}.xdlv-row-icon svg{display:block;width:100%;height:100%}.xdlv-row-text{flex:1;min-width:0;padding-top:2px;display:flex;align-items:baseline;column-gap:12px;row-gap:4px}.xdlv-row-text b,.xdlv-row-text strong{font-weight:700}.xdlv-row-content{flex:1;min-width:0}.xdlv-row-loc{font-weight:700}.xdlv-row-cutoff{font-weight:700;color:#0040ff}.xdlv-row-content .deliverr-cart-minimum{font-weight:700}.xdlv-change{flex:none;margin-left:auto;padding:0;border:0;background:none;font:inherit;font-weight:600;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:#0040ff;cursor:pointer}.xdlv-change:hover{color:#204ed8}.xdlv-divider{margin:12px 0;border-top:1px solid rgba(29,29,29,.08)}.xdlv-trust{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}.xdlv-trust-item{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#1d1d1d;white-space:nowrap}.xdlv-trust-item svg{flex:none;width:14px;height:14px;color:#0040ff}@media (max-width: 480px){.xdlv-block{padding:18px}.xdlv-row-text{font-size:13px}.xdlv-change{margin-left:0;text-align:right}.xdlv-trust{justify-content:flex-start}}.xstk-bar{position:fixed;left:0;right:0;bottom:0;z-index:2147483637;background:#f2f2f7;box-shadow:0 -2px 16px #0000001a;transform:translateY(100%);transition:transform .25s ease;font-family:inherit}.xstk-bar--visible{transform:translateY(0)}.xstk-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1440px;margin:0 auto;padding:20px 116px}.xstk-info{flex:1;min-width:0}.xstk-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;font-size:16px;color:#1d1d1d;margin-bottom:6px}.xstk-row{display:flex;align-items:center;gap:16px}.xstk-price{font-weight:700;font-size:20px;color:#1d1d1d}.xstk-fit{display:none;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#616161;white-space:nowrap}.xstk-fit svg{flex:none;width:18px;height:18px}.xstk-fit--yes,.xstk-fit--no{display:inline-flex}.xstk-atc{flex:none;padding:20px 40px;border:0;border-radius:8px;background:#0040ff;color:#fff;font-family:inherit;font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;cursor:pointer}.xstk-atc:hover{background:#204ed8}@media (max-width: 480px){.xstk-inner{padding:13px 20px 11px;gap:12px}.xstk-title{display:none}.xstk-price{font-size:18px}.xstk-atc{padding:18px 24px;font-size:14px}}.xdlv-modal-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;background:transparent}.xdlv-modal{position:absolute;top:calc(100% + 8px);right:0;z-index:1000;width:257px;max-width:calc(100vw - 32px);padding:22px;border-radius:16px;border:none;background:#fff;box-shadow:0 12px 32px #00000029;font-family:inherit;font-size:14px;color:#1d1d1d}.xdlv-modal-field{display:block;margin-bottom:16px}.xdlv-modal-field>span{display:block;margin-bottom:8px;font-size:13px;color:#1d1d1d}.xdlv-modal-field--zip{flex:1;min-width:0;margin-bottom:0}.xdlv-modal-field--zip[hidden]{display:none}.xdlv-modal-country,.xdlv-modal-zip{box-sizing:border-box;width:100%;height:42px;padding:0 16px;border:1px solid #bdbdbd;border-radius:8px;font-family:inherit;font-size:14px;color:#1d1d1d;background:#fff}.xdlv-modal-country:focus,.xdlv-modal-zip:focus{outline:none;border-color:#0040ff}.xdlv-modal-country{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:40px;background-repeat:no-repeat;background-position:right 14px center;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231D1D1D' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}.xdlv-modal-zip-row{display:flex;align-items:flex-start;gap:6px}.xdlv-modal-submit{flex:none;align-self:flex-end;height:42px;padding:0 20px;border:none;border-radius:8px;background:#0040ff;color:#fff;font-family:inherit;font-weight:600;font-size:13px;letter-spacing:.02em;text-transform:uppercase;cursor:pointer}.xdlv-modal-submit:hover{background:#204ed8}.xdlv-modal-close{position:absolute;top:18px;right:18px;width:auto;height:auto;padding:0;border:none;background:none;color:#1d1d1d;cursor:pointer}.xdlv-modal-close svg{display:block;width:14px;height:14px}`, f = (o, t, e, i = "") => {
+  const _ = `.xdlv-native-root,.xdlv-hidden{display:none}.xdlv-block{position:relative;margin:16px 0;padding:18px 26px;border:2px solid #d0e3fb;border-radius:12px;background:#f2f2f7;font-family:inherit;font-size:16px;line-height:20px;color:#1d1d1d}.xdlv-rows{display:flex;flex-direction:column;gap:12px}.xdlv-row{display:flex;align-items:flex-start;gap:12px}.xdlv-row-icon{flex:none;width:24px;height:24px;color:#0040ff}.xdlv-row-icon svg{display:block;width:100%;height:100%}.xdlv-row-text{flex:1;min-width:0;padding-top:2px;display:flex;align-items:baseline;column-gap:12px;row-gap:4px}.xdlv-row-text b,.xdlv-row-text strong{font-weight:700}.xdlv-row-content{flex:1;min-width:0}.xdlv-row-loc{font-weight:700}.xdlv-row-cutoff{font-weight:700;color:#0040ff}.xdlv-row-content .deliverr-cart-minimum{font-weight:700}.xdlv-change{flex:none;margin-left:auto;padding:0;border:0;background:none;font:inherit;font-weight:600;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:#0040ff;cursor:pointer}.xdlv-change:hover{color:#204ed8}.xdlv-divider{margin:12px 0;border-top:1px solid rgba(29,29,29,.08)}.xdlv-trust{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}.xdlv-trust-item{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#1d1d1d;white-space:nowrap}.xdlv-trust-item svg{flex:none;width:14px;height:14px;color:#0040ff}@media (max-width: 480px){.xdlv-block{padding:18px}.xdlv-row-text{font-size:13px}.xdlv-change{margin-left:0;text-align:right}.xdlv-trust{justify-content:flex-start}}.xstk-bar{position:fixed;left:0;right:0;bottom:0;z-index:2147483637;background:#f2f2f7;box-shadow:0 -2px 16px #0000001a;transform:translateY(100%);transition:transform .25s ease;font-family:inherit}.xstk-bar--visible{transform:translateY(0)}.xstk-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1440px;margin:0 auto;padding:20px 116px}.xstk-info{flex:1;min-width:0}.xstk-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;font-size:16px;color:#1d1d1d;margin-bottom:6px}.xstk-row{display:flex;align-items:center;gap:16px}.xstk-price{font-weight:700;font-size:20px;color:#1d1d1d}.xstk-fit{display:none;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#616161;white-space:nowrap}.xstk-fit svg{flex:none;width:18px;height:18px}.xstk-fit--yes,.xstk-fit--no{display:inline-flex}.xstk-atc{flex:none;padding:20px 40px;border:0;border-radius:8px;background:#0040ff;color:#fff;font-family:inherit;font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;cursor:pointer}.xstk-atc:hover{background:#204ed8}@media (max-width: 480px){.xstk-inner{padding:13px 20px 11px;gap:12px}.xstk-title{display:none}.xstk-price{font-size:18px}.xstk-atc{padding:18px 24px;font-size:14px}}.xdlv-modal-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;background:transparent}.xdlv-modal{position:absolute;top:calc(100% + 8px);right:0;z-index:1000;width:257px;max-width:calc(100vw - 32px);padding:22px;border-radius:16px;border:none;background:#fff;box-shadow:0 12px 32px #00000029;font-family:inherit;font-size:14px;color:#1d1d1d}.xdlv-modal-field{display:block;margin-bottom:16px}.xdlv-modal-field>span{display:block;margin-bottom:8px;font-size:13px;color:#1d1d1d}.xdlv-modal-field--zip{flex:1;min-width:0;margin-bottom:0}.xdlv-modal-field--zip[hidden]{display:none}.xdlv-modal-country,.xdlv-modal-zip{box-sizing:border-box;width:100%;height:42px;padding:0 16px;border:1px solid #bdbdbd;border-radius:8px;font-family:inherit;font-size:14px;color:#1d1d1d;background:#fff}.xdlv-modal-country:focus,.xdlv-modal-zip:focus{outline:none;border-color:#0040ff}.xdlv-modal-country{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:40px;background-repeat:no-repeat;background-position:right 14px center;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231D1D1D' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}.xdlv-modal-zip-row{display:flex;align-items:flex-start;gap:6px}.xdlv-modal-submit{flex:none;align-self:flex-end;height:42px;padding:0 20px;border:none;border-radius:8px;background:#0040ff;color:#fff;font-family:inherit;font-weight:600;font-size:13px;letter-spacing:.02em;text-transform:uppercase;cursor:pointer}.xdlv-modal-submit:hover{background:#204ed8}.xdlv-modal-close{position:absolute;top:18px;right:18px;width:auto;height:auto;padding:0;border:none;background:none;color:#1d1d1d;cursor:pointer}.xdlv-modal-close svg{display:block;width:14px;height:14px}`, h = (n, t, e, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: o,
+      event_name: n,
       event_desc: t,
       event_type: e,
       event_loc: i
-    }), v(`Event: ${o} | ${t} | ${e} | ${i}`, "success");
-  }, C = (o) => new Promise((t) => {
-    const e = document.querySelector(o);
+    }), m(`Event: ${n} | ${t} | ${e} | ${i}`, "success");
+  }, C = (n) => new Promise((t) => {
+    const e = document.querySelector(n);
     e && t(e);
     const i = new MutationObserver(() => {
-      const n = document.querySelector(o);
-      n && (t(n), i.disconnect());
+      const o = document.querySelector(n);
+      o && (t(o), i.disconnect());
     });
     i.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), _ = ({ name: o, dev: t }) => {
-    const e = o.toLowerCase().replace(/\s/g, "_");
-    f(`${e}_started`, `Experiment ${o} started`, "other", e), console.log(
-      `%c EXP: ${o} (DEV: ${t})`,
+  }), $ = ({ name: n, dev: t }) => {
+    const e = n.toLowerCase().replace(/\s/g, "_");
+    h(`${e}_started`, `Experiment ${n} started`, "other", e), console.log(
+      `%c EXP: ${n} (DEV: ${t})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class h {
+  class v {
     constructor(t) {
-      this.elements = t instanceof h ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
+      this.elements = t instanceof v ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
     }
     on(t, e, i) {
-      return typeof e == "function" && (i = e, e = ""), this.elements.forEach((n) => {
-        n.addEventListener(t, function(s) {
-          var r;
+      return typeof e == "function" && (i = e, e = ""), this.elements.forEach((o) => {
+        o.addEventListener(t, function(s) {
+          var l;
           if (e !== "") {
-            let l = (r = s.target) == null ? void 0 : r.closest(e);
-            l && (i == null || i.call(l, s));
+            let r = (l = s.target) == null ? void 0 : l.closest(e);
+            r && (i == null || i.call(r, s));
           } else
-            i == null || i.call(n, s);
+            i == null || i.call(o, s);
         });
       }), this;
     }
@@ -59,18 +59,18 @@
     }
     each(t) {
       for (let e of this.elements)
-        t(new h(e), this.elements.indexOf(e));
+        t(new v(e), this.elements.indexOf(e));
       return this;
     }
     style(t, e) {
-      const i = t.split("-").map((n, s) => s === 0 ? n : n.charAt(0).toUpperCase() + n.slice(1)).join("");
-      return this.elements.forEach(function(n) {
-        n.style[i] = e;
+      const i = t.split("-").map((o, s) => s === 0 ? o : o.charAt(0).toUpperCase() + o.slice(1)).join("");
+      return this.elements.forEach(function(o) {
+        o.style[i] = e;
       }), this;
     }
     find(t) {
       const e = this.elements.map((i) => Array.from(i.querySelectorAll(t)));
-      return new h(e.flat());
+      return new v(e.flat());
     }
     attr(t, e) {
       return e ? (this.elements.forEach(function(i) {
@@ -88,26 +88,26 @@
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const d = (o) => new h(o), w = (o, t, e, i, n = 1e3, s = 0.5) => {
-    let r, l;
-    if (r = new IntersectionObserver(
+  const u = (n) => new v(n), k = (n, t, e, i, o = 1e3, s = 0.5) => {
+    let l, r;
+    if (l = new IntersectionObserver(
       function(a) {
-        a[0].isIntersecting === !0 ? l = setTimeout(() => {
-          f(
+        a[0].isIntersecting === !0 ? r = setTimeout(() => {
+          h(
             t,
             a[0].target.dataset.visible || i || "",
             "view",
             e
-          ), r.disconnect();
-        }, n) : (v("Element is not fully visible", "warn"), clearTimeout(l));
+          ), l.disconnect();
+        }, o) : (m("Element is not fully visible", "warn"), clearTimeout(r));
       },
       { threshold: [s] }
-    ), typeof o == "string") {
-      const a = document.querySelector(o);
-      a && r.observe(a);
+    ), typeof n == "string") {
+      const a = document.querySelector(n);
+      a && l.observe(a);
     } else
-      r.observe(o);
-  }, v = (o, t = "info") => {
+      l.observe(n);
+  }, m = (n, t = "info") => {
     let e;
     switch (t) {
       case "info":
@@ -123,8 +123,8 @@
         e = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${o}`, `${e} font-size: 16px; font-weight: 600`);
-  }, u = {
+    console.log(`%c>>> ${n}`, `${e} font-size: 16px; font-weight: 600`);
+  }, p = {
     package: (
       /* HTML */
       `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -210,21 +210,21 @@
     </defs>
   </svg>`
     )
-  }, m = {
+  }, x = {
     changeLabel: "Change",
     confirmLabel: "Confirm",
     unavailableText: "This item is not available for delivery to your address.",
     trustItems: ["Limited lifetime warranty", "30-day returns", "Perfect fit guarantee"]
-  }, $ = () => (
+  }, A = () => (
     /* HTML */
     `
   <div class="xdlv-block xdlv-hidden" id="xdlvBlock">
     <div class="xdlv-rows" id="xdlvRows"></div>
     <div class="xdlv-divider"></div>
     <div class="xdlv-trust">
-      ${m.trustItems.map((o) => (
+      ${x.trustItems.map((n) => (
       /* HTML */
-      ` <span class="xdlv-trust-item">${u.check}<span>${o}</span></span> `
+      ` <span class="xdlv-trust-item">${p.check}<span>${n}</span></span> `
     )).join("")}
     </div>
     ${P()}
@@ -235,7 +235,7 @@
     `
   <div class="xdlv-modal-backdrop" data-xdlv-modal-close hidden></div>
   <div class="xdlv-modal" id="xdlvModal" hidden>
-    <button type="button" class="xdlv-modal-close" data-xdlv-modal-close aria-label="Close">${u.close}</button>
+    <button type="button" class="xdlv-modal-close" data-xdlv-modal-close aria-label="Close">${p.close}</button>
     <label class="xdlv-modal-field">
       <span>Location</span>
       <select class="xdlv-modal-country" data-xdlv-modal-country>
@@ -256,17 +256,17 @@
           placeholder="ZIP"
         />
       </label>
-      <button type="button" class="xdlv-modal-submit" data-xdlv-modal-submit>${m.confirmLabel}</button>
+      <button type="button" class="xdlv-modal-submit" data-xdlv-modal-submit>${x.confirmLabel}</button>
     </div>
   </div>
 `
-  ), A = (o) => (
+  ), R = (n) => (
     /* HTML */
     `
   <div class="xstk-bar" id="xstkBar">
     <div class="xstk-inner">
       <div class="xstk-info">
-        <div class="xstk-title">${o}</div>
+        <div class="xstk-title">${n}</div>
         <div class="xstk-row">
           <span class="xstk-price" id="xstkPrice"></span>
           <span class="xstk-fit" id="xstkFit"></span>
@@ -280,147 +280,147 @@
     /* HTML */
     `
   <div class="xdlv-row">
-    <span class="xdlv-row-icon">${u.fitWarn}</span>
+    <span class="xdlv-row-icon">${p.fitWarn}</span>
     <span class="xdlv-row-text">
-      <span class="xdlv-row-content">${m.unavailableText}</span>
-      <button type="button" class="xdlv-change" data-xdlv-change>${m.changeLabel}</button>
+      <span class="xdlv-row-content">${x.unavailableText}</span>
+      <button type="button" class="xdlv-change" data-xdlv-change>${x.changeLabel}</button>
     </span>
   </div>
 `
-  ), R = (o) => o.map(
+  ), I = (n) => n.map(
     (t, e) => (
       /* HTML */
       `
         <div class="xdlv-row">
-          <span class="xdlv-row-icon">${t.fast ? u.truck : u.package}</span>
+          <span class="xdlv-row-icon">${t.fast ? p.truck : p.package}</span>
           <span class="xdlv-row-text">
             <span class="xdlv-row-content">${t.html}</span>
             ${e === 0 ? (
         /* HTML */
-        `<button type="button" class="xdlv-change" data-xdlv-change>${m.changeLabel}</button>`
+        `<button type="button" class="xdlv-change" data-xdlv-change>${x.changeLabel}</button>`
       ) : ""}
           </span>
         </div>
       `
     )
-  ).join(""), k = "xdlv_geo_info", I = "https://ipwho.is/";
-  let x = null;
-  const S = async (o = 4e3) => {
+  ).join(""), S = "xdlv_geo_info", B = "https://ipwho.is/";
+  let g = null;
+  const E = async (n = 4e3) => {
     try {
-      const t = sessionStorage.getItem(k);
+      const t = sessionStorage.getItem(S);
       if (t) return JSON.parse(t);
     } catch {
     }
-    return x || (x = (async () => {
+    return g || (g = (async () => {
       try {
-        const t = new AbortController(), e = setTimeout(() => t.abort(), o), i = await fetch(I, { signal: t.signal });
+        const t = new AbortController(), e = setTimeout(() => t.abort(), n), i = await fetch(B, { signal: t.signal });
         if (clearTimeout(e), !i.ok) return null;
-        const n = await i.json();
-        if (!(n != null && n.success)) return null;
-        const s = String(n.country_code || ""), r = String(n.postal || "").trim(), l = { countryCode: s, zip: /^\d{5}$/.test(r) ? r : null };
+        const o = await i.json();
+        if (!(o != null && o.success)) return null;
+        const s = String(o.country_code || ""), l = String(o.postal || "").trim(), r = { countryCode: s, zip: /^\d{5}$/.test(l) ? l : null };
         try {
-          sessionStorage.setItem(k, JSON.stringify(l));
+          sessionStorage.setItem(S, JSON.stringify(r));
         } catch {
         }
-        return l;
+        return r;
       } catch {
-        return v("Xotic delivery block: IP geolocation unavailable, skipping geo lookup", "warn"), null;
+        return m("Xotic delivery block: IP geolocation unavailable, skipping geo lookup", "warn"), null;
       } finally {
-        x = null;
+        g = null;
       }
-    })(), x);
-  }, B = async (o = 4e3) => {
-    const t = await S(o);
+    })(), g);
+  }, Z = async (n = 4e3) => {
+    const t = await E(n);
     return !t || t.countryCode !== "US" || !t.zip ? null : { zip: t.zip, countryCode: t.countryCode };
-  }, Z = async (o = 4e3) => {
-    const t = await S(o);
+  }, q = async (n = 4e3) => {
+    const t = await E(n);
     return (t == null ? void 0 : t.countryCode) || null;
-  }, g = /* @__PURE__ */ new Map(), V = async (o, t = 4e3) => {
+  }, y = /* @__PURE__ */ new Map(), V = async (n, t = 4e3) => {
     var e;
-    if (g.has(o)) return g.get(o) ?? null;
+    if (y.has(n)) return y.get(n) ?? null;
     try {
-      const i = new AbortController(), n = setTimeout(() => i.abort(), t), s = await fetch(`https://api.zippopotam.us/us/${o}`, { signal: i.signal });
-      if (clearTimeout(n), !s.ok)
-        return g.set(o, null), null;
-      const r = await s.json(), l = (e = r == null ? void 0 : r.places) == null ? void 0 : e[0], a = l == null ? void 0 : l["place name"], c = l == null ? void 0 : l["state abbreviation"], p = a && c ? `${a}, ${c}` : null;
-      return g.set(o, p), p;
+      const i = new AbortController(), o = setTimeout(() => i.abort(), t), s = await fetch(`https://api.zippopotam.us/us/${n}`, { signal: i.signal });
+      if (clearTimeout(o), !s.ok)
+        return y.set(n, null), null;
+      const l = await s.json(), r = (e = l == null ? void 0 : l.places) == null ? void 0 : e[0], a = r == null ? void 0 : r["place name"], d = r == null ? void 0 : r["state abbreviation"], c = a && d ? `${a}, ${d}` : null;
+      return y.set(n, c), c;
     } catch {
       return null;
     }
-  }, L = 24 * 60 * 60 * 1e3, q = (o) => {
-    const t = new Date(o);
+  }, L = 24 * 60 * 60 * 1e3, O = (n) => {
+    const t = new Date(n);
     return Number.isNaN(t.getTime()) ? null : new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" }).format(t);
-  }, O = (o = /* @__PURE__ */ new Date()) => {
-    const t = new Date(o.getTime() + L);
+  }, U = (n = /* @__PURE__ */ new Date()) => {
+    const t = new Date(n.getTime() + L);
     for (; t.getDay() === 0 || t.getDay() === 6; ) t.setTime(t.getTime() + L);
     return new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" }).format(t);
-  }, j = async (o, t, e = 4e3) => {
+  }, j = async (n, t, e = 4e3) => {
     var i;
     try {
-      const n = new AbortController(), s = setTimeout(() => n.abort(), e), r = await fetch(`https://shopify.deliverr.com/v3/variants/service-level/zip/${t}`, {
+      const o = new AbortController(), s = setTimeout(() => o.abort(), e), l = await fetch(`https://shopify.deliverr.com/v3/variants/service-level/zip/${t}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ shopifyVariantIds: [o] }),
-        signal: n.signal
+        body: JSON.stringify({ shopifyVariantIds: [n] }),
+        signal: o.signal
       });
-      if (clearTimeout(s), !r.ok) return { isoDate: null, minutesToCutoff: null, resolved: !1 };
-      const l = await r.json(), a = (i = l == null ? void 0 : l.deliveryDates) == null ? void 0 : i[o], c = l == null ? void 0 : l.minutesToCutoff;
+      if (clearTimeout(s), !l.ok) return { isoDate: null, minutesToCutoff: null, resolved: !1 };
+      const r = await l.json(), a = (i = r == null ? void 0 : r.deliveryDates) == null ? void 0 : i[n], d = r == null ? void 0 : r.minutesToCutoff;
       return {
         isoDate: typeof a == "string" ? a : null,
-        minutesToCutoff: typeof c == "number" ? c : null,
+        minutesToCutoff: typeof d == "number" ? d : null,
         resolved: !0
       };
     } catch {
       return { isoDate: null, minutesToCutoff: null, resolved: !1 };
     }
-  }, N = (o) => {
-    if (!Number.isFinite(o) || o <= 0) return null;
-    const t = Math.round(o);
+  }, N = (n) => {
+    if (!Number.isFinite(n) || n <= 0) return null;
+    const t = Math.round(n);
     return { hours: Math.floor(t / 60), minutes: t % 60 };
-  }, E = async (o = 4e3) => {
+  }, T = async (n = 4e3) => {
     try {
-      const t = new AbortController(), e = setTimeout(() => t.abort(), o), i = await fetch("/cart.json", { signal: t.signal });
+      const t = new AbortController(), e = setTimeout(() => t.abort(), n), i = await fetch("/cart.json", { signal: t.signal });
       if (clearTimeout(e), !i.ok) return null;
-      const n = await i.json();
-      return typeof (n == null ? void 0 : n.total_price) == "number" ? n.total_price : null;
+      const o = await i.json();
+      return typeof (o == null ? void 0 : o.total_price) == "number" ? o.total_price : null;
     } catch {
       return null;
     }
-  }, T = async (o, t, e = 4e3) => {
+  }, H = async (n, t, e = 4e3) => {
     var i;
     try {
-      const n = new AbortController(), s = setTimeout(() => n.abort(), e), r = await fetch(`/products/${o}.js`, { signal: n.signal });
-      if (clearTimeout(s), !r.ok) return null;
-      const l = await r.json(), a = (i = l == null ? void 0 : l.variants) == null ? void 0 : i.find((c) => String(c.id) === String(t));
+      const o = new AbortController(), s = setTimeout(() => o.abort(), e), l = await fetch(`/products/${n}.js`, { signal: o.signal });
+      if (clearTimeout(s), !l.ok) return null;
+      const r = await l.json(), a = (i = r == null ? void 0 : r.variants) == null ? void 0 : i.find((d) => String(d.id) === String(t));
       return typeof (a == null ? void 0 : a.price) == "number" ? a.price : null;
     } catch {
       return null;
     }
-  }, U = "$49.99", y = 1e4, H = () => ` for orders over&nbsp;<span class="deliverr-cart-minimum">$${y / 100}</span>`, M = "#cm-verify-fitment", F = () => {
-    var i, n;
-    const o = document.querySelector(`${M} .cm_verify-fitment_block`);
-    if (!o) return { state: null, vehicle: "" };
-    const t = o.classList.contains("cm_verify-fitment_block--yes") ? "yes" : o.classList.contains("cm_verify-fitment_block--no") ? "no" : null, e = ((n = (i = o.querySelector(".cm_verify-fitment_vehicle")) == null ? void 0 : i.textContent) == null ? void 0 : n.trim()) || "";
+  }, F = "$49.99", b = 1e4, M = () => ` for orders over&nbsp;<span class="deliverr-cart-minimum">$${b / 100}</span>`, z = "#cm-verify-fitment", G = () => {
+    var i, o;
+    const n = document.querySelector(`${z} .cm_verify-fitment_block`);
+    if (!n) return { state: null, vehicle: "" };
+    const t = n.classList.contains("cm_verify-fitment_block--yes") ? "yes" : n.classList.contains("cm_verify-fitment_block--no") ? "no" : null, e = ((o = (i = n.querySelector(".cm_verify-fitment_vehicle")) == null ? void 0 : i.textContent) == null ? void 0 : o.trim()) || "";
     return { state: t, vehicle: e };
-  }, G = (o) => {
-    const t = document.querySelector(M);
+  }, W = (n) => {
+    const t = document.querySelector(z);
     if (!t) return;
-    const e = () => o(F());
+    const e = () => n(G());
     e(), new MutationObserver(e).observe(t, { childList: !0, subtree: !0 });
-  }, W = "button.product-form--atc-button[data-product-atc]", X = "h1.product-title", Y = ".price__current", Q = ["chat-button", "mount-floating-engagement-widget"];
-  class J {
+  }, X = "button.product-form--atc-button[data-product-atc]", Y = "h1.product-title", Q = ".price__current", J = ["chat-button", "mount-floating-engagement-widget"];
+  class K {
     constructor() {
       this.init();
     }
     async init() {
       var i;
-      this.atcButton = await C(W);
-      const t = document.querySelector(X), e = document.querySelector(Y);
+      this.atcButton = await C(X);
+      const t = document.querySelector(Y), e = document.querySelector(Q);
       if (!t || !e) {
-        v("Xotic Sticky ATC: product title/price not found, skipping", "warn");
+        m("Xotic Sticky ATC: product title/price not found, skipping", "warn");
         return;
       }
-      document.getElementById("xstkBar") || (document.body.insertAdjacentHTML("beforeend", A(((i = t.textContent) == null ? void 0 : i.trim()) || "")), this.barEl = document.getElementById("xstkBar"), this.fitEl = this.barEl.querySelector("#xstkFit"), this.renderPrice(e), this.observePrice(e), this.bindClick(), this.observeAtcVisibility(), G((n) => this.renderFitment(n.state)), w(
+      document.getElementById("xstkBar") || (document.body.insertAdjacentHTML("beforeend", R(((i = t.textContent) == null ? void 0 : i.trim()) || "")), this.barEl = document.getElementById("xstkBar"), this.fitEl = this.barEl.querySelector("#xstkFit"), this.renderPrice(e), this.observePrice(e), this.bindClick(), this.observeAtcVisibility(), W((o) => this.renderFitment(o.state)), k(
         "#xstkBar",
         "exp_xotic_sticky_atc_01",
         "PDP sticky add to cart",
@@ -433,9 +433,9 @@
     // too). `offsetParent` is null exactly for display:none elements, so this
     // picks out whichever `[data-price]` node the theme is actually showing.
     getVisiblePriceText(t) {
-      var n;
+      var o;
       const e = Array.from(t.querySelectorAll("[data-price]")), i = e.find((s) => s.offsetParent !== null) || e[0];
-      return ((n = i == null ? void 0 : i.textContent) == null ? void 0 : n.trim()) || "";
+      return ((o = i == null ? void 0 : i.textContent) == null ? void 0 : o.trim()) || "";
     }
     renderPrice(t) {
       const e = document.getElementById("xstkPrice");
@@ -462,16 +462,16 @@
         }
         this.fitEl.classList.add(t === "yes" ? "xstk-fit--yes" : "xstk-fit--no"), this.fitEl.innerHTML = t === "yes" ? (
           /* HTML */
-          `${u.fitOk} Fit guaranteed`
+          `${p.fitOk} Fit guaranteed`
         ) : (
           /* HTML */
-          `${u.fitWarn} Doesn't fit`
+          `${p.fitWarn} Doesn't fit`
         );
       }
     }
     bindClick() {
-      d(this.barEl).on("click", "[data-xstk-atc]", () => {
-        this.atcButton.click(), f("xotic_sticky_atc_click", "Sticky Add to cart clicked", "click", "PDP sticky add to cart bar");
+      u(this.barEl).on("click", "[data-xstk-atc]", () => {
+        this.atcButton.click(), h("xotic_sticky_atc_click", "Sticky Add to cart clicked", "click", "PDP sticky add to cart bar");
       });
     }
     // Only "not visible AND scrolled past" should show the bar — not "not
@@ -483,8 +483,8 @@
     observeAtcVisibility() {
       new IntersectionObserver(
         (e) => {
-          const i = e[0], n = !i.isIntersecting && i.boundingClientRect.bottom <= 0;
-          this.barEl.classList.toggle("xstk-bar--visible", n), this.adjustChatWidget(n);
+          const i = e[0], o = !i.isIntersecting && i.boundingClientRect.bottom <= 0;
+          this.barEl.classList.toggle("xstk-bar--visible", o), this.adjustChatWidget(o);
         },
         { threshold: 0 }
       ).observe(this.atcButton);
@@ -495,21 +495,21 @@
     // separate app and may not have loaded (or be ad-blocked).
     adjustChatWidget(t) {
       const e = t ? this.barEl.offsetHeight : 0;
-      for (const i of Q) {
-        const n = document.getElementById(i);
-        n && (n.style.transition = "transform 0.25s ease", n.style.transform = e ? `translateY(-${e}px)` : "");
+      for (const i of J) {
+        const o = document.getElementById(i);
+        o && (o.style.transition = "transform 0.25s ease", o.style.transform = e ? `translateY(-${e}px)` : "");
       }
     }
   }
-  _({ name: "Xotic Delivery Block", dev: "AI" });
-  class K {
+  $({ name: "Xotic Delivery Block", dev: "AI" });
+  class tt {
     // resolved pre-ZIP equivalent of buildUsRows's own `qualifies` check — see resolveFreeShippingQualifies
     constructor() {
       this.resolvedLocation = null, this.pendingAutoZip = null, this.usRows = null, this.lastZip = null, this.countryCode = null, this.freeShippingQualifies = null, this.init();
     }
     async init() {
-      if (await C("head"), document.head.insertAdjacentHTML("beforeend", `<style>${z}</style>`), this.nativeRoot = await this.findHydratedNativeRoot(), this.nativeRoot.classList.add("xdlv-native-root"), d("#xdlvBlock").elements.length === 0 && this.nativeRoot.insertAdjacentHTML("afterend", $()), w("#xdlvBlock", "exp_xotic_delivery_block_01", "PDP delivery block", "PDP delivery block visibility"), this.labelEl = this.nativeRoot.querySelector(".deliverr-label"), this.changeToggle = this.nativeRoot.querySelector(".deliverr-zip-deliver-to"), this.locationTextEl = this.nativeRoot.querySelector(".deliverr-zip-deliver-to-text"), !this.labelEl || !this.changeToggle) {
-        v("Xotic Delivery Block: unexpected Deliverr markup, skipping redesign", "warn");
+      if (await C("head"), document.head.insertAdjacentHTML("beforeend", `<style>${_}</style>`), this.nativeRoot = await this.findHydratedNativeRoot(), this.nativeRoot.classList.add("xdlv-native-root"), u("#xdlvBlock").elements.length === 0 && this.nativeRoot.insertAdjacentHTML("afterend", A()), k("#xdlvBlock", "exp_xotic_delivery_block_01", "PDP delivery block", "PDP delivery block visibility"), this.labelEl = this.nativeRoot.querySelector(".deliverr-label"), this.changeToggle = this.nativeRoot.querySelector(".deliverr-zip-deliver-to"), this.locationTextEl = this.nativeRoot.querySelector(".deliverr-zip-deliver-to-text"), !this.labelEl || !this.changeToggle) {
+        m("Xotic Delivery Block: unexpected Deliverr markup, skipping redesign", "warn");
         return;
       }
       this.bindBlock(), this.bindZipSubmit(), this.render(), this.observeNativeChanges(), this.resolveCountryCode(), this.resolveFreeShippingQualifies(), await this.maybeAutoDetectUsZip();
@@ -520,7 +520,7 @@
     // synchronously off whatever native DOM existed at that point, without
     // knowing the country yet.
     async resolveCountryCode() {
-      this.countryCode = await Z(), this.usRows || this.render();
+      this.countryCode = await q(), this.hasResolvedUsRows() || this.render();
     }
     // Pre-ZIP equivalent of the `qualifies` check buildUsRows does further
     // down — same first-party sources (current cart + this variant's own
@@ -532,11 +532,21 @@
     // resolved for the same reason resolveCountryCode does: the initial
     // render() already ran synchronously before this had an answer.
     async resolveFreeShippingQualifies() {
-      const { variantId: t, handle: e } = this.getVariantContext(), [i, n] = await Promise.all([
-        E(),
-        t && e ? T(e, t) : Promise.resolve(null)
+      const { variantId: t, handle: e } = this.getVariantContext(), [i, o] = await Promise.all([
+        T(),
+        t && e ? H(e, t) : Promise.resolve(null)
       ]);
-      this.freeShippingQualifies = (i ?? 0) + (n ?? 0) >= y, this.usRows || this.render();
+      this.freeShippingQualifies = (i ?? 0) + (o ?? 0) >= b, this.hasResolvedUsRows() || this.render();
+    }
+    // `this.usRows` can legitimately be `[]` (buildUsRows found nothing
+    // deliverable) without that meaning "permanently resolved, nothing to
+    // show" — see the comment on this check's use in getSlaRows below for why
+    // treating an empty array the same as a real resolved list caused the
+    // block to get stuck. Centralized here so the three call sites (this one,
+    // the two re-render gates above) can't drift out of sync on what "US rows
+    // are actually resolved" means.
+    hasResolvedUsRows() {
+      return !!this.usRows && this.usRows.length > 0;
     }
     // Same "has real Deliverr content" check findHydratedNativeRoot below
     // uses — pulled out so removeConflictingBadgeDuplicates can share it
@@ -568,11 +578,11 @@
     removeConflictingBadgeDuplicates() {
       const t = Array.from(document.querySelectorAll('deliverr[data-component="BadgeWithCountdown"]'));
       if (t.length <= 1) return;
-      const e = t.filter((n) => this.isBadgeHydrated(n));
+      const e = t.filter((o) => this.isBadgeHydrated(o));
       if (!e.length) return;
       const i = e[0];
-      t.filter((n) => !this.isBadgeHydrated(n)).forEach((n) => {
-        !i.dataset.variantid && n.dataset.variantid && (i.dataset.variantid = n.dataset.variantid), !i.dataset.handle && n.dataset.handle && (i.dataset.handle = n.dataset.handle), n.remove();
+      t.filter((o) => !this.isBadgeHydrated(o)).forEach((o) => {
+        !i.dataset.variantid && o.dataset.variantid && (i.dataset.variantid = o.dataset.variantid), !i.dataset.handle && o.dataset.handle && (i.dataset.handle = o.dataset.handle), o.remove();
       });
     }
     // Resolves to whichever `deliverr[data-component="BadgeWithCountdown"]`
@@ -606,16 +616,16 @@
     findHydratedNativeRoot() {
       return new Promise((t) => {
         const e = () => Array.from(document.querySelectorAll('deliverr[data-component="BadgeWithCountdown"]')).find(
-          (r) => this.isBadgeHydrated(r)
+          (l) => this.isBadgeHydrated(l)
         ) || null;
         let i;
-        const n = () => {
+        const o = () => {
           this.removeConflictingBadgeDuplicates(), clearTimeout(i), i = setTimeout(() => {
-            const r = e();
-            r && (s.disconnect(), t(r));
+            const l = e();
+            l && (s.disconnect(), t(l));
           }, 300);
-        }, s = new MutationObserver(n);
-        s.observe(document.documentElement, { childList: !0, subtree: !0 }), n();
+        }, s = new MutationObserver(o);
+        s.observe(document.documentElement, { childList: !0, subtree: !0 }), o();
       });
     }
     observeNativeChanges() {
@@ -648,18 +658,20 @@
     // can't actually get. It only ever appears once buildUsRows below
     // confirms a real US ZIP.
     getSlaRows() {
-      if (this.usRows) return this.usRows;
+      if (this.hasResolvedUsRows()) return this.usRows;
       if (!this.labelEl) return [];
-      const t = this.countryCode === "US" || this.countryCode === "CA", e = this.freeShippingQualifies === !1 && t ? H() : "";
-      return Array.from(this.labelEl.children).filter((i) => i.classList.contains("deliverr-label-sla")).filter((i) => {
-        var s;
-        const n = i.querySelector("time");
-        return !n || !!((s = n.textContent) != null && s.trim());
-      }).map((i, n) => {
-        var c;
-        const s = Array.from(i.classList).find((p) => p !== "deliverr-label-sla") || "", r = parseInt(((c = s.match(/(\d+)\s*day/)) == null ? void 0 : c[1]) || "", 10), l = /1day|2day|next.?day|same.?day/i.test(s) || !Number.isNaN(r) && r <= 3;
-        let a = n === 0 ? i.innerHTML + e : i.innerHTML;
-        return this.countryCode === "CA" && (a = a.replace(/\d+\s*[–-]\s*\d+\s*weeks?/i, "3–7 business days"), a = a.replace(/\binternational\b\s*/gi, "")), { html: a, fast: l };
+      const t = this.countryCode === "US" || this.countryCode === "CA", e = this.freeShippingQualifies === !1 && t ? M() : "", i = this.labelEl.querySelector(".deliverr-messaging"), o = !!i && !i.classList.contains("deliverr-below-cart-minimum");
+      return Array.from(this.labelEl.querySelectorAll(".deliverr-label-sla")).filter((s, l) => {
+        var d, c;
+        const r = s.querySelector("time");
+        if (r && !((d = r.textContent) != null && d.trim())) return !1;
+        const a = l === 0 && o ? i.querySelector("time") : null;
+        return !(a && !((c = a.textContent) != null && c.trim()));
+      }).map((s, l) => {
+        var f;
+        const r = Array.from(s.classList).find((w) => w !== "deliverr-label-sla") || "", a = parseInt(((f = r.match(/(\d+)\s*day/)) == null ? void 0 : f[1]) || "", 10), d = /1day|2day|next.?day|same.?day/i.test(r) || !Number.isNaN(a) && a <= 3;
+        let c = s.innerHTML;
+        return l === 0 && (c += (o ? i.innerHTML : "") + e), this.countryCode === "CA" && (c = c.replace(/\d+\s*[–-]\s*\d+\s*weeks?/i, "3–7 business days"), c = c.replace(/\binternational\b\s*/gi, "")), { html: c, fast: d };
       });
     }
     getLocationText() {
@@ -682,16 +694,16 @@
     render() {
       var i;
       const t = this.getSlaRows(), e = document.getElementById("xdlvRows");
-      e && (e.innerHTML = t.length ? R(t) : D()), (i = document.getElementById("xdlvBlock")) == null || i.classList.remove("xdlv-hidden");
+      e && (e.innerHTML = t.length ? I(t) : D()), (i = document.getElementById("xdlvBlock")) == null || i.classList.remove("xdlv-hidden");
     }
     bindBlock() {
       const t = document.getElementById("xdlvBlock");
-      t && (d(t).on("click", "[data-xdlv-change]", () => {
-        this.openChangeModal(), f("xotic_delivery_block_change", "Change delivery location clicked", "click", "PDP delivery block");
-      }), d(t).on("click", "[data-xdlv-modal-close]", () => this.closeChangeModal()), d(t).on("click", "[data-xdlv-modal-submit]", () => this.confirmChangeModal()), d(t).on("change", "[data-xdlv-modal-country]", () => {
+      t && (u(t).on("click", "[data-xdlv-change]", () => {
+        this.openChangeModal(), h("xotic_delivery_block_change", "Change delivery location clicked", "click", "PDP delivery block");
+      }), u(t).on("click", "[data-xdlv-modal-close]", () => this.closeChangeModal()), u(t).on("click", "[data-xdlv-modal-submit]", () => this.confirmChangeModal()), u(t).on("change", "[data-xdlv-modal-country]", () => {
         const e = document.querySelector("[data-xdlv-modal-country]");
         e && this.updateModalZipVisibility(e.value);
-      }), d(t).on("keydown", "[data-xdlv-modal-zip]", (e) => {
+      }), u(t).on("keydown", "[data-xdlv-modal-zip]", (e) => {
         e.key === "Enter" && this.confirmChangeModal();
       }), document.addEventListener("keydown", (e) => {
         e.key === "Escape" && this.closeChangeModal();
@@ -706,8 +718,8 @@
     // confirm — and most visitors opening "Change" are here to correct/confirm
     // a US ZIP, not to switch away from one.
     openChangeModal() {
-      const t = document.getElementById("xdlvModal"), e = document.querySelector(".xdlv-modal-backdrop"), i = document.querySelector("[data-xdlv-modal-country]"), n = document.querySelector("[data-xdlv-modal-zip]");
-      !t || !e || !i || !n || (i.value = "United States", n.value = this.lastZip || "", this.updateModalZipVisibility(i.value), e.hidden = !1, t.hidden = !1, n.focus());
+      const t = document.getElementById("xdlvModal"), e = document.querySelector(".xdlv-modal-backdrop"), i = document.querySelector("[data-xdlv-modal-country]"), o = document.querySelector("[data-xdlv-modal-zip]");
+      !t || !e || !i || !o || (i.value = "United States", o.value = this.lastZip || "", this.updateModalZipVisibility(i.value), e.hidden = !1, t.hidden = !1, o.focus());
     }
     closeChangeModal() {
       const t = document.getElementById("xdlvModal"), e = document.querySelector(".xdlv-modal-backdrop");
@@ -716,8 +728,8 @@
     updateModalZipVisibility(t) {
       const e = document.querySelector("[data-xdlv-modal-zip-label]"), i = document.querySelector("[data-xdlv-modal-zip]");
       if (!e || !i) return;
-      const n = t === "United States";
-      e.hidden = !n, i.disabled = !n;
+      const o = t === "United States";
+      e.hidden = !o, i.disabled = !o;
     }
     // Confirming in *our* modal never touches Deliverr's own modal DOM (never
     // shown at all) — it drives the same underlying <select>/<input>/submit
@@ -728,20 +740,20 @@
     async confirmChangeModal() {
       const t = document.querySelector("[data-xdlv-modal-country]"), e = document.querySelector("[data-xdlv-modal-zip]");
       if (!t || !e) return;
-      const i = t.value, n = e.value.trim();
-      if (i === "United States" && !/^\d{5}$/.test(n)) {
+      const i = t.value, o = e.value.trim();
+      if (i === "United States" && !/^\d{5}$/.test(o)) {
         e.focus();
         return;
       }
       const s = this.nativeRoot.querySelector(
         "select.deliverr-zip-location-field--country"
-      ), r = this.nativeRoot.querySelector("input.deliverr-zip-location-field--zipcode"), l = this.nativeRoot.querySelector("button.deliverr-zip-location-submit");
-      if (!(!s || !r || !l)) {
+      ), l = this.nativeRoot.querySelector("input.deliverr-zip-location-field--zipcode"), r = this.nativeRoot.querySelector("button.deliverr-zip-location-submit");
+      if (!(!s || !l || !r)) {
         if (this.setNativeValue(s, i), await new Promise((a) => setTimeout(a, 150)), i === "United States") {
-          if (r.disabled) return;
-          this.setNativeValue(r, n);
+          if (l.disabled) return;
+          this.setNativeValue(l, o);
         }
-        l.click(), this.closeChangeModal();
+        r.click(), this.closeChangeModal();
       }
     }
     // Delegated on the (stable) native root rather than the submit button
@@ -758,17 +770,17 @@
       this.nativeRoot.addEventListener(
         "click",
         (t) => {
-          var s, r, l, a;
+          var s, l, r, a;
           if (!((s = t.target) != null && s.closest(".deliverr-zip-location-submit"))) return;
-          const e = (r = this.nativeRoot.querySelector(
+          const e = (l = this.nativeRoot.querySelector(
             "select.deliverr-zip-location-field--country"
-          )) == null ? void 0 : r.value, i = (a = (l = this.nativeRoot.querySelector("input.deliverr-zip-location-field--zipcode")) == null ? void 0 : l.value) == null ? void 0 : a.trim();
+          )) == null ? void 0 : l.value, i = (a = (r = this.nativeRoot.querySelector("input.deliverr-zip-location-field--zipcode")) == null ? void 0 : r.value) == null ? void 0 : a.trim();
           if (e !== "United States" || !i || !/^\d{5}$/.test(i)) {
             this.resolvedLocation = null, this.usRows = null, this.pendingAutoZip = null, this.render();
             return;
           }
-          const n = i === this.pendingAutoZip ? "auto" : "manual";
-          this.pendingAutoZip = null, this.applyZip(i, n);
+          const o = i === this.pendingAutoZip ? "auto" : "manual";
+          this.pendingAutoZip = null, this.applyZip(i, o);
         },
         !0
       );
@@ -782,8 +794,8 @@
     // by {date}") rather than appended separately afterward — buildUsRows
     // needs the final string up front to compose that.
     async applyZip(t, e) {
-      const i = await V(t), n = i ? `${i} ${t}` : t, s = await this.buildUsRows(t, n);
-      this.resolvedLocation = n, this.usRows = s, this.lastZip = t, this.render(), f(
+      const i = await V(t), o = i ? `${i} ${t}` : t, s = await this.buildUsRows(t, o);
+      this.resolvedLocation = o, this.usRows = s, this.lastZip = t, this.render(), h(
         `xotic_delivery_block_${e}_zip`,
         `${e === "auto" ? "Auto-detected" : "Confirmed"} ZIP ${t}${i ? ` (${i})` : ""}`,
         "other",
@@ -824,7 +836,7 @@
     fastShippingRow(t = null) {
       const e = t !== null ? N(t) : null, i = e ? ` if ordered within <span class="xdlv-row-cutoff">${e.hours} hrs ${e.minutes} mins</span>` : "";
       return {
-        html: `1-Day Shipping – <b>${U}, by ${O()}</b>${i}`,
+        html: `1-Day Shipping – <b>${F}, by ${U()}</b>${i}`,
         fast: !0
       };
     }
@@ -867,19 +879,19 @@
     // we simply don't know, so row 2 still falls back to showing rather than
     // wrongly implying the address is undeliverable.
     async buildUsRows(t, e) {
-      const i = [], { variantId: n, handle: s } = this.getVariantContext(), [r, l, a] = await Promise.all([
-        E(),
-        n && s ? T(s, n) : Promise.resolve(null),
-        n ? j(n, t) : Promise.resolve({ isoDate: null, minutesToCutoff: null, resolved: !1 })
-      ]), p = (r ?? 0) + (l ?? 0) >= y, b = a.isoDate ? q(a.isoDate) : null;
-      if (b) {
-        const tt = p ? "" : H();
+      const i = [], { variantId: o, handle: s } = this.getVariantContext(), [l, r, a] = await Promise.all([
+        T(),
+        o && s ? H(s, o) : Promise.resolve(null),
+        o ? j(o, t) : Promise.resolve({ isoDate: null, minutesToCutoff: null, resolved: !1 })
+      ]), c = (l ?? 0) + (r ?? 0) >= b, f = a.isoDate ? O(a.isoDate) : null;
+      if (f) {
+        const w = c ? "" : M();
         i.push({
-          html: `<b>FREE</b> delivery, <span class="xdlv-row-loc">${e}</span>, by ${b}${tt}`,
+          html: `<b>FREE</b> delivery, <span class="xdlv-row-loc">${e}</span>, by ${f}${w}`,
           fast: !1
         });
       }
-      return (b || !a.resolved) && i.push(this.fastShippingRow(a.minutesToCutoff)), i;
+      return (f || !a.resolved) && i.push(this.fastShippingRow(a.minutesToCutoff)), i;
     }
     // If Deliverr's own IP lookup couldn't place the visitor in the US, take one
     // best-effort shot at a ZIP via our own geolocation and drive the real,
@@ -893,12 +905,12 @@
     // the (Figma-restyled) modal themselves via "Change" to correct the guess.
     async maybeAutoDetectUsZip() {
       if (this.getLocationText()) return;
-      const t = await B();
+      const t = await Z();
       if (!t) return;
       const e = this.nativeRoot.querySelector(
         "select.deliverr-zip-location-field--country"
-      ), i = this.nativeRoot.querySelector("input.deliverr-zip-location-field--zipcode"), n = this.nativeRoot.querySelector("button.deliverr-zip-location-submit");
-      !e || !i || !n || (this.setNativeValue(e, "United States"), await new Promise((s) => setTimeout(s, 150)), !i.disabled && (this.setNativeValue(i, t.zip), this.pendingAutoZip = t.zip, n.click()));
+      ), i = this.nativeRoot.querySelector("input.deliverr-zip-location-field--zipcode"), o = this.nativeRoot.querySelector("button.deliverr-zip-location-submit");
+      !e || !i || !o || (this.setNativeValue(e, "United States"), await new Promise((s) => setTimeout(s, 150)), !i.disabled && (this.setNativeValue(i, t.zip), this.pendingAutoZip = t.zip, o.click()));
     }
     // Native <select>/<input> are controlled by Deliverr's own framework, so a
     // plain `.value = x` assignment gets ignored on the next render — going
@@ -906,11 +918,11 @@
     // their controller pick the change up (mirrors how a real user interaction
     // would fire).
     setNativeValue(t, e) {
-      var n, s;
+      var o, s;
       const i = t instanceof HTMLSelectElement ? window.HTMLSelectElement.prototype : window.HTMLInputElement.prototype;
-      (s = (n = Object.getOwnPropertyDescriptor(i, "value")) == null ? void 0 : n.set) == null || s.call(t, e), t.dispatchEvent(new Event("input", { bubbles: !0 })), t.dispatchEvent(new Event("change", { bubbles: !0 }));
+      (s = (o = Object.getOwnPropertyDescriptor(i, "value")) == null ? void 0 : o.set) == null || s.call(t, e), t.dispatchEvent(new Event("input", { bubbles: !0 })), t.dispatchEvent(new Event("change", { bubbles: !0 }));
     }
   }
-  new K(), new J();
+  new tt(), new K();
 })();
 //# sourceMappingURL=index.js.map
