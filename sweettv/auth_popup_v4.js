@@ -121,6 +121,10 @@
     right: 20px !important;
   }
 }
+
+body:has(> .ui-modal .auth-modal-shell) > #crs_survey {
+  z-index: 9 !important;
+}
 `,r=`.auth-modal-shell:has(.crs-banner) .auth-v1-start-screen__phone-input .ui-input__field {
   display: flex !important;
   align-items: center !important;
@@ -427,6 +431,7 @@
 
 .auth-modal-shell:has(.crs-banner) .auth-google-identity-button--icon [role='button'] {
   border-color: transparent !important;
+  outline: none !important;
 }
 
 .auth-modal-shell:has(.crs-banner) .auth-google-identity-button--icon iframe[allow='identity-credentials-get'] {
@@ -434,7 +439,7 @@
   height: 44px !important;
   max-width: none !important;
   max-height: none !important;
-  clip-path: circle(19px at 32px 22px);
+  clip-path: circle(18px at 32px 22px);
 }
 
 .auth-modal-shell:has(.crs-banner) .auth-v1-start-screen__provider {
