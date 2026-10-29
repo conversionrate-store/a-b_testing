@@ -503,8 +503,14 @@ main {
   gap: 20px;
   min-height: 260px;
 }
+.iaby-verified__card-top {
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
 .iaby-verified__card-top svg {
   display: block;
+  max-height: 100%;
 }
 .iaby-verified__card-top img {
   height: 50px;
