@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  const D = `html.crs-cart-lock,
+  const s1 = `html.crs-cart-lock,
 html.crs-cart-lock body {
   overflow: hidden !important;
 }
@@ -667,118 +667,361 @@ html.crs-cart-lock body {
 .crs-included__name bdi {
   white-space: nowrap;
 }
-`, _ = (n, t, e, r = "") => {
+
+.crs-offer__main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.crs-offer__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  background: #fff;
+}
+.crs-offer__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.crs-offer--assembly.is-added .crs-offer__price {
+  color: #263444;
+}
+
+.crs-recs__arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.crs-recs.is-static .crs-recs__arrows {
+  display: none;
+}
+
+html[data-crs-cart-page] main .shopify-section[id$=__cart-section] {
+  display: none !important;
+}
+
+.crs-page {
+  max-width: 1092px;
+  margin: 0 auto;
+  padding: 37px 16px 56px;
+  color: #263444;
+  direction: rtl;
+  text-align: right;
+}
+.crs-page *,
+.crs-page *::before,
+.crs-page *::after {
+  box-sizing: border-box;
+}
+.crs-page p,
+.crs-page h1 {
+  margin: 0;
+}
+.crs-page button {
+  font-family: inherit;
+  direction: rtl;
+  cursor: pointer;
+}
+.crs-page img {
+  display: block;
+}
+.crs-page a.crs-btn {
+  text-decoration: none;
+}
+.crs-page .crs-cart__empty {
+  padding: 64px 16px;
+}
+.crs-page .crs-cart__banner {
+  border-radius: 12px;
+}
+.crs-page .crs-card {
+  padding: 16px;
+}
+.crs-page .crs-recs__track {
+  margin-inline-end: 0;
+  padding-inline-end: 0;
+}
+.crs-page .crs-rec {
+  flex: 1 0 166px;
+}
+
+.crs-page__content {
+  transition: opacity 0.2s ease;
+}
+.crs-page.is-busy .crs-page__content {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.crs-page__head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.crs-page__title {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 700;
+  color: #263444;
+}
+
+.crs-page__count {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.crs-page__layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.crs-page__main {
+  flex: 1 1 600px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.crs-page__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  background: #fff;
+}
+.crs-page__panel .crs-cart__items {
+  gap: 16px;
+}
+
+.crs-summary {
+  flex: 0 1 432px;
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.crs-summary__title {
+  align-self: stretch;
+  margin-bottom: 8px !important;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 700;
+}
+
+.crs-summary__rows {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.crs-summary__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 20px;
+}
+.crs-summary__row span {
+  color: #000;
+}
+.crs-summary__row--saved {
+  color: #ff6a1a;
+}
+
+.crs-summary__total {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.crs-summary__total div {
+  display: flex;
+  flex-direction: column;
+}
+.crs-summary__total b {
+  font-size: 18px;
+  line-height: 20px;
+}
+.crs-summary__total span {
+  font-size: 14px;
+  line-height: 19px;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+@media screen and (max-width: 989px) {
+  .crs-page {
+    padding-top: 24px;
+  }
+  .crs-page__layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .crs-page__main,
+  .crs-summary {
+    flex: 0 0 auto;
+  }
+  .crs-summary {
+    position: static;
+  }
+}
+@media screen and (max-width: 749px) {
+  .crs-page__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .crs-page__panel {
+    padding: 12px;
+  }
+  .crs-page .crs-card {
+    padding: 12px;
+  }
+  .crs-summary {
+    padding: 16px;
+  }
+  .crs-summary__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .crs-page .crs-rec {
+    flex: 0 0 166px;
+  }
+}
+`, _ = (t, e, n, s = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
-      event_name: n,
-      event_desc: t,
-      event_type: e,
-      event_loc: r
-    }), $(`Event: ${n} | ${t} | ${e} | ${r}`, "success");
-  }, k = (n) => new Promise((t) => {
-    const e = document.querySelector(n);
-    e && t(e);
-    const r = new MutationObserver(() => {
-      const s = document.querySelector(n);
-      s && (t(s), r.disconnect());
+      event_name: t,
+      event_desc: e,
+      event_type: n,
+      event_loc: s
+    }), V(`Event: ${t} | ${e} | ${n} | ${s}`, "success");
+  }, w = (t) => new Promise((e) => {
+    const n = document.querySelector(t);
+    n && e(n);
+    const s = new MutationObserver(() => {
+      const r = document.querySelector(t);
+      r && (e(r), s.disconnect());
     });
-    r.observe(document, {
+    s.observe(document, {
       childList: !0,
       subtree: !0
     });
-  }), G = ({ name: n, dev: t }) => {
-    const e = n.toLowerCase().replace(/\s/g, "_");
-    _(`${e}_started`, `Experiment ${n} started`, "other", e), console.log(
-      `%c EXP: ${n} (DEV: ${t})`,
+  }), r1 = ({ name: t, dev: e }) => {
+    const n = t.toLowerCase().replace(/\s/g, "_");
+    _(`${n}_started`, `Experiment ${t} started`, "other", n), console.log(
+      `%c EXP: ${t} (DEV: ${e})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
   };
-  class b {
-    constructor(t) {
-      this.elements = t instanceof b ? t.elements : typeof t == "string" ? Array.from(document.querySelectorAll(t)) : t instanceof Element ? [t] : Array.isArray(t) ? t : Array.from(t);
+  class v {
+    constructor(e) {
+      this.elements = e instanceof v ? e.elements : typeof e == "string" ? Array.from(document.querySelectorAll(e)) : e instanceof Element ? [e] : Array.isArray(e) ? e : Array.from(e);
     }
-    on(t, e, r) {
-      return typeof e == "function" && (r = e, e = ""), this.elements.forEach((s) => {
-        s.addEventListener(t, function(i) {
-          var c;
-          if (e !== "") {
-            let l = (c = i.target) == null ? void 0 : c.closest(e);
-            l && (r == null || r.call(l, i));
+    on(e, n, s) {
+      return typeof n == "function" && (s = n, n = ""), this.elements.forEach((r) => {
+        r.addEventListener(e, function(c) {
+          var o;
+          if (n !== "") {
+            let i = (o = c.target) == null ? void 0 : o.closest(n);
+            i && (s == null || s.call(i, c));
           } else
-            r == null || r.call(s, i);
+            s == null || s.call(r, c);
         });
       }), this;
     }
-    addClass(t) {
-      return this.elements.forEach(function(e) {
-        e.classList.add(t);
+    addClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.add(e);
       }), this;
     }
-    removeClass(t) {
-      return this.elements.forEach(function(e) {
-        e.classList.remove(t);
+    removeClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.remove(e);
       }), this;
     }
-    toggleClass(t) {
-      return this.elements.forEach(function(e) {
-        e.classList.toggle(t);
+    toggleClass(e) {
+      return this.elements.forEach(function(n) {
+        n.classList.toggle(e);
       }), this;
     }
-    each(t) {
-      for (let e of this.elements)
-        t(new b(e), this.elements.indexOf(e));
+    each(e) {
+      for (let n of this.elements)
+        e(new v(n), this.elements.indexOf(n));
       return this;
     }
-    style(t, e) {
-      const r = t.split("-").map((s, i) => i === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1)).join("");
-      return this.elements.forEach(function(s) {
-        s.style[r] = e;
+    style(e, n) {
+      const s = e.split("-").map((r, c) => c === 0 ? r : r.charAt(0).toUpperCase() + r.slice(1)).join("");
+      return this.elements.forEach(function(r) {
+        r.style[s] = n;
       }), this;
     }
-    find(t) {
-      const e = this.elements.map((r) => Array.from(r.querySelectorAll(t)));
-      return new b(e.flat());
+    find(e) {
+      const n = this.elements.map((s) => Array.from(s.querySelectorAll(e)));
+      return new v(n.flat());
     }
-    attr(t, e) {
-      return e ? (this.elements.forEach(function(r) {
-        r.setAttribute(t, e);
-      }), this) : this.elements[0].getAttribute(t);
+    attr(e, n) {
+      return n ? (this.elements.forEach(function(s) {
+        s.setAttribute(e, n);
+      }), this) : this.elements[0].getAttribute(e);
     }
-    text(t) {
-      return t ? (this.elements.forEach(function(e) {
-        e.textContent = t;
+    text(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.textContent = e;
       }), this) : this.elements[0].textContent || "";
     }
-    html(t) {
-      return t ? (this.elements.forEach(function(e) {
-        e.innerHTML = t;
+    html(e) {
+      return e ? (this.elements.forEach(function(n) {
+        n.innerHTML = e;
       }), this) : this.elements[0].innerHTML;
     }
   }
-  const N = (n) => new b(n), $ = (n, t = "info") => {
-    let e;
-    switch (t) {
+  const i1 = (t) => new v(t), V = (t, e = "info") => {
+    let n;
+    switch (e) {
       case "info":
-        e = "color: #3498db;";
+        n = "color: #3498db;";
         break;
       case "warn":
-        e = "color: #f39c12;";
+        n = "color: #f39c12;";
         break;
       case "error":
-        e = "color: #e74c3c;";
+        n = "color: #e74c3c;";
         break;
       case "success":
-        e = "color: #2ecc71;";
+        n = "color: #2ecc71;";
         break;
     }
-    console.log(`%c>>> ${n}`, `${e} font-size: 16px; font-weight: 600`);
-  }, o = {
+    console.log(`%c>>> ${t}`, `${n} font-size: 16px; font-weight: 600`);
+  }, a = {
     title: "העגלה שלך",
     oneProduct: "מוצר אחד",
-    products: (n) => `${n} מוצרים`,
+    products: (t) => `${t} מוצרים`,
     close: "סגור",
-    saving: (n) => `חיסכון ${n}`,
-    included: (n) => `מה כלול בבאנדל (${n} פריטים)`,
+    saving: (t) => `חיסכון ${t}`,
+    included: (t) => `מה כלול בבאנדל (${t} פריטים)`,
     includedLabel: "כלול",
     chairPrefix: "כיסא",
     remove: "הסרה",
@@ -786,22 +1029,33 @@ html.crs-cart-lock body {
     free: "חינם",
     upgradeTitle: "שדרוג ל-Pro Bundle",
     upgradeButton: "שדרוג",
-    upgradePrice: (n) => `ב-${n}`,
+    upgradePrice: (t) => `ב-${t}`,
     add: "הוספה",
     // Carousel title falls back to this when the cart has no chair to name it
     // after (Figma titles it with the chair's own model name).
     recsFallbackTitle: "משלימים את הסטאפ",
     totalLabel: "סה״כ לתשלום (כולל מע״מ)",
-    saved: (n) => `חסכת ${n} בהזמנה זו`,
-    installments: (n) => `עד 12 תשלומים · ${n}/חודש`,
+    saved: (t) => `חסכת ${t} בהזמנה זו`,
+    installments: (t) => `עד 12 תשלומים · ${t}/חודש`,
     checkout: "מעבר לתשלום",
     warranty: "אחריות 5 שנים",
     trial: "30 ימי ניסיון או החזר מלא",
     empty: "העגלה שלך ריקה",
     error: "לא הצלחנו לעדכן את העגלה, נסו שוב",
     continueShopping: "המשך קניות",
-    cm: "ס״מ"
-  }, y = "Pro Bundle - פרו", I = 12, V = [
+    cm: "ס״מ",
+    assemblyTitle: "הרכבה וכיוון בבית או במשרד",
+    assemblyDesc: "טכנאי מרכיב את הכיסא ומכוונן אותו לגובה שלך",
+    // /cart page (Figma 32:17563)
+    pageTitle: "עגלת הקניות שלך",
+    summaryTitle: "סיכום הזמנה",
+    summaryProducts: "סה״כ מוצרים",
+    summaryShipping: "משלוח",
+    summarySaved: "סך החיסכון בהזמנה",
+    summaryTotal: "סה״כ לתשלום",
+    vat: "כולל מע״מ",
+    perMonth: (t) => `או ${q} × ${t}`
+  }, j = "assembly-service", k = "Pro Bundle - פרו", q = 12, H = [
     {
       name: "Foot Support",
       handle: "libernovo-foot-support",
@@ -814,7 +1068,20 @@ html.crs-cart-lock body {
       newtonHandle: "libernovo-battery",
       title: "סוללה נטענת"
     }
-  ], E = ["Omni", "Omni Pro", "Omni SE", "Omni Gen", "Maxis Airflow", "Maxis Manual", "Maxis Electric"], F = ["Midnight Black", "Space Grey", "Moss Green", "Glacier", "Graphite", "Obsidian"], U = {
+  ], R = ["Omni", "Omni Pro", "Omni SE", "Omni Gen", "Maxis Airflow", "Maxis Manual", "Maxis Electric"], c1 = [
+    "Mylo",
+    "Mylo Pro",
+    "Mylo Cloud",
+    "Velto",
+    "Velto Cloud",
+    "Velar",
+    "Velar Cloud",
+    "Revo QuickFold",
+    "Revo Pro Cloud",
+    "Alpha",
+    "Jazz",
+    "Nexa Pro"
+  ], a1 = ["Midnight Black", "Space Grey", "Moss Green", "Glacier", "Graphite", "Obsidian"], o1 = {
     Glacier: "גלסייר",
     Graphite: "גרפיט"
   }, h = {
@@ -1002,214 +1269,272 @@ html.crs-cart-lock body {
 </clipPath>
 </defs>
 </svg>`
+    ),
+    gear: (
+      /* HTML */
+      `<svg preserveAspectRatio="none" overflow="visible" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="crs-gear-fi_75668" clip-path="url(#crs-gear-clip0_0_4)">
+<path id="crs-gear-Vector" d="M19.9371 8.8897C19.9055 8.60859 19.5776 8.39712 19.2941 8.39712C18.3778 8.39712 17.5646 7.85931 17.2236 7.0269C16.8754 6.17451 17.1001 5.18062 17.7827 4.55433C17.9978 4.35773 18.024 4.02854 17.8437 3.80002C17.3746 3.20443 16.8416 2.66636 16.2595 2.20008C16.0318 2.01741 15.6971 2.04284 15.4995 2.26158C14.9035 2.92169 13.8328 3.16698 13.0054 2.82179C12.1447 2.45964 11.6014 1.58719 11.6548 0.650733C11.6724 0.356398 11.4572 0.100638 11.1639 0.0664738C10.4168 -0.0200191 9.66323 -0.0225274 8.91403 0.0605922C8.62445 0.0925946 8.40943 0.342299 8.41903 0.632915C8.45146 1.56021 7.90206 2.41726 7.04967 2.76643C6.23223 3.10038 5.16897 2.85691 4.57416 2.20259C4.37756 1.98705 4.04881 1.96058 3.81951 2.13936C3.22029 2.60962 2.6753 3.14804 2.20184 3.73879C2.01735 3.96843 2.04459 4.30125 2.26143 4.49854C2.95761 5.12899 3.18206 6.13144 2.82061 6.99377C2.4755 7.81589 1.6219 8.34548 0.644793 8.34548C0.32771 8.33528 0.10205 8.54831 0.0670207 8.83667C-0.0208561 9.58769 -0.0218075 10.3533 0.0627825 11.1105C0.0943524 11.3928 0.431934 11.6025 0.718571 11.6025C1.58955 11.5803 2.42525 12.1192 2.77632 12.9726C3.12567 13.825 2.90079 14.8184 2.21697 15.4456C2.00308 15.6422 1.97574 15.9706 2.15634 16.1989C2.62072 16.7907 3.15421 17.3291 3.73804 17.7994C3.96724 17.984 4.30059 17.9581 4.49926 17.7391C5.09762 17.0775 6.16814 16.8326 6.99216 17.1785C7.85535 17.5397 8.39836 18.412 8.34534 19.3488C8.32795 19.6431 8.54367 19.8996 8.83592 19.933C9.21822 19.9777 9.60251 19.9999 9.98801 19.9999C10.3539 19.9999 10.7198 19.9799 11.0858 19.9392C11.3757 19.9072 11.5904 19.6572 11.5806 19.3665C11.5471 18.4396 12.0977 17.5825 12.9491 17.234C13.772 16.8979 14.8305 17.1439 15.4256 17.7972C15.6233 18.0124 15.95 18.0385 16.1803 17.8604C16.7785 17.3913 17.3224 16.8532 17.798 16.2609C17.9826 16.0317 17.9564 15.6984 17.7384 15.5008C17.0424 14.8708 16.8167 13.8679 17.1782 13.0064C17.5179 12.1954 18.3398 11.6508 19.2237 11.6508L19.3474 11.6541C19.6344 11.6774 19.8981 11.4564 19.9328 11.1636C20.0211 10.4119 20.022 9.64711 19.9371 8.8897ZM10 15.765C6.81597 15.765 4.23494 13.184 4.23494 10C4.23494 6.81603 6.81606 4.235 10 4.235C13.184 4.235 15.7651 6.81603 15.7651 10C15.7651 11.0807 15.4672 12.0916 14.9497 12.956L12.4253 10.4315C12.6081 10.0006 12.7046 9.53346 12.7045 9.05135C12.7045 8.10728 12.3368 7.21978 11.6692 6.55231C11.0017 5.88485 10.1142 5.51725 9.17031 5.51725C8.8553 5.51725 8.54176 5.55911 8.23843 5.64172C8.10558 5.67796 7.99694 5.78746 7.96157 5.92057C7.92541 6.05671 7.96615 6.19622 8.07254 6.30269C8.07254 6.30269 9.31881 7.55857 9.7358 7.97547C9.77948 8.01915 9.77939 8.12337 9.77325 8.16091L9.76936 8.18832C9.72732 8.64674 9.64628 9.197 9.57942 9.40848C9.57042 9.41739 9.56195 9.42491 9.55278 9.43408C9.54318 9.44368 9.53435 9.45294 9.5251 9.46245C9.31086 9.53121 8.75211 9.61321 8.28644 9.6549L8.28652 9.65239L8.26559 9.65767C8.26187 9.6581 8.25495 9.65862 8.24578 9.65862C8.19545 9.65862 8.12141 9.64452 8.05412 9.57731C7.62009 9.14329 6.42269 7.95445 6.42269 7.95445C6.31526 7.84737 6.20507 7.82488 6.13164 7.82488C5.96047 7.82488 5.8072 7.94857 5.75894 8.12596C5.42932 9.34577 5.77875 10.6579 6.6711 11.5503C7.33873 12.2179 8.22632 12.5854 9.17039 12.5854C9.6525 12.5854 10.1197 12.489 10.5505 12.3062L13.1023 14.858C12.2064 15.4313 11.1425 15.765 10 15.765Z" fill="#E4512A"/>
+</g>
+<defs>
+<clipPath id="crs-gear-clip0_0_4">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>`
     )
-  }, g = (n, t) => {
-    var e;
-    return ((e = n.properties) == null ? void 0 : e[t]) ?? "";
-  }, A = (n) => g(n, "_promo_gift") === "true", L = (n) => {
-    const t = ` ${n.product_title.toLowerCase()} `;
-    return [...E].sort((r, s) => s.length - r.length).find((r) => t.includes(` ${r.toLowerCase()} `)) ?? E.find((r) => r.toLowerCase() === (n.product_type || "").trim().toLowerCase()) ?? "";
-  }, j = (n) => g(n, "_main_chair_product") === "true" || g(n, "_chair_accessory") !== "true" && !!L(n), W = (n) => {
-    const t = [], e = /* @__PURE__ */ new Map(), r = /* @__PURE__ */ new Map(), s = [];
-    for (const i of n.items) {
-      if (A(i)) {
-        s.push(i);
+  }, g = (t, e) => {
+    var n;
+    return ((n = t.properties) == null ? void 0 : n[e]) ?? "";
+  }, T = (t) => g(t, "_promo_gift") === "true", l1 = (t) => g(t, "_hidden_from_customer") === "true", z = (t) => t.handle === j, $ = (t) => {
+    const e = ` ${t.product_title.toLowerCase()} `;
+    return [...R].sort((s, r) => r.length - s.length).find((s) => e.includes(` ${s.toLowerCase()} `)) ?? R.find((s) => s.toLowerCase() === (t.product_type || "").trim().toLowerCase()) ?? "";
+  }, O = (t) => g(t, "_main_chair_product") === "true" || g(t, "_chair_accessory") !== "true" && (!!$(t) || c1.includes((t.product_type || "").trim())), d1 = (t) => {
+    var o;
+    const e = [], n = /* @__PURE__ */ new Map(), s = /* @__PURE__ */ new Map(), r = [], c = [];
+    for (const i of t.items) {
+      if (z(i)) continue;
+      if (l1(i)) {
+        c.push(i);
         continue;
       }
-      const c = g(i, "_bundle_uuid"), l = c ? e.get(c) : void 0;
+      if (T(i)) {
+        r.push(i);
+        continue;
+      }
+      const d = g(i, "_bundle_uuid"), l = d ? n.get(d) : void 0;
       if (l) {
-        l.lines.push(i), r.set(i.key, l);
+        l.lines.push(i), s.set(i.key, l);
         continue;
       }
-      const u = {
-        id: c || i.key,
+      const f = {
+        id: d || i.key,
         main: i,
         accessories: [],
         lines: [i],
         gifts: [],
+        hidden: [],
         isBundle: !1,
         isChair: !1,
         isGift: !1
       };
-      c && e.set(c, u), r.set(i.key, u), t.push(u);
+      d && n.set(d, f), s.set(i.key, f), e.push(f);
     }
-    for (const i of t)
-      i.main = i.lines.find(j) ?? i.lines[0], i.accessories = i.lines.filter((c) => c !== i.main), i.lines = [i.main, ...i.accessories], i.isBundle = i.accessories.length > 0, i.isChair = j(i.main);
-    t.sort((i, c) => Number(c.isChair) - Number(i.isChair));
-    for (const i of s) {
-      const c = r.get(g(i, "_promo_parent_key"));
-      if (c) {
-        c.gifts.push(i);
+    for (const i of e)
+      i.main = i.lines.find(O) ?? i.lines[0], i.accessories = i.lines.filter((d) => d !== i.main), i.lines = [i.main, ...i.accessories], i.isBundle = i.accessories.length > 0, i.isChair = O(i.main);
+    e.sort((i, d) => Number(d.isChair) - Number(i.isChair));
+    for (const i of r) {
+      const d = s.get(g(i, "_promo_parent_key"));
+      if (d) {
+        d.gifts.push(i);
         continue;
       }
-      t.push({
+      e.push({
         id: i.key,
         main: i,
         accessories: [],
         lines: [i],
         gifts: [],
+        hidden: [],
         isBundle: !1,
         isChair: !1,
         isGift: !0
       });
     }
-    return t;
-  }, X = (n) => n.lines.reduce((t, e) => t + e.final_line_price, 0), J = (n) => n.lines.reduce((t, e) => t + e.original_line_price, 0), x = (n) => {
-    const t = n / 100, e = Number.isInteger(t) ? 0 : 2;
-    return `₪${t.toLocaleString("en-US", { minimumFractionDigits: e, maximumFractionDigits: e })}`;
-  }, H = (n, t) => {
-    if (!n) return "";
-    const e = n.startsWith("//") ? `https:${n}` : n;
-    return e.includes("width=") ? e.replace(/width=\d+/, `width=${t}`) : `${e}${e.includes("?") ? "&" : "?"}width=${t}`;
-  }, M = (n) => {
-    const e = (n.accessories.map((r) => g(r, "_color")).find(Boolean) || n.main.product_title).toLowerCase();
-    return F.find((r) => e.includes(r.toLowerCase())) ?? "";
-  }, P = (n) => U[n] ?? n, q = (n) => {
-    var e;
-    const t = g(n, "Seat Depth") || ((e = n.product_title.match(/\b(\d{2})\s*cm\b/i)) == null ? void 0 : e[1]) || "";
-    return t ? `${t.replace(/\s*cm$/i, "")} ${o.cm}` : "";
-  }, B = (n) => g(n, "_bundle_label").split(" - ")[0].trim(), S = (n) => n.isChair ? L(n.main) || n.main.product_type || n.main.product_title : n.isBundle && B(n.main) ? B(n.main) : n.main.product_title, K = (n) => {
-    if (n.isChair)
-      return [n.isBundle ? B(n.main) : "", P(M(n)), q(n.main)].filter(Boolean).join(" · ");
-    const t = n.main.variant_title;
-    return t && t !== "Default Title" ? t : "";
-  }, Q = (n, t) => {
-    if (t === n.main && n.isChair) {
-      const r = [P(M(n)), q(t)].filter(Boolean).join(" · ");
-      return `${o.chairPrefix} ${S(n)} ${r}`.trim();
+    for (const i of c)
+      (o = e.find((d) => String(d.main.variant_id) === g(i, "_linked_to"))) == null || o.hidden.push(i);
+    return e;
+  }, M = (t) => t.filter((e) => e.isChair).reduce((e, n) => e + n.main.quantity, 0), p1 = (t) => t.lines.reduce((e, n) => e + n.final_line_price, 0), h1 = (t) => t.lines.reduce((e, n) => e + n.original_line_price, 0), C = (t) => {
+    const e = t / 100, n = Number.isInteger(e) ? 0 : 2;
+    return `₪${e.toLocaleString("en-US", { minimumFractionDigits: n, maximumFractionDigits: n })}`;
+  }, S = (t, e) => {
+    if (!t) return "";
+    const n = t.startsWith("//") ? `https:${t}` : t;
+    return n.includes("width=") ? n.replace(/width=\d+/, `width=${e}`) : `${n}${n.includes("?") ? "&" : "?"}width=${e}`;
+  }, A = (t) => {
+    const n = (t.accessories.map((s) => g(s, "_color")).find(Boolean) || t.main.product_title).toLowerCase();
+    return a1.find((s) => n.includes(s.toLowerCase())) ?? "";
+  }, D = (t) => o1[t] ?? t, G = (t) => {
+    var n;
+    const e = g(t, "Seat Depth") || ((n = t.product_title.match(/\b(\d{2})\s*cm\b/i)) == null ? void 0 : n[1]) || "";
+    return e ? `${e.replace(/\s*cm$/i, "")} ${a.cm}` : "";
+  }, B = (t) => g(t, "_bundle_label").split(" - ")[0].trim(), P = (t) => t.isChair ? $(t.main) || t.main.product_title : t.isBundle && B(t.main) ? B(t.main) : t.main.product_title, u1 = (t) => {
+    if (t.isChair)
+      return [t.isBundle ? B(t.main) : "", D(A(t)), G(t.main)].filter(Boolean).join(" · ");
+    const e = t.main.variant_title;
+    return e && e !== "Default Title" ? e : "";
+  }, f1 = (t, e) => {
+    if (e === t.main && t.isChair) {
+      const s = [D(A(t)), G(e)].filter(Boolean).join(" · ");
+      return `${a.chairPrefix} ${P(t)} ${s}`.trim();
     }
-    const e = V.find((r) => r.name === g(t, "_accessory_name"));
-    return (e == null ? void 0 : e.title) ?? t.product_title;
-  }, Y = (n) => {
-    const t = n.filter((s) => s.isChair).map((s) => g(s.main, "זמן אספקה")).filter(Boolean), e = t.find((s) => /מוקדמת|pre-?order/i.test(s) || !/ימי עסקים/.test(s));
-    return { text: e ?? t[0] ?? "", preorder: !!e };
-  }, t1 = (n, t, e) => {
-    const r = n.options.findIndex((i) => /model/i.test(i.name)), s = n.options.findIndex((i) => /color/i.test(i.name));
-    return r < 0 || s < 0 ? null : n.variants.find(
-      (i) => i.available && i.options[s] === e && i.options[r].split("/").map((c) => c.trim().toLowerCase()).includes(t)
+    const n = H.find((s) => s.name === g(e, "_accessory_name"));
+    return (n == null ? void 0 : n.title) ?? e.product_title;
+  }, m1 = (t) => {
+    const e = t.filter((r) => r.isChair).map((r) => g(r.main, "זמן אספקה")).filter(Boolean), n = e.find((r) => /מוקדמת|pre-?order/i.test(r) || !/ימי עסקים/.test(r));
+    return { text: n ?? e[0] ?? "", preorder: !!n };
+  }, _1 = (t, e, n) => {
+    const s = t.options.findIndex((c) => /model/i.test(c.name)), r = t.options.findIndex((c) => /color/i.test(c.name));
+    return s < 0 || r < 0 ? null : t.variants.find(
+      (c) => c.available && c.options[r] === n && c.options[s].split("/").map((o) => o.trim().toLowerCase()).includes(e)
     ) ?? null;
-  }, e1 = (n, t) => {
-    if (!n.isChair) return null;
-    const e = L(n.main).toLowerCase(), r = M(n);
-    if (!e || !r) return null;
-    const s = new Set(n.accessories.map((c) => g(c, "_accessory_name"))), i = [];
-    return V.forEach((c, l) => {
-      const u = t[l];
-      if (!u || s.has(c.name)) return;
-      const a = t1(u, e, r);
-      a && i.push({ accessory: c, product: u, variant: a, color: r });
-    }), i.length ? { items: i, price: i.reduce((c, l) => c + l.variant.price, 0) * n.main.quantity } : null;
-  }, d = (n) => n.replace(/[&<>"']/g, (t) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[t]), R = (n) => n.split(" · ").map((t) => `<bdi>${d(t)}</bdi>`).join(" · "), n1 = () => (
+  }, g1 = (t, e) => {
+    if (!t.isChair) return null;
+    const n = $(t.main).toLowerCase(), s = A(t);
+    if (!n || !s) return null;
+    const r = new Set(t.accessories.map((o) => g(o, "_accessory_name"))), c = [];
+    return H.forEach((o, i) => {
+      const d = e[i];
+      if (!d || r.has(o.name)) return;
+      const l = _1(d, n, s);
+      l && c.push({ accessory: o, product: d, variant: l, color: s });
+    }), c.length ? { items: c, price: c.reduce((o, i) => o + i.variant.price, 0) * t.main.quantity } : null;
+  }, u = (t) => t.replace(/[&<>"']/g, (e) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[e]), N = (t) => t.split(" · ").map((e) => `<bdi>${u(e)}</bdi>`).join(" · "), C1 = () => (
     /* HTML */
     `
-  <dialog id="crsCart" class="crs-cart" dir="rtl" aria-label="${o.title}">
+  <dialog id="crsCart" class="crs-cart" dir="rtl" aria-label="${a.title}">
     <div class="crs-cart__overlay" data-crs-close></div>
     <div class="crs-cart__panel">
       <div class="crs-cart__content" data-crs-content></div>
     </div>
   </dialog>
 `
-  ), r1 = (n) => {
-    const { cart: t, groups: e } = n;
-    if (!e.length) return O(0) + i1();
-    const r = e.filter((s) => !s.isGift).length;
+  ), x1 = () => (
+    /* HTML */
+    `
+  <div id="crsCartPage" class="crs-page" dir="rtl">
+    <div class="crs-page__content" data-crs-content></div>
+  </div>
+`
+  ), I = (t) => t.filter((e) => !e.isGift).length, F = (t) => t ? `<p class="crs-cart__error" role="alert">${t}</p>` : "", U = (t) => {
+    const { groups: e } = t;
     return (
       /* HTML */
       `
-    ${O(r)} ${n.error ? `<p class="crs-cart__error" role="alert">${n.error}</p>` : ""}
-    ${s1(e)}
-    <div class="crs-cart__body" data-crs-body>
-      <div class="crs-cart__items">${e.map((s) => c1(s, n)).join("")}</div>
-      ${h1(n)}
+    <div class="crs-cart__items">
+      ${e.map(
+        (n, s) => {
+          var r;
+          return w1(n, t) + // Right under the chairs (they're sorted first), as in Figma.
+          (t.assembly && n.isChair && !((r = e[s + 1]) != null && r.isChair) ? V1(t.assembly) : "");
+        }
+      ).join("")}
     </div>
-    ${f1(t)}
   `
     );
-  }, O = (n) => (
+  }, y1 = (t) => {
+    const { cart: e, groups: n } = t;
+    return n.length ? (
+      /* HTML */
+      `
+    ${W(I(n))} ${F(t.error)} ${X(n)}
+    <div class="crs-cart__body" data-crs-body>${U(t)} ${K(t)}</div>
+    ${S1(e)}
+  `
+    ) : W(0) + J();
+  }, b1 = (t) => {
+    const { cart: e, groups: n } = t, s = I(n), r = (
+      /* HTML */
+      `
+    <div class="crs-page__head">
+      <p class="crs-page__title" role="heading" aria-level="1">${a.pageTitle}</p>
+      ${s ? `<p class="crs-page__count">${s === 1 ? a.oneProduct : a.products(s)}</p>` : ""}
+    </div>
+  `
+    );
+    return n.length ? (
+      /* HTML */
+      `
+    ${r}
+    <div class="crs-page__layout">
+      <div class="crs-page__main">
+        ${F(t.error)} ${X(n)}
+        <div class="crs-page__panel">${U(t)} ${K(t)}</div>
+      </div>
+      ${A1(e)}
+    </div>
+  `
+    ) : r + J(!0);
+  }, W = (t) => (
     /* HTML */
     `
   <div class="crs-cart__header">
     <div class="crs-cart__heading">
-      <p class="crs-cart__title">${o.title}</p>
-      ${n ? `<p class="crs-cart__count">${n === 1 ? o.oneProduct : o.products(n)}</p>` : ""}
+      <p class="crs-cart__title">${a.title}</p>
+      ${t ? `<p class="crs-cart__count">${t === 1 ? a.oneProduct : a.products(t)}</p>` : ""}
     </div>
-    <button type="button" class="crs-cart__close" data-crs-close aria-label="${o.close}">${h.close}</button>
+    <button type="button" class="crs-cart__close" data-crs-close aria-label="${a.close}">${h.close}</button>
   </div>
 `
-  ), s1 = (n) => {
-    const { text: t, preorder: e } = Y(n);
-    return t ? (
+  ), X = (t) => {
+    const { text: e, preorder: n } = m1(t);
+    return e ? (
       /* HTML */
       `
-    <div class="crs-cart__banner ${e ? "crs-cart__banner--preorder" : ""}">
-      ${e ? h.truckPreorder : h.truck}
-      <span>${d(t)}</span>
+    <div class="crs-cart__banner ${n ? "crs-cart__banner--preorder" : ""}">
+      ${n ? h.truckPreorder : h.truck}
+      <span>${u(e)}</span>
     </div>
   `
     ) : "";
-  }, i1 = () => (
+  }, J = (t = !1) => (
     /* HTML */
     `
   <div class="crs-cart__empty">
-    <p>${o.empty}</p>
-    <button type="button" class="crs-btn crs-btn--outline" data-crs-close>${o.continueShopping}</button>
+    <p>${a.empty}</p>
+    ${t ? `<a class="crs-btn crs-btn--outline" href="/">${a.continueShopping}</a>` : `<button type="button" class="crs-btn crs-btn--outline" data-crs-close>${a.continueShopping}</button>`}
   </div>
 `
-  ), c1 = (n, t) => {
-    if (n.isGift) return p1(n);
-    const e = t.upgrades.get(n.id);
-    return o1(n, t.openGroups.has(n.id)) + (e ? d1(n, e) : "");
-  }, o1 = (n, t) => {
-    const e = X(n), r = J(n), s = K(n);
+  ), w1 = (t, e) => {
+    if (t.isGift) return H1(t);
+    const n = e.upgrades.get(t.id);
+    return v1(t, e.openGroups.has(t.id)) + (n ? $1(t, n) : "");
+  }, v1 = (t, e) => {
+    const n = p1(t), s = h1(t), r = u1(t);
     return (
       /* HTML */
       `
-    <div class="crs-card" data-crs-group="${d(n.id)}">
+    <div class="crs-card" data-crs-group="${u(t.id)}">
       <div class="crs-card__top">
-        <a class="crs-card__media" href="${d(n.main.url)}">
-          <img src="${H(n.main.image, 200)}" alt="${d(n.main.product_title)}" loading="lazy" />
+        <a class="crs-card__media" href="${u(t.main.url)}">
+          <img src="${S(t.main.image, 200)}" alt="${u(t.main.product_title)}" loading="lazy" />
         </a>
         <div class="crs-card__info">
-          <p class="crs-card__name">${d(S(n))}</p>
-          ${s ? `<p class="crs-card__subtitle">${R(s)}</p>` : ""}
-          ${r > e ? `<span class="crs-badge">${o.saving(x(r - e))}</span>` : ""}
+          <p class="crs-card__name">${u(P(t))}</p>
+          ${r ? `<p class="crs-card__subtitle">${N(r)}</p>` : ""}
+          ${s > n ? `<span class="crs-badge">${a.saving(C(s - n))}</span>` : ""}
         </div>
         <div class="crs-card__price">
-          <span class="crs-card__price-final">${x(e)}</span>
-          ${r > e ? `<s class="crs-card__price-original">${x(r)}</s>` : ""}
+          <span class="crs-card__price-final">${C(n)}</span>
+          ${s > n ? `<s class="crs-card__price-original">${C(s)}</s>` : ""}
         </div>
       </div>
-      ${n.isBundle ? a1(n, t) : ""}
+      ${t.isBundle ? L1(t, e) : ""}
       <div class="crs-card__actions">
-        ${l1(n)}
-        <button type="button" class="crs-card__remove" data-crs-remove="${d(n.id)}">${o.remove}</button>
+        ${k1(t)}
+        <button type="button" class="crs-card__remove" data-crs-remove="${u(t.id)}">${a.remove}</button>
       </div>
     </div>
   `
     );
-  }, a1 = (n, t) => (
+  }, L1 = (t, e) => (
     /* HTML */
     `
-  <div class="crs-included ${t ? "is-open" : ""}">
-    <button
-      type="button"
-      class="crs-included__toggle"
-      data-crs-toggle="${d(n.id)}"
-      aria-expanded="${t}"
-    >
+  <div class="crs-included ${e ? "is-open" : ""}">
+    <button type="button" class="crs-included__toggle" data-crs-toggle="${u(t.id)}" aria-expanded="${e}">
       <span class="crs-included__chevron">${h.chevron}</span>
-      <span>${o.included(n.lines.length)}</span>
+      <span>${a.included(t.lines.length)}</span>
     </button>
     <ul class="crs-included__list">
-      ${n.lines.map(
-      (e) => (
+      ${t.lines.map(
+      (n) => (
         /* HTML */
         `
             <li class="crs-included__row">
-              <span class="crs-included__img"><img src="${H(e.image, 100)}" alt="" loading="lazy" /></span>
-              <span class="crs-included__name">${R(Q(n, e))}</span>
+              <span class="crs-included__img"><img src="${S(n.image, 100)}" alt="" loading="lazy" /></span>
+              <span class="crs-included__name">${N(f1(t, n))}</span>
               <span class="crs-included__price">
-                ${e === n.main ? x(e.final_line_price) : o.includedLabel}
+                ${n === t.main ? C(n.final_line_price) : a.includedLabel}
               </span>
             </li>
           `
@@ -1218,52 +1543,73 @@ html.crs-cart-lock body {
     </ul>
   </div>
 `
-  ), l1 = (n) => (
+  ), k1 = (t) => (
     /* HTML */
     `
   <div class="crs-qty">
-    <button type="button" class="crs-qty__btn" data-crs-qty="${d(n.id)}" data-delta="1" aria-label="+">
+    <button type="button" class="crs-qty__btn" data-crs-qty="${u(t.id)}" data-delta="1" aria-label="+">
       ${h.plus}
     </button>
-    <span class="crs-qty__value">${n.main.quantity}</span>
-    <button type="button" class="crs-qty__btn" data-crs-qty="${d(n.id)}" data-delta="-1" aria-label="-">
+    <span class="crs-qty__value">${t.main.quantity}</span>
+    <button type="button" class="crs-qty__btn" data-crs-qty="${u(t.id)}" data-delta="-1" aria-label="-">
       ${h.minus}
     </button>
   </div>
 `
-  ), d1 = (n, t) => (
+  ), $1 = (t, e) => (
     /* HTML */
     `
   <div class="crs-offer">
     <div class="crs-offer__text">
-      <p class="crs-offer__title">${o.upgradeTitle}</p>
-      <p class="crs-offer__desc">${t.items.map((e) => e.accessory.title).join(" + ")}</p>
-      <p class="crs-offer__price">${o.upgradePrice(x(t.price))}</p>
+      <p class="crs-offer__title">${a.upgradeTitle}</p>
+      <p class="crs-offer__desc">${e.items.map((n) => n.accessory.title).join(" + ")}</p>
+      <p class="crs-offer__price">${a.upgradePrice(C(e.price))}</p>
     </div>
-    <button type="button" class="crs-btn crs-btn--outline crs-btn--small" data-crs-upgrade="${d(n.id)}">
+    <button type="button" class="crs-btn crs-btn--outline crs-btn--small" data-crs-upgrade="${u(t.id)}">
       ${h.plusOrange}
-      <span>${o.upgradeButton}</span>
+      <span>${a.upgradeButton}</span>
     </button>
   </div>
 `
-  ), p1 = (n) => (
+  ), V1 = ({ price: t, line: e }) => (
+    /* HTML */
+    `
+  <div class="crs-offer crs-offer--assembly ${e ? "is-added" : ""}">
+    <div class="crs-offer__main">
+      <span class="crs-offer__icon">${h.gear}</span>
+      <div class="crs-offer__text">
+        <p class="crs-offer__title">${a.assemblyTitle}</p>
+        <p class="crs-offer__desc">${a.assemblyDesc}</p>
+        <p class="crs-offer__price">${C(t)}</p>
+      </div>
+    </div>
+    ${e ? `<button type="button" class="crs-card__remove" data-crs-assembly="remove">${a.remove}</button>` : (
+      /* HTML */
+      `<button type="button" class="crs-btn crs-btn--outline crs-btn--small" data-crs-assembly="add">
+          ${h.plusOrange}
+          <span>${a.add}</span>
+        </button>`
+    )}
+  </div>
+`
+  ), H1 = (t) => (
     /* HTML */
     `
   <div class="crs-gift">
-    <span class="crs-included__img"><img src="${H(n.main.image, 100)}" alt="" loading="lazy" /></span>
-    <span class="crs-included__name">${d(n.main.product_title)}</span>
-    <span class="crs-included__price">${o.gift}</span>
+    <span class="crs-included__img"><img src="${S(t.main.image, 100)}" alt="" loading="lazy" /></span>
+    <span class="crs-included__name">${u(t.main.product_title)}</span>
+    <span class="crs-included__price">${a.gift}</span>
   </div>
 `
-  ), h1 = (n) => {
-    if (!n.recommendations.length) return "";
-    const t = n.groups.find((r) => r.isChair), e = t ? S(t) : o.recsFallbackTitle;
+  ), K = (t) => {
+    if (!t.recommendations.length) return "";
+    const e = t.groups.find((s) => s.isChair), n = e ? P(e) : a.recsFallbackTitle;
     return (
       /* HTML */
       `
     <div class="crs-recs">
       <div class="crs-recs__head">
-        <p class="crs-recs__title">${d(e)}</p>
+        <p class="crs-recs__title">${u(n)}</p>
         <div class="crs-recs__arrows" dir="ltr">
           <button type="button" class="crs-recs__arrow" data-crs-slide="next" aria-label="next">${h.arrow}</button>
           <button type="button" class="crs-recs__arrow crs-recs__arrow--prev" data-crs-slide="prev" aria-label="prev">
@@ -1271,70 +1617,118 @@ html.crs-cart-lock body {
           </button>
         </div>
       </div>
-      <div class="crs-recs__track" data-crs-track>
-        ${n.recommendations.map(u1).join("")}
-      </div>
+      <div class="crs-recs__track" data-crs-track>${t.recommendations.map(M1).join("")}</div>
     </div>
   `
     );
-  }, u1 = (n) => (
+  }, M1 = (t) => (
     /* HTML */
     `
   <div class="crs-rec">
-    <a class="crs-rec__media" href="${d(n.url)}"><img src="${d(n.image)}" alt="${d(n.title)}" loading="lazy" /></a>
-    <p class="crs-rec__title">${d(n.title)}</p>
+    <a class="crs-rec__media" href="${u(t.url)}"
+      ><img src="${u(t.image)}" alt="${u(t.title)}" loading="lazy"
+    /></a>
+    <p class="crs-rec__title">${u(t.title)}</p>
     <p class="crs-rec__price">
-      <span>${d(n.price)}</span>
-      ${n.compare ? `<s>${d(n.compare)}</s>` : ""}
+      <span>${u(t.price)}</span>
+      ${t.compare ? `<s>${u(t.compare)}</s>` : ""}
     </p>
-    <button type="button" class="crs-btn crs-btn--outline crs-btn--small crs-rec__add" data-crs-rec-add="${n.index}">
+    <button type="button" class="crs-btn crs-btn--outline crs-btn--small crs-rec__add" data-crs-rec-add="${t.index}">
       ${h.plusOrange}
-      <span>${o.add}</span>
+      <span>${a.add}</span>
     </button>
   </div>
 `
-  ), f1 = (n) => {
-    const t = n.original_total_price - n.total_price, e = x(Math.round(n.total_price / I / 100) * 100);
+  ), Q = (t) => C(Math.round(t.total_price / q / 100) * 100), Y = (t) => (
+    /* HTML */
+    `
+  <button type="button" class="crs-cart__checkout" data-crs-checkout>
+    <span>${a.checkout}</span>
+    <span class="crs-cart__checkout-sep"></span>
+    <span>${C(t.total_price)}</span>
+  </button>
+  <div class="crs-cart__trust">
+    <span>${a.trial}${h.trial}</span>
+    <span>${a.warranty}${h.shield}</span>
+  </div>
+  <div class="crs-cart__payments" dir="ltr">${h.applePay}${h.visa}${h.master}${h.amex}${h.diners}</div>
+`
+  ), S1 = (t) => {
+    const e = t.original_total_price - t.total_price;
     return (
       /* HTML */
       `
     <div class="crs-cart__footer">
       <div class="crs-cart__summary">
-        <span class="crs-cart__summary-label">${o.totalLabel}</span>
-        <span class="crs-cart__summary-note">${t > 0 ? o.saved(x(t)) : o.installments(e)}</span>
+        <span class="crs-cart__summary-label">${a.totalLabel}</span>
+        <span class="crs-cart__summary-note"
+          >${e > 0 ? a.saved(C(e)) : a.installments(Q(t))}</span
+        >
       </div>
-      <button type="button" class="crs-cart__checkout" data-crs-checkout>
-        <span>${o.checkout}</span>
-        <span class="crs-cart__checkout-sep"></span>
-        <span>${x(n.total_price)}</span>
-      </button>
-      <div class="crs-cart__trust">
-        <span>${o.trial}${h.trial}</span>
-        <span>${o.warranty}${h.shield}</span>
-      </div>
-      <div class="crs-cart__payments" dir="ltr">${h.applePay}${h.visa}${h.master}${h.amex}${h.diners}</div>
+      ${Y(t)}
     </div>
   `
     );
+  }, A1 = (t) => {
+    const e = t.original_total_price - t.total_price;
+    return (
+      /* HTML */
+      `
+    <aside class="crs-summary">
+      <p class="crs-summary__title">${a.summaryTitle}</p>
+      <div class="crs-summary__rows">
+        <div class="crs-summary__row">
+          <span>${a.summaryProducts}</span><b>${C(t.original_total_price)}</b>
+        </div>
+        <div class="crs-summary__row"><span>${a.summaryShipping}</span><b>${a.free}</b></div>
+        ${e > 0 ? `<div class="crs-summary__row crs-summary__row--saved"><b>${a.summarySaved}</b><b>${C(e)}</b></div>` : ""}
+      </div>
+      <div class="crs-summary__total">
+        <div>
+          <b>${a.summaryTotal}</b>
+          <span>${a.vat}</span>
+        </div>
+        <div>
+          <b>${C(t.total_price)}</b>
+          <span dir="rtl">${a.perMonth(Q(t))}</span>
+        </div>
+      </div>
+      ${Y(t)}
+    </aside>
+  `
+    );
   };
-  G({ name: "Newton Cart Update", dev: "YK" });
-  const Z = "crs-cart", v = "cart-drawer-component", m = "Slide-in cart";
-  class _1 {
+  r1({ name: "Newton Cart Update", dev: "YK" });
+  const E = "crs-cart", L = "cart-drawer-component", b = /^\/cart\/?$/.test(location.pathname), Z = 'main .shopify-section[id$="__cart-section"]', e1 = b ? Z : L, x = b ? "Cart page" : "Slide-in cart";
+  class B1 {
     constructor() {
-      this.cart = null, this.groups = [], this.upgrades = /* @__PURE__ */ new Map(), this.recommendations = [], this.accessoryProducts = [], this.openGroups = /* @__PURE__ */ new Set(), this.isOpen = !1, this.busy = !1, this.error = "", this.notifying = !1, this.injectStyle(), this.mount(), this.hijackNativeDrawer(), this.listen(), this.loadAccessoryProducts();
+      this.cart = null, this.groups = [], this.upgrades = /* @__PURE__ */ new Map(), this.recommendations = [], this.accessoryProducts = [], this.assemblyProduct = null, this.openGroups = /* @__PURE__ */ new Set(), this.isOpen = !1, this.busy = !1, this.error = "", this.notifying = !1, this.injectStyle(), this.mount(), this.hijackNativeDrawer(), this.listen(), this.loadAccessoryProducts(), this.loadAssemblyProduct();
     }
     // Same reason as ../fit_block: the dev server injects the bundle before the
     // parser has reached <head>/<body>.
     async injectStyle() {
       if (document.getElementById("crsCartStyle")) return;
-      (await k("head")).insertAdjacentHTML("beforeend", `<style id="crsCartStyle">${D}</style>`);
+      (await w("head")).insertAdjacentHTML("beforeend", `<style id="crsCartStyle">${s1}</style>`);
+    }
+    get dialog() {
+      return this.root;
     }
     async mount() {
-      var e;
-      const t = await k("body");
-      (e = document.getElementById("crsCart")) == null || e.remove(), t.insertAdjacentHTML("beforeend", n1()), this.root = document.getElementById("crsCart"), this.content = this.root.querySelector("[data-crs-content]"), this.root.addEventListener("cancel", (r) => {
-        r.preventDefault(), this.close();
+      var n;
+      if (b) return this.mountPage();
+      const e = await w("body");
+      (n = document.getElementById("crsCart")) == null || n.remove(), e.insertAdjacentHTML("beforeend", C1()), this.root = document.getElementById("crsCart"), this.content = this.root.querySelector("[data-crs-content]"), this.root.addEventListener("cancel", (s) => {
+        s.preventDefault(), this.close();
       }), this.bind();
+    }
+    // The native section is hidden by CSS from the first paint, so it never
+    // flashes before ours is in place. An attribute, not a class: the theme
+    // rewrites <html>'s className ("no-js" → "js").
+    async mountPage() {
+      var s;
+      (await w("html")).setAttribute("data-crs-cart-page", "");
+      const n = await w(Z);
+      (s = document.getElementById("crsCartPage")) == null || s.remove(), n.insertAdjacentHTML("beforebegin", x1()), this.root = document.getElementById("crsCartPage"), this.content = this.root.querySelector("[data-crs-content]"), this.bind(), this.refresh();
     }
     // Every way the theme opens its drawer — header cart icon (on:click="/open"),
     // product-form's CartAddEvent (auto-open), the cart recommendations' own
@@ -1344,10 +1738,10 @@ html.crs-cart-lock body {
     // drawer keeps rendering (hidden) and keeps its own cart-items/summary logic,
     // which we still reuse for the checkout form and recommendations.
     async hijackNativeDrawer() {
-      this.hijackNativeDialog(), await customElements.whenDefined(v);
-      const t = customElements.get(v), e = this;
-      t.prototype.showDialog = function() {
-        e.notifying || e.open();
+      this.hijackNativeDialog(), await customElements.whenDefined(L);
+      const e = customElements.get(L), n = this;
+      e.prototype.showDialog = function() {
+        n.notifying || n.open();
       };
     }
     // product-form.js's bundle add (Standard/Pro) doesn't stop at drawer.open():
@@ -1362,72 +1756,76 @@ html.crs-cart-lock body {
     // so every other way of opening it (open = true, show(), the attribute) is
     // a no-op too. Every other dialog on the page (ours included) is untouched.
     hijackNativeDialog() {
-      const t = this, e = HTMLDialogElement.prototype, r = e.showModal, s = e.show, i = Object.getOwnPropertyDescriptor(e, "open"), c = (a) => a instanceof HTMLDialogElement && !!a.closest(v);
-      e.showModal = function() {
-        if (!c(this)) return r.call(this);
-        t.notifying || t.open();
-      }, e.show = function() {
-        if (!c(this)) return s.call(this);
-      }, Object.defineProperty(e, "open", {
-        ...i,
+      const e = this, n = HTMLDialogElement.prototype, s = n.showModal, r = n.show, c = Object.getOwnPropertyDescriptor(n, "open"), o = (l) => l instanceof HTMLDialogElement && !!l.closest(L);
+      n.showModal = function() {
+        if (!o(this)) return s.call(this);
+        e.notifying || e.open();
+      }, n.show = function() {
+        if (!o(this)) return r.call(this);
+      }, Object.defineProperty(n, "open", {
+        ...c,
         get() {
-          return c(this) ? t.isOpen : i.get.call(this);
+          return o(this) ? e.isOpen : c.get.call(this);
         },
-        set(a) {
-          c(this) && a || i.set.call(this, a);
+        set(l) {
+          o(this) && l || c.set.call(this, l);
         }
       });
-      const l = Element.prototype.setAttribute, u = Element.prototype.toggleAttribute;
-      Element.prototype.setAttribute = function(a, C) {
-        if (!(a === "open" && c(this)))
-          return l.call(this, a, C);
-      }, Element.prototype.toggleAttribute = function(a, C) {
-        return a === "open" && c(this) ? !1 : u.call(this, a, C);
+      const i = Element.prototype.setAttribute, d = Element.prototype.toggleAttribute;
+      Element.prototype.setAttribute = function(l, f) {
+        if (!(l === "open" && o(this)))
+          return i.call(this, l, f);
+      }, Element.prototype.toggleAttribute = function(l, f) {
+        return l === "open" && o(this) ? !1 : d.call(this, l, f);
       };
     }
     listen() {
-      document.addEventListener("cart:update", (t) => {
-        var r;
-        const e = t.detail;
-        ((r = e == null ? void 0 : e.data) == null ? void 0 : r.source) !== Z && this.scheduleRefresh();
-      }), document.addEventListener("promo:cart-reconciled", () => this.scheduleRefresh()), k(v).then((t) => {
-        let e;
+      document.addEventListener("cart:update", (e) => {
+        var s;
+        const n = e.detail;
+        ((s = n == null ? void 0 : n.data) == null ? void 0 : s.source) !== E && this.scheduleRefresh();
+      }), document.addEventListener("promo:cart-reconciled", () => this.scheduleRefresh()), window.addEventListener("resize", () => this.isOpen && this.updateArrows(), { passive: !0 }), w(L).then((e) => {
+        let n;
         new MutationObserver(() => {
-          clearTimeout(e), e = window.setTimeout(() => {
+          clearTimeout(n), n = window.setTimeout(() => {
             if (!this.cart) return;
-            const r = this.readRecommendations();
-            JSON.stringify(r) !== JSON.stringify(this.recommendations) && (this.recommendations = r, this.render());
+            const s = this.readRecommendations();
+            JSON.stringify(s) !== JSON.stringify(this.recommendations) && (this.recommendations = s, this.render());
           }, 150);
-        }).observe(t, { childList: !0, subtree: !0 });
+        }).observe(e, { childList: !0, subtree: !0 });
+      }), b && w(Z).then((e) => {
+        new MutationObserver(() => this.scheduleRefresh()).observe(e, { childList: !0, subtree: !0 });
       });
     }
     bind() {
-      N(this.root).on("click", (t) => {
-        const e = t.target;
-        if (e.closest("[data-crs-close]")) return this.close();
-        const r = e.closest("[data-crs-toggle]");
-        if (r) return this.toggleIncluded(r.dataset.crsToggle);
+      i1(this.root).on("click", (e) => {
+        const n = e.target;
+        if (n.closest("[data-crs-close]")) return this.close();
+        const s = n.closest("[data-crs-toggle]");
+        if (s) return this.toggleIncluded(s.dataset.crsToggle);
         if (this.busy) return;
-        const s = e.closest("[data-crs-qty]");
-        if (s) return this.changeQuantity(s.dataset.crsQty, Number(s.dataset.delta));
-        const i = e.closest("[data-crs-remove]");
-        if (i) return this.removeGroup(i.dataset.crsRemove);
-        const c = e.closest("[data-crs-upgrade]");
-        if (c) return this.upgradeGroup(c.dataset.crsUpgrade);
-        const l = e.closest("[data-crs-rec-add]");
-        if (l) return this.addRecommendation(Number(l.dataset.crsRecAdd));
-        const u = e.closest("[data-crs-slide]");
-        if (u) return this.slide(u.dataset.crsSlide);
-        if (e.closest("[data-crs-checkout]")) return this.checkout();
+        const r = n.closest("[data-crs-qty]");
+        if (r) return this.changeQuantity(r.dataset.crsQty, Number(r.dataset.delta));
+        const c = n.closest("[data-crs-remove]");
+        if (c) return this.removeGroup(c.dataset.crsRemove);
+        const o = n.closest("[data-crs-upgrade]");
+        if (o) return this.upgradeGroup(o.dataset.crsUpgrade);
+        const i = n.closest("[data-crs-assembly]");
+        if (i) return i.dataset.crsAssembly === "add" ? this.addAssembly() : this.removeAssembly();
+        const d = n.closest("[data-crs-rec-add]");
+        if (d) return this.addRecommendation(Number(d.dataset.crsRecAdd));
+        const l = n.closest("[data-crs-slide]");
+        if (l) return this.slide(l.dataset.crsSlide);
+        if (n.closest("[data-crs-checkout]")) return this.checkout();
       });
     }
     // ─── Open / close ────────────────────────────────────────────────────────
     open() {
-      var t;
-      this.root && (this.isOpen || (this.isOpen = !0, clearTimeout(this.closeTimer), this.root.open || this.root.showModal(), requestAnimationFrame(() => this.root.classList.add("is-open")), document.documentElement.classList.add("crs-cart-lock"), _("newton_cart_open", "Slide-in cart opened", "view", m), (t = this.root.querySelector(".crs-cart__close")) == null || t.focus({ preventScroll: !0 })), this.cart && this.render(), this.scheduleRefresh());
+      var e;
+      !this.root || b || (this.isOpen || (this.isOpen = !0, clearTimeout(this.closeTimer), this.dialog.open || this.dialog.showModal(), requestAnimationFrame(() => this.root.classList.add("is-open")), document.documentElement.classList.add("crs-cart-lock"), _("newton_cart_open", "Slide-in cart opened", "view", x), (e = this.root.querySelector(".crs-cart__close")) == null || e.focus({ preventScroll: !0 })), this.cart && this.render(), this.scheduleRefresh());
     }
     close() {
-      this.isOpen && (this.isOpen = !1, this.root.classList.remove("is-open"), this.closeTimer = window.setTimeout(() => this.root.close(), 300), document.documentElement.classList.remove("crs-cart-lock"), _("newton_cart_close", "Slide-in cart closed", "click", m));
+      !this.isOpen || b || (this.isOpen = !1, this.root.classList.remove("is-open"), this.closeTimer = window.setTimeout(() => this.dialog.close(), 300), document.documentElement.classList.remove("crs-cart-lock"), _("newton_cart_close", "Slide-in cart closed", "click", x));
     }
     // ─── Data ────────────────────────────────────────────────────────────────
     scheduleRefresh() {
@@ -1435,27 +1833,39 @@ html.crs-cart-lock body {
     }
     async refresh() {
       try {
-        const t = await fetch("/cart.js", { cache: "no-store" }).then((e) => e.json());
-        this.setCart(t);
-      } catch (t) {
-        $(`Newton Cart: failed to load cart — ${t}`, "error");
+        const e = await fetch("/cart.js", { cache: "no-store" }).then((n) => n.json());
+        this.setCart(e);
+      } catch (e) {
+        V(`Newton Cart: failed to load cart — ${e}`, "error");
       }
     }
-    setCart(t) {
-      this.cart = t, this.groups = W(t), this.computeUpgrades(), this.recommendations = this.readRecommendations(), this.render();
+    setCart(e) {
+      this.cart = e, this.groups = d1(e), this.computeUpgrades(), this.recommendations = this.readRecommendations(), this.render(), this.syncAssembly();
     }
     async loadAccessoryProducts() {
       this.accessoryProducts = await Promise.all(
-        V.map(
-          (t) => fetch(`/products/${t.handle}.js`).then((e) => e.ok ? e.json() : null).catch(() => null)
+        H.map(
+          (e) => fetch(`/products/${e.handle}.js`).then((n) => n.ok ? n.json() : null).catch(() => null)
         )
       ), this.cart && (this.computeUpgrades(), this.render());
     }
+    async loadAssemblyProduct() {
+      this.assemblyProduct = await fetch(`/products/${j}.js`).then((e) => e.ok ? e.json() : null).catch(() => null), this.cart && this.render();
+    }
+    assemblyLine() {
+      var e;
+      return (e = this.cart) == null ? void 0 : e.items.find(z);
+    }
+    assemblyState() {
+      var c;
+      const e = M(this.groups), n = this.assemblyLine(), s = (c = this.assemblyProduct) == null ? void 0 : c.variants[0];
+      return !e || !n && !(s != null && s.available) ? null : { price: n ? n.final_line_price / n.quantity : s.price, line: n };
+    }
     computeUpgrades() {
       this.upgrades.clear();
-      for (const t of this.groups) {
-        const e = e1(t, this.accessoryProducts);
-        e && this.upgrades.set(t.id, e);
+      for (const e of this.groups) {
+        const n = g1(e, this.accessoryProducts);
+        n && this.upgrades.set(e.id, n);
       }
     }
     // Cards come from the native drawer's own (hidden) recommendations section
@@ -1464,62 +1874,71 @@ html.crs-cart-lock body {
     // addRecommendation()).
     nativeRecommendationCards() {
       return Array.from(
-        document.querySelectorAll(`${v} [data-cart-recommendation-card]`)
+        document.querySelectorAll(`${e1} [data-cart-recommendation-card]`)
       );
     }
     readRecommendations() {
-      return this.nativeRecommendationCards().map((t, e) => {
-        var l, u, a, C, p, f;
-        const r = t.querySelector("[data-recommendation-select]"), s = r == null ? void 0 : r.options[r.selectedIndex], i = (s == null ? void 0 : s.dataset) ?? {}, c = (l = t.querySelector(".cart-recommendations__image")) == null ? void 0 : l.getAttribute("src");
+      return this.nativeRecommendationCards().map((e, n) => {
+        var i, d, l, f, p, m;
+        const s = e.querySelector("[data-recommendation-select]"), r = s == null ? void 0 : s.options[s.selectedIndex], c = (r == null ? void 0 : r.dataset) ?? {}, o = (i = e.querySelector(".cart-recommendations__image")) == null ? void 0 : i.getAttribute("src");
         return {
-          index: e,
-          title: i.hebrewModel || i.productTitle || ((a = (u = t.querySelector("[data-recommendation-title]")) == null ? void 0 : u.textContent) == null ? void 0 : a.trim()) || "",
-          price: i.price || ((p = (C = t.querySelector("[data-recommendation-price]")) == null ? void 0 : C.textContent) == null ? void 0 : p.trim()) || "",
-          compare: i.compare || "",
-          image: i.image || c || "",
-          url: i.productUrl || ((f = t.querySelector("[data-recommendation-link]")) == null ? void 0 : f.href) || "#"
+          index: n,
+          title: c.hebrewModel || c.productTitle || ((l = (d = e.querySelector("[data-recommendation-title]")) == null ? void 0 : d.textContent) == null ? void 0 : l.trim()) || "",
+          price: c.price || ((p = (f = e.querySelector("[data-recommendation-price]")) == null ? void 0 : f.textContent) == null ? void 0 : p.trim()) || "",
+          compare: c.compare || "",
+          image: c.image || o || "",
+          url: c.productUrl || ((m = e.querySelector("[data-recommendation-link]")) == null ? void 0 : m.href) || "#"
         };
       });
     }
     // ─── Render ──────────────────────────────────────────────────────────────
     render() {
       if (!this.content || !this.cart) return;
-      const t = this.content.querySelector("[data-crs-body]"), e = this.content.querySelector("[data-crs-track]"), r = (t == null ? void 0 : t.scrollTop) ?? 0, s = (e == null ? void 0 : e.scrollLeft) ?? 0, i = {
+      const e = this.content.querySelector("[data-crs-body]"), n = this.content.querySelector("[data-crs-track]"), s = (e == null ? void 0 : e.scrollTop) ?? 0, r = (n == null ? void 0 : n.scrollLeft) ?? 0, c = {
         cart: this.cart,
         groups: this.groups,
         upgrades: this.upgrades,
         recommendations: this.recommendations,
         openGroups: this.openGroups,
-        error: this.error
+        error: this.error,
+        assembly: this.assemblyState()
       };
-      this.content.innerHTML = r1(i);
-      const c = this.content.querySelector("[data-crs-body]"), l = this.content.querySelector("[data-crs-track]");
-      c && (c.scrollTop = r), l && (l.scrollLeft = s);
+      this.content.innerHTML = b ? b1(c) : y1(c);
+      const o = this.content.querySelector("[data-crs-body]"), i = this.content.querySelector("[data-crs-track]");
+      o && (o.scrollTop = s), i && (i.scrollLeft = r, i.addEventListener("scroll", () => this.updateArrows(), { passive: !0 }), this.updateArrows());
     }
-    setBusy(t) {
-      this.busy = t, this.root.classList.toggle("is-busy", t);
+    // The theme only ever returns a couple of recommendations — arrows are
+    // hidden when they all fit, and each one is disabled at its end.
+    updateArrows() {
+      const e = this.root.querySelector("[data-crs-track]"), n = e == null ? void 0 : e.closest(".crs-recs");
+      if (!e || !n) return;
+      const s = e.scrollWidth - e.clientWidth, r = Math.abs(e.scrollLeft);
+      n.classList.toggle("is-static", s <= 1), n.querySelector('[data-crs-slide="prev"]').disabled = r <= 1, n.querySelector('[data-crs-slide="next"]').disabled = r >= s - 1;
+    }
+    setBusy(e) {
+      this.busy = e, this.root.classList.toggle("is-busy", e);
     }
     // ─── Cart mutations ──────────────────────────────────────────────────────
     // window.fetch is looked up per call on purpose: promo-engine wraps it to
     // reconcile its gift lines after cart changes, and our requests have to go
     // through that wrapper just like the theme's own.
-    async post(t, e) {
-      const r = await window.fetch(t, {
+    async post(e, n, s = {}) {
+      const r = await window.fetch(e, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(e)
-      }), s = await r.json().catch(() => null);
-      if (!r.ok) throw new Error((s == null ? void 0 : s.description) || (s == null ? void 0 : s.message) || `${t} ${r.status}`);
-      return s;
+        headers: { "Content-Type": "application/json", Accept: "application/json", ...s },
+        body: JSON.stringify(n)
+      }), c = await r.json().catch(() => null);
+      if (!r.ok) throw new Error((c == null ? void 0 : c.description) || (c == null ? void 0 : c.message) || `${e} ${r.status}`);
+      return c;
     }
-    async mutate(t) {
+    async mutate(e) {
       this.setBusy(!0), this.error = "";
       try {
-        await t();
-      } catch (e) {
-        this.error = o.error, $(`Newton Cart: ${e}`, "error"), _("newton_cart_error", String(e), "error", m);
+        await e();
+      } catch (n) {
+        this.error = a.error, V(`Newton Cart: ${n}`, "error"), _("newton_cart_error", String(n), "error", x);
       }
-      await this.refresh(), this.notifyTheme(), this.setBusy(!1);
+      await this.refresh(), this.notifyTheme(), this.setBusy(!1), this.syncAssembly();
     }
     // Keeps everything else on the page in sync with a change we made: the
     // header cart-icon bubble, the native (hidden) drawer's own section — it
@@ -1530,136 +1949,163 @@ html.crs-cart-lock body {
           bubbles: !0,
           detail: {
             resource: {},
-            sourceId: Z,
-            data: { source: Z, itemCount: this.cart.item_count }
+            sourceId: E,
+            data: { source: E, itemCount: this.cart.item_count }
           }
         })
       ), this.notifying = !1);
     }
-    findGroup(t) {
-      return this.groups.find((e) => e.id === t);
+    findGroup(e) {
+      return this.groups.find((n) => n.id === e);
     }
     // A bundle's lines always move together — same rule as the theme's own
     // syncBundleAccessories() (accessory quantity follows the chair's).
-    changeQuantity(t, e) {
-      const r = this.findGroup(t);
-      if (!r) return;
-      const s = Math.max(0, r.main.quantity + e);
-      if (s === 0) return this.removeGroup(t);
+    changeQuantity(e, n) {
+      const s = this.findGroup(e);
+      if (!s) return;
+      const r = Math.max(0, s.main.quantity + n);
+      if (r === 0) return this.removeGroup(e);
       _(
         "newton_cart_quantity",
-        `Quantity ${e > 0 ? "increased" : "decreased"}: ${r.main.product_title}`,
+        `Quantity ${n > 0 ? "increased" : "decreased"}: ${s.main.product_title}`,
         "click",
-        m
+        x
       );
-      const i = Object.fromEntries(r.lines.map((c) => [c.key, s]));
-      this.mutate(() => this.post("/cart/update.js", { updates: i }));
+      const c = Object.fromEntries([...s.lines, ...s.hidden].map((o) => [o.key, r]));
+      this.mutate(() => this.post("/cart/update.js", { updates: c }));
     }
     // Removes the whole card: chair + its accessories + promo gifts attached to
     // it — what the theme's removeDependentCartItems() does when the chair goes.
-    removeGroup(t) {
-      const e = this.findGroup(t);
-      if (!e) return;
-      _("newton_cart_remove", `Removed: ${e.main.product_title}`, "click", m);
-      const r = Object.fromEntries([...e.lines, ...e.gifts].map((s) => [s.key, 0]));
-      this.mutate(() => this.post("/cart/update.js", { updates: r }));
+    removeGroup(e) {
+      const n = this.findGroup(e);
+      if (!n) return;
+      _("newton_cart_remove", `Removed: ${n.main.product_title}`, "click", x);
+      const s = Object.fromEntries([...n.lines, ...n.gifts, ...n.hidden].map((r) => [r.key, 0]));
+      this.mutate(() => this.post("/cart/update.js", { updates: s }));
     }
-    toggleIncluded(t) {
-      var r, s;
-      const e = !this.openGroups.has(t);
-      e ? this.openGroups.add(t) : this.openGroups.delete(t), (r = this.root.querySelector(`[data-crs-group="${CSS.escape(t)}"] .crs-included`)) == null || r.classList.toggle("is-open", e), (s = this.root.querySelector(`[data-crs-toggle="${CSS.escape(t)}"]`)) == null || s.setAttribute("aria-expanded", String(e)), _(
+    toggleIncluded(e) {
+      var s, r;
+      const n = !this.openGroups.has(e);
+      n ? this.openGroups.add(e) : this.openGroups.delete(e), (s = this.root.querySelector(`[data-crs-group="${CSS.escape(e)}"] .crs-included`)) == null || s.classList.toggle("is-open", n), (r = this.root.querySelector(`[data-crs-toggle="${CSS.escape(e)}"]`)) == null || r.setAttribute("aria-expanded", String(n)), _(
         "newton_cart_bundle_contents",
-        e ? "Bundle contents expanded" : "Bundle contents collapsed",
+        n ? "Bundle contents expanded" : "Bundle contents collapsed",
         "click",
-        m
+        x
       );
     }
     // Adds the missing accessories exactly as the PDP's bundle picker would
     // (same line properties, same `_bundle_uuid`), then relabels the chair and
     // the accessories already in the cart to Pro — so the theme's own bundle
     // logic, the order and checkout all see one Pro bundle.
-    upgradeGroup(t) {
-      const e = this.findGroup(t), r = this.upgrades.get(t);
-      !e || !r || (_("newton_cart_upgrade", `Upgrade to Pro Bundle: ${e.main.product_title}`, "click", m), this.mutate(async () => {
-        const s = e.main, i = s.properties ?? {}, c = i._bundle_uuid || `b-${Date.now()}-${Math.floor(Math.random() * 1e5)}`, l = i["Seat Depth"] ? { "עומק מושב": i["עומק מושב"] ?? "", "Seat Depth": i["Seat Depth"] } : {};
+    upgradeGroup(e) {
+      const n = this.findGroup(e), s = this.upgrades.get(e);
+      !n || !s || (_("newton_cart_upgrade", `Upgrade to Pro Bundle: ${n.main.product_title}`, "click", x), this.mutate(async () => {
+        const r = n.main, c = r.properties ?? {}, o = c._bundle_uuid || `b-${Date.now()}-${Math.floor(Math.random() * 1e5)}`, i = c["Seat Depth"] ? { "עומק מושב": c["עומק מושב"] ?? "", "Seat Depth": c["Seat Depth"] } : {};
         await this.post("/cart/add.js", {
-          items: r.items.map(({ accessory: p, product: f, variant: w, color: T }) => {
-            var z;
+          items: s.items.map(({ accessory: p, product: m, variant: y, color: n1 }) => {
+            var t1;
             return {
-              id: w.id,
-              quantity: s.quantity,
+              id: y.id,
+              quantity: r.quantity,
               properties: {
                 _chair_accessory: "true",
                 _accessory_name: p.name,
-                _linked_to: String(s.variant_id),
-                _color: T,
-                _matched_variant_title: w.title,
-                _matched_variant_display_title: [L(s), T].filter(Boolean).join(" / "),
-                _accessory_image: ((z = w.featured_image) == null ? void 0 : z.src) || f.featured_image || "",
-                _bundle_uuid: c,
-                _bundle_label: y,
-                ...l,
-                Bundle: y,
+                _linked_to: String(r.variant_id),
+                _color: n1,
+                _matched_variant_title: y.title,
+                _matched_variant_display_title: [$(r), n1].filter(Boolean).join(" / "),
+                _accessory_image: ((t1 = y.featured_image) == null ? void 0 : t1.src) || m.featured_image || "",
+                _bundle_uuid: o,
+                _bundle_label: k,
+                ...i,
+                Bundle: k,
                 _newton_handle: p.newtonHandle
               }
             };
           })
         });
-        const u = { _bundle_uuid: c, _bundle_label: y, Bundle: y };
-        let a = null;
-        for (const p of [s, ...e.accessories]) {
-          const f = p === s ? { _main_chair_product: "true" } : {};
-          a = await this.post("/cart/change.js", {
+        const d = { _bundle_uuid: o, _bundle_label: k, Bundle: k };
+        let l = null;
+        for (const p of [r, ...n.accessories]) {
+          const m = p === r ? { _main_chair_product: "true" } : {};
+          l = await this.post("/cart/change.js", {
             id: p.key,
             quantity: p.quantity,
-            properties: { ...p.properties ?? {}, ...u, ...f }
+            properties: { ...p.properties ?? {}, ...d, ...m }
           });
         }
-        const C = a == null ? void 0 : a.items.find(
+        const f = l == null ? void 0 : l.items.find(
           (p) => {
-            var f, w;
-            return p.variant_id === s.variant_id && ((f = p.properties) == null ? void 0 : f._bundle_uuid) === c && ((w = p.properties) == null ? void 0 : w._main_chair_product) === "true";
+            var m, y;
+            return p.variant_id === r.variant_id && ((m = p.properties) == null ? void 0 : m._bundle_uuid) === o && ((y = p.properties) == null ? void 0 : y._main_chair_product) === "true";
           }
         );
-        if (!(!a || !C || C.key === s.key))
-          for (const p of a.items.filter((f) => {
-            var w;
-            return A(f) && ((w = f.properties) == null ? void 0 : w._promo_parent_key) === s.key;
+        if (!(!l || !f || f.key === r.key))
+          for (const p of l.items.filter((m) => {
+            var y;
+            return T(m) && ((y = m.properties) == null ? void 0 : y._promo_parent_key) === r.key;
           }))
             await this.post("/cart/change.js", {
               id: p.key,
               quantity: p.quantity,
-              properties: { ...p.properties ?? {}, _promo_parent_key: C.key }
+              properties: { ...p.properties ?? {}, _promo_parent_key: f.key }
             });
       }));
     }
-    // Submits the native recommendation form — its own capturing submit
-    // handler (newton-cart-recommendations.js) does the add (bundle options
-    // included), fires cart:update and re-opens the drawer, which lands on ours.
-    addRecommendation(t) {
-      const e = this.nativeRecommendationCards()[t], r = e == null ? void 0 : e.querySelector("form[data-newton-cart-recommendation-form]"), s = this.recommendations[t];
-      if (!r || !s) return;
-      _("newton_cart_recommendation_add", `Recommendation added: ${s.title}`, "click", m), this.setBusy(!0);
-      const i = () => {
-        clearTimeout(c), document.removeEventListener("cart:update", i), this.setBusy(!1);
-      }, c = window.setTimeout(i, 8e3);
-      document.addEventListener("cart:update", i), r.requestSubmit();
+    addAssembly() {
+      var n;
+      const e = (n = this.assemblyProduct) == null ? void 0 : n.variants[0];
+      !e || !M(this.groups) || (_("newton_cart_assembly_add", "Assembly added", "click", x), this.mutate(() => this.post("/cart/add.js", { items: [{ id: e.id, quantity: 1 }] })));
     }
-    slide(t) {
-      const e = this.root.querySelector("[data-crs-track]"), r = e == null ? void 0 : e.querySelector(".crs-rec");
-      if (!e || !r) return;
-      const s = r.offsetWidth + 12;
-      e.scrollBy({ left: t === "next" ? -s : s, behavior: "smooth" }), _("newton_cart_recommendations_slide", `Recommendations ${t}`, "click", m);
+    removeAssembly() {
+      const e = this.assemblyLine();
+      e && (_("newton_cart_assembly_remove", "Assembly removed", "click", x), this.mutate(() => this.post("/cart/update.js", { updates: { [e.key]: 0 } })));
+    }
+    // One assembly per order: kept at quantity 1 however it got changed (here,
+    // /cart page, anywhere else), and removed with the last chair. Runs after every cart read; the mutate()
+    // it starts re-reads the cart, which then matches and stops here.
+    syncAssembly() {
+      const e = this.assemblyLine();
+      if (!e || this.busy || this.error) return;
+      const n = M(this.groups) ? 1 : 0;
+      e.quantity !== n && this.mutate(() => this.post("/cart/update.js", { updates: { [e.key]: n } }));
+    }
+    // Adds what the native recommendation card would, the same way its own
+    // handler (newton-cart-recommendations.js) builds the request — including
+    // the two-line "Rest & Relax Set" bundles. Not by submitting that form:
+    // promo-shopping-il-cart.js re-submits every /cart/add form after its own
+    // sync, and the recommendations handler then adds the product a second time.
+    addRecommendation(e) {
+      var d;
+      const n = this.nativeRecommendationCards()[e], s = n == null ? void 0 : n.querySelector("form[data-newton-cart-recommendation-form]"), r = this.recommendations[e];
+      if (!n || !s || !r) return;
+      const c = n.querySelector("[data-recommendation-select]"), o = ((d = c == null ? void 0 : c.options[c.selectedIndex]) == null ? void 0 : d.dataset) ?? {};
+      _("newton_cart_recommendation_add", `Recommendation added: ${r.title}`, "click", x);
+      let i;
+      if (o.bundle === "true") {
+        const l = `cart-rec-${Date.now()}-${Math.floor(Math.random() * 1e5)}`, f = o.bundleLabel || "Rest & Relax Set", p = { _bundle_uuid: l, _bundle_label: f, Bundle: f };
+        i = [o.bundleV1Id, o.bundleV2Id].map((m) => ({ id: Number(m), quantity: 1, properties: p }));
+      } else {
+        const l = o.variantId || String(new FormData(s).get("id") || "");
+        i = [{ id: Number(l), quantity: 1 }];
+      }
+      this.mutate(() => this.post("/cart/add.js", { items: i }, { "X-Newton-Cart-Recommendation": "true" }));
+    }
+    slide(e) {
+      const n = this.root.querySelector("[data-crs-track]"), s = n == null ? void 0 : n.querySelector(".crs-rec");
+      if (!n || !s) return;
+      const r = s.offsetWidth + 12;
+      n.scrollBy({ left: e === "next" ? -r : r, behavior: "smooth" }), _("newton_cart_recommendations_slide", `Recommendations ${e}`, "click", x);
     }
     // Clicks the native checkout button (name="checkout" inside the theme's
     // cart form) rather than navigating to /checkout ourselves — keeps any
     // app/promo hooks bound to that form working.
     checkout() {
-      _("newton_cart_checkout", "Checkout clicked", "click", m);
-      const t = document.querySelector(`${v} button[name="checkout"]`);
-      t ? t.click() : window.location.href = "/checkout";
+      _("newton_cart_checkout", "Checkout clicked", "click", x);
+      const e = document.querySelector(`${e1} button[name="checkout"]`);
+      e ? e.click() : window.location.href = "/checkout";
     }
   }
-  new _1();
+  new B1();
 })();
 //# sourceMappingURL=index.js.map
