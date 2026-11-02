@@ -13,7 +13,7 @@
   font-family: inherit;
 }
 .iaby {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-manrope, "Manrope"), sans-serif;
   color: #2e353f;
   background: #fff;
 }
