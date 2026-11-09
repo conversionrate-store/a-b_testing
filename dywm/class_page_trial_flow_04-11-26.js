@@ -925,18 +925,6 @@ button.ctf_link {
   display: none;
 }
 
-.ctf_title_m {
-  display: none;
-}
-
-@media (max-width: 640px) {
-  .ctf_title_d {
-    display: none;
-  }
-  .ctf_title_m {
-    display: inline;
-  }
-}
 .ctf_overlay::before {
   inset: -8px;
 }
@@ -954,7 +942,7 @@ button.ctf_link {
 .ctf_ended:not(.ctf_stacked) .ctf_overlay {
   overflow: visible;
 }
-`, a = (t, n, e, i = "") => {
+`, C = (t, n, e, i = "") => {
     window.dataLayer = window.dataLayer || [], window.dataLayer.push({
       event: "event-to-ga4",
       event_name: t,
@@ -975,7 +963,7 @@ button.ctf_link {
     });
   }), J = ({ name: t, dev: n }) => {
     const e = t.toLowerCase().replace(/\s/g, "_");
-    a(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
+    C(`${e}_started`, `Experiment ${t} started`, "other", e), console.log(
       `%c EXP: ${t} (DEV: ${n})`,
       "background: #3498eb; color: #fccf3a; font-size: 20px; font-weight: bold;"
     );
@@ -1074,7 +1062,7 @@ button.ctf_link {
     free: {
       bannerSub: `${w} after the trial, even <br class="ctf_m" />if you don't subscribe`,
       overlaySub: `Keep watching with 1200+ classes free for 7 days. ${w} even <br class="ctf_m" />if you don't subscribe.`,
-      popupTitle: '<span class="ctf_title_d">Watch this class and 1200+ more free for 7 days</span><span class="ctf_title_m">Unlock this class and<br />1200 more</span>',
+      popupTitle: "Watch this class and 1200+ more free for 7 days",
       popupSub: "Try Premium free for 7 days. Cancel any time — this class stays free either way.",
       lastStep: "Keep Premium, or cancel — this class stays free either way."
     }
@@ -1082,7 +1070,7 @@ button.ctf_link {
   <div class="ctf_rating">
     <span class="ctf_stars">${`<img src="${Z}" alt="" />`.repeat(5)}</span>
     <span><b>Rated 4.8</b> by <b>21,500+</b> customers</span>
-  </div>`, C = (t, n) => `<span class="ctf_perk"><img class="${t === f || t === R ? "ctf_perk_inset" : ""}" src="${t}" alt="" />${n}</span>`, z = (t) => `
+  </div>`, a = (t, n) => `<span class="ctf_perk"><img class="${t === f || t === R ? "ctf_perk_inset" : ""}" src="${t}" alt="" />${n}</span>`, z = (t) => `
   <div class="ctf_banner">
     <img class="ctf_banner_img" src="${S}" alt="" />
     <div class="ctf_banner_text">
@@ -1092,7 +1080,7 @@ button.ctf_link {
     </div>
     <div class="ctf_banner_action">
       <button type="button" class="ctf_btn" data-ctf-cta="banner">Start Free Trial</button>
-      ${C(g, "Easy cancel, anytime")}
+      ${a(g, "Easy cancel, anytime")}
     </div>
   </div>`, T = (t, n) => `
   <div class="ctf_overlay" style="--ctf-poster: ${n}">
@@ -1102,10 +1090,10 @@ button.ctf_link {
       <p class="ctf_overlay_sub">${E[t].overlaySub}</p>
       <button type="button" class="ctf_btn ctf_btn--wide" data-ctf-cta="overlay">Start 7-day free trial</button>
       <div class="ctf_perks ${t === "free" ? "ctf_perks--four" : ""}">
-        ${C(R, "$0 today")}
-        ${C(g, "Easy cancel any time")}
-        ${C(f, "Reminder 3 days before")}
-        ${t === "free" ? C(I, "30-day money-back") : ""}
+        ${a(R, "$0 today")}
+        ${a(g, "Easy cancel any time")}
+        ${a(f, "Reminder 3 days before")}
+        ${t === "free" ? a(I, "30-day money-back") : ""}
       </div>
       ${d}
     </div>
@@ -1146,9 +1134,9 @@ button.ctf_link {
         </div>
         <button type="button" class="ctf_btn ctf_btn--wide" data-ctf-submit>Start My 7-Day Free Trial</button>
         <div class="ctf_perks ctf_perks--popup">
-          ${C(g, "Cancel any time")}
-          ${C(f, "Reminder 3 days before")}
-          ${C(I, "30-day money-back")}
+          ${a(g, "Cancel any time")}
+          ${a(f, "Reminder 3 days before")}
+          ${a(I, "30-day money-back")}
         </div>
       </div>
       <aside class="ctf_how">
@@ -1197,7 +1185,7 @@ button.ctf_link {
         n.remove();
         return;
       }
-      this.routeForm = e, this.classType = (h = i.dywm_subscribers) != null && h.is_premium ? "premium" : "free", window.dataLayer = window.dataLayer || [], window.dataLayer.push({ funnel_source: "class_page", class_type: this.classType }), document.head.insertAdjacentHTML("beforeend", `<style class="ctf_style">${B}</style>`), this.mount(), a(x, "Start experiment", "loaded", this.classType);
+      this.routeForm = e, this.classType = (h = i.dywm_subscribers) != null && h.is_premium ? "premium" : "free", window.dataLayer = window.dataLayer || [], window.dataLayer.push({ funnel_source: "class_page", class_type: this.classType }), document.head.insertAdjacentHTML("beforeend", `<style class="ctf_style">${B}</style>`), this.mount(), C(x, "Start experiment", "loaded", this.classType);
     }
     // Prices come from the native form so currency and plan ids stay correct.
     readPlans(n) {
@@ -1232,12 +1220,12 @@ button.ctf_link {
       }).observe(this.primary), this.bindCtas(), this.bindPopup(), this.watchPlayer(), this.watchPreviewEnd(), this.trackOnce("banner", "Banner view"), k("Trial flow mounted");
     }
     trackOnce(n, e) {
-      this.seen.has(n) || (this.seen.add(n), a(x, e, "view", this.classType));
+      this.seen.has(n) || (this.seen.add(n), C(x, e, "view", this.classType));
     }
     bindCtas() {
       this.primary.addEventListener("click", (n) => {
         const e = n.target.closest("[data-ctf-cta]");
-        e && (a(x, "Start trial CTA", "click", `${e.dataset.ctfCta}|${this.classType}`), this.openPopup());
+        e && (C(x, "Start trial CTA", "click", `${e.dataset.ctfCta}|${this.classType}`), this.openPopup());
       });
     }
     openPopup() {
@@ -1254,14 +1242,14 @@ button.ctf_link {
         this.showStep("notready"), this.trackOnce("notready", "Not ready for Premium view");
         return;
       }
-      a(x, "Trial popup close", "click", this.classType), this.popup.close();
+      C(x, "Trial popup close", "click", this.classType), this.popup.close();
     }
     bindPopup() {
       this.popup.addEventListener("cancel", (n) => {
         n.preventDefault(), this.dismiss();
       }), this.popup.addEventListener("change", () => {
         const n = this.selectedPlan();
-        this.popup.querySelector("[data-ctf-billing]").textContent = n.billing, a(x, "Plan select", "change", `${n.name}|${this.classType}`);
+        this.popup.querySelector("[data-ctf-billing]").textContent = n.billing, C(x, "Plan select", "change", `${n.name}|${this.classType}`);
       }), this.popup.addEventListener("click", (n) => {
         const e = n.target;
         (e === this.popup || e.closest("[data-ctf-close]")) && this.dismiss(), e.closest("[data-ctf-back]") && this.showStep("trial"), e.closest("[data-ctf-submit]") && this.submitTrial(), e.closest("[data-ctf-free]") && this.createFreeAccount();
@@ -1274,14 +1262,14 @@ button.ctf_link {
     }
     submitTrial() {
       const n = this.selectedPlan();
-      a(x, "Trial popup submit", "click", `${n.name}|${this.classType}`);
+      C(x, "Trial popup submit", "click", `${n.name}|${this.classType}`);
       const e = this.routeForm.getAttribute("data-funnel-cookie"), i = this.routeForm.getAttribute("data-route-info");
       e && i && (document.cookie = `${e}=${encodeURIComponent(i)}; path=/; max-age=${_}`);
       const o = `/express-checkout/${n.id}`;
       window.location.href = `/yogi/register?destination=${o}&plan=${n.id}&trial=1&from=class_page`;
     }
     createFreeAccount() {
-      a(x, "Create a free account", "click", this.classType), window.location.href = `/yogi/register?destination=${window.location.pathname}&from=class_page`;
+      C(x, "Create a free account", "click", this.classType), window.location.href = `/yogi/register?destination=${window.location.pathname}&from=class_page`;
     }
     async watchPlayer() {
       this.video = await r(".sfc-flowplayerPlayer video");
