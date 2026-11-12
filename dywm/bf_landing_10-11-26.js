@@ -1739,7 +1739,7 @@
     },
     strength: {
       title: "A year of yoga to get stronger and more flexible",
-      sub: "Vinyasa, power yoga, core work, Pilates and deep stretches you can do at home. No gym and no equipment needed.",
+      sub: "Yoga classes that work your core, build full-body strength and loosen tight muscles at home. No gym and no equipment needed.",
       hero: Z2
     }
   }, x = {
